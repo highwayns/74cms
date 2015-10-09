@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=gb2312">
+<title>{#$title#}</title>
+<link rel="shortcut icon" href="{#$QISHI.main_domain#}favicon.ico" />
+<meta name="author" content="骑士CMS" />
+<meta name="copyright" content="74cms.com" />
+<link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
+<script src="{#$QISHI.site_template#}js/jquery.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/jquery.dialog.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/jquery.vtip-min.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/jquery.reasontip-min.js" type='text/javascript' language="javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	vtip_reason("{#$QISHI.website_dir#}","jobs_reason");
+	//更多操作
+{#if $QISHI.operation_mode=="1" && $points_rule.jobs_refresh.value>"0"#}
+	$("#refresh").click(function(){
+		var length=$("#form1 :checkbox[checked]").length;
+		var refresh_point="{#$points_rule.jobs_refresh.value#}";
+		var total_point=length*refresh_point;
+		alert("刷新职位可提高职位排名，每条职位消耗{#$points_rule.jobs_refresh.value#}{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}，您选择了"+length+"条职位，总共需要消耗"+total_point+"{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}，确定刷新吗？")
+	});
+{#/if#}
+
+	$("#delay").click(function(){
+		var str=new Array();
+	    $("input[name='y_id[]']:checkbox:checked").each(function(e){ 
+	        if($(this).attr("checked")){
+	            str[e] = $(this).val();
+	        }
+	    })
+	    str = str.join(",");
+		var tsTimeStamp= new Date().getTime();
+		dialog("职位延期","url:../../user/user_delay_jobs.php?id="+str+"&act=delay&t="+tsTimeStamp,"500px","auto","","");
+	});	
+
+	$(".delay").click(function(){
+	    str = $(this).attr("jobid");
+		var tsTimeStamp= new Date().getTime();
+		dialog("职位延期","url:../../user/user_delay_jobs.php?id="+str+"&act=delay&t="+tsTimeStamp,"500px","auto","","");
+	});	
+
+	$(".set_promotion").click(function(){
+			var catid = $(this).attr("catid");
+			var jobid = $(this).attr("jobid"); 
+			dialog("职位推广","url:company_ajax.php?act=set_promotion&catid="+catid+"&jobid="+jobid,"610px","auto","","");
+	});
+	// 推广下拉
+	$(".spread").click(function(){
+		$(this).find(".spread_but_group").slideToggle("fast");
+	})
+});
+</script>
+</head>
+<body>
+{#include file="user/header.htm"#}
+
+<div class="page_location link_bk">当前位置：<a href="{#$QISHI.main_domain#}">首页</a> > <a href="{#$userindexurl#}">会员中心</a> > 职位管理</div>
+<div class="usermain">
+  <div class="leftmenu  com link_bk">
+  	 {#include file="member_company/left.htm"#}
+  </div>
+  <div class="rightmain">
+  
+ 	<div class="bbox1 link_bk">
+		<div class="topnav">
+			<div class="titleH1">
+				<div class="h1-title">管理职位</div>
+			</div>
+			<div class="title_text">
+				<p>{#if $QISHI.operation_mode=="2" || $QISHI.operation_mode=="3"#}
+				您已发布&nbsp;<span>{#$total[2]#}</span>&nbsp;个职位，还可发布&nbsp;<span>{#$setmeal.jobs_ordinary#}</span>&nbsp;个职位。
+				{#/if#}</p>
+				<div class="but95lan" onclick="javascript:location.href='?act=addjobs'">立即发布</div>
+			</div>
+
+			<div class="navs">
+				
+				<a href="?act={#$act#}&jobtype=" {#if $smarty.get.jobtype==""#}class="se"{#/if#}>发布中职位</a>
+				<a href="?act={#$act#}&jobtype=2" {#if $smarty.get.jobtype=="2"#}class="se"{#/if#}>暂停中职位</a>
+				<a href="?act={#$act#}&jobtype=5" {#if $smarty.get.jobtype=="5"#}class="se"{#/if#}>已过期职位</a>
+				<a href="?act={#$act#}&jobtype=3" {#if $smarty.get.jobtype=="3"#}class="se"{#/if#}>审核中职位</a>
+				<a href="?act={#$act#}&jobtype=4" {#if $smarty.get.jobtype=="4"#}class="se"{#/if#}>未通过职位</a>
+				<a href="?act={#$act#}&jobtype=1" {#if $smarty.get.jobtype=="1"#}class="se"{#/if#}>所有职位</a>
+				<div class="clear"></div>
+			</div>
+		
+		</div>
+		<form id="form1" name="form1" method="post" action="?act=jobs_perform">
+		
+		<!-- 新的发布中职位 -->
+		{#if $smarty.get.jobtype==""#}
+			<div class="jobs_manage">
+				<table class="pub_ing" cellspacing="0">
+					<tbody>
+						<tr class="jobs_tit"bgcolor="#F5F5F5">
+							<th width="550" align="left"class="manage_frist"><label><input type="checkbox" id="chk" name="chkAll"> 职位名称</label></th>
+							<th width="120"><div class="forced_center">推广</div></th>
+							<th width="120"><div class="forced_center">操作</div></th>
+						</tr>
+						{#if $jobs#}
+						{#foreach from=$jobs item=li#}
+						<tr>
+							<td class="manage_frist"><label><input name="y_id[]" type="checkbox" id="y_id"  value="{#$li.id#}"/>&nbsp;<a href="{#$li.jobs_url#}" target="_blank">{#$li.jobs_name#}</a></label><span class="jobs_area_detail">{#$li.district_cn#} - {#$li.category_cn#}</span><br /><div class="jobs_detail_bottom">截止日期：{#$li.deadline|date_format:"%Y-%m-%d"#} | 浏览 <a href="company_recruitment.php?act=view_jobs_log&jobsid={#$li.id#}">{#$li.click#}</a> 次  | 
+								{#if $li.countresume!=0#}
+								<a href="company_recruitment.php?act=apply_jobs&look=1&jobsid={#$li.id#}">应聘简历<i> ({#$li.countresume#}) </i></a> 
+								{#else#}
+								<a href="company_recruitment.php?act=apply_jobs&look=&jobsid={#$li.id#}">应聘简历</a> 
+								{#/if#}
+								| 更新时间：{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#}<a href="?act=jobs_perform&refresh=1&y_id={#$li.id#}" class="f5">[刷新]</a></div></td>
+							<td align="center">
+								{#if $li.stick!=1#}
+									<a  href="javascript:void(0);" class="but_a set_promotion" catid="3" jobid="{#$li.id#}">置顶</a>
+								{#else#}
+									<a  href="javascript:void(0);" class="but_a" style="color:#999" title="该职位已置顶">置顶</a>
+								{#/if#}
+								{#if $li.highlight==""#}
+								<a  href="javascript:void(0);" class="but_a set_promotion" catid="4" jobid="{#$li.id#}">变色</a><br />
+								{#else#}
+								<a  href="javascript:void(0);" class="but_a" style="color:#999" title="该职位已变色">变色</a><br />
+								{#/if#}
+								{#if $li.emergency=="0"#}
+								<a href="javascript:void(0);" class="but_a set_promotion" catid="2" jobid="{#$li.id#}">紧急</a>
+								{#else#}
+								<a  href="javascript:void(0);" class="but_a" style="color:#999" title="该职位已经行紧急推广">紧急</a>
+								{#/if#}
+								{#if $li.recommend=="0"#}
+								<a href="javascript:void(0);" class="but_a set_promotion" catid="1" jobid="{#$li.id#}">推荐</a>
+								{#else#}
+								<a  href="javascript:void(0);" class="but_a" style="color:#999" title="该职位已经行紧急推荐">推荐</a>
+								{#/if#}
+							</td>
+							<td align="center">
+								<a class="but_a" onclick="javascript:location.href='?act=editjobs&id={#$li.id#}'">修改</a><a target="_blank" href="{#"QS_resumelist,jobcategory:"|cat:$li.jobcategory|qishi_url#}" class="but_a">匹配</a><br /><a href="?act=jobs_perform&display2=1&y_id={#$li.id#}" class="but_a">暂停</a><a href="?act=jobs_perform&delete=1&y_id={#$li.id#}" class="but_a" onclick="return confirm('确认要删除该职位?')">删除</a>
+							</td>
+						</tr>
+						{#/foreach#}
+						{#else#}
+						<tr>
+							<td colspan=3 style="border:0"><div class="emptytip">没有找到对应的职位信息！</div></td>
+						</tr>
+						{#/if#}
+					</tbody>
+				</table>
+				{#if $jobs#}
+					<div class="jobs_manage_but_group">
+						<input type="submit" name="refresh"class="but95_35lan"  value="刷新职位" id="refresh"/>
+						<input type="button" name="delay"  class="but95_35lan" value="申请延期" id="delay"/>
+						<input type="submit" name="delete" class="but95_35lan" value="删除职位" id="delete" onclick="return confirm('确认要删除选定职位?')"/>
+					</div>
+					{#if $page#}
+					<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
+			          <tr>
+			            <td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
+			          </tr>
+			      	</table>
+					{#/if#}
+				{#/if#}
+			</div>
+		{#/if#}
+		<!-- 新的发布中职位结束 -->
+		<!-- 新的已过期的职位 -->
+		{#if $smarty.get.jobtype=="5"#}
+			<div class="jobs_manage">
+				<table class="pub_ing" cellspacing="0">
+					<tbody>
+						<tr class="jobs_tit"bgcolor="#F5F5F5">
+							<th width="700" align="left"class="manage_frist"><label><input type="checkbox" id="chk" name="chkAll"> 职位名称</label></th>
+							<th width="160"><div class="forced_center">操作</div></th>
+						</tr>
+						{#if $jobs#}
+						{#foreach from=$jobs item=li#}
+						<tr>
+							<td class="manage_frist"><label><input name="y_id[]" type="checkbox" id="y_id"  value="{#$li.id#}"/>&nbsp;<a href="{#$li.jobs_url#}" target="_blank">{#$li.jobs_name#}</a></label><span class="jobs_area_detail">{#$li.district_cn#} - {#$li.category_cn#}</span><br /><div class="jobs_detail_bottom">发布期限：{#$li.addtime|date_format:"%Y-%m-%d"#}至{#$li.deadline|date_format:"%Y-%m-%d"#} | 应聘/浏览：<a href="company_recruitment.php?act=apply_jobs&look=1&jobsid={#$li.id#}">{#$li.countresume#}</a>/ <a href="company_recruitment.php?act=view_jobs_log&jobsid={#$li.id#}">{#$li.click#}</a> | 刷新日期：{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#}</div></td>
+							<td align="center">
+								<a class="but_a" onclick="javascript:location.href='?act=editjobs&id={#$li.id#}'">修改</a>
+								<a class="but_a delay" jobid="{#$li.id#}">延期</a>
+								<a href="?act=jobs_perform&delete=1&y_id={#$li.id#}" class="but_a" onclick="return confirm('确认要删除该职位?')">删除</a>
+							</td>
+						</tr>
+						{#/foreach#}
+						{#else#}
+						<tr>
+							<td colspan=2 style="border:0"><div class="emptytip">没有找到对应的职位信息！</div></td>
+						</tr>
+						{#/if#}
+					</tbody>
+				</table>
+				{#if $jobs#}
+					<div class="jobs_manage_but_group">
+						<input type="button" name="delay"  class="but95_35lan" value="申请延期" id="delay"/>
+						<input type="submit" name="delete" class="but95_35lan" value="删除职位" id="delete" onclick="return confirm('确认要删除选定职位?')"/>
+					</div>
+					{#if $page#}
+					<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
+			          <tr>
+			            <td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
+			          </tr>
+			      	</table>
+					{#/if#}
+				{#/if#}
+			</div>
+		{#/if#}
+		 <!-- 新的已过期的职位结束 -->
+		 <!-- 新的暂停中的职位 -->
+		{#if $smarty.get.jobtype=="2"#}
+			<div class="jobs_manage">
+				<table class="pub_ing" cellspacing="0">
+					<tbody>
+						<tr class="jobs_tit"bgcolor="#F5F5F5">
+							<th width="700" align="left"class="manage_frist"><label><input type="checkbox" id="chk" name="chkAll"> 职位名称</label></th>
+							<th width="160"><div class="forced_center">操作</div></th>
+						</tr>
+						{#if $jobs#}
+						{#foreach from=$jobs item=li#}
+						<tr>
+							<td class="manage_frist"><label><input name="y_id[]" type="checkbox" id="y_id"  value="{#$li.id#}"/>&nbsp;<a href="{#$li.jobs_url#}" target="_blank">{#$li.jobs_name#}</a></label><span class="jobs_area_detail">{#$li.district_cn#} - {#$li.category_cn#}</span><br /><div class="jobs_detail_bottom">截止日期: {#$li.deadline|date_format:"%Y-%m-%d"#} | 学历要求：{#$li.education_cn#} | 工作经验：{#$li.experience_cn#} | 更新日期:{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#}</div></td>
+							<td align="center">
+								<a class="but_a" onclick="javascript:location.href='?act=editjobs&id={#$li.id#}'">修改</a>
+								<a href="?act=jobs_perform&display1=1&y_id={#$li.id#}" class="but_a">恢复</a>
+								<a href="?act=jobs_perform&delete=1&y_id={#$li.id#}" class="but_a" onclick="return confirm('确认要删除该职位?')">删除</a>
+							</td>
+						</tr>
+						{#/foreach#}
+						{#else#}
+						<td colspan=2 style="border:0"><div class="emptytip">没有找到对应的职位信息！</div></td>
+						{#/if#}
+					</tbody>
+				</table>
+				{#if $jobs#}
+					<div class="jobs_manage_but_group">
+						<input type="submit" name="display1"  class="but95_35lan" value="恢复职位" id="display1"/>
+						<input type="submit" name="delete" class="but95_35lan" value="删除职位" id="delete" onclick="return confirm('确认要删除选定职位?')"/>
+					</div>
+					{#if $page#}
+					<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
+			          <tr>
+			            <td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
+			          </tr>
+			      	</table>
+					{#/if#}
+				{#/if#}
+			</div>
+		{#/if#}
+		 <!-- 新的暂停中的职位结束 -->
+		 <!-- 新的审核中的职位 -->
+		 {#if $smarty.get.jobtype=="3"#}
+			<div class="jobs_manage">
+				<table class="pub_ing" cellspacing="0">
+					<tbody>
+						<tr class="jobs_tit"bgcolor="#F5F5F5">
+							<th width="700" align="left"class="manage_frist"><label><input type="checkbox" id="chk" name="chkAll"> 职位名称</label></th>
+							<th width="160"><div class="forced_center">操作</div></th>
+						</tr>
+						{#if $jobs#}
+						{#foreach from=$jobs item=li#}
+						<tr>
+							<td class="manage_frist"><label><input name="y_id[]" type="checkbox" id="y_id"  value="{#$li.id#}"/>&nbsp;<a href="{#$li.jobs_url#}" target="_blank">{#$li.jobs_name#}</a></label><span class="jobs_area_detail">{#$li.district_cn#} - {#$li.category_cn#}</span><br /><div class="jobs_detail_bottom">发布期限：{#$li.addtime|date_format:"%Y-%m-%d"#}至{#$li.deadline|date_format:"%Y-%m-%d"#} | 学历要求：{#$li.education_cn#} | 工作经验：{#$li.experience_cn#}</div></td>
+							<td align="center">
+								<a class="but_a" onclick="javascript:location.href='?act=editjobs&id={#$li.id#}'">修改</a><a href="?act=jobs_perform&delete=1&y_id={#$li.id#}" class="but_a" onclick="return confirm('确认要删除该职位?')">删除</a>
+							</td>
+						</tr>
+						{#/foreach#}
+						{#else#}
+						<td colspan=2 style="border:0"><div class="emptytip">没有找到对应的职位信息！</div></td>
+						{#/if#}
+					</tbody>
+				</table>
+				{#if $jobs#}
+					<div class="jobs_manage_but_group">
+						<input type="submit" name="delete" class="but95_35lan" value="删除职位" id="delete" onclick="return confirm('确认要删除选定职位?')"/>
+					</div>
+					{#if $page#}
+					<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
+			          <tr>
+			            <td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
+			          </tr>
+			      	</table>
+					{#/if#}
+				{#/if#}
+			</div>
+		{#/if#}
+		 <!-- 新的审核中的职位结束 -->
+		 <!-- 新的未通过的职位 -->
+		 {#if $smarty.get.jobtype=="4"#}
+			<div class="jobs_manage">
+				<table class="pub_ing" cellspacing="0">
+					<tbody>
+						<tr class="jobs_tit"bgcolor="#F5F5F5">
+							<th width="550" align="left"class="manage_frist"><label><input type="checkbox" id="chk" name="chkAll"> 职位名称</label></th>
+							<th width="120"><div class="forced_center">原因</div></th>
+							<th width="120"><div class="forced_center">操作</div></th>
+						</tr>
+						{#if $jobs#}
+						{#foreach from=$jobs item=li#}
+						<tr>
+							<td class="manage_frist"><label><input name="y_id[]" type="checkbox" id="y_id"  value="{#$li.id#}"/>&nbsp;<a href="{#$li.jobs_url#}" target="_blank">{#$li.jobs_name#}</a></label><span class="jobs_area_detail">{#$li.district_cn#} - {#$li.category_cn#}</span><br /><div class="jobs_detail_bottom">发布期限：{#$li.addtime|date_format:"%Y-%m-%d"#}至{#$li.deadline|date_format:"%Y-%m-%d"#} | 学历要求：{#$li.education_cn#} | 工作经验：{#$li.experience_cn#}</div></td>
+							<td align="center">
+								<img src="{#$QISHI.site_template#}/images/17.jpg" alt="" title="{#$li.reason#}" class="vtip" id="{#$li.id#}" />
+							</td>
+							<td align="center">
+								<a class="but_a" onclick="javascript:location.href='?act=editjobs&id={#$li.id#}'">修改</a><a href="?act=jobs_perform&delete=1&y_id={#$li.id#}" class="but_a" onclick="return confirm('确认要删除该职位?')">删除</a>
+							</td>
+						</tr>
+						{#/foreach#}
+						{#else#}
+						<td colspan=3 style="border:0"><div class="emptytip">没有找到对应的职位信息！</div></td>
+						{#/if#}
+					</tbody>
+				</table>
+				{#if $jobs#}
+					<div class="jobs_manage_but_group">
+						<input type="submit" name="delete" class="but95_35lan" value="删除职位" id="delete" onclick="return confirm('确认要删除选定职位?')"/>
+					</div>
+					{#if $page#}
+					<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
+			          <tr>
+			            <td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
+			          </tr>
+			      	</table>
+					{#/if#}
+				{#/if#}
+			</div>
+			
+		{#/if#}
+		 <!-- 新的未通过的职位结束 -->
+		 <!-- 新的所有职位 -->
+		 {#if $smarty.get.jobtype=="1"#}
+			<div class="jobs_manage">
+				<table class="pub_ing" cellspacing="0">
+					<tbody>
+						<tr class="jobs_tit"bgcolor="#F5F5F5">
+							<th width="700" align="left"class="manage_frist"><label><input type="checkbox" id="chk" name="chkAll"> 职位名称</label></th>
+							<th width="160"><div class="sp_th">操作</div></th>
+						</tr>
+						{#if $jobs#}
+						{#foreach from=$jobs item=li#}
+						<tr>
+							<td class="manage_frist"><label><input name="y_id[]" type="checkbox" id="y_id"  value="{#$li.id#}"/>&nbsp;<a href="{#$li.jobs_url#}" target="_blank">{#$li.jobs_name#}</a></label><span class="jobs_area_detail">{#$li.district_cn#} - {#$li.category_cn#}</span><br /><div class="jobs_detail_bottom">发布期限：{#$li.addtime|date_format:"%Y-%m-%d"#}至{#$li.deadline|date_format:"%Y-%m-%d"#} | 应聘/浏览：<a href="company_recruitment.php?act=apply_jobs&look=1&jobsid={#$li.id#}">{#$li.countresume#}</a> / <a href="company_recruitment.php?act=view_jobs_log&jobsid={#$li.id#}">{#$li.click#}</a> | 刷新日期：{#$li.refreshtime|date_format:"%Y-%m-%d"#}{#if $li.status==1#}{#elseif $li.status==4#} | <span class="manage_hong">{#$li.status_cn#}</span>{#else#} | <span class="manage_cheng">{#$li.status_cn#}</span>{#/if#}</div></td>
+							<td align="left" valign="top">
+								<div class="all_jobs_sp">
+									{#if $li.status==1#}
+									<a href="?act=jobs_perform&refresh=1&y_id={#$li.id#}" class="but_a">刷新</a><a class="but_a" onclick="javascript:location.href='?act=editjobs&id={#$li.id#}'">修改</a><a target="_blank" href="{#"QS_resumelist,jobcategory:"|cat:$li.jobcategory|qishi_url#}" class="but_a">匹配</a><br /><a href="?act=jobs_perform&delete=1&y_id={#$li.id#}" class="but_a" onclick="return confirm('确认要删除该职位?')">删除</a><a href="?act=jobs_perform&display2=1&y_id={#$li.id#}" class="but_a">暂停</a><span  class="but_a spread">推广<img src="{#$QISHI.site_template#}/images/spread_icon.gif" alt="" />
+									<div class="spread_but_group" style="display:none">
+									{#if $li.stick!=1#}<a  href="javascript:void(0);" class="but_a set_promotion" catid="3" jobid="{#$li.id#}">置顶</a>{#else#}<a  href="javascript:void(0);" class="but_a" style="color:#999" title="该职位已置顶">置顶</a>{#/if#}{#if $li.highlight==""#}<a  href="javascript:void(0);" class="but_a set_promotion" catid="4" jobid="{#$li.id#}">变色</a>{#else#}<a  href="javascript:void(0);" class="but_a" style="color:#999" title="该职位已变色">变色</a>{#/if#}{#if $li.emergency=="0"#}<a href="javascript:void(0);" class="but_a set_promotion" catid="2" jobid="{#$li.id#}">紧急</a>{#else#}<a  href="javascript:void(0);" class="but_a" style="color:#999" title="该职位已经行紧急推广">紧急</a>{#/if#}{#if $li.recommend=="0"#}<a href="javascript:void(0);" class="but_a set_promotion" catid="1" jobid="{#$li.id#}" style="margin-right:0">推荐</a>{#else#}<a  href="javascript:void(0);" class="but_a"  title="该职位已经行紧急推荐" style="margin-right:0;color:#999">推荐</a>{#/if#}</div></span>
+									{#elseif $li.status==2#}
+									<a class="but_a" onclick="javascript:location.href='?act=editjobs&id={#$li.id#}'">修改</a><a href="?act=jobs_perform&display1=1&y_id={#$li.id#}" class="but_a">恢复</a><a href="?act=jobs_perform&delete=1&y_id={#$li.id#}" class="but_a" onclick="return confirm('确认要删除该职位?')">删除</a>
+									{#elseif $li.status==3#}
+									<a class="but_a" onclick="javascript:location.href='?act=editjobs&id={#$li.id#}'">修改</a><a href="?act=jobs_perform&delete=1&y_id={#$li.id#}" class="but_a" onclick="return confirm('确认要删除该职位?')">删除</a>
+									{#elseif $li.status==4#}
+									<a class="but_a" onclick="javascript:location.href='?act=editjobs&id={#$li.id#}'">修改</a><a href="?act=jobs_perform&delete=1&y_id={#$li.id#}" class="but_a" onclick="return confirm('确认要删除该职位?')">删除</a>
+									{#elseif $li.status==5#}
+									<a class="but_a" onclick="javascript:location.href='?act=editjobs&id={#$li.id#}'">修改</a><a class="but_a delay" jobid="{#$li.id#}">延期</a><a href="?act=jobs_perform&delete=1&y_id={#$li.id#}" class="but_a" onclick="return confirm('确认要删除该职位?')">删除</a>
+									{#/if#}
+								</div>
+							</td>
+						</tr>
+						{#/foreach#}
+						{#else#}
+						<tr>
+						<td colspan=2 style="border:0"><div class="emptytip">没有找到对应的职位信息！</div></td>
+						</tr>
+						{#/if#}
+					</tbody>
+				</table>
+				{#if $jobs#}
+					<div class="jobs_manage_but_group">
+						<input type="submit" name="delete" class="but95_35lan" value="删除职位" id="delete" onclick="return confirm('确认要删除选定职位?')"/>
+					</div>
+					{#if $page#}
+					<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
+			          <tr>
+			            <td height="50" align="center"> <div class="page link_bk">{#$page#}</div></td>
+			          </tr>
+			      	</table>
+					{#/if#}
+				{#/if#}
+			</div>
+		{#/if#}
+		</form>
+  	</div>
+  </div>
+  <div class="clear"></div>
+</div>
+{#include file="user/footer.htm"#}
+</body>
+</html>

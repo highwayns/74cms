@@ -1,0 +1,53 @@
+<script>
+	$(function(){
+		// 点击事件
+		$(".local_station").live("click",function(){
+			if($(".sub_station").attr('data') == "hide") {
+				$(this).blur();
+				$(this).parent().parent().before("<div class=\"menu_bg_layer\"></div>");
+				$(".menu_bg_layer").height($(document).height());
+				$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute",left:"0", top:"0","z-index":"88","background-color":"#000000"});
+				$(".menu_bg_layer").css("opacity",0);
+				$(".sub_station").show();
+				$(".sub_station").attr('data',"show");
+				$(".menu_bg_layer").click(function() {
+					$(".sub_station").hide();
+					$(".sub_station").attr('data',"hide");
+					$(".menu_bg_layer").remove();
+				});
+			} else {
+				$(".sub_station").hide();
+				$(".sub_station").attr('data',"hide");
+			}
+		});
+		//单数行变色
+		$(".sub_st_content li:odd").css("background-color", "#F5F5F5");
+		$(".local_station>p").hover(function(){
+			$(this).addClass("hover");
+		},function(){
+			$(this).removeClass("hover");
+		})
+	});
+</script>
+<div class="user_top_nav" >
+	<div class="main">
+	    <div class="ltit"><span id="top_loginform"></span></div>	
+	    <div class="rlink link_lan">
+	    	{#include file="top-nav.htm"#}
+	    </div>	
+	    <div class="clear"></div>
+    </div>
+</div>
+<div class="user_top_logo">
+	  <div class="logobox">
+		<a href="{#$QISHI.website_dir#}"><img src="{#$QISHI.upfiles_dir#}{#$QISHI.web_logo#}" alt="{#$QISHI.site_name#}" border="0" align="absmiddle" /></a>
+	  </div>
+	  <div class="clear"></div>
+</div>
+<div class="nav">
+	{#qishi_nav set="调用名称:QS_top,列表名:list"#}
+	{#foreach from=$list item=list#}
+        <div class="li"><a href="{#$list.url#}" target="{#$list.target#}" {#if $list.tag==$page_select && $list.tag!=""#}class="select"{#/if#}>{#$list.title#}</a></div>
+    {#/foreach#}
+  <div class="clear"></div>
+</div>
