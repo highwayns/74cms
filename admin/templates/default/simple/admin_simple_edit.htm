@@ -99,7 +99,7 @@ $("#FormData").validate({
   {#$inputtoken#}
 <table width="100%" border="0" cellspacing="8" cellpadding="0">
   <tr>
-    <td width="100" align="right">招聘职位：</td>
+    <td width="100" align="right"><strong  style="color:#FF0000">*</strong>招聘职位：</td>
     <td><input name="jobname" type="text" class="input_text_200" id="jobname" maxlength="20"  value="{#$show.jobname#}"></td>
   </tr>
   <tr>
@@ -108,19 +108,19 @@ $("#FormData").validate({
 	<span class="admin_note">填写数字，"0"为若干</span>	</td>
   </tr>
   <tr>
-    <td align="right">公司名称：</td>
+    <td align="right"><strong  style="color:#FF0000">*</strong>公司名称：</td>
     <td><input name="comname" type="text" class="input_text_200" id="comname" maxlength="20"  value="{#$show.comname#}"></td>
   </tr>
   <tr>
-    <td align="right">联系人：</td>
+    <td align="right"><strong  style="color:#FF0000">*</strong>联系人：</td>
     <td><input name="contact" type="text" class="input_text_200" id="contact" maxlength="15" value="{#$show.contact#}"></td>
   </tr>
   <tr>
-    <td align="right">联系电话：</td>
+    <td align="right"><strong  style="color:#FF0000">*</strong>联系电话：</td>
     <td><input name="tel" type="text" class="input_text_200" id="tel" maxlength="25" value="{#$show.tel#}"></td>
   </tr>
   <tr>
-    <td align="right">联系地址：</td>
+    <td align="right"><strong  style="color:#FF0000">*</strong>联系地址：</td>
     <td>
 		<div>
 		<input type="text" value="{#$show.district_cn#}"  readonly="readonly" name="district_cn" id="district_cn" class="input_text_200 input_text_selsect"/>
@@ -139,7 +139,7 @@ $("#FormData").validate({
 	</td>
   </tr>
   <tr>
-    <td align="right">具体要求：</td>
+    <td align="right"><strong  style="color:#FF0000">*</strong>具体要求：</td>
     <td><textarea name="detailed" id="detailed" class="input_text_400" style="height:60px;">{#$show.detailed#}</textarea></td>
   </tr>
     <tr>
@@ -171,7 +171,7 @@ $("#FormData").validate({
   </tr>
   {#/if#}
   <tr>
-    <td align="right">管理密码：</td>
+    <td align="right"><strong  style="color:#FF0000">*</strong>管理密码：</td>
     <td><input name="pwd" type="text" class="input_text_200" id="pwd" style="width:100px;" maxlength="25">
 	<span class="admin_note">留空为不修改管理密码</span>	</td>
   </tr>

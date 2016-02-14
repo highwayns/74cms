@@ -37,6 +37,8 @@ elseif($act == 'set_save')
 	}
 	refresh_cache('config');
 	refresh_cache('text');	
+	//填写管理员日志
+	write_log("后台成功更新搜索设置", $_SESSION['admin_name'],3);
 	adminmsg("保存成功！",2);
 }
 elseif($act == 'modeselect')
@@ -53,6 +55,8 @@ elseif($act == 'modeselect_save')
 	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k' LIMIT 1")?adminmsg('保存失败', 1):"";
 	}
 	refresh_cache('config');
+	//填写管理员日志
+	write_log("后台成功更新配置", $_SESSION['admin_name'],3);
 	adminmsg("保存成功！",2);
 }
 elseif($act == 'set_points')
@@ -75,6 +79,8 @@ elseif($act == 'set_points_save')
 	!$db->query("UPDATE ".table('members_points_rule')." SET value='{$value[$k]}', operation='{$operation[$k]}' WHERE id='{$id}' LIMIT 1")?adminmsg('保存失败', 1):"";
 	}
 	refresh_points_rule_cache();
+	//填写管理员日志
+	write_log("后台成功更新积分规则", $_SESSION['admin_name'],3);
 	adminmsg("更新设置成功！",2);
 }
 elseif($act == 'set_points_config_save')
@@ -137,18 +143,21 @@ elseif($act == 'set_meal_add_save')
 	 */
 	$setsqlarr['refresh_jobs_space']=intval($_POST['refresh_jobs_space']);
 	$setsqlarr['refresh_jobs_time']=intval($_POST['refresh_jobs_time']);
-	/**
-	 * 2014-01-26新增end
-	 */
-	if (inserttable(table('setmeal'),$setsqlarr))
+	//2015-01-09薪资短信设置 set_sms 
+	$setsqlarr['set_sms'] = intval($_POST['set_sms']);
+	if ($db->inserttable(table('setmeal'),$setsqlarr))
 		{
-		$link[0]['text'] = "返回套餐设置";
-		$link[0]['href'] ="?act=set_meal";
-		adminmsg("添加成功！",2,$link);
+			//填写管理员日志
+			write_log("后台成功添加套餐", $_SESSION['admin_name'],3);
+			$link[0]['text'] = "返回套餐设置";
+			$link[0]['href'] ="?act=set_meal";
+			adminmsg("添加成功！",2,$link);
 		}
 		else
 		{
-		adminmsg("添加失败！",0);
+			//填写管理员日志
+			write_log("后台添加套餐失败", $_SESSION['admin_name'],3);
+			adminmsg("添加失败！",0);
 		}
 }
 elseif($act == 'set_meal_edit')
@@ -191,18 +200,21 @@ elseif($act == 'set_meal_edit_save')
 	 */
 	$setsqlarr['refresh_jobs_space']=intval($_POST['refresh_jobs_space']);
 	$setsqlarr['refresh_jobs_time']=intval($_POST['refresh_jobs_time']);
-	/**
-	 * 2014-01-26新增end
-	 */
-	if (updatetable(table('setmeal'),$setsqlarr," id=".intval($_POST['id'])))
+	//2015-01-09薪资短信设置 set_sms 
+	$setsqlarr['set_sms'] = intval($_POST['set_sms']);
+	if ($db->updatetable(table('setmeal'),$setsqlarr," id=".intval($_POST['id'])))
 		{
-		$link[0]['text'] = "返回套餐设置";
-		$link[0]['href'] ="?act=set_meal";
-		adminmsg("设置成功！",2,$link);
+			//填写管理员日志
+			write_log("后台成功修改套餐", $_SESSION['admin_name'],3);
+			$link[0]['text'] = "返回套餐设置";
+			$link[0]['href'] ="?act=set_meal";
+			adminmsg("设置成功！",2,$link);
 		}
 		else
 		{
-		adminmsg("设置失败！",0);
+			//填写管理员日志
+			write_log("后台修改套餐失败", $_SESSION['admin_name'],3);
+			adminmsg("设置失败！",0);
 		}
 }
 elseif($act == 'set_meal_del')
@@ -220,6 +232,8 @@ elseif($act == 'set_meal_del')
 elseif($act == 'reg_service_save')
 {
 	check_token();
+	//填写管理员日志
+	write_log("后台更新配置文件", $_SESSION['admin_name'],3);
 	foreach($_POST as $k => $v)
 	{
 	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k' LIMIT 1")?adminmsg('保存失败', 1):"";

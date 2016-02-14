@@ -208,7 +208,7 @@ function makejs_classify()
 {
 	global $db;
 	$content = "//JavaScript Document 生成时间：".date("Y-m-d  H:i:s")."\n\n";
-	$sql = "select * from ".table('category_district')." where parentid=0 ";
+	$sql = "select * from ".table('category_district')." where parentid=0 order BY category_order desc,id asc";
 	$list=$db->getall($sql);
 	foreach($list as $parent)
 	{
@@ -217,6 +217,7 @@ function makejs_classify()
 	$content .= "var QS_city_parent=new Array(".implode(',',$parentarr).");\n";	
 	unset($parentarr);
 	$content .= "var QS_city=new Array();\n";
+	$third_content = "";
 	foreach($list as $val)
 	{
 		$sql1 = "select * from ".table('category_district')." where parentid=".$val['id']."  order BY category_order desc,id asc";
@@ -225,19 +226,34 @@ function makejs_classify()
 		{	
 			foreach($list1 as $val1)
 			{
-			$sarr[]=$val1['id'].",".$val1['categoryname'];
+				$sarr[]=$val1['id'].",".$val1['categoryname'];
+				$sql2 = "select * from ".table('category_district')." where parentid=".$val1['id']."  order BY category_order desc,id asc";
+				$list2=$db->getall($sql2);
+				if (is_array($list2))
+				{	
+					foreach($list2 as $val2)
+					{
+					$third_arr[]=$val2['id'].",".$val2['categoryname'];
+					}
+				$content_third .= "QS_city[".$val1['id']."]=\"".implode('|',$third_arr)."\"; \n";
+				unset($third_arr);
+				}
 			}
 		$content .= "QS_city[".$val['id']."]=\"".implode('|',$sarr)."\"; \n";	
 		unset($sarr);
 		}
 	}
-	$sql = "select * from ".table('category_jobs')." where parentid=0 ";
+	// $content .= "var QS_city_third=new Array(); \n";
+	$content .= $content_third;	
+	// unset($third_arr);
+	$sql = "select * from ".table('category_jobs')." where parentid=0 order BY category_order desc,id asc";
 	$list=$db->getall($sql);
 	foreach($list as $parent)
 	{
 	$parentarr[]="\"".$parent['id'].",".$parent['categoryname']."\"";
 	}
 	$content .= "var QS_jobs_parent=new Array(".implode(',',$parentarr).");\n";	
+	unset($parentarr);
 	$content .= "var QS_jobs=new Array(); \n";
 	$content_third = "";
 	foreach($list as $val)
@@ -266,8 +282,6 @@ function makejs_classify()
 		}
 	}
 	$content .= $content_third;	
-	
-	
 	//
 	$sql = "select * from ".table('category')." ORDER BY c_order DESC,c_id ASC";
 	$list=$db->getall($sql);
@@ -309,6 +323,38 @@ function makejs_classify()
 		{
 		$resumetag[]="\"".$li['c_id'].",".$li['c_name']."\"";
 		}
+		elseif ($li['c_alias']=="QS_hunter_wage")
+		{
+		$hunterwage[]="\"".$li['c_id'].",".$li['c_name']."\"";
+		}
+		elseif ($li['c_alias']=="QS_hunter_age")
+		{
+		$hunterage[]="\"".$li['c_id'].",".$li['c_name']."\"";
+		}
+		elseif ($li['c_alias']=="QS_hunter_wage_structure")
+		{
+		$wagestructure[]="\"".$li['c_id'].",".$li['c_name']."\"";
+		}
+		elseif ($li['c_alias']=="QS_hunter_socialbenefits")
+		{
+		$socialbenefits[]="\"".$li['c_id'].",".$li['c_name']."\"";
+		}
+		elseif ($li['c_alias']=="QS_hunter_livebenefits")
+		{
+		$livebenefits[]="\"".$li['c_id'].",".$li['c_name']."\"";
+		}
+		elseif ($li['c_alias']=="QS_hunter_annualleave")
+		{
+		$annualleave[]="\"".$li['c_id'].",".$li['c_name']."\"";
+		}		
+		elseif ($li['c_alias']=="QS_hunter_rank")
+		{
+		$rank[]="\"".$li['c_id'].",".$li['c_name']."\"";
+		}		
+		elseif ($li['c_alias']=="QS_language")
+		{
+		$language[]="\"".$li['c_id'].",".$li['c_name']."\"";
+		}
 	
 	}
 	$content .= "var QS_trade=new Array(".implode(',',$trade).");\n";
@@ -320,7 +366,52 @@ function makejs_classify()
 	$content .= "var QS_scale=new Array(".implode(',',$scale).");\n";
 	$content .= "var QS_jobtag=new Array(".implode(',',$jobtag).");\n";
 	$content .= "var QS_resumetag=new Array(".implode(',',$resumetag).");\n";
-	
+	$content .= "var QS_hunter_wage=new Array(".implode(',',$hunterwage).");\n";
+	$content .= "var QS_hunter_age=new Array(".implode(',',$hunterage).");\n";
+	$content .= "var QS_hunter_wage_structure=new Array(".implode(',',$wagestructure).");\n";
+	$content .= "var QS_hunter_socialbenefits=new Array(".implode(',',$socialbenefits).");\n";
+	$content .= "var QS_hunter_livebenefits =new Array(".implode(',',$livebenefits).");\n";
+	$content .= "var QS_hunter_annualleave=new Array(".implode(',',$annualleave).");\n";
+	$content .= "var QS_hunter_rank=new Array(".implode(',',$rank).");\n";
+	$content .= "var QS_language=new Array(".implode(',',$language).");\n";
+	/*
+		生成专业分类js
+	*/
+	$sql = "select * from ".table('category_major')." where parentid=0 order BY category_order desc,id asc";
+	$list=$db->getall($sql);
+	foreach($list as $parent)
+	{
+	$parentarr[]="\"".$parent['id'].",".$parent['categoryname']."\"";
+	}
+	$content .= "var QS_major_parent=new Array(".implode(',',$parentarr).");\n";	
+	unset($parentarr);
+	$content .= "var QS_major=new Array();\n";
+	$third_content = "";
+	foreach($list as $val)
+	{
+		$sql1 = "select * from ".table('category_major')." where parentid=".$val['id']."  order BY category_order desc,id asc";
+		$list1=$db->getall($sql1);
+		if (is_array($list1))
+		{	
+			foreach($list1 as $val1)
+			{
+				$sarr[]=$val1['id'].",".$val1['categoryname'];
+				$sql2 = "select * from ".table('category_major')." where parentid=".$val1['id']."  order BY category_order desc,id asc";
+				$list2=$db->getall($sql2);
+				if (is_array($list2))
+				{	
+					foreach($list2 as $val2)
+					{
+					$third_arr[]=$val2['id'].",".$val2['categoryname'];
+					}
+				$content_third .= "QS_major[".$val1['id']."]=\"".implode('|',$third_arr)."\"; \n";
+				unset($third_arr);
+				}
+			}
+		$content .= "QS_major[".$val['id']."]=\"".implode('|',$sarr)."\"; \n";	
+		unset($sarr);
+		}
+	}
 	$fp = @fopen(QISHI_ROOT_PATH . 'data/cache_classify.js', 'wb+');
 	if (!$fp){
 			exit('生成JS文件失败');
@@ -368,5 +459,39 @@ function url_rewrite($alias=NULL,$get=NULL,$rewrite=true)
 			}
 			return $url;
 	}
+}
+
+function getip()
+{
+	if (getenv('HTTP_CLIENT_IP') and strcasecmp(getenv('HTTP_CLIENT_IP'),'unknown')) {
+		$onlineip=getenv('HTTP_CLIENT_IP');
+	}elseif (getenv('HTTP_X_FORWARDED_FOR') and strcasecmp(getenv('HTTP_X_FORWARDED_FOR'),'unknown')) {
+		$onlineip=getenv('HTTP_X_FORWARDED_FOR');
+	}elseif (getenv('REMOTE_ADDR') and strcasecmp(getenv('REMOTE_ADDR'),'unknown')) {
+		$onlineip=getenv('REMOTE_ADDR');
+	}elseif (isset($_SERVER['REMOTE_ADDR']) and $_SERVER['REMOTE_ADDR'] and strcasecmp($_SERVER['REMOTE_ADDR'],'unknown')) {
+		$onlineip=$_SERVER['REMOTE_ADDR'];
+	}
+	preg_match("/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/",$onlineip,$match);
+	return $onlineip = $match[0] ? $match[0] : 'unknown';
+}
+function request_url()
+{     
+  	if (isset($_SERVER['REQUEST_URI']))     
+    {        
+   	 $url = $_SERVER['REQUEST_URI'];    
+    }
+	else
+	{    
+		  if (isset($_SERVER['argv']))        
+			{           
+			$url = $_SERVER['PHP_SELF'] .'?'. $_SERVER['argv'][0];      
+			}         
+		  else        
+			{          
+			$url = $_SERVER['PHP_SELF'] .'?'.$_SERVER['QUERY_STRING'];
+			}  
+    }    
+    return urlencode($url); 
 }
 ?>

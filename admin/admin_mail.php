@@ -56,6 +56,7 @@ elseif($act == 'email_set_save')
 	!$db->query("UPDATE ".table('mailconfig')." SET value='$v' WHERE name='$k'")?adminmsg('更新站点设置失败', 1):"";
 	}
 	refresh_cache('mailconfig');
+	write_log("设置邮件配置", $_SESSION['admin_name'],3);
 	adminmsg("保存成功！",2);
 }
 if($act == 'testing')
@@ -73,6 +74,7 @@ elseif($act == 'email_testing')
 	if (!preg_match("/^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/",$check_smtp))adminmsg('email格式错误！',1);
 	if (smtp_mail($check_smtp,"骑士CMS测试邮件",$txt))
 	{
+	write_log("测试邮件发送成功！", $_SESSION['admin_name'],3);
 	adminmsg('测试邮件发送成功！',2);
 	}
 	else
@@ -102,6 +104,7 @@ elseif($act == 'email_rule_save')
 	!$db->query("UPDATE ".table('mailconfig')." SET value='$v' WHERE name='$k'")?adminmsg('更新站点设置失败', 1):"";
 	}
 	refresh_cache('mailconfig');
+	write_log("设置邮件发送规则", $_SESSION['admin_name'],3);
 	adminmsg("保存成功！",2);
 }
 elseif($act == 'mail_templates_edit')
@@ -116,6 +119,7 @@ elseif($act == 'mail_templates_edit')
 	{
 	$label[]=array('{username}','用户名');
 	$label[]=array('{password}','密码');
+	$label[]=array('{utype}','会员类型');
 	}
 	elseif ($templates_name=='set_applyjobs')
 	{
@@ -166,6 +170,7 @@ elseif($act == 'templates_save')
 	$link[0]['text'] = "返回上一页";
 	$link[0]['href'] ="?act=email_set_templates";
 	refresh_cache('mail_templates');
+	write_log("修改邮件发送模版", $_SESSION['admin_name'],3);
 	adminmsg("保存成功！",2,$link);
 }
  elseif($act == 'send')
@@ -217,7 +222,7 @@ elseif($act == 'email_send')
 	if(smtp_mail($setsqlarr['m_mail'],$setsqlarr['m_subject'],$setsqlarr['m_body'])){
 		$setsqlarr['m_sendtime']=time();
 		$setsqlarr['m_type']=1;//发送成功
-		inserttable(table('mailqueue'),$setsqlarr);
+		$db->inserttable(table('mailqueue'),$setsqlarr);
 		unset($setsqlarr);
 		$link[0]['text'] = "返回上一页";
 		$link[0]['href'] = "{$url}";
@@ -227,7 +232,7 @@ elseif($act == 'email_send')
 	{
 		$setsqlarr['m_sendtime']=time();
 		$setsqlarr['m_type']=2;//发送失败
-		inserttable(table('mailqueue'),$setsqlarr);
+		$db->inserttable(table('mailqueue'),$setsqlarr);
 		unset($setsqlarr);
 		$link[0]['text'] = "返回上一页";
 		$link[0]['href'] = "{$url}";
@@ -246,12 +251,12 @@ elseif ($act=='again_send')
 	if(smtp_mail($result['m_mail'],$result['m_subject'],$result['m_body'])){
 		$setsqlarr['m_sendtime']=time();
 		$setsqlarr['m_type']=1;//发送成功
-		!updatetable(table('mailqueue'),$setsqlarr,$wheresql);
+		!$db->updatetable(table('mailqueue'),$setsqlarr,$wheresql);
 		adminmsg('发送成功',2);
 	}else{
 		$setsqlarr['m_sendtime']=time();
 		$setsqlarr['m_type']=2;
-		!updatetable(table('mailqueue'),$setsqlarr,$wheresql);
+		!$db->updatetable(table('mailqueue'),$setsqlarr,$wheresql);
 		adminmsg('发送失败',0);
 	}
 		
@@ -271,5 +276,32 @@ elseif ($act=='del')
 	adminmsg("删除成功",2);
 	}
 }
+// 邮件日志
+elseif($act == "log")
+{
+	get_token();
+	require_once(QISHI_ROOT_PATH.'include/page.class.php');
+	$key=isset($_GET['key'])?trim($_GET['key']):"";
+	$key_type=isset($_GET['key_type'])?intval($_GET['key_type']):"";
+	if (!empty($key) && $key_type>0)
+	{
+		
+		if     ($key_type===1)$wheresql=" WHERE subject like '%{$key}%'";
+		if     ($key_type===2)$wheresql=" WHERE send_to = '{$key}'";
+		if     ($key_type===3)$wheresql=" WHERE send_from = '{$key}'";
+		$oederbysql="";
+	}
+	$_GET['state']<>''? $wheresqlarr['state']=intval($_GET['state']):'';
+	if (!empty($wheresqlarr)) $wheresql=wheresql($wheresqlarr);
+	$total_sql="SELECT COUNT(*) AS num FROM ".table('sys_email_log').$wheresql;
+	$page = new page(array('total'=>$db->get_total($total_sql), 'perpage'=>$perpage));
+	$currenpage=$page->nowindex;
+	$offset=($currenpage-1)*$perpage;
+	$list = get_mail_log($offset,$perpage,$wheresql.$oderbysql);
 
+	$smarty->assign('list',$list);
+	$smarty->assign('page',$page->show(3));
+	$smarty->assign('navlabel','log');
+	$smarty->display('mail/admin_mail_log.htm');
+}
 ?>

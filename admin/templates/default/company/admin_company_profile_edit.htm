@@ -7,6 +7,80 @@ $(document).ready(function()
 	showmenu("#trade_cn","#menu2","#trade");
 	showmenulayer("#district_cn","#menu3","#district","#sdistrict","",QS_city);
 	showmenu("#scale_cn","#menu4","#scale");	
+        jQuery.validator.addMethod("isPhoneNumber", function(value, element) {   
+            var tel = /^((0\d{2,3}-[2-9][0-9]{6,7})|(0\d{2,3}[2-9][0-9]{6,7})|([2-9][0-9]{6,7})|(1[35847]\d{9}))$/;
+            return this.optional(element) || (tel.test(value));
+        }, "请正确填写联系电话");
+      $("#Form1").validate({
+            rules:{
+                  companyname:{
+                        required: true
+                  },
+                  nature:{
+                        required: true
+                  },
+                  trade:{
+                        required: true
+                  },
+                  district:{
+                        required: true
+                  },
+                  scale:{
+                        required: true
+                  },
+                  contact:{
+                        required: true
+                  },
+                  telephone:{
+                        required:true,
+                        isPhoneNumber:true,
+                  },
+                  email:{
+                        email:true,
+                        required:true
+                  },
+                  address:{
+                        required: true
+                  },
+                  contents:{
+                        required: true
+                  },
+            },
+            messages: {
+                  companyname: {
+                        required: jQuery.format("请输入公司名称")
+                  },
+                  nature: {
+                        required: jQuery.format("请选择企业性质")
+                  },
+                  trade: {
+                        required: jQuery.format("请选择所属行业")
+                  },
+                  district: {
+                        required: jQuery.format("请选择所在地区")
+                  },
+                  scale: {
+                        required: jQuery.format("请选择公司规模")
+                  },
+                  contact: {
+                        required:("请填写联系人"),
+                  },
+                  telephone: {
+                        required: jQuery.format("请填写联系电话"),
+                        isPhoneNumber: jQuery.format("请正确填写手机号码"),
+                  },
+                  email: {
+                        required: jQuery.format("请填写电子邮箱"),
+                        email: jQuery.format("请正确填写电子邮箱"),
+                  },
+                  address: {
+                        required:("请填写通讯地址"),
+                  },
+                  contents: {
+                        required:("请填写公司介绍"),
+                  },
+            }
+      });
 });
 </script>
 <div class="admin_main_nr_dbox">
@@ -40,8 +114,8 @@ $(document).ready(function()
 		<tr>
           <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">营业执照：</td>
           <td  style=" border-bottom:1px #CCCCCC dashed" class="link_lan">
-		  {#if $company_profile.license#}
-		  <a href="{#$certificate_dir#}{#$company_profile.certificate_img#}" target="_blank" title="点击查看"> {#$company_profile.license#}</a>		 
+		  {#if $company_profile.certificate_img#}
+		  <a href="{#$certificate_dir#}{#$company_profile.certificate_img#}" target="_blank" title="点击查看"> 已上传</a>		 
 		  {#else#}
 		  未上传
 		  {#/if#}
@@ -135,8 +209,8 @@ $(document).ready(function()
 	 </td>
   </tr>
   <tr>
-    <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span>注册资金：</td>
-    <td  style=" border-bottom:1px #CCCCCC dashed"><input name="registered" type="text" class="input_text_200" id="registered" maxlength="20" value="{#$company_profile.registered#}" style="width:80px;"/>
+    <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">注册资金：</td>
+    <td  style=" border-bottom:1px #CCCCCC dashed"><input name="registered" type="text" class="input_text_200" id="registered" maxlength="5" value="{#$company_profile.registered#}"  style="width:80px;" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
       万
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <label>
@@ -187,15 +261,6 @@ $(document).ready(function()
         <br />
         <div style="line-height:30px; height:30px;"> <span style="color:#333333">请将字数控制在2000字以内进行填写</span></div></td>
   </tr>
-  {#if $_PLUG.yellowpage.p_install==2#}	
-  <tr>
-          <td align="right" valign="top" >&nbsp;</td>
-          <td   > 
-           <label><input name="yellowpages"  type="checkbox" value="1" {#if $company_profile.yellowpages=='1'#}checked="checked"{#/if#} />
-           公司信息在网站黄页中显示</label>
-		   </td>
-        </tr>
-        {#/if#}
   <tr>
             <td height="30" align="right"   >&nbsp;</td>
             <td height="120"   >

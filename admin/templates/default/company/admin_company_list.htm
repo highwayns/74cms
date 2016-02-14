@@ -66,16 +66,6 @@ $(document).ready(function()
 		</div>
 		<div class="clear"></div>
 </div>
-  <div class="seltpye_x">
-		<div class="left">企业黄页</div>	
-		<div class="right">
-		<a href="{#"yellowpages:"|qishi_parse_url#}" {#if $smarty.get.yellowpages==""#}class="select"{#/if#}>不限</a>
-		<a href="{#"yellowpages:1"|qishi_parse_url#}" {#if $smarty.get.yellowpages=="1"#}class="select"{#/if#}>已加入</a>
-		<a href="{#"yellowpages:0"|qishi_parse_url#}" {#if $smarty.get.yellowpages=="0"#}class="select"{#/if#}>未加入</a>
-		<div class="clear"></div>
-		</div>
-		<div class="clear"></div>
-</div>
   <form id="form1" name="form1" method="post" action="?act=company_perform">
   {#$inputtoken#}
   <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
@@ -105,7 +95,6 @@ $(document).ready(function()
       <td class="admin_list admin_list_first" >
         <input name="y_id[]" type="checkbox" id="y_id" value="{#$list.uid#}" />
 		<a href="{#$list.company_url#}" target="_blank">{#$list.companyname#}</a>
-		{#if $list.yellowpages=='1'#}<span style="color:#FF6600" class="vtip" title='已加入企业黄页'>[黄]</span>{#/if#}
 		</td>
 		
 		<td  class="admin_list">
@@ -114,12 +103,8 @@ $(document).ready(function()
 		 {#if $list.mobile#}<a href="admin_sms.php?act=send&mobile={#$list.mobile#}&uid={#$list.uid#}"><img src="images/sms.gif" border="0" title="发送短信" /></a>{#/if#}
 		</td>
         <td class="admin_list">
-		{#if $list.license#}
-			{#if $list.certificate_img#}
-			<a href="{#$certificate_dir#}{#$list.certificate_img#}" target="_blank" title="点击查看">{#$list.license#}</a>&nbsp;
-			{#else#}
-			{#$list.license#}
-			{#/if#}
+		{#if $list.certificate_img#}
+		<a href="{#$certificate_dir#}{#$list.certificate_img#}" target="_blank" title="点击查看">已上传</a>&nbsp;
 		{#else#}
 		<span  style="color: #999999">未上传</span>
 		{#/if#}	
@@ -154,7 +139,7 @@ $(document).ready(function()
 		&nbsp;
 		<a href="?act=edit_company_profile&id={#$list.id#}">修改</a>
 		&nbsp;
-		<a href="?act=meal_log&key={#$list.uid#}&key_type=2&key_type_cn=UID">充值记录</a>
+		<a href="?act=meal_log&key_uid={#$list.uid#}&key_type=2&key_type_cn=UID">充值记录</a>
 		&nbsp;
 		<a href="?act=management&id={#$list.uid#}"  target="_blank"  class="userinfo"  id="{#$list.uid#}">管理</a>
 		</td>

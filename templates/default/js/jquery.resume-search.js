@@ -1,588 +1,1152 @@
-function allaround(dir,getstr){
-	var checkedstr = "";
-	fillTrad("#divTradCate"); // 行业填充内容
-	// 恢复行业选中条件
-	if(getstr) {
-		if(getstr[0]) {
-			var recoverTradArray = getstr[0].split(",");
-			$.each(recoverTradArray, function(index, val) {
-				 $("#tradList a").each(function() {
-					if(val == $(this).attr('cln')) {
-						$(this).addClass('selectedcolor');
+/*行业选择弹出层填充数据*/
+function trade_filldata(fillID, data_resources, showID, resultlist, resultshowID, resultID, dir) {
+	var tradhtm = '';
+	var sourse_length = parseInt(data_resources.length);
+	var rows = 0;
+	var subscriptnum = 0;
+	if((sourse_length%4) == 0) {
+		rows = sourse_length / 4;
+	} else {
+		rows = (sourse_length / 4) + 1;
+	}
+	for (var i = 0; i < rows; i++) {
+		tradhtm += '<tr>';
+		for (var j = 0; j < 4; j++) {
+			if (data_resources[subscriptnum]) {
+				var trad_array = data_resources[subscriptnum].split(",");
+				tradhtm += '<td><label><input type="checkbox" data="'+trad_array[0]+','+trad_array[1]+'" name="item-list" class="input-checkbox">'+trad_array[1]+'</label></td>';
+				subscriptnum ++;
+			};
+		};
+		tradhtm += '</tr>';
+	};
+	$(fillID).html(tradhtm);
+	// 恢复选中
+	if ($(resultID).val().length > 0) {
+		var idarray = $(resultID).val().split("_");
+		$.each(idarray, function(index, val) {
+			$(fillID+" :checkbox").unbind().each(function() {
+				var boxdata_array = $(this).attr("data").split(",");
+				if(val == boxdata_array[0]) {
+					$(this).attr('checked',true);
+				}
+			});
+		});
+		copyitem();
+		copy_selected();
+		isexceed($(fillID+" :checkbox[checked]").length);
+		// 单选
+		$(fillID+" label :checkbox").unbind().live("click",function(event) {
+			if ($(this).find(":checkbox").attr('checked')) {
+				$(this).find(":checkbox").attr('checked',false);
+				isexceed($(fillID+" :checkbox[checked]").length);
+			} else {
+				$(this).find(":checkbox").attr('checked',true);
+				isexceed($(fillID+" :checkbox[checked]").length);
+			}
+		});
+	};
+	// 单选
+	$(fillID+" label :checkbox").unbind().live("click",function(event) {
+		if ($(this).find(":checkbox").attr('checked')) {
+			$(this).find(":checkbox").attr('checked',false);
+			isexceed($(fillID+" :checkbox[checked]").length);
+		} else {
+			$(this).find(":checkbox").attr('checked',true);
+			isexceed($(fillID+" :checkbox[checked]").length);
+		}
+	});
+	// 复制选中项目
+	function copyitem() {
+		var resulthtm = '';
+		$(fillID+" :checkbox[checked]").unbind().each(function(index) {
+			var result_data_array = $(this).attr("data").split(",");
+			resulthtm += '<span data-code="'+result_data_array[0]+','+result_data_array[1]+'">'+result_data_array[1]+'<i class="data-icon data-icon-close"></i></span>';
+		});
+		$(resultlist).html(resulthtm);
+		var spi = $(resultlist + " span");
+		spi.unbind().bind('click', function() {
+			var spidata = $(this).attr("data-code"),
+				apid_array = splitdata(spidata);
+			$(fillID+" :checkbox[checked]").unbind().each(function(index) {
+				var result_data_array = $(this).attr("data").split(",");
+				if (apid_array[0] == result_data_array[0]) {
+					$(this).attr('checked',false);
+					isexceed($(fillID+" :checkbox[checked]").length);
+				}
+			});
+			copyitem();
+		});
+		$("#arstrade").html($(fillID+" :checkbox[checked]").length);
+		if ($(fillID+" :checkbox[checked]").length > 0) {
+			$(".cla").show();
+			$(".cla").click(function() {
+				$(fillID+" :checkbox").unbind().each(function(index) {
+					$(this).attr('disabled',false);
+					$(this).attr('checked',false);
+				});
+				copyitem();
+			})
+		} else {
+			$(".cla").hide();
+		}
+	}
+	// 复制选中 赋值
+	function copy_selected() {
+		var selectedhtm = "";
+		var selectedid_array = new Array();
+		var selectedcn_array = new Array();
+		$(fillID+" :checkbox[checked]").unbind().each(function(index) {
+			var data_array = $(this).attr("data").split(",");
+			selectedid_array[index]=data_array[0];
+			selectedcn_array[index]=data_array[1];
+		});
+		selectedcn_array.length > 0 ? selectedhtm = selectedcn_array.join("+") : selectedhtm = "选择行业类别";
+		$(resultshowID).html(selectedhtm);
+		$(resultID).val(selectedid_array.join("_"));
+	}
+	// 分割data 返回数组
+	function splitdata(arr) {
+		if(arr) {
+			var arrs_array = arr.split(","),
+				arrid_array = arrs_array[0].split(".");
+			return arrid_array;
+		}
+	}
+	/*判断选中的数量是否超出最大限制*/
+	function isexceed(num) {
+		if(num >= 3) {
+			$(fillID+" :checkbox").each(function(index, el) {
+				if (!$(this).attr('checked')) {
+					$(this).attr('disabled',"disabled");
+				}
+			});
+		} else {
+			$(fillID+" :checkbox").each(function(index, el) {
+				$(this).attr('disabled',false);
+			});
+		}
+		copyitem();
+	}
+	// 点击确定跳转
+	$("#tr-selector-save").click(function() {
+		copy_selected();
+		search_location(dir);
+	});
+}
+/*专业类别选择弹出层填充数据*/
+function major_filldata(fillID, data_resourcesP, data_resources, navID, showID, resultlist, resultshowID, resultID, dir) {
+	var tradhtm = '',marorPhtm = '';
+	$.each(data_resourcesP, function(indexp, valp) {
+		var pjob_array = valp.split(",");
+		marorPhtm += '<li code="'+pjob_array[0]+'"';
+		indexp == 0 ? marorPhtm += ' class="tnon">' : marorPhtm += '>';
+		marorPhtm += pjob_array[1]+'</li>';
+		var major_sourseArray = data_resources[pjob_array[0]].split("|"),
+			sourse_length = parseInt(major_sourseArray.length);
+		var rows = 0;
+		var subscriptnum = 0;
+		if((sourse_length%4) == 0) {
+			rows = sourse_length / 4;
+		} else {
+			rows = parseInt(sourse_length / 4) + 1;
+		}
+		tradhtm += '<tbody class="major_num_t">';
+		for (var i = 0; i < rows; i++) {
+			tradhtm += '<tr>';
+			for (var j = 0; j < 4; j++) {
+				if (major_sourseArray[subscriptnum]) {
+					var trad_array = major_sourseArray[subscriptnum].split(",");
+					tradhtm += '<td><label><input type="checkbox" data="'+trad_array[0]+','+trad_array[1]+'" name="item-list" class="input-checkbox">'+trad_array[1]+'</label></td>';
+					subscriptnum ++;
+				}
+			}
+			tradhtm += '</tr>';
+		}
+		tradhtm += '</tbody>';
+	});
+	$(navID).html(marorPhtm);
+	$(fillID).html(tradhtm);
+	$(".major_num_t").eq(0).show().siblings('.major_num_t').hide();
+	$(navID+" li").unbind().bind('click',function(){
+		$(navID+" li").removeClass('tnon');
+		$(this).addClass('tnon');
+		var ind = $(navID+" li").index(this);
+		$(".major_num_t").eq(ind).show().siblings('.major_num_t').hide();
+	});
+	// 恢复选中
+	if ($(resultID).val().length > 0) {
+		var idarray = $(resultID).val().split("_");
+		$.each(idarray, function(index, val) {
+			$(fillID+" :checkbox").unbind().each(function() {
+				var boxdata_array = $(this).attr("data").split(",");
+				if(val == boxdata_array[0]) {
+					$(this).attr('checked',true);
+				}
+			});
+		});
+		copyitem();
+		copy_selected();
+		isexceed($(fillID+" :checkbox[checked]").length);
+		// 单选
+		$(fillID+" label :checkbox").unbind().live("click",function(event) {
+			if ($(this).find(":checkbox").attr('checked')) {
+				$(this).find(":checkbox").attr('checked',false);
+				isexceed($(fillID+" :checkbox[checked]").length);
+			} else {
+				$(this).find(":checkbox").attr('checked',true);
+				isexceed($(fillID+" :checkbox[checked]").length);
+			}
+		});
+	};
+	// 单选
+	$(fillID+" label :checkbox").unbind().live("click",function(event) {
+		if ($(this).find(":checkbox").attr('checked')) {
+			$(this).find(":checkbox").attr('checked',false);
+			isexceed($(fillID+" :checkbox[checked]").length);
+		} else {
+			$(this).find(":checkbox").attr('checked',true);
+			isexceed($(fillID+" :checkbox[checked]").length);
+		}
+	});
+	// 复制选中项目
+	function copyitem() {
+		var resulthtm = '';
+		$(fillID+" :checkbox[checked]").unbind().each(function(index) {
+			var result_data_array = $(this).attr("data").split(",");
+			resulthtm += '<span data-code="'+result_data_array[0]+','+result_data_array[1]+'">'+result_data_array[1]+'<i class="data-icon data-icon-close"></i></span>';
+		});
+		$(resultlist).html(resulthtm);
+		var spi = $(resultlist + " span");
+		spi.unbind().bind('click', function() {
+			var spidata = $(this).attr("data-code"),
+				apid_array = splitdata(spidata);
+			$(fillID+" :checkbox[checked]").unbind().each(function(index) {
+				var result_data_array = $(this).attr("data").split(",");
+				if (apid_array[0] == result_data_array[0]) {
+					$(this).attr('checked',false);
+					isexceed($(fillID+" :checkbox[checked]").length);
+				}
+			});
+			copyitem();
+		});
+		$("#arsmajor").html($(fillID+" :checkbox[checked]").length);
+		if ($(fillID+" :checkbox[checked]").length > 0) {
+			$(".cla").show();
+			$(".cla").click(function() {
+				$(fillID+" :checkbox").unbind().each(function(index) {
+					$(this).attr('disabled',false);
+					$(this).attr('checked',false);
+				});
+				copyitem();
+			})
+		} else {
+			$(".cla").hide();
+		}
+	}
+	// 复制选中 赋值
+	function copy_selected() {
+		var selectedhtm = "";
+		var selectedid_array = new Array();
+		var selectedcn_array = new Array();
+		$(fillID+" :checkbox[checked]").unbind().each(function(index) {
+			var data_array = $(this).attr("data").split(",");
+			selectedid_array[index]=data_array[0];
+			selectedcn_array[index]=data_array[1];
+		});
+		selectedcn_array.length > 0 ? selectedhtm = selectedcn_array.join("+") : selectedhtm = "选择行业类别";
+		$(resultshowID).html(selectedhtm);
+		$(resultID).val(selectedid_array.join("_"));
+	}
+	// 分割data 返回数组
+	function splitdata(arr) {
+		if(arr) {
+			var arrs_array = arr.split(","),
+				arrid_array = arrs_array[0].split(".");
+			return arrid_array;
+		}
+	}
+	/*判断选中的数量是否超出最大限制*/
+	function isexceed(num) {
+		if(num >= 3) {
+			$(fillID+" :checkbox").each(function(index, el) {
+				if (!$(this).attr('checked')) {
+					$(this).attr('disabled',"disabled");
+				}
+			});
+		} else {
+			$(fillID+" :checkbox").each(function(index, el) {
+				$(this).attr('disabled',false);
+			});
+		}
+		copyitem();
+	}
+	// 点击确定跳转
+	$("#mj-selector-save").click(function() {
+		copy_selected();
+		search_location(dir);
+	});
+}
+/*职位选择弹出层填充数据*/
+function job_filldata(fillID, data_resourcesP, data_resources, resultlist, showID, resultshowID, resulthidId, dir) {
+	var jobhtm = '', result_datapool = new Array();
+	$.each(data_resourcesP, function(indexp, valp) {
+		 var pjob_array = valp.split(",");
+		 	jobhtm += '<div class="data-row data-row-odd item-list clearfix">';
+		 jobhtm += '<div class="data-row-side">'+pjob_array[1]+'</div>';
+		 jobhtm += '<div class="data-row-side-r"><ul>';
+		 var job_array = data_resources[pjob_array[0]].split("|");
+		 $.each(job_array, function(index, val) {
+		 	 var joblist_array = val.split(",");
+		 	 jobhtm += '<li><a title="'+joblist_array[1]+'" href="javascript:;" data="'+pjob_array[0]+'.'+joblist_array[0]+'.0,'+joblist_array[1]+'" rel="'+pjob_array[0]+'.'+joblist_array[0]+'" class="cat"><i class="data-icon data-icon-expend"></i>'+joblist_array[1]+'</a><a href="javascript:;" class="cat-touch"><label title="'+joblist_array[1]+'"><input type="checkbox" data="'+pjob_array[0]+'.'+joblist_array[0]+'.0,'+joblist_array[1]+'" rel="'+pjob_array[0]+'.'+joblist_array[0]+'" class="checkbox" name="LocalDataMultiC">'+joblist_array[1]+'</label></a></li>';
+		 });
+		 jobhtm += '</ul></div>';
+		 jobhtm += '</div>';
+	});
+	$(fillID).html(jobhtm);
+	// 全部恢复
+	if ($(resulthidId).val().length > 0) {
+		var recoverid_array = $(resulthidId).val().split("_"),
+			recovercn_array = new Array();
+		$.each(recoverid_array, function(index, val) {
+			var vspArray = val.split("."),
+				vue = vspArray[2];
+			if (vue == 0) {
+				var vueArray = data_resources[vspArray[0]].split("|");
+				$.each(vueArray, function(indexso, valso) {
+					var vuesoArray = valso.split(",");
+					if (vspArray[1] == vuesoArray[0]) {
+						recovercn_array.push(vuesoArray[1]);
 					}
 				});
-			});
-			copyTradItem();
-			var a_cn = new Array();
-			$("#tradAcq a").each(function(index) {
-				var checkText = $(this).attr('title');
-				a_cn[index]=checkText;
-			});
-			$("#tradText").html(a_cn.join(","));
-			$("#tradText").css("color","#4095ef");
-			$("#jobsTrad").css("border-color","#4095ef");
-			checkedstr += '<a href="javascript:;" ty="trade_id" class="cnt"><span>'+$("#tradText").html()+'</span><i class="del"></i></a>';
-		}
-	}
-	/* 行业列表点击显示到已选 */
-	$("#tradList li a").unbind().live('click', function() {
-		// 判断选择的数量是否超出
-		if($("#tradList .selectedcolor").length >= 5) {
-			$("#tradropcontent").show(0).delay(3000).fadeOut("slow");
-		} else {
-			$(this).addClass('selectedcolor');
-			copyTradItem(); // 将行业已选的拷贝
-		}
-	});
-	// 行业确定选择
-	$("#tradSure").unbind().click(function() {
-		var a_cn=new Array();
-		var a_id=new Array();
-		$("#tradAcq a").each(function(index) {
-			var checkID = $(this).attr('rel');
-			var checkText = $(this).attr('title');
-			a_id[index]=checkID;
-			a_cn[index]=checkText;
-		});
-		if (a_cn.length > 0) {
-			$("#tradText").html(a_cn.join(","));
-			$("#tradText").css("color","#4095ef");
-			$("#jobsTrad").css("border-color","#4095ef");
-			$("#trade_cn").val(a_cn.join(","));
-			$("#trade_id").val(a_id.join(","));
-		} else {
-			$("#tradText").html("请选择行业类别");
-			$("#tradText").css("color","#cccccc");
-			$("#jobsTrad").css("border-color","#cccccc");
-			$("#trade_cn").val("");
-			$("#trade_id").val("");
-		}
-		$("#divTradCate").hide();
-	});
-	fillJobs("#divJobCate"); // 职位填充内容
-	// 恢复职位选中条件
-	if(getstr) {
-		if(getstr[1]) {
-			var recoverJobArray = getstr[1].split(",");
-			$.each(recoverJobArray, function(index, val) {
-				 var demojobArray = val.split(".");
-				 if(demojobArray[2] == "0") { // 如果第三个参数是0 则只选到第二级
-				 	$(".jobcatebox p a").each(function() {
-				 		if(demojobArray[1] == $(this).attr("rcoid")) {
-				 			$(this).addClass('selectedcolor');
-				 		}
-				 	});
-				 } else {
-				 	$(".jobcatebox .subcate a").each(function() {
-				 		if(demojobArray[2] == $(this).attr("rcoid")) {
-				 			$(this).addClass('selectedcolor');
-				 		}
-				 	});
-				 }
-			});
-			copyJobItem();
-			var a_cn=new Array();
-			$("#jobAcq a").each(function(index) {
-				var checkText = $(this).attr('title');
-				a_cn[index]=checkText;
-			});
-			$("#jobText").html(a_cn.join(","));
-			$("#jobText").css("color","#4095ef");
-			$("#jobsSort").css("border-color","#4095ef");
-			checkedstr += '<a href="javascript:;" ty="jobs_id" class="cnt"><span>'+$("#jobText").html()+'</span><i class="del"></i></a>';
-		}
-	}
-	/* 职位列表点击显示到已选 */
-	$("#divJobCate li p a").unbind().live('click', function() {
-		// 判断选择的数量是否超出
-		if($("#divJobCate .selectedcolor").length >= 5) {
-			$("#jobdropcontent").show(0).delay(3000).fadeOut("slow");
-		} else {
-			$(this).addClass('selectedcolor');
-			copyJobItem(); // 将职位已选的拷贝
-		}
-	});
-	$("#divJobCate .subcate a").unbind().live('click', function() {
-		// 判断选择的数量是否超出
-		if($("#divJobCate .selectedcolor").length >= 5) {
-			$("#jobdropcontent").show(0).delay(3000).fadeOut("slow");
-		} else {
-			if($(this).attr("p") == "qb") {
-				$(this).parent().prev().find('font a').addClass('selectedcolor');
-				$(this).parent().find('a').removeClass('selectedcolor');
 			} else {
-				$(this).parent().prev().find('font a').removeClass('selectedcolor');
-				$(this).addClass('selectedcolor');
+				var vuesArray = data_resources[vspArray[1]].split("|");
+				$.each(vuesArray, function(indexson, valson) {
+					var vuesonArray = valson.split(",");
+					if (vue == vuesonArray[0]) {
+						recovercn_array.push(vuesonArray[1]);
+					}
+				});
 			}
-			copyJobItem(); // 将职位已选的拷贝
-		}
-	});
-	// 职位确定选择
-	$("#jobSure").unbind().click(function() {
-		var a_cn=new Array();
-		var a_id=new Array();
-		$("#jobAcq a").each(function(index) {
-			// 如果选择的是二级分类将第三个参数补0
-			var chid = new Array();
-			if($(this).attr('pid')) {
-				chid = $(this).attr('pid').split(".");
-				if(chid.length < 3) {
-					chid.push(0);
-				}
-			}
-			var checkID = chid.join(".");
-			var checkText = $(this).attr('title');
-			a_id[index]=checkID;
-			a_cn[index]=checkText;
 		});
-		if (a_cn.length > 0) {
-			$("#jobText").html(a_cn.join(","));
-			$("#jobText").css("color","#4095ef");
-			$("#jobsSort").css("border-color","#4095ef");
-			$("#jobs_cn").val(a_cn.join(","));
-			$("#jobs_id").val(a_id.join(","));
-		} else {
-			$("#jobText").html("请选择职位类别");
-			$("#jobText").css("color","#cccccc");
-			$("#jobsSort").css("border-color","#cccccc");
-			$("#jobs_cn").val("");
-			$("#jobs_id").val("");
-		}
-		$("#divJobCate").hide();
+		for (var i = 0; i < recoverid_array.length; i++) {
+			result_datapool[i] = recoverid_array[i]+","+recovercn_array[i];
+		};
+		copyitem();
+		copy_selected();
+		var cata_array = $(fillID + " a.cat");
+		$.each(cata_array, function() {
+			var catcobj = $(this), catcheckedid_array = splitdata(catcobj.attr("data"));
+			$.each(result_datapool, function(indexdp,valdp) {
+				var rdatapool_array = splitdata(valdp);
+				if (catcheckedid_array[1]==rdatapool_array[1] && rdatapool_array[2] !=0) {
+					catcobj.addClass('cat-checked');
+				} else if(catcheckedid_array[1]==rdatapool_array[1] && rdatapool_array[2] ==0) {
+					catcobj.addClass('cat-checked');
+					catcobj.next().find("input").attr("checked", !0);
+				}
+			})
+		});
+	}
+	$(fillID + " a.cat").unbind().on("click",function() {
+		var ace = $(this), jobarrayid_array = ace.attr("rel").split(".");
+		if (data_resources[jobarrayid_array[1]]) { // 判断是否有三级分类
+			var tjobhtm = '<div class="data-sub"><table cellpadding="0" cellspacing="0"><tbody>';
+			var tjob_array = data_resources[jobarrayid_array[1]].split("|");
+			var sourse_length = parseInt(tjob_array.length);
+			var rows = 0;
+			var subscriptnum = 0;
+			if((sourse_length%2) == 0) {
+				rows = sourse_length / 2;
+			} else {
+				rows = (sourse_length / 2) + 1;
+			}
+			for (var i = 0; i < rows; i++) {
+				tjobhtm += '<tr>';
+				for (var j = 0; j < 2; j++) {
+					if (tjob_array[subscriptnum]) {
+						var tjoblist_array = tjob_array[subscriptnum].split(",");
+						tjobhtm += '<td><a class="cat" data="'+jobarrayid_array[0]+'.'+jobarrayid_array[1]+'.'+tjoblist_array[0]+','+tjoblist_array[1]+'" href="javascript:;"><label title="'+tjoblist_array[1]+'"><input type="checkbox" class="checkbox" rel="'+jobarrayid_array[0]+'.'+jobarrayid_array[1]+'.'+tjoblist_array[0]+'" data="'+jobarrayid_array[0]+'.'+jobarrayid_array[1]+'.'+tjoblist_array[0]+','+tjoblist_array[1]+'" />'+tjoblist_array[1]+'</label></a></td>';
+						subscriptnum ++;
+					}
+				};
+				tjobhtm += '</tr>';
+			};
+			tjobhtm += '</tbody></table></div>';
+			$(fillID).append(tjobhtm);
+			var d = $(".data-sub"), l = $(this).closest("li");
+			var g = l.find(".cat-touch input"), s = d.find("input");
+			// 判断是否有选中
+			var rco_resultlist = $(resultlist + " span");
+			if (rco_resultlist.length > 0) {
+				$.each(rco_resultlist, function() {
+					var dsc = $(this).attr("data-code"),
+					 	dscode_array = splitdata(dsc);
+					if(dscode_array[2] == 0) {
+						$.each(g, function() {
+							if (dsc == $(this).attr("data")) {
+							 	var idsc = $(this).is(':checked');
+							 	$(this).attr("checked", idsc);
+							 	s.prop({"checked":idsc, "disabled":idsc});
+							}
+						})
+					} else {
+						$.each(s, function() {
+							if (dsc == $(this).attr("data")) {
+							 	$(this).attr("checked", !0);
+							}
+						})
+					}
+				})
+			} else {
+				g.prop("checked", false);
+			}
+			var pleft = $(fillID).offset().left,
+				ptop = $(fillID).offset().top,
+				pwidth = $(fillID).outerWidth(),
+				pheight = $(fillID).outerHeight(),
+				ileft = $(this).offset().left,
+				itop = $(this).offset().top,
+				iwidth = $(this).outerWidth(),
+				iheight = $(this).outerHeight(),
+				dwidth = d.outerWidth(),
+				dheight = d.outerHeight(),
+				comparetop = parseInt(itop - ptop),
+				dcleft = parseInt(ileft - pleft);
+			var pbv = 1, bpv = 2;
+			if($.browser.mozilla) {
+				pbv = 2;
+				bpv = 1;
+			}
+			l.addClass('cat-active');
+			var n = $(this).next();
+			pheight - dheight - iheight < comparetop ? (n.removeClass("sub").addClass("sup"), d.css({left:(pwidth-dwidth < dcleft ? (pwidth-dwidth-((pleft+pwidth)-(ileft+iwidth))) : dcleft),top:(comparetop + iheight)-dheight-iheight + pbv})) : (n.removeClass("sup").addClass("sub"), d.css({left:(pwidth-dwidth < dcleft ? (pwidth-dwidth-((pleft+pwidth)-(ileft+iwidth)))  : dcleft),top:(comparetop + iheight) - bpv}));
+			n.bind('mouseenter', function() {
+				var e = $(this).closest("li");
+				e.attr("data-active", !0)
+			}).bind('mouseleave', function() {
+				var a = $(this).closest("li");
+				a.removeAttr("data-active"), setTimeout(function() {
+					a.attr("data-active") || ($(fillID).find(".data-sub").remove(), a.removeClass("cat-active"))
+				}, 200)
+			});
+			d.bind('mouseenter', function() {
+				l.attr("data-active", !0)
+			}).bind('mouseleave', function() {
+				l.removeAttr("data-active"), setTimeout(function() {
+					l.attr("data-active") || (d.remove(), l.removeClass("cat-active"))
+				}, 200)
+			});
+			g.unbind('click').bind('click', function() {
+				var ic = $(this).is(':checked'), gdata = $(this).attr("data");
+				s.prop({"checked":ic, "disabled":ic});
+				if (ic) {
+					var gdata_array = splitdata(gdata);
+					for (var i = 0; i < result_datapool.length; i++) {
+						if (result_datapool[i]) {
+							var icgdata_array = splitdata(result_datapool[i]);
+							if (gdata_array[1] == icgdata_array[1]) {
+								result_datapool.splice(i,1);
+								i = -1;
+							}
+						}
+					}
+					result_datapool.push(gdata);
+					if(isexceed()) {
+						ace.addClass('cat-checked');
+					} else {
+						$(this).attr("checked",false);
+						result_datapool.splice($.inArray(gdata,result_datapool),1);
+					}
+				} else {
+					result_datapool.splice($.inArray(gdata,result_datapool),1);
+					ace.removeClass('cat-checked');
+				}
+				copyitem();
+			});
+			s.unbind('click').bind('click', function() {
+				var sic = $(this).is(':checked'), sdata = $(this).attr("data");
+				if (sic) {
+					result_datapool.push(sdata);
+					isexceed() ? ace.addClass('cat-checked') : result_datapool.splice($.inArray(sdata,result_datapool),1);
+				} else {
+					result_datapool.splice($.inArray(sdata,result_datapool),1);
+					var chnum = d.find(' :checkbox[checked]').length;
+					if (chnum <= 0) {
+						ace.removeClass('cat-checked');
+					}
+				}
+				copyitem();
+			});
+		} else{
+			var l = $(this).closest("li");
+			var g = l.find(".cat-touch input");
+			// 判断是否有选中
+			var rco_resultlist = $(resultlist + " span");
+			if (rco_resultlist.length > 0) {
+				$.each(rco_resultlist, function() {
+					var dsc = $(this).attr("data-code"),
+					 	dscode_array = splitdata(dsc);
+					if(dscode_array[2] == 0) {
+						$.each(g, function() {
+							if (dsc == $(this).attr("data")) {
+							 	var idsc = $(this).is(':checked');
+							 	$(this).attr("checked", idsc);
+							}
+						})
+					}
+				})
+			} else {
+				g.prop("checked", false);
+			}
+			l.addClass('cat-active');
+			var n = $(this).next();
+			n.bind('mouseenter', function() {
+				var e = $(this).closest("li");
+				e.attr("data-active", !0)
+			}).bind('mouseleave', function() {
+				var a = $(this).closest("li");
+				a.removeAttr("data-active"), setTimeout(function() {
+					a.attr("data-active") || ($(fillID).find(".data-sub").remove(), a.removeClass("cat-active"))
+				}, 200)
+			});
+			g.unbind('click').bind('click', function() {
+				var ic = $(this).is(':checked'), gdata = $(this).attr("data");
+				if (ic) {
+					result_datapool.push(gdata);
+					if(isexceed()) {
+						ace.addClass('cat-checked');
+					} else {
+						$(this).attr("checked",false);
+						result_datapool.splice($.inArray(gdata,result_datapool),1);
+					}
+				} else {
+					result_datapool.splice($.inArray(gdata,result_datapool),1);
+					ace.removeClass('cat-checked');
+				}
+				copyitem();
+			});
+		};
 	});
-	fillCity("#divCityCate"); // 地区内容填充
-	// 恢复地区选中条件
-	if(getstr) {
-		if(getstr[2]) {
-			var recoverCityArray = getstr[2].split(",");
-			$.each(recoverCityArray, function(index, val) {
-				 var democityArray = val.split(".");
-				 if(democityArray[1] == 0) { // 如果第二个参数为 0 说明选择的是一级地区
-				 	$(".citycatebox p a").each(function() {
-				 		if(democityArray[0] == $(this).attr("rcoid")) {
-				 			$(this).addClass('selectedcolor');
-				 		}
-				 	});
-				 } else { // 选择的是二级地区
-				 	$(".citycatebox .subcate a").each(function() {
-				 		if(democityArray[1] == $(this).attr("rcoid")) {
-				 			$(this).addClass('selectedcolor');
-				 		}
-				 	});
-				 }
+	// 复制选中项目
+	function copyitem() {
+		var resulthtm = '';
+		$.each(result_datapool, function(indexrd,valrd) {
+			var result_data_array = valrd.split(",");
+			resulthtm += '<span data-code="'+result_data_array[0]+','+result_data_array[1]+'">'+result_data_array[1]+'<i class="data-icon data-icon-close"></i></span>';
+		});
+		$(resultlist).html(resulthtm);
+		var spi = $(resultlist + " span");
+		spi.unbind().bind('click', function() {
+			var spidata = $(this).attr("data-code"),
+				apid_array = splitdata(spidata);
+			result_datapool.splice($.inArray(spidata,result_datapool),1);
+			var catchecked_array = $(fillID + " a.cat-checked");
+			$.each(catchecked_array, function() {
+				var catcobj = $(this), catcheckedid_array = splitdata(catcobj.attr("data"));
+				if(apid_array[1]==catcheckedid_array[1] && apid_array[2]==0){
+					catcobj.removeClass('cat-checked');
+					catcobj.next().find("input").attr("checked", false);
+				} else if (apid_array[1]==catcheckedid_array[1] && apid_array[2]!=0) {
+					var rdanum = 0;
+					$.each(result_datapool, function(indexdp,valdp) {
+						var rdatapool_array = splitdata(valdp);
+						if (apid_array[1]==rdatapool_array[1] && apid_array[2]!=0) {
+							rdanum ++;
+						}
+					});
+					if (rdanum <= 0) {
+						catcobj.removeClass('cat-checked');
+					}
+				}
 			});
-			copyCityItem();
-			var a_cn=new Array();
-			$("#cityAcq a").each(function(index) {
-				var checkText = $(this).attr('title');
-				a_cn[index]=checkText;
-			});
-			$("#cityText").html(a_cn.join(","));
-			$("#cityText").css("color","#4095ef");
-			$("#jobsCity").css("border-color","#4095ef");
-			checkedstr += '<a href="javascript:;" ty="district_id" class="cnt"><span>'+$("#cityText").html()+'</span><i class="del"></i></a>';
+			copyitem();
+		});
+		$("#ars").html(result_datapool.length);
+		if (result_datapool.length > 0) {
+			$(".cla").show();
+			$(".cla").click(function() {
+				result_datapool.splice(0,result_datapool.length);
+				var catchecked_array = $(fillID + " a.cat-checked");
+				$.each(catchecked_array, function(index, val) {
+					$(this).removeClass('cat-checked');
+				});
+				copyitem();
+			})
+		} else {
+			$(".cla").hide();
 		}
 	}
-	/* 地区列表点击显示到已选 */
-	$("#divCityCate li p a").unbind().live('click', function(){
-		// 判断选择的数量是否超出
-		if($("#divCityCate .selectedcolor").length >= 5) {
-			$("#citydropcontent").show(0).delay(3000).fadeOut("slow");
-		} else {
-			$(this).addClass('selectedcolor');
-			copyCityItem(); // 将地区已选的拷贝
+	// 分割data 返回数组
+	function splitdata(arr) {
+		if(arr) {
+			var arrs_array = arr.split(","),
+				arrid_array = arrs_array[0].split(".");
+			return arrid_array;
 		}
-	});
-	$("#divCityCate .subcate a").unbind().live('click', function() {
-		// 判断选择的数量是否超出
-		if($("#divCityCate .selectedcolor").length >= 5) {
-			$("#citydropcontent").show(0).delay(3000).fadeOut("slow");
+	}
+	// 判断选择数量是否超出
+	function isexceed() {
+		if(result_datapool.length > 3) {
+			alert("最多可选3个");
+			return false;
 		} else {
-			if($(this).attr("p") == "qb") {
-				$(this).parent().prev().find('font a').addClass('selectedcolor');
-				$(this).parent().find('a').removeClass('selectedcolor');
+			return true;
+		}
+	}
+	// 复制选中 赋值
+	function copy_selected() {
+		var selectedhtm = "";
+		var selectedid_array = new Array();
+		var selectedcn_array = new Array();
+		for (var i = 0; i < result_datapool.length; i++) {
+			if (result_datapool[i]) {
+				var data_array = result_datapool[i].split(",");
+				selectedid_array[i]=data_array[0];
+				selectedcn_array[i]=data_array[1];
+			};
+		};
+		selectedcn_array.length > 0 ? selectedhtm = selectedcn_array.join("+"): selectedhtm = "选择职位类别";
+		$(resultshowID).html(selectedhtm);
+		$(resulthidId).val(selectedid_array.join("_"));
+	}
+	// 点击确定跳转
+	$("#jb-selector-save").click(function() {
+		copy_selected();
+		search_location(dir);	
+	});
+}
+/*地区选择弹出层填充数据*/
+function city_filldata(fillID, data_resourcesP, data_resources, resultlist, showID, resultshowID, resulthidId, dir) {
+	var cityhtm = '', result_datapool = new Array();
+
+	var sourse_city_length = parseInt(data_resourcesP.length);
+	var rows_city = 0;
+	var subscriptnum_city = 0;
+	// 计算总行数
+	if((sourse_city_length%5) == 0) {
+		rows_city = sourse_city_length / 5;
+	} else {
+		if (sourse_city_length > 5*((sourse_city_length / 5) + 1)) {
+			rows_city = (sourse_city_length / 5) + 1;
+		} else {
+			rows_city = (sourse_city_length / 5);
+		}
+	}
+	for (var i = 0; i < rows_city; i++) {
+		cityhtm += '<div class="data-row item-list data-row-nob clearfix">';
+		cityhtm += '<div class="data-row-side-r615"><ul>';
+		for (var j = 0; j < 5; j++) {
+			if (data_resourcesP[subscriptnum_city]) {
+				var citylist_array = data_resourcesP[subscriptnum_city].split(",");
+				cityhtm += '<li><a title="'+citylist_array[1]+'" href="javascript:;" data="'+citylist_array[0]+'.0,'+citylist_array[1]+'" rel="'+citylist_array[0]+'.0" class="cat"><i class="data-icon data-icon-expend"></i>'+citylist_array[1]+'</a><a href="javascript:;" class="cat-touch"><label title="'+citylist_array[1]+'"><input type="checkbox" data="'+citylist_array[0]+'.0,'+citylist_array[1]+'" rel="'+citylist_array[0]+'.0" class="checkbox" name="LocalDataMultiC">'+citylist_array[1]+'</label></a></li>';
+				subscriptnum_city ++;
+			};
+		};
+		cityhtm += '</ul></div>';
+		cityhtm += '</div>';
+	};
+	$(fillID).html(cityhtm);
+	// 全部恢复
+	if ($(resulthidId).val().length > 0) {
+		var recoverid_array = $(resulthidId).val().split("_"),
+			recovercn_array = new Array();
+		$.each(recoverid_array, function(index, val) {
+			var vspArray = val.split("."),
+				vue = vspArray[1];
+			if (vue == 0) {
+				$.each(data_resourcesP, function(indexso, valso) {
+					var vuesoArray = valso.split(",");
+					if (vspArray[0] == vuesoArray[0]) {
+						recovercn_array.push(vuesoArray[1]);
+					}
+				});
 			} else {
-				$(this).parent().prev().find('font a').removeClass('selectedcolor');
-				$(this).addClass('selectedcolor');
+				var vuesArray = data_resources[vspArray[0]].split("|");
+				$.each(vuesArray, function(indexson, valson) {
+					var vuesonArray = valson.split(",");
+					if (vue == vuesonArray[0]) {
+						recovercn_array.push(vuesonArray[1]);
+					}
+				});
 			}
-			copyCityItem(); // 将地区已选的拷贝
-		}
-	});
-	// 地区确定选择
-	$("#citySure").unbind().click(function() {
-		var a_cn=new Array();
-		var a_id=new Array();
-		$("#cityAcq a").each(function(index) {
-			// 如果选择的是一级地区将第二个参数补 0
-			var chid = new Array();
-			if($(this).attr('pid')) {
-				chid = $(this).attr('pid').split(".");
-				if(chid.length < 2) {
-					chid.push(0);
-				}
-			}
-			var checkID = chid.join(".");
-			var checkText = $(this).attr('title');
-			a_id[index]=checkID;
-			a_cn[index]=checkText;
 		});
-		if (a_cn.length > 0) {
-			$("#cityText").html(a_cn.join(","));
-			$("#cityText").css("color","#4095ef");
-			$("#jobsCity").css("border-color","#4095ef");
-			$("#district_cn").val(a_cn.join(","));
-			$("#district_id").val(a_id.join(","));
-		} else {
-			$("#cityText").html("请选择地区分类");
-			$("#cityText").css("color","#cccccc");
-			$("#jobsCity").css("border-color","#cccccc");
-			$("#district_cn").val("");
-			$("#district_id").val("");
-		}
-		$("#divCityCate").hide();
+		for (var i = 0; i < recoverid_array.length; i++) {
+			result_datapool[i] = recoverid_array[i]+","+recovercn_array[i];
+		};
+		copyitem();
+		copy_selected();
+		var cata_array = $(fillID + " a.cat");
+		$.each(cata_array, function() {
+			var catcobj = $(this), catcheckedid_array = splitdata(catcobj.attr("data"));
+			$.each(result_datapool, function(indexdp,valdp) {
+				var rdatapool_array = splitdata(valdp);
+				if (catcheckedid_array[0]==rdatapool_array[0] && rdatapool_array[1] !=0) {
+					catcobj.addClass('cat-checked');
+				} else if(catcheckedid_array[0]==rdatapool_array[0] && rdatapool_array[1] ==0) {
+					catcobj.addClass('cat-checked');
+					catcobj.next().find("input").attr("checked", !0);
+				}
+			})
+		});
+	}
+	$(fillID + " a.cat").unbind().on("click",function() {
+		var ace = $(this), cityarrayid_array = ace.attr("rel").split(".");
+		if (data_resources[cityarrayid_array[0]]) { // 判断是否有二级地区
+			var tcityhtm = '<div class="data-sub"><table cellpadding="0" cellspacing="0"><tbody>';
+			var tcity_array = data_resources[cityarrayid_array[0]].split("|");
+			var sourse_length = parseInt(tcity_array.length);
+			var rows = 0;
+			var subscriptnum = 0;
+			if((sourse_length%2) == 0) {
+				rows = sourse_length / 2;
+			} else {
+				rows = (sourse_length / 2) + 1;
+			}
+			for (var i = 0; i < rows; i++) {
+				tcityhtm += '<tr>';
+				for (var j = 0; j <= 2; j++) {
+					if (tcity_array[subscriptnum]) {
+						var tcitylist_array = tcity_array[subscriptnum].split(",");
+						tcityhtm += '<td><a class="cat" data="'+cityarrayid_array[0]+'.'+tcitylist_array[0]+','+tcitylist_array[1]+'" href="javascript:;"><label title="'+tcitylist_array[1]+'"><input type="checkbox" class="checkbox" rel="'+cityarrayid_array[0]+'.'+tcitylist_array[0]+'" data="'+cityarrayid_array[0]+'.'+tcitylist_array[0]+','+tcitylist_array[1]+'" />'+tcitylist_array[1]+'</label></a></td>';
+						subscriptnum ++;
+					}
+				};
+				tcityhtm += '</tr>';
+			};
+			tcityhtm += '</tbody></table></div>';
+			$(fillID).append(tcityhtm);
+			var d = $(".data-sub"), l = $(this).closest("li");
+			var g = l.find(".cat-touch input"), s = d.find("input");
+			// 判断是否有选中
+			var rco_resultlist = $(resultlist + " span");
+			if (rco_resultlist.length > 0) {
+				$.each(rco_resultlist, function() {
+					var dsc = $(this).attr("data-code"),
+					 	dscode_array = splitdata(dsc);
+					if(dscode_array[1] == 0) {
+						$.each(g, function() {
+							if (dsc == $(this).attr("data")) {
+							 	var idsc = $(this).is(':checked');
+							 	$(this).attr("checked", idsc);
+							 	s.prop({"checked":idsc, "disabled":idsc});
+							}
+						})
+					} else {
+						$.each(s, function() {
+							if (dsc == $(this).attr("data")) {
+							 	$(this).attr("checked", !0);
+							}
+						})
+					}
+				})
+			} else {
+				g.prop("checked", false);
+			}
+			var pleft = $(fillID).offset().left,
+				ptop = $(fillID).offset().top,
+				pwidth = $(fillID).outerWidth(),
+				pheight = $(fillID).outerHeight(),
+				ileft = $(this).offset().left,
+				itop = $(this).offset().top,
+				iwidth = $(this).outerWidth(),
+				iheight = $(this).outerHeight(),
+				dwidth = d.outerWidth(),
+				dheight = d.outerHeight(),
+				comparetop = parseInt(itop - ptop),
+				dcleft = parseInt(ileft - pleft);
+			var pbv = 1, bpv = 2;
+			if($.support.mozilla) {
+				pbv = 2;
+				bpv = 1;
+			}
+			l.addClass('cat-active');
+			var n = $(this).next();
+			pheight - dheight - iheight < comparetop ? (n.removeClass("sub").addClass("sub"), d.css({left:(pwidth-dwidth < dcleft ? (pwidth-dwidth-((pleft+pwidth)-(ileft+iwidth))) : dcleft),top:(comparetop + iheight) - bpv})) : (n.removeClass("sub").addClass("sub"), d.css({left:(pwidth-dwidth < dcleft ? (pwidth-dwidth-((pleft+pwidth)-(ileft+iwidth)))  : dcleft),top:(comparetop + iheight) - bpv}));
+			n.bind('mouseenter', function() {
+				var e = $(this).closest("li");
+				e.attr("data-active", !0)
+			}).bind('mouseleave', function() {
+				var a = $(this).closest("li");
+				a.removeAttr("data-active"), setTimeout(function() {
+					a.attr("data-active") || ($(fillID).find(".data-sub").remove(), a.removeClass("cat-active"))
+				}, 200)
+			});
+			d.bind('mouseenter', function() {
+				l.attr("data-active", !0)
+			}).bind('mouseleave', function() {
+				l.removeAttr("data-active"), setTimeout(function() {
+					l.attr("data-active") || (d.remove(), l.removeClass("cat-active"))
+				}, 200)
+			});
+			g.unbind('click').bind('click', function() {
+				var ic = $(this).is(':checked'), gdata = $(this).attr("data");
+				s.prop({"checked":ic, "disabled":ic});
+				if (ic) {
+					var gdata_array = splitdata(gdata);
+					for (var i = 0; i < result_datapool.length; i++) {
+						if (result_datapool[i]) {
+							var icgdata_array = splitdata(result_datapool[i]);
+							if (gdata_array[0] == icgdata_array[0]) {
+								result_datapool.splice(i,1);
+								i = -1;
+							}
+						}
+					}
+					result_datapool.push(gdata);
+					if(isexceed()) {
+						ace.addClass('cat-checked');
+					} else {
+						$(this).attr("checked",false);
+						result_datapool.splice($.inArray(gdata,result_datapool),1);
+					}
+				} else {
+					result_datapool.splice($.inArray(gdata,result_datapool),1);
+					ace.removeClass('cat-checked');
+				}
+				copyitem();
+			});
+			s.unbind('click').bind('click', function() {
+				var sic = $(this).is(':checked'), sdata = $(this).attr("data");
+				if (sic) {
+					result_datapool.push(sdata);
+					isexceed() ? ace.addClass('cat-checked') : result_datapool.splice($.inArray(sdata,result_datapool),1);
+				} else {
+					result_datapool.splice($.inArray(sdata,result_datapool),1);
+					var chnum = d.find(' :checkbox[checked]').length;
+					if (chnum <= 0) {
+						ace.removeClass('cat-checked');
+					}
+				}
+				copyitem();
+			});
+		} else{
+			var l = $(this).closest("li");
+			var g = l.find(".cat-touch input");
+			// 判断是否有选中
+			var rco_resultlist = $(resultlist + " span");
+			if (rco_resultlist.length > 0) {
+				$.each(rco_resultlist, function() {
+					var dsc = $(this).attr("data-code"),
+					 	dscode_array = splitdata(dsc);
+					if(dscode_array[0] == 0) {
+						$.each(g, function() {
+							if (dsc == $(this).attr("data")) {
+							 	var idsc = $(this).is(':checked');
+							 	$(this).attr("checked", idsc);
+							}
+						})
+					}
+				})
+			} else {
+				g.prop("checked", false);
+			}
+			l.addClass('cat-active');
+			var n = $(this).next();
+			n.bind('mouseenter', function() {
+				var e = $(this).closest("li");
+				e.attr("data-active", !0)
+			}).bind('mouseleave', function() {
+				var a = $(this).closest("li");
+				a.removeAttr("data-active"), setTimeout(function() {
+					a.attr("data-active") || ($(fillID).find(".data-sub").remove(), a.removeClass("cat-active"))
+				}, 200)
+			});
+			g.unbind('click').bind('click', function() {
+				var ic = $(this).is(':checked'), gdata = $(this).attr("data");
+				if (ic) {
+					result_datapool.push(gdata);
+					if(isexceed()) {
+						ace.addClass('cat-checked');
+					} else {
+						$(this).attr("checked",false);
+						result_datapool.splice($.inArray(gdata,result_datapool),1);
+					}
+				} else {
+					result_datapool.splice($.inArray(gdata,result_datapool),1);
+					ace.removeClass('cat-checked');
+				}
+				copyitem();
+			});
+		};
 	});
-	// 处理关键字搜索框
-	$("#searckey").focus(function() {
-		if($(this).val() == "请输入关键字") {
+	// 复制选中项目
+	function copyitem() {
+		var resulthtm = '';
+		$.each(result_datapool, function(indexrd,valrd) {
+			var result_data_array = valrd.split(",");
+			resulthtm += '<span data-code="'+result_data_array[0]+','+result_data_array[1]+'">'+result_data_array[1]+'<i class="data-icon data-icon-close"></i></span>';
+		});
+		$(resultlist).html(resulthtm);
+		var spi = $(resultlist + " span");
+		spi.unbind().bind('click', function() {
+			var spidata = $(this).attr("data-code"),
+				apid_array = splitdata(spidata);
+			result_datapool.splice($.inArray(spidata,result_datapool),1);
+			var catchecked_array = $(fillID + " a.cat-checked");
+			$.each(catchecked_array, function() {
+				var catcobj = $(this), catcheckedid_array = splitdata(catcobj.attr("data"));
+				if(apid_array[0]==catcheckedid_array[0] && apid_array[1]==0){
+					catcobj.removeClass('cat-checked');
+					catcobj.next().find("input").attr("checked", false);
+				} else if (apid_array[0]==catcheckedid_array[0] && apid_array[1]!=0) {
+					var rdanum = 0;
+					$.each(result_datapool, function(indexdp,valdp) {
+						var rdatapool_array = splitdata(valdp);
+						if (apid_array[0]==rdatapool_array[0] && apid_array[1]!=0) {
+							rdanum ++;
+						}
+					});
+					if (rdanum <= 0) {
+						catcobj.removeClass('cat-checked');
+					}
+				}
+			});
+			copyitem();
+		});
+		$("#arscity").html(result_datapool.length);
+		if (result_datapool.length > 0) {
+			$(".cla").show();
+			$(".cla").click(function() {
+				result_datapool.splice(0,result_datapool.length);
+				var catchecked_array = $(fillID + " a.cat-checked");
+				$.each(catchecked_array, function(index, val) {
+					$(this).removeClass('cat-checked');
+				});
+				copyitem();
+			})
+		} else {
+			$(".cla").hide();
+		}
+	}
+	// 分割data 返回数组
+	function splitdata(arr) {
+		if (arr) {
+			var arrs_array = arr.split(","),
+				arrid_array = arrs_array[0].split(".");
+			return arrid_array;
+		};
+	}
+	// 判断选择数量是否超出
+	function isexceed() {
+		if(result_datapool.length > 3) {
+			alert("最多可选3个");
+			return false;
+		} else {
+			return true;
+		}
+	}
+	// 复制选中 赋值
+	function copy_selected() {
+		var selectedhtm = "";
+		var selectedid_array = new Array();
+		var selectedcn_array = new Array();
+		for (var i = 0; i < result_datapool.length; i++) {
+			if (result_datapool[i]) {
+				var data_array = result_datapool[i].split(",");
+				selectedid_array[i]=data_array[0];
+				selectedcn_array[i]=data_array[1];
+			};
+		};
+		selectedcn_array.length > 0 ? selectedhtm = selectedcn_array.join("+") : selectedhtm = "选择地区类别";
+		$(resultshowID).html(selectedhtm);
+		$(resulthidId).val(selectedid_array.join("_"));
+	}
+	// 点击确定跳转
+	$("#ct-selector-save").click(function() {
+		copy_selected();
+		search_location(dir);
+	});
+}
+// 一些js的集合
+function allaround(dir) {
+	$('.search-type-choose').hover(function(){
+		$(this).find(".search-options").show();
+	}, function(){
+		$(this).find(".search-options").hide();
+	});
+	$('.filter-drop .filter-item:last').css({'margin-right':0});
+	// 福利展开
+	$('#fliterMore .fl-content-li:gt(10)').hide().css("margin-top","5px");
+	$('.show-more').toggle(function(){
+		$('#fliterMore .fl-content-li:gt(10)').show();
+		$(this).html('收起').addClass('sq');
+	}, function(){
+		$('#fliterMore .fl-content-li:gt(10)').hide();
+		$(this).html('展开').removeClass('sq');
+	})
+	// 更多筛选
+	$(".saixuan").hover(function () {
+        $(this).addClass("selectd").find(".saixuans").show().css("zIndex",1);
+    }, function () {
+        $(this).removeClass("selectd").find(".saixuans").hide().css("zIndex",0);
+    });
+	// 显示下拉
+	$(".cc-default").click(function() {
+		if (!$(this).hasClass('aui_is_show')) {
+			$('.aui_outer').hide();
+			$(".cc-default").removeClass('aui_is_show');
+			$(this).addClass('aui_is_show');
+			$(this).parent().find('.aui_outer').show();
+		} else {
+			$(this).removeClass('aui_is_show');
+			$(this).parent().find('.aui_outer').hide();
+		}
+	});
+	$(document).delegate("body", "click", function(e){
+		var _con = $(".cc-default"), _caui = $(".aui_outer");
+		if(!_con.is(e.target) && _caui.has(e.target).length === 0){
+			$('.aui_outer').hide();
+			$(".cc-default").removeClass('aui_is_show');
+		}
+	});
+	// 关闭下拉
+	$(".selector-close").die().live('click', function(event) {
+		$('.aui_outer').hide();
+		$(".cc-default").removeClass('aui_is_show');
+	});
+	// 选项点击
+	$(".fl-content-li").click(function() {
+		var type = $(this).attr('type'),
+			code = $(this).attr('code');
+		if (type == 'resumetag') {
+			if ($(this).hasClass('select')) {
+				if ($("#"+type).val()) {
+					var resumetagArray = $("#"+type).val().split(",");
+					resumetagArray.splice($.inArray(code,resumetagArray),1);
+					$("#"+type).val(resumetagArray.join(","));
+				} else {
+					$("#"+type).val(code);
+				}
+				$(this).removeClass('select');
+			} else {
+				if ($("#"+type).val()) {
+					var resumetagArray = $("#"+type).val().split(",");
+					resumetagArray.push(code);
+					$("#"+type).val(resumetagArray.join(","));
+				} else {
+					$("#"+type).val(code);
+				}
+				$(this).addClass('select');
+			}
+		} else {
+			if ($(this).hasClass('select')) {
+				$(this).removeClass('select');
+				$("#"+type).val('');
+			} else {
+				$(this).addClass('select').siblings('.fl-content-li').removeClass('select');
+				$("#"+type).val(code);
+			}
+		}
+		search_location(dir);
+	});
+	$(".saixuans a").click(function() {
+		var type = $(this).attr('type'),
+			code = $(this).attr('defvalue');
+		$(this).hasClass('select') ? $("#"+type).val('') : $("#"+type).val(code);
+		$(".saixuans").hide();
+		search_location(dir);
+	});
+	$(".key").click(function() {
+		$(this).hide();
+		$("#key").show().focus();
+		$("#key").blur(function() {
+			var v = $("#key").val();
+			if (!(v && v.length)) {
+				$(".key").show();
+				$("#key").hide();
+			}
+		});
+	});
+	// 热门关键字提示
+	var hotKey = $('#key').autocomplete({
+		serviceUrl:dir+"plus/ajax_common.php?act=hotword",
+		minChars:1, 
+		maxHeight:400,
+		width:400,
+		zIndex: 1,
+		deferRequestBy: 0 
+	});
+	// 回车搜索
+	$('#key').keydown(function(e) {
+		if (e.keyCode==13) {
+			search_location(dir);
+		}
+	});
+	// 搜索按钮点击
+	$("#searcnbtn").click(function() {
+		search_location(dir);
+	});
+	// 福利数据还原
+	if ($("#resumetag").val()) {
+		var re_resumetagArray = $("#resumetag").val().split(",");
+		$.each(re_resumetagArray, function(index, val) {
+			$("#fliterMore .fl-content-li").each(function(ind, el) {
+				if ($(this).attr('code') == val) {
+					if (ind > 10) {
+						$('#fliterMore .fl-content-li:gt(10)').show();
+					}
+					$(this).addClass('select');
+				}
+			})
+		})
+	}
+	// 已选条件 列表选项点击
+	$(".has-select-item").click(function() {
+		var type= $(this).attr('type');
+		$('#'+type).val('');
+		search_location(dir);
+	});
+	// 清空所选
+	$("#clear_all_selected").click(function() {
+		$("#hidden_input_box input").each(function(index, el) {
 			$(this).val('');
-		}
-	}).blur(function() {
-		if($(this).val() == "") {
-			$(this).val('请输入关键字');
-		}
-	});
-	showOption("#resumeducation","education",QS_education);	//学历
-	// 恢复学历选中条件
-	if(getstr) {
-		if(getstr[3]) {
-			$("#searoptions").show();
-			var edustr = "";
-			$("#resumeducation a").each(function() {
-				$(this).removeClass('selc');
-				var demoEduArray = $(this).attr('id').split('-');
-				if(getstr[3] == demoEduArray[1]) {
-					$(this).addClass('selc');
-					edustr = $(this).html();
-				}
-			});
-			checkedstr += '<a href="javascript:;" ty="education" class="cnt"><span>'+edustr+'</span><i class="del"></i></a>';
-		}
-	}
-	showOption("#resumexperience","experience",QS_experience); // 经验
-	// 恢复经验选中条件
-	if(getstr) {
-		if(getstr[4]) {
-			$("#searoptions").show();
-			var expstr = "";
-			$("#resumexperience a").each(function() {
-				$(this).removeClass('selc');
-				var demoExpArray = $(this).attr('id').split('-');
-				if(getstr[4] == demoExpArray[1]) {
-					$(this).addClass('selc');
-					expstr = $(this).html();
-				}
-			});
-			checkedstr += '<a href="javascript:;" ty="experience" class="cnt"><span>'+expstr+'</span><i class="del"></i></a>';
-		}
-	}
-	// 恢复照片选中条件
-	if(getstr) {
-		if(getstr[5]) {
-			$("#searoptions").show();
-			var photostr = "";
-			$("#resumephoto a").each(function() {
-				$(this).removeClass('selc');
-				var demoPhotoArray = $(this).attr('id').split('-');
-				if(getstr[5] == demoPhotoArray[1]) {
-					$(this).addClass('selc');
-					photostr = $(this).html();
-				}
-			});
-			checkedstr += '<a href="javascript:;" ty="photo" class="cnt"><span>'+photostr+'</span><i class="del"></i></a>';
-		}
-	}
-	// 恢复等级选中条件
-	if(getstr) {
-		if(getstr[6]) {
-			$("#searoptions").show();
-			var talentstr = "";
-			$("#resumetalent a").each(function() {
-				$(this).removeClass('selc');
-				var demoTalentArray = $(this).attr('id').split('-');
-				if(getstr[6] == demoTalentArray[1]) {
-					$(this).addClass('selc');
-					talentstr = $(this).html();
-				}
-			});
-			checkedstr += '<a href="javascript:;" ty="talent" class="cnt"><span>'+talentstr+'</span><i class="del"></i></a>';
-		}
-	}
-	// 关键字显示到以选择
-	if($("#searckey").attr("data")) {
-		checkedstr += '<a href="javascript:;" ty="key" class="cnt"><span>'+$("#searckey").attr("data")+'</span><i class="del"></i></a>';
-	}
-	// 点击显示更多条件
-	$("#showmoreoption").unbind().click(function(){
-		if($("#searoptions").css('display') == "none") {
-			$(this).find('span').html("收起更多");
-			$(this).find('i').addClass('sq');
-			$("#searoptions").show();
-		} else {
-			$(this).find('span').html("更多条件");
-			$(this).find('i').removeClass('sq');
-			$("#searoptions").hide();
-		}
-	});
-	// 点击搜索按钮
-	$("#btnsearch").unbind().click(function() {
-		search_location();
-	});
-	// 更多条件选项的点击
-	$("#searoptions .opt").click(function(){
-		var opt=$(this).attr('id');
-		opt=opt.split("-");
-		$("#searckeybox input[name="+opt[0]+"]").val(opt[1]);
-		search_location();
-	});
-	// 简历列表页面选中条件的显示
-	if(checkedstr != "") {
-		$("#showselected").html(checkedstr);
-		$("#resumeselected").show();
-	}
-	$("#showselected .cnt").click(function(){
-		var opt=$(this).attr('ty');
-		$("#searckeybox input[name="+opt+"]").val('');
-		setTimeout(function() {
-			search_location();
-		}, 1);
-	});
-	$("#clearallopt").click(function(){
-		$("#searckeybox input[type='hidden']").val('');
-		$("#searckeybox input[name='key']").val('');
-		setTimeout(function() {
-			search_location();
-		}, 1);
-	});
-	// 搜索跳转
-	function search_location() {
-		var key=$("#searckeybox input[name=key]").val();
-		if($("#searckeybox input[name=key]").val() == "请输入关键字") {
-			key = '';
-		}
-		var trade=$("#searckeybox input[name=trade_id]").val();
-		var jobcategory=$("#searckeybox input[name=jobs_id]").val();
-		var citycategory=$("#searckeybox input[name=district_id]").val();
-		var education=$("#searckeybox input[name=education]").val();
-		var experience=$("#searckeybox input[name=experience]").val();
-		var photo=$("#searckeybox input[name=photo]").val();
-		var talent=$("#searckeybox input[name=talent]").val();
-		var sort_1=$("#searckeybox input[name=sort]").val();
-		var page=$("#searckeybox input[name=page]").val();
-		$.get(dir+"plus/ajax_search_location.php", {"act":"QS_resumelist","key":key,"trade":trade,"jobcategory":jobcategory,"citycategory":citycategory,"education":education,"experience":experience,"photo":photo,"talent":talent,"sort":sort_1,"page":page},
-			function (data,textStatus)
-			 {	
-				 window.location.href=data;
-			 },"text"
-		);
-	}
-	// 照片简历 最新简历切换卡
-	$span_tit = $("#jobsmix .tit span");
-	$info_div = $("#jobsmix div.info");
-	$span_tit.click(function() {
-		$(this).addClass('slect').siblings().removeClass('slect');
-		var index = $span_tit.index(this);
-		$info_div.eq(index).show().siblings('.info').hide();
-	});
-}
-/*
- * 74cms 职位搜索页面 行业内容的填充
-|   @param: fillID      -- 填入的ID
-*/
-function fillTrad(fillID){
-	var tradli = '';
-	$.each(QS_trade, function(index, val) {
-		if(val) {
-			var trads = val.split(",");
-		 	tradli += '<li><a title="'+trads[1]+'" cln="'+trads[0]+'" href="javascript:;">'+trads[1]+'</a></li>';
-		}
-	});
-	$(fillID+" ul").html(tradli);
-}
-/*
- * 74cms 职位搜索页面 拷贝行业已选
-*/
-function copyTradItem() {
-	var tradacqhtm = '';
-	$("#tradList .selectedcolor").each(function() {
-		tradacqhtm += '<a href="javascript:;" rel="'+$(this).attr('cln')+'" title="'+$(this).attr('title')+'"><div class="text">'+$(this).attr('title')+'</div><div class="close" id="c-'+$(this).attr('cln')+'"></div></a>';
-	});
-	$("#tradAcq").html(tradacqhtm);
-	// 已选项目绑定点击事件
-	$("#tradAcq a").unbind().click(function() {
-		var selval = $(this).attr('title');
-		$("#tradList .selectedcolor").each(function() {
-			if ($(this).attr('title') == selval) {
-				$(this).removeClass('selectedcolor');
-				copyTradItem();
-			}
 		});
+		search_location(dir);
 	});
-	// 清空
-	$("#tradEmpty").unbind().click(function() {
-		$("#tradAcq").html("");
-		$("#tradList .selectedcolor").each(function() {
-			$(this).removeClass('selectedcolor');
-		});
-	});
-}
-/*
- * 74cms 职位搜索页面 职位内容的填充
-|   @param: fillID      -- 填入的ID
-*/
-function fillJobs(fillID){
-	var jobstr = '';
-	$.each(QS_jobs_parent, function(pindex, pval) {
-		if(pval) {
-			jobstr += '<tr>';
-			var jobs = pval.split(",");
-		 	jobstr += '<th>'+jobs[1]+'</th>';
-		 	jobstr += '<td><ul class="jobcatelist">';
-		 	var sjobsArray = QS_jobs[jobs[0]].split("|");
-		 	$.each(sjobsArray, function(sindex, sval) {
-		 		if(sval) {
-		 			var sjobs = sval.split(",");
-			 		jobstr += '<li>';
-			 		jobstr += '<p><font><a rcoid="'+sjobs[0]+'" pid="'+jobs[0]+'.'+sjobs[0]+'" title="'+sjobs[1]+'" href="javascript:;">'+sjobs[1]+'</a></font></p>';
-			 		if(QS_jobs[sjobs[0]]) {
-			 			jobstr += '<div class="subcate" style="display:none;">';
-			 			var cjobsArray = QS_jobs[sjobs[0]].split("|");
-			 			jobstr += '<a p="qb" href="javascript:;">不限</a>';
-				 		$.each(cjobsArray, function(cindex, cval) {
-				 			if(cval) {
-					 			var cjobs = cval.split(",");
-					 			jobstr += '<a rcoid="'+cjobs[0]+'" title="'+cjobs[1]+'" pid="'+jobs[0]+'.'+sjobs[0]+'.'+cjobs[0]+'" href="javascript:;">'+cjobs[1]+'</a>';
-				 			}
-				 		});
-			 			jobstr += '</div>';
-			 		}
-			 		jobstr += '</li>';
-		 		}
-		 	});
-		 	jobstr += '</ul></td>';
-			jobstr += '</tr>';
-		}
-	});
-	$(fillID+" tbody").html(jobstr);
-	$(".jobcatelist li").each(function() {
-		if($(this).find('.subcate').length <= 0) {
-			$(this).find('font').css("background","none");
-		}
-	});
-}
-/*
- * 74cms 职位搜索页面 地区内容的填充
-|   @param: fillID      -- 填入的ID
-*/
-function fillCity(fillID){
-	var citystr = '';
-	citystr += '<tr>';
-	citystr += '<td><ul class="jobcatelist">';
-	$.each(QS_city_parent, function(pindex, pval) {
-		if(pval) {
-			var citys = pval.split(",");
-	 		citystr += '<li>';
-	 		citystr += '<p><font><a rcoid="'+citys[0]+'" pid="'+citys[0]+'" title="'+citys[1]+'" href="javascript:;">'+citys[1]+'</a></font></p>';
-	 		if(QS_city[citys[0]]) {
-	 			citystr += '<div class="subcate" style="display:none;">';
-	 			var ccitysArray = QS_city[citys[0]].split("|");
-	 			citystr += '<a p="qb" href="javascript:;">不限</a>';
-		 		$.each(ccitysArray, function(cindex, cval) {
-		 			if(cval) {
-			 			var ccitys = cval.split(",");
-			 			citystr += '<a rcoid="'+ccitys[0]+'" title="'+ccitys[1]+'" pid="'+citys[0]+'.'+ccitys[0]+'" href="javascript:;">'+ccitys[1]+'</a>';
-		 			}
-		 		});
-	 			citystr += '</div>';
-	 		}
-	 		citystr += '</li>';
-		}
-	});
-	citystr += '</ul></td>';
-	citystr += '</tr>';
-	$(fillID+" tbody").html(citystr);
-	$(".jobcatelist li").each(function() {
-		if($(this).find('.subcate').length <= 0) {
-			$(this).find('font').css("background","none");
-		}
-	});
-}
-/*
- * 74cms 职位搜索页面 拷贝地区已选
-*/
-function copyCityItem() {
-	var cityacqhtm = '';
-	$("#divCityCate .selectedcolor").each(function() {
-		cityacqhtm += '<a pid="'+$(this).attr('pid')+'" href="javascript:;" title="'+$(this).attr('title')+'"><div class="text">'+$(this).attr('title')+'</div><div class="close"></div></a>';
-	});
-	$("#cityAcq").html(cityacqhtm);
-	// 已选项目绑定点击事件
-	$("#cityAcq a").unbind().click(function() {
-		var selval = $(this).attr('title');
-		$("#divCityCate .selectedcolor").each(function() {
-			if ($(this).attr('title') == selval) {
-				$(this).removeClass('selectedcolor');
-				copyCityItem();
-			}
-		});
-	});
-	// 清空
-	$("#cityEmpty").unbind().click(function() {
-		$("#cityAcq").html("");
-		$("#divCityCate .selectedcolor").each(function() {
-			$(this).removeClass('selectedcolor');
-		});
-	});
-}
-/*
- * 74cms 职位搜索页面 拷贝职位已选
-*/
-function copyJobItem() {
-	var jobacqhtm = '';
-	$("#divJobCate .selectedcolor").each(function() {
-		jobacqhtm += '<a pid="'+$(this).attr('pid')+'" href="javascript:;" title="'+$(this).attr('title')+'"><div class="text">'+$(this).attr('title')+'</div><div class="close"></div></a>';
-	});
-	$("#jobAcq").html(jobacqhtm);
-	// 已选项目绑定点击事件
-	$("#jobAcq a").unbind().click(function() {
-		var selval = $(this).attr('title');
-		$("#divJobCate .selectedcolor").each(function() {
-			if ($(this).attr('title') == selval) {
-				$(this).removeClass('selectedcolor');
-				copyJobItem();
-			}
-		});
-	});
-	// 清空
-	$("#jobEmpty").unbind().click(function() {
-		$("#jobAcq").html("");
-		$("#divJobCate .selectedcolor").each(function() {
-			$(this).removeClass('selectedcolor');
-		});
-	});
-}
-/*
- * 74cms 职位搜索页面 填充更多条件
-|   @param: showid      -- 填入的ID
-|   @param: type      -- 条件的类型
-|   @param: QSarr      -- 类型数组
-*/
-function showOption(fillID,type,QSarr){
-	var  href="javascript:void(0);";
-	var opthtm = '';
-	for(var i=0;i<QSarr.length;i++)
-	{
-		arr = QSarr[i].split(",");
-		opthtm+='<a href="'+href+'" id="'+type+'-'+arr[0]+'" class="opt">'+arr[1]+'</a>';
+	// 判断是否显示已选条件
+	if (!$("#has_result .has-select-item").length > 0) {
+		$("#has_result").hide();
+		$(".fliter-wrap").addClass('fwnob');
 	}
-	$(fillID).html(opthtm);
+}
+// 搜索跳转
+function search_location(dir) {
+	generateBackground();
+	var listype = $("#searcnbtn").attr('detype');
+	var key=$("input[name=key]").val();
+	var jobcategory=$("input[name=jobcategory]").val();
+	var trade=$("input[name=trade]").val();
+	var citycategory=$("input[name=citycategory]").val();
+	var major=$("input[name=major]").val();
+	var experience=$("input[name=experience]").val();
+	var resumetag=$("input[name=resumetag]").val();
+	var education=$("input[name=education]").val();
+	var sex=$("input[name=sex]").val();
+	var photo=$("input[name=photo]").val();
+	var talent=$("input[name=talent]").val();
+	var settr=$("input[name=settr]").val();
+	var sort=$("input[name=sort]").val();
+	var page=1;
+	$.get(dir+"plus/ajax_search_location.php", {"act":listype,"key":key,"jobcategory":jobcategory,"trade":trade,"citycategory":citycategory,"major":major,"experience":experience,"resumetag":resumetag,"education":education,"sex":sex,"photo":photo,"talent":talent,"settr":settr,"sort":sort,"page":page},
+		function (data,textStatus)
+		 {	
+			 window.location.href=data;
+		 },"text"
+	);
+}
+// 正在加载
+function generateBackground() {
+	var backgroundHtm = '<div id="bonfire-pageloader"><div class="bonfire-pageloader-icon"></div></div>';
+	var html = jQuery('html');
+	html.append(backgroundHtm);
+	jQuery(window).resize(function(){
+		 resizenow();
+	});
+	function resizenow() {
+		var browserwidth = jQuery(window).width();
+		var browserheight = jQuery(window).height();
+		jQuery('.bonfire-pageloader-icon').css('right', ((browserwidth - jQuery(".bonfire-pageloader-icon").width())/2)).css('top', ((browserheight - jQuery(".bonfire-pageloader-icon").height())/2 + $(document).scrollTop() - 109));
+	};
+	resizenow();
 }

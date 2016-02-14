@@ -60,7 +60,7 @@ elseif($act=="news")
 	$setsqlarr['Small_img']=trim($_POST['Small_img']);
 	$setsqlarr['addtime']=$timestamp;
 	$setsqlarr['robot']=1;
-		if (inserttable(table('article'),$setsqlarr))
+		if ($db->inserttable(table('article'),$setsqlarr))
 		{
 		exit("Ìí¼Ó³É¹¦");
 		}

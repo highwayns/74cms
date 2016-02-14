@@ -1,12 +1,12 @@
 <?php
  /*
- * 74cms ÁªÏµ·½Ê½Í¼ÐÎ»¯
+ * 74cms è”ç³»æ–¹å¼å›¾å½¢åŒ–
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -17,11 +17,21 @@ $act = trim($_GET['act']);
 $type =intval($_GET['type']);
 $token=trim($_GET['token']);
 $id=intval($_GET['id']);
+function hidtel($phone){
+    $IsWhat = preg_match('/(0[0-9]{2,3}[-]?[2-9][0-9]{6,7}[-]?[0-9]?)/i',$phone); //å›ºå®šç”µè¯
+    if($IsWhat == 1){
+        return preg_replace('/(0[0-9]{2,3}[-]?[2-9])[0-9]{3,4}([0-9]{3}[-]?[0-9]?)/i','$1****$2',$phone);
+    }else{
+        return  preg_replace('/(1[358]{1}[0-9])[0-9]{4}([0-9]{4})/i','$1****$2',$phone);
+    }
+} 
 if($act == 'jobs_contact')
 {
 			$sql = "select * from ".table('jobs_contact')." where pid='{$id}' LIMIT 1";
 			$val=$db->getone($sql);
 			$tmd5=md5($val['contact'].$id.$val['telephone']);
+			$user = $db->getone("select m.username uname from ".table("members")." as m left join ".table("jobs")." as j on m.uid=j.uid where j.id=$id ");
+			$hashstr=substr(md5($user['uname']),8,16);
 			if ($tmd5<>$token)
 			{
 			exit();
@@ -32,7 +42,11 @@ if($act == 'jobs_contact')
 			  $t=$val['contact'];
 			  break;  
 			case 2:
-			   $t=$val['telephone'];
+				if($hashstr==$_GET['hashstr']){
+					$t=$val['telephone'];
+				}else{
+					$t=hidtel($val['telephone']); 
+				} 
 			  break;
 			  case 3:
 			   $t=$val['email'];
@@ -59,15 +73,15 @@ elseif($act == 'company_contact')
 			case 1:
 			  $t=$val['contact'];
 			  break;  
-			case 2:
-			   $t=$val['telephone'];
+			case 2: 
+			 $t=$val['telephone']; 
 			  break;
-			  case 3:
+			case 3:
 			   $t=$val['email'];
 			  break;
 			}
 }
-//¼òÀúÁªÏµ·½Ê½
+//ç®€åŽ†è”ç³»æ–¹å¼
 elseif($act == 'resume_contact')
 {
 		$val=$db->getone("select fullname,telephone,email from ".table('resume')." WHERE  id='{$id}'  LIMIT 1");
@@ -81,26 +95,28 @@ elseif($act == 'resume_contact')
 			case 1:
 			  $t=$val['fullname'];
 			  break; 
-			case 2:
-			  $t=$val['telephone'];
+			case 2: 
+			 $t=$val['telephone']; 
 			  break;  
 			case 3:
 			   $t=$val['email'];
 			  break;
 			}
 }
-
 header("Content-type: image/gif");
-$w=30+(strlen($t)*8);
-$h=20;
+$w=10+(strlen($t)*9);
+$h=22;
 $im = imagecreate($w,$h);
 $white = imagecolorallocate($im, 255,255,255);
-$black = imagecolorallocate($im, 0,0,0);
+$black = imagecolorallocate($im, 255,0,0);
 if (strcasecmp(QISHI_DBCHARSET,"utf8")!=0)
 	{
-	$t=iconv(QISHI_DBCHARSET,"utf-8",$t);
+		$t=iconv(QISHI_DBCHARSET,"utf-8",$t);
 	}
 $ttf=QISHI_ROOT_PATH."data/contactimgfont/cn.ttc";
-imagettftext($im, 9, 0, 10, 15, $black, $ttf,$t);
+imagettftext($im, 12, 0, 10, 15, $black, $ttf,$t); 
 imagegif($im);
+ImageDestroy($im);
+
+  
 ?> 

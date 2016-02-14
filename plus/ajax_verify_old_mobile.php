@@ -27,21 +27,21 @@ exit("短信模块处于关闭状态");
 }
 if ($act=="send_code")
 {
-		if (empty($mobile) || !preg_match("/^(13|15|18)\d{9}$/",$mobile))
+		if (empty($mobile) || !preg_match("/^(13|14|15|17|18)\d{9}$/",$mobile))
 		{
 		exit("手机号错误");
 		}
 		
-		if ($_SESSION['send_time'] && (time()-$_SESSION['send_time'])<60)
+		if ($_SESSION['send_time'] && (time()-$_SESSION['send_time'])<180)
 		{
-		exit("请60秒后再进行验证！");
+		exit("请180秒后再进行验证！");
 		}
 		$rand=mt_rand(100000, 999999);	
 		$r=captcha_send_sms($mobile,"感谢您使用{$_CFG['site_name']}手机认证,验证码为:{$rand}");
 		if ($r=="success")
 		{
 		$_SESSION['mobile_rand']=$rand;
-		// $_SESSION['send_time']=time();
+		$_SESSION['send_time']=time();
 		$_SESSION['verify_mobile']=$mobile;
 		exit("success");
 		}

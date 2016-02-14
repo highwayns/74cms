@@ -18,6 +18,7 @@ $smarty->assign('pageheader',"¶ÌÐÅÓªÏú");
 if($act == 'send')
 {
 	get_token();
+	//$smarty->assign('navlabel','testing');
 	$url=trim($_REQUEST['url']);
 	if (empty($url))
 	{

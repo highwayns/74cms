@@ -22,7 +22,7 @@ if($act =='do_login')
 	{
 	$account_type=2;
 	}
-	elseif (preg_match("/^(13|15|18)\d{9}$/",$username))
+	elseif (preg_match("/^(13|14|15|18)\d{9}$/",$username))
 	{
 	$account_type=3;
 	}
@@ -78,7 +78,7 @@ elseif ($act=='do_reg')
 		}
 	}
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
-	$username = (isset($_POST['username'])&&(strlen($_POST['username'])<22)&&(strlen($_POST['username'])>0))?trim($_POST['username']):exit("err");
+	$username = isset($_POST['username'])?trim($_POST['username']):exit("err");
 	$password = isset($_POST['password'])?trim($_POST['password']):exit("err");
 	$member_type = isset($_POST['member_type'])?intval($_POST['member_type']):exit("err");
 	$email = isset($_POST['email'])?trim($_POST['email']):exit("err");
@@ -106,7 +106,7 @@ elseif ($act=='do_reg')
 		$mailconfig=get_cache('mailconfig');
 		if ($mailconfig['set_reg']=="1")
 		{
-		dfopen($_CFG['website_dir']."plus/asyn_mail.php?uid=".$_SESSION['uid']."&key=".asyn_userkey($_SESSION['uid'])."&sendemail=".$email."&sendusername=".$username."&sendpassword=".$password."&act=reg");
+		dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_mail.php?uid=".$_SESSION['uid']."&key=".asyn_userkey($_SESSION['uid'])."&sendemail=".$email."&sendusername=".$username."&sendpassword=".$password."&act=reg");
 		}
 		$ucjs=$login_js['uc_login'];
 		$qsurl=$login_js['qs_login'];
@@ -176,7 +176,7 @@ elseif ($act=="top_loginform")
 	$contents='';
 	if ($_COOKIE['QS']['username'] && $_COOKIE['QS']['password'])
 	{
-		$contents='欢迎&nbsp;&nbsp;<a href="{#$user_url#}" style="color:#339900">{#$username#}</a> 登录！&nbsp;&nbsp;{#$pmscount_a#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$user_url#}" style="color:#0066cc">[会员中心]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$logout_url#}" style="color:#0066cc">[退出]</a>';
+		$contents='欢迎&nbsp;&nbsp;<a href="{#$user_url#}" style="color:#339900">{#$username#}</a> 登录！&nbsp;&nbsp;{#$pmscount_a#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$user_url#}">[会员中心]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$logout_url#}" >[退出]</a>';
 	}
 	elseif ($_SESSION['activate_username'] && defined('UC_API'))
 	{
@@ -184,7 +184,7 @@ elseif ($act=="top_loginform")
 	}
 	else
 	{	
-		$contents='欢迎来到{#$site_name#}！&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$login_url#}" style="color:#0066cc" >[登录]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$reg_url#}" style="color:#0066cc">[免费注册]</a>';
+		$contents='欢迎来到{#$site_name#}！&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$login_url#}" >[登录]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$reg_url#}" >[免费注册]</a>';
 	}
 		$contents=str_replace('{#$activate_username#}',$_SESSION['activate_username'],$contents);
 		$contents=str_replace('{#$site_name#}',$_CFG['site_name'],$contents);
@@ -193,42 +193,42 @@ elseif ($act=="top_loginform")
 		$contents=str_replace('{#$site_template#}',$_CFG['site_template'],$contents);
 		if ($_COOKIE['QS']['utype']=='1')
 		{
-		$user_url=$_CFG['main_domain']."user/company/company_index.php";
+		$user_url=$_CFG['site_dir']."user/company/company_index.php";
 			if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['main_domain'].'user/company/company_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/company/company_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='2')
 		{
-			$user_url=$_CFG['main_domain']."user/personal/personal_index.php";
+			$user_url=$_CFG['site_dir']."user/personal/personal_index.php";
 			if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['main_domain'].'user/personal/personal_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/personal/personal_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='4')
 		{
-			$user_url=$_CFG['main_domain']."user/train/train_index.php";
+			$user_url=$_CFG['site_dir']."user/train/train_index.php";
 			if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['main_domain'].'user/train/train_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/train/train_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='3')
 		{
-			$user_url=$_CFG['main_domain']."user/hunter/hunter_index.php";
+			$user_url=$_CFG['site_dir']."user/hunter/hunter_index.php";
 			if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['main_domain'].'user/hunter/hunter_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/hunter/hunter_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		$contents=str_replace('{#$pmscount_a#}',$pmscount_a,$contents);
 		$contents=str_replace('{#$user_url#}',$user_url,$contents);
-		$contents=str_replace('{#$login_url#}',url_rewrite('QS_login',NULL,false),$contents);
-		$contents=str_replace('{#$logout_url#}',url_rewrite('QS_login',NULL,false)."?act=logout",$contents);
-		$contents=str_replace('{#$reg_url#}',$_CFG['main_domain']."user/user_reg.php",$contents);
-		$contents=str_replace('{#$activate_url#}',$_CFG['main_domain']."user/user_reg.php?act=activate",$contents);
+		$contents=str_replace('{#$login_url#}',url_rewrite('QS_login'),$contents);
+		$contents=str_replace('{#$logout_url#}',url_rewrite('QS_login')."?act=logout",$contents);
+		$contents=str_replace('{#$reg_url#}',$_CFG['site_dir']."user/user_reg.php",$contents);
+		$contents=str_replace('{#$activate_url#}',$_CFG['site_dir']."user/user_reg.php?act=activate",$contents);
 		exit($contents);
 }
 elseif ($act=="loginform")
@@ -252,45 +252,45 @@ elseif ($act=="loginform")
 		$contents=str_replace('{#$username#}',$_COOKIE['QS']['username'],$contents);
 		$contents=str_replace('{#$pmscount#}',$_COOKIE['QS']['pmscount'],$contents);
 		$contents=str_replace('{#$site_template#}',$_CFG['site_template'],$contents);
-		$contents=str_replace('{#$website_dir#}',$_CFG['website_dir'],$contents);
+		$contents=str_replace('{#$site_dir#}',$_CFG['site_dir'],$contents);
 		if ($_COOKIE['QS']['utype']=='1')
 		{
-			$user_url=$_CFG['main_domain']."user/company/company_index.php";
+			$user_url=$_CFG['site_dir']."user/company/company_index.php";
 			 if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['main_domain'].'user/company/company_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/company/company_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='2')
 		{
-			$user_url=$_CFG['main_domain']."user/personal/personal_index.php";
+			$user_url=$_CFG['site_dir']."user/personal/personal_index.php";
 			 if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['main_domain'].'user/personal/personal_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/personal/personal_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='4')
 		{
-			$user_url=$_CFG['main_domain']."user/train/train_index.php";
+			$user_url=$_CFG['site_dir']."user/train/train_index.php";
 			 if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['main_domain'].'user/train/train_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/train/train_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='3')
 		{
-			$user_url=$_CFG['main_domain']."user/hunter/hunter_index.php";
+			$user_url=$_CFG['site_dir']."user/hunter/hunter_index.php";
 			 if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['main_domain'].'user/hunter/hunter_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/hunter/hunter_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="短消息">消息 '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		$contents=str_replace('{#$pmscount_a#}',$pmscount_a,$contents);
 		$contents=str_replace('{#$user_url#}',$user_url,$contents);
-		$contents=str_replace('{#$login_url#}',url_rewrite('QS_login',NULL,false),$contents);
-		$contents=str_replace('{#$logout_url#}',url_rewrite('QS_login',NULL,false)."?act=logout",$contents);
-		$contents=str_replace('{#$reg_url#}',$_CFG['main_domain']."user/user_reg.php",$contents);
-		$contents=str_replace('{#$activate_url#}',$_CFG['main_domain']."user/user_reg.php?act=activate",$contents);
+		$contents=str_replace('{#$login_url#}',url_rewrite('QS_login'),$contents);
+		$contents=str_replace('{#$logout_url#}',url_rewrite('QS_login')."?act=logout",$contents);
+		$contents=str_replace('{#$reg_url#}',$_CFG['site_dir']."user/user_reg.php",$contents);
+		$contents=str_replace('{#$activate_url#}',$_CFG['site_dir']."user/user_reg.php?act=activate",$contents);
 		exit($contents);
 }
 ?>

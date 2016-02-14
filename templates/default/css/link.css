@@ -8,10 +8,10 @@
 .subscribe .subscribe_box .input_box .ver_code{height:30px;line-height:30px;padding:0 16px;color:#A6A6A6;border:1px solid #ccc;cursor:pointer;}
 .sub_right p{font-size:14px;font-family:"ËÎÌו";color:#656565;}
 .sub_right p span{color:#017FCF;}
-.left_area{width:730px;float:left;border:1px solid #ccc;margin-bottom:10px;}  
+.left_area{width:888px;float:left;border:1px solid #ccc;margin-bottom:10px;}  
 .left_tit_box{padding-top:14px;padding-bottom:14px;padding-left:15px;border-bottom:1px solid #ccc;background-color:#F5F5F5;}
 .left_tit_box h5{margin:0;font-size:14px;font-family:"ËÎÌו";font-weight:bold;}
-.right_area{width:250px;float:right;}
+.right_area{width:300px;float:right;}
 .right_box{margin-bottom:10px;border:1px solid #ccc;}
 .right_box .title_box{padding-top:14px;padding-bottom:14px;padding-left:15px;border-bottom:1px solid #ccc;background-color:#F5F5F5;}
 .right_box .title_box h5{margin:0;font-size:14px;font-family:"ËÎÌו";font-weight:bold;}

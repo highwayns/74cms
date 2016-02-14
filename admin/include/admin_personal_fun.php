@@ -13,6 +13,43 @@
  {
  	die('Access Denied!');
  }
+  function get_user_info($uid)
+{
+	global $db;
+	$sql = "select * from ".table('members')." where uid = ".intval($uid)." LIMIT 1";
+	return $db->getone($sql);
+}
+ //检查该简历是否投递过该职位
+ function check_jobs_apply($jobs_id,$resume_id,$p_uid)
+{
+	global $db;
+	$sql = "select did from ".table('personal_jobs_apply')." WHERE personal_uid = '".intval($p_uid)."' AND jobs_id='".intval($jobs_id)."'  AND resume_id='".intval($resume_id)."'";
+	return $db->getall($sql);
+}
+ //获取职位信息列表
+function get_jobs($offset,$perpage,$get_sql= '')
+{
+	global $db,$timestamp;
+	$row_arr = array();
+	$limit=" LIMIT ".$offset.','.$perpage;
+	$result = $db->query($get_sql.$limit);
+	while($row = $db->fetch_array($result))
+	{
+	$row['jobs_name']=cut_str($row['jobs_name'],12,0,"...");
+	if (!empty($row['highlight']))
+	{
+	$row['jobs_name']="<span style=\"color:{$row['highlight']}\">{$row['jobs_name']}</span>";
+	}
+	$row['companyname']=cut_str($row['companyname'],18,0,"...");
+	$row['company_url']=url_rewrite('QS_companyshow',array('id'=>$row['company_id']));
+	$row['jobs_url']=url_rewrite('QS_jobsshow',array('id'=>$row['id']));
+	$get_resume_nolook = $db->getone("select count(*) from ".table('personal_jobs_apply')." where personal_look=1 and jobs_id=".$row['id']);
+	$get_resume_all = $db->getone("select count(*) from ".table('personal_jobs_apply')." where jobs_id=".$row['id']);
+	$row['get_resume'] = "( ".$get_resume_nolook['count(*)']." / ".$get_resume_all['count(*)']." )";
+	$row_arr[] = $row;
+	}
+	return $row_arr;
+}
  //******************************简历部分**********************************
 function get_resume_list($offset,$perpage,$get_sql= '')
 {
@@ -37,13 +74,16 @@ function del_resume($id)
 	if (!$db->query("Delete from ".table('resume')." WHERE id IN ({$sqlin})")) return false;
 	$return=$return+$db->affected_rows();
 	if (!$db->query("Delete from ".table('resume_jobs')." WHERE pid IN ({$sqlin}) ")) return false;
+	if (!$db->query("Delete from ".table('resume_district')." WHERE pid IN ({$sqlin}) ")) return false;
 	if (!$db->query("Delete from ".table('resume_trade')." WHERE pid IN ({$sqlin}) ")) return false;
+	if (!$db->query("Delete from ".table('resume_tag')." WHERE pid IN ({$sqlin}) ")) return false;
 	if (!$db->query("Delete from ".table('resume_education')." WHERE pid IN ({$sqlin}) ")) return false;
 	if (!$db->query("Delete from ".table('resume_training')." WHERE pid IN ({$sqlin}) ")) return false;
 	if (!$db->query("Delete from ".table('resume_work')." WHERE pid IN ({$sqlin}) ")) return false;
 	if (!$db->query("Delete from ".table('resume_search_rtime')." WHERE id IN ({$sqlin})")) return false;
 	if (!$db->query("Delete from ".table('resume_search_key')." WHERE id IN ({$sqlin})")) return false;
-	if (!$db->query("Delete from ".table('resume_search_tag')." WHERE id IN ({$sqlin})")) return false;
+	//填写管理员日志
+	write_log("删除简历id为".$id."的简历 , 共删除".$return."行", $_SESSION['admin_name'],3);
 	return $return;
 	}
 	return $return;
@@ -81,11 +121,9 @@ function edit_resume_audit($id,$audit,$reason,$pms_notice)
 		if (!$db->query("update  ".table('resume')." SET audit='{$audit}'  WHERE id IN ({$sqlin}) ")) return false;
 		if (!$db->query("update  ".table('resume_search_key')." SET audit='{$audit}'  WHERE id IN ({$sqlin}) ")) return false;
 		if (!$db->query("update  ".table('resume_search_rtime')." SET audit='{$audit}'  WHERE id IN ({$sqlin}) ")) return false;
-		if (!$db->query("update  ".table('resume_search_tag')." SET audit='{$audit}'  WHERE id IN ({$sqlin}) ")) return false;
-		foreach ($id as $key => $value) {
-			set_resume_entrust($value);
-		}
 		// distribution_resume($id);
+		//填写管理员日志
+		write_log("修改简历id为".$sqlin."的审核状态为".$audit, $_SESSION['admin_name'],3);
 		//发送站内信
 		if ($pms_notice=='1')
 		{
@@ -101,7 +139,7 @@ function edit_resume_audit($id,$audit,$reason,$pms_notice)
 					$setsqlarr['dateline']=time();
 					$setsqlarr['replytime']=time();
 					$setsqlarr['new']=1;
-					inserttable(table('pms'),$setsqlarr);
+					$db->inserttable(table('pms'),$setsqlarr);
 				 }
 		}
 		//审核未通过增加原因
@@ -110,7 +148,7 @@ function edit_resume_audit($id,$audit,$reason,$pms_notice)
 				$auditsqlarr['resume_id']=$list;
 				$auditsqlarr['reason']=$reason;
 				$auditsqlarr['addtime']=time();
-				inserttable(table('audit_reason'),$auditsqlarr);
+				$db->inserttable(table('audit_reason'),$auditsqlarr);
 			}
 		}
 			
@@ -166,10 +204,11 @@ function edit_resume_audit($id,$audit,$reason,$pms_notice)
 	return false;
 }
 //修改照片审核状态
-function edit_resume_photoaudit($id,$audit)
+function edit_resume_photoaudit($id,$audit,$is_del_img)
 {
-	global $db;
+	global $db,$_CFG;
 	$audit=intval($audit);
+	$is_del_img=intval($is_del_img);
 	if (!is_array($id)) $id=array($id);
 	if (!empty($id))
 	{
@@ -179,19 +218,33 @@ function edit_resume_photoaudit($id,$audit)
 			$tb1=$db->getone("select photo_img,photo_audit,photo_display from ".table('resume')." WHERE id='{$i}' LIMIT  1");
 			if (!empty($tb1))
 			{
-				if ($tb1['photo_img'] && $audit=="1" && $tb1['photo_display']=="1")
+				if($is_del_img==1 && $audit==3)
 				{
-				$photo=1;
+					$photo=0;
+					@unlink(QISHI_ROOT_PATH.'data/photo/'.$tb1['photo_img']);
+					@unlink(QISHI_ROOT_PATH.'data/photo/thumb/'.$tb1['photo_img']);
+					$db->query("update  ".table('resume')." SET photo_img='',photo_audit='{$audit}',photo='{$photo}' WHERE id='{$i}' LIMIT 1 ");
+					$db->query("update  ".table('resume_search_rtime')." SET photo='{$photo}' WHERE id='{$i}' LIMIT 1 ");
+					$db->query("update  ".table('resume_search_key')." SET photo='{$photo}' WHERE id='{$i}' LIMIT 1 ");
 				}
 				else
 				{
-				$photo=0;
-				}	
-				$db->query("update  ".table('resume')." SET photo_audit='{$audit}',photo='{$photo}' WHERE id='{$i}' LIMIT 1 ");
-				$db->query("update  ".table('resume_search_rtime')." SET photo='{$photo}' WHERE id='{$i}' LIMIT 1 ");
-				$db->query("update  ".table('resume_search_key')." SET photo='{$photo}' WHERE id='{$i}' LIMIT 1 ");				
+					if ($tb1['photo_img'] && $audit=="1" && $tb1['photo_display']=="1")
+					{
+					$photo=1;
+					}
+					else
+					{
+					$photo=0;
+					}	
+					$db->query("update  ".table('resume')." SET photo_audit='{$audit}',photo='{$photo}' WHERE id='{$i}' LIMIT 1 ");
+					$db->query("update  ".table('resume_search_rtime')." SET photo='{$photo}' WHERE id='{$i}' LIMIT 1 ");
+					$db->query("update  ".table('resume_search_key')." SET photo='{$photo}' WHERE id='{$i}' LIMIT 1 ");
+				}
 			}
 		}
+		//填写管理员日志
+		write_log("修改简历id为".$id."的照片审核状态为".$audit, $_SESSION['admin_name'],3);
 	}
 	return true;
 }
@@ -204,10 +257,12 @@ function edit_resume_talent($id,$talent)
 	$sqlin=implode(",",$id);
 	if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
 	{
-	if (!$db->query("update  ".table('resume')." SET talent={$talent}  WHERE id IN ({$sqlin})")) return false;
-	if (!$db->query("update  ".table('resume_search_rtime')." SET talent={$talent}  WHERE id IN ({$sqlin})")) return false;
-	if (!$db->query("update  ".table('resume_search_key')." SET talent={$talent}  WHERE id IN ({$sqlin})")) return false;
-	return true;
+		if (!$db->query("update  ".table('resume')." SET talent={$talent}  WHERE id IN ({$sqlin})")) return false;
+		if (!$db->query("update  ".table('resume_search_rtime')." SET talent={$talent}  WHERE id IN ({$sqlin})")) return false;
+		if (!$db->query("update  ".table('resume_search_key')." SET talent={$talent}  WHERE id IN ({$sqlin})")) return false;
+		//填写管理员日志
+		write_log("修改简历id为".$sqlin."的人才等级为".$talent, $_SESSION['admin_name'],3);
+		return true;
 	}
 	return false;
 }
@@ -237,6 +292,8 @@ function refresh_resume($id)
 		if (!$db->query("update  ".table('resume_search_rtime')." SET refreshtime='".time()."'  WHERE id IN (".$sqlin.")")) return false;
 		if (!$db->query("update  ".table('resume_search_key')." SET refreshtime='".time()."'  WHERE id IN (".$sqlin.")")) return false;
 	}
+	//填写管理员日志
+	write_log("刷新简历id为".$sqlin."的简历 , 共刷新".$return."行", $_SESSION['admin_name'],3);
 	return $return;
 }
 //**************************个人会员列表
@@ -248,7 +305,9 @@ function get_member_list($offset,$perpage,$get_sql= '')
 	$result = $db->query("SELECT * FROM ".table('members')." as m ".$get_sql.$limit);
 		while($row = $db->fetch_array($result))
 		{
-		$row_arr[] = $row;
+			$address = $db->getone("select log_address,log_id,log_uid from ".table("members_log")." where log_type = '1000' and log_uid = ".$row['uid']." order by log_id asc limit 1");
+			$row['ipAddress'] = $address['log_address'];
+			$row_arr[] = $row;
 		}
 	return $row_arr;
 }
@@ -259,19 +318,10 @@ function delete_member($uid)
 	$sqlin=implode(",",$uid);
 		if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
 		{
-					if(defined('UC_API'))
-					{
-						include_once(QISHI_ROOT_PATH.'uc_client/client.php');
-						foreach($uid as $tuid)
-						{
-						$userinfo=get_user($tuid);
-						$uc_user=uc_get_user($userinfo['username']);
-						$uc_uid_arr[]=$uc_user[0];
-						}
-						uc_user_delete($uc_uid_arr);
-					} 
 		if (!$db->query("Delete from ".table('members')." WHERE uid IN (".$sqlin.")")) return false;
 		if (!$db->query("Delete from ".table('members_info')." WHERE uid IN (".$sqlin.")")) return false;
+		//填写管理员日志
+		write_log("删除uid为".$sqlin."的会员", $_SESSION['admin_name'],3);
 		return true;
 		}
 	return false;
@@ -312,10 +362,7 @@ function get_resume_basic($uid,$id)
 	{
 	$info['age']=date("Y")-$info['birthdate'];
 	$info['number']="N".str_pad($info['id'],7,"0",STR_PAD_LEFT);
-	$info['lastname']=cut_str($info['fullname'],1,0,"**");
-	$info['tagcn']=preg_replace("/\d+/", '',$info['tag']);
-	$info['tagcn']=preg_replace('/\,/','',$info['tagcn']);
-	$info['tagcn']=preg_replace('/\|/','&nbsp;&nbsp;&nbsp;',$info['tagcn']);
+	$info['lastname']=$info['fullname'];
 	return $info;
 	}
 }
@@ -356,101 +403,19 @@ function reasonaudit_del($id)
 	$sqlin=implode(",",$id);
 	if (!preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin)) return false;
 	if (!$db->query("Delete from ".table('audit_reason')." WHERE id IN ({$sqlin})")) return false;
+	//填写管理员日志
+	write_log("后台删除日志id为".$sqlin."的日志", $_SESSION['admin_name'],3);
 	return $db->affected_rows();
 }
-function export_resume($yid){
+//修改用户状态
+function set_user_status($status,$uid)
+{
 	global $db;
-	$yid_str = implode(",", $yid);
-	$oederbysql=" order BY refreshtime desc ";
-	$wheresql = empty($wheresql)?" id in ({$yid_str}) ":" and id in ({$yid_str}) ";
-	if (!empty($wheresql))
-	{
-	$wheresql=" WHERE ".ltrim(ltrim($wheresql),'AND');
-	}
-	$data = $db->getall("select * from ".table('resume').$wheresql);
-	
-	if(!empty($data)){
-		$result = $data;
-	}
-	if(!empty($result)){
-		foreach ($result as $key => $value) {
-			$arr[$key]['num'] = $key;
-			$arr[$key]['title'] = $value['title'];
-			$arr[$key]['fullname'] = $value['fullname'];
-			$arr[$key]['sex_cn'] = $value['sex_cn'];
-			$arr[$key]['birthdate'] = $value['birthdate'];
-			$arr[$key]['height'] = $value['height'];
-			$arr[$key]['householdaddress'] = $value['householdaddress'];
-			$arr[$key]['marriage_cn'] = $value['marriage_cn'];
-			$arr[$key]['experience_cn'] = $value['experience_cn'];
-			$arr[$key]['education_cn'] = $value['education_cn'];
-			$arr[$key]['natrue_cn'] = $value['natrue_cn'];
-			$arr[$key]['trade_cn'] = $value['trade_cn'];
-			$arr[$key]['district_cn'] = $value['district_cn'];
-			$arr[$key]['wage_cn'] = $value['wage_cn'];
-			$arr[$key]['tag']=preg_replace("/\d+/", '',$value['tag']);
-			$arr[$key]['tag']=preg_replace('/\,/','',$arr[$key]['tag']);
-			$arr[$key]['tag']=preg_replace('/\|/','&nbsp;&nbsp;&nbsp;',$arr[$key]['tag']);
-			$arr[$key]['school'] = "";
-			$school = $db->getall("select * from ".table('resume_education')." where pid=".$value['id']." order by id desc");
-			if(!empty($school)){
-				foreach ($school as $key1 => $value1) {
-					$arr[$key]['school'] .= $value1['start']."-".$value1['endtime']."就读于".$value1['school'].",所学专业：".$value1['speciality'].",学历：".$value1['education_cn'].";&nbsp;";
-				}
-			}
-			$arr[$key]['work'] = "";
-			$work = $db->getall("select * from ".table('resume_work')." where pid=".$value['id']." order by id desc");
-			if(!empty($work)){
-				foreach ($work as $key1 => $value1) {
-					$arr[$key]['work'] .= $value1['start']."-".$value1['endtime']."就职于".$value1['companyname'].",任职：".$value1['jobs'].";&nbsp;";
-				}
-			}
-			$arr[$key]['train'] = "";
-			$train = $db->getall("select * from ".table('resume_training')." where pid=".$value['id']." order by id desc");
-			if(!empty($train)){
-				foreach ($train as $key1 => $value1) {
-					$arr[$key]['train'] .= $value1['start']."-".$value1['endtime']."在".$value1['agency']."培训".$value1['course']."课程;&nbsp;";
-				}
-			}
-			$arr[$key]['telephone'] = $value['telephone'];
-			$arr[$key]['email'] = $value['email'];
-			$arr[$key]['qq'] = $value['qq'];
-			$arr[$key]['address'] = $value['address'];
-			$arr[$key]['website'] = $value['website'];
-			$arr[$key]['recentjobs'] = $value['recentjobs'];
-			$arr[$key]['intention_jobs'] = $value['intention_jobs'];
-			$arr[$key]['specialty'] = str_replace("\n","",str_replace("\r", "", $value['specialty']));
-			$arr[$key]['addtime'] = date("Y-m-d",$value['addtime']);
-			$arr[$key]['refreshtime'] = date("Y-m-d",$value['refreshtime']);
-			$arr[$key]['talent'] = $value['talent']==1?"普通":"高级";
-			$arr[$key]['complete_percent'] = $value['complete_percent'];
-		}
-		$top_str = "序号\t简历名称\t姓名\t性别\t出生年月\t身高\t户籍所在地\t婚姻状况\t工作经验\t学历\t意向职位性质\t意向行业\t意向工作地区\t意向薪资\t标签\t教育经历\t工作经历\t培训经历\t手机\t邮箱\tQQ\t地址\t个人主页\t最近从事工作\t意向职位\t技能特长\t添加时间\t刷新时间\t简历等级\t完整度\t\n";
-		create_excel($top_str,$arr);
-		return true;
-	}else{
-		return false;
-	}
-	
-}
-function set_resume_entrust($resume_id){
-	global $db;
-	$resume = $db->getone("select audit,uid,fullname,addtime,entrust from ".table('resume')." where id=".$resume_id);
-	if($resume["audit"]=="1" && $resume["entrust"]=="1"){
-		$has = $db->getone("select 1 from ".table('resume_entrust')." where id=".$resume_id);
-		if(!$has){
-			$setsqlarr['id'] = $resume_id;
-			$setsqlarr['uid'] = $resume['uid'];
-			$setsqlarr['fullname'] = $resume['fullname'];
-			$setsqlarr['resume_addtime'] = $resume['addtime'];
-			inserttable(table('resume_entrust'),$setsqlarr);
-			updatetable(table('resume'),array("entrust"=>"0")," id=".$resume_id." ");
-		}
-	}
-	else
-	{
-		$db->query("delete from ".table('resume_entrust')." where id=".$resume_id);
-	}
+	$status=intval($status);
+	$uid=intval($uid);
+	if (!$db->query("UPDATE ".table('members')." SET status= {$status} WHERE uid={$uid} LIMIT 1")) return false;
+	//填写管理员日志
+	write_log("后台将uid为".$uid."会员的用户状态修改为".$status, $_SESSION['admin_name'],3);
 	return true;
 }
 ?>

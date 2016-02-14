@@ -19,6 +19,12 @@ if ($act=='apply_jobs')
 	$wheresql=" WHERE a.company_uid='{$_SESSION['uid']}' ";
 	$look=intval($_GET['look']);
 	if($look>0)$wheresql.=" AND a.personal_look='{$look}'";
+	$state=intval($_GET['state']);
+	if($state>0)
+	{
+		$joinsql.=" left join ".table('company_label_resume')." as l on l.resume_id=a.resume_id ";
+		$wheresql.=" AND l.resume_state=$state AND l.uid={$_SESSION['uid']} ";
+	}
 	$jobsid=intval($_GET['jobsid']);
 	if($jobsid>0){
 		$wheresql.=" AND a.jobs_id='{$jobsid}' ";
@@ -27,17 +33,21 @@ if ($act=='apply_jobs')
 		$smarty->assign('jobs_name',$row["jobs_name"]);
 	}
 	$perpage=10;
-	$total_sql="SELECT COUNT(*) AS num FROM ".table('personal_jobs_apply')." AS a  {$wheresql} ";
-	$page = new page(array('total'=>$db->get_total($total_sql), 'perpage'=>$perpage));
+	$total_sql="SELECT COUNT(*) AS num FROM ".table('personal_jobs_apply')." AS a  ".$joinsql." {$wheresql} ";
+	$total=$db->get_total($total_sql);
+	$page = new page(array('total'=>$total, 'perpage'=>$perpage));
 	$offset=($page->nowindex-1)*$perpage;
 	$smarty->assign('act',$act);
 	$smarty->assign('title','收到的职位申请 - 企业会员中心 - '.$_CFG['site_name']);
 	$smarty->assign('jobs_apply',get_apply_jobs($offset,$perpage,$joinsql.$wheresql));
-	$smarty->assign('page',$page->show(3));
-	$smarty->assign('count',count_jobs_apply($_SESSION['uid']));
-	$smarty->assign('count1',count_jobs_apply($_SESSION['uid'],1));
-	$smarty->assign('count2',count_jobs_apply($_SESSION['uid'],2));
-	$smarty->assign('jobs',get_auditjobs($_SESSION['uid']));	
+	if($total>$perpage)
+	{
+		$smarty->assign('page',$page->show(3));
+	}
+	$smarty->assign('count',count_jobs_apply($_SESSION['uid'],0,$jobsid));
+	$smarty->assign('count1',count_jobs_apply($_SESSION['uid'],1,$jobsid));
+	$smarty->assign('count2',count_jobs_apply($_SESSION['uid'],2,$jobsid));
+	$smarty->assign('jobs',get_auditjobs($_SESSION['uid']));
 	$smarty->display('member_company/company_apply_jobs.htm');
 }
 elseif ($act=='set_apply_jobs')
@@ -65,6 +75,7 @@ elseif ($act=='down_resume_list')
 	$wheresql=" WHERE  d.company_uid='{$_SESSION['uid']}' ";
 	$settr=intval($_GET['settr']);
 	$talent=intval($_GET['talent']);
+	$state=intval($_GET['state']);//标记状态
 	if($settr>0)
 	{
 	$settr_val=strtotime("-{$settr} day");
@@ -73,15 +84,24 @@ elseif ($act=='down_resume_list')
 	if($talent){
 		$wheresql.=" AND r.talent=1 ";
 	}
-	$total_sql="SELECT COUNT(*) AS num FROM ".table('company_down_resume')." as d".$wheresql;
+	if($state>0)
+	{
+		$joinsql.=" left join ".table('company_label_resume')." as l on l.resume_id=d.resume_id ";
+		$wheresql.=" AND l.resume_state=$state ";
+	}
+
+	$total_sql="SELECT COUNT(*) AS num FROM ".table('company_down_resume')." as d".$joinsql.$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$smarty->assign('title','已下载的简历 - 企业会员中心 - '.$_CFG['site_name']);
 	$smarty->assign('act',$act);
 	$smarty->assign('list',get_down_resume($offset,$perpage,$joinsql.$wheresql));
-	$smarty->assign('page',$page->show(3));
+	if($total_val>$perpage)
+	{
+		$smarty->assign('page',$page->show(3));
+	}
 	$smarty->display('member_company/company_down_resume.htm');
 }
 elseif ($act=='down_resume_del')
@@ -113,20 +133,6 @@ elseif ($act=='perform')
 		{
 		showmsg("添加失败,已经存在！",1);
 		}
-	}elseif(!empty($_REQUEST['attention_shift'])){
-		$num=attention_to_favorites($id,$_SESSION['uid']);
-		if ($num==='full')
-		{
-		showmsg("人才库已满!",1);
-		}
-		elseif($num>0)
-		{
-		showmsg("添加成功，共添加 {$num} 条",2);
-		}
-		else
-		{
-		showmsg("添加失败,已经存在！",1);
-		}
 	}
 	
 }
@@ -144,12 +150,15 @@ elseif ($act=='favorites_list')
 	}
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('company_favorites')." AS f ".$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$offset=($page->nowindex-1)*$perpage;
 	$smarty->assign('title','企业人才库 - 企业会员中心 - '.$_CFG['site_name']);
 	$smarty->assign('act',$act);
 	$smarty->assign('favorites',get_favorites($offset, $perpage,$joinsql.$wheresql));
-	$smarty->assign('page',$page->show(3));
+	if($total_val>$perpage)
+	{
+		$smarty->assign('page',$page->show(3));
+	}
 	$smarty->display('member_company/company_favorites.htm');
 }
 elseif ($act=='favorites_del')
@@ -171,39 +180,63 @@ elseif ($act=='interview_list')
 	$perpage=10;
 	$joinsql=" LEFT JOIN ".table('resume')." as r ON i.resume_id=r.id ";
 	$wheresql=" WHERE i.company_uid='{$_SESSION['uid']}' ";
+	//面试职位 筛选
 	$jobsid=intval($_GET['jobsid']);
-	if($jobsid>0){
+	if($jobsid>0)
+	{
 		$wheresql.=" AND i.jobs_id='{$jobsid}' ";
-		$sql="select jobs_name from ".table("jobs")." where id=".intval($_GET['jobsid'])." ";
-		$row=$db->getone($sql);
-		$smarty->assign('jobs_name',$row["jobs_name"]);
 	}
+	//对方查看状态 帅选
 	$look=intval($_GET['look']);
 	if($look>0)$wheresql.=" AND  i.personal_look='{$look}' ";
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('company_interview')." as i ".$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
+	$resume = get_interview($offset, $perpage,$joinsql.$wheresql);
 	$smarty->assign('act',$act);
 	$smarty->assign('title','我发起的面试邀请 - 企业会员中心 - '.$_CFG['site_name']);
-	$smarty->assign('resume',get_interview($offset, $perpage,$joinsql.$wheresql));
+	$smarty->assign('resume',$resume);
 	$count1=count_interview($_SESSION['uid'],1,$jobsid);//未查看
-	$count2=count_interview($_SESSION['uid'],2,$jobsid);//以查看
+	$count2=count_interview($_SESSION['uid'],2,$jobsid);//已查看
 	$count=$count1+$count2;
 	$smarty->assign('count',$count);
 	$smarty->assign('count1',$count1);
 	$smarty->assign('count2',$count2);
-	$smarty->assign('jobs',get_auditjobs($_SESSION['uid']));
-	$smarty->assign('page',$page->show(3));
+	$smarty->assign('filter_jobs',get_interview_jobs($_SESSION['uid']));
+	if($total_val>$perpage)
+	{
+		$smarty->assign('page',$page->show(3));
+	}
 	$smarty->display('member_company/company_interview.htm');
 }
 //删除面试邀请信息
 elseif ($act=='interview_del')
 {
-	$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("你没有选择项目！",1);
-	$delete =$_POST['delete'];
-	$delete?(!del_interview($yid,$_SESSION['uid'])?showmsg("删除失败！",0):showmsg("删除成功！",2)):'';
+	$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("你没有选择简历！",1);
+	if (del_interview($yid,$_SESSION['uid']))
+	{
+		showmsg("删除成功！",2);
+	}
+	else
+	{
+		showmsg("删除失败！",0);
+	}
+}
+//收藏 简历
+elseif($act == 'fav_att_resume')
+{
+	$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("你没有选择简历！",1);
+	$n = add_favorites($yid,$_SESSION['uid']);
+	if(intval($n) > 0)
+	{
+	showmsg("收藏成功！共收藏 {$n} 行",2);
+	}
+	else
+	{
+	showmsg("收藏失败！",0);
+	}
 }
 unset($smarty);
 ?>

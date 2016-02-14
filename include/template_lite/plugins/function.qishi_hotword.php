@@ -32,7 +32,7 @@ $aset['start']=isset($aset['start'])?intval($aset['start']):0;
 $aset['titlelen']=isset($aset['titlelen'])?intval($aset['titlelen']):5;
 	$orderbysql=" ORDER BY w_hot DESC";
 	$limit=" LIMIT ".abs($aset['start']).','.$aset['row'];
-	$result = $db->query("SELECT * FROM ".table('hotword')." ".$wheresql.$orderbysql.$limit);
+	$result = $db->query("SELECT w_id,w_word,w_hot FROM ".table('hotword')." ".$wheresql.$orderbysql.$limit);
 	$list=array();
 	while($row = $db->fetch_array($result))
 	{

@@ -4,7 +4,7 @@
 * *******************************************/
 function tpl_function_qishi_nav($params, &$smarty)
 {
-	global $db,$_NAV,$_CFG;
+	global $db,$_NAV;
 	$arr=explode(',',$params['set']);
 	foreach($arr as $str)
 	{
@@ -17,9 +17,23 @@ function tpl_function_qishi_nav($params, &$smarty)
 		case "列表名":
 			$aset['listname'] = $a[1];
 			break;
+		case "分割":
+			$aset['limit'] = $a[1];
+			break;
 		}
 	}
 	$aset['listname']=$aset['listname']?$aset['listname']:"list";
-	$smarty->assign($aset['listname'],$_NAV[$aset['alias']]);
+	$limit=intval($aset['limit']);
+	if($limit>0)
+	{
+		$navarr=$_NAV[$aset['alias']];
+		$smarty->assign($aset['listname'],array_slice($navarr,0,$limit));
+		$smarty->assign($aset['listname']."_more",array_slice($navarr,$limit));
+	}
+	else
+	{
+		$smarty->assign($aset['listname'],$_NAV[$aset['alias']]);
+	}
+	
 }
 ?>

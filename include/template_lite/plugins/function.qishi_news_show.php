@@ -20,14 +20,15 @@ $aset=array_map("get_smarty_request",$aset);
 $aset['id']=$aset['id']?intval($aset['id']):0;
 $aset['listname']=$aset['listname']?$aset['listname']:"list";
 unset($arr,$str,$a,$params);
-$sql = "select * from ".table('article')." WHERE  id=".intval($aset['id'])." AND  is_display=1 LIMIT 1";
+$sql = "select id,content,title,seo_keywords,seo_description,type_id,addtime from ".table('article')." WHERE  id=".intval($aset['id'])." AND  is_display=1 LIMIT 1";
 $val=$db->getone($sql);
-if (empty($val) || (intval($_GET['subsite_id']) != $val['subsite_id']))
+if (empty($val))
 {
 	header("HTTP/1.1 404 Not Found"); 
 	$smarty->display("404.htm");
 	exit();
 }
+$val['content']=htmlspecialchars_decode($val['content'],ENT_QUOTES);
 if ($val['seo_keywords']=="")
 {
 $val['keywords']=$val['title'];

@@ -58,6 +58,7 @@ elseif($act == 'set_save')
 	!$db->query("UPDATE ".table('locoyspider')." SET value='$v' WHERE name='$k' LIMIT 1")?adminmsg('更新失败', 1):"";
 	}
 	refresh_cache('locoyspider');
+	write_log("设置火车头配置", $_SESSION['admin_name'],3);
 	adminmsg("保存成功！",2);
 }
 ?>

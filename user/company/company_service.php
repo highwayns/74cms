@@ -12,86 +12,118 @@
 define('IN_QISHI', true);
 require_once(dirname(__FILE__).'/company_common.php');
 $smarty->assign('leftmenu',"service");
-if ($act=='account')
+//我的账户 -> 积分操作 
+if ($act=='j_account')
 {
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
-	$i_type=trim($_GET['i_type']);
+	$smarty->assign('operation_mode',intval($_CFG['operation_mode']));
+	//收支状态(消耗->1 赠送->2)/操作时间
+	$cid=trim($_GET['cid']);
 	$settr=intval($_GET['settr']);
-	if($_CFG['operation_mode']=="1"){
+	//套餐
+	$my_setmeal = get_user_setmeal($_SESSION['uid']);
+	$smarty->assign('setmeal',$my_setmeal);
+	//积分
+	$my_points = get_user_points(intval($_SESSION['uid']));
+	$smarty->assign('points',$my_points);
+	$smarty->assign('act','j_account');
+	$smarty->assign('title','我的账户 - 企业会员中心 - '.$_CFG['site_name']);
+	//积分消费明细
+	if(trim($_GET['detail']) == '1')
+	{
 		$wheresql=" WHERE log_uid='{$_SESSION['uid']}' AND log_type=9001 AND log_mode=1";
-	}elseif($_CFG['operation_mode']=="2"){
-		$wheresql=" WHERE log_uid='{$_SESSION['uid']}' AND log_type=9002 AND log_mode=2 ";
-	}else{
-		$wheresql1=" WHERE log_uid='{$_SESSION['uid']}' AND log_type=9001 AND log_mode=1";
-		$wheresql2=" WHERE log_uid='{$_SESSION['uid']}' AND log_type=9002 AND log_mode=2 ";
-	}
-	
-	if($_CFG['operation_mode']=="3"){
 		if($settr>0)
 		{
-		$settr_val=strtotime("-".$settr." day");
-		$wheresql1.=" AND log_addtime>".$settr_val;
-		$wheresql2.=" AND log_addtime>".$settr_val;
+			$settr_val=strtotime("-".$settr." day");
+			$wheresql.=" AND log_addtime>".$settr_val;
+			$smarty->assign('settr',$_GET['settr']);
 		}
-		$perpage=15;
-		$total_sql1="SELECT COUNT(*) AS num FROM ".table('members_log').$wheresql1;
-		$total_sql2="SELECT COUNT(*) AS num FROM ".table('members_log').$wheresql2;
-		$total_val1=$db->get_total($total_sql1);
-		$total_val2=$db->get_total($total_sql2);
-		$page1 = new page(array('total'=>$total_val1, 'perpage'=>$perpage));
-		$page2 = new page(array('total'=>$total_val2, 'perpage'=>$perpage));
-		$offset1=($page1->nowindex-1)*$perpage;
-		$offset2=($page2->nowindex-1)*$perpage;
-		$smarty->assign('report',get_user_report($offset1, $perpage,$wheresql1));
-		$smarty->assign('setmeal_report',get_user_report($offset2, $perpage,$wheresql2));
-		$smarty->assign('page1',$page1->show(3));
-		$smarty->assign('page2',$page2->show(3));
-	}else{
-		if($settr>0)
+		if($cid == '1')
 		{
-		$settr_val=strtotime("-".$settr." day");
-		$wheresql.=" AND log_addtime>".$settr_val;
+			$smarty->assign('c_type',"消耗");
+			$smarty->assign('cid',$_GET['cid']);
+			$wheresql.=" AND log_op_used < 0 ";
 		}
-		$perpage=15;
+		elseif($cid == '2')
+		{
+			$smarty->assign('c_type',"赠送");
+			$smarty->assign('cid',$_GET['cid']);
+			$wheresql.=" AND log_op_used > 0 ";
+		}
+		$perpage=10;
 		$total_sql="SELECT COUNT(*) AS num FROM ".table('members_log').$wheresql;
 		$total_val=$db->get_total($total_sql);
-		$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+		$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 		$offset=($page->nowindex-1)*$perpage;
 		$smarty->assign('report',get_user_report($offset, $perpage,$wheresql));
 		$smarty->assign('page',$page->show(3));
+		$smarty->display('member_company/company_my_account_detail.htm');
 	}
-	
-	$setmeal = get_user_setmeal($_SESSION['uid']);
-	if ($setmeal['endtime']>0){
-		$setmeal_endtime=sub_day($setmeal['endtime'],time());
-	}else{
-		$setmeal_endtime="无限期";
-	}
-	
-	$smarty->assign('title','我的账户 - 企业会员中心 - '.$_CFG['site_name']);
-	$smarty->assign('act',$act);
-	$smarty->assign('points',get_user_points($_SESSION['uid']));
-	$smarty->assign('setmeal',$setmeal);
-	$smarty->assign('points_rule',get_points_rule());
-	$smarty->assign('setmeal_rule',get_members_setmeal_rule($setmeal['setmeal_id']));
-	$smarty->assign('setmeal_endtime',$setmeal_endtime);
-	if($_CFG['operation_mode']=="1"){
+	//积分规则
+	else
+	{
+		$smarty->assign('points_rule',get_points_rule());
 		$smarty->display('member_company/company_my_account.htm');
-	}elseif($_CFG['operation_mode']=="2"){
-		$smarty->display('member_company/company_my_account_package.htm');
-	}else{
-		$smarty->display('member_company/company_my_account_complex.htm');
 	}
-	
+}
+//我的账户 -> 套餐操作 
+elseif ($act=='t_account')
+{
+	$settr=intval($_GET['settr']);
+	require_once(QISHI_ROOT_PATH.'include/page.class.php');
+	$smarty->assign('operation_mode',intval($_CFG['operation_mode']));
+	//积分
+	$my_points = get_user_points(intval($_SESSION['uid']));
+	$smarty->assign('points',$my_points);
+	//套餐
+	$my_setmeal = get_user_setmeal($_SESSION['uid']);
+	$smarty->assign('setmeal',$my_setmeal);
+	$smarty->assign('act','t_account');
+	$smarty->assign('title','我的账户 - 企业会员中心 - '.$_CFG['site_name']);
+	//套餐消费明细
+	if(trim($_GET['detail']) == '1')
+	{
+		$wheresql=" WHERE log_uid='{$_SESSION['uid']}' AND log_type=9002 AND log_mode=2 ";
+		if($settr>0)
+		{
+			$settr_val=strtotime("-".$settr." day");
+			$wheresql.=" AND log_addtime>".$settr_val;
+			$smarty->assign('settr',$_GET['settr']);
+		}
+		$perpage=10;
+		$total_sql="SELECT COUNT(*) AS num FROM ".table('members_log').$wheresql;
+		$total_val=$db->get_total($total_sql);
+		$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
+		$offset=($page->nowindex-1)*$perpage;
+		$smarty->assign('report',get_user_report($offset, $perpage,$wheresql));
+		$smarty->assign('page',$page->show(3));
+		$smarty->display('member_company/company_my_account_package_detail.htm');
+	}
+	//套餐规则
+	else
+	{
+		$smarty->assign('setmeal_rule',get_members_setmeal_rule($my_setmeal['setmeal_id']));
+		$smarty->display('member_company/company_my_account_package.htm');
+	}
+
 }
 elseif ($act=='order_list')
 {
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
 	$is_paid=trim($_GET['is_paid']);
+	$pay_type=intval($_GET['pay_type']);
 	$wheresql=" WHERE uid='".$_SESSION['uid']."' ";
+	//订单状态
 	if($is_paid<>'' && is_numeric($is_paid))
 	{
-	$wheresql.=" AND is_paid='".intval($is_paid)."' ";
+		$smarty->assign('is_paid',$is_paid);
+		$wheresql.=" AND is_paid='".intval($is_paid)."' ";
+	}
+	//订单类别
+	if($pay_type > 0)
+	{
+		$smarty->assign('pay_type',$pay_type);
+		$wheresql.=" AND pay_type='".intval($pay_type)."' ";
 	}
 	$perpage=10;
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('order').$wheresql;
@@ -117,7 +149,7 @@ elseif ($act=='order_add')
 }
 elseif ($act=='order_add_save')
 {
-		if (empty($company_profile['companyname']))
+		if (!$cominfo_flge)
 		{
 		$link[0]['text'] = "填写企业资料";
 		$link[0]['href'] = 'company_info.php?act=company_profile';
@@ -138,10 +170,10 @@ elseif ($act=='order_add_save')
 	if (empty($paymenttpye)) showmsg("支付方式错误！",0);
 	$fee=number_format(($amount/100)*$paymenttpye['fee'],1,'.','');//手续费
 	$order['oid']= strtoupper(substr($paymenttpye['typename'],0,1))."-".date('ymd',time())."-".date('His',time());//订单号
-	$order['v_url']=$_CFG['main_domain']."include/payment/respond_".$paymenttpye['typename'].".php";
+	$order['v_url']=$_CFG['site_domain'].$_CFG['site_dir']."include/payment/respond_".$paymenttpye['typename'].".php";
 	$order['v_amount']=$amount+$fee; 
 	$points=$amount*$_CFG['payment_rate'];
-	$order_id=add_order($_SESSION['uid'],$order['oid'],$amount,$payment_name,"充值积分:".$points,$timestamp,$points,'',1);
+	$order_id=add_order($_SESSION['uid'],4,$order['oid'],$amount,$payment_name,"充值积分:".$points,$timestamp,$points,'',1);
 		if ($order_id)
 			{
 			header("location:?act=payment&order_id=".$order_id);
@@ -166,9 +198,9 @@ elseif ($act=='payment')
 	$myorder=get_order_one($_SESSION['uid'],$order_id);
 	$payment=get_payment_info($myorder['payment_name']);
 	if (empty($payment)) showmsg("支付方式错误！",0);
-	$fee=number_format(($amount/100)*$payment['fee'],1,'.','');//手续费
+	$fee=number_format(($myorder['amount']/100)*$payment['fee'],1,'.','');//手续费
 	$order['oid']=$myorder['oid'];//订单号
-	$order['v_url']=$_CFG['main_domain']."include/payment/respond_".$payment['typename'].".php";
+	$order['v_url']=$_CFG['site_domain'].$_CFG['site_dir']."include/payment/respond_".$payment['typename'].".php";
 	$order['v_amount']=$myorder['amount']+$fee;
 	if ($myorder['payment_name']!='remittance')//假如是非线下支付，
 	{
@@ -224,7 +256,7 @@ elseif ($act=='setmeal_order_add')
 }
 elseif ($act=='setmeal_order_add_save')
 {
-		if (empty($company_profile['companyname']))
+		if (!$cominfo_flge)
 		{
 		$link[0]['text'] = "填写企业资料";
 		$link[0]['href'] = 'company_info.php?act=company_profile';
@@ -246,9 +278,9 @@ elseif ($act=='setmeal_order_add_save')
 		if (empty($paymenttpye)) showmsg("支付方式错误！",0);
 		$fee=number_format(($setmeal['expense']/100)*$paymenttpye['fee'],1,'.','');//手续费
 		$order['oid']= strtoupper(substr($paymenttpye['typename'],0,1))."-".date('ymd',time())."-".date('His',time());//订单号
-		$order['v_url']=$_CFG['main_domain']."include/payment/respond_".$paymenttpye['typename'].".php";
+		$order['v_url']=$_CFG['site_domain'].$_CFG['site_dir']."include/payment/respond_".$paymenttpye['typename'].".php";
 		$order['v_amount']=$setmeal['expense']+$fee;//金额
-		$order_id=add_order($_SESSION['uid'],$order['oid'],$setmeal['expense'],$payment_name,"开通服务:".$setmeal['setmeal_name'],$timestamp,"",$setmeal['id'],1);
+		$order_id=add_order($_SESSION['uid'],1,$order['oid'],$setmeal['expense'],$payment_name,"开通服务:".$setmeal['setmeal_name'],$timestamp,"",$setmeal['id'],1);
 			if ($order_id)
 			{
 				if ($order['v_amount']==0)//0元套餐
@@ -256,7 +288,7 @@ elseif ($act=='setmeal_order_add_save')
 					if (order_paid($order['oid']))
 					{
 						$link[0]['text'] = "查看订单";
-						$link[0]['href'] = '?act=order_list';
+						$link[0]['href'] = 'company_service.php?act=order_list';
 						$link[1]['text'] = "会员中心首页";
 						$link[1]['href'] = 'company_index.php?act=';
 						showmsg("操作成功，系统已为您开通了服务！",2,$link);	
@@ -295,7 +327,7 @@ elseif ($act=='feedback_save')
 	$setsqlarr['username']=$_SESSION['username'];
 	$setsqlarr['addtime']=$timestamp;
 	write_memberslog($_SESSION['uid'],1,7001,$_SESSION['username'],"添加了反馈信息");
-	!inserttable(table('feedback'),$setsqlarr)?showmsg("添加失败！",0):showmsg("添加成功，请等待管理员回复！",2);
+	!$db->inserttable(table('feedback'),$setsqlarr)?showmsg("添加失败！",0):showmsg("添加成功，请等待管理员回复！",2);
 }
 elseif ($act=='del_feedback')
 {

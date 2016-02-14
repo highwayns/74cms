@@ -18,7 +18,7 @@ function tpl_function_qishi_help_show($params, &$smarty)
 	}
 	$aset=array_map("get_smarty_request",$aset);
 	$aset['listname']=$aset['listname']?$aset['listname']:"list";
-	$sql = "select * from ".table('help')." WHERE  id=".intval($aset['id'])." LIMIT   1";
+	$sql = "select id,type_id,parentid,title,content,click,addtime from ".table('help')." WHERE  id=".intval($aset['id'])." LIMIT   1";
 	$val=$db->getone($sql);
 	if (empty($val))
 	{
@@ -26,22 +26,9 @@ function tpl_function_qishi_help_show($params, &$smarty)
 			$smarty->display("404.htm");
 			exit();
 	}
-		if ($val['seo_keywords']=="")
-		{
-		$val['keywords']=$val['title'];
-		}
-		else
-		{
-		$val['keywords']=$val['seo_keywords'];
-		}
-		if ($val['seo_description']=="")
-		{
-		$val['description']=cut_str(strip_tags($val['content']),60,0,"");
-		}
-		else
-		{
-		$val['description']=$val['seo_description'];
-		}
+	$val['keywords']=$val['title'];
+	$val['description']=cut_str(strip_tags($val['content']),60,0,"");
+	$val['content']=htmlspecialchars_decode($val['content'],ENT_QUOTES);
 	$smarty->assign($aset['listname'],$val);
 }
 ?>

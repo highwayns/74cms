@@ -20,8 +20,10 @@ $smarty->assign('pageheader',"导航栏设置");
 if($act == 'list')
 {
 	get_token();
+	//筛选顶部导航
+	$alias = !empty($_GET['alias']) ? trim($_GET['alias']) : 'QS_top';
 	$smarty->assign('navlabel',"list");
-	$smarty->assign('list',get_nav());
+	$smarty->assign('list',get_nav($alias));
 	$smarty->display('nav/admin_nav.htm');
 }
 elseif($act == 'site_navigation_all_save')
@@ -38,6 +40,7 @@ elseif($act == 'site_navigation_all_save')
 		}
 	refresh_nav_cache();
 	$smarty->clear_all_cache();
+	write_log("修改导航成功", $_SESSION['admin_name'],3);
 	adminmsg("修改成功！",2);
 }
 elseif($act == 'site_navigation_add')
@@ -68,12 +71,13 @@ elseif($act == 'site_navigation_add_save')
 	$setsqlarr['color']=$_POST['tit_color'];
 	$setsqlarr['alias']=trim($_POST['alias']);
 	$setsqlarr['tag']=trim($_POST['tag']);
-	if(inserttable(table('navigation'),$setsqlarr))
+	if($db->inserttable(table('navigation'),$setsqlarr))
 	{
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] ="?act=list";
 	refresh_nav_cache();
 	$smarty->clear_all_cache();
+	write_log("添加导航", $_SESSION['admin_name'],3);
 	adminmsg("添加成功！",2,$link);
 	}
 	else
@@ -91,6 +95,7 @@ elseif($act == 'del_navigation')
 	$smarty->clear_all_cache();
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] ="?act=";
+	write_log("删除导航", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！",2,$link);
 	}
 	else
@@ -129,12 +134,13 @@ elseif($act == 'site_navigation_edit_save')
 	$setsqlarr['alias']=trim($_POST['alias']);
 	$setsqlarr['tag']=trim($_POST['tag']);
 	$wheresql=" id='".intval($_POST['id'])."'";
-	if(updatetable(table('navigation'),$setsqlarr,$wheresql))
+	if($db->updatetable(table('navigation'),$setsqlarr,$wheresql))
 	{
 	refresh_nav_cache();
 	$smarty->clear_all_cache();
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] ="?act=list";
+	write_log("修改导航栏目", $_SESSION['admin_name'],3);
 	adminmsg("修改成功！",2,$link);
 	}
 	else
@@ -171,7 +177,8 @@ elseif($act == 'site_navigation_category_add_save')
 			{
 			$link[0]['text'] = "返回列表";
 			$link[0]['href'] ="?act=site_navigation_category";
-			inserttable(table('navigation_category'),$setsqlarr)?adminmsg("添加成功！",2,$link):adminmsg("添加失败！",0);	
+			write_log("添加导航分类", $_SESSION['admin_name'],3);
+			$db->inserttable(table('navigation_category'),$setsqlarr)?adminmsg("添加成功！",2,$link):adminmsg("添加失败！",0);	
 			}
 			else
 			{
@@ -185,6 +192,7 @@ elseif($act == 'site_navigation_category_del')
 	check_token();
 	if (del_nav_cat(intval($_GET['id'])))
 	{
+	write_log("删除导航分类", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！",2);
 	}
 	else
@@ -217,7 +225,8 @@ elseif($act == 'site_navigation_category_edit_save')
 			$link[0]['text'] = "返回列表";
 			$link[0]['href'] ="?act=site_navigation_category";
 			$wheresql=" id='".intval($_POST['id'])."'";
-			!updatetable(table('navigation_category'),$setsqlarr,$wheresql)?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+			write_log("修改导航分类", $_SESSION['admin_name'],3);
+			!$db->updatetable(table('navigation_category'),$setsqlarr,$wheresql)?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 			}
 			else
 			{

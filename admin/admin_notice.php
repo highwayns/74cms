@@ -77,7 +77,8 @@ elseif($act == 'editsave')
 	$link[0]['href'] = '?';
 	$link[1]['text'] = "查看修改";
 	$link[1]['href'] = "?act=edit&id=".$id;
- 	!updatetable(table('notice'),$setsqlarr," id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	write_log("修改id为".$id."的公告", $_SESSION['admin_name'],3);
+ 	!$db->updatetable(table('notice'),$setsqlarr," id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 elseif($act == 'add')
 {
@@ -106,7 +107,14 @@ elseif($act == 'addsave')
 	$link[0]['href'] = '?act=add&type_id='.$setsqlarr['type_id'];
 	$link[1]['text'] = "返回列表";
 	$link[1]['href'] = '?';
-	!inserttable(table('notice'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
+	write_log("添加公告：".$setsqlarr['title'], $_SESSION['admin_name'],3);
+	$insertid = $db->inserttable(table('notice'),$setsqlarr,1);
+	if(!$insertid){
+		adminmsg("添加失败！",0);
+	}else{
+		baidu_submiturl(url_rewrite('QS_noticeshow',array('id'=>$insertid)),'addnotice');
+		adminmsg("添加成功！",2,$link);
+	}
 }
 elseif($act == 'notice_del')
 {
@@ -115,6 +123,7 @@ elseif($act == 'notice_del')
 	$id=$_REQUEST['id'];
 	if ($num=del_notice($id))
 	{
+	write_log("删除公告，共删除".$num."行", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除".$num."行",2);
 	}
 	else
@@ -148,7 +157,7 @@ elseif($act == 'add_category_save')
 			if (!empty($_POST['categoryname'][$i]))
 			{		
 				$setsqlarr['categoryname']=trim($_POST['categoryname'][$i]);				
-				!inserttable(table('notice_category'),$setsqlarr)?adminmsg("添加失败！",0):"";
+				!$db->inserttable(table('notice_category'),$setsqlarr)?adminmsg("添加失败！",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
@@ -165,6 +174,7 @@ elseif($act == 'add_category_save')
 	$link[0]['href'] = '?act=category';
 	$link[1]['text'] = "继续添加属性";
 	$link[1]['href'] = "?act=category_add";
+	write_log("添加成功！共添加".$num."个公告分类", $_SESSION['admin_name'],3);
 	adminmsg("添加成功！共添加".$num."个分类",2,$link);
 	}
 }
@@ -187,7 +197,8 @@ elseif($act == 'edit_category_save')
 	$link[0]['href'] = '?act=edit_category&id='.$id;
 	$link[1]['text'] = "返回分类管理";
 	$link[1]['href'] = '?act=category';
-	!updatetable(table('notice_category'),$setsqlarr," id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	write_log("修改id为".$id."的公告分类", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('notice_category'),$setsqlarr," id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 elseif($act == 'del_category')
 {
@@ -196,6 +207,7 @@ elseif($act == 'del_category')
 	$id=$_REQUEST['id'];
 	if ($num=del_notice_category($id))
 	{
+	write_log("删除公告分类！共删除".$num."行", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除".$num."行",2);
 	}
 	else

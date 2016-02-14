@@ -7,7 +7,7 @@ function tpl_modifier_qishi_categoryname($string)
 			$val1 = explode(",", $val[0]);
 			$type = $val1[0];
 			$cat_type = $val1[1];
-			$param_arr = explode(",", $val[1]);
+			$param_arr = explode("_", $val[1]);
 			$id_str = $param_arr[0];
 			$id_arr = explode(".",$id_str);
 			if($cat_type=="jobcategory"){
@@ -46,10 +46,9 @@ function tpl_modifier_qishi_categoryname($string)
 				if ($len>0) $cat['categoryname']=cut_str($cat['categoryname'],$len,0,'');
 				return $cat['categoryname'];
 			}
-			//高级职位
-			elseif ($type=="QS_hunter_jobs")
+			if ($type=="QS_jobs_floor")
 			{
-				$cat=$db->getone("select categoryname from ".table('category_hunterjobs')." WHERE  id='{$id}' LIMIT  1");
+				$cat=$db->getone("select categoryname from ".table('category_jobs')." WHERE  id='{$id}' LIMIT  1");
 				if ($len>0) $cat['categoryname']=cut_str($cat['categoryname'],$len,0,'');
 				return $cat['categoryname'];
 			}

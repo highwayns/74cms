@@ -4,7 +4,7 @@
 $(document).ready(function()
 {
 	
-	showmenulayer("#category_cn","#menu1","#category","#subclass","#thirdclass",QS_jobs);
+	showmenulayer("#category_cn","#menu1","#topclass","#category","#subclass",QS_jobs);
 	showmenulayer("#district_cn","#menu2","#district","#sdistrict","",QS_city);
 	showmenu("#education_cn","#menu3","#education");
 	showmenu("#experience_cn","#menu4","#experience");
@@ -13,8 +13,100 @@ $(document).ready(function()
 	$("input[name='sex']").click(function(){$("#sex_cn").val($(this).attr("title"))	});
 	
 	//设置职位性质中文字段
-	$("input[name='nature']").click(function(){$("#nature_cn").val($(this).attr("title"))	})
-});
+	$("input[name='nature']").click(function(){$("#nature_cn").val($(this).attr("title"))	});
+	jQuery.validator.addMethod("isPhoneNumber", function(value, element) {   
+	    var tel = /^((0\d{2,3}-[2-9][0-9]{6,7})|(0\d{2,3}[2-9][0-9]{6,7})|([2-9][0-9]{6,7})|(1[35847]\d{9}))$/;
+	    return this.optional(element) || (tel.test(value));
+	}, "请正确填写联系电话");
+	$("#Form1").validate({
+	   rules:{
+	   jobs_name:{
+	    required: true,
+		minlength:2,
+	    maxlength:30
+	   },
+	   amount: {
+	   	required: true,
+		range:[0,9999]
+	   },
+	   category: "required",
+	   district: "required",
+	   wage: "required",
+	   education: "required",
+	   experience: "required",
+	   contents:{
+	   required: true,
+		minlength:30,
+	    maxlength:1000
+	   },
+	   contact:{
+	   required: true
+	   },
+		  telephone: {
+		   required:true,
+		   isPhoneNumber:true
+		},
+		  address: "required",
+		   email: {
+		   required:true,
+		   email:true
+		   }
+		},
+	    messages: {
+	    jobs_name: {
+	    required: "请输入职位名称",
+	    minlength: jQuery.format("职位名称不能小于{0}个字符"),
+		maxlength: jQuery.format("职位名称不能大于{0}个字符")
+	   },
+	   amount: {
+	    required: "请输入招聘人数",
+	    range: jQuery.format("请输入一个介于 {0} 和 {1} 之间的值")
+	   },
+	    category: {
+	    required: jQuery.format("请选择职位类别，精确选择职位类别可以有效提高招聘效果")
+	   },
+	    district: {
+	    required: jQuery.format("请选择工作地区")
+	   },
+	   wage: {
+	    required: jQuery.format("请选择月薪范围")
+	   },
+	   education: {
+	    required: jQuery.format("请选择学历要求")
+	   },
+	    experience: {
+	    required: jQuery.format("请选择工作经验")
+	   },
+	   contents: {
+	    required: jQuery.format("请填写职位描述"),
+		minlength: jQuery.format("职位描述内容不能小于{0}个字符"),
+		maxlength: jQuery.format("职位描述内容不能大于{0}个字符")
+	   },
+	   contact: {
+	    required: jQuery.format("请填写联系人")
+	   },
+	    telephone: {
+	    required: jQuery.format("请填写联系电话"),
+		isPhoneNumber: jQuery.format("请正确填写联系电话")
+	   },
+	   address: {
+	    required: jQuery.format("请填写联系地址")
+	   },
+	   email: {
+	    required: jQuery.format("请填写电子邮箱"),
+		email: jQuery.format("请正确填写电子邮箱")
+	   } 
+	  },
+	  errorPlacement: function(error, element) {
+	    if ( element.is(":radio") )
+	        error.appendTo( element.parent().next().next() );
+	    else if ( element.is(":checkbox") )
+	        error.appendTo ( element.next());
+	    else
+	        error.appendTo(element.parent());
+		}
+	    });
+	});
 </script>
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
@@ -22,7 +114,7 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="toptit">修改职位- <span style="color:#0066CC">{#$jobs.jobs_name#}</span> </div>
-<form id="Form1" name="Form1" method="post" action="?act=editjobs_save"  onsubmit="return chk_form();">
+<form id="Form1" name="Form1" method="post" action="?act=editjobs_save" >
 {#$inputtoken#}
   <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
 <tr>
@@ -91,16 +183,12 @@ $(document).ready(function()
         </tr>
         <tr>
           <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold;">*</span> 招聘人数：</td>
-          <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><input name="amount" type="text" class="input_text_200" id="amount" value="{#$jobs.amount#}" maxlength="3" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
+          <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><input name="amount" type="text" class="input_text_200" id="amount" value="{#$jobs.amount#}" maxlength="4" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
             人</td>
         </tr>
         <tr>
           <td height="30" align="right" bgcolor="#FFFFFF"style=" border-bottom:1px #CCCCCC dashed">有效日期：</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">发布日期：{#$jobs.addtime|date_format:"%Y-%m-%d %H:%M"#}，截止日期：{#$jobs.deadline|date_format:"%Y-%m-%d %H:%M"#}<input name="olddeadline" type="hidden" value="{#$jobs.deadline#}" /></td>
-        </tr>
-		<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style="border-bottom:1px #CCCCCC dashed; color:#0033CC">延长有效时间：</td>
-          <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><input name="days" type="text"  class="input_text_200" id="days" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');check_deadline(this.value);total_pointst()" value="0" maxlength="3" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"  style="width:50px;"/> 天&nbsp;&nbsp;(0表示不延长) </td>
         </tr>
         <tr>
           <td height="30" align="right"   bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> 职位类别：</td>
@@ -228,14 +316,14 @@ $(document).ready(function()
 		  <input name="contact" type="text" class="input_text_200" id="contact" value="{#$jobs.contact.contact#}" maxlength="15" />
            <label><input name="contact_show"  type="checkbox" value="1" {#if $jobs.contact.contact_show=="1"#}checked="checked"{#/if#} />联系人在职位详细页中显示
 		  </td>
-        </tr>
-		<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold"> </span>联系人QQ号码：</td>
-          <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
-		  <input name="qq" type="text" class="input_text_200" id="qq" maxlength="50" value="{#$jobs.contact.qq#}" />
-		  <label><input name="qq_show"  type="checkbox" value="1" {#if $jobs.contact.qq_show=="1"#}checked="checked"{#/if#}/>联系qq在职位详细页中显示</label>
-           </td>
-        </tr>
+         </tr>
+       	<!--	<tr>
+         <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold"> </span>联系人QQ号码：</td>
+         <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
+       		  <input name="qq" type="text" class="input_text_200" id="qq" maxlength="50" value="{#$jobs.contact.qq#}" />
+       		  <label><input name="qq_show"  type="checkbox" value="1" {#if $jobs.contact.qq_show=="1"#}checked="checked"{#/if#}/>联系qq在职位详细页中显示</label>
+          </td>
+       </tr> -->
 		<tr>
           <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> 联系电话：</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
@@ -243,19 +331,19 @@ $(document).ready(function()
            <label><input name="telephone_show"  type="checkbox" value="1" {#if $jobs.contact.telephone_show=="1"#}checked="checked"{#/if#} />联系电话在职位详细页中显示
 		  </td>
         </tr>
-		<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> 联系地址：</td>
-          <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
-		  <input name="address" type="text" class="input_text_200" id="address" maxlength="50"  value="{#$jobs.contact.address#}"/>
-           <label><input name="address_show"  type="checkbox" value="1" {#if $jobs.contact.address_show=="1"#}checked="checked"{#/if#} />联系地址在职位详细页中显示
-		  </td>
-        </tr>
-		<tr>
+	<tr>
           <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> 联系邮箱：</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><label>
           <input name="email" type="text" class="input_text_200" id="email" maxlength="80"  value="{#$jobs.contact.email#}"/>
           </label>
            <label><input name="email_show"  type="checkbox" value="1" {#if $jobs.contact.email_show=="1"#}checked="checked"{#/if#} />联系邮箱在职位详细页中显示
+		  </td>
+        </tr>
+        <tr>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> 联系地址：</td>
+          <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
+		  <input name="address" type="text" class="input_text_200" id="address" maxlength="50"  value="{#$jobs.contact.address#}"/>
+           <label><!-- <input name="address_show"  type="checkbox" value="1" {#if $jobs.contact.address_show=="1"#}checked="checked"{#/if#} />联系地址在职位详细页中显示 -->
 		  </td>
         </tr>
           <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">用邮箱接收简历?</td>

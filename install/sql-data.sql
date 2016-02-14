@@ -1,21 +1,27 @@
-INSERT INTO `qs_ad` (`id`, `subsite_id`, `alias`, `is_display`, `category_id`, `type_id`, `title`, `note`, `show_order`, `addtime`, `starttime`, `deadline`, `text_content`, `text_url`, `text_color`, `img_path`, `img_url`, `img_explain`, `img_uid`, `code_content`, `flash_path`, `flash_width`, `flash_height`, `floating_type`, `floating_width`, `floating_height`, `floating_url`, `floating_path`, `floating_left`, `floating_right`, `floating_top`, `video_path`, `video_width`, `video_height`) VALUES
-(1, 0, 'QS_indexfocus', 1, 1, 2, '软件商业授权', '', 50, 0, 0, 0, '', '', '', 'http://www.74cms.com/74ad_280x135.jpg', 'http://www.74cms.com/', '骑士CMS商业授权', 0, '', '', 0, 0, 1, 0, 0, '', '', '', '', 0, '', 0, 0);
+INSERT INTO `qs_ad_category` VALUES 
+(NUll, 'QS_indexfocus', 2, '首页图片轮番广告', 1, 10),
+(NUll, 'QS_indexcentreimg', 2, '首页中部格子广告', 1, 30),
+(NUll, 'QS_newsbanner', 2, '资讯首页中间横幅', 1, 0),
+(NUll, 'QS_indexfootimg', 2, '首页下方格子广告位', 1, 0),
+(NUll, 'QS_indexfloat', 5, '首页对联广告', 1, 0),
+(NUll, 'QS_indexfootbanner', 2, '首页底部横幅广告', 1, 0),
+(NUll, 'QS_indexcenter', 2, '首页中部横幅广告', 1, 0),
+(NUll, 'QS_indexrecommend', 2, '首页上部名企推荐广告位', 1, 0),
+(NUll, 'QS_indextopimg', 2, '首页上方横幅广告位', 1, 0),
+(NUll, 'QS_yellowpage', 2, '黄页右侧广告位', 1, 0),
+(NUll, 'QS_newsbanner2', 2, '资讯首页中间横幅2', 1, 0),
+(NUll, 'QS_company_index', 2, '企业会员中心中部广告位', 1, 0),
+(NUll, 'QS_indexcentreimg_230x58', 2, '首页中部格子广告230x58', 1, 0),
+(NUll, 'QS_floor_img1', 2, '首页楼层广告1', 1, 0),
+(NUll, 'QS_floor_img2', 2, '首页楼层广告2', 1, 0),
+(NUll, 'QS_floor_img3', 2, '首页楼层广告3', 1, 0),
+(NUll, 'QS_floor_img4', 2, '首页楼层广告4', 1, 0),
+(NUll, 'QS_floor_img5', 2, '首页楼层广告5', 1, 0);
 
-insert  into `qs_ad_category`(`id`,`alias`,`type_id`,`categoryname`,`admin_set`) values 
-(NULL,'QS_indexfocus',2,'首页图片轮番广告',1),
-(NULL,'QS_indexcentreimg',2,'首页中部格子广告',1),
-(NULL,'QS_newsbanner',2,'资讯首页中间横幅',1),
-(NULL,'QS_indexfootimg',2,'首页下方格子广告位',1),
-(NULL,'QS_indexfloat',5,'首页对联广告',1),
-(NULL,'QS_alltopimg',2,'全站顶部图片广告位468X60',1),
-(NULL,'QS_indexfootbanner',2,'首页底部Banner 985X80',1),
-(NULL,'QS_indexcenter',2,'首页中部横幅广告',1),
-(NULL,'QS_indexrecommend',2,'首页上部名企推荐广告位',1),
-(NULL,'QS_indextopimg',2,'首页上方横幅广告位',1),
-(NULL,'QS_yellowpage',2,'黄页右侧广告位',1),
-(NULL,'QS_newsbanner2',2,'资讯首页中间横幅2',1);
+INSERT INTO `qs_ad` VALUES
+(1, 'QS_indexfocus', 1, 1, 2, '软件商业授权', '', 50, 0, 0, 0, '', '', '', 'http://www.74cms.com/74ad_610x270.jpg', 'http://www.74cms.com/', '骑士CMS商业授权', 0, '', '', 0, 0, 1, 0, 0, '', '', '', '', 0, '', 0, 0);
 
-INSERT INTO `qs_article_category` (`id`, `parentid`, `categoryname`, `category_order`, `title`, `description`, `keywords`, `admin_set`) VALUES
+INSERT INTO `qs_article_category` VALUES 
 (1, 0, '资讯中心', 0, '资讯中心', '', '', 1),
 (2, 1, '职业指导', 0, '', '', '', 1),
 (3, 1, '简历指南', 0, '', '', '', 1),
@@ -24,13 +30,13 @@ INSERT INTO `qs_article_category` (`id`, `parentid`, `categoryname`, `category_o
 (6, 1, '劳动法苑', 0, '', '', '', 1),
 (7, 1, '职场观察', 0, '', '', '', 1);
 
-INSERT INTO `qs_article_property` (`id`, `categoryname`, `category_order`, `admin_set`) VALUES
+INSERT INTO `qs_article_property` VALUES 
 (1, '普通资讯', 0, 1),
 (2, '头条资讯', 0, 1),
 (3, '焦点新闻', 0, 1),
 (4, '推荐资讯', 0, 1);
 
-INSERT INTO `qs_baiduxml` (`id`, `name`, `value`) VALUES
+INSERT INTO `qs_baiduxml` VALUES 
 (1, 'order', '1'),
 (2, 'xmlmax', '0'),
 (3, 'xmlpagesize', '3000'),
@@ -39,27 +45,41 @@ INSERT INTO `qs_baiduxml` (`id`, `name`, `value`) VALUES
 (6, 'indexname', 'index.xml'),
 (7, 'indexdir', 'baiduxml/');
 
-INSERT INTO `qs_captcha` (`id`, `name`, `value`) VALUES
-(NULL, 'verify_userreg', '0'),
-(NULL, 'verify_userlogin', '0'),
-(NULL, 'verify_getpwd', '0'),
-(NULL, 'verify_addjob', '0'),
-(NULL, 'verify_resume', '0'),
-(NULL, 'verify_link', '1'),
-(NULL, 'verify_simple', '0'),
-(NULL, 'verify_adminlogin', '0'),
-(NULL, 'captcha_width', '150'),
-(NULL, 'captcha_height', '40'),
-(NULL, 'captcha_textcolor', ''),
-(NULL, 'captcha_textfontsize', '25'),
-(NULL, 'captcha_textlength', '4'),
-(NULL, 'captcha_lang', 'en'),
-(NULL, 'captcha_bgcolor', ''),
-(NULL, 'captcha_noisepoint', '0'),
-(NULL, 'captcha_noiseline', '5'),
-(NULL, 'captcha_distortion', '0');
+INSERT INTO `qs_baidu_submiturl` VALUES 
+(NUll, 'token', ''),
+(NUll, 'addcompany', '0'),
+(NUll, 'addjob', '0'),
+(NUll, 'addresume', '0'),
+(NUll, 'addcompanynews', '0'),
+(NUll, 'addarticle', '0'),
+(NUll, 'addexplain', '0'),
+(NUll, 'addnotice', '0'),
+(NUll, 'addcourse', '0'),
+(NUll, 'addagency', '0'),
+(NUll, 'addteacher', '0');
 
-INSERT INTO `qs_category` (`c_id`, `c_parentid`, `c_alias`, `c_name`, `c_order`, `c_index`, `c_note`, `stat_jobs`, `stat_resume`) VALUES
+INSERT INTO `qs_captcha` VALUES 
+(NUll, 'verify_userreg', '0'),
+(NUll, 'verify_userlogin', '1'),
+(NUll, 'verify_getpwd', '0'),
+(NUll, 'verify_addjob', '0'),
+(NUll, 'verify_resume', '0'),
+(NUll, 'verify_link', '1'),
+(NUll, 'verify_simple', '0'),
+(NUll, 'verify_comment', '1'),
+(NUll, 'verify_adminlogin', '0'),
+(NUll, 'captcha_width', '150'),
+(NUll, 'captcha_height', '40'),
+(NUll, 'captcha_textcolor', ''),
+(NUll, 'captcha_textfontsize', '25'),
+(NUll, 'captcha_textlength', '4'),
+(NUll, 'captcha_lang', 'en'),
+(NUll, 'captcha_bgcolor', ''),
+(NUll, 'captcha_noisepoint', '0'),
+(NUll, 'captcha_noiseline', '5'),
+(NUll, 'captcha_distortion', '0');
+
+INSERT INTO `qs_category` VALUES 
 (1, 0, 'QS_trade', '计算机软件/硬件', 0, '', '', '', ''),
 (2, 0, 'QS_trade', '计算机系统/维修', 0, '', '', '', ''),
 (3, 0, 'QS_trade', '通信(设备/运营/服务)', 0, '', '', '', ''),
@@ -144,6 +164,14 @@ INSERT INTO `qs_category` (`c_id`, `c_parentid`, `c_alias`, `c_name`, `c_order`,
 (83, 0, 'QS_scale', '500-999人', 0, '', '', '', ''),
 (84, 0, 'QS_scale', '1000-9999人', 0, '', '', '', ''),
 (85, 0, 'QS_scale', '10000人以上', 0, '', '', '', ''),
+(86, 0, 'QS_train_type', '自主办学', 0, '', '', '', ''),
+(88, 0, 'QS_train_type', '教学机构', 0, '', '', '', ''),
+(240, 0, 'QS_train_classtype', '其他班', 0, 'q', '', '', ''),
+(239, 0, 'QS_train_classtype', '全日制', 0, 'q', '', '', ''),
+(238, 0, 'QS_train_classtype', '周末班', 0, 'z', '', '', ''),
+(237, 0, 'QS_train_classtype', '晚班', 0, 'w', '', '', ''),
+(236, 0, 'QS_train_classtype', '白天班', 0, 'b', '', '', ''),
+(235, 0, 'QS_train_classtype', '随到随学', 0, 's', '', '', ''),
 (127, 0, 'QS_street', '建设南路', 0, 'j', '0', '', ''),
 (128, 0, 'QS_street', '西羊市街', 0, 'x', '0', '', ''),
 (129, 0, 'QS_street', '杏花岭街', 0, 'x', '0', '', ''),
@@ -203,9 +231,109 @@ INSERT INTO `qs_category` (`c_id`, `c_parentid`, `c_alias`, `c_name`, `c_order`,
 (183, 0, 'QS_resumetag', '有上进心', 0, 'y', '0', '', ''),
 (184, 0, 'QS_resumetag', '人脉广', 0, 'r', '0', '', ''),
 (185, 0, 'QS_resumetag', '知识丰富', 0, 'z', '0', '', ''),
-(186, 0, 'QS_resumetag', '才艺多', 0, 'c', '0', '', '');
+(186, 0, 'QS_resumetag', '才艺多', 0, 'c', '0', '', ''),
+(187, 0, 'QS_train_category', '电脑', 0, '', '0', '', ''),
+(188, 0, 'QS_train_category', '英语', 0, '', '0', '', ''),
+(189, 0, 'QS_train_category', '文艺体育', 0, '', '0', '', ''),
+(190, 0, 'QS_train_category', '就业技能', 0, '', '0', '', ''),
+(191, 0, 'QS_train_category', '职业资格', 0, '', '0', '', ''),
+(192, 0, 'QS_train_category', '企业管理', 0, '', '0', '', ''),
+(193, 0, 'QS_train_category', '财会金融', 0, '', '0', '', ''),
+(194, 0, 'QS_train_category', '学历教育', 0, '', '0', '', ''),
+(195, 0, 'QS_train_category', '出国留学', 0, '', '0', '', ''),
+(196, 0, 'QS_hunter_wage', '面议', 0, '', '0', '', ''),
+(197, 0, 'QS_hunter_wage', '10-20万', 0, '', '0', '', ''),
+(198, 0, 'QS_hunter_wage', '20-30万', 0, '', '0', '', ''),
+(199, 0, 'QS_hunter_wage', '30-50万', 0, '', '0', '', ''),
+(200, 0, 'QS_hunter_wage', '50-80万', 0, '', '0', '', ''),
+(201, 0, 'QS_hunter_wage', '80-100万', 0, '', '0', '', ''),
+(202, 0, 'QS_hunter_wage', '100万以上', 0, '', '0', '', ''),
+(203, 0, 'QS_hunter_age', '18-25岁', 0, '', '0', '', ''),
+(204, 0, 'QS_hunter_age', '25-30岁', 0, '', '0', '', ''),
+(205, 0, 'QS_hunter_age', '30-40岁', 0, '', '0', '', ''),
+(206, 0, 'QS_hunter_age', '40-50岁', 0, '', '0', '', ''),
+(207, 0, 'QS_hunter_age', '50-60岁', 0, '', '0', '', ''),
+(208, 0, 'QS_language', '普通话', 0, '', '0', '', ''),
+(209, 0, 'QS_language', '粤语', 0, '', '0', '', ''),
+(210, 0, 'QS_language', '英语', 0, '', '0', '', ''),
+(211, 0, 'QS_language', '法语', 0, '', '0', '', ''),
+(212, 0, 'QS_language', '日语', 0, '', '0', '', ''),
+(213, 0, 'QS_language', '其他', 0, '', '0', '', ''),
+(214, 0, 'QS_hunter_wage_structure', '基本薪资', 0, '', '0', '', ''),
+(215, 0, 'QS_hunter_wage_structure', '奖金/提成', 0, '', '0', '', ''),
+(216, 0, 'QS_hunter_wage_structure', '期权', 0, '', '0', '', ''),
+(217, 0, 'QS_hunter_wage_structure', '其他', 0, '', '0', '', ''),
+(218, 0, 'QS_hunter_socialbenefits', '国家标准', 0, '', '0', '', ''),
+(219, 0, 'QS_hunter_socialbenefits', '商业保险', 0, '', '0', '', ''),
+(220, 0, 'QS_hunter_socialbenefits', '其他', 0, '', '0', '', ''),
+(221, 0, 'QS_hunter_livebenefits', '住房补贴', 0, '', '0', '', ''),
+(222, 0, 'QS_hunter_livebenefits', '公司安排', 0, '', '0', '', ''),
+(223, 0, 'QS_hunter_livebenefits', '公积金', 0, '', '0', '', ''),
+(224, 0, 'QS_hunter_livebenefits', '其他', 0, '', '0', '', ''),
+(225, 0, 'QS_hunter_annualleave', '国家标准', 0, '', '0', '', ''),
+(226, 0, 'QS_hunter_annualleave', '其他', 0, '', '0', '', ''),
+(227, 0, 'QS_hunter_rank', '寻访员(R)', 0, '', '0', '', ''),
+(228, 0, 'QS_hunter_rank', '助理顾问(AC)', 0, '', '0', '', ''),
+(229, 0, 'QS_hunter_rank', '顾问(C)', 0, '', '0', '', ''),
+(230, 0, 'QS_hunter_rank', '资深顾问(SC)', 0, '', '0', '', ''),
+(231, 0, 'QS_hunter_rank', '合伙人', 0, '', '0', '', ''),
+(232, 0, 'QS_hunter_rank', '兼职猎头', 0, '', '0', '', ''),
+(233, 0, 'QS_hunter_rank', '其他', 0, '', '0', '', ''),
+(241, 0, 'QS_current', '我目前已离职，可快速到岗', 0, '', '', '', ''),
+(242, 0, 'QS_current', '我目前在职，但考虑换个新环境', 0, '', '', '', ''),
+(243, 0, 'QS_current', '观望有好的机会再考虑', 0, '', '', '', ''),
+(244, 0, 'QS_current', '目前暂无跳槽打算', 0, '', '', '', ''),
+(245, 0, 'QS_current', '应届毕业生', 0, '', '', '', ''),
+(246, 0, 'QS_major', '计算机软件/硬件相关', 0, 'j', '', '', ''),
+(247, 0, 'QS_major', '计算机系统/维修相关', 0, 'j', '', '', ''),
+(248, 0, 'QS_major', '通信(设备/运营/服务)相关', 0, 't', '', '', ''),
+(249, 0, 'QS_major', '互联网/电子商务相关', 0, 'h', '', '', ''),
+(250, 0, 'QS_major', '网络游戏相关', 0, 'w', '', '', ''),
+(251, 0, 'QS_major', '电子/半导体/集成电路相关', 0, 'd', '', '', ''),
+(252, 0, 'QS_major', '仪器仪表/工业自动化相关', 0, 'y', '', '', ''),
+(253, 0, 'QS_major', '会计/审计相关', 0, 'h', '', '', ''),
+(254, 0, 'QS_major', '金融(投资/证券相关', 0, 'j', '', '', ''),
+(255, 0, 'QS_major', '金融(银行/保险)相关', 0, 'j', '', '', ''),
+(256, 0, 'QS_major', '贸易/进出口相关', 0, 'm', '', '', ''),
+(257, 0, 'QS_major', '批发/零售相关', 0, 'p', '', '', ''),
+(258, 0, 'QS_major', '消费品(食/饮/烟酒)相关', 0, 'x', '', '', ''),
+(259, 0, 'QS_major', '服装/纺织/皮革相关', 0, 'f', '', '', ''),
+(260, 0, 'QS_major', '家具/家电/工艺品/玩具相关', 0, 'j', '', '', ''),
+(261, 0, 'QS_major', '办公用品及设备相关', 0, 'b', '', '', ''),
+(262, 0, 'QS_major', '机械/设备/重工相关', 0, 'j', '', '', ''),
+(263, 0, 'QS_major', '汽车/摩托车/零配件相关', 0, 'q', '', '', ''),
+(264, 0, 'QS_major', '制药/生物工程相关', 0, 'z', '', '', ''),
+(265, 0, 'QS_major', '医疗/美容/保健/卫生相关', 0, 'y', '', '', ''),
+(266, 0, 'QS_major', '医疗设备/器械相关', 0, 'y', '', '', ''),
+(267, 0, 'QS_major', '广告/市场推广相关', 0, 'g', '', '', ''),
+(268, 0, 'QS_major', '会展/博览相关', 0, 'h', '', '', ''),
+(269, 0, 'QS_major', '影视/媒体/艺术/出版相关', 0, 'y', '', '', ''),
+(270, 0, 'QS_major', '印刷/包装/造纸相关', 0, 'y', '', '', ''),
+(271, 0, 'QS_major', '房地产开发相关', 0, 'f', '', '', ''),
+(272, 0, 'QS_major', '建筑与工程相关', 0, 'j', '', '', ''),
+(273, 0, 'QS_major', '家居/室内设计/装潢相关', 0, 'j', '', '', ''),
+(274, 0, 'QS_major', '物业管理/商业中心相关', 0, 'w', '', '', ''),
+(275, 0, 'QS_major', '中介服务/家政服务相关', 0, 'z', '', '', ''),
+(276, 0, 'QS_major', '专业服务/财会/法律相关', 0, 'z', '', '', ''),
+(277, 0, 'QS_major', '检测/认证相关', 0, 'j', '', '', ''),
+(278, 0, 'QS_major', '教育/培训相关', 0, 'j', '', '', ''),
+(279, 0, 'QS_major', '学术/科研相关', 0, 'x', '', '', ''),
+(280, 0, 'QS_major', '餐饮/娱乐/休闲相关', 0, 'c', '', '', ''),
+(281, 0, 'QS_major', '酒店/旅游相关', 0, 'j', '', '', ''),
+(282, 0, 'QS_major', '交通/运输/物流相关', 0, 'j', '', '', ''),
+(283, 0, 'QS_major', '航天/航空相关', 0, 'h', '', '', ''),
+(284, 0, 'QS_major', '能源(石油/化工/矿产)相关', 0, 'n', '', '', ''),
+(285, 0, 'QS_major', '能源(采掘/冶炼/原材料)相关', 0, 'n', '', '', ''),
+(286, 0, 'QS_major', '电力/水利/新能源相关', 0, 'd', '', '', ''),
+(287, 0, 'QS_major', '政府部门/事业单位相关', 0, 'z', '', '', ''),
+(288, 0, 'QS_major', '非盈利机构/行业协会相关', 0, 'f', '', '', ''),
+(289, 0, 'QS_major', '农业/渔业/林业/牧业相关', 0, 'n', '', '', ''),
+(290, 0, 'QS_major', '其他专业', 0, 'q', '', '', ''),
+(291, 0, 'QS_language_level', '入门', 0, 'r', '', '', ''),
+(292, 0, 'QS_language_level', '熟练', 0, 's', '', '', ''),
+(293, 0, 'QS_language_level', '精通', 0, 'j', '', '', '');
 
-INSERT INTO `qs_category_district` (`id`, `parentid`, `categoryname`, `category_order`, `stat_jobs`, `stat_resume`) VALUES
+INSERT INTO `qs_category_district` VALUES 
 (1, 0, '北京市', 0, '', ''),
 (2, 0, '上海市', 0, '', ''),
 (3, 0, '天津市', 0, '', ''),
@@ -744,7 +872,7 @@ INSERT INTO `qs_category_district` (`id`, `parentid`, `categoryname`, `category_
 (536, 34, '望德堂区', 0, '', ''),
 (537, 34, '风顺堂区', 0, '', '');
 
-INSERT INTO `qs_category_group` (`g_id`, `g_alias`, `g_name`, `g_sys`) VALUES
+INSERT INTO `qs_category_group` VALUES 
 (1, 'QS_trade', '行业分类', 1),
 (2, 'QS_company_type', '企业性质分类', 1),
 (3, 'QS_wage', '月薪分类', 1),
@@ -754,9 +882,13 @@ INSERT INTO `qs_category_group` (`g_id`, `g_alias`, `g_name`, `g_sys`) VALUES
 (7, 'QS_scale', '企业规模', 1),
 (9, 'QS_street', '道路', 1),
 (10, 'QS_jobtag', '职位标签', 1),
-(11, 'QS_resumetag', '简历标签', 1);
+(11, 'QS_resumetag', '简历标签', 1),
+(12, 'QS_language', '语言分类', 1),
+(13, 'QS_language_level', '语言熟练程度', 1),
+(14, 'QS_major', '专业分类', 1),
+(15, 'QS_current', '目前状态分类', 1);
 
-INSERT INTO `qs_category_jobs` (`id`, `parentid`, `categoryname`, `category_order`, `stat_jobs`, `stat_resume`, `content`) VALUES
+INSERT INTO `qs_category_jobs` VALUES 
 (1, 0, '销售|市场|客服|贸易', 0, '', '', ''),
 (2, 1, '销售管理', 0, '', '', ''),
 (3, 1, '销售人员', 0, '', '', ''),
@@ -1004,7 +1136,7 @@ INSERT INTO `qs_category_jobs` (`id`, `parentid`, `categoryname`, `category_orde
 (735, 79, '硬件测试', 0, '', '', '岗位职责：\r\n1、完成公司项目、产品的所有相关测试工作；\r\n2、根据产品需求和设计文档，制定测试计划，并分析测试需求、设计测试流程；\r\n3、根据产品测试需求完成测试环境的设计与配置工作；\r\n4、执行具体测试任务并确认测试结果、缺陷跟踪，完成测试报告以及测试结果分析；\r\n5、在测试各环节与开发、产品等部门沟通保证测试输入和输出的正确性和完备性；\r\n6、完成产品缺陷验证和确认，对于难以重现的缺陷，需要完成可能性原因分析与验证；\r\n7、定期提交产品缺陷统计分析报告并完成产品测试总结报告；\r\n8、完成测试团队的管理考核及业务培训工作\r\n\r\n岗位要求：\r\n1、相关专业本科以上学历；英语良好；\r\n2、两年以上相关测试工作经验；\r\n3、熟悉产品结构及质量控制理论；善于制定测试计划，编制测试方案及用例，能够规范测试流程；熟悉相关测试工具；熟练使用办公软件；\r\n4、具备良好的业务沟通和理解能力,有较强的责任感及进取精神。'),
 (734, 79, '软件测试', 0, '', '', '岗位职责：\r\n1、完成公司项目、产品的所有相关测试工作；\r\n2、根据产品需求和设计文档，制定测试计划，并分析测试需求、设计测试流程；\r\n3、根据产品测试需求完成测试环境的设计与配置工作；\r\n4、执行具体测试任务并确认测试结果、缺陷跟踪，完成测试报告以及测试结果分析；\r\n5、在测试各环节与开发、产品等部门沟通保证测试输入和输出的正确性和完备性；\r\n6、完成产品缺陷验证和确认，对于难以重现的缺陷，需要完成可能性原因分析与验证；\r\n7、定期提交产品缺陷统计分析报告并完成产品测试总结报告；\r\n8、完成测试团队的管理考核及业务培训工作。\r\n\r\n岗位要求：\r\n1、相关专业本科以上学历；英语良好；\r\n2、两年以上相关测试工作经验；\r\n3、熟悉产品结构及质量控制理论；善于制定测试计划，编制测试方案及用例，能够规范测试流程；熟悉相关测试工具；熟练使用办公软件；\r\n4、具备良好的业务沟通和理解能力,有较强的责任感及进取精神。'),
 (733, 79, 'IT品质管理', 0, '', '', '岗位职责：\r\n1、负责网络及其设备的维护、管理、故障排除等日常工作，确保公司网络日常的正常运作；\r\n2、负责公司办公环境的软硬件和桌面系统的日常维护；\r\n3、维护和监控公司局域网、广域网，保证其正常运行，确保局域网、广域网在工作期间内安全稳定运行；\r\n4、安装和维护公司计算机、服务器系统软件和应用软件，同时为其他部门提供软硬件技术支持；\r\n5、解决排除各种软硬件故障，做好记录，定期制作系统运行报告；\r\n6、维护数据中心，对系统数据进行备份。\r\n\r\n岗位要求：\r\n1、通信、电子工程、自动化、计算机等相关专业，大专或以上学历，1年以上网格系统与IT系统维护工作经验；\r\n2、熟悉和掌握各种计算机软硬件，可独立进行安装、调试及故障排除；\r\n3、精通局域网的维护及网络安全知识，可熟练进行局域网的搭建和网络设备的基本维护和故障处理；\r\n4、熟练运用WINDOWS、server20002003等对服务器进行维护与管理；\r\n5、有良好的专业英语读写水平；工作主动性强，耐心细致，有责任心，具备团队合作精神。');
-INSERT INTO `qs_category_jobs` (`id`, `parentid`, `categoryname`, `category_order`, `stat_jobs`, `stat_resume`, `content`) VALUES
+INSERT INTO `qs_category_jobs` VALUES 
 (732, 79, 'IT技术支持/维护工程师', 0, '', '', '岗位职责：\r\n1、负责网络及其设备的维护、管理、故障排除等日常工作，确保公司网络日常的正常运作；\r\n2、负责公司办公环境的软硬件和桌面系统的日常维护；\r\n3、维护和监控公司局域网、广域网，保证其正常运行，确保局域网、广域网在工作期间内安全稳定运行；\r\n4、安装和维护公司计算机、服务器系统软件和应用软件，同时为其他部门提供软硬件技术支持；\r\n5、解决排除各种软硬件故障，做好记录，定期制作系统运行报告；\r\n6、维护数据中心，对系统数据进行备份。\r\n\r\n岗位要求：\r\n1、通信、电子工程、自动化、计算机等相关专业，大专或以上学历，1年以上网格系统与IT系统维护工作经验；\r\n2、熟悉和掌握各种计算机软硬件，可独立进行安装、调试及故障排除；\r\n3、精通局域网的维护及网络安全知识，可熟练进行局域网的搭建和网络设备的基本维护和故障处理；\r\n4、熟练运用WINDOWS、server20002003等对服务器进行维护与管理；\r\n5、有良好的专业英语读写水平；工作主动性强，耐心细致，有责任心，具备团队合作精神。'),
 (731, 79, 'IT技术支持/维护经理', 0, '', '', NULL),
 (730, 78, '其他IT管理', 0, '', '', NULL),
@@ -1107,7 +1239,7 @@ INSERT INTO `qs_category_jobs` (`id`, `parentid`, `categoryname`, `category_orde
 (582, 5, '市场拓展', 0, '', '', NULL),
 (581, 5, '市场策划经理/专员', 0, '', '', '岗位职责：\r\n1、负责商业情报的收集及信息平台的规划，研究市场的宏观方面的信息，包含市场动态、竞争品牌动向、产品与市场信息；\r\n2、参与制定年、季、月度市场推广方案并督导、执行；\r\n3、独立完成广告策划方案、品牌推广方案、方案设计报告的撰写；\r\n4、协调公司内部的运作实施，并完成品牌、产品推广的效果评估，提出改进方案。\r\n\r\n岗位要求：\r\n1、市场营销管理类或相关专业专科以上学历；\r\n2、具有_______行业的从业背景，有市场策划工作经验；\r\n3、优秀的文案功底，有较强的创造性思维能力、创意概念及良好的沟通能力；\r\n4、了解市场动态，依据市场变化适时策划制定整体促销方案，策划定期的促销活动；\r\n5、有一定的组织实施经验，监督、指导、落实促销活动的执行，有成功的策划案例者优先；\r\n6、有综合运用包括广告策划、软文宣传、公关活动等在内的各种营销方式进行市场宣传、品牌推广的能力；\r\n7、熟练操作办公软件。'),
 (580, 5, '市场营销', 0, '', '', NULL);
-INSERT INTO `qs_category_jobs` (`id`, `parentid`, `categoryname`, `category_order`, `stat_jobs`, `stat_resume`, `content`) VALUES
+INSERT INTO `qs_category_jobs` VALUES 
 (579, 5, '市场专员/助理', 0, '', '', '岗位职责：\r\n1、协助销售组织展开市场运作：与销售紧密配合，执行相关产品的市场营销活动计划，并做出相应的分析与反馈；\r\n2、在市场部经理的指导下，传达产品终端陈列、展示模式，并给予培训和指导；\r\n3、负责产品广告和促销计划的执行、跟踪和反馈及促销用品使用的执行和监督；\r\n4、了解、分析、反馈市场竞争情况，协调、处理所负责产品的突发事件；\r\n5、协助展开市场调查、区域市场自愿组织、政府事务等所有市场部职能事务的协调、执行和管理；\r\n6、监控主要市场活动的投入产出情况，准备并提供行业市场数据的处理及分析；\r\n7、协助区域负责人完成市场计划。\r\n\r\n岗位要求：\r\n1、大学本科以上学历，市场营销、计算机、管理类等相关专业优先；\r\n2、熟悉_______行业，一年以上相关工作经验，具有产品市场专员从业经验者优先；\r\n3、具备较强的中英文字表达能力，文档组织编写能力；\r\n4、熟练使用MS Office软件编写产品文档、产品演示文稿和进行数据分析；\r\n5、具有较强的规划、分析能力和创新意识，对产品和数据运营敏感 , 思维清晰而有条理；\r\n6、良好的沟通、协调能力，表达能力强，突出的执行能力；\r\n7、良好的职业素质和敬业精神。'),
 (578, 5, '市场经理/主管', 0, '', '', '岗位职责：\r\n1、负责进行公司市场战略规划，制定公司的市场总体工作计划，提出市场推广、品牌、公关、活动等方面的具体方向和实施方案；\r\n2、组织和监督实施年度市场推广计划；\r\n3、进行市场调研与分析，研究同行、业界发展状况，定期进行市场预测及情报分析，为公司决策提供依据；\r\n4、制定公司整体公关策略及危机公关的应对处理；\r\n5、建立完善市场部工作流程以及制度规范；\r\n6、制定市场推广费用预算及市场部全年整体财务预算制定、控制以及完善激励考核制度；\r\n7、管理市场团队，并对团队成员和相关部门进行市场培训和指导。\r\n\r\n岗位要求：\r\n1、市场营销管理类或相关专业本科以上学历；\r\n2、五年市场营销工作经验，在相关企业任职市场总监三年以上，具有市场策划行业的从业背景，对该领域发展有深刻理解；\r\n3、具备很强的策划能力，熟悉各类媒体运作方式，有大型市场活动推广成功经验；\r\n4、具有敏感的商业和市场意识，分析问题及解决问题能力强，具有优秀的资源整合能力和业务推进能力；\r\n5、具备良好的沟通合作技巧及丰富的团队建设经验。'),
 (577, 5, '市场总监', 0, '', '', NULL),
@@ -1341,13 +1473,97 @@ INSERT INTO `qs_category_jobs` (`id`, `parentid`, `categoryname`, `category_orde
 (1053, 246, '理货员', 0, '', '', '岗位职责：\r\n1、熟悉所在商品部门的商品名称、产地、厂家、规格、用途、性能、保质期限；\r\n2、遵守超市仓库管理和商品发货的有关规定，按作业流程进行该项工作；\r\n3、掌握商品标价的知识，正确标好价格；\r\n4、熟练掌握商品陈列的有关专业知识，并把它运用到实际工作中；\r\n5、搞好货架与责任区\r\n岗位要求：\r\n1、高中以上学历；\r\n2、有大型商场或超市工作经验者优先；\r\n3、品貌端正，热爱零售行业，吃苦耐劳，责任心强，身体健康，有很强的敬业精神和良好的心理素质；\r\n4、具备简单的计算机操作技巧，了解商品分类和存储知识；\r\n5、能够胜任繁重的体力工作，能适应中夜班调休安排。'),
 (1054, 246, '其他物流/交通/仓储', 0, '', '', NULL);
 
-INSERT INTO `qs_color` (`id`, `value`) VALUES
+INSERT INTO `qs_category_major` VALUES 
+(1, 0, '工科类', 0),
+(2, 0, '理科类', 0),
+(3, 0, '农学类', 0),
+(4, 0, '医学类', 0),
+(5, 0, '管理学', 0),
+(6, 0, '法学类', 0),
+(7, 0, '文学类', 0),
+(8, 0, '其他类', 0),
+(9, 1, '电气信息类', 0),
+(12, 1, '材料类', 0),
+(10, 1, '电气信息类', 0),
+(11, 1, '地矿类', 0),
+(13, 1, '机械类', 0),
+(14, 1, '仪器仪表类', 0),
+(15, 1, '能源动力类', 0),
+(16, 1, '土建类', 0),
+(17, 1, '水利类', 0),
+(18, 1, '测绘类', 0),
+(19, 1, '环境与安全类', 0),
+(20, 1, '化工与制药类', 0),
+(21, 1, '交通运输类', 0),
+(22, 1, '海洋工程类', 0),
+(23, 1, '轻工纺织食品类', 0),
+(24, 1, '航空航天类', 0),
+(25, 1, '武器类', 0),
+(26, 1, '工程力学类', 0),
+(27, 1, '生物工程类', 0),
+(28, 1, '农业工程类', 0),
+(29, 1, '林业工程类', 0),
+(30, 1, '公安技术类', 0),
+(31, 2, '数学类', 0),
+(32, 2, '物理学类', 0),
+(33, 2, '化学类', 0),
+(34, 2, '生物科学类', 0),
+(35, 2, '天文学类', 0),
+(36, 2, '地质学类', 0),
+(37, 2, '地理科学类', 0),
+(38, 2, '地球物理学类', 0),
+(39, 2, '大气科学类', 0),
+(40, 2, '海洋科学类', 0),
+(41, 2, '力学类', 0),
+(42, 2, '电子信息科学类', 0),
+(43, 2, '材料科学类', 0),
+(44, 2, '环境科学类', 0),
+(45, 2, '心理学类', 0),
+(46, 2, '统计学类', 0),
+(47, 3, '植物生产类', 0),
+(48, 3, '草业科学类', 0),
+(49, 3, '森林资源类', 0),
+(50, 3, '环境生态类', 0),
+(51, 3, '动物生产类', 0),
+(52, 3, '动物医学类', 0),
+(53, 3, '水产类', 0),
+(54, 4, '基础医学类', 0),
+(55, 4, '预防医学类', 0),
+(56, 4, '临床医学与医学技术类', 0),
+(57, 4, '口腔医学类', 0),
+(58, 4, '中医学类', 0),
+(59, 4, '法医学类', 0),
+(60, 4, '护理学类', 0),
+(61, 4, '药学类', 0),
+(62, 5, '管理科学与工程类', 0),
+(63, 5, '工商管理类', 0),
+(64, 5, '公共管理类', 0),
+(65, 5, '农业经济管理类', 0),
+(66, 5, '图书档案学类', 0),
+(67, 6, '法学类', 0),
+(68, 6, '马克思主义理论类', 0),
+(69, 6, '社会学类', 0),
+(70, 6, '政治学类', 0),
+(71, 6, '公安学类', 0),
+(72, 7, '中国语言文学类', 0),
+(73, 7, '外国语言文学类', 0),
+(74, 7, '新闻传播学类', 0),
+(75, 7, '艺术类', 0),
+(76, 8, '哲学类', 0),
+(77, 8, '经济学类', 0),
+(78, 8, '教育学类', 0),
+(79, 8, '体育学类', 0),
+(80, 8, '历史学类', 0),
+(81, 8, '未划分专业', 0),
+(82, 8, '其他类', 0);
+
+INSERT INTO `qs_color` VALUES 
 (NULL, '#bc123a'),
 (NULL, '#a212bc'),
 (NULL, '#12bc86'),
 (NULL, '#bc7a12');
 
-INSERT INTO `qs_config` (`id`, `name`, `value`) VALUES
+INSERT INTO `qs_config` VALUES 
 (NULL, 'site_name', '骑士人才系统'),
 (NULL, 'site_domain', ''),
 (NULL, 'site_dir', '/'),
@@ -1356,7 +1572,7 @@ INSERT INTO `qs_config` (`id`, `name`, `value`) VALUES
 (NULL, 'top_tel', '000-00000000'),
 (NULL, 'bootom_tel', '000-00000000'),
 (NULL, 'address', '00省00市00路00号0大厦00楼'),
-(NULL, 'bottom_other', 'Copyright @ 2010 74cms.com All Right Reserved '),
+(NULL, 'bottom_other', 'Copyright @ 2015 74cms.com All Right Reserved '),
 (NULL, 'icp', 'icp000000000'),
 (NULL, 'web_logo', 'logo.gif'),
 (NULL, 'isclose', '0'),
@@ -1381,14 +1597,12 @@ INSERT INTO `qs_config` (`id`, `name`, `value`) VALUES
 (NULL, 'audit_unexaminedcom_addnews', '2'),
 (NULL, 'audit_unexaminedcom_editnews', '-1'),
 (NULL, 'company_add_days', '15'),
-(NULL, 'company_add_days_min', '10'),
 (NULL, 'company_repeat', '1'),
 (NULL, 'jobs_list_max', '1000'),
 (NULL, 'certificate_max_size', '1024'),
 (NULL, 'updir_images', 'images'),
 (NULL, 'updir_thumb', 'images/thumb'),
 (NULL, 'updir_certificate', 'certificate'),
-(NULL, 'updir_train_certificate', 'train_certificate'),
 (NULL, 'payment_min', '1'),
 (NULL, 'payment_rate', '1'),
 (NULL, 'resume_max', '3'),
@@ -1410,12 +1624,12 @@ INSERT INTO `qs_config` (`id`, `name`, `value`) VALUES
 (NULL, 'map_zoom', '14'),
 (NULL, 'map_center_x', '112.559468'),
 (NULL, 'map_center_y', '37.845738'),
+(NULL, 'map_ak', 'np21m1qLWsuF4gGwzSwYMpC4'),
 (NULL, 'app_link', '1'),
 (NULL, 'filter', ''),
 (NULL, 'filter_tips', '请勿在信息中包敏感词语。'),
 (NULL, 'filter_ip', ''),
 (NULL, 'filter_ip_tips', '您的IP已经被锁定禁止访问，请联系网站管理员。'),
-(NULL, 'subsite', '1'),
 (NULL, 'meal_min_remind', '0'),
 (NULL, 'reg_service', '1'),
 (NULL, 'operation_mode', '1'),
@@ -1440,16 +1654,14 @@ INSERT INTO `qs_config` (`id`, `name`, `value`) VALUES
 (NULL, 'contact_img_com', '1'),
 (NULL, 'contact_img_job', '1'),
 (NULL, 'contact_img_resume', '1'),
-(NULL, 'open_comment', '1'),
-(NULL, 'open_commentaudit', '0'),
-(NULL, 'qq_apiopen', '0'),
+(NULL, 'qq_apiopen', '1'),
 (NULL, 'qq_logintype', '1'),
 (NULL, 'qq_appid', ''),
 (NULL, 'qq_appkey', ''),
-(NULL, 'sina_apiopen', '0'),
+(NULL, 'sina_apiopen', '1'),
 (NULL, 'sina_appkey', ''),
 (NULL, 'sina_appsecret', ''),
-(NULL, 'taobao_apiopen', '0'),
+(NULL, 'taobao_apiopen', '1'),
 (NULL, 'taobao_appkey', ''),
 (NULL, 'taobao_appsecret', ''),
 (NULL, 'com_pointsmode_refresh_space', '0'),
@@ -1466,63 +1678,74 @@ INSERT INTO `qs_config` (`id`, `name`, `value`) VALUES
 (NULL, 'weixin_default_pic', 'weixin_default_pic.png'),
 (NULL, 'weixin_apptoken', ''),
 (NULL, 'weixin_appid', ''),
-(NULL, 'wap_domain', '');
+(NULL, 'wap_domain', ''),
+(NULL, 'access_token', ''),
+(NULL, 'expires_addtime', ''),
+(NULL, 'weixin_scan_bind', '0'),
+(NULL, 'weixin_mpname', ''),
+(NULL, 'weixin_mpnumber', ''),
+(NULL, 'weixin_scan_login', '0'),
+(NULL, 'weixin_encoding_aes_key', ''),
+(NULL, 'showresumecontact_wap', '2'),
+(NULL, 'reset_service', '1'),
+(NULL, 'check_reg_email', '0'),
+(NULL, 'showjobcontact_wap', '1');
 
-INSERT INTO `qs_crons` (`cronid`, `available`, `admin_set`, `name`, `filename`, `lastrun`, `nextrun`, `weekday`, `day`, `hour`, `minute`) VALUES
+INSERT INTO `qs_crons`  VALUES
 (NULL, 1, 1, '每周清除缓存文件', 'clear_all_cache.php', 0, 0, 5, -1, 1, '0'),
 (NULL, 1, 1, '限时推广清理', 'clear_promotion.php', 0, 0, -1, -1, 0, '0'),
-(NULL, 1, 1, '每日数据统计', 'stat_category.php', 0, 0, -1, -1, 0, '0'),
+(NULL, 0, 1, '每日数据统计', 'stat_category.php', 0, 0, -1, -1, 0, '0'),
 (NULL, 1, 1, '每月清除会员沉余日志', 'clear_members_log.php', 0, 0, -1, 1, 0, '0'),
 (NULL, 1, 1, '每小时清除过期职位', 'clear_expired_jobs.php', 0, 0, -1, -1, -1, '1'),
 (NULL, 1, 1, '每天清除过期微招聘', 'clear_expired_simple.php', 0, 0, -1, -1, 3, '0'),
-(NULL, 0, 1, '每日生成百度开放平台数据', 'make_baiduxml.php', 0, 0, -1, -1, 3, ''),
-(NULL, 1, 1, '委托简历自动申请职位', 'auto_apply_jobs.php', 0, 0, -1, -1, 0, '1');
+(NULL, 0, 1, '每日生成百度开放平台数据', 'make_baiduxml.php', 0, 0, -1, -1, 3, '0'),
+(NULL, 1, 1, '每天重置过期套餐会员的套餐为指定套餐', 'clear_members_setmeal.php', 0, 0, -1, -1, 0, '1');
 
-INSERT INTO `qs_explain` (`id`, `subsite_id`, `type_id`, `title`, `content`, `tit_color`, `tit_b`, `is_display`, `is_url`, `seo_keywords`, `seo_description`, `click`, `addtime`, `show_order`) VALUES
-(1, 0, 1, '联系我们', '', '', 0, 1, 'http://', '', '', 1, 1264332774, 0),
-(2, 0, 1, '网站简介', '', '', 0, 1, 'http://', '', '', 1, 1266987290, 0),
-(4, 0, 1, '合作共赢', '', '', 0, 1, '', '', '', 1, 1407755536, 0),
-(5, 0, 1, '网站声明', '', '', 0, 1, '', '', '', 1, 1407755601, 0),
-(6, 0, 1, '职场指南', '', '', 0, 1, '', '', '', 1, 1407755714, 0),
-(7, 0, 1, '收费标准', '', '', 0, 1, '', '', '', 1, 1407755891, 0);
+INSERT INTO `qs_explain` VALUES 
+(1, 1, '联系我们', '', '', 0, 1, 'http://', '', '', 1, 1264332774, 0),
+(2, 1, '网站简介', '', '', 0, 1, 'http://', '', '', 1, 1266987290, 0),
+(4, 1, '合作共赢', '', '', 0, 1, '', '', '', 1, 1407755536, 0),
+(5, 1, '网站声明', '', '', 0, 1, '', '', '', 1, 1407755601, 0),
+(6, 1, '职场指南', '', '', 0, 1, '', '', '', 1, 1407755714, 0),
+(7, 1, '收费标准', '', '', 0, 1, '', '', '', 1, 1407755891, 0);
 
-INSERT INTO `qs_explain_category` (`id`, `categoryname`, `category_order`, `admin_set`) VALUES
+INSERT INTO `qs_explain_category` VALUES 
 (1, '关于我们', 0, 1);
 
-INSERT INTO `qs_help_category` (`id`, `parentid`, `categoryname`, `category_order`) VALUES
-(NULL, 0, '账户管理', 3),
-(NULL, 0, '我是企业', 2),
-(NULL, 0, '我是个人', 1),
-(NULL, 1, '注册与登录', 0),
-(NULL, 1, '密码找回与重置', 0),
-(NULL, 1, '账户状态', 0),
-(NULL, 1, '资料与头像', 0),
-(NULL, 1, '手机与邮箱认证', 0),
-(NULL, 2, '职位发布与管理', 0),
-(NULL, 2, '职位推广', 0),
-(NULL, 2, '招聘管理', 0),
-(NULL, 2, '招聘会', 0),
-(NULL, 2, '充值与消费', 0),
-(NULL, 2, '使用礼品卡', 0),
-(NULL, 2, '资料与地图', 0),
-(NULL, 3, '简历创建与管理', 0),
-(NULL, 3, '求职管理', 0);
+INSERT INTO `qs_help_category` VALUES 
+(1, 0, '账户管理', 3),
+(2, 0, '我是企业', 2),
+(3, 0, '我是个人', 1),
+(4, 1, '注册与登录', 0),
+(5, 1, '密码找回与重置', 0),
+(6, 1, '账户状态', 0),
+(7, 1, '资料与头像', 0),
+(8, 1, '手机与邮箱认证', 0),
+(9, 2, '职位发布与管理', 0),
+(10, 2, '职位推广', 0),
+(11, 2, '招聘管理', 0),
+(12, 2, '招聘会', 0),
+(13, 2, '充值与消费', 0),
+(14, 2, '使用礼品卡', 0),
+(15, 2, '资料与地图', 0),
+(16, 3, '简历创建与管理', 0),
+(17, 3, '求职管理', 0);
 
-INSERT INTO `qs_hrtools_category` (`c_id`, `c_name`, `c_order`, `c_adminset`) VALUES
-(NULL, '招聘/面试', 0, 1),
-(NULL, '人事档案', 0, 0),
-(NULL, '员工管理', 0, 0),
-(NULL, '合同/试用', 0, 0),
-(NULL, '薪酬制度', 0, 0),
-(NULL, '加班/考勤', 0, 0),
-(NULL, '出差', 0, 0),
-(NULL, '员工培训', 0, 0),
-(NULL, '绩效考核', 0, 0),
-(NULL, '辞退/移交', 0, 0),
-(NULL, '其它', 0, 0);
+INSERT INTO `qs_hrtools_category` VALUES 
+(1, '招聘/面试', 0, 1),
+(2, '人事档案', 0, 0),
+(3, '员工管理', 0, 0),
+(4, '合同/试用', 0, 0),
+(5, '薪酬制度', 0, 0),
+(6, '加班/考勤', 0, 0),
+(7, '出差', 0, 0),
+(8, '员工培训', 0, 0),
+(9, '绩效考核', 0, 0),
+(10, '辞退/移交', 0, 0),
+(11, '其它', 0, 0);
 
-INSERT INTO `qs_link` (`link_id`, `subsite_id`, `type_id`, `display`, `alias`, `link_name`, `link_url`, `link_logo`, `show_order`, `Notes`, `app_notes`) VALUES
-(1, 0, 1, 1, 'QS_index', '骑士cms官方站', 'http://www.74cms.com', '', 100, '', '');
+INSERT INTO `qs_link` (`link_id`, `type_id`, `display`, `alias`, `link_name`, `link_url`, `link_logo`, `show_order`, `Notes`, `app_notes`) VALUES
+(1, 1, 1, 'QS_index', '骑士cms官方站', 'http://www.74cms.com', '', 100, '', '');
 
 INSERT INTO `qs_link_category` (`id`, `categoryname`, `c_sys`, `c_alias`) VALUES
 (1, '网站首页', 1, 'QS_index'),
@@ -1547,6 +1770,7 @@ INSERT INTO `qs_locoyspider` (`id`, `name`, `value`) VALUES
 (NULL, 'jobs_nature', '62'),
 (NULL, 'jobs_days_min', '20'),
 (NULL, 'jobs_days_max', '60'),
+(NULL, 'jobs_topclass', ''),
 (NULL, 'jobs_category', '1'),
 (NULL, 'jobs_subclass', '2'),
 (NULL, 'jobs_district', '134'),
@@ -1560,39 +1784,9 @@ INSERT INTO `qs_locoyspider` (`id`, `name`, `value`) VALUES
 (NULL, 'reg_usname', 'sp_'),
 (NULL, 'reg_password_tpye', '1'),
 (NULL, 'reg_password', '123456'),
-(NULL, 'reg_email', '@126.com'),
-(NULL, 'jobs_topclass', '');
+(NULL, 'reg_email', '@126.com');
 
-INSERT INTO `qs_mail_templates` ( `id` , `name` , `value` ) VALUES 
-(NULL, 'set_reg_title', '恭喜你成为{sitename}的会员'), 
-(NULL, 'set_applyjobs_title', '{personalfullname}申请了您发布的职位:{jobsname}'),
-(NULL, 'set_invite_title', '{companyname}邀请你参加面试'), 
-(NULL, 'set_order_title', '充值订单添加成功'), 
-(NULL, 'set_payment_title', '充值成功，系统已为您开通服务！'),
-(NULL, 'set_editpwd_title', '密码修改成功！'),
-(NULL, 'set_jobsallow_title', '恭喜，您发布的职位({jobsname})已经通过审核！'), 
-(NULL, 'set_jobsnotallow_title', '很抱歉，你发布的职位({jobsname})未通过审核！'), 
-(NULL, 'set_licenseallow_title', '恭喜，你的企业信息已认证通过！'), 
-(NULL, 'set_licensenotallow_title', '很抱歉，你的企业信息未认证通过！'), 
-(NULL, 'set_addmap_title', '恭喜，您已成功开通企业电子地图！'), 
-(NULL, 'set_resumeallow_title', '恭喜，您的简历已通过审核！'), 
-(NULL, 'set_resumenotallow_title', '很抱歉，你的简历未通过审核！'),
-(NULL, 'set_reg', '恭喜你成为<strong><a href="{sitedomain}" target="_blank">{sitename}</a></strong>的会员<br />\r\n你的用户名是：<strong>{username}</strong><br />\r\n你的密码是：<strong>{password}</strong><br />\r\n此邮件由系统自动发出，请勿回复！<br />'),
-(NULL, 'set_applyjobs', '亲爱的会员：<br />\r\n<strong>{personalfullname}</strong> 申请了您发布的职位:<strong>{jobsname}</strong><br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
-(NULL, 'set_invite', '亲爱的会员：<br />\r\n<strong>{companyname}</strong>  对你发起了面试邀请<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
-(NULL, 'set_order', '亲爱的会员：<br />\r\n你的订单已添加成功，请及时付款，订单号：{oid}，付款方式为：{paymenttpye}，应付金额为：{amount} 元。<br />\r\n付款后系统将为您自动开通相关服务。<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
-(NULL, 'set_payment', '亲爱的会员：<br />\r\n你已经付款成功，系统已为您开通服务。<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
-(NULL, 'set_editpwd', '亲爱的会员：<br />\r\n你已经成功修改密码，新密码为：{newpassword}。<br />\r\n此信息由系统自动发送，请勿回复！'),
-(NULL, 'set_jobsallow', '亲爱的会员：<br />\r\n恭喜，你发布的职位({jobsname})已经通过审核！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
-(NULL, 'set_jobsnotallow', '亲爱的会员：<br />\r\n很抱歉，你发布的职位({jobsname})未通过审核，请修改后再次提交审核！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
-(NULL, 'set_licenseallow', '亲爱的会员：<br />\r\n恭喜，您的企业资料已认证通过！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
-(NULL, 'set_licensenotallow', '亲爱的会员：<br />\r\n很抱歉，你的企业认证未通过，请重新上传营业执照！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
-(NULL, 'set_addmap', '亲爱的会员：<br />\r\n恭喜，您已成功开通企业电子地图！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
-(NULL, 'set_resumeallow', '亲爱的会员：<br />\r\n恭喜，您的简历已通过审核！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
-(NULL, 'set_resumenotallow', '亲爱的会员：<br />\r\n很抱歉，您的简历未通过审核，请修改后再次提交审核！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！');
-
- 
-INSERT INTO `qs_mailconfig` (`id`, `name`, `value`) VALUES 
+INSERT INTO `qs_mailconfig` (`id`, `name`, `value`) VALUES
 (NULL, 'method', '1'),
 (NULL, 'smtpservers', ''),
 (NULL, 'smtpusername', ''),
@@ -1613,97 +1807,116 @@ INSERT INTO `qs_mailconfig` (`id`, `name`, `value`) VALUES
 (NULL, 'set_resumeallow', '0'),
 (NULL, 'set_resumenotallow', '0');
 
-INSERT INTO `qs_members_points_rule` (`id`,`utype`, `title`, `name`, `operation`, `value`) VALUES 
-(null, '1','刷新职位', 'jobs_refresh', '2', 0),
-(null,'1', '发布职位', 'jobs_add', '2', 15),
-(null, '1','职位有效期内每天', 'jobs_daily', '2', 1),
-(null,'1', '下载普通简历', 'resume_download', '2', 1),
-(null,'1', '下载高级人才简历', 'resume_download_advanced', '2', 2),
-(null,'1', '发起普通人才面试邀请', 'interview_invite', '2', 1),
-(null,'1', '发起高级人才面试邀请', 'interview_invite_advanced', '2', 2),
-(null,'1', '修改招聘信息', 'jobs_edit', '2', 3),
-(null, '1','永久开通电子地图', 'company_map', '2', 10),
-(null,'1', '上传营业执照并认证通过', 'company_auth', '1', 15),
-(null, '1','新注册会员赠送', 'reg_points', '1', 60),
-(NULL,'1', '会员每天第一次登录', 'userlogin', '1', '1'),
-(NULL,'1', '会员邮箱认证通过', 'verifyemail','1', '3'), 
-(NULL,'1', '会员手机认证通过', 'verifymobile', '1', '3');
+INSERT INTO `qs_mail_templates` (`id`, `name`, `value`) VALUES
+(NULL, 'set_reg', '恭喜你成为<strong><a href="{sitedomain}" target="_blank">{sitename}</a></strong>的{utype}会员<br />\r\n你的用户名是：<strong>{username}</strong><br />\r\n你的密码是：<strong>{password}</strong><br />\r\n此邮件由系统自动发出，请勿回复！<br />'),
+(NULL, 'set_applyjobs', '应聘职位{jobsname}，请通过简历中的电话或邮件联系我（请勿直接回复邮件）。'),
+(NULL, 'set_invite', '亲爱的会员：<br />\r\n<strong>{companyname}</strong>  对你发起了面试邀请<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
+(NULL, 'set_order', '亲爱的会员：<br />\r\n你的订单已添加成功，请及时付款，订单号：{oid}，付款方式为：{paymenttpye}，应付金额为：{amount} 元。<br />\r\n付款后系统将为您自动开通相关服务。<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
+(NULL, 'set_payment', '亲爱的会员：<br />\r\n你已经付款成功，系统已为您开通服务。<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
+(NULL, 'set_editpwd', '亲爱的会员：<br />\r\n你已经成功修改密码，新密码为：{newpassword}。<br />\r\n此信息由系统自动发送，请勿回复！'),
+(NULL, 'set_jobsallow', '亲爱的会员：<br />\r\n恭喜，你发布的职位({jobsname})已经通过审核！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
+(NULL, 'set_jobsnotallow', '亲爱的会员：<br />\r\n很抱歉，你发布的职位({jobsname})未通过审核，请修改后再次提交审核！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
+(NULL, 'set_licenseallow', '亲爱的会员：<br />\r\n恭喜，您的企业资料已认证通过！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
+(NULL, 'set_licensenotallow', '亲爱的会员：<br />\r\n很抱歉，你的企业认证未通过，请重新上传营业执照！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
+(NULL, 'set_addmap', '亲爱的会员：<br />\r\n恭喜，您已成功开通企业电子地图！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
+(NULL, 'set_resumeallow', '亲爱的会员：<br />\r\n恭喜，您的简历已通过审核！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！'),
+(NULL, 'set_resumenotallow', '亲爱的会员：<br />\r\n很抱歉，您的简历未通过审核，请修改后再次提交审核！<br />\r\n请登录<a href="{sitedomain}" target="_blank">会员中心</a>详细查看。<br />\r\n此信息由系统自动发送，请勿回复！');
 
-INSERT INTO `qs_navigation` (`id`, `alias`, `urltype`, `display`, `title`, `color`, `pagealias`, `list_id`, `tag`, `url`, `target`, `navigationorder`) VALUES 
-(NULL, 'QS_top', 0, 1, '首  页', '', 'QS_index', '', 'homepage', '', '_self', 0),
-(NULL, 'QS_top', 0, 1, '招聘信息', '', 'QS_jobs', '', 'jobs', '', '_blank', 0),
-(NULL, 'QS_top', 0, 1, '微商圈', '', 'QS_simplelist', '', 'simple', '', '_self', 0),
-(NULL, 'QS_top', 0, 1, '求职信息', '', 'QS_resume', '', 'resume', '', '_blank', 0),
-(NULL, 'QS_top', 0, 1, 'HR工具箱', '', 'QS_hrtoolsindex', '', 'hrtools', '', '_self', 0),
-(NULL, 'QS_top', 0, 1, '黄页', '', 'QS_companylist', '', 'company', '', '_self', 0),
-(NULL, 'QS_top', 0, 1, '新闻资讯', '', 'QS_news', '', 'news', '', '_self', 0),
-(NULL, 'QS_top', 0, 1, '会员中心', '', 'QS_login', '', 'user', '', '_self', 0);
+INSERT INTO `qs_members_points_rule` VALUES 
+(NULL, 1, '刷新职位', 'jobs_refresh', 2, 0),
+(NULL, 1, '发布职位', 'jobs_add', 2, 15),
+(NULL, 1, '完善基本资料', 'company_profile_points', 1, 20),
+(NULL, 1, '下载普通简历', 'resume_download', 2, 1),
+(NULL, 1, '下载高级人才简历', 'resume_download_advanced', 2, 2),
+(NULL, 1, '发起普通人才面试邀请', 'interview_invite', 2, 1),
+(NULL, 1, '发起高级人才面试邀请', 'interview_invite_advanced', 2, 2),
+(NULL, 1, '修改招聘信息', 'jobs_edit', 2, 3),
+(NULL, 1, '永久开通电子地图', 'company_map', 1, 10),
+(NULL, 1, '上传营业执照并认证通过', 'company_auth', 1, 15),
+(NULL, 1, '新注册会员赠送', 'reg_points', 1, 100),
+(NULL, 1, '会员每天第一次登录', 'userlogin', 1, 1),
+(NULL, 1, '会员邮箱认证通过', 'verifyemail', 1, 3),
+(NULL, 1, '会员手机认证通过', 'verifymobile', 1, 3),
+(NULL, 1, '上传logo', 'company_logo_points', 1, 10),
+(NULL, 1, '微信认证', 'company_wx_points', 1, 2),
+(NULL, 1, '举报简历', 'company_report_resume_points', 1, 20);
 
-insert  into `qs_navigation_category`(`id`,`alias`,`categoryname`,`admin_set`) values 
-(null,'QS_top','顶部导航',1);
+INSERT INTO `qs_navigation` VALUES 
+(NUll, 'QS_top', 0, 1, '首  页', '', 'QS_index', '', 'homepage', '', '_self', 0),
+(NUll, 'QS_top', 0, 1, '招聘信息', '', 'QS_jobs', '', 'jobs', '', '_blank', 0),
+(NUll, 'QS_top', 0, 1, '微商圈', '', 'QS_simplelist', '', 'simple', '', '_self', 0),
+(NUll, 'QS_top', 0, 1, '求职信息', '', 'QS_resume', '', 'resume', '', '_blank', 0),
+(NUll, 'QS_top', 0, 1, 'HR工具箱', '', 'QS_hrtoolsindex', '', 'hrtools', '', '_self', 0),
+(NUll, 'QS_top', 0, 1, '名企招聘', '', 'QS_companylist', '', 'company', '', '_self', 0),
+(NUll, 'QS_top', 0, 1, '新闻资讯', '', 'QS_news', '', 'news', '', '_self', 0),
+(NUll, 'QS_top', 0, 1, '会员中心', '', 'QS_login', '', 'user', '', '_self', 0);
 
-insert  into `qs_notice_category`(`id`,`categoryname`,`sort`,`admin_set`) values 
-(1,'首页公告',0,1);
+INSERT INTO `qs_navigation_category` VALUES 
+(NULL, 'QS_top', '顶部导航', 1);
 
-insert  into `qs_page`(`id`,`systemclass`,`pagetpye`,`alias`,`pname`,`file`,`tpl`,`rewrite`,`url`,`caching`,`tag`,`title`,`description`,`keywords`) values 
-(NULL,1,1,'QS_index','网站首页','index.php','index.htm','index.htm',0,0,'homepage','骑士PHP高端人才系统(www.74cms.com)','',''),
-(NULL,1,1,'QS_jobs','招聘首页','jobs/','jobs.htm','jobs/index.htm',0,0,'jobs','招聘首页','',''),
-(NULL,1,2,'QS_jobslist','招聘列表','jobs/jobs-list.php','jobs-list.htm','jobs/jobs-list-($jobcategory)-($citycategory)-($settr)-($trade)-($wage)-($nature)-($education)-($experience)-($sort)-($key)-($page).htm',0,0,'jobs','','',''),
-(NULL,1,3,'QS_jobsshow','招聘详细页','jobs/jobs-show.php','jobs-show.htm','jobs/jobs-show-($id).htm',0,0,'jobs','','',''),
-(NULL,1,2,'QS_street','道路搜索','jobs/street-search.php','street-search.htm','jobs/street-search-($streetid)-($sort)-($inforow)-($page).htm',0,0,'street','','',''),
-(NULL,1,2,'QS_companylist','企业列表','company/index.php','company-list.htm','company/company-list-($trade)-($page).htm',0,0,'company','','',''),
-(NULL,1,3,'QS_companyshow','企业简介页','company/company-show.php','company-show.htm','company/company-show-($id).htm',0,0,'jobs','','',''),
-(NULL,1,2,'QS_companyjobs','企业职位列表页','company/company-jobs.php','company-jobs-list.htm','company/company-jobs-($id)-($page).htm',0,0,'jobs','','',''),
-(NULL,1,1,'QS_login','会员登录','user/login.php','user/login.htm','',0,0,'user','会员登录','',''),
-(NULL,1,1,'QS_resume','简历首页','resume/','resume.htm','resume/index.htm',0,0,'resume','人才信息','',''),
-(NULL,1,2,'QS_resumelist','简历列表','resume/resume-list.php','resume-list.htm','resume/resume-list-($jobcategory)-($citycategory)-($experience)-($education)-($photo)-($talent)-($trade)-($sort)-($key)-($page).htm',0,0,'resume','','',''),
-(NULL,1,2,'QS_resumetag','简历标签搜索','resume/resume-search.php','resumetag-search.htm','resume/resumetag-search-($category)-($subclass)-($district)-($sdistrict)-($resumetag)-($inforow)-($page).htm',0,0,'resumetag','','',''),
-(NULL,1,3,'QS_resumeshow','简历详细页','resume/resume-show.php','resume-show.htm','resume/resume-show-($id).htm',0,0,'resume','','',''),
-(NULL,1,2,'QS_hrtoolslist','HR工具箱列表','hrtools/hrtools-list.php','hrtools-list.htm','hrtools/hrtools-list-($id).htm',0,0,'hrtools','HR工具箱','',''),
-(NULL,1,1,'QS_news','资讯首页','news/','news.htm','news/index.htm',0,0,'news','新闻资讯','',''),
-(NULL,1,2,'QS_newslist','资讯列表','news/news-list.php','news-list.htm','news/news-list-($id)-($page).htm',0,0,'news','','',''),
-(NULL,1,2,'QS_newssearch','资讯搜索页','news/news-search.php','news-search.htm','news/news-search-($key)-($page).htm',0,0,'news','','',''),
-(NULL,1,3,'QS_newsshow','资讯详细页','news/news-show.php','news-show.htm','news/news-show-($id).htm',0,0,'news','','',''),
-(NULL,1,3,'QS_explainshow','说明页详细页','explain/explain-show.php','explain-show.htm','explain/explain-show-($id).htm',0,0,'explain','','',''),
-(NULL,1,2,'QS_noticelist','公告列表','notice/notice-list.php','notice-list.htm','notice/notice-list-($id)-($page).htm',0,0,'notice','','',''),
-(NULL,1,3,'QS_noticeshow','公告详细页','notice/notice-show.php','notice-show.htm','notice/notice-show-($id).htm',0,0,'notice','','',''),
-(NULL,1,2,'QS_simplelist','微招聘','simple/simple-list.php','simple/simple-list.htm','simple/simple-list-($key)-($keytype)-($citycategory)-($page).htm',0,0,'simple','微商圈','',''),
-(NULL,1,2,'QS_jobtag','职位标签搜索','jobs/jobtag-search.php','jobtag-search.htm','jobs/jobtag-search-($category)-($subclass)-($district)-($sdistrict)-($jobtag)-($inforow)-($page).htm',0,0,'jobtag','','',''),
-(NULL,1,1,'QS_help','帮助首页','help/','help/index.htm','help/',0,0,'help','帮助','',''),
-(NULL,1,2,'QS_helplist','帮助列表','help/help-list.php','help/help-list.htm','help/help-list-($id)-($page).htm',0,0,'help','','',''),
-(NULL,1,3,'QS_helpshow','帮助详细页','help/help-show.php','help/help-show.htm','help/help-show-($id).htm',0,0,'help','','',''),
-(NULL,1,2,'QS_helpsearch','帮助搜索页','help/help-search.php','help/help-search.htm','help/help-search-($key)-($page).htm',0,0,'help','','',''),
-(NULL,1,1,'QS_hrtoolsindex','HR工具箱首页','hrtools/index.php','hrtools-index.htm','hrtools/index.htm',0,0,'hrtools','HR工具箱','',''),
-(NULL,1,1,'QS_suggest','意见/建议','suggest/index.php','suggest.htm','suggest/index.htm',0,0,'suggest','意见/建议','','');
+INSERT INTO `qs_notice_category` VALUES 
+(1, '首页公告', 0, 1);
 
-INSERT INTO `qs_payment` (`id`, `listorder`, `typename`, `byname`, `p_introduction`, `notes`, `partnerid`, `ytauthkey`, `fee`, `parameter1`, `parameter2`, `parameter3`, `p_install`) VALUES
+INSERT INTO `qs_page` VALUES 
+(NULL, 1, 1, 'QS_index', '网站首页', 'index.php', 'index.htm', 'index.htm', 0, 0, 'homepage', '骑士PHP高端人才系统(www.74cms.com)', '', ''),
+(NULL, 1, 1, 'QS_jobs', '招聘首页', 'jobs/', 'jobs.htm', 'jobs/index.htm', 0, 0, 'jobs', '招聘首页', '', ''),
+(NULL, 1, 2, 'QS_jobslist', '招聘列表', 'jobs/jobs-list.php', 'jobs-list.htm', 'jobs/jobs-list-($jobcategory)-($citycategory)-($settr)-($trade)-($wage)-($nature)-($education)-($experience)-($sort)-($key)-($page)-($jobtag).htm', 0, 0, 'jobs', '', '', ''),
+(NULL, 1, 3, 'QS_jobsshow', '招聘详细页', 'jobs/jobs-show.php', 'jobs-show.htm', 'jobs/jobs-show-($id).htm', 0, 0, 'jobs', '', '', ''),
+(NULL, 1, 2, 'QS_street', '道路搜索', 'jobs/street-search.php', 'street-search.htm', 'jobs/street-search-($streetid)-($sort)-($page).htm', 0, 0, 'street', '', '', ''),
+(NULL, 1, 2, 'QS_companylist', '企业列表', 'company/index.php', 'company-list.htm', 'company/company-list-($key)-($trade)-($citycategory)-($nature)-($scale)-($page).htm', 0, 0, 'company', '', '', ''),
+(NULL, 1, 3, 'QS_companyshow', '企业简介页', 'company/company-show.php', 'company-show.htm', 'company/company-show-($id).htm', 0, 0, 'jobs', '', '', ''),
+(NULL, 1, 2, 'QS_companyjobs', '企业职位列表页', 'company/company-jobs.php', 'company-jobs-list.htm', 'company/company-jobs-($id)-($page).htm', 0, 0, 'jobs', '', '', ''),
+(NULL, 1, 2, 'QS_companynews', '企业新闻列表页', 'company/company-news.php', 'company-news.htm', 'company/company-news-($id)-($page).htm', 0, 0, 'jobs', '', '', ''),
+(NULL, 1, 3, 'QS_companynewsshow', '企业新闻详细页', 'company/company-news-show.php', 'company-news-show.htm', 'company/company-news-show-($id).htm', 0, 0, 'jobs', '', '', ''),
+(NULL, 1, 1, 'QS_login', '会员登录', 'user/login.php', 'user/login.htm', '', 0, 0, 'user', '会员登录', '', ''),
+(NULL, 1, 1, 'QS_resume', '简历首页', 'resume/', 'resume.htm', 'resume/index.htm', 0, 0, 'resume', '人才信息', '', ''),
+(NULL, 1, 2, 'QS_resumelist', '简历列表', 'resume/resume-list.php', 'resume-list.htm', 'resume/resume-list-($jobcategory)-($citycategory)-($experience)-($education)-($photo)-($talent)-($trade)-($major)-($resumetag)-($sex)-($sort)-($key)-($page).htm', 0, 0, 'resume', '', '', ''),
+(NULL, 1, 3, 'QS_resumeshow', '简历详细页', 'resume/resume-show.php', 'resume-show.htm', 'resume/resume-show-($id).htm', 0, 0, 'resume', '', '', ''),
+(NULL, 1, 2, 'QS_simplelist', '微招聘', 'simple/simple-list.php', 'simple/simple-list.htm', 'simple/simple-list-($key)-($keytype)-($citycategory)-($page).htm', 0, 0, 'simple', '微商圈', '', ''),
+(NULL, 1, 2, 'QS_hrtoolslist', 'HR工具箱列表', 'hrtools/hrtools-list.php', 'hrtools-list.htm', 'hrtools/hrtools-list-($id).htm', 0, 0, 'hrtools', 'HR工具箱', '', ''),
+(NULL, 1, 1, 'QS_news', '资讯首页', 'news/', 'news.htm', 'news/index.htm', 0, 0, 'news', '新闻资讯', '', ''),
+(NULL, 1, 2, 'QS_newslist', '资讯列表', 'news/news-list.php', 'news-list.htm', 'news/news-list-($id)-($page).htm', 0, 0, 'news', '', '', ''),
+(NULL, 1, 2, 'QS_newssearch', '资讯搜索页', 'news/news-search.php', 'news-search.htm', 'news/news-search-($key)-($page).htm', 0, 0, 'news', '', '', ''),
+(NULL, 1, 3, 'QS_newsshow', '资讯详细页', 'news/news-show.php', 'news-show.htm', 'news/news-show-($id).htm', 0, 0, 'news', '', '', ''),
+(NULL, 1, 3, 'QS_explainshow', '说明页详细页', 'explain/explain-show.php', 'explain-show.htm', 'explain/explain-show-($id).htm', 0, 0, 'explain', '', '', ''),
+(NULL, 1, 2, 'QS_noticelist', '公告列表', 'notice/notice-list.php', 'notice-list.htm', 'notice/notice-list-($id)-($page).htm', 0, 0, 'notice', '', '', ''),
+(NULL, 1, 3, 'QS_noticeshow', '公告详细页', 'notice/notice-show.php', 'notice-show.htm', 'notice/notice-show-($id).htm', 0, 0, 'notice', '', '', ''),
+(NULL, 1, 1, 'QS_help', '帮助首页', 'help/', 'help/index.htm', 'help/', 0, 0, 'help', '帮助', '', ''),
+(NULL, 1, 2, 'QS_helplist', '帮助列表', 'help/help-list.php', 'help/help-list.htm', 'help/help-list-($id)-($page).htm', 0, 0, 'help', '', '', ''),
+(NULL, 1, 3, 'QS_helpshow', '帮助详细页', 'help/help-show.php', 'help/help-show.htm', 'help/help-show-($id).htm', 0, 0, 'help', '', '', ''),
+(NULL, 1, 2, 'QS_helpsearch', '帮助搜索页', 'help/help-search.php', 'help/help-search.htm', 'help/help-search-($key)-($page).htm', 0, 0, 'help', '', '', ''),
+(NULL, 1, 1, 'QS_hrtoolsindex', 'HR工具箱首页', 'hrtools/index.php', 'hrtools-index.htm', 'hrtools/index.htm', 0, 0, 'hrtools', 'HR工具箱', '', ''),
+(NULL, 1, 1, 'QS_suggest', '意见/建议', 'suggest/index.php', 'suggest.htm', 'suggest/index.htm', 0, 0, 'suggest', '意见/建议', '', ''),
+(NULL, 1, 3, 'QS_companyinfo', '企业介绍页', 'company/company-info.php', 'company-info.htm', 'company/company-info-($id).htm', 0, 0, 'jobs', '', '', '');
+
+INSERT INTO `qs_payment` VALUES 
 (NULL, 50, 'remittance', '转账/汇款', '没有开通网银的请选择此项，到款后需客服为您手动开通', '<br /><br />\r\n<div align="center"><strong style=" color:#FF6600; font-size:18px;">付款后请通知我们客服！为你开通相关服务！</strong></div>\r\n <br />\r\n<strong style="color:#FF0000" >联系客服</strong>\r\n  <br />\r\n客服QQ:000000000; 客服电话：000-0000000\r\n<br />\r\n<br />\r\n<strong style="color:#FF0000" >付款方式</strong>\r\n<br />\r\n工商银行<br />\r\n  账号：000000000000000000000<br />\r\n户名：xxxxxxxxxxxxxxx<br />\r\n开户行：XXXXXXXXXXXXXX<br />\r\n---------------------------<br />\r\n  建设银行<br />\r\n  账号：000000000000000000000<br />\r\n  户名：xxxxxxxxxxxxxxx<br />\r\n开户行：XXXXXXXXXXXXXX\r\n<br />', 'remittance', '', '0', '', '', '', 2),
 (NULL, 50, 'chinabank', '网银在线', '全面支持全国19家银行的信用卡及借记卡实现网上支付', '网银在线与中国工商银行、招商银行、中国建设银行、农业银行、民生银行等数十家金融机构达成协议。全面支持全国19家银行的信用卡及借记卡实现网上支付。（网址：http://www.chinabank.com.cn）', '', '', '0', '', '', '', 1),
 (NULL, 50, 'tenpay', '财付通', '财付通是腾讯公司创办的中国领先的在线支付平台', '财付通支持全国各大银行的网银支付，用户也可以先充值到财付通，享受更加便捷的财付通余额支付体验。财付通的提现、收款、付款等配套账户功能，让资金使用更灵活。', NULL, NULL, '0', NULL, NULL, NULL, 2),
 (NULL, 50, 'alipay', '支付宝', '全球领先的独立第三方支付平台', '支付宝，全球领先的独立第三方支付平台，致力于为广大用户提供安全快速的电子支付/网上支付/安全支付/手机支付体验，及转账收款/水电煤缴费/信用卡还款/AA收款等生活服务应用', '', '', '1.5', '', '', '', 2);
 
-insert  into `qs_plug`(`id`,`typename`,`plug_name`,`p_install`) values 
-(NULL,'simple','微商圈',2),
-(NULL,'hrtools','hr工具箱',2),
-(NULL,'yellowpage','黄页',2);
+INSERT INTO `qs_plug` VALUES 
+(NULL, 'hrtools', 'hr工具箱', 2),
+(NULL, 'simple', '微商圈', 2),
+(NULL, 'yellowpage', '黄页', 2);
 
-insert  into `qs_pms_sys`(`spmid`,`spms_usertype`,`spms_type`,`message`,`dateline`) values 
-(NULL,0,1,'感谢您使用骑士人才系统\r\n\r\n骑士人才系统官方网站：http://www.74cms.com',1363941301);
+INSERT INTO `qs_pms_sys`  VALUES
+(NULL, 0, 1, '感谢您使用骑士人才系统\r\n\r\n骑士人才系统官方网站：http://www.74cms.com', 1363941301);
 
-INSERT INTO `qs_promotion_category` (`cat_id`, `cat_available`, `cat_name`, `cat_type`, `cat_minday`, `cat_maxday`, `cat_points`, `cat_notes`, `cat_order`) VALUES
+INSERT INTO `qs_promotion_category` VALUES
 (1, 1, '推荐职位', 1, 15, 60, 3, '<p>职位推荐后，网站首页推荐职位栏目将会出现您的推荐职位。这样可以很大程度提高您的招聘效率。<br />\r\n推荐职位到期后将自动取消推荐。</p>', 0),
 (2, 1, '紧急招聘', 1, 7, 60, 3, '<p>设置紧急招聘后职位将出现在首页紧急招聘栏目中，而且在职位名称后面有急聘字样的图片。</p>\r\n<p>紧急招聘是按天计费，过期后将自动取消。</p>', 0),
 (3, 1, '职位置顶', 1, 7, 30, 6, '<p>置顶招聘将会在职位列表首页置顶显示，可有效提高招聘效率。</p>\r\n<p>置顶招聘是按天计费，过期后将自动取消。</p>', 0),
 (4, 1, '职位变色', 1, 7, 0, 2, '<p>通过此方案可让您的职位名称颜色随意变换，更加引人瞩目！</p>\r\n<p>职位套色是按天计费，过期后将自动取消。</p>', 0);
 
-INSERT INTO `qs_setmeal` (`id`, `display`, `apply`, `setmeal_name`, `days`, `original_price`, `expense`, `jobs_ordinary`, `download_resume_ordinary`, `download_resume_senior`, `interview_ordinary`, `interview_senior`, `talent_pool`, `recommend_num`, `recommend_days`, `stick_num`, `stick_days`, `emergency_num`, `emergency_days`, `highlight_num`, `highlight_days`, `jobsfair_num`, `change_templates`, `map_open`, `added`, `show_order`, `refresh_jobs_space`, `refresh_jobs_time`) VALUES
-(1, 1, 0, '免费会员', 0, 0, 0, 2, 5, 1, 5, 1, 15, 10, 20, 10, 20, 10, 20, 10, 20, 1, 1, 0, '', 0, 0, 0),
-(2, 1, 1, '铜牌会员', 30, 350, 300, 10, 300, 30, 300, 30, 1, 20, 30, 20, 30, 20, 30, 20, 30, 2, 1, 1, '', 0, 0, 0),
-(3, 1, 1, '银牌会员', 90, 700, 600, 30, 900, 90, 900, 90, 9000, 30, 40, 30, 40, 30, 40, 30, 40, 3, 1, 1, '赠送首页广告位', 0, 0, 0),
-(4, 1, 1, '金牌会员', 180, 1200, 1000, 60, 1800, 180, 1800, 180, 18000, 40, 50, 40, 50, 40, 50, 40, 50, 4, 1, 1, '赠送首页广告位', 0, 0, 0),
-(5, 1, 1, '钻石会员', 360, 2000, 1600, 120, 3600, 360, 3600, 360, 36000, 50, 60, 50, 60, 50, 60, 50, 60, 5, 1, 1, '赠送首页广告位', 0, 0, 0);
+INSERT INTO `qs_setmeal` VALUES 
+(1, 1, 0, '免费会员', 0, 0, 0, 2, 5, 1, 5, 1, 15, 10, 20, 10, 20, 10, 20, 10, 20, 1, 1, 0, '', 0, 0, 2, 0),
+(2, 1, 1, '铜牌会员', 30, 350, 300, 10, 300, 30, 300, 30, 1, 20, 30, 20, 30, 20, 30, 20, 30, 2, 1, 1, '', 0, 0, 0, 0),
+(3, 1, 1, '银牌会员', 90, 700, 600, 30, 900, 90, 900, 90, 9000, 30, 40, 30, 40, 30, 40, 30, 40, 3, 1, 1, '赠送首页广告位', 0, 0, 0, 0),
+(4, 1, 1, '金牌会员', 180, 1200, 1000, 60, 1800, 180, 1800, 180, 18000, 40, 50, 40, 50, 40, 50, 40, 50, 4, 1, 1, '赠送首页广告位', 0, 0, 0, 0),
+(5, 1, 1, '钻石会员', 360, 2000, 1600, 120, 3600, 360, 3600, 360, 36000, 50, 60, 50, 60, 50, 60, 50, 60, 5, 1, 1, '赠送首页广告位', 0, 0, 0, 50);
 
-INSERT INTO `qs_sms_config` (`id`, `name`, `value`) VALUES
+INSERT INTO `qs_sms_config` VALUES 
 (NULL, 'open', '0'),
 (NULL, 'captcha_sms_name', ''),
 (NULL, 'captcha_sms_key', ''),
@@ -1719,13 +1932,9 @@ INSERT INTO `qs_sms_config` (`id`, `name`, `value`) VALUES
 (NULL, 'set_addrecommend', '0'),
 (NULL, 'set_addmap', '0'),
 (NULL, 'set_resumeallow', '0'),
-(NULL, 'set_resumenotallow', '0'),
-(NULL, 'notice_sms_name', ''),
-(NULL, 'notice_sms_key', ''),
-(NULL, 'free_sms_name', ''),
-(NULL, 'free_sms_key', '');
+(NULL, 'set_resumenotallow', '0');
 
-INSERT INTO `qs_sms_templates` (`id`, `name`, `value`) VALUES
+INSERT INTO `qs_sms_templates` VALUES 
 (NULL, 'set_applyjobs', '{sitename}提醒您:{personalfullname}申请了您发布的职位{jobsname}，请登录{sitedomain}查看'),
 (NULL, 'set_invite', '{sitename}提醒您：{companyname}对您发起了面试邀请，请登录{sitedomain}查看'),
 (NULL, 'set_order', '{sitename}提醒您：订单{oid}已经添加成功，付款方式为：{paymenttpye}，应付金额{amount}。请登录{sitedomain}查看'),
@@ -1740,23 +1949,23 @@ INSERT INTO `qs_sms_templates` (`id`, `name`, `value`) VALUES
 (NULL, 'set_resumeallow', '{sitename}提醒您：您的简历已通过审核！请登录{sitedomain}查看'),
 (NULL, 'set_resumenotallow', '{sitename}提醒您：您的简历未通过审核，请修改后再次提交审核！请登录{sitedomain}查看');
 
-INSERT INTO `qs_text` (`id`, `name`, `value`) VALUES
+INSERT INTO `qs_text`  VALUES
 (NULL, 'personal_talent_requirement', ''),
 (NULL, 'agreement', '请完善注册协议'),
 (NULL, 'link_application_txt', '有意与本站交换链接的同盟请注意：<br />1、贵网站为人才相关网站；<br />2、首页友情连接，要求pr&gt;=6、alexa &lt; 10000；其他页面连接根据具体页面而定（请具体咨询）。<br />3、贵网站要在百度google都有记录收录，且网站访问速度不能太慢。');
 
-INSERT INTO `qs_tpl` (`tpl_id`, `tpl_type`, `tpl_name`, `tpl_display`, `tpl_dir`, `tpl_val`) VALUES
+INSERT INTO `qs_tpl` VALUES 
 (NULL, 2, '默认模版', 1, 'default', 0),
 (NULL, 1, '默认模版', 1, 'default', 0);
 
-insert  into `qs_weixin_menu`(`id`,`parentid`,`title`,`key`,`type`,`url`,`menu_order`,`status`) values 
-(1,0,'找工作','','click','',0,1),
-(2,1,'最新职位','newjobs','click','',0,1),
-(3,1,'紧急招聘','emergencyjobs','click','',0,1),
-(4,1,'推荐职位','recommendjobs','click','',0,1),
-(5,1,'找人才','resume','click','',0,1),
-(6,0,'会员服务','','click','',0,1),
-(7,6,'刷新简历','resume_refresh','click','',0,1),
-(8,6,'面试邀请','interview','click','',0,1),
-(9,0,'绑定账号','binding','click','',0,1),
-(10,6,'应聘记录','apply_jobs','click','',0,1);
+INSERT INTO `qs_weixin_menu` VALUES 
+(1, 0, '找工作', '', 'click', '', 0, 1),
+(2, 1, '最新职位', 'newjobs', 'click', '', 0, 1),
+(3, 1, '紧急招聘', 'emergencyjobs', 'click', '', 0, 1),
+(4, 1, '推荐职位', 'recommendjobs', 'click', '', 0, 1),
+(5, 1, '找人才', 'resume', 'click', '', 0, 1),
+(6, 0, '会员服务', '', 'click', '', 0, 1),
+(7, 6, '刷新简历', 'resume_refresh', 'click', '', 0, 1),
+(8, 6, '面试邀请', 'interview', 'click', '', 0, 1),
+(9, 0, '绑定账号', 'binding', 'click', '', 0, 1),
+(10, 6, '应聘记录', 'apply_jobs', 'click', '', 0, 1);

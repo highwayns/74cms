@@ -12,7 +12,7 @@
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
 <link href="../css/user_company.css" rel="stylesheet" type="text/css" />
 <script src="../js/jquery.js" type='text/javascript' ></script>
-<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 <script src="../js/jquery.common.js" type='text/javascript' ></script>
 <script type="text/javascript">
 $(document).ready(function()
@@ -77,12 +77,12 @@ $(document).ready(function()
 	<div class="get_resume_box" onclick="window.location.href='../wap-resume-show.php?id={#$list.resume_id#}'">
 		<div class="get_resume_left">
 			<div class="name_box">
-				<div class="name_box_l">{#$list.title#}</div>
+				<div class="name_box_l">{#$list.fullname#}</div>
 				<div class="name_box_r">{#$list.down_addtime|date_format:'%Y-%m-%d'#}</div>
 				<div class="clear"></div>
 			</div>
 			<div class="person_detail">
-				{#$list.education_cn#}|{#$list.birthdate_#}|{#$list.experience_cn#}|{#$list.residence_cn#}
+				{#$list.education_cn#}|{#$list.birthdate_#}|{#$list.experience_cn#}|{#$list.residence#}
 			</div>
 		</div>
 		<div class="get_resume_right">

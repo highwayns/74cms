@@ -36,7 +36,7 @@ set_time_limit(180);
 		$in_jobwheresql=" WHERE district='{$row['id']}' ";
 		$in_resumewheresql=" WHERE r.district='{$row['id']}'";
 		$jobtotal=$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs').$in_jobwheresql);		
-		$resumetotal=$db->get_total("SELECT  COUNT(*) AS num  FROM  ".table('resume')." AS r ".$in_resumewheresql);
+		$resumetotal=$db->get_total("SELECT  COUNT(*) AS num  FROM  ".table('resume_district')." AS r ".$in_resumewheresql);
 		$jobtotal=$jobtotal>0?"({$jobtotal})":'';
 		$resumetotal=$resumetotal>0?"({$resumetotal})":'';
 		$sql = "UPDATE ".table('category_district')." SET stat_jobs='{$jobtotal}',stat_resume='{$resumetotal}'  WHERE id='{$row['id']}' LIMIT 1";
@@ -112,5 +112,5 @@ set_time_limit(180);
 	}
 	$setsqlarr['nextrun']=$nextrun;
 	$setsqlarr['lastrun']=time();
-	updatetable(table('crons'), $setsqlarr," cronid ='".intval($crons['cronid'])."'");
+	$db->updatetable(table('crons'), $setsqlarr," cronid ='".intval($crons['cronid'])."'");
 ?>

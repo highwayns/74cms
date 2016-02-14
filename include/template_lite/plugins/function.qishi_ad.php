@@ -42,18 +42,37 @@ $aset['dot']=isset($aset['dot'])?$aset['dot']:null;
 $aset['displayorder']=isset($aset['displayorder'])?$aset['displayorder']:null;
 unset($arr,$str,$a,$params);
 $wheresql=" WHERE alias='".$aset['alias']."' AND( starttime<=".time()."  OR starttime=0 ) AND (deadline>=".time()." OR deadline='0' ) AND is_display=1 ";
-if ($_CFG['subsite']=="1" && $_CFG['subsite_filter_ad']=="1" && intval($_CFG['subsite_id'])>0)
-{
-	$wheresql.=" AND subsite_id=".intval($_CFG['subsite_id'])." ";
-}
 $limit=" LIMIT ".$aset['start'].','.$aset['row'];
 if ($aset['displayorder'])
 {
 	if (strpos($aset['displayorder'],'>'))
 	{
-	$arr=explode('>',$aset['displayorder']);
-	$arr[0]=preg_match('/show_order|id/',$arr[0])?$arr[0]:"";
-	$arr[1]=preg_match('/asc|desc/',$arr[1])?$arr[1]:"";
+		$arr=explode('>',$aset['displayorder']);
+		// ÅÅÐò×Ö¶Î
+		if($arr[0]=='show_order'){
+			$arr[0]="show_order";
+		}
+		elseif($arr[0]=="id")
+		{
+			$arr[0]="id";
+		}
+		else
+		{
+			$arr[0]="";
+		}
+		// ÅÅÐò·½Ê½
+		if($arr[1]=='desc'){
+			$arr[1]="desc";
+		}
+		elseif($arr[1]=="asc")
+		{
+			$arr[1]="asc";
+		}
+		else
+		{
+			$arr[1]="";
+		}
+
 		if ($arr[0] && $arr[1])
 		{
 		$orderbysql=" ORDER BY ".$arr[0]." ".$arr[1];
@@ -82,15 +101,22 @@ while($row = $db->fetch_array($result))
 		$list['img_explain_']=$row['img_explain'];
 		$list['img_explain']=cut_str($row['img_explain'],$aset['titlelen'],0,$aset['dot']);
 		$list['img_uid']=$row['img_uid'];
+		unset($list['jobs']);
 		if($row['img_uid'] > 0) {
+			$companyinfo = $db->getone("select id,companyname,contents from ".table('company_profile')." where uid={$row['img_uid']}");
+			$list["briefly"]=htmlspecialchars_decode(strip_tags($companyinfo['contents']),ENT_QUOTES);
+			unset($list["companyname"]);
+			$list["companyname"]=strip_tags($companyinfo['companyname']);
+			$list["company_url"]=url_rewrite("QS_companyshow",array('id'=>$companyinfo['id']));
+			if($list['img_url']=="")
+			{
+				$list['img_url']=$list["company_url"];
+			}
 			$jobsarray = $db->getall("select * from ".table('jobs')." where uid={$row['img_uid']}");
-			foreach ($jobsarray as $jobs) {
-				$list['uid'] = $jobs['uid'];
-				$list['companyname'] = $jobs['companyname'];
-				$list['company_url'] = url_rewrite("QS_companyshow",array('id'=>$jobs['company_id']),true);
-				$list['briefly'] = strip_tags($jobs['contents']);
-				$list['jobs']['id']['jobs_name'] = $jobs['jobs_name'];
-				$list['jobs']['id']['jobs_url'] = url_rewrite("QS_jobsshow",array('id'=>$jobs['id']),true,$jobs['subsite_id']);
+			unset($list['jobs']);
+			foreach ($jobsarray as $key=>$val) {
+				$val["jobs_url"]=url_rewrite("QS_jobsshow",array('id'=>$val['id']));
+				$list['jobs'][$key]=$val;
 			}
 		}
 	}
@@ -128,6 +154,9 @@ while($row = $db->fetch_array($result))
 	}
 	$list['type_id']=$row['type_id'];
 	$arr[]=$list;
+	// echo "<pre>";
+	// print_r($arr);
+	// echo "</pre>";
 }
 if(!empty($arr) && $arr[0]['type_id']=="5")
 {

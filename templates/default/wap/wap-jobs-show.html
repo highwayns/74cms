@@ -12,7 +12,7 @@
 <link href="./css/user.css" rel="stylesheet" type="text/css" />
 <link href="./css/jobs.css" rel="stylesheet" type="text/css" />
 <script src="./js/jquery.js" type='text/javascript' ></script>
-<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 <script src="./js/jquery.common.js" type='text/javascript' ></script>
 <script type="text/javascript">
 $(document).ready(function()
@@ -55,7 +55,7 @@ $(document).ready(function()
 		var company_name = "{#$show.companyname#}";
 		var company_uid = {#$show.uid#};
 		// alert(resume_id);
-		$("#but_left").live("click",function(){
+		$("#but_left").click(function(){
 			var resume_id=$("input[name='resume_list']:checked").val();
 			var resume_title=$("input[name='resume_list']:checked").attr("title");
 			if(resume_id){
@@ -77,7 +77,7 @@ $(document).ready(function()
 				alert("«Î—°‘ÒºÚ¿˙");
 			}
 		});
-		$("#but_right").live("click",function(){
+		$("#but_right").click(function(){
 			$(".choose_menu").hide();
 			$(".menu_bg_layer").remove();
 		})

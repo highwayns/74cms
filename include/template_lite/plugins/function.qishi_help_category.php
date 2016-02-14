@@ -54,11 +54,11 @@ if(isset($aset['num']) && $aset['num']>0){
 }else{
 	$limitsql = "";
 }
-$result = $db->query("SELECT * FROM ".table('help_category')." ".$wheresql." ORDER BY  `category_order`  DESC".$limitsql);
+$result = $db->query("SELECT id,parentid,categoryname,category_order FROM ".table('help_category')." ".$wheresql." ORDER BY  `category_order`  DESC".$limitsql);
 $list=array();
 while($row = $db->fetch_array($result))
 {
-$row['url']=url_rewrite($aset['showname'],array('id'=>$row['id']),false);
+$row['url']=url_rewrite($aset['showname'],array('id'=>$row['id']));
 $row['title_']=$row['categoryname'];
 $row['title']=cut_str($row['categoryname'],$aset['titlelen'],0,$aset['dot']);
 $list[] = $row;

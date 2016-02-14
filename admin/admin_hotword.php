@@ -56,7 +56,8 @@ elseif($act == 'addsave')
 	$link[0]['href'] = '?act=add&w_type='.$setsqlarr['w_type'];
 	$link[1]['text'] = "返回列表";
 	$link[1]['href'] = '?';
-	!inserttable(table('hotword'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
+	write_log("添加热门关键字", $_SESSION['admin_name'],3);
+	!$db->inserttable(table('hotword'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
 }
 elseif($act == 'edit')
 {
@@ -77,7 +78,8 @@ elseif($act == 'editsave')
 	}
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] = '?';
- 	!updatetable(table('hotword'),$setsqlarr," w_id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	write_log("修改热门关键字", $_SESSION['admin_name'],3);
+ 	!$db->updatetable(table('hotword'),$setsqlarr," w_id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 elseif($act == 'hottype_del')
 {
@@ -85,6 +87,7 @@ elseif($act == 'hottype_del')
 	$id=$_REQUEST['id'];
 	if ($num=del_hottype($id))
 	{
+	write_log("删除热门关键字,共删除 {$num} 行", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除 {$num} 行",2);
 	}
 	else

@@ -70,7 +70,7 @@ $(document).ready(function()
         元 <span class="admin_note">(0表示免费) </span></td>
       </tr>
 <tr>
-        <td align="right">发布普通职位：</td>
+        <td align="right">职位最大并发数：</td>
         <td><input name="jobs_ordinary" type="text" class="input_text_200" id="jobs_ordinary" value="1"/>
         条  <span class="admin_note">(0为不允许) </span></td>
       </tr>
@@ -173,6 +173,11 @@ $(document).ready(function()
         <td align="right">显示顺序：</td>
         <td><input name="show_order" type="text" class="input_text_200" id="show_order" onkeyup="if(event.keyCode !=37 &amp;&amp; event.keyCode != 39) value=value.replace(/\D/g,'');" value="0" maxlength="3"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
           数字越大越靠前</td>
+      </tr>
+	   <tr>
+        <td align="right">免费短信条数：</td>
+        <td><input name="set_sms" type="text" class="input_text_200" id="set_sms" onkeyup="if(event.keyCode !=37 &amp;&amp; event.keyCode != 39) value=value.replace(/\D/g,'');" value="0" maxlength="3"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
+          条<span class="admin_note">(0为不送短信)</span> </td>
       </tr>
 	  <tr>
         <td align="right">显示状态：</td>

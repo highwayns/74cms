@@ -12,7 +12,7 @@
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
 <link href="../css/user_company.css" rel="stylesheet" type="text/css" />
 <script src="../js/jquery.js" type='text/javascript' ></script>
-<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 <script src="../js/jquery.common.js" type='text/javascript' ></script>
 <script type="text/javascript">
 $(document).ready(function()
@@ -21,15 +21,15 @@ $(document).ready(function()
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
-	// 职位暂停
+	// 职位关闭
 	$(".jobs_pause").click(function(){
 		var id = $(this).attr("jid");
 		$.post("?act=jobs_pause",{id:id},function(data){
 			if(data=="ok"){
-				alert("职位暂停成功");
+				alert("职位关闭成功");
 				window.location.reload();
 			}else if(data=="err"){
-				alert("职位暂停失败");
+				alert("职位关闭失败");
 				window.location.reload();
 			}else{
 				alert(data);
@@ -37,7 +37,7 @@ $(document).ready(function()
 			}
 		});
 	});
-	// 暂停职位恢复
+	// 关闭职位恢复
 	$(".jobs_regain").click(function(){
 		var id = $(this).attr("jid");
 		$.post("?act=jobs_regain",{id:id},function(data){
@@ -179,7 +179,7 @@ $(document).ready(function()
 				{#if $list.status==1#}
 				<div class="list_icon jobs_pause" jid="{#$list.id#}">
 					<a>
-						<img src="../images/job_i_2.gif" alt="" /><br />暂停
+						<img src="../images/job_i_2.gif" alt="" /><br />关闭
 					</a>
 				</div>
 				{#elseif $list.status==2#}
@@ -191,7 +191,7 @@ $(document).ready(function()
 				{#else#}
 				<div class="list_icon">
 					<a>
-						<img src="../images/job_i_2_hui.gif" alt="" /><br />暂停
+						<img src="../images/job_i_2_hui.gif" alt="" /><br />关闭
 					</a>
 				</div>
 				{#/if#}

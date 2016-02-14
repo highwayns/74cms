@@ -32,7 +32,7 @@ if($act == 'suggest_list')
 		}
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('feedback').$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$list = get_feedback_list($offset,$perpage,$wheresql);
@@ -53,6 +53,7 @@ elseif($act == 'del_feedback')
 	$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("你没有选择项目！",1);
 	if ($num=del_feedback($id))
 	{
+	write_log("删除意见建议,共删除".$num."行", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除".$num."行",2);
 	}
 	else
@@ -78,9 +79,16 @@ elseif($act == 'report_list')
 	}else{
 		$total_sql="SELECT COUNT(*) AS num FROM ".table('report_resume')." AS r ".$joinsql.$wheresql;
 	}
-	
+	if (!empty($_GET['reporttype']))
+	{
+		$wheresql=empty($wheresql)?" WHERE r.report_type=".$_GET['reporttype']:$wheresql." AND r.report_type=".$_GET['reporttype'];
+	}
+	if (!empty($_GET['audit']))
+	{
+		$wheresql=empty($wheresql)?" WHERE r.audit=".$_GET['audit']:$wheresql." AND r.audit=".$_GET['audit'];
+	}
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$list = get_report_list($offset,$perpage,$joinsql.$wheresql.$oederbysql,$type);
@@ -93,6 +101,35 @@ elseif($act == 'report_list')
 		$smarty->display('feedback/admin_report_resume_list.htm');
 	}
 }
+elseif($act == 'report_perform')
+{
+	$type=intval($_POST['type'])==0?1:intval($_POST['type']);
+	//审核
+	if(!empty($_POST['set_audit'])){
+		check_permissions($_SESSION['admin_purview'],"report_audit");
+		check_token();
+		$id=$_REQUEST['id'];
+		if ($type==1) {
+			$rid=$_REQUEST['jobs_id'];
+		} else {
+			$rid=$_REQUEST['resume_id'];
+		}
+		$audit=intval($_POST['audit']);
+		if (empty($id))
+		{
+		adminmsg("您没有选择项目！",1);
+		}
+		if ($num=report_audit($id,$audit,$type,$rid))
+		{
+		write_log("设置举报信息审核状态，共影响{$num}行 ", $_SESSION['admin_name'],3);
+		adminmsg("设置成功！共影响 {$num}行 ",2);
+		}
+		else
+		{
+		adminmsg("设置失败！",0);
+		}
+	}
+}
 elseif($act == 'del_report')
 {
 	check_token();
@@ -101,6 +138,7 @@ elseif($act == 'del_report')
 	$id=$_REQUEST['id'];
 	if ($num=del_report($id))
 	{
+	write_log("删除举报信息，共删除{$num}行 ", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除".$num."行",2);
 	}
 	else
@@ -116,6 +154,7 @@ elseif($act == 'del_report_resume')
 	$id=$_REQUEST['id'];
 	if ($num=del_report_resume($id))
 	{
+	write_log("删除举报简历信息，共删除{$num}行 ", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除".$num."行",2);
 	}
 	else

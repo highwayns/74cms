@@ -86,7 +86,7 @@ elseif ($act=="addsave")
 	$setsqlarr['key']=$sp->pad($setsqlarr['key']);
 	$link[0]['text'] = "返回微招聘列表";
 	$link[0]['href'] =url_rewrite('QS_simplelist');
-	if(inserttable(table('simple'),$setsqlarr))
+	if($db->inserttable(table('simple'),$setsqlarr))
 	{
 		if ($setsqlarr['audit']<>1)
 		{
@@ -108,7 +108,7 @@ elseif ($act=="delsimple")
 }
 elseif ($act=="exe_delsimple")
 {
-		$pwd=$_POST['pwd'];
+		$pwd=trim($_POST['pwd']);
 		$id=intval($_POST['id']);
 		$sql = "select * from ".table('simple')." where id = '{$id}' LIMIT 1";
 		$info=$db->getone($sql);
@@ -120,6 +120,10 @@ elseif ($act=="exe_delsimple")
 		$link[0]['href'] =url_rewrite('QS_simplelist');
 		showmsg("删除成功！",2,$link);
 		}
+		else
+		{
+			showmsg("管理密码错误",1);
+		}
 }
 elseif ($act=="refreshsimple")
 {
@@ -130,7 +134,7 @@ elseif ($act=="refreshsimple")
 }
 elseif ($act=="exe_refreshsimple")
 {
-		$pwd=$_POST['pwd'];
+		$pwd=trim($_POST['pwd']);
 		$id=intval($_POST['id']);
 		$sql = "select * from ".table('simple')." where id = '{$id}' LIMIT 1";
 		$info=$db->getone($sql);
@@ -141,6 +145,10 @@ elseif ($act=="exe_refreshsimple")
 		$link[0]['text'] = "返回微招聘列表";
 		$link[0]['href'] =url_rewrite('QS_simplelist');
 		showmsg("刷新成功！",2,$link);
+		}
+		else
+		{
+			showmsg("管理密码错误",1);
 		}
 }
 elseif ($act=="editsimple")
@@ -218,7 +226,7 @@ elseif ($act=="editsave")
 	$setsqlarr['key']=$sp->pad($setsqlarr['key']);
 	$link[0]['text'] = "返回微招聘列表";
 	$link[0]['href'] =url_rewrite('QS_simplelist');
-	if(updatetable(table('simple'),$setsqlarr," id='{$id}' "))
+	if($db->updatetable(table('simple'),$setsqlarr," id='{$id}' "))
 	{
 		if ($_CFG['simple_edit_audit']>1)
 		{

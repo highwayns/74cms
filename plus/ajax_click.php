@@ -41,11 +41,22 @@ elseif($act == 'jobs_click')
 	$id=intval($_GET['id']);
 	if ($id>0)
 	{
-		$db->query("update ".table('jobs')." set click=click+1 WHERE id='{$id}'  LIMIT 1");
-		$db->query("update ".table('jobs_search_hot')." set click=click+1 WHERE id='{$id}'  LIMIT 1");
-		$sql = "select click from ".table('jobs_search_hot')." where id='{$id}'  LIMIT 1";
-		$val=$db->getone($sql);
-		exit($val['click']);
+		$job=$db->getone("SELECT id FROM ".table('jobs')." WHERE id='{$id}' limit 1");
+		if(!empty($job))
+		{
+			$db->query("update ".table('jobs')." set click=click+1 WHERE id='{$id}'  LIMIT 1");
+			$db->query("update ".table('jobs_search_hot')." set click=click+1 WHERE id='{$id}'  LIMIT 1");
+			$sql = "select click from ".table('jobs_search_hot')." where id='{$id}'  LIMIT 1";
+			$val=$db->getone($sql);
+			exit($val['click']);
+		}
+		else
+		{
+			$db->query("update ".table('jobs_tmp')." set click=click+1 WHERE id='{$id}'  LIMIT 1");
+			$sql = "select click from ".table('jobs_tmp')." where id='{$id}'  LIMIT 1";
+			$val=$db->getone($sql);
+			exit($val['click']);
+		}
 	}
 }
 elseif($act == 'resume_click')

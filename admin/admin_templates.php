@@ -163,7 +163,8 @@ elseif ($act == 'com_tpl')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"tpl_company");
-	$smarty->assign('pageheader',"企业模版");	
+	$smarty->assign('pageheader',"模板设置");	
+	$smarty->assign('navlabel',"com_tpl");	
 	$smarty->assign('list',get_user_tpl(1,"tpl_company"));
 	$smarty->display('tpl/admin_com_tpl_list.htm');
 }
@@ -181,7 +182,7 @@ elseif ($act == 'com_tpl_save')
 				$setsqlarr['tpl_name']=trim($_POST['tpl_name'][$i]);
 				$setsqlarr['tpl_display']=intval($_POST['tpl_display'][$i]);
 				$setsqlarr['tpl_val']=intval($_POST['tpl_val'][$i]);
-				!updatetable(table('tpl'),$setsqlarr," tpl_id=".intval($_POST['tpl_id'][$i]))?adminmsg("保存加失败！",0):"";
+				!$db->updatetable(table('tpl'),$setsqlarr," tpl_id=".intval($_POST['tpl_id'][$i]))?adminmsg("保存加失败！",0):"";
 		}
 
 	}
@@ -214,7 +215,8 @@ elseif ($act == 'resume_tpl')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"tpl_resume");
-	$smarty->assign('pageheader',"简历模版");	
+	$smarty->assign('pageheader',"模板设置");	
+	$smarty->assign('navlabel',"resume_tpl");
 	$smarty->assign('list',get_user_tpl(2,"tpl_resume"));
 	$smarty->display('tpl/admin_resume_tpl_list.htm');
 }
@@ -232,7 +234,7 @@ elseif ($act == 'resume_tpl_save')
 				$setsqlarr['tpl_name']=trim($_POST['tpl_name'][$i]);
 				$setsqlarr['tpl_display']=intval($_POST['tpl_display'][$i]);
 				$setsqlarr['tpl_val']=intval($_POST['tpl_val'][$i]);
-				!updatetable(table('tpl'),$setsqlarr," tpl_id=".intval($_POST['tpl_id'][$i]))?adminmsg("保存加失败！",0):"";
+				!$db->updatetable(table('tpl'),$setsqlarr," tpl_id=".intval($_POST['tpl_id'][$i]))?adminmsg("保存加失败！",0):"";
 
 		}
 

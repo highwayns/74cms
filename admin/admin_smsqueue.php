@@ -62,14 +62,14 @@ elseif($act == 'smsqueue_add_save')
 	$mobile_arr=explode('|',$setsqlarr['s_sms']);
 	$mobile_arr=array_unique($mobile_arr);
 	foreach($mobile_arr as $list){
-		if (preg_match("/^(13|15|18)\d{9}$/",$list))
+		if (preg_match("/^(13|15|14|17|18)\d{9}$/",$list))
 		{
 			$uid=$db->getone('select uid from '.table('members')." where mobile= '{$list}' limit 1 ");
 			$smssqlarr['s_uid']=$uid['uid'];
 			$smssqlarr['s_body']=$s_body;
 			$smssqlarr['s_addtime']=time();
 			$smssqlarr['s_mobile']=$list;
-			inserttable(table('smsqueue'),$smssqlarr);
+			$db->inserttable(table('smsqueue'),$smssqlarr);
 			$num++;
 		}
 	}
@@ -94,12 +94,12 @@ elseif($act == 'smsqueue_edit_save')
 	$wheresql=" s_id='".intval($_POST['id'])."' ";
 	$link[0]['text'] = "·µ»ØÁÐ±í";
 	$link[0]['href'] = '?';
-	if (preg_match("/^(13|15|18)\d{9}$/",$setsqlarr['s_sms']))
+	if (preg_match("/^(13|15|14|17|18)\d{9}$/",$setsqlarr['s_sms']))
 	{
 		$smssqlarr['s_body']=$s_body;
 		$smssqlarr['s_addtime']=time();
 		$smssqlarr['s_mobile']=$setsqlarr['s_sms'];
-		!updatetable(table('smsqueue'),$smssqlarr,$wheresql)?adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0):adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);
+		!$db->updatetable(table('smsqueue'),$smssqlarr,$wheresql)?adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0):adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);
 	}
 }
 elseif($act == 'smsqueue_batchadd')
@@ -149,12 +149,12 @@ elseif($act == 'smsqueue_batchadd_save')
 
  	while($user = $db->fetch_array($result))
 	{
- 			if(preg_match("/^(13|15|18)\d{9}$/",$user['mobile'])){
+ 			if(preg_match("/^(13|15|14|17|18)\d{9}$/",$user['mobile'])){
 				$smssqlarr['s_uid']=$user['uid'];
 				$smssqlarr['s_body']=$s_body;
 				$smssqlarr['s_addtime']=time();
 				$smssqlarr['s_mobile']=$user['mobile'];
-				!inserttable(table('smsqueue'),$smssqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):'';
+				!$db->inserttable(table('smsqueue'),$smssqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):'';
 				$num++;
 			}
 	}

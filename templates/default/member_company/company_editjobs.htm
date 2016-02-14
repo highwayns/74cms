@@ -3,129 +3,81 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
-<link rel="shortcut icon" href="{#$QISHI.main_domain#}favicon.ico" />
+<link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <meta name="author" content="骑士CMS" />
 <meta name="copyright" content="74cms.com" />
+<meta name="renderer" content="webkit"> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/jobs.css" rel="stylesheet" type="text/css" />
+<link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type="text/javascript" language="javascript"></script>
 <script src="{#$QISHI.site_template#}js/jquery.validate.min.js" type='text/javascript' language="javascript"></script>
-<script src="{#$QISHI.site_template#}js/jquery.dialog.js" type='text/javascript' language="javascript"></script>
-<script src="{#$QISHI.main_domain#}data/cache_classify.js" type="text/javascript" charset="utf-8"></script>
+<script src="{#$QISHI.site_template#}js/dialog-min.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_template#}js/dialog-min-common.js" type="text/javascript" language="javascript"></script>
+<script src="{#$QISHI.site_dir#}data/cache_classify.js" type="text/javascript" charset="utf-8"></script>
 <script src="{#$QISHI.site_template#}js/jquery.company.selectlayer.js" type='text/javascript' language="javascript"></script>
-<script src="{#$QISHI.site_template#}js/jquery.hoverDelay.js" type='text/javascript'></script>
+<link rel="stylesheet" href="{#$QISHI.site_template#}kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="{#$QISHI.site_template#}kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="{#$QISHI.site_template#}kindeditor/lang/zh_CN.js"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
+$("#Form1 input, #Form1 textarea, #Form1 select").each(function(index, el) {
+	$(this).attr('_value', jQuery(this).val());
+});
+//绑定beforeunload事件
+function is_form_changed() {
+	//检测页面是否有保存按钮
+	var t_save = $("#submitsave");
+	if(t_save.length>0) {
+		var is_changed = false;
+		$("#Form1 input, #Form1 textarea, #Form1 select").each(function(index, el) {
+			var _v = $(this).attr('_value');
+			if(typeof(_v) == 'undefined') {
+				_v = '';
+			}
+			if(_v != jQuery(this).val()) {
+				is_changed = true;
+			}
+		});
+		return is_changed;
+	}
+	return false;
+}
+if ($.browser.msie){
+    window.onunload = function(){
+        return "您正在编辑的内容尚未保存，确定要离开此页吗？";
+    }
+}
+else{
+    window.onbeforeunload = function(){
+        if (is_form_changed()) {
+			return '您正在编辑的内容尚未保存，确定要离开此页吗？';
+		}
+    }
+}
 allaround('{#$QISHI.site_dir#}');
-// 显示职位
- 		$("#jobsSort").hoverDelay({
-		    hoverEvent: function(){
-		        $("#divJobCate").show();
-		        var dx = $("#divJobCate").offset().left; // 获取弹出框的x坐标
-		        var dy = $("#divJobCate").offset().top; // 获取弹出框的y坐标
-		        var dwidth = $("#divJobCate").outerWidth(true); // 获取弹出框的宽度
-		        var dheight = $("#divJobCate").outerHeight(true); // 获取弹出框的高度
-		        var lastx = dx + dwidth; // 加上弹出框的宽度获取弹出框最右边的x坐标
-		        var lasty = dy + dheight; // 加上弹出框的高度获取弹出框最下边的y坐标
-	 			$("#divJobCate li").each(function(index, el) {
-	 				var that = $(this);
-	 				var sx = that.offset().left; // 获取当前li的x坐标
-	 				var sy = that.offset().top; // 获取当前li的y坐标
-	 				that.hoverDelay({
-					    hoverEvent: function(){
-					        if(that.find('.subcate').length > 0) {
-			 					that.addClass('selected');
-			 					var tharsub = that.find('.subcate');
-			 					var thap = that.find('p');
-			 					var swidth = tharsub.outerWidth(true); // 获取三级弹出框的宽度
-			 					var sheight = tharsub.outerHeight(true); // 获取三级弹出框的高度
-			 					if((lastx - sx) < swidth && (lasty - sy) > sheight) { 
-			 						thap.css("border-bottom",0);
-			 						tharsub.css("left",-265);
-			 					}
-			 					if((lastx - sx) > swidth && (lasty - sy) > sheight) { 
-			 						thap.css("border-bottom",0);
-			 						tharsub.css("left",0); 
-			 					}
-			 					if((lastx - sx) < swidth && (lasty - sy) < sheight) { 
-				 					thap.css({
-				 						"border-top": '0px',
-				 						"border-bottom": ''
-				 					});
-			 						tharsub.css("left",-265); 
-				 					tharsub.css("top",-(sheight - 2));
-			 					}
-			 					if((lastx - sx) > swidth && (lasty - sy) < sheight) { 
-				 					thap.css({
-				 						"border-top": '0px',
-				 						"border-bottom": ''
-				 					});
-			 						tharsub.css("left",0); 
-				 					tharsub.css("top",-(sheight - 2));
-			 					}
-			 					tharsub.show();
-			 				} else {
-			 					that.find('a').css("color","#f77d40");
-			 				}
-					    },
-					    outEvent: function(){
-			                if(that.find('.subcate').length > 0) {
-				 				that.removeClass('selected');
-				 				that.find('.subcate').hide();
-			 				} else {
-			 					that.find('a').css("color","#0180cf");
-			 				}    
-			            }
-					});
-	 			});
-		    },
-		    outEvent: function(){
-                $("#divJobCate").hide(); 
-            }
-		});
- 		// 显示地区
- 		$("#jobsCity").hoverDelay({
-		    hoverEvent: function(){
-		        $("#divCityCate").show();
-		        var dx = $("#divCityCate").offset().left; // 获取弹出框的x坐标
-		        var dwidth = $("#divCityCate").outerWidth(true); // 获取弹出框的宽度
-		        var lastx = dx + dwidth; // 加上弹出框的宽度获取弹出框最右边的x坐标
-	 			$("#divCityCate li").each(function(index, el) {
-	 				var that = $(this);
-	 				var sx = that.offset().left; // 获取当前li的x坐标
-	 				that.hoverDelay({
-					    hoverEvent: function(){
-					        if(that.find('.subcate').length > 0) {
-			 					that.addClass('selected');
-			 					var tharsub = that.find('.subcate');
-			 					var thap = that.find('p');
-			 					thap.css("border-bottom","0px");
-			 					var swidth = tharsub.outerWidth(true); // 获取三级弹出框的宽度
-			 					if((lastx - sx) < swidth) { // 判断li与弹出框最右边的距离是否大于三级弹出框的宽度
-			 						tharsub.css("left",-265); // 如果小于就改变三级弹出框x方向的位置
-			 					}
-			 					tharsub.show();
-			 				} else {
-			 					that.find('a').css("color","#f77d40");
-			 				}
-					    },
-					    outEvent: function(){
-			                if(that.find('.subcate').length > 0) {
-				 				that.removeClass('selected');
-				 				that.find('.subcate').hide();
-			 				} else {
-			 					that.find('a').css("color","#0180cf");
-			 				}    
-			            }
-					});
-	 			});
-		    },
-		    outEvent: function(){
-                $("#divCityCate").hide(); 
-            }
-		});
+// 职位类别填充数据 
+job_filldata("#job_list", QS_jobs_parent, QS_jobs, "#result-list-job", "#aui_outer_job", "#job_result_show", "#topclass", "{#$QISHI.site_dir#}");
+// 工作地区填充数据
+city_filldata("#city_list", QS_city_parent, QS_city, "#result-list-city", "#aui_outer_city", "#city_result_show", "#district", "{#$QISHI.site_dir#}");
+// 职位亮点填充数据
+tag_filldata("#tag_list", QS_jobtag, "#aui_outer_tag", "#result-list-tag", "#trade_result_show", "#tag", "{#$QISHI.site_dir#}");
+// 点击职位类别自动填充该类别的职位描述
+$("#JobRequInfoTemplate a").unbind().die().live('click', function() {
+	var aid = $(this).attr("data");
+	$.get("company_jobs.php?act=get_content_by_jobs_cat&id="+aid, function(data) {
+		if (data == "-1") {
+			editor.html('');
+			editor.sync();
+		} else {
+			editor.html(data);
+			editor.sync();
+		}
+	});
+});
 //工作性质单选
 var nature_obj = $("#nature_radio .input_radio").first();
 $("#nature").val(nature_obj.attr("id"));
@@ -156,6 +108,7 @@ function menuDown(menuId,input,input_cn,menuList,width){
 		$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute", left: "0", top: "0" , "z-index": "0", "background-color": "#ffffff"});
 		$(".menu_bg_layer").css("opacity","0");
 		$(".menu_bg_layer").click(function(){
+		
 			$(".menu_bg_layer").remove();
 			$(menuList).slideUp("fast");
 			$(menuId).parent("div").css("position","");
@@ -183,8 +136,8 @@ function showagebox(divname,inputname)
 		$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute", left: "0", top: "0" , "z-index": "0"});
 		$(inputdiv).parent("div").css("position","relative");
 		
-		var y=18;
-		var ymax=65;
+		var y=16;
+		var ymax=60;
 		htm="<div class=\"showyearbox yearlist\">";		
 		htm+="<ul>";
 		for (i=y;i<=ymax;i++)
@@ -207,8 +160,21 @@ function showagebox(divname,inputname)
 		//
 		$(inputdiv).parent("div").children(".yearlist").find("li").unbind("click").click(function()
 		{
-			$(inputname).val($(this).attr("title"));
-			$(inputdiv).html($(this).attr("title"));
+			var tt = $(this).attr("title");
+			$(inputname).val(tt);
+			$(inputdiv).html(tt);
+			if (inputname == "#minage") {
+				var maxval = $("#maxage").val();
+				if(maxval) {
+					tt >= maxval ? $("#ageerr").show() : $("#ageerr").hide();
+				}
+			}
+			if (inputname == "#maxage") {
+				var minval = $("#minage").val();
+				if(minval) {
+					tt <= minval ? $("#ageerr").show() : $("#ageerr").hide();
+				}
+			}
 			$(inputdiv).parent("div").children(".yearlist").hide();
 			$(".menu_bg_layer").remove();
 		});	
@@ -234,6 +200,25 @@ function showagebox(divname,inputname)
 		});
 	});
 }
+// 手机号码验证   
+var mobile = /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}|17[0-9]{9}$/;
+var current_tel = "{#$jobs.contact.telephone#}";
+if(!mobile.test(current_tel)){
+	$("#receiveit").attr('disabled','disabled');
+    $("#receiveit").attr('checked',false);
+}
+// 手机号码验证   
+jQuery.validator.addMethod("isPhoneNumber", function(value, element) {   
+    var tel = /^((0\d{2,3}-[2-9][0-9]{6,7})|(0\d{2,3}[2-9][0-9]{6,7})|([2-9][0-9]{6,7})|(1[35847]\d{9}))$/;
+    var mobile = /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}|17[0-9]{9}$/;
+    if(this.optional(element) || (mobile.test(value))){
+    	$("#receiveit").removeAttr('disabled');
+    }else{
+    	$("#receiveit").attr('disabled','disabled');
+    	$("#receiveit").attr('checked',false);
+    }
+    return this.optional(element) || (tel.test(value));
+}, "请正确填写联系电话");
 $("#Form1").validate({
  //debug: true,
 // onsubmit:false,
@@ -247,9 +232,6 @@ $("#Form1").validate({
    amount: {
 	range:[0,9999]
    },
-  days: {
-	digits:true
-   },
    category: "required",
    district: "required",
    wage: "required",
@@ -257,13 +239,15 @@ $("#Form1").validate({
    experience: "required",
    contents:{
    required: true,
-	minlength:30,
-    maxlength:1000
+	minlength:30
    },
    contact:{
    required: true
    },
-	 telephone: "required",
+	 telephone: {
+	   required:true,
+	   isPhoneNumber:true
+	},
 	  address: "required", 
 	   email: {
 	   required:true,
@@ -278,9 +262,6 @@ $("#Form1").validate({
    },
    amount: {
     range: jQuery.format("请输入一个介于 {0} 和 {1} 之间的值")
-   },
-   days: {
-    digits: jQuery.format("必须是整数")
    },
     category: {
     required: jQuery.format("请选择所属职位，精确选择职位类别可以有效提高招聘效果")
@@ -299,14 +280,14 @@ $("#Form1").validate({
    },
    contents: {
     required: jQuery.format("请填写职位描述"),
-	minlength: jQuery.format("职位描述内容不能小于{0}个字符"),
-	maxlength: jQuery.format("职位描述内容不能大于{0}个字符")
+	minlength: jQuery.format("职位描述内容不能小于{0}个字符")
    },
    contact: {
     required: jQuery.format("请填写联系人")
    },
    telephone: {
-    required: jQuery.format("请填写联系电话")
+    required: jQuery.format("请填写联系电话"),
+	isPhoneNumber: jQuery.format("请正确填写联系电话")
    },
    address: {
     required: jQuery.format("请填写联系地址")
@@ -322,15 +303,19 @@ $("#Form1").validate({
     else if ( element.is(":checkbox") )
         error.appendTo ( element.next());
     else
-        error.appendTo(element.parent());
+        error.appendTo(element.parent().next());
+	},
+	submitHandler: function(form) {
+		window.onbeforeunload = null;
+		form.submit();
 	}
     });
 });
 </script>
 </head>
-<body>
+<body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">当前位置：<a href="{#$QISHI.main_domain#}">首页</a> > <a href="{#$userindexurl#}">会员中心</a> > 修改职位</div>
+<div class="page_location link_bk">当前位置：<a href="{#$QISHI.site_dir#}">首页</a> > <a href="{#$userindexurl#}">会员中心</a> > 修改职位</div>
 <div class="usermain">
   <div class="leftmenu link_bk">
   {#include file="member_company/left.htm"#}
@@ -357,7 +342,7 @@ $("#Form1").validate({
 			<input name="nature" id="nature" type="hidden" value="{#$jobs.nature#}" />
 			<input name="nature_cn" id="nature_cn" type="hidden" value="{#$jobs.nature_cn#}" />
 			 {#qishi_get_classify set="类型:QS_jobs_nature,列表名:c_nature"#}{#foreach from=$c_nature item=list#}
-			  <div class="input_radio {#if $list.id eq $c_nature.0.id#}select{#/if#}" id="{#$list.id#}">{#$list.categoryname#}</div>
+			  <div class="input_radio {#if $list.id eq $jobs.nature#}select{#/if#}" id="{#$list.id#}">{#$list.categoryname#}</div>
 			   {#/foreach#}			  
 			  <div class="clear"></div>
 			  </div>		    </td>
@@ -365,10 +350,38 @@ $("#Form1").validate({
 		  <tr class="jobmain">
 			<td align="right"><span class="nec">职位类别</span>：</td>
 			<td id="jobsSort" style="position:relative;">
-             <div id="jobText" class="input_text_200_bg choose_cate">{#$jobs.category_cn#}</div>		
-              <div style="display:none;left:1px;top:46px;" id="divJobCate" class="divJobCate">
-					<table class="jobcatebox"><tbody></tbody></table>
-			  </div>		
+             <div id="jobText" class="input_text_200_bg choose_cate ucc-default">{#$jobs.category_cn|default:"请选择"#}</div>	
+				<!-- 职位类别弹出框 -->
+				<div class="aui_outer" id="aui_outer_job">
+					<table class="aui_border">
+						<tbody>
+							<tr>
+								<td class="aui_c">
+									<div class="aui_inner">
+										<table class="aui_dialog">
+											<tbody>
+												<tr>
+													<td class="aui_main">
+														<div class="aui_content" style="padding: 0px;">
+															<div class="LocalDataMultiC">
+																<div class="selector-header"><span class="selector-title">职位选择</span><div></div><span class="selector-close">X</span><div class="clear"></div></div>
+
+																<div class="data-row-list data-row-main" id="job_list">
+																	<!-- 列表内容 -->
+																</div>
+															</div>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- 职位类别弹出框 End-->		
               <input name="topclass" id="topclass" type="hidden" value="{#$jobs.topclass#}" />	
               <input name="category" id="category" type="hidden" value="{#$jobs.category#}" />		
               <input name="subclass" id="subclass" type="hidden" value="{#$jobs.subclass#}" />		
@@ -377,32 +390,49 @@ $("#Form1").validate({
 		  </tr>
 		   <tr>
 			<td align="right"><span class="nec">招聘人数</span>：</td>
-			<td><input name="amount" type="text" class="input_text_200" id="amount" maxlength="4" value="5" value="{#$jobs.amount#}"/></td>
+			<td><input name="amount" type="text" class="input_text_200" id="amount" maxlength="4" value="{#$jobs.amount#}"/></td>
 			<td><div class="righttip">0表示若干!</div></td>
 		  </tr>
 		   <tr class="jobmain">
 			<td align="right"><span class="nec">工作地区</span>：</td>
 			<td id="jobsCity" style="position:relative;">
-			
-              <div id="cityText" class="input_text_200_bg">{#$jobs.district_cn|default:"请选择"#}</div>	
-              <div style="display:none;left:1px;top:46px;" id="divCityCate" class="divJobCate">
-					<table class="jobcatebox citycatebox"><tbody></tbody></table>
-				</div>		
+			<div id="cityText" class="input_text_200_bg choose_district ucc-default">{#$jobs.district_cn|default:"请选择"#}</div>	
+				<!-- 工作地区弹出框 -->
+				<div class="aui_outer" id="aui_outer_city">
+					<table class="aui_border">
+						<tbody>
+							<tr>
+								<td class="aui_c">
+									<div class="aui_inner">
+										<table class="aui_dialog">
+											<tbody>
+												<tr>
+													<td class="aui_main">
+														<div class="aui_content" style="padding: 0px;">
+															<div class="LocalDataMultiC" style="width:623px;">
+																<div class="selector-header"><span class="selector-title">地区选择</span><div></div><span class="selector-close">X</span><div class="clear"></div></div>
+
+																<div class="data-row-list data-row-main" id="city_list">
+																	<!-- 列表内容 -->
+																</div>
+															</div>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- 工作地区弹出框 End-->	
               <input name="district" id="district" type="hidden" value="{#$jobs.district#}" />	
               <input name="sdistrict" id="sdistrict" type="hidden" value="{#$jobs.sdistrict#}" />
               <input name="districtID" id="districtID" type="hidden" value="" />
               <input name="district_cn" id="district_cn" type="hidden" value="{#$jobs.district_cn#}" />			</td>
 			<td>&nbsp;</td>
-		  </tr>
-		  <tr>
-			<td align="right">有效时间：</td>
-			<td>{#$jobs.deadline_days#}<input name="olddeadline" type="hidden" value="{#$jobs.deadline#}" />	</td>
-			<td><div class="righttip">(发布日期：{#$jobs.addtime|date_format:"%Y-%m-%d %H:%M"#}～截止日期：{#$jobs.deadline|date_format:"%Y-%m-%d %H:%M"#})</div></td>
-		  </tr>
-		  <tr>
-			<td align="right">增加有效时间：</td>
-			<td><input name="days" type="text" class="input_text_200" id="days" maxlength="3" value="0"/></td>
-			<td><div class="righttip">(0表示不延长)</div></td>
 		  </tr>
 		  <tr>
 			<td align="right"><span class="nec">薪资待遇</span>：</td>
@@ -420,20 +450,55 @@ $("#Form1").validate({
 	            </div>				
              	 <input name="wage" type="hidden" id="wage" value="{#$jobs.wage#}" />
              	 <input name="wage_cn" type="hidden" id="wage_cn" value="{#$jobs.wage_cn#}" /></td>
-			<td><label><input name="negotiable" type="checkbox" value="1" {#if $jobs.negotiable=="1"#}checked="checked"{#/if#} />可面议</label></td>
+			<td><label><input name="negotiable" type="checkbox" value="1" {#if $jobs.negotiable=="1"#}checked="checked"{#/if#} /> 可面议</label></td>
 		  </tr>
 	    </table>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
-		  <tr>
+			<tr>
 			<td width="125" align="right">职位亮点：</td>
-			<td >
-			<div id="tag_checkbox">
-				  <div class="showchecktag"></div>
-				  <div class="input_checkbox_add" id="tagAdd"><span>添加</span></div>
-				  <div class="clear"></div>
-				  <input type="hidden" value="{#$jobs.tag#}" id="tag" name="tag">
-			  </div>
-			</td>
+			<td style="position:relative;">
+			  <div class="showchecktag"></div>
+              <div class="input_checkbox_add ucc-default">添加</div>	
+              <!-- 职位亮点弹出框 -->
+				<div class="aui_outer" id="aui_outer_tag">
+					<table class="aui_border">
+						<tbody>
+							<tr>
+								<td class="aui_c">
+									<div class="aui_inner">
+										<table class="aui_dialog">
+											<tbody>
+												<tr>
+													<td class="aui_main">
+														<div class="aui_content">
+															<div class="items jquery-localdata">
+																<div class="selector-header"><span class="selector-title">职位亮点选择</span><div></div><span id="tag-selector-save" class="selector-save">确定</span><span class="selector-close">X</span><div class="clear"></div></div>
+
+																<div class="data-row-head"><div class="data-row"><div class="data-row-side">最多选 <strong class="text-warning">5</strong> 项&nbsp;&nbsp;已选 <strong id="arstrade" class="text-warning">0</strong> 项</div><div id="result-list-tag" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
+																<div class="item-table">
+																	<table class="options-table options-table-7">
+																		<tbody class="item-list"><tr><td class="bno"><table><tbody id="tag_list">
+																			<!-- 列表内容 -->
+																		</tbody></table></td></tr>
+																		</tbody>
+																	</table>
+																</div>
+															</div>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- 职位亮点弹出框 End-->
+              <input name="tag" type="hidden" id="tag" value="{#$jobs.tag#}" />
+			  <input name="tag_cn" type="hidden" id="tag_cn" value="{#$jobs.tag_cn#}" />		
+          </td>
 		  </tr>
 	    </table>
 		<div class="titleH2"><span>职位要求</span></div>
@@ -466,7 +531,7 @@ $("#Form1").validate({
 	            </div>				
              	 <input name="education" type="hidden" id="education" value="{#$jobs.education#}" />
              	 <input name="education_cn" type="hidden" id="education_cn" value="{#$jobs.education_cn#}" /></td>
-			<td>&nbsp;</td>
+			<td><label> 及以上</label></td>
 		  </tr>
 		  <tr>
 			<td align="right"><span class="nec">工作经验</span>：</td>
@@ -484,7 +549,7 @@ $("#Form1").validate({
 	            </div>				
              	 <input name="experience" type="hidden" id="experience" value="{#$jobs.experience#}" />
              	 <input name="experience_cn" type="hidden" id="experience_cn" value="{#$jobs.experience_cn#}" /></td>
-			<td><label><input name="graduate" type="checkbox" {#if $jobs.graduate=="1"#}checked="checked"{#/if#} value="1" />应届生亦可</label></td>
+			<td><label><input name="graduate" type="checkbox" {#if $jobs.graduate=="1"#}checked="checked"{#/if#} value="1" /> 应届生亦可</label></td>
 		  </tr>
 		    <tr>
 			<td align="right">年龄要求：</td>
@@ -493,19 +558,20 @@ $("#Form1").validate({
                           <tr>
                             <td width="80" style="padding:0px">
                             	<div>
-                            	<div class="input_text_50_bg date_input" id="minage_div">{#if $jobs.minage#}{#$jobs.minage#}{#else#}请选择{#/if#}</div>
+                            	<div class="input_text_50_bg date_input wid54" id="minage_div">{#if $jobs.minage#}{#$jobs.minage#}{#else#}请选择{#/if#}</div>
 				             	 <input name="minage" id="minage" type="hidden" value="{#$jobs.minage#}" />
 				            	</div>
 				        	</td>
                             <td width="20" style="padding:0px">至</td>
                             <td width="80"  style="padding:0px">
                             	<div>
-                            	<div class="input_text_50_bg date_input" id="maxage_div">{#if $jobs.maxage#}{#$jobs.maxage#}{#else#}请选择{#/if#}</div>
+                            	<div class="input_text_50_bg date_input wid54" id="maxage_div">{#if $jobs.maxage#}{#$jobs.maxage#}{#else#}请选择{#/if#}</div>
 				             	 <input name="maxage" id="maxage" type="hidden" value="{#$jobs.maxage#}" />
 				            	</div>
                             </td>
                           </tr>
                         </table>
+						<label id="ageerr" class="error" style="display:none">请选择正确的年龄范围</label>
 				</td>
 		  </tr>
 	    </table>
@@ -514,10 +580,27 @@ $("#Form1").validate({
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 		  <tr>
 			<td width="125" align="right" valign="top"><span class="nec">职位描述</span>：</td>
-			<td>
-			
-			<textarea name="contents" id="contents" cols="" rows="" class="input_textarea_500">{#$jobs.contents#}</textarea>
+			<td width="500">
+			{#if $jobs.category_cn !=''#}
+			<div style="" id="template">
+				<span class="tdTemplateTitle">&nbsp;</span><font style="color:#FF6600">（点击职位模板后会自动填充职位描述）</font>
+				<span id="JobRequInfoTemplate"><a data="{#$jobs.subclass#}" href="javascript:void(0);">{#$jobs.category_cn#}</a></span>
+			</div>
+			{#/if#}
+			<textarea id="contents" name="contents" style="width:700px;height:300px;visibility:hidden;">{#$jobs.contents#}</textarea>
+			<script type="text/javascript">
+				var editor;
+				KindEditor.ready(function(K) {
+					editor = K.create('textarea[name="contents"]', {
+						allowFileManager : false,
+						width:600,
+						height:250,
+						afterBlur: function(){this.sync();}
+					});
+				});
+			</script>
 			</td>
+			<td></td>
 		  </tr>
 	    </table>
 		
@@ -526,44 +609,61 @@ $("#Form1").validate({
 		  <tr>
 			<td width="125" align="right"><span class="nec">联系人</span>：</td>
 			<td width="230"><input name="contact" type="text" class="input_text_200" id="contact" maxlength="20"   value="{#$jobs.contact.contact#}"/></td>
-			<td><label><input name="contact_show" type="checkbox" value="1" {#if $jobs.contact.contact_show=="1"#}checked="checked"{#/if#} />网站中显示联系人</label></td>
+			<td><label><input name="contact_show" type="checkbox" value="1" {#if $jobs.contact.contact_show=="1"#}checked="checked"{#/if#} /> 对外公开联系人</label></td>
 		  </tr>
 		  <tr>
 			<td align="right"><span class="nec">联系电话</span>：</td>
 			<td>
 			
-            <input name="telephone" type="text" class="input_text_200" id="telephone" maxlength="35"   value="{#$jobs.contact.telephone#}"/></td>
-			<td><label><input name="telephone_show" type="checkbox" value="1" {#if $jobs.contact.telephone_show=="1"#}checked="checked"{#/if#} />网站中显示联系电话</label></td>
+            <input name="telephone" oninput="OnInput (event,'#telephone_two')" onpropertychange="OnPropChanged (event,'#telephone_two')" type="text" class="input_text_200" id="telephone" maxlength="35"   value="{#$jobs.contact.telephone#}"/></td>
+			<td><label><input name="telephone_show" type="checkbox" value="1" {#if $jobs.contact.telephone_show=="1"#}checked="checked"{#/if#} /> 对外公开联系电话</label></td>
 		  </tr>
 		  <tr>
 			<td align="right"><span class="nec">联系邮箱</span>：</td>
 			<td>
 			
-             <input name="email" type="text" class="input_text_200" id="email" maxlength="80" value="{#$jobs.contact.email#}"/>            	</td>
-			<td><label><input name="email_show" type="checkbox" value="1" {#if $jobs.contact.email_show=="1"#}checked="checked"{#/if#} />网站中显示联系邮箱</label></td>
-		  </tr>
-		  <tr>
-			<td align="right">邮件通知：</td>
-			<td>{#$user.email#}
-            </td>
-			<td>
-				<label><input name="notify" type="checkbox" value="1" {#if $jobs.contact.notify=="1"#}checked="checked"{#/if#}/>接收</label>{#if $user.email_audit=="0"#}<span class="redtip link_lan">你的邮箱未认证，不能接收邮件。<a href="company_user.php?act=user_email">[立即认证]</a></span>
-				{#/if#}          	
-			</td>
+             <input name="email" oninput="OnInput (event,'#email_two')" onpropertychange="OnPropChanged (event,'#email_two')" type="text" class="input_text_200" id="email" maxlength="80" value="{#$jobs.contact.email#}"/>            	</td>
+			<td><label><input name="email_show" type="checkbox" value="1" {#if $jobs.contact.email_show=="1"#}checked="checked"{#/if#} /> 对外公开联系邮箱</label></td>
 		  </tr>
 	    </table>
+	    <script type="text/javascript">
+	    	// Firefox, Google Chrome, Opera, Safari, Internet Explorer from version 9
+			function OnInput (event,id) {
+				$(id).val(event.target.value);
+			    // alert ("The new content: " + event.target.value);
+			}
+			// Internet Explorer
+			function OnPropChanged (event,id) {
+			    if (event.propertyName.toLowerCase () == "value") {
+			    	$(id).val(event.srcElement.value);
+			    }
+			}
+	    </script>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 		   <tr>
 			<td width="125" align="right"><span class="nec">联系地址</span>：</td>
 			<td ><input name="address" id="address" type="text" class="input_text_500" maxlength="100" value="{#$jobs.contact.address#}"/>
 		     </td>
 		  </tr>
-		   <tr>
-			<td width="125" align="right"> </td>
-			<td ><input type="submit" name="submitsave" id="submitsave" value="保存"  class="but220lan"/>
-		     </td>
-		  </tr>
 	    </table>
+	    <div class="titleH2"><span style="background:none;">高级设置</span></div>
+	    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
+			<tr>
+				<td width="125" align="right"><span class="">简历接收邮箱</span>：</td>
+				<td width="230"><input name="email_two" id="email_two" type="text" class="input_text_200" maxlength="80" value="{#$jobs.contact.email#}" disabled="disabled"/></td>
+				<td><label><input name="notify" type="checkbox" value="1" {#if $jobs.contact.notify=='1'#}checked="checked"{#/if#}/>接收</label></td>
+		  	</tr>
+			<tr>
+				<td width="125" align="right"><span class="">简历短信通知</span>：</td>
+				<td width="230"><input name="telephone_two" id="telephone_two" type="text" class="input_text_200" maxlength="80" value="{#$jobs.contact.telephone#}" disabled="disabled"/></td>
+				<td><label><input name="notify_mobile" type="checkbox" value="1" id="receiveit" {#if $jobs.contact.notify_mobile=='1'#}checked="checked"{#/if#} />接收</label></td>
+		  	</tr>
+		  	<tr>
+				<td width="125" align="right"> </td>
+				<td ><input type="submit" name="submitsave" id="submitsave" value="保存"  class="but220lan" onclick="$(window).unbind('beforeunload');"/>
+				</td>
+			</tr>
+		</table>
 	    <input name="add_mode" type="hidden" id="add_mode" value="{#$jobs.add_mode#}" />
 		<input name="id" type="hidden" value="{#$jobs.id#}" />
 {#if $jobs.add_mode=="1"#}
@@ -571,45 +671,14 @@ $("#Form1").validate({
 $(document).ready(function()
 {
 	//积分默认
-	check_day();
 	total();
-	$("#days").keyup(function(){
-	check_day();
-	total()
-	});
-	//计算发布天数对应的积分
-	function check_day()
-	{
-		var jobs_daily = {#$points.jobs_daily.value#};
-		if (jobs_daily>0)
-		{
-			var count_days_pon= $("#days").val()*jobs_daily;
-			if ($("#days").val()==0)
-			{
-				$("#days_info").html("");
-				$("#release_daysa").html(" ");
-			}
-			else
-			{
-			$("#days_info").html("延长有效时间&nbsp;"+$("#days").val()+"&nbsp;天，修改后将扣除&nbsp;<strong><span style=\"color:#FF3300\">"+count_days_pon+"</span></strong>&nbsp;{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}");
-				$("#release_daysa").html(" ☉ 延长有效时间&nbsp;&nbsp;"+$("#days").val()+"&nbsp;&nbsp;天，修改后将扣除&nbsp;&nbsp;<strong>"+count_days_pon+"</strong>&nbsp;&nbsp;{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}<br />");
-			}	
-		}
-	}
 	//计算总计积分
 	function total()
 	{
-				var points = {#$points_total#};
-				var jobs_edit = {#$points.jobs_edit.value#};
-				var jobs_daily = {#$points.jobs_daily.value#};
-				var input_days=$("#days").val();
-				var day_pointst=input_days*jobs_daily;
-				var totals=day_pointst+jobs_edit;
-			if (jobs_edit>0)
-			{
-			$("#release_jobs_edit").html(" ☉ 修改本条信息将扣除&nbsp;&nbsp;<strong>"+jobs_edit+"</strong>&nbsp;&nbsp;{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}<br/>");
-			}				
-			$("#total").html("修改本条信息总计扣除&nbsp;<span style=\"font-size:20px; color: #FF0000\" >"+totals+"</span>&nbsp;{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}，你目前共有<strong style=\"color:#0033FF\"> {#$points_total#}  </strong>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}；<br />");
+			var points = {#$points_total#};
+			var jobs_edit = {#$points.jobs_edit.value#};
+			var totals=jobs_edit;			
+			$("#total").html("修改本条信息总计扣除&nbsp;<span style=\"font-size:20px; color: #FF0000\" >"+totals+"</span>&nbsp;{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}，你目前共有<strong style=\"color:#0033FF\"> {#$points_total#}  </strong>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}，<a href=\"company_service.php?act=order_add\">[充值积分]</a><br />");
 			$("#totals").val({#$points_total#}-totals);	
 	}				
 	$("#editsubmit").click(function()
@@ -617,9 +686,17 @@ $(document).ready(function()
 		if ($("#totals").val()<0)
 		{
 			{#if $QISHI.operation_mode=="2"#}
-			alert_dialog("fail:您的积分不足，请申请新的服务或者充值积分！","250px","","","");
+			dialog({
+			  title: '系统提示',
+			  content: "您的积分不足，请申请新的服务或者充值积分！",
+			  width:'300px'
+			}).showModal();
 			{#else#}
-			alert_dialog("fail:您的积分不足，请充值后再发布！","250px","","","");
+			dialog({
+			  title: '系统提示',
+			  content: "您的积分不足，请充值后再发布！",
+			  width:'300px'
+			}).showModal();
 			{#/if#}
 		}
 		else
@@ -630,23 +707,13 @@ $(document).ready(function()
 });
 </script>
 <div style="position:relative;">
-	  <table width="100%" border="0" cellpadding="20" cellspacing="0" class="link_lan" bgcolor="F9F9F9" >
-            <tr>               
-              <td align="center" >
-              	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall"  bgcolor="F9F9F9">
-		   <tr>
-			<td width="360" align="left">
-				<div id="release_jobs_edit"></div>
-	            <div id="release_info"></div>
-				<div id="release_daysa"></div>
-				<div id="total"></div>
-				   <a href="company_service.php?act=account" target="_blank">[积分消费明细]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=account" target="_blank">[积分消费规则]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=order_add">[充值积分]</a>
-			</td>
-		  </tr>
-	    </table>
-              	</td>
-            </tr>
-      </table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
+		<tr>   
+          	<td align="left" style="padding-left:29px;">
+          		<div id="total"></div>
+          	</td>	
+	  	<tr>
+	</table>
 </div>
 {#/if#}
 	</form>
@@ -657,77 +724,6 @@ $(document).ready(function()
   </div>
   <div class="clear"></div>
 </div>
-<!-- 职位类别选择框 -->
-<div id="intentionJobsBox" class="alert-window" style="display:none;width: 810px; height: 450px; left: 50%; top: 400px; margin-left: -405px; position: absolute; z-index: 100001;">
-	<div style="width: 810px;" class="resume-tc">
-        <div class="resume-tc-head">
-            <h3><i class="icon-loc"></i> 请选择职位类别</h3>
-            <a class="close wd_close cm_closeMsg" href="javascript:;"></a> 
-        </div>
-        <div class="sx-yx">
-        	<span class="clr-grn fnt-b">已选：</span>
-        	<span id="box_checkedJobs"></span>
-        </div>
-        <div id="showJobsType" style="width:810px; height: 360px; overflow: auto; overflow-x: hidden; overflow-y: auto; position: relative;">
-	        
-		</div>
-    </div>
-</div>
-<!-- 职位类别选择框 end-->
-<!-- 工作地区选择框  -->
-<div id="cityBoxDistrict" class="alert-window" style="width:810px;height:500px;left:50%;margin-left:-405px;top:532px; position:absolute;z-index:10;display:none;">
-	<div class="resume-tc">
-		<div class="resume-tc-head">
-        <h3><i class="icon-loc"></i>请选择工作地区</h3>
-        <a class="close wd_close cm_closeMsg" href="javascript:;"></a>
-    </div>
-    <div class="sx-yx">
-    	<span class="clr-grn fnt-b">已选：</span>
-    	<span id="box_checkedDistrict"></span>
-    </div>
-    <div style="width:810px; height: 410px; overflow: auto; overflow-x: hidden; overflow-y: auto; position: relative;" class="sx-cnt">
-    	<div style="padding-bottom: 0px;" class="sx-rm" id="sx-rmDistrict">
-    		<ul style="width: 760px;" class="cf"></ul>
-    	</div>
-    	<div style="padding-bottom: 0px;" class="sx-nomal" id="sx-nomalDistrict">
-    		<ul style="width: 760px;" class="cf"></ul>
-    	</div>
-    </div>
-	</div>
-</div>
-<!-- 工作地区选择框  end-->
-<!-- 职位亮点选择框 -->
-<div id="tagBox" class="alert-window" style="display:none;width: 810px; height: 300px; left: 50%; top: 796px; margin-left: -405px; position: absolute; z-index: 100001;">
-	<div style="width: 810px;" class="resume-tc">
-        <div class="resume-tc-head">
-            <h3><i class="icon-loc"></i> 请选职位两点（最多选择5个）</h3>
-            <a class="close wd_close cm_closeMsg" href="javascript:;"></a> 
-        </div>
-        <div class="sx-yx">
-        	<span class="clr-grn fnt-b">已选：</span>
-        	<span id="box_checkedTag"></span>
-        </div>
-        <div id="showTag" style="width:810px; height: 200px; overflow: auto; overflow-x: hidden; overflow-y: auto; position: relative;">
-	        
-		</div>
-        <div class="sx-action">
-        	<button id="btn_tagsave" class="grn" type="button">确定</button> 
-        	<button id="btn_tagcancel" class="gray" type="button">取消</button>
-        </div>
-    </div>
-</div>
-<!-- 职位亮点选择框 end-->
-<script src="{#$QISHI.main_domain#}data/cache_classify.js" type="text/javascript" charset="utf-8"></script>
-<script src="{#$QISHI.site_template#}js/jquery.company.selectlayer.js" type='text/javascript' language="javascript"></script>
-<script type="text/javascript">
-	// 职位类别    
-	showIntentionJobsBox("#intentionJobsAdd","#intentionJobsBox","#showJobsType",".sx-nomal","#box_checkedJobs","#jobs_checkbox","#topclass","#category","#subclass","#category_cn",QS_jobs_parent,QS_jobs);
-	// 工作地区
-	showCityBox("#showCityBoxDistrict","#cityBoxDistrict","#sx-rmDistrict","#sx-nomalDistrict","#box_checkedDistrict","#districtID","#district_cn",QS_city_parent,QS_city,true);
-	// 职位亮点
-	showTagBox("#tagAdd","#tagBox","#showTag","#box_checkedTag","#btn_tagsave","#tag","#tag_checkbox",QS_jobtag);
-	
-</script>
  {#include file="user/footer.htm"#}
 </body>
 </html>

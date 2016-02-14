@@ -1,5 +1,5 @@
 <?php
 if(!defined('IN_QISHI'))die('Access Denied!');
-define('QISHI_VERSION','3.5.1');
-define('QISHI_RELEASE', '20141027');
+define('QISHI_VERSION','3.6');
+define('QISHI_RELEASE', '20150923');
 ?>

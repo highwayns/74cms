@@ -57,16 +57,20 @@ function del_ad($id)
 	$sqlin=implode(",",$id);
 	if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
 	{
-	if (!$db->query("Delete from ".table('ad')." WHERE id IN (".$sqlin.") ")) return false;
-	$return=$return+$db->affected_rows();
+		if (!$db->query("Delete from ".table('ad')." WHERE id IN (".$sqlin.") ")) return false;
+		$return=$return+$db->affected_rows();
+		//填写管理员日志
+		write_log("后台删除广告成功", $_SESSION['admin_name'],3);
 	}
 	return $return;
 }
 function del_ad_category($id)
 {
-global $db;
-if (!$db->query("Delete from ".table('ad_category')." WHERE id  = ".intval($id)." AND admin_set<>'1'")) return false; 
-return true;
+	global $db;
+	if (!$db->query("Delete from ".table('ad_category')." WHERE id  = ".intval($id)." AND admin_set<>'1'")) return false; 
+	//填写管理员日志
+	write_log("后台成功删除广告位", $_SESSION['admin_name'],3);
+	return true;
 }
 function ck_category_alias($alias,$noid=NULL){
 global $db;
@@ -84,100 +88,5 @@ $info=$db->getone($sql);
  {
  return false;
  }
-}
-
-//广告位订单列表
-function get_adv_order_list($offset,$perpage,$get_sql= '')
-{
-	global $db;
-	$row_arr = array();
-	$limit=" LIMIT ".$offset.','.$perpage;
-	$result = $db->query("SELECT o.*,m.username,m.email,c.companyname FROM ".table('adv_order')." as o ".$get_sql.$limit);
-	while($row = $db->fetch_array($result))
-	{
-		if($row['is_points']=="0"){
-			$row['payment_name']=get_adv_payment_info($row['payment_name'],true);
-		}
-		if($row['is_points']=="1"){
-			$row['amount']=intval($row['amount']);
-		}
-	$row_arr[] = $row;
-	}
-	return $row_arr;
-}
-//获取订单
-function get_adv_order_one($id=0)
-{
-	global $db;
-	$sql = "select * from ".table('adv_order')." where id=".intval($id)." LIMIT 1";
-	$val=$db->getone($sql);
-	if($val['is_points']=="0"){
-		$val['payment_name']=get_adv_payment_info($val['payment_name'],true);
-	}
-	$val['payment_username']=get_adv_user($val['uid']);
-	return $val;
-}
-//取消订单
-function del_adv_order($id)
-{
-	global $db;
-	if (!is_array($id))$id=array($id);
-	$sqlin=implode(",",$id);
-	if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
-	{
-		if (!$db->query("Delete from ".table('adv_order')." WHERE id IN (".$sqlin.")  AND is_paid=1 ")) return false;		
-		return true;
-	}
-	return false;
-}
-//获取充值支付方式名称
-function get_adv_payment_info($typename,$name=false)
-{
-	global $db;
-	$sql = "select * from ".table('payment')." where typename ='".$typename."'";
-	$val=$db->getone($sql);
-	if ($name)
-	{
-	return $val['byname'];
-	}
-	else
-	{
-	return $val;
-	}
-}
-function get_adv_user($uid)
-{
-	global $db;
-	$sql = "select * from ".table('members')." where uid=".intval($uid)." LIMIT 1";
-	return $db->getone($sql);
-}
-//付款后开通
-function adv_order_paid($v_oid)
-{
-	global $db,$timestamp,$_CFG;
-	$order=$db->getone("select * from ".table('adv_order')." WHERE oid ='{$v_oid}' AND is_paid= '1' LIMIT 1 ");
-	if ($order)
-	{
-		$user=get_adv_user($order['uid']);
-		$sql = "UPDATE ".table('adv_order')." SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='{$v_oid}' LIMIT 1 ";
-		if (!$db->query($sql)) return false;
-			
-		//发送邮件
-		$mailconfig=get_cache('mailconfig');
-		if ($mailconfig['set_payment']=="1" && $user['email_audit']=="1")
-		{
-		dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_mail.php?uid=".$order['uid']."&key=".asyn_userkey($order['uid'])."&act=set_payment");
-		}
-		//发送邮件完毕
-		//sms
-		$sms=get_cache('sms_config');
-		if ($sms['open']=="1" && $sms['set_payment']=="1"  && $user['mobile_audit']=="1")
-		{
-		dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_sms.php?uid=".$order['uid']."&key=".asyn_userkey($order['uid'])."&act=set_payment");
-		}
-		//sms
-		return true;
-	}
-return true;
 }
 ?>

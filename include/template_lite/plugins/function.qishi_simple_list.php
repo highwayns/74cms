@@ -68,16 +68,46 @@ if (isset($aset['displayorder']))
 {
 	if (strpos($aset['displayorder'],'>'))
 	{
-	$arr=explode('>',$aset['displayorder']);
-	$arr[0]=preg_match('/refreshtime|id|click/',$arr[0])?$arr[0]:"";
-	$arr[1]=preg_match('/asc|desc/',$arr[1])?$arr[1]:"";
+		$arr=explode('>',$aset['displayorder']);
+		// ÅÅÐò×Ö¶Î
+		if($arr[0]=='refreshtime'){
+			$arr[0]="refreshtime";
+		}
+		elseif($arr[0]=="id")
+		{
+			$arr[0]="id";
+		}
+		elseif($arr[0]=="click")
+		{
+			$arr[0]=="click";
+		}
+		else
+		{
+			$arr[0]="";
+		}
+		// ÅÅÐò·½Ê½
+		if($arr[1]=='desc'){
+			$arr[1]="desc";
+		}
+		elseif($arr[1]=="asc")
+		{
+			$arr[1]="asc";
+		}
+		else
+		{
+			$arr[1]="";
+		}
+
 		if ($arr[0] && $arr[1])
 		{
-		$orderbysql=" ORDER BY {$arr[0]} {$arr[1]}";
+		$orderbysql=" ORDER BY {$arr[0]} {$arr[1]} ";
 		}
 	}
+}else{
+	$orderbysql=" ORDER BY id DESC";
 }
 $wheresql=" AND audit=1 ";
+
 if (isset($aset['settr']) && $aset['settr']<>'')
 {
 	$settr=intval($aset['settr']);
@@ -89,7 +119,7 @@ if (isset($aset['settr']) && $aset['settr']<>'')
 }
 if (isset($aset['key']) && !empty($aset['key']))
 {
-	$aset['key']=trim($aset['key']);
+	$aset['key']=help::addslashes_deep(trim($aset['key']));
 	if ($aset['keytype']=="1" || $aset['keytype']=="")
 	{
 		$wheresql.=" AND  jobname like '%{$aset['key']}%'";
@@ -181,8 +211,9 @@ if (isset($aset['page']))
 	$smarty->assign('total',$total_count);
 }
 	$limit=" LIMIT ".abs($aset['start']).','.$aset['row'];
-	$result = $db->query("SELECT * FROM ".table('simple')." ".$wheresql.$orderbysql.$limit);
+	$result = $db->query("SELECT id,jobname,detailed,refreshtime,comname,amount,deadline,district_cn,sdistrict_cn FROM ".table('simple')." ".$wheresql.$orderbysql.$limit);
 	$list   = array();
+	//echo "SELECT * FROM ".table('jobs')." ".$wheresql.$orderbysql.$limit;
 		while($row = $db->fetch_array($result))
 		{
 		$row['jobname_']=$row['jobname'];

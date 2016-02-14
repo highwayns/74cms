@@ -171,6 +171,7 @@ if ($act=="get_promotion_one")
 elseif($act == "promotion_save"){
 	$jobsid=intval($_GET['jobsid'])==0?exit("0"):intval($_GET['jobsid']);
 	$jobs=get_jobs_one($jobsid,$_SESSION['uid']);
+	$jobs = array_map("addslashes",$jobs);
 	if($jobs['deadline']<time()){
 		exit("-1");
 		// showmsg("该职位已到期，请先延期！",1);
@@ -250,10 +251,9 @@ elseif($act == "promotion_save"){
 		{
 		showmsg("请选择颜色！",1);
 		}
-			if (inserttable(table('promotion'),$setsqlarr))
+			if ($db->inserttable(table('promotion'),$setsqlarr))
 			{
 				set_job_promotion($jobsid,$setsqlarr['cp_promotionid'],$_GET['val']);
-				$jobs=get_jobs_one($jobsid,$_SESSION['uid']);
 				if ($_CFG['operation_mode']=='1' && $pro_cat['cat_points']>0)
 				{
 					report_deal($_SESSION['uid'],2,$points);

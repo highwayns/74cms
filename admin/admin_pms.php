@@ -62,7 +62,7 @@ elseif($act == 'add_pms_sys_save')
 		$link[0]['href'] = '?act=add_pms_sys';
 		$link[1]['text'] = "返回列表";
 		$link[1]['href'] = '?act=list';
-		!inserttable(table('pms_sys'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
+		!$db->inserttable(table('pms_sys'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
 	}
 	else
 	{
@@ -91,7 +91,7 @@ elseif($act == 'add_pms_sys_save')
 						$setsqlarr['dateline']=$time;
 						$setsqlarr['replytime']=$time;
 						$setsqlarr['new']=1;
-						inserttable(table('pms'),$setsqlarr);
+						$db->inserttable(table('pms'),$setsqlarr);
 						unset($userinfo,$setsqlarr);
 						$s++;
 					}
@@ -104,6 +104,7 @@ elseif($act == 'add_pms_sys_save')
 			$link[0]['href'] = '?act=add_pms_sys';
 			$link[1]['text'] = "返回列表";
 			$link[1]['href'] = '?act=list';
+			write_log("发送消息,共发给了 {$s} 个会员", $_SESSION['admin_name'],3);
 			adminmsg("发送成功！共发给了 {$s} 个会员",2,$link);
 			}
 			else
@@ -121,6 +122,7 @@ elseif($act =='pms_sys_del')
 	$n=del_pms_sys($id);
 	if ($n)
 	{
+	write_log("删除消息,共删除 {$n} 行！", $_SESSION['admin_name'],3);
 	adminmsg("删除成功 共删除 {$n} 行！",2);
 	}
 	else
@@ -149,6 +151,7 @@ elseif($act == 'pms_editsave')
 		$link[0]['href'] = '?act=add_pms_sys';
 		$link[1]['text'] = "查看修改结果";
 		$link[1]['href'] = "?act=pms_edit&id=".$id;
-		!updatetable(table('pms_sys'),$setsqlarr," spmid=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+		write_log("修改id为".$id."的消息", $_SESSION['admin_name'],3);
+		!$db->updatetable(table('pms_sys'),$setsqlarr," spmid=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 ?>

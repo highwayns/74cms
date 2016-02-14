@@ -7,7 +7,7 @@
 <meta name="keywords" content="{#$show.keywords#}">
 <meta name="author" content="骑士CMS" />
 <meta name="copyright" content="74cms.com" />
-<link rel="shortcut icon" href="{#$QISHI.main_domain#}favicon.ico" />
+<link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/news.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' ></script>
@@ -16,7 +16,7 @@ $(document).ready(function()
 {
 		var id="{#$smarty.get.id#}";
 		var tsTimeStamp= new Date().getTime();
-		$.get("{#$QISHI.website_dir#}plus/ajax_click.php", { "id": id,"time":tsTimeStamp,"act":"news_click"},
+		$.get("{#$QISHI.site_dir#}plus/ajax_click.php", { "id": id,"time":tsTimeStamp,"act":"news_click"},
 			function (data,textStatus)
 			 {			
 				$("#click").html(data);
@@ -30,22 +30,32 @@ $(document).ready(function()
 		{
 			$("body").append('<div id="pageloadingbox">页面加载中....</div><div id="pageloadingbg"></div>');
 			$("#pageloadingbg").css("opacity", 0.5);
-			$.get("{#$QISHI.website_dir#}plus/ajax_search_location.php", {"act":"QS_newssearch","key":key},
+			$.get("{#$QISHI.site_dir#}plus/ajax_search_location.php", {"act":"QS_newssearch","key":key},
 					function (data,textStatus)
 					 {
 						 window.location.href=data;
 					 }
 				);
 		}
+		// 等比例缩放图片
+		var w = $(".left_area .news_box").width();//容器宽度 
+	    $(".news_txt img").each(function(){//如果有很多图片，我们可以使用each()遍历 
+	        var img_w = $(this).width();//图片宽度 
+	        var img_h = $(this).height();//图片高度 
+	        if(img_w>w){//如果图片宽度超出容器宽度--要撑破了 
+	            var height = (w*img_h)/img_w; //高度等比缩放 
+	            $(this).css({"width":w,"height":height});//设置缩放后的宽度和高度 
+	        } 
+	    });
 });
 </script>
 </head>
-<body>
+<body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
 <!-- 当前位置 -->
 <div class="page_location link_bk">
 {#qishi_news_category set="列表名:category,名称长度:10,资讯小类:"|cat:$show.type_id#}
-当前位置：<a href="{#$QISHI.website_dir#}">首页</a>&nbsp;>&nbsp;<a href="{#"QS_news"|qishi_url#}">新闻资讯</a>&nbsp;>&nbsp;
+当前位置：<a href="{#$QISHI.site_dir#}">首页</a>&nbsp;>&nbsp;<a href="{#"QS_news"|qishi_url#}">新闻资讯</a>&nbsp;>&nbsp;
 <a href="{#$category.url#}">{#$category.title_#}</a>&nbsp;>&nbsp;正文
 </div>
 	<!-- 主体内容 -->
@@ -59,7 +69,7 @@ $(document).ready(function()
 					<div class="news_dateil">
 						<div class="time">{#$show.addtime|date_format:"%Y-%m-%d %H:%M"#}</div>
 						<div class="time">查看：<span id="click"></span> 次</div>
-						<div><a href="javascript:window.print();">[打印]</a><a href="javascript:void(0);" onclick="window.external.addFavorite(parent.location.href,document.title);">[收藏]</a></div>
+						<div><a href="javascript:window.print();">[打印]</a> <a href="javascript:void(0);" onclick="window.external.addFavorite(parent.location.href,document.title);">[收藏]</a></div>
 						<div class="clear"></div>
 					</div>
 					<div class="news_txt">
@@ -124,8 +134,8 @@ $(document).ready(function()
 				</div>
 			</div>
 			<div class="right_search">
-				<input type="text" class="input_text_180" name="key" id="key"/>
-				<input type="button" value="搜索" class="but70lan search_news" />
+				<div class="news_search"><input type="text" name="key" id="key" /></div>
+				<button class="news_sreach_but search_news">搜索</button>
 			</div>
 			<div class="clear"></div>
 			<div class="right_box">

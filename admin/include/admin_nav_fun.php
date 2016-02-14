@@ -14,10 +14,10 @@
  	die('Access Denied!');
  }
 //获取导航所有
-function get_nav($typeid=NULL)
+function get_nav($alias=NULL)
 {
 	global $db;
-	if ($typeid) $wheresql=" WHERE typeid='".intval($typeid)."' ";
+	if ($alias) $wheresql=" WHERE alias='".trim($alias)."' ";
 	$result = $db->query("SELECT * FROM ".table('navigation').$wheresql." order BY display desc,navigationorder desc,id asc");
 	while($row = $db->fetch_array($result))
 	{

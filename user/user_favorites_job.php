@@ -93,12 +93,12 @@ function DialogClose()
 </script>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="add_ok">
     <tr>
-		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/14.gif" /></td>
+		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/big-yes.png" /></td>
 		<td>
 			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">添加成功!</strong>
 			<div style="border-top:1px #CCCCCC solid; line-height:180%; margin-top:10px; padding-top:10px; height:50px;margin-left:20px"  class="dialog_closed">
-			<a href="<?php echo get_member_url(2,true)?>personal_apply.php?act=favorites" >查看职位收藏夹</a><br />
-			<a href="javascript:void(0)"  class="DialogClose">添加完成</a>
+			<a href="<?php echo get_member_url(2,true)?>personal_apply.php?act=favorites" style="color:#0180cf;text-decoration:none;" class="underline">查看职位收藏夹</a><br />
+			<a href="javascript:void(0)"  class="DialogClose underline" style="color:#0180cf;text-decoration:none;">添加完成</a>
 			</div>
 		</td>
     </tr>

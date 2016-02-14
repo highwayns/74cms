@@ -48,6 +48,7 @@ function del_news($id)
 		@unlink($upfiles_dir."/".$y_img['Small_img']);
 		@unlink($thumb_dir.$y_img['Small_img']);
 		$db->query("Delete from  ".table('article')." where id=".intval($val)." LIMIT 1");
+		write_log("删除职位id为".intval($val)."文章", $_SESSION['admin_name'],3);
 	}
 	return true;
 }
@@ -120,6 +121,7 @@ function del_property($id)
 	{
 		if (!$db->query("Delete from ".table('article_property')." WHERE id IN (".$sqlin.")  AND admin_set<>1")) return false;
 		$return=$return+$db->affected_rows();
+		write_log("删除id为".$sqlin."的新闻属性,共删除".$return."行", $_SESSION['admin_name'],3);
 	}
 	return $return;
 }

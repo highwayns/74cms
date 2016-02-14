@@ -12,8 +12,8 @@
 define('IN_QISHI', true);
 require_once(dirname(__FILE__).'/../include/plus.common.inc.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'QQlogin';
-$login_allback="{$_CFG['main_domain']}user/connect_qq_server.php?act=login_allback" ;
-$binding_callback="{$_CFG['main_domain']}user/connect_qq_server.php?act=binding_callback" ;
+$login_allback="{$_CFG['site_domain']}{$_CFG['site_dir']}user/connect_qq_server.php?act=login_allback" ;
+$binding_callback="{$_CFG['site_domain']}{$_CFG['site_dir']}user/connect_qq_server.php?act=binding_callback" ;
 if (!function_exists('json_decode'))
 {
 exit('您的php不支持json_decode');
@@ -131,10 +131,14 @@ elseif ($act=='reg')
 		$jsoninfo = json_decode($output, true);
 		$nickname = iconv("utf-8","gbk",$jsoninfo["nickname"]);
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
+		$smarty->assign('third_name',"QQ");
 		$smarty->assign('title','补充信息 - '.$_CFG['site_name']);
 		$smarty->assign('qqurl',"?act=");
 		$smarty->assign('nickname',$nickname);
-		$smarty->display('user/connect-qq.htm');
+		$smarty->assign('openid',$_SESSION["openid"]);
+		$smarty->assign('nickname',$nickname);
+		$smarty->assign('bindtype','qq');
+		$smarty->display('user/connect_activate.htm');
 	}
 }
 elseif ($act=='reg_save')
@@ -143,19 +147,20 @@ elseif ($act=='reg_save')
 	{
 		exit("openid is empty");
 	}
-	$val['username']=!empty($_POST['username'])?trim($_POST['username']):exit("err");
+	$val['qq_nick']= trim(utf8_to_gbk($_POST['nickname']));
 	$val['email']=!empty($_POST['email'])?trim($_POST['email']):exit("err");
-	$val['member_type']=intval($_POST['member_type']);
+	$val['mobile']=!empty($_POST['mobile'])?trim($_POST['mobile']):exit("err");
+	$val['member_type']=intval($_POST['utype']);
 	$val['password']=!empty($_POST['password'])?trim($_POST['password']):exit("err");
 	require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 	$db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
 	unset($dbhost,$dbuser,$dbpass,$dbname);
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
-	$userid=user_register($val['username'],$val['password'],$val['member_type'],$val['email']);
+	$userid=user_register(3,$val['password'],$val['member_type'],$val['email'],$val['mobile'],$uc_reg=true);
 	if ($userid)
 	{
 		$time=time();
-		$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION['openid']}',bindingtime='{$time}'  WHERE uid='{$userid}' AND qq_openid='' LIMIT 1");
+		$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION[openid]}', qq_nick = '{$val[qq_nick]}', qq_binding_time = '{$time}' WHERE uid='{$userid}' AND qq_openid='' LIMIT 1");
 		update_user_info($userid);
 		$userurl=get_member_url($val['member_type']);
 		header("Location:{$userurl}");
@@ -164,7 +169,7 @@ elseif ($act=='reg_save')
 	{
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 		$link[0]['text'] = "返回首页";
-		$link[0]['href'] = "{$_CFG['main_domain']}";
+		$link[0]['href'] = "{$_CFG['site_dir']}";
 		showmsg('注册失败！',0,$link);
 	}
 	
@@ -253,8 +258,18 @@ elseif ($act=='binding_callback')
 			}
 			else
 			{
+					$url = "https://graph.qq.com/user/get_user_info?access_token=".$access_token."&oauth_consumer_key={$_CFG['qq_appid']}&openid=".$_SESSION["openid"];
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL, $url);
+					curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+					curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+					$output = curl_exec($ch);
+					curl_close($ch);
+					$jsoninfo = json_decode($output, true);
+					$nickname = iconv("utf-8","gbk",$jsoninfo["nickname"]);
 					$time=time();
-					$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION['openid']}',bindingtime='{$time}' WHERE uid='{$_SESSION[uid]}' AND qq_openid='' LIMIT 1");
+					$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION[openid]}', qq_nick = '{$nickname}', qq_binding_time = '{$time}' WHERE uid='".$_SESSION['uid']."' AND qq_openid='' LIMIT 1");
 					$link[0]['text'] = "进入会员中心";
 					$link[0]['href'] = get_member_url($_SESSION['utype']);
 					$_SESSION['uqqid']=$_SESSION['openid'];

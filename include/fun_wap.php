@@ -16,9 +16,11 @@
 function company_one($id)
 {
 	global $db;
-	$wheresql=" WHERE id=".intval($id);
+	$id=intval($id);
+	$wheresql=" WHERE id=".$id;
 	$sql = "select * from ".table('company_profile').$wheresql." LIMIT 1";
 	$val=$db->getone($sql);
+	$val['contents'] = htmlspecialchars_decode($val['contents'],ENT_QUOTES);
 	$jobslist = $db->getall("select * from ".table('jobs')." where `company_id`=".$id." limit 5");
 	foreach ($jobslist as $key => $value) {
 		$jobslist[$key]['url'] = wap_url_rewrite("wap-jobs-show",array("id"=>$value['id']));
@@ -45,6 +47,7 @@ function news_one($id)
 	$wheresql=" WHERE id=".intval($id);
 	$sql = "select * from ".table('article').$wheresql." LIMIT 1";
 	$val=$db->getone($sql);
+	$val['content'] = htmlspecialchars_decode($val['content'],ENT_QUOTES);
 	return $val;
 }
 function jobs_one($id)
@@ -52,6 +55,7 @@ function jobs_one($id)
 	global $db;
 	$id=intval($id);
 	$db->query("update ".table('jobs')." set click=click+1 WHERE id='{$id}'  LIMIT 1");
+	$db->query("update ".table('jobs_search_hot')." set click=click+1 WHERE id='{$id}'  LIMIT 1");
 	$wheresql=" WHERE id='".$id."'";
 	$sql = "select * from ".table('jobs').$wheresql." LIMIT 1";
 	$val=$db->getone($sql);
@@ -59,23 +63,29 @@ function jobs_one($id)
 		$sql = "select * from ".table('jobs_tmp').$wheresql." LIMIT 1";
 		$val=$db->getone($sql);
 	}
+	if(intval($_SESSION['uid'])>0 && intval($_SESSION['utype'])==2){
+		//检查该职位是否对此会员发起面试邀请,并且此会员没看
+		$check_int = wap_check_interview(intval($_SESSION['uid']),$val['id']);
+		if($check_int){
+			wap_update_interview(intval($_SESSION['uid']),$val['id']);
+		}
+	}
 	$val['amount']=$val['amount']=="0"?'若干':$val['amount'];
 	$profile=company_one($val['company_id']);
 	$val['company']=$profile;
+	$val['contents'] = htmlspecialchars_decode($val['contents'],ENT_QUOTES);
 	$val['company_url']=wap_url_rewrite("wap-company-show",array("id"=>$val['company_id']));
 	$sql = "select * from ".table('jobs_contact')." where pid='{$id}' LIMIT 1";
 	$contact=$db->getone($sql);
 	$val['contact']=$contact;
-	if($val['tag']){
-		$str=$val['tag'];
-		$tag_arr=explode("|", $str);
-		
-		foreach ($tag_arr as $key=>$value) {
-			$tag_cn=explode(",", $value);
-			$value=$tag_cn[1];
-			$tag_arr[$key]=$value;
-		}
-		$val['tag_cn']=$tag_arr;
+	if ($val['tag_cn'])
+	{
+		$tag_cn=explode(',',$val['tag_cn']);
+		$val['tag_cn']=$tag_cn;
+	}
+	else
+	{
+	$val['tag_cn']=array();
 	}
 	return $val;
 }
@@ -96,12 +106,6 @@ function resume_one($id)
 {
 	global $db;
 	$id=intval($id);
-	if(intval($_SESSION['uid'])>0 && intval($_SESSION['utype'])==1){
-		$check = check_view_log(intval($_SESSION['uid']),$id);
-		if(!$check){
-			add_view_log(intval($_SESSION['uid']),$id);
-		}
-	}
 	$db->query("update ".table('resume')." set click=click+1 WHERE id='{$id}'  LIMIT 1");
 	$wheresql=" WHERE id='{$id}'";
 	$sql = "select * from ".table('resume').$wheresql." LIMIT 1";
@@ -113,7 +117,14 @@ function resume_one($id)
 	}
 	elseif($val['display_name']=="3")
 	{
-		$val['fullname']=cut_str($val['fullname'],1,0,"**");
+		if($val['sex']==1)
+		{
+			$val['fullname']=cut_str($val['fullname'],1,0,"先生");
+		}
+		elseif($val['sex']==2)
+		{
+			$val['fullname']=cut_str($val['fullname'],1,0,"女士");
+		}
 		$val['fullname_']=$val['fullname'];	
 	}
 	else
@@ -122,25 +133,25 @@ function resume_one($id)
 		$val['fullname']=$val['fullname'];
 	}
 	if($val['talent']==1){
-		$val['talent'] = "高级";
-	}else{
+		$val['talent_'] = "1";
 		$val['talent'] = "普通";
+	}elseif($val['talent']==2){
+		$val['talent_'] = "2";
+		$val['talent'] = "高级";
 	}
 	$val['fullname_3']=cut_str($val['fullname'],1,0,"先生/女士");
 	$val['age']=date("Y")-$val['birthdate'];
 	$val['education_list']=get_this_education_all($val['uid'],$val['id']);
 	$val['work_list']=get_this_work_all($val['uid'],$val['id']);
 	$val['training_list']=get_this_training_all($val['uid'],$val['id']);
-	if($val['tag']){
-		$str=$val['tag'];
-		$tag_arr=explode("|", $str);
-		
-		foreach ($tag_arr as $key=>$value) {
-			$tag_cn=explode(",", $value);
-			$value=$tag_cn[1];
-			$tag_arr[$key]=$value;
-		}
-		$val['tag_cn']=$tag_arr;
+	if ($val['tag_cn'])
+	{
+		$tag_cn=explode(',',$val['tag_cn']);
+		$val['tag_cn']=$tag_cn;
+	}
+	else
+	{
+	$val['tag_cn']=array();
 	}		
 	return $val;
 }
@@ -247,17 +258,6 @@ function get_this_training($uid,$id)
 	$sql = "select * from ".table('resume_training')." where uid='".intval($uid)."' AND id='".intval($id)."'";
 	return $db->getone($sql);
 }
-function check_view_log($uid,$resumeid){
-	global $db;
-	$result = $db->getone("select * from ".table("view_resume")." where `uid`=".$uid." and `resumeid`=".$resumeid);
-	return $result;
-}
-function add_view_log($uid,$resumeid){
-	$setsqlarr['uid'] = $uid;
-	$setsqlarr['resumeid'] = $resumeid;
-	$setsqlarr['addtime'] = time();
-	inserttable(table("view_resume"),$setsqlarr);
-}
 function wap_get_user_info($uid)
 {
 	global $db;
@@ -344,11 +344,13 @@ function wap_user_register($username,$password,$member_type=0,$email,$uc_reg=tru
 	$setsqlarr['utype']=intval($member_type);
 	$setsqlarr['reg_time']=$timestamp;
 	$setsqlarr['reg_ip']=$online_ip;
-	$insert_id=inserttable(table('members'),$setsqlarr,true);
+	$setsqlarr['reg_type']=2;	//来源于WAP
+	$insert_id=$db->inserttable(table('members'),$setsqlarr,true);
 			if($member_type=="1")
 			{
-				$db->query("INSERT INTO ".table('members_points')." (uid) VALUES ('{$insert_id}')");
-				$db->query("INSERT INTO ".table('members_setmeal')." (uid) VALUES ('{$insert_id}')");
+				$setarr["uid"]=$insert_id;
+				$db->inserttable(table("members_points"),$setarr);
+				$db->inserttable(table("members_setmeal"),$setarr);
 			}
 return $insert_id;
 }
@@ -360,7 +362,7 @@ function wap_user_login($account,$password,$account_type=1,$uc_login=true,$expir
 	if (preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$account))
 	{
 		$account_type=2;
-	}elseif (preg_match("/^(13|15|18)\d{9}$/",$account))
+	}elseif (preg_match("/^(13|14|15|18)\d{9}$/",$account))
 	{
 		$account_type=3;
 	}
@@ -455,8 +457,20 @@ function wap_add_resume_jobs($pid,$uid,$str)
 		$setsqlarr['topclass']=$arr[0];
 		$setsqlarr['category']=$arr[1];
 		$setsqlarr['subclass']=$arr[2];
-		if (!inserttable(table('resume_jobs'),$setsqlarr))return false;
+		if (!$db->inserttable(table('resume_jobs'),$setsqlarr))return false;
 	}
+	return true;
+}
+//增加意向地区
+function wap_add_resume_district($pid,$uid,$district,$sdistrict)
+{
+	global $db;
+	$db->query("Delete from ".table('resume_district')." WHERE pid='".intval($pid)."'");
+	$setsqlarr['uid']=intval($uid);
+	$setsqlarr['pid']=intval($pid);
+	$setsqlarr['district']=intval($district);
+	$setsqlarr['sdistrict']=intval($sdistrict);
+	if (!$db->inserttable(table('resume_district'),$setsqlarr))return false;
 	return true;
 }
 // 添加意向行业
@@ -468,7 +482,28 @@ function wap_add_resume_trade($pid,$uid,$str)
 	$setsqlarr['uid']=intval($uid);
 	$setsqlarr['pid']=intval($pid);
 	$setsqlarr['trade']=$str;
-	if (!inserttable(table('resume_trade'),$setsqlarr))return false;
+	if (!$db->inserttable(table('resume_trade'),$setsqlarr))return false;
 	return true;
+}
+// 绑定帐号自动登录
+function wap_weixin_logon($fromUsername,$expire=null)
+{
+	global $db;
+	if($fromUsername){
+	$sql ="select uid from ".table('members')." where weixin_openid = '{$fromUsername}' LIMIT 1";
+	$usinfo = $db->getone($sql);
+	wap_update_user_info($usinfo['uid'],true,true,$expire);
+	unset($fromUsername);
+	}
+}
+function wap_check_interview($uid,$jobsid){
+	global $db;
+	$result = $db->getone("select did from ".table("company_interview")." where `personal_look`=1 and  `resume_uid`=".$uid." and `jobs_id`=".$jobsid);
+	return $result;
+}
+function wap_update_interview($uid,$jobsid){
+	global $db;
+	$setsqlarr['personal_look'] = 2;
+	$db->updatetable(table("company_interview"),$setsqlarr," `resume_uid`=".$uid." and `jobs_id`=".$jobsid );
 }
 ?>

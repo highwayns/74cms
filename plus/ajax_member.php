@@ -18,7 +18,7 @@ if($act == 'edit_apply')
 	if ($id>0)
 	{
 	$setsqlarr['personal_look']=2;
-	updatetable(table('personal_jobs_apply'),$setsqlarr," did='".$id."' LIMIT 1");
+	$db->updatetable(table('personal_jobs_apply'),$setsqlarr," did='".$id."' LIMIT 1");
 			$sql="select m.username from ".table('personal_jobs_apply')." AS a JOIN ".table('members')." AS m ON a.personal_uid=m.uid WHERE a.did='{$id}' LIMIT 1";
 			$user=$db->getone($sql);
 			write_memberslog($_SESSION['uid'],1,2006,$_SESSION['username'],"查看了 {$user['username']} 的职位申请");
@@ -31,7 +31,7 @@ elseif($act == 'edit_interview')
 	if ($id>0)
 	{
 	$setsqlarr['personal_look']=2;
-	if (updatetable(table('company_interview'),$setsqlarr," did='".$id."' LIMIT 1"))exit("ok");
+	if ($db->updatetable(table('company_interview'),$setsqlarr," did='".$id."' LIMIT 1"))exit("ok");
 	}
 }
 ?>

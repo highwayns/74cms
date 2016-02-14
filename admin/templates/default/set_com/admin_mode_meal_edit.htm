@@ -70,7 +70,7 @@ $(document).ready(function()
         元 <span class="admin_note">(0表示免费)</span> </td>
       </tr>
 		<tr>
-        <td align="right">发布普通职位：</td>
+        <td align="right">职位最大并发数：</td>
         <td><input name="jobs_ordinary" type="text" class="input_text_200" id="jobs_ordinary" value="{#$show.jobs_ordinary#}"  maxlength="10"/>
         条   <span class="admin_note">(0为不允许)</span></td>
       </tr>
@@ -146,7 +146,7 @@ $(document).ready(function()
 	   <tr>
         <td align="right">允许职位套色：<span style="position:relative;"><div class="set_meal" id="highlight_he"></div></span></td>
         <td><input name="highlight_num" type="text" class="input_text_200 monitor" id="highlight" value="{#$show.highlight_num#}" maxlength="5"/>
-        条 <span class="admin_note">(0为不允许使用职位套色)</span> </td>
+        条 </td>
       </tr>
 	   <tr style="display:none" id="highlight_days">
         <td align="right"  >套色天数设定：</td>
@@ -158,7 +158,6 @@ $(document).ready(function()
         <td><input name="show_order" type="text" class="input_text_200" id="show_order" onkeyup="if(event.keyCode !=37 &amp;&amp; event.keyCode != 39) value=value.replace(/\D/g,'');" value="{#$show.show_order#}" maxlength="3"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
           数字越大越靠前</td>
       </tr>
-	
 	  <tr>
         <td align="right">允许会员切换模板：</td>
         <td><label>

@@ -40,7 +40,7 @@ function tpl_function_qishi_hrtools_list($params, &$smarty)
 	$wheresql=" WHERE  h_typeid=".intval($aset['type_id']);
 	}
 	$limit=" LIMIT ".abs($aset['start']).','.$aset['row'];
-	$result = $db->query("SELECT * FROM ".table('hrtools')." ".$wheresql.$orderbysql.$limit);
+	$result = $db->query("SELECT h_id,h_filename,h_fileurl,h_color,h_strong FROM ".table('hrtools')." ".$wheresql.$orderbysql.$limit);
 	$list = array();
 	while($row = $db->fetch_array($result))
 	{
@@ -52,7 +52,7 @@ function tpl_function_qishi_hrtools_list($params, &$smarty)
 		{
 		$row['h_filename']="<span style=\"color:{$row['h_color']}\">{$row['h_filename']}</span>";
 		}
-		$row['h_fileurl']=substr($row['h_fileurl'],0,7)=="http://"?$row['h_fileurl']:$_CFG['main_domain'].$row['h_fileurl'];
+		$row['h_fileurl']=substr($row['h_fileurl'],0,7)=="http://"?$row['h_fileurl']:$_CFG['site_dir'].$row['h_fileurl'];
 		$list[] = $row;
 	}
 	$smarty->assign($aset['listname'],$list);

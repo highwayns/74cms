@@ -25,6 +25,12 @@ $("li>a").click(function(){
 <li><a href="admin_set.php"  target="mainFrame"  >网站配置</a></li>
 <li><a href="admin_set_com.php"  target="mainFrame"  >企业设置 </a></li>
 <li><a href="admin_set_per.php"  target="mainFrame"  >个人设置 </a></li>
+{#if $_PLUG.hunter.p_install==2#}
+<li><a href="admin_set_hunter.php"  target="mainFrame"  >猎头设置 </a></li>
+{#/if#}
+{#if $_PLUG.train.p_install==2#}
+<li><a href="admin_set_train.php"  target="mainFrame"  >培训设置 </a></li>
+{#/if#}
 {#if $_PLUG.simple.p_install==2#}
 <li><a href="admin_set_simple.php"  target="mainFrame"  >微商圈 </a></li>
 {#/if#}
@@ -37,7 +43,9 @@ $("li>a").click(function(){
 <li><a href="admin_category.php" target="mainFrame" >分类管理</a></li>
 <li><a href="admin_hotword.php" target="mainFrame" >热门关键字</a></li>
 <li><a href="admin_memberslog.php" target="mainFrame" >会员日志</a></li>
+<li><a href="admin_users.php" target="mainFrame">网站管理员</a></li>
 <li><a href="admin_syslog.php" target="mainFrame">系统错误日志</a></li>
+<li><a href="admin_login.php?act=logout"  target="_top"  >退出登录</a></li>
 </ul>
 </div>
 </body>

@@ -27,7 +27,7 @@ exit("短信模块处于关闭状态");
 }
 if ($act=="send_code")
 {
-		if (empty($mobile) || !preg_match("/^(13|15|18)\d{9}$/",$mobile))
+		if (empty($mobile) || !preg_match("/^(13|15|14|17|18)\d{9}$/",$mobile))
 		{
 		exit("手机号错误");
 		}
@@ -43,9 +43,9 @@ if ($act=="send_code")
 		}
 		else
 		{
-			if ($_SESSION['send_time'] && (time()-$_SESSION['send_time'])<60)
+			if ($_SESSION['send_time'] && (time()-$_SESSION['send_time'])<180)
 			{
-			exit("请60秒后再进行验证！");
+			exit("请180秒后再进行验证！");
 			}
 			$rand=mt_rand(100000, 999999);	
 			$r=captcha_send_sms($mobile,"感谢您使用{$_CFG['site_name']}手机认证,验证码为:{$rand}");
@@ -80,11 +80,17 @@ elseif ($act=="verify_code")
 			{
 					$setsqlarr['mobile']=$_SESSION['verify_mobile'];
 					$setsqlarr['mobile_audit']=1;
-					updatetable(table('members'),$setsqlarr," uid='{$uid}'");
-					$infoarr['phone']=$setsqlarr['mobile'];
-					updatetable(table('members_info'),$infoarr," uid='{$uid}'");
+					$db->updatetable(table('members'),$setsqlarr," uid='{$uid}'");
+					if ($_SESSION['utype']=="2")
+					{
+						$infoarr['phone']=$setsqlarr['mobile'];
+						$db->updatetable(table('members_info'),$infoarr," uid='{$uid}'");
+						
+						$u['telephone']=$setsqlarr['mobile'];
+						$db->updatetable(table('resume'),$u," uid='{$uid}'");
+					}
 					unset($setsqlarr,$infoarr,$_SESSION['verify_mobile'],$_SESSION['mobile_rand']);
-					if ($_SESSION['utype']=="1" && $_CFG['operation_mode']=='1')
+					if ($_SESSION['utype']=="1" && ($_CFG['operation_mode']=='1' || $_CFG['operation_mode']=='3'))
 					{
 						$rule=get_cache('points_rule');
 						if ($rule['verifymobile']['value']>0)
@@ -102,10 +108,69 @@ elseif ($act=="verify_code")
 							write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username']," 手机通过验证，{$_CFG['points_byname']}({$operator}{$rule['verifymobile']['value']})，(剩余:{$user_points})",1,1016,"手机认证通过","{$operator}{$rule['verifymobile']['value']}","{$user_points}");
 							}
 						}
+					}elseif ($_SESSION['utype']=='4' && $_CFG['operation_train_mode']=='1')
+					{
+						$rule=get_cache('points_rule');
+						if ($rule['train_verifymobile']['value']>0)
+						{
+							$info=$db->getone("SELECT uid FROM ".table('members_handsel')." WHERE uid ='{$_SESSION['uid']}' AND htype='verifymobile' LIMIT 1");
+							if(empty($info))
+							{
+							$time=time();			
+							$db->query("INSERT INTO ".table('members_handsel')." (uid,htype,addtime) VALUES ('{$_SESSION['uid']}', 'verifymobile','{$time}')");
+							require_once(QISHI_ROOT_PATH.'include/fun_train.php');
+							report_deal($_SESSION['uid'],$rule['train_verifymobile']['type'],$rule['train_verifymobile']['value']);
+							$user_points=get_user_points($_SESSION['uid']);
+							$operator=$rule['train_verifymobile']['type']=="1"?"+":"-";
+							$_SESSION['handsel_verifymobile']=$_CFG['train_points_byname'].$operator.$rule['train_verifymobile']['value'];
+							write_memberslog($_SESSION['uid'],4,9101,$_SESSION['username']," 手机通过验证，{$_CFG['train_points_byname']}({$operator}{$rule['train_verifymobile']['value']})，(剩余:{$user_points})");
+							}
+						}
+					}elseif ($_SESSION['utype']=='3' && $_CFG['operation_hunter_mode']=='1')
+					{
+						$rule=get_cache('points_rule');
+						if ($rule['hunter_verifymobile']['value']>0)
+						{
+							$info=$db->getone("SELECT uid FROM ".table('members_handsel')." WHERE uid ='{$_SESSION['uid']}' AND htype='verifymobile' LIMIT 1");
+							if(empty($info))
+							{
+							$time=time();			
+							$db->query("INSERT INTO ".table('members_handsel')." (uid,htype,addtime) VALUES ('{$_SESSION['uid']}', 'verifymobile','{$time}')");
+							require_once(QISHI_ROOT_PATH.'include/fun_hunter.php');
+							report_deal($_SESSION['uid'],$rule['hunter_verifymobile']['type'],$rule['hunter_verifymobile']['value']);
+							$user_points=get_user_points($_SESSION['uid']);
+							$operator=$rule['hunter_verifymobile']['type']=="1"?"+":"-";
+							$_SESSION['handsel_verifymobile']=$_CFG['hunter_points_byname'].$operator.$rule['hunter_verifymobile']['value'];
+							write_memberslog($_SESSION['uid'],3,9201,$_SESSION['username']," 手机通过验证，{$_CFG['hunter_points_byname']}({$operator}{$rule['hunter_verifymobile']['value']})，(剩余:{$user_points})");
+							}
+						}
 					}
 
 					exit("success");
 			}
+	}
+}
+// 个人发布简历 修改简历的时候 
+elseif($act == "mobile_code")
+{
+	$verifycode=trim($_POST['mobile_code']);
+	if (empty($verifycode) || empty($_SESSION['mobile_rand']) || $verifycode<>$_SESSION['mobile_rand'])
+	{
+		exit("false");
+	}
+	else
+	{
+		$uid=intval($_SESSION['uid']);
+		if (empty($uid))
+		{
+			exit("false");
+		}
+		else
+		{
+			unset($_SESSION['verify_mobile'],$_SESSION['mobile_rand']);
+			exit("true");
+
+		}
 	}
 }
 ?>

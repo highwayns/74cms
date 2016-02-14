@@ -11,7 +11,7 @@
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <link href="css/index.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery.js" type='text/javascript' ></script>
-<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 <script src="js/jquery.common.js" type='text/javascript' ></script>
 <script type="text/javascript">
 $(document).ready(function()
@@ -114,14 +114,19 @@ $(document).ready(function()
 <div class="d6">
 {#foreach from=$emergency_jobs item=list#}
 	<div class="list" url="{#$list.url#}">
-	  <div class="t1"><span><a href="{#$list.url#}">{#$list.jobs_name#}</a></span><br />
+	  <div class="t1"><span><a href="{#$list.url#}">{#$list.jobs_name#}</a>
+		{#if $list.stick=="1"#}<img title="置顶信息" src="images/ding.jpg" border="0" class="vtip"/>{#/if#}
+             		{#if $list.emergency=="1"#}<img title="紧急招聘" src="images/iconji.gif" border="0" class="vtip" />{#/if#}
+              	{#if $list.recommend=="1"#}<img title="推荐职位" src="images/iconjian.gif" border="0" class="vtip" />{#/if#}
+            		{#if $list.graduate=="1"#}<img title="欢迎应届生投递简历" src="images/ying.jpg" border="0" class="vtip"/>{#/if#}
+	  </span><br />
 {#$list.companyname#}</div>
 	  <div class="t2">{#$list.district_cn#}<br />{#$list.wage_cn#}</div>
 	  <div class="t3"><img src="images/14.png"  border="0"/></div>
 	  <div class="clear"></div>
 	</div>
 {#/foreach#}	
-    <div class="more link_bk"><a href="wap-jobs-list.php">更多职位...</a></div>	
+    <a style="display:block;text-decoration:none" class="more link_bk" href="wap-jobs-list.php">更多职位...</a>	
 </div>
 {#include file="wap/footer.htm"#}
 

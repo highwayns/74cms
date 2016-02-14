@@ -61,7 +61,7 @@ if($act == 'list')
 	$joinsql=" LEFT JOIN  ".table('ad_category')." AS c ON  a.category_id=c.id ";
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('ad')." AS a " .$joinsql.$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$smarty->assign('list',get_ad_list($offset,$perpage,$joinsql.$wheresql));
@@ -241,7 +241,18 @@ elseif($act == 'ad_add_save')
 	$link[0]['href'] ="?act=ad_add&category_id=".$_POST['category_id']."&type_id=".$_POST['type_id']."&alias=".$_POST['alias'];
 	$link[1]['text'] = "返回广告列表";
 	$link[1]['href'] ="?act=";
-	!inserttable(table('ad'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
+	if(!$db->inserttable(table('ad'),$setsqlarr))
+	{
+		//填写管理员日志
+		write_log("后台添加广告失败", $_SESSION['admin_name'],3);
+		adminmsg("添加失败！",0);
+	}
+	else
+	{
+		//填写管理员日志
+		write_log("后台成功添加广告", $_SESSION['admin_name'],3);
+		adminmsg("添加成功！",2,$link);
+	}
 }
 //修改广告
 elseif($act == 'edit_ad')
@@ -416,11 +427,24 @@ elseif($act == 'ad_edit_save')
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] =trim($_POST['url']);
 	$wheresql=" id='".intval($_POST['id'])."' "; 
-	!updatetable(table('ad'),$setsqlarr,$wheresql)?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	if(!$db->updatetable(table('ad'),$setsqlarr,$wheresql))
+	{
+		//填写管理员日志
+		write_log("后台修改广告失败", $_SESSION['admin_name'],3);
+		adminmsg("修改失败！",0);
+	}
+	else
+	{
+		//填写管理员日志
+		write_log("后台修改广告成功", $_SESSION['admin_name'],3);
+		adminmsg("修改成功！",2,$link);
+	}
+	
 }
 //删除广告
 elseif($act=='del_ad')
 {
+	check_permissions($_SESSION['admin_purview'],"ad_del");
 	$id=$_REQUEST['id'];
 	check_token();
 	if (empty($id)) adminmsg("请选择项目！",0);
@@ -459,11 +483,23 @@ elseif($act=='ad_category_add_save')
 	$link[0]['text'] = "返回上一页";
 	$link[0]['href'] ="?act=ad_category";
 	$setsqlarr['categoryname']=$_POST['categoryname']?trim($_POST['categoryname']):adminmsg('您没有广告位名称！',1);
+	$setsqlarr['expense'] = intval($_POST['expense']);
 	$setsqlarr['alias']=$_POST['alias']?trim($_POST['alias']):adminmsg('您没有填写调用名称！',1);
 	substr($setsqlarr['alias'],0,3)=='QS_'?adminmsg('自定义广告位调用名称不允许 QS_ 开头！',1):'';
 	ck_category_alias($setsqlarr['alias'])?adminmsg('调用名称已经存在，请换一个调用名称！',1):'';
 	$setsqlarr['type_id']=$_POST['type_id']?intval($_POST['type_id']):adminmsg('您没有选择广告类型！',1);
-	!inserttable(table('ad_category'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
+	if(!$db->inserttable(table('ad_category'),$setsqlarr))
+	{
+		//填写管理员日志
+		write_log("后台添加广告位失败", $_SESSION['admin_name'],3);
+		adminmsg("添加失败！",0);
+	}
+	else
+	{
+		//填写管理员日志
+		write_log("后台成功添加广告位", $_SESSION['admin_name'],3);
+		adminmsg("添加成功！",2,$link);
+	}
 }
 //修改广告位
 elseif($act=='edit_ad_category')
@@ -509,19 +545,22 @@ elseif($act=='ad_category_edit_save')
 		ck_category_alias($setsqlarr['alias'],$_POST['id'])?adminmsg('调用名称已经存在，请换一个调用名称！',1):'';
 		$setsqlarr['type_id']=trim($_POST['type_id'])?trim($_POST['type_id']):adminmsg('您没有选择广告类型！',1);
 	}
+	$setsqlarr['expense'] = intval($_POST['expense']);
 	$wheresql=" id='".intval($_POST['id'])."'";
-		if (updatetable(table('ad_category'),$setsqlarr,$wheresql))
+		if ($db->updatetable(table('ad_category'),$setsqlarr,$wheresql))
 		{
 			if(intval($_POST['admin_set'])!=1){
 				$adaliasarr['alias']=$setsqlarr['alias'];//同时修改此分类下所有广告的alias
 				$wheresql=" category_id='".intval($_POST['id'])."'";
-				updatetable(table('ad'),$adaliasarr,$wheresql);
+				$db->updatetable(table('ad'),$adaliasarr,$wheresql);
 			}
-		adminmsg("修改成功！",2,$link);
+			//填写管理员日志
+			write_log("后台成功修改广告位", $_SESSION['admin_name'],3);
+			adminmsg("修改成功！",2,$link);
 		}
 		else
 		{
-		adminmsg("修改失败！",0);
+			adminmsg("修改失败！",0);
 		}
 }
 //删除广告位
@@ -535,7 +574,7 @@ elseif($act=='del_ad_category')
 			!del_ad_category($id)?adminmsg("删除失败！",0):adminmsg("删除成功！",2);
 		}
 }
- elseif($act == 'management')
+elseif($act == 'management')
 {	
 	$id=intval($_GET['id']);
 	$u=get_adv_user($id);

@@ -70,9 +70,35 @@ if ($aset['displayorder'])
 {
 	if (strpos($aset['displayorder'],'>'))
 	{
-	$arr=explode('>',$aset['displayorder']);
-	$arr[0]=preg_match('/article_order|click|id/',$arr[0])?$arr[0]:"";
-	$arr[1]=preg_match('/asc|desc/',$arr[1])?$arr[1]:"";
+		$arr=explode('>',$aset['displayorder']);
+		// 排序字段
+		if($arr[0]=='click'){
+			$arr[0]="click";
+		}
+		elseif($arr[0]=="id")
+		{
+			$arr[0]="id";
+		}
+		elseif($arr[0]='article_order')
+		{
+			$arr[0]='article_order';
+		}
+		else
+		{
+			$arr[0]="";
+		}
+		// 排序方式
+		if($arr[1]=='desc'){
+			$arr[1]="desc";
+		}
+		elseif($arr[1]=="asc")
+		{
+			$arr[1]="asc";
+		}
+		else
+		{
+			$arr[1]="";
+		}
 		if ($arr[0] && $arr[1])
 		{
 		$orderbysql=" ORDER BY ".$arr[0]." ".$arr[1];
@@ -95,7 +121,7 @@ $wheresql.=" AND addtime > ".$settr_val;
 }
 if (!empty($aset['key']))
 {
-$key=trim($aset['key']);
+$key=help::addslashes_deep(trim($aset['key']));
 $wheresql.=" AND title like '%{$key}%'";
 }
 if (isset($aset['paged']))
@@ -117,7 +143,7 @@ if (isset($aset['paged']))
 		$smarty->assign('total',$total_count);
 }
 $limit=" LIMIT ".abs($aset['start']).','.$aset['row'];
-$result = $db->query("SELECT * FROM ".table('article')." ".$wheresql.$orderbysql.$limit);
+$result = $db->query("SELECT id,type_id,parentid,title,content,tit_color,tit_b,Small_img,author,source,focos,is_url,seo_description,seo_keywords,click,addtime FROM ".table('article')." ".$wheresql.$orderbysql.$limit);
 $list= array();
 while($row = $db->fetch_array($result))
 {
@@ -142,6 +168,7 @@ while($row = $db->fetch_array($result))
 		}
 	$row['img']=$_CFG['thumb_dir'].$row['Small_img'];
 	$row['bimg']=$_CFG['upfiles_dir'].$row['Small_img'];
+	$row['isimg']=$row['Small_img']; // 不带路径，判断是否有缩略图，在news.htm页面用到
 	$list[] = $row;
 }
 $smarty->assign($aset['listname'],$list);

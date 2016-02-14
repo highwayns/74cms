@@ -177,9 +177,11 @@ $(document).ready(function()
 </ul>	
 		  </td>
         </tr>
-      </table>	
+      </table>	  
+
  
-{#if $_PLUG.simple.p_install==2#}
+   {#if $_PLUG.simple.p_install==2#}
+
  <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
         <tr>
           <td height="25" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed; padding-left:20px;"><strong>微招聘：</strong></td>
@@ -228,7 +230,25 @@ $(document).ready(function()
 		  </td>
         </tr>
       </table>
-	 {#/if#}   
+	 {#/if#} 
+       <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
+          <tr>
+            <td height="25" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed; padding-left:20px;"><strong>移动端配置：</strong></td>
+          </tr>
+          <tr>
+            <td  bgcolor="#FFFFFF" style="  padding-left:14px;">
+              <ul style="margin:0px; padding:3px; list-style:none">
+                <li  class="user_box_li">
+                <label>
+                <input name="purview[]" type="checkbox"  value="set_weixinconnect" {#if "set_weixinconnect"|in_array:$admin_set#}checked="checked"{#/if#} />微信公众平台 
+                </label>
+                </li>
+                <li class="clear" style="list-style:none; display:none"></li>
+              </ul> 
+            </td>
+          </tr>
+        </table>
+
 	  <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
         <tr>
           <td height="25" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed; padding-left:20px;"><strong>会员设置：</strong></td>
@@ -264,7 +284,7 @@ $(document).ready(function()
 </ul>	
 		  </td>
         </tr>
-        
+       
 		        <tr>
           <td  bgcolor="#FFFFFF" style="  padding-left:14px;">
 		  <ul style="margin:0px; padding:3px; list-style:none">		  
@@ -512,6 +532,36 @@ $(document).ready(function()
 </ul>	
 	    </td>
         </tr>
+        <tr>
+          <td  bgcolor="#FFFFFF" style="  padding-left:14px;">
+      <ul style="margin:0px; padding:3px; list-style:none">     
+<li  class="user_box_li">
+<label>
+<input name="purview[]" type="checkbox"  value="report_show" {#if "report_show"|in_array:$admin_set#}checked="checked"{#/if#} />查看举报
+</label>
+</li>
+<!-- -->
+<li  class="user_box_li">
+<label>
+<input name="purview[]" type="checkbox"  value="report_del" {#if "report_del"|in_array:$admin_set#}checked="checked"{#/if#} />删除举报
+</label>
+</li>
+<!-- -->
+<li  class="user_box_li">
+<label>
+<input name="purview[]" type="checkbox"  value="suggest_show" {#if "suggest_show"|in_array:$admin_set#}checked="checked"{#/if#} />查看建议
+</label>
+</li>
+<li  class="user_box_li">
+<label>
+<input name="purview[]" type="checkbox"  value="suggest_del" {#if "suggest_del"|in_array:$admin_set#}checked="checked"{#/if#} />删除建议
+</label>
+</li>
+<!-- -->
+<li class="clear" style="list-style:none; display:none"></li>
+</ul> 
+</td>
+  </tr>
       </table>
 	    <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
         <tr>
@@ -603,13 +653,13 @@ $(document).ready(function()
 </td>
   </tr>
       </table>
-	  	  	    <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
+	  <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
         <tr>
-          <td height="25" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed; padding-left:20px;"><strong>模版管理：</strong></td>
+          <td height="25" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed; padding-left:20px;"><strong>工具插件：</strong></td>
         </tr>
         <tr>
           <td  bgcolor="#FFFFFF" style="  padding-left:14px;">
-		  <ul style="margin:0px; padding:3px; list-style:none">		  
+      <ul style="margin:0px; padding:3px; list-style:none">     
 <li  class="user_box_li">
 <label>
 <input name="purview[]" type="checkbox"  value="tpl_show" {#if "tpl_show"|in_array:$admin_set#}checked="checked"{#/if#} />查看模版
@@ -638,50 +688,9 @@ $(document).ready(function()
 </label>
 </li>
 <!-- -->
-<li class="clear" style="list-style:none; display:none"></li>
-</ul>	
+</ul> 
 </td>
   </tr>
-      </table>
-	  	  	  	    <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
-        <tr>
-          <td height="25" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed; padding-left:20px;"><strong>反馈信息：</strong></td>
-        </tr>
-        <tr>
-          <td  bgcolor="#FFFFFF" style="  padding-left:14px;">
-		  <ul style="margin:0px; padding:3px; list-style:none">		  
-<li  class="user_box_li">
-<label>
-<input name="purview[]" type="checkbox"  value="report_show" {#if "report_show"|in_array:$admin_set#}checked="checked"{#/if#} />查看举报
-</label>
-</li>
-<!-- -->
-<li  class="user_box_li">
-<label>
-<input name="purview[]" type="checkbox"  value="report_del" {#if "report_del"|in_array:$admin_set#}checked="checked"{#/if#} />删除举报
-</label>
-</li>
-<!-- -->
-<li  class="user_box_li">
-<label>
-<input name="purview[]" type="checkbox"  value="suggest_show" {#if "suggest_show"|in_array:$admin_set#}checked="checked"{#/if#} />查看建议
-</label>
-</li>
-<li  class="user_box_li">
-<label>
-<input name="purview[]" type="checkbox"  value="suggest_del" {#if "suggest_del"|in_array:$admin_set#}checked="checked"{#/if#} />删除建议
-</label>
-</li>
-<!-- -->
-<li class="clear" style="list-style:none; display:none"></li>
-</ul>	
-</td>
-  </tr>
-      </table>
-	  		<table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
-        <tr>
-          <td height="25" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed; padding-left:20px;"><strong>工具插件：</strong></td>
-        </tr>
         <tr>
           <td  bgcolor="#FFFFFF" style="  padding-left:14px;">
 		  <ul style="margin:0px; padding:3px; list-style:none">	 
@@ -721,11 +730,6 @@ $(document).ready(function()
 		
 <li  class="user_box_li">
 <label>
-<input name="purview[]" type="checkbox"  value="set_weixinconnect" {#if "set_weixinconnect"|in_array:$admin_set#}checked="checked"{#/if#} />微信公众平台 
-</label>
-</li>
-<li  class="user_box_li">
-<label>
 <input name="purview[]" type="checkbox"  value="smsqueue" {#if "smsqueue"|in_array:$admin_set#}checked="checked"{#/if#} />短信营销
 </label>
 </li>
@@ -734,16 +738,26 @@ $(document).ready(function()
 <input name="purview[]" type="checkbox"  value="mailqueue" {#if "mailqueue"|in_array:$admin_set#}checked="checked"{#/if#} />邮件营销  
 </label>
 </li>
-<li  class="user_box_li">
-<label>
-<input name="purview[]" type="checkbox"  value="site_plug" {#if "site_plug"|in_array:$admin_set#}checked="checked"{#/if#} />模块管理  
-</label>
-</li>
 <!-- -->
 <li class="clear" style="list-style:none; display:none"></li>
 </ul>	
 </td>
   </tr>
+   <tr>
+ <td  bgcolor="#FFFFFF" style="  padding-left:14px;">
+<ul style="margin:0px; padding:3px; list-style:none">  
+        <li  class="user_box_li">
+      <label>
+      <input name="purview[]" type="checkbox"  value="site_plug" {#if "site_plug"|in_array:$admin_set#}checked="checked"{#/if#} />模块管理  
+      </label>
+      </li>
+      <li  class="user_box_li">
+      </li>
+      <li class="clear" style="list-style:none; display:none"></li>
+</ul> 
+</td>
+  </tr>  
+
       </table>
 	  	<table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
         <tr>
@@ -757,6 +771,7 @@ $(document).ready(function()
 <input name="purview[]" type="checkbox"  value="site_set" {#if "site_set"|in_array:$admin_set#}checked="checked"{#/if#} />网站配置 
 </label>
 </li>
+
 <!-- -->
 <li  class="user_box_li">
 <label>
@@ -850,22 +865,21 @@ $(document).ready(function()
 </ul>	
 </td>
   </tr>
-      </table>
+</table>
+<table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
 
-	                    <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
-
-                          <tr>
-                            <td height="50" bgcolor="#FFFFFF" style=" border-top:1px #CCCCCC dashed; padding-left:20px;">
-							{#if $admin_purview=="all"#}
-							<input name="id" type="hidden" value="{#$account.admin_id#}" />
-                              <input name="submit3" type="submit" class="admin_submit"    value="修改"/>
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							  {#/if#}
-                              <input name="submit222" type="button" class="admin_submit"    value="返回" onclick="Javascript:window.history.go(-1)"/>
-                                   </td>
-                          </tr>
-                        </table>
-    </form>
+  <tr>
+    <td height="50" bgcolor="#FFFFFF" style=" border-top:1px #CCCCCC dashed; padding-left:20px;">
+     {#if $admin_purview=="all"#}
+     <input name="id" type="hidden" value="{#$account.admin_id#}" />
+     <input name="submit3" type="submit" class="admin_submit"    value="修改"/>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     {#/if#}
+     <input name="submit222" type="button" class="admin_submit"    value="返回" onclick="Javascript:window.history.go(-1)"/>
+   </td>
+ </tr>
+</table>
+</form>
   {#/if#} 
 </div>
 {#include file="sys/admin_footer.htm"#}

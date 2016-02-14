@@ -33,7 +33,7 @@ function tpl_modifier_qishi_url($string)
 	}
 	else
 	{
-	return url_rewrite($string,NULL);
+	return url_rewrite($string);
 	}
 }
 ?>

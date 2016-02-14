@@ -16,6 +16,23 @@ $smarty->cache = false;
 require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 require_once(QISHI_ROOT_PATH.'include/fun_personal.php');
 $db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
+if((empty($_SESSION['uid']) || empty($_SESSION['username']) || empty($_SESSION['utype'])) &&  $_COOKIE['QS']['username'] && $_COOKIE['QS']['password'] && $_COOKIE['QS']['uid'])
+{
+	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
+	if(check_cookie($_COOKIE['QS']['uid'],$_COOKIE['QS']['username'],$_COOKIE['QS']['password']))
+	{
+	update_user_info($_COOKIE['QS']['uid'],false,false);
+	header("Location:".get_member_url($_SESSION['utype']));
+	}
+	else
+	{
+	unset($_SESSION['uid'],$_SESSION['username'],$_SESSION['utype'],$_SESSION['uqqid'],$_SESSION['activate_username'],$_SESSION['activate_email'],$_SESSION["openid"]);
+	setcookie("QS[uid]","",time() - 3600,$QS_cookiepath, $QS_cookiedomain);
+	setcookie('QS[username]',"", time() - 3600,$QS_cookiepath, $QS_cookiedomain);
+	setcookie('QS[password]',"", time() - 3600,$QS_cookiepath, $QS_cookiedomain);
+	setcookie("QS[utype]","",time() - 3600,$QS_cookiepath, $QS_cookiedomain);
+	}	
+}
 if ($_SESSION['uid']=='' || $_SESSION['username']=='' || intval($_SESSION['uid'])===0)
 {
 	header("Location: ".url_rewrite('QS_login')."?act=logout");
@@ -46,7 +63,7 @@ elseif ($_SESSION['utype']!='2')
 		$link[0]['text'] = "认证邮箱";
 		$link[0]['href'] = 'personal_user.php?act=authenticate';
 		$link[1]['text'] = "网站首页";
-		$link[1]['href'] = $_CFG['main_domain'];
+		$link[1]['href'] = $_CFG['site_dir'];
 		showmsg('您的邮箱未认证，认证后才能进行其他操作！',1,$link,true,6);
 		exit();
 	}
@@ -56,12 +73,19 @@ elseif ($_SESSION['utype']!='2')
 		$link[0]['text'] = "认证手机";
 		$link[0]['href'] = 'personal_user.php?act=authenticate';
 		$link[1]['text'] = "网站首页";
-		$link[1]['href'] = $_CFG['main_domain'];
+		$link[1]['href'] = $_CFG['site_dir'];
 		showmsg('您的手机未认证，认证后才能进行其他操作！',1,$link,true,6);
 		exit();
 	}
 	$smarty->assign('user',$user);
 	$smarty->assign('userindexurl','personal_index.php');
-	$smarty->assign('auditresume',get_auditresume_list($_SESSION['uid']));
+	$auditresume = get_auditresume_list($_SESSION['uid'],2);
+	$smarty->assign('auditresume',$auditresume);
 	$smarty->assign('sms',$sms);
+	// 检测是否 今天第一次登录
+	if($_SESSION['personal_login_first'] && $auditresum && $act!="edit_resume")
+	{
+		$smarty->assign('personal_login_first',$_SESSION['personal_login_first']);
+		unset($_SESSION['personal_login_first']);
+	}
 ?>

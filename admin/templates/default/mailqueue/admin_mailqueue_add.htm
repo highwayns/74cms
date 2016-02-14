@@ -12,9 +12,9 @@
 </p>
 </div> 
  <div class="toptit">新增邮件任务</div>
-<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
-<script charset="utf-8" src="kindeditor/kindeditor-min.js"></script>
-<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" charset="gbk" src="ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="gbk" src="ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="gbk" src="ueditor/lang/zh-cn/zh-cn.js"></script>
     <form id="form1" name="form1" method="post"   action="?act=mailqueue_add_save" >
 	{#$inputtoken#}
   <table width="100%" border="0" cellpadding="4" cellspacing="0"   >
@@ -45,30 +45,13 @@
       <td height="30" align="right" valign="top"  >邮件内容：</td>
       <td   >
 	  <textarea name="m_body" id="m_body" style="width:700px; height:200px; font-size:12px; line-height:180%" ></textarea>
-	  <script>
-      var editor;
-      KindEditor.ready(function(K) {
-        editor = K.create('textarea[name="m_body"]', {
-          allowFileManager : true
-        });
-      });
-    </script>
+	  <script type="text/javascript">
+          var ue = UE.getEditor('m_body');
+      </script>
 	  
 	  </td>
     </tr>
 
-	  
-	   <tr>
-      <td   height="30" align="right"  ></td>
-      <td  >
-	  
-	  {#foreach from=$label item=li#}			
-			<div id="{#$li.0#}" class="sellabel" align="left">{#$li.1#}</div>
-			{#/foreach#}
-				<div class="clear"></div>
-	  
-       </td>
-    </tr>
 	  
 	  
 	      <tr>

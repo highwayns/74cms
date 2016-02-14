@@ -12,7 +12,7 @@
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
 <link href="../css/user_company.css" rel="stylesheet" type="text/css" />
 <script src="../js/jquery.js" type='text/javascript' ></script>
-<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 <script src="../js/jquery.common.js" type='text/javascript' ></script>
 <script type="text/javascript">
 $(document).ready(function()
@@ -292,14 +292,6 @@ $(document).ready(function()
 	            }
 	          });
 	        </script>
-			<tr>
-				<td class="create_job_l">截止日期</td>
-				<td class="create_job_r"><input type="text" class="create_input" name="" value="{#$jobs.deadline|date_format:"%Y-%m-%d %H:%M"#}"/></td>
-			</tr>
-			<tr>
-				<td class="create_job_l">增加有效时间</td>
-				<td class="create_job_r"><input type="text" class="create_input" name="days" value="0" />(0表示不增加)</td>
-			</tr>
 			<tr>
 				<td class="create_job_l">招聘人数</td>
 				<td class="create_job_r"><input type="text" class="create_input" name="amount" value="{#$jobs.amount#}" /></td>

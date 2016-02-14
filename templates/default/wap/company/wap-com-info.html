@@ -12,7 +12,7 @@
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
 <link href="../css/user_company.css" rel="stylesheet" type="text/css" />
 <script src="../js/jquery.js" type='text/javascript' ></script>
-<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 <script src="../js/jquery.common.js" type='text/javascript' ></script>
 <script type="text/javascript">
 $(document).ready(function()
@@ -94,11 +94,10 @@ $(document).ready(function()
 		var email=$("input[name=email]").val();
 		var address=$("input[name=address]").val();
 		var contents=$("textarea[name=contents]").val();
-		var yellowpages=$("input[name=yellowpages]").val();
-		$.post("?act=company_info_save",{companyname:companyname,nature_cn:nature_cn,nature:nature,trade_cn:trade_cn,trade:trade,scale_cn:scale_cn,scale:scale,district_cn:district_cn,district:district,sdistrict:sdistrict,contact:contact,telephone:telephone,email:email,address:address,contents:contents,yellowpages:yellowpages},function(data){
+		$.post("?act=company_info_save",{companyname:companyname,nature_cn:nature_cn,nature:nature,trade_cn:trade_cn,trade:trade,scale_cn:scale_cn,scale:scale,district_cn:district_cn,district:district,sdistrict:sdistrict,contact:contact,telephone:telephone,email:email,address:address,contents:contents},function(data){
 			if(data=="1"){
 				alert("保存企业信息成功");
-				window.location.reload();
+				window.location.href="wap_user.php";
 			}else{
 				alert(data);
 			}
@@ -293,15 +292,6 @@ $(document).ready(function()
 			<tr>
 				<td class="com_info_l">公司简介</td>
 				<td class="com_info_r"><textarea name="contents">{#$company_info.contents#}</textarea></td>
-			</tr>
-			<tr>
-				<td colspan="2" class="com_info_last">
-					{#if $company_info.yellowpages==1#}
-					<label><input type="checkbox" name="yellowpages" value="1" checked/> 公司信息在网站黄页中显示</label>
-					{#else#}
-					<label><input type="checkbox" name="yellowpages" value="0"/> 公司信息在网站黄页中显示</label>
-					{#/if#}
-				</td>
 			</tr>
 		</tbody>
 	</table>

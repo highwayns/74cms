@@ -29,7 +29,7 @@ if ($aset['ID'])
 {
 $wheresql=" WHERE id=".intval($aset['ID']);
 }
-$List = $db->getall("SELECT * FROM ".table('article_property')." ".$wheresql);
+$List = $db->getall("SELECT id,categoryname,category_order FROM ".table('article_property')." ".$wheresql);
 $smarty->assign($aset['listname'],$List);
 }
 ?>

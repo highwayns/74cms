@@ -60,6 +60,11 @@ if($act == 'list')
 		$wheresqlarr['photo']=intval($_GET['photo']);
 		$oederbysql=" order BY addtime DESC ";
 		}
+		if ($_GET['photo_display']<>'')
+		{
+		$wheresqlarr['photo_display']=intval($_GET['photo_display']);
+		$oederbysql=" order BY addtime DESC ";
+		}
 		if (is_array($wheresqlarr)) $wheresql=wheresql($wheresqlarr);	
 		if (!empty($_GET['addtimesettr']))
 		{
@@ -72,7 +77,6 @@ if($act == 'list')
 			$settr=strtotime("-".intval($_GET['settr'])." day");
 			$wheresql=empty($wheresql)?" WHERE refreshtime> ".$settr:$wheresql." AND refreshtime> ".$settr;
 		}
-		
 	}
 	if ($tablename=="all")
 	{
@@ -95,7 +99,7 @@ if($act == 'list')
 		$total_sql="SELECT COUNT(*) AS num FROM ".table('resume').$wheresql;
 	}
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	if ($tablename=="all")
@@ -170,7 +174,8 @@ elseif($act == 'perform')
 		{
 		check_permissions($_SESSION['admin_purview'],"resume_photo_audit");
 		$photoaudit=$_POST['photoaudit'];
-		!edit_resume_photoaudit($id,$photoaudit)?adminmsg("设置失败！",0):adminmsg("设置成功！",2,$link);
+		$is_del_img=intval($_POST['is_del_img']);
+		!edit_resume_photoaudit($id,$photoaudit,$is_del_img)?adminmsg("设置失败！",0):adminmsg("设置成功！",2,$link);
 		}
 		elseif (!empty($_GET['refresh']))
 		{
@@ -182,7 +187,7 @@ elseif($act == 'perform')
 			{
 			adminmsg("刷新失败！",0);
 			}
-		}
+		}	
 }
 elseif($act == 'members_list')
 {
@@ -230,7 +235,7 @@ elseif($act == 'members_list')
 	}
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('members')." as m ".$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$member = get_member_list($offset,$perpage,$wheresql.$oederbysql);
@@ -288,16 +293,32 @@ elseif($act == 'set_account_save')
 	{
 	adminmsg("用户名 {$setsqlarr['username']}  已经存在！",1);
 	}
-	if (empty($setsqlarr['email']) || !preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$setsqlarr['email']))
+	//若勾选已验证，则需判断手机号是否填写
+	if($setsqlarr['mobile_audit']==1)
 	{
-	adminmsg('电子邮箱格式错误！',1);
+		if (empty($setsqlarr['mobile']))
+		{
+		adminmsg('手机号码为空！',1);
+		}
+	}
+	if (!empty($setsqlarr['mobile']) && !preg_match("/^(13|15|14|17|18)\d{9}$/",$setsqlarr['mobile']))
+	{
+	adminmsg('手机号码错误！',1);
 	}
 	$getemail=get_user_inemail($setsqlarr['email']);
 	if (!empty($getemail)  && $getemail['uid']<>$thisuid)
 	{
 	adminmsg("Email  {$setsqlarr['email']}  已经存在！",1);
 	}
-	if (!empty($setsqlarr['mobile']) && !preg_match("/^(13|15|18)\d{9}$/",$setsqlarr['mobile']))
+	//若勾选已验证，则需判断手机号是否填写
+	if($setsqlarr['mobile_audit']==1)
+	{
+		if (empty($setsqlarr['mobile']))
+		{
+		adminmsg('手机号码为空！',1);
+		}
+	}
+	if (!empty($setsqlarr['mobile']) && !preg_match("/^(13|15|14|17|18)\d{9}$/",$setsqlarr['mobile']))
 	{
 	adminmsg('手机号码错误！',1);
 	}
@@ -306,17 +327,19 @@ elseif($act == 'set_account_save')
 	{
 	adminmsg("手机号 {$setsqlarr['mobile']}  已经存在！",1);
 	}
-	if (updatetable(table('members'),$setsqlarr," uid=".$thisuid.""))
+	if ($db->updatetable(table('members'),$setsqlarr," uid=".$thisuid.""))
 	{
 		$u['email']=$setsqlarr['email'];
-		updatetable(table('resume'),$u," uid={$thisuid}");
-	$link[0]['text'] = "返回列表";
-	$link[0]['href'] = $_POST['url'];
-	adminmsg('修改成功！',2,$link);
+		$db->updatetable(table('resume'),$u," uid={$thisuid}");
+		//填写管理员日志
+		write_log("修改会员uid为".$thisuid."的基本信息", $_SESSION['admin_name'],3);
+		$link[0]['text'] = "返回列表";
+		$link[0]['href'] = $_POST['url'];
+		adminmsg('修改成功！',2,$link);
 	}
 	else
 	{
-	adminmsg('修改失败！',1);
+		adminmsg('修改失败！',1);
 	}
 }
 elseif($act == 'userpass_edit')
@@ -329,20 +352,17 @@ elseif($act == 'userpass_edit')
 	$md5password=md5(md5(trim($_POST['password'])).$pwd_hash.$QS_pwdhash);	
 		if ($db->query( "UPDATE ".table('members')." SET password = '{$md5password}'  WHERE uid='{$user_info['uid']}' LIMIT 1"))
 		{
-				if(defined('UC_API'))
-				{
-				include_once(QISHI_ROOT_PATH.'uc_client/client.php');
-				uc_user_edit($user_info['username'],trim($_POST['password']),trim($_POST['password']),"",1);
-				}
-		$link[0]['text'] = "返回列表";
-		$link[0]['href'] = $_POST['url'];
-		$member=get_member_one($user_info['uid']);
-		write_memberslog($member['uid'],1,1004,$member['username'],"管理员在后台修改登录密码");
-		adminmsg('操作成功！',2,$link);
+			$link[0]['text'] = "返回列表";
+			$link[0]['href'] = $_POST['url'];
+			$member=get_member_one($user_info['uid']);
+			write_memberslog($member['uid'],1,1004,$member['username'],"管理员在后台修改登录密码");
+			//填写管理员日志
+			write_log("修改会员uid为".$member['uid']."的密码", $_SESSION['admin_name'],3);
+			adminmsg('操作成功！',2,$link);
 		}
 		else
 		{
-		adminmsg('操作失败！',1);
+			adminmsg('操作失败！',1);
 		}
 }
 elseif($act == 'members_add')
@@ -379,31 +399,15 @@ elseif($act == 'members_add_save')
 	{
 	adminmsg('该 Email 已经被注册！',1);
 	}
-	if(defined('UC_API'))
-	{
-		include_once(QISHI_ROOT_PATH.'uc_client/client.php');
-		if (uc_user_checkname($sql['username'])<>"1")
-		{
-		adminmsg('该用户名已经被使用或者用户名非法！',1);
-		exit();
-		}
-		elseif (uc_user_checkemail($sql['email'])<>"1")
-		{
-			adminmsg('该 Email已经被使用或者非法！',1);
-			exit();
-		}
-		else
-		{
-			uc_user_register($sql['username'],$sql['password'],$sql['email']);
-		}
-	}
 	$sql['pwd_hash'] = randstr();
 	$sql['password'] = md5(md5($sql['password']).$sql['pwd_hash'].$QS_pwdhash);
 	$sql['reg_time']=time();
 	$sql['reg_ip']=$online_ip;
-	$insert_id=inserttable(table('members'),$sql,true);
+	$insert_id=$db->inserttable(table('members'),$sql,true);
 	if ($insert_id)
 	{
+		//填写管理员日志
+		write_log("添加id为".$insert_id."的个人会员", $_SESSION['admin_name'],3);
 		write_memberslog($insert_id,1,1000,$sql['username'],"管理员在后台新增会员");
 		$link[0]['text'] = "返回列表";
 		$link[0]['href'] = "?act=members_list";
@@ -472,7 +476,22 @@ elseif($act == 'management')
 		setcookie('QS[username]',$u['username'],0,$QS_cookiepath,$QS_cookiedomain);
 		setcookie('QS[password]',$u['password'],0,$QS_cookiepath,$QS_cookiedomain);
 		setcookie('QS[utype]',$u['utype'], 0,$QS_cookiepath,$QS_cookiedomain);
-		header("Location:".get_member_url($u['utype'],false,$_CFG['site_dir']));
+		header("Location:".get_member_url($u['utype']));
 	}	
-} 
+}
+elseif($act == 'userstatus_edit')
+{
+	check_token();
+	check_permissions($_SESSION['admin_purview'],"com_user_edit");
+	if(set_user_status(intval($_POST['status']),intval($_POST['userstatus_uid'])))
+	{
+		$link[0]['text'] = "返回列表";
+		$link[0]['href'] = $_POST['url'];
+		adminmsg('操作成功！',2,$link);
+	}
+	else
+	{
+	adminmsg('操作失败！',1);
+	}
+}
 ?>

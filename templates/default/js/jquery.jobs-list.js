@@ -1,25 +1,54 @@
 //全选反选
-$("input[name='selectall']").unbind().click(function(){$("#infolists :checkbox").attr('checked',$(this).attr('checked'))});
+$("input[name='selectall']").die().live('click',function(){$("#infolists :checkbox").attr('checked',$(this).is(':checked'))});
 // 申请职位
 function apply_jobs(ajaxurl)
 {
 	$(".deliver").click(function()
 	{
-			var sltlength=$("#infolists input:checked").length;
-			if ($("#infolists .list input:checked").length==0)
-			{
-				dialog("系统提示","text:请选择职位","300px","auto");
-			}
-			else
-			{
-				var jidArr=new Array();
-				 $("#infolists .list :checkbox[checked]").each(function(index){jidArr[index]=$(this).val();});
-				dialog("申请职位","url:"+ajaxurl+"user/user_apply_jobs.php?id="+jidArr.join("-")+"&act=app","500px","auto","");
-			}
+		var sltlength='';
+		sltlength=$("#infolists .info-list-wrap input:checked").length;
+		if (sltlength==0)
+		{
+			var myDialog = dialog();
+			myDialog.content("请选择职位");
+	        myDialog.title('系统提示');
+	        myDialog.width('300');
+	        myDialog.showModal();
+		}
+		else
+		{
+			var jidArr=new Array();
+			$("#infolists .info-list-wrap :checkbox[checked]").each(function(index){jidArr[index]=$(this).val();});
+			var url_=ajaxurl+"user/user_apply_jobs.php?id="+jidArr.join("-")+"&act=app";
+			var myDialog = dialog();
+			myDialog.title('申请职位');
+			myDialog.content("加载中...");
+			myDialog.width('500');
+			myDialog.showModal();
+			$.get(url_, function(data){
+				myDialog.content(data);
+				/* 关闭 */
+				$(".DialogClose").live('click',function() {
+					myDialog.close().remove();
+				});
+			});
+		}
 	});
 	//单个申请职位
 	$(".app_jobs").unbind().click(function(){
-	dialog("申请职位","url:"+ajaxurl+"user/user_apply_jobs.php?id="+$(this).attr("id")+"&act=app","500px","auto","");
+		var url_=ajaxurl+"user/user_apply_jobs.php?id="+$(this).attr("jobs_id")+"&act=app";
+		var myDialog = dialog();
+		myDialog.title('申请职位');
+		myDialog.content("加载中...");
+		myDialog.width('500');
+		myDialog.showModal();
+		$.get(url_, function(data){
+			myDialog.content(data);
+			/* 关闭 */
+			$(".DialogClose").live('click',function() {
+				myDialog.close().remove();
+			});
+		});
 	});
 }
 // 收藏职位
@@ -27,43 +56,47 @@ function favorites(ajaxurl)
 {	
 	$(".collecter").click(function()
 	{
-		var sltlength=$("#infolists input:checked").length;
-		if ($("#infolists .list input:checked").length==0)
-			{
-				dialog("系统提示","text:请选择职位","300px","auto");
-			}
-			else
-			{
-				var jidArr=new Array();
-				 $("#infolists .list :checkbox[checked]").each(function(index){jidArr[index]=$(this).val();});
-				dialog("收藏职位","url:"+ajaxurl+"user/user_favorites_job.php?id="+jidArr.join("-")+"&act=add","500px","auto","");
-			}
+		var sltlength='';
+		sltlength=$("#infolists .info-list-wrap input:checked").length;
+		if (sltlength==0)
+		{
+			var myDialog = dialog();
+			myDialog.content("请选择职位");
+	        myDialog.title('系统提示');
+	        myDialog.width('300');
+	        myDialog.showModal();
+		}
+		else
+		{
+			var jidArr=new Array();
+			$("#infolists .info-list-wrap :checkbox[checked]").each(function(index){jidArr[index]=$(this).val();});
+			var myDialog = dialog();
+			var url_=ajaxurl+"user/user_favorites_job.php?id="+jidArr.join("-")+"&act=add";
+		    $.get(url_, function(data){
+		        myDialog.content(data);
+		        myDialog.title('加入收藏');
+		        myDialog.width('500');
+		        myDialog.showModal();
+		        /* 关闭 */
+		        $(".DialogClose").live('click',function() {
+		          myDialog.close().remove();
+		        });
+		    });
+		}
 	});
 	// 单个收藏职位
 	$(".add_favorites").unbind().click(function(){
-	dialog("收藏职位","url:"+ajaxurl+"user/user_favorites_job.php?id="+$(this).attr("id")+"&act=add","500px","auto","");
-	});
-}
-// 加入人才库
-function allfavorites(ajaxurl)
-{
-	$(".add_favoritesr").unbind().click(function(){	
-	var url=ajaxurl+"user/user_favorites_resume.php?id="+$(this).attr("id")+"&act=add";
-	dialog("收藏到人才库","url:"+url,"500px","auto","");	
-	});	
-	
-	$(".allfavorites").click(function()
-	{
-		var sltlength=$("#infolists input:checked").length;
-		if ($("#infolists .list input:checked").length==0)
-			{
-			dialog("系统提示","text:请选择简历","300px","auto");
-			}
-			else
-			{
-				var jidArr=new Array();
-				 $("#infolists .list :checkbox[checked]").each(function(index){jidArr[index]=$(this).val();});
-				dialog("加入人才库","url:"+ajaxurl+"user/user_favorites_resume.php?id="+jidArr.join("-")+"&act=add","500px","auto","");
-			}
+		var myDialog = dialog();
+		var url_=ajaxurl+"user/user_favorites_job.php?id="+$(this).attr("jobs_id")+"&act=add";
+	    $.get(url_, function(data){
+	        myDialog.content(data);
+	        myDialog.title('加入收藏');
+	        myDialog.width('500');
+	        myDialog.showModal();
+	        /* 关闭 */
+	        $(".DialogClose").live('click',function() {
+	          myDialog.close().remove();
+	        });
+	    });
 	});
 }

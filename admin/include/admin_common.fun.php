@@ -144,7 +144,7 @@ function refresh_category_cache()
 	$result = $db->query($sql);
 		while($row = $db->fetch_array($result))
 		{
-			if ($row['c_alias']=="QS_street")
+			if ($row['c_alias']=="QS_officebuilding" || $row['c_alias']=="QS_street")
 			{
 			continue;
 			}
@@ -165,7 +165,7 @@ function refresh_nav_cache()
 				{
 				$row['url']=nav_url_rewrite($row['pagealias'],!empty($row['list_id'])?array('id'=>$row['list_id']):'');
 				}
-			$catarr[$row['alias']][] =array("title"=>$row['title'],"url"=>$row['url'],"target"=>$row['target'],"tag"=>$row['tag'],"pagealias"=>$row['pagealias']);
+			$catarr[$row['alias']][] =array("title"=>$row['title'],"urltype"=>$row['urltype'],"url"=>$row['url'],"target"=>$row['target'],"tag"=>$row['tag'],"pagealias"=>$row['pagealias']);
 			}
 		write_static_cache($cache_file_path,$catarr);
 }
@@ -404,6 +404,7 @@ function makejs_classify()
 	$parentarr[]="\"".$parent['id'].",".$parent['categoryname']."\"";
 	}
 	$content .= "var QS_jobs_parent=new Array(".implode(',',$parentarr).");\n";	
+	unset($parentarr);
 	$content .= "var QS_jobs=new Array(); \n";
 	$content_third = "";
 	foreach($list as $val)
@@ -432,9 +433,6 @@ function makejs_classify()
 		}
 	}
 	$content .= $content_third;	
-	
-	
-	//
 	$sql = "select * from ".table('category')." ORDER BY c_order DESC,c_id ASC";
 	$list=$db->getall($sql);
 	foreach($list as $li)
@@ -474,6 +472,10 @@ function makejs_classify()
 		elseif ($li['c_alias']=="QS_resumetag")
 		{
 		$resumetag[]="\"".$li['c_id'].",".$li['c_name']."\"";
+		}	
+		elseif ($li['c_alias']=="QS_language")
+		{
+		$language[]="\"".$li['c_id'].",".$li['c_name']."\"";
 		}
 	
 	}
@@ -486,7 +488,45 @@ function makejs_classify()
 	$content .= "var QS_scale=new Array(".implode(',',$scale).");\n";
 	$content .= "var QS_jobtag=new Array(".implode(',',$jobtag).");\n";
 	$content .= "var QS_resumetag=new Array(".implode(',',$resumetag).");\n";
-	
+	$content .= "var QS_language=new Array(".implode(',',$language).");\n";
+	/*
+		生成专业分类js
+	*/
+	$sql = "select * from ".table('category_major')." where parentid=0 order BY category_order desc,id asc";
+	$list=$db->getall($sql);
+	foreach($list as $parent)
+	{
+	$parentarr[]="\"".$parent['id'].",".$parent['categoryname']."\"";
+	}
+	$content .= "var QS_major_parent=new Array(".implode(',',$parentarr).");\n";	
+	unset($parentarr);
+	$content .= "var QS_major=new Array();\n";
+	$third_content = "";
+	foreach($list as $val)
+	{
+		$sql1 = "select * from ".table('category_major')." where parentid=".$val['id']."  order BY category_order desc,id asc";
+		$list1=$db->getall($sql1);
+		if (is_array($list1))
+		{	
+			foreach($list1 as $val1)
+			{
+				$sarr[]=$val1['id'].",".$val1['categoryname'];
+				$sql2 = "select * from ".table('category_major')." where parentid=".$val1['id']."  order BY category_order desc,id asc";
+				$list2=$db->getall($sql2);
+				if (is_array($list2))
+				{	
+					foreach($list2 as $val2)
+					{
+					$third_arr[]=$val2['id'].",".$val2['categoryname'];
+					}
+				$content_third .= "QS_major[".$val1['id']."]=\"".implode('|',$third_arr)."\"; \n";
+				unset($third_arr);
+				}
+			}
+		$content .= "QS_major[".$val['id']."]=\"".implode('|',$sarr)."\"; \n";	
+		unset($sarr);
+		}
+	}
 	$fp = @fopen(QISHI_ROOT_PATH . 'data/cache_classify.js', 'wb+');
 	if (!$fp){
 			exit('生成JS文件失败');
@@ -500,7 +540,6 @@ function makejs_classify()
 		}
 	@fclose($fp);
 }
-
 function traverse($path) {
     $current_dir = opendir("../".$path);    //opendir()返回一个目录句柄,失败返回false
  
@@ -516,6 +555,32 @@ function traverse($path) {
         }
     }
     return $f;
+}
+function make_city_file($dirname,$cityid){
+	if(!$dirname||!$cityid){
+		return ;
+	}
+	// write_city_file($dirname,"",$cityid);
+	write_city_file($dirname,"company",$cityid);
+	write_city_file($dirname,"explain",$cityid);
+	write_city_file($dirname,"help",$cityid);
+	write_city_file($dirname,"hrtools",$cityid);
+	write_city_file($dirname,"hunter",$cityid);
+	write_city_file($dirname,"jobs",$cityid);
+	write_city_file($dirname,"news",$cityid);
+	write_city_file($dirname,"notice",$cityid);
+	write_city_file($dirname,"resume",$cityid);
+	write_city_file($dirname,"simple",$cityid);
+	write_city_file($dirname,"train",$cityid);
+	write_city_file($dirname,"plus",$cityid);
+	write_city_file($dirname,"user",$cityid);
+	// if(file_exists(QISHI_ROOT_PATH."httpd.ini")){
+
+	// 	copy(QISHI_ROOT_PATH."httpd.ini",QISHI_ROOT_PATH.$dirname."/httpd.ini");
+	// }
+	// if(file_exists(QISHI_ROOT_PATH.".htaccess")){
+	// 	copy(QISHI_ROOT_PATH.".htaccess",QISHI_ROOT_PATH.$dirname."/.htaccess");
+	// }
 }
 function create_excel($top_str,$data){
 	header("Content-Type: application/vnd.ms-execl");
@@ -563,5 +628,22 @@ function get_weixin_json_menu(){
 	}
 	$menu['button'] = $arr;
 	return urldecode(json_encode($menu));
+}
+// 获取邮件系统日志
+function get_mail_log($offset, $perpage, $wheresql= '')
+{
+	global $db;
+	$row_arr = array();
+	$limit=" LIMIT ".$offset.','.$perpage;
+	$result = $db->query("SELECT * FROM ".table('sys_email_log').$wheresql.$limit);
+	while($row = $db->fetch_array($result))
+	{
+	$row['subject']=$row['subject'];
+	$row['subject_']=cut_str(strip_tags($row['subject']),18,0,"...");
+	$row['body']=strip_tags($row['body']);
+	$row['body_']=cut_str(strip_tags($row['body']),18,0,"...");
+	$row_arr[] = $row;
+	}
+	return $row_arr;
 }
 ?>

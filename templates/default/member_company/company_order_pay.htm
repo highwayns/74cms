@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
 <title>{#$title#}</title>
-<link rel="shortcut icon" href="{#$QISHI.main_domain#}favicon.ico" />
+<link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <meta name="author" content="骑士CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
@@ -11,9 +11,9 @@
 <script src="{#$QISHI.site_template#}js/jquery.js" type="text/javascript" language="javascript"></script>
 
 </head>
-<body>
+<body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">当前位置：<a href="{#$QISHI.main_domain#}">首页</a> > <a href="{#$userindexurl#}">会员中心</a> > 充值订单</div>
+<div class="page_location link_bk">当前位置：<a href="{#$QISHI.site_dir#}">首页</a> > <a href="{#$userindexurl#}">会员中心</a> > 充值订单</div>
 
 <div class="usermain">
   <div class="leftmenu  com link_bk">
@@ -23,34 +23,33 @@
   
  	<div class="bbox1 link_bk my_account intrgration" style="padding-top:0;">
 		<div class="topnav">
-			<div class="titleH1">
-				<div class="h1-title">充值/订单</div>
-			</div>
-
-			<div class="navs">
-				{#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
-				<a href="?act=order_add">积分充值</a>
-				{#/if#}
-				{#if $QISHI.operation_mode=="2" || $QISHI.operation_mode=="3"#}
-				<a href="?act=setmeal_list">申请服务</a>
-				{#/if#}
-        <a href="?act=order_list" class="se">我的订单</a>
-					
-				<div class="clear"></div>
-			</div>
+      <div class="titleH1"><div class="h1-title">充值/订单</div></div>
+      <div class="navs link_bk">
+        {#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
+        <a href="?act=order_add">积分充值</a>
+        {#/if#}
+        {#if $QISHI.operation_mode=="2" || $QISHI.operation_mode=="3"#}
+        <a href="?act=setmeal_list">申请VIP套餐</a>
+        {#/if#}
+        <a href="?act=order_list"  class="se">我的订单</a>
+        {#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
+        <a href="?act=gifts">礼品卡</a>
+        {#/if#}
+        <div class="clear"></div>
+      </div>
 		</div>
   		{#if $QISHI.operation_mode=="1"#}
 		<div class="balance margin-common">
-  			<div class="bal_text">您的账户剩余<span> {#$points#} </span>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=account">[积分明细]</a>&nbsp;&nbsp;<a href="company_service.php?act=account">[积分消费规则]</a></div>
+  			<div class="bal_text">您的账户剩余<span> {#$points#} </span>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="company_service.php?act=j_account&detail=1">[积分明细]</a>&nbsp;&nbsp;<a target="_blank" href="company_service.php?act=j_account">[积分消费规则]</a></div>
   		</div>
   		{#elseif $QISHI.operation_mode=="2"#}
   		<div class="balance">
-  			<div class="bal_text">我的套餐：<span> {#$user_setmeal.setmeal_name#} </span>，{#if $setmeal_endtime#}{#if $setmeal_endtime=="无限期"#}无限期{#else#}还有<span> {#$setmeal_endtime#} </span>到期{#/if#}{#else#}已经到期{#/if#}<span class="small"> (开通时间{#$user_setmeal.starttime|date_format:"%Y-%m-%d"#}，结束时间{#$user_setmeal.endtime|date_format:"%Y-%m-%d"#})</span>&nbsp;&nbsp;&nbsp;<a target="_blank" href="?act=account">[套餐明细]</a></div>
+  			<div class="bal_text">我的套餐：<span> {#$user_setmeal.setmeal_name#} </span>，{#if $setmeal_endtime#}{#if $setmeal_endtime=="无限期"#}无限期{#else#}还有<span> {#$setmeal_endtime#} </span>到期{#/if#}{#else#}已经到期{#/if#}<span class="small"> (开通时间{#$user_setmeal.starttime|date_format:"%Y-%m-%d"#}，结束时间{#$user_setmeal.endtime|date_format:"%Y-%m-%d"#})</span>&nbsp;&nbsp;&nbsp;<a target="_blank" href="?act=t_account&detail=1">[套餐明细]</a></div>
   		</div>
   		{#else#}
   		<div class="balance">
-  			<div class="bal_text">您的套餐：<span> {#$user_setmeal.setmeal_name#} </span>，{#if $setmeal_endtime#}{#if $setmeal_endtime=="无限期"#}无限期{#else#}还有<span> {#$setmeal_endtime#} </span>到期{#/if#}{#else#}已经到期{#/if#}<span class="small"> (开通时间{#$user_setmeal.starttime|date_format:"%Y-%m-%d"#}，结束时间{#$user_setmeal.endtime|date_format:"%Y-%m-%d"#})</span>&nbsp;&nbsp;&nbsp;<a target="_blank" href="?act=account">[套餐明细]</a></div>
-  			<div class="bal_text bal_text_s">剩余{#$QISHI.points_byname#}：<span> {#$points#} </span>{#$QISHI.points_quantifier#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=account">[积分明细]</a>&nbsp;&nbsp;<a href="company_service.php?act=account">[积分消费规则]</a></div>
+  			<div class="bal_text">您的套餐：<span> {#$user_setmeal.setmeal_name#} </span>，{#if $setmeal_endtime#}{#if $setmeal_endtime=="无限期"#}无限期{#else#}还有<span> {#$setmeal_endtime#} </span>到期{#/if#}{#else#}已经到期{#/if#}<span class="small"> (开通时间{#$user_setmeal.starttime|date_format:"%Y-%m-%d"#}，结束时间{#$user_setmeal.endtime|date_format:"%Y-%m-%d"#})</span>&nbsp;&nbsp;&nbsp;<a target="_blank" href="?act=t_account&detail=1">[套餐明细]</a></div>
+  			<div class="bal_text bal_text_s">剩余{#$QISHI.points_byname#}：<span> {#$points#} </span>{#$QISHI.points_quantifier#}&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="company_service.php?act=j_account&detail=1">[积分明细]</a>&nbsp;&nbsp;<a target="_blank" href="company_service.php?act=j_account">[积分消费规则]</a></div>
   		</div>
   		{#/if#}
   		<div class="bar">
@@ -65,7 +64,7 @@
   			</div>
   		</div>
   		 
-  		<div class="intrgration_box">
+  		<div class="intrgration_box" style="margin:0 30px;">
   			<table>
   				<tbody>
   					<tr>
@@ -90,7 +89,7 @@
   					</tr>
             <tr>
               <td height="30">支付方式描述：</td>
-              <td width="600">{#$byname.notes#}</td>
+              <td width="600">{#$byname.notes|htmlspecialchars_decode#}</td>
             </tr>
 
   				</tbody>

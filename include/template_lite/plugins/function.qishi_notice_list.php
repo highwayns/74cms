@@ -51,9 +51,31 @@ if ($aset['displayorder'])
 {
 	if (strpos($aset['displayorder'],'>'))
 	{
-	$arr=explode('>',$aset['displayorder']);
-	$arr[0]=preg_match('/sort|id/',$arr[0])?$arr[0]:"";
-	$arr[1]=preg_match('/asc|desc/',$arr[1])?$arr[1]:"";
+		$arr=explode('>',$aset['displayorder']);
+		// ÅÅĞò×Ö¶Î
+		if($arr[0]=='sort'){
+			$arr[0]="sort";
+		}
+		elseif($arr[0]=="id")
+		{
+			$arr[0]="id";
+		}
+		else
+		{
+			$arr[0]="";
+		}
+		// ÅÅĞò·½Ê½
+		if($arr[1]=='desc'){
+			$arr[1]="desc";
+		}
+		elseif($arr[1]=="asc")
+		{
+			$arr[1]="asc";
+		}
+		else
+		{
+			$arr[1]="";
+		}
 		if ($arr[0] && $arr[1])
 		{
 		$orderbysql=" ORDER BY ".$arr[0]." ".$arr[1];
@@ -66,6 +88,7 @@ else
 }
 $wheresql=" WHERE is_display=1 ";
 $aset['type_id']?$wheresql.=" AND type_id=".intval($aset['type_id'])." ":'';
+
 if (isset($aset['paged']))
 {
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
@@ -81,7 +104,7 @@ if (isset($aset['paged']))
 		$smarty->assign('total',$total_count);
 }
 $limit=" LIMIT ".abs($aset['start']).','.$aset['row'];
-$result = $db->query("SELECT * FROM ".table('notice')." ".$wheresql.$orderbysql.$limit);
+$result = $db->query("SELECT id,title,tit_color,tit_b,is_url,content,addtime,click FROM ".table('notice')." ".$wheresql.$orderbysql.$limit);
 //echo "SELECT * FROM ".table('notice')." ".$wheresql.$orderbysql.$limit;
 $list=array();
 while($row = $db->fetch_array($result))

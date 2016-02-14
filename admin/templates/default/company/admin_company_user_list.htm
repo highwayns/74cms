@@ -10,6 +10,12 @@ $(document).ready(function()
 	DialogWidth:"500",
 	DialogAddType:"html"	
 	});
+
+	//点击批量设置顾问
+	$("#AddConsultant").click(function(){
+		$("form[name=form1]").attr("action","?act=consultant_install");
+		$("form[name=form1]").submit()
+	});
 });
 </script>
 <div class="admin_main_nr_dbox">
@@ -42,6 +48,16 @@ $(document).ready(function()
 		</div>
 		<div class="clear"></div>
   </div>
+  <div class="seltpye_x">
+		<div class="left">有无顾问</div>
+		<div class="right">
+		<a href="{#"consultant:"|qishi_parse_url#}" {#if $smarty.get.consultant==""#}class="select"{#/if#}>不限</a>
+		<a href="{#"consultant:0"|qishi_parse_url#}" {#if $smarty.get.consultant=="0"#}class="select"{#/if#}>未分配顾问</a>
+		<a href="{#"consultant:1"|qishi_parse_url#}" {#if $smarty.get.consultant != "" && $smarty.get.consultant != "0"#}class="select"{#/if#}>已分配顾问</a>
+		<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+  </div>
   <form id="form1" name="form1" method="post" action="?act=delete_user">
   {#$inputtoken#}
   <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
@@ -51,14 +67,16 @@ $(document).ready(function()
       <td  class="admin_list_tit">email</td>
 	  <td  class="admin_list_tit">手机</td>
       <td  class="admin_list_tit">企业信息</td>
-      <td width="13%"   align="center"   class="admin_list_tit">注册时间</td>
-	  <td width="13%"   align="center"   class="admin_list_tit">最后登录时间</td>
+      <td width="10%"   align="center"   class="admin_list_tit">注册时间</td>
+      <td width="10%"   align="center"   class="admin_list_tit">注册IP</td>
+	  <td width="10%"   align="center"   class="admin_list_tit">最后登录时间</td>
+	<td width="10%"   align="center"   class="admin_list_tit">顾问姓名</td>
       <td width="13%"  align="center"  class="admin_list_tit" >操作</td>
     </tr>
 	{#foreach from=$member item=list#}
       <tr>
       <td class="admin_list admin_list_first">
-        <input name="tuid[]" type="checkbox"   value="{#$list.uid#}"/>{#$list.username#}
+        <input name="tuid[]" type="checkbox" id="tuid" value="{#$list.uid#}"/>{#$list.username#}
 		</td>
  		<td class="admin_list">
 		{#$list.email#}
@@ -80,19 +98,27 @@ $(document).ready(function()
 		<td align="center" class="admin_list">
 		{#$list.reg_time|date_format:"%Y-%m-%d"#}
 		</td>
+		<td align="center" class="admin_list"> {#$list.reg_ip#} </td>
 		<td align="center" class="admin_list">
 		{#if $list.last_login_time#}
 		{#$list.last_login_time|date_format:"%Y-%m-%d"#}
 		{#else#}
 		从未登录
 		{#/if#}
-		</td>       
+		</td> 
+		<td align="center" class="admin_list">
+		{#if $list.con_name#}
+		{#$list.con_name"#}
+		{#else#}
+		 - -
+		{#/if#}
+		</td>
         <td align="center" class="admin_list">
 		<a href="admin_memberslog.php?uid={#$list.uid#}">日志</a>
 		&nbsp;
 		<a href="?act=user_edit&tuid={#$list.uid#}">修改</a>
 		&nbsp;
-		<a href="?act=meal_log&key={#$list.uid#}&key_type=2&key_type_cn=UID">充值记录</a>
+		<a href="?act=meal_log&key_uid={#$list.uid#}&key_type=2&key_type_cn=UID">充值记录</a>
 		&nbsp;
 		<a href="?act=management&id={#$list.uid#}"  target="_blank"  class="userinfo"  id="{#$list.uid#}">管理</a>
 		</td>
@@ -107,8 +133,9 @@ $(document).ready(function()
 	<table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">
       <tr>
         <td>
-         <input type="button" name="open" value="添加会员" class="admin_submit"  onclick="window.location.href='?act=members_add'"/>
-		<input type="button" name="ButDel"  id="ButDel" value="删除会员" class="admin_submit"/>
+        	 <input type="button" name="open" value="添加会员" class="admin_submit"  onclick="window.location.href='?act=members_add'"/>
+	<input type="button" name="ButDel"  id="ButDel" value="删除会员" class="admin_submit"/>
+	<input type="button" name="AddConsultant" id="AddConsultant" value="设置顾问" class="admin_submit"/>
 		</td>
         <td width="305" align="right">
 		<form id="formseh" name="formseh" method="get" action="?">	

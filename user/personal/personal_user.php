@@ -28,76 +28,58 @@ elseif ($act=='userprofile')
 	$smarty->assign('send_email_key',$_SESSION['send_email_key']);
 	$smarty->assign('user',$user);
 	$smarty->assign('title','个人资料 - 会员中心 - '.$_CFG['site_name']);
-	$smarty->assign('userprofile',get_userprofile($_SESSION['uid']));	
+	$smarty->assign('userprofile',get_userprofile($_SESSION['uid']));
+	// 新注册会员 邮箱调取注册邮箱
+	$smarty->assign('user',$user);
 	$smarty->display('member_personal/personal_userprofile.htm');
 }
 elseif ($act=='userprofile_save')
 {
 	$setsqlarr['uid']=intval($_SESSION['uid']);
-	if($user["email_audit"]==0){
-		$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):showmsg('请填写邮箱！',1);
-		$email_verifycode=trim($_POST['email_verifycode']);
-		if($email_verifycode){
-			if (empty($_SESSION['email_rand']) || $email_verifycode<>$_SESSION['email_rand'])
-			{
-				showmsg("邮箱验证码错误",1);
-			}
-			else
-			{
-				$verifysqlarr['email'] = $setsqlarr['email'];
-				$verifysqlarr['email_audit'] = 1;
-				updatetable(table('members'),$verifysqlarr," uid='{$setsqlarr['uid']}'");
-				unset($verifysqlarr);
-			}
-		}
-		unset($_SESSION['verify_email'],$_SESSION['email_rand']);
+	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):showmsg('请填写邮箱！',1);
+	if($user['email_audit']!="1")
+	{
+		$members['email']=$setsqlarr['email'];
+		$resume['email']=$setsqlarr['email'];
+		$db->updatetable(table("members"),$members,array("uid"=>intval($_SESSION['uid'])));
+		$db->updatetable(table("resume"),$resume,array("uid"=>intval($_SESSION['uid'])));
+		unset($members['email'],$resume['email']);
 	}
-	if($user["mobile_audit"]==0){
-		$setsqlarr['phone']=trim($_POST['mobile'])?trim($_POST['mobile']):showmsg('请填写手机号！',1);
-		$mobile_verifycode=trim($_POST['mobile_verifycode']);
-		if($mobile_verifycode){
-			if (empty($_SESSION['mobile_rand']) || $mobile_verifycode<>$_SESSION['mobile_rand'])
-			{
-				showmsg("手机验证码错误",1);
-			}
-			else
-			{
-				$verifysqlarr['mobile'] = $setsqlarr['phone'];
-				$verifysqlarr['mobile_audit'] = 1;
-				updatetable(table('members'),$verifysqlarr," uid='{$setsqlarr['uid']}'");
-				unset($verifysqlarr);
-			}
-		}
-		unset($_SESSION['verify_mobile'],$_SESSION['mobile_rand']);
+	$setsqlarr['phone']=trim($_POST['mobile'])?trim($_POST['mobile']):showmsg('请填写手机号！',1);
+	if($user['mobile_audit']!="1")
+	{
+		$members['mobile']=$setsqlarr['phone'];
+		$resume['telephone']=$setsqlarr['phone'];
+		$db->updatetable(table("members"),$members,array("uid"=>intval($_SESSION['uid'])));
+		$db->updatetable(table("resume"),$resume,array("uid"=>intval($_SESSION['uid'])));
+		unset($members['mobile'],$resume['telephone']);
 	}
-	
-	
 	$setsqlarr['realname']=trim($_POST['realname'])?trim($_POST['realname']):showmsg('请填写真实姓名！',1);
 	$setsqlarr['sex']=intval($_POST['sex'])?intval($_POST['sex']):showmsg('请选择性别！',1);
 	$setsqlarr['sex_cn']=trim($_POST['sex_cn']);
 	$setsqlarr['birthday']=intval($_POST['birthday'])?intval($_POST['birthday']):showmsg('请选择出生年份',1);
-	$setsqlarr['residence']=trim($_POST['residence'])?trim($_POST['residence']):showmsg('请选择现居住地！',1);
-	$setsqlarr['residence_cn']=trim($_POST['residence_cn']);
+	$setsqlarr['residence']=trim($_POST['residence'])?trim($_POST['residence']):showmsg('请填写现居住地！',1);
 	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):showmsg('请选择学历',1);
 	$setsqlarr['education_cn']=trim($_POST['education_cn']);
+	$setsqlarr['major']=intval($_POST['major'])?intval($_POST['major']):showmsg('请选择专业',1);
+	$setsqlarr['major_cn']=trim($_POST['major_cn']);
 	$setsqlarr['experience']=intval($_POST['experience'])?intval($_POST['experience']):showmsg('请选择工作经验',1);
 	$setsqlarr['experience_cn']=trim($_POST['experience_cn']);
 	$setsqlarr['height']=intval($_POST['height']);
 	$setsqlarr['householdaddress']=trim($_POST['householdaddress']);
-	$setsqlarr['householdaddress_cn']=trim($_POST['householdaddress_cn']);	
 	$setsqlarr['marriage']=intval($_POST['marriage']);
 	$setsqlarr['marriage_cn']=trim($_POST['marriage_cn']);
 	if (get_userprofile($_SESSION['uid']))
 	{
 	$wheresql=" uid='".intval($_SESSION['uid'])."'";
 	write_memberslog($_SESSION['uid'],2,1005,$_SESSION['username'],"修改了个人资料");
-	!updatetable(table('members_info'),$setsqlarr,$wheresql)?showmsg("修改失败！",0):showmsg("修改成功！",2);
+	!$db->updatetable(table('members_info'),$setsqlarr,$wheresql)?showmsg("修改失败！",0):showmsg("修改成功！",2);
 	}
 	else
 	{
 	$setsqlarr['uid']=intval($_SESSION['uid']);
 	write_memberslog($_SESSION['uid'],2,1005,$_SESSION['username'],"修改了个人资料");
-	!inserttable(table('members_info'),$setsqlarr)?showmsg("修改失败！",0):showmsg("修改成功！",2);
+	!$db->inserttable(table('members_info'),$setsqlarr)?showmsg("修改失败！",0):showmsg("修改成功！",2);
 	}
 }
 //头像
@@ -128,9 +110,11 @@ elseif ($act=='avatars_ready')
 	{
 		
 	makethumb($up_dir_original.$setsqlarr['avatars'],$up_dir_thumb.date("Y/m/d/"),445,300);
+	// makethumb($up_dir_original.$setsqlarr['avatars'],$up_dir_100.date("Y/m/d/"),100,100);
+	// makethumb($up_dir_original.$setsqlarr['avatars'],$up_dir_48.date("Y/m/d/"),48,48);
 	$wheresql=" uid='".$_SESSION['uid']."'";
 	write_memberslog($_SESSION['uid'],2,1006 ,$_SESSION['username'],"修改了个人头像");
-	updatetable(table('members'),$setsqlarr,$wheresql)?exit($setsqlarr['avatars']):showmsg('保存失败！',1);
+	$db->updatetable(table('members'),$setsqlarr,$wheresql)?exit($setsqlarr['avatars']):showmsg('保存失败！',1);
 	}
 	else
 	{
@@ -138,33 +122,27 @@ elseif ($act=='avatars_ready')
 	}
 }
 elseif ($act=='avatars_save')
-{
-	require_once(QISHI_ROOT_PATH.'include/cut_upload.php');
-	require_once(QISHI_ROOT_PATH.'include/imageresize.class.php');
-	$imgresize = new ImageResize();
-	$userinfomation=get_user_info($_SESSION['uid']);
-	if($userinfomation['avatars']){
-		$up_dir_original="../../data/avatar/original/";
-		$up_dir_100="../../data/avatar/100/";
-		$up_dir_48="../../data/avatar/48/";
-		$up_dir_thumb="../../data/avatar/thumb/";
-		$imgresize->load($up_dir_thumb.$userinfomation['avatars']);
-		$imgresize->cut(intval($_POST['w']),intval($_POST['h']), intval($_POST['x']), intval($_POST['y']));
-		$imgresize->save($up_dir_thumb.$userinfomation['avatars']);
-		
-		makethumb($up_dir_thumb.$userinfomation['avatars'],$up_dir_100.date("Y/m/d/"),100,100);
-		makethumb($up_dir_thumb.$userinfomation['avatars'],$up_dir_48.date("Y/m/d/"),48,48);
-
-		@unlink($up_dir_original.$userinfomation['avatars']);
-		@unlink($up_dir_thumb.$userinfomation['avatars']);
-
-		$wheresql=" uid='".$_SESSION['uid']."'";
-		write_memberslog($_SESSION['uid'],2,1006 ,$_SESSION['username'],"修改了个人头像");
-		showmsg('保存成功！',2);
-	}else{
-		showmsg('请上传图片！',1);
+{	
+	$savePath = "../../data/avatar/100/";  //图片存储路径
+	$savePathThumb = "../../data/avatar/48/";  //图片存储路径
+	$savePicName = time();//图片存储名称
+	$file_src = $savePath.$savePicName."_src.jpg";
+	$filename150 = $savePath.$savePicName.".jpg"; 
+	$filename50 = $savePathThumb.$savePicName.".jpg"; 
+	$src=base64_decode($_POST['pic']);
+	$pic1=base64_decode($_POST['pic1']);   
+	$pic2=base64_decode($_POST['pic2']);
+	if($src) {
+		file_put_contents($file_src,$src);
 	}
-	
+	file_put_contents($filename150,$pic1);
+	if($pic2)file_put_contents($filename50,$pic2);
+	$rs['status'] = 1;
+	$rs['picUrl'] = $savePicName.".jpg";
+	$setsqlarr['avatars']=$savePicName.".jpg";
+	$wheresql=" uid='".$_SESSION['uid']."'";
+	$db->updatetable(table('members'),$setsqlarr,$wheresql)?print json_encode($rs):showmsg('保存失败！',1);
+	write_memberslog($_SESSION['uid'],2,1006 ,$_SESSION['username'],"修改了个人头像");
 }
 //修改密码
 elseif ($act=='password_edit')
@@ -198,15 +176,26 @@ elseif ($act=='save_password')
 			{
 			dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_sms.php?uid=".$_SESSION['uid']."&key=".asyn_userkey($_SESSION['uid'])."&act=set_editpwd&newpassword=".$arr['password']);
 			}
-			//sms
-			if(defined('UC_API'))
-			{
-			include_once(QISHI_ROOT_PATH.'uc_client/client.php');
-			uc_user_edit($arr['username'],$arr['oldpassword'], $arr['password']);
-			}
 	 write_memberslog($_SESSION['uid'],2,1004 ,$_SESSION['username'],"修改密码");
 	 showmsg('密码修改成功！',2);
 	 }
+}
+//保存修改用户名
+elseif ($act=='save_username')
+{
+	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
+	$arr['uid']=$_SESSION['uid'];
+	$_POST['newusername'] = utf8_to_gbk($_POST['newusername']);
+	$arr['newusername']=trim($_POST['newusername'])?trim($_POST['newusername']):showmsg('新用户名！',1);
+	$row_newname = $db->getone("SELECT * FROM ".table('members')." WHERE username='{$arr['newusername']}' LIMIT 1");
+	if($row_newname)
+	{
+		exit("-1");
+	}
+	$info=edit_username($arr);
+	if ($info==-1) exit("-2");
+	if (!$info) exit("-3");
+	exit("1");
 }
 elseif ($act=='authenticate')
 {
@@ -217,6 +206,29 @@ elseif ($act=='authenticate')
 	$smarty->assign('title','验证邮箱 - 个人会员中心 - '.$_CFG['site_name']);
 	$_SESSION['send_key']=mt_rand(100000, 999999);
 	$smarty->assign('send_key',$_SESSION['send_key']);
+	/**
+	 * 微信扫描绑定start
+	 */
+    if(intval($_CFG['weixin_apiopen'])==1 && intval($_CFG['weixin_scan_bind'])==1 && !$user['weixin_openid']){
+	    $scene_id = mt_rand(20000001,30000000);
+	    $_SESSION['scene_id'] = $scene_id;
+		$dir = QISHI_ROOT_PATH.'data/weixin/'.($scene_id%10);
+		make_dir($dir);
+	    $fp = @fopen($dir.'/'.$scene_id.'.txt', 'wb+');
+		$access_token = get_access_token();
+	    $post_data = '{"expire_seconds": 1800, "action_name": "QR_SCENE", "action_info": {"scene": {"scene_id": '.$scene_id.'}}}';
+	    $url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$access_token;
+	    $result = https_request($url, $post_data);
+	    $result_arr = json_decode($result,true);
+	    $ticket = urlencode($result_arr["ticket"]);
+	    $html = '<img width="240" height="240" src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket='.$ticket.'">';
+		$smarty->assign('qrcode_img',$html);
+	}else{
+		$smarty->assign('qrcode_img','');
+	}
+    /**
+     * 微信扫描绑定end
+     */
 	$smarty->display('member_personal/personal_authenticate.htm');
 }
 elseif ($act=='feedback')
@@ -241,7 +253,7 @@ elseif ($act=='feedback_save')
 	$setsqlarr['username']=$_SESSION['username'];
 	$setsqlarr['addtime']=$timestamp;
 	write_memberslog($_SESSION['uid'],2,7001,$_SESSION['username'],"添加反馈信息");
-	!inserttable(table('feedback'),$setsqlarr)?showmsg("添加失败！",0):showmsg("添加成功，请等待管理员回复！",2);
+	!$db->inserttable(table('feedback'),$setsqlarr)?showmsg("添加失败！",0):showmsg("添加成功，请等待管理员回复！",2);
 }
 //删除用户反馈
 elseif ($act=='del_feedback')
@@ -259,16 +271,26 @@ elseif ($act=='pm')
 	$orderby=" order by p.pmid desc";
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('pms').' AS p '.$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$sql="SELECT p.* FROM ".table('pms').' AS p'.$joinsql.$wheresql.$orderby;
+	//获取所查看消息的pmid , 并且将其修改为已读
+	$pmid = update_pms_read($offset, $perpage,$sql);
+	if(!empty($pmid))
+	{
+		$db->query("UPDATE ".table('pms')." SET `new`='2' WHERE new=1 AND msgtouid='{$uid}' and pmid in (".$pmid.")");	
+	}
+	else
+	{
+		$db->query("UPDATE ".table('pms')." SET `new`='2' WHERE new=1 AND msgtouid='{$uid}'");
+	}	
+	get_pms_no_num();
 	$smarty->assign('pms',get_pms($offset,$perpage,$sql));
 	$smarty->assign('total',$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$uid}' OR msgtouid='{$uid}') AND `new`='1'"));
 	$smarty->assign('title','短消息 - 会员中心 - '.$_CFG['site_name']);	
 	$smarty->assign('page',$page->show(3));
-	$smarty->assign('uid',$uid);
-	$db->query("UPDATE ".table('pms')." SET `new`='2' WHERE new=1 AND msgtouid='{$uid}'");	
+	$smarty->assign('uid',$uid);  
 	$smarty->display('member_personal/personal_user_pm.htm');
 }
 elseif ($act=='pm_del')
@@ -290,17 +312,17 @@ elseif ($act=='pm_del')
 elseif ($act=='del_qq_binding')
 {
 	$db->query("UPDATE ".table('members')." SET qq_openid = ''  WHERE uid='{$_SESSION[uid]}' LIMIT 1");
-	showmsg('操作成功！',2);
+	exit('解除腾讯QQ绑定成功！');
 }
 elseif ($act=='del_sina_binding')
 {
 	$db->query("UPDATE ".table('members')." SET sina_access_token = ''  WHERE uid='{$_SESSION[uid]}' LIMIT 1");
-	showmsg('操作成功！',2);
+	exit('解除新浪微博绑定成功！');
 }
 elseif ($act=='del_taobao_binding')
 {
 	$db->query("UPDATE ".table('members')." SET taobao_access_token = ''  WHERE uid='{$_SESSION[uid]}' LIMIT 1");
-	showmsg('操作成功！',2);
+	exit('解除淘宝账号绑定成功！');
 }
 
 //会员登录日志
@@ -314,13 +336,18 @@ elseif ($act=='login_log')
 	$perpage=15;
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('members_log').$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$smarty->assign('loginlog',get_user_loginlog($offset, $perpage,$wheresql));
 	$smarty->assign('page',$page->show(3));
 	$smarty->assign('title','会员登录日志 - 企业会员中心 - '.$_CFG['site_name']);
 	$smarty->display('member_personal/personal_user_loginlog.htm');
+}elseif($act == 'demo'){
+	require_once(QISHI_ROOT_PATH.'include/fun_user.php'); 
+	echo '<pre>';
+	print_r(get_ip_area('113.25.9.112'));
+	echo '</pre>';
 }
 unset($smarty);
 ?>

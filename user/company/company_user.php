@@ -28,16 +28,27 @@ elseif ($act=='pm')
 	$orderby=" order by p.pmid desc";
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('pms').' AS p '.$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$sql="SELECT p.* FROM ".table('pms').' AS p'.$joinsql.$wheresql.$orderby;
+	//获取所查看消息的pmid , 并且将其修改为已读
+	$pmid = update_pms_read($offset, $perpage,$sql);
+	if(!empty($pmid))
+	{
+		$db->query("UPDATE ".table('pms')." SET `new`='2' WHERE new=1 AND msgtouid='{$uid}' and pmid in (".$pmid.")");	
+	}
+	else
+	{
+		$db->query("UPDATE ".table('pms')." SET `new`='2' WHERE new=1 AND msgtouid='{$uid}'");
+	}
+	get_pms_no_num();
 	$smarty->assign('pms',get_pms($offset,$perpage,$sql));
 	$smarty->assign('total',$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$uid}' OR msgtouid='{$uid}') AND `new`='1'"));
 	$smarty->assign('title','短消息 - 会员中心 - '.$_CFG['site_name']);	
 	$smarty->assign('page',$page->show(3));
-	$smarty->assign('uid',$uid);
-	$db->query("UPDATE ".table('pms')." SET `new`='2' WHERE new=1 AND msgtouid='{$uid}'");	
+	$smarty->assign('uid',$uid); 
+
 	$smarty->display('member_company/company_user_pm.htm');
 }
 elseif ($act=='pm_del')
@@ -64,6 +75,29 @@ elseif ($act=='authenticate')
 	$smarty->assign('title','认证管理 - 企业会员中心 - '.$_CFG['site_name']);
 	$_SESSION['send_key']=mt_rand(100000, 999999);
 	$smarty->assign('send_key',$_SESSION['send_key']);
+	/**
+	 * 微信扫描绑定start
+	 */
+    if(intval($_CFG['weixin_apiopen'])==1 && intval($_CFG['weixin_scan_bind'])==1 && !$user['weixin_openid']){
+	    $scene_id = mt_rand(20000001,30000000);
+	    $_SESSION['scene_id'] = $scene_id;
+		$dir = QISHI_ROOT_PATH.'data/weixin/'.($scene_id%10);
+		make_dir($dir);
+	    $fp = @fopen($dir.'/'.$scene_id.'.txt', 'wb+');
+		$access_token = get_access_token();
+	    $post_data = '{"expire_seconds": 1800, "action_name": "QR_SCENE", "action_info": {"scene": {"scene_id": '.$scene_id.'}}}';
+	    $url = "https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=".$access_token;
+	    $result = https_request($url, $post_data);
+	    $result_arr = json_decode($result,true);
+	    $ticket = urlencode($result_arr["ticket"]);
+	    $html = '<img width="240" height="240" src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket='.$ticket.'">';
+		$smarty->assign('qrcode_img',$html);
+	}else{
+		$smarty->assign('qrcode_img','');
+	}
+    /**
+     * 微信扫描绑定end
+     */
 	$smarty->display('member_company/company_authenticate.htm');
 }
 //修改密码
@@ -94,31 +128,42 @@ elseif ($act=='save_password')
 			$sms=get_cache('sms_config');
 			if ($sms['open']=="1" && $sms['set_editpwd']=="1"  && $user['mobile_audit']=="1")
 			{
-			dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_sms.php?uid={$_SESSION['uid']}&key=".asyn_userkey($_SESSION['uid'])."&act=set_editpwd&newpassword={$arr['password']}");
-			}
-			//sms
-			if(defined('UC_API'))
-			{
-			include_once(QISHI_ROOT_PATH.'uc_client/client.php');
-			uc_user_edit($arr['username'],$arr['oldpassword'], $arr['password']);
+				dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_sms.php?uid={$_SESSION['uid']}&key=".asyn_userkey($_SESSION['uid'])."&act=set_editpwd&newpassword={$arr['password']}");
 			}
 			showmsg('密码修改成功！',2);
 	}
 }
+//保存修改用户名
+elseif ($act=='save_username')
+{
+	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
+	$arr['uid']=$_SESSION['uid'];
+	$_POST['newusername'] = utf8_to_gbk($_POST['newusername']);
+	$arr['newusername']=trim($_POST['newusername'])?trim($_POST['newusername']):showmsg('新用户名！',1);
+	$row_newname = $db->getone("SELECT * FROM ".table('members')." WHERE username='{$arr['newusername']}' LIMIT 1");
+	if($row_newname)
+	{
+		exit("-1");
+	}
+	$info=edit_username($arr);
+	if ($info==-1) exit("-2");
+	if (!$info) exit("-3");
+	exit("1");
+}
 elseif ($act=='del_qq_binding')
 {
 	$db->query("UPDATE ".table('members')." SET qq_openid = ''  WHERE uid='{$_SESSION[uid]}' LIMIT 1");
-	showmsg('操作成功！',2);
+	exit('解除腾讯QQ绑定成功！');
 }
 elseif ($act=='del_sina_binding')
 {
 	$db->query("UPDATE ".table('members')." SET sina_access_token = ''  WHERE uid='{$_SESSION[uid]}' LIMIT 1");
-	showmsg('操作成功！',2);
+	exit('解除新浪微博绑定成功！');
 }
 elseif ($act=='del_taobao_binding')
 {
 	$db->query("UPDATE ".table('members')." SET taobao_access_token = ''  WHERE uid='{$_SESSION[uid]}' LIMIT 1");
-	showmsg('操作成功！',2);
+	exit('解除淘宝账号绑定成功！');
 }
 
 //会员登录日志
@@ -136,7 +181,7 @@ elseif ($act=='login_log')
 	$perpage=15;
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('members_log').$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$smarty->assign('loginlog',get_user_loginlog($offset, $perpage,$wheresql));

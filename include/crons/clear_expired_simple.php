@@ -16,7 +16,7 @@ die('Access Denied!');
 	global $_CFG;
 	$time=time();
 	//删除过期微招聘
-	$db->query("Delete from ".table('simple')." WHERE deadline<{$time} AND deadline<>0 ");	
+	$db->query("Delete from ".table('simple')." WHERE deadline<{$time} AND deadline<>0 ");
 
 	//更新任务时间表
 	if ($crons['weekday']>=0)
@@ -45,5 +45,5 @@ die('Access Denied!');
 	}
 	$setsqlarr['nextrun']=$nextrun;
 	$setsqlarr['lastrun']=time();
-	updatetable(table('crons'), $setsqlarr," cronid ='".intval($crons['cronid'])."'");
+	$db->updatetable(table('crons'), $setsqlarr," cronid ='".intval($crons['cronid'])."'");
 ?>

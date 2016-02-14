@@ -11,7 +11,7 @@
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <link href="css/company.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery.js" type='text/javascript' ></script>
-<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 <script src="js/jquery.common.js" type='text/javascript' ></script>
 <script type="text/javascript">
 $(document).ready(function()
@@ -73,6 +73,7 @@ $(document).ready(function()
 所属行业：{#$show.trade_cn#}<br />
 注册资金：{#if $show.registered#}{#$show.registered#}{#$show.currency#}万{#else#}未填写{#/if#}<br />
 公司规模：{#$show.scale_cn#}<br />
+所在地区：{#$show.address#}<br />
   </div>
 </div>
 

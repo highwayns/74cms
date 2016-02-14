@@ -27,9 +27,9 @@
       结尾不要加 &quot; / &quot;</td>
     </tr>
     <tr>
-      <td align="right">Wap站域名：</td>
+      <td align="right">触屏版域名：</td>
       <td><input name="wap_domain" type="text"  class="input_text_200" id="wap_domain" value="{#$config.wap_domain#}" maxlength="100"/>
-      设置后请将域名绑定到wap目录；如不设置请留空</td>
+      设置后请将域名绑定到m目录；如不设置请留空</td>
     </tr>
     <tr>
       <td align="right">安装目录：</td>
@@ -95,14 +95,22 @@
 <label >
 <input type="radio" name="closetime" value="1"  {#if $config.closetime=="1"#}checked=checked{#/if#}/>是</label></td>
     </tr>
-	 
-	      
-	       <tr>
-	         <td align="right">&nbsp;</td>
-	         <td height="50"> 
-	           <input name="submit" type="submit" class="admin_submit"    value="保存修改"/>
-             </td>
-      </tr>
+
+    <tr>
+      <td align="right">邮件注册会员激活：</td>
+      <td>
+      <label>
+      <input name="check_reg_email" type="radio" id="check_reg_email" value="0"  {#if $config.check_reg_email==0#}checked=checked {#/if#}/>否</label>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <label >
+      <input type="radio" name="check_reg_email" value="1"  {#if $config.check_reg_email=="1"#}checked=checked{#/if#}/>是</label></td>
+    </tr>
+    <tr>
+      <td align="right">&nbsp;</td>
+      <td height="50"> 
+        <input name="submit" type="submit" class="admin_submit"    value="保存修改"/>
+      </td>
+    </tr>
   </table>
   </form>
 </div>

@@ -26,6 +26,8 @@ if($act == 'set')
 elseif($act == 'set_save')
 {
 	check_token();
+	//填写管理员日志
+	write_log("后台更新设置", $_SESSION['admin_name'],3);
 	foreach($_POST as $k => $v)
 	{
 	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('更新设置失败', 1):"";

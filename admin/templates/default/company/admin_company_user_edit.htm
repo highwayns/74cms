@@ -53,7 +53,38 @@ $(document).ready(function()
 	$(".yes_money3").click(function(){
 		$(".log_amount3").show();
 	});
-			
+	jQuery.validator.addMethod("isPhoneNumber", function(value, element) {   
+      var tel = /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/;
+      return this.optional(element) || (tel.test(value));
+  }, "请正确填写手机号码");
+  $("#form4").validate({
+     rules:{
+      mobile: {
+       isPhoneNumber:true
+    },
+       email: {
+       required:true,
+       email:true
+       }
+    },
+      messages: {
+      mobile: {
+    isPhoneNumber: jQuery.format("请正确填写手机号码")
+     },
+     email: {
+      required: jQuery.format("请填写电子邮箱"),
+    email: jQuery.format("请正确填写电子邮箱")
+     } 
+    },
+    errorPlacement: function(error, element) {
+      if ( element.is(":radio") )
+          error.appendTo( element.parent().next().next() );
+      else if ( element.is(":checkbox") )
+          error.appendTo ( element.next());
+      else
+          error.appendTo(element.next());
+    }
+      });		
 }); 
 </script>
 <div class="admin_main_nr_dbox">
@@ -66,13 +97,13 @@ $(document).ready(function()
     <tr>
       <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">注册时间：</td>
       <td  style=" border-bottom:1px #CCCCCC dashed" >{#$company_user.reg_time|date_format:"%Y-%m-%d   %H:%M"#}&nbsp;</td>
-      <td width="120" align="right"  style=" border-bottom:1px #CCCCCC dashed" >最后登陆时间：</td>
+      <td width="120" align="right"  style=" border-bottom:1px #CCCCCC dashed" >最后登录时间：</td>
       <td  style=" border-bottom:1px #CCCCCC dashed" >{#$company_user.last_login_time|date_format:"%Y-%m-%d %H:%M"#}</td>
     </tr>
     <tr>
       <td height="30" align="right"   >注册IP：</td>
       <td   >{#if $company_user.reg_ip#}{#$company_user.reg_ip#}{#else#}- - - -{#/if#}</td>
-      <td align="right"  >最后登陆IP：</td>
+      <td align="right"  >最后登录IP：</td>
       <td   >{#if $company_user.last_login_ip#}{#$company_user.last_login_ip#}{#else#}- - - -{#/if#}</td>
     </tr>
   </table>
@@ -159,12 +190,10 @@ $(document).ready(function()
     </tr>
 	</table>
 	</form>
-	<div class="toptit">用户状态</div>
+   <div class="toptit">用户状态</div>
 	 <form id="form9" name="form9" method="post" action="?act=userstatus_edit">
 	 {#$inputtoken#}
-	<table width="100%" border="0" cellpadding="4" cellspacing="0"   >	
-	
-
+	<table width="100%" border="0" cellpadding="4" cellspacing="0"   > 
 		<tr>
       <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">帐号状态：</td>
       <td  style=" border-bottom:1px #CCCCCC dashed;" >
@@ -317,7 +346,7 @@ $(document).ready(function()
       </tr>
 
 	  <tr>
-        <td   height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">人才库容量剩余：</td>
+        <td   height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">人才库容量：</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="talent_pool" type="text" class="input_text_200" id="talent_pool" maxlength="50" value="{#$setmeal.talent_pool#}"  >
           条</td>

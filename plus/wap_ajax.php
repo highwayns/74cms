@@ -50,35 +50,6 @@ if($act == 'ajaxjobslist'){
 		exit('-1');
 	}
 }
-elseif($act == 'ajaxhunterjobslist'){
-	$jobslisthtml="";
-	if (!empty($wheresql))
-	{
-	$wheresql=" WHERE ".ltrim(ltrim($wheresql),'AND');
-	}
-	$rows=intval($_GET['rows']);
-	$offset=intval($_GET['offset']); 
-	$jobslistarray=$db->getall("select * from ".table('hunter_jobs').$wheresql." ORDER BY `refreshtime` DESC LIMIT {$offset},{$rows}");
-	if (!empty($jobslistarray) && $offset<=100)
-	{
-		foreach($jobslistarray as $li)
-		{
-			$url = wap_url_rewrite("wap-hunter-jobs-show",array("id"=>$li["id"]));
-			$jobslisthtml.='<div class="list" id="li-'.$offset.'" url="'.$url.'">
-	  <div class="t1"><span><a href="'.$url.'">'.$li["jobs_name"].'</a></span><br />
-'.$li["companyname"].'</div>
-	  <div class="t2">'.$li["district_cn"].'<br />'.$li["wag_cn"].'</div>
-	  <div class="t3"><img src="images/14.jpg"  border="0"/></div>
-	  <div class="clear"></div>
-	</div>';
-	}
-		exit($jobslisthtml);
-	}
-	else
-	{
-		exit('-1');
-	}
-}
 elseif($act == 'ajaxnewslist'){
 	$newslisthtml="";
 	$rows=intval($_GET['rows']);
@@ -205,9 +176,9 @@ elseif($act == 'jobs_contact')
 			if ($_CFG['contact_img_job']=='2')
 			{
 			$token=md5($val['contact'].$id.$val['telephone']);
-			$contact=$val['contact_show']=='1'?"联系人：<img src=\"{$_CFG['website_dir']}plus/contact_img.php?act=jobs_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"联系人：企业设置不对外公开<br />";
-			$telephone=$val['telephone_show']=='1'?"联系电话：<img src=\"{$_CFG['website_dir']}plus/contact_img.php?act=jobs_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"联系电话：企业设置不对外公开<br />";
-			$address=$val['address_show']=='1'?"联系地址：<img src=\"{$_CFG['website_dir']}plus/contact_img.php?act=jobs_contact&type=4&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"联系地址：企业设置不对外公开<br />";
+			$contact=$val['contact_show']=='1'?"联系人：<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"联系人：企业设置不对外公开<br />";
+			$telephone=$val['telephone_show']=='1'?"联系电话：<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"联系电话：企业设置不对外公开<br />";
+			$address=$val['address_show']=='1'?"联系地址：<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=4&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"联系地址：企业设置不对外公开<br />";
 			$html='<div class="title"><h2>联系方式</h2></div><div class="txt telbox">';
 			$html.=$contact.$telephone.$address;
 			$html.='</div><div class="telimg"><a href="wtai://wp/mc;'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div>';
@@ -286,9 +257,9 @@ elseif($act == 'company_contact')
 			if ($_CFG['contact_img_com']=='2')
 			{
 			$token=md5($val['contact'].$id.$val['telephone']);
-			$contact=$val['contact_show']=='1'?"联系人：<img src=\"{$_CFG['website_dir']}plus/contact_img.php?act=company_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"联系人：企业设置不对外公开<br />";
-			$telephone=$val['telephone_show']=='1'?"联系电话：<img src=\"{$_CFG['website_dir']}plus/contact_img.php?act=company_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"联系电话：企业设置不对外公开<br />";
-			$address=$val['address_show']=='1'?"联系地址：<img src=\"{$_CFG['website_dir']}plus/contact_img.php?act=company_contact&type=4&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"联系地址：企业设置不对外公开<br />";
+			$contact=$val['contact_show']=='1'?"联系人：<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"联系人：企业设置不对外公开<br />";
+			$telephone=$val['telephone_show']=='1'?"联系电话：<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"联系电话：企业设置不对外公开<br />";
+			$address=$val['address_show']=='1'?"联系地址：<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=4&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"联系地址：企业设置不对外公开<br />";
 			$html='<div class="title"><h2>联系方式</h2></div><div class="txt">';
 			$html.=$contact.$telephone.$address;
 			$html.='</div><div class="telimg"><a href="wtai://wp/mc;'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div>';
@@ -369,9 +340,9 @@ elseif($act == 'resume_contact')
 			{
 			$token=md5($val['fullname'].$id.$val['telephone']);
 			$html='<div class="title"><h2>联系方式</h2></div><div class="txt">';
-			$html.="联 系 人：<img src=\"{$_CFG['website_dir']}plus/contact_img.php?act=resume_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
-			$html.="联系电话：<img src=\"{$_CFG['website_dir']}plus/contact_img.php?act=resume_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
-			$html.="联系地址：<img src=\"{$_CFG['website_dir']}plus/contact_img.php?act=resume_contact&type=5&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
+			$html.="联 系 人：<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
+			$html.="联系电话：<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
+			$html.="联系地址：<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=5&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
 			$html.="<div align=\"center\"><br/><img src=\"{$_CFG['site_template']}images/64.gif\"  border=\"0\" id=\"invited\"/></div>";
 			$html.="<div align=\"center\"><span class=\"add_resume_pool\">[添加到人才库]</span><br/><br/></div>";
 			$html.='</div><div class="telimg"><a href="wtai://wp/mc;'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div>';

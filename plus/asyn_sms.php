@@ -44,13 +44,13 @@ if($act == 'jobs_apply')
 	else
 	{
 	$templates=label_replace($SMStemplates['set_applyjobs']);
-	send_sms($comuser['mobile'],$templates);
+	exit(send_sms($comuser['mobile'],$templates));
 	}
 }
 elseif($act == 'set_invite')
 {
 	$templates=label_replace($SMStemplates['set_invite']);
-	send_sms($_GET['mobile'],$templates);
+	exit(send_sms($_GET['mobile'],$templates));
 }
 elseif($act == 'set_order')
 {
@@ -98,6 +98,46 @@ elseif($act == 'set_resumeallow'){
 }
 elseif($act == 'set_resumenotallow'){
 	$templates=label_replace($SMStemplates['set_resumenotallow']);
+	send_sms($userinfo['mobile'],$templates);
+}
+elseif($act == 'set_teaallow'){
+	$templates=label_replace($SMStemplates['set_teaallow']);
+	send_sms($userinfo['mobile'],$templates);
+}
+elseif($act == 'set_teanotallow'){
+	$templates=label_replace($SMStemplates['set_teanotallow']);
+	send_sms($userinfo['mobile'],$templates);
+}
+elseif($act == 'set_couallow'){
+	$templates=label_replace($SMStemplates['set_couallow']);
+	send_sms($userinfo['mobile'],$templates);
+}
+elseif($act == 'set_counotallow'){
+	$templates=label_replace($SMStemplates['set_counotallow']);
+	send_sms($userinfo['mobile'],$templates);
+}
+elseif($act == 'set_applycou'){
+	$templates=label_replace($SMStemplates['set_applycou']);
+	send_sms($_GET['mobile'],$templates);
+}
+elseif($act == 'set_downapp'){
+	$templates=label_replace($SMStemplates['set_downapp']);
+	send_sms($_GET['mobile'],$templates);
+}
+elseif($act == 'set_hunallow'){
+	$templates=label_replace($SMStemplates['set_hunallow']);
+	send_sms($userinfo['mobile'],$templates);
+}
+elseif($act == 'set_hunnotallow'){
+	$templates=label_replace($SMStemplates['set_hunnotallow']);
+	send_sms($userinfo['mobile'],$templates);
+}
+elseif($act == 'set_hunjobsallow'){
+	$templates=label_replace($SMStemplates['set_hunjobsallow']);
+	send_sms($userinfo['mobile'],$templates);
+}
+elseif($act == 'set_hunjobsnotallow'){
+	$templates=label_replace($SMStemplates['set_hunjobsnotallow']);
 	send_sms($userinfo['mobile'],$templates);
 }
 

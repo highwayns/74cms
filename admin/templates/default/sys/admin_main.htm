@@ -1,7 +1,7 @@
 {#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
-	<div class="ptit">欢迎登陆 {#$QISHI.site_name#} 管理中心！</div>
+	<div class="ptit">欢迎登录 {#$QISHI.site_name#} 管理中心！</div>
   <div class="clear"></div>
 </div>
 <span id="version"></span>
@@ -45,8 +45,8 @@
         <td  >待开通高级人才：&nbsp;<a href="admin_personal.php?talent=3" id="t4">...</a></td>
       </tr>
       <tr>
-        <td>待付款企业订单：&nbsp;<a href="admin_company.php?act=order_list&is_paid=1" id="t5">...</a>		  </td>
         <td  >待审核照片 ：&nbsp;<a href="admin_personal.php?act=list&photo_audit=2" id="t6">...</a></td>
+        <td>待付款企业订单：&nbsp;<a href="admin_company.php?act=order_list&is_paid=1" id="t5">...</a>		  </td>
       </tr>
       <tr>
         <td  >举报信息：&nbsp;<a href="admin_feedback.php?act=report_list" id="t7">...</a>		  </td>
@@ -86,7 +86,7 @@
   <tr>
     <td style=" line-height:220%; color:#666666; padding-left:15px;"><table border="0" cellpadding="0" cellspacing="0" class="link_lan">
       <tr>
-        <td width="300"  >系统当前版本：v{#$system_info.version#}.{#$system_info.release#}</td>
+        <td width="400"  >系统当前版本：v{#$system_info.version#}.{#$system_info.release#}<span id="update_notice"></span></td>
         <td  >认证授权：<span id="certification">载入中...</span>
         </td>
       </tr>
@@ -107,7 +107,7 @@
     <td style="  color:#666666; padding-left:15px;line-height:220%;">
 	<table border="0" cellpadding="0" cellspacing="0" class="link_lan">
       <tr>
-        <td width="300"  >操作系统：{#$system_info.os#}</td>
+        <td width="400"  >操作系统：{#$system_info.os#}</td>
         <td  >PHP 版本：{#$system_info.php_ver#}</td>
       </tr>
       <tr>

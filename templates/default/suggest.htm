@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>意见反馈</title>
-<link rel="shortcut icon" href="{#$QISHI.main_domain#}favicon.ico" />
+<link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <meta name="author" content="骑士CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
@@ -28,7 +28,7 @@ $("#Form1").validate({
     IScaptchastr: true,
     required: true,
     remote:{     
-    url:"{#$QISHI.main_domain#}include/imagecaptcha.php",     
+    url:"{#$QISHI.site_dir#}include/imagecaptcha.php",     
     type:"post",    
     data:{"postcaptcha":function (){return $("#postcaptcha").val()},"act":"verify","time":function (){return new Date().getTime()}}     
     }
@@ -78,7 +78,7 @@ function imgcaptcha(inputID,imgdiv)
     $(imgdiv).show();
     if ($(imgdiv).html()=='')
     {
-    $(imgdiv).append("<img src=\"{#$QISHI.main_domain#}include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:3px;\" title=\"看不请验证码？点击更换一张\"  border=\"0\"/>");
+    $(imgdiv).append("<img src=\"{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:3px;\" title=\"看不请验证码？点击更换一张\"  border=\"0\"/>");
     }
     $(imgdiv+" img").click(function()
     {
@@ -103,11 +103,11 @@ imgcaptcha("#postcaptcha","#imgdiv");
 
 </script>
 </head>
-<body>
+<body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
 <!-- 当前位置 -->
 <div class="page_location link_bk">
-	当前位置：<a href="{#$QISHI.website_dir#}">首页</a>>意见反馈
+	当前位置：<a href="{#$QISHI.site_dir#}">首页</a>>意见反馈
 </div>
 	<!-- 主体内容 -->
 	<div class="container link_bk">
@@ -126,6 +126,7 @@ imgcaptcha("#postcaptcha","#imgdiv");
 				意见反馈
 			</div>
 			<form action="suggest_submit.php" method="post" id="Form1" >
+        <input type="hidden" name="input_token" value="{#$input_token#}">
 			<div class="about_r_content">
 				<table>
 					<tbody>

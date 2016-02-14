@@ -44,7 +44,7 @@ elseif ($act=="save")
 	}
 	else
 	{
-	$setsqlarr['link_name']=trim($_POST['link_name'])?trim($_POST['link_name']):showmsg('您没有填写标题！',1);
+	$setsqlarr['link_name']=trim($_POST['link_name'])?trim($_POST['link_name']):showmsg('您没有填写链接名称！',1);
 	$setsqlarr['link_url']=trim($_POST['link_url'])?trim($_POST['link_url']):showmsg('您没有填写链接地址！',1);
 	$setsqlarr['link_logo']=trim($_POST['link_logo']);
 	$setsqlarr['app_notes']=trim($_POST['app_notes']);
@@ -52,8 +52,8 @@ elseif ($act=="save")
 	$setsqlarr['display']=2;
 	$setsqlarr['type_id']=2;
 	$link[0]['text'] = "返回网站首页";
-	$link[0]['href'] =$_CFG['website_dir'];
-	!inserttable(table('link'),$setsqlarr)?showmsg("添加失败！",0):showmsg("添加成功，请等待管理员审核！",2,$link);
+	$link[0]['href'] =$_CFG['site_dir'];
+	!$db->inserttable(table('link'),$setsqlarr)?showmsg("添加失败！",0):showmsg("添加成功，请等待管理员审核！",2,$link);
 	}
 }
 unset($smarty);

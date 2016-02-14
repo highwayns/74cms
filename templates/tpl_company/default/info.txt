@@ -1,4 +1,4 @@
 name:д╛ходё╟Ф
-version:3.5
+version:3.6
 author:74cms.com
 authorurl:http://www.74cms.com

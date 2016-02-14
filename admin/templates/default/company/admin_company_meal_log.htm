@@ -70,6 +70,8 @@
 			  <td width="10%" class="admin_list_tit">目前积分</td>
 		{#elseif $QISHI.operation_mode=='2'#}  
 			  <td width="10%"  class="admin_list_tit">目前套餐</td>
+		{#elseif $QISHI.operation_mode=='3'#}  
+			<td width="10%"  class="admin_list_tit">目前积分(套餐)</td>
 		{#/if#}
       <td  class="admin_list_tit">操作类型</td>     
       <td  class="admin_list_tit">付款金额</td>     
@@ -96,7 +98,9 @@
 		{#if $QISHI.operation_mode=='1'#} 
 			<strong>{#$list.points#}</strong> 积分
 		{#elseif $QISHI.operation_mode=='2'#}  
-				{#if $list.setmeal_name#}<span style="color: #009900">{#$list.setmeal_name#}</span>{#else#}<span style="color:#FF3300">无套餐</span>{#/if#}
+			{#if $list.setmeal_name#}<span style="color: #009900">{#$list.setmeal_name#}</span>{#else#}<span style="color:#FF3300">无套餐</span>{#/if#}
+		{#elseif $QISHI.operation_mode=='3'#}  
+			积分:<strong>{#$list.points#}</strong>({#if $list.setmeal_name#}<span style="color: #009900">{#$list.setmeal_name#}</span>{#else#}<span style="color:#FF3300">无套餐</span>{#/if#})
 		{#/if#}
 		</td>
  		<td class="admin_list">
@@ -136,6 +140,7 @@
         <td>
         <input type="button" name="Butdel"  id="Butdel" value="删除记录" class="admin_submit"/>
 		</td>
+	{#if $sign!='1'#}
         <td width="305" align="right">
 		<form id="formseh" name="formseh" method="get" action="?">	
 			<div class="seh">
@@ -164,6 +169,7 @@
 		  </form>
 		  <script type="text/javascript">$(document).ready(function(){showmenu("#key_type_cn","#sehmenu","#key_type");});	</script>
 	    </td>
+	    {#/if#}
       </tr>
   </table>
 <div class="page link_bk">{#$page#}</div>

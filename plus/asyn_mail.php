@@ -42,9 +42,87 @@ if($act == 'reg'){
 //申请职位发送邮件
 elseif($act == 'jobs_apply')
 {   
+	global $_CFG;
 	$templates=label_replace($mail_templates['set_applyjobs']);
 	$templates_title=label_replace($mail_templates['set_applyjobs_title']);
-	smtp_mail($_GET['email'],$templates_title,$templates);
+	// 申请职位发送邮件 简历信息
+	require_once(QISHI_ROOT_PATH.'include/fun_personal.php');
+	$resume_id=intval($_GET['resume_id']);
+	$resume_basic=get_resume_basic($uid,$resume_id);
+	if($resume_basic['tag_cn'])
+	{
+		$resume_tag=explode(',',$resume_basic['tag_cn']);
+		$tag_str='<p>';
+		foreach ($resume_tag as $value)
+		{
+			$tag_str.='<span style="color: #656565;display:inline-block;background-color: #f2f4f7; border: 1px solid #d6d6d7;text-align: center;height:30px;line-height: 30px;margin-right:10px;padding:0 10px">'.$value.'</span>';
+		}
+		$tag_str.='</p>';
+	}
+	$resume_work=get_resume_work($uid,$resume_id);
+	$show_contact = false;
+	if($_CFG['showapplycontact']=='1' || $_CFG['showresumecontact']=='0')
+	{
+		$show_contact = '<p>手机号码：'.$resume_basic["telephone"].' 电子邮箱：'.$resume_basic["email"].'</p>';
+	}
+	else
+	{
+		$show_contact = '<p>联系方式：<a href='.url_rewrite('QS_resumeshow',array('id'=>$resume_id)).'>点击查看</a></p>';
+	}	
+	$htm='<div style="width: 900px;margin: 0 auto;font-size: 14px;">
+		<div style="margin-bottom:10px">
+			<div style="float: left;"><a href="'.$_CFG['site_domain'].$_CFG['site_dir'].'"><img src="'.$_CFG['site_domain'].$_CFG['upfiles_dir'].$_CFG['web_logo'].'" alt="'.$_CFG['site_name'].'" border="0" align="absmiddle" width=180 height=50 /></a></div>
+			<div style="float: right;padding-top:10px;">'.$templates.'更新时间：'.date("Y-m-d",$resume_basic["refreshtime"]).'</div>
+			<div style="clear:both"></div>
+		</div>
+		<div style="padding-bottom: 10px;">
+			<span style="font-size: 18px;font-weight: 700;">'.$resume_basic["fullname"].'</span><span>（'.$resume_basic["sex_cn"].'，'.$resume_basic["age"].'）</span>
+			<p>学历：'.$resume_basic["education_cn"].' | 专业：'.$resume_basic["major_cn"].' | 工作经验：'.$resume_basic["experience_cn"].'年 | 现居住地：'.$resume_basic["residence"].'</p>
+
+			'.$show_contact.$tag_str.'
+
+		</div>
+		<div style="padding-bottom: 10px;">
+			<p style="font-size: 16px;font-weight: 700;">求职意向</p>
+			<p>期望职位：'.$resume_basic["intention_jobs"].'</p>
+			<p>期望薪资：'.$resume_basic["wage_cn"].'</p>
+			<p>期望地区：'.$resume_basic["district_cn"].'</p>
+		</div>
+		<div style="padding-bottom: 10px;">
+			<p style="font-size: 16px;font-weight: 700;">工作经验</p>';
+				if(!empty($resume_work))
+				{
+					foreach ($resume_work as $value)
+					{
+						$htm.='<div>
+								<p style="font-size: 14px;font-weight: 700;">'.$value["companyname"].'</p>
+								<p>'.$value["startyear"].'年'.$value["startmonth"].'月-'.$value["endyear"].'年'.$value["endmonth"].'月 '.$value["jobs"].'</p>
+								<div style="float: left;width: 100px;">工作内容：</div>
+								<div style="float: right;width: 800px;">'.$value["achievements"].'</div>
+								<div style="clear:both"></div>
+							</div>'	;
+					}
+				}
+				else
+				{
+					$htm.='<div>
+								没有填写工作经历
+							</div>'	;
+				}
+				
+		$htm.='</div>';
+		if($resume_basic["specialty"])
+		{
+			$htm.='<div style="padding-bottom: 10px;">
+				<p style="font-size: 16px;font-weight: 700;">自我描述</p>
+				<p>'.$resume_basic["specialty"].'</p>
+			</div>';
+		}
+		$htm.='<div style="text-align: center;margin-top:20px">
+				该简历来自<a href="'.$_CFG["site_domain"].$_CFG["site_dir"].'">'.$_CFG["site_name"].'</a>
+			</div>
+		</div>';
+	smtp_mail($_GET['email'],$templates_title,$htm);
 }
 //邀请面试发送邮件
 elseif($act == 'set_invite')
@@ -123,4 +201,73 @@ elseif($act == 'set_resumenotallow'){
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
+//讲师通过审核，发送邮件
+elseif($act == 'set_teaallow'){
+			$templates=label_replace($mail_templates['set_teaallow']);
+			$templates_title=label_replace($mail_templates['set_teaallow_title']);
+			$useremail=get_user_inid($uid);
+			smtp_mail($useremail['email'],$templates_title,$templates);
+}
+//讲师未通过审核，发送邮件
+elseif($act == 'set_teanotallow'){
+			$templates=label_replace($mail_templates['set_teanotallow']);
+			$templates_title=label_replace($mail_templates['set_teanotallow_title']);
+			$useremail=get_user_inid($uid);
+			smtp_mail($useremail['email'],$templates_title,$templates);
+}
+//课程通过审核，发送邮件
+elseif($act == 'set_couallow'){
+			$templates=label_replace($mail_templates['set_couallow']);
+			$templates_title=label_replace($mail_templates['set_couallow_title']);
+			$useremail=get_user_inid($uid);
+			smtp_mail($useremail['email'],$templates_title,$templates);
+}
+//课程未通过审核，发送邮件
+elseif($act == 'set_counotallow'){
+			$templates=label_replace($mail_templates['set_counotallow']);
+			$templates_title=label_replace($mail_templates['set_counotallow_title']);
+			$useremail=get_user_inid($uid);
+			smtp_mail($useremail['email'],$templates_title,$templates);
+}
+//个人在线申请课程，发送邮件
+elseif($act == 'set_applycou'){
+			$templates=label_replace($mail_templates['set_applycou']);
+			$templates_title=label_replace($mail_templates['set_applycou_title']);
+			smtp_mail($_GET['email'],$templates_title,$templates);
+}
+//机构下载申请，发送邮件
+elseif($act == 'set_downapp'){
+			$templates=label_replace($mail_templates['set_downapp']);
+			$templates_title=label_replace($mail_templates['set_downapp_title']);
+			smtp_mail($_GET['email'],$templates_title,$templates);
+}
+//猎头通过审核，发送邮件
+elseif($act == 'set_hunallow'){
+			$templates=label_replace($mail_templates['set_hunallow']);
+			$templates_title=label_replace($mail_templates['set_hunallow_title']);
+			$useremail=get_user_inid($uid);
+			smtp_mail($useremail['email'],$templates_title,$templates);
+}
+//猎头未通过审核，发送邮件
+elseif($act == 'set_hunnotallow'){
+			$templates=label_replace($mail_templates['set_hunnotallow']);
+			$templates_title=label_replace($mail_templates['set_hunnotallow_title']);
+			$useremail=get_user_inid($uid);
+			smtp_mail($useremail['email'],$templates_title,$templates);
+}
+//高级职位通过审核，发送邮件
+elseif($act == 'set_hunjobsallow'){
+			$templates=label_replace($mail_templates['set_hunjobsallow']);
+			$templates_title=label_replace($mail_templates['set_hunjobsallow_title']);
+			$useremail=get_user_inid($uid);
+			smtp_mail($useremail['email'],$templates_title,$templates);
+}
+//高级职位未通过审核，发送邮件
+elseif($act == 'set_hunjobsnotallow'){
+			$templates=label_replace($mail_templates['set_hunjobsnotallow']);
+			$templates_title=label_replace($mail_templates['set_hunjobsnotallow_title']);
+			$useremail=get_user_inid($uid);
+			smtp_mail($useremail['email'],$templates_title,$templates);
+}
+
 ?>

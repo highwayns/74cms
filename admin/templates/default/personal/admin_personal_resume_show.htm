@@ -21,13 +21,7 @@
 		 </td>
           <td align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">姓名：</td>
           <td bgcolor="#FFFFFF"   style=" border-bottom:1px #CCCCCC dashed">
-			  {#if $resume.display_name == "2"#}
-			  {#$resume.number#}
-			  {#elseif $resume.display_name == "3"#}
 			  {#$resume.lastname#}
-			  {#else#}
-			  {#$resume.fullname#}
-			  {#/if#}			
 		 </td>
       </tr>
 		<tr>
@@ -128,26 +122,14 @@
 		 </td>
       </tr>
 		<tr>
-          <td height="30" width="80" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">个人主页：</td>
-          <td bgcolor="#FFFFFF"  colspan="7" style=" border-bottom:1px #CCCCCC dashed;">
-				{#$resume.website#}
-		 </td>
-      </tr>
-		<tr>
           <td height="30"  align="right" width="80"  bgcolor="#FFFFFF" >特长标签：</td>
           <td bgcolor="#FFFFFF"  colspan="7" >
-				{#$resume.tagcn#}
+				{#$resume.tag_cn#}
 		 </td>
       </tr>
 		</table>
 	<div class="toptit">求职意向</div>
   <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
-		<tr>
-          <td height="30" width="130" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">最近工作过的职位：</td>
-          <td bgcolor="#FFFFFF"  style=" border-bottom:1px #CCCCCC dashed;">
-				{#$resume.recentjobs#}
-		 </td>
-     	 </tr>
 		<tr>
           <td height="30" width="130" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">期望岗位性质：</td>
           <td bgcolor="#FFFFFF"  style=" border-bottom:1px #CCCCCC dashed;">
@@ -179,7 +161,7 @@
 		 </td>
      	 </tr>
 		</table>
-	<div class="toptit">技能特长</div>
+	<div class="toptit">个人简介</div>
 	{#if $resume.specialty#} 
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="10">
 	<tr>
@@ -200,7 +182,7 @@
               </tr>
 			   {#foreach from=$resume_education item=list#}
   <tr>
-    <td height="23" align="center">{#$list.start#}至{#$list.endtime#}</td>
+    <td height="23" align="center">{#$list.startyear#}年{#$list.startmonth#}月至{#$list.endyear#}年{#$list.endmonth#}</td>
     <td align="center">{#$list.school#}</td>
     <td align="center">{#$list.speciality#}</td>
     <td align="center">{#$list.education_cn#}</td>
@@ -220,7 +202,7 @@
               </tr>
 			  {#foreach from=$resume_work item=list#}
 			  <tr>
-				<td height="23" align="center">{#$list.start#}至{#$list.endtime#}</td>
+   				 <td height="23" align="center">{#$list.startyear#}年{#$list.startmonth#}月至{#$list.endyear#}年{#$list.endmonth#}</td>
 				<td align="center">{#$list.companyname#}</td>
 				<td align="center">{#$list.jobs#}</td>
 			  </tr>
@@ -239,7 +221,7 @@
                 </tr>
 				{#foreach from=$resume_training item=list#}
 				  <tr>
-					<td height="23" align="center">{#$list.start#}至{#$list.endtime#}</td>
+   				 <td height="23" align="center">{#$list.startyear#}年{#$list.startmonth#}月至{#$list.endyear#}年{#$list.endmonth#}</td>
 					<td align="center">{#$list.agency#}</td>
 					<td align="center">{#$list.course#}</td>
 				  </tr>
@@ -264,21 +246,9 @@
 			 </td>
         </tr>
 		<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">通讯QQ：</td>
-          <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" class="link_lan">
-			{#$resume.qq#} 
-			</td>
-        </tr>
-		<tr>
           <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">户籍所在地：</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" class="link_lan">
 			{#$resume.householdaddress#}
-			 </td>
-        </tr>
-		<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" >通讯地址：</td>
-          <td bgcolor="#FFFFFF"  class="link_lan" >
-			{#$resume.address#}
 			 </td>
         </tr>
   </table>

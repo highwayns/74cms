@@ -23,7 +23,7 @@ if($act == 'list')
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
 	$key=isset($_GET['key'])?trim($_GET['key']):"";
 	$key_type=isset($_GET['key_type'])?intval($_GET['key_type']):"";
-	$orderbysql=" order BY `refreshtime` DESC";
+	$orderbysql=" order BY  `refreshtime` DESC";
 	if ($key && $key_type>0)
 	{
 		
@@ -67,7 +67,7 @@ if($act == 'list')
 	
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('simple').$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$list = get_simple_list($offset,$perpage,$wheresql.$orderbysql);
@@ -89,6 +89,7 @@ elseif($act == 'simple_del')
 	}
 	if ($num=simple_del($id))
 	{
+	write_log("删除微商圈共删除".$num."行", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除".$num."行",2);
 	}
 	else
@@ -107,6 +108,7 @@ elseif($act == 'simple_refresh')
 	}
 	if ($num=simple_refresh($id))
 	{
+	write_log("刷新微商圈共删除".$num."行", $_SESSION['admin_name'],3);
 	adminmsg("刷新成功！共刷新 {$num}行 ",2);
 	}
 	else
@@ -114,23 +116,27 @@ elseif($act == 'simple_refresh')
 	adminmsg("刷新失败！",0);
 	}
 }
-elseif($act == 'simple_audit')
+elseif($act == 'jobs_perform')
 {
-	check_permissions($_SESSION['admin_purview'],"simple_audit");
-	check_token();
-	$id=$_REQUEST['id'];
-	$audit=intval($_POST['audit']);
-	if (empty($id))
-	{
-	adminmsg("您没有选择项目！",1);
-	}
-	if ($num=simple_audit($id,$audit))
-	{
-	adminmsg("设置成功！共影响 {$num}行 ",2);
-	}
-	else
-	{
-	adminmsg("设置失败！",0);
+	//审核
+	if(!empty($_POST['set_audit'])){
+		check_permissions($_SESSION['admin_purview'],"simple_audit");
+		check_token();
+		$id=$_REQUEST['id'];
+		$audit=intval($_POST['audit']);
+		if (empty($id))
+		{
+		adminmsg("您没有选择项目！",1);
+		}
+		if ($num=simple_audit($id,$audit))
+		{
+		write_log("设置微招聘审核状态为".$audit."共影响 {$num}行", $_SESSION['admin_name'],3);
+		adminmsg("设置成功！共影响 {$num}行 ",2);
+		}
+		else
+		{
+		adminmsg("设置失败！",0);
+		}
 	}
 }
 elseif($act == 'simple_add')
@@ -173,12 +179,15 @@ elseif($act == 'simple_add_save')
 	$setsqlarr['key']=$setsqlarr['jobname'].$setsqlarr['comname'].$setsqlarr['address'].$setsqlarr['detailed'];
 	$setsqlarr['key']="{$setsqlarr['jobname']} {$setsqlarr['comname']} ".$sp->extracttag($setsqlarr['key']);
 	$setsqlarr['key']=$sp->pad($setsqlarr['key']);
-	if(inserttable(table('simple'),$setsqlarr))
+	if($db->inserttable(table('simple'),$setsqlarr))
 	{
+		//填写管理员日志
+		write_log("后台添加职位名称为 : ".$setsqlarr['jobname']."的微招聘 ", $_SESSION['admin_name'],3);
 		$link[0]['text'] = "返回列表";
 		$link[0]['href'] = '?act=list';
 		$link[1]['text'] = "继续添加";
 		$link[1]['href'] = "?act=simple_add";
+		write_log("添加微招聘：".$setsqlarr['jobname'], $_SESSION['admin_name'],3);
 		adminmsg("添加成功！",2,$link);
 	}
 	else
@@ -236,10 +245,13 @@ elseif($act == 'simple_edit_save')
 	$setsqlarr['key']=$setsqlarr['jobname'].$setsqlarr['comname'].$setsqlarr['address'].$setsqlarr['detailed'];
 	$setsqlarr['key']="{$setsqlarr['jobname']} {$setsqlarr['comname']} ".$sp->extracttag($setsqlarr['key']);
 	$setsqlarr['key']=$sp->pad($setsqlarr['key']);
-	if(updatetable(table('simple'),$setsqlarr," id='{$id}' "))
+	if($db->updatetable(table('simple'),$setsqlarr," id='{$id}' "))
 	{
+		//填写管理员日志
+		write_log("后台修改id为".$id."的微招聘 ", $_SESSION['admin_name'],3);
 		$link[0]['text'] = "返回列表";
 		$link[0]['href'] = '?act=list';
+		write_log("修改id为：".$id."微招聘信息", $_SESSION['admin_name'],3);
 		adminmsg("修改成功！",2,$link);
 	}
 	else

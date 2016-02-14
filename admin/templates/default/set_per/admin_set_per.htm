@@ -1,7 +1,8 @@
 {#include file="sys/admin_header.htm"#}
-<link rel="stylesheet" href="kindeditor/themes/default/default.css" />
-<script charset="utf-8" src="kindeditor/kindeditor-min.js"></script>
-<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" charset="gbk" src="ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="gbk" src="ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="gbk" src="ueditor/lang/zh-cn/zh-cn.js"></script>
+
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -170,7 +171,7 @@
  {#$inputtoken#}
     <table width="95%" border="0" cellspacing="5" cellpadding="1" style=" margin-bottom:3px;">	 
 	<tr>
-      <td width="200" align="right">简历联系方式显示方式：</td>
+      <td width="200" align="right">Web端允许查看简历联系方式：</td>
       <td><label>
         <input name="showresumecontact" type="radio" value="0"  {#if $config.showresumecontact=="0"#}checked=checked {#/if#}/>游客可见</label>
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -183,6 +184,20 @@
  </label>
  <span class="admin_note">(如此项为“游客可见”或“已登录会员可见”，网站将会失去重要赢利点)</span></td>
     </tr>
+    <tr>
+    	<td width="200" align="right">触屏版允许查看简历联系方式：</td>
+    	<td><label>
+    		<input name="showresumecontact_wap" type="radio" value="0"  {#if $config.showresumecontact_wap=="0"#}checked=checked {#/if#}/>游客可见</label>
+    		&nbsp;&nbsp;&nbsp;&nbsp;
+    		<label >
+    			<input type="radio" name="showresumecontact_wap" value="1"  {#if $config.showresumecontact_wap=="1"#}checked=checked{#/if#}/>已登录会员可见
+    		</label>
+    		&nbsp;&nbsp;&nbsp;&nbsp;
+    		<label >
+    			<input type="radio" name="showresumecontact_wap" value="2"  {#if $config.showresumecontact_wap=="2"#}checked=checked{#/if#}/>下载后可见
+    		</label>
+    		<span class="admin_note">(如此项为“游客可见”或“已登录会员可见”，网站将会失去重要赢利点)</span></td>
+    	</tr>
 	<tr>
       <td width="200" align="right">企业查看收到的简历无需下载：</td>
       <td><label>
@@ -246,7 +261,29 @@
 	  </tr>
 	  </table>
   </form>
+  	<div class="toptit">高级简历下载设置</div>
  
+    <form action="?act=set_save" method="post" name="form1" id="form1">
+ {#$inputtoken#}
+    <table width="95%" border="0" cellspacing="5" cellpadding="1" style=" margin-bottom:3px;">	 
+	<tr>
+      <td width="200" align="right">高级简历下载要求：</td>
+      <td><label>
+        <input name="down_talent_resume_limit" type="radio" value="1"  {#if $config.down_talent_resume_limit=="1"#}checked=checked {#/if#}/>已登录且有发布职位的猎头可下载</label>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<label >
+<input type="radio" name="down_talent_resume_limit" value="2"  {#if $config.down_talent_resume_limit=="2"#}checked=checked{#/if#}/>已登录的猎头可下载
+ </label>
+ </td>
+    </tr>
+	<tr>
+	  <td align="right" valign="top">&nbsp;</td>
+	  <td> 
+	    <input name="submit" type="submit" class="admin_submit"    value="保存修改"/>
+	  </td>
+	  </tr>
+	  </table>
+  </form>
 	<div class="toptit">高级人才设置</div>
  
     <form action="?act=set_save" method="post" name="form1" id="form1">
@@ -275,15 +312,11 @@
 	</tr>
       <td width="200" align="right" valign="top">申请高级人才说明：</td>
       <td>
-	  <textarea name="personal_talent_requirement" style="width:700px; height:160px; font-size:12px; line-height:180%"  id="personal_talent_requirement">{#$text.personal_talent_requirement#}</textarea>
-	   <script>
-			var editor;
-			KindEditor.ready(function(K) {
-				editor = K.create('textarea[name="personal_talent_requirement"]', {
-					allowFileManager : true
-				});
-			});
-		</script>	  </td>
+		<script id="editor" name="personal_talent_requirement" type="text/plain" style="width:700px;height:160px;">{#$text.personal_talent_requirement#}</script>
+		<script type="text/javascript">
+		var ue = UE.getEditor('editor');
+		</script>
+	  </td>
     </tr>
 	<tr>
 	  <td align="right" valign="top">&nbsp;</td>

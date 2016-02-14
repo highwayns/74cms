@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
 <title>{#$title#}</title>
-<link rel="shortcut icon" href="{#$QISHI.main_domain#}favicon.ico" />
+<link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <meta name="author" content="骑士CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
@@ -32,26 +32,26 @@ $(document).ready(function() {
  //debug: true,
 // onsubmit:false,
 //onfocusout :true,
-   rules:{
-   amount:{
-    required: true,
-	digits:true,
-	min:{#$QISHI.payment_min#}
-   },
-   payment_name:{
-    required: true
-   }
+	rules:{
+		amount:{
+			required: true,
+			digits:true,
+			min:{#$QISHI.payment_min#}
+		},
+		payment_name:{
+			required: true
+		}
 	},
     messages: {
-    amount: {
-    required: "请输入充值金额",
-	digits: "金额必须是整数",
-    min: jQuery.format("单笔金额不能低于{0}元")
-   },
-   payment_name:{
-    required: "请选择支付方式"
-   }
-  },
+		amount: {
+			required: "请输入充值金额",
+			digits: "金额必须是整数",
+			min: jQuery.format("单笔金额不能低于{0}元")
+		},
+		payment_name:{
+			required: "请选择支付方式"
+		}
+	},
   errorPlacement: function(error, element) {
     if ( element.is(":radio") )
         error.appendTo( $("#pay_er"));
@@ -64,9 +64,9 @@ $(document).ready(function() {
 });
 </script>
 </head>
-<body>
+<body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">当前位置：<a href="{#$QISHI.main_domain#}">首页</a> > <a href="{#$userindexurl#}">会员中心</a> > 充值订单</div>
+<div class="page_location link_bk">当前位置：<a href="{#$QISHI.site_dir#}">首页</a> > <a href="{#$userindexurl#}">会员中心</a> > 充值订单</div>
 
 <div class="usermain">
   <div class="leftmenu  com link_bk">
@@ -81,17 +81,18 @@ $(document).ready(function() {
 			</div>
 
 			<div class="navs">
-				<a href="?act=order_add" class="se">积分充值</a>
-        {#if $QISHI.operation_mode=="3"#}
-        <a href="?act=setmeal_list">申请服务</a>
+        {#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
+        <a href="?act=order_add" class="se">积分充值</a>
+        {#/if#}
+        {#if $QISHI.operation_mode=="2" || $QISHI.operation_mode=="3"#}
+        <a href="?act=setmeal_list">申请VIP套餐</a>
         {#/if#}
         <a href="?act=order_list">我的订单</a>
-					
 				<div class="clear"></div>
 			</div>
 		</div>
 		<div class="balance margin-common">
-  			<div class="bal_text">您的账户剩余<span> {#$points#} </span>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="company_service.php?act=account">[积分明细]</a>&nbsp;&nbsp;<a href="company_service.php?act=account">[积分消费规则]</a></div>
+  			<div class="bal_text" style="margin-bottom:0;">您的账户剩余<span> {#$points#} </span>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="company_service.php?act=j_account&detail=1">[积分明细]</a>&nbsp;&nbsp;<a target="_blank" href="company_service.php?act=j_account">[积分消费规则]</a></div>
   		</div>
   		<div class="bar">
   			<div class="bar_step1">
@@ -115,7 +116,7 @@ $(document).ready(function() {
   					</tr>
   					<tr id="count" style="display:none;">
   						<td></td>
-  						<td><span id="show_val"></span></td>
+  						<td colspan="2"><span id="show_val"></span></td>
   					</tr>
   				</tbody>
   			</table>
@@ -124,13 +125,19 @@ $(document).ready(function() {
   					{#section name=payment loop=$payment#}
   					<tr>
   						<td height="30" width="100">{#if $smarty.section.payment.index==0#}支付方式：{#/if#}</td>
-  						<td width="150"><input type="radio" name="payment_name" value="{#$payment[payment].typename#}" id="payment_name" />&nbsp;&nbsp;<img src="{#$QISHI.main_domain#}include/payment/logo/{#$payment[payment].typename#}.gif" alt=""/></td>
+  						<td width="150"><input type="radio" name="payment_name" value="{#$payment[payment].typename#}" id="payment_name" />&nbsp;&nbsp;<img src="{#$QISHI.site_dir#}include/payment/logo/{#$payment[payment].typename#}.gif" alt=""/></td>
   						<td> <p>({#$payment[payment].p_introduction#})</p></td>
   					</tr>
   					{#/section#}
-  				</tbody>
-  			</table>
-  			<input class="but130lan intrgration_but" type="submit" name="submit" value="充值"/>
+  				</tbody> 
+  			</table>  
+			<table>
+				<tr>
+					<td height="30" width="100">&nbsp;</td>
+					<td width="150"><div id="pay_er"> </td> 
+				</tr>
+			</table> 
+  			<input class="but130lan intrgration_but" type="submit" style="margin-top:0;" name="submit" value="充值"/>
   		</div>
   		</form>
   	</div>

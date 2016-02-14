@@ -66,6 +66,8 @@ exit("请先将“install”目录以及此目录下的子目录设置为可读写状态（777）<br />建议
 					'data/photo/thumb',
  					'data/hrtools',
 					'data/sessions',
+					'data/credent_photo',
+					'data/word',
 					'temp/caches',
 					'temp/templates_c',		
 					'temp/backup_templates',			
@@ -73,5 +75,4 @@ exit("请先将“install”目录以及此目录下的子目录设置为可读写状态（777）<br />建议
 					'admin/statement',			
 					'install'
                     );
-
 ?>

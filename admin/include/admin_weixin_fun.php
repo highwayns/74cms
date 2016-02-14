@@ -70,7 +70,7 @@ function del_binding($uid)
 	$sqlin=implode(",",$uid);
 	if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
 	{
-		if (!$db->query("update ".table('members')." set weixin_openid='',bindingtime=0 WHERE uid IN (".$sqlin.") ")) return false;
+		if (!$db->query("update ".table('members')." set weixin_openid=null,weixin_nick='',bindingtime=0 WHERE uid IN (".$sqlin.") ")) return false;
 		$return=$return+$db->affected_rows();
 	}
 	return $return;

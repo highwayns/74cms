@@ -122,5 +122,5 @@ die('Access Denied!');
 	}
 	$setsqlarr['nextrun']=$nextrun;
 	$setsqlarr['lastrun']=time();
-	updatetable(table('crons'), $setsqlarr," cronid ='".intval($crons['cronid'])."'");	
+	$db->updatetable(table('crons'), $setsqlarr," cronid ='".intval($crons['cronid'])."'");	
 ?>

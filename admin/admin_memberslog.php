@@ -51,7 +51,7 @@ if($act == 'list')
 	}
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('members_log').$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$list = get_memberslog_list($offset,$perpage,$wheresql.$oederbysql);
@@ -67,6 +67,7 @@ elseif($act == 'del_memberslog')
 	$dnum=del_memberslog($id);
 	if ($dnum>0)
 	{
+	write_log("删除会员日志,共删除".$dnum."行", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除".$dnum."行",2);
 	}
 	else
@@ -103,6 +104,7 @@ elseif($act == 'pidel_memberslog_del')
 	$dnum=pidel_memberslog($log_type,$starttime,$endtime);
 	if ($dnum>0)
 	{
+	write_log("删除会员日志,共删除".$dnum."行", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除".$dnum."行",2,$link);
 	}
 	else

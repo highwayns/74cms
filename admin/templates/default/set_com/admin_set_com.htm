@@ -24,11 +24,6 @@
       天<span  style="color:#666666"></span></td>
     </tr>
 	<tr>
-      <td align="right">招聘有效时间最少为：</td>
-      <td><input name="company_add_days_min" type="text"  class="input_text_150" id="company_add_days_min" value="{#$config.company_add_days_min#}" maxlength="3"  onkeyup="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
-      天<span  style="color:#666666"></span></td>
-    </tr>
-	<tr>
       <td align="right">上传营业执照文件限制：</td>
       <td><input name="certificate_max_size" type="text"  class="input_text_150" id="certificate_max_size" value="{#$config.certificate_max_size#}" maxlength="10"  onkeyup="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>        
         kb</td>
@@ -59,7 +54,7 @@
     <table width="100%" border="0" cellspacing="5" cellpadding="1" style=" margin-bottom:3px;">
  
 	<tr>
-      <td align="right" width="200">允许查看职位和企业的联系方式：</td>
+      <td align="right" width="200">Web端允许查看联系方式：</td>
       <td>
 	  
 	  <label><input name="showjobcontact" type="radio"   value="0"  {#if $config.showjobcontact=="0"#}checked=checked {#/if#}/>游客</label>
@@ -69,6 +64,16 @@
  <label><input name="showjobcontact" type="radio"   value="2"  {#if $config.showjobcontact=="2"#}checked=checked {#/if#}/>已登录且发布了有效简历</label>
 
         </td>
+    </tr>
+    <tr>
+    	<td align="right" width="200">移动端允许查看联系方式：</td>
+    	<td>
+    		<label><input name="showjobcontact_wap" type="radio"   value="0"  {#if $config.showjobcontact_wap=="0"#}checked=checked {#/if#}/>游客</label>
+    		&nbsp;&nbsp;&nbsp;&nbsp;
+    		<label><input name="showjobcontact_wap" type="radio"   value="1"  {#if $config.showjobcontact_wap=="1"#}checked=checked {#/if#}/>已登录会员</label>
+    		&nbsp;&nbsp;&nbsp;&nbsp;
+    		<label><input name="showjobcontact_wap" type="radio"   value="2"  {#if $config.showjobcontact_wap=="2"#}checked=checked {#/if#}/>已登录且发布了有效简历</label>
+    	</td>
     </tr>
 	<tr>
 	  <td align="right" valign="top">&nbsp;</td>
@@ -244,8 +249,7 @@
 		  </table>
 	  
 	    </form>
-		
-
+	
 	 <div class="toptit">过期信息设置</div>
     <form action="?act=set_save" method="post" name="form1" id="form1">
  {#$inputtoken#}
@@ -272,8 +276,6 @@
 		  </table>
 	  
 	    </form>
-		
-		
 	 <div class="toptit">其他设置</div>
     <form action="?act=set_save" method="post" name="form1" id="form1">
  {#$inputtoken#}

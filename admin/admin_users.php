@@ -25,7 +25,7 @@ if($act == 'list')
 	}
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('admin').$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$list = get_admin_list($offset,$perpage,$wheresql);	
@@ -60,8 +60,10 @@ elseif($act == 'add_users_save')
 	$setsqlarr['pwd_hash']=randstr();
 	$setsqlarr['pwd']=md5($password.$setsqlarr['pwd_hash'].$QS_pwdhash);	
 	
-	if (inserttable(table('admin'),$setsqlarr))
+	if ($db->inserttable(table('admin'),$setsqlarr))
 	{
+		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
+		write_log("ºóÌ¨Ìí¼ÓÓÃ»§ÃûÎª".$setsqlarr['admin_name']."µÄ¹ÜÀíÔ±", $_SESSION['admin_name'],3);
 		$link[0]['text'] = "·µ»ØÁĞ±í";
 		$link[0]['href'] ="?act=";
 		adminmsg('Ìí¼Ó³É¹¦£¡',2,$link);
@@ -128,12 +130,16 @@ elseif($act == 'edit_users_info_save' && $_SESSION['admin_purview']=="all")//³¬¼
 			$sql = "select * from ".table('admin')." where admin_name = '".$$setsqlarr['admin_name']."' AND admin_id<>".$id;
 			$ck_info=$db->getone($sql);
 			if (!empty($ck_info))adminmsg("ÓÃ»§ÃûÓĞÖØ¸´£¡",1);
-		if (updatetable(table('admin'),$setsqlarr,' admin_id='.$id))
+		if ($db->updatetable(table('admin'),$setsqlarr,' admin_id='.$id))
 		{
+			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
+			write_log("³¬¼¶¹ÜÀíÔ±³É¹¦ĞŞ¸Ä×ÊÁÏ", $_SESSION['admin_name'],3);
 			adminmsg("ĞŞ¸Ä³É¹¦£¡",2);
 		 }
 		 else
 		{
+			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
+			write_log("³¬¼¶¹ÜÀíÔ±ĞŞ¸Ä×ÊÁÏÊ§°Ü", $_SESSION['admin_name'],3);
 			adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
 		 }
 }
@@ -149,12 +155,16 @@ elseif($act == 'edit_users_pwd_save')
 				$md5_pwd=md5($_POST['old_password'].$account['pwd_hash'].$QS_pwdhash);
 				if ($md5_pwd<>$account['pwd'])adminmsg("¾ÉÃÜÂëÊäÈë´íÎó£¡",1);
 				$setsqlarr['pwd']=md5($_POST['password'].$account['pwd_hash'].$QS_pwdhash);
-				if (updatetable(table('admin'),$setsqlarr,' admin_id='.$id))
+				if ($db->updatetable(table('admin'),$setsqlarr,' admin_id='.$id))
 				{
+					//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
+					write_log("³¬¼¶¹ÜÀíÔ±³É¹¦ĞŞ¸ÄÃÜÂë", $_SESSION['admin_name'],3);
 					adminmsg("ĞŞ¸Ä³É¹¦£¡",2);
 				 }
 				 else
 				 {
+				 	//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
+					write_log("³¬¼¶¹ÜÀíÔ±ĞŞ¸ÄÃÜÂëÊ§°Ü", $_SESSION['admin_name'],3);
 					adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
 				 }
 	}
@@ -164,7 +174,9 @@ elseif($act == 'edit_users_pwd_save')
 				{
 					if (strlen($_POST['password'])<6)adminmsg("ÃÜÂë³¤¶È²»ÄÜĞ¡ÓÚ6Î»£¡",1);
 					$setsqlarr['pwd']=md5($_POST['password'].$account['pwd_hash'].$QS_pwdhash);
-					if (!updatetable(table('admin'),$setsqlarr,' admin_id='.$id)) adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
+					//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
+					write_log("¹ÜÀíÔ±ĞŞ¸ÄÃÜÂë", $_SESSION['admin_name'],3);
+					if (!$db->updatetable(table('admin'),$setsqlarr,' admin_id='.$id)) adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
 				}
 				else
 				{
@@ -173,7 +185,9 @@ elseif($act == 'edit_users_pwd_save')
 					$md5_pwd=md5($_POST['old_password'].$account['pwd_hash'].$QS_pwdhash);
 					if ($md5_pwd<>$account['pwd'])adminmsg("¾ÉÃÜÂëÊäÈë´íÎó£¡",1);
 					$setsqlarr['pwd']=md5($_POST['password'].$account['pwd_hash'].$QS_pwdhash);
-					if (!updatetable(table('admin'),$setsqlarr,' admin_id='.$id)) adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
+					//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
+					write_log("¹ÜÀíÔ±ĞŞ¸ÄÃÜÂë", $_SESSION['admin_name'],3);
+					if (!$db->updatetable(table('admin'),$setsqlarr,' admin_id='.$id)) adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
 				}
 				 adminmsg("ĞŞ¸Ä³É¹¦£¡",2);
 	}
@@ -197,7 +211,7 @@ elseif($act == 'loglist')
 	}
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('admin_log').$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$list = get_admin_log($offset,$perpage,$wheresql);
@@ -227,12 +241,16 @@ elseif($act == 'users_set_save')
 	if ($_SESSION['admin_purview']<>"all")adminmsg("È¨ÏŞ²»×ã£¡",1);
 	$setsqlarr['purview']=$_POST['purview'];
 	$setsqlarr['purview']=implode(',',$setsqlarr['purview']);
-		if (updatetable(table('admin'),$setsqlarr,' admin_id='.$id))
+		if ($db->updatetable(table('admin'),$setsqlarr,' admin_id='.$id))
 		{
+			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
+			write_log("³É¹¦ÉèÖÃ¹ÜÀíÔ±È¨ÏŞ", $_SESSION['admin_name'],3);
 			adminmsg("ÉèÖÃ³É¹¦£¡",2);
 		 }
 		 else
 		{
+			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
+			write_log("ÉèÖÃ¹ÜÀíÔ±È¨ÏŞÊ§°Ü", $_SESSION['admin_name'],3);
 			adminmsg("ÉèÖÃÊ§°Ü£¡",0);
 		 }
 }

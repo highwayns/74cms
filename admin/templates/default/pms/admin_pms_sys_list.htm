@@ -25,12 +25,14 @@ $(document).ready(function()
 		<a href="{#"spms_usertype:0"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="0"#}class="select"{#/if#}>所有会员</a>
 		<a href="{#"spms_usertype:1"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="1"#}class="select"{#/if#}>企业会员</a>
 		<a href="{#"spms_usertype:2"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="2"#}class="select"{#/if#}>个人会员</a>
+		<a href="{#"spms_usertype:3"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="3"#}class="select"{#/if#}>猎头顾问</a>
+		<a href="{#"spms_usertype:4"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="4"#}class="select"{#/if#}>培训机构</a>
 		<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
 </div>
 <div class="seltpye_x">
-		<div class="left">类型类型</div>	
+		<div class="left">消息类型</div>	
 		<div class="right">
 		<a href="{#"spms_type:"|qishi_parse_url#}" {#if $smarty.get.spms_type==""#}class="select"{#/if#}>不限</a>
 		<a href="{#"spms_type:1"|qishi_parse_url#}" {#if $smarty.get.spms_type=="1"#}class="select"{#/if#}>普通消息</a>

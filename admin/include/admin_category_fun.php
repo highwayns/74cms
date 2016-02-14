@@ -37,6 +37,8 @@ function del_group($alias)
 			if (!$db->query("Delete from ".table('category')." WHERE c_alias ='".trim($a)."' ")) return false;
 			$return=$return+$db->affected_rows();
 	}
+	//填写管理员日志
+	write_log("后台成功删除分类 , 共删除".$return."行！", $_SESSION['admin_name'],3);
 	return $return;
 }
 function get_color()
@@ -82,6 +84,8 @@ function del_category($id)
 		if (!$db->query("Delete from ".table('category')." WHERE c_id IN (".$sqlin.") ")) return false;
 		$return=$return+$db->affected_rows();
 	}
+	//填写管理员日志
+	write_log("后台成功删除分类,共删除".$return."个", $_SESSION['admin_name'],3);
 	return $return;
 }
 function get_category_district($pid='0')
@@ -148,7 +152,6 @@ function del_jobs_category($id)
 	}
 	return $return;
 }
-
 function getfirstchar($str)
 {
         $fchar=ord($str{0});   
@@ -183,5 +186,41 @@ function getfirstchar($str)
         if($asc>=-11847 and $asc<=-11056)return "y ".$str;
         if($asc>=-11055 and $asc<=-10247)return "z ".$str;
         return NULL; 
+}
+//-----------专业
+function get_category_major()
+{
+	global $db;
+	$sql = "select * from ".table('category_major')." where parentid=0  order BY category_order desc,id asc";
+	$result = $db->query($sql);
+	while($row = $db->fetch_array($result))
+	{		
+		$sql = "select * from ".table('category_major')." where parentid=".$row['id']."  order BY category_order desc,id asc";
+		$sub=$db->getall($sql);
+		$row['sub']=$sub;
+		$category[]=$row;
+	}
+	return $category;
+}
+function get_category_major_one($id)
+{
+	global $db;
+	$sql = "select * from ".table('category_major')." WHERE id=".intval($id)." LIMIT 1";
+	return $db->getone($sql);
+}
+function del_major_category($id)
+{
+	global $db;
+	if(!is_array($id)) $id=array($id);
+	$return=0;
+	$sqlin=implode(",",$id);
+	if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
+	{
+		if (!$db->query("Delete from ".table('category_major')." WHERE id IN (".$sqlin.") ")) return false;
+		$return=$return+$db->affected_rows();
+		if (!$db->query("Delete from ".table('category_major')." WHERE parentid IN (".$sqlin.") ")) return false;
+		$return=$return+$db->affected_rows();
+	}
+	return $return;
 }
 ?>

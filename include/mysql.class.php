@@ -10,9 +10,9 @@
  * ============================================================================
 */
 if(!defined('IN_QISHI')) exit('Access Denied!');
+require_once(QISHI_ROOT_PATH.'include/help.class.php');
 class mysql {
 	var $linkid=null;
-
     function __construct($dbhost, $dbuser, $dbpw, $dbname = '', $dbcharset = 'gbk', $connect = 1) {
     	$this -> connect($dbhost, $dbuser, $dbpw, $dbname, $dbcharset, $connect);
     }
@@ -40,27 +40,71 @@ class mysql {
     function select_db($dbname){
     	return mysql_select_db($dbname, $this->linkid);
     }
-
     function query($sql){
+        $sql=help::CheckSql($sql);
+
     	if(!$query=@mysql_query($sql, $this->linkid)){
     		$this->dbshow("Query error:$sql");
     	}else{
     		return $query;
     	}
     }
+    function inserttable($tablename, $insertsqlarr, $returnid=0, $replace = false, $silent=0){
+        $insertkeysql = $insertvaluesql = $comma = '';
+        foreach ($insertsqlarr as $insert_key => $insert_value) {
+            $insertkeysql .= $comma.'`'.$insert_key.'`';
+            $insertvaluesql .= $comma.'\''.$insert_value.'\'';
+            $comma = ', ';
+        }
+        $method = $replace?'REPLACE':'INSERT';
+        $state = $this->query($method." INTO $tablename ($insertkeysql) VALUES ($insertvaluesql)", $silent?'SILENT':'');
+        if($returnid && !$replace) {
+            return $this->insert_id();
+        }else {
+            return $state;
+        } 
+    }
+    function updatetable($tablename, $setsqlarr, $wheresqlarr, $silent=0)
+    {
 
+        $setsql = $comma = '';
+        foreach ($setsqlarr as $set_key => $set_value) {
+            if(is_array($set_value)) {
+                $setsql .= $comma.'`'.$set_key.'`'.'=\''.$set_value[0].'\'';
+            } else {
+                $setsql .= $comma.'`'.$set_key.'`'.'=\''.$set_value.'\'';
+            }
+            $comma = ', ';
+        }
+        $where = $comma = '';
+        if(empty($wheresqlarr)) {
+            $where = '1';
+        } elseif(is_array($wheresqlarr)) {
+            foreach ($wheresqlarr as $key => $value) {
+                $where .= $comma.'`'.$key.'`'.'=\''.$value.'\'';
+                $comma = ' AND ';
+            }
+        } else {
+            $where = $wheresqlarr;
+        }
+           
+        return $this->query("UPDATE ".($tablename)." SET ".$setsql." WHERE ".$where, $silent?"SILENT":"");
+    }
     function getall($sql, $type=MYSQL_ASSOC){
     	$query = $this->query($sql);
     	while($row = mysql_fetch_array($query,$type)){
     		$rows[] = $row;
     	}
-    	return $rows;
+    	return help::htmlspecialchars_($rows);
     }
 
     function getone($sql, $type=MYSQL_ASSOC){
     	$query = $this->query($sql,$this->linkid);
     	$row = mysql_fetch_array($query, $type);
-    	return $row;
+        foreach ($row as $key => $value) {
+           $row[$key]=$value;
+        }
+    	return help::htmlspecialchars_($row);
     }
 	function get_total($sql)
 	{
@@ -139,7 +183,7 @@ class mysql {
     		$info = "Errno：".$this->errno()." Error：".$this->error();
     	}
     	exit($info);
+        // exit("数据库错误,请联系网站管理员！");
     }
-
 }
 ?>

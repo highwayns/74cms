@@ -21,6 +21,8 @@ function get_syslog_list($offset,$perpage,$sql= '')
 	while($row = $db->fetch_array($result))
 	{
 	$row['l_page']=urldecode($row['l_page']);
+	$row['l_str'] = str_replace('<p>','<br />',$row['l_str']);
+	$row['l_str'] = str_replace('</p>','',$row['l_str']);
 	$row_arr[] = $row;
 	}
 	return $row_arr;

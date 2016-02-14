@@ -74,16 +74,16 @@ elseif ($act=="verify_code")
 			{
 					$setsqlarr['email']=$_SESSION['verify_email'];
 					$setsqlarr['email_audit']=1;
-					updatetable(table('members'),$setsqlarr," uid='{$uid}'");
-					$infoarr['email']=$setsqlarr['email'];
-					updatetable(table('members_info'),$infoarr," uid='{$uid}'");
+					$db->updatetable(table('members'),$setsqlarr," uid='{$uid}'");
 					if ($_SESSION['utype']=="2")
 					{
-					$u['email']=$_SESSION['verify_email'];
-					updatetable(table('resume'),$u," uid='{$uid}'");
+						$infoarr['email']=$setsqlarr['email'];
+						$db->updatetable(table('members_info'),$infoarr," uid='{$uid}'");
+						$u['email']=$setsqlarr['email'];
+						$db->updatetable(table('resume'),$u," uid='{$uid}'");
 					}
 					unset($setsqlarr,$_SESSION['verify_email'],$_SESSION['email_rand'],$u,$infoarr);
-					if ($_CFG['operation_mode']=='1' && $_SESSION['utype']=='1')
+					if (($_CFG['operation_mode']=='1' || $_CFG['operation_mode']=='3') && $_SESSION['utype']=='1')
 					{
 						$rule=get_cache('points_rule');
 						if ($rule['verifyemail']['value']>0)
@@ -99,6 +99,42 @@ elseif ($act=="verify_code")
 							$operator=$rule['verifyemail']['type']=="1"?"+":"-";
 							$_SESSION['handsel_verifyemail']=$_CFG['points_byname'].$operator.$rule['verifyemail']['value'];
 							write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username']," 邮箱通过验证，{$_CFG['points_byname']}({$operator}{$rule['verifyemail']['value']})，(剩余:{$user_points})",1,1015,"邮箱认证通过","{$operator}{$rule['verifyemail']['value']}","{$user_points}");
+							}
+						}
+					}elseif ($_CFG['operation_train_mode']=='1' && $_SESSION['utype']=='4')
+					{
+						$rule=get_cache('points_rule');
+						if ($rule['train_verifyemail']['value']>0)
+						{
+							$info=$db->getone("SELECT uid FROM ".table('members_handsel')." WHERE uid ='{$_SESSION['uid']}' AND htype='verifyemail'   LIMIT 1");
+							if(empty($info))
+							{
+							$time=time();			
+							$db->query("INSERT INTO ".table('members_handsel')." (uid,htype,addtime) VALUES ('{$_SESSION['uid']}', 'verifyemail','{$time}')");
+							require_once(QISHI_ROOT_PATH.'include/fun_train.php');
+							report_deal($_SESSION['uid'],$rule['train_verifyemail']['type'],$rule['train_verifyemail']['value']);
+							$user_points=get_user_points($_SESSION['uid']);
+							$operator=$rule['train_verifyemail']['type']=="1"?"+":"-";
+							$_SESSION['handsel_verifyemail']=$_CFG['train_points_byname'].$operator.$rule['train_verifyemail']['value'];
+							write_memberslog($_SESSION['uid'],4,9101,$_SESSION['username']," 邮箱通过验证，{$_CFG['train_points_byname']}({$operator}{$rule['train_verifyemail']['value']})，(剩余:{$user_points})");
+							}
+						}
+					}elseif ($_CFG['operation_hunter_mode']=='1' && $_SESSION['utype']=='3')
+					{
+						$rule=get_cache('points_rule');
+						if ($rule['hunter_verifyemail']['value']>0)
+						{
+							$info=$db->getone("SELECT uid FROM ".table('members_handsel')." WHERE uid ='{$_SESSION['uid']}' AND htype='verifyemail'   LIMIT 1");
+							if(empty($info))
+							{
+							$time=time();			
+							$db->query("INSERT INTO ".table('members_handsel')." (uid,htype,addtime) VALUES ('{$_SESSION['uid']}', 'verifyemail','{$time}')");
+							require_once(QISHI_ROOT_PATH.'include/fun_hunter.php');
+							report_deal($_SESSION['uid'],$rule['hunter_verifyemail']['type'],$rule['hunter_verifyemail']['value']);
+							$user_points=get_user_points($_SESSION['uid']);
+							$operator=$rule['hunter_verifyemail']['type']=="1"?"+":"-";
+							$_SESSION['handsel_verifyemail']=$_CFG['hunter_points_byname'].$operator.$rule['hunter_verifyemail']['value'];
+							write_memberslog($_SESSION['uid'],3,9201,$_SESSION['username']," 邮箱通过验证，{$_CFG['hunter_points_byname']}({$operator}{$rule['hunter_verifyemail']['value']})，(剩余:{$user_points})");
 							}
 						}
 					}

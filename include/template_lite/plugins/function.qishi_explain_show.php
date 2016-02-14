@@ -18,7 +18,7 @@ function tpl_function_qishi_explain_show($params, &$smarty)
 	}
 	$aset=array_map("get_smarty_request",$aset);
 	$aset['listname']=$aset['listname']?$aset['listname']:"list";
-	$sql = "select * from ".table('explain')." WHERE  id=".intval($aset['id'])." LIMIT 0 , 1";
+	$sql = "select id,title,seo_keywords,seo_description,content from ".table('explain')." WHERE  id=".intval($aset['id'])." LIMIT 0 , 1";
 	$val=$db->getone($sql);
 	if (empty($val))
 	{
@@ -42,6 +42,8 @@ function tpl_function_qishi_explain_show($params, &$smarty)
 		{
 		$val['description']=$val['seo_description'];
 		}
+		$val['content']=htmlspecialchars_decode($val['content'],ENT_QUOTES);
+
 	$smarty->assign($aset['listname'],$val);
 }
 ?>

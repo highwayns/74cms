@@ -45,9 +45,31 @@ if (isset($aset['displayorder']))
 {
 	if (strpos($aset['displayorder'],'>'))
 	{
-	$arr=explode('>',$aset['displayorder']);
-	$arr[0]=preg_match('/show_order|id/',$arr[0])?$arr[0]:"";
-	$arr[1]=preg_match('/asc|desc/',$arr[1])?$arr[1]:"";
+		$arr=explode('>',$aset['displayorder']);
+		// ÅÅÐò×Ö¶Î
+		if($arr[0]=='show_order'){
+			$arr[0]="show_order";
+		}
+		elseif($arr[0]=="id")
+		{
+			$arr[0]="id";
+		}
+		else
+		{
+			$arr[0]="";
+		}
+		// ÅÅÐò·½Ê½
+		if($arr[1]=='desc'){
+			$arr[1]="desc";
+		}
+		elseif($arr[1]=="asc")
+		{
+			$arr[1]="asc";
+		}
+		else
+		{
+			$arr[1]="";
+		}
 		if ($arr[0] && $arr[1])
 		{
 		$orderbysql=" ORDER BY ".$arr[0]." ".$arr[1];
@@ -78,7 +100,7 @@ else
 		}
 		else
 		{
-		$row['url'] = url_rewrite($aset['showname'],array('id'=>$row['id']),false);
+		$row['url'] = url_rewrite($aset['showname'],array('id'=>$row['id']));
 		}
 		$list[] = $row;
 	}

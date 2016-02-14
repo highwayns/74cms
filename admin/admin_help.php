@@ -51,6 +51,7 @@ elseif($act =='help_del')
 	$n=del_help($id);
 	if ($n)
 	{
+	write_log("删除帮助 共删除 {$n} 行！", $_SESSION['admin_name'],3);
 	adminmsg("删除成功 共删除 {$n} 行！",2);
 	}
 	else
@@ -77,7 +78,8 @@ elseif($act == 'addsave')
 	$link[0]['href'] = '?act=add&type_id_cn='.trim($_POST['type_id_cn'])."&type_id=".$_POST['type_id'];
 	$link[1]['text'] = "返回列表";
 	$link[1]['href'] = '?act=list';
-	!inserttable(table('help'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
+	write_log("添加帮助：".$setsqlarr['title'], $_SESSION['admin_name'],3);
+	!$db->inserttable(table('help'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
 }
 elseif($act == 'edit')
 {
@@ -105,7 +107,8 @@ elseif($act == 'editsave')
 	$link[0]['href'] = '?act=list';
 	$link[1]['text'] = "查看修改结果";
 	$link[1]['href'] = "?act=edit&id=".$id;
-	!updatetable(table('help'),$setsqlarr," id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	write_log("修改id为".$id."的帮助", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('help'),$setsqlarr," id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 elseif($act == 'category')
 {
@@ -130,7 +133,7 @@ elseif($act == 'add_category_save')
 				$setsqlarr['categoryname']=trim($_POST['categoryname'][$i]);
 				$setsqlarr['parentid']=intval($_POST['parentid'][$i]);
 				$setsqlarr['category_order']=intval($_POST['category_order'][$i]);	
-				!inserttable(table('help_category'),$setsqlarr)?adminmsg("添加失败！",0):"";
+				!$db->inserttable(table('help_category'),$setsqlarr)?adminmsg("添加失败！",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
@@ -147,6 +150,7 @@ elseif($act == 'add_category_save')
 	$link[0]['href'] = '?act=category';
 	$link[1]['text'] = "继续添加分类";
 	$link[1]['href'] = "?act=category_add";
+	write_log("添加帮助分类，共添加".$num."个分类", $_SESSION['admin_name'],3);
 	adminmsg("添加成功！共添加".$num."个分类",2,$link);
 	}
 }
@@ -157,6 +161,7 @@ elseif($act == 'del_category')
 	$id=$_REQUEST['id'];
 	if ($num=del_category($id))
 	{
+	write_log("删除帮助分类,共删除 {$num} 个分类", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除 {$num} 个分类",2);
 	}
 	else
@@ -182,6 +187,7 @@ elseif($act == 'edit_category_save')
 	$link[0]['href'] = '?act=edit_category&id='.$id;
 	$link[1]['text'] = "返回分类管理";
 	$link[1]['href'] = '?act=category';
-	!updatetable(table('help_category'),$setsqlarr," id='{$id}'")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	write_log("修改id为".$id."的帮助分类", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('help_category'),$setsqlarr," id='{$id}'")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 ?>

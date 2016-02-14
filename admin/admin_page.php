@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_page_fun.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'page_list';
 check_permissions($_SESSION['admin_purview'],"site_page");
-$norewrite=array('QS_login','QS_salary');
+$norewrite=array('QS_login');
 $nocaching=array('QS_login','QS_jobslist','QS_street','QS_jobtag','QS_resumelist','QS_resumetag','QS_simplelist','QS_simpleresumelist','QS_helpsearch','QS_newssearch');
 $smarty->assign('pageheader',"页面管理");
 if($act == 'page_list')
@@ -24,7 +24,7 @@ if($act == 'page_list')
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('page');
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$list = get_page($offset,$perpage,$wheresql.$oederbysql);
@@ -66,7 +66,7 @@ $setsqlarr['caching']=intval($_POST['caching']);
 $setsqlarr['title']=trim($_POST['title']);
 $setsqlarr['keywords']=trim($_POST['keywords']);
 $setsqlarr['description']=trim($_POST['description']);
-	if (inserttable(table('page'),$setsqlarr))
+	if ($db->inserttable(table('page'),$setsqlarr))
 	{
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] ="?act=";	
@@ -77,6 +77,7 @@ $setsqlarr['description']=trim($_POST['description']);
 	!copy_page($setsqlarr['file'],$setsqlarr['alias'])?adminmsg("新建：".$setsqlarr['file']."文件失败，请检查目录权限或者手动建立文件",0):"";
 	refresh_page_cache();
 	refresh_nav_cache();
+	write_log("添加页面", $_SESSION['admin_name'],3);
 	adminmsg("添加成功！",2,$link);
 	}
 	else
@@ -138,9 +139,10 @@ $wheresql=" id='".intval($_POST['id'])."'";
 	}
 	refresh_page_cache();
 	refresh_nav_cache();
-	if (updatetable(table('page'),$setsqlarr,$wheresql))
+	if ($db->updatetable(table('page'),$setsqlarr,$wheresql))
 	{
 	refresh_page_cache();
+	write_log("修改页面", $_SESSION['admin_name'],3);
 	adminmsg("修改成功！",2);
 	}
 	else
@@ -157,6 +159,7 @@ elseif($act == 'del_page')
 	{
 	refresh_page_cache();
 	refresh_nav_cache();
+	write_log("删除页面，共删除".$num."行", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除".$num."行",2);
 	}
 	else
@@ -174,6 +177,7 @@ elseif($act == 'set_page')
 		{
 		refresh_page_cache();
 		refresh_nav_cache();
+		write_log("设置页面链接", $_SESSION['admin_name'],3);
 		adminmsg("设置成功！",2);		
 		}
 		else
@@ -186,8 +190,8 @@ elseif($act == 'set_page')
 		if (set_page_caching($id,$_POST['caching'],$nocaching))
 		{
 		refresh_page_cache();
+		write_log("这页页面缓存", $_SESSION['admin_name'],3);
 		adminmsg("设置成功！",2);
-		adminmsg("设置失败！",0);
 		}
 		else
 		{

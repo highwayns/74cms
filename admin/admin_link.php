@@ -106,7 +106,9 @@ elseif($act =='addsave')
 	$link[0]['href'] = '?act=add';
 	$link[1]['text'] = "返回友情链接列表";
 	$link[1]['href'] = '?';
-	!inserttable(table('link'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
+	//填写管理员日志
+	write_log("后台添加友情链接", $_SESSION['admin_name'],3);
+	!$db->inserttable(table('link'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
 }
 elseif($act =='edit')
 {
@@ -147,7 +149,9 @@ elseif($act =='editsave')
 	}
 	$link[0]['text'] = "返回上一页";
 	$link[0]['href'] = $_POST['url'];
-	!updatetable(table('link'),$setsqlarr," link_id =".intval($_POST['id']))?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	//填写管理员日志
+	write_log("后台修改友情链接", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('link'),$setsqlarr," link_id =".intval($_POST['id']))?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 elseif($act == 'category')
 {
@@ -182,7 +186,7 @@ elseif($act == 'add_category_save')
 	$link[0]['href'] = '?act=category';
 	$link[1]['text'] = "继续添加分类";
 	$link[1]['href'] = "?act=category_add";
-	!inserttable(table('link_category'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
+	!$db->inserttable(table('link_category'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
 	}	
 }
 elseif($act == 'category_edit')
@@ -209,7 +213,7 @@ elseif($act == 'edit_category_save')
 	{
 	$link[0]['text'] = "返回分类管理";
 	$link[0]['href'] = '?act=category';
-	!updatetable(table('link_category'),$setsqlarr," id=".intval($_POST['id']))?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	!$db->updatetable(table('link_category'),$setsqlarr," id=".intval($_POST['id']))?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 	}	
 }
 elseif($act == 'del_category')

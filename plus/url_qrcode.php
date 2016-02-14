@@ -3308,8 +3308,13 @@
             }
         }
     }
-$value=$_GET['url'];
-$errorCorrectionLevel = "L";
-$matrixPointSize = "2";
-QRcode::png($value, false, $errorCorrectionLevel, $matrixPointSize);
-
+$value=$_GET['url']; 
+$errorCorrectionLevel = "H";
+$matrixPointSize = "4";
+if(isset($_GET['download']) && intval($_GET['download'])==1){
+    header("Content-type:application/x-png");
+    header("Content-Disposition:attachment;filename=qrcode.png");
+    echo QRcode::png($value, false, $errorCorrectionLevel, $matrixPointSize,1);
+}else{
+    QRcode::png($value, false, $errorCorrectionLevel, $matrixPointSize,1);
+}

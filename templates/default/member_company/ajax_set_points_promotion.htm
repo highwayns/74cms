@@ -36,10 +36,9 @@
 <div class="spread_but_box">
 	<input type="hidden" id="jobid" value="{#$jobid#}">
 	<input type="hidden" id="catid" value="{#$catid#}">
-	<input type="button" value="确定" class="but95cheng" id="add"/>
-	<input type="button" value="取消" class="but95hui" onclick="jacascript:location.reload();"/>
+	<input type="button" value="确定" class="but95cheng DialogSubmit"/>
+	<input type="button" value="取消" class="but95hui DialogClose"/>
 </div>
-<script src="{#$site_template#}js/jquery.dialog.js" type='text/javascript' language="javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	//计算总积分
@@ -58,60 +57,34 @@ $(document).ready(function(){
 			$("#count").html("");	
 			}
 		});
-		$("#add").click(function(){
-			var jobid = $("#jobid").val();
-			var catid = $("#catid").val();
-			var days = $("#days").val();
-			var val = $("#val").val();
-			if(days<{#$cat_minday#}){
-				alert_dialog("fail:推广天数不能小于{#$cat_minday#}天","250px","","","");
-				return false;
-			}
-			if(catid==4 && !val){
-				alert_dialog("fail:请选择推广颜色","","","","");
-				return false;
-			}
-			$.post("company_ajax.php?act=promotion_add_save",{jobid:jobid,catid:catid,days:days,val:val},function(result){
-				if(result=="1"){
-					alert_dialog("success:推广成功！","","","","");
-					location.reload();
-				}else if(result=="-1"){
-					alert_dialog("fail:参数错误！","","","","");
-					return false;
-				}else{
-					alert_dialog("fail:"+result,"250px","","","");
-					return false;
-				}
-			});
-		});
-			menuDown("#val_menu","#val","","#menu1","88px");
-			function menuDown(menuId,input,input_cn,menuList,width){
-				$(menuId).click(function(){
-					$(menuList).css("width",width);
-					$(menuList).slideDown('fast');
-					//生成背景
-					$(menuId).parent("div").before("<div class=\"menu_bg_layer\"></div>");
-					$(".menu_bg_layer").height($(".FloatBox").height());
-					$(".menu_bg_layer").css({ width: $(".FloatBox").width(), position: "absolute", left: "0", top: "0" , "z-index": "0", "background-color": "#ffffff"});
-					$(".menu_bg_layer").css("opacity","0");
-					$(".menu_bg_layer").click(function(){
-						$(".menu_bg_layer").remove();
-						$(menuList).slideUp("fast");
-						$(menuId).parent("div").css("position","");
-					});
-				});
-
-				$(menuList+" li").click(function(){
-					var id = $(this).attr("id");
-					var title = $(this).attr("title");
-					$(input).val(id);
-					$(input_cn).val(title);
-					$(menuId).html("&nbsp");
-					$(menuId).css("background-color",title);
-					$(menuList).slideUp('fast');
+		menuDown("#val_menu","#val","","#menu1","88px");
+		function menuDown(menuId,input,input_cn,menuList,width){
+			$(menuId).click(function(){
+				$(menuList).css("width",width);
+				$(menuList).slideDown('fast');
+				//生成背景
+				$(menuId).parent("div").before("<div class=\"menu_bg_layer\"></div>");
+				$(".menu_bg_layer").height($(".FloatBox").height());
+				$(".menu_bg_layer").css({ width: $(".FloatBox").width(), position: "absolute", left: "0", top: "0" , "z-index": "0", "background-color": "#ffffff"});
+				$(".menu_bg_layer").css("opacity","0");
+				$(".menu_bg_layer").click(function(){
 					$(".menu_bg_layer").remove();
+					$(menuList).slideUp("fast");
+					$(menuId).parent("div").css("position","");
 				});
-			}
+			});
+
+			$(menuList+" li").click(function(){
+				var id = $(this).attr("id");
+				var title = $(this).attr("title");
+				$(input).val(id);
+				$(input_cn).val(title);
+				$(menuId).html("&nbsp");
+				$(menuId).css("background-color",title);
+				$(menuList).slideUp('fast');
+				$(".menu_bg_layer").remove();
+			});
+		}
 		
 });
 </script>

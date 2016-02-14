@@ -54,6 +54,6 @@ elseif($act == 'save_payment')
 	$wheresql=" id=".$setsqlarr['id']." ";
 	$link[0]['text'] = "返回支付方式列表";
 	$link[0]['href'] = '?';
-	!updatetable(table('payment'), $setsqlarr,$wheresql)?adminmsg('保存失败！', 1):adminmsg('保存成功！', 2,$link);
+	!$db->updatetable(table('payment'), $setsqlarr,$wheresql)?adminmsg('保存失败！', 1):adminmsg('保存成功！', 2,$link);
 }
 ?>

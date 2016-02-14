@@ -17,15 +17,14 @@ if($act == 'total')
 {
 	$total_jobs=$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs_tmp')." WHERE audit=2");
 	$total_company=$db->get_total("SELECT COUNT(*) AS num FROM ".table('company_profile')." WHERE audit=2");
-	$total_payment_log=$db->get_total("SELECT COUNT(*) AS num FROM ".table('order')." WHERE is_paid=1 and utype=1");
-	$total_hunter_payment_log=$db->get_total("SELECT COUNT(*) AS num FROM ".table('order')." WHERE is_paid=1 and utype=3");
-	$total_train_payment_log=$db->get_total("SELECT COUNT(*) AS num FROM ".table('order')." WHERE is_paid=1 and utype=4");
 	$total_resume_audit=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume')." WHERE audit=2");
 	$total_resume_talent=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume')." WHERE talent=3");
+	$total_payment_log=$db->get_total("SELECT COUNT(*) AS num FROM ".table('order')." WHERE is_paid=1 and utype=1");
 	$total_resume_photo_audit=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume')." WHERE photo_audit=2 ");
 	$total_feedback_replyinfo=$db->get_total("SELECT COUNT(*) AS num FROM ".table('feedback'));//意见与建议
-	$total_report=$db->get_total("SELECT COUNT(*) AS num FROM ".table('report')." ");//所有投诉信息
-	
+	$total_report=$db->get_total("SELECT COUNT(*) AS num FROM ".table('report')." ");//所有投诉企业信息
+	$total_report1=$db->get_total("SELECT COUNT(*) AS num FROM ".table('report_resume')." ");//所有投诉企业信息
+	$total_report=$total_report+$total_report1;
 	
 	$str="[{$total_jobs}]";
 	$str.=",[{$total_resume_audit}]";
@@ -35,8 +34,6 @@ if($act == 'total')
 	$str.=",[{$total_resume_photo_audit}]";
 	$str.=",[{$total_report}]";
 	$str.=",[{$total_feedback_replyinfo}]";
-	$str.=",[{$total_hunter_payment_log}]";
-	$str.=",[{$total_train_payment_log}]";
 	exit($str);
 }
 elseif($act == 'get_cat_city')
@@ -67,8 +64,20 @@ elseif($act == 'get_cat_jobs')
 	exit(implode('|',$cat));
 	}
 }
-
-
+elseif($act == 'get_cat_major')
+{
+	$pid=intval($_GET['pid']);
+	$sql = "select * from ".table('category_major')." where parentid='{$pid}'  order BY category_order desc,id asc";
+	$result = $db->query($sql);
+	while($row = $db->fetch_array($result))
+	{	
+		$cat[]=$row['id'].",".$row['categoryname'].",".$row['category_order'];
+	}
+	if (!empty($cat))
+	{
+	exit(implode('|',$cat));
+	}
+}
 elseif($act == 'get_jobs')
 {
 	$type=trim($_GET['type']);
@@ -105,8 +114,8 @@ elseif($act == 'get_jobs')
 			$row['addtime']=date("Y-m-d",$row['addtime']);
 			$row['deadline']=date("Y-m-d",$row['deadline']);
 			$row['refreshtime']=date("Y-m-d",$row['refreshtime']);
-			$row['company_url']=url_rewrite('QS_companyshow',array('id'=>$row['company_id']),false);
-			$row['jobs_url']=url_rewrite('QS_jobsshow',array('id'=>$row['id']),false);
+			$row['company_url']=url_rewrite('QS_companyshow',array('id'=>$row['company_id']));
+			$row['jobs_url']=url_rewrite('QS_jobsshow',array('id'=>$row['id']));
 			$info[]=$row['id']."%%%".$row['jobs_name']."%%%".$row['jobs_url']."%%%".$row['companyname']."%%%".$row['company_url']."%%%".$row['addtime']."%%%".$row['deadline']."%%%".$row['refreshtime'];
 		}
 		if (!empty($info))
@@ -146,7 +155,7 @@ elseif($act == 'get_company')
 			continue;
 			}
 			$row['addtime']=date("Y-m-d",$row['addtime']);
-			$row['company_url']=url_rewrite('QS_companyshow',array('id'=>$row['id']),false);
+			$row['company_url']=url_rewrite('QS_companyshow',array('id'=>$row['id']));
 			$info[]=$row['id']."%%%".$row['companyname']."%%%".$row['company_url']."%%%".$row['addtime'];
 		}
 		if (!empty($info))
@@ -195,13 +204,20 @@ elseif($act == 'get_user_info')
 		$html.="公司名称：{$com['companyname']}<br/>";
 		$totaljob=$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs')."  where uid='{$id}'");
 		$html.="发布职位：{$totaljob}条<br/>";
-		if ($_CFG['operation_mode']=="2")
+		if ($_CFG['operation_mode']>="2")
 		{
 			$setmeal=$db->getone("select * from ".table('members_setmeal')."  WHERE uid='{$id}' AND  effective=1 LIMIT 1");
 			if (!empty($setmeal))
 			{
-			$html.="服务套餐：{$setmeal['setmeal_name']}<br/>";
-			$html.="服务期限：".date("Y/m/d",$setmeal['starttime'])."--".date("Y/m/d",$setmeal['endtime']);
+				$html.="服务套餐：{$setmeal['setmeal_name']}<br/>";
+				if($setmeal['endtime']=='0')
+				{
+					$html.="服务期限：".date("Y/m/d",$setmeal['starttime'])."-- 至今";
+				}
+				else
+				{
+					$html.="服务期限：".date("Y/m/d",$setmeal['starttime'])."--".date("Y/m/d",$setmeal['endtime']);
+				}
 			}
 		}
 	}
@@ -226,5 +242,4 @@ elseif($act == 'get_weixin_sub_menu')
 	exit(implode('|',$cat));
 	}
 }
-
 ?>

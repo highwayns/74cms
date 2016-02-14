@@ -59,6 +59,12 @@ $a=explode(':',$str);
 	case "职位页面":
 		$aset['jobsshow'] = $a[1];
 		break;
+	case "职位分类":
+		$aset['jobscategory'] = $a[1];
+		break;
+	case "统计职位":
+		$aset['countjobs'] = $a[1];
+		break;
 	}
 }
 if (is_array($aset)) $aset=array_map("get_smarty_request",$aset);
@@ -74,7 +80,18 @@ $aset['jobsshow']=isset($aset['jobsshow'])?$aset['jobsshow']:'QS_jobsshow';
 if (isset($aset['displayorder']))
 {
 		$arr=explode('>',$aset['displayorder']);
-		$arr[1]=preg_match('/asc|desc/',$arr[1])?$arr[1]:"desc";
+		// 排序方式
+		if($arr[1]=='desc'){
+			$arr[1]="desc";
+		}
+		elseif($arr[1]=="asc")
+		{
+			$arr[1]="asc";
+		}
+		else
+		{
+			$arr[1]="desc";
+		}
 		if ($arr[0]=="rtime")
 		{
 		$orderbysql=" ORDER BY refreshtime {$arr[1]}";
@@ -108,7 +125,7 @@ if (isset($aset['displayorder']))
 }
 else
 {
-		$orderbysql=" ORDER BY refreshtime {$arr[1]}";
+		$orderbysql=" ORDER BY refreshtime desc ";
 		$jobstable=table('jobs_search_rtime');	
 }
 if (isset($aset['recommend']))
@@ -151,6 +168,14 @@ if (isset($aset['district'])  && $aset['district']<>'')
 	$wheresql.=" AND district=".intval($aset['district'])." ";
 	}
 }
+//楼层 职位
+if (isset($aset['jobscategory'])  && $aset['jobscategory']<>'')
+{
+	$jobscategory=trim($aset['jobscategory']);
+	$jobscategory=str_replace("_", ",", $jobscategory);
+	$wheresql.=" AND category in (".$jobscategory.") ";
+}
+
 $limit=" LIMIT {$aset['start']},{$aset['row']}";
 if (!empty($wheresql))
 {
@@ -204,8 +229,13 @@ if (!empty($uidarr))
 			{
 			$companyarray[$row['uid']]['jobs'][$row['id']]['jobs_name']="<span style=\"color:{$row['highlight']}\">{$companyarray[$row['uid']]['jobs'][$row['id']]['jobs_name']}</span>";
 			}
-		$companyarray[$row['uid']]['jobs'][$row['id']]['jobs_url']=url_rewrite($aset['jobsshow'],array('id'=>$row['id']),false);
+		$companyarray[$row['uid']]['jobs'][$row['id']]['jobs_url']=url_rewrite($aset['jobsshow'],array('id'=>$row['id']));
 		$companyarray[$row['uid']]['jobs'][$row['id']]['id']=$row['id'];
+		if(intval($aset['countjobs'])==1)
+		{
+			$companyarray[$row['uid']]['jobs_num']=$db->get_total("SELECT count(*) as num from ".table("jobs")." where uid={$row['uid']} ");
+		}
+
 	}
 }
 $smarty->assign($aset['listname'],$companyarray);

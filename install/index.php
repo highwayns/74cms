@@ -15,11 +15,11 @@ define('QISHI_CHARSET', 'gb2312');
 define('QISHI_DBCHARSET', 'GBK');
 require_once(dirname(__FILE__) . '/include/common.inc.php');
 require_once(QISHI_ROOT_PATH . 'include/74cms_version.php');
-if(file_exists(QISHI_ROOT_PATH.'data/install.lock'))
+$act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : '1';
+if(file_exists(QISHI_ROOT_PATH.'data/install.lock')&&$act!='5')
 {
 exit('您已经安装过本系统，如果想重新安装，请删除data目录下install.lock文件');
 }
-$act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : '1';
 if($act =="1")
 {
 	$install_smarty->assign("act", $act);
@@ -88,6 +88,16 @@ if($act =="4")
 		install_showmsg('选择数据库错误，请检查是否拥有权限或存在此数据库');
 	}
 	mysql_query("SET NAMES '".QISHI_DBCHARSET."',character_set_client=binary,sql_mode='';",$db);
+	ob_end_clean();
+	$html ="";
+	$html.= "<script type=\"text/javascript\">\n";
+	$html.= "$('#installing').append('<p>数据库创建成功！...</p>');\n";
+	$html.= "var div = document.getElementById('installing');";
+	$html.= "div.scrollTop = div.scrollHeight;";
+	$html.= "</script>";
+	echo $html;
+	ob_flush();
+	flush();
 	$mysql_version = mysql_get_server_info($db);
 	$site_dir=substr(dirname($php_self), 0, -7)?substr(dirname($php_self), 0, -7):'/';
 	$QS_pwdhash=randstr(16);
@@ -113,6 +123,21 @@ if($act =="4")
 		install_showmsg('写入配置文件失败');
 	}
 	@fclose($fp);
+	$site_domain = "http://".$_SERVER['HTTP_HOST'];
+	$site_dir=substr(dirname($php_self), 0, -7)?substr(dirname($php_self), 0, -7):'/';
+	if(is_writable(QISHI_ROOT_PATH.'data/'))
+	{
+		$fp = @fopen(QISHI_ROOT_PATH.'data/install.lock', 'wb+');
+		fwrite($fp, 'OK');
+		fclose($fp);
+	}
+	$install_smarty->assign("act", $act);
+	$install_smarty->assign("domain", $site_domain);
+	$install_smarty->assign("domaindir", $site_domain.$site_dir);
+	$install_smarty->assign("v", QISHI_VERSION);
+	$install_smarty->assign("t", 2);
+	$install_smarty->assign("email", $admin_email);
+	$install_smarty->display('step4.htm');
   	if(!$fp = @fopen(dirname(__FILE__).'/sql-structure.sql','rb'))
 	{
 		install_showmsg('打开文件sql-structure.sql出错，请检查文件是否存在');
@@ -121,24 +146,37 @@ if($act =="4")
 	while(!feof($fp))
     {
 		$line = rtrim(fgets($fp,1024)); 
-		if(preg_match('/;$/',$line)) 
-		{
-			$query .= $line."\n";
-			$query = str_replace(QISHI_PRE,$pre,$query);
-			if ( $mysql_version >= 4.1 )
+		if(strstr($line,'||-_-||')!=false) {
+			$line = ltrim(rtrim($line,"||-_-||"),"||-_-||");
+			$html ="";
+			$html.= "<script type=\"text/javascript\">\n";
+			$html.= "$('#installing').append('<p>".$line."...</p>');\n";
+			$html.= "var div = document.getElementById('installing');";
+			$html.= "div.scrollTop = div.scrollHeight;";
+			$html.= "</script>";
+			echo $html;
+			ob_flush();
+			flush();
+		}else{
+			if(preg_match('/;$/',$line)) 
 			{
-				mysql_query(str_replace("TYPE=MyISAM", "ENGINE=MyISAM  DEFAULT CHARSET=".QISHI_DBCHARSET,  $query), $db);
-			}
-			else
-			{
-				mysql_query($query, $db);
-			}
-			$query='';
-		 }
-		 else if(!ereg('/^(//|--)/',$line))
-		 {
-		 	$query .= $line;
-		 }
+				$query .= $line."\n";
+				$query = str_replace(QISHI_PRE,$pre,$query);
+				if ( $mysql_version >= 4.1 )
+				{
+					mysql_query(str_replace("TYPE=MyISAM", "ENGINE=MyISAM  DEFAULT CHARSET=".QISHI_DBCHARSET,  $query), $db);
+				}
+				else
+				{
+					mysql_query($query, $db);
+				}
+				$query='';
+			 }
+			 else if(!ereg('/^(//|--)/',$line))
+			 {
+			 	$query .= $line;
+			 }
+		}
 	}
 	@fclose($fp);	
 	$query = '';
@@ -162,6 +200,15 @@ if($act =="4")
 		 }
 	}
 	@fclose($fp);	
+	$html ="";
+	$html.= "<script type=\"text/javascript\">\n";
+	$html.= "$('#installing').append('<p>基础数据添加成功！...</p>');\n";
+	$html.= "var div = document.getElementById('installing');";
+	$html.= "div.scrollTop = div.scrollHeight;";
+	$html.= "</script>";
+	echo $html;
+	ob_flush();
+	flush();
 	$query = '';
 	if(!$fp = @fopen(dirname(__FILE__).'/sql-hrtools.sql','rb'))
 	{
@@ -182,7 +229,16 @@ if($act =="4")
 			$query .= $line;
 		 }
 	}
-	@fclose($fp);	
+	@fclose($fp);
+	$html ="";
+	$html.= "<script type=\"text/javascript\">\n";
+	$html.= "$('#installing').append('<p>hr工具箱数据添加成功！...</p>');\n";
+	$html.= "var div = document.getElementById('installing');";
+	$html.= "div.scrollTop = div.scrollHeight;";
+	$html.= "</script>";
+	echo $html;
+	ob_flush();
+	flush();	
 	$query = '';
 	if(!$fp = @fopen(dirname(__FILE__).'/sql-hotword.sql','rb'))
 	{
@@ -203,9 +259,16 @@ if($act =="4")
 			$query .= $line;
 		 }
 	}
-	@fclose($fp);	
-	$site_domain = "http://".$_SERVER['HTTP_HOST'];
-	$site_dir=substr(dirname($php_self), 0, -7)?substr(dirname($php_self), 0, -7):'/';
+	@fclose($fp);
+	$html ="";
+	$html.= "<script type=\"text/javascript\">\n";
+	$html.= "$('#installing').append('<p>热门关键词数据添加成功！...</p>');\n";
+	$html.= "var div = document.getElementById('installing');";
+	$html.= "div.scrollTop = div.scrollHeight;";
+	$html.= "</script>";
+	echo $html;
+	ob_flush();
+	flush();	
 	mysql_query("UPDATE `{$pre}config` SET value = '{$site_dir}' WHERE name = 'site_dir'", $db);
 	mysql_query("UPDATE `{$pre}config` SET value = '{$site_domain}' WHERE name = 'site_domain'", $db);
 	$pwd_hash=randstr();
@@ -230,23 +293,33 @@ if($act =="4")
 	refresh_cache('sms_templates');
 	refresh_cache('captcha');
 	refresh_cache('baiduxml');
+	
+	refresh_cache('baidu_submiturl');
+	
 	refresh_plug_cache();
 	refresh_category_cache();
 	refresh_points_rule_cache();			
 	//生成分类JS
 	makejs_classify();
-	if(is_writable(QISHI_ROOT_PATH.'data/'))
-	{
-		$fp = @fopen(QISHI_ROOT_PATH.'data/install.lock', 'wb+');
-		fwrite($fp, 'OK');
-		fclose($fp);
-	}
+	$html ="";
+	$html.= "<script type=\"text/javascript\">\n";
+	$html.= "$('#installing').append('<p>缓存数据添加成功！...</p><p>安装完成！</p>');\n";
+	$html.= "var div = document.getElementById('installing');";
+	$html.= "div.scrollTop = div.scrollHeight;";
+	$html.= "</script>";
+	echo $html;
+	ob_flush();
+	flush();
+	
+	$html ="";
+	$html.= "<script type=\"text/javascript\">\n";
+	$html.= "window.location.href='?act=5';";
+	$html.= "</script>";
+	echo $html;
+}
+if($act =="5")
+{
 	$install_smarty->assign("act", $act);
-	$install_smarty->assign("domain", $site_domain);
-	$install_smarty->assign("domaindir", $site_domain.$site_dir);
-	$install_smarty->assign("v", QISHI_VERSION);
-	$install_smarty->assign("t", 2);
-	$install_smarty->assign("email", $admin_email);
 	$install_smarty->display('step5.htm');
 }
 ?>

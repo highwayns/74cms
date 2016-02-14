@@ -16,7 +16,7 @@ $code=trim($_REQUEST['code']);
 if($act == 'login' && empty($code))
 {
 	$o = new SaeTOAuthV2($_CFG['sina_appkey'],$_CFG['sina_appsecret']);
-	$code_url = $o->getAuthorizeURL("{$_CFG['main_domain']}user/connect_sina.php");
+	$code_url = $o->getAuthorizeURL("{$_CFG['site_domain']}{$_CFG['site_dir']}user/connect_sina.php");
 	header("Location:{$code_url}");	
 }
 elseif($act == 'login' && !empty($code))
@@ -30,23 +30,30 @@ elseif($act == 'login' && !empty($code))
 	{
 		$keys = array();
 		$keys['code'] = $code;
-		$keys['redirect_uri'] ="{$_CFG['main_domain']}user/connect_sina.php";
+		$keys['redirect_uri'] ="{$_CFG['site_domain']}{$_CFG['site_dir']}user/connect_sina.php";
 		try {
 			$token = $o->getAccessToken('code', $keys ) ;
+			
 		} catch (OAuthException $e) {
 		}
 	}
 	$token=$token['access_token'];
-	if (empty($token))
+	$sina_v2 = new SaeTClientV2($_CFG['sina_appkey'],$_CFG['sina_appsecret'],$token);
+	
+	$aa= $sina_v2->get_uid();
+	$sina_user_id = $aa['uid'];
+	$info = $sina_v2->show_user_by_id($sina_user_id);
+	$sina_nickname = iconv('utf-8','gbk',$info['screen_name']);
+	if (empty($sina_user_id))
 	{
 	$link[0]['text'] = "返回上一页";
-	$link[0]['href'] = "{$_CFG['main_domain']}user/connect_sina.php";
+	$link[0]['href'] = "{$_CFG['site_dir']}user/connect_sina.php";
 	showmsg('登录失败！token获取失败',0);
 	}
 	else
 	{
 				require_once(QISHI_ROOT_PATH.'include/fun_user.php');
-				$uinfo=get_user_insina_access_token($token);
+				$uinfo=get_user_insina_access_token($sina_user_id);
 				if (!empty($uinfo))
 				{
 					update_user_info($uinfo['uid']);
@@ -58,14 +65,15 @@ elseif($act == 'login' && !empty($code))
 					if (!empty($_SESSION['uid']) && !empty($_SESSION['utype']))
 					{
 					$time=time();
-					$db->query("UPDATE ".table('members')." SET sina_access_token = '{$token}',bindingtime='{$time}'  WHERE uid='{$_SESSION[uid]}' AND sina_access_token='' LIMIT 1");
+					$db->query("UPDATE ".table('members')." SET sina_access_token = '{$sina_user_id}',sina_nick = '{$sina_nickname}', sina_binding_time = '{$time}' WHERE uid='{$_SESSION[uid]}' AND sina_access_token='' LIMIT 1"); 
 					$link[0]['text'] = "进入会员中心";
 					$link[0]['href'] = get_member_url($_SESSION['utype']);
 					showmsg('绑定帐号成功！',2,$link);
 					}
 					else
 					{
-					$_SESSION['sina_access_token']=$token;
+					$_SESSION['sina_access_token']=$sina_user_id;
+					$_SESSION['sina_nickname']=$sina_nickname;
 					header("Location:?act=reg");
 					}
 				}
@@ -82,8 +90,12 @@ elseif ($act=='reg')
 	{
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 		$smarty->assign('title','完善信息 - '.$_CFG['site_name']);
+		$smarty->assign('third_name',"Sina");
 		$smarty->assign('sinaurl',"?act=");
-		$smarty->display('user/connect-sina.htm');
+		$smarty->assign('nickname',$_SESSION['sina_nickname']);
+		$smarty->assign('openid',$_SESSION["sina_access_token"]);
+		$smarty->assign('bindtype','sina');
+		$smarty->display('user/connect_activate.htm');
 	}
 }
 elseif ($act=='reg_save')
@@ -92,20 +104,22 @@ elseif ($act=='reg_save')
 	{
 		exit("access_token is empty");
 	}
-	$val['username']=!empty($_POST['username'])?trim($_POST['username']):exit("err");
+	$sina_nickname=$_SESSION['sina_nickname'];
 	$val['email']=!empty($_POST['email'])?trim($_POST['email']):exit("err");
-	$val['member_type']=intval($_POST['member_type']);
-	$val['password']=!empty($_POST['password'])?trim($_POST['password']):exit("err");	
+	$val['mobile']=!empty($_POST['mobile'])?trim($_POST['mobile']):exit("err");
+	$val['member_type']=intval($_POST['utype']);
+	$val['password']=!empty($_POST['password'])?trim($_POST['password']):exit("err");
 	require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 	$db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
 	unset($dbhost,$dbuser,$dbpass,$dbname);
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
-	$userid=user_register($val['username'],$val['password'],$val['member_type'],$val['email']);
+	$userid=user_register(3,$val['password'],$val['member_type'],$val['email'],$val['mobile'],$uc_reg=true);
 	if ($userid)
 	{
 		$time=time();
-		$db->query("UPDATE ".table('members')." SET sina_access_token = '{$_SESSION['sina_access_token']}',bindingtime='{$time}'  WHERE uid='{$userid}' AND sina_access_token='' LIMIT 1");
+		$db->query("UPDATE ".table('members')." SET sina_access_token = '{$_SESSION['sina_access_token']}', sina_nick = '{$sina_nickname}', sina_binding_time = '{$time}' WHERE uid='{$userid}' AND sina_access_token='' LIMIT 1");
 		unset($_SESSION["sina_access_token"]);
+		unset($_SESSION["sina_nickname"]);
 		update_user_info($userid);
 		$userurl=get_member_url($val['member_type']);
 		header("Location:{$userurl}");
@@ -113,9 +127,10 @@ elseif ($act=='reg_save')
 	else
 	{
 		unset($_SESSION["sina_access_token"]);
+		unset($_SESSION["sina_nickname"]);
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 		$link[0]['text'] = "返回首页";
-		$link[0]['href'] = "{$_CFG['main_domain']}";
+		$link[0]['href'] = "{$_CFG['site_dir']}";
 		showmsg('注册失败！',0,$link);
 	}
 	

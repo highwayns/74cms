@@ -1,5 +1,6 @@
 {#include file="sys/admin_header.htm"#}
 <script type="text/javascript" src="js/jquery.userinfotip-min.js"></script>
+<script type="text/javascript" src="js/jquery.entrustinfotip-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -50,6 +51,14 @@ $(document).ready(function()
 	$("#success").click(function(){
 		$("#reason").hide();
 	});
+
+	$("#not_audit").click(function(){
+		$("#is_del_img").show();
+	});
+	$("#yes_audit").click(function(){
+		$("#is_del_img").hide();
+	});
+	
 	
 		
 });
@@ -59,6 +68,7 @@ $(document).ready(function()
 	<div class="ptit"> {#$pageheader#}</div>
   <div class="clear"></div>
 </div>
+
 <div class="toptip">
 	<h2>提示：</h2>
 	<p>
@@ -100,6 +110,7 @@ $(document).ready(function()
 	  {#/if#}
 	
 	
+
 	<div class="list" >
 	  <div class="t">简历等级</div>	  
 	  <div class="txt link_lan">
@@ -114,9 +125,9 @@ $(document).ready(function()
 	<div class="list" >
 	  <div class="t">照片可见</div>	  
 	  <div class="txt link_lan">
-	 	<a href="{#"photo:"|qishi_parse_url#}" {#if $smarty.get.photo==""#}class="select"{#/if#}>不限</a>
-		<a href="{#"photo:1"|qishi_parse_url#}" {#if $smarty.get.photo=="1"#}class="select"{#/if#}>可见</a>
-		<a href="{#"photo:0"|qishi_parse_url#}" {#if $smarty.get.photo=="0"#}class="select"{#/if#}>不可见</a>
+	 	<a href="{#"photo_display:"|qishi_parse_url#}" {#if $smarty.get.photo_display==""#}class="select"{#/if#}>不限</a>
+		<a href="{#"photo_display:1"|qishi_parse_url#}" {#if $smarty.get.photo_display=="1"#}class="select"{#/if#}>可见</a>
+		<a href="{#"photo_display:2"|qishi_parse_url#}" {#if $smarty.get.photo_display=="2"#}class="select"{#/if#}>不可见</a>
 	  </div>
     </div>
 	
@@ -157,8 +168,6 @@ $(document).ready(function()
 	  </div>
     </div>
 	
-	
-	
 	<div class="clear"></div>
 </div>
  
@@ -175,7 +184,7 @@ $(document).ready(function()
       <td   align="center" width="8%" class="admin_list_tit">公开</td>
 	  <td align="center" width="8%" class="admin_list_tit">照片</td>
       <td align="center" width="12%"  class="admin_list_tit">添加时间</td>
-	  <td align="center"  width="12%"  class="admin_list_tit">刷新时间</td>	
+	  <td align="center"  width="12%"  class="admin_list_tit">刷新时间</td>
       <td align="center"  width="15%" class="admin_list_tit">操作</td>
     </tr>
 	{#foreach from=$resumelist item=list#}
@@ -229,9 +238,11 @@ $(document).ready(function()
       <td align="center"  class="admin_list">
 		<a href="admin_memberslog.php?uid={#$list.uid#}">日志</a>
 		&nbsp;
-	  <a href="?act=resume_show&id={#$list.id#}&uid={#$list.uid#}" >查看</a>
-	  &nbsp;
-		<a href="?act=management&id={#$list.uid#}"  target="_blank" class="userinfo"  id="{#$list.uid#}">管理</a>	  </td>
+		<a href="?act=resume_show&id={#$list.id#}&uid={#$list.uid#}" >查看</a>
+		&nbsp;
+		<a href="?act=management&id={#$list.uid#}"  target="_blank" class="userinfo"  id="{#$list.uid#}">管理</a>	 
+	&nbsp;
+	  </td>
     </tr>
 	 {#/foreach#}
   </table>
@@ -265,7 +276,6 @@ $(document).ready(function()
 														<li id="2" title="ID">ID</li>
 														<li id="3" title="UID">UID</li>
 														<li id="4" title="电话">电话</li>
-														<li id="5" title="QQ">QQ</li>
 														<li id="6" title="地址">地址</li>
 														</ul>
 												</div>
@@ -360,14 +370,21 @@ $(document).ready(function()
       <td width="27" height="25">&nbsp;</td>
       <td>
 	  <label >
-                      <input name="photoaudit" type="radio" value="1" checked="checked"  />
+                      <input name="photoaudit" type="radio" value="1" checked="checked" id="yes_audit"/>
                       照片审核通过 </label>	  </td>
     </tr>
     <tr>
       <td width="27" height="25">&nbsp;</td>
       <td width="425"><label >
-                      <input type="radio" name="photoaudit" value="3"  />
+                      <input type="radio" name="photoaudit" value="3" id="not_audit"/>
                        照片审核未通过</label></td>
+    </tr>
+    <tr style="display:none" id="is_del_img">
+      <td width="27" height="25">&nbsp;</td>
+      <td>
+                      <label><input type="checkbox" name="is_del_img" value="1"/>
+					  是否删除相应照片
+                       </label></td>
     </tr>
     <tr>
       <td height="25">&nbsp;</td>

@@ -18,9 +18,10 @@ ini_set('session.save_handler', 'files');
 session_save_path(QISHI_ROOT_PATH.'data/sessions/');
 session_start();
 require_once(QISHI_ROOT_PATH.'include/74cms_version.php');
-require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
+require_once(ADMIN_ROOT_PATH.'include/mysql.class.php');
 $db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
 unset($dbhost,$dbuser,$dbpass);
+require_once(QISHI_ROOT_PATH.'include/help.class.php');
 require_once(QISHI_ROOT_PATH.'include/common.fun.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_common.fun.php');
 if(!get_magic_quotes_gpc())
@@ -49,10 +50,6 @@ $_CFG['resume_photo_dir']=$_CFG['site_dir']."data/".$_CFG['resume_photo_dir']."/
 $_CFG['resume_photo_dir_thumb']=$_CFG['site_dir']."data/".$_CFG['resume_photo_dir_thumb']."/";
 $_CFG['hunter_photo_dir']=$_CFG['site_dir']."data/hunter/";
 $_CFG['hunter_photo_dir_thumb']=$_CFG['site_dir']."data/hunter/thumb/";
-	$_CFG['company_img']=$_CFG['site_dir']."data/companyimg/original/";
-	$_CFG['company_img_thumb']=$_CFG['site_dir']."data/companyimg/thumb/";
-	$_CFG['train_img']=$_CFG['site_dir']."data/train_img/original/";
-	$_CFG['train_img_thumb']=$_CFG['site_dir']."data/train_img/thumb/";
 $upfiles_dir="../data/".$_CFG['updir_images']."/";
 $thumb_dir="../data/".$_CFG['updir_thumb']."/";
 $certificate_dir="../data/".$_CFG['updir_certificate']."/";
@@ -65,8 +62,6 @@ if (empty($_GET['perpage']))
 $_GET['perpage']=10;
 }
 $perpage=intval($_GET['perpage']);
-$_CFG['subsite_id']=0;
-subsiteinfo($_CFG);
 require_once(ADMIN_ROOT_PATH.'include/admin_tpl.inc.php');
 date_default_timezone_set("PRC");
 if(empty($_SESSION['admin_id']) && $_REQUEST['act'] != 'login' && $_REQUEST['act'] != 'do_login' && $_REQUEST['act'] != 'logout')

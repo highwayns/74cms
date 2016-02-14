@@ -142,6 +142,7 @@ elseif($act =='do_backup')
 		@unlink("../data/{$backup_dir}/temp.txt");
 		$link[0]['text'] = "查看备份文件";
 		$link[0]['href'] = "?act=restore";
+		write_log("数据库备份成功", $_SESSION['admin_name'],3);
 		adminmsg('数据库备份成功',2,$link);
 		}
 		elseif ($j == 0)
@@ -216,6 +217,7 @@ elseif($act =='del')
 		}	
 		unset($sql_file,$file);
 	}
+	write_log("删除备份文件成功", $_SESSION['admin_name'],3);
 	adminmsg('删除备份文件成功',2);
 }
 elseif($act =='import')
@@ -261,6 +263,7 @@ elseif($act =='import')
 			$link[0]['text'] = "查看备份文件";
 			$link[0]['href'] = "?act=restore";
 			unset($_SESSION['backup_file']);
+			write_log("数据库还原成功", $_SESSION['admin_name'],3);
 			adminmsg('数据库还原成功',2,$link);
 		}
 		else
@@ -309,7 +312,8 @@ elseif($act == 'optimize_table')
 	{
 		$sqlstr=implode(",",$tablename);
 		if ($db->query("OPTIMIZE TABLE $sqlstr"))
-		{
+		{	
+			write_log("优化数据库成功", $_SESSION['admin_name'],3);
 			adminmsg('优化成功!',2);
 		}
 	}

@@ -1,5 +1,5 @@
 TRUNCATE TABLE `qs_hotword`;
-INSERT INTO `qs_hotword` (`w_id`, `w_word`, `w_hot`) VALUES 
+INSERT INTO `qs_hotword` (`w_id`, `w_word`, `w_hot`) VALUES
 (44, '运营助理', 70),
 (45, '水电工', 207),
 (46, '会计', 5475),
@@ -1830,7 +1830,7 @@ INSERT INTO `qs_hotword` (`w_id`, `w_word`, `w_hot`) VALUES
 (6216, '生产部长', 33),
 (6219, '财务统计', 29),
 (6223, '专职安全员', 11);
-INSERT INTO `qs_hotword` (`w_id`, `w_word`, `w_hot`) VALUES 
+INSERT INTO `qs_hotword` (`w_id`, `w_word`, `w_hot`) VALUES
 (6230, '网络营销总监', 17),
 (6232, '门店销售', 29),
 (6240, '销售业务主管', 11),
@@ -3548,7 +3548,7 @@ INSERT INTO `qs_hotword` (`w_id`, `w_word`, `w_hot`) VALUES
 (29922, '检测工程师', 22),
 (29923, '资深软件工程师', 14),
 (29953, '化学老师', 10);
-INSERT INTO `qs_hotword` (`w_id`, `w_word`, `w_hot`) VALUES 
+INSERT INTO `qs_hotword` (`w_id`, `w_word`, `w_hot`) VALUES
 (29955, 'iPhone开发工程师', 82),
 (29956, 'delphi工程师', 19),
 (29986, '日语担当', 11),

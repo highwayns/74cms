@@ -15,6 +15,7 @@ $(document).ready(function()
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit">{#$pageheader#}</div>
+  {#include file="tpl/admin_templates_nav.htm"#}
   <div class="clear"></div>
 </div>
 <div class="toptip">
@@ -37,7 +38,7 @@ $(document).ready(function()
   <tr>
         <td width="50" align="right">Ãû³Æ£º</td>
         <td><input name="tpl_id[]" type="hidden" value="{#$li.tpl_id#}" />
-          <input name="tpl_name[]" type="text" value="{#$li.tpl_name#}"  class="input_text_200" />
+          <input name="tpl_name[]" type="text" value="{#$li.info.name#}"  class="input_text_200" />
 		  
 		  </td>
       </tr>

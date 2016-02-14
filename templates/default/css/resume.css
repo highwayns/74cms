@@ -84,3 +84,76 @@
 .resume-list .noinfo{ padding:10px; width:965px;  border-bottom:1px #E3E3E3 solid; line-height:180%}
 .resume-list .noinfo span{ font-size:14px; font-weight:bold; color:#FF6600}
 .highlight { color: #FF0000}
+
+/*
+***以下样式为3.6版本的照片简历列表，最新简历列表样式
+*/
+/*照片简历*/
+.photo-resumes-list{padding:15px 0 0 15px;background-color: #fff;font-family: "SimSun";*padding-bottom: 15px;}
+.photo-resumes-list .photo-resume-item{background-color: #fff;border:1px solid #e2e2e2;width: 156px;height: 198px;overflow: hidden;margin:0 10px 10px 0;cursor: pointer;}
+.photo-resumes-list .photo-resume-item:hover{border-color:#0180cf;}
+.photo-resume-item .photo-box{height: 104px;text-align: center;*height:118px;}
+.photo-resume-item .photo-box .avater-img{width: 70px;height: 70px;margin:14px auto 0 auto;border-radius:50%;overflow: hidden;}
+.photo-resume-item .photo-box p{height:34px;line-height: 34px;color:#333;font-size: 14px;}
+.photo-resume-item .photo-box p a{color:#333;text-decoration:none;}
+.photo-resume-item .photo-box p a:hover {text-decoration:underline;}
+.photo-resume-item .photo-detail{height: 80px;background-color: #f2f2f2;padding:0 10px;}
+.photo-resume-item .photo-detail .date-time{padding-top: 12px;font-size: 12px;color:#999;}
+.photo-resume-item .photo-detail .detail-content{margin-top:8px;width: 120px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;font-size: 12px;color:#666;}
+/*最新简历*/
+.newst-resume-list{padding-left: 13px;padding-bottom: 15px;}
+.newst-resume-list .newst-resume-item{margin-right: 10px;border-bottom:1px dotted #dbdbdb;padding: 13px 23px 10px 7px;width: 353px;}
+.newst-resume-item .name-date{margin-bottom: 12px;}
+.newst-resume-item .name-date a{color:#0180cf;text-decoration: none;font-size: 14px;margin-right: 15px;line-height: 16px;}
+.newst-resume-item .name-date a:hover{text-decoration: underline;}
+.newst-resume-item .name-date span{font-size: 12px;font-family: Arial;color:#999;line-height: 16px;}
+.newst-resume-item .resume-detail{font-size: 12px;color:#666;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
+
+/*数据列表*/
+.underline:hover{text-decoration: underline;}
+.infolists{font-family: "SimSun";/*margin-top:10px;*/}
+.infolists a{text-decoration: none;}
+.infolists .infolists-head{padding:10px 20px;border-bottom:1px solid #ccc;height: 30px;}
+.infolists .infolists-head label{line-height: 30px;font-size: 14px;cursor: pointer;}
+.infolists .infolists-head .all-ctrl{margin-left: 15px;line-height: 30px;font-family: "SimSun";}
+.infolists .infolists-head .all-ctrl .all-down-btn{width: 80px;height: 30px;border:0;color:#fff;background-color: #3d90e5;cursor: pointer;font-size: 14px;line-height: normal;font-family: "SimSun";}
+.infolists .infolists-head .all-ctrl .all-down-btn:hover{background-color: #0180cf;}
+.infolists .infolists-head .all-ctrl .collect-link{font-size: 14px;color:#0180cf;}
+.infolists .infolists-head .all-ctrl .collect-link:hover{color:#0070bd;}
+.infolists .infolists-head .list-tab{font-size: 14px;color:#666;}
+.infolists .infolists-head .tab-item{margin-left: 15px;line-height: 30px;padding-left: 20px;background: url(../images/data-icon.png) no-repeat; color:#666;}
+.infolists .infolists-head .tab-item.tab-list{background-position: 0px -63px;}
+.infolists .infolists-head .tab-list.select,
+.infolists .infolists-head .tab-list:hover{background-position: 0px -109px;color:#0180cf;}
+.infolists .infolists-head .tab-item.tab-detail{background-position: 0px -155px;}
+.infolists .infolists-head .tab-detail.select,
+.infolists .infolists-head .tab-detail:hover{background-position: 0px -201px;color:#0180cf;}
+.info-list-wrap{padding:0 20px 5px;}
+.info-list-wrap .infolist-row{border-bottom: 1px dotted #ccc;color:#666;}
+.info-list-wrap .infolist-row .info-list-block{height:44px;line-height: 44px;overflow: hidden;}
+.info-list-wrap .infolist-row .info-list-block .list-item{overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
+.info-list-wrap .infolist-row .info-list-block.resume .item1{width: 198px;}
+.info-list-wrap .infolist-row .info-list-block .item1 a{font-size: 14px;/*font-family: "Microsoft Yahei";*/color:#0180cf;}
+.info-list-wrap .infolist-row .info-list-block .item1 span{display: inline-block;max-width: 120px;/*overflow: hidden;*/white-space: nowrap;text-overflow:ellipsis;}
+.info-list-wrap .infolist-row .info-list-block.resume .item2{width: 48px;text-align: center;}
+.info-list-wrap .infolist-row .info-list-block.resume .item3{width: 66px;text-align: center;}
+.info-list-wrap .infolist-row .info-list-block.resume .item4{width: 66px;text-align: center;}
+.info-list-wrap .infolist-row .info-list-block.resume .item5{width: 252px;padding-left:15px;}
+.info-list-wrap .infolist-row .info-list-block.resume .item6{width: 219px;}
+.info-list-wrap .infolist-row .info-list-block.resume .item7{width: 144px;}
+.info-list-wrap .infolist-row .info-list-block.resume .item8{width: 120px;text-align: right;}
+.info-list-wrap .infolist-row .info-list-block .list-item-ctrl{width: 14px;height: 14px;margin:15px 0 15px 10px;background: url(../images/data-icon.png) no-repeat 0px -285px;}
+.info-list-wrap .infolist-row .info-list-block .list-item-ctrl.ishow{background-position: 0px -246px;}
+.info-list-wrap .infolist-row .info-list-detail{padding-left: 17px;display: none;}
+.info-list-wrap .infolist-row .info-list-detail .info-text{width: 1010px;color:#666;padding-bottom: 10px;}
+.info-list-wrap .infolist-row .info-list-detail .info-text p{width: 1010px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;line-height: 24px;}
+.info-list-wrap .infolist-row .info-list-detail .info-text div{line-height: 24px;}
+.info-list-wrap .infolist-row .info-list-detail .info-control{padding-top: 0px;padding-left: 10px;}
+.info-list-wrap .infolist-row .info-list-detail .info-control .apply-job-btn{width: 95px;height: 30px;border:0;cursor: pointer;background: url(../images/li_right.png) no-repeat 0px 0px;text-align: center;color:#fff;font-size: 12px;font-family: "SimSun";}
+.info-list-wrap .infolist-row .info-list-detail .info-control .apply-job-btn:hover{background: url(../images/li_right_h.png) no-repeat 0px 0px;}
+.info-list-wrap .infolist-row .info-list-detail .info-control p{padding-left: 30px;padding-top: 7px;}
+.info-list-wrap .infolist-row .info-list-detail .info-control p .collect-btn{display: block;width: 45px;height: 20px;background: url(../images/li_right.png) no-repeat -26px -39px;}
+.info-list-wrap .infolist-row .info-list-detail .info-control p .collect-btn:hover{background: url(../images/li_right_h.png) no-repeat -26px -39px;}
+.resume-auth{display: inline-block;width: 16px;height: 18px;background: url(../images/data-icon.png) no-repeat;margin:13px 7px 13px 0;vertical-align: middle;}
+.resume-auth.pic{background-position: 0px -412px;}
+.resume-auth.phone{background-position: -1px -454px;}

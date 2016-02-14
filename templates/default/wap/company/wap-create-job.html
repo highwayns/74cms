@@ -12,7 +12,7 @@
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
 <link href="../css/user_company.css" rel="stylesheet" type="text/css" />
 <script src="../js/jquery.js" type='text/javascript' ></script>
-<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 <script src="../js/jquery.common.js" type='text/javascript' ></script>
 <script type="text/javascript">
 $(document).ready(function()
@@ -122,7 +122,6 @@ $(document).ready(function()
 	// ajax 发布职位
 	$("#create_job_but").click(function(){
 		var add_mode =$("input[name=add_mode]").val();
-		var days =$("input[name=days]").val();
 		var jobs_name =$("input[name=jobs_name]").val();
 		var nature =$("input[name=nature]").val();
 		var nature_cn =$("input[name=nature_cn]").val();
@@ -146,7 +145,7 @@ $(document).ready(function()
 		var contents =$("textarea[name=contents]").val();
 		var contact =$("input[name=contact]").val();
 		var telephone =$("input[name=telephone]").val();
-		$.post("?act=jobs_add_save",{add_mode:add_mode,days:days,jobs_name:jobs_name,nature:nature,nature_cn:nature_cn,topclass:topclass,category:category,subclass:subclass,category_cn:category_cn,amount:amount,district:district,sdistrict:sdistrict,district_cn:district_cn,wage:wage,wage_cn:wage_cn,sex:sex,sex_cn:sex_cn,education:education,education_cn:education_cn,experience:experience,experience_cn:experience_cn,graduate:graduate,contents:contents,contact:contact,telephone:telephone},function(data){
+		$.post("?act=jobs_add_save",{add_mode:add_mode,jobs_name:jobs_name,nature:nature,nature_cn:nature_cn,topclass:topclass,category:category,subclass:subclass,category_cn:category_cn,amount:amount,district:district,sdistrict:sdistrict,district_cn:district_cn,wage:wage,wage_cn:wage_cn,sex:sex,sex_cn:sex_cn,education:education,education_cn:education_cn,experience:experience,experience_cn:experience_cn,graduate:graduate,contents:contents,contact:contact,telephone:telephone},function(data){
 			// alert(data);
 			var   type="^[0-9]*[1-9][0-9]*$";
         	var   re = new RegExp(type);
@@ -300,10 +299,6 @@ $(document).ready(function()
 	            }
 	          });
 	        </script>
-			<tr>
-				<td class="create_job_l">招聘天数</td>
-				<td class="create_job_r"><input type="text" class="create_input" name="days" /></td>
-			</tr>
 			<tr>
 				<td class="create_job_l">招聘人数</td>
 				<td class="create_job_r"><input type="text" class="create_input" name="amount" /></td>

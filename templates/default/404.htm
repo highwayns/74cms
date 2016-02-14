@@ -9,14 +9,14 @@
 <link href="{#$QISHI.site_template#}css/404.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' ></script>
 </head>
-<body>
+<body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 <!--头部-->
 <div id="head">
   <div class="header_con">
-    <a href="{#$QISHI.website_dir#}"><img src="{#$QISHI.upfiles_dir#}{#$QISHI.web_logo#}" title="{#$QISHI.site_name#}" alt="{#$QISHI.site_name#}" /></a>
+    <a href="{#$QISHI.site_dir#}"><img src="{#$QISHI.upfiles_dir#}{#$QISHI.web_logo#}" title="{#$QISHI.site_name#}" alt="{#$QISHI.site_name#}" /></a>
         <ul class="header_tiao">
-          <li><a href="{#$QISHI.website_dir#}">返回首页</a></li>
-          <li><a href="{#$QISHI.main_domain#}help">查看帮助</a></li>
+          <li><a href="{#$QISHI.site_dir#}">返回首页</a></li>
+          <li><a href="{#$QISHI.site_dir#}help">查看帮助</a></li>
         </ul>
     </div>
 </div>

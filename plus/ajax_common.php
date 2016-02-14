@@ -14,11 +14,6 @@ require_once(dirname(dirname(__FILE__)).'/include/plus.common.inc.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : '';
 if ($act=="countinfo")
 {
-	if(intval($_GET['subsite_id'])>0){
-		$wheresql = " where subsite_id=".intval($_GET['subsite_id']);
-	}else{
-		$wheresql="";
-	}
 	$total="SELECT COUNT(*) AS num FROM ".table('company_profile');
 	$total_company=$db->get_total($total);
 	$total="SELECT COUNT(*) AS num FROM ".table('jobs').$wheresql;
@@ -36,12 +31,8 @@ if ($act=="countinfo")
 }
 elseif ($act=="company_down_resume")
 {
-	$wheresql = "";
-	if ($_CFG['subsite']=="1"  && $_CFG['subsite_filter_jobs']=="1" && intval($_CFG['subsite_id'])>0)
-	{
-		$wheresql.=" WHERE c.subsite_id=".intval($_CFG['subsite_id']);
-	}	
-	$result = $db->query("SELECT a.down_addtime,b.companyname,b.id AS bid,b.addtime AS baddtime,c.id AS cid,c.display_name,c.addtime AS caddtime,c.fullname,c.subsite_id FROM ".table('company_down_resume')." AS a LEFT JOIN  ".table('company_profile')." AS b ON a.company_uid=b.uid  LEFT JOIN ".table('resume')." AS c ON a.resume_id=c.id".$wheresql." ORDER BY a.down_addtime DESC  LIMIT 30");
+	$wheresql = "";	
+	$result = $db->query("SELECT a.down_addtime,b.companyname,b.id AS bid,b.addtime AS baddtime,c.id AS cid,c.sex,c.display_name,c.addtime AS caddtime,c.fullname FROM ".table('company_down_resume')." AS a LEFT JOIN  ".table('company_profile')." AS b ON a.company_uid=b.uid  LEFT JOIN ".table('resume')." AS c ON a.resume_id=c.id".$wheresql." ORDER BY a.down_addtime DESC  LIMIT 30");
 	$html=array();
 	while($row = $db->fetch_array($result))
 	{
@@ -54,12 +45,19 @@ elseif ($act=="company_down_resume")
 		}
 		elseif ($row['display_name']=="3")
 		{
-		$row['fullname']=cut_str($row['fullname'],1,0,"**");
+			if($row['sex']==1)
+			{
+				$row['fullname']=cut_str($row['fullname'],1,0,"先生");
+			}
+			elseif($row['sex']==2)
+			{
+				$row['fullname']=cut_str($row['fullname'],1,0,"女士");
+			}
 		}
 		if($_CFG['closetime']==1){
-			$html[$row['bid']]="<li><a href=".url_rewrite('QS_companyshow',array('id'=>$row['bid']),false)." target=\"_blank\">".$row['companyname']." </a> 下载了 <a href=".url_rewrite('QS_resumeshow',array('id'=>$row['cid']),true,$row['subsite_id'])." target=\"_blank\">".$row['fullname']." </a>的个人简历</li>";
+			$html[$row['bid']]="<li><a href=".url_rewrite('QS_companyshow',array('id'=>$row['bid']))." target=\"_blank\">".$row['companyname']." </a> 下载了 <a href=".url_rewrite('QS_resumeshow',array('id'=>$row['cid']))." target=\"_blank\">".$row['fullname']." </a>的个人简历</li>";
 		}else{
-			$html[$row['bid']]="<li><a href=".url_rewrite('QS_companyshow',array('id'=>$row['bid']),false)." target=\"_blank\">".$row['companyname']." </a> 下载了 <a href=".url_rewrite('QS_resumeshow',array('id'=>$row['cid']),true,$row['subsite_id'])." target=\"_blank\">".$row['fullname']." </a>的个人简历<span>{$row['time']}</span></li>";
+			$html[$row['bid']]="<li><a href=".url_rewrite('QS_companyshow',array('id'=>$row['bid']))." target=\"_blank\">".$row['companyname']." </a> 下载了 <a href=".url_rewrite('QS_resumeshow',array('id'=>$row['cid']))." target=\"_blank\">".$row['fullname']." </a>的个人简历<span>{$row['time']}</span></li>";
 		}
 		}
 	}
@@ -92,14 +90,45 @@ elseif($act=="hotword")
 	exit($str);
 	}
 }
+// 邮箱自动提示
+elseif($act=="reg_email")
+{
+	if (empty($_GET['query']))
+	{
+	exit();
+	}
+	$gbk_query=trim($_GET['query']);
+	if (strcasecmp(QISHI_DBCHARSET,"utf8")!=0)
+	{
+	$gbk_query=utf8_to_gbk($gbk_query);
+	}
+	$gbk_query = explode("@", $gbk_query);
+	$gbk_query = $gbk_query[0];
+	$list = array(
+			0 => "'{$gbk_query}@qq.com'",
+			1 => "'{$gbk_query}@163.com'",
+			2 => "'{$gbk_query}@126.com'",
+			3 => "'{$gbk_query}@hotmail.com'",
+			4 => "'{$gbk_query}@yahoo.com'",
+			5 => "'{$gbk_query}@sina.com'",
+			6 => "'{$gbk_query}@gmail.com'",
+			7 => "'{$gbk_query}@sogou.com'",
+			8 => "'{$gbk_query}@139.com'"
+		);
+	if ($list)
+	{
+	$liststr=implode(',',$list);
+	$str="{";
+	$str.="query:'{$gbk_query}',";
+	$str.="suggestions:[{$liststr}]";
+	$str.="}";
+	exit($str);
+	}
+}
 elseif($act=="joblisttip")
 {
 	$uid=intval($_GET['uid']);
 	$wheresql='';
-	if ($_CFG['subsite']=="1"  && $_CFG['subsite_filter_jobs']=="1" && intval($_CFG['subsite_id'])>0)
-	{
-		$wheresql.=" AND subsite_id=".intval($_CFG['subsite_id'])." ";
-	}	
 	$result = $db->query("SELECT * FROM ".table('jobs')." WHERE uid='{$uid}' {$wheresql} ORDER BY refreshtime desc limit 6");
 	$i=1;
 	while($row = $db->fetch_array($result))
@@ -114,8 +143,8 @@ elseif($act=="joblisttip")
 				} 
 				$row['companyname_']=$row['companyname'];
 				$row['companyname']=cut_str($row['companyname'],15,0,"...");
-				$row['jobs_url']=url_rewrite('QS_jobsshow',array('id'=>$row['id']),true,$row['subsite_id']);
-				$row['company_url']=url_rewrite('QS_companyshow',array('id'=>$row['company_id']),false);
+				$row['jobs_url']=url_rewrite('QS_jobsshow',array('id'=>$row['id']));
+				$row['company_url']=url_rewrite('QS_companyshow',array('id'=>$row['company_id']));
 				if ($i>5)
 				{
 				$html.="<li class=\"more\"><a href=\"{$row['company_url']}\" target=\"_blank\">更多...</span></li>";
@@ -139,16 +168,12 @@ elseif($act=="ajaxcomlist")
 			$showtype=trim($_GET['showtype']);
 			$limit=intval($_GET['comrow'])>0?intval($_GET['comrow']):10;
 			$jobrow=intval($_GET['jobrow'])>0?intval($_GET['jobrow']):3;
-			$companynamelen=intval($_GET['companynamelen'])>0?intval($_GET['companynamelen']):14;
+			$companynamelen=intval($_GET['companynamelen'])>0?intval($_GET['companynamelen']):12;
 			$jobslen=intval($_GET['jobslen'])>0?intval($_GET['jobslen']):6;	
 			$jobstable=table('jobs_search_rtime');
 			$wheresql='';
 			$ordersql='  ORDER BY refreshtime desc ';
 			$limitsql=" LIMIT ".$limit*15;
-			if ($_CFG['subsite']=='1'  && $_CFG['subsite_filter_jobs']=='1' && intval($_CFG['subsite_id'])>0)
-			{
-				$wheresql.=" AND subsite_id=".intval($_CFG['subsite_id'])." ";
-			}
 			if ($showtype=="category")
 			{
 				if ($categoryid>0)
@@ -175,7 +200,7 @@ elseif($act=="ajaxcomlist")
 			{
 				$uidarr= implode(",",$uidarr);
 				$wheresql=$wheresql?$wheresql." AND uid IN ({$uidarr}) ":" WHERE uid IN ({$uidarr}) ";
-				$sql="SELECT company_audit,subsite_id,company_id,companyname,company_addtime,refreshtime,id,jobs_name,addtime,uid,click,highlight,highlight,setmeal_id,setmeal_name FROM ".table('jobs').$wheresql.$ordersql;
+				$sql="SELECT company_audit,company_id,companyname,company_addtime,refreshtime,id,jobs_name,addtime,uid,click,highlight,highlight,setmeal_id,setmeal_name FROM ".table('jobs').$wheresql.$ordersql;
 				$countuid=array();
 				$result = $db->query($sql);
 				while($row = $db->fetch_array($result))
@@ -184,7 +209,7 @@ elseif($act=="ajaxcomlist")
 					if (count($countuid[$row['uid']])>$jobrow)continue;
 					$companyarray[$row['uid']]['companyname_']=$row['companyname'];
 					$companyarray[$row['uid']]['companyname']=cut_str($row['companyname'],$companynamelen,0,'');
-					$companyarray[$row['uid']]['company_url']=url_rewrite('QS_companyshow',array('id'=>$row['company_id']),false);
+					$companyarray[$row['uid']]['company_url']=url_rewrite('QS_companyshow',array('id'=>$row['company_id']));
 					$companyarray[$row['uid']]['company_addtime']=$row['company_addtime'];
 					$companyarray[$row['uid']]['refreshtime']=$companyarray[$row['uid']]['refreshtime']>$row['refreshtime']?$companyarray[$row['uid']]['refreshtime']:$row['refreshtime'];
 					$companyarray[$row['uid']]['refreshtime_cn']=daterange(time(),$companyarray[$row['uid']]['refreshtime'],'m-d',"#A9A9A9");
@@ -200,7 +225,7 @@ elseif($act=="ajaxcomlist")
 						{
 						$companyarray[$row['uid']]['jobs'][$row['id']]['jobs_name']="<span style=\"color:{$row['highlight']}\">{$companyarray[$row['uid']]['jobs'][$row['id']]['jobs_name']}</span>";
 						}
-					$companyarray[$row['uid']]['jobs'][$row['id']]['jobs_url']=url_rewrite('QS_jobsshow',array('id'=>$row['id']),true,$row['subsite_id']);
+					$companyarray[$row['uid']]['jobs'][$row['id']]['jobs_url']=url_rewrite('QS_jobsshow',array('id'=>$row['id']));
 				}
 			}
 			if (!empty($companyarray))
@@ -213,7 +238,7 @@ elseif($act=="ajaxcomlist")
 					if ($li['company_audit'] == 1) {
 						$html.="<img title=\"企业已认证\" class=\"vtip\" src=\"$_CFG[site_template]images/iconren.jpg\" border=\"0\">&nbsp;";
 					}
-					if ($_CFG['operation_mode'] == 2 && $li['setmeal_id'] > 1) {
+					if ($_CFG['operation_mode'] >= 2 && $li['setmeal_id'] > 1) {
 						$html.="<img src=\"$_CFG[site_dir]data/setmealimg/{$li['setmeal_id']}.gif\" border=\"0\" title=\"{$li['setmeal_name']}\" class=\"vtip\"/>";
 					}
 					$html.="</a><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></p>";
@@ -222,7 +247,7 @@ elseif($act=="ajaxcomlist")
 					if ($li['company_audit'] == 1) {
 						$html.="<img title=\"企业已认证\" class=\"vtip\" src=\"$_CFG[site_template]images/iconren.jpg\" border=\"0\">&nbsp;";
 					}
-					if ($_CFG['operation_mode'] == 2 && $li['setmeal_id'] > 1) {
+					if ($_CFG['operation_mode'] >= 2 && $li['setmeal_id'] > 1) {
 						$html.="<img src=\"$_CFG[site_dir]data/setmealimg/{$li['setmeal_id']}.gif\" border=\"0\" title=\"{$li['setmeal_name']}\" class=\"vtip\"/>";
 					}
 					$html.="</a><span>{$li['refreshtime_cn']}更新</span></p>";
@@ -242,11 +267,7 @@ elseif($act=="ajaxcomlist")
 elseif($act=="ajaxjoblist")
 {
 	$trade=intval($_GET['trade']);
-	$wheresql=$trade>0?' WHERE trade='.$trade." ":"";
-	if ($_CFG['subsite']=="1"  && $_CFG['subsite_filter_jobs']=="1" && intval($_CFG['subsite_id'])>0)
-	{
-		$wheresql .= ($wheresql==""?" WHERE ":" AND ")."subsite_id=".intval($_CFG['subsite_id'])." ";
-	}	
+	$wheresql=$trade>0?' WHERE trade='.$trade." ":"";	
 	$result = $db->query("SELECT * FROM ".table('jobs')." {$wheresql} ORDER BY refreshtime desc limit 12");
 	$i=1;
 	$html = '<ul class="clearfix">';
@@ -260,7 +281,7 @@ elseif($act=="ajaxjoblist")
 				} 
 				$row['companyname_']=$row['companyname'];
 				$row['companyname']=cut_str($row['companyname'],13,0,"");
-				$row['jobs_url']=url_rewrite('QS_jobsshow',array('id'=>$row['id']),true,$row['subsite_id']);
+				$row['jobs_url']=url_rewrite('QS_jobsshow',array('id'=>$row['id']));
 				$row['company_url']=url_rewrite('QS_companyshow',array('id'=>$row['company_id']));
 				if($_CFG['closetime']==1){
 					$html.="<li class=\"clearfix\"><span>.</span><a target=\"_blank\" href=\"{$row['jobs_url']}\">{$row['jobs_name']}</a><b><a target=\"_blank\" href=\"{$row['company_url']}\">{$row['companyname']}</a></b></li>";
@@ -273,5 +294,78 @@ elseif($act=="ajaxjoblist")
 	}
 	$html .= '</div>';
 	exit($html);
+}
+// 解除微信绑定
+elseif($act == "bind_wx_jc")
+{
+	$uid=intval($_GET['uid']);
+	$user=$db->getone("SELECT * FROM ".table("members")." where uid=$uid");
+	$bind_wx_true=intval($_GET['bind_wx_true']);
+	$html="";
+	if($bind_wx_true)
+	{
+		$db->query("update ".table('members')." set weixin_openid=null,bindingtime='' where uid=$uid ");
+
+		$html.="<div style='padding:10px 20px 20px 20px;'>";
+		$html.="<div style='font-size: 14px;line-height: 1.8;'>解除微信绑定成功</div>";
+		$html.="</div>";
+	}
+	else
+	{
+		if($user['email_audit']!=1 && $user['mobile_audit']!=1)
+		{
+			$html.="<div class='unbindBox unbindBoxs'>";
+			$html.="<div class='con'><div class='f-left'><img src='$_CFG[site_template]images/wx_showmsg.jpg'></div><div class='f-right tex'>检测到您的账号没有绑定手机和邮箱，关闭微信安全登录后如果密码丢失后<span class='class'>将无法找回密码</span>，确定要关闭微信安全登录吗？</div><div class='clear'></div></div>";
+			$html.="<div class='sclosePd'><a class='sclose f-left' href='javascript:;' id='bind_wx_true' uid='".$user['uid']."'>确认</a><a class='sclose f-left sclosem' href='javascript:;'>取消</a></div>";
+			$html.="</div>";
+		}
+		else
+		{
+			$html.="<div class='unbindBox unbindBoxs'>";
+			$html.="<div class='con'><div class='f-left'><img src='$_CFG[site_template]images/wx_showmsg.jpg'></div><div class='f-right tex'>微信登录更简单安全，且可防止木马、键盘录制窃取密码，确定要关闭微信安全登录吗？</div><div class='clear'></div></div>";
+			$html.="<div class='sclosePd'><a class='sclose f-left' href='javascript:;' id='bind_wx_true' uid='".$user['uid']."'>确认</a><a class='sclose f-left sclosem' href='javascript:;'>取消</a></div>";
+			$html.="</div>";
+		}
+	}
+	exit($html);
+}
+elseif($act == 'waiting_weixin_scan'){
+	$event_key = $_SESSION['scene_id'];
+	$openid = "";
+	if(file_exists(QISHI_ROOT_PATH."data/weixin/".($event_key%10).'/'.$event_key.".txt")){
+		$openid = file_get_contents(QISHI_ROOT_PATH."data/weixin/".($event_key%10).'/'.$event_key.".txt");
+	}
+	if($openid){
+		$access_token = get_access_token();
+		$w_url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$access_token."&openid=".$openid."&lang=zh_CN";
+		$w_result = https_request($w_url);
+		$w_userinfo = json_decode($w_result,true);
+		$w_userinfo = array_map('utf8_to_gbk', $w_userinfo);
+		global $db;
+		$result = $db->query("update ".table('members')." set weixin_openid='".$openid."',weixin_nick='".$w_userinfo['nickname']."' where uid=".$_SESSION['uid']." and weixin_openid IS NULL");
+		if($result){
+			// 绑定微信 获得积分
+			$rule=get_cache('points_rule');
+			if ($rule['company_wx_points']['value']>0)
+			{
+				$info=$db->getone("SELECT uid FROM ".table('members_handsel')." WHERE uid ='{$_SESSION['uid']}' AND htype='company_wx_points' LIMIT 1");
+				if(empty($info))
+				{
+				$time=time();			
+				$db->query("INSERT INTO ".table('members_handsel')." (uid,htype,addtime) VALUES ('{$_SESSION['uid']}', 'company_wx_points','{$time}')");
+				require_once(QISHI_ROOT_PATH.'include/fun_comapny.php');
+				report_deal($_SESSION['uid'],$rule['company_wx_points']['type'],$rule['company_wx_points']['value']);
+				$user_points=get_user_points($_SESSION['uid']);
+				$operator=$rule['company_wx_points']['type']=="1"?"+":"-";
+				$_SESSION['handsel_company_wx_points']=$_CFG['points_byname'].$operator.$rule['company_wx_points']['value'];
+				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username']," 绑定微信，{$_CFG['points_byname']}({$operator}{$rule['company_wx_points']['value']})，(剩余:{$user_points})",1,1016,"绑定微信","{$operator}{$rule['company_wx_points']['value']}","{$user_points}");
+				}
+			}
+			unlink(QISHI_ROOT_PATH."data/weixin/".($event_key%10).'/'.$event_key.".txt");
+			exit("1");
+		}else{
+			exit("-1");
+		}
+	}
 }
 ?>

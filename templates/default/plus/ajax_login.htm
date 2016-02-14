@@ -49,7 +49,7 @@ e.preventDefault();
 		 {
 		 var expire="";
 		 }
-		$.post("{#$QISHI.website_dir#}plus/ajax_user.php", {"username": $("#username").val(),"password": $("#password").val(),"expire":expire,"url":window.location.href,"postcaptcha":$("#postcaptcha").val(),"time": new Date().getTime(),"act":"do_login"},
+		$.post("{#$QISHI.site_dir#}plus/ajax_user.php", {"username": $("#username").val(),"password": $("#password").val(),"expire":expire,"url":window.location.href,"postcaptcha":$("#postcaptcha").val(),"time": new Date().getTime(),"act":"do_login"},
 	 	function (data,textStatus)
 	 	 {
 			if (data=="err" || data=="errcaptcha")
@@ -68,6 +68,7 @@ e.preventDefault();
 				errinfo="验证码错误";
 				}
 				$(".ajax_login_err").html(errinfo);
+				$("#login").removeAttr('disabled');
 			}
 			else
 			{
@@ -82,7 +83,7 @@ e.preventDefault();
 {#if $verify_userlogin=="1"#}
 function imgcaptcha(inputID,imgdiv)
 {
-	$(inputID).focus(function(){
+	
 		if ($(inputID).val()=="点击获取验证码")
 		{
 		$(inputID).val("");
@@ -90,11 +91,11 @@ function imgcaptcha(inputID,imgdiv)
 		}
 		$(inputID).parent("div").css("position","relative");
 		//设置验证码DIV
-		$(imgdiv).css({ position: "absolute", right: "-34px", "top": "68px" , "z-index": "10", "background-color": "#FFFFFF", "border": "1px #A3C8DC solid","display": "none","margin-left": "15px"});
+		$(imgdiv).css({ position: "absolute", right: "-34px", "z-index": "10", "background-color": "#FFFFFF", "margin-left": "15px"});
 		$(imgdiv).show();
 		if ($(imgdiv).html()=='')
 		{
-		$(imgdiv).append("<img src=\"{#$QISHI.main_domain#}include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:3px;\" title=\"看不请验证码？点击更换一张\"  border=\"0\"/>");
+		$(imgdiv).append("<img src=\"{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:-1px;\" title=\"看不请验证码？点击更换一张\"  border=\"0\"/>");
 		}
 		$(imgdiv+" img").click(function()
 		{
@@ -105,11 +106,10 @@ function imgcaptcha(inputID,imgdiv)
 			var clickid=$(event.target).attr("id");
 			if (clickid!="getcode" &&  clickid!="postcaptcha")
 			{
-			$(imgdiv).hide();
-			$(inputID).parent("div").css("position","");
+			//$(imgdiv).hide();
+			//$(inputID).parent("div").css("position","");
 			}			
 		});
-	});
 }
 imgcaptcha("#postcaptcha","#imgdiv");
 //验证码结束
@@ -118,7 +118,6 @@ imgcaptcha("#postcaptcha","#imgdiv");
 });
 </script>
 <div class="login_pop_box">
-	<h2>快速登录</h2>
 	<div class="ajax_login_err"></div>
 	<form id="Formlogin" name="Formlogin" method="post" action="">
 	<div class="content_box">
@@ -130,14 +129,14 @@ imgcaptcha("#postcaptcha","#imgdiv");
 			{#if $verify_userlogin=="1"#}
 			<div class="postcaptcha">
 			<div id="imgdiv"></div>
-			<input  class="txtinput" name="postcaptcha" id="postcaptcha" type="text" value="点击获取验证码" style="color:#999999;"/>
+			<input  class="txtinput" name="postcaptcha" id="postcaptcha" type="text" value="点击获取验证码" style="color:#999999;width:130px"/>
 			</div>
 			{#/if#}
 		</div>
 		<div class="auto">
 			<div><input type="checkbox" name="autologin" id="expire" name="expire" value="7" /><span>一周内自动登录</span></div>
 			<a href="{#$QISHI.site_dir#}user/user_getpass.php">忘记密码？</a>
-			<a href="{#$QISHI.main_domain#}user/user_reg.php">免费注册</a>
+			<a href="{#$QISHI.site_dir#}user/user_reg.php">免费注册</a>
 			<div class="clear"></div>
 		</div>
 		<div class="input-box-waiting" id="waiting">

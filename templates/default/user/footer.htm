@@ -10,7 +10,7 @@
 						{#foreach from=$explain item=list#}
 							<li><a target="_blank" href="{#$list.url#}">{#$list.title#}</a></li>
 						{#/foreach#}
-							<li><a target="_blank" href="{#$QISHI.main_domain#}suggest">意见反馈</a></li>
+							<li><a target="_blank" href="{#$QISHI.site_dir#}suggest">意见反馈</a></li>
 						</ul>
 						<ul>
 							{#qishi_explain_list set="列表名:explain,显示数目:3,开始位置:3,标题长度:6,分类ID:1"#}
@@ -40,10 +40,7 @@
 					<div class="foot_list">
 						<ul>
 							<li><a target="_blank" href="{#"QS_jobslist"|qishi_url#}">职位搜索</a></li>
-							<li><a target="_blank" href="{#$QISHI.main_domain#}explain/explain-show.php?id=6">职场指南</a></li>
-						</ul>
-						<ul>
-							<li><a target="_blank" href="{#"QS_jobslist,nature:63"|qishi_url#}">兼职招聘</a></li>
+							<li><a target="_blank" href="{#$QISHI.site_dir#}explain/explain-show.php?id=6">职场指南</a></li>
 						</ul>
 					</div>
 				</div>
@@ -51,9 +48,8 @@
 					<h4>企业服务</h4>
 					<div class="foot_list">
 						<ul>
-							<li><a target="_blank" href="{#$QISHI.main_domain#}user/company/company_jobs.php?act=addjobs">发布职位</a></li>
+							<li><a target="_blank" href="{#$QISHI.site_dir#}user/company/company_jobs.php?act=addjobs">发布职位</a></li>
 							<li><a target="_blank" href="{#"QS_resumelist"|qishi_url#}">简历搜索</a></li>
-							<li><a target="_blank" href="{#"QS_simplelist"|qishi_url#}">招聘普工</a></li>
 							<li><a target="_blank" href="{#"QS_hrtoolslist"|qishi_url#}">HR工具箱</a></li>
 						</ul>
 						<ul>
@@ -89,7 +85,7 @@
   <div class="copyright">
 联系地址：{#$QISHI.address#} 联系电话：{#$QISHI.bootom_tel#} 网站备案：{#$QISHI.icp#}{#$QISHI.statistics#}<br />
 {#$QISHI.bottom_other#}<br />
-Powered by <a href="http://www.74cms.com/" target="_blank" style="color:#009900"><em> 74cms v{#$QISHI.version#}</em></a><br />
+Powered by <a href="http://www.74cms.com/" target="_blank" style="color:#009900"><em> 74cms v{#$QISHI.version#} 迅易科技版权所有</em></a><br />
 </div>
 </div>
 <!-- 回到顶部组件 -->

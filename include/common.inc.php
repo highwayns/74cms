@@ -1,12 +1,12 @@
 <?php
  /*
- * 74cms å…±ç”¨é…ç½®æ–‡ä»¶
+ * 74cms ¹²ÓÃÅäÖÃÎÄ¼þ
  * ============================================================================
- * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
- * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
+ * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
+ * ÍøÕ¾µØÖ·: http://www.74cms.com£»
  * ----------------------------------------------------------------------------
- * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
- * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
+ * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
+ * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
  * ============================================================================
 */
 if(!defined('IN_QISHI')) exit('Access Denied!');
@@ -17,20 +17,20 @@ session_save_path(QISHI_ROOT_PATH.'data/sessions/');
 session_start();
 require_once(QISHI_ROOT_PATH.'data/config.php');
 header("Content-Type:text/html;charset=".QISHI_CHARSET);
+require_once(QISHI_ROOT_PATH.'include/help.class.php');
 require_once(QISHI_ROOT_PATH.'include/common.fun.php');
 require_once(QISHI_ROOT_PATH.'include/74cms_version.php');
 $QSstarttime=exectime();
-
 if (!empty($_GET))
 {
-$_GET  = addslashes_deep($_GET);
+$_GET  = help::addslashes_deep($_GET);
 }
 if (!empty($_POST))
 {
-$_POST = addslashes_deep($_POST);
+$_POST = help::addslashes_deep($_POST);
 }
-$_COOKIE   = addslashes_deep($_COOKIE);
-$_REQUEST  = addslashes_deep($_REQUEST);
+$_COOKIE   = help::addslashes_deep($_COOKIE);
+$_REQUEST  = help::addslashes_deep($_REQUEST);
 date_default_timezone_set("PRC");
 $timestamp = time();
 $online_ip=getip();
@@ -39,27 +39,22 @@ $_NAV=get_cache('nav');
 $_PAGE=get_cache('page');
 $_CFG=get_cache('config');
 $_PLUG=get_cache('plug');
-$_CFG['main_domain'] = $_CFG['site_domain'].$_CFG['site_dir'];
-$_CFG['wap_domain'] = $_CFG['wap_domain']==""?$_CFG['main_domain']."wap":$_CFG['wap_domain'];
+$_CFG['wap_domain'] = $_CFG['wap_domain']==""?$_CFG['site_domain'].$_CFG['site_dir']."m":$_CFG['wap_domain'];
 $_CFG['version']=QISHI_VERSION;
 $_CFG['web_logo']=$_CFG['web_logo']?$_CFG['web_logo']:'logo.gif';
-$_CFG['upfiles_dir']=$_CFG['main_domain']."data/".$_CFG['updir_images']."/";
-$_CFG['thumb_dir']=$_CFG['main_domain']."data/".$_CFG['updir_thumb']."/";
-$_CFG['resume_photo_dir']=$_CFG['main_domain']."data/".$_CFG['resume_photo_dir']."/";
-$_CFG['resume_photo_dir_thumb']=$_CFG['main_domain']."data/".$_CFG['resume_photo_dir_thumb']."/";
-$_CFG['teacher_photo_dir']=$_CFG['main_domain']."data/train_teachers/";
-$_CFG['teacher_photo_dir_thumb']=$_CFG['main_domain']."data/train_teachers/thumb/";
-$_CFG['hunter_photo_dir']=$_CFG['main_domain']."data/hunter/";
-$_CFG['hunter_photo_dir_thumb']=$_CFG['main_domain']."data/hunter/thumb/";
-$_CFG['subsite_id']=0;
-subsiteinfo($_CFG);
-$_CFG['site_template']=$_CFG['main_domain'].'templates/'.$_CFG['template_dir'];
+$_CFG['upfiles_dir']=$_CFG['site_dir']."data/".$_CFG['updir_images']."/";
+$_CFG['thumb_dir']=$_CFG['site_dir']."data/".$_CFG['updir_thumb']."/";
+$_CFG['_resume_photo_dir']= $_CFG['resume_photo_dir'];
+$_CFG['resume_photo_dir']=$_CFG['site_dir']."data/".$_CFG['resume_photo_dir']."/";
+$_CFG['_resume_photo_dir_thumb']= $_CFG['resume_photo_dir_thumb'];
+$_CFG['resume_photo_dir_thumb']=$_CFG['site_dir']."data/".$_CFG['resume_photo_dir_thumb']."/";
+$_CFG['site_template']=$_CFG['site_dir'].'templates/'.$_CFG['template_dir'];
 $mypage=$_PAGE[$alias];
 $mypage['tag']?$page_select=$mypage['tag']:'';
 require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 	if ($_CFG['isclose'])
 	{
-				$smarty->assign('info',$_CFG['close_reason']=$_CFG['close_reason']?$_CFG['close_reason']:'ç«™ç‚¹æš‚æ—¶å…³é—­...');
+				$smarty->assign('info',$_CFG['close_reason']=$_CFG['close_reason']?$_CFG['close_reason']:'Õ¾µãÔÝÊ±¹Ø±Õ...');
 				$smarty->display('warning.htm');
 				exit();
 	}

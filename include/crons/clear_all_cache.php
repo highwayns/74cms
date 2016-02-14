@@ -21,6 +21,25 @@ die('Access Denied!');
 	$cronstpl -> template_dir = QISHI_ROOT_PATH.'templates/'.$_CFG['template_dir'];
 	$cronstpl->cache = true;
 	$cronstpl -> clear_all_cache();
+
+	//删除微信扫描缓存文件
+	deldir(QISHI_ROOT_PATH."data/weixin/");
+	function deldir($dir) {
+	  //删除目录下的文件：
+	  $dh=opendir($dir);
+	  while ($file=readdir($dh)) {
+	    if($file!="." && $file!="..") {
+	      $fullpath=$dir."/".$file;
+	      if(!is_dir($fullpath)) {
+	          unlink($fullpath);
+	      } else {
+	          deldir($fullpath);
+	      }
+	    }
+	  }
+	  closedir($dh);
+	}
+
 	//更新任务时间表
 	if ($crons['weekday']>=0)
 	{
@@ -48,5 +67,5 @@ die('Access Denied!');
 	}
 	$setsqlarr['nextrun']=$nextrun;
 	$setsqlarr['lastrun']=time();
-	updatetable(table('crons'), $setsqlarr," cronid ='".intval($crons['cronid'])."'");
+	$db->updatetable(table('crons'), $setsqlarr," cronid ='".intval($crons['cronid'])."'");
 ?>

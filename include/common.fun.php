@@ -10,63 +10,6 @@
  * ============================================================================
 */
 if(!defined('IN_QISHI')) die('Access Denied!');
-function addslashes_deep($value)
-{
-    if (empty($value))
-    {
-        return $value;
-    }
-    else
-    {
-		if (!get_magic_quotes_gpc())
-		{
-		$value=is_array($value) ? array_map('addslashes_deep', $value) : mystrip_tags(addslashes($value));
-		}
-		else
-		{
-		$value=is_array($value) ? array_map('addslashes_deep', $value) : mystrip_tags($value);
-		}
-		return $value;
-    }
-}
-function mystrip_tags($string)
-{
-	$string = new_html_special_chars($string);
-	$string = remove_xss($string);
-	return $string;
-}
-function new_html_special_chars($string) {
-	$string = str_replace(array('&amp;', '&quot;', '&lt;', '&gt;'), array('&', '"', '<', '>'), $string);
-	$string = strip_tags($string);
-	return $string;
-}
-function remove_xss($string) { 
-    $string = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]+/S', '', $string);
-
-    $parm1 = Array('javascript', 'union','vbscript', 'expression', 'applet', 'xml', 'blink', 'link', 'script', 'embed', 'object', 'iframe', 'frame', 'frameset', 'ilayer', 'layer', 'bgsound', 'title', 'base');
-
-    $parm2 = Array('onabort', 'onactivate', 'onafterprint', 'onafterupdate', 'onbeforeactivate', 'onbeforecopy', 'onbeforecut', 'onbeforedeactivate', 'onbeforeeditfocus', 'onbeforepaste', 'onbeforeprint', 'onbeforeunload', 'onbeforeupdate', 'onblur', 'onbounce', 'oncellchange', 'onchange', 'onclick', 'oncontextmenu', 'oncontrolselect', 'oncopy', 'oncut', 'ondataavailable', 'ondatasetchanged', 'ondatasetcomplete', 'ondblclick', 'ondeactivate', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'onerror', 'onerrorupdate', 'onfilterchange', 'onfinish', 'onfocus', 'onfocusin', 'onfocusout', 'onhelp', 'onkeydown', 'onkeypress', 'onkeyup', 'onlayoutcomplete', 'onload', 'onlosecapture', 'onmousedown', 'onmouseenter', 'onmouseleave', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onmove', 'onmoveend', 'onmovestart', 'onpaste', 'onpropertychange', 'onreadystatechange', 'onreset', 'onresize', 'onresizeend', 'onresizestart', 'onrowenter', 'onrowexit', 'onrowsdelete', 'onrowsinserted', 'onscroll', 'onselect', 'onselectionchange', 'onselectstart', 'onstart', 'onstop', 'onsubmit', 'onunload','style','href','action','location','background','src','poster');
-	
-	$parm3 = Array('alert','sleep','load_file','confirm','prompt','benchmark','select','update','insert','delete','alter','drop','truncate');
-
-    $parm = array_merge($parm1, $parm2, $parm3); 
-
-	for ($i = 0; $i < sizeof($parm); $i++) { 
-		$pattern = '/'; 
-		for ($j = 0; $j < strlen($parm[$i]); $j++) { 
-			if ($j > 0) { 
-				$pattern .= '('; 
-				$pattern .= '(&#[x|X]0([9][a][b]);?)?'; 
-				$pattern .= '|(&#0([9][10][13]);?)?'; 
-				$pattern .= ')?'; 
-			}
-			$pattern .= $parm[$i][$j]; 
-		}
-		$pattern .= '/i';
-		$string = preg_replace($pattern, '****', $string); 
-	}
-	return $string;
-}
 function table($table)
 {
  	global $pre;
@@ -198,49 +141,6 @@ function convertip_tiny($ip, $ipdatafile) {
 		return '- Unknown';
 	}
 }
-
-
-function inserttable($tablename, $insertsqlarr, $returnid=0, $replace = false, $silent=0) {
-	global $db;
-	$insertkeysql = $insertvaluesql = $comma = '';
-	foreach ($insertsqlarr as $insert_key => $insert_value) {
-		$insertkeysql .= $comma.'`'.$insert_key.'`';
-		$insertvaluesql .= $comma.'\''.$insert_value.'\'';
-		$comma = ', ';
-	}
-	$method = $replace?'REPLACE':'INSERT';
-	// echo $method." INTO $tablename ($insertkeysql) VALUES ($insertvaluesql)", $silent?'SILENT':'';die;
-	$state = $db->query($method." INTO $tablename ($insertkeysql) VALUES ($insertvaluesql)", $silent?'SILENT':'');
-	if($returnid && !$replace) {
-		return $db->insert_id();
-	}else {
-	    return $state;
-	} 
-}
-function updatetable($tablename, $setsqlarr, $wheresqlarr, $silent=0) {
-	global $db;
-	$setsql = $comma = '';
-	foreach ($setsqlarr as $set_key => $set_value) {
-		if(is_array($set_value)) {
-			$setsql .= $comma.'`'.$set_key.'`'.'=\''.$set_value[0].'\'';
-		} else {
-			$setsql .= $comma.'`'.$set_key.'`'.'=\''.$set_value.'\'';
-		}
-		$comma = ', ';
-	}
-	$where = $comma = '';
-	if(empty($wheresqlarr)) {
-		$where = '1';
-	} elseif(is_array($wheresqlarr)) {
-		foreach ($wheresqlarr as $key => $value) {
-			$where .= $comma.'`'.$key.'`'.'=\''.$value.'\'';
-			$comma = ' AND ';
-		}
-	} else {
-		$where = $wheresqlarr;
-	}
-	return $db->query("UPDATE ".($tablename)." SET ".$setsql." WHERE ".$where, $silent?"SILENT":"");
-}
 function wheresql($wherearr='')
 {
 	$wheresql="";
@@ -249,7 +149,7 @@ function wheresql($wherearr='')
 		$where_set=' WHERE ';
 			foreach ($wherearr as $key => $value)
 			{
-			$wheresql .=$where_set. $comma.$key.'="'.$value.'"';
+			$wheresql .=$where_set. $comma.$key."='".$value."'";
 			$comma = ' AND ';
 			$where_set=' ';
 			}
@@ -415,15 +315,28 @@ function smtp_mail($sendto_email,$subject,$body,$From='',$FromName='')
 	$mail->Subject = $subject;
 	$mail->Body =$body;
 	$mail->AltBody ="text/html";
-	if($mail->Send())  
+	if($mail->Send())
 	{
+	write_sys_email_log($mailconfig['smtpusername'],$sendto_email,$subject,$body,"1");
 	return true;
 	}
 	else
 	{
 	write_syslog(2,'MAIL',$mail->ErrorInfo);
+	write_sys_email_log($mailconfig['smtpusername'],$sendto_email,$subject,$body,"2");
 	return false;
 	}
+}
+function write_sys_email_log($send_from,$send_to,$subject,$body,$state)
+{
+	global $db;
+	$setarr['send_from']=$send_from;
+	$setarr['send_to']=$send_to;
+	$setarr['subject']=$subject;
+	$setarr['body']=addslashes($body);
+	$setarr['state']=intval($state);
+	$setarr['sendtime']=time();
+	$db->inserttable(table('sys_email_log'),$setarr);
 }
 function dfopen($url,$limit = 0, $post = '', $cookie = '', $bysocket = FALSE	, $ip = '', $timeout = 15, $block = TRUE, $encodetype  = 'URLENCOD')
 {
@@ -504,7 +417,8 @@ function send_sms($mobile,$content)
 	}
 	else
 	{
-	return dfopen("http://www.74cms.com/SMSsend.php?sms_name={$sms['notice_sms_name']}&sms_key={$sms['notice_sms_key']}&mobile={$mobile}&content={$content}");
+		return https_request("http://www.74cms.com/SMSsend.php?sms_name={$sms['notice_sms_name']}&sms_key={$sms['notice_sms_key']}&mobile={$mobile}&content={$content}");
+	
 	}	
 }
 //验证码类短信接口
@@ -518,7 +432,7 @@ function captcha_send_sms($mobile,$content)
 	}
 	else
 	{
-		return dfopen("http://www.74cms.com/SMSsend.php?sms_name={$sms['captcha_sms_name']}&sms_key={$sms['captcha_sms_key']}&mobile={$mobile}&content={$content}");
+		return https_request("http://www.74cms.com/SMSsend.php?sms_name={$sms['captcha_sms_name']}&sms_key={$sms['captcha_sms_key']}&mobile={$mobile}&content={$content}");
 	}	
 }
 //其他类短信接口
@@ -532,7 +446,7 @@ function free_send_sms($mobile,$content)
 	}
 	else
 	{
-	return dfopen("http://www.74cms.com/SMSsend.php?sms_name={$sms['free_sms_name']}&sms_key={$sms['free_sms_key']}&mobile={$mobile}&content={$content}");
+	return https_request("http://www.74cms.com/SMSsend5.php?sms_name={$sms['free_sms_name']}&sms_key={$sms['free_sms_key']}&mobile={$mobile}&content={$content}");
 	}	
 }
 function execution_crons()
@@ -548,11 +462,15 @@ function get_tpl($type,$id)
 {
 	global $db,$_CFG,$smarty;
 	$id=intval($id);
-	$tarr=array("jobs","company_profile","resume","companycommentshow","companynewsshow",'course','train_profile');
+	$tarr=array("jobs","company_profile","resume","companycommentshow");
 	if (!in_array($type,$tarr)) exit();
-	if ($type=='companynewsshow')
+	if($type=='jobs')
 	{
-	$utpl=$db->getone("SELECT p.tpl FROM ".table('company_news')."  AS c LEFT JOIN ".table('company_profile')."  AS p ON c.company_id=p.id WHERE c.id='{$id}' limit 1");
+		$utpl=$db->getone("SELECT tpl FROM ".table($type)." WHERE id='{$id}' limit 1");
+		if(empty($utpl))
+		{
+			$utpl=$db->getone("SELECT tpl FROM ".table('jobs_tmp')." WHERE id='{$id}' limit 1");
+		}
 	}
 	else
 	{
@@ -568,19 +486,13 @@ function get_tpl($type,$id)
 		if ($type=='resume')
 		{
 		$thistpl="../tpl_resume/{$_CFG['tpl_personal']}/";
-		$smarty->assign('user_tpl',$_CFG['main_domain']."templates/tpl_resume/{$_CFG['tpl_personal']}/");
-		return $thistpl;
-		}
-		elseif ($type=='course' || $type=='train_profile' || $type=='trainnewsshow')
-		{
-		$thistpl="../tpl_train/{$_CFG['tpl_train']}/";
-		$smarty->assign('user_tpl',$_CFG['main_domain']."templates/tpl_train/{$_CFG['tpl_train']}/");
+		$smarty->assign('user_tpl',$_CFG['site_dir']."templates/tpl_resume/{$_CFG['tpl_personal']}/");
 		return $thistpl;
 		}
 		else
 		{
 		$thistpl="../tpl_company/{$_CFG['tpl_company']}/";
-		$smarty->assign('user_tpl',$_CFG['main_domain']."templates/tpl_company/{$_CFG['tpl_company']}/");
+		$smarty->assign('user_tpl',$_CFG['site_dir']."templates/tpl_company/{$_CFG['tpl_company']}/");
 		return $thistpl;
 		}
 	}
@@ -588,122 +500,67 @@ function get_tpl($type,$id)
 	{
 		if ($type=='resume')
 		{
-		$smarty->assign('user_tpl',$_CFG['main_domain']."templates/tpl_resume/{$thistpl}/");
+		$smarty->assign('user_tpl',$_CFG['site_dir']."templates/tpl_resume/{$thistpl}/");
 		return "../tpl_resume/{$thistpl}/";
 		}
 		else
 		{
-		$smarty->assign('user_tpl',$_CFG['main_domain']."templates/tpl_company/{$thistpl}/");
+		$smarty->assign('user_tpl',$_CFG['site_dir']."templates/tpl_company/{$thistpl}/");
 		return "../tpl_company/{$thistpl}/";
 		}		
 	}	
 }
-function url_rewrite($alias=NULL,$get=NULL,$rewrite=true,$subsite_id=0)
+function url_rewrite($alias=NULL,$get=NULL,$rewrite=true)
 {
 	global $_CFG,$_PAGE;
-	$_SUBSITE=get_cache('subsite');
-	
 	$url ='';
-	if($rewrite==false){
-		$config = get_cache('config');
-		$_CFG['version']=QISHI_VERSION;
-		$_CFG['web_logo']=$config['web_logo']?$config['web_logo']:'logo.gif';
-		$_CFG['upfiles_dir']=$config['site_dir']."data/".$config['updir_images']."/";
-		$_CFG['thumb_dir']=$config['site_dir']."data/".$config['updir_thumb']."/";
-		$_CFG['resume_photo_dir']=$config['site_dir']."data/".$config['resume_photo_dir']."/";
-		$_CFG['resume_photo_dir_thumb']=$config['site_dir']."data/".$config['resume_photo_dir_thumb']."/";
-		$_CFG['teacher_photo_dir']=$config['site_dir']."data/train_teachers/";
-		$_CFG['teacher_photo_dir_thumb']=$config['site_dir']."data/train_teachers/thumb/";
-		$_CFG['hunter_photo_dir']=$config['site_dir']."data/hunter/";
-		$_CFG['hunter_photo_dir_thumb']=$config['site_dir']."data/hunter/thumb/";
-		if (!empty($get))
-		{
-			foreach($get as $k=>$v)
+	if ($_PAGE[$alias]['url']=='0' || $rewrite==false)//原始链接
+	{
+			if (!empty($get))
 			{
-			$url .="{$k}={$v}&";
-			}
-		}
-		$url=!empty($url)?"?".rtrim($url,'&'):'';
-		
-		return $config['site_domain'].$config['site_dir'].$_PAGE[$alias]['file'].$url;
-	
-	}else{
-		if ($_PAGE[$alias]['url']=='0')//原始链接
-		{
-				if (!empty($get))
-				{
-					foreach($get as $k=>$v)
-					{
-					$url .="{$k}={$v}&";
-					}
-				}
-				$url=!empty($url)?"?".rtrim($url,'&'):'';
-				if ($subsite_id>0){
-					$subsite = $_SUBSITE[$subsite_id];
-					if($alias == "QS_login" || $alias == "QS_logout"){
-						return $_CFG['site_dir'].$_PAGE[$alias]['file'].$url;
-					}
-					return "http://".$subsite['sitedomain']."/".$_PAGE[$alias]['file'].$url;
-				}else{
-					return $_CFG['site_domain'].$_CFG['site_dir'].$_PAGE[$alias]['file'].$url;
-				}
-				
-		}
-		else 
-		{
-			if ($subsite_id>0){
-				$subsite = $_SUBSITE[$subsite_id];
-				$url ="http://".$subsite['sitedomain']."/".$_PAGE[$alias]['rewrite'];
-			}else{
-				$url =$_CFG['site_domain'].$_CFG['site_dir'].$_PAGE[$alias]['rewrite'];
-			}
-				if ($_PAGE[$alias]['pagetpye']=='2' && empty($get['page']))
-				{
-				$get['page']=1;
-				}
 				foreach($get as $k=>$v)
 				{
-				$url=str_replace('($'.$k.')',$v,$url);
+				$url .="{$k}={$v}&";
 				}
-				
-				$url=preg_replace('/\(\$(.+?)\)/','',$url);
-				if(substr($url,-5)=='?key=')
-				{
-				$url=rtrim($url,'?key=');
-				}
-				return $url;
-		}
+			}
+			$url=!empty($url)?"?".rtrim($url,'&'):'';
+			return $_CFG['site_domain'].$_CFG['site_dir'].$_PAGE[$alias]['file'].$url;
 	}
-	
+	else 
+	{
+			$url =$_CFG['site_domain'].$_CFG['site_dir'].$_PAGE[$alias]['rewrite'];
+			if ($_PAGE[$alias]['pagetpye']=='2' && empty($get['page']))
+			{
+			$get['page']=1;
+			}
+			foreach($get as $k=>$v)
+			{
+			$url=str_replace('($'.$k.')',$v,$url);
+			}
+			
+			$url=preg_replace('/\(\$(.+?)\)/','',$url);
+			if(substr($url,-5)=='?key=')
+			{
+			$url=rtrim($url,'?key=');
+			}
+			return $url;
+	}
 }
-function get_member_url($type,$dirname=false,$pre_domain=false)
+function get_member_url($type,$dirname=false)
 {
 	global $_CFG;
 	$type=intval($type);
-	if($pre_domain){
-		$domain = $pre_domain;
-	}else{
-		$domain = $_CFG['main_domain'];
-	}
 	if ($type===0) 
 	{
 	return "";
 	}
 	elseif ($type===1)
 	{
-	$return=$domain."user/company/company_index.php";
+	$return=$_CFG['site_dir']."user/company/company_index.php";
 	}
 	elseif ($type===2) 
 	{
-	$return=$domain."user/personal/personal_index.php";
-	}
-	elseif ($type===3) 
-	{
-	$return=$domain."user/hunter/hunter_index.php";
-	}
-	elseif ($type===4) 
-	{
-	$return=$domain."user/train/train_index.php";
+	$return=$_CFG['site_dir']."user/personal/personal_index.php";
 	}
 	if ($dirname)
 	{
@@ -712,56 +569,6 @@ function get_member_url($type,$dirname=false,$pre_domain=false)
 	else
 	{
 	return $return;
-	}
-}
-
-function subsiteinfo(&$_CFG)
-{
-	if ($_CFG['subsite']=="0")
-	{
-	$_CFG['subsite_dir']=$_CFG['site_dir'];
-	// $_CFG['main_domain'] = $_CFG['site_domain'];
-	$_CFG['website_dir']=$_CFG['site_domain'].$_CFG['subsite_dir'];
-	return false;
-	}
-	else
-	{
-		$_SUBSITE=get_cache('subsite');
-			foreach($_SUBSITE as $key=> $sub)
-			{
-			$_CFG['district_array'][]=array('subsite'=>$sub['districtname'],'url'=>"http://".$sub['sitedomain']);
-			}
-		// $host=$_SERVER['HTTP_HOST'];
-		$subsite_id = intval($_GET['subsite_id']);
-    	$_CFG['subsite_dir']=$_CFG['site_dir'];
-    	// $_CFG['main_domain'] = $_CFG['site_domain'].$_CFG['site_dir'];
-		$_CFG['website_dir']=$_CFG['site_domain'].$_CFG['subsite_dir'];
-		if (array_key_exists($subsite_id,$_SUBSITE))
-		{
-			$subsite=$_SUBSITE[$subsite_id];
-			$_CFG['site_domain']="http://".$subsite['sitedomain'];
-			$_CFG['subsite_dir']="/";
-			$_CFG['website_dir']=$_CFG['site_domain'].$_CFG['subsite_dir'];
-			$_CFG['subsite_districtname']=$subsite['districtname'];
-			$_CFG['site_name']=$subsite['sitename'];
-			if (empty($_GET['district_cn']))
-			{
-			$_GET['district_cn']=$_CFG['subsite_districtname'];
-			}
-			$_CFG['subsite_id']=$subsite_id;
-			$subsite['logo']?$_CFG['web_logo']=$subsite['logo']:'';
-			$subsite['tpl']?$_CFG['template_dir']=$subsite['tpl'].'/':'';
-			$subsite['filter_notice']?$_CFG['subsite_filter_notice']=$subsite['filter_notice']:'';
-			$subsite['filter_jobs']?$_CFG['subsite_filter_jobs']=$subsite['filter_jobs']:'';
-			$subsite['filter_resume']?$_CFG['subsite_filter_resume']=$subsite['filter_resume']:'';
-			$subsite['filter_ad']?$_CFG['subsite_filter_ad']=$subsite['filter_ad']:'';
-			$subsite['filter_links']?$_CFG['subsite_filter_links']=$subsite['filter_links']:'';
-			$subsite['filter_news']?$_CFG['subsite_filter_news']=$subsite['filter_news']:'';
-			$subsite['filter_explain']?$_CFG['subsite_filter_explain']=$subsite['filter_explain']:'';
-			$subsite['filter_jobfair']?$_CFG['subsite_filter_jobfair']=$subsite['filter_jobfair']:'';
-			$subsite['filter_simple']?$_CFG['subsite_filter_simple']=$subsite['filter_simple']:'';
-			$subsite['filter_course']?$_CFG['subsite_filter_course']=$subsite['filter_course']:'';
-		}
 	}
 }
 function fulltextpad($str)
@@ -792,22 +599,46 @@ function asyn_userkey($uid)
 function write_syslog($type,$type_name,$str)
 {
  	global $db,$online_ip,$ip_address;
-	$l_page = addslashes(request_url());
-	$str = addslashes($str);
- 	$sql = "INSERT INTO ".table('syslog')." (l_type, l_type_name, l_time,l_ip,l_address,l_page,l_str) VALUES ('{$type}', '{$type_name}', '".time()."','{$online_ip}','{$ip_address}','{$l_page}','{$str}')"; 
-	return $db->query($sql);
+	$setarr["l_type"]=$type;
+	$setarr["l_type_name"]=$type_name;
+	$setarr["l_time"]=time();
+	$setarr["l_ip"]=$online_ip;
+	$setarr["l_address"]=$ip_address;
+	$setarr["l_page"]=request_url();
+	$setarr["l_str"]=$str;
+	return $db->inserttable(table("syslog"),$setarr);
 }
 function write_memberslog($uid,$utype,$type,$username,$str,$mode,$op_type,$op_type_cn,$op_used,$op_leave)
 {
  	global $db,$online_ip,$ip_address;
- 	$sql = "INSERT INTO ".table('members_log')." (log_uid,log_username,log_utype,log_type,log_addtime,log_ip,log_address,log_value,log_mode,log_op_type,log_op_type_cn,log_op_used,log_op_leave) VALUES ( '{$uid}','{$username}','{$utype}','{$type}', '".time()."','{$online_ip}','{$ip_address}','{$str}','{$mode}','{$op_type}','{$op_type_cn}','{$op_used}','{$op_leave}')";
-	return $db->query($sql);
+ 	$setarr["log_uid"]=$uid;
+ 	$setarr["log_username"]=$username;
+ 	$setarr["log_utype"]=$utype;
+ 	$setarr["log_type"]=$type;
+ 	$setarr["log_addtime"]=time();
+ 	$setarr["log_ip"]=$online_ip;
+ 	$setarr["log_address"]=$ip_address;
+ 	$setarr["log_value"]=$str;
+ 	$setarr["log_mode"]=$mode;
+ 	$setarr["log_op_type"]=$op_type;
+ 	$setarr["log_op_type_cn"]=$op_type_cn;
+ 	$setarr["log_op_used"]=$op_used;
+ 	$setarr["log_op_leave"]=$op_leave;
+ 	return $db->inserttable(table("members_log"),$setarr);
 }
 function write_setmeallog($uid,$username,$value,$type,$amount='0.00',$is_money='1',$log_mode='1',$log_utype='1')
 {
  	global $db;
- 	$sql = "INSERT INTO ".table('members_charge_log')." (log_uid,log_username,log_type,log_addtime,log_value,log_amount,log_ismoney,log_mode,log_utype) VALUES ( '{$uid}','{$username}','{$type}', '".time()."','{$value}','{$amount}','{$is_money}','{$log_mode}','{$log_utype}')";
-	return $db->query($sql);
+ 	$setarr["log_uid"]=$uid;
+ 	$setarr["log_username"]=$username;
+ 	$setarr["log_type"]=$type;
+ 	$setarr["log_addtime"]=time();
+ 	$setarr["log_value"]=$value;
+ 	$setarr["log_amount"]=$amount;
+ 	$setarr["log_ismoney"]=$is_money;
+ 	$setarr["log_mode"]=$log_mode;
+ 	$setarr["log_utype"]=$log_utype;
+ 	return $db->inserttable(table("members_charge_log"),$setarr);
 }
 
 function request_url()
@@ -836,6 +667,7 @@ function label_replace($templates)
 	$templates=str_replace('{sitedomain}',$_CFG['site_domain'].$_CFG['site_dir'],$templates);
 	$templates=str_replace('{username}',$_GET['sendusername'],$templates);
 	$templates=str_replace('{password}',$_GET['sendpassword'],$templates);
+	$templates=str_replace('{utype}',$_GET['utype'],$templates);
 	$templates=str_replace('{newpassword}',$_GET['newpassword'],$templates);
 	$templates=str_replace('{personalfullname}',$_GET['personal_fullname'],$templates);
 	$templates=str_replace('{jobsname}',$_GET['jobs_name'],$templates);
@@ -868,28 +700,32 @@ function write_pmsnotice($touid,$toname,$message){
 	$setsqlarr['dateline']=time();
 	$setsqlarr['replytime']=time();
 	$setsqlarr['new']=1;
-	inserttable(table('pms'),$setsqlarr);
+	$db->inserttable(table('pms'),$setsqlarr);
 }
 //查看会员的日志
-function get_last_refresh_date($uid,$type)
+function get_last_refresh_date($uid,$type,$mode=0)
 {
 	global $db;
-	$sql = "select max(addtime) from ".table('refresh_log')." where uid=".intval($uid).' and ' . "`type`='".$type."'";
+	$sql = "select max(addtime) from ".table('refresh_log')." where uid=".intval($uid).' and ' . "`type`='".$type."' and mode = ".$mode;
 	return $db->getone($sql);
 }
-function get_today_refresh_times($uid,$type)
+//统计今天刷新次数
+function get_today_refresh_times($uid,$type,$mode=0)
 {
 	global $db;
 	$today = strtotime(date('Y-m-d'));
 	$tomorrow = $today+3600*24;
-	$sql = "select count(*) from ".table('refresh_log')." where uid=".intval($uid).' and ' . "`type`='".$type."' and addtime>".$today." and addtime<".$tomorrow;
+	$sql = "select count(*) from ".table('refresh_log')." where uid=".intval($uid).' and ' . "`type`='".$type."' and addtime>".$today." and addtime<".$tomorrow." and mode = ".$mode;
 	return $db->getone($sql);
 }
-function write_refresh_log($uid,$type){
+function write_refresh_log($uid,$mode=0,$type)
+{
+	global $db;
 	$setsqlarr['uid'] = $uid;
+	$setsqlarr['mode'] = $mode;
 	$setsqlarr['type'] = $type;
 	$setsqlarr['addtime'] = time();
-	inserttable(table('refresh_log'),$setsqlarr);
+	$db->inserttable(table('refresh_log'),$setsqlarr);
 }
 
 /**
@@ -932,6 +768,9 @@ function filter_url($alias){
  * @param $utfstr
  */
 function utf8_to_gbk($utfstr) {
+	if(is_numeric($utfstr)){
+		return $utfstr;
+	}
 	global $UC2GBTABLE;
 	$okstr = '';
 	if(empty($UC2GBTABLE)) {
@@ -973,6 +812,9 @@ function utf8_to_gbk($utfstr) {
  * @param $gbstr
  */
 function gbk_to_utf8($gbstr) {
+	if(is_numeric($gbstr)){
+		return $gbstr;
+	}
 	global $CODETABLE;
 	if(empty($CODETABLE)) {
 		define('CODETABLEDIR', dirname(__FILE__).DIRECTORY_SEPARATOR.'encoding'.DIRECTORY_SEPARATOR);
@@ -1082,17 +924,105 @@ function browser()
 	return $browser;
 }
 function https_request($url,$data = null){
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-    if (!empty($data)){
-        curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-    }
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    $output = curl_exec($curl);
-    curl_close($curl);
-    return $output;
+	if(function_exists('curl_init')){
+		$curl = curl_init();
+	    curl_setopt($curl, CURLOPT_URL, $url);
+	    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+	    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+	    curl_setopt($curl, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1);
+	    if (!empty($data)){
+	        curl_setopt($curl, CURLOPT_POST, 1);
+	        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+	    }
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	    $output = curl_exec($curl);
+	    curl_close($curl);
+	    return $output;
+	}else{
+		return false;
+	}
+}
+function get_access_token(){
+	global $_CFG,$db;
+	//判断之前的token是否在生命周期范围内
+	if(!empty($_CFG['access_token']) && !empty($_CFG['expires_addtime']) && (time()-$_CFG['expires_addtime'] <= 7200))
+	{
+		return $_CFG['access_token'];
+	}
+	else
+	{
+		$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$_CFG['weixin_appid']."&secret=".$_CFG['weixin_appsecret'];
+		$result = https_request($url);
+		$jsoninfo = json_decode($result, true);
+		$access_token = $jsoninfo["access_token"];
+		//更新数据库
+		$db->query("UPDATE ".table('config')." SET value='".$access_token."' WHERE name='access_token'");
+		$db->query("UPDATE ".table('config')." SET value='".time()."' WHERE name='expires_addtime'");
+		return $access_token;
+	}
+}
+function send_template_message($data){
+	$access_token = get_access_token();
+	$url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$access_token;
+	$result = https_request($url, $data);
+	return json_decode($result,true);
+}
+//检查缓存
+function check_cache($cache,$dir,$days=1)
+{
+	$cachename=QISHI_ROOT_PATH.'data/'.$dir."/".$cache;
+	if (!is_writable(QISHI_ROOT_PATH.'data/'.$dir.'/'))
+	{
+	exit("请先将“".$dir."”目录设置可读写！");
+	}
+	if (file_exists($cachename))
+	{
+		$filemtime=filemtime($cachename);
+		if ($filemtime>strtotime("-".$days." day"))
+		{
+			return file_get_contents($cachename);
+		}
+	}
+	return false;
+}
+//写入缓存
+function write_cache($cache, $json, $dir)
+{
+	$content = $json;
+	$cachename=QISHI_ROOT_PATH.'data/'.$dir."/".$cache;
+	if (!file_put_contents($cachename, $content, LOCK_EX))
+	{
+		$fp = @fopen($cachename, 'wb+');
+		if (!$fp)
+		{
+			exit('生cache文件失败，请设置“'.$dir.'”的读写权限');
+		}
+		if (!@fwrite($fp, trim($content)))
+		{
+			exit('生cache文件失败，请设置“'.$dir.'”的读写权限');
+		}
+		@fclose($fp);
+	}
+}
+function baidu_submiturl($urls,$param){
+	global $_CFG;
+	$_SUBURL=get_cache('baidu_submiturl');
+	if($_SUBURL['token'] && $_SUBURL[$param]=='1' && function_exists('curl_init')){
+		if(!is_array($urls)){
+			$urls = array($urls);
+		}
+		$site_domain = str_replace('http://','',$_CFG['site_domain']);
+		$api = 'http://data.zz.baidu.com/urls?site='.$site_domain.'&token='.$_SUBURL['token'];
+		$ch = curl_init();
+		$options =  array(
+		    CURLOPT_URL => $api,
+		    CURLOPT_POST => true,
+		    CURLOPT_RETURNTRANSFER => true,
+		    CURLOPT_POSTFIELDS => implode("\n", $urls),
+		    CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
+		);
+		curl_setopt_array($ch, $options);
+		$result = curl_exec($ch);
+	}
 }
 ?>

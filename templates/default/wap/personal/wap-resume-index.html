@@ -12,7 +12,7 @@
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
 <link href="../css/user_personal.css" rel="stylesheet" type="text/css" />
 <script src="../js/jquery.js" type='text/javascript' ></script>
-<script src="{#$QISHI.main_domain#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
+<script src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}data/cache_classify.js" type='text/javascript' charset="utf-8"></script>
 <script src="../js/jquery.common.js" type='text/javascript' ></script>
 <script type="text/javascript">
 $(document).ready(function()
@@ -48,7 +48,7 @@ $(document).ready(function()
 		    if(data=="ok"){
 		    	// alert("删除简历成功");
 		    	window.location.reload();
-		    }else if(data="err"){
+		    }else if(data=="err"){
 		    	alert("删除简历失败！");
 		    }else{
 		    	alert(data);
@@ -63,8 +63,10 @@ $(document).ready(function()
 		    if(data=="ok"){
 		    	alert("申请高级简历,请等待管理员审核！");
 		    	window.location.reload();
-		    }else if(data="err"){
+		    }else if(data=="err"){
 		    	alert("申请失败！");
+		    }else{
+		    	alert(data);
 		    }
 		  });
 	});
@@ -107,7 +109,7 @@ $(document).ready(function()
 				<div class="resume_name">{#$list.title#}<span>{#if $list.audit=="1"#}{#elseif $list.audit=="2"#}[<i class="audit">审核中</i>]{#else#}[<i class="audit">审核未通过</i>]{#/if#}</span></div>
 				<div class="resume_centent">
 					<div class="resume_centent_l">
-						等级：{#if $list.talent=="2"#}<span style="color:#FF6600">高级</span>{#elseif $list.talent=="3"#}高级待审{#else#}普通&nbsp;&nbsp;<a href="javascript:val()"class="update" id="resume_talent" pid="{#$list.id#}">[升级简历]</a>{#/if#}<br />刷新：{#$list.refreshtime|date_format:"%Y-%m-%d %H:%M"#}
+						等级：{#if $list.talent=="2"#}<span style="color:#FF6600">高级</span>{#elseif $list.talent=="3"#}高级待审{#else#}普通&nbsp;&nbsp;<a href="javascript:;"class="update" id="resume_talent" pid="{#$list.id#}">[升级简历]</a>{#/if#}<br />刷新：{#$list.refreshtime|date_format:"%Y-%m-%d %H:%M"#}
 					</div>
 					<div class="resume_centent_r">
 						完整度：{#$list.complete_percent#}%(<span class="bad">{#if $list.level=="1"#} 差 {#elseif $list.level=="2"#}良{#else#}优{#/if#} </span>)<br />下载/浏览：{#$list.countdown#}/{#$list.click#}

@@ -280,13 +280,14 @@ class page{
 
     $this->last_page='尾页';
 
+
     return $this->first_page()."".$this->pre_page()."".$this->nowbar("","select")."".$this->next_page()."".$this->last_page()."<li class=\"page_all\">".$this->nowindex."/".$this->totalpage."页</li><div class=\"clear\"></div>";
 
     break;
 
    case '4':
 
-    $this->next_page='下一页';
+    $this->next_page='>';
 
     $this->pre_page='<';
 
@@ -305,12 +306,50 @@ class page{
     return "第".$this->nowindex."/".$this->totalpage."页";
 
     break;
+  case '7':// 积分商城 小页
 
+    $this->next_page='>';
+
+    $this->pre_page='<';
+
+    return $this->pre_page()."<li><b style='color:#ff9900'>".$this->nowindex."</b>/".$this->totalpage."页</li>".$this->next_page()."<div class=\"clear\"></div>";
+
+    break;
+  // 带跳转分页
+  case '8':
+
+    $this->next_page='下一页';
+
+    $this->pre_page='上一页';
+
+    $this->first_page='首页';
+
+    $this->last_page='尾页';
+
+    $this->go_page='跳转';
+
+    return $this->first_page()."".$this->pre_page()."".$this->nowbar("","select")."".$this->next_page()."".$this->last_page()."<li class=\"page_all\">".$this->nowindex."/".$this->totalpage."页</li><li style='line-height:23px;'>".$this->go_page()."</li><div class=\"clear\"></div>";
+
+    break;
   }
 
-
-
  }
+
+  function go_page($style='')
+  {
+   $get=$this->getarray;
+   $page_input="";
+   foreach ($get as $key => $value)
+   {
+
+      if($key=="page")
+      {
+        continue;
+      }
+      $page_input.='<input type="hidden" name="'.$key.'" value="'.$value.'">';
+   }
+   return '<form method="GET" class="page_form">'.$page_input.'到 <input type="text" name="page" size="1" class="page_input"> 页 <input type="submit" class="page_submit" value="'.$this->go_page.'"></form>';
+  }
 
  function _set_url($url="")
 

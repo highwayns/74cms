@@ -94,6 +94,15 @@ if ($act=="app")
 ?>
 <script type="text/javascript">
 $(".but80").hover(function(){$(this).addClass("but80_hover")},function(){$(this).removeClass("but80_hover")});
+
+var resumeid = $("#resumeid").val();
+var  url='../resume/resume-show.php?id='+resumeid+'';
+$("#resume_yl").attr("href",url);
+$("#resumeid").change(function(){
+	var resumeid = $("#resumeid").val();
+	var  url='../resume/resume-show.php?id='+resumeid+'';
+	$("#resume_yl").attr("href",url);
+})
 //计算今天申请数量
 var app_max="<?php echo $_CFG['apply_jobs_max'] ?>";
 var app_today="<?php echo get_now_applyjobs_num($_SESSION['uid']) ?>";
@@ -106,15 +115,15 @@ $("#ajax_app").click(function() {
 	{
 	alert("您今天投简历数量已经超出最大限制！");
 	}
-	else if ($("#app :checkbox[checked]").length>(app_max-app_today))
+	else if ($(".ajax_app :checkbox[checked]").length>(app_max-app_today))
 	{
 	alert("您今天还可以投递"+(app_max-app_today)+"个简历，已选职位超出了最大限制！");
 	}
-	else if ($("#app :checkbox[checked]").length==0)
+	else if ($(".ajax_app :checkbox[checked]").length==0)
 	{
 	alert("请选择投递的职位！");
 	}
-	else if ($("#app :radio[checked]").length==0)
+	else if ($("#resumeid").val()=="")
 	{
 	alert("请选择你的简历！");
 	}
@@ -126,11 +135,11 @@ $("#ajax_app").click(function() {
 		var tsTimeStamp= new Date().getTime();
 		 //alert(expire);
 			 var jidArr=new Array();
-
+			 var resumeid=$("#resumeid").val();
 			 var pms_notice=$("#pms_notice").attr("checked");
 			 if(pms_notice) pms_notice=1;else pms_notice=0;
 			 $("#app :checkbox[checked][name='jobsid']").each(function(index){jidArr[index]=$(this).val();});
-		$.post("<?php echo $_CFG['website_dir'] ?>user/user_apply_jobs.php", { "resumeid": $("#app :radio[checked]").val(),"jobsid": jidArr.join("-"),"notes": $("#notes").val(),"pms_notice":pms_notice,"time":tsTimeStamp,"act":"app_save"},
+		$.post("<?php echo $_CFG['site_dir'] ?>user/user_apply_jobs.php", { "resumeid": $("#resumeid").val(),"jobsid": jidArr.join("-"),"notes": $("#notes").val(),"pms_notice":pms_notice,"time":tsTimeStamp,"act":"app_save"},
 
 	 	function (data,textStatus)
 	 	 {
@@ -140,38 +149,32 @@ $("#ajax_app").click(function() {
 				$("#notice").hide();
 				$("#waiting").hide();
 				$("#app_ok").show();
-					$("#app_ok .closed").click(function(){
-					});
 			}
 			else if(data=="repeat")
 			{
-				$("#app").show();
-				$("#notice").show();
+				$("#app").hide();
+				$("#notice").hide();
 				$("#waiting").hide();
 				$("#app_ok").hide();
-				alert("您投递过此职位，不能重复投递");
+				$("#error_msg").html("您投递过此职位，不能重复投递");
+				$("#error").show();
 			}
 			else
 			{
-				$("#app").show();
-				$("#notice").show();
+				$("#app").hide();
+				$("#notice").hide();
 				$("#waiting").hide();
 				$("#app_ok").hide();
-				alert("投递失败！"+data);
+				$("#error_msg").html("投递失败！"+data);
+				$("#error").show();
 			}
 	 	 })
 	}
 });
-function DialogClose()
-{
-	$("#FloatBg").hide();
-	$("#FloatBox").hide();
-}
 </script>
-
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="app">
     <tr>
-		<td width="120" align="right">要投递的职位：</td>
+		<td width="120" align="right" valign="top">申请职位：</td>
 		<td class="ajax_app">
 			<ul>
 			 <?php
@@ -179,33 +182,34 @@ function DialogClose()
 			 foreach($jobs as $j)
 			 {
 			 ?>
-			 <li><label><input name="jobsid" type="checkbox" value="<?php echo $j['id']?>" checked="checked" /><?php echo $j['jobs_name']?></label>
+			 <li style="float:left;width:110px;margin-right:10px;"><label><input name="jobsid" type="checkbox" value="<?php echo $j['id']?>" checked="checked" /><?php echo $j['jobs_name']?></label>
 			 <?php }?>
 			 </li>
+			 <div style="clear:both"></div>
 			 </ul>
 		</td>
     </tr>
     <tr>
 		<td width="120" align="right">选择简历：</td>
 		<td>
-			<ul>
-			 <?php
-			 foreach($resume_list as $resume)
-			 {
-			 ?>
-			 <li><label><input name="resumeid" type="radio" value="<?php echo $resume['id']?>"  /><?php echo $resume['title']?></label>&nbsp;&nbsp;
-			  <a href="<?php echo url_rewrite('QS_resumeshow',array('id'=>$resume['id']))?>" target="_blank">[预览]</a>
-			 <?php 
-			 }
-			 ?>
-			 </li>
-			 </ul>
+			<select  name="resumeid"  id="resumeid">
+				<?php 
+				foreach ($resume_list as $resume)
+				{
+				?>
+				<option value="<?php echo $resume['id']?>"><?php echo $resume['title']?> </option>
+				<?php
+				}
+				?>
+			</select>
+			<a href="" target="_blank" id="resume_yl" style="color:#0180cf">[预览]</a>
+			
 		</td>
     </tr>
     <tr>
 		<td align="right">其他说明：</td>
 		<td>
-			<textarea name="notes" id="notes"  style="width:300px; height:60px; line-height:180%; font-size:12px;"></textarea>
+			<textarea name="notes" id="notes"  style="width:300px; height:60px; line-height:180%; font-size:12px;border:1px solid #e2e2e2;resize:both"></textarea>
 		</td>
     </tr>
     <tr>
@@ -223,12 +227,16 @@ function DialogClose()
 		</td>
     </tr>
 </table>
+ 
 <table id="notice" width="100%" border="0" style="border-top:1px #CCCCCC dotted;background-color: #EEEEEE; line-height: 230%;padding: 15px; margin-top: 10px; ">
-    <tbody><tr>
-	    <td class="ajax_app_tip">您每天可以投递<span></span>次简历，今天已经投递了<span></span>次，还可以投递<span></span>次
-	    </td>
-    </tr>
-</tbody>
+    <tbody>
+    	<tr>
+    		<td class="dialog_bottom">
+		    	<div class="dialog_tip"></div><div class="dialog_text ajax_app_tip">您每天可以投递<span></span>次简历，今天已经投递了<span></span>次，还可以投递<span></span>次</div>
+		    	<div class="clear"></div>
+		    </td>
+    	</tr>
+	</tbody>
 </table>
 <table width="100%" border="0" cellspacing="5" cellpadding="0" id="waiting"  style="display:none">
   <tr>
@@ -240,15 +248,20 @@ function DialogClose()
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="app_ok" style="display:none">
     <tr>
-		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/14.gif" /></td>
+		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/big-yes.png" /></td>
 		<td>
 			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">投递成功!</strong>
 			<div style="border-top:1px #CCCCCC solid; line-height:180%; margin-top:10px; padding-top:10px; height:50px;margin-left:20px"  class="dialog_closed">
-			<a href="<?php echo get_member_url(2,true)?>personal_apply.php?act=apply_jobs" >查看已投递的职位</a><br />
-			<a href="javascript:void(0)"  class="DialogClose">投递完成</a>
+			<a href="<?php echo get_member_url(2,true)?>personal_apply.php?act=apply_jobs" style="color:#0180cf;text-decoration:none;" class="underline">查看已投递的职位</a><br />
+			<a href="javascript:void(0)"  class="DialogClose underline" style="color:#0180cf;text-decoration:none;">投递完成</a>
 			</div>
 		</td>
     </tr>
+</table>
+<table width="100%" border="0" cellspacing="5" cellpadding="0" id="error"  style="display:none">
+  <tr>
+    <td align="center" id="error_msg"></td>
+  </tr>
 </table>
 <?php
 }
@@ -265,6 +278,7 @@ elseif ($act=="app_save")
 	exit("职位丢失");
 	}
 	$resume_basic=get_resume_basic($_SESSION['uid'],$resumeid);
+	$resume_basic = array_map("addslashes", $resume_basic);
 	if (empty($resume_basic))
 	{
 	exit("简历丢失");
@@ -272,24 +286,13 @@ elseif ($act=="app_save")
 	$i=0;
 	foreach($jobsarr as $jobs)
 	 {
+	 		$jobs = array_map("addslashes",$jobs);
 	 		if (check_jobs_apply($jobs['id'],$resumeid,$_SESSION['uid']))
 			{
 			 continue ;
 			}
-			if ($resume_basic['display_name']=="2")
-			{
-				$personal_fullname="N".str_pad($resume_basic['id'],7,"0",STR_PAD_LEFT);
-			}
-			elseif($resume_basic['display_name']=="3")
-			{
-				$personal_fullname=cut_str($resume_basic['fullname'],1,0,"**");
-			}
-			else
-			{
-				$personal_fullname=$resume_basic['fullname'];
-			}
 	 		$addarr['resume_id']=$resumeid;
-			$addarr['resume_name']=$personal_fullname;
+			$addarr['resume_name']=$resume_basic['fullname'];
 			$addarr['personal_uid']=intval($_SESSION['uid']);
 			$addarr['jobs_id']=$jobs['id'];
 			$addarr['jobs_name']=$jobs['jobs_name'];
@@ -303,28 +306,27 @@ elseif ($act=="app_save")
 			}
 			$addarr['apply_addtime']=time();
 			$addarr['personal_look']=1;
-			if (inserttable(table('personal_jobs_apply'),$addarr))
+			if ($db->inserttable(table('personal_jobs_apply'),$addarr))
 			{
 					$mailconfig=get_cache('mailconfig');					
 					$jobs['contact']=$db->getone("select * from ".table('jobs_contact')." where pid='{$jobs['id']}' LIMIT 1 ");
-					$sms=get_cache('sms_config');	
-					$comuser=get_user_info($jobs['uid']);	
+					$sms=get_cache('sms_config');
+					$comuser=get_user_info($jobs['uid']);
 					if ($mailconfig['set_applyjobs']=="1"  && $comuser['email_audit']=="1" && $jobs['contact']['notify']=="1")
 					{	
-						dfopen("{$_CFG['website_dir']}plus/asyn_mail.php?uid={$_SESSION['uid']}&key=".asyn_userkey($_SESSION['uid'])."&act=jobs_apply&jobs_id={$jobs['id']}&jobs_name={$jobs['jobs_name']}&personal_fullname={$personal_fullname}&email={$comuser['email']}");
+						dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_mail.php?uid={$_SESSION['uid']}&key=".asyn_userkey($_SESSION['uid'])."&act=jobs_apply&jobs_id={$jobs['id']}&jobs_name={$jobs['jobs_name']}&personal_fullname={$resume_basic['fullname']}&email={$comuser['email']}&resume_id={$resumeid}");
 					}
-					//sms	
-					if ($sms['open']=="1"  && $sms['set_applyjobs']=="1"  && $comuser['mobile_audit']=="1")
+					//sms
+					if ($sms['open']=="1"  && $sms['set_applyjobs']=="1"  && $comuser['mobile_audit']=="1" && $jobs['contact']['notify_mobile']=="1")
 					{
-					//修正bug,求职者申请职位不发送短信
-						dfopen("{$_CFG['website_dir']}plus/asyn_sms.php?uid={$_SESSION['uid']}&key=".asyn_userkey($_SESSION['uid'])."&act=jobs_apply&jobs_id=".$jobs['id']."&jobs_name=".$jobs['jobs_name'].'&jobs_uid='.$jobs['uid']."&personal_fullname=".$personal_fullname."&mobile=".$comuser['mobile']);
+						$success = dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_sms.php?uid={$_SESSION['uid']}&key=".asyn_userkey($_SESSION['uid'])."&act=jobs_apply&jobs_id=".$jobs['id']."&jobs_name=".$jobs['jobs_name'].'&jobs_uid='.$jobs['uid']."&personal_fullname=".$resume_basic['fullname']."&mobile=".$comuser['mobile']);
 					}
 					//站内信
 					if($pms_notice=='1'){
 						$user=$db->getone("select username from ".table('members')." where uid ={$jobs['uid']} limit 1");
 						$jobs_url=url_rewrite('QS_jobsshow',array('id'=>$jobs['id']));
-						$resume_url=url_rewrite('QS_resumeshow',array('id'=>$resumeid),false);
-						$message=$personal_fullname."申请了您发布的职位：<a href=\"{$jobs_url}\" target=\"_blank\">{$jobs['jobs_name']}</a>,<a href=\"{$resume_url}\" target=\"_blank\">点击查看</a>";
+						$resume_url=url_rewrite('QS_resumeshow',array('id'=>$resumeid));
+						$message=$resume_basic['fullname'].'申请了您发布的职位：<a href="'.$jobs_url.'" target="_blank">'.$jobs['jobs_name'].'</a>,<a href="'.$resume_url.'" target="_blank">点击查看</a>';
 						write_pmsnotice($jobs['uid'],$user['username'],$message);
 					}
 					write_memberslog($_SESSION['uid'],2,1301,$_SESSION['username'],"投递了简历，职位:{$jobs['jobs_name']}");
@@ -339,6 +341,6 @@ elseif ($act=="app_save")
 	 {
 	 exit("ok");
 	 }
-}
 
+}
 ?>

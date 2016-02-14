@@ -58,7 +58,8 @@ $(".input_checkbox,.input_checkbox_add").hover(
   }
 );
 //全选
-$('#chk').click(function(){$("#form1 :checkbox").attr('checked',$("#chk").attr('checked'))});
+$('#chk').click(function(){$("#form1 :checkbox").attr('checked',$("#chk").is(':checked'))});
+$('#chk2').click(function(){$("#form1 :checkbox").attr('checked',$("#chk2").is(':checked'))});
 });
 // 右侧漂浮
 $(function(){
@@ -71,10 +72,23 @@ $(function(){
 		$(".guwen").show();
 	})
 })
-
+$(document).ready(function() {
+	$(".guwen").click(function(){
+		$(this).hide();
+		$(".guwen_open").show();
+	});
+	$(".guwen_close").click(function(){
+		$(".guwen_open").hide();
+		$(".guwen").show();
+	});
+});
 </script>
 <div class="meun1">
   		<div class="meun2">
+  		<div class="meunbox">
+			<div class="menu_top"><a href="company_index.php">中心首页</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;{#if $company_url#}<a target="_black" href="{#$company_url#}">预览企业</a>{#else#}<a href="company_info.php?act=company_profile" onClick="return confirm('无法预览,您没有完善企业资料,现在去完善企业资料？')">预览企业</a>{#/if#}
+			</div>
+		</div>
 		<div class="meunbox">
 		  <div class="tit"><div class="t c1">职位管理</div></div>
 		  	<div class="linktxt">
@@ -100,14 +114,19 @@ $(function(){
 		  <div class="tit"><div class="t c4">会员服务</div></div>
 		  	<div class="linktxt">
 				<ul>
-				<li {#if $smarty.get.act=="account"#}class="h"{#/if#}><a href="company_service.php?act=account">我的账户</a></li>
+				{#if $QISHI.operation_mode=="1"#}
+				<li {#if $smarty.get.act=="j_account"#}class="h"{#/if#}><a href="company_service.php?act=j_account">我的账户</a></li>
+				{#elseif $QISHI.operation_mode=="2"#}
+				<li {#if $smarty.get.act=="t_account"#}class="h"{#/if#}><a href="company_service.php?act=t_account">我的账户</a></li>
+				{#elseif $QISHI.operation_mode=="3"#}
+				<li {#if $smarty.get.act=="j_account" || $smarty.get.act=="t_account"#}class="h"{#/if#}><a href="company_service.php?act=j_account">我的账户</a></li>
+				{#/if#}
 				{#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
-				<li {#if $smarty.get.act=="order_add" || $smarty.get.act=="setmeal_list" || $smarty.get.act=="order_list" || $smarty.get.act=="payment" || $smarty.get.act=="setmeal_order_add"#}class="h"{#/if#}><a href="company_service.php?act=order_add">充值订单</a></li>
+				<li {#if $smarty.get.act=="order_add" || $smarty.get.act=="setmeal_list" || $smarty.get.act=="order_list" || $smarty.get.act=="payment" || $smarty.get.act=="setmeal_order_add" || $smarty.get.act=="gifts"#}class="h"{#/if#}><a href="company_service.php?act=order_add">充值订单</a></li>
 				{#elseif $QISHI.operation_mode=="2"#}
 				<li {#if $smarty.get.act=="setmeal_list" || $smarty.get.act=="order_list" || $smarty.get.act=="payment" || $smarty.get.act=="setmeal_order_add"#}class="h"{#/if#}><a href="company_service.php?act=setmeal_list">充值订单</a></li>
 				{#/if#}
-				<li {#if $smarty.get.act=="promotion"#}class="h"{#/if#}><a href="company_promotion.php?act=promotion">职位推广</a></li>
-				<li><a href="company_promotion.php?act=tpl">选择模板</a></li>
+				<li {#if $smarty.get.act=="tpl"#}class="h"{#/if#}><a href="company_promotion.php?act=tpl">企业模板</a></li>
 				</ul>
 			</div>
 		</div>
@@ -116,9 +135,9 @@ $(function(){
 		  <div class="tit"><div class="t c5">账号管理</div></div>
 		  	<div class="linktxt">
 				<ul>
-				<li {#if $smarty.get.act=="company_profile" || $smarty.get.act=="company_logo" || $smarty.get.act=="company_news" || $smarty.get.act=="company_img" || $smarty.get.act=="company_map_set" || $smarty.get.act=="company_news_add" || $smarty.get.act=="company_news_edit"#}class="h"{#/if#}><a href="company_info.php?act=company_profile">企业资料</a></li>
-				<li {#if $smarty.get.act=="password_edit" || $smarty.get.act=="binding" || $smarty.get.act=="login_log"#}class="h"{#/if#}><a href="company_user.php?act=password_edit">安全助手</a></li>
-				<li{#if $smarty.get.act=="authenticate" || $smarty.get.act=="company_auth"#} class="h"{#/if#}><a href="company_user.php?act=authenticate">认证管理</a></li>
+				<li {#if $smarty.get.act=="company_profile" || $smarty.get.act=="company_logo" || $smarty.get.act=="company_map_set"#}class="h"{#/if#}><a href="company_info.php?act=company_profile">企业资料</a></li>
+				<li{#if $smarty.get.act=="authenticate" || $smarty.get.act=="company_auth" || $smarty.get.act=="login_log"#} class="h"{#/if#}><a href="company_user.php?act=authenticate">安全认证</a></li>
+				<li {#if $smarty.get.act=="pm"#}class="h"{#/if#}><a href="company_user.php?act=pm">我的消息</a></li>
 				<li><a href="{#"QS_login"|qishi_url#}?act=logout">退出登录</a></li>
 				</ul>
 			</div>
@@ -130,15 +149,19 @@ $(function(){
 	<!-- 右侧漂浮组件 -->
 {#if $consultant#}
 <div class="guwen_bbox">
-	<div class="guwen">
-		<span>企业顾问</span>
-		<span>>></span>
+		<div class="guwen">企业顾问</div>
+		<div class="guwen_open" style="display:none;">
+			<div class="open_box">
+				<span class="guwen_close"></span>
+				<div class="guwen_blc">企业顾问</div>
+				<div class="guwen_top">
+					<div class="guwen_avater"><img src="{#$QISHI.site_dir#}data/images/{#$consultant.pic#}" alt="" width="55" height="70"></div>
+					<p>客服：{#$consultant.name#}</p>
+				</div>
+				<div class="guwen_btn_box">
+					<a href="http://wpa.qq.com/msgrd?v=3&uin={#$consultant.qq#}&site=qq&menu=yes" class="guwen_btn">立即咨询</a>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="guwen_open">
-		<span class="close"></span>
-		<div class="cus_ser"><img src="{#$QISHI.main_domain#}data/images/{#$consultant.pic#}" alt="顾问" width="68" height="74"></div>
-		<div class="cus_ser_name">客服：{#$consultant.name#}</div>
-		<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={#$consultant.qq#}&site=qq&menu=yes">立即咨询</a>
-	</div>
-</div>
 {#/if#}

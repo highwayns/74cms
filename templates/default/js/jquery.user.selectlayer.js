@@ -171,7 +171,7 @@ function allaround(dir){
 		/* 行业列表点击显示到已选 */
 		$("#tradList li a").unbind().live('click', function() {
 			// 判断选择的数量是否超出
-			if($("#tradList .selectedcolor").length >= 5) {
+			if($("#tradList .selectedcolor").length >= 3) {
 				$("#tradropcontent").show(0).delay(3000).fadeOut("slow");
 			} else {
 				$(this).addClass('selectedcolor');
@@ -232,7 +232,7 @@ function allaround(dir){
 		/* 职位列表点击显示到已选 */
 		$("#divJobCate li p a").unbind().live('click', function() {
 			// 判断选择的数量是否超出
-			if($("#divJobCate .selectedcolor").length >= 5) {
+			if($("#divJobCate .selectedcolor").length >= 3) {
 				$("#jobdropcontent").show(0).delay(3000).fadeOut("slow");
 			} else {
 				$(this).addClass('selectedcolor');
@@ -241,7 +241,7 @@ function allaround(dir){
 		});
 		$("#divJobCate .subcate a").unbind().live('click', function() {
 			// 判断选择的数量是否超出
-			if($("#divJobCate .selectedcolor").length >= 5) {
+			if($("#divJobCate .selectedcolor").length >= 3) {
 				$("#jobdropcontent").show(0).delay(3000).fadeOut("slow");
 			} else {
 				if($(this).attr("p") == "qb") {
@@ -298,9 +298,9 @@ function fillJobs(fillID){
 		 		if(sval) {
 		 			var sjobs = sval.split(",");
 			 		jobstr += '<li>';
-			 		jobstr += '<p><font><a rcoid="'+sjobs[0]+'" pid="'+jobs[0]+'.'+sjobs[0]+'.0" title="'+sjobs[1]+'" href="javascript:;">'+sjobs[1]+'</a></font></p>';
+			 		jobstr += '<p class="jobp"><font><a class="joba" rcoid="'+sjobs[0]+'" pid="'+jobs[0]+'.'+sjobs[0]+'.0" title="'+sjobs[1]+'" href="javascript:;">'+sjobs[1]+'</a></font></p>';
 			 		if(QS_jobs[sjobs[0]]) {
-			 			jobstr += '<div class="subcate" style="display:none;">';
+			 			jobstr += '<div class="subcate jobsub" style="display:none;">';
 			 			var cjobsArray = QS_jobs[sjobs[0]].split("|");
 			 			jobstr += '<a p="qb" href="javascript:;">不限</a>';
 				 		$.each(cjobsArray, function(cindex, cval) {
@@ -762,8 +762,8 @@ function closeDialog(showID) {
 // 判断选择的数量是否超出
 function getCheckNum(checkbox) {
 	var chenkNum = $(checkbox+" a");
-	if (chenkNum.length >= 5) {
-		alert("最多可选5个");
+	if (chenkNum.length >= 3) {
+		alert("最多可选3个");
 		return false;
 	} else {
 		return true;
@@ -1502,101 +1502,3 @@ function chechkcli(chid,htmid){
 			$(this).parent().remove();
 		});
 	}
-	// 猎头职能恢复
-	if($("#goodcategory_cn").val()) {
-		var jobstrarray = $("#goodcategory").val().split("-");
-		var pgsnameArr = new Array();
-		var pgsname = '';
-		var jobopthtm = '';
-		var jobdivhtm = '';
-		$.each(jobstrarray, function(index, val) {
-			 var jobstr = val.split('.');
-			 var pname = '';
-			 $.each(QS_hunter_jobs_parent, function(vindex, valv) {
-			 	 var vid = valv.split(",");
-			 	 if(jobstr[0] == vid[0]) {
-			 	 	pname = vid[1];
-			 	 }
-			 });
-			 var gname = '';
-			 var gns = QS_hunter_jobs[jobstr[0]].split("|");
-			 $.each(gns, function(gindex, galv) {
-			 	 var gvid = galv.split(",");
-			 	 if(jobstr[1] == gvid[0]) {
-			 	 	gname = gvid[1];
-			 	 }
-			 });
-			 pgsname += pname + "/" + gname;
-			 pgsnameArr.push(pgsname);
-			 jobopthtm += '<a href="javascript:;" class="sx-yx-cnt" id="checked_value_'+jobstr[1]+'" gname="'+pgsname+'" gid="'+val+'"><span lid="'+jobstr[0]+'" rel="'+jobstr[1]+'">'+gname+'</span><i class="del cls_checked_del" rel="'+jobstr[1]+'" id="checked_value_del_'+jobstr[1]+'"></i></a>';
-			 jobdivhtm += '<div class="input_checkbox"><span rel="'+jobstr[1]+'">'+gname+'</span></div>';
-		});
-		$("#jobs_checkbox .showchecked").html(jobdivhtm);
-		$("#box_checkedjob").html(jobopthtm);
-		chechkcli("#box_checkedjob","#sx-nomaljob");
-		$a_checkbox = $("#box_checkedjob a");
-		$("#jobs_checkbox .showchecked span").click(function(){
-			var slel = $(this).attr('rel');
-			$a_checkbox.each(function(index) {
-				var alel = $(this).find('span').attr('rel');
-				var agid = $(this).attr('gid');
-				if (alel == slel) {
-					$(this).remove();
-					var joid = $("#goodcategory").val().split("-");
-					joid.splice($.inArray(agid,joid),1);
-					$("#goodcategory").val(joid.join("-"));
-					return false;
-				}
-			});
-			$("#sx-nomaljob :checkbox[checked]").each(function() {
-				if($(this).val() == slel){
-					$(this).attr('checked',false);
-				}
-			});
-			$(this).parent().remove();
-		});
-	}
-	// 恢复猎头所在地区
-	if($("#district_cnh").val()) {
-		var pgsnameArr = new Array();
-		var pgsname = '';
-		var cityopthtm = '';
-		 var citystr = new Array();
-		 citystr[0] = $("#district").val();
-		 citystr[1] = $("#sdistrict").val();
-		 citystr[2] = $("#tdistrict").val();
-		 var pname = '';
-		 $.each(QS_city_parent, function(vindex, valv) {
-		 	 var vid = valv.split(",");
-		 	 if(citystr[0] == vid[0]) {
-		 	 	pname = vid[1];
-		 	 }
-		 });
-		 var gname = '';
-		 var gns = QS_city[citystr[0]].split("|");
-		 $.each(gns, function(gindex, galv) {
-		 	 var gvid = galv.split(",");
-		 	 if(citystr[1] == gvid[0]) {
-		 	 	gname = gvid[1];
-		 	 }
-		 });
-		 pgsname += pname + "/" + gname; 
-		 cityopthtm += '<a href="javascript:;" class="sx-yx-cnt" id="checked_value_'+citystr[1]+'" gname="'+pgsname+'" gid="'+citystr.join(".")+'"><span rel="'+citystr[1]+'">'+gname+'</span><i class="del cls_checked_del" rel="'+citystr[1]+'" id="checked_value_del_'+citystr[1]+'"></i></a>';
-		 if(QS_city[citystr[1]]) {
-		 	var sname = '';
-		 	var sns = QS_city[citystr[1]].split("|");
-			 $.each(sns, function(sindex, salv) {
-			 	 var svid = salv.split(",");
-			 	 if(citystr[2] == svid[0]) {
-			 	 	sname = svid[1];
-			 	 }
-			 });
-			 pgsname += "/" + sname;
-			 cityopthtm += '<a href="javascript:;" class="sx-yx-cnt" id="checked_value_'+citystr[2]+'" gname="'+pgsname+'" gid="'+citystr.join(".")+'"><span lid="'+citystr[1]+'" rel="'+citystr[2]+'">'+sname+'</span><i class="del cls_checked_del" rel="'+citystr[2]+'" id="checked_value_del_'+citystr[2]+'"></i></a>';
-		 }
-		 pgsnameArr.push(pgsname);
-		$("#showCityBox").html(pgsnameArr.join(","));
-		$("#box_checked").html(cityopthtm);
-		chechkcli("#box_checked","#sx-nomal");
-	}
-	

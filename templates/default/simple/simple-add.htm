@@ -15,7 +15,7 @@ function imgcaptcha(inputID,imgdiv)
 		$(imgdiv).show();
 		if ($(imgdiv).html()=='')
 		{
-		$(imgdiv).append("<img src=\"{#$QISHI.main_domain#}include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:3px;\" title=\"看不请验证码？点击更换一张\"  border=\"0\"/>");
+		$(imgdiv).append("<img src=\"{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:3px;\" title=\"看不请验证码？点击更换一张\"  border=\"0\"/>");
 		}
 		$(imgdiv+" img").click(function()
 		{
@@ -61,7 +61,7 @@ $("#form_simple").validate({
 	{#if $QISHI.simple_tel_repeat=="0"#}
 	,
 	remote:{     
-		url:"{#$QISHI.website_dir#}plus/ajax_simple.php",     
+		url:"{#$QISHI.site_dir#}plus/ajax_simple.php",     
 		type:"get",    
 		data:{"tel":function (){return $("#tel").val()},"act":"check_tel","time":function (){return new Date().getTime()}}     
 		}
@@ -83,7 +83,7 @@ $("#form_simple").validate({
 		IScaptchastr: true,
 		required: true,
 		remote:{     
-		url:"{#$QISHI.website_dir#}include/imagecaptcha.php",     
+		url:"{#$QISHI.site_dir#}include/imagecaptcha.php",     
 		type:"post",    
 		data:{"postcaptcha":function (){return $("#postcaptcha").val()},"act":"verify","time":function (){return new Date().getTime()}}     
 		}
@@ -198,7 +198,7 @@ function menuDown(menuId,input,input_cn,menuList,width,next_div,next_menu){
       $("#sdistrict_menu").html("请选择");
       $("#sdistrict").val("");
       $("#sdistrict_cn").val("");
-	  $.get("{#$QISHI.website_dir#}plus/ajax_simple.php?act=get_sdistrict&id="+id,function(result){
+	  $.get("{#$QISHI.site_dir#}plus/ajax_simple.php?act=get_sdistrict&id="+id,function(result){
       $(next_menu).children("ul").html(result);
     });
     }
@@ -207,7 +207,7 @@ function menuDown(menuId,input,input_cn,menuList,width,next_div,next_menu){
 }
 });
 </script>
-<form id="form_simple" name="form_simple" method="post" action="{#$QISHI.website_dir#}plus/ajax_simple.php?act=addsave">
+<form id="form_simple" name="form_simple" method="post" action="{#$QISHI.site_dir#}plus/ajax_simple.php?act=addsave">
 <div class="content link_lan wei_job_dialog">
         <table>
           <tbody>
@@ -297,8 +297,7 @@ function menuDown(menuId,input,input_cn,menuList,width,next_div,next_menu){
              <tr>
               <td></td>
               <td>
-                <div>  
-                <input type="hidden" name="subsite_id" id="subsite_id" value="{#$subsite_id#}"> 
+                <div>
                 <input type="submit" value="发布" class="but95_35lan" id="addsimple" />
               </td>
             </tr>

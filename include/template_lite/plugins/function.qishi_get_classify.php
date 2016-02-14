@@ -48,7 +48,20 @@ if ($act=="QS_jobs")
 	$list[] = $row;
 	}
 }
-
+// Â¥²ã
+elseif ($act=="QS_jobs_floor")
+{
+	$id=trim($aset['id']);
+	$id=str_replace("_", ",", $id);
+	$result = $db->query("SELECT * FROM ".table('category_jobs')." where parentid in (".$id.") ORDER BY category_order desc,id asc".$limit);
+	while($row = $db->fetch_array($result))
+	{
+	$row['categoryname']=cut_str($row['categoryname'],$aset['titlelen'],0,$aset['dot']);
+	$row['title']=cut_str($row['categoryname'],$aset['titlelen'],0,$aset['dot']);
+	$row['jobcategory']=$row['parentid']=='0'?$row['id'].".0":$row['parentid'].".".$row['id'];
+	$list[] = $row;
+	}
+}
 elseif ($act=="QS_jobs_parent")
 {
 	if (strpos($aset['id'],"-"))
@@ -128,6 +141,18 @@ elseif ($act=="QS_street")
 	while($row = $db->fetch_array($result))
 	{
 	$row['categoryname']=cut_str($row['c_name'],$aset['titlelen'],0,$aset['dot']);
+	$list[] = $row;
+	}
+}
+elseif ($act =="QS_major")
+{
+	$id=intval($aset['id']);
+	$result = $db->query("SELECT * FROM ".table('category_major')." where parentid=".$id." ORDER BY category_order desc,id asc".$limit);
+	while($row = $db->fetch_array($result))
+	{
+	$row['categoryname']=cut_str($row['categoryname'],$aset['titlelen'],0,$aset['dot']);
+	$row['title']=cut_str($row['categoryname'],$aset['titlelen'],0,$aset['dot']);
+	$row['jobcategory']=$row['parentid']=='0'?$row['id'].".0":$row['parentid'].".".$row['id'];
 	$list[] = $row;
 	}
 }

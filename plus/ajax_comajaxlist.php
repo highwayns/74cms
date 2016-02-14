@@ -23,7 +23,7 @@ if ($act=='show_jobs_more')
 	{
 		foreach($comjobsarray as $li)
 		{
-			$jobs_url=url_rewrite("QS_jobsshow",array('id'=>$li['id']),true,$li['subsite_id']);
+			$jobs_url=url_rewrite("QS_jobsshow",array('id'=>$li['id']));
 			$jobs_name=cut_str($li['jobs_name'],"10",0,"..");
 			$comjobshtml.="<li class=\"listbox\" id=\"li-{$offset}\">
 			<div class=\"j_name\"><a href=\"{$jobs_url}\" target=\"_blank\">{$jobs_name}</a></div>
@@ -42,34 +42,6 @@ if ($act=='show_jobs_more')
 			</li>";
 		}
 		exit($comjobshtml);
-	}
-	else
-	{
-		exit('empty!');
-	}
-}
-elseif ($act=='show_news_more')
-{
-	$comnewshtml="";
-	$rows=intval($_GET['rows']);
-	$offset=intval($_GET['offset']); 
-	$companyid=intval($_GET['companyid']); 
-	$comnewsarray=$db->getall("select * from ".table('company_news')." where company_id = '{$companyid}' ORDER BY `order` DESC,id DESC LIMIT {$offset},{$rows}");
-	if (!empty($comnewsarray) && $offset<=100)
-	{
-		foreach($comnewsarray as $li)
-		{
-			$title=cut_str($li['title'],"10",0,"..");
-			$url = url_rewrite("QS_companynewsshow",array('id'=>$li['id']));
-			$content=str_replace('&nbsp;','',$li['content']);
-			$briefly=cut_str(strip_tags($content),"100",0,"..");
-			$comnewshtml.="<li class=\"listbox\" id=\"li-{$offset}\">
-			<div class=\"new_tit\"><a href=\"{$url}\" target=\"_blank\">{$title}</a></div>
-			<p>发布时间：".date('Y-m-d',$li['addtime'])." &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>浏览次数：".$li['click']."</span></p>
-			<p>".$briefly."<a href=\"{$url}\" target=\"_blank\">[查看全文]</a></p>
-			</li>";
-		}
-		exit($comnewshtml);
 	}
 	else
 	{

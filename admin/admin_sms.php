@@ -26,14 +26,11 @@ elseif($act == 'set_save')
 {
 	check_token();
 	header("Cache-control: private");
-	// if (intval($_POST['open'])=="1")
-	// {
-	// empty($_POST['captcha_sms_name']) ? adminmsg('请填写短信通帐户名',1) :'' ;
-	// empty($_POST['captcha_sms_key']) ? adminmsg('请填写S短信通密钥',1) :'' ;
-	// }
 	foreach($_POST as $k => $v){
 	!$db->query("UPDATE ".table('sms_config')." SET value='$v' WHERE name='$k'")?adminmsg('更新站点设置失败', 1):"";
 	}
+	//填写管理员日志
+	write_log("后台更新站点设置", $_SESSION['admin_name'],3);
 	refresh_cache('sms_config');
 	adminmsg("保存成功！",2);
 }
@@ -48,7 +45,7 @@ elseif($act == 'sms_testing')
 	check_token();
 	$txt="您好！这是一条检测短信模块配置的短信。收到此短信，意味着您的短信模块设置正确！您可以进行其它操作了！";
 	$mobile=$_POST['mobile'];
-	if (!preg_match("/^(13|15|18)\d{9}$/",$mobile))
+	if (!preg_match("/^(13|15|14|17|18)\d{9}$/",$mobile))
 	{
 	adminmsg("手机号填写错误，请重新填写!",0);
 	}
@@ -56,6 +53,8 @@ elseif($act == 'sms_testing')
 		$r=captcha_send_sms($mobile,$txt);
 		if ($r=="success")
 		{
+			//填写管理员日志
+		write_log("后台短信发送成功！", $_SESSION['admin_name'],3);
 		adminmsg('短信发送成功！',2);
 		}
 		else
@@ -66,6 +65,8 @@ elseif($act == 'sms_testing')
 		$r=send_sms($mobile,$txt);
 		if ($r=="success")
 		{
+			//填写管理员日志
+		write_log("后台短信发送成功！", $_SESSION['admin_name'],3);
 		adminmsg('短信发送成功！',2);
 		}
 		else
@@ -76,6 +77,8 @@ elseif($act == 'sms_testing')
 		$r=free_send_sms($mobile,$txt);
 		if ($r=="success")
 		{
+			//填写管理员日志
+		write_log("后台短信发送成功！", $_SESSION['admin_name'],3);
 		adminmsg('短信发送成功！',2);
 		}
 		else
@@ -106,6 +109,8 @@ elseif($act == 'sms_rule_save')
 	{
 	!$db->query("UPDATE ".table('sms_config')." SET value='$v' WHERE name='$k'")?adminmsg('更新站点设置失败', 1):"";
 	}
+	//填写管理员日志
+	write_log("后台设置短信配置！", $_SESSION['admin_name'],3);
 	refresh_cache('sms_config');
 	adminmsg("保存成功！",2);
 }
@@ -166,6 +171,8 @@ elseif($act == 'templates_save')
 	$link[0]['text'] = "返回上一页";
 	$link[0]['href'] ="?act=set_tpl";
 	refresh_cache('sms_templates');
+	//填写管理员日志
+	write_log("后台成功保存模板！", $_SESSION['admin_name'],3);
 	adminmsg("保存成功！",2,$link);
 }
 elseif($act == 'send')
@@ -215,7 +222,7 @@ elseif($act == 'sms_send')
 	{
 	adminmsg('手机不能为空！',0);
 	}
-	if (!preg_match("/^(13|15|18|14)\d{9}$/",$mobile))
+	if (!preg_match("/^(13|15|14|17|18)\d{9}$/",$mobile))
 	{
 		$link[0]['text'] = "返回上一页";
 		$link[0]['href'] = "{$url}";
@@ -233,8 +240,10 @@ elseif($act == 'sms_send')
 			{
 				$setsqlarr['s_sendtime']=time();
 				$setsqlarr['s_type']=1;//发送成功
-				inserttable(table('smsqueue'),$setsqlarr);
+				$db->inserttable(table('smsqueue'),$setsqlarr);
 				unset($setsqlarr);
+				//填写管理员日志
+				write_log("后台成功发送短信！", $_SESSION['admin_name'],3);
 				$link[0]['text'] = "返回上一页";
 				$link[0]['href'] = "{$url}";
 				adminmsg("发送成功！",2,$link);
@@ -243,7 +252,7 @@ elseif($act == 'sms_send')
 			{
 				$setsqlarr['s_sendtime']=time();
 				$setsqlarr['s_type']=2;//发送失败
-				inserttable(table('smsqueue'),$setsqlarr);
+				$db->inserttable(table('smsqueue'),$setsqlarr);
 				unset($setsqlarr);
 				$link[0]['text'] = "返回上一页";
 				$link[0]['href'] = "{$url}";
@@ -265,12 +274,14 @@ elseif ($act=='again_send')
 	{
 		$setsqlarr['s_sendtime']=time();
 		$setsqlarr['s_type']=1;//发送成功
-		!updatetable(table('smsqueue'),$setsqlarr,$wheresql);
+		!$db->updatetable(table('smsqueue'),$setsqlarr,$wheresql);
+		//填写管理员日志
+		write_log("后台成功发送项目！", $_SESSION['admin_name'],3);
 		adminmsg('发送成功',2);
 	}else{
 		$setsqlarr['s_sendtime']=time();
 		$setsqlarr['s_type']=2;
-		!updatetable(table('smsqueue'),$setsqlarr,$wheresql);
+		!$db->updatetable(table('smsqueue'),$setsqlarr,$wheresql);
 		adminmsg('发送失败',0);
 	}
 		
@@ -287,9 +298,9 @@ elseif ($act=='del')
 	if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
 	{
 	$db->query("Delete from ".table('smsqueue')." WHERE s_id IN ({$sqlin}) ");
+	//填写管理员日志
+	write_log("后台成功删除项目！", $_SESSION['admin_name'],3);
 	adminmsg("删除成功",2);
 	}
 }
-
-
 ?>

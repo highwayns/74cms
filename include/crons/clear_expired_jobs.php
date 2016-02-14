@@ -23,7 +23,11 @@ die('Access Denied!');
 			$row=array_map('addslashes',$row);
 		
 			$db->query("Delete from ".table('jobs_tmp')." WHERE id='{$row['id']}' LIMIT 1");
-			inserttable(table('jobs_tmp'),$row);
+			/*
+				职位过期 相当于关闭
+			*/
+			$row['display']=2;
+			$db->inserttable(table('jobs_tmp'),$row);
 			$did[]=$row['id'];
 			if ((time()-$time)>3)
 			{
@@ -38,7 +42,6 @@ die('Access Denied!');
 						$db->query("Delete from ".table('jobs_search_scale')." WHERE id='{$id}' LIMIT 1");
 						$db->query("Delete from ".table('jobs_search_stickrtime')." WHERE id='{$id}' LIMIT 1");
 						$db->query("Delete from ".table('jobs_search_wage')." WHERE id='{$id}' LIMIT 1");
-						$db->query("Delete from ".table('jobs_search_tag')." WHERE id='{$id}' LIMIT 1");
 					}
 				}
 				break;
@@ -55,7 +58,6 @@ die('Access Denied!');
 						$db->query("Delete from ".table('jobs_search_scale')." WHERE id='{$id}' LIMIT 1");
 						$db->query("Delete from ".table('jobs_search_stickrtime')." WHERE id='{$id}' LIMIT 1");
 						$db->query("Delete from ".table('jobs_search_wage')." WHERE id='{$id}' LIMIT 1");
-						$db->query("Delete from ".table('jobs_search_tag')." WHERE id='{$id}' LIMIT 1");
 					}
 				}	
 	 }
@@ -86,5 +88,5 @@ die('Access Denied!');
 	}
 	$setsqlarr['nextrun']=$nextrun;
 	$setsqlarr['lastrun']=time();
-	updatetable(table('crons'), $setsqlarr," cronid ='".intval($crons['cronid'])."'");
+	$db->updatetable(table('crons'), $setsqlarr," cronid ='".intval($crons['cronid'])."'");
 ?>

@@ -90,7 +90,17 @@ $(document).ready(function()
 		<a href="{#"audit:2"|qishi_parse_url#}" {#if $smarty.get.audit=="2"#}class="select"{#/if#}>等待审核<span>({#$total.3#})</span></a>
 		<a href="{#"audit:3"|qishi_parse_url#}" {#if $smarty.get.audit=="3"#}class="select"{#/if#}>审核未通过<span>({#$total.4#})</span></a>
 	  </div>
-    </div>
+    	</div>
+    	<div class="list listod">
+	  <div class="t">无效原因</div>	  
+	  <div class="txt link_lan">
+	 	<a href="{#"invalid:"|qishi_parse_url#}" {#if $smarty.get.invalid==""#}class="select"{#/if#}>不限</a>
+		<a href="{#"invalid:1"|qishi_parse_url#}" {#if $smarty.get.invalid=="1"#}class="select"{#/if#}>职位到期</a>
+		<a href="{#"invalid:2"|qishi_parse_url#}" {#if $smarty.get.invalid=="2"#}class="select"{#/if#}>套餐到期</a>
+		<a href="{#"invalid:3"|qishi_parse_url#}" {#if $smarty.get.invalid=="3"#}class="select"{#/if#}>职位暂停</a>
+		<a href="{#"invalid:4"|qishi_parse_url#}" {#if $smarty.get.invalid=="4"#}class="select"{#/if#}>非审核通过</a>
+	  </div>
+    	</div>
 	  {#/if#}
 	
 	
@@ -234,7 +244,6 @@ $(document).ready(function()
         <td>
           <input name="ButAudit" type="button" class="admin_submit" id="ButAudit"    value="审核"  />
 		  <input type="button" name="Butrefresh"  id="Butrefresh" value="刷新" class="admin_submit"/>
-		  <input type="button" name="Butdelay"  id="Butdelay" value="延期" class="admin_submit"/>
 		<input type="button" name="ButDlete"  id="ButDlete" value="删除" class="admin_submit"/>
 		</td>
         <td width="305" align="right">
@@ -307,29 +316,7 @@ $(document).ready(function()
  </td>
     </tr>
   </table>
-  </div>
-  
-<div style="display:none" id="delayset">
-<table width="100%" border="0" align="center" cellpadding="0" cellspacing="6">
-    <tr>
-      <td width="20" height="30">&nbsp;</td>
-      <td height="30"><strong  style="color:#0066CC; font-size:14px;">延长职位有效期：</strong></td>
-    </tr>
-	      <tr>
-      <td width="27" height="25">&nbsp;</td>
-      <td>
-        <input name="days" type="text" class="input_text_150" id="days" value="1" maxlength="3"/>&nbsp;天</td>
-    </tr>
- 
-    <tr>
-      <td height="25">&nbsp;</td>
-      <td>
-	  <input type="submit" name="set_delay" value="确定" class="admin_submit"/>
- </td>
-    </tr>
-  </table>
-  </div>
-    
+  </div>   
 </div>
 {#include file="sys/admin_footer.htm"#}
 </body>

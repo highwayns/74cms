@@ -20,7 +20,7 @@ $aset=array_map("get_smarty_request",$aset);
 $aset['id']=$aset['id']?intval($aset['id']):0;
 $aset['listname']=$aset['listname']?$aset['listname']:"list";
 unset($arr,$str,$a,$params);
-$sql = "select * from ".table('notice')." WHERE  id=".intval($aset['id'])." AND  is_display=1 LIMIT 1";
+$sql = "select id,title,content,seo_keywords,seo_description,type_id,addtime from ".table('notice')." WHERE  id=".intval($aset['id'])." AND  is_display=1 LIMIT 1";
 $val=$db->getone($sql);
 if (empty($val))
 	{
@@ -44,6 +44,7 @@ if (empty($val))
 	{
 	$val['description']=$val['seo_description'];
 	}
+	$val['content']=htmlspecialchars_decode($val['content'],ENT_QUOTES);
 $smarty->assign($aset['listname'],$val);
 }
 ?>

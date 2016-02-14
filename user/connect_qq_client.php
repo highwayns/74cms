@@ -14,7 +14,7 @@ require_once(dirname(__FILE__).'/../include/plus.common.inc.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'QQlogin';
 if($act == 'QQlogin')
 {
-$url="https://graph.qq.com/oauth2.0/authorize?response_type=token&client_id={$_CFG['qq_appid']}&redirect_uri={$_CFG['main_domain']}user/connect_qq_client.php".urlencode('?act=login_check');
+$url="https://graph.qq.com/oauth2.0/authorize?response_type=token&client_id={$_CFG['qq_appid']}&redirect_uri={$_CFG['site_domain']}{$_CFG['site_dir']}user/connect_qq_client.php".urlencode('?act=login_check');
 header("Location:{$url}");	
 }
 elseif ($act=='login_check')
@@ -56,8 +56,19 @@ elseif ($act=='login_go')
 			{
 				if (!empty($_SESSION['uid']) && !empty($_SESSION['utype']) && !empty($_SESSION['openid']))
 				{
+					$url = "https://graph.qq.com/user/get_user_info?access_token=".$_SESSION['accessToken']."&oauth_consumer_key={$_CFG['qq_appid']}&openid=".$_SESSION["openid"];
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL, $url);
+					curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+					curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+					$output = curl_exec($ch);
+					curl_close($ch);
+					$jsoninfo = json_decode($output, true);
+					$nickname = iconv("utf-8","gbk",$jsoninfo["nickname"]);
+					$time=time();
 					require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
-					$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION['openid']}'  WHERE uid='{$_SESSION[uid]}' AND qq_openid='' LIMIT 1");
+					$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION['openid']}',qq_nick ='{$nickname}' ,qq_binding_time = '{$time}' WHERE uid='{$_SESSION[uid]}' AND qq_openid='' LIMIT 1");
 					$link[0]['text'] = "进入会员中心";
 					$link[0]['href'] = get_member_url($_SESSION['utype']);
 					$_SESSION['uqqid']=$_SESSION['openid'];
@@ -71,7 +82,7 @@ elseif ($act=='login_go')
 	}
 }
 elseif ($act=='reg')
-{
+{	
 	if (empty($_SESSION["openid"]))
 	{
 		exit("openid is empty");
@@ -90,9 +101,13 @@ elseif ($act=='reg')
 		$nickname = iconv("utf-8","gbk",$jsoninfo["nickname"]);
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 		$smarty->assign('title','补充信息 - '.$_CFG['site_name']);
+		$smarty->assign('third_name',"QQ");
 		$smarty->assign('qqurl',"?act=");
 		$smarty->assign('nickname',$nickname);
-		$smarty->display('user/connect-qq.htm');
+		$smarty->assign('openid',$_SESSION["openid"]);
+		$smarty->assign('nickname',$nickname);
+		$smarty->assign('bindtype','qq');
+		$smarty->display('user/connect_activate.htm');
 	}
 }
 elseif ($act=='reg_save')
@@ -101,19 +116,20 @@ elseif ($act=='reg_save')
 	{
 		exit("openid is empty");
 	}
-	$val['username']=!empty($_POST['username'])?trim($_POST['username']):exit("err");
+	$val['qq_nick']= trim(utf8_to_gbk($_POST['nickname']));
 	$val['email']=!empty($_POST['email'])?trim($_POST['email']):exit("err");
-	$val['member_type']=intval($_POST['member_type']);
+	$val['mobile']=!empty($_POST['mobile'])?trim($_POST['mobile']):exit("err");
+	$val['member_type']=intval($_POST['utype']);
 	$val['password']=!empty($_POST['password'])?trim($_POST['password']):exit("err");
 	require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 	$db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
 	unset($dbhost,$dbuser,$dbpass,$dbname);
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
-	$userid=user_register($val['username'],$val['password'],$val['member_type'],$val['email']);
+	$userid=user_register(3,$val['password'],$val['member_type'],$val['email'],$val['mobile'],$uc_reg=true);
 	if ($userid)
 	{
 		$time=time();
-		$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION['openid']}',bindingtime='{$time}' WHERE uid='{$userid}' AND qq_openid='' LIMIT 1");
+		$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION[openid]}', qq_nick = '{$val[qq_nick]}', qq_binding_time = '{$time}' WHERE uid='{$userid}' AND qq_openid='' LIMIT 1");
 		update_user_info($userid);
 		$userurl=get_member_url($val['member_type']);
 		header("Location:{$userurl}");
@@ -122,14 +138,14 @@ elseif ($act=='reg_save')
 	{
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 		$link[0]['text'] = "返回首页";
-		$link[0]['href'] = "{$_CFG['main_domain']}";
+		$link[0]['href'] = "{$_CFG['site_dir']}";
 		showmsg('注册失败！',0,$link);
 	}
-	
 }
+
 elseif($act == 'binding')
 {
-	$url="https://graph.qq.com/oauth2.0/authorize?response_type=token&client_id={$_CFG['qq_appid']}&redirect_uri={$_CFG['main_domain']}user/connect_qq_client.php".urlencode('?act=binding_check');
+	$url="https://graph.qq.com/oauth2.0/authorize?response_type=token&client_id={$_CFG['qq_appid']}&redirect_uri={$_CFG['site_domain']}{$_CFG['site_dir']}user/connect_qq_client.php".urlencode('?act=binding_check');
 header("Location:{$url}");
 }
 elseif ($act=='binding_check')
@@ -137,10 +153,10 @@ elseif ($act=='binding_check')
 	$html ="<script type=\"text/javascript\" src=\"http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js\" charset=\"utf-8\" data-callback=\"true\"></script> ";
 	$html.="<script type=\"text/javascript\">";
 	$html.="if(QC.Login.check())";
-	$html.="{";
+	$html.="{";			
 	$html.="QC.Login.getMe(function(openId, accessToken)";
 	$html.="{";
-	$html.="window.location.href = '?act=binding_callback&openid='+openId;"; 
+	$html.="window.location.href = '?act=binding_callback&openid='+openId+'&accessToken='+accessToken;"; 
 	$html.="});";
 	$html.="}";
 	$html.="</script>";
@@ -153,6 +169,7 @@ elseif ($act=='binding_callback')
 			exit("error");
 		}
 		$_SESSION["openid"] = trim($_GET['openid']);
+		$_SESSION["accessToken"] = trim($_GET['accessToken']);
 		if (empty($_SESSION['openid']))
 		{
 			exit("error");
@@ -172,8 +189,19 @@ elseif ($act=='binding_callback')
 					showmsg('此QQ帐号已经绑定了其他会员,请换一个QQ帐号！',2,$link);
 			}
 			else
-			{		$time=time();
-					$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION['openid']}',bindingtime='{$time}' WHERE uid='{$_SESSION[uid]}' AND qq_openid='' LIMIT 1");
+			{	
+					$url = "https://graph.qq.com/user/get_user_info?access_token=".$_SESSION['accessToken']."&oauth_consumer_key={$_CFG['qq_appid']}&openid=".$_SESSION["openid"];
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL, $url);
+					curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+					curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+					$output = curl_exec($ch);
+					curl_close($ch);
+					$jsoninfo = json_decode($output, true);
+					$nickname = iconv("utf-8","gbk",$jsoninfo["nickname"]);
+					$time=time();
+					$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION[openid]}', qq_nick = '{$nickname}', qq_binding_time = '{$time}' WHERE uid='".$_SESSION['uid']."' AND qq_openid='' LIMIT 1");
 					$link[0]['text'] = "进入会员中心";
 					$link[0]['href'] = get_member_url($_SESSION['utype']);
 					$_SESSION['uqqid']=$_SESSION['openid'];

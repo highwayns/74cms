@@ -74,11 +74,13 @@ if (isset($aset['paged']))
 	$pagelist = new page(array('total'=>$total_count, 'perpage'=>$aset['row'],'alias'=>$aset['listpage'],'getarray'=>$_GET));
 	$currenpage=$pagelist->nowindex;
 	$aset['start']=($currenpage-1)*$aset['row'];
-	$smarty->assign('page',$pagelist->show(3));
+	if($total_count>$aset['row']){
+		$smarty->assign('page',$pagelist->show(3));
+	}
 	$smarty->assign('total',$total_count);
 }
 $limit=" LIMIT ".abs($aset['start']).','.$aset['row'];
-$result = $db->query("SELECT * FROM ".table('help')." ".$wheresql.$orderbysql.$limit);
+$result = $db->query("SELECT id,type_id,parentid,title,content,click,addtime FROM ".table('help')." ".$wheresql.$orderbysql.$limit);
 $list= array();
 while($row = $db->fetch_array($result))
 {

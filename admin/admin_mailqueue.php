@@ -70,7 +70,8 @@ elseif($act == 'mailqueue_add_save')
 	$link[0]['href'] = '?act=mailqueue_add';
 	$link[1]['text'] = "返回列表";
 	$link[1]['href'] = '?';
-	!inserttable(table('mailqueue'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
+	write_log("添加邮件队列 ", $_SESSION['admin_name'],3);
+	!$db->inserttable(table('mailqueue'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
 }
 elseif($act == 'mailqueue_edit')
 {
@@ -97,7 +98,7 @@ elseif($act == 'mailqueue_edit_save')
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] = '?';
 	$wheresql=" m_id='".intval($_POST['id'])."' ";
-	!updatetable(table('mailqueue'),$setsqlarr,$wheresql)?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	!$db->updatetable(table('mailqueue'),$setsqlarr,$wheresql)?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 elseif($act == 'mailqueue_batchadd')
 {
@@ -140,11 +141,12 @@ elseif($act == 'mailqueue_batchadd_save')
 		$setsqlarr['m_subject']=replace_label($m_subject,$user);	
 		$setsqlarr['m_body']=replace_label($m_body,$user);
 		$setsqlarr['m_addtime']=time();
-		!inserttable(table('mailqueue'),$setsqlarr)?adminmsg("添加失败！",0):'';
+		!$db->inserttable(table('mailqueue'),$setsqlarr)?adminmsg("添加失败！",0):'';
 		$n++;
 	}
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] = '?';
+	write_log("批量添加邮件队列，共添加 {$n} 行 ", $_SESSION['admin_name'],3);
 	adminmsg("添加成功，共添加 {$n} 行 ",2,$link);
 }
 elseif($act == 'totalsend')

@@ -58,7 +58,7 @@ if(isset($aset['limit']) && intval($aset['limit'])>0){
 }else{
 	$limit = " ";
 }
-$result = $db->query("SELECT * FROM ".table('article_category')." ".$wheresql." ORDER BY  category_order DESC".$limit);
+$result = $db->query("SELECT id,parentid,categoryname,title,description,keywords FROM ".table('article_category')." ".$wheresql." ORDER BY  category_order DESC".$limit);
 $list=array();
 while($row = $db->fetch_array($result))
 {

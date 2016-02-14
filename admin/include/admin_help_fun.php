@@ -21,7 +21,7 @@ function get_help($offset, $perpage, $sql= '')
 	$result = $db->query("SELECT a.*,c.id as cid,c.categoryname as c_categoryname FROM ".table('help')." AS a {$sql}  {$limit}");
 	while($row = $db->fetch_array($result))
 	{
-	$row['url'] = url_rewrite('QS_helpshow',array('id'=>$row['id']),false);
+	$row['url'] = url_rewrite('QS_helpshow',array('id'=>$row['id']));
 	$row_arr[] = $row;
 	}
 	return $row_arr;

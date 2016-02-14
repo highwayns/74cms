@@ -23,19 +23,18 @@ if($act == 'alphabet')
 	{
 		if ($listtype=="li")
 		{
-		$htm.="<li  title=\"{$row['c_name']}\" id=\"{$row['c_id']}\">{$row['c_name']}</li>";
+		$htm.="<div class=\"fl-content-li\" type=\"streetid\" code=\"{$row['c_id']}\">{$row['c_name']}</div>";
 		}
 		else
 		{
 		$_GET['streetid']=$row['c_id'];
 		$url=url_rewrite('QS_street',$_GET);
-		$htm.="<li><a href=\"{$url}\" title=\"{$row['c_note']}\" class=\"vtip\">{$row['c_name']}</a><span>{$row['stat_jobs']}</span></li>";
-		
+		$htm.="<div class=\"fl-content-li\" type=\"streetid\" code=\"{$row['c_id']}\">{$row['c_name']}</div>";
 		}
 	}
 	if (empty($htm))
 	{
-	$htm="<span class=\"noinfo\">没有找到首字母为：<span>{$alphabet}</span>  的道路！</span>";
+	$htm="<div class=\"fl-content-li-nostreet\">没有找到首字母为：<span class=\"le\">{$alphabet}</span> 的道路！</div>";
 	}
 	exit($htm);
 	}
@@ -51,18 +50,18 @@ elseif($act == 'key')
 	{
 		if ($listtype=="li")
 		{
-		$htm.="<li  title=\"{$row['c_name']}\" id=\"{$row['c_id']}\">{$row['c_name']}</li>";
+		$htm.="<div class=\"fl-content-li\" type=\"streetid\" code=\"{$row['c_id']}\">{$row['c_name']}</div>";
 		}
 		else
 		{
 		$_GET['streetid']=$row['c_id'];
 		$url=url_rewrite('QS_street',$_GET);
-		$htm.="<li><a href=\"{$url}\" title=\"{$row['c_note']}\" class=\"vtip\">{$row['c_name']}</a><span>{$row['stat_jobs']}</span></li>";
+		$htm.="<div class=\"fl-content-li\" type=\"streetid\" code=\"{$row['c_id']}\">{$row['c_name']}</div>";
 		};
 	}
 	if (empty($htm))
 	{
-	$htm="<span class=\"noinfo\">没有找到关键字： <span>{$key}</span> 相关道路！</span>";
+	$htm="<div class=\"fl-content-li-nostreet\">没有找到关键字为：<span class=\"le\">{$key}</span> 相关道路！</div>";
 	}
 	exit($htm);
 	}

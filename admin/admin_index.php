@@ -14,6 +14,8 @@ require_once(dirname(__FILE__).'/../data/config.php');
 require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_flash_statement_fun.php');
 $act=!empty($_REQUEST['act']) ? trim($_REQUEST['act']) : '';
+$smarty->assign('admin_plug_hunter',$_PLUG["hunter"]['p_install']);
+$smarty->assign('admin_plug_train',$_PLUG["train"]['p_install']);
 $smarty->assign('admin_plug_simple',$_PLUG["simple"]['p_install']);
 if($act=='')
 {

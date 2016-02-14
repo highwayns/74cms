@@ -56,7 +56,7 @@ if($act == 'list')
 	}
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('promotion')." AS p ".$joinsql.$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$list = get_promotion($offset,$perpage,$joinsql.$wheresql.$oderbysql);
@@ -101,12 +101,13 @@ elseif($act == 'promotion_save')
 		$setsqlarr['cp_hour']=intval($_POST['hour']);
 		$jobs=get_jobs_one($setsqlarr['cp_jobid']);
 		$setsqlarr['cp_uid']=$jobs['uid'];
-		if (inserttable(table('promotion'),$setsqlarr))
+		if ($db->inserttable(table('promotion'),$setsqlarr))
 		{
 		$u=get_user($setsqlarr['cp_uid']);
 		$promotion=get_promotion_cat_one($setsqlarr['cp_promotionid']);
 		write_memberslog($u['uid'],1,3004,$u['username'],"管理员增加推广：{$promotion['cat_name']},职位ID：{$setsqlarr['cp_jobid']}");
 		set_job_promotion($setsqlarr['cp_jobid'],$setsqlarr['cp_promotionid'],$setsqlarr['cp_val']);
+		write_log("添加推广：{$promotion['cat_name']},职位ID：{$setsqlarr['cp_jobid']}", $_SESSION['admin_name'],3);
 		$link[0]['text'] = "返回列表";
 		$link[0]['href'] = "?act=list";
 		adminmsg("添加成功",2,$link);		
@@ -144,7 +145,7 @@ elseif($act == 'promotion_edit_save')
 	$setsqlarr['cp_endtime']=$endtime>time()?$endtime+($days*(60*60*24)):strtotime("".$days." day");
 	}
 	$wheresql=" cp_id='{$setsqlarr['cp_id']}' ";
-	if (updatetable(table('promotion'),$setsqlarr,$wheresql))
+	if ($db->updatetable(table('promotion'),$setsqlarr,$wheresql))
 	{
 		if ($setsqlarr['cp_promotionid']=="4")
 		{
@@ -152,6 +153,7 @@ elseif($act == 'promotion_edit_save')
 		 	$db->query("UPDATE ".table('jobs')." SET highlight='{$setsqlarr['cp_val']}' WHERE id='{$jobid}' ");
 			$db->query("UPDATE ".table('jobs_tmp')." SET highlight='{$setsqlarr['cp_val']}' WHERE id='{$jobid}' ");
 		}
+		write_log("修改推广id为".$setsqlarr['cp_id']."的推广", $_SESSION['admin_name'],3);
 		$link[0]['text'] = "推广列表";
 		$link[0]['href'] ="?act=list";
 		adminmsg("修改成功！",2,$link);
@@ -195,7 +197,7 @@ elseif($act=='edit_category_save')
 	$setsqlarr['cat_order']=intval($_POST['cat_order']);
 	$setsqlarr['cat_notes']=trim($_POST['cat_notes']);
 	$wheresql=" cat_id='".intval($_POST['id'])."'";
-		if (updatetable(table('promotion_category'),$setsqlarr,$wheresql))
+		if ($db->updatetable(table('promotion_category'),$setsqlarr,$wheresql))
 		{
 		$link[0]['text'] = "方案列表";
 		$link[0]['href'] ="?act=category";

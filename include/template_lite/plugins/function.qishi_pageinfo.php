@@ -22,7 +22,7 @@ $a=explode(':',$str);
 if (is_array($aset))$aset=array_map("get_smarty_request",$aset);
 $aset['alias']=$aset['alias']?$aset['alias']:"QS_index";
 $aset['listname']=$aset['listname']?$aset['listname']:"list";
-if ($alias=="QS_newslist" && $aset['id'])
+if ($aset['alias']=="QS_newslist" && $aset['id'])
 {
 	$sql = "select title,description,keywords from ".table('article_category')." where id = ".intval($aset['id'])." LIMIT  1";
 	$info=$db->getone($sql);
@@ -34,13 +34,13 @@ $info=$db->getone($sql);
 }
 	$info['title']=str_replace('{domain}',$_CFG['site_domain'],$info['title']);
 	$info['title']=str_replace('{sitename}',$_CFG['site_name'],$info['title']);
-	$info['title']=str_replace('{district}',$_CFG['subsite_districtname'],$info['title']);
+	$info['title']=str_replace('{district}','',$info['title']);
 	$info['description']=str_replace('{domain}',$_CFG['site_domain'],$info['description']);
 	$info['description']=str_replace('{sitename}',$_CFG['site_name'],$info['description']);
-	$info['description']=str_replace('{district}',$_CFG['subsite_districtname'],$info['description']);
+	$info['description']=str_replace('{district}','',$info['description']);
 	$info['keywords']=str_replace('{domain}',$_CFG['site_domain'],$info['keywords']);
 	$info['keywords']=str_replace('{sitename}',$_CFG['site_name'],$info['keywords']);
-	$info['keywords']=str_replace('{district}',$_CFG['subsite_districtname'],$info['keywords']);
+	$info['keywords']=str_replace('{district}','',$info['keywords']);
 $smarty->assign($aset['listname'],$info);
 }
 ?>

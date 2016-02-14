@@ -85,7 +85,8 @@ elseif($act == 'editsave')
 		}
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] = '?';
-	!updatetable(table('hrtools'),$setsqlarr," h_id=".intval($_POST['id'])."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	write_log("修改id为".intval($_POST['id'])."的hr工具", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('hrtools'),$setsqlarr," h_id=".intval($_POST['id'])."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 elseif($act == 'add')
 {
@@ -125,7 +126,8 @@ elseif($act == 'addsave')
 	$link[0]['href'] = "?act=add&h_typeid={$setsqlarr['h_typeid']}&h_typeid_cn={$_POST['h_typeid_cn']}";
 	$link[1]['text'] = "返回列表";
 	$link[1]['href'] = '?';
-	!inserttable(table('hrtools'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
+	write_log("添加hr工具:".$setsqlarr['h_filename'], $_SESSION['admin_name'],3);
+	!$db->inserttable(table('hrtools'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
 }
 elseif($act == 'hrtools_del')
 {
@@ -133,6 +135,7 @@ elseif($act == 'hrtools_del')
 	$id=$_REQUEST['id'];
 	if ($num=del_hrtools($id))
 	{
+	write_log("删除hr工具,共删除".$num."行", $_SESSION['admin_name'],3);	
 	adminmsg("删除成功！共删除".$num."行",2);
 	}
 	else
@@ -165,7 +168,7 @@ elseif($act == 'add_category_save')
 				$setsqlarr['c_name']=trim($_POST['c_name'][$i]);
 				$setsqlarr['c_order']=intval($_POST['c_order'][$i]);	
 				$setsqlarr['c_adminset']=0;		
-				!inserttable(table('hrtools_category'),$setsqlarr)?adminmsg("添加失败！",0):"";
+				!$db->inserttable(table('hrtools_category'),$setsqlarr)?adminmsg("添加失败！",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
@@ -182,6 +185,7 @@ elseif($act == 'add_category_save')
 	$link[0]['href'] = '?act=category';
 	$link[1]['text'] = "继续添加";
 	$link[1]['href'] = "?act=category_add";
+	write_log("添加hr工具分类,共添加".$num."个分类", $_SESSION['admin_name'],3);
 	adminmsg("添加成功！共添加".$num."个分类",2,$link);
 	}
 }
@@ -203,7 +207,8 @@ elseif($act == 'edit_category_save')
 	$link[0]['href'] = '?act=edit_category&id='.$id;
 	$link[1]['text'] = "返回分类管理";
 	$link[1]['href'] = '?act=category';
-	!updatetable(table('hrtools_category'),$setsqlarr," c_id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	write_log("修改id为".$id."的分类", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('hrtools_category'),$setsqlarr," c_id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 elseif($act == 'del_category')
 {
@@ -211,6 +216,7 @@ elseif($act == 'del_category')
 	$id=$_REQUEST['id'];
 	if ($num=del_hrtools_category($id))
 	{
+	write_log("删除hr工具分类,共删除".$num."行", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除".$num."行",2);
 	}
 	else

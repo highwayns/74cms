@@ -18,6 +18,7 @@ if($act == 'jobs')
 {
 	check_permissions($_SESSION['admin_purview'],"jobs_show");
 	$audit=intval($_GET['audit']);
+	$invalid=intval($_GET['invalid']);
 	$deadline=intval($_GET['deadline']);
 	$jobtype=intval($_GET['jobtype']);
 	if (empty($jobtype))
@@ -36,7 +37,7 @@ if($act == 'jobs')
 	$tablename="jobs_tmp";
 	}
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
-	$oederbysql=" order BY id DESC ";
+	$oederbysql=" order BY id DESC";
 	$wheresqlarr=array();
 	$key=isset($_GET['key'])?trim($_GET['key']):"";
 	$key_type=isset($_GET['key_type'])?intval($_GET['key_type']):"";
@@ -80,9 +81,31 @@ if($act == 'jobs')
 				$wheresql=empty($wheresql)?" WHERE addtime> ".$settr:$wheresql." AND addtime> ".$settr;
 				$oederbysql=" order BY addtime DESC ";
 			}
+			//无效原因(1->职位到期  2->套餐到期  3->职位暂停  4->审核未通过)
+			if ($invalid==1)
+			{
+			$wheresql=empty($wheresql)?" WHERE deadline< ".time():$wheresql." AND deadline< ".time();
+			$oederbysql=" order BY deadline DESC ";
+			}
+			elseif($invalid==2)
+			{
+			$wheresql=empty($wheresql)?" WHERE setmeal_deadline!=0 AND setmeal_deadline< ".time():$wheresql." AND  setmeal_deadline!=0 AND  setmeal_deadline< ".time();
+			$oederbysql=" order BY setmeal_deadline DESC ";
+			}
+			elseif($invalid==3)
+			{
+			$wheresql=empty($wheresql)?" WHERE display=2 ":$wheresql." AND  display=2 ";
+			$oederbysql=" order BY refreshtime DESC ";
+			}
+			elseif($invalid==4)
+			{
+			$wheresql=empty($wheresql)?" WHERE audit!=1 ":$wheresql." AND  audit!=1 ";
+			$oederbysql=" order BY deadline DESC ";
+			}
+
 			if($deadline==1)
 			{
-			$wheresql=empty($wheresql)?" WHERE deadline< ".time():$wheresql." AND deadline> ".time();
+			$wheresql=empty($wheresql)?" WHERE deadline< ".time():$wheresql." AND deadline< ".time();
 			$oederbysql=" order BY deadline DESC ";
 			}
 			elseif($deadline==2)
@@ -96,6 +119,7 @@ if($act == 'jobs')
 			$wheresql=empty($wheresql)?" WHERE deadline< {$settr}":$wheresql." AND deadline<{$settr} ";
 			$oederbysql=" order BY deadline DESC ";
 			}
+			
 			if (!empty($_GET['promote']))
 			{
 				$promote=intval($_GET['promote']);
@@ -123,7 +147,7 @@ if($act == 'jobs')
 				{
 				$psql="highlight<>'' ";
 				$wheresql=empty($wheresql)?" WHERE {$psql} ":"{$wheresql} AND {$psql} ";
-				} 
+				}
 				$oederbysql="";
 			}
 		 
@@ -137,7 +161,7 @@ if($act == 'jobs')
 	$total_sql="SELECT COUNT(*) AS num FROM ".table($tablename).$wheresql;
 	}
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	if ($tablename=="all")
@@ -192,11 +216,12 @@ elseif($act == 'jobs_perform')
 			$reason=trim($_POST['reason']);
 			if ($n=edit_jobs_audit($yid,$audit,$reason,$pms_notice))
 			{
+			refresh_jobs($yid); 
 			adminmsg("审核成功！响应行数 {$n}",2);			
 			}
 			else
 			{
-			adminmsg("审核成功！响应行数 0",1);
+			adminmsg("审核失败！响应行数 0",1);
 			}
 		}
 		elseif (!empty($_GET['refresh']))
@@ -217,10 +242,20 @@ elseif($act == 'jobs_perform')
 			{
 			adminmsg("请填写要延长的天数！",0);
 			}
-			if($n=delay_jobs($yid,$days))
+			$arr=delay_jobs($yid,$days);
+			if(!empty($arr))
 			{
-			distribution_jobs($yid);
-			adminmsg("延长有效期成功！响应行数 {$n}",2);
+				$job_arr = explode(',', $arr);
+				if(intval($job_arr[1])==0)
+				{
+					$img_type = 0;
+				}
+				else
+				{
+					$img_type = 2;
+				}
+				distribution_jobs($yid);
+				adminmsg("共延长职位 {$job_arr[0]} 个！成功 {$job_arr[1]} 个，失败 {$job_arr[2]} 个",$img_type);
 			}
 			else
 			{
@@ -281,6 +316,9 @@ elseif ($act=='editjobs_save')
 	$setsqlarr_contact['contact']=trim($_POST['contact']);
 	$setsqlarr_contact['qq']=trim($_POST['qq']);
 	$setsqlarr_contact['telephone']=trim($_POST['telephone']);
+	if(!preg_match("/1[3458]{1}\d{9}$/",$setsqlarr_contact['telephone'])){
+		$setsqlarr_contact['notify_mobile'] = 0;
+	}
 	$setsqlarr_contact['address']=trim($_POST['address']);
 	$setsqlarr_contact['email']=trim($_POST['email']);
 	$setsqlarr_contact['notify']=trim($_POST['notify']);
@@ -294,15 +332,14 @@ elseif ($act=='editjobs_save')
 	$tb1=$db->getone("select * from ".table('jobs')." where id='{$id}' LIMIT 1");
 	if (!empty($tb1))
 	{
-		if (!updatetable(table('jobs'),$setsqlarr,$wheresql)) adminmsg("保存失败！",0);
+		if (!$db->updatetable(table('jobs'),$setsqlarr,$wheresql)) adminmsg("保存失败！",0);
 	}
 	else
 	{
-		if (!updatetable(table('jobs_tmp'),$setsqlarr,$wheresql)) adminmsg("保存失败！",0);
+		if (!$db->updatetable(table('jobs_tmp'),$setsqlarr,$wheresql)) adminmsg("保存失败！",0);
 	}
 	$wheresql=" pid=".$id;
-	if (!updatetable(table('jobs_contact'),$setsqlarr_contact,$wheresql)) adminmsg("保存失败！",0);
-	//
+	if (!$db->updatetable(table('jobs_contact'),$setsqlarr_contact,$wheresql)) adminmsg("保存失败！",0);
 	$searchtab['nature']=$setsqlarr['nature'];
 	$searchtab['sex']=$setsqlarr['sex'];
 	$searchtab['topclass']=$setsqlarr['topclass'];
@@ -313,15 +350,17 @@ elseif ($act=='editjobs_save')
 	$searchtab['education']=$setsqlarr['education'];
 	$searchtab['experience']=$setsqlarr['experience'];
 	$searchtab['wage']=$setsqlarr['wage'];
+	$searchtab['graduate']=$setsqlarr['graduate'];
 	//
-	updatetable(table('jobs_search_wage'),$searchtab," id='{$id}'");
-	updatetable(table('jobs_search_rtime'),$searchtab," id='{$id}'");
-	updatetable(table('jobs_search_stickrtime'),$searchtab," id='{$id}'");
-	updatetable(table('jobs_search_hot'),$searchtab," id='{$id}'");
-	updatetable(table('jobs_search_scale'),$searchtab," id='{$id}'");
+	$db->updatetable(table('jobs_search_wage'),$searchtab," id='{$id}'");
+	$db->updatetable(table('jobs_search_rtime'),$searchtab," id='{$id}'");
+	$db->updatetable(table('jobs_search_stickrtime'),$searchtab," id='{$id}'");
+	$db->updatetable(table('jobs_search_hot'),$searchtab," id='{$id}'");
+	$db->updatetable(table('jobs_search_scale'),$searchtab," id='{$id}'");
 	$searchtab['key']=$setsqlarr['key'];
 	$searchtab['likekey']=$setsqlarr['jobs_name'].','.$company_profile['companyname'];
-	updatetable(table('jobs_search_key'),$searchtab," id='{$id}' ");	
+	$db->updatetable(table('jobs_search_key'),$searchtab," id='{$id}' ");
+	write_log("修改职位id为".$id."的职位,", $_SESSION['admin_name'],3);
 	unset($setsqlarr_contact,$setsqlarr);
 	distribution_jobs($id);
 	$link[0]['text'] = "返回职位列表";
@@ -348,7 +387,6 @@ elseif($act == 'company_list')
 		$oederbysql="";
 	}
 	$_GET['audit']<>""? $wheresqlarr['c.audit']=intval($_GET['audit']):'';
-	$_GET['yellowpages']<>""? $wheresqlarr['c.yellowpages']=intval($_GET['yellowpages']):'';
 	if (is_array($wheresqlarr)) $wheresql=wheresql($wheresqlarr);
 	if (!empty($_GET['settr']))
 	{
@@ -363,7 +401,7 @@ elseif($act == 'company_list')
 	}
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('company_profile')." AS c".$joinsql.$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$clist = get_company($offset,$perpage,$joinsql.$wheresql.$oederbysql,$operation_mode);
@@ -422,13 +460,6 @@ elseif($act == 'company_perform')
 		adminmsg("刷新失败！",0);
 		}
 	}
-	elseif (!empty($_REQUEST['export']))
-	{
-		check_permissions($_SESSION['admin_purview'],"company_export");
-		if(!export_company($u_id)){
-			adminmsg("导出失败！",0);
-		}
-	}
 }
 elseif($act == 'edit_company_profile')
 {
@@ -470,7 +501,6 @@ elseif ($act=='company_profile_save')
 	$setsqlarr['contact']=trim($_POST['contact']);
 	$setsqlarr['telephone']=trim($_POST['telephone']);
 	$setsqlarr['email']=trim($_POST['email']);
-	$setsqlarr['yellowpages']=intval($_POST['yellowpages']);
 	$setsqlarr['website']=trim($_POST['website']);
 	$setsqlarr['contents']=trim($_POST['contents'])?trim($_POST['contents']):adminmsg('请填写公司简介！',1);
 		$setsqlarr['contact_show']=intval($_POST['contact_show']);
@@ -481,7 +511,7 @@ elseif ($act=='company_profile_save')
 	$wheresql=" id='{$id}' ";
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] = $_POST['url'];
-		if (updatetable(table('company_profile'),$setsqlarr,$wheresql))
+		if ($db->updatetable(table('company_profile'),$setsqlarr,$wheresql))
 		{
 				$jobarr['companyname']=$setsqlarr['companyname'];
 				$jobarr['trade']=$setsqlarr['trade'];
@@ -490,17 +520,18 @@ elseif ($act=='company_profile_save')
 				$jobarr['scale_cn']=$setsqlarr['scale_cn'];
 				$jobarr['street']=$setsqlarr['street'];
 				$jobarr['street_cn']=$setsqlarr['street_cn'];
-				if (!updatetable(table('jobs'),$jobarr," uid=".intval($_POST['cuid'])."")) adminmsg('修改职位部分出错！',0);
-				if (!updatetable(table('jobs_tmp'),$jobarr," uid=".intval($_POST['cuid'])."")) adminmsg('修改职位部分出错！',0);
+				if (!$db->updatetable(table('jobs'),$jobarr," uid=".intval($_POST['cuid'])."")) adminmsg('修改职位部分出错！',0);
+				if (!$db->updatetable(table('jobs_tmp'),$jobarr," uid=".intval($_POST['cuid'])."")) adminmsg('修改职位部分出错！',0);
 				$soarray['trade']=$jobarr['trade'];
 				$soarray['scale']=$jobarr['scale'];
 				$soarray['street']=$setsqlarr['street'];
-				updatetable(table('jobs_search_scale'),$soarray," uid=".intval($_POST['cuid'])."");
-				updatetable(table('jobs_search_wage'),$soarray," uid=".intval($_POST['cuid'])."");
-				updatetable(table('jobs_search_rtime'),$soarray," uid=".intval($_POST['cuid'])."");
-				updatetable(table('jobs_search_stickrtime'),$soarray," uid=".intval($_POST['cuid'])."");
-				updatetable(table('jobs_search_hot'),$soarray," uid=".intval($_POST['cuid'])."");
-				updatetable(table('jobs_search_key'),$soarray," uid=".intval($_POST['cuid'])."");
+				$db->updatetable(table('jobs_search_scale'),$soarray," uid=".intval($_POST['cuid'])."");
+				$db->updatetable(table('jobs_search_wage'),$soarray," uid=".intval($_POST['cuid'])."");
+				$db->updatetable(table('jobs_search_rtime'),$soarray," uid=".intval($_POST['cuid'])."");
+				$db->updatetable(table('jobs_search_stickrtime'),$soarray," uid=".intval($_POST['cuid'])."");
+				$db->updatetable(table('jobs_search_hot'),$soarray," uid=".intval($_POST['cuid'])."");
+				$db->updatetable(table('jobs_search_key'),$soarray," uid=".intval($_POST['cuid'])."");
+				
 				unset($setsqlarr);
 				adminmsg("保存成功！",2,$link);
 		}
@@ -544,7 +575,7 @@ elseif($act == 'order_list')
 	$joinsql=" left JOIN ".table('members')." as m ON o.uid=m.uid LEFT JOIN  ".table('company_profile')." as c ON o.uid=c.uid ";
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('order')." as o ".$joinsql.$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$orderlist = get_order_list($offset,$perpage,$joinsql.$wheresql.$oederbysql);
@@ -651,7 +682,7 @@ elseif($act == 'meal_members')
 	$joinsql=" LEFT JOIN ".table('members')." as b ON a.uid=b.uid  LEFT JOIN ".table('company_profile')." as c ON a.uid=c.uid ";
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('members_setmeal')." as a ".$joinsql.$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$member = get_meal_members_list($offset,$perpage,$joinsql.$wheresql.$oederbysql);
@@ -667,44 +698,72 @@ elseif($act == 'meal_log')
 	get_token();
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
 	$oederbysql=" order BY a.log_id DESC ";
+	$key_uid=isset($_GET['key_uid'])?trim($_GET['key_uid']):"";
 	$key=isset($_GET['key'])?trim($_GET['key']):"";
 	$key_type=isset($_GET['key_type'])?intval($_GET['key_type']):"";
-	$operation_mode=$_CFG['operation_mode'];
-	$wheresql=" WHERE a.log_mode={$operation_mode} AND a.log_utype=1";
-	if ($key && $key_type>0)
+	$operation_mode=trim($_CFG['operation_mode']);
+	//积分、套餐和混合三种模式变更记录，混合模式下积分和套餐变更的记录都显示
+	if($operation_mode=='1')
+	{
+		$wheresql=" WHERE a.log_mode=1 AND a.log_utype=1";
+	}
+	elseif($operation_mode=='2')
+	{
+		$wheresql=" WHERE a.log_mode=2 AND a.log_utype=1";
+	}
+	else
+	{
+		$wheresql=" WHERE (a.log_mode=1 OR a.log_mode=2) AND a.log_utype=1";
+	}
+	//单个会员(uid)查看变更记录
+	if ($key_uid)
+	{
+		$wheresql.="  AND a.log_uid = '".intval($key_uid)."' ";
+		//做个标识，如果查询单个会员的话 那么右下角的搜索栏就没用了
+		$smarty->assign('sign','1');
+	}
+	//下面的搜索栏 : 搜索某个会员的变更记录
+	elseif ($key && $key_type>0)
 	{
 		if     ($key_type===1)$wheresql.="  AND a.log_username = '{$key}'";
 		elseif ($key_type===2)$wheresql.="  AND a.log_uid = '".intval($key)."' ";
 		elseif ($key_type===3)$wheresql.=" AND c.companyname like '{$key}%'";
 		$oederbysql=" order BY a.log_id DESC ";
 	}
-	else
-	{	
-		if (!empty($_GET['log_type']))
-		{
-			$log_type=intval($_GET['log_type']);
-			$wheresql.=" AND  a.log_type=".$log_type;
-		}
-		if (!empty($_GET['settr']))
-		{
-			$settr=intval($_GET['settr']);
-			$settr=strtotime("-{$settr} day");
-			$wheresql.=" AND a.log_addtime> ".$settr;
-		}
-		if (!empty($_GET['is_money']))
-		{
-			$is_money=intval($_GET['is_money']);
-			$wheresql.= " AND a.log_ismoney={$is_money}";
-		}
+	//操作类型筛选（1->系统赠送、2->会员购买、3->管理员修改、4->管理员开通）等筛选
+	if (!empty($_GET['log_type']))
+	{
+		$log_type=intval($_GET['log_type']);
+		$wheresql.=" AND  a.log_type=".$log_type;
 	}
-	if($operation_mode=='1'){
+	if (!empty($_GET['settr']))
+	{
+		$settr=intval($_GET['settr']);
+		$settr=strtotime("-{$settr} day");
+		$wheresql.=" AND a.log_addtime> ".$settr;
+	}
+	if (!empty($_GET['is_money']))
+	{
+		$is_money=intval($_GET['is_money']);
+		$wheresql.= " AND a.log_ismoney={$is_money}";
+	}
+	//三种模式 的外连接sql
+	if($operation_mode=='1')
+	{
 		$joinsql=" LEFT JOIN ".table('members_points')." as b ON a.log_uid=b.uid  LEFT JOIN ".table('company_profile')." as c ON a.log_uid=c.uid ";
-	}else{
+	}
+	elseif($operation_mode=='2')
+	{
 		$joinsql=" LEFT JOIN ".table('members_setmeal')." as b ON a.log_uid=b.uid  LEFT JOIN ".table('company_profile')." as c ON a.log_uid=c.uid ";
+	}
+	else
+	{
+		$joinsql=" LEFT JOIN ".table('members_points')." as pb ON a.log_uid=pb.uid ";
+		$joinsql.=" LEFT JOIN ".table('members_setmeal')." as sb ON a.log_uid=sb.uid  LEFT JOIN ".table('company_profile')." as c ON a.log_uid=c.uid ";
 	}
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('members_charge_log')." as a ".$joinsql.$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$meallog = get_meal_members_log($offset,$perpage,$joinsql.$wheresql.$oederbysql,$operation_mode);
@@ -771,11 +830,13 @@ elseif($act == 'members_list')
 	}
 	else
 	{	
+		//注册时间
 		if (!empty($_GET['settr']))
 		{
 			$settr=strtotime("-".intval($_GET['settr'])." day");
 			$wheresql.=" AND m.reg_time> ".$settr;
 		}
+		//验证类型
 		if (!empty($_GET['verification']))
 		{
 			if ($_GET['verification']=="1")
@@ -795,11 +856,26 @@ elseif($act == 'members_list')
 			$wheresql.=" AND m.mobile_audit = 0";
 			}
 		}
+		//有无顾问
+		if ($_GET['consultant']!="")
+		{
+			//未分配
+			$consultant=intval($_GET['consultant']);
+			if ($consultant=="0")
+			{
+			$wheresql.=" AND  m.consultant=0";
+			}
+			//已分配
+			elseif ($consultant=="1")
+			{
+			$wheresql.=" AND m.consultant != 0";
+			}
+		}
 	}
 	$joinsql=" LEFT JOIN ".table('company_profile')." as c ON m.uid=c.uid ";
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('members')." as m ".$joinsql.$wheresql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$member = get_member_list($offset,$perpage,$joinsql.$wheresql.$oederbysql);
@@ -830,6 +906,7 @@ elseif($act == 'delete_user')
 	adminmsg("删除成功！",2);
 	}
 }
+//添加会员
 elseif($act == 'members_add')
 {
 	get_token();
@@ -866,29 +943,11 @@ elseif($act == 'members_add_save')
 	{
 	adminmsg('该 Email 已经被注册！',1);
 	}
-	if(defined('UC_API'))
-	{
-		include_once(QISHI_ROOT_PATH.'uc_client/client.php');
-		if (uc_user_checkname($sql['username'])<>"1")
-		{
-		adminmsg('该用户名已经被使用或者用户名非法！',1);
-		exit();
-		}
-		elseif (uc_user_checkemail($sql['email'])<>"1")
-		{
-			adminmsg('该 Email已经被使用或者非法！',1);
-			exit();
-		}
-		else
-		{
-			uc_user_register($sql['username'],$sql['password'],$sql['email']);
-		}
-	}
 	$sql['pwd_hash'] = randstr();
 	$sql['password'] = md5(md5($sql['password']).$sql['pwd_hash'].$QS_pwdhash);
 	$sql['reg_time']=time();
 	$sql['reg_ip']=$online_ip;
-	$insert_id=inserttable(table('members'),$sql,true);
+	$insert_id=$db->inserttable(table('members'),$sql,true);
 			if($sql['utype']=="1")
 			{
 			$db->query("INSERT INTO ".table('members_points')." (uid) VALUES ('{$insert_id}')");
@@ -930,7 +989,49 @@ elseif($act == 'members_add_save')
 	$link[0]['href'] = "?act=members_list";
 	$link[1]['text'] = "继续添加";
 	$link[1]['href'] = "?act=members_add";
+	write_log("添加会员".$sql['username'], $_SESSION['admin_name'],3);
 	adminmsg('添加成功！',2,$link);
+}
+//设置顾问
+elseif($act == 'consultant_install')
+{	
+	//得到要设置顾问的企业会员uid 
+	$tuid =!empty($_REQUEST['tuid'])?$_REQUEST['tuid']:adminmsg("你没有选择会员！",1);
+	if(is_array($tuid)){
+		$tuid=implode(",",$tuid);
+	}
+	//得到顾问信息
+	$consultants = $db->getall("select * from ".table('consultant'));
+	//分页
+	require_once(QISHI_ROOT_PATH.'include/page.class.php');
+	$total_sql="SELECT COUNT(*) AS num FROM ".table('consultant').$oederbysql;
+	$total_val=$db->get_total($total_sql);
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
+	$currenpage=$page->nowindex;
+	$offset=($currenpage-1)*$perpage;
+	$clist = get_consultant($offset,$perpage,$oederbysql);
+
+	$smarty->assign('tuid',$tuid);
+	$smarty->assign('pageheader',"设置顾问");
+	$smarty->assign('page',$page->show(3));
+	$smarty->assign('consultants',$consultants);
+	$smarty->display('company/admin_consultant_install.htm');
+}
+//保存  设置顾问
+elseif($act == 'consultant_install_save')
+{
+	//得到 顾问的id 
+	$id = !empty($_GET['id'])?intval($_GET['id']):adminmsg("选择顾问发生错误！",0);
+	//得到要设置顾问的企业会员uid 
+	$tuid =!empty($_REQUEST['tuid'])?$_REQUEST['tuid']:adminmsg("你没有选择会员！",1);
+	$tuid=explode(",", $tuid);
+	foreach ($tuid as $uid) {
+		$db->updatetable(table('members'),array('consultant' => $id )," uid='{$uid}'");
+	}
+	$link[0]['text'] = "返回列表";
+	$link[0]['href'] = "?act=members_list";
+	write_log("为企业uid为".$tuid."的企业设置顾问,顾问id为".$id, $_SESSION['admin_name'],3);
+	adminmsg('设置成功！',2,$link);
 }
 elseif($act == 'user_edit')
 {
@@ -977,7 +1078,7 @@ elseif($act == 'set_account_save')
 	{
 	adminmsg("Email  {$setsqlarr['email']}  已经存在！",1);
 	}
-	if (!empty($setsqlarr['mobile']) && !preg_match("/^(13|15|18)\d{9}$/",$setsqlarr['mobile']))
+	if (!empty($setsqlarr['mobile']) && !preg_match("/^(13|15|14|17|18)\d{9}$/",$setsqlarr['mobile']))
 	{
 	adminmsg('手机号码错误！',1);
 	}
@@ -989,15 +1090,16 @@ elseif($act == 'set_account_save')
 	if ($_POST['tpl'])
 	{
 		$tplarr['tpl']=trim($_POST['tpl']);
-		updatetable(table('company_profile'),$tplarr," uid='{$thisuid}'");
-		updatetable(table('jobs'),$tplarr," uid='{$thisuid}'");
-		updatetable(table('jobs_tmp'),$tplarr," uid='{$thisuid}'");
+		$db->updatetable(table('company_profile'),$tplarr," uid='{$thisuid}'");
+		$db->updatetable(table('jobs'),$tplarr," uid='{$thisuid}'");
+		$db->updatetable(table('jobs_tmp'),$tplarr," uid='{$thisuid}'");
 		unset($tplarr);
 	}
-	if (updatetable(table('members'),$setsqlarr," uid=".$thisuid.""))
+	if ($db->updatetable(table('members'),$setsqlarr," uid=".$thisuid.""))
 	{
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] = $_POST['url'];
+	write_log("修改会员uid为".$thisuid."的基本信息", $_SESSION['admin_name'],3);
 	adminmsg('修改成功！',2,$link);
 	}
 	else
@@ -1030,7 +1132,7 @@ elseif($act == 'userpoints_edit')
 		}
 		$notes="操作人：{$_SESSION['admin_name']},说明：修改会员 {$user['username']} 积分 ({$t}{$_POST['points']})。收取积分金额：{$amount} 元，备注：{$_POST['points_notes']}";
 		write_setmeallog($_POST['company_uid'],$user['username'],$notes,3,$amount,$ismoney,1,1);
-			
+	write_log("修改会员uid为".$user['uid']."积分", $_SESSION['admin_name'],3);		
 	adminmsg('保存成功！',2);
 }
 elseif($act == 'set_setmeal_save')
@@ -1054,7 +1156,7 @@ elseif($act == 'set_setmeal_save')
 		}
 		$notes="操作人：{$_SESSION['admin_name']},说明：为会员 {$user['username']} 重新开通服务，收取服务金额：{$amount}元，服务ID：{$_POST['reg_service']}。";
 		write_setmeallog($_POST['company_uid'],$user['username'],$notes,4,$amount,$ismoney,2,1);
-			
+		write_log("修改会员uid为".$_POST['company_uid']."套餐信息", $_SESSION['admin_name'],3);
 		adminmsg('操作成功！',2,$link);
 		}
 		else
@@ -1086,6 +1188,7 @@ elseif($act == 'edit_setmeal_save')
 	$setsqlarr['highlight_num']=intval($_POST['highlight_num']);
 	$setsqlarr['highlight_days']=intval($_POST['highlight_days']);
 	$setsqlarr['change_templates']=intval($_POST['change_templates']);
+	$setsqlarr['jobsfair_num']=intval($_POST['jobsfair_num']);
 	$setsqlarr['map_open']=intval($_POST['map_open']);
 
 	$setsqlarr['added']=$_POST['added'];
@@ -1122,7 +1225,7 @@ elseif($act == 'edit_setmeal_save')
 	if ($company_uid)
 	{
 			$setmeal=get_user_setmeal($company_uid);
-			if (!updatetable(table('members_setmeal'),$setsqlarr," uid=".$company_uid."")) adminmsg('修改出错！',0);
+			if (!$db->updatetable(table('members_setmeal'),$setsqlarr," uid=".$company_uid."")) adminmsg('修改出错！',0);
 		//会员套餐变更记录。管理员后台修改会员套餐：修改会员。3表示：管理员后台修改
 			$setmeal['endtime']=date('Y-m-d',$setmeal['endtime']);
 			$setsqlarr['endtime']=date('Y-m-d',$setsqlarr['endtime']);
@@ -1137,11 +1240,12 @@ elseif($act == 'edit_setmeal_save')
 			if ($setsqlarr['endtime']<>"")
 			{
 				$setmeal_deadline['setmeal_deadline']=$setmealtime;
-				if (!updatetable(table('jobs'),$setmeal_deadline," uid='{$company_uid}' AND add_mode='2' "))adminmsg('修改出错！',0);
-				if (!updatetable(table('jobs_tmp'),$setmeal_deadline," uid='{$company_uid}' AND add_mode='2' "))adminmsg('修改出错！',0);
+				if (!$db->updatetable(table('jobs'),$setmeal_deadline," uid='{$company_uid}' AND add_mode='2' "))adminmsg('修改出错！',0);
+				if (!$db->updatetable(table('jobs_tmp'),$setmeal_deadline," uid='{$company_uid}' AND add_mode='2' "))adminmsg('修改出错！',0);
 				distribution_jobs_uid($company_uid);
 			}
 	}
+	write_log("编辑会员uid为".$company_uid."套餐信息", $_SESSION['admin_name'],3);
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] = $_POST['url'];
 	adminmsg('操作成功！',2,$link);
@@ -1157,11 +1261,7 @@ elseif($act == 'userpass_edit')
 	$md5password=md5(md5(trim($_POST['password'])).$pwd_hash.$QS_pwdhash);	
 	if ($db->query( "UPDATE ".table('members')." SET password = '$md5password'  WHERE uid='".$user_info['uid']."'"))
 	{
-			if(defined('UC_API'))
-			{
-			include_once(QISHI_ROOT_PATH.'uc_client/client.php');
-			uc_user_edit($user_info['username'],trim($_POST['password']),trim($_POST['password']),"",1);
-			}
+	write_log("修改会员uid为".$user_info['uid']."密码", $_SESSION['admin_name'],3);
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] = $_POST['url'];
 	adminmsg('操作成功！',2,$link);
@@ -1177,6 +1277,7 @@ elseif($act == 'userstatus_edit')
 	check_permissions($_SESSION['admin_purview'],"com_user_edit");
 	if(set_user_status(intval($_POST['status']),intval($_POST['userstatus_uid'])))
 	{
+		write_log("修改会员uid为".intval($_POST['userstatus_uid'])."的状态", $_SESSION['admin_name'],3);
 		$link[0]['text'] = "返回列表";
 		$link[0]['href'] = $_POST['url'];
 		adminmsg('操作成功！',2,$link);
@@ -1186,7 +1287,7 @@ elseif($act == 'userstatus_edit')
 	adminmsg('操作失败！',1);
 	}
 }
- elseif($act == 'del_auditreason')
+elseif($act == 'del_auditreason')
 {	
 	//check_token();
 	check_permissions($_SESSION['admin_purview'],"jobs_audit");//用的是职位审核的权限
@@ -1201,7 +1302,7 @@ elseif($act == 'userstatus_edit')
 	adminmsg("删除失败！",0);
 	}
 }
- elseif($act == 'management')
+elseif($act == 'management')
 {	
 	$id=intval($_GET['id']);
 	$u=get_user($id);
@@ -1222,11 +1323,12 @@ elseif($act == 'userstatus_edit')
 		$_SESSION['username']=$u['username'];
 		$_SESSION['utype']=$u['utype'];
 		$_SESSION['uqqid']="1";
+		$_SESSION['no_self']="1";
 		setcookie('QS[uid]',$u['uid'],0,$QS_cookiepath,$QS_cookiedomain);
 		setcookie('QS[username]',$u['username'],0,$QS_cookiepath,$QS_cookiedomain);
 		setcookie('QS[password]',$u['password'],0,$QS_cookiepath,$QS_cookiedomain);
 		setcookie('QS[utype]',$u['utype'], 0,$QS_cookiepath,$QS_cookiedomain);
-		header("Location:".get_member_url($u['utype'],false,$_CFG['site_dir']));
+		header("Location:".get_member_url($u['utype']));
 	}	
 } 
 elseif($act == 'consultant')
@@ -1238,7 +1340,7 @@ elseif($act == 'consultant')
 	
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('consultant').$oederbysql;
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$clist = get_consultant($offset,$perpage,$oederbysql);
@@ -1246,6 +1348,62 @@ elseif($act == 'consultant')
 	$smarty->assign('clist',$clist);
 	$smarty->assign('page',$page->show(3));
 	$smarty->display('company/admin_consultant_list.htm');
+}
+//顾问  管理
+elseif($act == 'consultant_manage')
+{
+	//得到顾问id 
+	$id = intval($_GET['id']);
+	$sql = "select * from ".table('consultant')." where id = {$id}";
+	$consultant = $db->getone($sql);
+	if(empty($consultant)){
+		adminmsg('顾问丢失',1);
+	}
+	//分页
+	require_once(QISHI_ROOT_PATH.'include/page.class.php');
+	$wheresql = " where consultant ={$id}";
+	$total_sql="select count(*) as num from ".table('members')." where consultant ={$id}";
+	$total_val=$db->get_total($total_sql);
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
+	$currenpage=$page->nowindex;
+	$offset=($currenpage-1)*$perpage;
+	$members = get_member_manage($offset,$perpage,$wheresql);
+	$smarty->assign('pageheader',"重置顾问");
+	$smarty->assign('consultant',$consultant);
+	$smarty->assign('members',$members);
+	$smarty->assign('page',$page->show(3));
+	$smarty->display('company/admin_consultant_manage.htm');
+}
+//管理 顾问  重置 按钮 
+elseif($act == 'resetting')
+{
+	//批量和非批量得到不同的会员uid（批量得到的uid是个数组memberstuid，非批量得到的是一个id值membersids）
+	$membersid =$_GET['uid'];
+	$memberstuid =$_REQUEST['tuid'];
+	if(empty($membersid) && empty($memberstuid)){
+		adminmsg("重置发生错误！",0);
+	}
+	$members_id = empty($membersid)?$memberstuid:$membersid;
+	$member_del_id='';
+	if(is_array($members_id)){
+		foreach ($members_id as  $value) {
+			if(empty($member_del_id)){
+				$member_del_id = $value;
+			}else{
+				$member_del_id = $member_del_id.','.$value;
+			}
+		}
+	}else{
+		$member_del_id = $members_id;
+	}
+	//对这些会员进行重置顾问
+	if($db->updatetable(table('members'),array('consultant'=>0)," uid in ({$member_del_id}) ")){
+		adminmsg('重置成功!',2);
+	}else{
+		adminmsg('重置过程失败!',0);
+	}
+	
+
 }
 elseif($act == 'consultant_add')
 {
@@ -1268,8 +1426,8 @@ elseif($act == 'consultant_add_save')
 	$setsqlarr['pic']=_asUpFiles($upload_image_dir, "pic","2048",'gif/jpg/bmp/png',true);
 	$setsqlarr['pic']=date("Y/m/d/").$setsqlarr['pic'];
 
-	$insert_id=inserttable(table('consultant'),$setsqlarr,true);
-	
+	$insert_id=$db->inserttable(table('consultant'),$setsqlarr,true);
+	write_log("添加顾问".$setsqlarr['name'], $_SESSION['admin_name'],3);
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] = "?act=consultant";
 	$link[1]['text'] = "继续添加";
@@ -1309,8 +1467,8 @@ elseif($act == 'consultant_edit_save')
 		@unlink("../data/".$_CFG['updir_images']."/".$consultant['pic']);
 	}
 	
-	updatetable(table('consultant'),$setsqlarr," id={$id} ");
-	
+	$db->updatetable(table('consultant'),$setsqlarr," id={$id} ");
+	write_log("修改顾问id为".$id."的顾问信息", $_SESSION['admin_name'],3);
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] = "?act=consultant";
 	$link[1]['text'] = "查看修改结果";

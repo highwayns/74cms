@@ -459,7 +459,7 @@ function locoyspider_jobs_deadline()
 //采集注册会员
 function locoyspider_user_register($email=NULL,$utype='1')
 {
-	global $db,$locoyspider;
+	global $db,$locoyspider,$QS_pwdhash;
 	$setsqlarr['username']=$locoyspider['reg_usname'].uniqid().time();
 	$setsqlarr['pwd_hash']=res_randstr();
 		//reg_password
@@ -480,12 +480,12 @@ function locoyspider_user_register($email=NULL,$utype='1')
 		{
 			$email=time().uniqid().$locoyspider['reg_email'];
 		}
-	$setsqlarr['password']=md5(md5($pwd).$setsqlarr['pwd_hash']);
+	$setsqlarr['password']=md5(md5($pwd).$setsqlarr['pwd_hash'].$QS_pwdhash);
 	$setsqlarr['email']=$email;
 	$setsqlarr['utype']=$utype;
 	$setsqlarr['reg_time']=time();
 	$setsqlarr['robot']=1;//标记为采集
-	$reg_id=inserttable(table('members'),$setsqlarr,true);
+	$reg_id=$db->inserttable(table('members'),$setsqlarr,true);
 	if (!$reg_id) return false;
 	if($utype=='1'){
 		if(!$db->query("INSERT INTO ".table('members_points')." (uid) VALUES ('{$reg_id}')"))  return false;
@@ -496,7 +496,7 @@ function locoyspider_user_register($email=NULL,$utype='1')
 //添加职位
 function locoyspider_addjobs($companyinfo)
 {
-		global $locoyspider;
+		global $locoyspider,$db;
 		$jobssetsqlarr['uid']=$companyinfo['uid'];		
 		$jobssetsqlarr['companyname']=$companyinfo['companyname'];
 		$jobssetsqlarr['company_id']=$companyinfo['id'];		
@@ -552,7 +552,7 @@ function locoyspider_addjobs($companyinfo)
 		$jobssetsqlarr['audit']=$locoyspider['jobs_audit'];
 		$jobssetsqlarr['display']=$locoyspider['jobs_display'];
 		$jobssetsqlarr['robot']=1;
-		$pid=inserttable(table('jobs'),$jobssetsqlarr,true);
+		$pid=$db->inserttable(table('jobs'),$jobssetsqlarr,true);
 		if (!$pid) exit("添加招聘信息失败");
 		//职位联系方式
 		$setsqlarr_contact['contact']=trim($_POST['contact']);
@@ -570,7 +570,7 @@ function locoyspider_addjobs($companyinfo)
 
 		$setsqlarr_contact['notify']=$locoyspider['jobs_notify'];
 		$setsqlarr_contact['pid']=$pid;
-		if (!inserttable(table('jobs_contact'),$setsqlarr_contact)) exit("添加招聘联系方式失败");
+		if (!$db->inserttable(table('jobs_contact'),$setsqlarr_contact)) exit("添加招聘联系方式失败");
 		//------
 		$searchtab['id']=$pid;
 		$searchtab['uid']=$jobssetsqlarr['uid'];
@@ -591,30 +591,21 @@ function locoyspider_addjobs($companyinfo)
 		$searchtab['refreshtime']=$jobssetsqlarr['refreshtime'];
 		$searchtab['scale']=$jobssetsqlarr['scale'];	
 		//
-		inserttable(table('jobs_search_wage'),$searchtab);
-		inserttable(table('jobs_search_scale'),$searchtab);
-		inserttable(table('jobs_search_rtime'),$searchtab);
+		$db->inserttable(table('jobs_search_wage'),$searchtab);
+		$db->inserttable(table('jobs_search_scale'),$searchtab);
+		$db->inserttable(table('jobs_search_rtime'),$searchtab);
 		//
 		$searchtab['stick']=$jobssetsqlarr['stick'];
-		inserttable(table('jobs_search_stickrtime'),$searchtab);
+		$db->inserttable(table('jobs_search_stickrtime'),$searchtab);
 		unset($searchtab['stick']);
 		//
 		$searchtab['click']=$jobssetsqlarr['click'];
-		inserttable(table('jobs_search_hot'),$searchtab);
+		$db->inserttable(table('jobs_search_hot'),$searchtab);
 		unset($searchtab['click']);
 		//
 		$searchtab['likekey']=$jobssetsqlarr['jobs_name'].','.$jobssetsqlarr['companyname'];
 		$searchtab['key']=$jobssetsqlarr['key'];
-		inserttable(table('jobs_search_key'),$searchtab);
-		$tagsql['tag1']=$tagsql['tag2']=$tagsql['tag3']=$tagsql['tag4']=$tagsql['tag5']=0;
-		$tagsql['id']=$pid;
-		$tagsql['uid']=$jobssetsqlarr['uid'];
-		$tagsql['topclass']=$jobssetsqlarr['topclass'];
-		$tagsql['category']=$jobssetsqlarr['category'];
-		$tagsql['subclass']=$jobssetsqlarr['subclass'];
-		$tagsql['district']=$jobssetsqlarr['district'];
-		$tagsql['sdistrict']=$jobssetsqlarr['sdistrict'];	
-		inserttable(table('jobs_search_tag'),$tagsql);
+		$db->inserttable(table('jobs_search_key'),$searchtab);
 		require_once(ADMIN_ROOT_PATH.'include/admin_company_fun.php');
 		distribution_jobs($pid);
 		exit("添加成功");	
@@ -622,7 +613,7 @@ function locoyspider_addjobs($companyinfo)
 //添加企业
 function locoyspider_addcompany($companyname)
 {
-	global $locoyspider;
+	global $locoyspider,$db;
 		$setsqlarr['uid']=locoyspider_user_register(check_email(trim($_POST['email'])));
 		if ($setsqlarr['uid']=="") exit("添加会员出错");
 		$setsqlarr['companyname']=$companyname;
@@ -657,7 +648,7 @@ function locoyspider_addcompany($companyname)
 		$setsqlarr['telephone_show']=1;
 		$setsqlarr['email_show']=1;
 		$setsqlarr['address_show']=1;
-		if (!inserttable(table('company_profile'),$setsqlarr)) exit("添加企业出错");
+		if (!$db->inserttable(table('company_profile'),$setsqlarr)) exit("添加企业出错");
 		return true;
 }
 //获取随机字符串

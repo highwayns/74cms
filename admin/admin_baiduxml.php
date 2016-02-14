@@ -59,6 +59,7 @@ elseif($act == 'setsave')
 		!$db->query("UPDATE ".table('baiduxml')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('保存失败', 1):"";
 		}
 		refresh_cache('baiduxml');
+		write_log("修改百度开放平台配置", $_SESSION['admin_name'],3);
 		adminmsg("保存成功！",2);
 }
 elseif($act == 'del')
@@ -75,6 +76,7 @@ elseif($act == 'del')
 	{
 	@unlink($xmldir.$f);
 	}
+	write_log("删除百度开放平台文档", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！",2);
 }
 elseif($act == 'make')
@@ -109,7 +111,7 @@ elseif($act == 'make')
 	$com=$db->getone("SELECT * from ".table('company_profile')." where id = '{$row['company_id']}' LIMIT 1");
 	$category=$db->getone("SELECT * FROM ".table('category_jobs')." where id=".$row['category']." LIMIT 1");
 	$subclass=$db->getone("SELECT * FROM ".table('category_jobs')." where id=".$row['subclass']." LIMIT 1");
-	$row['jobs_url']=url_rewrite('QS_jobsshow',array('id'=>$row['id']),false);
+	$row['jobs_url']=url_rewrite('QS_jobsshow',array('id'=>$row['id']));
 	
 	$x=array($row['jobs_url'],date("Y-m-d",$row['refreshtime']),$row['jobs_name'],date("Y-m-d",$row['deadline']),$row['contents'],$row['nature_cn'],   str_replace('/','',$row['district_cn']),$row['companyname'],$contact['email'],$category['categoryname'],$subclass['categoryname'],$row['education_cn'],$row['experience_cn'],date("Y-m-d",$row['addtime']),date("Y-m-d",$row['deadline']),str_replace('~','-',$row['wage_cn']),$row['trade_cn'],$com['nature_cn'],$_CFG['site_name'],$_CFG['site_domain'].$_CFG['site_dir']);
 	foreach ($x as $key => $value) {

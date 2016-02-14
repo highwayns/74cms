@@ -31,7 +31,17 @@
 		   {#/foreach#}
 		</td>
       </tr>
-		
+    <tr>
+        <td height="30" align="right" >会员过期套餐过期后套餐自动变更为：</td>
+        <td>
+        {#foreach from=$givesetmeal item=list#}
+        <label>
+          <input type="radio" name="reset_service" value="{#$list.id#}"   {#if $QISHI.reset_service==$list.id#}checked="checked"{#/if#}/>
+          {#$list.setmeal_name#}
+        </label>
+        {#/foreach#}
+        </td>
+    </tr>
 	  <tr>
       <td height="30" align="right" >服务超期或超出规定条数启用积分消费：</td>
       <td  >
@@ -53,7 +63,7 @@
  <tr>
         <td height="30" align="right" >服务到期时间提前几天提醒：</td>
         <td  >
-		<input name="meal_min_remind" type="text" class="input_text_200" id="meal_min_remind" value="{#$QISHI.meal_min_remind#}"/>
+		<input name="meal_min_remind" type="text" class="input_text_50" id="meal_min_remind" value="{#$QISHI.meal_min_remind#}"/>
 		   <span class="admin_note">0为不提醒</span> 
 		</td>
       </tr>

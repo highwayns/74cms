@@ -76,7 +76,8 @@ if ($act=="report")
 					</td>
 			    </tr>
 			</table>');
-		}
+		} 
+		
 		if (check_resume_report($_SESSION['uid'],intval($_GET['resume_id'])))
 		{
 			exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
@@ -102,61 +103,63 @@ $("#ajax_report").click(function() {
 	}
 	else
 	{
-		$("#report").hide();
+		$(".report-dialog").hide();
 		$("#waiting").show();
 		
-		$.post("<?php echo $_CFG['site_dir'] ?>user/user_report_resume.php", { "resume_id": $("#resume_id").val(),"full_name": $("#full_name").val(),"content": $("#content").val(),"resume_addtime":$("#resume_addtime").val(),"act":"app_save"},
+		$.post("<?php echo $_CFG['site_dir'] ?>user/user_report_resume.php", { "resume_id": $("#resume_id").val(),"full_name": $("#full_name").val(),"content": $("#content").val(),"report_type":$('input[name="report_type"]:checked').val(),"resume_addtime":$("#resume_addtime").val(),"act":"app_save"},
 
 	 	function (data,textStatus)
 	 	 {
 			if (data=="ok")
 			{
-				$("#report").hide();
+				$(".report-dialog").hide();
 				$("#waiting").hide();
 				$("#app_ok").show();
-					$("#app_ok .closed").click(function(){
-					});
 			}
 			else
 			{
-				$("#report").show();
+				$(".report-dialog").show();
 				$("#waiting").hide();
 				$("#app_ok").hide();
-				alert("举报失败！"+data);
+				$("#error_msg").html("举报失败！"+data);
+				$("#error").show();
 			}
 	 	 });
 	}
 });
-function DialogClose()
-{
-	$("#FloatBg").hide();
-	$("#FloatBox").hide();
-}
 </script>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="report">
+<div class="report-dialog">
 	<input type="hidden" id="resume_id" value="<?php echo intval($_GET['resume_id']);?>">
 	<input type="hidden" id="full_name" value="<?php echo trim($_GET['full_name']);?>">
 	<input type="hidden" id="resume_addtime" value="<?php echo trim($_GET['resume_addtime']);?>">
-    <tr>
-		<td width="120" align="right">投诉的简历：</td>
-		<td>
-			<?php echo trim($_GET['full_name']);?>
-		</td>
-    </tr>
-    <tr>
-		<td align="right">相关描述：</td>
-		<td>
-			<textarea name="content" id="content"  style="width:300px; height:60px; line-height:180%; font-size:12px;"></textarea>
-		</td>
-    </tr>
-    <tr>
-		<td></td>
-		<td>
-			<input type="button" name="Submit"  id="ajax_report" class="but130lan" value="提交" />
-		</td>
-    </tr>
-</table>
+	<div class="report-item clearfix">
+		<div class="report-type f-left">举报原因：</div>
+		<div class="report-content f-left">
+			<label><input type="radio" name="report_type"  class="radio" value="1" checked="checked"/>信息虚假<span>（乱写、乱填等无意义内容）</span></label>
+			<label><input type="radio" name="report_type"  class="radio" value="2" />电话不通<span>（电话多次未通）</span></label>
+			<label><input type="radio" name="report_type"  class="radio" value="3" />其它原因<span>（如中介等）</span></label>
+		</div>
+	</div>
+	<div class="report-item clearfix">
+		<div class="report-type f-left">相关描述：</div>
+		<div class="report-content f-left">
+			<textarea name="content" id="content" cols="30" rows="10"></textarea>
+		</div>
+	</div>
+	<span class="r-all-row">一经核实，我们会立即... </span>
+	<div class="report-item clearfix">
+		<div class="report-type f-left">&nbsp;</div>
+		<div class="report-content f-left">
+			<p class="del-info">删除信息，为民除害 </p>
+			<p class="del-info">站内信通知您 </p>
+		</div>
+	</div>
+	<div class="center-btn-box">
+		<input type="button" value="举报" class="btn-65-30blue btn-big-font " id="ajax_report"/><input type="button" value="取消" class="btn-65-30grey btn-big-font DialogClose" />
+	</div>
+	<p class="jubao-tip" style="padding-left: 10px;">温馨提示：找份工作不容易，请您如实举报哦！</p>
+</div>
+
 <table width="100%" border="0" cellspacing="5" cellpadding="0" id="waiting"  style="display:none">
   <tr>
     <td align="center" height="60"><img src="<?php echo  $_CFG['site_template']?>images/30.gif"  border="0"/></td>
@@ -167,28 +170,28 @@ function DialogClose()
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="app_ok" style="display:none">
     <tr>
-		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/14.gif" /></td>
+		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/big-yes.png" /></td>
 		<td>
 			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">举报成功，管理员会认真处理!</strong>
 		</td>
     </tr>
 </table>
+<table width="100%" border="0" cellspacing="5" cellpadding="0" id="error"  style="display:none">
+  <tr>
+    <td align="center" id="error_msg"></td>
+  </tr>
+</table>
 <?php
 }
-
 elseif ($act=="app_save")
 {
-	$setsqlarr['content']=trim($_POST['content'])?trim($_POST['content']):exit("出错了");
-	$setsqlarr['resume_id']=$_POST['resume_id']?intval($_POST['resume_id']):exit("出错了");
-	$setsqlarr['title']=trim($_POST['full_name'])?trim($_POST['full_name']):exit("出错了");
+	$setsqlarr['content']=trim($_POST['content'])?trim($_POST['content']):exit("请填写相关描述！");
+	$setsqlarr['resume_id']=$_POST['resume_id']?intval($_POST['resume_id']):exit("简历id丢失！");
 	$setsqlarr['resume_addtime']=intval($_POST['resume_addtime']);
 	$setsqlarr['uid']=intval($_SESSION['uid']);
 	$setsqlarr['addtime']=time();
-	if (strcasecmp(QISHI_DBCHARSET,"utf8")!=0)
-	{
-	$setsqlarr['content']=utf8_to_gbk($setsqlarr['content']);
-	$setsqlarr['title']=utf8_to_gbk($setsqlarr['title']);
-	}
+	$setsqlarr['report_type']=intval($_POST['report_type']); // 投诉类型
+	$setsqlarr['content']=iconv("utf-8", "gbk", $setsqlarr['content']);
 	$resume=get_resume_basic($setsqlarr['resume_id']);
 	if (empty($resume))
 	{
@@ -196,12 +199,31 @@ elseif ($act=="app_save")
 	}
 	else
 	{
-		$insert_id = inserttable(table('report_resume'),$setsqlarr,1);
+		if ($resume['display_name']=="2")
+		{
+			$setsqlarr['title']="N".str_pad($resume['id'],7,"0",STR_PAD_LEFT);
+		}
+		elseif($resume['display_name']=="3")
+		{
+			if($resume['sex']==1)
+			{
+				$setsqlarr['title']=cut_str($resume['fullname'],1,0,"先生");
+			}
+			elseif($resume['sex'] == 2)
+			{
+				$setsqlarr['title']=cut_str($resume['fullname'],1,0,"女士");
+			}
+		}
+		else
+		{
+			$setsqlarr['title']=$resume['fullname'];
+		}
+		$insert_id = $db->inserttable(table('report_resume'),$setsqlarr,1);
 	}
 	if($insert_id)
-	 {
-	 exit("ok");
-	 }
+	{
+	exit("ok");
+	}
 }
 
 ?>

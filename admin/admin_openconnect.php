@@ -32,6 +32,7 @@ elseif($act == 'set_qq_save')
 	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('更新设置失败', 1):"";
 	}
 	refresh_cache('config');
+	write_log("设置第三方登录QQ", $_SESSION['admin_name'],3);
 	adminmsg("保存成功！",2);
 }
 elseif($act == 'sina_set')
@@ -50,6 +51,7 @@ elseif($act == 'set_sina_save')
 	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('更新设置失败', 1):"";
 	}
 	refresh_cache('config');
+	write_log("设置第三方登录sina", $_SESSION['admin_name'],3);
 	adminmsg("保存成功！",2);
 }
 elseif($act == 'taobao_set')
@@ -68,6 +70,7 @@ elseif($act == 'set_taobao_save')
 	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('更新设置失败', 1):"";
 	}
 	refresh_cache('config');
+	write_log("设置第三方登录taobao", $_SESSION['admin_name'],3);
 	adminmsg("保存成功！",2);
 }
 ?>

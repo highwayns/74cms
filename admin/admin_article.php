@@ -78,7 +78,7 @@ elseif($act == 'addsave')
 	check_token();
 	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('您没有填写标题！',1);
 	$setsqlarr['type_id']=!empty($_POST['type_id'])?intval($_POST['type_id']):adminmsg('您没有选择分类！',1);
-	$setsqlarr['content']=!empty($_POST['content'])?$_POST['content']:adminmsg('您没有内容！',1);
+	$setsqlarr['content']=!empty($_POST['content'])?trim($_POST['content']):adminmsg('您没有内容！',1);
 	$setsqlarr['tit_color']=trim($_POST['tit_color']);
 	$setsqlarr['tit_b']=intval($_POST['tit_b']);
 	$setsqlarr['author']=trim($_POST['author']);
@@ -105,7 +105,14 @@ elseif($act == 'addsave')
 	$link[0]['href'] = '?act=news_add&type_id_cn='.trim($_POST['type_id_cn'])."&type_id=".$_POST['type_id'];
 	$link[1]['text'] = "返回文章列表";
 	$link[1]['href'] = '?act=newslist';
-	!inserttable(table('article'),$setsqlarr)?adminmsg("添加失败！",0):adminmsg("添加成功！",2,$link);
+	write_log("添加文章：".$setsqlarr['title'], $_SESSION['admin_name'],3);
+	$insertid = $db->inserttable(table('article'),$setsqlarr,1);
+	if(!$insertid){
+		adminmsg("添加失败！",0);
+	}else{
+		baidu_submiturl(url_rewrite('QS_newsshow',array('id'=>$insertid)),'addarticle');
+		adminmsg("添加成功！",2,$link);
+	}
 }
 elseif($act == 'article_edit')
 {
@@ -128,7 +135,7 @@ elseif($act == 'editsave')
 	$id=intval($_POST['id']);
 	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('您没有填写标题！',1);
 	$setsqlarr['type_id']=trim($_POST['type_id'])?intval($_POST['type_id']):0;
-	$setsqlarr['content']=!empty($_POST['content'])?$_POST['content']:adminmsg('您没有内容！',1);
+	$setsqlarr['content']=!empty($_POST['content'])?trim($_POST['content']):adminmsg('您没有内容！',1);
 	$setsqlarr['tit_color']=trim($_POST['tit_color']);
 	$setsqlarr['tit_b']=intval($_POST['tit_b']);
 	$setsqlarr['author']=trim($_POST['author']);
@@ -154,7 +161,8 @@ elseif($act == 'editsave')
 	$link[0]['href'] = '?act=newslist';
 	$link[1]['text'] = "查看已修改文章";
 	$link[1]['href'] = "?act=article_edit&id=".$id;
-	!updatetable(table('article'),$setsqlarr," id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	write_log("修改id为".$id."的文章信息", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('article'),$setsqlarr," id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 elseif($act == 'del_img')
 {
@@ -166,6 +174,7 @@ elseif($act == 'del_img')
 	$db->query($sql);
 	@unlink($upfiles_dir.$img);
 	@unlink($thumb_dir.$img);
+	write_log("删除id为".$id."的文章缩略图", $_SESSION['admin_name'],3);
 	adminmsg("删除缩略图成功！",2);
 }
 elseif($act == 'property'){
@@ -193,7 +202,7 @@ elseif($act == 'add_property_save')
 			{		
 				$setsqlarr['categoryname']=trim($_POST['categoryname'][$i]);
 				$setsqlarr['category_order']=intval($_POST['category_order'][$i]);				
-				!inserttable(table('article_property'),$setsqlarr)?adminmsg("添加失败！",0):"";
+				!$db->inserttable(table('article_property'),$setsqlarr)?adminmsg("添加失败！",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
@@ -210,6 +219,7 @@ elseif($act == 'add_property_save')
 	$link[0]['href'] = '?act=property';
 	$link[1]['text'] = "继续添加属性";
 	$link[1]['href'] = "?act=property_add";
+	write_log("添加成功！共添加".$num."新闻属性", $_SESSION['admin_name'],3);
 	adminmsg("添加成功！共添加".$num."个分类",2,$link);
 	}
 }
@@ -247,7 +257,8 @@ elseif($act == 'edit_property_save')
 	$link[0]['href'] = '?act=edit_property&id='.$id;
 	$link[1]['text'] = "返回属性管理";
 	$link[1]['href'] = '?act=property';
-	!updatetable(table('article_property'),$setsqlarr," id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	write_log("修改id为".$id."新闻属性", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('article_property'),$setsqlarr," id=".$id."")?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 elseif($act == 'category')
 {
@@ -280,7 +291,7 @@ elseif($act == 'add_category_save')
 				$setsqlarr['title']=$_POST['title'][$i];
 				$setsqlarr['description']=$_POST['description'][$i];
 				$setsqlarr['keywords']=$_POST['keywords'][$i];
-				!inserttable(table('article_category'),$setsqlarr)?adminmsg("添加失败！",0):"";
+				!$db->inserttable(table('article_category'),$setsqlarr)?adminmsg("添加失败！",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
@@ -293,6 +304,7 @@ elseif($act == 'add_category_save')
 	}
 	else
 	{
+	write_log("添加成功！共添加".$num."个分类", $_SESSION['admin_name'],3);
 	$link[0]['text'] = "返回分类管理";
 	$link[0]['href'] = '?act=category';
 	$link[1]['text'] = "继续添加分类";
@@ -307,6 +319,7 @@ elseif($act == 'del_category')
 	$id=$_REQUEST['id'];
 	if ($num=del_category($id))
 	{
+	write_log("删除成功！共删除".$num."个分类", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除".$num."个分类",2);
 	}
 	else
@@ -338,11 +351,12 @@ elseif($act == 'edit_category_save')
 	$link[0]['href'] = '?act=edit_category&id='.$id;
 	$link[1]['text'] = "返回分类管理";
 	$link[1]['href'] = '?act=category';
-	if(!updatetable(table('article_category'),$setsqlarr," id='".$id."'")){
+	if(!$db->updatetable(table('article_category'),$setsqlarr," id='".$id."'")){
 		adminmsg("修改失败！",0);
 	}else{
 		$set_type_sqlarr['parentid'] = $setsqlarr['parentid'];
-		updatetable(table('article'),$set_type_sqlarr," type_id='".$id."'");
+		$db->updatetable(table('article'),$set_type_sqlarr," type_id='".$id."'");
+		write_log("修改位id为".$id."的分类", $_SESSION['admin_name'],3);
 		adminmsg("修改成功！",2,$link);
 	}
 }

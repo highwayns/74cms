@@ -21,7 +21,7 @@ $(".admin_top_nav>a").click(function(){
 </head>
 <body>
 <div class="admin_top_bg">
-    <table width="1215" height="70" border="0" cellpadding="0" cellspacing="0">
+    <table width="1400" height="70" border="0" cellpadding="0" cellspacing="0">
         <tr><td width="200" rowspan="2" align="right" valign="middle" ><div align="center"><img src="images/logo_in.png" width="160" height="25" /></div>
 		</td>
           <td height="39" align="right" valign="middle" class="link_w">
@@ -36,12 +36,10 @@ $(".admin_top_nav>a").click(function(){
 		  {#if $_PLUG.simple.p_install==2#}
 		  <a href="admin_simple.php" target="mainFrame" id="simple">微商圈</a>
 		  {#/if#}
+		  <a href="admin_weixin.php" target="mainFrame" id="mobile">移动端</a>
 		  <a href="admin_article.php" target="mainFrame" id="article">内容</a>
 		  <a href="admin_ad.php?act=list" target="mainFrame" id="ad">广告</a>
-		  <a href="admin_templates.php" target="mainFrame" id="templates">模板</a>
-		  <a href="admin_feedback.php?act=report_list" target="mainFrame" id="feedback">反馈</a>
 		  <a href="admin_clearcache.php" target="mainFrame" id="tools">工具</a>
-		  <a href="admin_users.php" target="mainFrame" id="users">管理员</a>
 		  <a href="admin_set.php" target="mainFrame" id="set">系统</a>
 		  <div class="clear"></div>
 		   </td>

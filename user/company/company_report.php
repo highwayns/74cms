@@ -34,7 +34,7 @@ elseif ($act=='report_save')
 	$setsqlarr['uid']=$_SESSION['uid'];
 	$setsqlarr['addtime']=time();
 	write_memberslog($_SESSION['uid'],2,7003,$_SESSION['username'],"举报简历({$_POST['resume_id']})");
-	!inserttable(table('report_resume'),$setsqlarr)?showmsg("举报失败！",0,$link):showmsg("举报成功，管理员会认真处理！",2,$link);
+	!$db->inserttable(table('report_resume'),$setsqlarr)?showmsg("举报失败！",0,$link):showmsg("举报成功，管理员会认真处理！",2,$link);
 }
 unset($smarty);
 ?>

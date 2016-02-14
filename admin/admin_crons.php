@@ -21,7 +21,7 @@ if($act == 'list')
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('crons');
 	$total_val=$db->get_total($total_sql);
-	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage));
+	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$list = get_crons($offset,$perpage,$wheresql.$oederbysql);
@@ -52,10 +52,11 @@ $setsqlarr['minute']=intval($setsqlarr['minute'])>60?60:intval($setsqlarr['minut
 }
 $setsqlarr['admin_set']=0;
 $setsqlarr['available']=intval($_POST['available']);
-	if (inserttable(table('crons'),$setsqlarr))
+	if ($db->inserttable(table('crons'),$setsqlarr))
 	{
 	$link[0]['text'] = "返回列表";
 	$link[0]['href'] ="?act=";
+	write_log("添加计划任务：".$setsqlarr['name'], $_SESSION['admin_name'],3);
 	adminmsg("添加成功！",2,$link);
 	}
 	else
@@ -85,8 +86,8 @@ elseif($act == 'edit_save')
 	$setsqlarr['minute']=intval($setsqlarr['minute'])>60?60:intval($setsqlarr['minute']);
 	}
 	$setsqlarr['available']=intval($_POST['available']);
-	$wheresql=" cronid=".intval($_POST['cronid']);;
-	!updatetable(table('crons'),$setsqlarr,$wheresql)?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
+	$wheresql=" cronid=".intval($_POST['cronid']);
+	!$db->updatetable(table('crons'),$setsqlarr,$wheresql)?adminmsg("修改失败！",0):adminmsg("修改成功！",2,$link);
 }
 elseif($act == 'del')
 {
@@ -95,6 +96,7 @@ elseif($act == 'del')
 	if (empty($id)) adminmsg("请选择项目！",0);
 	if ($num=del_crons($id))
 	{
+	write_log("删除计划任务,共删除".$num."行", $_SESSION['admin_name'],3);
 	adminmsg("删除成功！共删除".$num."行",2);
 	}
 	else
