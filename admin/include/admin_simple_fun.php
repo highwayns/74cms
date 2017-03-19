@@ -1,19 +1,19 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Î¢ÕĞÆ¸
+ * 74cms å¾®æ‹›è˜
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 if(!defined('IN_QISHI'))
 {
  die('Access Denied!');
 }
-//Î¢ÕĞÆ¸ÁĞ±í
+//å¾®æ‹›è˜åˆ—è¡¨
 function get_simple_list($offset, $perpage, $sql= '')
 {
 	global $db;
@@ -36,8 +36,8 @@ function simple_del($id)
 	{
 		if (!$db->query("Delete from ".table('simple')." WHERE id IN (".$sqlin.")")) return false;
 		$return=$return+$db->affected_rows();
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨É¾³ıidÎª".$sqlin."µÄÎ¢ÕĞÆ¸ , ¹²É¾³ı".$return."ĞĞ", $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°åˆ é™¤idä¸º".$sqlin."çš„å¾®æ‹›è˜ , å…±åˆ é™¤".$return."è¡Œ", $_SESSION['admin_name'],3);
 	}
 	return $return;
 }
@@ -51,12 +51,12 @@ function simple_refresh($id)
 	{
 		if (!$db->query("update  ".table('simple')." SET refreshtime='".time()."'  WHERE id IN (".$sqlin.")")) return false;
 		$return=$return+$db->affected_rows();
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨Ë¢ĞÂidÎª".$sqlin."µÄÎ¢ÕĞÆ¸ , ¹²Ë¢ĞÂ".$return."ĞĞ", $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°åˆ·æ–°idä¸º".$sqlin."çš„å¾®æ‹›è˜ , å…±åˆ·æ–°".$return."è¡Œ", $_SESSION['admin_name'],3);
 	}
 	return $return;
 }
-//Î¢ÕĞÆ¸ÉóºË
+//å¾®æ‹›è˜å®¡æ ¸
 function simple_audit($id,$audit)
 {
 	global $db;
@@ -67,8 +67,8 @@ function simple_audit($id,$audit)
 	{
 		if (!$db->query("update  ".table('simple')." SET audit='".intval($audit)."'  WHERE id IN (".$sqlin.")")) return false;
 		$return=$return+$db->affected_rows();
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨ÉóºËidÎª".$sqlin."µÄÎ¢ÕĞÆ¸ , ¹²ÉóºË".$return."ĞĞ", $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°å®¡æ ¸idä¸º".$sqlin."çš„å¾®æ‹›è˜ , å…±å®¡æ ¸".$return."è¡Œ", $_SESSION['admin_name'],3);
 	}
 	return $return;
 }

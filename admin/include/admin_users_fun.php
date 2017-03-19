@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¹ÜÀíÖĞĞÄ ¹ÜÀíÔ±ÕË»§Ïà¹Øº¯Êı
+ * 74cms ç®¡ç†ä¸­å¿ƒ ç®¡ç†å‘˜è´¦æˆ·ç›¸å…³å‡½æ•°
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
  if(!defined('IN_QISHI'))
@@ -35,8 +35,8 @@ function del_users($id,$purview='')
 	if ($purview<>"all") return false;
 	if (!$db->query("Delete from ".table('admin')." WHERE admin_id=".intval($id)." AND purview<>'all' ")) return false;
 	$return=$return+$db->affected_rows();	
-	//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨É¾³ıidÎª".$id."µÄ¹ÜÀíÔ±", $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åå°åˆ é™¤idä¸º".$id."çš„ç®¡ç†å‘˜", $_SESSION['admin_name'],3);
 	return $return;
 }
 function get_admin_log($offset,$perpage,$get_sql= '')
@@ -46,7 +46,7 @@ function get_admin_log($offset,$perpage,$get_sql= '')
 	$sql="SELECT * FROM ".table('admin_log')." ".$get_sql." order BY log_id DESC ".$limit;
 	return $db->getall($sql);
 }
-//´ÓID»ñÈ¡ÕË»§ĞÅÏ¢
+//ä»IDè·å–è´¦æˆ·ä¿¡æ¯
 function get_admin_account($admin_id)
 {
 	global $db;
@@ -54,7 +54,7 @@ function get_admin_account($admin_id)
 	$account = $db->getone("SELECT * FROM ".table('admin')." WHERE admin_id = '$admin_id'");
 	return $account;
 }
-//»ñÈ¡Ëæ»ú×Ö·û´®
+//è·å–éšæœºå­—ç¬¦ä¸²
  function randstr($length=6)
 {
 	$hash='';

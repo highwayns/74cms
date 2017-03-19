@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Ò³Ãæ¹ÜÀí
+ * 74cms é¡µé¢ç®¡ç†
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -17,7 +17,7 @@ $act = !empty($_GET['act']) ? trim($_GET['act']) : 'page_list';
 check_permissions($_SESSION['admin_purview'],"site_page");
 $norewrite=array('QS_login');
 $nocaching=array('QS_login','QS_jobslist','QS_street','QS_jobtag','QS_resumelist','QS_resumetag','QS_simplelist','QS_simpleresumelist','QS_helpsearch','QS_newssearch');
-$smarty->assign('pageheader',"Ò³Ãæ¹ÜÀí");
+$smarty->assign('pageheader',"é¡µé¢ç®¡ç†");
 if($act == 'page_list')
 {
 	get_token();
@@ -42,25 +42,25 @@ elseif($act == 'add_page')
 elseif($act == 'add_page_save')
 {
 	check_token();
-    substr($_POST['alias'],0,3)=='QS_'?adminmsg('µ÷ÓÃÃû³Æ²»ÔÊĞí QS_ ¿ªÍ·£¡',1):'';
+    substr($_POST['alias'],0,3)=='QS_'?adminmsg('è°ƒç”¨åç§°ä¸å…è®¸ QS_ å¼€å¤´ï¼',1):'';
 	if (ck_page_alias($_POST['alias']))
 	{
-	adminmsg("µ÷ÓÃID ".$_POST['alias']." ÒÑ¾­´æÔÚ£¡ÇëÖØĞÂÌîĞ´",1);
+	adminmsg("è°ƒç”¨ID ".$_POST['alias']." å·²ç»å­˜åœ¨ï¼è¯·é‡æ–°å¡«å†™",1);
 	exit();
 	}
 	if (ck_page_file($_POST['file']))
 	{
-	adminmsg("ÎÄ¼şÂ·¾¶ ".$_POST['file']." ÒÑ¾­´æÔÚ£¡ÇëÖØĞÂÌîĞ´",1);
+	adminmsg("æ–‡ä»¶è·¯å¾„ ".$_POST['file']." å·²ç»å­˜åœ¨ï¼è¯·é‡æ–°å¡«å†™",1);
 	exit();
 	}
 $setsqlarr['systemclass']=0;
 $setsqlarr['pagetpye']=trim($_POST['pagetpye'])?trim($_POST['pagetpye']):1;
-$setsqlarr['alias']=trim($_POST['alias'])?trim($_POST['alias']):adminmsg('µ÷ÓÃID²»ÄÜÎª¿Õ£¡',1);
-$setsqlarr['pname']=trim($_POST['pname'])?trim($_POST['pname']):adminmsg('ÄúÃ»ÓĞÌîĞ´Ò³ÃæÃû³Æ£¡',1);
+$setsqlarr['alias']=trim($_POST['alias'])?trim($_POST['alias']):adminmsg('è°ƒç”¨IDä¸èƒ½ä¸ºç©ºï¼',1);
+$setsqlarr['pname']=trim($_POST['pname'])?trim($_POST['pname']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™é¡µé¢åç§°ï¼',1);
 $setsqlarr['tag']=trim($_POST['tag']);
 $setsqlarr['url']=trim($_POST['url'])?trim($_POST['url']):0;
-$setsqlarr['file']=trim($_POST['file'])?trim($_POST['file']):adminmsg('ÄúÃ»ÓĞÌîĞ´ÎÄ¼şÂ·¾¶£¡',1);
-$setsqlarr['tpl']=trim($_POST['tpl'])?trim($_POST['tpl']):adminmsg('ÄúÃ»ÓĞÌîĞ´Ä£°åÂ·¾¶£¡',1);
+$setsqlarr['file']=trim($_POST['file'])?trim($_POST['file']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™æ–‡ä»¶è·¯å¾„ï¼',1);
+$setsqlarr['tpl']=trim($_POST['tpl'])?trim($_POST['tpl']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™æ¨¡æ¿è·¯å¾„ï¼',1);
 $setsqlarr['rewrite']=trim($_POST['rewrite']);
 $setsqlarr['caching']=intval($_POST['caching']);
 $setsqlarr['title']=trim($_POST['title']);
@@ -68,21 +68,21 @@ $setsqlarr['keywords']=trim($_POST['keywords']);
 $setsqlarr['description']=trim($_POST['description']);
 	if ($db->inserttable(table('page'),$setsqlarr))
 	{
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] ="?act=";	
 		if ($_POST['mkdir']=="y" && $setsqlarr['html'])
 		{
 		ck_page_dir($setsqlarr['html']);
 		}
-	!copy_page($setsqlarr['file'],$setsqlarr['alias'])?adminmsg("ĞÂ½¨£º".$setsqlarr['file']."ÎÄ¼şÊ§°Ü£¬Çë¼ì²éÄ¿Â¼È¨ÏŞ»òÕßÊÖ¶¯½¨Á¢ÎÄ¼ş",0):"";
+	!copy_page($setsqlarr['file'],$setsqlarr['alias'])?adminmsg("æ–°å»ºï¼š".$setsqlarr['file']."æ–‡ä»¶å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç›®å½•æƒé™æˆ–è€…æ‰‹åŠ¨å»ºç«‹æ–‡ä»¶",0):"";
 	refresh_page_cache();
 	refresh_nav_cache();
-	write_log("Ìí¼ÓÒ³Ãæ", $_SESSION['admin_name'],3);
-	adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+	write_log("æ·»åŠ é¡µé¢", $_SESSION['admin_name'],3);
+	adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 	}
 	else
 	{
-	adminmsg("Ìí¼ÓÊ§°Ü£¡",0);
+	adminmsg("æ·»åŠ å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'edit_page')
@@ -94,17 +94,17 @@ elseif($act == 'edit_page')
 elseif($act == 'edit_page_save')
 {
 	check_token();
-	if ($_POST['systemclass']<>"1")//·ÇÏµÍ³ÄÚÖÃ
+	if ($_POST['systemclass']<>"1")//éç³»ç»Ÿå†…ç½®
 	{
 	$setsqlarr['pagetpye']=trim($_POST['pagetpye'])?trim($_POST['pagetpye']):1;
-	$setsqlarr['alias']=trim($_POST['alias'])?trim($_POST['alias']):adminmsg('µ÷ÓÃID²»ÄÜÎª¿Õ£¡',1);
-	substr($_POST['alias'],0,3)=='QS_'?adminmsg('µ÷ÓÃÃû³Æ²»ÔÊĞí QS_ ¿ªÍ·£¡',1):'';
+	$setsqlarr['alias']=trim($_POST['alias'])?trim($_POST['alias']):adminmsg('è°ƒç”¨IDä¸èƒ½ä¸ºç©ºï¼',1);
+	substr($_POST['alias'],0,3)=='QS_'?adminmsg('è°ƒç”¨åç§°ä¸å…è®¸ QS_ å¼€å¤´ï¼',1):'';
 	}
-$setsqlarr['pname']=trim($_POST['pname'])?trim($_POST['pname']):adminmsg('ÄúÃ»ÓĞÌîĞ´Ò³ÃæÃû³Æ£¡',1);
+$setsqlarr['pname']=trim($_POST['pname'])?trim($_POST['pname']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™é¡µé¢åç§°ï¼',1);
 $setsqlarr['tag']=trim($_POST['tag']);
 $setsqlarr['url']=trim($_POST['url'])?trim($_POST['url']):0;
-$setsqlarr['file']=trim($_POST['file'])?trim($_POST['file']):adminmsg('ÄúÃ»ÓĞÌîĞ´ÎÄ¼şÂ·¾¶£¡',1);
-$setsqlarr['tpl']=trim($_POST['tpl'])?trim($_POST['tpl']):adminmsg('ÄúÃ»ÓĞÌîĞ´Ä£°åÂ·¾¶£¡',1);
+$setsqlarr['file']=trim($_POST['file'])?trim($_POST['file']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™æ–‡ä»¶è·¯å¾„ï¼',1);
+$setsqlarr['tpl']=trim($_POST['tpl'])?trim($_POST['tpl']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™æ¨¡æ¿è·¯å¾„ï¼',1);
 $setsqlarr['rewrite']=trim($_POST['rewrite']);
 $setsqlarr['caching']=intval($_POST['caching']);
 $setsqlarr['title']=trim($_POST['title']);
@@ -124,12 +124,12 @@ $setsqlarr['description']=trim($_POST['description']);
 	 }
 	if (ck_page_alias($_POST['alias'],$_POST['id']))
 	{
-	adminmsg("µ÷ÓÃID ".$_POST['alias']." ÒÑ¾­´æÔÚ£¡ÇëÖØĞÂÌîĞ´",1);
+	adminmsg("è°ƒç”¨ID ".$_POST['alias']." å·²ç»å­˜åœ¨ï¼è¯·é‡æ–°å¡«å†™",1);
 	exit();
 	}
 	if (ck_page_file($_POST['file'],$_POST['id']))
 	{
-	adminmsg("ÎÄ¼şÂ·¾¶ ".$_POST['file']." ÒÑ¾­´æÔÚ£¡ÇëÖØĞÂÌîĞ´",1);
+	adminmsg("æ–‡ä»¶è·¯å¾„ ".$_POST['file']." å·²ç»å­˜åœ¨ï¼è¯·é‡æ–°å¡«å†™",1);
 	exit();
 	}
 $wheresql=" id='".intval($_POST['id'])."'";
@@ -142,60 +142,60 @@ $wheresql=" id='".intval($_POST['id'])."'";
 	if ($db->updatetable(table('page'),$setsqlarr,$wheresql))
 	{
 	refresh_page_cache();
-	write_log("ĞŞ¸ÄÒ³Ãæ", $_SESSION['admin_name'],3);
-	adminmsg("ĞŞ¸Ä³É¹¦£¡",2);
+	write_log("ä¿®æ”¹é¡µé¢", $_SESSION['admin_name'],3);
+	adminmsg("ä¿®æ”¹æˆåŠŸï¼",2);
 	}
 	else
 	{
-	adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
+	adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'del_page')
 {
 	check_token();
 	$id=$_REQUEST['id'];
-	if (empty($id)) adminmsg("ÇëÑ¡ÔñÏîÄ¿£¡",0);
+	if (empty($id)) adminmsg("è¯·é€‰æ‹©é¡¹ç›®ï¼",0);
 	if ($num=del_page($id))
 	{
 	refresh_page_cache();
 	refresh_nav_cache();
-	write_log("É¾³ıÒ³Ãæ£¬¹²É¾³ı".$num."ĞĞ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı".$num."ĞĞ",2);
+	write_log("åˆ é™¤é¡µé¢ï¼Œå…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ıÊ§°Ü£¡".$num,1);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼".$num,1);
 	}
 }
 elseif($act == 'set_page')
 {
 	check_token();
-	$id =!empty($_POST['id'])?$_POST['id']:adminmsg("ÄãÃ»ÓĞÑ¡ÔñÒ³Ãæ£¡",1);
-	if ($_POST['set_url'])//ÉèÖÃÒ³ÃæÁ´½Ó
+	$id =!empty($_POST['id'])?$_POST['id']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©é¡µé¢ï¼",1);
+	if ($_POST['set_url'])//è®¾ç½®é¡µé¢é“¾æ¥
 	{
 		if (set_page_url($id,$_POST['url'],$norewrite))
 		{
 		refresh_page_cache();
 		refresh_nav_cache();
-		write_log("ÉèÖÃÒ³ÃæÁ´½Ó", $_SESSION['admin_name'],3);
-		adminmsg("ÉèÖÃ³É¹¦£¡",2);		
+		write_log("è®¾ç½®é¡µé¢é“¾æ¥", $_SESSION['admin_name'],3);
+		adminmsg("è®¾ç½®æˆåŠŸï¼",2);		
 		}
 		else
 		{
-		adminmsg("ÉèÖÃÊ§°Ü£¡",0);
+		adminmsg("è®¾ç½®å¤±è´¥ï¼",0);
 		}
 	}
-	if ($_POST['set_caching'])//ÉèÖÃÒ³Ãæ»º´æÊ±¼ä
+	if ($_POST['set_caching'])//è®¾ç½®é¡µé¢ç¼“å­˜æ—¶é—´
 	{		
 		if (set_page_caching($id,$_POST['caching'],$nocaching))
 		{
 		refresh_page_cache();
-		write_log("ÕâÒ³Ò³Ãæ»º´æ", $_SESSION['admin_name'],3);
-		adminmsg("ÉèÖÃ³É¹¦£¡",2);
+		write_log("è¿™é¡µé¡µé¢ç¼“å­˜", $_SESSION['admin_name'],3);
+		adminmsg("è®¾ç½®æˆåŠŸï¼",2);
 		}
 		else
 		{
-		adminmsg("ÉèÖÃÊ§°Ü£¡",0);;
+		adminmsg("è®¾ç½®å¤±è´¥ï¼",0);;
 		}
 	}
 }

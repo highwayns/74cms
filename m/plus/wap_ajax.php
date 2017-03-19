@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ajax·µ»Ø
+ * 74cms ajaxè¿”å›
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -276,11 +276,11 @@ elseif($act == 'ajaxresumelist'){
 			{
 				if($value['sex']==1)
 				{
-					$value['fullname']=cut_str($value['fullname'],1,0,"ÏÈÉú");
+					$value['fullname']=cut_str($value['fullname'],1,0,"å…ˆç”Ÿ");
 				}
 				elseif($value['sex']==2)
 				{
-					$value['fullname']=cut_str($value['fullname'],1,0,"Å®Ê¿");
+					$value['fullname']=cut_str($value['fullname'],1,0,"å¥³å£«");
 				}
 				$value['fullname_']=$value['fullname'];	
 			}
@@ -306,7 +306,7 @@ elseif($act == 'ajaxresumelist'){
 			$url = wap_url_rewrite("wap-resume-show",array("id"=>$li["id"]));
 			$resumelisthtml.='<div class="list" id="li-'.$offset.'" url="'.$url.'">
 	  <span><a href="'.$url.'">'.$li["fullname"].'('.$li["sex_cn"].')</a></span><br />
-Ñ§Àú£º'.$li["education_cn"].'  ¹¤×÷¾­Ñé£º'.$li["experience_cn"].'<br />
+å­¦å†ï¼š'.$li["education_cn"].'  å·¥ä½œç»éªŒï¼š'.$li["experience_cn"].'<br />
 '.$li["intention_jobs"].'
 	</div>';
 	}
@@ -336,8 +336,8 @@ elseif($act == 'jobs_contact')
 			else
 			{
 			$show=false;
-			$html='<div class="job_show_box telbox"><h2>ÁªÏµ·½Ê½</h2>';
-  			$html.='<div class="nolog_txt">¸öÈË»áÔ±Çë<a href="wap_login.php">[µÇÂ¼]</a>ºó²é¿´ÁªÏµ·½Ê½<br />Ã»ÓĞÕÊºÅ£¿<a href="wap_user_reg.php">[Ãâ·Ñ×¢²á]</a></div></div>';
+			$html='<div class="job_show_box telbox"><h2>è”ç³»æ–¹å¼</h2>';
+  			$html.='<div class="nolog_txt">ä¸ªäººä¼šå‘˜è¯·<a href="wap_login.php">[ç™»å½•]</a>åæŸ¥çœ‹è”ç³»æ–¹å¼<br />æ²¡æœ‰å¸å·ï¼Ÿ<a href="wap_user_reg.php">[å…è´¹æ³¨å†Œ]</a></div></div>';
 			}
 		}
 		elseif($_CFG['showjobcontact_wap']=='2')
@@ -352,15 +352,15 @@ elseif($act == 'jobs_contact')
 				else
 				{
 				$show=false;
-				$html='<div class="job_show_box telbox"><h2>ÁªÏµ·½Ê½</h2>';
-				$html.='<div class="nolog_txt">ÄúÃ»ÓĞ·¢²¼¼òÀú»òÕß¼òÀúÎŞĞ§£¬·¢²¼¼òÀúºó²Å¿ÉÒÔ²é¿´ÁªÏµ·½Ê½¡£</div></div>';
+				$html='<div class="job_show_box telbox"><h2>è”ç³»æ–¹å¼</h2>';
+				$html.='<div class="nolog_txt">æ‚¨æ²¡æœ‰å‘å¸ƒç®€å†æˆ–è€…ç®€å†æ— æ•ˆï¼Œå‘å¸ƒç®€å†åæ‰å¯ä»¥æŸ¥çœ‹è”ç³»æ–¹å¼ã€‚</div></div>';
 				}
 			}
 			else
 			{
 			$show=false;
-			$html='<div class="job_show_box telbox"><h2>ÁªÏµ·½Ê½</h2>';
-  			$html.='<div class="nolog_txt">¸öÈË»áÔ±Çë<a href="wap_login.php">[µÇÂ¼]</a>ºó²é¿´ÁªÏµ·½Ê½<br />Ã»ÓĞÕÊºÅ£¿<a href="wap_user_reg.php">[Ãâ·Ñ×¢²á]</a></div></div>';
+			$html='<div class="job_show_box telbox"><h2>è”ç³»æ–¹å¼</h2>';
+  			$html.='<div class="nolog_txt">ä¸ªäººä¼šå‘˜è¯·<a href="wap_login.php">[ç™»å½•]</a>åæŸ¥çœ‹è”ç³»æ–¹å¼<br />æ²¡æœ‰å¸å·ï¼Ÿ<a href="wap_user_reg.php">[å…è´¹æ³¨å†Œ]</a></div></div>';
 			}
 		}
 		if ($show)
@@ -370,20 +370,20 @@ elseif($act == 'jobs_contact')
 			// if ($_CFG['contact_img_job']=='2')
 			// {
 			// $token=md5($val['contact'].$id.$val['telephone']);
-			// $contact=$val['contact_show']=='1'?"ÁªÏµÈË£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"ÁªÏµÈË£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			// $telephone=$val['telephone_show']=='1'?"ÁªÏµµç»°£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"ÁªÏµµç»°£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			// $address=$val['address_show']=='1'?"ÁªÏµµØÖ·£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=4&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"ÁªÏµµØÖ·£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			// $html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt telbox">';
+			// $contact=$val['contact_show']=='1'?"è”ç³»äººï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"è”ç³»äººï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			// $telephone=$val['telephone_show']=='1'?"è”ç³»ç”µè¯ï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"è”ç³»ç”µè¯ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			// $address=$val['address_show']=='1'?"è”ç³»åœ°å€ï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=4&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"è”ç³»åœ°å€ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			// $html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt telbox">';
 			// $html.=$contact.$telephone.$address;
 			// $html.='</div><div class="telimg"><a href="tel://'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div>';
 			// }
 			// else
 			// {
-			$contact=$val['contact_show']=='1'?"<div class='txt_box'>ÁªÏµÈË£º{$val['contact']}<br />":"ÁªÏµÈË£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$telephone=$val['telephone_show']=='1'?"ÁªÏµµç»°£º{$val['telephone']}<br />":"ÁªÏµµç»°£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$address=$val['email_show']=='1'?"ÁªÏµÓÊÏä£º{$val['email']}<br />":"ÁªÏµÓÊÏä£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br /></div>";
+			$contact=$val['contact_show']=='1'?"<div class='txt_box'>è”ç³»äººï¼š{$val['contact']}<br />":"è”ç³»äººï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$telephone=$val['telephone_show']=='1'?"è”ç³»ç”µè¯ï¼š{$val['telephone']}<br />":"è”ç³»ç”µè¯ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$address=$val['email_show']=='1'?"è”ç³»é‚®ç®±ï¼š{$val['email']}<br />":"è”ç³»é‚®ç®±ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br /></div>";
 			$tel=$val["telephone_show"]=='1'?$val['telephone']:"";
-			$html='<div class="job_show_box telbox"><h2>ÁªÏµ·½Ê½</h2>';
+			$html='<div class="job_show_box telbox"><h2>è”ç³»æ–¹å¼</h2>';
 			$html.=$contact.$telephone.$address;
 			$html.='<div class="telimg"><a href="tel:'.$tel.'"><img src="./images/23.jpg" alt="" /></a></div></div>';
 			// }
@@ -415,8 +415,8 @@ elseif($act == 'company_contact')
 			else
 			{
 			$show=false;
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			$html.='¸öÈË»áÔ±Çë<a href="wap_login.php">[µÇÂ¼]</a>ºó²é¿´ÁªÏµ·½Ê½<br />Ã»ÓĞÕÊºÅ£¿<a href="wap_user_reg.php">[Ãâ·Ñ×¢²á]</a>';
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			$html.='ä¸ªäººä¼šå‘˜è¯·<a href="wap_login.php">[ç™»å½•]</a>åæŸ¥çœ‹è”ç³»æ–¹å¼<br />æ²¡æœ‰å¸å·ï¼Ÿ<a href="wap_user_reg.php">[å…è´¹æ³¨å†Œ]</a>';
 			$html.='</div><div class="telimg"></div>';
 			}
 		}
@@ -432,16 +432,16 @@ elseif($act == 'company_contact')
 				else
 				{
 				$show=false;
-				$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-				$html.="ÄúÃ»ÓĞ·¢²¼¼òÀú»òÕß¼òÀúÎŞĞ§£¬·¢²¼¼òÀúºó²Å¿ÉÒÔ²é¿´ÁªÏµ·½Ê½¡£<a href=\"".get_member_url($_SESSION['utype'],true)."personal_resume.php?act=resume_list\">[²é¿´ÎÒµÄ¼òÀú]</a>";
+				$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+				$html.="æ‚¨æ²¡æœ‰å‘å¸ƒç®€å†æˆ–è€…ç®€å†æ— æ•ˆï¼Œå‘å¸ƒç®€å†åæ‰å¯ä»¥æŸ¥çœ‹è”ç³»æ–¹å¼ã€‚<a href=\"".get_member_url($_SESSION['utype'],true)."personal_resume.php?act=resume_list\">[æŸ¥çœ‹æˆ‘çš„ç®€å†]</a>";
 				$html.='</div><div class="telimg"></div>';
 				}
 			}
 			else
 			{
 			$show=false;
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			$html.='¸öÈË»áÔ±Çë<a href="wap_login.php">[µÇÂ¼]</a>ºó²é¿´ÁªÏµ·½Ê½<br />Ã»ÓĞÕÊºÅ£¿<a href="wap_user_reg.php">[Ãâ·Ñ×¢²á]</a>';
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			$html.='ä¸ªäººä¼šå‘˜è¯·<a href="wap_login.php">[ç™»å½•]</a>åæŸ¥çœ‹è”ç³»æ–¹å¼<br />æ²¡æœ‰å¸å·ï¼Ÿ<a href="wap_user_reg.php">[å…è´¹æ³¨å†Œ]</a>';
 			$html.='</div><div class="telimg"></div>';
 			}
 		}
@@ -452,19 +452,19 @@ elseif($act == 'company_contact')
 			if ($_CFG['contact_img_com']=='2')
 			{
 			$token=md5($val['contact'].$id.$val['telephone']);
-			$contact=$val['contact_show']=='1'?"ÁªÏµÈË£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"ÁªÏµÈË£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$telephone=$val['telephone_show']=='1'?"ÁªÏµµç»°£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"ÁªÏµµç»°£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$address=$val['email_show']=='1'?"ÁªÏµÓÊÏä£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=3&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"ÁªÏµÓÊÏä£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
+			$contact=$val['contact_show']=='1'?"è”ç³»äººï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"è”ç³»äººï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$telephone=$val['telephone_show']=='1'?"è”ç³»ç”µè¯ï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"è”ç³»ç”µè¯ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$address=$val['email_show']=='1'?"è”ç³»é‚®ç®±ï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=3&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"è”ç³»é‚®ç®±ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
 			$html.=$contact.$telephone.$address;
 			$html.='</div><div class="telimg"><a href="tel:'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div>';
 			}
 			else
 			{
-			$contact=$val['contact_show']=='1'?"ÁªÏµÈË£º{$val['contact']}<br />":"ÁªÏµÈË£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$telephone=$val['telephone_show']=='1'?"ÁªÏµµç»°£º{$val['telephone']}<br />":"ÁªÏµµç»°£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$address=$val['email_show']=='1'?"ÁªÏµÓÊÏä£º{$val['email']}<br />":"ÁªÏµÓÊÏä£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
+			$contact=$val['contact_show']=='1'?"è”ç³»äººï¼š{$val['contact']}<br />":"è”ç³»äººï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$telephone=$val['telephone_show']=='1'?"è”ç³»ç”µè¯ï¼š{$val['telephone']}<br />":"è”ç³»ç”µè¯ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$address=$val['email_show']=='1'?"è”ç³»é‚®ç®±ï¼š{$val['email']}<br />":"è”ç³»é‚®ç®±ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
 			$html.=$contact.$telephone.$address;
 			$html.='</div><div class="telimg"><a href="tel:'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div>';
 			}
@@ -476,7 +476,7 @@ elseif($act == 'company_contact')
 		}
 	}	
 }
-//¼òÀúÁªÏµ·½Ê½
+//ç®€å†è”ç³»æ–¹å¼
 elseif($act == 'resume_contact')
 {   
 	$id=intval($_GET['id']);
@@ -494,8 +494,8 @@ elseif($act == 'resume_contact')
 			else
 			{
 			$show=false;
-			$html='<div class="resume_show_box" id=""><div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			$html.='ÆóÒµ»áÔ±Çë<a href="wap_login.php">[µÇÂ¼]</a>ºó²é¿´ÁªÏµ·½Ê½<br />Ã»ÓĞÕÊºÅ£¿<a href="wap_user_reg.php">[Ãâ·Ñ×¢²á]</a>';
+			$html='<div class="resume_show_box" id=""><div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			$html.='ä¼ä¸šä¼šå‘˜è¯·<a href="wap_login.php">[ç™»å½•]</a>åæŸ¥çœ‹è”ç³»æ–¹å¼<br />æ²¡æœ‰å¸å·ï¼Ÿ<a href="wap_user_reg.php">[å…è´¹æ³¨å†Œ]</a>';
 			$html.='</div><div class="telimg"></div></div>';
 			}
 		}
@@ -517,8 +517,8 @@ elseif($act == 'resume_contact')
 			else
 			{
 			$show=false;
-			$html='<div class="resume_show_box" id=""><div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			$html.='ÆóÒµ»áÔ±Çë<a href="wap_login.php">[µÇÂ¼]</a>ºó²é¿´ÁªÏµ·½Ê½<br />Ã»ÓĞÕÊºÅ£¿<a href="wap_user_reg.php">[Ãâ·Ñ×¢²á]</a>';
+			$html='<div class="resume_show_box" id=""><div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			$html.='ä¼ä¸šä¼šå‘˜è¯·<a href="wap_login.php">[ç™»å½•]</a>åæŸ¥çœ‹è”ç³»æ–¹å¼<br />æ²¡æœ‰å¸å·ï¼Ÿ<a href="wap_user_reg.php">[å…è´¹æ³¨å†Œ]</a>';
 			$html.='</div><div class="telimg"></div></div>';
 			}
 		}
@@ -529,20 +529,20 @@ elseif($act == 'resume_contact')
 			// if ($_CFG['contact_img_resume']=='2')
 			// {
 			// $token=md5($val['fullname'].$id.$val['telephone']);
-			// $html='<div class="resume_show_box" id=""><div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			// $html.="Áª Ïµ ÈË£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
-			// $html.="ÁªÏµµç»°£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
-			// $html.="ÁªÏµµØÖ·£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=5&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
+			// $html='<div class="resume_show_box" id=""><div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			// $html.="è” ç³» äººï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
+			// $html.="è”ç³»ç”µè¯ï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
+			// $html.="è”ç³»åœ°å€ï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=5&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
 			// $html.="<div align=\"center\"><br/><img src=\"{$_CFG['site_template']}images/64.gif\"  border=\"0\" id=\"invited\"/></div>";
-			// $html.="<div align=\"center\"><span class=\"add_resume_pool\">[Ìí¼Óµ½ÈË²Å¿â]</span><br/><br/></div>";
+			// $html.="<div align=\"center\"><span class=\"add_resume_pool\">[æ·»åŠ åˆ°äººæ‰åº“]</span><br/><br/></div>";
 			// $html.='</div><div class="telimg"><a href="tel://'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div></div>';
 			// }
 			// else
 			// {
-			$html='<div class="resume_show_box" id=""><div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			$html.="Áª Ïµ ÈË£º".$val['fullname']."<br />";
-			$html.="ÁªÏµµç»°£º".$val['telephone']."<br />";
-			$html.="ÁªÏµµØÖ·£º".$val['residence']."<br />";
+			$html='<div class="resume_show_box" id=""><div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			$html.="è” ç³» äººï¼š".$val['fullname']."<br />";
+			$html.="è”ç³»ç”µè¯ï¼š".$val['telephone']."<br />";
+			$html.="è”ç³»åœ°å€ï¼š".$val['residence']."<br />";
 			$html.='</div><div class="telimg"><a href="tel:'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div></div>';
 			// }
 			exit($html);
@@ -552,20 +552,20 @@ elseif($act == 'resume_contact')
 			exit($html);
 		}
 }
-// ajax »ñÈ¡ÃæÊÔÑûÇë
+// ajax è·å–é¢è¯•é‚€è¯·
 elseif($act=="ajax_interview_list")
 {
 	$interviewhtml="";
-	//µÃµ½Ò³Ãæ´«¹ıÀ´µÄÏÔÊ¾¸öÊı
+	//å¾—åˆ°é¡µé¢ä¼ è¿‡æ¥çš„æ˜¾ç¤ºä¸ªæ•°
 	$rows=intval($_GET['rows']);
-	//µÃµ½Ò³Ãæ´«¹ıÀ´µÄ  ×îºóÒ»Ìõ¼ÇÂ¼µÄdidÖµ
+	//å¾—åˆ°é¡µé¢ä¼ è¿‡æ¥çš„  æœ€åä¸€æ¡è®°å½•çš„didå€¼
 	$offset=intval($_GET['offset']); 
 	$interviewarray=$db->getall("select * from ".table('company_interview')." where  resume_uid=$_SESSION[uid] order by interview_addtime desc  LIMIT {$offset},{$rows}");
 	if (!empty($interviewarray) && $offset<=100)
 	{
 		foreach($interviewarray as $list)
 		{
-			$interviewhtml.='<div class="interview_list_content" did="'.$list['did'].'"><div class="list_centent_left"><h4>'.$list['company_name'].'</h4><div class="l_bottom"><div class="l_bottom_l">ÑûÇëÄúÃæÊÔ&nbsp;&nbsp;"'.$list['jobs_name'].'"</div><div class="l_bottom_r">'.date('Y-m-d',$list['addtime']).'</div><div class="clear"></div></div></div><div class="list_centent_right"><img src="../images/36.gif" alt="" /></div><div class="clear"></div></div>';
+			$interviewhtml.='<div class="interview_list_content" did="'.$list['did'].'"><div class="list_centent_left"><h4>'.$list['company_name'].'</h4><div class="l_bottom"><div class="l_bottom_l">é‚€è¯·æ‚¨é¢è¯•&nbsp;&nbsp;"'.$list['jobs_name'].'"</div><div class="l_bottom_r">'.date('Y-m-d',$list['addtime']).'</div><div class="clear"></div></div></div><div class="list_centent_right"><img src="../images/36.gif" alt="" /></div><div class="clear"></div></div>';
 		}
 		exit($interviewhtml);
 	}
@@ -574,7 +574,7 @@ elseif($act=="ajax_interview_list")
 		exit('-1');
 	}
 }
-// ajax »ñÈ¡ÊÕ²ØÖ°Î»
+// ajax è·å–æ”¶è—èŒä½
 elseif($act=="ajax_favorites_list")
 {
 	$favoriteshtml="";
@@ -594,7 +594,7 @@ elseif($act=="ajax_favorites_list")
 		exit('-1');
 	}
 }
-// ajax »ñÈ¡ ÉêÇëÖ°Î»
+// ajax è·å– ç”³è¯·èŒä½
 elseif($act=="ajax_apply_list")
 {
 	$favoriteshtml="";
@@ -614,7 +614,7 @@ elseif($act=="ajax_apply_list")
 		exit('-1');
 	}
 }
-// ÑûÇëÃæÊÔ
+// é‚€è¯·é¢è¯•
 elseif ($act == 'invited_add')
 {
 
@@ -622,7 +622,7 @@ elseif ($act == 'invited_add')
 	$resume=resume_one($_POST["resume_id"]);
 	$jobs=jobs_one($_POST["jobs_id"]);
 	if($_SESSION['utype']!=1){
-		exit("ÆóÒµ»áÔ±ÇëµÇÂ¼ºóÑûÇëÃæÊÔ");
+		exit("ä¼ä¸šä¼šå‘˜è¯·ç™»å½•åé‚€è¯·é¢è¯•");
 	}
 
 	if (check_interview($_POST["resume_id"],$_POST["jobs_id"],$_SESSION['uid']))
@@ -639,11 +639,11 @@ elseif ($act == 'invited_add')
 	{
 		if($resume['sex']==1)
 		{
-			$addarr['resume_name']=cut_str($resume['fullname'],1,0,"ÏÈÉú");
+			$addarr['resume_name']=cut_str($resume['fullname'],1,0,"å…ˆç”Ÿ");
 		}
 		elseif($resume['sex']==2)
 		{
-			$addarr['resume_name']=cut_str($resume['fullname'],1,0,"Å®Ê¿");
+			$addarr['resume_name']=cut_str($resume['fullname'],1,0,"å¥³å£«");
 		}
 	}
 	else
@@ -663,7 +663,7 @@ elseif ($act == 'invited_add')
 	$addarr['interview_addtime']=time();
 	$user=get_user_info($resume['uid']);
 	$resume_user=get_user_info($resume['uid']);
-	//Ì×²ÍÄ£Ê½
+	//å¥—é¤æ¨¡å¼
 	if ($_CFG['operation_mode']=="2")
 	{
 		$db->inserttable(table('company_interview'),$addarr);
@@ -671,18 +671,18 @@ elseif ($act == 'invited_add')
 		{
 			action_user_setmeal($_SESSION['uid'],"interview_senior");
 			$setmeal=get_user_setmeal($_SESSION['uid']);
-			write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"ÑûÇëÁË {$resume_user['username']} ÃæÊÔ£¬»¹¿ÉÒÔÑûÇë¸ß¼¶ÈË²Å {$setmeal['interview_senior']} ´Î",2,1007,"ÑûÇë¸ß¼¶ÈË²ÅÃæÊÔ","1","{$setmeal['interview_senior']}");
-			write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"ÑûÇëÁË {$resume_user['username']} ÃæÊÔ");
+			write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"é‚€è¯·äº† {$resume_user['username']} é¢è¯•ï¼Œè¿˜å¯ä»¥é‚€è¯·é«˜çº§äººæ‰ {$setmeal['interview_senior']} æ¬¡",2,1007,"é‚€è¯·é«˜çº§äººæ‰é¢è¯•","1","{$setmeal['interview_senior']}");
+			write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"é‚€è¯·äº† {$resume_user['username']} é¢è¯•");
 		}
 		else
 		{				 
 			action_user_setmeal($_SESSION['uid'],"interview_ordinary");
 			$setmeal=get_user_setmeal($_SESSION['uid']);
-			write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"ÑûÇëÁË {$resume_user['username']} ÃæÊÔ£¬»¹¿ÉÒÔÑûÇëÆÕÍ¨ÈË²Å {$setmeal['interview_ordinary']} ´Î",2,1006,"ÑûÇëÆÕÍ¨ÈË²ÅÃæÊÔ","1","{$setmeal['interview_ordinary']}");
-			write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"ÑûÇëÁË {$resume_user['username']} ÃæÊÔ");				
+			write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"é‚€è¯·äº† {$resume_user['username']} é¢è¯•ï¼Œè¿˜å¯ä»¥é‚€è¯·æ™®é€šäººæ‰ {$setmeal['interview_ordinary']} æ¬¡",2,1006,"é‚€è¯·æ™®é€šäººæ‰é¢è¯•","1","{$setmeal['interview_ordinary']}");
+			write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"é‚€è¯·äº† {$resume_user['username']} é¢è¯•");				
 		}			
 	}
-	//»ı·ÖÄ£Ê½	 
+	//ç§¯åˆ†æ¨¡å¼	 
 	elseif($_CFG['operation_mode']=="1")
 	{
 		$mypoints=get_user_points($_SESSION['uid']);
@@ -691,7 +691,7 @@ elseif ($act == 'invited_add')
 		$ptype=$resume['talent_']=='2'?$points_rule['interview_invite_advanced']['type']:$points_rule['interview_invite']['type'];
 		if  ($mypoints<$points)
 		{
-			exit("ÄúµÄ»ı·Ö²»¹»");
+			exit("æ‚¨çš„ç§¯åˆ†ä¸å¤Ÿ");
 		}
 		$db->inserttable(table('company_interview'),$addarr);
 		if ($points>0)
@@ -700,81 +700,81 @@ elseif ($act == 'invited_add')
 			$user_points=get_user_points($_SESSION['uid']);
 			$operator=$ptype=="1"?"+":"-";
 			if($resume['talent_']=='2'){
-				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÑûÇë {$resume_user['username']} ÃæÊÔ({$operator}{$points}),(Ê£Óà:{$user_points})",1,1007,"ÑûÇë¸ß¼¶ÈË²ÅÃæÊÔ","{$operator}{$points}","{$user_points}");
+				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"é‚€è¯· {$resume_user['username']} é¢è¯•({$operator}{$points}),(å‰©ä½™:{$user_points})",1,1007,"é‚€è¯·é«˜çº§äººæ‰é¢è¯•","{$operator}{$points}","{$user_points}");
 			}else{
-				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÑûÇë {$resume_user['username']} ÃæÊÔ({$operator}{$points}),(Ê£Óà:{$user_points})",1,1006,"ÑûÇëÆÕÍ¨ÈË²ÅÃæÊÔ","{$operator}{$points}","{$user_points}");
+				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"é‚€è¯· {$resume_user['username']} é¢è¯•({$operator}{$points}),(å‰©ä½™:{$user_points})",1,1006,"é‚€è¯·æ™®é€šäººæ‰é¢è¯•","{$operator}{$points}","{$user_points}");
 			}
-			write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"ÑûÇë {$resume_user['username']} ÃæÊÔ");
+			write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"é‚€è¯· {$resume_user['username']} é¢è¯•");
 		}		
 	}
-	//»ìºÏÄ£Ê½
+	//æ··åˆæ¨¡å¼
 	elseif($_CFG['operation_mode']=="3")
 	{
-		//²é¿´ËûµÄ»ı·Ö
+		//æŸ¥çœ‹ä»–çš„ç§¯åˆ†
 		$mypoints=get_user_points($_SESSION['uid']);
 		$points_rule=get_cache('points_rule');
-		//ÏÈ¿´¸Ã»áÔ±ÊÇ·ñÓĞ·¢²¼Í¨¹ıÉóºËµÄµÄÖ°Î»
+		//å…ˆçœ‹è¯¥ä¼šå‘˜æ˜¯å¦æœ‰å‘å¸ƒé€šè¿‡å®¡æ ¸çš„çš„èŒä½
 		$user_jobs=get_auditjobs($_SESSION['uid']);
 		if (count($user_jobs)==0)
 		{
-			exit("ÑûÇëÊ§°Ü£¬ÄãÃ»ÓĞ·¢²¼ÕĞÆ¸ĞÅÏ¢»òÕßĞÅÏ¢Ã»ÓĞÉóºËÍ¨¹ı!");
+			exit("é‚€è¯·å¤±è´¥ï¼Œä½ æ²¡æœ‰å‘å¸ƒæ‹›è˜ä¿¡æ¯æˆ–è€…ä¿¡æ¯æ²¡æœ‰å®¡æ ¸é€šè¿‡!");
 		}
-		//È»ºó¿´ËûµÄÌ×²ÍÊÇ·ñÔÊĞí
+		//ç„¶åçœ‹ä»–çš„å¥—é¤æ˜¯å¦å…è®¸
 		$setmeal = get_user_setmeal(intval($_SESSION['uid']));
 		if (empty($setmeal) || ($setmeal['endtime']<time() && $setmeal['endtime']<>"0"))
 		{
-			exit("ÄúµÄ·şÎñÒÑµ½ÆÚ !");
+			exit("æ‚¨çš„æœåŠ¡å·²åˆ°æœŸ !");
 		}
 		elseif($resume['talent_']=='2' && $setmeal['interview_senior']<=0)
 		{
-			//ºóÌ¨¿ªÆô ÆôÓÃ»ı·ÖÏû·Ñ
+			//åå°å¼€å¯ å¯ç”¨ç§¯åˆ†æ¶ˆè´¹
 			if ($_CFG['setmeal_to_points']=="1")
 			{
 				$points=$points_rule['interview_invite_advanced']['value'];
 				$ptype=$points_rule['interview_invite_advanced']['type'];
-				//¼õ»ı·Ö
+				//å‡ç§¯åˆ†
 				if(intval($ptype) == 2 && ($mypoints < $points))
 				{
-					exit("ÄúÑûÇëÃæÊÔ´ÎÊıÒÑ¾­³¬³öÏŞÖÆ , ²¢ÇÒ»ı·Ö²»×ã !");
+					exit("æ‚¨é‚€è¯·é¢è¯•æ¬¡æ•°å·²ç»è¶…å‡ºé™åˆ¶ , å¹¶ä¸”ç§¯åˆ†ä¸è¶³ !");
 				}
 				$is_points = '1';
 			}
 			else
 			{
-				exit("ÄãÑûÇë¸ß¼¶ÈË²ÅÃæÊÔ´ÎÊıÒÑ¾­³¬³öÁËÏŞÖÆ¡£");
+				exit("ä½ é‚€è¯·é«˜çº§äººæ‰é¢è¯•æ¬¡æ•°å·²ç»è¶…å‡ºäº†é™åˆ¶ã€‚");
 			}
 		}
 		elseif ($resume['talent_']=='1' && $setmeal['interview_ordinary']<=0)
 		{
-			//ºóÌ¨¿ªÆô ÆôÓÃ»ı·ÖÏû·Ñ
+			//åå°å¼€å¯ å¯ç”¨ç§¯åˆ†æ¶ˆè´¹
 			if ($_CFG['setmeal_to_points']=="1")
 			{
 				$points=$points_rule['interview_invite']['value'];
 				$ptype=$points_rule['interview_invite']['type'];
-				//¼õ»ı·Ö
+				//å‡ç§¯åˆ†
 				if(intval($ptype) == 2 && ($mypoints < $points))
 				{
-					exit("ÄúÑûÇëÃæÊÔ´ÎÊıÒÑ¾­³¬³öÏŞÖÆ , ²¢ÇÒ»ı·Ö²»×ã !");
+					exit("æ‚¨é‚€è¯·é¢è¯•æ¬¡æ•°å·²ç»è¶…å‡ºé™åˆ¶ , å¹¶ä¸”ç§¯åˆ†ä¸è¶³ !");
 				}
 				$is_points = '1';
 			}
 			else
 			{
-				exit("ÄãÑûÇë¸ß¼¶ÈË²ÅÃæÊÔ´ÎÊıÒÑ¾­³¬³öÁËÏŞÖÆ¡£");
+				exit("ä½ é‚€è¯·é«˜çº§äººæ‰é¢è¯•æ¬¡æ•°å·²ç»è¶…å‡ºäº†é™åˆ¶ã€‚");
 			}
 		}
-		//Ğ´ÈÕÖ¾ÒÔ¼°²åÊı¾İ¿â
+		//å†™æ—¥å¿—ä»¥åŠæ’æ•°æ®åº“
 		$db->inserttable(table('company_interview'),$addarr);
-		//$is_pointsÎª¿Õ : ËµÃ÷ÓÃÌ×²Í²Ù×÷µÄ   ²»Îª¿Õ :  ËµÃ÷ÊÇÓÃ»ı·Ö²Ù×÷µÄ
+		//$is_pointsä¸ºç©º : è¯´æ˜ç”¨å¥—é¤æ“ä½œçš„   ä¸ä¸ºç©º :  è¯´æ˜æ˜¯ç”¨ç§¯åˆ†æ“ä½œçš„
 		if(empty($is_points))
 		{
 			$resume_talent = $resume['talent_']=='1'?'interview_ordinary':'interview_senior';
 			action_user_setmeal($_SESSION['uid'],$resume_talent);
 			$setmeal=get_user_setmeal($_SESSION['uid']);
-			$messgae = $resume['talent_']=='1'?"ÑûÇëÁË {$resume_user['username']} ÃæÊÔ£¬»¹¿ÉÒÔÑûÇëÆÕÍ¨ÈË²Å {$setmeal['interview_ordinary']} ´Î":"ÑûÇëÁË {$resume_user['username']} ÃæÊÔ£¬»¹¿ÉÒÔÑûÇë¸ß¼¶ÈË²Å {$setmeal['interview_senior']} ´Î";
-			$message_type = $resume['talent_']=='1'?"ÑûÇëÆÕÍ¨ÈË²ÅÃæÊÔ":"ÑûÇë¸ß¼¶ÈË²ÅÃæÊÔ";
+			$messgae = $resume['talent_']=='1'?"é‚€è¯·äº† {$resume_user['username']} é¢è¯•ï¼Œè¿˜å¯ä»¥é‚€è¯·æ™®é€šäººæ‰ {$setmeal['interview_ordinary']} æ¬¡":"é‚€è¯·äº† {$resume_user['username']} é¢è¯•ï¼Œè¿˜å¯ä»¥é‚€è¯·é«˜çº§äººæ‰ {$setmeal['interview_senior']} æ¬¡";
+			$message_type = $resume['talent_']=='1'?"é‚€è¯·æ™®é€šäººæ‰é¢è¯•":"é‚€è¯·é«˜çº§äººæ‰é¢è¯•";
 			write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],$messgae,2,1007,$message_type,"1","{$setmeal['interview_senior']}");
-			write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"ÑûÇëÁË {$resume_user['username']} ÃæÊÔ");
+			write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"é‚€è¯·äº† {$resume_user['username']} é¢è¯•");
 		}
 		else
 		{
@@ -784,11 +784,11 @@ elseif ($act == 'invited_add')
 				$user_points=get_user_points($_SESSION['uid']);
 				$operator=$ptype=="1"?"+":"-";
 				if($resume['talent_']=='2'){
-					write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÑûÇë {$resume_user['username']} ÃæÊÔ({$operator}{$points}),(Ê£Óà:{$user_points})",1,1007,"ÑûÇë¸ß¼¶ÈË²ÅÃæÊÔ","{$operator}{$points}","{$user_points}");
+					write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"é‚€è¯· {$resume_user['username']} é¢è¯•({$operator}{$points}),(å‰©ä½™:{$user_points})",1,1007,"é‚€è¯·é«˜çº§äººæ‰é¢è¯•","{$operator}{$points}","{$user_points}");
 				}else{
-					write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÑûÇë {$resume_user['username']} ÃæÊÔ({$operator}{$points}),(Ê£Óà:{$user_points})",1,1006,"ÑûÇëÆÕÍ¨ÈË²ÅÃæÊÔ","{$operator}{$points}","{$user_points}");
+					write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"é‚€è¯· {$resume_user['username']} é¢è¯•({$operator}{$points}),(å‰©ä½™:{$user_points})",1,1006,"é‚€è¯·æ™®é€šäººæ‰é¢è¯•","{$operator}{$points}","{$user_points}");
 				}
-				write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"ÑûÇë {$resume_user['username']} ÃæÊÔ");
+				write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"é‚€è¯· {$resume_user['username']} é¢è¯•");
 			}
 		}
 
@@ -806,16 +806,16 @@ elseif ($act == 'invited_add')
 	{
 		dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_sms.php?uid={$_SESSION['uid']}&key=".asyn_userkey($_SESSION['uid'])."&act=set_invite&companyname={$jobs['companyname']}&mobile={$resume_user['mobile']}");		
 	}
-	//Õ¾ÄÚĞÅ
+	//ç«™å†…ä¿¡
 	if($pms_notice=='1'){
 		$user=$db->getone("select username from ".table('members')." where uid ={$resume['uid']} limit 1");
 		$jobs_url=url_rewrite('QS_jobsshow',array('id'=>$jobs['id']));
 		$company_url=url_rewrite('QS_companyshow',array('id'=>$jobs['company_id']));
-		$message=$jobs['companyname']."ÑûÇëÄú²Î¼Ó¹«Ë¾ÃæÊÔ£¬ÃæÊÔÖ°Î»£º<a href=\"{$jobs_url}\" target=\"_blank\"> {$jobs['jobs_name']} </a>£¬<a href=\"{$company_url}\" target=\"_blank\">µã»÷²é¿´¹«Ë¾ÏêÇé</a>";
+		$message=$jobs['companyname']."é‚€è¯·æ‚¨å‚åŠ å…¬å¸é¢è¯•ï¼Œé¢è¯•èŒä½ï¼š<a href=\"{$jobs_url}\" target=\"_blank\"> {$jobs['jobs_name']} </a>ï¼Œ<a href=\"{$company_url}\" target=\"_blank\">ç‚¹å‡»æŸ¥çœ‹å…¬å¸è¯¦æƒ…</a>";
 		write_pmsnotice($resume['uid'],$user['username'],$message);
 	}
 	
-	//Î¢ĞÅ
+	//å¾®ä¿¡
 	if(intval($_CFG['weixin_apiopen'])==1){
 		$user=$db->getone("select weixin_openid from ".table('members')." where uid ={$resume['uid']} limit 1");
 		
@@ -827,7 +827,7 @@ elseif ($act == 'invited_add')
 				'url' => $jobs_url,
 				'topcolor' => "#7B68EE",
 				'data' => array(
-					'first' => array('value' => urlencode(gbk_to_utf8($jobs['companyname']."ÑûÇëÄú²Î¼Ó¹«Ë¾ÃæÊÔ")),
+					'first' => array('value' => urlencode(gbk_to_utf8($jobs['companyname']."é‚€è¯·æ‚¨å‚åŠ å…¬å¸é¢è¯•")),
 									'color' => "#743A3A",
 						),
 					'job' => array('value' => urlencode(gbk_to_utf8($jobs['jobs_name'])),
@@ -836,7 +836,7 @@ elseif ($act == 'invited_add')
 					'company' => array('value' => urlencode(gbk_to_utf8($jobs['companyname'])),
 									'color' => "#743A3A",
 						),
-					'time' => array('value' => urlencode(gbk_to_utf8("Çëµã»÷²é¿´")),
+					'time' => array('value' => urlencode(gbk_to_utf8("è¯·ç‚¹å‡»æŸ¥çœ‹")),
 									'color' => "#743A3A",
 						),
 					'address' => array('value' => urlencode(gbk_to_utf8($jobs['contact']['address'])),
@@ -860,7 +860,7 @@ elseif ($act == 'invited_add')
 	
 
 }
-//»ñÈ¡Ö°Î»»òÕß¼òÀúµÄËùÊôUID
+//è·å–èŒä½æˆ–è€…ç®€å†çš„æ‰€å±UID
 function get_uid($aid,$type='jobs')
 {
     global $db;

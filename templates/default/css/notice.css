@@ -1,4 +1,4 @@
-/*-----�б�----------*/
+﻿/*-----列表----------*/
 .notice-list{ width:985px;margin:0 auto; margin-top:8px;}
 .notice-list .left{ width:710px; float:left}
 .notice-list .left .listbox{ width:700px;border:1px solid #E4E4E4}
@@ -13,7 +13,7 @@
 .notice-list .right .listbox .tit strong {font-size:14px;  color:#666666; padding-left:15px;}
 .notice-list .right .listbox .txt {line-height:180%; border-bottom:1px #CCCCCC  dashed; margin:10px;}
 .notice-list .right .listbox .txt li { padding-left:12px;line-height:180%;background:url(../images/01.gif) no-repeat 5px 10px;}
-/*-----��ϸҳ----------*/
+/*-----详细页----------*/
 .notice-show{ width:985px;margin:0 auto; margin-top:8px;}
 .notice-show .left{ width:710px; float:left}
 .notice-show .left .show{ width:680px;border:1px solid #E4E4E4;background:url(../images/16.jpg) repeat-x; padding:10px;}

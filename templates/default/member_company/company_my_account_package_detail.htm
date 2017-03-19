@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_common.css" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_company.css" />
@@ -15,25 +15,25 @@
 <script src="{#$QISHI.site_template#}js/dialog-min.js"></script>
 <script>
 	$(document).ready(function() {
-		// ¶¥²¿É¸Ñ¡
+		// é¡¶éƒ¨ç­›é€‰
 		$('.data-filter').on('click', function(e){
 			$(this).find('.filter-down').toggle();
-			// ¶¯Ì¬ÉèÖÃÏÂÀ­ÁĞ±í¿í¶È
+			// åŠ¨æ€è®¾ç½®ä¸‹æ‹‰åˆ—è¡¨å®½åº¦
 			var fWidth = $(this).find('.filter-span').outerWidth(true) - 2;
 			$(this).find(".filter-down").width(fWidth);
-			// µã»÷ÆäËûÎ»ÖÃÊÕÆğÏÂÀ­
+			// ç‚¹å‡»å…¶ä»–ä½ç½®æ”¶èµ·ä¸‹æ‹‰
 			$(document).one("click",function(){
 				$('.filter-down').hide();
 			});
 			e.stopPropagation();
-			//µã»÷ÏÂÀ­Ê±ÊÕÆğÆäËûÏÂÀ­
+			//ç‚¹å‡»ä¸‹æ‹‰æ—¶æ”¶èµ·å…¶ä»–ä¸‹æ‹‰
 			$(".data-filter").not($(this)).find('.filter-down').hide();
 		});
-		//²é¿´µ¯³ö
+		//æŸ¥çœ‹å¼¹å‡º
 		$('.check-detail').on('click', function(){
 			var log_value =  $(this).attr('log_value');
 			dialog({
-				title: 'ÏêÇé',
+				title: 'è¯¦æƒ…',
 				content: log_value,
 				width:350
 			}).showModal();
@@ -43,7 +43,7 @@
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > »áÔ±·şÎñ</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > ä¼šå‘˜æœåŠ¡</div>
 	<div class="usermain">
 		<div class="leftmenu com link_bk">
 			{#include file="member_company/left.htm"#}
@@ -51,52 +51,52 @@
 		<div class="rightmain">
 			<div class="bbox1 my_account">
 				<div class="topnav get_resume">
-					<div class="titleH1"><div class="h1-title">ÎÒµÄÕË»§</div></div>
+					<div class="titleH1"><div class="h1-title">æˆ‘çš„è´¦æˆ·</div></div>
 					<div class="navs link_bk">
 						{#if $QISHI.operation_mode == '1' || $QISHI.operation_mode == '3'#}
-						<a href="company_service.php?act=j_account" {#if $act=='j_account'#}class="se"{#/if#}>ÎÒµÄ»ı·Ö</a>
+						<a href="company_service.php?act=j_account" {#if $act=='j_account'#}class="se"{#/if#}>æˆ‘çš„ç§¯åˆ†</a>
 						{#/if#}
 						{#if $QISHI.operation_mode == '2' || $QISHI.operation_mode == '3'#}
-						<a href="company_service.php?act=t_account" {#if $act=='t_account'#}class="se"{#/if#}>ÎÒµÄÌ×²Í</a>
+						<a href="company_service.php?act=t_account" {#if $act=='t_account'#}class="se"{#/if#}>æˆ‘çš„å¥—é¤</a>
 						{#/if#}
 						<div class="clear"></div>
 					</div>
 				</div>
 				<div class="account-wrap">
 					<div class="account-top-block clearfix">
-						<div class="account-state f-left">ÕË»§×´Ì¬</div>
+						<div class="account-state f-left">è´¦æˆ·çŠ¶æ€</div>
 						<div class="a-state-content f-left">
 							{#if $QISHI.operation_mode == '2' || $QISHI.operation_mode == '3'#}
-							<span class="account-type">µ±Ç°Ì×²Í£º<span>{#$setmeal.setmeal_name#}</span><em>({#$setmeal.starttime|date_format:"%Y-%m-%d"#} ÖÁ {#if $setmeal.endtime=='0'#}--{#else#}{#$setmeal.endtime|date_format:"%Y-%m-%d"#}{#/if#})</em><a href="company_service.php?act=setmeal_list" class="underline">Éı¼¶VIPÌ×²Í</a></span>
+							<span class="account-type">å½“å‰å¥—é¤ï¼š<span>{#$setmeal.setmeal_name#}</span><em>({#$setmeal.starttime|date_format:"%Y-%m-%d"#} è‡³ {#if $setmeal.endtime=='0'#}--{#else#}{#$setmeal.endtime|date_format:"%Y-%m-%d"#}{#/if#})</em><a href="company_service.php?act=setmeal_list" class="underline">å‡çº§VIPå¥—é¤</a></span>
 							{#/if#}
 							{#if $QISHI.operation_mode == '1' || $QISHI.operation_mode == '3'#}
-							<span class="account-type last">µ±Ç°{#$QISHI.points_byname#}£º<span>{#$points#}</span>{#$QISHI.points_quantifier#}<a href="company_service.php?act=order_add" class="underline">»ı·Ö³äÖµ</a></span>
+							<span class="account-type last">å½“å‰{#$QISHI.points_byname#}ï¼š<span>{#$points#}</span>{#$QISHI.points_quantifier#}<a href="company_service.php?act=order_add" class="underline">ç§¯åˆ†å……å€¼</a></span>
 							{#/if#}
 						</div>
 					</div>
 					<div class="account-ctrl-bar clearfix">
-						<h3 class="f-left">Ì×²ÍÊ¹ÓÃÃ÷Ï¸</h3>
-						<a href="company_service.php?act=t_account" class="f-right underline">Ì×²ÍÓàÁ¿>></a>
+						<h3 class="f-left">å¥—é¤ä½¿ç”¨æ˜ç»†</h3>
+						<a href="company_service.php?act=t_account" class="f-right underline">å¥—é¤ä½™é‡>></a>
 					</div>
 					<div class="company-data-list">
 						<div class="c-data-top account-pack-d clearfix">
-							<div class="item f-left top-item1">²Ù×÷ÀàĞÍ</div>
-							<div class="item f-left top-item2">Ì×²ÍÓàÁ¿</div>
+							<div class="item f-left top-item1">æ“ä½œç±»å‹</div>
+							<div class="item f-left top-item2">å¥—é¤ä½™é‡</div>
 							<div class="item f-left top-item3">
 								<div class="data-filter span4">
 									<span class="filter-span">
-										{#if $settr=='3'#}ÈıÌìÄÚ{#elseif $settr=='7'#}Ò»ÖÜÄÚ{#elseif $settr=='30'#}Ò»¸öÔÂ{#else#}²Ù×÷Ê±¼ä{#/if#}
+										{#if $settr=='3'#}ä¸‰å¤©å†…{#elseif $settr=='7'#}ä¸€å‘¨å†…{#elseif $settr=='30'#}ä¸€ä¸ªæœˆ{#else#}æ“ä½œæ—¶é—´{#/if#}
 										<i class="filter-icon"></i>
 									</span>
 									<ul class="filter-down select_ul">
-										<li type="settr" data="0"><a href="company_service.php?act=t_account&detail=1&settr=0">È«²¿</a></li>
-										<li type="settr" data="3"><a href="company_service.php?act=t_account&detail=1&settr=3">ÈıÌìÄÚ</a></li>
-										<li type="settr" data="7"><a href="company_service.php?act=t_account&detail=1&settr=7">Ò»ÖÜÄÚ</a></li>
-										<li type="settr" data="30"><a href="company_service.php?act=t_account&detail=1&settr=30">Ò»¸öÔÂ</a></li>
+										<li type="settr" data="0"><a href="company_service.php?act=t_account&detail=1&settr=0">å…¨éƒ¨</a></li>
+										<li type="settr" data="3"><a href="company_service.php?act=t_account&detail=1&settr=3">ä¸‰å¤©å†…</a></li>
+										<li type="settr" data="7"><a href="company_service.php?act=t_account&detail=1&settr=7">ä¸€å‘¨å†…</a></li>
+										<li type="settr" data="30"><a href="company_service.php?act=t_account&detail=1&settr=30">ä¸€ä¸ªæœˆ</a></li>
 									</ul>
 								</div>
 							</div>
-							<div class="item f-left top-item4">²Ù×÷</div>
+							<div class="item f-left top-item4">æ“ä½œ</div>
 						</div>
 						{#if $report#}
 							{#foreach from=$report item=list#}
@@ -105,7 +105,7 @@
 									<div class="c-item f-left content1">{#$list.log_op_type_cn#}</div>
 									<div class="c-item f-left content2"><span class="lost-number">{#if $list.log_op_leave#}{#$list.log_op_leave#}{#else#}0{#/if#}</span></div>
 									<div class="c-item f-left content3"><span class="data-time">{#$list.log_addtime|date_format:"%Y-%m-%d"#}</span></div>
-									<div class="c-item f-left content4"><a href="javascript:;" log_value="{#$list.log_value#}" class="data-ctrl underline check-detail">²é¿´</a></div>
+									<div class="c-item f-left content4"><a href="javascript:;" log_value="{#$list.log_value#}" class="data-ctrl underline check-detail">æŸ¥çœ‹</a></div>
 								</div>
 							</div>
 							{#/foreach#}
@@ -117,7 +117,7 @@
 							</table>
 							{#/if#}
 						{#else#}
-							<div class="emptytip">Ã»ÓĞÕÒµ½¶ÔÓ¦µÄĞÅÏ¢£¡</div>
+							<div class="emptytip">æ²¡æœ‰æ‰¾åˆ°å¯¹åº”çš„ä¿¡æ¯ï¼</div>
 						{#/if#}
 					</div>
 				</div>

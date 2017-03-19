@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template_Lite bbcode modifier plugin
  *

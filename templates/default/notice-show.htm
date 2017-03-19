@@ -1,11 +1,11 @@
-{#qishi_notice_show set="ÁĞ±íÃû:show,¹«¸æID:GET[id]"#}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿{#qishi_notice_show set="åˆ—è¡¨å:show,å…¬å‘ŠID:GET[id]"#}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$show.title#} - {#$QISHI.site_name#}</title>
 <meta name="description" content="{#$show.description#}">
 <meta name="keywords" content="{#$show.keywords#}">
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
@@ -27,23 +27,23 @@ $(document).ready(function()
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
-<!-- µ±Ç°Î»ÖÃ -->
+<!-- å½“å‰ä½ç½® -->
 <div class="page_location link_bk">
-{#qishi_news_category set="ÁĞ±íÃû:category,Ãû³Æ³¤¶È:10,×ÊÑ¶Ğ¡Àà:"|cat:$show.type_id#}
-µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a>&nbsp;>&nbsp;<a href="{#"QS_noticelist,id:1"|qishi_url#}">ÍøÕ¾¹«¸æ</a>&nbsp;>&nbsp;ÕıÎÄ
+{#qishi_news_category set="åˆ—è¡¨å:category,åç§°é•¿åº¦:10,èµ„è®¯å°ç±»:"|cat:$show.type_id#}
+å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a>&nbsp;>&nbsp;<a href="{#"QS_noticelist,id:1"|qishi_url#}">ç½‘ç«™å…¬å‘Š</a>&nbsp;>&nbsp;æ­£æ–‡
 </div>
-	<!-- Ö÷ÌåÄÚÈİ -->
+	<!-- ä¸»ä½“å†…å®¹ -->
 	<div class="container link_bk">
 		
-		<!-- ×ó±ßÄÚÈİ -->
+		<!-- å·¦è¾¹å†…å®¹ -->
 		<div class="left_area">
 			<div class="news_box">
 				<div class="com_container">
 					<div class="title">{#$show.title#}</div>
 					<div class="news_dateil">
 						<div class="time">{#$show.addtime|date_format:"%Y-%m-%d %H:%M"#}</div>
-						<div class="time">²é¿´£º<span id="click"></span> ´Î</div>
-						<div><a href="javascript:window.print();">[´òÓ¡]</a><a href="javascript:void(0);" onclick="window.external.addFavorite(parent.location.href,document.title);">[ÊÕ²Ø]</a></div>
+						<div class="time">æŸ¥çœ‹ï¼š<span id="click"></span> æ¬¡</div>
+						<div><a href="javascript:window.print();">[æ‰“å°]</a><a href="javascript:void(0);" onclick="window.external.addFavorite(parent.location.href,document.title);">[æ”¶è—]</a></div>
 						<div class="clear"></div>
 					</div>
 					<div class="news_txt">
@@ -55,7 +55,7 @@ $(document).ready(function()
 						        <a class="bds_tsina"></a>
 						        <a class="bds_tqq"></a>
 						        <a class="bds_renren"></a>
-						        <span class="bds_more">¸ü¶à</span>
+						        <span class="bds_more">æ›´å¤š</span>
 						    </div>
 						<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=659075" ></script>
 						<script type="text/javascript" id="bdshell_js"></script>
@@ -72,15 +72,15 @@ $(document).ready(function()
 			</div>
 
 		</div>
-		<!-- ÓÒ±ßÄÚÈİ -->
+		<!-- å³è¾¹å†…å®¹ -->
 		<div class="right_area">
 			<div class="right_box">
 				<div class="title_box">
-					<h5>×îĞÂÖ°Î»</h5>
+					<h5>æœ€æ–°èŒä½</h5>
 				</div>
 				<div class="list">
 					<ul class="newest">
-						{#qishi_jobs_list set="ÁĞ±íÃû:jobslist,ÏÔÊ¾ÊıÄ¿:5,Ö°Î»Ãû³¤¶È:14,Ìî²¹×Ö·û:...,ÅÅĞò:rtime>desc"#}
+						{#qishi_jobs_list set="åˆ—è¡¨å:jobslist,æ˜¾ç¤ºæ•°ç›®:5,èŒä½åé•¿åº¦:14,å¡«è¡¥å­—ç¬¦:...,æ’åº:rtime>desc"#}
 						{#foreach from=$jobslist item=list#}
 						<li><a href="{#$list.jobs_url#}" target="_blank">{#$list.jobs_name#}</a></li>
 						{#/foreach#}
@@ -90,7 +90,7 @@ $(document).ready(function()
 		</div>
 		<div class="clear"></div>
 	</div>
-	<!-- Ö÷ÌåÄÚÈİ ½áÊø -->
+	<!-- ä¸»ä½“å†…å®¹ ç»“æŸ -->
 	{#include file="footer.htm"#}
 </body>
 </html>

@@ -1,24 +1,24 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ¸öÈË»áÔ±ÖĞĞÄ
+ * 74cms ä¸ªäººä¼šå‘˜ä¸­å¿ƒ
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
 require_once(dirname(__FILE__) . '/personal_common.php');
 $smarty->assign('leftmenu',"resume"); 
  
-//¼òÀúÁĞ±í
+//ç®€å†åˆ—è¡¨
 if ($act=='resume_list')
 {
 	$wheresql=" WHERE uid='".$_SESSION['uid']."' ";
 	$sql="SELECT * FROM ".table('resume').$wheresql;
-	$smarty->assign('title','ÎÒµÄ¼òÀú - ¸öÈË»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','æˆ‘çš„ç®€å† - ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('act',$act);
 	$total=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume')." WHERE uid='{$_SESSION['uid']}'");
 	$smarty->assign('total',$total);
@@ -27,51 +27,51 @@ if ($act=='resume_list')
 }
 elseif ($act=='refresh')
 {
-		$resumeid = intval($_GET['id'])?intval($_GET['id']):showmsg("ÄúÃ»ÓĞÑ¡Ôñ¼òÀú£¡");
+		$resumeid = intval($_GET['id'])?intval($_GET['id']):showmsg("æ‚¨æ²¡æœ‰é€‰æ‹©ç®€å†ï¼");
 		$refrestime=get_last_refresh_date($_SESSION['uid'],"2001");
 		$duringtime=time()-$refrestime['max(addtime)'];
 		$space = $_CFG['per_refresh_resume_space']*60;
 		$refresh_time = get_today_refresh_times($_SESSION['uid'],"2001");
 		if($_CFG['per_refresh_resume_time']!=0&&($refresh_time['count(*)']>=$_CFG['per_refresh_resume_time']))
 		{
-		showmsg("Ã¿Ìì×î¶àÖ»ÄÜË¢ĞÂ".$_CFG['per_refresh_resume_time']."´Î,Äú½ñÌìÒÑ³¬¹ı×î´óË¢ĞÂ´ÎÊıÏŞÖÆ£¡",2);	
+		showmsg("æ¯å¤©æœ€å¤šåªèƒ½åˆ·æ–°".$_CFG['per_refresh_resume_time']."æ¬¡,æ‚¨ä»Šå¤©å·²è¶…è¿‡æœ€å¤§åˆ·æ–°æ¬¡æ•°é™åˆ¶ï¼",2);	
 		}
 		elseif($duringtime<=$space){
-		showmsg($_CFG['per_refresh_resume_space']."·ÖÖÓÄÚ²»ÄÜÖØ¸´Ë¢ĞÂ¼òÀú£¡",2);
+		showmsg($_CFG['per_refresh_resume_space']."åˆ†é’Ÿå†…ä¸èƒ½é‡å¤åˆ·æ–°ç®€å†ï¼",2);
 		}
 		else 
 		{
-		refresh_resume($resumeid,$_SESSION['uid'])?showmsg('²Ù×÷³É¹¦£¡',2):showmsg('²Ù×÷Ê§°Ü£¡',0);
+		refresh_resume($resumeid,$_SESSION['uid'])?showmsg('æ“ä½œæˆåŠŸï¼',2):showmsg('æ“ä½œå¤±è´¥ï¼',0);
 		}
 }
-//É¾³ı¼òÀú
+//åˆ é™¤ç®€å†
 elseif ($act=='del_resume')
 {
 	if (intval($_GET['id'])==0)
 	{
-	exit('ÄúÃ»ÓĞÑ¡Ôñ¼òÀú£¡');
+	exit('æ‚¨æ²¡æœ‰é€‰æ‹©ç®€å†ï¼');
 	}
 	else
 	{
 	del_resume($_SESSION['uid'],intval($_GET['id']))?exit('success'):exit('fail');
 	}
 }
-//´´½¨¼òÀú-»ù±¾ĞÅÏ¢
+//åˆ›å»ºç®€å†-åŸºæœ¬ä¿¡æ¯
 elseif ($act=='make1')
 {
 	$uid=intval($_SESSION['uid']);
 	$pid=intval($_REQUEST['pid']);
 	/**
-	 * 3.6ÓÅ»¯start
+	 * 3.6ä¼˜åŒ–start
 	 * @var [type]
 	 */
 	$total=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume')." WHERE uid='{$uid}'");
 	if ($total>=intval($_CFG['resume_max']))
 	{
-	showmsg("Äú×î¶à¿ÉÒÔ´´½¨{$_CFG['resume_max']} ·İ¼òÀú,ÒÑ¾­³¬³öÁË×î´óÏŞÖÆ£¡",1);
+	showmsg("æ‚¨æœ€å¤šå¯ä»¥åˆ›å»º{$_CFG['resume_max']} ä»½ç®€å†,å·²ç»è¶…å‡ºäº†æœ€å¤§é™åˆ¶ï¼",1);
 	}
 	/**
-	 * 3.6ÓÅ»¯end
+	 * 3.6ä¼˜åŒ–end
 	 * @var [type]
 	 */
 	$_SESSION['send_mobile_key']=mt_rand(100000, 999999);
@@ -84,27 +84,27 @@ elseif ($act=='make1')
 	$smarty->assign('pid',$pid);
 	$smarty->assign('user',$user);
 	$smarty->assign('userprofile',get_userprofile($_SESSION['uid']));
-	$smarty->assign('title','ÎÒµÄ¼òÀú - ¸öÈË»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','æˆ‘çš„ç®€å† - ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$captcha=get_cache('captcha');
 	$smarty->assign('verify_resume',$captcha['verify_resume']);
 	$smarty->assign('go_resume_show',$_GET['go_resume_show']);
 	$smarty->display('member_personal/personal_make_resume_step1.htm');
 }
-//´´½¨¼òÀú -±£´æ»ù±¾ĞÅÏ¢¡¢ÇóÖ°ÒâÏò
+//åˆ›å»ºç®€å† -ä¿å­˜åŸºæœ¬ä¿¡æ¯ã€æ±‚èŒæ„å‘
 elseif ($act=='make1_save')
 {
 	$captcha=get_cache('captcha');
 	$postcaptcha = trim($_POST['postcaptcha']);
 	if($captcha['verify_resume']=='1' && empty($postcaptcha) && intval($_REQUEST['pid'])===0)
 	{
-		showmsg("ÇëÌîĞ´ÏµÍ³ÑéÖ¤Âë",1);
+		showmsg("è¯·å¡«å†™ç³»ç»ŸéªŒè¯ç ",1);
  	}
 	if ($captcha['verify_resume']=='1' && intval($_REQUEST['pid'])===0 &&  strcasecmp($_SESSION['imageCaptcha_content'],$postcaptcha)!=0)
 	{
-		showmsg("ÏµÍ³ÑéÖ¤Âë´íÎó",1);
+		showmsg("ç³»ç»ŸéªŒè¯ç é”™è¯¯",1);
 	}
 	$setsqlarr['uid']=intval($_SESSION['uid']);
-	$setsqlarr['telephone']=trim($_POST['mobile'])?trim($_POST['mobile']):showmsg('ÇëÌîĞ´ÊÖ»úºÅ£¡',1);
+	$setsqlarr['telephone']=trim($_POST['mobile'])?trim($_POST['mobile']):showmsg('è¯·å¡«å†™æ‰‹æœºå·ï¼',1);
 	if($user['mobile_audit']!="1")
 	{
 		$members['mobile']=$telephone;
@@ -115,22 +115,22 @@ elseif ($act=='make1_save')
 		$db->updatetable(table("resume"),$resume,array("uid"=>intval($_SESSION['uid'])));
 		unset($members['mobile'],$members_info['phone'],$resume['telephone']);
 	}
-	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):"Î´ÃüÃû¼òÀú";
+	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):"æœªå‘½åç®€å†";
 	check_word($_CFG['filter'],$_POST['title'])?showmsg($_CFG['filter_tips'],0):'';
-	$setsqlarr['fullname']=trim($_POST['fullname'])?trim($_POST['fullname']):showmsg('ÇëÌîĞ´ĞÕÃû£¡',1);
+	$setsqlarr['fullname']=trim($_POST['fullname'])?trim($_POST['fullname']):showmsg('è¯·å¡«å†™å§“åï¼',1);
 	check_word($_CFG['filter'],$_POST['fullname'])?showmsg($_CFG['filter_tips'],0):'';
 	$setsqlarr['display_name']=intval($_POST['display_name']);
-	$setsqlarr['sex']=trim($_POST['sex'])?intval($_POST['sex']):showmsg('ÇëÑ¡ÔñĞÔ±ğ£¡',1);
+	$setsqlarr['sex']=trim($_POST['sex'])?intval($_POST['sex']):showmsg('è¯·é€‰æ‹©æ€§åˆ«ï¼',1);
 	$setsqlarr['sex_cn']=trim($_POST['sex_cn']);
-	$setsqlarr['birthdate']=intval($_POST['birthdate'])>1945?intval($_POST['birthdate']):showmsg('ÇëÕıÈ·ÌîĞ´³öÉúÄê·İ',1);
-	$setsqlarr['residence']=trim($_POST['residence'])?trim($_POST['residence']):showmsg('ÇëÌîĞ´ÏÖ¾Ó×¡µØ£¡',1);
-	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):showmsg('ÇëÑ¡ÔñÑ§Àú',1);
+	$setsqlarr['birthdate']=intval($_POST['birthdate'])>1945?intval($_POST['birthdate']):showmsg('è¯·æ­£ç¡®å¡«å†™å‡ºç”Ÿå¹´ä»½',1);
+	$setsqlarr['residence']=trim($_POST['residence'])?trim($_POST['residence']):showmsg('è¯·å¡«å†™ç°å±…ä½åœ°ï¼',1);
+	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):showmsg('è¯·é€‰æ‹©å­¦å†',1);
 	$setsqlarr['education_cn']=trim($_POST['education_cn']);
-	$setsqlarr['major']=intval($_POST['major'])?intval($_POST['major']):showmsg('ÇëÑ¡Ôñ×¨Òµ',1);
+	$setsqlarr['major']=intval($_POST['major'])?intval($_POST['major']):showmsg('è¯·é€‰æ‹©ä¸“ä¸š',1);
 	$setsqlarr['major_cn']=trim($_POST['major_cn']);
-	$setsqlarr['experience']=$_POST['experience']?$_POST['experience']:showmsg('ÇëÑ¡Ôñ¹¤×÷¾­Ñé',1);
+	$setsqlarr['experience']=$_POST['experience']?$_POST['experience']:showmsg('è¯·é€‰æ‹©å·¥ä½œç»éªŒ',1);
 	$setsqlarr['experience_cn']=trim($_POST['experience_cn']);
-	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):showmsg('ÇëÌîĞ´ÓÊÏä£¡',1);
+	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):showmsg('è¯·å¡«å†™é‚®ç®±ï¼',1);
 	if($user['email_audit']!="1")
 	{
 		$members['email']=$setsqlarr['email'];
@@ -147,16 +147,16 @@ elseif ($act=='make1_save')
 	$setsqlarr['householdaddress']=trim($_POST['householdaddress']);
 	$setsqlarr['marriage']=intval($_POST['marriage']);
 	$setsqlarr['marriage_cn']=trim($_POST['marriage_cn']);;
-	$setsqlarr['intention_jobs']=trim($_POST['intention_jobs'])?trim($_POST['intention_jobs']):showmsg('ÇëÑ¡ÔñÒâÏòÖ°Î»£¡',1);
-	$setsqlarr['trade']=$_POST['trade']?trim($_POST['trade']):showmsg('ÇëÑ¡ÔñÆÚÍûĞĞÒµ£¡',1);
+	$setsqlarr['intention_jobs']=trim($_POST['intention_jobs'])?trim($_POST['intention_jobs']):showmsg('è¯·é€‰æ‹©æ„å‘èŒä½ï¼',1);
+	$setsqlarr['trade']=$_POST['trade']?trim($_POST['trade']):showmsg('è¯·é€‰æ‹©æœŸæœ›è¡Œä¸šï¼',1);
 	$setsqlarr['trade_cn']=trim($_POST['trade_cn']);
-	$setsqlarr['district_cn']=$_POST['district_cn']?trim($_POST['district_cn']):showmsg('ÇëÑ¡ÔñÆÚÍû¹¤×÷µØÇø£¡',1);
-	$setsqlarr['nature']=intval($_POST['nature'])?intval($_POST['nature']):showmsg('ÇëÑ¡ÔñÆÚÍû¸ÚÎ»ĞÔÖÊ£¡',1);
+	$setsqlarr['district_cn']=$_POST['district_cn']?trim($_POST['district_cn']):showmsg('è¯·é€‰æ‹©æœŸæœ›å·¥ä½œåœ°åŒºï¼',1);
+	$setsqlarr['nature']=intval($_POST['nature'])?intval($_POST['nature']):showmsg('è¯·é€‰æ‹©æœŸæœ›å²—ä½æ€§è´¨ï¼',1);
 	$setsqlarr['nature_cn']=trim($_POST['nature_cn']);
-	//Ä¿Ç°×´Ì¬
-	$setsqlarr['current']=intval($_POST['current'])?intval($_POST['current']):showmsg('ÇëÑ¡ÔñÄ¿Ç°×´Ì¬£¡',1);
+	//ç›®å‰çŠ¶æ€
+	$setsqlarr['current']=intval($_POST['current'])?intval($_POST['current']):showmsg('è¯·é€‰æ‹©ç›®å‰çŠ¶æ€ï¼',1);
 	$setsqlarr['current_cn']=trim($_POST['current_cn']);
-	$setsqlarr['wage']=intval($_POST['wage'])?intval($_POST['wage']):showmsg('ÇëÑ¡ÔñÆÚÍûĞ½×Ê£¡',1);
+	$setsqlarr['wage']=intval($_POST['wage'])?intval($_POST['wage']):showmsg('è¯·é€‰æ‹©æœŸæœ›è–ªèµ„ï¼',1);
 	$setsqlarr['wage_cn']=trim($_POST['wage_cn']);
 	$setsqlarr['refreshtime']=$timestamp;
 	$setsqlarr['audit']=intval($_CFG['audit_resume']);
@@ -164,7 +164,7 @@ elseif ($act=='make1_save')
 	$total=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume')." WHERE uid='{$_SESSION['uid']}'");
 	if ($total>=intval($_CFG['resume_max']))
 	{
-	showmsg("Äú×î¶à¿ÉÒÔ´´½¨{$_CFG['resume_max']} ·İ¼òÀú,ÒÑ¾­³¬³öÁË×î´óÏŞÖÆ£¡",1);
+	showmsg("æ‚¨æœ€å¤šå¯ä»¥åˆ›å»º{$_CFG['resume_max']} ä»½ç®€å†,å·²ç»è¶…å‡ºäº†æœ€å¤§é™åˆ¶ï¼",1);
 	}
 	else
 	{
@@ -174,12 +174,12 @@ elseif ($act=='make1_save')
 	$searchtab['uid'] = $_SESSION['uid'];
 	$db->inserttable(table('resume_search_key'),$searchtab);
 	$db->inserttable(table('resume_search_rtime'),$searchtab);
-	if (empty($pid))showmsg("±£´æÊ§°Ü£¡",0);
-	add_resume_jobs($pid,$_SESSION['uid'],$_POST['intention_jobs_id'])?"":showmsg('±£´æÊ§°Ü£¡',0);
-	add_resume_district($pid,$_SESSION['uid'],$_POST['district'])?"":showmsg('±£´æÊ§°Ü£¡',0);
-	add_resume_trade($pid,$_SESSION['uid'],$_POST['trade'])?"":showmsg('±£´æÊ§°Ü£¡',0);
+	if (empty($pid))showmsg("ä¿å­˜å¤±è´¥ï¼",0);
+	add_resume_jobs($pid,$_SESSION['uid'],$_POST['intention_jobs_id'])?"":showmsg('ä¿å­˜å¤±è´¥ï¼',0);
+	add_resume_district($pid,$_SESSION['uid'],$_POST['district'])?"":showmsg('ä¿å­˜å¤±è´¥ï¼',0);
+	add_resume_trade($pid,$_SESSION['uid'],$_POST['trade'])?"":showmsg('ä¿å­˜å¤±è´¥ï¼',0);
 	check_resume($_SESSION['uid'],$pid);
-	write_memberslog($_SESSION['uid'],2,1101,$_SESSION['username'],"´´½¨ÁË¼òÀú");
+	write_memberslog($_SESSION['uid'],2,1101,$_SESSION['username'],"åˆ›å»ºäº†ç®€å†");
 	
 	if(!get_userprofile($_SESSION['uid'])){
 		$infoarr['realname']=$setsqlarr['fullname'];
@@ -207,7 +207,7 @@ elseif($act=='make1_succeed'){
 	$pid = intval($_GET['pid']);
 	$smarty->assign('pid',$pid);
 	$smarty->assign('resume_basic',get_resume_basic($_SESSION['uid'],$pid));
-	$smarty->assign('title','ÎÒµÄ¼òÀú - ¸öÈË»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','æˆ‘çš„ç®€å† - ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->display('member_personal/personal_make_resume_step1_succeed.htm');
 }
 elseif($act=='ajax_get_interest_jobs'){
@@ -234,7 +234,7 @@ elseif($act=='ajax_get_interest_jobs'){
 }
 elseif($act == 'ajax_save_basic_info')
 {
-	$telephone=trim($_POST['mobile'])?trim($_POST['mobile']):exit('ÇëÌîĞ´ÊÖ»úºÅ£¡');
+	$telephone=trim($_POST['mobile'])?trim($_POST['mobile']):exit('è¯·å¡«å†™æ‰‹æœºå·ï¼');
 	$resume_basic=get_resume_basic($_SESSION['uid'],$_REQUEST['pid']);
 	$setsqlarr['telephone']=$telephone;
 	if($user['mobile_audit']!="1")
@@ -246,20 +246,20 @@ elseif($act == 'ajax_save_basic_info')
 		unset($members['mobile'],$members_info['phone']);
 	}
 	$setsqlarr['title']=utf8_to_gbk(trim($_POST['title']));
-	$setsqlarr['fullname']=trim($_POST['fullname'])?utf8_to_gbk(trim($_POST['fullname'])):exit('ÇëÌîĞ´ĞÕÃû£¡');
+	$setsqlarr['fullname']=trim($_POST['fullname'])?utf8_to_gbk(trim($_POST['fullname'])):exit('è¯·å¡«å†™å§“åï¼');
 	check_word($_CFG['filter'],$setsqlarr['fullname'])?exit($_CFG['filter_tips']):'';
 	$setsqlarr['display_name']=intval($_POST['display_name']);
-	$setsqlarr['sex']=trim($_POST['sex'])?intval($_POST['sex']):exit('ÇëÑ¡ÔñĞÔ±ğ£¡');
+	$setsqlarr['sex']=trim($_POST['sex'])?intval($_POST['sex']):exit('è¯·é€‰æ‹©æ€§åˆ«ï¼');
 	$setsqlarr['sex_cn']=utf8_to_gbk(trim($_POST['sex_cn']));
-	$setsqlarr['birthdate']=intval($_POST['birthdate'])>1945?intval($_POST['birthdate']):exit('ÇëÕıÈ·ÌîĞ´³öÉúÄê·İ');
-	$setsqlarr['residence']=trim($_POST['residence'])?utf8_to_gbk(trim($_POST['residence'])):exit('ÇëÌîĞ´ÏÖ¾Ó×¡µØ£¡');
-	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):exit('ÇëÑ¡ÔñÑ§Àú');
+	$setsqlarr['birthdate']=intval($_POST['birthdate'])>1945?intval($_POST['birthdate']):exit('è¯·æ­£ç¡®å¡«å†™å‡ºç”Ÿå¹´ä»½');
+	$setsqlarr['residence']=trim($_POST['residence'])?utf8_to_gbk(trim($_POST['residence'])):exit('è¯·å¡«å†™ç°å±…ä½åœ°ï¼');
+	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):exit('è¯·é€‰æ‹©å­¦å†');
 	$setsqlarr['education_cn']=utf8_to_gbk(trim($_POST['education_cn']));
-	$setsqlarr['major']=intval($_POST['major'])?intval($_POST['major']):exit('ÇëÑ¡Ôñ×¨Òµ');
+	$setsqlarr['major']=intval($_POST['major'])?intval($_POST['major']):exit('è¯·é€‰æ‹©ä¸“ä¸š');
 	$setsqlarr['major_cn']=utf8_to_gbk(trim($_POST['major_cn']));
-	$setsqlarr['experience']=$_POST['experience']?$_POST['experience']:exit('ÇëÑ¡Ôñ¹¤×÷¾­Ñé');
+	$setsqlarr['experience']=$_POST['experience']?$_POST['experience']:exit('è¯·é€‰æ‹©å·¥ä½œç»éªŒ');
 	$setsqlarr['experience_cn']=utf8_to_gbk(trim($_POST['experience_cn']));
-	$setsqlarr['email']=trim($_POST['email'])?utf8_to_gbk(trim($_POST['email'])):exit('ÇëÌîĞ´ÓÊÏä£¡');
+	$setsqlarr['email']=trim($_POST['email'])?utf8_to_gbk(trim($_POST['email'])):exit('è¯·å¡«å†™é‚®ç®±ï¼');
 	if($user['email_audit']!="1")
 	{
 		$members['email']=$setsqlarr['email'];
@@ -283,43 +283,43 @@ elseif($act == 'ajax_save_basic_info')
 	
 	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));
 	$title = utf8_to_gbk(trim($_POST['title']));
-	write_memberslog($_SESSION['uid'],2,1105,$_SESSION['username'],"ĞŞ¸ÄÁË¼òÀú({$title})");
+	write_memberslog($_SESSION['uid'],2,1105,$_SESSION['username'],"ä¿®æ”¹äº†ç®€å†({$title})");
 	exit("success");
 }
 elseif($act == 'ajax_save_titl')
 {
 	$setsqlarr['uid']=intval($_SESSION['uid']);
-	$setsqlarr['title']=utf8_to_gbk(trim($_POST['title']))?utf8_to_gbk(trim($_POST['title'])):exit('ÇëÌîĞ´¼òÀúÃû³Æ£¡');
+	$setsqlarr['title']=utf8_to_gbk(trim($_POST['title']))?utf8_to_gbk(trim($_POST['title'])):exit('è¯·å¡«å†™ç®€å†åç§°ï¼');
 	check_word($_CFG['filter'],$setsqlarr['title'])?exit($_CFG['filter_tips']):''; 
 	$db->updatetable(table('resume'),$setsqlarr," id='".intval($_POST['pid'])."'  AND uid='{$setsqlarr['uid']}'"); 
 	$title = $setsqlarr['title'];
-	write_memberslog($_SESSION['uid'],2,1105,$_SESSION['username'],"ĞŞ¸ÄÁË¼òÀú({$title})"); 
+	write_memberslog($_SESSION['uid'],2,1105,$_SESSION['username'],"ä¿®æ”¹äº†ç®€å†({$title})"); 
 	exit('success'); 
 } 
 elseif ($act=='ajax_save_basic')
 {
 	$setsqlarr['uid']=intval($_SESSION['uid']);
 	 
-	$setsqlarr['intention_jobs']=utf8_to_gbk(trim($_POST['intention_jobs']))?utf8_to_gbk(trim($_POST['intention_jobs'])):exit('ÇëÑ¡ÔñÒâÏòÖ°Î»£¡');
-	$setsqlarr['trade']=$_POST['trade']?trim($_POST['trade']):exit('ÇëÑ¡ÔñÆÚÍûĞĞÒµ£¡');
+	$setsqlarr['intention_jobs']=utf8_to_gbk(trim($_POST['intention_jobs']))?utf8_to_gbk(trim($_POST['intention_jobs'])):exit('è¯·é€‰æ‹©æ„å‘èŒä½ï¼');
+	$setsqlarr['trade']=$_POST['trade']?trim($_POST['trade']):exit('è¯·é€‰æ‹©æœŸæœ›è¡Œä¸šï¼');
 	$setsqlarr['trade_cn']=utf8_to_gbk(trim($_POST['trade_cn']));
-	$setsqlarr['district_cn']=utf8_to_gbk(trim($_POST['district_cn']))?utf8_to_gbk(trim($_POST['district_cn'])):exit('ÇëÑ¡ÔñÆÚÍû¹¤×÷µØÇø£¡');
-	$setsqlarr['nature']=intval($_POST['nature'])?intval($_POST['nature']):exit('ÇëÑ¡ÔñÆÚÍû¸ÚÎ»ĞÔÖÊ£¡');
+	$setsqlarr['district_cn']=utf8_to_gbk(trim($_POST['district_cn']))?utf8_to_gbk(trim($_POST['district_cn'])):exit('è¯·é€‰æ‹©æœŸæœ›å·¥ä½œåœ°åŒºï¼');
+	$setsqlarr['nature']=intval($_POST['nature'])?intval($_POST['nature']):exit('è¯·é€‰æ‹©æœŸæœ›å²—ä½æ€§è´¨ï¼');
 	$setsqlarr['nature_cn']=utf8_to_gbk(trim($_POST['nature_cn']));
-	//Ä¿Ç°×´Ì¬
-	$setsqlarr['current']=intval($_POST['current'])?intval($_POST['current']):exit('ÇëÑ¡ÔñÄ¿Ç°×´Ì¬£¡');
+	//ç›®å‰çŠ¶æ€
+	$setsqlarr['current']=intval($_POST['current'])?intval($_POST['current']):exit('è¯·é€‰æ‹©ç›®å‰çŠ¶æ€ï¼');
 	$setsqlarr['current_cn']=utf8_to_gbk(trim($_POST['current_cn']));
-	$setsqlarr['wage']=intval($_POST['wage'])?intval($_POST['wage']):exit('ÇëÑ¡ÔñÆÚÍûĞ½×Ê£¡');
+	$setsqlarr['wage']=intval($_POST['wage'])?intval($_POST['wage']):exit('è¯·é€‰æ‹©æœŸæœ›è–ªèµ„ï¼');
 	$setsqlarr['wage_cn']=utf8_to_gbk(trim($_POST['wage_cn']));
 	$setsqlarr['refreshtime']=$timestamp;
 	$_CFG['audit_edit_resume']!="-1"?$setsqlarr['audit']=intval($_CFG['audit_edit_resume']):"";
 	$db->updatetable(table('resume'),$setsqlarr," id='".intval($_REQUEST['pid'])."'  AND uid='{$setsqlarr['uid']}'");
-	add_resume_jobs(intval($_REQUEST['pid']),$_SESSION['uid'],$_POST['intention_jobs_id'])?"":showmsg('±£´æÊ§°Ü£¡',0);
-	add_resume_district(intval($_REQUEST['pid']),$_SESSION['uid'],$_POST['district'])?"":showmsg('±£´æÊ§°Ü£¡',0);
-	add_resume_trade(intval($_REQUEST['pid']),$_SESSION['uid'],$_POST['trade'])?"":showmsg('±£´æÊ§°Ü£¡',0);
+	add_resume_jobs(intval($_REQUEST['pid']),$_SESSION['uid'],$_POST['intention_jobs_id'])?"":showmsg('ä¿å­˜å¤±è´¥ï¼',0);
+	add_resume_district(intval($_REQUEST['pid']),$_SESSION['uid'],$_POST['district'])?"":showmsg('ä¿å­˜å¤±è´¥ï¼',0);
+	add_resume_trade(intval($_REQUEST['pid']),$_SESSION['uid'],$_POST['trade'])?"":showmsg('ä¿å­˜å¤±è´¥ï¼',0);
 	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));
 	$title = utf8_to_gbk(trim($_POST['title']));
-	write_memberslog($_SESSION['uid'],2,1105,$_SESSION['username'],"ĞŞ¸ÄÁË¼òÀú({$title})");
+	write_memberslog($_SESSION['uid'],2,1105,$_SESSION['username'],"ä¿®æ”¹äº†ç®€å†({$title})");
 	exit("success");
 }
 elseif ($act=='resume_logo_save')
@@ -331,11 +331,11 @@ elseif ($act=='resume_logo_save')
 		@unlink("../../data/".$_CFG['_resume_photo_dir_thumb']."/".$resume_basic['photo_img']);
 	}
 	$updir = date('Y/m/d');
-	$savePath = "../../data/".$_CFG['_resume_photo_dir']."/".$updir;  //Í¼Æ¬´æ´¢Â·¾¶
-	$savePathThumb = "../../data/".$_CFG['_resume_photo_dir_thumb']."/".$updir;  //Í¼Æ¬´æ´¢Â·¾¶
+	$savePath = "../../data/".$_CFG['_resume_photo_dir']."/".$updir;  //å›¾ç‰‡å­˜å‚¨è·¯å¾„
+	$savePathThumb = "../../data/".$_CFG['_resume_photo_dir_thumb']."/".$updir;  //å›¾ç‰‡å­˜å‚¨è·¯å¾„
 	 make_dir($savePath);
 	 make_dir($savePathThumb);
-	$savePicName = time();//Í¼Æ¬´æ´¢Ãû³Æ
+	$savePicName = time();//å›¾ç‰‡å­˜å‚¨åç§°
 	$file_src = $savePath.'/'.$savePicName."_src.jpg";
 	$filename150 = $savePath.'/'.$savePicName.".jpg"; 
 	$filename50 = $savePathThumb.'/'.$savePicName.".jpg"; 
@@ -362,47 +362,47 @@ elseif($act=='save_education'){
 	$setsqlarr['uid'] = intval($_SESSION['uid']);
 	$setsqlarr['pid'] = intval($_REQUEST['pid']);
 	
-	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 ) exit('¼òÀú²»´æÔÚ£¡');
+	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 ) exit('ç®€å†ä¸å­˜åœ¨ï¼');
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_REQUEST['pid']));
-	if (empty($resume_basic)) exit("ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢£¡");
+	if (empty($resume_basic)) exit("è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯ï¼");
 	$resume_education=get_resume_education($_SESSION['uid'],$_REQUEST['pid']);
-	if (count($resume_education)>=6) exit('½ÌÓı¾­Àú²»ÄÜ³¬¹ı6Ìõ£¡');
+	if (count($resume_education)>=6) exit('æ•™è‚²ç»å†ä¸èƒ½è¶…è¿‡6æ¡ï¼');
 	$school = utf8_to_gbk(trim($_POST['school']));
 	$speciality = utf8_to_gbk(trim($_POST['speciality']));
 	$education_cn = utf8_to_gbk(trim($_POST['education_cn']));
-	$setsqlarr['school'] = $school?$school:exit("ÇëÌîĞ´Ñ§Ğ£Ãû³Æ£¡");
+	$setsqlarr['school'] = $school?$school:exit("è¯·å¡«å†™å­¦æ ¡åç§°ï¼");
 	check_word($_CFG['filter'],$setsqlarr['school'])?exit($_CFG['filter_tips']):'';
-	$setsqlarr['speciality'] = $speciality?$speciality:exit("ÇëÌîĞ´×¨ÒµÃû³Æ£¡");
+	$setsqlarr['speciality'] = $speciality?$speciality:exit("è¯·å¡«å†™ä¸“ä¸šåç§°ï¼");
 	check_word($_CFG['filter'],$setsqlarr['speciality'])?exit($_CFG['filter_tips']):'';
-	$setsqlarr['education'] = intval($_POST['education'])?intval($_POST['education']):exit("ÇëÑ¡Ôñ»ñµÃÑ§Àú£¡");
-	$setsqlarr['education_cn'] = $education_cn?$education_cn:exit("ÇëÑ¡Ôñ»ñµÃÑ§Àú£¡");
-	// Ñ¡ÔñÖÁ½ñ¾Í²»ÅĞ¶Ï½áÊøÊ±¼äÁË
+	$setsqlarr['education'] = intval($_POST['education'])?intval($_POST['education']):exit("è¯·é€‰æ‹©è·å¾—å­¦å†ï¼");
+	$setsqlarr['education_cn'] = $education_cn?$education_cn:exit("è¯·é€‰æ‹©è·å¾—å­¦å†ï¼");
+	// é€‰æ‹©è‡³ä»Šå°±ä¸åˆ¤æ–­ç»“æŸæ—¶é—´äº†
 	if (intval($_POST['edu_todate']) == 1) {
 		if(trim($_POST['edu_start_year'])==""||trim($_POST['edu_start_month'])==""){
-			exit("ÇëÑ¡Ôñ¾Í¶ÁÊ±¼ä£¡");
+			exit("è¯·é€‰æ‹©å°±è¯»æ—¶é—´ï¼");
 		}
 		if(intval(($_POST['edu_start_year']))>intval(date('Y'))){
-			exit('¾Í¶Á¿ªÊ¼Ê±¼ä²»ÔÊĞí´óÓÚ±ÏÒµÊ±¼ä');
+			exit('å°±è¯»å¼€å§‹æ—¶é—´ä¸å…è®¸å¤§äºæ¯•ä¸šæ—¶é—´');
 		}
 		if(intval($_POST['edu_start_year']) == intval(date('Y')) && intval(($_POST['edu_start_month']))>=intval(date('m'))){
-			exit('¾Í¶Á¿ªÊ¼ÔÂ·İ²»ÔÊĞí´óÓÚ±ÏÒµÊ±¼ä');
+			exit('å°±è¯»å¼€å§‹æœˆä»½ä¸å…è®¸å¤§äºæ¯•ä¸šæ—¶é—´');
 		}
 	} else {
 		if(trim($_POST['edu_start_year'])==""||trim($_POST['edu_start_month'])==""||trim($_POST['edu_end_year'])==""||trim($_POST['edu_end_month'])==""){
-			exit("ÇëÑ¡Ôñ¾Í¶ÁÊ±¼ä£¡");
+			exit("è¯·é€‰æ‹©å°±è¯»æ—¶é—´ï¼");
 		}
 		if(intval(($_POST['edu_start_year']))>intval($_POST['edu_end_year'])){
-			exit('¾Í¶Á¿ªÊ¼Ê±¼ä²»ÔÊĞí´óÓÚ±ÏÒµÊ±¼ä');
+			exit('å°±è¯»å¼€å§‹æ—¶é—´ä¸å…è®¸å¤§äºæ¯•ä¸šæ—¶é—´');
 		}
 		if(intval($_POST['edu_start_year']) == intval($_POST['edu_end_year']) && intval(($_POST['edu_start_month']))>=intval($_POST['edu_end_month'])){
-			exit('¾Í¶Á¿ªÊ¼ÔÂ·İ²»ÔÊĞí´óÓÚ±ÏÒµÊ±¼ä');
+			exit('å°±è¯»å¼€å§‹æœˆä»½ä¸å…è®¸å¤§äºæ¯•ä¸šæ—¶é—´');
 		}
 	}
 	$setsqlarr['startyear'] = intval($_POST['edu_start_year']);
 	$setsqlarr['startmonth'] = intval($_POST['edu_start_month']);
 	$setsqlarr['endyear'] = intval($_POST['edu_end_year']);
 	$setsqlarr['endmonth'] = intval($_POST['edu_end_month']);
-	$setsqlarr['todate'] = intval($_POST['edu_todate']); // ÖÁ½ñ
+	$setsqlarr['todate'] = intval($_POST['edu_todate']); // è‡³ä»Š
 	if($id){
 		$db->updatetable(table("resume_education"),$setsqlarr,array("id"=>$id));
 		exit("success");
@@ -424,16 +424,16 @@ elseif($act=='ajax_get_education_list'){
 	$html="";
 	if($education_list){
 		foreach ($education_list as $key => $value) {
-			// ÅĞ¶Ï½áÊøÊ±¼äÊÇ·ñÖÁ½ñ
+			// åˆ¤æ–­ç»“æŸæ—¶é—´æ˜¯å¦è‡³ä»Š
 			$datehtm = '';
 			if($value["todate"] == 1) {
-				$datehtm = 'ÖÁ½ñ';
+				$datehtm = 'è‡³ä»Š';
 			} else {
-				$datehtm = $value["endyear"].'Äê'.$value["endmonth"].'ÔÂ';
+				$datehtm = $value["endyear"].'å¹´'.$value["endmonth"].'æœˆ';
 			}
 			// ===========================
 			$html.='<div class="jl1">
-				 	 <div class="l1">'.$value["startyear"].'Äê'.$value["startmonth"].'ÔÂ-'.$datehtm.'</div>
+				 	 <div class="l1">'.$value["startyear"].'å¹´'.$value["startmonth"].'æœˆ-'.$datehtm.'</div>
 					 <div class="l2">'.$value["school"].'</div>
 					 <div class="l3">'.$value["speciality"].'</div>
 					 <div class="l4">'.$value["education_cn"].'</div>
@@ -447,9 +447,9 @@ elseif($act=='ajax_get_education_list'){
 	}else{
 		$js='<script type="text/javascript">$("#add_education").hide();$(function(){$(".but130lan_add").hover(function(){$(this).addClass("hover")},function(){$(this).removeClass("hover");})})</script>';
 		$html.='<div class="noinfo" id="education_empty_box">
-		 	 <div class="txt">½ÌÓı¾­Àú×îÄÜÌåÏÖÄúµÄÑ§ÀúºÍ×¨ÒµÄÜÁ¦£¬¿ìÀ´Íê³ÉËüÎüÒıÆóÒµºÍHRÇàíù°É£¡</div>
+		 	 <div class="txt">æ•™è‚²ç»å†æœ€èƒ½ä½“ç°æ‚¨çš„å­¦å†å’Œä¸“ä¸šèƒ½åŠ›ï¼Œå¿«æ¥å®Œæˆå®ƒå¸å¼•ä¼ä¸šå’ŒHRé’çå§ï¼</div>
 			 <div class="addbut">
-			 	<input type="button" name="" id="empty_add_education" value="Ìí¼Ó¾­Àú"  class="but130lan_add"/>
+			 	<input type="button" name="" id="empty_add_education" value="æ·»åŠ ç»å†"  class="but130lan_add"/>
 			 </div>
 		</div>';
 		$html.=$js;
@@ -457,15 +457,15 @@ elseif($act=='ajax_get_education_list'){
 	
 	exit($html);
 }
-//´´½¨¼òÀú-ĞŞ¸Ä½ÌÓı¾­Àú
+//åˆ›å»ºç®€å†-ä¿®æ”¹æ•™è‚²ç»å†
 elseif ($act=='edit_education')
 {
 	$uid=intval($_SESSION['uid']);
 	$pid=intval($_REQUEST['pid']);
-	if ($uid==0 || $pid==0) exit('¼òÀú²»´æÔÚ£¡');
+	if ($uid==0 || $pid==0) exit('ç®€å†ä¸å­˜åœ¨ï¼');
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_REQUEST['pid']));
-	if (empty($resume_basic)) exit("ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢£¡");
-	$id=intval($_GET['id'])?intval($_GET['id']):exit('²ÎÊı´íÎó£¡');
+	if (empty($resume_basic)) exit("è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯ï¼");
+	$id=intval($_GET['id'])?intval($_GET['id']):exit('å‚æ•°é”™è¯¯ï¼');
 	$education_edit = get_resume_education_one($_SESSION['uid'],$pid,$id);
 	foreach ($education_edit as $key => $value) {
 		$education_edit[$key] = gbk_to_utf8($value);
@@ -473,66 +473,66 @@ elseif ($act=='edit_education')
 	$json_encode = json_encode($education_edit);
 	exit($json_encode);
 }
-//´´½¨¼òÀú-É¾³ı½ÌÓı¾­Àú
+//åˆ›å»ºç®€å†-åˆ é™¤æ•™è‚²ç»å†
 elseif ($act=='del_education')
 {
 	$id=intval($_GET['id']);
 	$sql="Delete from ".table('resume_education')." WHERE id='{$id}'  AND uid='".intval($_SESSION['uid'])."' AND pid='".intval($_REQUEST['pid'])."' LIMIT 1 ";
 	if ($db->query($sql))
 	{
-	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));//¸üĞÂ¼òÀúÍê³É×´Ì¬
-	exit('É¾³ı³É¹¦£¡');
+	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));//æ›´æ–°ç®€å†å®ŒæˆçŠ¶æ€
+	exit('åˆ é™¤æˆåŠŸï¼');
 	}
 	else
 	{
-	exit('É¾³ıÊ§°Ü£¡');
+	exit('åˆ é™¤å¤±è´¥ï¼');
 	}	
 }
 elseif($act=='save_work'){
 	$id=intval($_POST['id']);
 	$setsqlarr['uid'] = intval($_SESSION['uid']);
 	$setsqlarr['pid'] = intval($_REQUEST['pid']);
-	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 ) exit('¼òÀú²»´æÔÚ£¡');
+	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 ) exit('ç®€å†ä¸å­˜åœ¨ï¼');
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_REQUEST['pid']));
-	if (empty($resume_basic)) exit("ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢£¡");
+	if (empty($resume_basic)) exit("è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯ï¼");
 	$resume_work=get_resume_work($_SESSION['uid'],$_REQUEST['pid']);
-	if (count($resume_work)>=6) exit('¹¤×÷¾­Àú²»ÄÜ³¬¹ı6Ìõ£¡');
+	if (count($resume_work)>=6) exit('å·¥ä½œç»å†ä¸èƒ½è¶…è¿‡6æ¡ï¼');
 
 	$companyname = utf8_to_gbk(trim($_POST['companyname']));
 	$jobs = utf8_to_gbk(trim($_POST['jobs']));
 	$achievements = utf8_to_gbk(trim($_POST['achievements']));
-	$setsqlarr['companyname'] = $companyname?$companyname:exit("ÇëÌîĞ´¹«Ë¾Ãû³Æ£¡");
+	$setsqlarr['companyname'] = $companyname?$companyname:exit("è¯·å¡«å†™å…¬å¸åç§°ï¼");
 	check_word($_CFG['filter'],$setsqlarr['companyname'])?exit($_CFG['filter_tips']):'';
-	$setsqlarr['jobs'] = $jobs?$jobs:exit("ÇëÌîĞ´Ö°Î»Ãû³Æ£¡");
+	$setsqlarr['jobs'] = $jobs?$jobs:exit("è¯·å¡«å†™èŒä½åç§°ï¼");
 	check_word($_CFG['filter'],$setsqlarr['jobs'])?exit($_CFG['filter_tips']):'';
-	// Ñ¡ÔñÖÁ½ñ¾Í²»ÅĞ¶Ï½áÊøÊ±¼äÁË
+	// é€‰æ‹©è‡³ä»Šå°±ä¸åˆ¤æ–­ç»“æŸæ—¶é—´äº†
 	if (intval($_POST['work_todate']) == 1) {
 		if(trim($_POST['work_start_year'])==""||trim($_POST['work_start_month'])==""){
-			exit("ÇëÑ¡ÔñÈÎÖ°Ê±¼ä£¡");
+			exit("è¯·é€‰æ‹©ä»»èŒæ—¶é—´ï¼");
 		}
 		if(intval(($_POST['work_start_year']))>intval(date('Y'))){
-			exit('¹¤×÷¿ªÊ¼Ê±¼ä²»ÔÊĞí´óÓÚ¹¤×÷½áÊøÊ±¼ä');
+			exit('å·¥ä½œå¼€å§‹æ—¶é—´ä¸å…è®¸å¤§äºå·¥ä½œç»“æŸæ—¶é—´');
 		}
 		if(intval($_POST['work_start_year']) == intval(date('Y')) && intval(($_POST['work_start_month']))>=intval(date('m'))){
-				exit('¹¤×÷¿ªÊ¼ÔÂ·İ²»ÔÊĞí´óÓÚ¹¤×÷½áÊøÊ±¼ä');
+				exit('å·¥ä½œå¼€å§‹æœˆä»½ä¸å…è®¸å¤§äºå·¥ä½œç»“æŸæ—¶é—´');
 		}
 	} else {
 		if(trim($_POST['work_start_year'])==""||trim($_POST['work_start_month'])==""||trim($_POST['work_end_year'])==""||trim($_POST['work_end_month'])==""){
-			exit("ÇëÑ¡ÔñÈÎÖ°Ê±¼ä£¡");
+			exit("è¯·é€‰æ‹©ä»»èŒæ—¶é—´ï¼");
 		}
 		if(intval(($_POST['work_start_year']))>intval($_POST['work_end_year'])){
-			exit('¹¤×÷¿ªÊ¼Ê±¼ä²»ÔÊĞí´óÓÚ¹¤×÷½áÊøÊ±¼ä');
+			exit('å·¥ä½œå¼€å§‹æ—¶é—´ä¸å…è®¸å¤§äºå·¥ä½œç»“æŸæ—¶é—´');
 		}
 		if(intval($_POST['work_start_year']) == intval($_POST['work_end_year']) && intval(($_POST['work_start_month']))>=intval($_POST['work_end_month'])){
-				exit('¹¤×÷¿ªÊ¼ÔÂ·İ²»ÔÊĞí´óÓÚ¹¤×÷½áÊøÊ±¼ä');
+				exit('å·¥ä½œå¼€å§‹æœˆä»½ä¸å…è®¸å¤§äºå·¥ä½œç»“æŸæ—¶é—´');
 		}
 	}
 	$setsqlarr['startyear'] = intval($_POST['work_start_year']);
 	$setsqlarr['startmonth'] = intval($_POST['work_start_month']);
 	$setsqlarr['endyear'] = intval($_POST['work_end_year']);
 	$setsqlarr['endmonth'] = intval($_POST['work_end_month']);
-	$setsqlarr['achievements'] = $achievements?$achievements:exit("ÇëÌîĞ´¹¤×÷Ö°Ôğ£¡");
-	$setsqlarr['todate'] = intval($_POST['work_todate']); // ÖÁ½ñ
+	$setsqlarr['achievements'] = $achievements?$achievements:exit("è¯·å¡«å†™å·¥ä½œèŒè´£ï¼");
+	$setsqlarr['todate'] = intval($_POST['work_todate']); // è‡³ä»Š
 	check_word($_CFG['filter'],$setsqlarr['achievements'])?exit($_CFG['filter_tips']):'';
 	
 	if($id){
@@ -556,16 +556,16 @@ elseif($act=='ajax_get_work_list'){
 	$html="";
 	if($work_list){
 		foreach ($work_list as $key => $value) {
-			// ÅĞ¶Ï½áÊøÊ±¼äÊÇ·ñÖÁ½ñ
+			// åˆ¤æ–­ç»“æŸæ—¶é—´æ˜¯å¦è‡³ä»Š
 			$datehtm = '';
 			if($value["todate"] == 1) {
-				$datehtm = 'ÖÁ½ñ';
+				$datehtm = 'è‡³ä»Š';
 			} else {
-				$datehtm = $value["endyear"].'Äê'.$value["endmonth"].'ÔÂ';
+				$datehtm = $value["endyear"].'å¹´'.$value["endmonth"].'æœˆ';
 			}
 			// ===========================
 			$html.='<div class="jl2">
-					 	 <div class="l1">'.$value["startyear"].'Äê'.$value["startmonth"].'ÔÂ-'.$datehtm.'</div>
+					 	 <div class="l1">'.$value["startyear"].'å¹´'.$value["startmonth"].'æœˆ-'.$datehtm.'</div>
 						 <div class="l2">'.$value["companyname"].'</div>
 						 <div class="l3">'.$value["jobs"].'</div>
 						 <div class="l4">
@@ -573,7 +573,7 @@ elseif($act=='ajax_get_work_list'){
 						 <a class="del_work d" href="javascript:void(0);" pid="'.$pid.'" work_id="'.$value["id"].'" ></a><div class="clear"></div>
 						 <div class="clear"></div>
 						 </div>
-						 <div class="l5">¹¤×÷Ö°Ôğ£º</div>
+						 <div class="l5">å·¥ä½œèŒè´£ï¼š</div>
 						 <div class="l6">'.$value["achievements"].'
 						 </div>
 						 <div class="clear"></div>
@@ -582,9 +582,9 @@ elseif($act=='ajax_get_work_list'){
 	}else{
 		$js='<script type="text/javascript">$("#add_work").hide();$(function(){$(".but130lan_add").hover(function(){$(this).addClass("hover")},function(){$(this).removeClass("hover");})})</script>';
 		$html.='<div class="noinfo" id="work_empty_box">	
-			 	 <div class="txt">¹¤×÷¾­Àú×îÄÜÌåÏÖÄú·á¸»µÄÔÄÀúºÍ³öÖÚµÄ¹¤×÷ÄÜÁ¦£¬ÊÇÄãĞ½³ê·­±¶µÄ³ïÂëÅ¶HRÇàíù°É£¡</div>
+			 	 <div class="txt">å·¥ä½œç»å†æœ€èƒ½ä½“ç°æ‚¨ä¸°å¯Œçš„é˜…å†å’Œå‡ºä¼—çš„å·¥ä½œèƒ½åŠ›ï¼Œæ˜¯ä½ è–ªé…¬ç¿»å€çš„ç­¹ç å“¦HRé’çå§ï¼</div>
 				 <div class="addbut">
-				 	<input type="button" name="" id="empty_add_work" value="Ìí¼Ó¾­Àú"  class="but130lan_add"/>
+				 	<input type="button" name="" id="empty_add_work" value="æ·»åŠ ç»å†"  class="but130lan_add"/>
 				 </div>
 			</div>';
 		$html.=$js;
@@ -592,15 +592,15 @@ elseif($act=='ajax_get_work_list'){
 	
 	exit($html);
 }
-//´´½¨¼òÀú-ĞŞ¸Ä¹¤×÷¾­Àú
+//åˆ›å»ºç®€å†-ä¿®æ”¹å·¥ä½œç»å†
 elseif ($act=='edit_work')
 {
 	$uid=intval($_SESSION['uid']);
 	$pid=intval($_REQUEST['pid']);
-	if ($uid==0 || $pid==0) exit('¼òÀú²»´æÔÚ£¡');
+	if ($uid==0 || $pid==0) exit('ç®€å†ä¸å­˜åœ¨ï¼');
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_REQUEST['pid']));
-	if (empty($resume_basic)) exit("ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢£¡");
-	$id=intval($_GET['id'])?intval($_GET['id']):exit('²ÎÊı´íÎó£¡');
+	if (empty($resume_basic)) exit("è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯ï¼");
+	$id=intval($_GET['id'])?intval($_GET['id']):exit('å‚æ•°é”™è¯¯ï¼');
 	$work_edit = get_resume_work_one($_SESSION['uid'],$pid,$id);
 	foreach ($work_edit as $key => $value) {
 		$work_edit[$key] = gbk_to_utf8($value);
@@ -608,66 +608,66 @@ elseif ($act=='edit_work')
 	$json_encode = json_encode($work_edit);
 	exit($json_encode);
 }
-//´´½¨¼òÀú-É¾³ı¹¤×÷¾­Àú
+//åˆ›å»ºç®€å†-åˆ é™¤å·¥ä½œç»å†
 elseif ($act=='del_work')
 {
 	$id=intval($_GET['id']);
 	$sql="Delete from ".table('resume_work')." WHERE id='{$id}'  AND uid='".intval($_SESSION['uid'])."' AND pid='".intval($_REQUEST['pid'])."' LIMIT 1 ";
 	if ($db->query($sql))
 	{
-	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));//¸üĞÂ¼òÀúÍê³É×´Ì¬
-	exit('É¾³ı³É¹¦£¡');
+	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));//æ›´æ–°ç®€å†å®ŒæˆçŠ¶æ€
+	exit('åˆ é™¤æˆåŠŸï¼');
 	}
 	else
 	{
-	exit('É¾³ıÊ§°Ü£¡');
+	exit('åˆ é™¤å¤±è´¥ï¼');
 	}	
 }
 elseif($act=='save_training'){
 	$id=intval($_POST['id']);
 	$setsqlarr['uid'] = intval($_SESSION['uid']);
 	$setsqlarr['pid'] = intval($_REQUEST['pid']);
-	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 ) exit('¼òÀú²»´æÔÚ£¡');
+	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 ) exit('ç®€å†ä¸å­˜åœ¨ï¼');
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_REQUEST['pid']));
-	if (empty($resume_basic)) exit("ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢£¡");
+	if (empty($resume_basic)) exit("è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯ï¼");
 	$resume_training=get_resume_training($_SESSION['uid'],$_REQUEST['pid']);
-	if (count($resume_training)>=6) exit('ÅàÑµ¾­Àú²»ÄÜ³¬¹ı6Ìõ£¡');
+	if (count($resume_training)>=6) exit('åŸ¹è®­ç»å†ä¸èƒ½è¶…è¿‡6æ¡ï¼');
 	
 	$agency = utf8_to_gbk(trim($_POST['agency']));
 	$course = utf8_to_gbk(trim($_POST['course']));
 	$description = utf8_to_gbk(trim($_POST['description']));
-	$setsqlarr['agency'] = $agency?$agency:exit("ÇëÌîĞ´ÅàÑµ»ú¹¹£¡");
+	$setsqlarr['agency'] = $agency?$agency:exit("è¯·å¡«å†™åŸ¹è®­æœºæ„ï¼");
 	check_word($_CFG['filter'],$setsqlarr['agency'])?exit($_CFG['filter_tips']):'';
-	$setsqlarr['course'] = $course?$course:exit("ÇëÌîĞ´ÅàÑµ¿Î³Ì£¡");
+	$setsqlarr['course'] = $course?$course:exit("è¯·å¡«å†™åŸ¹è®­è¯¾ç¨‹ï¼");
 	check_word($_CFG['filter'],$setsqlarr['course'])?exit($_CFG['filter_tips']):'';
-	// Ñ¡ÔñÖÁ½ñ¾Í²»ÅĞ¶Ï½áÊøÊ±¼äÁË
+	// é€‰æ‹©è‡³ä»Šå°±ä¸åˆ¤æ–­ç»“æŸæ—¶é—´äº†
 	if (intval($_POST['training_todate']) == 1) {
 		if(trim($_POST['training_start_year'])==""||trim($_POST['training_start_month'])==""){
-			exit("ÇëÑ¡ÔñÅàÑµÊ±¼ä£¡");
+			exit("è¯·é€‰æ‹©åŸ¹è®­æ—¶é—´ï¼");
 		}
 		if(intval(($_POST['training_start_year']))>intval(date('Y'))){
-			exit('ÅàÑµ¿ªÊ¼Ê±¼ä²»ÔÊĞí´óÓÚÅàÑµ½áÊøÊ±¼ä');
+			exit('åŸ¹è®­å¼€å§‹æ—¶é—´ä¸å…è®¸å¤§äºåŸ¹è®­ç»“æŸæ—¶é—´');
 		}
 		if(intval($_POST['training_start_year']) == intval(date('Y')) && intval(($_POST['training_start_month']))>=intval(date('m'))){
-				exit('ÅàÑµ¿ªÊ¼ÔÂ·İ²»ÔÊĞí´óÓÚÅàÑµ½áÊøÊ±¼ä');
+				exit('åŸ¹è®­å¼€å§‹æœˆä»½ä¸å…è®¸å¤§äºåŸ¹è®­ç»“æŸæ—¶é—´');
 		}
 	} else {
 		if(trim($_POST['training_start_year'])==""||trim($_POST['training_start_month'])==""||trim($_POST['training_end_year'])==""||trim($_POST['training_end_month'])==""){
-			exit("ÇëÑ¡ÔñÅàÑµÊ±¼ä£¡");
+			exit("è¯·é€‰æ‹©åŸ¹è®­æ—¶é—´ï¼");
 		}
 		if(intval(($_POST['training_start_year']))>intval($_POST['training_end_year'])){
-			exit('ÅàÑµ¿ªÊ¼Ê±¼ä²»ÔÊĞí´óÓÚÅàÑµ½áÊøÊ±¼ä');
+			exit('åŸ¹è®­å¼€å§‹æ—¶é—´ä¸å…è®¸å¤§äºåŸ¹è®­ç»“æŸæ—¶é—´');
 		}
 		if(intval($_POST['training_start_year']) == intval($_POST['training_end_year']) && intval(($_POST['training_start_month']))>=intval($_POST['training_end_month'])){
-				exit('ÅàÑµ¿ªÊ¼ÔÂ·İ²»ÔÊĞí´óÓÚÅàÑµ½áÊøÊ±¼ä');
+				exit('åŸ¹è®­å¼€å§‹æœˆä»½ä¸å…è®¸å¤§äºåŸ¹è®­ç»“æŸæ—¶é—´');
 		}
 	}
 	$setsqlarr['startyear'] = intval($_POST['training_start_year']);
 	$setsqlarr['startmonth'] = intval($_POST['training_start_month']);
 	$setsqlarr['endyear'] = intval($_POST['training_end_year']);
 	$setsqlarr['endmonth'] = intval($_POST['training_end_month']);
-	$setsqlarr['description'] = $description?$description:exit("ÇëÌîĞ´ÅàÑµÄÚÈİ£¡");
-	$setsqlarr['todate'] = intval($_POST['training_todate']); // ÖÁ½ñ
+	$setsqlarr['description'] = $description?$description:exit("è¯·å¡«å†™åŸ¹è®­å†…å®¹ï¼");
+	$setsqlarr['todate'] = intval($_POST['training_todate']); // è‡³ä»Š
 	check_word($_CFG['filter'],$setsqlarr['description'])?exit($_CFG['filter_tips']):'';
 	
 	if($id){
@@ -690,23 +690,23 @@ elseif($act=='ajax_get_training_list'){
 	$html="";
 	if($training_list){
 		foreach ($training_list as $key => $value) {
-			// ÅĞ¶Ï½áÊøÊ±¼äÊÇ·ñÖÁ½ñ
+			// åˆ¤æ–­ç»“æŸæ—¶é—´æ˜¯å¦è‡³ä»Š
 			$datehtm = '';
 			if($value["todate"] == 1) {
-				$datehtm = 'ÖÁ½ñ';
+				$datehtm = 'è‡³ä»Š';
 			} else {
-				$datehtm = $value["endyear"].'Äê'.$value["endmonth"].'ÔÂ';
+				$datehtm = $value["endyear"].'å¹´'.$value["endmonth"].'æœˆ';
 			}
 			// ===========================
 			$html.='<div class="jl2">
-			 	 <div class="l1">'.$value["startyear"].'Äê'.$value["startmonth"].'ÔÂ-'.$datehtm.'</div>
+			 	 <div class="l1">'.$value["startyear"].'å¹´'.$value["startmonth"].'æœˆ-'.$datehtm.'</div>
 				 <div class="l2">'.$value["agency"].'</div>
 				 <div class="l3">'.$value["course"].'</div>
 				 <div class="l4">
 				 <a class="edit_training" todate="'.$value["todate"].'" href="javascript:void(0);" url="?act=edit_training&id='.$value["id"].'&pid='.$pid.'"></a>
 				 <a class="del_training d" href="javascript:void(0);" pid="'.$pid.'" training_id="'.$value["id"].'" ></a><div class="clear"></div>
 				 </div>
-				 <div class="l5">ÅàÑµÄÚÈİ£º</div>
+				 <div class="l5">åŸ¹è®­å†…å®¹ï¼š</div>
 				 <div class="l6">'.$value["description"].'</div>
 				 <div class="clear"></div>
 			</div>';
@@ -714,24 +714,24 @@ elseif($act=='ajax_get_training_list'){
 	}else{
 		$js='<script type="text/javascript">$("#add_training").hide();$(function(){$(".but130lan_add").hover(function(){$(this).addClass("hover")},function(){$(this).removeClass("hover");})})</script>';
 		$html.='<div class="noinfo" id="training_empty_box">	
-		 	 <div class="txt">ÅàÑµ¾­ÀúÊÇÄãÓÂÓÚÉÏ½øµÄ×îºÃµÄÌåÏÖ£¬¿ìÀ´ËµËµÁîÄúÄÑÍüµÄÑ§Ï°¾­Àú°É£¡</div>
+		 	 <div class="txt">åŸ¹è®­ç»å†æ˜¯ä½ å‹‡äºä¸Šè¿›çš„æœ€å¥½çš„ä½“ç°ï¼Œå¿«æ¥è¯´è¯´ä»¤æ‚¨éš¾å¿˜çš„å­¦ä¹ ç»å†å§ï¼</div>
 			 <div class="addbut">
-			 	<input type="button" name="" id="empty_add_training" value="Ìí¼Ó¾­Àú"  class="but130lan_add"/>
+			 	<input type="button" name="" id="empty_add_training" value="æ·»åŠ ç»å†"  class="but130lan_add"/>
 			 </div>
 		</div>';
 		$html.=$js;
 	}
 	exit($html);
 }
-//´´½¨¼òÀú-ĞŞ¸ÄÅàÑµ¾­Àú
+//åˆ›å»ºç®€å†-ä¿®æ”¹åŸ¹è®­ç»å†
 elseif ($act=='edit_training')
 {
 	$uid=intval($_SESSION['uid']);
 	$pid=intval($_REQUEST['pid']);
-	if ($uid==0 || $pid==0) exit('¼òÀú²»´æÔÚ£¡');
+	if ($uid==0 || $pid==0) exit('ç®€å†ä¸å­˜åœ¨ï¼');
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_REQUEST['pid']));
-	if (empty($resume_basic)) exit("ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢£¡");
-	$id=intval($_GET['id'])?intval($_GET['id']):exit('²ÎÊı´íÎó£¡');
+	if (empty($resume_basic)) exit("è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯ï¼");
+	$id=intval($_GET['id'])?intval($_GET['id']):exit('å‚æ•°é”™è¯¯ï¼');
 	$training_edit = get_resume_training_one($_SESSION['uid'],$pid,$id);
 	foreach ($training_edit as $key => $value) {
 		$training_edit[$key] = gbk_to_utf8($value);
@@ -739,22 +739,22 @@ elseif ($act=='edit_training')
 	$json_encode = json_encode($training_edit);
 	exit($json_encode);
 }
-//´´½¨¼òÀú-É¾³ıÅàÑµ¾­Àú
+//åˆ›å»ºç®€å†-åˆ é™¤åŸ¹è®­ç»å†
 elseif ($act=='del_training')
 {
 	$id=intval($_GET['id']);
 	$sql="Delete from ".table('resume_training')." WHERE id='{$id}'  AND uid='".intval($_SESSION['uid'])."' AND pid='".intval($_REQUEST['pid'])."' LIMIT 1 ";
 	if ($db->query($sql))
 	{
-	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));//¸üĞÂ¼òÀúÍê³É×´Ì¬
-	exit('É¾³ı³É¹¦£¡');
+	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));//æ›´æ–°ç®€å†å®ŒæˆçŠ¶æ€
+	exit('åˆ é™¤æˆåŠŸï¼');
 	}
 	else
 	{
-	exit('É¾³ıÊ§°Ü£¡');
+	exit('åˆ é™¤å¤±è´¥ï¼');
 	}	
 }
-//ÓïÑÔ
+//è¯­è¨€
 elseif($act=='ajax_get_language_list'){
 	$pid=intval($_GET['pid']);
 	$uid=intval($_SESSION['uid']);
@@ -776,9 +776,9 @@ elseif($act=='ajax_get_language_list'){
 	}else{
 		$js='<script type="text/javascript">$("#add_language").hide();$(function(){$(".but130lan_add").hover(function(){$(this).addClass("hover")},function(){$(this).removeClass("hover");})})</script>';
 		$html.='<div class="noinfo" id="language_empty_box">	
-		 	 <div class="txt">ÓïÑÔÄÜÁ¦ÊÇÄãÓÂÓÚÉÏ½øµÄ×îºÃµÄÌåÏÖ£¬¿ìÀ´ËµËµÁîÄúÄÑÍüµÄÓïÑÔÄÜÁ¦°É£¡</div>
+		 	 <div class="txt">è¯­è¨€èƒ½åŠ›æ˜¯ä½ å‹‡äºä¸Šè¿›çš„æœ€å¥½çš„ä½“ç°ï¼Œå¿«æ¥è¯´è¯´ä»¤æ‚¨éš¾å¿˜çš„è¯­è¨€èƒ½åŠ›å§ï¼</div>
 			 <div class="addbut">
-			 	<input type="button" name="" id="empty_add_language" value="Ìí¼ÓÓïÑÔ"  class="but130lan_add"/>
+			 	<input type="button" name="" id="empty_add_language" value="æ·»åŠ è¯­è¨€"  class="but130lan_add"/>
 			 </div>
 		</div>';
 		$html.=$js;
@@ -789,17 +789,17 @@ elseif($act=='save_language'){
 	$id=intval($_POST['id']);
 	$setsqlarr['uid'] = intval($_SESSION['uid']);
 	$setsqlarr['pid'] = intval($_REQUEST['pid']);
-	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 ) exit('¼òÀú²»´æÔÚ£¡');
+	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 ) exit('ç®€å†ä¸å­˜åœ¨ï¼');
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_REQUEST['pid']));
-	if (empty($resume_basic)) exit("ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢£¡");
+	if (empty($resume_basic)) exit("è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯ï¼");
 	$resume_language=get_resume_language($_SESSION['uid'],$_REQUEST['pid']);
-	if (count($resume_language)>=6) exit('ÓïÑÔÄÜÁ¦²»ÄÜ³¬¹ı6Ìõ£¡');
+	if (count($resume_language)>=6) exit('è¯­è¨€èƒ½åŠ›ä¸èƒ½è¶…è¿‡6æ¡ï¼');
  
 	$language_cn = utf8_to_gbk(trim($_POST['language_cn']));
 	$language_level_cn = utf8_to_gbk(trim($_POST['language_level_cn']));
 	 
-	$setsqlarr['language_cn'] = $language_cn?$language_cn:exit("ÇëÌîÓïÑÔÀàĞÍ£¡"); 
-	$setsqlarr['level_cn'] = $language_level_cn?$language_level_cn:exit("ÇëÌîĞ´ÓïÑÔµÈ¼¶£¡");
+	$setsqlarr['language_cn'] = $language_cn?$language_cn:exit("è¯·å¡«è¯­è¨€ç±»å‹ï¼"); 
+	$setsqlarr['level_cn'] = $language_level_cn?$language_level_cn:exit("è¯·å¡«å†™è¯­è¨€ç­‰çº§ï¼");
 	 
 	$setsqlarr['language'] = intval($_POST['language']);
 	$setsqlarr['level'] = intval($_POST['language_level']); 
@@ -816,15 +816,15 @@ elseif($act=='save_language'){
 		}
 	} 
 }
-//´´½¨¼òÀú-ĞŞ¸ÄÅàÑµ¾­Àú
+//åˆ›å»ºç®€å†-ä¿®æ”¹åŸ¹è®­ç»å†
 elseif ($act=='edit_language')
 {
 	$uid=intval($_SESSION['uid']);
 	$pid=intval($_REQUEST['pid']);
-	if ($uid==0 || $pid==0) exit('¼òÀú²»´æÔÚ£¡');
+	if ($uid==0 || $pid==0) exit('ç®€å†ä¸å­˜åœ¨ï¼');
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_REQUEST['pid']));
-	if (empty($resume_basic)) exit("ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢£¡");
-	$id=intval($_GET['id'])?intval($_GET['id']):exit('²ÎÊı´íÎó£¡');
+	if (empty($resume_basic)) exit("è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯ï¼");
+	$id=intval($_GET['id'])?intval($_GET['id']):exit('å‚æ•°é”™è¯¯ï¼');
 	$language_edit = get_resume_language_one($_SESSION['uid'],$pid,$id);
 	foreach ($language_edit as $key => $value) {
 		$language_edit[$key] = gbk_to_utf8($value);
@@ -832,22 +832,22 @@ elseif ($act=='edit_language')
 	$json_encode = json_encode($language_edit);
 	exit($json_encode);
 }
-//´´½¨¼òÀú-É¾³ıÅàÑµ¾­Àú
+//åˆ›å»ºç®€å†-åˆ é™¤åŸ¹è®­ç»å†
 elseif ($act=='del_language')
 {
 	$id=intval($_GET['id']);
 	$sql="Delete from ".table('resume_language')." WHERE id='{$id}'  AND uid='".intval($_SESSION['uid'])."' AND pid='".intval($_REQUEST['pid'])."' LIMIT 1 ";
 	if ($db->query($sql))
 	{
-	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));//¸üĞÂ¼òÀúÍê³É×´Ì¬
-	exit('É¾³ı³É¹¦£¡');
+	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));//æ›´æ–°ç®€å†å®ŒæˆçŠ¶æ€
+	exit('åˆ é™¤æˆåŠŸï¼');
 	}
 	else
 	{
-	exit('É¾³ıÊ§°Ü£¡');
+	exit('åˆ é™¤å¤±è´¥ï¼');
 	}	
 }
-//Ö¤Êé
+//è¯ä¹¦
 elseif($act=='ajax_get_credent_list'){
 	$pid=intval($_GET['pid']);
 	$uid=intval($_SESSION['uid']);
@@ -857,7 +857,7 @@ elseif($act=='ajax_get_credent_list'){
 		foreach ($credent_list as $key => $value) {
 			$html.='<div class="jl2">
 				 <div class="l1">'.$value["name"].'</div>
-			 	 <div class="l2">'.$value["year"].'Äê'.$value["month"].'ÔÂ</div>  
+			 	 <div class="l2">'.$value["year"].'å¹´'.$value["month"].'æœˆ</div>  
 				 <div class="l3"></div>  
 				 <div class="l4">
 				 <a class="edit_credent" href="javascript:void(0);" url="?act=edit_credent&id='.$value["id"].'&pid='.$pid.'"></a>
@@ -868,9 +868,9 @@ elseif($act=='ajax_get_credent_list'){
 	}else{
 		$js='<script type="text/javascript">$("#add_credent").hide();$(function(){$(".but130lan_add").hover(function(){$(this).addClass("hover")},function(){$(this).removeClass("hover");})})</script>';
 		$html.='<div class="noinfo" id="credent_empty_box">	
-		 	 <div class="txt">Ö¤ÊéÊÇÄãÓÂÓÚÉÏ½øµÄ×îºÃµÄÌåÏÖ£¬¿ìÀ´ËµËµÁîÄúÄÑÍüµÄ»ñµÃµÄÖ¤Êé°É£¡</div>
+		 	 <div class="txt">è¯ä¹¦æ˜¯ä½ å‹‡äºä¸Šè¿›çš„æœ€å¥½çš„ä½“ç°ï¼Œå¿«æ¥è¯´è¯´ä»¤æ‚¨éš¾å¿˜çš„è·å¾—çš„è¯ä¹¦å§ï¼</div>
 			 <div class="addbut">
-			 	<input type="button" name="" id="empty_add_credent" value="Ìí¼ÓÖ¤Êé"  class="but130lan_add"/>
+			 	<input type="button" name="" id="empty_add_credent" value="æ·»åŠ è¯ä¹¦"  class="but130lan_add"/>
 			 </div>
 		</div>';
 		$html.=$js;
@@ -881,17 +881,17 @@ elseif($act=='save_credent'){
 	$id=intval($_POST['id']);
 	$setsqlarr['uid'] = intval($_SESSION['uid']);
 	$setsqlarr['pid'] = intval($_REQUEST['pid']);
-	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 ) exit('¼òÀú²»´æÔÚ£¡');
+	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 ) exit('ç®€å†ä¸å­˜åœ¨ï¼');
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_REQUEST['pid']));
-	if (empty($resume_basic)) exit("ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢£¡");
+	if (empty($resume_basic)) exit("è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯ï¼");
 	$resume_language=get_resume_language($_SESSION['uid'],$_REQUEST['pid']);
-	if (count($resume_language)>=6) exit('Ö¤Êé²»ÄÜ³¬¹ı6Ìõ£¡');
+	if (count($resume_language)>=6) exit('è¯ä¹¦ä¸èƒ½è¶…è¿‡6æ¡ï¼');
  
 	$credent = utf8_to_gbk(trim($_POST['credent'])); 
 	check_word($_CFG['filter'],$setsqlarr['credent'])?exit($_CFG['filter_tips']):'';
-	$setsqlarr['name'] = $credent?$credent:exit("ÇëÌîĞ´Ö¤ÊéÃû³Æ£¡");
-	$setsqlarr['year'] = intval($_POST['credent_year'])?intval($_POST['credent_year']):exit("ÇëÑ¡ÔñÄê£¡");
-	$setsqlarr['month'] = intval($_POST['credent_month'])?intval($_POST['credent_month']):exit("ÇëÑ¡ÔñÔÂ£¡");
+	$setsqlarr['name'] = $credent?$credent:exit("è¯·å¡«å†™è¯ä¹¦åç§°ï¼");
+	$setsqlarr['year'] = intval($_POST['credent_year'])?intval($_POST['credent_year']):exit("è¯·é€‰æ‹©å¹´ï¼");
+	$setsqlarr['month'] = intval($_POST['credent_month'])?intval($_POST['credent_month']):exit("è¯·é€‰æ‹©æœˆï¼");
 
 	if($id){
 		$db->updatetable(table("resume_credent"),$setsqlarr,array("id"=>$id));
@@ -910,10 +910,10 @@ elseif ($act=='edit_credent')
 {
 	$uid=intval($_SESSION['uid']);
 	$pid=intval($_REQUEST['pid']);
-	if ($uid==0 || $pid==0) exit('¼òÀú²»´æÔÚ£¡');
+	if ($uid==0 || $pid==0) exit('ç®€å†ä¸å­˜åœ¨ï¼');
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_REQUEST['pid']));
-	if (empty($resume_basic)) exit("ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢£¡");
-	$id=intval($_GET['id'])?intval($_GET['id']):exit('²ÎÊı´íÎó£¡');
+	if (empty($resume_basic)) exit("è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯ï¼");
+	$id=intval($_GET['id'])?intval($_GET['id']):exit('å‚æ•°é”™è¯¯ï¼');
 	$credent_edit = get_resume_credent_one($_SESSION['uid'],$pid,$id);
 	foreach ($credent_edit as $key => $value) {
 		$credent_edit[$key] = gbk_to_utf8($value);
@@ -921,7 +921,7 @@ elseif ($act=='edit_credent')
 	$json_encode = json_encode($credent_edit);
 	exit($json_encode);
 }
-//É¾³ıÖ¤Êé
+//åˆ é™¤è¯ä¹¦
 elseif ($act=='del_credent')
 {
 	$id=intval($_GET['id']); 
@@ -932,17 +932,17 @@ elseif ($act=='del_credent')
 	$sql="Delete from ".table('resume_credent')." WHERE id='{$id}'  AND uid='".intval($_SESSION['uid'])."' AND pid='".intval($_REQUEST['pid'])."' LIMIT 1 ";
 	if ($db->query($sql))
 	{ 
-	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));//¸üĞÂ¼òÀúÍê³É×´Ì¬
-	exit('É¾³ı³É¹¦£¡');
+	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));//æ›´æ–°ç®€å†å®ŒæˆçŠ¶æ€
+	exit('åˆ é™¤æˆåŠŸï¼');
 	}
 	else
 	{
-	exit('É¾³ıÊ§°Ü£¡');
+	exit('åˆ é™¤å¤±è´¥ï¼');
 	}	
-}//ÉÏ´«Ö¤Êé
+}//ä¸Šä¼ è¯ä¹¦
 elseif ($act=='credent_photo')
 {	 
-	!$_FILES['credent_photo']['name']?exit('ÇëÉÏ´«Í¼Æ¬£¡'):"";
+	!$_FILES['credent_photo']['name']?exit('è¯·ä¸Šä¼ å›¾ç‰‡ï¼'):"";
 	require_once(QISHI_ROOT_PATH.'include/cut_upload.php');  
 	$up_res_original="../../data/credent_photo/"; 
 	$cdate = date("Y/m/d/");
@@ -955,12 +955,12 @@ elseif ($act=='credent_photo')
 	$json_encode = json_encode($data);
 	exit($json_encode);
 }
-////ÉÏ´«WORD
+////ä¸Šä¼ WORD
 elseif ($act=='word_upload')
 {	
 	$pid=intval($_GET['pid']);
 	$setsqlarr['uid'] = intval($_SESSION['uid']);
-	!$_FILES['word_resume']['name']?exit('ÇëÉÏ´«ÎÄ¼ş£¡'):""; 
+	!$_FILES['word_resume']['name']?exit('è¯·ä¸Šä¼ æ–‡ä»¶ï¼'):""; 
 	require_once(QISHI_ROOT_PATH.'include/cut_upload.php');
 	$up_res_original="../../data/word/"; 
 	$cdate = date("Y/m/d/");
@@ -975,36 +975,36 @@ elseif ($act=='word_upload')
 	$json_encode = json_encode($data);
 	exit($json_encode);
 }
-// É¾³ı word 
+// åˆ é™¤ word 
 elseif($act == "word_del")
 {
-	$pid=$_POST['pid']?intval($_POST['pid']):exit("¼òÀúID¶ªÊ§");
+	$pid=$_POST['pid']?intval($_POST['pid']):exit("ç®€å†IDä¸¢å¤±");
 	$uid=intval($_SESSION['uid']);
 	$word=get_resume_basic($uid,$pid);
 	@unlink(QISHI_ROOT_PATH."data/word/".$word['word_resume']);
 	$setarr['word_resume']="";
-	$db->updatetable(table("resume"),$setarr,array('uid'=>$uid,"id"=>$pid))?exit("É¾³ı³É¹¦"):exit("É¾³ı³É¹¦");
+	$db->updatetable(table("resume"),$setarr,array('uid'=>$uid,"id"=>$pid))?exit("åˆ é™¤æˆåŠŸ"):exit("åˆ é™¤æˆåŠŸ");
 }
 elseif($act == "ajax_save_specialty")
 {
 	$uid=intval($_SESSION['uid']);
-	$pid=$_POST['pid']?intval($_POST['pid']):exit("¼òÀúID¶ªÊ§");
-	$specialty=$_POST['specialty']?iconv("utf-8", "gbk", trim($_POST['specialty'])):exit("ÇëÊäÈë×ÔÎÒÃèÊö");
+	$pid=$_POST['pid']?intval($_POST['pid']):exit("ç®€å†IDä¸¢å¤±");
+	$specialty=$_POST['specialty']?iconv("utf-8", "gbk", trim($_POST['specialty'])):exit("è¯·è¾“å…¥è‡ªæˆ‘æè¿°");
 	$setarr['specialty']=$specialty;
-	$db->updatetable(table('resume'),$setarr,array("id"=>$pid,"uid"=>$uid))?exit("ok"):exit("±£´æÊ§°Ü");
+	$db->updatetable(table('resume'),$setarr,array("id"=>$pid,"uid"=>$uid))?exit("ok"):exit("ä¿å­˜å¤±è´¥");
 }
-// ajax ±£´æ ¸½¼şÍ¼Æ¬
+// ajax ä¿å­˜ é™„ä»¶å›¾ç‰‡
 elseif($act == "ajax_resume_img_save")
 {
 	$uid=intval($_SESSION['uid']);
-	$pid=$_GET['pid']?intval($_GET['pid']):exit("¼òÀúID¶ªÊ§");
+	$pid=$_GET['pid']?intval($_GET['pid']):exit("ç®€å†IDä¸¢å¤±");
 	$n=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume_img')." WHERE uid=$uid and resume_id=$pid ");
 	if($n>=4)
 	{
 		exit("-7");
 	}
 	require_once(QISHI_ROOT_PATH.'include/upload.php');
-	!$_FILES['resume_img']['name']?exit('ÇëÉÏ´«Í¼Æ¬£¡'):"";
+	!$_FILES['resume_img']['name']?exit('è¯·ä¸Šä¼ å›¾ç‰‡ï¼'):"";
 	$datedir=date("Y/m/d/");
 	$up_dir="../../data/photo/".$datedir;
 	make_dir($up_dir);
@@ -1038,41 +1038,41 @@ elseif($act == "ajax_resume_img_save")
 		exit("-6");
 	}
 }
-// ±£´æ¸½¼şÃèÊö
+// ä¿å­˜é™„ä»¶æè¿°
 elseif($act == "ajax_resume_img_title_save")
 {
 	$uid=intval($_SESSION['uid']);
-	$img_id=$_POST['id']?intval($_POST['id']):exit("ID¶ªÊ§");
-	$setarr['title']=$_POST['title']?iconv("utf-8", "gbk", trim($_POST['title'])):exit("ÇëÊäÈë±¸×¢£¡");
-	$db->updatetable(table("resume_img"),$setarr,array("id"=>$img_id,"uid"=>$uid))?exit("Ìí¼Ó±¸×¢³É¹¦"):exit("Ìí¼Ó±¸×¢Ê§°Ü");
+	$img_id=$_POST['id']?intval($_POST['id']):exit("IDä¸¢å¤±");
+	$setarr['title']=$_POST['title']?iconv("utf-8", "gbk", trim($_POST['title'])):exit("è¯·è¾“å…¥å¤‡æ³¨ï¼");
+	$db->updatetable(table("resume_img"),$setarr,array("id"=>$img_id,"uid"=>$uid))?exit("æ·»åŠ å¤‡æ³¨æˆåŠŸ"):exit("æ·»åŠ å¤‡æ³¨å¤±è´¥");
 }
-// É¾³ı¸½¼ş Í¼Æ¬
+// åˆ é™¤é™„ä»¶ å›¾ç‰‡
 elseif($act== "ajax_resume_img_del")
 {
 	global $_CFG;
 	$uid=intval($_SESSION['uid']);
-	$img_id=$_POST['id']?intval($_POST['id']):exit("ID¶ªÊ§");
+	$img_id=$_POST['id']?intval($_POST['id']):exit("IDä¸¢å¤±");
 	$row=$db->getone("select img from ".table("resume_img")." where id=$img_id and uid=$uid limit 1");
 	@unlink("../../data/photo/".$row['img']);
-	$db->query("delete from ".table("resume_img")." where id=$img_id and uid=$uid limit 1")?exit("É¾³ı³É¹¦"):exit("É¾³ıÊ§°Ü");
+	$db->query("delete from ".table("resume_img")." where id=$img_id and uid=$uid limit 1")?exit("åˆ é™¤æˆåŠŸ"):exit("åˆ é™¤å¤±è´¥");
 }
-// ajax ±£´æÌØ³¤±êÇ©
+// ajax ä¿å­˜ç‰¹é•¿æ ‡ç­¾
 elseif($act == "ajax_save_tag")
 {
 	$uid=intval($_SESSION['uid']);
-	$pid=$_POST['pid']?intval($_POST['pid']):exit("¼òÀúID¶ªÊ§");
+	$pid=$_POST['pid']?intval($_POST['pid']):exit("ç®€å†IDä¸¢å¤±");
 	$tag=$_POST['tag']?iconv("utf-8", "gbk", trim($_POST['tag'])):"";
 	$tag_cn=$_POST['tag_cn']?iconv("utf-8", "gbk", trim($_POST['tag_cn'])):"";
 	$setarr['tag']=$tag;
 	$setarr['tag_cn']=$tag_cn;
 	add_resume_tag($pid,$uid,$tag);
-	$db->updatetable(table('resume'),$setarr,array("id"=>$pid,"uid"=>$uid))?exit("ok"):exit("±£´æÊ§°Ü");
+	$db->updatetable(table('resume'),$setarr,array("id"=>$pid,"uid"=>$uid))?exit("ok"):exit("ä¿å­˜å¤±è´¥");
 }
-// ¼òÀú·¢²¼°´Å¥ 
+// ç®€å†å‘å¸ƒæŒ‰é’® 
 elseif($act == "edit_resume_save")
 {
 	$uid=intval($_SESSION['uid']);
-	$pid=$_POST['pid']?intval($_POST['pid']):showmsg("¼òÀúID¶ªÊ§",1);
+	$pid=$_POST['pid']?intval($_POST['pid']):showmsg("ç®€å†IDä¸¢å¤±",1);
 	$resume_basic= get_resume_basic($uid,$pid);
 	$make=intval($_POST['make']);
 	check_resume($uid,$pid);
@@ -1092,10 +1092,10 @@ elseif ($act=='edit_resume')
 	$pid=intval($_REQUEST['pid']);
 	if($_GET['make']==1)
 	{
-		$title="´´½¨¼òÀú";
+		$title="åˆ›å»ºç®€å†";
 	}else
 	{
-		$title="ĞŞ¸Ä¼òÀú";
+		$title="ä¿®æ”¹ç®€å†";
 	}
 	$smarty->assign('h_title',$title);
 	$_SESSION['send_mobile_key']=mt_rand(100000, 999999);
@@ -1131,7 +1131,7 @@ elseif ($act=='edit_resume')
 	$smarty->assign('act',$act);
 	$smarty->assign('pid',$pid);
 	$smarty->assign('user',$user);
-	$smarty->assign('title','ÎÒµÄ¼òÀú - ¸öÈË»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','æˆ‘çš„ç®€å† - ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$captcha=get_cache('captcha');
 	$smarty->assign('verify_resume',$captcha['verify_resume']);
 	$smarty->assign('go_resume_show',$_GET['go_resume_show']);
@@ -1149,7 +1149,7 @@ elseif ($act=='save_resume_privacy')
 	$setsqlarrdisplay['display']=intval($_POST['display']);
 	!$db->updatetable(table('resume_search_key'),$setsqlarrdisplay," uid='{$uid}' AND  id='{$pid}'");
 	!$db->updatetable(table('resume_search_rtime'),$setsqlarrdisplay," uid='{$uid}' AND  id='{$pid}'");
-	write_memberslog($_SESSION['uid'],2,1104,$_SESSION['username'],"ÉèÖÃ¼òÀúÒşË½({$pid})");
+	write_memberslog($_SESSION['uid'],2,1104,$_SESSION['username'],"è®¾ç½®ç®€å†éšç§({$pid})");
 }
 elseif ($act=='talent_save')
 {
@@ -1158,13 +1158,13 @@ elseif ($act=='talent_save')
 	$resume=get_resume_basic($uid,$pid);
 	if ($resume['complete_percent']<$_CFG['elite_resume_complete_percent'])
 	{
-	showmsg("¼òÀúÍêÕûÖ¸ÊıĞ¡ÓÚ{$_CFG['elite_resume_complete_percent']}%£¬½ûÖ¹ÉêÇë£¡",0);
+	showmsg("ç®€å†å®Œæ•´æŒ‡æ•°å°äº{$_CFG['elite_resume_complete_percent']}%ï¼Œç¦æ­¢ç”³è¯·ï¼",0);
 	}
 	$setsqlarr['talent']=3;
 	$wheresql=" uid='{$uid}' AND id='{$pid}' ";
 	$db->updatetable(table('resume'),$setsqlarr,$wheresql);
-	write_memberslog($uid,2,1107,$_SESSION['username'],"ÉêÇë¸ß¼¶ÈË²Å");
-	showmsg('ÉêÇë³É¹¦£¬ÇëµÈ´ı¹ÜÀíÔ±ÉóºË£¡',2);
+	write_memberslog($uid,2,1107,$_SESSION['username'],"ç”³è¯·é«˜çº§äººæ‰");
+	showmsg('ç”³è¯·æˆåŠŸï¼Œè¯·ç­‰å¾…ç®¡ç†å‘˜å®¡æ ¸ï¼',2);
 }
 unset($smarty);
 ?>

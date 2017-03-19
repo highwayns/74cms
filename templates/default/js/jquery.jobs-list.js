@@ -1,6 +1,6 @@
-//È«Ñ¡·´Ñ¡
+ï»¿//å…¨é€‰åé€‰
 $("input[name='selectall']").die().live('click',function(){$("#infolists :checkbox").attr('checked',$(this).is(':checked'))});
-// ÉêÇëÖ°Î»
+// ç”³è¯·èŒä½
 function apply_jobs(ajaxurl)
 {
 	$(".deliver").click(function()
@@ -10,8 +10,8 @@ function apply_jobs(ajaxurl)
 		if (sltlength==0)
 		{
 			var myDialog = dialog();
-			myDialog.content("ÇëÑ¡ÔñÖ°Î»");
-	        myDialog.title('ÏµÍ³ÌáÊ¾');
+			myDialog.content("è¯·é€‰æ‹©èŒä½");
+	        myDialog.title('ç³»ç»Ÿæç¤º');
 	        myDialog.width('300');
 	        myDialog.showModal();
 		}
@@ -21,37 +21,37 @@ function apply_jobs(ajaxurl)
 			$("#infolists .info-list-wrap :checkbox[checked]").each(function(index){jidArr[index]=$(this).val();});
 			var url_=ajaxurl+"user/user_apply_jobs.php?id="+jidArr.join("-")+"&act=app";
 			var myDialog = dialog();
-			myDialog.title('ÉêÇëÖ°Î»');
-			myDialog.content("¼ÓÔØÖĞ...");
+			myDialog.title('ç”³è¯·èŒä½');
+			myDialog.content("åŠ è½½ä¸­...");
 			myDialog.width('500');
 			myDialog.showModal();
 			$.get(url_, function(data){
 				myDialog.content(data);
-				/* ¹Ø±Õ */
+				/* å…³é—­ */
 				$(".DialogClose").live('click',function() {
 					myDialog.close().remove();
 				});
 			});
 		}
 	});
-	//µ¥¸öÉêÇëÖ°Î»
+	//å•ä¸ªç”³è¯·èŒä½
 	$(".app_jobs").unbind().click(function(){
 		var url_=ajaxurl+"user/user_apply_jobs.php?id="+$(this).attr("jobs_id")+"&act=app";
 		var myDialog = dialog();
-		myDialog.title('ÉêÇëÖ°Î»');
-		myDialog.content("¼ÓÔØÖĞ...");
+		myDialog.title('ç”³è¯·èŒä½');
+		myDialog.content("åŠ è½½ä¸­...");
 		myDialog.width('500');
 		myDialog.showModal();
 		$.get(url_, function(data){
 			myDialog.content(data);
-			/* ¹Ø±Õ */
+			/* å…³é—­ */
 			$(".DialogClose").live('click',function() {
 				myDialog.close().remove();
 			});
 		});
 	});
 }
-// ÊÕ²ØÖ°Î»
+// æ”¶è—èŒä½
 function favorites(ajaxurl)
 {	
 	$(".collecter").click(function()
@@ -61,8 +61,8 @@ function favorites(ajaxurl)
 		if (sltlength==0)
 		{
 			var myDialog = dialog();
-			myDialog.content("ÇëÑ¡ÔñÖ°Î»");
-	        myDialog.title('ÏµÍ³ÌáÊ¾');
+			myDialog.content("è¯·é€‰æ‹©èŒä½");
+	        myDialog.title('ç³»ç»Ÿæç¤º');
 	        myDialog.width('300');
 	        myDialog.showModal();
 		}
@@ -74,26 +74,26 @@ function favorites(ajaxurl)
 			var url_=ajaxurl+"user/user_favorites_job.php?id="+jidArr.join("-")+"&act=add";
 		    $.get(url_, function(data){
 		        myDialog.content(data);
-		        myDialog.title('¼ÓÈëÊÕ²Ø');
+		        myDialog.title('åŠ å…¥æ”¶è—');
 		        myDialog.width('500');
 		        myDialog.showModal();
-		        /* ¹Ø±Õ */
+		        /* å…³é—­ */
 		        $(".DialogClose").live('click',function() {
 		          myDialog.close().remove();
 		        });
 		    });
 		}
 	});
-	// µ¥¸öÊÕ²ØÖ°Î»
+	// å•ä¸ªæ”¶è—èŒä½
 	$(".add_favorites").unbind().click(function(){
 		var myDialog = dialog();
 		var url_=ajaxurl+"user/user_favorites_job.php?id="+$(this).attr("jobs_id")+"&act=add";
 	    $.get(url_, function(data){
 	        myDialog.content(data);
-	        myDialog.title('¼ÓÈëÊÕ²Ø');
+	        myDialog.title('åŠ å…¥æ”¶è—');
 	        myDialog.width('500');
 	        myDialog.showModal();
-	        /* ¹Ø±Õ */
+	        /* å…³é—­ */
 	        $(".DialogClose").live('click',function() {
 	          myDialog.close().remove();
 	        });

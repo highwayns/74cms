@@ -1,4 +1,4 @@
-CSS.AllowedFonts
+﻿CSS.AllowedFonts
 TYPE: lookup/null
 VERSION: 4.3.0
 DEFAULT: NULL

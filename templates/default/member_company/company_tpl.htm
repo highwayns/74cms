@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
@@ -15,12 +15,12 @@ $(document).ready(function()
 	$('input[name=choose_tpl_btn]').click(function() {
 		{#if ($QISHI.operation_mode=="2"||$QISHI.operation_mode=="3") && ( $setmeal.change_templates=="0" || $setmeal.change_templates=="")#}
 			{#if $setmeal.setmeal_name==""#}
-				var setmeal_name="ÄúÃ»ÓĞ¿ªÍ¨Ì×²Í";
+				var setmeal_name="æ‚¨æ²¡æœ‰å¼€é€šå¥—é¤";
 			{#else#}
-				var setmeal_name="ÄãµÄÌ×²Í£º{#$setmeal.setmeal_name#}";
+				var setmeal_name="ä½ çš„å¥—é¤ï¼š{#$setmeal.setmeal_name#}";
 			{#/if#}
 			$("input[name=choose_tpl_btn]").click(function(){
-				alert(setmeal_name+",Ã»ÓĞ×ÔÓÉÇĞ»»Ä£°åµÄÈ¨ÏŞ£¡");
+				alert(setmeal_name+",æ²¡æœ‰è‡ªç”±åˆ‡æ¢æ¨¡æ¿çš„æƒé™ï¼");
 				return false;
 			})
 		{#/if#}
@@ -46,7 +46,7 @@ $(document).ready(function()
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
 
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > »áÔ±·şÎñ</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > ä¼šå‘˜æœåŠ¡</div>
 
 <div class="usermain">
   <div class="leftmenu com link_bk">
@@ -56,7 +56,7 @@ $(document).ready(function()
   
 	<div class="bbox1">
 		<div class="topnav only">
-			<div class="titleH1"><div class="h1-title">Ñ¡ÔñÄ£°å</div></div>
+			<div class="titleH1"><div class="h1-title">é€‰æ‹©æ¨¡æ¿</div></div>
 		</div>
 	  	<form id="Form1" name="Form1" method="post" action="?act=tpl_save">
 		<div class="tpl-box">
@@ -64,9 +64,9 @@ $(document).ready(function()
 			<div class="tpl-block clearfix">
 				<div class="tpl-img f-left"><img src="{#$QISHI.site_dir#}templates/tpl_company/{#$li.tpl_dir#}/thumbnail.jpg" alt="{#$li.tpl_name#}" width="298" height="148" /></div>
 				<div class="tpl-ctrl f-left">
-					<div class="tpl-text">Ä£°æÃû³Æ£º{#$li.tpl_name#} <a href="{#$QISHI.site_dir#}company/company-show.php?id={#$com_info.id#}&style={#$li.tpl_dir#}" class="underline" target="_blank">[Ô¤ÀÀ]</a></div>
-					{#if $QISHI.operation_mode=="1"#}<div class="tpl-text">Ä£°æ¼Û¸ñ£º{#if $li.tpl_val=="0"#}Ãâ·Ñ{#else#}<span>{#$li.tpl_val#}</span> {#$QISHI.points_quantifier#}{#$QISHI.points_byname#}{#/if#}</div>{#/if#}
-					<div class="use-ctrl"><input name="choose_tpl_btn" data="{#$li.tpl_dir#}" type="button" value="{#if $mytpl==$li.tpl_dir#}Ê¹ÓÃÖĞ...{#else#}Ê¹ÓÃÄ£°å{#/if#}" class="{#if $mytpl==$li.tpl_dir#}but100cheng{#else#}but100lan{#/if#}" /></div>
+					<div class="tpl-text">æ¨¡ç‰ˆåç§°ï¼š{#$li.tpl_name#} <a href="{#$QISHI.site_dir#}company/company-show.php?id={#$com_info.id#}&style={#$li.tpl_dir#}" class="underline" target="_blank">[é¢„è§ˆ]</a></div>
+					{#if $QISHI.operation_mode=="1"#}<div class="tpl-text">æ¨¡ç‰ˆä»·æ ¼ï¼š{#if $li.tpl_val=="0"#}å…è´¹{#else#}<span>{#$li.tpl_val#}</span> {#$QISHI.points_quantifier#}{#$QISHI.points_byname#}{#/if#}</div>{#/if#}
+					<div class="use-ctrl"><input name="choose_tpl_btn" data="{#$li.tpl_dir#}" type="button" value="{#if $mytpl==$li.tpl_dir#}ä½¿ç”¨ä¸­...{#else#}ä½¿ç”¨æ¨¡æ¿{#/if#}" class="{#if $mytpl==$li.tpl_dir#}but100cheng{#else#}but100lan{#/if#}" /></div>
 				</div>
 			</div>
 			{#/foreach#}

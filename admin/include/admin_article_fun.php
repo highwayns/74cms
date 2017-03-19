@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¹ÜÀíÖÐÐÄ¹²ÓÃÊý¾Ýµ÷ÓÃº¯Êý
+ * 74cms ç®¡ç†ä¸­å¿ƒå…±ç”¨æ•°æ®è°ƒç”¨å‡½æ•°
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
  if(!defined('IN_QISHI'))
@@ -23,7 +23,7 @@ function get_news($offset, $perpage, $sql= '')
 	$tit_color = $row['tit_color'] ? "color:".$row['tit_color'].";" : '';
 	$tit_b = $row['tit_b']>0 ? "font-weight:bold;" : '';
 	$tit_style= $tit_color || $tit_b ? "style=\"".$tit_color.$tit_b."\""  : '';
-	$Small_img = $row['Small_img'] ? "<span style=\"color:#009900\">(Í¼)</span>" : '';
+	$Small_img = $row['Small_img'] ? "<span style=\"color:#009900\">(å›¾)</span>" : '';
 	if (!empty($row['is_url']) && $row['is_url']!='http://')
 	{
 	$row['url'] = $row['is_url'];
@@ -48,7 +48,7 @@ function del_news($id)
 		@unlink($upfiles_dir."/".$y_img['Small_img']);
 		@unlink($thumb_dir.$y_img['Small_img']);
 		$db->query("Delete from  ".table('article')." where id=".intval($val)." LIMIT 1");
-		write_log("É¾³ýÖ°Î»idÎª".intval($val)."ÎÄÕÂ", $_SESSION['admin_name'],3);
+		write_log("åˆ é™¤èŒä½idä¸º".intval($val)."æ–‡ç« ", $_SESSION['admin_name'],3);
 	}
 	return true;
 }
@@ -121,7 +121,7 @@ function del_property($id)
 	{
 		if (!$db->query("Delete from ".table('article_property')." WHERE id IN (".$sqlin.")  AND admin_set<>1")) return false;
 		$return=$return+$db->affected_rows();
-		write_log("É¾³ýidÎª".$sqlin."µÄÐÂÎÅÊôÐÔ,¹²É¾³ý".$return."ÐÐ", $_SESSION['admin_name'],3);
+		write_log("åˆ é™¤idä¸º".$sqlin."çš„æ–°é—»å±žæ€§,å…±åˆ é™¤".$return."è¡Œ", $_SESSION['admin_name'],3);
 	}
 	return $return;
 }

@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>ÆóÒµ»áÔ±ÖĞĞÄ</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="../css/common.css" rel="stylesheet" type="text/css" />
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
@@ -17,11 +17,11 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
-	// ajax »ñÈ¡ÊÕµ½µÄ¼òÀú
+	// ajax è·å–æ”¶åˆ°çš„ç®€å†
 	$(".check_more").click(function(){
 		$(this).hide();
 		var offset=$(".get_resume_box").size();
@@ -29,7 +29,7 @@ $(document).ready(function()
 		$.get("?act=ajax_collect_resume&offset="+(offset)+"&rows=5", function(result){
 		    if(result=="-1"){
 		    	$(".check_more").show();
-		    	$(".check_more").html("Ã»ÓĞ¸ü¶àÊÕ²ØµÄ¼òÀúÁË");
+		    	$(".check_more").html("æ²¡æœ‰æ›´å¤šæ”¶è—çš„ç®€å†äº†");
 		    }else{
 		    	$(".get_resume_bbox").append(result);
 		    	$(".check_more").show();
@@ -42,34 +42,34 @@ $(document).ready(function()
 <body>
 <div class="sub_bodybg"></div>
 <div class="sub_head_top">
-	<div class="title">»áÔ±ÖĞĞÄ</div>
+	<div class="title">ä¼šå‘˜ä¸­å¿ƒ</div>
 	<div class="back" id="pageback"><img src="../images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="../images/2.jpg"  border="0"/></a></div>
 </div>
 
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="../index.php";'>
-    <div class="box"><img src="../images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="../images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-jobs-list.php";'>
-    <div class="box"><img src="../images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="../images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-resume-list.php";'>
-    <div class="box"><img src="../images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="../images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-news-list.php";'>
-    <div class="box"><img src="../images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="../images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 
-<!-- ÊÕµ½µÄ¼òÀúÒ³Ãæ -->
+<!-- æ”¶åˆ°çš„ç®€å†é¡µé¢ -->
 <div class="get_resume_title">
-	ÊÕ²ØµÄ¼òÀú
+	æ”¶è—çš„ç®€å†
 </div>
 <div class="get_resume_bbox">
 	{#if $row#}
@@ -92,11 +92,11 @@ $(document).ready(function()
 	</div>
 	{#/foreach#}
 	{#else#}
-	<div class="nothing">Ã»ÓĞÊÕ²ØµÄ¼òÀú</div>
+	<div class="nothing">æ²¡æœ‰æ”¶è—çš„ç®€å†</div>
 	{#/if#}
 </div>
 
-<div class="check_more">²é¿´¸ü¶à</div>
+<div class="check_more">æŸ¥çœ‹æ›´å¤š</div>
 
 
 

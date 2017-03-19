@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms »ğ³µÍ·²É¼¯
+ * 74cms ç«è½¦å¤´é‡‡é›†
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -17,24 +17,24 @@ $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'set';
 $locoyspider=get_cache('locoyspider');
 if ($locoyspider['open']<>"1")
 {
-exit("ÇëÔÚÍøÕ¾ºóÌ¨¿ªÆô»ğ³µÍ·²É¼¯");
+exit("è¯·åœ¨ç½‘ç«™åå°å¼€å¯ç«è½¦å¤´é‡‡é›†");
 }
 elseif($act=="news")
 {
 	require_once(ADMIN_ROOT_PATH.'include/admin_article_fun.php');
-	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('ÎÄÕÂ±êÌâ²»ÄÜÎª¿Õ£¡',1);
+	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('æ–‡ç« æ ‡é¢˜ä¸èƒ½ä¸ºç©ºï¼',1);
 	if (ck_article_title($setsqlarr['title']))
 	{
-	exit("Ìí¼ÓÊ§°Ü£¬ĞÂÎÅ±êÌâÓĞÖØ¸´");
+	exit("æ·»åŠ å¤±è´¥ï¼Œæ–°é—»æ ‡é¢˜æœ‰é‡å¤");
 	}
-	$setsqlarr['type_id']=trim($_POST['type_id'])?trim($_POST['type_id']):exit('ÎÄÕÂËùÊô·ÖÀà²»ÄÜÎª¿Õ£¡');
+	$setsqlarr['type_id']=trim($_POST['type_id'])?trim($_POST['type_id']):exit('æ–‡ç« æ‰€å±åˆ†ç±»ä¸èƒ½ä¸ºç©ºï¼');
 	$setsqlarr['parentid']=get_article_parentid($setsqlarr['type_id']);
-	$setsqlarr['content']=trim($_POST['content'])?trim($_POST['content']):exit('ÎÄÕÂÄÚÈİ²»ÄÜÎª¿Õ£¡');
+	$setsqlarr['content']=trim($_POST['content'])?trim($_POST['content']):exit('æ–‡ç« å†…å®¹ä¸èƒ½ä¸ºç©ºï¼');
 	$setsqlarr['tit_color']=intval($_POST['tit_color']);
 	$setsqlarr['tit_b']=intval($_POST['tit_b']);
 	$setsqlarr['author']=trim($_POST['author']);
 	$setsqlarr['source']=trim($_POST['source']);
-		//ÅĞ¶ÏÊÇ·ñÉèÖÃ£¬·ñÔòÆôÓÃÏµÍ³Ä¬ÈÏ
+		//åˆ¤æ–­æ˜¯å¦è®¾ç½®ï¼Œå¦åˆ™å¯ç”¨ç³»ç»Ÿé»˜è®¤
 		if ($_POST['focos']=="")
 		{
 		$setsqlarr['focos']=$locoyspider['article_focos'];
@@ -43,7 +43,7 @@ elseif($act=="news")
 		{
 		$setsqlarr['focos']=intval($_POST['focos']);
 		}
-		//ÅĞ¶ÏÊÇ·ñÉèÖÃ£¬·ñÔòÆôÓÃÏµÍ³Ä¬ÈÏ
+		//åˆ¤æ–­æ˜¯å¦è®¾ç½®ï¼Œå¦åˆ™å¯ç”¨ç³»ç»Ÿé»˜è®¤
 		if ($_POST['is_display']=="")
 		{
 		$setsqlarr['is_display']=$locoyspider['article_display'];
@@ -62,17 +62,17 @@ elseif($act=="news")
 	$setsqlarr['robot']=1;
 		if ($db->inserttable(table('article'),$setsqlarr))
 		{
-		exit("Ìí¼Ó³É¹¦");
+		exit("æ·»åŠ æˆåŠŸ");
 		}
 		else
 		{
-		exit("Ìí¼ÓÊ§°Ü");
+		exit("æ·»åŠ å¤±è´¥");
 		}
 		exit();
 }
 elseif($act=="jobs")
 {
-$companyname=isset($_POST['companyname'])?trim($_POST['companyname']):exit('¹«Ë¾Ãû³Æ²»ÄÜÎª¿Õ£¡');
+$companyname=isset($_POST['companyname'])?trim($_POST['companyname']):exit('å…¬å¸åç§°ä¸èƒ½ä¸ºç©ºï¼');
 $companyinfo=get_companyinfo($companyname);
 	if ($companyinfo)
 	{
@@ -87,7 +87,7 @@ $companyinfo=get_companyinfo($companyname);
 		}
 		else
 		{
-		exit("Ìí¼ÓÊ§°Ü");
+		exit("æ·»åŠ å¤±è´¥");
 		}
 	} 
 }

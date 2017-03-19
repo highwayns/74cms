@@ -1,21 +1,21 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Éú³Éword
+ * 74cms ç”Ÿæˆword
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
 require_once(dirname(__FILE__).'/company_common.php');
 $smarty->assign('leftmenu',"recruitment");
-$id =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("ÄãÃ»ÓĞÑ¡Ôñ¼òÀú£¡",1);
+$id =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("ä½ æ²¡æœ‰é€‰æ‹©ç®€å†ï¼",1);
 if (is_array($id))
 {
-	// ÒÑÏÂÔØµÄ¼òÀú ÅúÁ¿µ¼³öÎªword  ÏÈ²éÑ¯¼òÀúid  
+	// å·²ä¸‹è½½çš„ç®€å† æ‰¹é‡å¯¼å‡ºä¸ºword  å…ˆæŸ¥è¯¢ç®€å†id  
 	$sqlin=implode(",",$id);
 	$idarr = $db->getall("select resume_id from ".table('company_down_resume')." where did IN ({$sqlin})");
 	foreach ($idarr as $key=>$value) {
@@ -63,11 +63,11 @@ foreach ($result as $val)
 	{
 		if($val['sex']==1)
 		{
-			$val['fullname']=cut_str($val['fullname'],1,0,"ÏÈÉú");
+			$val['fullname']=cut_str($val['fullname'],1,0,"å…ˆç”Ÿ");
 		}
 		elseif($val['sex']==2)
 		{
-			$val['fullname']=cut_str($val['fullname'],1,0,"Å®Ê¿");
+			$val['fullname']=cut_str($val['fullname'],1,0,"å¥³å£«");
 		}
 		$val['fullname_']=$val['fullname'];	
 	}
@@ -83,15 +83,15 @@ foreach ($result as $val)
 	// }else{
 	// 	$set_apply = 0;
 	// }
-	// ×î½üµÇÂ¼Ê±¼ä
+	// æœ€è¿‘ç™»å½•æ—¶é—´
 	$userinfo=$db->getone("select last_login_time from ".table('members')." where uid=$val[uid]");
 	$last_login_time=date('Y-m-d',$userinfo['last_login_time']);
 $htm.='
 <table width="700" border="0" align="center" cellpadding="10" cellspacing="0" style="background-color: #FAF7C1;padding:10px 0">
 		<tr>
-			<td align="center">¼òÀú±êÌâ</td>
+			<td align="center">ç®€å†æ ‡é¢˜</td>
 			<td align="center">'.$val['title'].'</td>
-			<td align="center">×î½üµÇÂ¼</td>
+			<td align="center">æœ€è¿‘ç™»å½•</td>
 			<td align="center">'.$last_login_time.'</td>
 			<td align="center"><img width="130" height="40" src="'.$_CFG["site_domain"].$_CFG["upfiles_dir"].$_CFG["web_logo"].'" alt="'.$_CFG["site_name"].'" border="0" align="absmiddle"></td>
 		</tr>
@@ -99,19 +99,19 @@ $htm.='
 // if($set_apply==1){
 // 	if($val['jobs_name']!=""){
 // 		$htm .= '<tr>
-// 	    <td colspan="1">ÉêÇëÖ°Î»£º'.$val["jobs_name"].'</td>
+// 	    <td colspan="1">ç”³è¯·èŒä½ï¼š'.$val["jobs_name"].'</td>
 // 	  </tr>';
 // 	}
 // }
 
-	// ¸öÈËĞÅÏ¢ ÁªÏµ·½Ê½
+	// ä¸ªäººä¿¡æ¯ è”ç³»æ–¹å¼
 	if($_CFG['showresumecontact']=='1' || $_CFG['showresumecontact']=='0')
 	{
 		$val['fullname']=$val['fullname'];
 		$val['telephone']=$val['telephone'];
 		$val['email']=$val['email'];
 	}
-	elseif($_CFG['showresumecontact']=='2')//ÁªÏµ·½Ê½£º»áÔ±ÏÂÔØºó¿É¼û
+	elseif($_CFG['showresumecontact']=='2')//è”ç³»æ–¹å¼ï¼šä¼šå‘˜ä¸‹è½½åå¯è§
 	{
 		if ($_SESSION['uid'] && $_SESSION['username'] && $_SESSION['utype']=='1')
 		{
@@ -126,8 +126,8 @@ $htm.='
 			else
 			{
 				$val['fullname']=$val['fullname'];
-				$val['telephone']="ÏÂÔØºó¿É¼û";
-				$val['email']="ÏÂÔØºó¿É¼û";
+				$val['telephone']="ä¸‹è½½åå¯è§";
+				$val['email']="ä¸‹è½½åå¯è§";
 			}
 		}elseif($_SESSION['utype']=='2' && $_SESSION['uid']==$val['uid'])
 		{
@@ -136,8 +136,8 @@ $htm.='
 			$val['email']=$val['email'];
 		}else{
 				$val['fullname']=$val['fullname'];
-				$val['telephone']="ÏÂÔØºó¿É¼û";
-				$val['email']="ÏÂÔØºó¿É¼û";
+				$val['telephone']="ä¸‹è½½åå¯è§";
+				$val['email']="ä¸‹è½½åå¯è§";
 		}
 	}
 	if ($val['photo']=="1")
@@ -150,73 +150,73 @@ $htm.='
 	}
 	$htm.='<table width="700" border="0" align="center" cellpadding="10" cellspacing="0">
 			<tr>
-				<td class="table_tit">¸öÈËĞÅÏ¢</td>
+				<td class="table_tit">ä¸ªäººä¿¡æ¯</td>
 			</tr>
 		</table>
 		<table width="700" border="0" align="center" cellpadding="6" cellspacing="0" style="font-size: 12px;">
 			<tr>
-				<td align="right" width="100">ĞÕÃû£º</td>
+				<td align="right" width="100">å§“åï¼š</td>
 				<td align="left" width="200">'.$val['fullname'].'</td>
-				<td align="right" width="100">ĞÔ±ğ£º</td>
+				<td align="right" width="100">æ€§åˆ«ï¼š</td>
 				<td align="left" width="200">'.$val['sex_cn'].'</td>
 				<td rowspan=5 align="center">
 					<img width="100" height="100" src="'.$val['photosrc'].'">
 				</td>
 			</tr>
 			<tr>
-				<td align="right" width="100" >ÊÖ»úºÅÂë£º</td>
+				<td align="right" width="100" >æ‰‹æœºå·ç ï¼š</td>
 				<td align="left" width="200">'.$val['telephone'].'</td>
-				<td align="right" width="100">ÄêÁä£º</td>
-				<td align="left" width="200">'.$val['age'].'Ëê</td>
+				<td align="right" width="100">å¹´é¾„ï¼š</td>
+				<td align="left" width="200">'.$val['age'].'å²</td>
 			</tr>
 			<tr>
-				<td align="right" width="100">µç×ÓÓÊ¼ş£º</td>
+				<td align="right" width="100">ç”µå­é‚®ä»¶ï¼š</td>
 				<td align="left" width="200">'.$val['email'].'</td>
-				<td align="right" width="100">½ÌÓı³Ì¶È£º</td>
+				<td align="right" width="100">æ•™è‚²ç¨‹åº¦ï¼š</td>
 				<td align="left" width="200">'.$val['education_cn'].'</td>
 			</tr>
 			<tr>
-				<td align="right" width="100">¹¤×÷ÄêÏŞ£º</td>
+				<td align="right" width="100">å·¥ä½œå¹´é™ï¼š</td>
 				<td align="left" width="200">'.$val['experience_cn'].'</td>
-				<td align="right" width="100">»éÒö×´¿ö£º</td>
+				<td align="right" width="100">å©šå§»çŠ¶å†µï¼š</td>
 				<td align="left" width="200">'.$val['marriage_cn'].'</td>
 			</tr>
 			<tr>
-				<td align="right" width="100">¼®¹á£º</td>
+				<td align="right" width="100">ç±è´¯ï¼š</td>
 				<td align="left" width="200">'.$val['householdaddress'].'</td>
-				<td align="right" width="100">Ä¿Ç°ËùÔÚµØ£º</td>
+				<td align="right" width="100">ç›®å‰æ‰€åœ¨åœ°ï¼š</td>
 				<td align="left" width="200">'.$val['residence'].'</td>
 			</tr>
 		</table>';
-	// ÇóÖ°ÒâÏò
+	// æ±‚èŒæ„å‘
 
 	$htm.='<table width="700" border="0" align="center" cellpadding="10" cellspacing="0">
 			<tr>
-				<td class="table_tit">ÇóÖ°ÒâÏò</td>
+				<td class="table_tit">æ±‚èŒæ„å‘</td>
 			</tr>
 		</table>
 		<table width="700" border="0" align="center" cellpadding="6" cellspacing="0" style="font-size: 12px;">
 				<tr>
-					<td align="right" width="100">ÆÚÍûĞĞÒµ£º</td>
+					<td align="right" width="100">æœŸæœ›è¡Œä¸šï¼š</td>
 					<td  align="left">'.$val['trade_cn'].'</td>
 				</tr>
 				<tr>
-					<td align="right" width="100">ÆÚÍûÖ°Î»£º</td>
+					<td align="right" width="100">æœŸæœ›èŒä½ï¼š</td>
 					<td align="left">'.$val['intention_jobs'].'</td>
 				</tr>
 				<tr>
-					<td align="right" width="100">ÆÚÍûµØµã£º</td>
+					<td align="right" width="100">æœŸæœ›åœ°ç‚¹ï¼š</td>
 					<td align="left">'.$val['district_cn'].'</td>
 				</tr>
 				<tr>
-					<td align="right" width="100">ÆÚÍûĞ½×Ê£º</td>
+					<td align="right" width="100">æœŸæœ›è–ªèµ„ï¼š</td>
 					<td align="left">'.$val['wage_cn'].'</td>
 				</tr>
 			</table>';
-	// ¹¤×÷¾­Àú
+	// å·¥ä½œç»å†
 	$htm.='<table width="700" border="0" align="center" cellpadding="10" cellspacing="0">
 			<tr>
-				<td class="table_tit">¹¤×÷¾­Àú</td>
+				<td class="table_tit">å·¥ä½œç»å†</td>
 			</tr>
 		</table>';
 	if($val['work_list'])
@@ -231,14 +231,14 @@ $htm.='
 			<tr>
 				<td width="100">&nbsp;</td>
 				<td >
-					<span class="fl w100">Ö°Î»Ãû³Æ£º</span>
+					<span class="fl w100">èŒä½åç§°ï¼š</span>
 					<span class="fl">'.$wli['jobs'].'</span>
 				</td>
 			</tr>
 			<tr>
 				<td width="100">&nbsp;</td>
 				<td >
-					<span class="fl w100">¹¤×÷Ö°Ôğ£º</span>
+					<span class="fl w100">å·¥ä½œèŒè´£ï¼š</span>
 					<span class="fl">
 					'.$wli['achievements'].'
 					</span>
@@ -249,12 +249,12 @@ $htm.='
 	}
 	else
 	{
-	 $htm.='<table width="700" border="0" align="center" cellpadding="10" cellspacing="0" style="font-size: 12px;padding-top: 20px;"><tr>Ã»ÓĞÌîĞ´¹¤×÷¾­Àú</tr></table>';
+	 $htm.='<table width="700" border="0" align="center" cellpadding="10" cellspacing="0" style="font-size: 12px;padding-top: 20px;"><tr>æ²¡æœ‰å¡«å†™å·¥ä½œç»å†</tr></table>';
 	}
-	// ÅàÑµ¾­Àú
+	// åŸ¹è®­ç»å†
 	$htm.='<table width="700" border="0" align="center" cellpadding="10" cellspacing="0">
 			<tr>
-				<td class="table_tit">ÅàÑµ¾­Àú</td>
+				<td class="table_tit">åŸ¹è®­ç»å†</td>
 			</tr>
 		</table>
 	';
@@ -270,13 +270,13 @@ $htm.='
 			<tr>
 				<td width="100">&nbsp;</td>
 				<td >
-					ÅàÑµ¿Î³Ì£º'.$tli['course'].'
+					åŸ¹è®­è¯¾ç¨‹ï¼š'.$tli['course'].'
 				</td>
 			</tr>
 			<tr>
 				<td width="100">&nbsp;</td>
 				<td >
-					<span class="fl w100">ÅàÑµ½éÉÜ£º</span>
+					<span class="fl w100">åŸ¹è®­ä»‹ç»ï¼š</span>
 					<span class="fl">
 						'.$tli['description'].'
 					</span>
@@ -288,12 +288,12 @@ $htm.='
 	else
 	{
 		$htm.='<table width="700" border="0" align="center" cellpadding="10" cellspacing="0" style="font-size: 12px;padding-top: 20px;">
-			<tr>Ã»ÓĞÌîĞ´ÅàÑµ¾­Àú</tr></table>';
+			<tr>æ²¡æœ‰å¡«å†™åŸ¹è®­ç»å†</tr></table>';
 	}
-	// ½ÌÓı¾­Àú
+	// æ•™è‚²ç»å†
 	$htm.='<table width="700" border="0" align="center" cellpadding="10" cellspacing="0">
 			<tr>
-				<td class="table_tit">½ÌÓı¾­Àú</td>
+				<td class="table_tit">æ•™è‚²ç»å†</td>
 			</tr>
 		</table>';
 	if($val['education_list']){
@@ -312,12 +312,12 @@ $htm.='
 	else
 	{
 		$htm.='<table width="700" border="0" align="center" cellpadding="10" cellspacing="0" style="font-size: 12px;padding-top: 20px;">
-			<tr>Ã»ÓĞÌîĞ´½ÌÓı¾­Àú</tr></table>';
+			<tr>æ²¡æœ‰å¡«å†™æ•™è‚²ç»å†</tr></table>';
 	}
-	// ×ÔÎÒÃèÊö
+	// è‡ªæˆ‘æè¿°
 	$htm.='<table width="700" border="0" align="center" cellpadding="10" cellspacing="0">
 			<tr>
-				<td class="table_tit">×ÔÎÒÃèÊö</td>
+				<td class="table_tit">è‡ªæˆ‘æè¿°</td>
 			</tr>
 		</table>
 		<table width="700" border="0" align="center" cellpadding="10" cellspacing="0" style="font-size: 12px;padding-top: 20px;">
@@ -335,7 +335,7 @@ $htm.="<div align=\"center\"><br />
 header("Cache-Control: no-cache, must-revalidate"); 
 header("Pragma: no-cache");   
 header("Content-Type: application/doc"); 
-header("Content-Disposition:attachment; filename=µ¼³ö¸öÈË¼òÀú.doc"); 
+header("Content-Disposition:attachment; filename=å¯¼å‡ºä¸ªäººç®€å†.doc"); 
 echo $htm;
 function get_this_education($uid,$pid)
 {

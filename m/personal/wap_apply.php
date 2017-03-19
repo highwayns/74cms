@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
  * 74cms WAP
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -43,8 +43,8 @@ elseif ($act == 'apply')
 }
 elseif ($act == 'apply_add')
 {
-	$jobsid=intval($_POST["jobs_id"])?intval($_POST["jobs_id"]):exit("³ö´íÁË");
-	$resumeid=intval($_POST["resume_id"])?intval($_POST["resume_id"]):exit("³ö´íÁË");
+	$jobsid=intval($_POST["jobs_id"])?intval($_POST["jobs_id"]):exit("å‡ºé”™äº†");
+	$resumeid=intval($_POST["resume_id"])?intval($_POST["resume_id"]):exit("å‡ºé”™äº†");
 	
 	$_POST=array_map("utf8_to_gbk", $_POST);
 	$sql="select * from ".table("personal_jobs_apply")." where personal_uid=".intval($_SESSION['uid'])." and resume_id=".intval($_POST["resume_id"])." and jobs_id=".intval($_POST["jobs_id"])."";
@@ -54,14 +54,14 @@ elseif ($act == 'apply_add')
 		$resume_basic = array_map("addslashes", $resume_basic);
 		if (empty($resume_basic))
 		{
-		exit("¼òÀú¶ªÊ§");
+		exit("ç®€å†ä¸¢å¤±");
 		}
 	
 	if($_SESSION['utype']!=2){
-		exit("¸öÈË»áÔ±ÇëµÇÂ¼ºóÉêÇëÖ°Î»");
+		exit("ä¸ªäººä¼šå‘˜è¯·ç™»å½•åç”³è¯·èŒä½");
 	}
 	elseif($row){
-		exit("ÄúÒÑ¾­ÉêÇë¹ı´ËÖ°Î»£¡");
+		exit("æ‚¨å·²ç»ç”³è¯·è¿‡æ­¤èŒä½ï¼");
 	}
 	else{
 	
@@ -77,11 +77,11 @@ elseif ($act == 'apply_add')
 			{
 				if($resume_basic['sex']==1)
 				{
-					$personal_fullname=cut_str($resume_basic['fullname'],1,0,"ÏÈÉú");
+					$personal_fullname=cut_str($resume_basic['fullname'],1,0,"å…ˆç”Ÿ");
 				}
 				elseif($resume_basic['sex']==2)
 				{
-					$personal_fullname=cut_str($resume_basic['fullname'],1,0,"Å®Ê¿");
+					$personal_fullname=cut_str($resume_basic['fullname'],1,0,"å¥³å£«");
 				}
 			}
 			else
@@ -115,22 +115,22 @@ elseif ($act == 'apply_add')
 					//sms	
 					if ($sms['open']=="1"  && $sms['set_applyjobs']=="1"  && $comuser['mobile_audit']=="1")
 					{
-					//ĞŞÕıbug,ÇóÖ°ÕßÉêÇëÖ°Î»²»·¢ËÍ¶ÌĞÅ
+					//ä¿®æ­£bug,æ±‚èŒè€…ç”³è¯·èŒä½ä¸å‘é€çŸ­ä¿¡
 						dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_sms.php?uid={$_SESSION['uid']}&key=".asyn_userkey($_SESSION['uid'])."&act=jobs_apply&jobs_id=".$jobs['id']."&jobs_name=".$jobs['jobs_name'].'&jobs_uid='.$jobs['uid']."&personal_fullname=".$personal_fullname."&mobile=".$comuser['mobile']);
 					}
-					//Õ¾ÄÚĞÅ
+					//ç«™å†…ä¿¡
 					if($pms_notice=='1'){
 						$user=$db->getone("select username from ".table('members')." where uid ={$jobs['uid']} limit 1");
 						$user = array_map("addslashes", $user);
 						$jobs_url=url_rewrite('QS_jobsshow',array('id'=>$jobs['id']));
 						$resume_url=url_rewrite('QS_resumeshow',array('id'=>$resumeid));
-						$message=$personal_fullname."ÉêÇëÁËÄú·¢²¼µÄÖ°Î»£º<a href=\"{$jobs_url}\" target=\"_blank\">{$jobs['jobs_name']}</a>,<a href=\"{$resume_url}\" target=\"_blank\">µã»÷²é¿´</a>";
+						$message=$personal_fullname."ç”³è¯·äº†æ‚¨å‘å¸ƒçš„èŒä½ï¼š<a href=\"{$jobs_url}\" target=\"_blank\">{$jobs['jobs_name']}</a>,<a href=\"{$resume_url}\" target=\"_blank\">ç‚¹å‡»æŸ¥çœ‹</a>";
 						write_pmsnotice($jobs['uid'],$user['username'],$message);
 					}
-					write_memberslog($_SESSION['uid'],2,1301,$_SESSION['username'],"Í¶µİÁË¼òÀú£¬Ö°Î»:{$jobs['jobs_name']}");
+					write_memberslog($_SESSION['uid'],2,1301,$_SESSION['username'],"æŠ•é€’äº†ç®€å†ï¼ŒèŒä½:{$jobs['jobs_name']}");
 					
 					
-					//Î¢ĞÅ
+					//å¾®ä¿¡
 					if(intval($_CFG['weixin_apiopen'])==1){
 						$user=$db->getone("select weixin_openid from ".table('members')." where uid = {$jobs['uid']} limit 1");
 						if($user['weixin_openid']!=""){
@@ -141,7 +141,7 @@ elseif ($act == 'apply_add')
 								'url' => $resume_url,
 								'topcolor' => "#7B68EE",
 								'data' => array(
-									'first' => array('value' => urlencode(gbk_to_utf8("ÄãÊÕµ½ÁËÒ»·İĞÂ¼òÀú£¬Çë¼°Ê±µÇÂ¼".$_CFG['site_name']."²éÔÄ")),
+									'first' => array('value' => urlencode(gbk_to_utf8("ä½ æ”¶åˆ°äº†ä¸€ä»½æ–°ç®€å†ï¼Œè¯·åŠæ—¶ç™»å½•".$_CFG['site_name']."æŸ¥é˜…")),
 													'color' => "#743A3A",
 										),
 									'job' => array('value' => urlencode(gbk_to_utf8($jobs['jobs_name'])),

@@ -1,27 +1,27 @@
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
+ï»¿<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
     <tr>
-		<td width="120" align="right">ÊÖ»úºÅ£º</td>
+		<td width="120" align="right">æ‰‹æœºå·ï¼š</td>
 		<td class="mobile">{#$mobile#}<input type="hidden" name="mobile" id="mobile_" value="{#$mobile#}"> </td>
     </tr>
     <tr id="displaymobilesend" style="display:none">
-		<td width="120" align="right">ÑéÖ¤Âë£º</td>
+		<td width="120" align="right">éªŒè¯ç ï¼š</td>
 		<td><input name="mobile_verifycode" id="mobile_verifycode" type="text" class="input_text_200" value="" /></td>
     </tr>
     <tr id="mobilesenddiv">
 		<td></td>
 		<td>
-			<input type="button" name="mobilesend" id="mobilesend" value="·¢ËÍÑéÖ¤¶ÌĞÅ"  class="but130lan"/>
+			<input type="button" name="mobilesend" id="mobilesend" value="å‘é€éªŒè¯çŸ­ä¿¡"  class="but130lan"/>
 		</td>
     </tr>
     <tr id="postverify" style="display:none">
 		<td align="right"></td>
-		<td><div class="but95cheng">È·¶¨</div></td>
+		<td><div class="but95cheng">ç¡®å®š</div></td>
 	</tr>
 </table>
 <table width="100%" border="0" style="border-top:1px #CCCCCC dotted;background-color: #EEEEEE; line-height: 200%;padding: 10px 15px; margin-top: 10px; color:#666666;"  >
     <tr>
     	<td class="dialog_bottom">
-	    	<span class="dialog_tip"></span><span class="dialog_text">ÌáÊ¾£ºÊÖ»úÓÃÓÚµÇÂ¼¡¢{#$notice#}¡£ĞŞ¸Ä³É¹¦ºó£¬ÇëÊ¹ÓÃĞÂÊÖ»úµÇÂ¼{#$site_name#}¡£</span>
+	    	<span class="dialog_tip"></span><span class="dialog_text">æç¤ºï¼šæ‰‹æœºç”¨äºç™»å½•ã€{#$notice#}ã€‚ä¿®æ”¹æˆåŠŸåï¼Œè¯·ä½¿ç”¨æ–°æ‰‹æœºç™»å½•{#$site_name#}ã€‚</span>
 	    	<div class="clear"></div>
 	    </td>
     </tr>
@@ -33,28 +33,28 @@ $(document).ready(function(){
 	}else{
 		$(".mobile").html('<input name="mobile" id="mobile_" type="text" class="input_text_200" value="{#$mobile#}" />');
 	}
-	//·¢ËÍ¶ÌĞÅÑéÖ¤
+	//å‘é€çŸ­ä¿¡éªŒè¯
 	$("#mobilesend").click(function(){
 		var tel = /^(13|15|14|18)\d{9}$/; 
 		if($("#mobile_").val()=='')
 		{
 			dialog({
-			    title: 'ÏµÍ³ÌáÊ¾',
-			    content: 'ÇëÊäÈëÊÖ»ú',
+			    title: 'ç³»ç»Ÿæç¤º',
+			    content: 'è¯·è¾“å…¥æ‰‹æœº',
 			    width:'300px'
 			}).showModal();
 		}
 		else if(!tel.test($("#mobile_").val()))
 		{
 			dialog({
-			    title: 'ÏµÍ³ÌáÊ¾',
-			    content: 'ÊÖ»úºÅ´íÎó',
+			    title: 'ç³»ç»Ÿæç¤º',
+			    content: 'æ‰‹æœºå·é”™è¯¯',
 			    width:'300px'
 			}).showModal();
 		}
 		else
 		{
-			 $("#mobilesend").html("ÕıÔÚ·¢ËÍ...");
+			 $("#mobilesend").html("æ­£åœ¨å‘é€...");
 			 var mobile = $("#mobile_").val();
 			 $("#mobile_").attr("disabled","disabled");
 			 $.post("../../plus/ajax_verify_mobile.php", {"mobile": $("#mobile_").val(),"send_key": "{#$send_mobile_key#}","time":new Date().getTime(),"act":"send_code"},
@@ -70,11 +70,11 @@ $(document).ready(function(){
 			else
 			{
 				$("#mobilesenddiv").show();
-				$("#mobilesend").html("·¢ËÍÑéÖ¤¶ÌĞÅ");
+				$("#mobilesend").html("å‘é€éªŒè¯çŸ­ä¿¡");
 				$("#displaymobilesend").hide();
 				$("#mobilesendsucceed").hide();
 				dialog({
-				    title: 'ÏµÍ³ÌáÊ¾',
+				    title: 'ç³»ç»Ÿæç¤º',
 				    content: ''+data+'',
 				    width:'300px',
 				    cancelDisplay: false,
@@ -93,8 +93,8 @@ $(document).ready(function(){
 		if($("#mobile_verifycode").val()=='')
 		{
 			dialog({
-			    title: 'ÏµÍ³ÌáÊ¾',
-			    content: 'ÇëÌîĞ´Ğ§ÑéÂë',
+			    title: 'ç³»ç»Ÿæç¤º',
+			    content: 'è¯·å¡«å†™æ•ˆéªŒç ',
 			    width:'300px'
 			}).showModal();
 		}
@@ -110,8 +110,8 @@ $(document).ready(function(){
 					else
 					{
 						dialog({
-						    title: 'ÏµÍ³ÌáÊ¾',
-						    content: 'ÑéÖ¤ÂëÌîĞ´´íÎó',
+						    title: 'ç³»ç»Ÿæç¤º',
+						    content: 'éªŒè¯ç å¡«å†™é”™è¯¯',
 						    width:'300px'
 						}).showModal();
 					}

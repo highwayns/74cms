@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -29,13 +29,13 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-Êı¾İ±¸·İ¹¦ÄÜ¸ù¾İÄúµÄÑ¡Ôñ±¸·İÍøÕ¾Êı¾İ¿âµÄÊı¾İ£¬µ¼³öµÄÊı¾İÎÄ¼ş¿ÉÓÃ¡°Êı¾İ»Ö¸´¡±¹¦ÄÜ»ò phpMyAdmin µ¼Èë¡£<br />
-        È«²¿±¸·İ¾ù²»°üº¬Ä£°åÎÄ¼şºÍ¸½¼şÎÄ¼ş¡£Ä£°å¡¢¸½¼şµÄ±¸·İÖ»ĞèÍ¨¹ı FTP µÈÏÂÔØ ./templates, ./data Ä¿Â¼¼´¿É£¬74cms ²»Ìá¹©µ¥¶À±¸·İ¡£
+æ•°æ®å¤‡ä»½åŠŸèƒ½æ ¹æ®æ‚¨çš„é€‰æ‹©å¤‡ä»½ç½‘ç«™æ•°æ®åº“çš„æ•°æ®ï¼Œå¯¼å‡ºçš„æ•°æ®æ–‡ä»¶å¯ç”¨â€œæ•°æ®æ¢å¤â€åŠŸèƒ½æˆ– phpMyAdmin å¯¼å…¥ã€‚<br />
+        å…¨éƒ¨å¤‡ä»½å‡ä¸åŒ…å«æ¨¡æ¿æ–‡ä»¶å’Œé™„ä»¶æ–‡ä»¶ã€‚æ¨¡æ¿ã€é™„ä»¶çš„å¤‡ä»½åªéœ€é€šè¿‡ FTP ç­‰ä¸‹è½½ ./templates, ./data ç›®å½•å³å¯ï¼Œ74cms ä¸æä¾›å•ç‹¬å¤‡ä»½ã€‚
 </p>
 </div>
-<div class="toptit">Éú³É±¸·İÊı¾İ¿â</div>
+<div class="toptit">ç”Ÿæˆå¤‡ä»½æ•°æ®åº“</div>
 	  <form id="form1" name="form1" method="post" action="">
 	  {#$inputtoken#}
 	<table width="100%" border="0" cellspacing="0" cellpadding="4" id="backupshow">
@@ -57,22 +57,22 @@ $(document).ready(function()
 	<tr>
       <td height="30" bgcolor="#F1F8FA" style=" line-height:180%; color:#666666; padding-left:20px;border-bottom:1px  #DFEDF7 solid;border-top:1px #DFEDF7 solid;">
 	  &nbsp;&nbsp;&nbsp;
-	  <span id="selectAll" style="color:#0066CC; cursor:pointer">[È«Ñ¡]</span>
+	  <span id="selectAll" style="color:#0066CC; cursor:pointer">[å…¨é€‰]</span>
 	  &nbsp;&nbsp;&nbsp;
-	  <span id="uncheckAll" style="color:#0066CC; cursor:pointer">[È«²»Ñ¡]</span>
+	  <span id="uncheckAll" style="color:#0066CC; cursor:pointer">[å…¨ä¸é€‰]</span>
 	  &nbsp;&nbsp;&nbsp;
- <span id="opposite" style="color:#0066CC; cursor:pointer">[·´Ñ¡]</span>
+ <span id="opposite" style="color:#0066CC; cursor:pointer">[åé€‰]</span>
   &nbsp;&nbsp;&nbsp;
-	  ·Ö¾í±¸·İ£º
+	  åˆ†å·å¤‡ä»½ï¼š
           <input name="limit_size" type="text" id="limit_size"   value="1024" maxlength="20" onkeyup="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"  onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))" class="input_text_100"/> KB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      ½¨±íÓï¾ä¸ñÊ½:
-	   <label><input type="radio" name="mysql_type" value="" checked  style="vertical-align:middle"/>Ä¬ÈÏ</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      å»ºè¡¨è¯­å¥æ ¼å¼:
+	   <label><input type="radio" name="mysql_type" value="" checked  style="vertical-align:middle"/>é»˜è®¤</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		 <label><input type="radio" name="mysql_type" value="mysql40"  style="vertical-align:middle" />MySQL 3.23/4.0.x</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	    <label><input type="radio" name="mysql_type" value="mysql41"  style="vertical-align:middle"/>MySQL 4.1.x/5.x</label>	  </td>
     </tr>
 	<tr>
 	  <td height="80" align="center"  ><input type="hidden" name="act" value="do_backup" />
-	   <input type="submit" name="Submit22" value="¿ªÊ¼±¸·İ" class="admin_submit"    onclick="document.getElementById('backupshow').style.display='none';document.getElementById('hide').style.display='block';"/>	  </td>
+	   <input type="submit" name="Submit22" value="å¼€å§‹å¤‡ä»½" class="admin_submit"    onclick="document.getElementById('backupshow').style.display='none';document.getElementById('hide').style.display='block';"/>	  </td>
 	  </tr>
   </table>
    <table width="600" height="100" border="0" cellpadding="5" cellspacing="0" id="hide" style="display:none">
@@ -80,7 +80,7 @@ $(document).ready(function()
             <td align="center" valign="bottom"><img src="images/ajax_loader.gif"  border="0" /></td>
           </tr>
           <tr>
-            <td align="center" valign="top" style="color: #009900">ÕıÔÚ±¸·İ£¬ÇëÉÔºò......</td>
+            <td align="center" valign="top" style="color: #009900">æ­£åœ¨å¤‡ä»½ï¼Œè¯·ç¨å€™......</td>
           </tr>
         </table>
   </form>

@@ -1,8 +1,8 @@
-<a href="{#$QISHI.site_dir#}mobile/" class="mphone">ÊÖ»úÆµµÀ</a>
-<a href="{#$QISHI.site_dir#}">ÍøÕ¾Ê×Ò³</a>
-<a href="{#$QISHI.site_dir#}plus/shortcut.php">±£´æµ½×ÀÃæ</a>
+ï»¿<a href="{#$QISHI.site_dir#}mobile/" class="mphone">æ‰‹æœºé¢‘é“</a>
+<a href="{#$QISHI.site_dir#}">ç½‘ç«™é¦–é¡µ</a>
+<a href="{#$QISHI.site_dir#}plus/shortcut.php">ä¿å­˜åˆ°æ¡Œé¢</a>
 <script type="text/javascript">
-//¶¥²¿²¿µÇÂ¼
+//é¡¶éƒ¨éƒ¨ç™»å½•
 $.get("{#$QISHI.site_dir#}plus/ajax_user.php", {"act":"top_loginform"},
 function (data,textStatus)
 {			
@@ -33,7 +33,7 @@ $("#t_so").css("position","");
 );
 $(".top-search-button").click(function()
 {
-	$("body").append('<div id="pageloadingbox">Ò³Ãæ¼ÓÔØÖĞ....</div><div id="pageloadingbg"></div>');
+	$("body").append('<div id="pageloadingbox">é¡µé¢åŠ è½½ä¸­....</div><div id="pageloadingbg"></div>');
 	$("#pageloadingbg").css("opacity", 0.5);
 	$.get("{#$QISHI.site_dir#}plus/ajax_search_location.php", {"act":$(this).attr('id'),"key":$("#top-search-key").val()},
 			function (data,textStatus)

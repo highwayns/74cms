@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ¸öÈË»áÔ±ÖĞĞÄajaxµ¯³ö¿ò
+ * 74cms ä¸ªäººä¼šå‘˜ä¸­å¿ƒajaxå¼¹å‡ºæ¡†
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -34,7 +34,7 @@ elseif($act=="user_email"){
 	$contents=str_replace('{#$site_name#}',$_CFG['site_name'],$contents);
 	$contents=str_replace('{#$send_email_key#}',$_SESSION['send_email_key'],$contents);
 	$contents=str_replace('{#$site_template#}',$_CFG['site_template'],$contents);
-	$contents=str_replace('{#$notice#}','½ÓÊÕHRÃæÊÔÑûÇë',$contents);
+	$contents=str_replace('{#$notice#}','æ¥æ”¶HRé¢è¯•é‚€è¯·',$contents);
 	exit($contents);
 }	
 elseif($act=="user_mobile"){
@@ -45,7 +45,7 @@ elseif($act=="user_mobile"){
 	$contents=str_replace('{#$site_name#}',$_CFG['site_name'],$contents);
 	$contents=str_replace('{#$send_mobile_key#}',$_SESSION['send_mobile_key'],$contents);
 	$contents=str_replace('{#$site_template#}',$_CFG['site_template'],$contents);
-	$contents=str_replace('{#$notice#}','½ÓÊÕHRÀ´µç',$contents);
+	$contents=str_replace('{#$notice#}','æ¥æ”¶HRæ¥ç”µ',$contents);
 	exit($contents);
 }
 elseif($act=="old_mobile"){
@@ -66,7 +66,7 @@ elseif($act=="edit_mobile"){
 	$contents=str_replace('{#$send_mobile_key#}',$_SESSION['send_mobile_key'],$contents);
 	$contents=str_replace('{#$site_name#}',$_CFG['site_name'],$contents);
 	$contents=str_replace('{#$site_template#}',$_CFG['site_template'],$contents);
-	$contents=str_replace('{#$notice#}','½ÓÊÕHRÀ´µç',$contents);
+	$contents=str_replace('{#$notice#}','æ¥æ”¶HRæ¥ç”µ',$contents);
 	exit($contents);
 }
 elseif($act=="tpl"){
@@ -83,10 +83,10 @@ elseif($act=="tpl"){
 	$html = "";
 	if(!empty($resumetpl)){
 		foreach ($resumetpl as $key => $value) {
-			$html_l.='<label><input type="radio" id="tpl_pid" name="resume_tpl" value="'.$value["tpl_dir"].'" class="radio set_tpl" '.($resume_basic['tpl']==$value['tpl_dir']?'checked':'').'>'.$value["tpl_name"].($resume_basic['tpl']==$value['tpl_dir']?'<span>[µ±Ç°]</span>':'').'</label>';
+			$html_l.='<label><input type="radio" id="tpl_pid" name="resume_tpl" value="'.$value["tpl_dir"].'" class="radio set_tpl" '.($resume_basic['tpl']==$value['tpl_dir']?'checked':'').'>'.$value["tpl_name"].($resume_basic['tpl']==$value['tpl_dir']?'<span>[å½“å‰]</span>':'').'</label>';
 			$html.='<div class="resume_box tpl_img'.$value["tpl_dir"].'" '.($resume_basic['tpl']==$value['tpl_dir']?'style="display:block"':'style="display:none"').'>
 					<div class="img"><img src="'.$_CFG["site_dir"].'templates/tpl_resume/'.$value["tpl_dir"].'/thumbnail.jpg" alt="" /></div>
-					<p style="margin-top:10px;"><a target="_blank" href="'.$resume_url.'&style='.$value["tpl_dir"].'">[Ô¤ÀÀ]</a></p>
+					<p style="margin-top:10px;"><a target="_blank" href="'.$resume_url.'&style='.$value["tpl_dir"].'">[é¢„è§ˆ]</a></p>
 				</div>';
 			
 		}
@@ -110,33 +110,33 @@ elseif($act == "save_tpl"){
 	exit("1");
 }
 elseif($act == "del_resume"){
-	$pid = intval($_GET['pid'])?intval($_GET['pid']):exit("ÄúÃ»ÓĞÑ¡Ôñ¼òÀú£¡");
+	$pid = intval($_GET['pid'])?intval($_GET['pid']):exit("æ‚¨æ²¡æœ‰é€‰æ‹©ç®€å†ï¼");
 	$tpl='../../templates/'.$_CFG['template_dir']."member_personal/ajax_delete_resume_box.htm";
 	$contents=file_get_contents($tpl);
 	$contents=str_replace('{#$resumeid#}',$pid,$contents);
 	exit($contents);
 }
 elseif($act == "refresh_resume"){
-	$resumeid = intval($_GET['id'])?intval($_GET['id']):exit("ÄúÃ»ÓĞÑ¡Ôñ¼òÀú£¡");
+	$resumeid = intval($_GET['id'])?intval($_GET['id']):exit("æ‚¨æ²¡æœ‰é€‰æ‹©ç®€å†ï¼");
 	$refrestime=get_last_refresh_date($_SESSION['uid'],"2001");
 	$duringtime=time()-$refrestime['max(addtime)'];
 	$space = $_CFG['per_refresh_resume_space']*60;
 	$refresh_time = get_today_refresh_times($_SESSION['uid'],"2001");
 	if($_CFG['per_refresh_resume_time']!=0&&($refresh_time['count(*)']>=$_CFG['per_refresh_resume_time']))
 	{
-	exit("Ã¿Ìì×î¶àÖ»ÄÜË¢ĞÂ".$_CFG['per_refresh_resume_time']."´Î,Äú½ñÌìÒÑ³¬¹ı×î´óË¢ĞÂ´ÎÊıÏŞÖÆ£¡");	
+	exit("æ¯å¤©æœ€å¤šåªèƒ½åˆ·æ–°".$_CFG['per_refresh_resume_time']."æ¬¡,æ‚¨ä»Šå¤©å·²è¶…è¿‡æœ€å¤§åˆ·æ–°æ¬¡æ•°é™åˆ¶ï¼");	
 	}
 	elseif($duringtime<=$space){
-	exit($_CFG['per_refresh_resume_space']."·ÖÖÓÄÚ²»ÄÜÖØ¸´Ë¢ĞÂ¼òÀú£¡");
+	exit($_CFG['per_refresh_resume_space']."åˆ†é’Ÿå†…ä¸èƒ½é‡å¤åˆ·æ–°ç®€å†ï¼");
 	}
 	else 
 	{
-	refresh_resume($resumeid,$_SESSION['uid'])?exit("1"):exit('²Ù×÷Ê§°Ü£¡');
+	refresh_resume($resumeid,$_SESSION['uid'])?exit("1"):exit('æ“ä½œå¤±è´¥ï¼');
 	}
 }
 elseif($act == "del_resume_edu"){
-	$pid = intval($_GET['pid'])?intval($_GET['pid']):exit("ÄúÃ»ÓĞÑ¡Ôñ¼òÀú£¡");
-	$id = intval($_GET['id'])?intval($_GET['id']):exit("ÄúÃ»ÓĞÑ¡Ôñ½ÌÓı¾­Àú£¡");
+	$pid = intval($_GET['pid'])?intval($_GET['pid']):exit("æ‚¨æ²¡æœ‰é€‰æ‹©ç®€å†ï¼");
+	$id = intval($_GET['id'])?intval($_GET['id']):exit("æ‚¨æ²¡æœ‰é€‰æ‹©æ•™è‚²ç»å†ï¼");
 	$tpl='../../templates/'.$_CFG['template_dir']."member_personal/ajax_delete_resume_edu_box.htm";
 	$contents=file_get_contents($tpl);
 	$contents=str_replace('{#$resumeid#}',$pid,$contents);
@@ -145,8 +145,8 @@ elseif($act == "del_resume_edu"){
 	exit($contents);
 }
 elseif($act == "del_resume_work"){
-	$pid = intval($_GET['pid'])?intval($_GET['pid']):exit("ÄúÃ»ÓĞÑ¡Ôñ¼òÀú£¡");
-	$id = intval($_GET['id'])?intval($_GET['id']):exit("ÄúÃ»ÓĞÑ¡Ôñ¹¤×÷¾­Àú£¡");
+	$pid = intval($_GET['pid'])?intval($_GET['pid']):exit("æ‚¨æ²¡æœ‰é€‰æ‹©ç®€å†ï¼");
+	$id = intval($_GET['id'])?intval($_GET['id']):exit("æ‚¨æ²¡æœ‰é€‰æ‹©å·¥ä½œç»å†ï¼");
 	$tpl='../../templates/'.$_CFG['template_dir']."member_personal/ajax_delete_resume_work_box.htm";
 	$contents=file_get_contents($tpl);
 	$contents=str_replace('{#$resumeid#}',$pid,$contents);
@@ -155,8 +155,8 @@ elseif($act == "del_resume_work"){
 	exit($contents);
 }
 elseif($act == "del_resume_training"){
-	$pid = intval($_GET['pid'])?intval($_GET['pid']):exit("ÄúÃ»ÓĞÑ¡Ôñ¼òÀú£¡");
-	$id = intval($_GET['id'])?intval($_GET['id']):exit("ÄúÃ»ÓĞÑ¡ÔñÅàÑµ¾­Àú£¡");
+	$pid = intval($_GET['pid'])?intval($_GET['pid']):exit("æ‚¨æ²¡æœ‰é€‰æ‹©ç®€å†ï¼");
+	$id = intval($_GET['id'])?intval($_GET['id']):exit("æ‚¨æ²¡æœ‰é€‰æ‹©åŸ¹è®­ç»å†ï¼");
 	$tpl='../../templates/'.$_CFG['template_dir']."member_personal/ajax_delete_resume_training_box.htm";
 	$contents=file_get_contents($tpl);
 	$contents=str_replace('{#$resumeid#}',$pid,$contents);
@@ -165,8 +165,8 @@ elseif($act == "del_resume_training"){
 	exit($contents);
 }
 elseif($act == "del_resume_language"){
-	$pid = intval($_GET['pid'])?intval($_GET['pid']):exit("ÄúÃ»ÓĞÑ¡Ôñ¼òÀú£¡");
-	$id = intval($_GET['id'])?intval($_GET['id']):exit("ÄúÃ»ÓĞÑ¡ÔñÓïÑÔÄÜÁ¦£¡");
+	$pid = intval($_GET['pid'])?intval($_GET['pid']):exit("æ‚¨æ²¡æœ‰é€‰æ‹©ç®€å†ï¼");
+	$id = intval($_GET['id'])?intval($_GET['id']):exit("æ‚¨æ²¡æœ‰é€‰æ‹©è¯­è¨€èƒ½åŠ›ï¼");
 	$tpl='../../templates/'.$_CFG['template_dir']."member_personal/ajax_delete_resume_language_box.htm";
 	$contents=file_get_contents($tpl);
 	$contents=str_replace('{#$resumeid#}',$pid,$contents);
@@ -175,8 +175,8 @@ elseif($act == "del_resume_language"){
 	exit($contents);
 }
 elseif($act == "del_resume_credent"){
-	$pid = intval($_GET['pid'])?intval($_GET['pid']):exit("ÄúÃ»ÓĞÑ¡Ôñ¼òÀú£¡");
-	$id = intval($_GET['id'])?intval($_GET['id']):exit("ÄúÃ»ÓĞÑ¡ÔñÖ¤Êé£¡");
+	$pid = intval($_GET['pid'])?intval($_GET['pid']):exit("æ‚¨æ²¡æœ‰é€‰æ‹©ç®€å†ï¼");
+	$id = intval($_GET['id'])?intval($_GET['id']):exit("æ‚¨æ²¡æœ‰é€‰æ‹©è¯ä¹¦ï¼");
 	$tpl='../../templates/'.$_CFG['template_dir']."member_personal/ajax_delete_resume_credent_box.htm";
 	$contents=file_get_contents($tpl);
 	$contents=str_replace('{#$resumeid#}',$pid,$contents);

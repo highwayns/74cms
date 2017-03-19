@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,10 +6,10 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-ÏµÍ³Ä¬ÈÏ·ÖÀà²»ÄÜÉ¾³ı£¡<br />
-É¾³ı·ÖÀà×é½«Í¬Ê±É¾³ı´Ë×éÏÂµÄËùÓĞ·ÖÀà¡£
+ç³»ç»Ÿé»˜è®¤åˆ†ç±»ä¸èƒ½åˆ é™¤ï¼<br />
+åˆ é™¤åˆ†ç±»ç»„å°†åŒæ—¶åˆ é™¤æ­¤ç»„ä¸‹çš„æ‰€æœ‰åˆ†ç±»ã€‚
 </p>
 </div>
   <form id="form1" name="form1" method="post" action="?act=del_group">
@@ -17,10 +17,10 @@
     <table width="100%" border="0" cellpadding="0" cellspacing="0" id="list" class="link_lan"  >
     <tr>
       <td height="26" class="admin_list_tit admin_list_first" >
-      <label id="chkAll"><input type="checkbox" name=" " title="È«Ñ¡/·´Ñ¡" id="chk"/>·ÖÀà×éÃû³Æ</label></td>
-	  <td  class="admin_list_tit">µ÷ÓÃÃû</td>
-	  <td   align="center"  class="admin_list_tit">ÀàĞÍ</td>
-      <td width="20%"   class="admin_list_tit">²Ù×÷</td>
+      <label id="chkAll"><input type="checkbox" name=" " title="å…¨é€‰/åé€‰" id="chk"/>åˆ†ç±»ç»„åç§°</label></td>
+	  <td  class="admin_list_tit">è°ƒç”¨å</td>
+	  <td   align="center"  class="admin_list_tit">ç±»å‹</td>
+      <td width="20%"   class="admin_list_tit">æ“ä½œ</td>
     </tr>
 	{#foreach from=$group item=li#}
      <tr>
@@ -34,17 +34,17 @@
 </td>
 			    <td align="center"  class="admin_list">
 	   {#if $li.g_sys=="1"#}
-	    ÏµÍ³·ÖÀà
+	    ç³»ç»Ÿåˆ†ç±»
 	   {#else#}
-	   ×Ô¶¨Òå·ÖÀà×é
+	   è‡ªå®šä¹‰åˆ†ç±»ç»„
 	   {#/if#}
  
 		 </td>
       <td class="admin_list">
-	  <a href="?act=show_category&alias={#$li.g_alias#}">²é¿´</a>&nbsp;&nbsp;
+	  <a href="?act=show_category&alias={#$li.g_alias#}">æŸ¥çœ‹</a>&nbsp;&nbsp;
 	  		{#if $li.g_sys<>"1"#}
-				 <a href="?act=edit_group&alias={#$li.g_alias#}">ĞŞ¸Ä</a>&nbsp;&nbsp;			 
-			 <a onclick="return confirm('É¾³ıºóÎŞ·¨»Ö¸´£¬ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')" href="?act=del_group&alias={#$li.g_alias#}&{#$urltoken#}">É¾³ı</a>
+				 <a href="?act=edit_group&alias={#$li.g_alias#}">ä¿®æ”¹</a>&nbsp;&nbsp;			 
+			 <a onclick="return confirm('åˆ é™¤åæ— æ³•æ¢å¤ï¼Œä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')" href="?act=del_group&alias={#$li.g_alias#}&{#$urltoken#}">åˆ é™¤</a>
 		 {#/if#}
 		</td>
     </tr>
@@ -53,8 +53,8 @@
 	<table width="100%" border="0" cellspacing="10"  class="admin_list_btm">
 <tr>
         <td>
-        <input name="ButADD" type="button" class="admin_submit" id="ButADD" value="Ìí¼Ó·ÖÀà×é"  onclick="window.location='?act=add_group'"/>
-		<input name="ButDel" type="submit" class="admin_submit" id="ButDel"  value="É¾³ıËùÑ¡" onclick="return confirm('É¾³ı·ÖÀà×éÍ¬Ê±Ò²»áÉ¾³ı´Ë·ÖÀà×éÏÂ¸ö·ÖÀà£¬ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')"/>
+        <input name="ButADD" type="button" class="admin_submit" id="ButADD" value="æ·»åŠ åˆ†ç±»ç»„"  onclick="window.location='?act=add_group'"/>
+		<input name="ButDel" type="submit" class="admin_submit" id="ButDel"  value="åˆ é™¤æ‰€é€‰" onclick="return confirm('åˆ é™¤åˆ†ç±»ç»„åŒæ—¶ä¹Ÿä¼šåˆ é™¤æ­¤åˆ†ç±»ç»„ä¸‹ä¸ªåˆ†ç±»ï¼Œä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')"/>
 		</td>
         <td width="305" align="right">
 	  

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Lite section_start compile plugin converted from Smarty
  *

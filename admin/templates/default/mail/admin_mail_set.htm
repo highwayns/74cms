@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript"> 
 $(document).ready(function()
 {
@@ -32,7 +32,7 @@ $(document).ready(function()
 	{
 		if ($("#method_sendmail div:nth-child(2)").text()=='')
 		{
-		alert('ÖÁÉÙÁôÒ»¸öSMTPÕË»§£¡');
+		alert('è‡³å°‘ç•™ä¸€ä¸ªSMTPè´¦æˆ·ï¼');
 		}
 		else
 		{
@@ -48,14 +48,14 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
-	<p>Äú¿ÉÒÔÍ¨¹ı·¢ËÍ²âÊÔÓÊ¼şÀ´µ÷ÊÔÅäÖÃĞÅÏ¢¡£<br />
-Í¨¹ıÁ¬½Ó SMTP ·şÎñÆ÷·¢ËÍÓÊ¼şĞèÓÊÏäÕË»§¿ªÍ¨SMTP·şÎñ¡£
+	<h2>æç¤ºï¼š</h2>
+	<p>æ‚¨å¯ä»¥é€šè¿‡å‘é€æµ‹è¯•é‚®ä»¶æ¥è°ƒè¯•é…ç½®ä¿¡æ¯ã€‚<br />
+é€šè¿‡è¿æ¥ SMTP æœåŠ¡å™¨å‘é€é‚®ä»¶éœ€é‚®ç®±è´¦æˆ·å¼€é€šSMTPæœåŠ¡ã€‚
 <br />
-Äú¿ÉÒÔÌí¼Ó¶à¸öSMTPÕË»§£¬ÏµÍ³½«Ëæ»úÊ¹ÓÃSMTPÕË»§¡£
+æ‚¨å¯ä»¥æ·»åŠ å¤šä¸ªSMTPè´¦æˆ·ï¼Œç³»ç»Ÿå°†éšæœºä½¿ç”¨SMTPè´¦æˆ·ã€‚
 </p>
   </div>
-<div class="toptit">ÉèÖÃ</div>
+<div class="toptit">è®¾ç½®</div>
 <form action="?act=email_set_save" method="post"   name="form1" id="form1">
 {#$inputtoken#}
 <table width="100%" border="0" cellspacing="8" cellpadding="0" style="padding-left:15px;" id="methodsel">
@@ -63,7 +63,7 @@ $(document).ready(function()
     <td>
 	<label>
 	<input name="method" type="radio" value="1"  {#if $mailconfig.method=="1"#}checked="checked"{#/if#}/>
-      Í¨¹ıÁ¬½Ó SMTP ·şÎñÆ÷·¢ËÍÓÊ¼ş
+      é€šè¿‡è¿æ¥ SMTP æœåŠ¡å™¨å‘é€é‚®ä»¶
 	  </label>
 	  </td>
     </tr>
@@ -71,7 +71,7 @@ $(document).ready(function()
     <td>
 	<label>
 	<input type="radio" name="method" value="2" {#if $mailconfig.method=="2"#}checked="checked"{#/if#}/>
-      Í¨¹ısendmail ·¢ËÍÓÊ¼ş
+      é€šè¿‡sendmail å‘é€é‚®ä»¶
 	  </label>
 	</td>
     </tr>
@@ -79,7 +79,7 @@ $(document).ready(function()
     <td>
 	<label>
 	<input type="radio" name="method" value="3" {#if $mailconfig.method=="3"#}checked="checked"{#/if#}/>
-     Í¨¹ı PHP º¯Êı SMTP ·¢ËÍÓÊ¼ş
+     é€šè¿‡ PHP å‡½æ•° SMTP å‘é€é‚®ä»¶
 
 	  </label>
 	</td>
@@ -91,30 +91,30 @@ $(document).ready(function()
 <div class="html_tpl">
 		<table width="700" border="0" cellspacing="8" cellpadding="1" style=" margin-bottom:3px; border-bottom:1px #CCCCCC solid" >
           <tr>
-            <td width="121" align="right">SMTP·şÎñÆ÷µØÖ·£º</td>
+            <td width="121" align="right">SMTPæœåŠ¡å™¨åœ°å€ï¼š</td>
             <td><input name="smtpservers[]" type="text"  class="input_text_200" id="smtpservers" value="{#$li.smtpservers#}" maxlength="30"/>
-              Èç£ºsmtp.qq.com</td>
-            <td><span style="color:#0066CC; cursor:pointer" class="delsmtp">X É¾³ı´ËÕË»§</span></td>
+              å¦‚ï¼šsmtp.qq.com</td>
+            <td><span style="color:#0066CC; cursor:pointer" class="delsmtp">X åˆ é™¤æ­¤è´¦æˆ·</span></td>
           </tr>
           <tr>
-            <td align="right">SMTP·şÎñÕÊ»§Ãû£º</td>
+            <td align="right">SMTPæœåŠ¡å¸æˆ·åï¼š</td>
             <td><input name="smtpusername[]" type="text"  class="input_text_200" id="smtpusername" value="{#$li.smtpusername#}" maxlength="100"/></td>
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td align="right">SMTP·şÎñÃÜÂë£º</td>
+            <td align="right">SMTPæœåŠ¡å¯†ç ï¼š</td>
             <td><input name="smtppassword[]" type="password"  class="input_text_200" id="smtppassword" value="{#$li.smtppassword#}" maxlength="40"/></td>
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td align="right">·¢ĞÅÈËÓÊ¼şµØÖ·£º</td>
+            <td align="right">å‘ä¿¡äººé‚®ä»¶åœ°å€ï¼š</td>
             <td><input name="smtpfrom[]" type="text"  class="input_text_200" id="site_title" value="{#$li.smtpfrom#}" maxlength="60"/>            </td>
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td align="right">SMTP ¶Ë¿Ú£º</td>
+            <td align="right">SMTP ç«¯å£ï¼š</td>
             <td><input name="smtpport[]" type="text"  class="input_text_200" id="smtpport" value="{#$li.smtpport#}" maxlength="60"/>
-Ä¬ÈÏ£º25</td>
+é»˜è®¤ï¼š25</td>
             <td>&nbsp;</td>
           </tr>
       </table>
@@ -128,8 +128,8 @@ $(document).ready(function()
           <tr>
             <td width="120" align="right">&nbsp;</td>
             <td> 
-              <input name="save" type="submit" class="admin_submit"    value="±£´æĞŞ¸Ä"/>
-			  <input type="button" name="add_form" id="add_form" value="¼ÌĞøÌí¼Ó" class="admin_submit" />
+              <input name="save" type="submit" class="admin_submit"    value="ä¿å­˜ä¿®æ”¹"/>
+			  <input type="button" name="add_form" id="add_form" value="ç»§ç»­æ·»åŠ " class="admin_submit" />
             </td>
           </tr>
       </table>

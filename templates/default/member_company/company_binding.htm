@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > °²È«ÖúÊÖ</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > å®‰å…¨åŠ©æ‰‹</div>
 
 <div class="usermain">
   <div class="leftmenu com link_bk">
@@ -28,29 +28,29 @@
  	    <div class="topnav">
 			  
 		 	<div class="titleH1">
-			  <div class="h1-title">°²È«ÖúÊÖ</div>
+			  <div class="h1-title">å®‰å…¨åŠ©æ‰‹</div>
 			</div>
 			<div class="navs">
-				<a href="?act=password_edit">ĞŞ¸ÄÃÜÂë</a>
-				<a href="?act=binding" class="se">ÕËºÅ°ó¶¨</a>
-				<a href="?act=login_log">µÇÂ¼ÈÕÖ¾</a>
+				<a href="?act=password_edit">ä¿®æ”¹å¯†ç </a>
+				<a href="?act=binding" class="se">è´¦å·ç»‘å®š</a>
+				<a href="?act=login_log">ç™»å½•æ—¥å¿—</a>
 				<div class="clear"></div>
 			</div>		
 	  	</div>
 			 
-		<!-- ĞÂµÄ°ó¶¨Ò³Ãæ -->
+		<!-- æ–°çš„ç»‘å®šé¡µé¢ -->
 		<div class="new_bindding">
 			<table class="new_bindding_table" border="0" cellspacing="0" cellpadding="0">
 				<tbody>
 					<tr bgcolor="#F5F5F5" height="44">
-						<th class="bindding_first" align="left" width="250">Àà±ğ</th>
-						<th align="center" width="200">°ó¶¨êÇ³Æ</th>
-						<th align="center" width="200">°ó¶¨Ê±¼ä</th>
-						<th align="center" width="180">×´Ì¬</th>
+						<th class="bindding_first" align="left" width="250">ç±»åˆ«</th>
+						<th align="center" width="200">ç»‘å®šæ˜µç§°</th>
+						<th align="center" width="200">ç»‘å®šæ—¶é—´</th>
+						<th align="center" width="180">çŠ¶æ€</th>
 					</tr>
 					{#if $QISHI.qq_apiopen=="1"#}
 					<tr>
-						<td class="bindding_first"><div class=" bind_icon {#if $user.qq_openid#}qq_bind{#else#}qq_no_bind{#/if#}">QQÕËºÅ</div></td>
+						<td class="bindding_first"><div class=" bind_icon {#if $user.qq_openid#}qq_bind{#else#}qq_no_bind{#/if#}">QQè´¦å·</div></td>
 						<td align="center">
 							{#if $user.qq_openid#}
 							{#$user.qq_nick#}
@@ -67,16 +67,16 @@
 						</td> 
 						<td align="center">
 							{#if $user.qq_openid#}
-							ÒÑ°ó¶¨ <a href="?act=del_qq_binding" onclick="return confirm('ÄúÈ·¶¨È¡Ïû°ó¶¨Âğ?')">[È¡Ïû°ó¶¨]</a>
+							å·²ç»‘å®š <a href="?act=del_qq_binding" onclick="return confirm('æ‚¨ç¡®å®šå–æ¶ˆç»‘å®šå—?')">[å–æ¶ˆç»‘å®š]</a>
 							{#else#}
-							Î´°ó¶¨ <a href="{#$QISHI.site_dir#}user/{#if $QISHI.qq_logintype=='1'#}connect_qq_client.php{#else#}connect_qq_server.php{#/if#}?act=binding">[Á¢¼´°ó¶¨]</a>
+							æœªç»‘å®š <a href="{#$QISHI.site_dir#}user/{#if $QISHI.qq_logintype=='1'#}connect_qq_client.php{#else#}connect_qq_server.php{#/if#}?act=binding">[ç«‹å³ç»‘å®š]</a>
 							{#/if#}
 						</td>
 					</tr>
 					{#/if#}
 					{#if $QISHI.taobao_apiopen=="1"#}
 					<tr>
-						<td class="bindding_first"><div class=" bind_icon {#if $user.taobao_access_token#}taobao_bind{#else#}taobao_no_bind{#/if#}">ÌÔ±¦ÕËºÅ</div></td>
+						<td class="bindding_first"><div class=" bind_icon {#if $user.taobao_access_token#}taobao_bind{#else#}taobao_no_bind{#/if#}">æ·˜å®è´¦å·</div></td>
 						<td align="center">
 							{#if $user.taobao_access_token#}
 							{#$user.taobao_nick#}
@@ -93,16 +93,16 @@
 						</td>
 						<td align="center">
 							{#if $user.taobao_access_token#}
-							ÒÑ°ó¶¨ <a href="?act=del_taobao_binding" onclick="return confirm('ÄúÈ·¶¨È¡Ïû°ó¶¨Âğ?')">[È¡Ïû°ó¶¨]</a>
+							å·²ç»‘å®š <a href="?act=del_taobao_binding" onclick="return confirm('æ‚¨ç¡®å®šå–æ¶ˆç»‘å®šå—?')">[å–æ¶ˆç»‘å®š]</a>
 							{#else#}
-							Î´°ó¶¨ <a href="{#$QISHI.site_dir#}user/connect_taobao.php">[Á¢¼´°ó¶¨]</a>
+							æœªç»‘å®š <a href="{#$QISHI.site_dir#}user/connect_taobao.php">[ç«‹å³ç»‘å®š]</a>
 							{#/if#}
 						</td>
 					</tr>
 					{#/if#}
 					{#if $QISHI.sina_apiopen=="1"#}
 					<tr>
-						<td class="bindding_first"><div class=" bind_icon {#if $user.sina_apiopen#}sina_bind{#else#}sina_no_bind{#/if#}">ĞÂÀËÕËºÅ</div></td>
+						<td class="bindding_first"><div class=" bind_icon {#if $user.sina_apiopen#}sina_bind{#else#}sina_no_bind{#/if#}">æ–°æµªè´¦å·</div></td>
 						<td align="center">
 							{#if $user.sina_access_token#}
 							{#$user.sina_nick#}
@@ -119,9 +119,9 @@
 						</td>
 						<td align="center">
 							{#if $user.sina_access_token#}
-							ÒÑ°ó¶¨ <a href="?act=del_sina_binding" onclick="return confirm('ÄúÈ·¶¨È¡Ïû°ó¶¨Âğ?')">[È¡Ïû°ó¶¨]</a>
+							å·²ç»‘å®š <a href="?act=del_sina_binding" onclick="return confirm('æ‚¨ç¡®å®šå–æ¶ˆç»‘å®šå—?')">[å–æ¶ˆç»‘å®š]</a>
 							{#else#}
-							Î´°ó¶¨ <a href="{#$QISHI.site_dir#}user/connect_sina.php">[Á¢¼´°ó¶¨]</a>
+							æœªç»‘å®š <a href="{#$QISHI.site_dir#}user/connect_sina.php">[ç«‹å³ç»‘å®š]</a>
 							{#/if#}
 						</td>
 					</tr>

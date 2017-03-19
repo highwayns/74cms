@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>¸öÈË»áÔ±ÖĞĞÄ</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ä¸ªäººä¼šå‘˜ä¸­å¿ƒ</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="../css/common.css" rel="stylesheet" type="text/css" />
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
@@ -17,16 +17,16 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
-	// Ö°Î»Á´½ÓÌø×ª
+	// èŒä½é“¾æ¥è·³è½¬
 	$(".list_centent").click(function(){
 		var url =$(this).attr("url");
 		window.location.href=""+url+"";
 	});
-	// ajax »ñÈ¡¸ü¶àÊÕ²ØÖ°Î»
+	// ajax è·å–æ›´å¤šæ”¶è—èŒä½
 	$(".check_more").click(function(){
 		$(this).hide();
 		var offset=$(".list_centent").size();
@@ -34,7 +34,7 @@ $(document).ready(function()
 		$.get("{#$QISHI.wap_domain#}/plus/wap_ajax.php?act=ajax_favorites_list&offset="+(offset)+"&rows=5", function(result){
 		    if(result=="-1"){
 		    	$(".check_more").show();
-		    	$(".check_more").html("Ã»ÓĞ¸ü¶àÊÕ²ØµÄÖ°Î»ÁË");
+		    	$(".check_more").html("æ²¡æœ‰æ›´å¤šæ”¶è—çš„èŒä½äº†");
 		    }else{
 		    	$(".apply_jobs_list").append(result);
 		    	$(".list_centent").click(function(){
@@ -51,35 +51,35 @@ $(document).ready(function()
 <body>
 <div class=""></div>
 <div class="sub_head_top">
-	<div class="title">ÊÕ²ØµÄÖ°Î»</div>
+	<div class="title">æ”¶è—çš„èŒä½</div>
 	<div class="back" id="pageback"><img src="../images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="../images/2.jpg"  border="0"/></a></div>
 </div>
 
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="../index.php";'>
-    <div class="box"><img src="../images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="../images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-jobs-list.php";'>
-    <div class="box"><img src="../images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="../images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-resume-list.php";'>
-    <div class="box"><img src="../images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="../images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-news-list.php";'>
-    <div class="box"><img src="../images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="../images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 
-<!-- ÒÑÉêÇëµÄÖ°Î» -->
+<!-- å·²ç”³è¯·çš„èŒä½ -->
 
 <div class="apply_jobs">
-	<div class="apply_title">ÊÕ²ØµÄÖ°Î»</div>
+	<div class="apply_title">æ”¶è—çš„èŒä½</div>
 	<div class="apply_jobs_list">
 		{#if $favorites#}
 		{#foreach from=$favorites  item=list#}
@@ -100,12 +100,12 @@ $(document).ready(function()
 		</div>
 		{#/foreach#}
 		{#else#}
-		<div class="nothing">ÄúÃ»ÓĞÊÕ²ØÖ°Î»</div>
+		<div class="nothing">æ‚¨æ²¡æœ‰æ”¶è—èŒä½</div>
 		{#/if#}
 	</div>
 </div>
 
-<div class="check_more">²é¿´¸ü¶à</div>
+<div class="check_more">æŸ¥çœ‹æ›´å¤š</div>
 
 
 

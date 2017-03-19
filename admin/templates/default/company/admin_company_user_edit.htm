@@ -1,16 +1,16 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <link href="css/date_input.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery.date_input.js" type='text/javascript' language="javascript"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
-//ÈÕÆÚ
+//æ—¥æœŸ
 	$(function() { 
 	$(".date_input").date_input(); 
 	}); 
 			
-	//Ì×²ÍÄ£Ê½ÏÂ£¬ÍÆ¹ãÖ°Î»¿ØÖÆÌìÊıµÄÏÔÊ¾£¬Òş²Ø
-	//³õÊ¼»¯ÌìÊıÑùÊ½
+	//å¥—é¤æ¨¡å¼ä¸‹ï¼Œæ¨å¹¿èŒä½æ§åˆ¶å¤©æ•°çš„æ˜¾ç¤ºï¼Œéšè—
+	//åˆå§‹åŒ–å¤©æ•°æ ·å¼
 	$(".monitor").keyup(function(){
 			var num=$(this).val();
 			var id=$(this).attr("id")+"_days";
@@ -56,7 +56,7 @@ $(document).ready(function()
 	jQuery.validator.addMethod("isPhoneNumber", function(value, element) {   
       var tel = /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/;
       return this.optional(element) || (tel.test(value));
-  }, "ÇëÕıÈ·ÌîĞ´ÊÖ»úºÅÂë");
+  }, "è¯·æ­£ç¡®å¡«å†™æ‰‹æœºå·ç ");
   $("#form4").validate({
      rules:{
       mobile: {
@@ -69,11 +69,11 @@ $(document).ready(function()
     },
       messages: {
       mobile: {
-    isPhoneNumber: jQuery.format("ÇëÕıÈ·ÌîĞ´ÊÖ»úºÅÂë")
+    isPhoneNumber: jQuery.format("è¯·æ­£ç¡®å¡«å†™æ‰‹æœºå·ç ")
      },
      email: {
-      required: jQuery.format("ÇëÌîĞ´µç×ÓÓÊÏä"),
-    email: jQuery.format("ÇëÕıÈ·ÌîĞ´µç×ÓÓÊÏä")
+      required: jQuery.format("è¯·å¡«å†™ç”µå­é‚®ç®±"),
+    email: jQuery.format("è¯·æ­£ç¡®å¡«å†™ç”µå­é‚®ç®±")
      } 
     },
     errorPlacement: function(error, element) {
@@ -92,69 +92,69 @@ $(document).ready(function()
 	<div class="ptit"> {#$pageheader#}</div>
   <div class="clear"></div>
 </div>
-<div class="toptit">±à¼­»áÔ± <span style="color:#0066CC">({#$company_user.username#})</span> </div>
+<div class="toptit">ç¼–è¾‘ä¼šå‘˜ <span style="color:#0066CC">({#$company_user.username#})</span> </div>
   <table width="100%" border="0" cellpadding="4" cellspacing="0"   >
     <tr>
-      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">×¢²áÊ±¼ä£º</td>
+      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">æ³¨å†Œæ—¶é—´ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed" >{#$company_user.reg_time|date_format:"%Y-%m-%d   %H:%M"#}&nbsp;</td>
-      <td width="120" align="right"  style=" border-bottom:1px #CCCCCC dashed" >×îºóµÇÂ¼Ê±¼ä£º</td>
+      <td width="120" align="right"  style=" border-bottom:1px #CCCCCC dashed" >æœ€åç™»å½•æ—¶é—´ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed" >{#$company_user.last_login_time|date_format:"%Y-%m-%d %H:%M"#}</td>
     </tr>
     <tr>
-      <td height="30" align="right"   >×¢²áIP£º</td>
+      <td height="30" align="right"   >æ³¨å†ŒIPï¼š</td>
       <td   >{#if $company_user.reg_ip#}{#$company_user.reg_ip#}{#else#}- - - -{#/if#}</td>
-      <td align="right"  >×îºóµÇÂ¼IP£º</td>
+      <td align="right"  >æœ€åç™»å½•IPï¼š</td>
       <td   >{#if $company_user.last_login_ip#}{#$company_user.last_login_ip#}{#else#}- - - -{#/if#}</td>
     </tr>
   </table>
-  <div class="toptit">»ù±¾ĞÅÏ¢</div>
+  <div class="toptit">åŸºæœ¬ä¿¡æ¯</div>
   <form id="form4" name="form4" method="post" action="?act=set_account_save">
 	{#$inputtoken#}
 	<table width="700" border="0" cellpadding="4" cellspacing="0"   >
       <tr>
-        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÓÃ»§Ãû£º</td>
+        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ç”¨æˆ·åï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="username" type="text" class="input_text_200"   maxlength="50" value="{#$company_user.username#}"  >
           	</td>
       </tr>
 	  <tr>
-        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÓÊÏä£º</td>
+        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">é‚®ç®±ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="email" type="text" class="input_text_200"   maxlength="50" value="{#$company_user.email#}"  >
 		  
 		  &nbsp;&nbsp;&nbsp;
 		  <label>
           <input name="email_audit" type="checkbox" value="1" {#if $company_user.email_audit=="1"#}checked="checked"{#/if#} />
-          ÒÑÑéÖ¤</label>	
+          å·²éªŒè¯</label>	
 		</td>
       </tr>
 	  <tr>
-        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÊÖ»ú£º</td>
+        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">æ‰‹æœºï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="mobile" type="text" class="input_text_200"   maxlength="50" value="{#$company_user.mobile#}"  >
 		  
 		  &nbsp;&nbsp;&nbsp;
 		  <label>
           <input type="checkbox" name="mobile_audit" value="1"  {#if $company_user.mobile_audit=="1"#}checked="checked"{#/if#} />
-          ÒÑÑéÖ¤</label>	
+          å·²éªŒè¯</label>	
 		</td>
       </tr>
 	   <tr>
-        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">QQ°ó¶¨£º</td>
+        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">QQç»‘å®šï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
          {#if $company_user.qq_openid#}
-		 ÒÑ°ó¶¨QQÕËºÅ 
+		 å·²ç»‘å®šQQè´¦å· 
 		  &nbsp;&nbsp;&nbsp; 
 		 <label>
           <input type="checkbox" name="qq_openid" value="1"  />
-          È¡Ïû°ó¶¨</label>
+          å–æ¶ˆç»‘å®š</label>
 		 {#else#}
-		 Î´°ó¶¨QQÕÊºÅ
+		 æœªç»‘å®šQQå¸å·
 		 {#/if#}
 		 	
 		</td>
 		<tr>
-        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">Õ¹Ê¾Ä£°æ£º</td>
+        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">å±•ç¤ºæ¨¡ç‰ˆï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="tpl" type="text" class="input_text_200"   maxlength="50" value="{#$company_user.tpl#}"  >
 		</td>
@@ -165,17 +165,17 @@ $(document).ready(function()
         <td height="50"  >
 		<input type="hidden" name="company_uid"  value="{#$company_user.uid#}" />
             <input type="hidden" name="url"  value="{#$url#}" />
-            <input name="submit32" type="submit" class="admin_submit"    value="È·¶¨"/>
-          <input name="submit222" type="button" class="admin_submit"    value="·µ »Ø" onclick="Javascript:window.history.go(-1)"/>        </td>
+            <input name="submit32" type="submit" class="admin_submit"    value="ç¡®å®š"/>
+          <input name="submit222" type="button" class="admin_submit"    value="è¿” å›" onclick="Javascript:window.history.go(-1)"/>        </td>
       </tr>
     </table>
   </form>
-  <div class="toptit">ĞŞ¸ÄÃÜÂë</div>
+  <div class="toptit">ä¿®æ”¹å¯†ç </div>
 	<form id="form6" name="form6" method="post" action="?act=userpass_edit">
 	{#$inputtoken#}
 	<table width="100%" border="0" cellpadding="4" cellspacing="0"   >		 
 	<tr>
-      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ĞÂÃÜÂë£º</td>
+      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">æ–°å¯†ç ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed;" >
         <input name="password" type="password" class="input_text_200" id="password" maxlength="50" value=""  />        </td>
     </tr>
@@ -184,25 +184,25 @@ $(document).ready(function()
       <td height="60"   ><span style="font-size:14px;">
         <input type="hidden" name="username"  value="{#$company_user.username#}" />
 		<input type="hidden" name="url"  value="{#$url#}" />
-        <input name="submit3" type="submit" class="admin_submit"    value="È·¶¨"/>
-        <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="Javascript:window.history.go(-1)"/>
+        <input name="submit3" type="submit" class="admin_submit"    value="ç¡®å®š"/>
+        <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="Javascript:window.history.go(-1)"/>
       </span></td>
     </tr>
 	</table>
 	</form>
-   <div class="toptit">ÓÃ»§×´Ì¬</div>
+   <div class="toptit">ç”¨æˆ·çŠ¶æ€</div>
 	 <form id="form9" name="form9" method="post" action="?act=userstatus_edit">
 	 {#$inputtoken#}
 	<table width="100%" border="0" cellpadding="4" cellspacing="0"   > 
 		<tr>
-      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÕÊºÅ×´Ì¬£º</td>
+      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">å¸å·çŠ¶æ€ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed;" >
 	    <label>
 	    <input name="status" type="radio" value="1"  {#if $company_user.status=="1"#}checked="checked"{#/if#}/>
-	    Õı³£</label> 
+	    æ­£å¸¸</label> 
 		<label>&nbsp;&nbsp;&nbsp;&nbsp;
 	    <input type="radio" name="status" value="2"  {#if $company_user.status=="2"#}checked="checked"{#/if#}/>
-	    ÔİÍ£</label>
+	    æš‚åœ</label>
 		</td>
     </tr>
 	    <tr>
@@ -210,63 +210,63 @@ $(document).ready(function()
       <td height="60"   ><span style="font-size:14px;">
         <input type="hidden" name="userstatus_uid"  value="{#$company_user.uid#}" />
 		<input type="hidden" name="url"  value="{#$url#}" />
-        <input name="submit3" type="submit" class="admin_submit"    value="È·¶¨"/>
-        <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="Javascript:window.history.go(-1)"/>
+        <input name="submit3" type="submit" class="admin_submit"    value="ç¡®å®š"/>
+        <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="Javascript:window.history.go(-1)"/>
       </span></td>
     </tr>	
   </table>
   </form>
 {#if $QISHI.operation_mode=='1'||$QISHI.operation_mode=='3'#}  
- <div class="toptit">»áÔ±»ı·ÖÉèÖÃ</div>
+ <div class="toptit">ä¼šå‘˜ç§¯åˆ†è®¾ç½®</div>
  <form id="form1" name="form1" method="post" action="?act=userpoints_edit">
  {#$inputtoken#}
   <table width="100%" border="0" cellpadding="4" cellspacing="0"   >
 		 
 		 <tr>
-      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">»áÔ±»ı·Ö£º</td>
+      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ä¼šå‘˜ç§¯åˆ†ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed; color: #FF6600; font-size:16px;" >{#$userpoints#}&nbsp;</td>
     </tr>
 	<tr>
-      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">²Ù×÷»ı·Ö£º</td>
+      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">æ“ä½œç§¯åˆ†ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed;" >
-	  <label><input name="points_type" type="radio" value="1" checked="checked" />Ôö¼Ó</label>
+	  <label><input name="points_type" type="radio" value="1" checked="checked" />å¢åŠ </label>
 	  &nbsp;&nbsp;&nbsp;
-	  <label><input name="points_type" type="radio" value="2" />¼õÉÙ</label>
+	  <label><input name="points_type" type="radio" value="2" />å‡å°‘</label>
 	  </td>
     </tr>
 			<tr>
-      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">Ôö¼õ»ı·Ö£º</td>
+      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">å¢å‡ç§¯åˆ†ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed;" >
 	   <input name="points" type="text"  id="points" maxlength="5" value="0"  class="input_text_50"  />
-	  µã        </td>
+	  ç‚¹        </td>
     </tr>
 	<tr>
-      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">²Ù×÷ËµÃ÷£º</td>
+      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">æ“ä½œè¯´æ˜ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed;" >
         <input name="points_notes" type="text" class="input_text_200" id="points_notes" maxlength="60" value="" style="width:450px;"/>        </td>
     </tr>
 		<tr>
-			<td align="right" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF0000">ÊÇ·ñÒÑÊÕ·Ñ£º</span></td>
+			<td align="right" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF0000">æ˜¯å¦å·²æ”¶è´¹ï¼š</span></td>
 			<td style=" border-bottom:1px #CCCCCC dashed">
 			<label>
 			 <input name="is_money" type="radio" value="1" checked="checked" class="yes_money3"/>
-			ÊÇ</label> &nbsp;&nbsp;&nbsp;<label>
+			æ˜¯</label> &nbsp;&nbsp;&nbsp;<label>
 			<input name="is_money" type="radio" value="0"  class="no_money3"/>
-			·ñ</label>		
+			å¦</label>		
 			</td>
       </tr>
 	   <tr class="log_amount3">
-        <td align="right"  style=" border-bottom:1px #CCCCCC dashed;"><span style="color:#FF0000">ÊÕ·Ñ½ğ¶î£º</span></td>
-        <td style=" border-bottom:1px #CCCCCC dashed"><input name="log_amount" type="text" class="input_text_200"  value="{#$setmeal.log_amount#}" maxlength="5"/> Ôª
-         <span class="admin_note">(ÇëÌîĞ´ÊÕ·Ñ½ğ¶î)</span> </td>
+        <td align="right"  style=" border-bottom:1px #CCCCCC dashed;"><span style="color:#FF0000">æ”¶è´¹é‡‘é¢ï¼š</span></td>
+        <td style=" border-bottom:1px #CCCCCC dashed"><input name="log_amount" type="text" class="input_text_200"  value="{#$setmeal.log_amount#}" maxlength="5"/> å…ƒ
+         <span class="admin_note">(è¯·å¡«å†™æ”¶è´¹é‡‘é¢)</span> </td>
       </tr>
     <tr>
       <td height="30" align="right"  >&nbsp;</td>
       <td height="35"   ><span style="font-size:14px;">
         <input type="hidden" name="company_uid"  value="{#$company_user.uid#}" />
 		<input type="hidden" name="url"  value="{#$url#}" />
-        <input name="submit3" type="submit" class="admin_submit"    value="È·¶¨"/>
-        <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="Javascript:window.history.go(-1)"/>
+        <input name="submit3" type="submit" class="admin_submit"    value="ç¡®å®š"/>
+        <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="Javascript:window.history.go(-1)"/>
       </span></td>
     </tr> 
 	</table>
@@ -276,185 +276,185 @@ $(document).ready(function()
   
   
 	{#if $setmeal#}
-	<div class="toptit">»áÔ±·şÎñÌ×²Í- ĞŞ¸Ä</div>
+	<div class="toptit">ä¼šå‘˜æœåŠ¡å¥—é¤- ä¿®æ”¹</div>
 	<form id="form2" name="form2" method="post" action="?act=edit_setmeal_save">
 	{#$inputtoken#}
 	<table width="100%" border="0" cellpadding="4" cellspacing="0" >
 	  <tr>
         <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">
-		·şÎñÌ×²ÍÃû³Æ£º		</td>
+		æœåŠ¡å¥—é¤åç§°ï¼š		</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
 {#$setmeal.setmeal_name#}		</td>
       </tr>
       <tr>
-        <td   height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">·şÎñÊ±¼ä£º</td>
+        <td   height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">æœåŠ¡æ—¶é—´ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
-		¿ªÊ¼Ê±¼ä£º{#$setmeal.starttime|date_format:"%Y-%m-%d"#}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		½áÊøÊ±¼ä£º{#if $setmeal.endtime=="0"#}
-		ÎŞÏŞÖÆ
+		å¼€å§‹æ—¶é—´ï¼š{#$setmeal.starttime|date_format:"%Y-%m-%d"#}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		ç»“æŸæ—¶é—´ï¼š{#if $setmeal.endtime=="0"#}
+		æ— é™åˆ¶
 		{#else#}
 		{#$setmeal.endtime|date_format:"%Y-%m-%d"#}
 		{#/if#}
 		 <input type="hidden" name="oldendtime"  value="{#$setmeal.endtime#}" />		</td>
       </tr>
 	  <tr>
-        <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">µ½ÆÚÊ±¼ä£º</td>
+        <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">åˆ°æœŸæ—¶é—´ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" ><input name="setendtime" type="text" class="input_text_200 date_input" id="setendtime" maxlength="10" value="{#if $setmeal.endtime=="0"#}{#else#}{#$setmeal.endtime|date_format:"%Y-%m-%d"#}{#/if#}"  >
-		<span class="admin_note">ÉèÖÃµ½ÆÚÊ±¼ä£¬¸ñÊ½ yyyy-mm-dd£¬Áô¿ÕÎª²»ÏŞÖÆ</span>
+		<span class="admin_note">è®¾ç½®åˆ°æœŸæ—¶é—´ï¼Œæ ¼å¼ yyyy-mm-ddï¼Œç•™ç©ºä¸ºä¸é™åˆ¶</span>
           </td>
       </tr>
 	      <tr>
-        <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">·şÎñÌìÊı£º</td>
+        <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">æœåŠ¡å¤©æ•°ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="days" type="text" class="input_text_200" id="days" maxlength="50" value="" style="width:60px;">
-          Ìì <span class="admin_note">(Ä¬ÈÏÎª¿Õ±íÊ¾²»×öĞŞ¸Ä£¬Ìî0Îª²»ÏŞÖÆ,ÈçÌîĞ´£º3£¬ÔòÑÓ³¤3Ìì£¬-3 Ôò¼õÉÙ3Ìì)</span></td>
+          å¤© <span class="admin_note">(é»˜è®¤ä¸ºç©ºè¡¨ç¤ºä¸åšä¿®æ”¹ï¼Œå¡«0ä¸ºä¸é™åˆ¶,å¦‚å¡«å†™ï¼š3ï¼Œåˆ™å»¶é•¿3å¤©ï¼Œ-3 åˆ™å‡å°‘3å¤©)</span></td>
       </tr>
 	  <!-- -->
 	  <tr>
-        <td  height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">·¢²¼ÆÕÍ¨ÕĞÆ¸Ê£Óà£º</td>
+        <td  height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">å‘å¸ƒæ™®é€šæ‹›è˜å‰©ä½™ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="jobs_ordinary" type="text" class="input_text_200" id="jobs_ordinary" maxlength="50" value="{#$setmeal.jobs_ordinary#}"  >
-          Ìõ</td>
+          æ¡</td>
       </tr>
 	 
 	  <tr>
-        <td   height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÏÂÔØÆÕÍ¨¼òÀúÊ£Óà£º</td>
+        <td   height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ä¸‹è½½æ™®é€šç®€å†å‰©ä½™ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="download_resume_ordinary" type="text" class="input_text_200" id="download_resume_ordinary" maxlength="50" value="{#$setmeal.download_resume_ordinary#}"  >
-          Ìõ</td>
+          æ¡</td>
       </tr>
 	  <tr>
-        <td   height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÏÂÔØ¸ß¼¶¼òÀúÊ£Óà£º</td>
+        <td   height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ä¸‹è½½é«˜çº§ç®€å†å‰©ä½™ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="download_resume_senior" type="text" class="input_text_200" id="download_resume_senior" maxlength="50" value="{#$setmeal.download_resume_senior#}"  >
-          Ìõ</td>
+          æ¡</td>
       </tr>
 	  <tr>
-        <td   height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÑûÇëÆÕÍ¨ÃæÊÔÊ£Óà£º</td>
+        <td   height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">é‚€è¯·æ™®é€šé¢è¯•å‰©ä½™ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="interview_ordinary" type="text" class="input_text_200" id="interview_ordinary" maxlength="50" value="{#$setmeal.interview_ordinary#}"  >
-          Ìõ</td>
+          æ¡</td>
       </tr>
 	  
 	  <!-- -->
 	    	   	  <!-- -->
 	  <tr>
-        <td  height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÑûÇë¸ß¼¶ÃæÊÔÊ£Óà£º</td>
+        <td  height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">é‚€è¯·é«˜çº§é¢è¯•å‰©ä½™ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="interview_senior" type="text" class="input_text_200" id="interview_senior" maxlength="50" value="{#$setmeal.interview_senior#}"  >
-          Ìõ</td>
+          æ¡</td>
       </tr>
 
 	  <tr>
-        <td   height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÈË²Å¿âÈİÁ¿£º</td>
+        <td   height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">äººæ‰åº“å®¹é‡ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="talent_pool" type="text" class="input_text_200" id="talent_pool" maxlength="50" value="{#$setmeal.talent_pool#}"  >
-          Ìõ</td>
+          æ¡</td>
       </tr>
 	  <!-- -->
 	    	   	  <!-- -->
 		
 	   <tr>
-        <td align="right" style=" border-bottom:1px #CCCCCC dashed">ÔÊĞíÍÆ¼öÖ°Î»£º<span style="position:relative;"><div class="set_meal" id="recommend_he"></div></span></td>
+        <td align="right" style=" border-bottom:1px #CCCCCC dashed">å…è®¸æ¨èèŒä½ï¼š<span style="position:relative;"><div class="set_meal" id="recommend_he"></div></span></td>
         <td style=" border-bottom:1px #CCCCCC dashed"><input name="recommend_num" type="text" class="input_text_200 monitor" id="recommend" value="{#$setmeal.recommend_num#}" maxlength="5"/>
-        Ìõ <span class="admin_note">(0Îª²»ÔÊĞíÊ¹ÓÃÍÆ¼öÖ°Î»)</span> </td>
+        æ¡ <span class="admin_note">(0ä¸ºä¸å…è®¸ä½¿ç”¨æ¨èèŒä½)</span> </td>
       </tr>
 	   <tr style="display:none;" id="recommend_days" >
-        <td align="right" style=" border-bottom:1px #CCCCCC dashed">ÍÆ¼öÌìÊıÉè¶¨£º</td>
+        <td align="right" style=" border-bottom:1px #CCCCCC dashed">æ¨èå¤©æ•°è®¾å®šï¼š</td>
         <td style=" border-bottom:1px #CCCCCC dashed"><input name="recommend_days" type="text" class="input_text_200"  value="{#$setmeal.recommend_days#}"  maxlength="5"/>
-        Ìì <span class="admin_note">(ÇëÉè¶¨ÌìÊı)</span> </td>
+        å¤© <span class="admin_note">(è¯·è®¾å®šå¤©æ•°)</span> </td>
       </tr>
 	   <tr>
-        <td align="right" style=" border-bottom:1px #CCCCCC dashed">ÔÊĞíÖÃ¶¥Ö°Î»£º<span style="position:relative;"><div class="set_meal" id="stick_he"></div></span></td>
+        <td align="right" style=" border-bottom:1px #CCCCCC dashed">å…è®¸ç½®é¡¶èŒä½ï¼š<span style="position:relative;"><div class="set_meal" id="stick_he"></div></span></td>
         <td style=" border-bottom:1px #CCCCCC dashed"><input name="stick_num" type="text" class="input_text_200 monitor" id="stick" value="{#$setmeal.stick_num#}" maxlength="5"/>
-        Ìõ <span class="admin_note">(0Îª²»ÔÊĞíÊ¹ÓÃÖÃ¶¥Ö°Î»)</span> </td>
+        æ¡ <span class="admin_note">(0ä¸ºä¸å…è®¸ä½¿ç”¨ç½®é¡¶èŒä½)</span> </td>
       </tr >
 	   <tr style="display:none" id="stick_days" >
-        <td align="right" style=" border-bottom:1px #CCCCCC dashed">ÖÃ¶¥ÌìÊıÉè¶¨£º</td>
+        <td align="right" style=" border-bottom:1px #CCCCCC dashed">ç½®é¡¶å¤©æ•°è®¾å®šï¼š</td>
         <td style=" border-bottom:1px #CCCCCC dashed"><input name="stick_days" type="text" class="input_text_200" value="{#$setmeal.stick_days#}" maxlength="5"/>
-        Ìì <span class="admin_note">(ÇëÉè¶¨ÌìÊı)</span> </td>
+        å¤© <span class="admin_note">(è¯·è®¾å®šå¤©æ•°)</span> </td>
       </tr>
 	   <tr>
-        <td align="right" style=" border-bottom:1px #CCCCCC dashed">ÔÊĞí½ô¼±Ö°Î»£º<span style="position:relative;"><div class="set_meal" id="emergency_he"></div></span></td>
+        <td align="right" style=" border-bottom:1px #CCCCCC dashed">å…è®¸ç´§æ€¥èŒä½ï¼š<span style="position:relative;"><div class="set_meal" id="emergency_he"></div></span></td>
         <td style=" border-bottom:1px #CCCCCC dashed"><input name="emergency_num" type="text" class="input_text_200 monitor" id="emergency" value="{#$setmeal.emergency_num#}" maxlength="5"/>
-        Ìõ <span class="admin_note">(0Îª²»ÔÊĞíÊ¹ÓÃ½ô¼±Ö°Î»)</span> </td>
+        æ¡ <span class="admin_note">(0ä¸ºä¸å…è®¸ä½¿ç”¨ç´§æ€¥èŒä½)</span> </td>
       </tr>
 	   <tr style="display:none" id="emergency_days">
-        <td align="right" style=" border-bottom:1px #CCCCCC dashed" >½ô¼±ÌìÊıÉè¶¨£º</td>
+        <td align="right" style=" border-bottom:1px #CCCCCC dashed" >ç´§æ€¥å¤©æ•°è®¾å®šï¼š</td>
         <td style=" border-bottom:1px #CCCCCC dashed"><input name="emergency_days" type="text" class="input_text_200"  value="{#$setmeal.emergency_days#}" maxlength="5"/>
-        Ìì <span class="admin_note">(ÇëÉè¶¨ÌìÊı)</span> </td>
+        å¤© <span class="admin_note">(è¯·è®¾å®šå¤©æ•°)</span> </td>
       </tr>
 	   <tr>
-        <td align="right" style=" border-bottom:1px #CCCCCC dashed">ÔÊĞíÖ°Î»Ì×É«£º<span style="position:relative;"><div class="set_meal" id="highlight_he"></div></span></td>
+        <td align="right" style=" border-bottom:1px #CCCCCC dashed">å…è®¸èŒä½å¥—è‰²ï¼š<span style="position:relative;"><div class="set_meal" id="highlight_he"></div></span></td>
         <td style=" border-bottom:1px #CCCCCC dashed"><input name="highlight_num" type="text" class="input_text_200 monitor" id="highlight" value="{#$setmeal.highlight_num#}" maxlength="5"/>
-        Ìõ <span class="admin_note">(0Îª²»ÔÊĞíÊ¹ÓÃÖ°Î»Ì×É«)</span> </td>
+        æ¡ <span class="admin_note">(0ä¸ºä¸å…è®¸ä½¿ç”¨èŒä½å¥—è‰²)</span> </td>
       </tr>
 	   <tr style="display:none" id="highlight_days">
-        <td align="right"  style=" border-bottom:1px #CCCCCC dashed">Ì×É«ÌìÊıÉè¶¨£º</td>
+        <td align="right"  style=" border-bottom:1px #CCCCCC dashed">å¥—è‰²å¤©æ•°è®¾å®šï¼š</td>
         <td style=" border-bottom:1px #CCCCCC dashed"><input name="highlight_days" type="text" class="input_text_200"  value="{#$setmeal.highlight_days#}" maxlength="5"/>
-        Ìì <span class="admin_note">(ÇëÉè¶¨ÌìÊı)</span> </td>
+        å¤© <span class="admin_note">(è¯·è®¾å®šå¤©æ•°)</span> </td>
       </tr>
 	   <tr>
-        <td align="right" style=" border-bottom:1px #CCCCCC dashed" >²Î¼ÓÕĞÆ¸»áÉè¶¨£º</td>
+        <td align="right" style=" border-bottom:1px #CCCCCC dashed" >å‚åŠ æ‹›è˜ä¼šè®¾å®šï¼š</td>
         <td style=" border-bottom:1px #CCCCCC dashed"><input name="jobsfair_num" type="text" class="input_text_200"  value="{#$setmeal.jobsfair_num#}" maxlength="5"/>
-        ³¡´Î <span class="admin_note">(ÓÃ»§¿É²Î¼ÓÕĞÆ¸»á³¡´Î)</span> </td>
+        åœºæ¬¡ <span class="admin_note">(ç”¨æˆ·å¯å‚åŠ æ‹›è˜ä¼šåœºæ¬¡)</span> </td>
       </tr>
 	  <tr>
-        <td align="right" style=" border-bottom:1px #CCCCCC dashed">ÔÊĞí»áÔ±ÇĞ»»Ä£°å£º</td>
+        <td align="right" style=" border-bottom:1px #CCCCCC dashed">å…è®¸ä¼šå‘˜åˆ‡æ¢æ¨¡æ¿ï¼š</td>
         <td style=" border-bottom:1px #CCCCCC dashed"><label>
           <input name="change_templates" type="radio" value="1"  {#if $setmeal.change_templates=="1"#}checked="checked"{#/if#}/>
-        ÔÊĞí</label> &nbsp;&nbsp;&nbsp;<label>
+        å…è®¸</label> &nbsp;&nbsp;&nbsp;<label>
         <input type="radio" name="change_templates" value="0"  {#if $setmeal.change_templates=="0"#}checked="checked"{#/if#}/>
-        ²»ÔÊĞí</label></td>
+        ä¸å…è®¸</label></td>
       </tr>
 		<tr>
-			<td align="right" style=" border-bottom:1px #CCCCCC dashed">¿ªÍ¨ÆóÒµµç×ÓµØÍ¼£º</td>
+			<td align="right" style=" border-bottom:1px #CCCCCC dashed">å¼€é€šä¼ä¸šç”µå­åœ°å›¾ï¼š</td>
 			<td style=" border-bottom:1px #CCCCCC dashed">
 			<label>
 			  <input name="map_open" type="radio" value="1" {#if $setmeal.map_open=="1"#}checked="checked"{#/if#}/>
-			ÊÇ</label> &nbsp;&nbsp;&nbsp;<label>
+			æ˜¯</label> &nbsp;&nbsp;&nbsp;<label>
 			<input name="map_open" type="radio" value="0"  {#if $setmeal.map_open=="0"#}checked="checked"{#/if#}/>
-			·ñ</label>		
+			å¦</label>		
 			</td>
       </tr>
 	  <tr>
-        <td   height="30" align="right" valign="top"  style=" border-bottom:1px #CCCCCC dashed">ÆäËûËµÃ÷£º</td>
+        <td   height="30" align="right" valign="top"  style=" border-bottom:1px #CCCCCC dashed">å…¶ä»–è¯´æ˜ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <textarea name="added"   id="added" style="width:300px; height:60px;">{#$setmeal.added#}</textarea>        </td>
       </tr>
 	  
 		<tr>
-			<td align="right" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF0000">ÊÇ·ñÒÑÊÕ·Ñ£º</span></td>
+			<td align="right" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF0000">æ˜¯å¦å·²æ”¶è´¹ï¼š</span></td>
 			<td style=" border-bottom:1px #CCCCCC dashed">
 			<label>
 			 <input name="is_money" type="radio" value="1" checked="checked" class="yes_money"/>
-			ÊÇ</label> &nbsp;&nbsp;&nbsp;<label>
+			æ˜¯</label> &nbsp;&nbsp;&nbsp;<label>
 			<input name="is_money" type="radio" value="0"  class="no_money"/>
-			·ñ</label>		
+			å¦</label>		
 			</td>
       </tr>
 	   <tr class="log_amount">
-        <td align="right"  style=" border-bottom:1px #CCCCCC dashed;"><span style="color:#FF0000">ÊÕ·Ñ½ğ¶î£º</span></td>
-        <td style=" border-bottom:1px #CCCCCC dashed"><input name="log_amount" type="text" class="input_text_200"  value="{#$setmeal.log_amount#}" maxlength="5"/> Ôª
-         <span class="admin_note">(ÇëÌîĞ´ÊÕ·Ñ½ğ¶î)</span> </td>
+        <td align="right"  style=" border-bottom:1px #CCCCCC dashed;"><span style="color:#FF0000">æ”¶è´¹é‡‘é¢ï¼š</span></td>
+        <td style=" border-bottom:1px #CCCCCC dashed"><input name="log_amount" type="text" class="input_text_200"  value="{#$setmeal.log_amount#}" maxlength="5"/> å…ƒ
+         <span class="admin_note">(è¯·å¡«å†™æ”¶è´¹é‡‘é¢)</span> </td>
       </tr>
 	  <tr>
       <td width="120" height="30" align="right"   >&nbsp;</td>
       <td height="35"   > 
         <input type="hidden" name="company_uid"  value="{#$company_user.uid#}" />
 		<input type="hidden" name="url"  value="{#$url#}" />
-        <input name="submit3" type="submit" class="admin_submit"    value="È·¶¨"/>
-        <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="Javascript:window.history.go(-1)"/> </td>
+        <input name="submit3" type="submit" class="admin_submit"    value="ç¡®å®š"/>
+        <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="Javascript:window.history.go(-1)"/> </td>
     </tr>
     </table>
 	</form>
 	{#/if#}
-	<div class="toptit">ÖØĞÂ¿ªÍ¨·şÎñÌ×²Í</div>
+	<div class="toptit">é‡æ–°å¼€é€šæœåŠ¡å¥—é¤</div>
 	<form id="form4" name="form4" method="post" action="?act=set_setmeal_save">
 	{#$inputtoken#}
 	<table width="700" border="0" cellpadding="4" cellspacing="0"   id="edit_setmeal2" >
       <tr>
-        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">Ñ¡ÔñÌ×²Í£º</td>
+        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">é€‰æ‹©å¥—é¤ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           {#foreach from=$givesetmeal item=list#}		   
 		    <label>
@@ -468,27 +468,27 @@ $(document).ready(function()
 		</td>
       </tr>
 		<tr>
-			<td align="right" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF0000">ÊÇ·ñÒÑÊÕ·Ñ£º</span></td>
+			<td align="right" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF0000">æ˜¯å¦å·²æ”¶è´¹ï¼š</span></td>
 			<td style=" border-bottom:1px #CCCCCC dashed">
 			<label>
 			 <input name="is_money" type="radio" value="1" checked="checked" class="yes_money1"/>
-			ÊÇ</label> &nbsp;&nbsp;&nbsp;<label>
+			æ˜¯</label> &nbsp;&nbsp;&nbsp;<label>
 			<input name="is_money" type="radio" value="0"  class="no_money1"/>
-			·ñ</label>		
+			å¦</label>		
 			</td>
       </tr>
 	   <tr class="log_amount1">
-        <td align="right"  style=" border-bottom:1px #CCCCCC dashed;"><span style="color:#FF0000">ÊÕ·Ñ½ğ¶î£º</span></td>
-        <td style=" border-bottom:1px #CCCCCC dashed"><input name="log_amount" type="text" class="input_text_200"  value="{#$setmeal.log_amount#}" maxlength="5"/> Ôª
-         <span class="admin_note">(ÇëÌîĞ´ÊÕ·Ñ½ğ¶î)</span> </td>
+        <td align="right"  style=" border-bottom:1px #CCCCCC dashed;"><span style="color:#FF0000">æ”¶è´¹é‡‘é¢ï¼š</span></td>
+        <td style=" border-bottom:1px #CCCCCC dashed"><input name="log_amount" type="text" class="input_text_200"  value="{#$setmeal.log_amount#}" maxlength="5"/> å…ƒ
+         <span class="admin_note">(è¯·å¡«å†™æ”¶è´¹é‡‘é¢)</span> </td>
       </tr>
       <tr>
         <td height="30" align="right"  >&nbsp;</td>
         <td height="35"  >
 		<input type="hidden" name="company_uid"  value="{#$company_user.uid#}" />
             <input type="hidden" name="url"  value="{#$url#}" />
-            <input name="submit32" type="submit" class="admin_submit"    value="È·¶¨"/>
-          <input name="submit222" type="button" class="admin_submit"    value="·µ »Ø" onclick="Javascript:window.history.go(-1)"/>
+            <input name="submit32" type="submit" class="admin_submit"    value="ç¡®å®š"/>
+          <input name="submit222" type="button" class="admin_submit"    value="è¿” å›" onclick="Javascript:window.history.go(-1)"/>
         </td>
       </tr>
     </table>

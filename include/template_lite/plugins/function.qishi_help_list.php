@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_help_list($params, &$smarty)
 {
 global $db,$_CFG;
@@ -8,40 +8,40 @@ foreach($arrset as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "ÁÐ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
-	case "ÏÔÊ¾ÊýÄ¿":
+	case "æ˜¾ç¤ºæ•°ç›®":
 		$aset['row'] = $a[1];
 		break;
-	case "´óÀà":
+	case "å¤§ç±»":
 		$aset['parentid'] = $a[1];
 		break;
-	case "Ð¡Àà":
+	case "å°ç±»":
 		$aset['type_id'] = $a[1];
 		break;
-	case "¹Ø¼ü×Ö":
+	case "å…³é”®å­—":
 		$aset['key'] = $a[1];
 		break;
-	case "±êÌâ³¤¶È":
+	case "æ ‡é¢˜é•¿åº¦":
 		$aset['titlelen'] = $a[1];
 		break;
-	case "ÕªÒª³¤¶È":
+	case "æ‘˜è¦é•¿åº¦":
 		$aset['infolen'] = $a[1];
 		break;		
-	case "¿ªÊ¼Î»ÖÃ":
+	case "å¼€å§‹ä½ç½®":
 		$aset['start'] = $a[1];
 		break;
-	case "Ìî²¹×Ö·û":
+	case "å¡«è¡¥å­—ç¬¦":
 		$aset['dot'] = $a[1];
 		break;
-	case "·ÖÒ³ÏÔÊ¾":
+	case "åˆ†é¡µæ˜¾ç¤º":
 		$aset['paged'] = $a[1];
 		break;
-	case "Ò³Ãæ":
+	case "é¡µé¢":
 		$aset['showname'] = $a[1];
 		break;
-	case "ÁÐ±íÒ³":
+	case "åˆ—è¡¨é¡µ":
 		$aset['listpage'] = $a[1];
 		break;
 	}

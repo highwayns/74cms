@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>¸öÈË»áÔ±ÖĞĞÄ</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ä¸ªäººä¼šå‘˜ä¸­å¿ƒ</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="../css/common.css" rel="stylesheet" type="text/css" />
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
@@ -17,11 +17,11 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
- 	// ¼òÀúÒşË½ÉèÖÃ
+ 	// ç®€å†éšç§è®¾ç½®
  	$(".privacy_save_but").click(function(){
  		var pid = {#$resume_one.id#};
  		// $('input[name="testradio"]:checked').val();
@@ -29,10 +29,10 @@ $(document).ready(function()
  		var display_name=$("input[name='display_name']:checked").val();
  		$.post("?act=resume_privacy_save",{pid:pid,display:display,display_name:display_name},function(data){
 		    if(data=="ok"){
-		    	alert("ÒşË½ÉèÖÃ³É¹¦");
+		    	alert("éšç§è®¾ç½®æˆåŠŸ");
 		    	window.location.reload();
 		    }else if(data=="err"){
-		    	alert("ÒşË½ÉèÖÃÊ§°Ü");
+		    	alert("éšç§è®¾ç½®å¤±è´¥");
 		    }
 		  });
  	});
@@ -42,31 +42,31 @@ $(document).ready(function()
 <body>
 <div class=""></div>
 <div class="sub_head_top">
-	<div class="title">ÒşË½ÉèÖÃ</div>
+	<div class="title">éšç§è®¾ç½®</div>
 	<div class="back" id="pageback"><img src="../images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="../images/2.jpg"  border="0"/></a></div>
 </div>
 
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="../index.php";'>
-    <div class="box"><img src="../images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="../images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-jobs-list.php";'>
-    <div class="box"><img src="../images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="../images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-resume-list.php";'>
-    <div class="box"><img src="../images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="../images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-news-list.php";'>
-    <div class="box"><img src="../images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="../images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
-<!-- ÒşË½ÉèÖÃÒ³Ãæ -->
+<!-- éšç§è®¾ç½®é¡µé¢ -->
 <div class="privacy_title">
 	<p>{#$resume_one.title#}</p>
 </div>
@@ -74,20 +74,20 @@ $(document).ready(function()
 <table class="privacy_table">
 	<tbody>
 		<tr>
-			<td><div class="table_title">¼òÀú×´Ì¬</div></td>
+			<td><div class="table_title">ç®€å†çŠ¶æ€</div></td>
 		</tr>
 		<tr>
-			<td><label><input type="radio" name="display" value="1" {#if $resume_one.display==1#}checked{#/if#}/> ¹«¿ª</label></td>
+			<td><label><input type="radio" name="display" value="1" {#if $resume_one.display==1#}checked{#/if#}/> å…¬å¼€</label></td>
 		</tr>
 		<tr>
-			<td><label><input type="radio" name="display" value="2"  {#if $resume_one.display==2#}checked{#/if#}/> ±£ÃÜ</label></td>
+			<td><label><input type="radio" name="display" value="2"  {#if $resume_one.display==2#}checked{#/if#}/> ä¿å¯†</label></td>
 		</tr>
 	</tbody>
 </table>
 <table class="privacy_table">
 	<tbody>
 		<tr>
-			<td><div class="table_title">ĞÕÃû</div></td>
+			<td><div class="table_title">å§“å</div></td>
 		</tr>
 		<tr>
 			<td><label><input type="radio" name="display_name" value="1" {#if $resume_one.display_name==1#}checked{#/if#} /> {#$resume_one.fullname#}</label></td>
@@ -96,29 +96,29 @@ $(document).ready(function()
 			<td><label><input type="radio" name="display_name" value="3" {#if $resume_one.display_name==3#}checked{#/if#}/> {#$resume_one.fullname_3#}</label></td>
 		</tr>
 		<tr>
-			<td><label><input type="radio" name="display_name" value="2" {#if $resume_one.display_name==2#}checked{#/if#}/> ±àºÅ</label></td>
+			<td><label><input type="radio" name="display_name" value="2" {#if $resume_one.display_name==2#}checked{#/if#}/> ç¼–å·</label></td>
 		</tr>
 	</tbody>
 </table>
-<!-- ¼òÀúÕÕÆ¬ÉèÖÃ -->
+<!-- ç®€å†ç…§ç‰‡è®¾ç½® -->
 <!-- <table class="privacy_table">
 	<tbody>
 		<tr>
-			<td><div class="table_title">¼òÀúÕÕÆ¬</div></td>
+			<td><div class="table_title">ç®€å†ç…§ç‰‡</div></td>
 		</tr>
 		<tr>
-			<td><label><input type="radio" name="photo_privacy" id="" checked /> ¹«¿ª</label></td>
+			<td><label><input type="radio" name="photo_privacy" id="" checked /> å…¬å¼€</label></td>
 		</tr>
 		<tr>
-			<td><label><input type="radio" name="photo_privacy" id="" /> ±£ÃÜ</label></td>
+			<td><label><input type="radio" name="photo_privacy" id="" /> ä¿å¯†</label></td>
 		</tr>
 	</tbody>
 </table> -->
 </form>
 
 <div class="privacy_but_group">
-	<div class="privacy_save_but"><a>±£´æ</a></div>
-	<div class="privacy_cancel_but" onclick="window.location.href='?act=resume_list'"><a>È¡Ïû</a></div>
+	<div class="privacy_save_but"><a>ä¿å­˜</a></div>
+	<div class="privacy_cancel_but" onclick="window.location.href='?act=resume_list'"><a>å–æ¶ˆ</a></div>
 	<div class="clear"></div>
 </div>
 

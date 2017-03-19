@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÎÄÕÂÒ³Ãæ
+ * 74cms æ–‡ç« é¡µé¢
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -48,19 +48,19 @@ if($act == 'newslist')
 	$article = get_news($offset, $perpage,$joinsql.$wheresql.$oederbysql);
 	$smarty->assign('article',$article);
 	$smarty->assign('page',$page->show(3));
-	$smarty->assign('pageheader',"ÐÂÎÅ×ÊÑ¶");
+	$smarty->assign('pageheader',"æ–°é—»èµ„è®¯");
 	get_token();
 	$smarty->display('article/admin_article.htm');
 }
 elseif($act =='migrate_article')
 {
 	$id=$_REQUEST['id'];
-	if (empty($id)) adminmsg("ÇëÑ¡ÔñÏîÄ¿£¡",1);
+	if (empty($id)) adminmsg("è¯·é€‰æ‹©é¡¹ç›®ï¼",1);
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"article_del");
 	if (del_news($id))
 	{
-	adminmsg("É¾³ý³É¹¦£¡",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼",2);
 	}
 }
 elseif($act == 'news_add')
@@ -68,7 +68,7 @@ elseif($act == 'news_add')
 	check_permissions($_SESSION['admin_purview'],"article_add");
 	$smarty->assign('article_category',get_article_category());
 	$smarty->assign('author',$_SESSION['admin_name']);
-	$smarty->assign('pageheader',"ÐÂÎÅ×ÊÑ¶");
+	$smarty->assign('pageheader',"æ–°é—»èµ„è®¯");
 	get_token();
 	$smarty->display('article/admin_article_add.htm');
 }
@@ -76,9 +76,9 @@ elseif($act == 'addsave')
 {
 	check_permissions($_SESSION['admin_purview'],"article_add");
 	check_token();
-	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('ÄúÃ»ÓÐÌîÐ´±êÌâ£¡',1);
-	$setsqlarr['type_id']=!empty($_POST['type_id'])?intval($_POST['type_id']):adminmsg('ÄúÃ»ÓÐÑ¡Ôñ·ÖÀà£¡',1);
-	$setsqlarr['content']=!empty($_POST['content'])?trim($_POST['content']):adminmsg('ÄúÃ»ÓÐÄÚÈÝ£¡',1);
+	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™æ ‡é¢˜ï¼',1);
+	$setsqlarr['type_id']=!empty($_POST['type_id'])?intval($_POST['type_id']):adminmsg('æ‚¨æ²¡æœ‰é€‰æ‹©åˆ†ç±»ï¼',1);
+	$setsqlarr['content']=!empty($_POST['content'])?trim($_POST['content']):adminmsg('æ‚¨æ²¡æœ‰å†…å®¹ï¼',1);
 	$setsqlarr['tit_color']=trim($_POST['tit_color']);
 	$setsqlarr['tit_b']=intval($_POST['tit_b']);
 	$setsqlarr['author']=trim($_POST['author']);
@@ -101,17 +101,17 @@ elseif($act == 'addsave')
 	}
 	$setsqlarr['addtime']=$timestamp;
 	$setsqlarr['parentid']=get_article_parentid($setsqlarr['type_id']);
-	$link[0]['text'] = "¼ÌÐøÌí¼ÓÎÄÕÂ";
+	$link[0]['text'] = "ç»§ç»­æ·»åŠ æ–‡ç« ";
 	$link[0]['href'] = '?act=news_add&type_id_cn='.trim($_POST['type_id_cn'])."&type_id=".$_POST['type_id'];
-	$link[1]['text'] = "·µ»ØÎÄÕÂÁÐ±í";
+	$link[1]['text'] = "è¿”å›žæ–‡ç« åˆ—è¡¨";
 	$link[1]['href'] = '?act=newslist';
-	write_log("Ìí¼ÓÎÄÕÂ£º".$setsqlarr['title'], $_SESSION['admin_name'],3);
+	write_log("æ·»åŠ æ–‡ç« ï¼š".$setsqlarr['title'], $_SESSION['admin_name'],3);
 	$insertid = $db->inserttable(table('article'),$setsqlarr,1);
 	if(!$insertid){
-		adminmsg("Ìí¼ÓÊ§°Ü£¡",0);
+		adminmsg("æ·»åŠ å¤±è´¥ï¼",0);
 	}else{
 		baidu_submiturl(url_rewrite('QS_newsshow',array('id'=>$insertid)),'addarticle');
-		adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+		adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 	}
 }
 elseif($act == 'article_edit')
@@ -124,7 +124,7 @@ elseif($act == 'article_edit')
 	$smarty->assign('upfiles_dir',$upfiles_dir); 
 	$smarty->assign('thumb_dir',$thumb_dir); 
 	$smarty->assign('article_category',get_article_category());
-	$smarty->assign('pageheader',"ÐÂÎÅ×ÊÑ¶");
+	$smarty->assign('pageheader',"æ–°é—»èµ„è®¯");
 	get_token();
 	$smarty->display('article/admin_article_edit.htm');
 }
@@ -133,9 +133,9 @@ elseif($act == 'editsave')
 	check_permissions($_SESSION['admin_purview'],"article_edit");
 	check_token();
 	$id=intval($_POST['id']);
-	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('ÄúÃ»ÓÐÌîÐ´±êÌâ£¡',1);
+	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™æ ‡é¢˜ï¼',1);
 	$setsqlarr['type_id']=trim($_POST['type_id'])?intval($_POST['type_id']):0;
-	$setsqlarr['content']=!empty($_POST['content'])?trim($_POST['content']):adminmsg('ÄúÃ»ÓÐÄÚÈÝ£¡',1);
+	$setsqlarr['content']=!empty($_POST['content'])?trim($_POST['content']):adminmsg('æ‚¨æ²¡æœ‰å†…å®¹ï¼',1);
 	$setsqlarr['tit_color']=trim($_POST['tit_color']);
 	$setsqlarr['tit_b']=intval($_POST['tit_b']);
 	$setsqlarr['author']=trim($_POST['author']);
@@ -157,12 +157,12 @@ elseif($act == 'editsave')
 		$setsqlarr['Small_img']=date("Y/m/d/").$Small_img;
 	}
 	$setsqlarr['parentid']=get_article_parentid($setsqlarr['type_id']);
-	$link[0]['text'] = "·µ»ØÎÄÕÂÁÐ±í";
+	$link[0]['text'] = "è¿”å›žæ–‡ç« åˆ—è¡¨";
 	$link[0]['href'] = '?act=newslist';
-	$link[1]['text'] = "²é¿´ÒÑÐÞ¸ÄÎÄÕÂ";
+	$link[1]['text'] = "æŸ¥çœ‹å·²ä¿®æ”¹æ–‡ç« ";
 	$link[1]['href'] = "?act=article_edit&id=".$id;
-	write_log("ÐÞ¸ÄidÎª".$id."µÄÎÄÕÂÐÅÏ¢", $_SESSION['admin_name'],3);
-	!$db->updatetable(table('article'),$setsqlarr," id=".$id."")?adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0):adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);
+	write_log("ä¿®æ”¹idä¸º".$id."çš„æ–‡ç« ä¿¡æ¯", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('article'),$setsqlarr," id=".$id."")?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'del_img')
 {
@@ -174,19 +174,19 @@ elseif($act == 'del_img')
 	$db->query($sql);
 	@unlink($upfiles_dir.$img);
 	@unlink($thumb_dir.$img);
-	write_log("É¾³ýidÎª".$id."µÄÎÄÕÂËõÂÔÍ¼", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ýËõÂÔÍ¼³É¹¦£¡",2);
+	write_log("åˆ é™¤idä¸º".$id."çš„æ–‡ç« ç¼©ç•¥å›¾", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤ç¼©ç•¥å›¾æˆåŠŸï¼",2);
 }
 elseif($act == 'property'){
 	check_permissions($_SESSION['admin_purview'],"article_property");
-	$smarty->assign('pageheader',"ÐÂÎÅ×ÊÑ¶");
+	$smarty->assign('pageheader',"æ–°é—»èµ„è®¯");
 	get_token();
 	$smarty->display('article/admin_article_property.htm');
 }
 elseif($act == 'property_add')
 {
 	check_permissions($_SESSION['admin_purview'],"article_property");
-	$smarty->assign('pageheader',"ÐÂÎÅ×ÊÑ¶");
+	$smarty->assign('pageheader',"æ–°é—»èµ„è®¯");
 	get_token();
 	$smarty->display('article/admin_article_property_add.htm');
 }
@@ -202,7 +202,7 @@ elseif($act == 'add_property_save')
 			{		
 				$setsqlarr['categoryname']=trim($_POST['categoryname'][$i]);
 				$setsqlarr['category_order']=intval($_POST['category_order'][$i]);				
-				!$db->inserttable(table('article_property'),$setsqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):"";
+				!$db->inserttable(table('article_property'),$setsqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
@@ -211,16 +211,16 @@ elseif($act == 'add_property_save')
 	}
 	if ($num==0)
 	{
-	adminmsg("Ìí¼ÓÊ§°Ü,Êý¾Ý²»ÍêÕû",1);
+	adminmsg("æ·»åŠ å¤±è´¥,æ•°æ®ä¸å®Œæ•´",1);
 	}
 	else
 	{
-	$link[0]['text'] = "·µ»ØÊôÐÔ¹ÜÀíÒ³Ãæ";
+	$link[0]['text'] = "è¿”å›žå±žæ€§ç®¡ç†é¡µé¢";
 	$link[0]['href'] = '?act=property';
-	$link[1]['text'] = "¼ÌÐøÌí¼ÓÊôÐÔ";
+	$link[1]['text'] = "ç»§ç»­æ·»åŠ å±žæ€§";
 	$link[1]['href'] = "?act=property_add";
-	write_log("Ìí¼Ó³É¹¦£¡¹²Ìí¼Ó".$num."ÐÂÎÅÊôÐÔ", $_SESSION['admin_name'],3);
-	adminmsg("Ìí¼Ó³É¹¦£¡¹²Ìí¼Ó".$num."¸ö·ÖÀà",2,$link);
+	write_log("æ·»åŠ æˆåŠŸï¼å…±æ·»åŠ ".$num."æ–°é—»å±žæ€§", $_SESSION['admin_name'],3);
+	adminmsg("æ·»åŠ æˆåŠŸï¼å…±æ·»åŠ ".$num."ä¸ªåˆ†ç±»",2,$link);
 	}
 }
 elseif($act == 'del_property')
@@ -230,11 +230,11 @@ elseif($act == 'del_property')
 	$id=$_REQUEST['id'];
 	if ($num=del_property($id))
 	{
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."¸ö·ÖÀà",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."ä¸ªåˆ†ç±»",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",1);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",1);
 	}
 }
 elseif($act == 'edit_property')
@@ -242,7 +242,7 @@ elseif($act == 'edit_property')
 	check_permissions($_SESSION['admin_purview'],"article_property");
 	$id=intval($_GET['id']);
 	$smarty->assign('property',get_article_property_one($id));
-	$smarty->assign('pageheader',"ÐÂÎÅ×ÊÑ¶");
+	$smarty->assign('pageheader',"æ–°é—»èµ„è®¯");
 	get_token();
 	$smarty->display('article/admin_article_property_edit.htm');
 }
@@ -251,19 +251,19 @@ elseif($act == 'edit_property_save')
 	check_permissions($_SESSION['admin_purview'],"article_property");
 	check_token();
 	$id=intval($_POST['id']);
-	$setsqlarr['categoryname']=trim($_POST['categoryname'])?trim($_POST['categoryname']):adminmsg('ÇëÌîÐ´·ÖÀàÃû³Æ£¡',1);
+	$setsqlarr['categoryname']=trim($_POST['categoryname'])?trim($_POST['categoryname']):adminmsg('è¯·å¡«å†™åˆ†ç±»åç§°ï¼',1);
 	$setsqlarr['category_order']=intval($_POST['category_order']);	
-	$link[0]['text'] = "²é¿´ÐÞ¸Ä½á¹û";
+	$link[0]['text'] = "æŸ¥çœ‹ä¿®æ”¹ç»“æžœ";
 	$link[0]['href'] = '?act=edit_property&id='.$id;
-	$link[1]['text'] = "·µ»ØÊôÐÔ¹ÜÀí";
+	$link[1]['text'] = "è¿”å›žå±žæ€§ç®¡ç†";
 	$link[1]['href'] = '?act=property';
-	write_log("ÐÞ¸ÄidÎª".$id."ÐÂÎÅÊôÐÔ", $_SESSION['admin_name'],3);
-	!$db->updatetable(table('article_property'),$setsqlarr," id=".$id."")?adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0):adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);
+	write_log("ä¿®æ”¹idä¸º".$id."æ–°é—»å±žæ€§", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('article_property'),$setsqlarr," id=".$id."")?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'category')
 {
 	check_permissions($_SESSION['admin_purview'],"article_category");
-	$smarty->assign('pageheader',"ÐÂÎÅ×ÊÑ¶");
+	$smarty->assign('pageheader',"æ–°é—»èµ„è®¯");
 	get_token();
 	$smarty->display('article/admin_article_category.htm');
 }
@@ -271,7 +271,7 @@ elseif($act == 'category_add')
 {
 	check_permissions($_SESSION['admin_purview'],"article_category");
 	$parentid = !empty($_GET['parentid']) ? intval($_GET['parentid']) : '0';
-	$smarty->assign('pageheader',"ÐÂÎÅ×ÊÑ¶");
+	$smarty->assign('pageheader',"æ–°é—»èµ„è®¯");
 	get_token();
 	$smarty->display('article/admin_article_category_add.htm');
 }
@@ -291,7 +291,7 @@ elseif($act == 'add_category_save')
 				$setsqlarr['title']=$_POST['title'][$i];
 				$setsqlarr['description']=$_POST['description'][$i];
 				$setsqlarr['keywords']=$_POST['keywords'][$i];
-				!$db->inserttable(table('article_category'),$setsqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):"";
+				!$db->inserttable(table('article_category'),$setsqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
@@ -300,16 +300,16 @@ elseif($act == 'add_category_save')
 	}
 	if ($num==0)
 	{
-	adminmsg("Ìí¼ÓÊ§°Ü,Êý¾Ý²»ÍêÕû",1);
+	adminmsg("æ·»åŠ å¤±è´¥,æ•°æ®ä¸å®Œæ•´",1);
 	}
 	else
 	{
-	write_log("Ìí¼Ó³É¹¦£¡¹²Ìí¼Ó".$num."¸ö·ÖÀà", $_SESSION['admin_name'],3);
-	$link[0]['text'] = "·µ»Ø·ÖÀà¹ÜÀí";
+	write_log("æ·»åŠ æˆåŠŸï¼å…±æ·»åŠ ".$num."ä¸ªåˆ†ç±»", $_SESSION['admin_name'],3);
+	$link[0]['text'] = "è¿”å›žåˆ†ç±»ç®¡ç†";
 	$link[0]['href'] = '?act=category';
-	$link[1]['text'] = "¼ÌÐøÌí¼Ó·ÖÀà";
+	$link[1]['text'] = "ç»§ç»­æ·»åŠ åˆ†ç±»";
 	$link[1]['href'] = "?act=category_add";
-	adminmsg("Ìí¼Ó³É¹¦£¡¹²Ìí¼Ó".$num."¸ö·ÖÀà",2,$link);
+	adminmsg("æ·»åŠ æˆåŠŸï¼å…±æ·»åŠ ".$num."ä¸ªåˆ†ç±»",2,$link);
 	}
 }
 elseif($act == 'del_category')
@@ -319,12 +319,12 @@ elseif($act == 'del_category')
 	$id=$_REQUEST['id'];
 	if ($num=del_category($id))
 	{
-	write_log("É¾³ý³É¹¦£¡¹²É¾³ý".$num."¸ö·ÖÀà", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."¸ö·ÖÀà",2);
+	write_log("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."ä¸ªåˆ†ç±»", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."ä¸ªåˆ†ç±»",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",1);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",1);
 	}
 }
 elseif($act == 'edit_category')
@@ -332,7 +332,7 @@ elseif($act == 'edit_category')
 	check_permissions($_SESSION['admin_purview'],"article_category");
 	$id=intval($_GET['id']);
 	$smarty->assign('category',get_article_category_one($id));
-	$smarty->assign('pageheader',"ÐÂÎÅ×ÊÑ¶");
+	$smarty->assign('pageheader',"æ–°é—»èµ„è®¯");
 	get_token();
 	$smarty->display('article/admin_article_category_edit.htm');
 }
@@ -342,22 +342,22 @@ elseif($act == 'edit_category_save')
 	check_token();
 	$id=intval($_POST['id']);
 	$setsqlarr['parentid']=trim($_POST['parentid'])?intval($_POST['parentid']):0;
-	$setsqlarr['categoryname']=trim($_POST['categoryname'])?trim($_POST['categoryname']):adminmsg('ÇëÌîÐ´·ÖÀàÃû³Æ£¡',1);
+	$setsqlarr['categoryname']=trim($_POST['categoryname'])?trim($_POST['categoryname']):adminmsg('è¯·å¡«å†™åˆ†ç±»åç§°ï¼',1);
 	$setsqlarr['category_order']=!empty($_POST['category_order'])?intval($_POST['category_order']):0;	
 	$setsqlarr['title']=$_POST['title'];
     $setsqlarr['description']=$_POST['description'];
 	$setsqlarr['keywords']=$_POST['keywords'];
-	$link[0]['text'] = "²é¿´ÐÞ¸Ä½á¹û";
+	$link[0]['text'] = "æŸ¥çœ‹ä¿®æ”¹ç»“æžœ";
 	$link[0]['href'] = '?act=edit_category&id='.$id;
-	$link[1]['text'] = "·µ»Ø·ÖÀà¹ÜÀí";
+	$link[1]['text'] = "è¿”å›žåˆ†ç±»ç®¡ç†";
 	$link[1]['href'] = '?act=category';
 	if(!$db->updatetable(table('article_category'),$setsqlarr," id='".$id."'")){
-		adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0);
+		adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
 	}else{
 		$set_type_sqlarr['parentid'] = $setsqlarr['parentid'];
 		$db->updatetable(table('article'),$set_type_sqlarr," type_id='".$id."'");
-		write_log("ÐÞ¸ÄÎ»idÎª".$id."µÄ·ÖÀà", $_SESSION['admin_name'],3);
-		adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);
+		write_log("ä¿®æ”¹ä½idä¸º".$id."çš„åˆ†ç±»", $_SESSION['admin_name'],3);
+		adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 	}
 }
 ?>

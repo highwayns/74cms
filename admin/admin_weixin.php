@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Î¢ÐÅ¹«ÖÚÆ½Ì¨
+ * 74cms å¾®ä¿¡å…¬ä¼—å¹³å°
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -16,7 +16,7 @@ require_once(ADMIN_ROOT_PATH.'include/admin_weixin_fun.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'set_weixin';
 $smarty->assign('act',$act);
 $smarty->assign('navlabel',$act);
-$smarty->assign('pageheader',"Î¢ÐÅ¹«ÖÚÆ½Ì¨");	
+$smarty->assign('pageheader',"å¾®ä¿¡å…¬ä¼—å¹³å°");	
 if($act == 'set_weixin')
 {
 	check_permissions($_SESSION['admin_purview'],"set_weixinconnect");	
@@ -34,25 +34,25 @@ elseif($act == 'set_weixin_save')
 	if($_FILES['weixin_img']['name'])
 	{
 	$weixin_img=_asUpFiles($upfiles_dir, "weixin_img", 1024*2, 'jpg/gif/png',"weixin_img");
-	!$db->query("UPDATE ".table('config')." SET value='$weixin_img' WHERE name='weixin_img'")?adminmsg('¸üÐÂÕ¾µãÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$weixin_img' WHERE name='weixin_img'")?adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1):"";
 	}
 	if($_FILES['weixin_first_pic']['name'])
 	{
 	$weixin_first_pic=_asUpFiles($upfiles_dir, "weixin_first_pic", 1024*2, 'jpg/gif/png',"weixin_first_pic");
-	!$db->query("UPDATE ".table('config')." SET value='$weixin_first_pic' WHERE name='weixin_first_pic'")?adminmsg('¸üÐÂÕ¾µãÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$weixin_first_pic' WHERE name='weixin_first_pic'")?adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1):"";
 	}
 	if($_FILES['weixin_default_pic']['name'])
 	{
 	$weixin_default_pic=_asUpFiles($upfiles_dir, "weixin_default_pic", 1024*2, 'jpg/gif/png',"weixin_default_pic");
-	!$db->query("UPDATE ".table('config')." SET value='$weixin_default_pic' WHERE name='weixin_default_pic'")?adminmsg('¸üÐÂÕ¾µãÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$weixin_default_pic' WHERE name='weixin_default_pic'")?adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1):"";
 	}
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('¸üÐÂÕ¾µãÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1):"";
 	}
 	refresh_cache('config');
-	write_log("ÉèÖÃÎ¢ÐÅ", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2);
+	write_log("è®¾ç½®å¾®ä¿¡", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'set_menu')
 {
@@ -70,12 +70,12 @@ elseif($act == 'menu_all_save')
 		{
 		 
 				$setsqlarr['menu_order']=intval($_POST['menu_order'][$k]);
-				!$db->updatetable(table('weixin_menu'),$setsqlarr," id=".intval($_POST['save_id'][$k]))?adminmsg("±£´æÊ§°Ü£¡",0):"";
+				!$db->updatetable(table('weixin_menu'),$setsqlarr," id=".intval($_POST['save_id'][$k]))?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
  
 		}
 	}
-	//ÐÂÔöµÄÈë¿â
+	//æ–°å¢žçš„å…¥åº“
 	if (is_array($_POST['add_pid']) && count($_POST['add_pid'])>0)
 	{
 		for ($i =0; $i <count($_POST['add_pid']);$i++){
@@ -83,14 +83,14 @@ elseif($act == 'menu_all_save')
 			{	
 				$setsqlarr['menu_order']=intval($_POST['add_menu_order'][$i]);
 				$setsqlarr['parentid']=intval($_POST['add_pid'][$i]);	
-				!$db->inserttable(table('weixin_menu'),$setsqlarr)?adminmsg("±£´æÊ§°Ü£¡",0):"";
+				!$db->inserttable(table('weixin_menu'),$setsqlarr)?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
 		}
 	}
-	write_log("ÉèÖÃÎ¢ÐÅ²Ëµ¥", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2);
+	write_log("è®¾ç½®å¾®ä¿¡èœå•", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'del_menu')
 {
@@ -98,12 +98,12 @@ elseif($act == 'del_menu')
 	$id=$_REQUEST['id'];
 	if ($num=del_menu($id))
 	{
-	write_log("É¾³ýÎ¢ÐÅ²Ëµ¥,¹²É¾³ý".$num."ÐÐ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."ÐÐ",2);
+	write_log("åˆ é™¤å¾®ä¿¡èœå•,å…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",1);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",1);
 	}
 }
 elseif($act == 'edit_menu')
@@ -124,11 +124,11 @@ elseif($act == 'edit_menu_save')
 	$setsqlarr['url']=trim($_POST['url']);
 	$setsqlarr['status']=intval($_POST['status']);
 	$setsqlarr['menu_order']=intval($_POST['menu_order']);	
-	!$db->updatetable(table('weixin_menu'),$setsqlarr," id=".intval($_POST['id']))?adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0):"";
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	!$db->updatetable(table('weixin_menu'),$setsqlarr," id=".intval($_POST['id']))?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):"";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] = '?act=set_menu';
-	write_log("ÐÞ¸ÄÎ¢ÐÅ²Ëµ¥", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2,$link);
+	write_log("ä¿®æ”¹å¾®ä¿¡èœå•", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'add_menu')
 {
@@ -147,11 +147,11 @@ elseif($act == 'add_menu_save')
 	$setsqlarr['url']=trim($_POST['url']);
 	$setsqlarr['status']=intval($_POST['status']);
 	$setsqlarr['menu_order']=intval($_POST['menu_order']);
-	!$db->inserttable(table('weixin_menu'),$setsqlarr)?adminmsg("±£´æÊ§°Ü£¡",0):"";
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	!$db->inserttable(table('weixin_menu'),$setsqlarr)?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] = '?act=set_menu';
-	write_log("Ìí¼ÓÎ¢ÐÅ²Ëµ¥", $_SESSION['admin_name'],3);
-	adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);	
+	write_log("æ·»åŠ å¾®ä¿¡èœå•", $_SESSION['admin_name'],3);
+	adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);	
 }
 elseif($act == 'binding_list')
 {
@@ -166,12 +166,12 @@ elseif($act == 'del_binding')
 	$uid=$_REQUEST['uid'];
 	if ($num=del_binding($uid))
 	{
-	write_log("½â°ó".$num."¸ö»áÔ±", $_SESSION['admin_name'],3);
-	adminmsg("½â°ó³É¹¦£¡¹²½â°ó".$num."¸ö»áÔ±",2);
+	write_log("è§£ç»‘".$num."ä¸ªä¼šå‘˜", $_SESSION['admin_name'],3);
+	adminmsg("è§£ç»‘æˆåŠŸï¼å…±è§£ç»‘".$num."ä¸ªä¼šå‘˜",2);
 	}
 	else
 	{
-	adminmsg("½â°óÊ§°Ü£¡",1);
+	adminmsg("è§£ç»‘å¤±è´¥ï¼",1);
 	}
 }
 ?>

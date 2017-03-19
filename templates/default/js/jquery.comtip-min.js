@@ -1,4 +1,4 @@
-/**
+ï»¿/**
 Requires jQuery
 */
 jQuery.joblisttip= function(obj,ajaxurl,loading,css) {  
@@ -15,13 +15,13 @@ jQuery.joblisttip= function(obj,ajaxurl,loading,css) {
             this.title = ''; 
 			if (domtitle=='' || domtitle=='null')
 			{
-				$(this).append( '<div class="'+ css +'"><div class="tipboxtit"></div><div class="tipboxtxt"><div class="tipboxtits">ÕĞÆ¸¸ÚÎ»£º</div><ul>' + loading + '</ul></div></div>' );
+				$(this).append( '<div class="'+ css +'"><div class="tipboxtit"></div><div class="tipboxtxt"><div class="tipboxtits">æ‹›è˜å²—ä½ï¼š</div><ul>' + loading + '</ul></div></div>' );
 				$(this).css("position","relative").css("position","relative").fadeIn(10);	
 					var insertobj=$(this);
 					$.get(ajaxurl, {"uid":uid},
 						function (data,textStatus)
 						{
-						data=data?data:"ÔİÎŞÖ°Î»...";
+						data=data?data:"æš‚æ— èŒä½...";
 						insertobj.find("ul").html(data);
 						domtitle=data;
 						
@@ -30,7 +30,7 @@ jQuery.joblisttip= function(obj,ajaxurl,loading,css) {
 			}
 			else
 			{
-				$(this).append( '<div class="'+ css +'"><div class="tipboxtit"></div><div class="tipboxtxt"><div class="tipboxtits">ÕĞÆ¸¸ÚÎ»£º</div><ul>' + domtitle+ '</ul></div></div>' );
+				$(this).append( '<div class="'+ css +'"><div class="tipboxtit"></div><div class="tipboxtxt"><div class="tipboxtits">æ‹›è˜å²—ä½ï¼š</div><ul>' + domtitle+ '</ul></div></div>' );
 				$(this).css("position","relative").css("position","relative").fadeIn(10); 
 			} 			           
         },

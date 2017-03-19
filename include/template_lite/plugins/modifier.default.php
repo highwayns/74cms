@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * template_lite default modifier plugin
  *

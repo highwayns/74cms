@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -7,26 +7,26 @@
 </div>
  
 
- <div class="toptit">CSRF·ÀÓù</div>
+ <div class="toptit">CSRFé˜²å¾¡</div>
  <form action="?act=setsave" method="post"  name="form1" id="form1">
  {#$inputtoken#}
 	  <table width="700" border="0" cellspacing="10" cellpadding="1" style=" margin-bottom:3px;">
         <tr>
-          <td width="162" align="right">¿ªÆôCSRF·ÀÓù£º</td>
+          <td width="162" align="right">å¼€å¯CSRFé˜²å¾¡ï¼š</td>
           <td>
 		  
 		  <label>
-        <input name="open_csrf" type="radio" id="open_csrf" value="1"  {#if $config.open_csrf=="1"#}checked=checked {#/if#}/>¿ªÆô</label>
+        <input name="open_csrf" type="radio" id="open_csrf" value="1"  {#if $config.open_csrf=="1"#}checked=checked {#/if#}/>å¼€å¯</label>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <label >
-<input type="radio" name="open_csrf" value="0" id="open_csrf"  {#if $config.open_csrf=="0"#}checked=checked{#/if#}/>¹Ø±Õ</label>
-		<span class="admin_note">¿ªÆôºó¿ÉÓĞĞ§·ÀÓùCSRF¹¥»÷¡¢¿çÓòÌá½»Êı¾İ¡¢ÖØ¸´Ìá½»±íµ¥µÈ²Ù×÷¡£</span>  
+<input type="radio" name="open_csrf" value="0" id="open_csrf"  {#if $config.open_csrf=="0"#}checked=checked{#/if#}/>å…³é—­</label>
+		<span class="admin_note">å¼€å¯åå¯æœ‰æ•ˆé˜²å¾¡CSRFæ”»å‡»ã€è·¨åŸŸæäº¤æ•°æ®ã€é‡å¤æäº¤è¡¨å•ç­‰æ“ä½œã€‚</span>  
 		  </td>
         </tr>
         <tr>
           <td align="right">&nbsp;</td>
           <td>
-            <input name="submit2" type="submit" class="admin_submit"    value="±£´æĞŞ¸Ä"/>          </td>
+            <input name="submit2" type="submit" class="admin_submit"    value="ä¿å­˜ä¿®æ”¹"/>          </td>
         </tr>
       </table>
   </form>

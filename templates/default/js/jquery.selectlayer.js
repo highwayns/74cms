@@ -1,4 +1,4 @@
-//Ö°Î»
+ï»¿//èŒä½
 function OpenCategory(objid,input_cn,input,dir,strlen,get)
 {
 	$(objid).unbind().click(function()
@@ -18,8 +18,8 @@ function OpenCategory(objid,input_cn,input,dir,strlen,get)
 				html+="<div id=\""+showidval+"\">";
 				html+="<div class=\"OpenFloatBoxBg\" ></div>";
 				html+="<div class=\"OpenFloatBox\">";
-				html+="<div class=\"title\"><h4>ÇëÑ¡ÔñÖ°Î»Àà±ğ</h4><div class=\"DialogClose\" title=\"¹Ø±Õ\"></div></div>";
-				html+="<div class=\"tip\">¿É¶àÑ¡£¬×î¶àÑ¡Ôñ5Ïî</div>";
+				html+="<div class=\"title\"><h4>è¯·é€‰æ‹©èŒä½ç±»åˆ«</h4><div class=\"DialogClose\" title=\"å…³é—­\"></div></div>";
+				html+="<div class=\"tip\">å¯å¤šé€‰ï¼Œæœ€å¤šé€‰æ‹©5é¡¹</div>";
 				html+="<div class=\"content link_lan\"><div class=\"wait\"></div>";
 				html+="</div>";
 				html+="</div></div>";
@@ -47,7 +47,7 @@ function OpenCategory(objid,input_cn,input,dir,strlen,get)
 					html+="</div>";					
 					html+="<div class=\"txt\"><div class=\"selecteditem\"></div></div>";	
 					html+="<div class=\"txt\">";
-					html+="<div align=\"center\"><input type=\"button\"  class=\"but80 Set\" value=\"È·¶¨\" /></div>";
+					html+="<div align=\"center\"><input type=\"button\"  class=\"but80 Set\" value=\"ç¡®å®š\" /></div>";
 					html+="</div>";
 					$(showid+" .content").html(html);
 					$(showid+" .OpenFloatBox").css("width","650");
@@ -60,10 +60,10 @@ function OpenCategory(objid,input_cn,input,dir,strlen,get)
 			{
 				addhover(showid,input_cn,input,strlen,get);
 			}
-			//¹Ø±Õ	
+			//å…³é—­	
 		 	$(showid+" .DialogClose").unbind().hover(function(){$(this).addClass("spanhover")},function(){$(this).removeClass("spanhover")});
 			$(showid+" .DialogClose").click(function(){DialogClose(showid);});
-			//ÉèÖÃ±³¾°±ß¿ò
+			//è®¾ç½®èƒŒæ™¯è¾¹æ¡†
 			$(showid).show();			
 			SetBoxBg(showid);
 			///---
@@ -112,12 +112,12 @@ function OpenCategory(objid,input_cn,input,dir,strlen,get)
 				$(showid+" .sitem").css("display","none");
 				}
 				);
-				//È·¶¨Ñ¡Ôñ
+				//ç¡®å®šé€‰æ‹©
 				$(showid+" .Set").unbind().click(function()
 				{
 						SetInput(showid,input_cn,input,strlen);
 				});
-				//get»Ö¸´
+				//getæ¢å¤
 				var getadd=$(showid+" .get").length;
 				if (get && getadd==0)
 				{
@@ -152,7 +152,7 @@ function OpenCategory(objid,input_cn,input,dir,strlen,get)
 			}
 	});	
 }
-//µØÇø
+//åœ°åŒº
 function OpenCity(objid,input_cn,input,dir,strlen,get)
 {
 	$(objid).unbind().click(function()
@@ -172,8 +172,8 @@ function OpenCity(objid,input_cn,input,dir,strlen,get)
 				html+="<div id=\""+showidval+"\">";
 				html+="<div class=\"OpenFloatBoxBg\" ></div>";
 				html+="<div class=\"OpenFloatBox\">";
-				html+="<div class=\"title\"><h4>ÇëÑ¡ÔñµØÇø</h4><div class=\"DialogClose\" title=\"¹Ø±Õ\"></div></div>";
-				html+="<div class=\"tip\">¿É¶àÑ¡£¬×î¶àÑ¡Ôñ5Ïî</div>";
+				html+="<div class=\"title\"><h4>è¯·é€‰æ‹©åœ°åŒº</h4><div class=\"DialogClose\" title=\"å…³é—­\"></div></div>";
+				html+="<div class=\"tip\">å¯å¤šé€‰ï¼Œæœ€å¤šé€‰æ‹©5é¡¹</div>";
 				html+="<div class=\"content link_lan\"><div class=\"wait\"></div>";
 				html+="</div>";
 				html+="</div></div>";
@@ -201,7 +201,7 @@ function OpenCity(objid,input_cn,input,dir,strlen,get)
 					html+="</div>";					
 					html+="<div class=\"txt\"><div class=\"selecteditem\"></div></div>";	
 					html+="<div class=\"txt\">";
-					html+="<div align=\"center\"><input type=\"button\"  class=\"but80 Set\" value=\"È·¶¨\" /></div>";
+					html+="<div align=\"center\"><input type=\"button\"  class=\"but80 Set\" value=\"ç¡®å®š\" /></div>";
 					html+="</div>";
 					$(showid+" .content").html(html);
 					$(showid+" .OpenFloatBox").css("width","650");
@@ -214,10 +214,10 @@ function OpenCity(objid,input_cn,input,dir,strlen,get)
 			{
 				addhover(showid,input_cn,input,strlen,get);
 			}
-			//¹Ø±Õ	
+			//å…³é—­	
 		 	$(showid+" .DialogClose").unbind().hover(function(){$(this).addClass("spanhover")},function(){$(this).removeClass("spanhover")});
 			$(showid+" .DialogClose").click(function(){DialogClose(showid);});
-			//ÉèÖÃ±³¾°±ß¿ò
+			//è®¾ç½®èƒŒæ™¯è¾¹æ¡†
 			$(showid).show();			
 			SetBoxBg(showid);
 			///---
@@ -266,12 +266,12 @@ function OpenCity(objid,input_cn,input,dir,strlen,get)
 				$(showid+" .sitem").css("display","none");
 				}
 				);
-				//È·¶¨Ñ¡Ôñ
+				//ç¡®å®šé€‰æ‹©
 				$(showid+" .Set").unbind().click(function()
 				{
 						SetInput(showid,input_cn,input,strlen);
 				});
-				//get»Ö¸´
+				//getæ¢å¤
 				var getadd=$(showid+" .get").length;
 				if (get && getadd==0)
 				{
@@ -305,13 +305,13 @@ function OpenCity(objid,input_cn,input,dir,strlen,get)
 			}
 	});	
 }
-//¹Ø±Õ
+//å…³é—­
 function DialogClose(showid)
 {
 	$(".menu_bg_layer").detach();
 	$(showid).hide();
 }
-//±³¾°±ß¿ò
+//èƒŒæ™¯è¾¹æ¡†
 function SetBoxBg(showid)
 {
 	$(showid+" .OpenFloatBoxBg").css("opacity", 0.2);
@@ -328,7 +328,7 @@ function SetBoxPoint(showid)
 	var left=($(document).width()-$(showid+" .OpenFloatBox").width())/2;
 	$(showid+" .OpenFloatBox").css({"left":left,"top":top,"z-index":"999"});
 }
-//Éú³ÉĞ¡Àà
+//ç”Ÿæˆå°ç±»
 function MakeLi(val,pid)
 {
 			if (val=="")return false;
@@ -341,10 +341,10 @@ function MakeLi(val,pid)
 				}
 			return htmlstr; 
 }
-//¿½±´
+//æ‹·è´
 function Copycheckbox(catbox)
 {
-					var htmlstr='&nbsp;&nbsp;&nbsp;ÒÑ¾­Ñ¡Ôñ·ÖÀà£º<span class=\"empty\">[Çå¿ÕÒÑÑ¡]</span><br/>';
+					var htmlstr='&nbsp;&nbsp;&nbsp;å·²ç»é€‰æ‹©åˆ†ç±»ï¼š<span class=\"empty\">[æ¸…ç©ºå·²é€‰]</span><br/>';
 					$(catbox+" .item :checkbox[checked][class='b']").each(function(index){
 					htmlstr+="<label><input class=\"b\"  type=\"checkbox\" value=\""+$(this).attr("value")+"\" title=\""+$(this).attr("title")+"\" checked/>"+$(this).attr("title")+"</label>";
 					})
@@ -364,7 +364,7 @@ function Copycheckbox(catbox)
 					{
 						$(catbox+" .selecteditem").css("display","none");
 					}
-					//ÒÑÑ¡ÏîÄ¿°ó¶¨click
+					//å·²é€‰é¡¹ç›®ç»‘å®šclick
 					$(catbox+" .selecteditem :checkbox").unbind().click(function()
 					{
 						var selval=$(this).val();
@@ -377,7 +377,7 @@ function Copycheckbox(catbox)
 									{
 										$(this).parent().next().find(":checkbox").attr("checked",false);
 									}									
-									//ÖØĞÂ¿ËÂ¡
+									//é‡æ–°å…‹éš†
 									Copycheckbox(catbox);
 								}	
 							})
@@ -388,7 +388,7 @@ function Copycheckbox(catbox)
 					 	$(this).parent().parent().prev().css("color","#FF6600");
 					});
 					SetBoxBg(catbox);
-					//Çå¿Õ
+					//æ¸…ç©º
 					$(catbox+" .selecteditem .empty").unbind().click(function()
 					{
 						$(catbox+" .selecteditem").css("display","none");
@@ -399,7 +399,7 @@ function Copycheckbox(catbox)
 						SetBoxBg(catbox);
 					});	
 }
-//ÉèÖÃ±íµ¥
+//è®¾ç½®è¡¨å•
 function SetInput(showid,input_cn,input,strlen)
 {
 	var a_cn=new Array();
@@ -407,7 +407,7 @@ function SetInput(showid,input_cn,input,strlen)
 	var i=0;
 	if ($(showid+" .OpenFloatBox .selecteditem :checkbox[checked]").length>5)
 		{
-			alert("²»ÄÜ³¬¹ı5¸öÑ¡Ïî");
+			alert("ä¸èƒ½è¶…è¿‡5ä¸ªé€‰é¡¹");
 			return false;
 		}
 		$(showid+" .OpenFloatBox .selecteditem :checkbox[checked]").each(function(index)
@@ -424,7 +424,7 @@ function SetInput(showid,input_cn,input,strlen)
 			i++;
 		});
 		$(input_cn).val(limit(a_cn.join("+"),strlen));
-		if ($(input_cn).val()=="")$(input_cn).val("Î´Ñ¡Ôñ");
+		if ($(input_cn).val()=="")$(input_cn).val("æœªé€‰æ‹©");
 		$(input).val(a_id.join("-"));
 		DialogClose(showid);
 }
@@ -448,11 +448,11 @@ function OpenCategoryLayer(objid,showid,input_cn,input,QSarr,strlen)
 				var pid=$(this).attr("id");
 				if (strclass)
 				{
-					//alert("ÓĞĞ¡Àà");
+					//alert("æœ‰å°ç±»");
 					$(this).find(".sitem").css("display","block");
 					if ($(this).find(".sitem").html()=="")
 					{
-					$(this).find(".sitem").html(MakeLi(strclass,pid));//Éú³ÉLI
+					$(this).find(".sitem").html(MakeLi(strclass,pid));//ç”ŸæˆLI
 					}
 				}
 					$(showid+" .OpenFloatBox label").unbind().click(function()
@@ -486,18 +486,18 @@ function OpenCategoryLayer(objid,showid,input_cn,input,QSarr,strlen)
 			);
 			$(showid+" .OpenFloatBox .DialogClose").unbind().hover(function(){$(this).addClass("spanhover")},function(){$(this).removeClass("spanhover")});
 			$(showid+" .DialogClose").click(function(){DialogClose(showid);});
-			//È·¶¨Ñ¡Ôñ
+			//ç¡®å®šé€‰æ‹©
 			$(showid+" .Set").unbind().click(function()
 			{
 					SetInput(showid,input_cn,input,strlen);
 			});	
-			//¹Ø±Õ
+			//å…³é—­
 			function DialogClose(showid)
 			{
 				$(".menu_bg_layer").hide();
 				$(showid).hide();
 			}
-			//ÉèÖÃ±íµ¥
+			//è®¾ç½®è¡¨å•
 			function SetInput(showid,input_cn,input,strlen)
 			{
 					var a_cn=new Array();
@@ -505,7 +505,7 @@ function OpenCategoryLayer(objid,showid,input_cn,input,QSarr,strlen)
 					var i=0;
 					if ($(showid+" .OpenFloatBox .selecteditem :checkbox[checked]").length>5)
 					{
-						alert("²»ÄÜ³¬¹ı5¸öÑ¡Ïî");
+						alert("ä¸èƒ½è¶…è¿‡5ä¸ªé€‰é¡¹");
 						return false;
 					}
 					$(showid+" .OpenFloatBox .selecteditem :checkbox[checked]").each(function(index)
@@ -522,17 +522,17 @@ function OpenCategoryLayer(objid,showid,input_cn,input,QSarr,strlen)
 							i++;
 					});
 					$(input_cn).val(limit(a_cn.join("+"),strlen));
-					if ($(input_cn).val()=="")$(input_cn).val("Î´Ñ¡Ôñ");
+					if ($(input_cn).val()=="")$(input_cn).val("æœªé€‰æ‹©");
 					$(input).val(a_id.join("-"));
 					DialogClose(showid);
 			}
 		
 	});	
 }
-//¿½±´
+//æ‹·è´
 function CopyItem(showid)
 {
-					var htmlstr='&nbsp;&nbsp;&nbsp;ÒÑ¾­Ñ¡Ôñ·ÖÀà£º<span class=\"empty\">[Çå¿ÕÒÑÑ¡]</span><br/>';
+					var htmlstr='&nbsp;&nbsp;&nbsp;å·²ç»é€‰æ‹©åˆ†ç±»ï¼š<span class=\"empty\">[æ¸…ç©ºå·²é€‰]</span><br/>';
 					$(showid+" .item :checkbox[checked][class='b']").each(function(index){
 					htmlstr+="<label><input class=\"b\"  type=\"checkbox\" value=\""+$(this).attr("value")+"\" title=\""+$(this).attr("title")+"\" checked/>"+$(this).attr("title")+"</label>";
 					})
@@ -552,7 +552,7 @@ function CopyItem(showid)
 					{
 						$(showid+" .selecteditem").css("display","none");
 					}
-					//ÒÑÑ¡ÏîÄ¿°ó¶¨click
+					//å·²é€‰é¡¹ç›®ç»‘å®šclick
 					$(showid+" .selecteditem :checkbox").unbind().click(function()
 					{
 						var selval=$(this).val();
@@ -565,7 +565,7 @@ function CopyItem(showid)
 									{
 										$(this).parent().next().find(":checkbox").attr("checked",false);
 									}									
-									//ÖØĞÂ¿ËÂ¡
+									//é‡æ–°å…‹éš†
 									CopyItem(showid);
 								}	
 							})
@@ -576,7 +576,7 @@ function CopyItem(showid)
 					 	$(this).parent().parent().prev().css("color","#FF6600");
 					});
 					SetBoxBg(showid);
-					//Çå¿Õ
+					//æ¸…ç©º
 					$(showid+" .selecteditem .empty").unbind().click(function()
 					{
 							$(showid+" .selecteditem").css("display","none");
@@ -587,7 +587,7 @@ function CopyItem(showid)
 							SetBoxBg(showid);
 					});	
 }
-//½ØÈ¡×Ö·û
+//æˆªå–å­—ç¬¦
 function limit(objString,num)
 {
 	var objLength =objString.length;
@@ -615,8 +615,8 @@ function OpentradeLayer(objid,input_cn,input,dir,strlen,get)
 				html+="<div id=\""+showidval+"\">";
 				html+="<div class=\"OpenFloatBoxBg\" ></div>";
 				html+="<div class=\"OpenFloatBox\">";
-				html+="<div class=\"title\"><h4>ÇëÑ¡ÔñĞĞÒµ</h4><div class=\"DialogClose\" title=\"¹Ø±Õ\"></div></div>";
-				html+="<div class=\"tip\">¿É¶àÑ¡£¬×î¶àÑ¡Ôñ5Ïî</div>";
+				html+="<div class=\"title\"><h4>è¯·é€‰æ‹©è¡Œä¸š</h4><div class=\"DialogClose\" title=\"å…³é—­\"></div></div>";
+				html+="<div class=\"tip\">å¯å¤šé€‰ï¼Œæœ€å¤šé€‰æ‹©5é¡¹</div>";
 				html+="<div class=\"content link_lan\"><div class=\"wait\"></div>";
 				html+="</div>";
 				html+="</div></div>";
@@ -644,7 +644,7 @@ function OpentradeLayer(objid,input_cn,input,dir,strlen,get)
 					html+="</div>";					
 					html+="<div class=\"txt\"><div class=\"selecteditem\"></div></div>";	
 					html+="<div class=\"txt\">";
-					html+="<div align=\"center\"><input type=\"button\"  class=\"but80 Set\" value=\"È·¶¨\" /></div>";
+					html+="<div align=\"center\"><input type=\"button\"  class=\"but80 Set\" value=\"ç¡®å®š\" /></div>";
 					html+="</div>";
 					$(showid+" .content").html(html);
 					$(showid+" .OpenFloatBox").css("width","650");
@@ -657,10 +657,10 @@ function OpentradeLayer(objid,input_cn,input,dir,strlen,get)
 			{
 				addhover(showid,input_cn,input,strlen,get);
 			}
-			//¹Ø±Õ	
+			//å…³é—­	
 		 	$(showid+" .DialogClose").unbind().hover(function(){$(this).addClass("spanhover")},function(){$(this).removeClass("spanhover")});
 			$(showid+" .DialogClose").click(function(){DialogClose(showid);});
-			//ÉèÖÃ±³¾°±ß¿ò
+			//è®¾ç½®èƒŒæ™¯è¾¹æ¡†
 			$(showid).show();	
 			SetBoxBg(showid);
 			//
@@ -670,7 +670,7 @@ function OpentradeLayer(objid,input_cn,input,dir,strlen,get)
 				$(showid+"  label").unbind().click(function(){
 						if ($(showid+" .content :checkbox[checked]").length>5)
 						{
-							alert("²»ÄÜ³¬¹ı5¸öÑ¡Ïî");
+							alert("ä¸èƒ½è¶…è¿‡5ä¸ªé€‰é¡¹");
 							$(this).attr("checked",false);
 							return false;
 						}
@@ -680,7 +680,7 @@ function OpentradeLayer(objid,input_cn,input,dir,strlen,get)
 						$(showid+"  :checkbox[checked]").parent().css("color","#FF6600");
 						}
 				});
-				//È·¶¨Ñ¡Ôñ
+				//ç¡®å®šé€‰æ‹©
 				$(showid+" .Set").unbind().click(function()
 				{
 						var a_cn=new Array();
@@ -690,11 +690,11 @@ function OpentradeLayer(objid,input_cn,input,dir,strlen,get)
 						a_id[index]=$(this).attr("value");
 						});
 						$(input_cn).val(limit(a_cn.join("+"),strlen));
-						if ($(input_cn).val()=="")$(input_cn).val("ÇëÑ¡Ôñ");
+						if ($(input_cn).val()=="")$(input_cn).val("è¯·é€‰æ‹©");
 						$(input).val(a_id.join("-"));
 						 DialogClose(showid);
 				});
-				//get»Ö¸´
+				//getæ¢å¤
 				var getadd=$(showid+" .get").length;
 				if (get && getadd==0)
 				{
@@ -733,7 +733,7 @@ function menulist(objid,input_cn,input,dir,type)
 			{
 				html+="<div id=\""+showidval+"\" class=\"menu\">";
 				html+="<ul>";
-				html+="<li id=\"\" title=\"ÇëÑ¡Ôñ\">¼ÓÔØÖĞ...</li>";
+				html+="<li id=\"\" title=\"è¯·é€‰æ‹©\">åŠ è½½ä¸­...</li>";
 				html+="</ul>";
 				html+="</div>";
 				clickobj.parent("div").append(html);
@@ -743,7 +743,7 @@ function menulist(objid,input_cn,input,dir,type)
 			{
 				$.getScript(dir+"data/cache_classify.js", function(){	
 					html='';
-					html+="<li id=\"\" title=\"²»ÏŞÖÆ\">²»ÏŞÖÆ</li>";
+					html+="<li id=\"\" title=\"ä¸é™åˆ¶\">ä¸é™åˆ¶</li>";
 					if (type=="wage")
 					{
 						data=QS_wage;
@@ -758,11 +758,11 @@ function menulist(objid,input_cn,input,dir,type)
 					}
 					else if(type=="settr")
 					{
-						data=new Array("3,ÈıÌìÄÚ","7,Ò»ÖÜÄÚ","30,Ò»ÔÂÄÚ","90,ÈıÔÂÄÚ");
+						data=new Array("3,ä¸‰å¤©å†…","7,ä¸€å‘¨å†…","30,ä¸€æœˆå†…","90,ä¸‰æœˆå†…");
 					}
 					else if(type=="sex")
 					{
-						data=new Array("1,ÄĞ","2,Å®");
+						data=new Array("1,ç”·","2,å¥³");
 					}
 					else if(type=="companytype")
 					{

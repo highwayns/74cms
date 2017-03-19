@@ -1,4 +1,4 @@
-/*
+﻿/*
  FusionCharts JavaScript Library
  Copyright FusionCharts Technologies LLP
  License Information at <http://www.fusioncharts.com/license>

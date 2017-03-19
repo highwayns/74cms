@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 define('IN_QISHI', true);
 require_once(dirname(__FILE__).'/../include/common.inc.php');
 $act = isset($_REQUEST['act']) ? trim($_REQUEST['act']) : 'app';

@@ -1,6 +1,6 @@
-<?php
+ï»¿<?php
 /*********************************************
-*ÆïÊ¿¹ã¸æ
+*éª‘å£«å¹¿å‘Š
 * *******************************************/
 function tpl_function_qishi_ad($params, &$smarty)
 {
@@ -11,25 +11,25 @@ foreach($arrset as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "ÏÔÊ¾ÊýÄ¿":
+	case "æ˜¾ç¤ºæ•°ç›®":
 		$aset['row'] = $a[1];
 		break;
-	case "¿ªÊ¼Î»ÖÃ":
+	case "å¼€å§‹ä½ç½®":
 		$aset['start'] = $a[1];
 		break;
-	case "ÎÄ×Ö³¤¶È":
+	case "æ–‡å­—é•¿åº¦":
 		$aset['titlelen'] = $a[1];
 		break;
-	case "Ìî²¹×Ö·û":
+	case "å¡«è¡¥å­—ç¬¦":
 		$aset['dot'] = $a[1];
 		break;
-	case "µ÷ÓÃÃû³Æ":
+	case "è°ƒç”¨åç§°":
 		$aset['alias'] = $a[1];
 		break;
-	case "ÁÐ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
-	case "ÅÅÐò":
+	case "æŽ’åº":
 		$aset['displayorder'] = $a[1];
 		break;
 	}
@@ -48,7 +48,7 @@ if ($aset['displayorder'])
 	if (strpos($aset['displayorder'],'>'))
 	{
 		$arr=explode('>',$aset['displayorder']);
-		// ÅÅÐò×Ö¶Î
+		// æŽ’åºå­—æ®µ
 		if($arr[0]=='show_order'){
 			$arr[0]="show_order";
 		}
@@ -60,7 +60,7 @@ if ($aset['displayorder'])
 		{
 			$arr[0]="";
 		}
-		// ÅÅÐò·½Ê½
+		// æŽ’åºæ–¹å¼
 		if($arr[1]=='desc'){
 			$arr[1]="desc";
 		}
@@ -87,14 +87,14 @@ $result = $db->query("SELECT * FROM ".table('ad')." ".$wheresql.$orderbysql.$lim
 $arr=array();
 while($row = $db->fetch_array($result))
 {
-	if ($row['type_id']=="1")//ÎÄ×Ö
+	if ($row['type_id']=="1")//æ–‡å­—
 	{
 	$list['text_content_']=$row['text_content'];
 	$list['text_content']=cut_str($row['text_content'],$aset['titlelen'],0,$aset['dot']);
 	$list['text_url']=$row['text_url'];
 	$row['text_color']?$list['text_content']="<span style=\"color:{$row['text_color']}\">{$list['text_content']}</span>":'';
 	}
-	elseif ($row['type_id']=="2")//Í¼Æ¬
+	elseif ($row['type_id']=="2")//å›¾ç‰‡
 	{
 		$list['img_path']=$row['img_path'];
 		$list['img_url']=$row['img_url'];
@@ -120,7 +120,7 @@ while($row = $db->fetch_array($result))
 			}
 		}
 	}
-	elseif ($row['type_id']=="3")//´úÂë
+	elseif ($row['type_id']=="3")//ä»£ç 
 	{
 	$list['code']=$row['code_content'];
 	}
@@ -130,7 +130,7 @@ while($row = $db->fetch_array($result))
 	$list['flash_width']=$row['flash_width'];
 	$list['flash_height']=$row['flash_height'];
 	}
-	elseif ($row['type_id']=="5")//¸¡¶¯
+	elseif ($row['type_id']=="5")//æµ®åŠ¨
 	{
 	$list['type_id']=$row['type_id'];
 	$list['id']=$row['id'];
@@ -144,7 +144,7 @@ while($row = $db->fetch_array($result))
 	$list['floating_top']=$row['floating_top'];
 	$list['float_code']='';	
 	}
-	elseif ($row['type_id']=="6")//ÊÓÆµ
+	elseif ($row['type_id']=="6")//è§†é¢‘
 	{
 	$list['type_id']=$row['type_id'];
 	$list['video_path']=$row['video_path'];
@@ -181,12 +181,12 @@ function qs_ad_floating($arr)
 	$floatingstr=$str['floating_left']!==""?" LEFT: ".$str['floating_left']."px;":" RIGHT: ".$str['floating_right']."px;";
 		if ($str['floating_type']=="1")
 		{
-		$html.="suspendcode=\"<DIV id=\'floating".$str['id']."\' style='Z-INDEX: 10".$str['id'].";".$floatingstr." POSITION: absolute; TOP: ".$str['floating_top']."px; width: ".$str['floating_width']."; height: ".($str['floating_height']+14)."px;'><img src='".$_CFG['site_template']."images/45close.gif' onClick=javascript:close_divs(\'floating".$str['id']."\') width='100' height='14' border='0' vspace='3' alt='¹Ø±Õ¹ã¸æ'><br/><a href='".$str['floating_url']."' target='_blank'><img src='".$str['floating_path']."' width='".$str['floating_width']."' height='".$str['floating_height']."' border='0'></a></DIV>\";\n"; 
+		$html.="suspendcode=\"<DIV id=\'floating".$str['id']."\' style='Z-INDEX: 10".$str['id'].";".$floatingstr." POSITION: absolute; TOP: ".$str['floating_top']."px; width: ".$str['floating_width']."; height: ".($str['floating_height']+14)."px;'><img src='".$_CFG['site_template']."images/45close.gif' onClick=javascript:close_divs(\'floating".$str['id']."\') width='100' height='14' border='0' vspace='3' alt='å…³é—­å¹¿å‘Š'><br/><a href='".$str['floating_url']."' target='_blank'><img src='".$str['floating_path']."' width='".$str['floating_width']."' height='".$str['floating_height']."' border='0'></a></DIV>\";\n"; 
 		$html.="document.write(suspendcode);\n"; 
 		}
 		if ($str['floating_type']=="2")
 		{
-		$html.="suspendcode=\"<DIV id=\'floating".$str['id']."\' style='Z-INDEX: 10".$str['id'].";".$floatingstr." POSITION: absolute; TOP: ".$str['floating_top']."px; width: ".$str['floating_width']."; height: ".($str['floating_height']+14)."px;'><img src='".$_CFG['site_template']."images/45close.gif' onClick=javascript:close_divs(\'floating".$str['id']."\') width='100' height='14' border='0' vspace='3' alt='¹Ø±Õ¹ã¸æ'><br/><object classid=\'clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\' codebase=\'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\' width=\'".$str['floating_width']."\' height=\'".$str['floating_height']."\'><param name=\'movie\' value=\'".$str['floating_path']."\' /><param name=\'quality\' value=\'high\' /><embed src=\'".$str['floating_path']."\' quality=\'high\' pluginspage=\'http://www.macromedia.com/go/getflashplayer\' type=\'application/x-shockwave-flash\' width=\'".$str['floating_width']."\' height=\'".$str['floating_height']."\'></embed></object></DIV>\";\n"; 
+		$html.="suspendcode=\"<DIV id=\'floating".$str['id']."\' style='Z-INDEX: 10".$str['id'].";".$floatingstr." POSITION: absolute; TOP: ".$str['floating_top']."px; width: ".$str['floating_width']."; height: ".($str['floating_height']+14)."px;'><img src='".$_CFG['site_template']."images/45close.gif' onClick=javascript:close_divs(\'floating".$str['id']."\') width='100' height='14' border='0' vspace='3' alt='å…³é—­å¹¿å‘Š'><br/><object classid=\'clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\' codebase=\'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0\' width=\'".$str['floating_width']."\' height=\'".$str['floating_height']."\'><param name=\'movie\' value=\'".$str['floating_path']."\' /><param name=\'quality\' value=\'high\' /><embed src=\'".$str['floating_path']."\' quality=\'high\' pluginspage=\'http://www.macromedia.com/go/getflashplayer\' type=\'application/x-shockwave-flash\' width=\'".$str['floating_width']."\' height=\'".$str['floating_height']."\'></embed></object></DIV>\";\n"; 
 		$html.="document.write(suspendcode);\n"; 
 		}
 	}

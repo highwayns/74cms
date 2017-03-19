@@ -1,4 +1,4 @@
-HTML.TidyAdd
+﻿HTML.TidyAdd
 TYPE: lookup
 VERSION: 2.0.0
 DEFAULT: array()

@@ -1,5 +1,5 @@
-.resume-nav{width:998px;  margin:0 auto; margin-top:8px; height:28px; background-color:#F2F2F2;border:1px solid #CCCCCC;border-bottom:3px  #4095ef solid;}
-.resume-nav a{display:block; float:left; height:28px;width:auto;color: #666666; cursor:pointer;text-decoration:none; line-height:28px; padding:0px 20px; font-size:14px;font-family:"microsoft yahei","ËÎÌå";}
+ï»¿.resume-nav{width:998px;  margin:0 auto; margin-top:8px; height:28px; background-color:#F2F2F2;border:1px solid #CCCCCC;border-bottom:3px  #4095ef solid;}
+.resume-nav a{display:block; float:left; height:28px;width:auto;color: #666666; cursor:pointer;text-decoration:none; line-height:28px; padding:0px 20px; font-size:14px;font-family:"microsoft yahei","å®‹ä½“";}
 .resume-nav a:hover {color: #4095ef;}
 .resume-nav a.select{color:#4095ef;font-weight:bold;}
 .resumesearchbox{width:998px;  margin:0 auto; border:1px #D5D5D5 solid;border-top:none;}
@@ -23,9 +23,9 @@
 .s1 .littxt .keybox .keyinputbox{ width:342px; float:left}
 .s1 .littxt .keybox .keyinputbox input{ width:330px; border:1px   #B9B9B9 solid; background-color:#FFFFFF; height:22px; padding-left:10px; padding-top:6px; border-right:0px; line-height:18px;}
 .s1 .littxt .keybox .subinputbox{ width:70px; height:31px; float:left;}
-.s1 .littxt .keybox .subinputbox input{ width:70px; height:31px;background:url(../images/80.gif) no-repeat; border:0px; color:#FFFFFF; font-family:"microsoft yahei","ËÎÌå"; font-size:15px; line-height:31px; *margin-top:1px;}
+.s1 .littxt .keybox .subinputbox input{ width:70px; height:31px;background:url(../images/80.gif) no-repeat; border:0px; color:#FFFFFF; font-family:"microsoft yahei","å®‹ä½“"; font-size:15px; line-height:31px; *margin-top:1px;}
 .s1 .littxt .keybox .subinputbox1{ width:70px; height:31px; float:left;}
-.s1 .littxt .keybox .subinputbox1 input{ width:70px; height:31px;background:url(../images/80.gif) no-repeat 0px -32px; border:0px; color: #666666; font-family:"microsoft yahei","ËÎÌå"; font-size:15px; line-height:31px; *margin-top:1px;}
+.s1 .littxt .keybox .subinputbox1 input{ width:70px; height:31px;background:url(../images/80.gif) no-repeat 0px -32px; border:0px; color: #666666; font-family:"microsoft yahei","å®‹ä½“"; font-size:15px; line-height:31px; *margin-top:1px;}
 .s1 .littxt .keymore{ width:200px;background:url(../images/80.gif) no-repeat 40px -64px; float:left; padding-left:63px; padding-top:15px; color:#FF6600; }
 .s1 .littxt li{ float:left;width:145px; height:25px; line-height:25px; overflow:hidden; }
 .s1 .littxt li.hide{ display:none}
@@ -34,9 +34,9 @@
 .s1 .littxt .min li{ width:100px; overflow:hidden}
 .s1 .littxt li span{ color: #4095ef}
 .s1 .advbox{ display:none}
-/*-----¼òÀúÊ×Ò³------*/
+/*-----ç®€å†é¦–é¡µ------*/
 .resumebox {width:963px;  margin:0 auto; margin-top:8px;border:1px solid #E4E4E4;background:url(../images/16.jpg) repeat-x; padding:10px;}
-.resumebox h2{ font-size:14px; font-weight:bold; padding-bottom:10px; font-family:"microsoft yahei","ËÎÌå"; color:#4095ef}
+.resumebox h2{ font-size:14px; font-weight:bold; padding-bottom:10px; font-family:"microsoft yahei","å®‹ä½“"; color:#4095ef}
 .resumebox li{ float:left; width:220px; height:25px; line-height:25px; padding-left:13px;background:url(../images/01.gif) no-repeat 5px -29px;  }
 .resumebox li span{ font-size:12px; color:#FF6600}
 .resumebox li.newresume{ width:455px; }
@@ -45,7 +45,7 @@
 .resumebox .photobox .imgdiv{ width:68px; height:85px; padding:1px; border:1px #CCCCCC solid; background-color:#FFFFFF; float:left}
 .resumebox .photobox .txt { padding-left:10px;float:left; width:220px; line-height:180%; padding-top:3px; color:#666666; overflow:hidden; height:83px;}
 .resumebox .photobox .txt span{} 
-/*-----¼òÀúÁĞ±í------*/
+/*-----ç®€å†åˆ—è¡¨------*/
 .resume-list{width:1000px; margin:0 auto; margin-top:8px;}
 .resume-list .tit{ width:975px; border:1px #D5D5D5 solid; height:32px; padding-left:8px; padding-top:8px; background-color: #F9F9F9}
 .resume-list .tit label{ width:60px; float:left}
@@ -68,9 +68,9 @@
 .resume-list .list{ width:983px; border-bottom:1px #D5D5D5 solid; color:#666666; padding-top:6px; padding-bottom:6px;border-left:1px #D5D5D5 solid;border-right:1px #D5D5D5 solid;}
 .resume-list .list .li_left_check{ width:22px; float:left; padding-left:10px; padding-top:5px;}
 .resume-list .list .li_left{ width:945px; float:left;}
-.resume-list .list .li_left .yname{ height:20px; width:180px; font-size:14px; float:left; padding-top:6px;font-family:"microsoft yahei","ËÎÌå";}
+.resume-list .list .li_left .yname{ height:20px; width:180px; font-size:14px; float:left; padding-top:6px;font-family:"microsoft yahei","å®‹ä½“";}
 .resume-list .list .li_left .age{ height:20px; width:100px;float:left;padding-top:6px; font-size:12px;}
-.resume-list .list .li_left .intention{ height:20px; width:480px;float:left;padding-top:6px; color: #4095ef; font-size:14px;font-family:"microsoft yahei","ËÎÌå"; overflow:hidden}
+.resume-list .list .li_left .intention{ height:20px; width:480px;float:left;padding-top:6px; color: #4095ef; font-size:14px;font-family:"microsoft yahei","å®‹ä½“"; overflow:hidden}
 .resume-list .list .li_left .date{ height:20px; width:100px;float:left;padding-top:6px; text-align:right;}
 .resume-list .list .li_left .txt { line-height:180%;word-break:break-all;word-wrap:break-word; padding-top:3px;}
 .resume-list .list .li_left .tag { padding-top:5px; color:#333333}
@@ -86,9 +86,9 @@
 .highlight { color: #FF0000}
 
 /*
-***ÒÔÏÂÑùÊ½Îª3.6°æ±¾µÄÕÕÆ¬¼òÀúÁĞ±í£¬×îĞÂ¼òÀúÁĞ±íÑùÊ½
+***ä»¥ä¸‹æ ·å¼ä¸º3.6ç‰ˆæœ¬çš„ç…§ç‰‡ç®€å†åˆ—è¡¨ï¼Œæœ€æ–°ç®€å†åˆ—è¡¨æ ·å¼
 */
-/*ÕÕÆ¬¼òÀú*/
+/*ç…§ç‰‡ç®€å†*/
 .photo-resumes-list{padding:15px 0 0 15px;background-color: #fff;font-family: "SimSun";*padding-bottom: 15px;}
 .photo-resumes-list .photo-resume-item{background-color: #fff;border:1px solid #e2e2e2;width: 156px;height: 198px;overflow: hidden;margin:0 10px 10px 0;cursor: pointer;}
 .photo-resumes-list .photo-resume-item:hover{border-color:#0180cf;}
@@ -100,7 +100,7 @@
 .photo-resume-item .photo-detail{height: 80px;background-color: #f2f2f2;padding:0 10px;}
 .photo-resume-item .photo-detail .date-time{padding-top: 12px;font-size: 12px;color:#999;}
 .photo-resume-item .photo-detail .detail-content{margin-top:8px;width: 120px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;font-size: 12px;color:#666;}
-/*×îĞÂ¼òÀú*/
+/*æœ€æ–°ç®€å†*/
 .newst-resume-list{padding-left: 13px;padding-bottom: 15px;}
 .newst-resume-list .newst-resume-item{margin-right: 10px;border-bottom:1px dotted #dbdbdb;padding: 13px 23px 10px 7px;width: 353px;}
 .newst-resume-item .name-date{margin-bottom: 12px;}
@@ -109,7 +109,7 @@
 .newst-resume-item .name-date span{font-size: 12px;font-family: Arial;color:#999;line-height: 16px;}
 .newst-resume-item .resume-detail{font-size: 12px;color:#666;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 
-/*Êı¾İÁĞ±í*/
+/*æ•°æ®åˆ—è¡¨*/
 .underline:hover{text-decoration: underline;}
 .infolists{font-family: "SimSun";/*margin-top:10px;*/}
 .infolists a{text-decoration: none;}

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Éú³ÉHTML
+ * 74cms ç”ŸæˆHTML
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -14,7 +14,7 @@ require_once(dirname(__FILE__).'/../data/config.php');
 require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'set';
 $smarty->assign('act',$act);
-$smarty->assign('pageheader',"°Ù¶ÈÁ´½ÓÌá½»");
+$smarty->assign('pageheader',"ç™¾åº¦é“¾æŽ¥æäº¤");
 if($act == 'set')
 {
 $smarty->assign('data',get_cache('baidu_submiturl'));
@@ -32,10 +32,10 @@ elseif($act == 'setsave')
 	$_POST['addnotice']=intval($_POST['addnotice']);
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('baidu_submiturl')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('±£´æÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('baidu_submiturl')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('ä¿å­˜å¤±è´¥', 1):"";
 	}
 	refresh_cache('baidu_submiturl');
-	write_log("ÐÞ¸Ä°Ù¶ÈÁ´½ÓÌá½»ÅäÖÃ", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2);
+	write_log("ä¿®æ”¹ç™¾åº¦é“¾æŽ¥æäº¤é…ç½®", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 ?>

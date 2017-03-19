@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¹ã¸æ¹ÜÀí
+ * 74cms å¹¿å‘Šç®¡ç†
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -68,29 +68,29 @@ if($act == 'list')
 	$smarty->assign('ad_category',get_ad_category());
 	$smarty->assign('page',$page->show(3));
 	$smarty->assign('total',$total_val);
-	$smarty->assign('pageheader',"¹ã¸æ¹ÜÀí");	
+	$smarty->assign('pageheader',"å¹¿å‘Šç®¡ç†");	
 	$smarty->display('ads/admin_ad_list.htm');
 }
-//Ìí¼Ó¹ã¸æ
+//æ·»åŠ å¹¿å‘Š
 elseif($act == 'ad_add')
 {
 	check_permissions($_SESSION['admin_purview'],"ad_add");
 	$smarty->assign('datefm',convert_datefm(time(),1));
 	$smarty->assign('ad_category',get_ad_category());
-	$smarty->assign('pageheader',"¹ã¸æ¹ÜÀí");
+	$smarty->assign('pageheader',"å¹¿å‘Šç®¡ç†");
 	get_token();
 	$smarty->display('ads/admin_ad_add.htm');
 }
-//±£´æÌí¼Ó¹ã¸æ
+//ä¿å­˜æ·»åŠ å¹¿å‘Š
 elseif($act == 'ad_add_save')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"ad_add");
-	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('ÄúÃ»ÓĞÌîĞ´±êÌâ£¡',1);
+	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™æ ‡é¢˜ï¼',1);
 	$setsqlarr['is_display']=trim($_POST['is_display'])?trim($_POST['is_display']):0;
-	$setsqlarr['category_id']=trim($_POST['category_id'])?trim($_POST['category_id']):adminmsg('ÄúÃ»ÓĞÌîĞ´¹ã¸æ·ÖÀà£¡',1);
-	$setsqlarr['type_id']=trim($_POST['type_id'])?trim($_POST['type_id']):adminmsg('ÄúÃ»ÓĞÌîĞ´¹ã¸æÀàĞÍ£¡',1);
-	$setsqlarr['alias']=trim($_POST['alias'])?trim($_POST['alias']):adminmsg('²ÎÊı´íÎó£¬µ÷ÓÃID²»´æÔÚ£¡',1);
+	$setsqlarr['category_id']=trim($_POST['category_id'])?trim($_POST['category_id']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™å¹¿å‘Šåˆ†ç±»ï¼',1);
+	$setsqlarr['type_id']=trim($_POST['type_id'])?trim($_POST['type_id']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™å¹¿å‘Šç±»å‹ï¼',1);
+	$setsqlarr['alias']=trim($_POST['alias'])?trim($_POST['alias']):adminmsg('å‚æ•°é”™è¯¯ï¼Œè°ƒç”¨IDä¸å­˜åœ¨ï¼',1);
 	$setsqlarr['show_order']=intval($_POST['show_order']);
 	$setsqlarr['note']=trim($_POST['note']);	
 		if ($_POST['starttime']=="")
@@ -109,19 +109,19 @@ elseif($act == 'ad_add_save')
 		{
 		$setsqlarr['deadline']=intval(convert_datefm($_POST['deadline'],2));
 		}
-	//ÎÄ×Ö
+	//æ–‡å­—
 	if ($setsqlarr['type_id']=="1")
 	{
-	$setsqlarr['text_content']=trim($_POST['text_content'])?trim($_POST['text_content']):adminmsg('ÄúÃ»ÓĞÌîĞ´ÎÄ×ÖÄÚÈİ£¡',1);
+	$setsqlarr['text_content']=trim($_POST['text_content'])?trim($_POST['text_content']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™æ–‡å­—å†…å®¹ï¼',1);
 	$setsqlarr['text_url']=trim($_POST['text_url']);
 	$setsqlarr['text_color']=trim($_POST['tit_color']);
 	}
-	//Í¼Æ¬
+	//å›¾ç‰‡
 	elseif ($setsqlarr['type_id']=="2")
 	{
 		if (empty($_FILES['img_file']['name']) && empty($_POST['img_path']))
 		{
-		adminmsg('ÇëÉÏ´«Í¼Æ¬»òÕßÌîĞ´Í¼Æ¬Â·¾¶£¡',1);
+		adminmsg('è¯·ä¸Šä¼ å›¾ç‰‡æˆ–è€…å¡«å†™å›¾ç‰‡è·¯å¾„ï¼',1);
 		}
 		if ($_FILES['img_file']['name'])
 		{
@@ -130,7 +130,7 @@ elseif($act == 'ad_add_save')
 			$setsqlarr['img_path']=_asUpFiles($ads_updir,"img_file",1000,'gif/jpg/bmp/png',true);
 			if (empty($setsqlarr['img_path']))
 			{
-			adminmsg('ÉÏ´«ÎÄ¼şÊ§°Ü£¡',1);
+			adminmsg('ä¸Šä¼ æ–‡ä»¶å¤±è´¥ï¼',1);
 			}
 			$setsqlarr['img_path']=$ads_dir.date("Y/m/d/").$setsqlarr['img_path'];
 		}
@@ -142,19 +142,19 @@ elseif($act == 'ad_add_save')
 	$setsqlarr['img_explain']=trim($_POST['img_explain']);
 	$setsqlarr['img_uid']=intval($_POST['img_uid']);
 	}
-	//´úÂë
+	//ä»£ç 
 	elseif ($setsqlarr['type_id']=="3")
 	{
-	$setsqlarr['code_content']=trim($_POST['code_content'])?trim($_POST['code_content']):adminmsg('ÄúÃ»ÓĞÌîĞ´´úÂë£¡',1);
+	$setsqlarr['code_content']=trim($_POST['code_content'])?trim($_POST['code_content']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™ä»£ç ï¼',1);
 	}
 	//FLASH
 	elseif ($setsqlarr['type_id']=="4")
 	{
-	$setsqlarr['flash_width']=!empty($_POST['flash_width'])?intval($_POST['flash_width']):adminmsg('ÄúÃ»ÓĞÌîĞ´flash¿í¶È£¡',1);
-	$setsqlarr['flash_height']=!empty($_POST['flash_height'])?intval($_POST['flash_height']):adminmsg('ÄúÃ»ÓĞÌîĞ´flash¸ß¶È£¡',1);
+	$setsqlarr['flash_width']=!empty($_POST['flash_width'])?intval($_POST['flash_width']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™flashå®½åº¦ï¼',1);
+	$setsqlarr['flash_height']=!empty($_POST['flash_height'])?intval($_POST['flash_height']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™flashé«˜åº¦ï¼',1);
 		if (empty($_FILES['flash_file']['name']) && empty($_POST['flash_path']))
 			{
-			adminmsg('ÇëÉÏ´«FLASH»òÕßÌîĞ´FLASHÂ·¾¶£¡',1);
+			adminmsg('è¯·ä¸Šä¼ FLASHæˆ–è€…å¡«å†™FLASHè·¯å¾„ï¼',1);
 			}
 			if ($_FILES['flash_file']['name'])
 			{
@@ -163,7 +163,7 @@ elseif($act == 'ad_add_save')
 				$setsqlarr['flash_path']=_asUpFiles($ads_updir,"flash_file",1000,'swf/SWF',true);
 				if (empty($setsqlarr['flash_path']))
 				{
-				adminmsg('ÉÏ´«ÎÄ¼şÊ§°Ü£¡',1);
+				adminmsg('ä¸Šä¼ æ–‡ä»¶å¤±è´¥ï¼',1);
 				}
 				$setsqlarr['flash_path']=$ads_dir.date("Y/m/d/").$setsqlarr['flash_path'];
 			}
@@ -172,20 +172,20 @@ elseif($act == 'ad_add_save')
 				$setsqlarr['flash_path']=trim($_POST['flash_path']);
 			}
 	}
-	//¶ÔÁª
+	//å¯¹è”
 	elseif ($setsqlarr['type_id']=="5")
 	{
 	$setsqlarr['floating_type']=$_POST['floating_type']?trim($_POST['floating_type']):1;	
 	$setsqlarr['floating_url']=trim($_POST['floating_url']);
-	$setsqlarr['floating_width']=$_POST['floating_width']?intval($_POST['floating_width']):adminmsg('ÄúÃ»ÓĞÌîĞ´¿í¶È£¡',1);
-	$setsqlarr['floating_height']=$_POST['floating_height']?intval($_POST['floating_height']):adminmsg('ÄúÃ»ÓĞÌîĞ´¸ß¶È£¡',1);
+	$setsqlarr['floating_width']=$_POST['floating_width']?intval($_POST['floating_width']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™å®½åº¦ï¼',1);
+	$setsqlarr['floating_height']=$_POST['floating_height']?intval($_POST['floating_height']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™é«˜åº¦ï¼',1);
 	$setsqlarr['floating_left']=$_POST['floating_left']<>""?intval($_POST['floating_left']):"";
 	$setsqlarr['floating_right']=$_POST['floating_right']<>""?intval($_POST['floating_right']):"";
-	if ($setsqlarr['floating_left']==="" && $setsqlarr['floating_right']==="") adminmsg('×ó±ß¾àºÍÓÒ±ß¾àÖÁÉÙÌîĞ´Ò»Ïî£¡',1);
+	if ($setsqlarr['floating_left']==="" && $setsqlarr['floating_right']==="") adminmsg('å·¦è¾¹è·å’Œå³è¾¹è·è‡³å°‘å¡«å†™ä¸€é¡¹ï¼',1);
 	$setsqlarr['floating_top']=$_POST['floating_top']?intval($_POST['floating_top']):0;
 		if (empty($_FILES['floating_file']['name']) && empty($_POST['floating_path']))
 		{
-		adminmsg('ÇëÉÏ´«ÎÄ¼ş»òÕßÌîĞ´Â·¾¶£¡',1);
+		adminmsg('è¯·ä¸Šä¼ æ–‡ä»¶æˆ–è€…å¡«å†™è·¯å¾„ï¼',1);
 		}
 		if ($_FILES['floating_file']['name'])
 		{
@@ -202,7 +202,7 @@ elseif($act == 'ad_add_save')
 			$setsqlarr['floating_path']=_asUpFiles($ads_updir,"floating_file",1000,$filetype,true);
 			if (empty($setsqlarr['floating_path']))
 			{
-			adminmsg('ÉÏ´«ÎÄ¼şÊ§°Ü£¡',1);
+			adminmsg('ä¸Šä¼ æ–‡ä»¶å¤±è´¥ï¼',1);
 			}
 			$setsqlarr['floating_path']=$ads_dir.date("Y/m/d/").$setsqlarr['floating_path'];
 		}
@@ -211,14 +211,14 @@ elseif($act == 'ad_add_save')
 			$setsqlarr['floating_path']=trim($_POST['floating_path']);
 		}
 	}
-	//ÊÓÆµ
+	//è§†é¢‘
 	elseif ($setsqlarr['type_id']=="6")
 	{
-	$setsqlarr['video_width']=$_POST['video_width']?intval($_POST['video_width']):adminmsg('ÄúÃ»ÓĞÌîĞ´¿í¶È£¡',1);
-	$setsqlarr['video_height']=$_POST['video_height']?intval($_POST['video_height']):adminmsg('ÄúÃ»ÓĞÌîĞ´¸ß¶È£¡',1);
+	$setsqlarr['video_width']=$_POST['video_width']?intval($_POST['video_width']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™å®½åº¦ï¼',1);
+	$setsqlarr['video_height']=$_POST['video_height']?intval($_POST['video_height']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™é«˜åº¦ï¼',1);
 		if (empty($_FILES['video_file']['name']) && empty($_POST['video_path']))
 		{
-		adminmsg('ÇëÉÏ´«ÎÄ¼ş»òÕßÌîĞ´Â·¾¶£¡',1);
+		adminmsg('è¯·ä¸Šä¼ æ–‡ä»¶æˆ–è€…å¡«å†™è·¯å¾„ï¼',1);
 		}
 		if ($_FILES['video_file']['name'])
 		{
@@ -227,7 +227,7 @@ elseif($act == 'ad_add_save')
 			$setsqlarr['video_path']=_asUpFiles($ads_updir,"video_file",5000,"swf/flv/f4v",true);
 			if (empty($setsqlarr['video_path']))
 			{
-			adminmsg('ÉÏ´«ÎÄ¼şÊ§°Ü£¡',1);
+			adminmsg('ä¸Šä¼ æ–‡ä»¶å¤±è´¥ï¼',1);
 			}
 			$setsqlarr['video_path']=$ads_dir.date("Y/m/d/").$setsqlarr['video_path'];
 		}
@@ -237,47 +237,47 @@ elseif($act == 'ad_add_save')
 		}
 	}
 	$setsqlarr['addtime']=$timestamp;
-	$link[0]['text'] = "¼ÌĞøÌí¼Ó";
+	$link[0]['text'] = "ç»§ç»­æ·»åŠ ";
 	$link[0]['href'] ="?act=ad_add&category_id=".$_POST['category_id']."&type_id=".$_POST['type_id']."&alias=".$_POST['alias'];
-	$link[1]['text'] = "·µ»Ø¹ã¸æÁĞ±í";
+	$link[1]['text'] = "è¿”å›å¹¿å‘Šåˆ—è¡¨";
 	$link[1]['href'] ="?act=";
 	if(!$db->inserttable(table('ad'),$setsqlarr))
 	{
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨Ìí¼Ó¹ã¸æÊ§°Ü", $_SESSION['admin_name'],3);
-		adminmsg("Ìí¼ÓÊ§°Ü£¡",0);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°æ·»åŠ å¹¿å‘Šå¤±è´¥", $_SESSION['admin_name'],3);
+		adminmsg("æ·»åŠ å¤±è´¥ï¼",0);
 	}
 	else
 	{
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦Ìí¼Ó¹ã¸æ", $_SESSION['admin_name'],3);
-		adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°æˆåŠŸæ·»åŠ å¹¿å‘Š", $_SESSION['admin_name'],3);
+		adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 	}
 }
-//ĞŞ¸Ä¹ã¸æ
+//ä¿®æ”¹å¹¿å‘Š
 elseif($act == 'edit_ad')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"ad_edit");
-	$id=!empty($_GET['id'])?intval($_GET['id']):adminmsg('Ã»ÓĞ¹ã¸æid£¡',1);
+	$id=!empty($_GET['id'])?intval($_GET['id']):adminmsg('æ²¡æœ‰å¹¿å‘Šidï¼',1);
 	$ad=get_ad_one($id);
 	$smarty->assign('ad',$ad);
-	$smarty->assign('ad_category',get_ad_category());//¹ã¸æÎ»·ÖÀàÁĞ±í
+	$smarty->assign('ad_category',get_ad_category());//å¹¿å‘Šä½åˆ†ç±»åˆ—è¡¨
 	$smarty->assign('url',$_SERVER['HTTP_REFERER']);
-	$smarty->assign('pageheader',"¹ã¸æ¹ÜÀí");
+	$smarty->assign('pageheader',"å¹¿å‘Šç®¡ç†");
 	$smarty->display('ads/admin_ad_edit.htm');
 	 
 }
-//±£´æ:ĞŞ¸Ä¹ã¸æ
+//ä¿å­˜:ä¿®æ”¹å¹¿å‘Š
 elseif($act == 'ad_edit_save')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"ad_edit");
-	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('ÄúÃ»ÓĞÌîĞ´±êÌâ£¡',1);
+	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™æ ‡é¢˜ï¼',1);
 	$setsqlarr['is_display']=trim($_POST['is_display'])?trim($_POST['is_display']):0;
-	$setsqlarr['category_id']=trim($_POST['category_id'])?trim($_POST['category_id']):adminmsg('ÄúÃ»ÓĞÌîĞ´¹ã¸æ·ÖÀà£¡',1);
-	$setsqlarr['type_id']=trim($_POST['type_id'])?trim($_POST['type_id']):adminmsg('ÄúÃ»ÓĞÌîĞ´¹ã¸æÀàĞÍ£¡',1);
-	$setsqlarr['alias']=trim($_POST['alias'])?trim($_POST['alias']):adminmsg('²ÎÊı´íÎó£¬µ÷ÓÃID²»´æÔÚ£¡',1);
+	$setsqlarr['category_id']=trim($_POST['category_id'])?trim($_POST['category_id']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™å¹¿å‘Šåˆ†ç±»ï¼',1);
+	$setsqlarr['type_id']=trim($_POST['type_id'])?trim($_POST['type_id']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™å¹¿å‘Šç±»å‹ï¼',1);
+	$setsqlarr['alias']=trim($_POST['alias'])?trim($_POST['alias']):adminmsg('å‚æ•°é”™è¯¯ï¼Œè°ƒç”¨IDä¸å­˜åœ¨ï¼',1);
 	$setsqlarr['show_order']=intval($_POST['show_order']);
 	$setsqlarr['note']=trim($_POST['note']);	
 		if ($_POST['starttime']=="")
@@ -296,19 +296,19 @@ elseif($act == 'ad_edit_save')
 		{
 		$setsqlarr['deadline']=intval(convert_datefm($_POST['deadline'],2));
 		}
-	//ÎÄ×Ö
+	//æ–‡å­—
 	if ($setsqlarr['type_id']=="1")
 	{
-	$setsqlarr['text_content']=trim($_POST['text_content'])?trim($_POST['text_content']):adminmsg('ÄúÃ»ÓĞÌîĞ´ÎÄ×ÖÄÚÈİ£¡',1);
+	$setsqlarr['text_content']=trim($_POST['text_content'])?trim($_POST['text_content']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™æ–‡å­—å†…å®¹ï¼',1);
 	$setsqlarr['text_url']=trim($_POST['text_url']);
 	$setsqlarr['text_color']=trim($_POST['tit_color']);
 	}
-	//Í¼Æ¬
+	//å›¾ç‰‡
 	elseif ($setsqlarr['type_id']=="2")
 	{
 		if (empty($_FILES['img_file']['name']) && empty($_POST['img_path']))
 		{
-		adminmsg('ÇëÉÏ´«Í¼Æ¬»òÕßÌîĞ´Í¼Æ¬Â·¾¶£¡',1);
+		adminmsg('è¯·ä¸Šä¼ å›¾ç‰‡æˆ–è€…å¡«å†™å›¾ç‰‡è·¯å¾„ï¼',1);
 		}
 		if ($_FILES['img_file']['name'])
 		{
@@ -317,7 +317,7 @@ elseif($act == 'ad_edit_save')
 			$setsqlarr['img_path']=_asUpFiles($ads_updir,"img_file",1000,'gif/jpg/bmp/png',true);
 			if (empty($setsqlarr['img_path']))
 			{
-			adminmsg('ÉÏ´«ÎÄ¼şÊ§°Ü£¡',1);
+			adminmsg('ä¸Šä¼ æ–‡ä»¶å¤±è´¥ï¼',1);
 			}
 			$setsqlarr['img_path']=$ads_dir.date("Y/m/d/").$setsqlarr['img_path'];
 		}
@@ -329,19 +329,19 @@ elseif($act == 'ad_edit_save')
 	$setsqlarr['img_explain']=trim($_POST['img_explain']);
 	$setsqlarr['img_uid']=intval($_POST['img_uid']);
 	}
-	//´úÂë
+	//ä»£ç 
 	elseif ($setsqlarr['type_id']=="3")
 	{
-	$setsqlarr['code_content']=trim($_POST['code_content'])?trim($_POST['code_content']):adminmsg('ÄúÃ»ÓĞÌîĞ´´úÂë£¡',1);
+	$setsqlarr['code_content']=trim($_POST['code_content'])?trim($_POST['code_content']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™ä»£ç ï¼',1);
 	}
 	//FLASH
 	elseif ($setsqlarr['type_id']=="4")
 	{
-	$setsqlarr['flash_width']=!empty($_POST['flash_width'])?intval($_POST['flash_width']):adminmsg('ÄúÃ»ÓĞÌîĞ´flash¿í¶È£¡',1);
-	$setsqlarr['flash_height']=!empty($_POST['flash_height'])?intval($_POST['flash_height']):adminmsg('ÄúÃ»ÓĞÌîĞ´flash¸ß¶È£¡',1);
+	$setsqlarr['flash_width']=!empty($_POST['flash_width'])?intval($_POST['flash_width']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™flashå®½åº¦ï¼',1);
+	$setsqlarr['flash_height']=!empty($_POST['flash_height'])?intval($_POST['flash_height']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™flashé«˜åº¦ï¼',1);
 		if (empty($_FILES['flash_file']['name']) && empty($_POST['flash_path']))
 			{
-			adminmsg('ÇëÉÏ´«FLASH»òÕßÌîĞ´FLASHÂ·¾¶£¡',1);
+			adminmsg('è¯·ä¸Šä¼ FLASHæˆ–è€…å¡«å†™FLASHè·¯å¾„ï¼',1);
 			}
 			if ($_FILES['flash_file']['name'])
 			{
@@ -350,7 +350,7 @@ elseif($act == 'ad_edit_save')
 				$setsqlarr['flash_path']=_asUpFiles($ads_updir,"flash_file",1000,'swf/SWF',true);
 				if (empty($setsqlarr['flash_path']))
 				{
-				adminmsg('ÉÏ´«ÎÄ¼şÊ§°Ü£¡',1);
+				adminmsg('ä¸Šä¼ æ–‡ä»¶å¤±è´¥ï¼',1);
 				}
 				$setsqlarr['flash_path']=$ads_dir.date("Y/m/d/").$setsqlarr['flash_path'];
 			}
@@ -359,20 +359,20 @@ elseif($act == 'ad_edit_save')
 				$setsqlarr['flash_path']=trim($_POST['flash_path']);
 			}
 	}
-	//¶ÔÁª
+	//å¯¹è”
 	elseif ($setsqlarr['type_id']=="5")
 	{
 	$setsqlarr['floating_type']=$_POST['floating_type']?trim($_POST['floating_type']):1;	
 	$setsqlarr['floating_url']=trim($_POST['floating_url']);
-	$setsqlarr['floating_width']=$_POST['floating_width']?intval($_POST['floating_width']):adminmsg('ÄúÃ»ÓĞÌîĞ´¿í¶È£¡',1);
-	$setsqlarr['floating_height']=$_POST['floating_height']?intval($_POST['floating_height']):adminmsg('ÄúÃ»ÓĞÌîĞ´¸ß¶È£¡',1);
+	$setsqlarr['floating_width']=$_POST['floating_width']?intval($_POST['floating_width']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™å®½åº¦ï¼',1);
+	$setsqlarr['floating_height']=$_POST['floating_height']?intval($_POST['floating_height']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™é«˜åº¦ï¼',1);
 	$setsqlarr['floating_left']=$_POST['floating_left']<>""?intval($_POST['floating_left']):"";
 	$setsqlarr['floating_right']=$_POST['floating_right']<>""?intval($_POST['floating_right']):"";
-	if ($setsqlarr['floating_left']==="" && $setsqlarr['floating_right']==="") adminmsg('×ó±ß¾àºÍÓÒ±ß¾àÖÁÉÙÌîĞ´Ò»Ïî£¡',1);
+	if ($setsqlarr['floating_left']==="" && $setsqlarr['floating_right']==="") adminmsg('å·¦è¾¹è·å’Œå³è¾¹è·è‡³å°‘å¡«å†™ä¸€é¡¹ï¼',1);
 	$setsqlarr['floating_top']=$_POST['floating_top']?intval($_POST['floating_top']):0;
 		if (empty($_FILES['floating_file']['name']) && empty($_POST['floating_path']))
 		{
-		adminmsg('ÇëÉÏ´«ÎÄ¼ş»òÕßÌîĞ´Â·¾¶£¡',1);
+		adminmsg('è¯·ä¸Šä¼ æ–‡ä»¶æˆ–è€…å¡«å†™è·¯å¾„ï¼',1);
 		}
 		if ($_FILES['floating_file']['name'])
 		{
@@ -389,7 +389,7 @@ elseif($act == 'ad_edit_save')
 			$setsqlarr['floating_path']=_asUpFiles($ads_updir,"floating_file",1000,$filetype,true);
 			if (empty($setsqlarr['floating_path']))
 			{
-			adminmsg('ÉÏ´«ÎÄ¼şÊ§°Ü£¡',1);
+			adminmsg('ä¸Šä¼ æ–‡ä»¶å¤±è´¥ï¼',1);
 			}
 			$setsqlarr['floating_path']=$ads_dir.date("Y/m/d/").$setsqlarr['floating_path'];
 		}
@@ -398,14 +398,14 @@ elseif($act == 'ad_edit_save')
 			$setsqlarr['floating_path']=trim($_POST['floating_path']);
 		}
 	}
-	//ÊÓÆµ
+	//è§†é¢‘
 	elseif ($setsqlarr['type_id']=="6")
 	{
-	$setsqlarr['video_width']=$_POST['video_width']?intval($_POST['video_width']):adminmsg('ÄúÃ»ÓĞÌîĞ´¿í¶È£¡',1);
-	$setsqlarr['video_height']=$_POST['video_height']?intval($_POST['video_height']):adminmsg('ÄúÃ»ÓĞÌîĞ´¸ß¶È£¡',1);
+	$setsqlarr['video_width']=$_POST['video_width']?intval($_POST['video_width']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™å®½åº¦ï¼',1);
+	$setsqlarr['video_height']=$_POST['video_height']?intval($_POST['video_height']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™é«˜åº¦ï¼',1);
 		if (empty($_FILES['video_file']['name']) && empty($_POST['video_path']))
 		{
-		adminmsg('ÇëÉÏ´«ÎÄ¼ş»òÕßÌîĞ´Â·¾¶£¡',1);
+		adminmsg('è¯·ä¸Šä¼ æ–‡ä»¶æˆ–è€…å¡«å†™è·¯å¾„ï¼',1);
 		}
 		if ($_FILES['video_file']['name'])
 		{
@@ -414,7 +414,7 @@ elseif($act == 'ad_edit_save')
 			$setsqlarr['video_path']=_asUpFiles($ads_updir,"video_file",5000,"swf/flv/f4v",true);
 			if (empty($setsqlarr['video_path']))
 			{
-			adminmsg('ÉÏ´«ÎÄ¼şÊ§°Ü£¡',1);
+			adminmsg('ä¸Šä¼ æ–‡ä»¶å¤±è´¥ï¼',1);
 			}
 			$setsqlarr['video_path']=$ads_dir.date("Y/m/d/").$setsqlarr['video_path'];
 		}
@@ -424,84 +424,84 @@ elseif($act == 'ad_edit_save')
 		}
 	}
 	$setsqlarr['addtime']=$timestamp;
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] =trim($_POST['url']);
 	$wheresql=" id='".intval($_POST['id'])."' "; 
 	if(!$db->updatetable(table('ad'),$setsqlarr,$wheresql))
 	{
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨ĞŞ¸Ä¹ã¸æÊ§°Ü", $_SESSION['admin_name'],3);
-		adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°ä¿®æ”¹å¹¿å‘Šå¤±è´¥", $_SESSION['admin_name'],3);
+		adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
 	}
 	else
 	{
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨ĞŞ¸Ä¹ã¸æ³É¹¦", $_SESSION['admin_name'],3);
-		adminmsg("ĞŞ¸Ä³É¹¦£¡",2,$link);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°ä¿®æ”¹å¹¿å‘ŠæˆåŠŸ", $_SESSION['admin_name'],3);
+		adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 	}
 	
 }
-//É¾³ı¹ã¸æ
+//åˆ é™¤å¹¿å‘Š
 elseif($act=='del_ad')
 {
 	check_permissions($_SESSION['admin_purview'],"ad_del");
 	$id=$_REQUEST['id'];
 	check_token();
-	if (empty($id)) adminmsg("ÇëÑ¡ÔñÏîÄ¿£¡",0);
+	if (empty($id)) adminmsg("è¯·é€‰æ‹©é¡¹ç›®ï¼",0);
 	if ($num=del_ad($id))
 	{
-	adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı".$num."ĞĞ",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ıÊ§°Ü£¡".$num,1);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼".$num,1);
 	}
 }
-//¹ã¸æÎ»¹ÜÀí
+//å¹¿å‘Šä½ç®¡ç†
 elseif($act=='ad_category')
 {
 	check_permissions($_SESSION['admin_purview'],"ad_category");
-	$smarty->assign('act',$act);//±êÇ©ID
+	$smarty->assign('act',$act);//æ ‡ç­¾ID
 	$smarty->assign('list',get_ad_category());
-	$smarty->assign('pageheader',"¹ã¸æ¹ÜÀí");
+	$smarty->assign('pageheader',"å¹¿å‘Šç®¡ç†");
 	get_token();
 	$smarty->display('ads/admin_ad_category.htm');
 }
-//Ìí¼Ó¹ã¸æÎ»
+//æ·»åŠ å¹¿å‘Šä½
 elseif($act=='ad_category_add')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"ad_category");
-	$smarty->assign('pageheader',"Ìí¼Ó¹ã¸æÎ»");
+	$smarty->assign('pageheader',"æ·»åŠ å¹¿å‘Šä½");
 	$smarty->display('ads/admin_ad_category_add.htm');
 }
-//±£´æÌí¼Ó¹ã¸æÎ»
+//ä¿å­˜æ·»åŠ å¹¿å‘Šä½
 elseif($act=='ad_category_add_save')
 {
 	check_permissions($_SESSION['admin_purview'],"ad_category");
 	check_token();
-	$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+	$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 	$link[0]['href'] ="?act=ad_category";
-	$setsqlarr['categoryname']=$_POST['categoryname']?trim($_POST['categoryname']):adminmsg('ÄúÃ»ÓĞ¹ã¸æÎ»Ãû³Æ£¡',1);
+	$setsqlarr['categoryname']=$_POST['categoryname']?trim($_POST['categoryname']):adminmsg('æ‚¨æ²¡æœ‰å¹¿å‘Šä½åç§°ï¼',1);
 	$setsqlarr['expense'] = intval($_POST['expense']);
-	$setsqlarr['alias']=$_POST['alias']?trim($_POST['alias']):adminmsg('ÄúÃ»ÓĞÌîĞ´µ÷ÓÃÃû³Æ£¡',1);
-	substr($setsqlarr['alias'],0,3)=='QS_'?adminmsg('×Ô¶¨Òå¹ã¸æÎ»µ÷ÓÃÃû³Æ²»ÔÊĞí QS_ ¿ªÍ·£¡',1):'';
-	ck_category_alias($setsqlarr['alias'])?adminmsg('µ÷ÓÃÃû³ÆÒÑ¾­´æÔÚ£¬Çë»»Ò»¸öµ÷ÓÃÃû³Æ£¡',1):'';
-	$setsqlarr['type_id']=$_POST['type_id']?intval($_POST['type_id']):adminmsg('ÄúÃ»ÓĞÑ¡Ôñ¹ã¸æÀàĞÍ£¡',1);
+	$setsqlarr['alias']=$_POST['alias']?trim($_POST['alias']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™è°ƒç”¨åç§°ï¼',1);
+	substr($setsqlarr['alias'],0,3)=='QS_'?adminmsg('è‡ªå®šä¹‰å¹¿å‘Šä½è°ƒç”¨åç§°ä¸å…è®¸ QS_ å¼€å¤´ï¼',1):'';
+	ck_category_alias($setsqlarr['alias'])?adminmsg('è°ƒç”¨åç§°å·²ç»å­˜åœ¨ï¼Œè¯·æ¢ä¸€ä¸ªè°ƒç”¨åç§°ï¼',1):'';
+	$setsqlarr['type_id']=$_POST['type_id']?intval($_POST['type_id']):adminmsg('æ‚¨æ²¡æœ‰é€‰æ‹©å¹¿å‘Šç±»å‹ï¼',1);
 	if(!$db->inserttable(table('ad_category'),$setsqlarr))
 	{
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨Ìí¼Ó¹ã¸æÎ»Ê§°Ü", $_SESSION['admin_name'],3);
-		adminmsg("Ìí¼ÓÊ§°Ü£¡",0);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°æ·»åŠ å¹¿å‘Šä½å¤±è´¥", $_SESSION['admin_name'],3);
+		adminmsg("æ·»åŠ å¤±è´¥ï¼",0);
 	}
 	else
 	{
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦Ìí¼Ó¹ã¸æÎ»", $_SESSION['admin_name'],3);
-		adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°æˆåŠŸæ·»åŠ å¹¿å‘Šä½", $_SESSION['admin_name'],3);
+		adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 	}
 }
-//ĞŞ¸Ä¹ã¸æÎ»
+//ä¿®æ”¹å¹¿å‘Šä½
 elseif($act=='edit_ad_category')
 {
 	check_permissions($_SESSION['admin_purview'],"ad_category");
@@ -509,69 +509,69 @@ elseif($act=='edit_ad_category')
 	if($ad_category['admin_set']=="1"){
 		switch($ad_category['type_id']){
 			case 1:
-				$type = "ÎÄ×Ö";break;
+				$type = "æ–‡å­—";break;
 			case 2:
-				$type = "Í¼Æ¬";break;
+				$type = "å›¾ç‰‡";break;
 			case 3:
-				$type = "´úÂë";break;
+				$type = "ä»£ç ";break;
 			case 4:
 				$type = "FLASH";break;
 			case 5:
-				$type = "¸¡¶¯";break;
+				$type = "æµ®åŠ¨";break;
 			case 6:
-				$type = "ÊÓÆµ";break;
+				$type = "è§†é¢‘";break;
 			default:
-				$type = "ÎÄ×Ö";break;
+				$type = "æ–‡å­—";break;
 		}
 		$smarty->assign('type',$type);
 	}
 	
 	$smarty->assign('ad_category',get_ad_category_one($_GET['id']));
-	$smarty->assign('pageheader',"¹ã¸æ¹ÜÀí");
+	$smarty->assign('pageheader',"å¹¿å‘Šç®¡ç†");
 	get_token();
 	$smarty->display('ads/admin_ad_category_edit.htm');
 }
-//±£´æ ĞŞ¸ÄµÄ¹ã¸æÎ»
+//ä¿å­˜ ä¿®æ”¹çš„å¹¿å‘Šä½
 elseif($act=='ad_category_edit_save')
 {
 	check_permissions($_SESSION['admin_purview'],"ad_category");
 	check_token();
-	$link[0]['text'] = "·µ»Ø¹ã¸æÎ»ÁĞ±í";
+	$link[0]['text'] = "è¿”å›å¹¿å‘Šä½åˆ—è¡¨";
 	$link[0]['href'] ="?act=ad_category";
 	if(intval($_POST['admin_set'])!=1){
-		$setsqlarr['categoryname']=trim($_POST['categoryname'])?trim($_POST['categoryname']):adminmsg('ÄúÃ»ÓĞ¹ã¸æÎ»Ãû³Æ£¡',1);
-		$setsqlarr['alias']=trim($_POST['alias'])?trim($_POST['alias']):adminmsg('ÄúÃ»ÓĞÌîĞ´µ÷ÓÃÃû³Æ£¡',1);
-		substr($setsqlarr['alias'],0,3)=='QS_'?adminmsg('×Ô¶¨Òå¹ã¸æÎ»µ÷ÓÃÃû³Æ²»ÔÊĞí QS_ ¿ªÍ·£¡',1):'';
-		ck_category_alias($setsqlarr['alias'],$_POST['id'])?adminmsg('µ÷ÓÃÃû³ÆÒÑ¾­´æÔÚ£¬Çë»»Ò»¸öµ÷ÓÃÃû³Æ£¡',1):'';
-		$setsqlarr['type_id']=trim($_POST['type_id'])?trim($_POST['type_id']):adminmsg('ÄúÃ»ÓĞÑ¡Ôñ¹ã¸æÀàĞÍ£¡',1);
+		$setsqlarr['categoryname']=trim($_POST['categoryname'])?trim($_POST['categoryname']):adminmsg('æ‚¨æ²¡æœ‰å¹¿å‘Šä½åç§°ï¼',1);
+		$setsqlarr['alias']=trim($_POST['alias'])?trim($_POST['alias']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™è°ƒç”¨åç§°ï¼',1);
+		substr($setsqlarr['alias'],0,3)=='QS_'?adminmsg('è‡ªå®šä¹‰å¹¿å‘Šä½è°ƒç”¨åç§°ä¸å…è®¸ QS_ å¼€å¤´ï¼',1):'';
+		ck_category_alias($setsqlarr['alias'],$_POST['id'])?adminmsg('è°ƒç”¨åç§°å·²ç»å­˜åœ¨ï¼Œè¯·æ¢ä¸€ä¸ªè°ƒç”¨åç§°ï¼',1):'';
+		$setsqlarr['type_id']=trim($_POST['type_id'])?trim($_POST['type_id']):adminmsg('æ‚¨æ²¡æœ‰é€‰æ‹©å¹¿å‘Šç±»å‹ï¼',1);
 	}
 	$setsqlarr['expense'] = intval($_POST['expense']);
 	$wheresql=" id='".intval($_POST['id'])."'";
 		if ($db->updatetable(table('ad_category'),$setsqlarr,$wheresql))
 		{
 			if(intval($_POST['admin_set'])!=1){
-				$adaliasarr['alias']=$setsqlarr['alias'];//Í¬Ê±ĞŞ¸Ä´Ë·ÖÀàÏÂËùÓĞ¹ã¸æµÄalias
+				$adaliasarr['alias']=$setsqlarr['alias'];//åŒæ—¶ä¿®æ”¹æ­¤åˆ†ç±»ä¸‹æ‰€æœ‰å¹¿å‘Šçš„alias
 				$wheresql=" category_id='".intval($_POST['id'])."'";
 				$db->updatetable(table('ad'),$adaliasarr,$wheresql);
 			}
-			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("ºóÌ¨³É¹¦ĞŞ¸Ä¹ã¸æÎ»", $_SESSION['admin_name'],3);
-			adminmsg("ĞŞ¸Ä³É¹¦£¡",2,$link);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("åå°æˆåŠŸä¿®æ”¹å¹¿å‘Šä½", $_SESSION['admin_name'],3);
+			adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 		}
 		else
 		{
-			adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
+			adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
 		}
 }
-//É¾³ı¹ã¸æÎ»
+//åˆ é™¤å¹¿å‘Šä½
 elseif($act=='del_ad_category')
 {
 	check_permissions($_SESSION['admin_purview'],"ad_category");
 	check_token();
-	$id=!empty($_GET['id'])?$_GET['id']:adminmsg("ÄãÃ»ÓĞÑ¡Ôñ¹ã¸æÎ»£¡",1);
+	$id=!empty($_GET['id'])?$_GET['id']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©å¹¿å‘Šä½ï¼",1);
 		if ($id)
 		{
-			!del_ad_category($id)?adminmsg("É¾³ıÊ§°Ü£¡",0):adminmsg("É¾³ı³É¹¦£¡",2);
+			!del_ad_category($id)?adminmsg("åˆ é™¤å¤±è´¥ï¼",0):adminmsg("åˆ é™¤æˆåŠŸï¼",2);
 		}
 }
 elseif($act == 'management')

@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_explain_list($params, &$smarty)
 {
 	global $db,$_CFG;
@@ -8,28 +8,28 @@ function tpl_function_qishi_explain_list($params, &$smarty)
 	$a=explode(':',$str);
 		switch ($a[0])
 		{
-		case "ÁĞ±íÃû":
+		case "åˆ—è¡¨å":
 			$aset['listname'] = $a[1];
 			break;
-		case "ÏÔÊ¾ÊıÄ¿":
+		case "æ˜¾ç¤ºæ•°ç›®":
 			$aset['row'] = $a[1];
 			break;
-		case "±êÌâ³¤¶È":
+		case "æ ‡é¢˜é•¿åº¦":
 			$aset['titlelen'] = $a[1];
 			break;
-		case "¿ªÊ¼Î»ÖÃ":
+		case "å¼€å§‹ä½ç½®":
 			$aset['start'] = $a[1];
 			break;
-		case "Ìî²¹×Ö·û":
+		case "å¡«è¡¥å­—ç¬¦":
 			$aset['dot'] = $a[1];
 			break;
-		case "ÅÅĞò":
+		case "æ’åº":
 			$aset['displayorder'] = $a[1];
 			break;
-		case "·ÖÀàID":
+		case "åˆ†ç±»ID":
 			$aset['type_id'] = $a[1];
 			break;
-		case "Ò³Ãæ":
+		case "é¡µé¢":
 			$aset['showname'] = $a[1];
 			break;
 		}
@@ -46,7 +46,7 @@ if (isset($aset['displayorder']))
 	if (strpos($aset['displayorder'],'>'))
 	{
 		$arr=explode('>',$aset['displayorder']);
-		// ÅÅĞò×Ö¶Î
+		// æ’åºå­—æ®µ
 		if($arr[0]=='show_order'){
 			$arr[0]="show_order";
 		}
@@ -58,7 +58,7 @@ if (isset($aset['displayorder']))
 		{
 			$arr[0]="";
 		}
-		// ÅÅĞò·½Ê½
+		// æ’åºæ–¹å¼
 		if($arr[1]=='desc'){
 			$arr[1]="desc";
 		}

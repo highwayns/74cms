@@ -1,4 +1,4 @@
-/**
+﻿/**
 *  Ajax Autocomplete for jQuery, version 1.1.3
 *  (c) 2010 Tomas Kirda
 *

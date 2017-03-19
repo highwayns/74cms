@@ -1,11 +1,11 @@
-/* Clear Start */
+ï»¿/* Clear Start */
 .clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
 .clearfix:before, .clearfix:after { content: '.'; display: block; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0; width: 0; height: 0; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
 /* Clear End */
 .fl{float: left;}.fr{float: right;}
-/* ¸öÈË»áÔ±ÖĞĞÄ index ÑùÊ½ */
+/* ä¸ªäººä¼šå‘˜ä¸­å¿ƒ index æ ·å¼ */
 .user_personal_main_top{margin:0 auto;height:60px;width:100%;background-color: #fff;padding:10px 0;margin-bottom: 10px;}
 .personal_top_left {float: left; width: 60px;height: 60px;padding-left: 15px;}
 .personal_top_left img {width: 60px;height: 60px;}
@@ -30,13 +30,13 @@ form table td{border: 1px solid #ccc}
 .errr_span{position: absolute;height: 40px;right:10px}
 .personal_submit{margin:10px auto;height:40px;line-height: 40px;color:#fff;cursor: pointer;font-size: 16px;border-radius: 5px; width:100%;border: 0; background-color: #0180cf;text-align:center;line-height: 40px;}
 
-/*Î´´´½¨¼òÀúÊ±µÄÌáÊ¾Ò³Ãæ*/
+/*æœªåˆ›å»ºç®€å†æ—¶çš„æç¤ºé¡µé¢*/
 .white_bg{width:100%;height:240px;background: #fff;}
 .white_bg .tip_content{width:92%;text-align: center;padding:50px 0;font-size: 18px;color:#666;margin:0 auto;line-height: 40px;}
 .white_bg .creat_resume_tip_button{width:92%;text-align: center;height:40px;line-height: 40px;background-color: #0180CF;margin:0 auto;font-size: 16px;color:#fff;border-radius: 5px;font-weight: bold;}
 
 
-/*´´½¨¼òÀú³É¹¦ºóµÄÒ³Ãæ*/
+/*åˆ›å»ºç®€å†æˆåŠŸåçš„é¡µé¢*/
 .success_box{width:92%;margin:0 auto;}
 .success_box .success_tip{height:40px;line-height:40px;font-size: 18px;color:#333;text-align: center;padding: 50px 0;}
 .success_box .success_tip img{vertical-align: middle;padding-right: 10px;}
@@ -44,7 +44,7 @@ form table td{border: 1px solid #ccc}
 .success_but_box .success_but{width:50%;float: left;}
 .success_but_box .success_but .perfect{display: block;width:92%;margin:0 auto;height:38px;line-height:38px;text-decoration: none;text-align: center; border:1px solid #0180CF;background-color: #0180CF;color:#fff;font-size: 14px;}
 .success_but_box .success_but .management{display: block;width:92%;margin:0 auto;height:38px;line-height:38px;text-decoration: none;text-align: center; border:1px solid #CCC;background-color: #FFF;color:#666;font-size: 14px;}
-/*ÎªÄúÍÆ¼öµÄÖ°Î»*/
+/*ä¸ºæ‚¨æ¨èçš„èŒä½*/
 .recommend_jobs{width:92%;margin:0 auto;margin-top: 10px;}
 .recommend_jobs .recommend_jobs_title{font-size: 14px;color:#666;line-height: 20px;padding-bottom: 10px;font-weight: bold;}
 .recommend_jobs .recommend_jobs_list{border:1px solid #ccc;border-bottom: 0;background-color: #fff;}
@@ -58,7 +58,7 @@ form table td{border: 1px solid #ccc}
 
 
 
-/*¼òÀú¹ÜÀíÊ×Ò³*/
+/*ç®€å†ç®¡ç†é¦–é¡µ*/
 .resume_bbox{}
 .resume_bbox .resume_box{width:100%;background-color: #fff;border-bottom: 1px solid #ccc;}
 .resume_bbox .resume_box .detail{width:92%;margin:0 auto; /*height:90px;*/padding-bottom:10px;}
@@ -84,7 +84,7 @@ form table td{border: 1px solid #ccc}
 .make_new_resume_but{width:92%;margin:0 auto;margin-top:15px;height:40px;line-height: 40px;text-align: center;background-color: #0180CF;color:#FFF;font-size: 18px;border-radius: 5px;}
 
 
-/*ÍêÉÆ¼òÀúÒ³Ãæ*/
+/*å®Œå–„ç®€å†é¡µé¢*/
 .comlpete_top{width:92%;margin:0 auto;margin-top: 10px;}
 .comlpete_top .complete_top_l{width:70%;float: left;line-height: 25px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;font-size: 16px;color:#333;}
 .comlpete_top .complete_top_r{width:30%;float: left;}
@@ -113,7 +113,7 @@ form table td{border: 1px solid #ccc}
 .complete_but .preview a{display: block;text-decoration: none;font-size: 14px; width:90%;height:28px;line-height: 28px;border:1px solid #CCC; margin:0 auto;background: #FBFBFB;color:#666;text-align: center;}
 
 
-/*¹¤×÷¾­ÑéÁĞ±íÒ³*/
+/*å·¥ä½œç»éªŒåˆ—è¡¨é¡µ*/
 .work_exp_bbox{width:92%;margin:0 auto;}
 .work_exp_bbox .work_exp_box{width:100%;margin-top: 10px;border:1px solid #ccc;background-color: #fff;height:84px;}
 .work_exp_bbox .work_exp_box .exp_left{float: left;width:68%;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;color:#666;line-height: 20px;padding-top: 10px;padding-left:2%;}
@@ -127,7 +127,7 @@ form table td{border: 1px solid #ccc}
 .work_exp_but_group .work_exp_save_but a{display: block;width:90%;margin:0 auto; height:28px;line-height: 28px;border:1px solid #CCC;text-align: center;background-color: #FDFDFD;color:#666;text-decoration: none;font-size: 14px;}
 
 
-/*±à¼­¹¤×÷¾­ÑéÒ³Ãæ*/
+/*ç¼–è¾‘å·¥ä½œç»éªŒé¡µé¢*/
 .edit_work_exp{width:92%;margin:0 auto;border-collapse:collapse;margin-top: 10px;}
 .edit_work_exp td{border:1px solid #ccc;background-color: #fff;}
 .edit_work_exp .edit_work_exp_l{width:30%;height:40px;text-align: center;font-size: 14px;color:#333;}
@@ -142,7 +142,7 @@ form table td{border: 1px solid #ccc}
 .edit_work_exp_but_group .edit_exp_cancel_but{width:50%;float: left;}
 .edit_work_exp_but_group .edit_exp_cancel_but a{display: block;width:90%;margin:0 auto; height:28px;line-height: 28px;border:1px solid #CCC;text-align: center;background-color: #FDFDFD;color:#666;text-decoration: none;font-size: 14px;}
 
-/*½ÌÓı¾­ÀúÒÔ¼°ÅàÑµ¾­ÀúÁĞ±íÒ³*/
+/*æ•™è‚²ç»å†ä»¥åŠåŸ¹è®­ç»å†åˆ—è¡¨é¡µ*/
 .edu_exp_bbox{width:92%;margin:0 auto;}
 .edu_exp_bbox .edu_exp_box{width:100%;margin-top: 10px;border:1px solid #ccc;background-color: #fff;height:84px;}
 .edu_exp_bbox .edu_exp_box .exp_left{float: left;width:68%;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;color:#666;line-height: 20px;padding-top: 10px;padding-left:2%;}
@@ -156,7 +156,7 @@ form table td{border: 1px solid #ccc}
 .edu_exp_but_group .edu_exp_save_but a{display: block;width:90%;margin:0 auto; height:28px;line-height: 28px;border:1px solid #CCC;text-align: center;background-color: #FDFDFD;color:#666;text-decoration: none;font-size: 14px;}
 
 
-/*±à¼­½ÌÓı¾­ÀúÒÔ¼°ÅàÑµ¾­ÀúÒ³Ãæ*/
+/*ç¼–è¾‘æ•™è‚²ç»å†ä»¥åŠåŸ¹è®­ç»å†é¡µé¢*/
 .edit_edu_exp{width:92%;margin:0 auto;border-collapse:collapse;margin-top: 10px;}
 .edit_edu_exp td{border:1px solid #ccc;background-color: #fff;}
 .edit_edu_exp .edit_edu_exp_l{width:30%;height:40px;text-align: center;font-size: 14px;color:#333;}
@@ -170,7 +170,7 @@ form table td{border: 1px solid #ccc}
 .edit_edu_exp_but_group .edit_exp_cancel_but{width:50%;float: left;}
 .edit_edu_exp_but_group .edit_exp_cancel_but a{display: block;width:90%;margin:0 auto; height:28px;line-height: 28px;border:1px solid #CCC;text-align: center;background-color: #FDFDFD;color:#666;text-decoration: none;font-size: 14px;}
 
-/*ĞŞ¸ÄÃÜÂëÒ³Ãæ*/
+/*ä¿®æ”¹å¯†ç é¡µé¢*/
 .password{width:92%;margin:0 auto;border-collapse:collapse;margin-top: 10px;}
 .password td{border:1px solid #ccc;background-color: #fff;}
 .password .password_l{width:30%;height:40px;text-align: center;font-size: 14px;color:#333;}
@@ -182,7 +182,7 @@ form table td{border: 1px solid #ccc}
 .password_but_group .edit_exp_cancel_but{width:50%;float: left;}
 .password_but_group .edit_exp_cancel_but a{display: block;width:90%;margin:0 auto; height:28px;line-height: 28px;border:1px solid #CCC;text-align: center;background-color: #FDFDFD;color:#666;text-decoration: none;font-size: 14px;}
 
-/*ÃæÊÔÑûÇëÒ³Ãæ*/
+/*é¢è¯•é‚€è¯·é¡µé¢*/
 .interview_list{width:92%;margin:0 auto;margin-top: 10px;}
 .interview_list .interview_list_content{width:100%;height:55px;border-bottom: 1px solid #ccc;padding:2px 0;}
 .interview_list .interview_list_content .list_centent_left{float: left;width:94%;}
@@ -195,7 +195,7 @@ form table td{border: 1px solid #ccc}
 .more{width:92%;margin:0 auto;height:32px;line-height: 32px;text-align: center;font-size: 14px;border:1px solid #ccc; color:#0180CF;background-image: url(../images/more_but_bg.jpg);background-repeat: repeat-x;margin-top: 10px;}
 
 
-/*ÒşË½ÉèÖÃÒ³Ãæ*/
+/*éšç§è®¾ç½®é¡µé¢*/
 .privacy_title{width:92%;margin: 0 auto;line-height: 20px;padding-top: 10px;}
 .privacy_title p{font-size: 14px; color:#333;}
 .privacy_table{width:92%;margin: 0 auto;border-collapse:collapse;margin-top: 10px;}
@@ -219,7 +219,7 @@ form table td{border: 1px solid #ccc}
 
 
 
-/*¼òÀúÔ¤ÀÀÒ³Ãæ*/
+/*ç®€å†é¢„è§ˆé¡µé¢*/
 .resume_show_box{width:92%;margin:0 auto;border:1px solid #ccc;margin-top: 10px;background-color: #fff;}
 .top .top_box{padding:10px;}
 .top .top_box .person_info{border-bottom:1px solid #F0F0F0;padding-bottom: 10px;}
@@ -244,7 +244,7 @@ form table td{border: 1px solid #ccc}
 .resume_show_box .detail_content .com .work_name{float: left;width:50%;color:#666;/*text-align: right;*/ overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .resume_show_box .detail_content .work_content{line-height: 180%;color:#666;}
 
-/*ÊÕ²ØºÍÒÑÍ¶µİµÄÖ°Î»Ò³Ãæ*/
+/*æ”¶è—å’Œå·²æŠ•é€’çš„èŒä½é¡µé¢*/
 .apply_jobs{width:92%;margin:0 auto;margin-top: 10px;}
 .apply_jobs .apply_title{font-size: 14px;color:#333;margin-bottom: 10px;}
 .apply_jobs .apply_jobs_list{border:1px solid #ccc;border-bottom: 0;background-color: #fff;}
@@ -257,7 +257,7 @@ form table td{border: 1px solid #ccc}
 .apply_jobs .apply_jobs_list .list_centent .jobs_t3 img{padding-top:12px;width:16px; }
 .check_more{width:92%;margin:0 auto;height:32px;line-height: 32px;text-align: center;font-size: 14px;border:1px solid #ccc; color:#0180CF;background-image: url(../images/more_but_bg.jpg);background-repeat: repeat-x;margin-top: 10px;}
 
-/*×ÔÎÒÆÀ¼ÛÒ³Ãæ*/
+/*è‡ªæˆ‘è¯„ä»·é¡µé¢*/
 .evaluation_table{width:92%;margin:0 auto;border-collapse:collapse;margin-top: 10px;}
 .evaluation_table td{border:1px solid #ccc;background-color: #fff;}
 .evaluation_table .evaluation_l{width:30%;height:40px;text-align: center;font-size: 14px;color:#333;}
@@ -269,11 +269,11 @@ form table td{border: 1px solid #ccc}
 .evaluation_but_group .evaluation_cancel_but{width:50%;float: left;}
 .evaluation_but_group .evaluation_cancel_but a{display: block;width:90%;margin:0 auto; height:28px;line-height: 28px;border:1px solid #CCC;text-align: center;background-color: #FDFDFD;color:#666;text-decoration: none;font-size: 14px;}
 
-/*¼òÀúË¢ĞÂ³É¹¦Ğ¡ÌáÊ¾¿ò*/
+/*ç®€å†åˆ·æ–°æˆåŠŸå°æç¤ºæ¡†*/
 .refresh_scc{position: absolute; width:200px;height:30px;line-height: 30px; background-color: #67AF01;font-size: 16px;color:#FFF;text-align: center;border-radius: 2px;margin-left: -100px;opacity: 0.7;}
 
 
-/*¸öÈË»áÔ±ÖĞĞÄÆÚÍûÖ°Î»Ñ¡Ôñ*/
+/*ä¸ªäººä¼šå‘˜ä¸­å¿ƒæœŸæœ›èŒä½é€‰æ‹©*/
 .want_job_choose{padding:0 10px;}
 .want_job_choose .w_j_c_left{float: left;width:50%;background-color: #fff;height:300px;padding:0;overflow-y: scroll;overflow-x: hidden;}
 .want_job_choose .w_j_c_left .job_big{height:40px;line-height: 40px;font-size: 12px;color:#666;}
@@ -287,7 +287,7 @@ form table td{border: 1px solid #ccc}
 .w_j_top_box{position: absolute;right:10px;top:10px;line-height: 25px;color:#333;}
 .w_j_top_box .w_j_but{display: inline-block;width:50px;height:25px;line-height: 25px;font-size: 12px;text-decoration: none;color:#FFF;background-color: #0180CF;text-align: center;}
 
-/*µØÇøÑ¡Ôñ¿ò*/
+/*åœ°åŒºé€‰æ‹©æ¡†*/
 .area_choose{padding:0 10px;}
 .area_choose .area_left{float: left;width:50%;overflow-y: scroll;padding:0;background-color: #fff;height: 300px;}
 .area_choose .area_left .area_big{font-size: 12px;height:40px;line-height: 40px;color:#666;text-indent: 1em;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}

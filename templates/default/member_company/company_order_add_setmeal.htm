@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
@@ -37,7 +37,7 @@ var msglen=oRadio.length;
 //----
 if (flag == false)
 {
-    alert("ÇëÑ¡ÔñÖ§¸¶·½Ê½")
+    alert("è¯·é€‰æ‹©æ”¯ä»˜æ–¹å¼")
     return (false);
 }
 return (true);
@@ -46,7 +46,7 @@ return (true);
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ³äÖµ¶©µ¥</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > å……å€¼è®¢å•</div>
 
 <div class="usermain">
   <div class="leftmenu  com link_bk">
@@ -56,30 +56,30 @@ return (true);
   
  	<div class="bbox1 link_bk my_account intrgration">
 		<div class="topnav">
-      <div class="titleH1"><div class="h1-title">³äÖµ/¶©µ¥</div></div>
+      <div class="titleH1"><div class="h1-title">å……å€¼/è®¢å•</div></div>
       <div class="navs link_bk">
         {#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
-        <a href="?act=order_add">»ı·Ö³äÖµ</a>
+        <a href="?act=order_add">ç§¯åˆ†å……å€¼</a>
         {#/if#}
         {#if $QISHI.operation_mode=="2" || $QISHI.operation_mode=="3"#}
-            <a href="?act=setmeal_list" class="se">ÉêÇëVIPÌ×²Í</a>
+            <a href="?act=setmeal_list" class="se">ç”³è¯·VIPå¥—é¤</a>
         {#/if#}
-        <a href="?act=order_list">ÎÒµÄ¶©µ¥</a>
+        <a href="?act=order_list">æˆ‘çš„è®¢å•</a>
         <div class="clear"></div>
       </div>
 		</div>
 		 <div class="balance">
-  			<div class="bal_text">ÎÒµÄÌ×²Í£º<span> {#$user_setmeal.setmeal_name#} </span>£¬{#if $setmeal_endtime#}{#if $setmeal_endtime=="ÎŞÏŞÆÚ"#}ÎŞÏŞÆÚ{#else#}»¹ÓĞ<span> {#$setmeal_endtime#} </span>Ììµ½ÆÚ{#/if#}{#else#}ÒÑ¾­µ½ÆÚ{#/if#}<span class="small"> (¿ªÍ¨Ê±¼ä{#$user_setmeal.starttime|date_format:"%Y-%m-%d"#}£¬½áÊøÊ±¼ä{#$user_setmeal.endtime|date_format:"%Y-%m-%d"#})</span>&nbsp;&nbsp;&nbsp;<a target="_blank" href="?act=t_account&detail=1">[Ì×²ÍÃ÷Ï¸]</a></div>
+  			<div class="bal_text">æˆ‘çš„å¥—é¤ï¼š<span> {#$user_setmeal.setmeal_name#} </span>ï¼Œ{#if $setmeal_endtime#}{#if $setmeal_endtime=="æ— é™æœŸ"#}æ— é™æœŸ{#else#}è¿˜æœ‰<span> {#$setmeal_endtime#} </span>å¤©åˆ°æœŸ{#/if#}{#else#}å·²ç»åˆ°æœŸ{#/if#}<span class="small"> (å¼€é€šæ—¶é—´{#$user_setmeal.starttime|date_format:"%Y-%m-%d"#}ï¼Œç»“æŸæ—¶é—´{#$user_setmeal.endtime|date_format:"%Y-%m-%d"#})</span>&nbsp;&nbsp;&nbsp;<a target="_blank" href="?act=t_account&detail=1">[å¥—é¤æ˜ç»†]</a></div>
   		</div>
   		<div class="bar">
   			<div class="bar_step1">
-  				<p>ÌîĞ´¶©µ¥</p>
+  				<p>å¡«å†™è®¢å•</p>
   			</div>
   			<div class="bar_step2 hui">
-  				<p>È·ÈÏ¶©µ¥</p>
+  				<p>ç¡®è®¤è®¢å•</p>
   			</div>
   			<div class="bar_step3 hui">
-  				<p>Ìá½»¶©µ¥</p>
+  				<p>æäº¤è®¢å•</p>
   			</div>
   		</div> 
   		<form id="form1" name="form1" method="post" action="?act=setmeal_order_add_save" onsubmit="return chk_form();">
@@ -88,12 +88,12 @@ return (true);
   			<table>
   				<tbody>
   					<tr>
-  						<td height="30" width="100">Ì×²ÍÀàĞÍ£º</td>
-  						<td><span>{#$setmeal.setmeal_name#}</span>&nbsp;£¨·şÎñÆÚÏŞ£º{#if $setmeal.days=="0"#}ÎŞÏŞÖÆ{#else#}{#$setmeal.days#}Ìì{#/if#}£©</td>
+  						<td height="30" width="100">å¥—é¤ç±»å‹ï¼š</td>
+  						<td><span>{#$setmeal.setmeal_name#}</span>&nbsp;ï¼ˆæœåŠ¡æœŸé™ï¼š{#if $setmeal.days=="0"#}æ— é™åˆ¶{#else#}{#$setmeal.days#}å¤©{#/if#}ï¼‰</td>
   					</tr>
   					<tr>
-  						<td height="30" width="100">Ì×²Í¼Û¸ñ£º</td>
-  						<td>{#if $setmeal.expense=="0"#}<span>Ãâ·Ñ</span>{#else#}<span>{#$setmeal.expense#}</span> Ôª{#/if#} &nbsp;<span class="del">£¨Ô­¼Û {#if $setmeal.original_price=="0"#}Ãâ·Ñ{#else#}£¤ {#$setmeal.original_price#}{#/if#}£©</span></td>
+  						<td height="30" width="100">å¥—é¤ä»·æ ¼ï¼š</td>
+  						<td>{#if $setmeal.expense=="0"#}<span>å…è´¹</span>{#else#}<span>{#$setmeal.expense#}</span> å…ƒ{#/if#} &nbsp;<span class="del">ï¼ˆåŸä»· {#if $setmeal.original_price=="0"#}å…è´¹{#else#}ï¿¥ {#$setmeal.original_price#}{#/if#}ï¼‰</span></td>
   					</tr>
   				</tbody>
   			</table>
@@ -101,14 +101,14 @@ return (true);
   				<tbody>
   					{#section name=payment loop=$payment#}
   					<tr>
-  						<td height="30" width="100">{#if $smarty.section.payment.index==0#}³äÖµ·½Ê½£º{#/if#}</td>
+  						<td height="30" width="100">{#if $smarty.section.payment.index==0#}å……å€¼æ–¹å¼ï¼š{#/if#}</td>
   						<td width="150"><input type="radio" name="payment_name" value="{#$payment[payment].typename#}" id="payment_name" />&nbsp;&nbsp;<img src="{#$QISHI.site_dir#}include/payment/logo/{#$payment[payment].typename#}.gif" alt=""/></td>
   						<td> <p>({#$payment[payment].p_introduction#})</p></td>
   					</tr>
   					{#/section#}
   				</tbody>
   			</table>
-  			<input class="but130lan intrgration_but" type="submit" name="submit" value="³äÖµ"/>
+  			<input class="but130lan intrgration_but" type="submit" name="submit" value="å……å€¼"/>
   		</div> 
   		</form>
   	

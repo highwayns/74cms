@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÈÈÃÅ¹Ø¼ü×Ö
+ * 74cms çƒ­é—¨å…³é”®å­—
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -16,7 +16,7 @@ require_once(ADMIN_ROOT_PATH.'include/admin_hotword_fun.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'list';
 $smarty->assign('act',$act);
 check_permissions($_SESSION['admin_purview'],"hotword");
-$smarty->assign('pageheader',"ÈÈÃÅ¹Ø¼ü´Ê");
+$smarty->assign('pageheader',"çƒ­é—¨å…³é”®è¯");
 if($act == 'list')
 {	
 	get_token();
@@ -46,18 +46,18 @@ elseif($act == 'add')
 elseif($act == 'addsave')
 {
 	check_token();
-	$setsqlarr['w_word']=trim($_POST['w_word'])?trim($_POST['w_word']):adminmsg('¹Ø¼ü´Ê±ØĞëÌîĞ´£¡',1);
+	$setsqlarr['w_word']=trim($_POST['w_word'])?trim($_POST['w_word']):adminmsg('å…³é”®è¯å¿…é¡»å¡«å†™ï¼',1);
 	$setsqlarr['w_hot']=intval($_POST['w_hot']);
 	if (get_hotword_obtainword($setsqlarr['w_word']))
 	{
-	adminmsg("¹Ø¼ü´ÊÒÑ¾­´æÔÚ£¡",0);
+	adminmsg("å…³é”®è¯å·²ç»å­˜åœ¨ï¼",0);
 	}
-	$link[0]['text'] = "¼ÌĞøÌí¼Ó";
+	$link[0]['text'] = "ç»§ç»­æ·»åŠ ";
 	$link[0]['href'] = '?act=add&w_type='.$setsqlarr['w_type'];
-	$link[1]['text'] = "·µ»ØÁĞ±í";
+	$link[1]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[1]['href'] = '?';
-	write_log("Ìí¼ÓÈÈÃÅ¹Ø¼ü×Ö", $_SESSION['admin_name'],3);
-	!$db->inserttable(table('hotword'),$setsqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+	write_log("æ·»åŠ çƒ­é—¨å…³é”®å­—", $_SESSION['admin_name'],3);
+	!$db->inserttable(table('hotword'),$setsqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'edit')
 {
@@ -68,18 +68,18 @@ elseif($act == 'edit')
 elseif($act == 'editsave')
 {
 	check_token();
-	$id = !empty($_POST['id']) ? intval($_POST['id']) : adminmsg('²ÎÊı´íÎó',1);
-	$setsqlarr['w_word']=trim($_POST['w_word'])?trim($_POST['w_word']):adminmsg('¹Ø¼ü´Ê±ØĞëÌîĞ´£¡',1);
+	$id = !empty($_POST['id']) ? intval($_POST['id']) : adminmsg('å‚æ•°é”™è¯¯',1);
+	$setsqlarr['w_word']=trim($_POST['w_word'])?trim($_POST['w_word']):adminmsg('å…³é”®è¯å¿…é¡»å¡«å†™ï¼',1);
 	$setsqlarr['w_hot']=intval($_POST['w_hot']);
 	$word=get_hotword_obtainword($setsqlarr['w_word']);
 	if ($word['w_id'] && $word['w_id']<>$id)
 	{
-	adminmsg("¹Ø¼ü´ÊÒÑ¾­´æÔÚ£¡",0);
+	adminmsg("å…³é”®è¯å·²ç»å­˜åœ¨ï¼",0);
 	}
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = '?';
-	write_log("ĞŞ¸ÄÈÈÃÅ¹Ø¼ü×Ö", $_SESSION['admin_name'],3);
- 	!$db->updatetable(table('hotword'),$setsqlarr," w_id=".$id."")?adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0):adminmsg("ĞŞ¸Ä³É¹¦£¡",2,$link);
+	write_log("ä¿®æ”¹çƒ­é—¨å…³é”®å­—", $_SESSION['admin_name'],3);
+ 	!$db->updatetable(table('hotword'),$setsqlarr," w_id=".$id."")?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'hottype_del')
 {
@@ -87,12 +87,12 @@ elseif($act == 'hottype_del')
 	$id=$_REQUEST['id'];
 	if ($num=del_hottype($id))
 	{
-	write_log("É¾³ıÈÈÃÅ¹Ø¼ü×Ö,¹²É¾³ı {$num} ĞĞ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı {$num} ĞĞ",2);
+	write_log("åˆ é™¤çƒ­é—¨å…³é”®å­—,å…±åˆ é™¤ {$num} è¡Œ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤ {$num} è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ıÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 ?>

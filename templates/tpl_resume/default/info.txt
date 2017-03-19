@@ -1,4 +1,4 @@
-name:Ä¬ÈÏÄ£°æ
+ï»¿name:é»˜è®¤æ¨¡ç‰ˆ
 version:3.6
 author:74cms.com
 authorurl:http://www.74cms.com

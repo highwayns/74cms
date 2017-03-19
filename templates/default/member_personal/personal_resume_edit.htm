@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <meta name="renderer" content="webkit"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,21 +22,21 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-// ÑéÖ¤ÓÊÏä
+// éªŒè¯é‚®ç®±
 auditEmail_dialog('.audit_email',"personal_ajax.php?act=user_email");
-//ÑéÖ¤ÊÖ»ú
+//éªŒè¯æ‰‹æœº
 editMobile_dialog(".audit_mobile","personal_ajax.php?act=old_mobile");
 
 allaround("{#$QISHI.site_dir#}");
-// ÆÚÍûÖ°Î»Ìî³äÊı¾İ 
+// æœŸæœ›èŒä½å¡«å……æ•°æ® 
 job_filldata("#job_list", QS_jobs_parent, QS_jobs, "#result-list-job", "#aui_outer_job", "#job_result_show", "#intention_jobs_id", "{#$QISHI.site_dir#}");
-// ÆÚÍûĞĞÒµÌî³äÊı¾İ
+// æœŸæœ›è¡Œä¸šå¡«å……æ•°æ®
 trade_filldata("#trad_list", QS_trade, "#aui_outer", "#result-list-trade", "#trade_result_show", "#trade", "{#$QISHI.site_dir#}");
-// ¹¤×÷µØÇøÌî³äÊı¾İ
+// å·¥ä½œåœ°åŒºå¡«å……æ•°æ®
 city_filldata("#city_list", QS_city_parent, QS_city, "#result-list-city", "#aui_outer_city", "#city_result_show", "#district", "{#$QISHI.site_dir#}");
-// ÌØ³¤±êÇ©Ìî³äÊı¾İ
+// ç‰¹é•¿æ ‡ç­¾å¡«å……æ•°æ®
 tag_filldata("#tag_list", QS_resumetag, "#aui_outer_tag", "#result-list-tag", "#trade_result_show", "#tag", "{#$QISHI.site_dir#}");
-// ËùÑ§×¨ÒµÌî³äÊı¾İ
+// æ‰€å­¦ä¸“ä¸šå¡«å……æ•°æ®
 major_filldata("#major_list", QS_major_parent, QS_major, "#major_tabnav", "#aui_outer_major", "#result-list-major", "#major_result_show", "#major", "{#$QISHI.site_dir#}");
 
 $.get("?act=ajax_get_education_list&pid={#$pid#}", function(result){
@@ -50,18 +50,18 @@ $.get("?act=ajax_get_training_list&pid={#$pid#}", function(result){
     $("#training_list_box").html(result);
     $("#training_list_box .jl2").last().css("border-bottom","none");
   });
-  //»ñÈ¡ÓïÑÔÁĞ±í
+  //è·å–è¯­è¨€åˆ—è¡¨
   $.get("?act=ajax_get_language_list&pid={#$pid#}", function(result){ 
     $("#language_list_box").html(result);
     $("#language_list_box .jl2").last().css("border-bottom","none");
   });
-  //»ñÈ¡Ö¤ÊéÁĞ±í
+  //è·å–è¯ä¹¦åˆ—è¡¨
   $.get("?act=ajax_get_credent_list&pid={#$pid#}", function(result){
     $("#credent_list_box").html(result);
     $("#credent_list_box .jl2").last().css("border-bottom","none");
   });
 	  
-//ÌîĞ´»ù±¾ĞÅÏ¢£¬´ò¿ªÑ¡ÌîÄÚÈİ
+//å¡«å†™åŸºæœ¬ä¿¡æ¯ï¼Œæ‰“å¼€é€‰å¡«å†…å®¹
 $("#displaymore").click(function(){
 		var tb=$("#displaymorediv");
 		var tb_display=tb.css("display");
@@ -76,7 +76,7 @@ $("#displaymore").click(function(){
 		tb.slideDown('fast');
 		}
 });
-//·¢ËÍÊÖ»úÑéÖ¤Âë°´Å¥Ğ§¹û
+//å‘é€æ‰‹æœºéªŒè¯ç æŒ‰é’®æ•ˆæœ
 // $("#mobilesend").hover(
 //   function () {
 //     $(this).addClass("h");
@@ -85,8 +85,8 @@ $("#displaymore").click(function(){
 //     $(this).removeClass("h");
 //   }
 // );
-//·¢ËÍÊÖ»úÑéÖ¤Âë
-//·¢ËÍÓÊÏäÑéÖ¤Âë°´Å¥Ğ§¹û
+//å‘é€æ‰‹æœºéªŒè¯ç 
+//å‘é€é‚®ç®±éªŒè¯ç æŒ‰é’®æ•ˆæœ
 $("#emailsend").hover(
   function () {
     $(this).addClass("h");
@@ -95,8 +95,8 @@ $("#emailsend").hover(
     $(this).removeClass("h");
   }
 );
-//·¢ËÍÓÊÏäÑéÖ¤Âë
-//ÌîĞ´»ù±¾ĞÅÏ¢,´ò¿ªÑ¡ÌîÏî°´Å¥Ğ§¹û
+//å‘é€é‚®ç®±éªŒè¯ç 
+//å¡«å†™åŸºæœ¬ä¿¡æ¯,æ‰“å¼€é€‰å¡«é¡¹æŒ‰é’®æ•ˆæœ
 $("#displaymore").hover(
   function () {
     $(this).css("background-color","#F6F6F6");
@@ -105,7 +105,7 @@ $("#displaymore").hover(
     $(this).css("background-color","#FFFFFF");
   }
 );
-//¹¤×÷ĞÔÖÊµ¥Ñ¡
+//å·¥ä½œæ€§è´¨å•é€‰
 var nature_obj = $("#nature_radio .input_radio").first();
 $("#nature").val(nature_obj.attr("id"));
 $("#nature_cn").val(nature_obj.text());
@@ -115,7 +115,7 @@ $("#nature_radio .input_radio").click(function(){
 		$("#nature_radio .input_radio").removeClass("select");
 		$(this).addClass("select");
 });
-//¼òÀú¹«¿ªÉèÖÃ
+//ç®€å†å…¬å¼€è®¾ç½®
  $("#publicitydiv").hover(
   function () {
      $("#publicitydiv .selbox").slideDown('fast');
@@ -124,7 +124,7 @@ $("#nature_radio .input_radio").click(function(){
     $("#publicitydiv .selbox").slideUp('fast');
   }
 );
-//¼òÀú¹«¿ªÉèÖÃ-²Ëµ¥Ğ§¹û
+//ç®€å†å…¬å¼€è®¾ç½®-èœå•æ•ˆæœ
 $("#publicitydiv .selbox div").hover(
   function () {
      $(this).css("background-color","#F6F6F6");
@@ -133,14 +133,14 @@ $("#publicitydiv .selbox div").hover(
      $(this).css("background-color","#FFFFFF");
   }
 );
-//¼òÀú¹«¿ªÉèÖÃ-µã»÷Ö´ĞĞÌî³ä±íµ¥
+//ç®€å†å…¬å¼€è®¾ç½®-ç‚¹å‡»æ‰§è¡Œå¡«å……è¡¨å•
 $("#publicitydiv .selbox div").click(function(){
 		$("#display_name").val($(this).attr('id'));
 		$("#display_name_cn").text($(this).text());
 		$("#publicitydiv .selbox").slideUp('fast');
 });
 
-//ĞÔ±ğµ¥Ñ¡
+//æ€§åˆ«å•é€‰
 $("#sex_radio .input_radio").click(function(){
 		$("#sex").val($(this).attr('id'));
 		$("#sex_cn").val($(this).text());
@@ -148,7 +148,7 @@ $("#sex_radio .input_radio").click(function(){
 		$(this).addClass("select");
 });
 
-//»éÒö×´¿öµ¥Ñ¡
+//å©šå§»çŠ¶å†µå•é€‰
 $("#marriage_radio .input_radio").click(function(){
 		$("#marriage").val($(this).attr('id'));
 		$("#marriage_cn").val($(this).text());
@@ -156,7 +156,7 @@ $("#marriage_radio .input_radio").click(function(){
 		$(this).addClass("select");
 });
 
-//ÏÂÀ­²Ëµ¥
+//ä¸‹æ‹‰èœå•
 menuDown("#education_menu","#education","#education_cn","#menu1","218px");
 menuDown("#major_menu","#major","#major_cn","#menumajor","218px");
 menuDown("#experience_menu","#experience","#experience_cn","#menu2","218px");
@@ -166,7 +166,7 @@ function menuDown(menuId,input,input_cn,menuList,width){
 	$(menuId).click(function(){
 		$(menuList).css("width",width);
 		$(menuList).slideDown('fast');
-		//Éú³É±³¾°
+		//ç”ŸæˆèƒŒæ™¯
 		$(menuId).parent("div").before("<div class=\"menu_bg_layer\"></div>");
 		$(".menu_bg_layer").height($(document).height());
 		$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute", left: "0", top: "0" , "z-index": "0", "background-color": "#ffffff"});
@@ -207,7 +207,7 @@ function showyearbox(divname,inputname,birth)
 			htm+="<ul>";
 			for (i=y;i>=ymin;i--)
 			{
-			htm+="<li title=\""+i+"\">"+i+"Äê</li>";
+			htm+="<li title=\""+i+"\">"+i+"å¹´</li>";
 			}
 			htm+="<div class=\"clear\"></div>";
 			htm+="</ul>";
@@ -219,7 +219,7 @@ function showyearbox(divname,inputname,birth)
 			htm+="<ul>";
 			for (i=y;i>=ymin;i--)
 			{
-			htm+="<li title=\""+i+"\">"+i+"Äê</li>";
+			htm+="<li title=\""+i+"\">"+i+"å¹´</li>";
 			}
 			htm+="<div class=\"clear\"></div>";
 			htm+="</ul>";
@@ -267,17 +267,17 @@ function showyearbox(divname,inputname,birth)
 		});
 	});
 }
-//µ±Ã»ÓĞ½ÌÓı¾­Àú£¬µã»÷Ìí¼Ó°´Å¥£¬Í¬Ê±¹Ø±ÕµôÌí¼ÓÌáÊ¾
+//å½“æ²¡æœ‰æ•™è‚²ç»å†ï¼Œç‚¹å‡»æ·»åŠ æŒ‰é’®ï¼ŒåŒæ—¶å…³é—­æ‰æ·»åŠ æç¤º
 $("#empty_add_education").live("click",function(){
 	$("#education_empty_box").hide();
 	$(":input","#education_add_form").not(':button,:submit').val("");
-	$("#education_menu").html("ÇëÑ¡Ôñ");
-	$("#edu_start_year_div").html("Äê·İ");
-	$("#edu_start_month_menu").html("9ÔÂ");
-	$("#edu_start_month").val("9ÔÂ");
-	$("#edu_end_year_div").html("Äê·İ");
-	$("#edu_end_month_menu").html("7ÔÂ");
-	$("#edu_end_month").val("7ÔÂ");
+	$("#education_menu").html("è¯·é€‰æ‹©");
+	$("#edu_start_year_div").html("å¹´ä»½");
+	$("#edu_start_month_menu").html("9æœˆ");
+	$("#edu_start_month").val("9æœˆ");
+	$("#edu_end_year_div").html("å¹´ä»½");
+	$("#edu_end_month_menu").html("7æœˆ");
+	$("#edu_end_month").val("7æœˆ");
 	$("#education_add_form").slideDown("slow");	
 	$("#work_add_form").slideUp("fast");
 	{#if !$resume_work#}
@@ -288,16 +288,16 @@ $("#empty_add_education").live("click",function(){
 		$("#training_empty_box").show();
 	{#/if#}		
 });
-//µ±ÓĞ½ÌÓı¾­Àú£¬µã»÷±êÌâÓÒ²àÌí¼Ó°´Å¥´ò¿ª±íµ¥
+//å½“æœ‰æ•™è‚²ç»å†ï¼Œç‚¹å‡»æ ‡é¢˜å³ä¾§æ·»åŠ æŒ‰é’®æ‰“å¼€è¡¨å•
 $("#nav_add_education").click(function(){
 	$(":input","#education_add_form").not(':button,:submit').val("");
-	$("#education_menu").html("ÇëÑ¡Ôñ");
-	$("#edu_start_year_div").html("Äê·İ");
-	$("#edu_start_month_menu").html("9ÔÂ");
-	$("#edu_start_month").val("9ÔÂ");
-	$("#edu_end_year_div").html("Äê·İ");
-	$("#edu_end_month_menu").html("7ÔÂ");
-	$("#edu_end_month").val("7ÔÂ");
+	$("#education_menu").html("è¯·é€‰æ‹©");
+	$("#edu_start_year_div").html("å¹´ä»½");
+	$("#edu_start_month_menu").html("9æœˆ");
+	$("#edu_start_month").val("9æœˆ");
+	$("#edu_end_year_div").html("å¹´ä»½");
+	$("#edu_end_month_menu").html("7æœˆ");
+	$("#edu_end_month").val("7æœˆ");
 	$("#education_add_form").slideUp("fast");
 	$("#education_add_form").slideDown("slow");
 	$("#work_add_form").slideUp("fast");	
@@ -311,7 +311,7 @@ $("#nav_add_education").click(function(){
 		$("#training_empty_box").show();
 	{#/if#}	
 });
-//È¡ÏûÌí¼Ó½ÌÓı¾­Àú±íµ¥
+//å–æ¶ˆæ·»åŠ æ•™è‚²ç»å†è¡¨å•
 $("#close_education_form").click(function(){
 	$("#education_add_form").slideUp("slow");
 	{#if !$resume_education#}
@@ -319,14 +319,14 @@ $("#close_education_form").click(function(){
 	{#/if#}
 });
 
-//µ±Ã»ÓĞ¹¤×÷¾­Àú£¬µã»÷Ìí¼Ó°´Å¥£¬Í¬Ê±¹Ø±ÕµôÌí¼ÓÌáÊ¾
+//å½“æ²¡æœ‰å·¥ä½œç»å†ï¼Œç‚¹å‡»æ·»åŠ æŒ‰é’®ï¼ŒåŒæ—¶å…³é—­æ‰æ·»åŠ æç¤º
 $("#empty_add_work").live("click",function(){
 	$("#work_empty_box").hide();
 	$(":input","#work_add_form").not(':button,:submit').val("");
-	$("#work_start_year_div").html("Äê·İ");
-	$("#work_start_month_menu").html("ÔÂ·İ");
-	$("#work_end_year_div").html("Äê·İ");
-	$("#work_end_month_menu").html("ÔÂ·İ");
+	$("#work_start_year_div").html("å¹´ä»½");
+	$("#work_start_month_menu").html("æœˆä»½");
+	$("#work_end_year_div").html("å¹´ä»½");
+	$("#work_end_month_menu").html("æœˆä»½");
 	$("#work_add_form").slideDown("slow");	
 	$("#education_add_form").slideUp("fast");	
 	{#if !$resume_education#}
@@ -337,13 +337,13 @@ $("#empty_add_work").live("click",function(){
 		$("#training_empty_box").show();
 	{#/if#}	
 });
-//µ±ÓĞ¹¤×÷¾­Àú£¬µã»÷±êÌâÓÒ²àÌí¼Ó°´Å¥´ò¿ª±íµ¥
+//å½“æœ‰å·¥ä½œç»å†ï¼Œç‚¹å‡»æ ‡é¢˜å³ä¾§æ·»åŠ æŒ‰é’®æ‰“å¼€è¡¨å•
 $("#nav_add_work").click(function(){
 	$(":input","#work_add_form").not(':button,:submit').val("");
-	$("#work_start_year_div").html("Äê·İ");
-	$("#work_start_month_menu").html("ÔÂ·İ");
-	$("#work_end_year_div").html("Äê·İ");
-	$("#work_end_month_menu").html("ÔÂ·İ");
+	$("#work_start_year_div").html("å¹´ä»½");
+	$("#work_start_month_menu").html("æœˆä»½");
+	$("#work_end_year_div").html("å¹´ä»½");
+	$("#work_end_month_menu").html("æœˆä»½");
 	$("#work_add_form").slideUp("fast");
 	$("#work_add_form").slideDown("slow");
 	$("#education_add_form").slideUp("fast");	
@@ -357,7 +357,7 @@ $("#nav_add_work").click(function(){
 		$("#training_empty_box").show();
 	{#/if#}
 });
-//È¡ÏûÌí¼Ó¹¤×÷¾­Àú±íµ¥
+//å–æ¶ˆæ·»åŠ å·¥ä½œç»å†è¡¨å•
 $("#close_work_form").click(function(){
 	$("#work_add_form").slideUp("slow");
 	{#if !$resume_work#}
@@ -365,14 +365,14 @@ $("#close_work_form").click(function(){
 	{#/if#}
 });
 
-//µ±Ã»ÓĞÅàÑµ¾­Àú£¬µã»÷Ìí¼Ó°´Å¥£¬Í¬Ê±¹Ø±ÕµôÌí¼ÓÌáÊ¾
+//å½“æ²¡æœ‰åŸ¹è®­ç»å†ï¼Œç‚¹å‡»æ·»åŠ æŒ‰é’®ï¼ŒåŒæ—¶å…³é—­æ‰æ·»åŠ æç¤º
 $("#empty_add_training").live("click",function(){
 	$("#training_empty_box").hide();
 	$(":input","#training_add_form").not(':button,:submit').val("");
-	$("#training_start_year_div").html("Äê·İ");
-	$("#training_start_month_menu").html("ÔÂ·İ");
-	$("#training_end_year_div").html("Äê·İ");
-	$("#training_end_month_menu").html("ÔÂ·İ");
+	$("#training_start_year_div").html("å¹´ä»½");
+	$("#training_start_month_menu").html("æœˆä»½");
+	$("#training_end_year_div").html("å¹´ä»½");
+	$("#training_end_month_menu").html("æœˆä»½");
 	$("#training_add_form").slideDown("slow");
 	$("#education_add_form").slideUp("fast");	
 	{#if !$resume_education#}
@@ -383,13 +383,13 @@ $("#empty_add_training").live("click",function(){
 		$("#work_empty_box").show();
 	{#/if#}		
 });
-//µ±ÓĞÅàÑµ¾­Àú£¬µã»÷±êÌâÓÒ²àÌí¼Ó°´Å¥´ò¿ª±íµ¥
+//å½“æœ‰åŸ¹è®­ç»å†ï¼Œç‚¹å‡»æ ‡é¢˜å³ä¾§æ·»åŠ æŒ‰é’®æ‰“å¼€è¡¨å•
 $("#nav_add_training").click(function(){
 	$(":input","#training_add_form").not(':button,:submit').val("");
-	$("#training_start_year_div").html("Äê·İ");
-	$("#training_start_month_menu").html("ÔÂ·İ");
-	$("#training_end_year_div").html("Äê·İ");
-	$("#training_end_month_menu").html("ÔÂ·İ");
+	$("#training_start_year_div").html("å¹´ä»½");
+	$("#training_start_month_menu").html("æœˆä»½");
+	$("#training_end_year_div").html("å¹´ä»½");
+	$("#training_end_month_menu").html("æœˆä»½");
 	$("#training_add_form").slideUp("fast");
 	$("#training_add_form").slideDown("slow");
 	$(".training_td_h").show();
@@ -402,7 +402,7 @@ $("#nav_add_training").click(function(){
 		$("#work_empty_box").show();
 	{#/if#}
 });
-//È¡ÏûÌí¼ÓÅàÑµ¾­Àú±íµ¥
+//å–æ¶ˆæ·»åŠ åŸ¹è®­ç»å†è¡¨å•
 $("#close_training_form").click(function(){
 	$("#training_add_form").slideUp("slow");
 	{#if !$resume_training#}
@@ -411,12 +411,12 @@ $("#close_training_form").click(function(){
 });
 
 /////////////////////// 
-//µ±Ã»ÓĞÓïÑÔÄÜÁ¦ 
+//å½“æ²¡æœ‰è¯­è¨€èƒ½åŠ› 
 $("#empty_add_language").live("click",function(){ 
 	$("#language_empty_box").hide();
 	$(":input","#language_add_form").not(':button,:submit').val("");
-	$("#language_div").html("ÓïÑÔ");
-	$("#language_level_div").html("Ë®Æ½³Ì¶È"); 
+	$("#language_div").html("è¯­è¨€");
+	$("#language_level_div").html("æ°´å¹³ç¨‹åº¦"); 
 	$("#language_add_form").slideDown("slow");	
 	$("#education_add_form").slideUp("fast");	
 	{#if !$resume_education#}
@@ -427,11 +427,11 @@ $("#empty_add_language").live("click",function(){
 		$("#training_empty_box").show();
 	{#/if#}	
 });
-//µ±ÓĞÓïÑÔÄÜÁ¦£¬µã»÷±êÌâÓÒ²àÌí¼Ó°´Å¥´ò¿ª±íµ¥
+//å½“æœ‰è¯­è¨€èƒ½åŠ›ï¼Œç‚¹å‡»æ ‡é¢˜å³ä¾§æ·»åŠ æŒ‰é’®æ‰“å¼€è¡¨å•
 $("#nav_add_language").click(function(){
 	$(":input","#language_add_form").not(':button,:submit').val("");
-	$("#language_div").html("ÓïÑÔ");
-	$("#language_level_div").html("Ë®Æ½³Ì¶È"); 
+	$("#language_div").html("è¯­è¨€");
+	$("#language_level_div").html("æ°´å¹³ç¨‹åº¦"); 
 	$("#language_add_form").slideUp("fast");
 	$("#language_add_form").slideDown("slow");
 	$("#education_add_form").slideUp("fast");	
@@ -450,12 +450,12 @@ $("#close_language_form").click(function(){
 	{#/if#}
 });
 
-//Ö¤Êé
+//è¯ä¹¦
 $("#empty_add_credent").live("click",function(){ 
 	$("#credent_empty_box").hide();
 	$(":input","#credent_add_form").not(':button,:submit').val("");
-	$("#credent_div").html("ÓïÑÔ");
-	$("#credent_level_div").html("³Ì¶È"); 
+	$("#credent_div").html("è¯­è¨€");
+	$("#credent_level_div").html("ç¨‹åº¦"); 
 	$("#credent_add_form").slideDown("slow");	
 	//$("#credent_add_form").slideUp("fast");	
 	{#if !$resume_education#}
@@ -466,11 +466,11 @@ $("#empty_add_credent").live("click",function(){
 		$("#training_empty_box").show();
 	{#/if#}	
 });
-//µ±ÓĞÓïÑÔÄÜÁ¦£¬µã»÷±êÌâÓÒ²àÌí¼Ó°´Å¥´ò¿ª±íµ¥
+//å½“æœ‰è¯­è¨€èƒ½åŠ›ï¼Œç‚¹å‡»æ ‡é¢˜å³ä¾§æ·»åŠ æŒ‰é’®æ‰“å¼€è¡¨å•
 $("#nav_add_credent").click(function(){
 	$(":input","#credent_add_form").not(':button,:submit').val("");
-	$("#credent_div").html("ÓïÑÔ");
-	$("#credent_level_div").html("Ë®Æ½³Ì¶È"); 
+	$("#credent_div").html("è¯­è¨€");
+	$("#credent_level_div").html("æ°´å¹³ç¨‹åº¦"); 
 	$("#credent_add_form").slideUp("fast");
 	$("#credent_add_form").slideDown("slow");
 //	$("#credent_add_form").slideUp("fast");	
@@ -505,10 +505,10 @@ showyearbox("#training_start_year_div","#training_start_year");
 showyearbox("#training_end_year_div","#training_end_year");
 menuDown("#training_start_month_menu","","#training_start_month","#menu9","68px");
 menuDown("#training_end_month_menu","","#training_end_month","#menu10","68px");
-//ÓïÑÔ
+//è¯­è¨€
 menuDown("#language_div","#language","#language_cn","#language_menu","88px");
 menuDown("#language_level_div","#language_level","#language_level_cn","#language_level_menu","88px");
-//Ö¤Êé
+//è¯ä¹¦
 showyearbox("#credent_year_div","#credent_year"); 
 menuDown("#credent_month_menu_div","","#credent_month","#credent_month_menu","68px"); 
 });
@@ -525,7 +525,7 @@ function uploadevent(status,picUrl,callbackdata) {
     	$("#maskLayer").remove();
     }
 }
-// Í·Ïñ±£´æ
+// å¤´åƒä¿å­˜
 $("#resumePhotosButton").die().live('click', function(event) {
 	popWin("altContentBox");
 	$(".ui-dialog-close").click(function() {
@@ -545,7 +545,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<!-- ¼òÀúÕÕÆ¬µ¯³ö¿ò -->
+<!-- ç®€å†ç…§ç‰‡å¼¹å‡ºæ¡† -->
 <div class="ui-popup ui-popup-modal ui-popup-show ui-popup-focus" id="altContentBox" style="display:none">
 	<div i="dialog" class="ui-dialog">
 		<div class="ui-dialog-arrow-a"></div>
@@ -554,7 +554,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 			<tr>
 				<td i="header" class="ui-dialog-header">
 					<button i="close" class="ui-dialog-close">&#215;</button>
-					<div i="title" class="ui-dialog-title">¼òÀúÕÕÆ¬</div>
+					<div i="title" class="ui-dialog-title">ç®€å†ç…§ç‰‡</div>
 				</td>
 			</tr>
 			<tr>
@@ -567,11 +567,11 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
   		</table>
   	</div>
 </div>
-<!-- ¼òÀúÕÕÆ¬µ¯³ö¿ò end-->
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.main_domain#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > {#$h_title#}</div>
-<!-- ½ø¶ÈÌõ -->
-<div class="photoTrad" id="photoTrad">ÕıÔÚÉÏ´«£¬ÇëÉÔºó£¡</div>
-<!-- ½ø¶ÈÌõ End-->
+<!-- ç®€å†ç…§ç‰‡å¼¹å‡ºæ¡† end-->
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.main_domain#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > {#$h_title#}</div>
+<!-- è¿›åº¦æ¡ -->
+<div class="photoTrad" id="photoTrad">æ­£åœ¨ä¸Šä¼ ï¼Œè¯·ç¨åï¼</div>
+<!-- è¿›åº¦æ¡ End-->
 <div class="usermain">
   <div class="leftmenu link_bk">
   {#include file="member_personal/left.htm"#}	
@@ -584,44 +584,44 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 	    <div class="titleH1">
 	      <div class="h1-title">{#$h_title#}</div>
         </div>
-        <!-- »ù±¾ĞÅÏ¢ start -->
+        <!-- åŸºæœ¬ä¿¡æ¯ start -->
 	    <div class="titleH2">
-			<span>»ù±¾ĞÅÏ¢</span>
+			<span>åŸºæœ¬ä¿¡æ¯</span>
 			<a style="width:20px; height:20px; background: url({#$QISHI.site_template#}images/13.gif) no-repeat 3px -379px; margin:10px 30px 0 0;*margin-top:-30px; float: right;" href="javascript:;" id="base_info_update"></a>
 		</div>
-		<!--¸öÈË»ù±¾ĞÅÏ¢ show -->
+		<!--ä¸ªäººåŸºæœ¬ä¿¡æ¯ show -->
 		<div id="base_info_update_show"> 
 			<div class="c-resume-info-show">
 				<div class="info-list">
-					<div class="all-row" >¼òÀúÃû³Æ£º<strong id="base_info_title">{#if $resume_basic.title#}{#$resume_basic.title#}{#else#}Î´ÃüÃû¼òÀú{#/if#}</strong></div>
+					<div class="all-row" >ç®€å†åç§°ï¼š<strong id="base_info_title">{#if $resume_basic.title#}{#$resume_basic.title#}{#else#}æœªå‘½åç®€å†{#/if#}</strong></div>
 					<div class="half-wrap clearfix">
-						<div class="half-row f-left">ĞÕ&nbsp;&nbsp;Ãû£º<span id="base_info_fullname">{#$resume_basic.fullname#}</span><span id="base_info_fullname_display_name"></span></div>
-						<div class="half-row f-left">³öÉúÄê·İ£º<span id="base_info_birthdate">{#$resume_basic.birthdate#}</span>Äê</div>
-						<div class="half-row f-left">ĞÔ&nbsp;&nbsp;±ğ£º<span id="base_info_sex_cn">{#if $resume_basic.sex==1#} ÄĞ{#/if#}  {#if $resume_basic.sex==2#} Å®{#/if#}</span></div>
-						<div class="half-row f-left">ÏÖ¾Ó×¡µØ£º<span id="base_info_residence">{#$resume_basic.residence#}</span></div>
-						<div class="half-row f-left">×î¸ßÑ§Àú£º<span id="base_info_education_cn">{#$resume_basic.education_cn#}</span></div>
-						<div class="half-row f-left">×¨&nbsp;&nbsp;Òµ£º<span id="base_info_major_cn">{#$resume_basic.major_cn#}</span></div>
-						<div class="half-row f-left">¹¤×÷¾­Ñé£º<span id="base_info_experience_cn">{#$resume_basic.experience_cn#}</span></div>
-						<div class="half-row f-left">»éÒö×´¿ö£º<span id="base_info_marriage_cn">{#$resume_basic.marriage_cn#}</span></div>
-						<div class="half-row f-left">Éí&nbsp;&nbsp;¸ß£º<span id="base_info_height">{# if $resume_basic.height#}{#$resume_basic.height#}{#else#}Î´ÌîĞ´{#/if#}</span></div>
-						<div class="half-row f-left">¼®&nbsp;&nbsp;¹á£º<span id="base_info_householdaddress">{#$resume_basic.householdaddress#}</span></div>
+						<div class="half-row f-left">å§“&nbsp;&nbsp;åï¼š<span id="base_info_fullname">{#$resume_basic.fullname#}</span><span id="base_info_fullname_display_name"></span></div>
+						<div class="half-row f-left">å‡ºç”Ÿå¹´ä»½ï¼š<span id="base_info_birthdate">{#$resume_basic.birthdate#}</span>å¹´</div>
+						<div class="half-row f-left">æ€§&nbsp;&nbsp;åˆ«ï¼š<span id="base_info_sex_cn">{#if $resume_basic.sex==1#} ç”·{#/if#}  {#if $resume_basic.sex==2#} å¥³{#/if#}</span></div>
+						<div class="half-row f-left">ç°å±…ä½åœ°ï¼š<span id="base_info_residence">{#$resume_basic.residence#}</span></div>
+						<div class="half-row f-left">æœ€é«˜å­¦å†ï¼š<span id="base_info_education_cn">{#$resume_basic.education_cn#}</span></div>
+						<div class="half-row f-left">ä¸“&nbsp;&nbsp;ä¸šï¼š<span id="base_info_major_cn">{#$resume_basic.major_cn#}</span></div>
+						<div class="half-row f-left">å·¥ä½œç»éªŒï¼š<span id="base_info_experience_cn">{#$resume_basic.experience_cn#}</span></div>
+						<div class="half-row f-left">å©šå§»çŠ¶å†µï¼š<span id="base_info_marriage_cn">{#$resume_basic.marriage_cn#}</span></div>
+						<div class="half-row f-left">èº«&nbsp;&nbsp;é«˜ï¼š<span id="base_info_height">{# if $resume_basic.height#}{#$resume_basic.height#}{#else#}æœªå¡«å†™{#/if#}</span></div>
+						<div class="half-row f-left">ç±&nbsp;&nbsp;è´¯ï¼š<span id="base_info_householdaddress">{#$resume_basic.householdaddress#}</span></div>
 					</div>
-					<div class="all-row">ÊÖ»ú£º<span id="base_info_telephone">{#$resume_basic.telephone#}</span> {#if $user.mobile_audit=="1"#}<img src="{#$QISHI.site_template#}images/icon-success.png" alt="" width="13" height="13" />{#/if#}</div>
-					<div class="all-row">ÓÊÏä£º<span id="base_info_email">{#$resume_basic.email#}</span> {#if $user.email_audit=="1"#}<img src="{#$QISHI.site_template#}images/icon-success.png" alt="" width="13" height="13" />{#/if#}</div>
+					<div class="all-row">æ‰‹æœºï¼š<span id="base_info_telephone">{#$resume_basic.telephone#}</span> {#if $user.mobile_audit=="1"#}<img src="{#$QISHI.site_template#}images/icon-success.png" alt="" width="13" height="13" />{#/if#}</div>
+					<div class="all-row">é‚®ç®±ï¼š<span id="base_info_email">{#$resume_basic.email#}</span> {#if $user.email_audit=="1"#}<img src="{#$QISHI.site_template#}images/icon-success.png" alt="" width="13" height="13" />{#/if#}</div>
 				</div>
 				<div class="leftbox" style="position: absolute;right:95px;top:25px;border:1px solid #c0c0c0;width: 150px;">
 					<div>
 					  	<img name="" src="{#if $$resume_basic.photo_img#}{#$QISHI.site_dir#}data/photo/{#$resume_basic.photo_img#}{#else#}{#$QISHI.site_template#}images/06.jpg{#/if#}" width="150" height="150" alt="" id="img_src_w"/>
 					</div>
-					<a href="javascript:;" class="edit" id="resumePhotosButton_w" style="background-color: #c0c0c0;color: #666666;display: block;font-size: 12px;height: 28px;line-height: 28px;text-align: center;text-decoration: none;width: 150px;">¼òÀúÕÕÆ¬</a>
+					<a href="javascript:;" class="edit" id="resumePhotosButton_w" style="background-color: #c0c0c0;color: #666666;display: block;font-size: 12px;height: 28px;line-height: 28px;text-align: center;text-decoration: none;width: 150px;">ç®€å†ç…§ç‰‡</a>
 		  		</div>
 			</div>
 		</div> 
-		<!--¸öÈË»ù±¾ĞÅÏ¢ form-->
+		<!--ä¸ªäººåŸºæœ¬ä¿¡æ¯ form-->
 	    <div id="base_info_update_part" style="display:none;">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall"> 
 			 <tr>
-				<td width="125" align="right">¼òÀúÃû³Æ£º</td>
+				<td width="125" align="right">ç®€å†åç§°ï¼š</td>
 				<td width="230"><input name="title" type="text" class="input_text_200" id="title" maxlength="80"   value="{#$resume_basic.title#}"/></td>
 				<td style="position: relative;">
 					
@@ -629,40 +629,40 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 						<div>
 						  	<img name="" src="{#if $$resume_basic.photo_img#}{#$QISHI.site_dir#}data/photo/{#$resume_basic.photo_img#}{#else#}{#$QISHI.site_template#}images/06.jpg{#/if#}" width="150" height="150" alt="" id="img_src"/>
 						</div>
-						<a href="javascript:;"  class="edit" id="resumePhotosButton" style="background-color: #c0c0c0;color: #666666;display: block;font-size: 12px;height: 28px;line-height: 28px;text-align: center;text-decoration: none;width: 150px;">¼òÀúÕÕÆ¬</a>
+						<a href="javascript:;"  class="edit" id="resumePhotosButton" style="background-color: #c0c0c0;color: #666666;display: block;font-size: 12px;height: 28px;line-height: 28px;text-align: center;text-decoration: none;width: 150px;">ç®€å†ç…§ç‰‡</a>
 			  		</div>
 				</td>
 			  </tr>
 			  <tr>
-				<td width="125"  align="right"><span class="nec">ĞÕÃû</span>£º</td>
+				<td width="125"  align="right"><span class="nec">å§“å</span>ï¼š</td>
 				<td  width="230"><input name="fullname" type="text" class="input_text_200" id="fullname" maxlength="6"   value="{#$resume_basic.fullname#}" /> </td>
 				<td>
 				<input name="display_name" id="display_name" type="hidden" value="{#$resume_basic.display_name#}" />
 				  <div class="publicity" id="publicitydiv">
-				    <div class="input_text_70_bg" id="display_name_cn">{#if $resume_basic.display_name=="1"#}ÍêÈ«¹«¿ª{#elseif $resume_basic.display_name=="2"#}ÏÔÊ¾±àºÅ{#elseif $resume_basic.display_name=="3"#}Òş²ØÃû×Ö{#/if#}</div>
+				    <div class="input_text_70_bg" id="display_name_cn">{#if $resume_basic.display_name=="1"#}å®Œå…¨å…¬å¼€{#elseif $resume_basic.display_name=="2"#}æ˜¾ç¤ºç¼–å·{#elseif $resume_basic.display_name=="3"#}éšè—åå­—{#/if#}</div>
 						<div class="selbox">
-							<div class="div" id="1">ÍêÈ«¹«¿ª</div>
-							<div class="div" id="2">ÏÔÊ¾±àºÅ</div>
-							<div class="div" id="3">Òş²ØÃû×Ö</div>
+							<div class="div" id="1">å®Œå…¨å…¬å¼€</div>
+							<div class="div" id="2">æ˜¾ç¤ºç¼–å·</div>
+							<div class="div" id="3">éšè—åå­—</div>
 						</div>
 				  </div>
 			    </td>
 			  </tr>
 			  <tr>
-				<td align="right"><span class="nec">ĞÔ±ğ</span>£º</td>
+				<td align="right"><span class="nec">æ€§åˆ«</span>ï¼š</td>
 				<td>
 				<div id="sex_radio">
 				<input name="sex" id="sex" type="hidden" value="{#$resume_basic.sex#}" />
 				<input name="sex_cn" id="sex_cn" type="hidden" value="{#$resume_basic.sex_cn#}" />
-				  <div class="input_radio{#if $resume_basic.sex==1#} select{#/if#}" id="1">ÄĞ</div>
-				  <div class="input_radio{#if $resume_basic.sex==2#} select{#/if#}" id="2">Å®</div>			  
+				  <div class="input_radio{#if $resume_basic.sex==1#} select{#/if#}" id="1">ç”·</div>
+				  <div class="input_radio{#if $resume_basic.sex==2#} select{#/if#}" id="2">å¥³</div>			  
 				  <div class="clear"></div>
 				  </div>
 			    </td>
 				<td>&nbsp;</td>
 			  </tr>
 			  <tr>
-				<td align="right"><span class="nec">³öÉúÄê·İ</span>£º</td>
+				<td align="right"><span class="nec">å‡ºç”Ÿå¹´ä»½</span>ï¼š</td>
 				<td class="infoContent">
 				<div class="timeSel">
 				 <div class="input_text_200_bg date_input">{#$resume_basic.birthdate#}</div>
@@ -744,18 +744,18 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				<td>&nbsp;</td>
 			  </tr>
 			  <tr class="jobmain">
-				<td align="right"><span class="nec">ÏÖ¾Ó×¡µØ</span>£º</td>
+				<td align="right"><span class="nec">ç°å±…ä½åœ°</span>ï¼š</td>
 				<td><input name="residence" type="text" class="input_text_200" id="residence"  value="{#$resume_basic.residence#}" /> </td>
 				<td>&nbsp;</td>
 			  </tr>
 			   <tr>
-				<td align="right"><span class="nec">Ñ§Àú</span>£º</td>
+				<td align="right"><span class="nec">å­¦å†</span>ï¼š</td>
 				<td>
 					<div style="position:relateve;">
 	             	 	<div id="education_menu" class="input_text_200_bg">{#$resume_basic.education_cn#}</div>	
 	             	 	<div class="menu" id="menu1">
 		              		<ul>
-		              			{#qishi_get_classify  set="ÀàĞÍ:QS_education,ÁĞ±íÃû:c_education"#}
+		              			{#qishi_get_classify  set="ç±»å‹:QS_education,åˆ—è¡¨å:c_education"#}
 		              			{#foreach from=$c_education item=list#}
 		              			<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 		              			{#/foreach#}
@@ -768,10 +768,10 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				<td>&nbsp;</td>
 			  </tr>
 			  <tr>
-				<td align="right"><span class="nec">ËùÑ§×¨Òµ</span>£º</td>
+				<td align="right"><span class="nec">æ‰€å­¦ä¸“ä¸š</span>ï¼š</td>
 				<td style="position:relative;z-index:2;">
 					<div class="input_text_200_bg ucc-default" id="majorText">{#$resume_basic.major_cn#}</div>
-					<!-- ËùÑ§×¨Òµµ¯³ö¿ò -->
+					<!-- æ‰€å­¦ä¸“ä¸šå¼¹å‡ºæ¡† -->
 					<div class="aui_outer" id="aui_outer_major">
 						<table class="aui_border">
 							<tbody>
@@ -784,7 +784,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 														<td class="aui_main">
 															<div class="aui_content">
 																<div class="items jquery-localdata">
-																	<div class="selector-header"><span class="selector-title">ËùÑ§×¨Òµ</span><div></div><span class="selector-close">X</span><div class="clear"></div></div>
+																	<div class="selector-header"><span class="selector-title">æ‰€å­¦ä¸“ä¸š</span><div></div><span class="selector-close">X</span><div class="clear"></div></div>
 																	<ul class="tabnav" id="major_tabnav"></ul>
 
 																	<div class="item-table majorbb">
@@ -805,21 +805,21 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 							</tbody>
 						</table>
 					</div>
-					<!-- ËùÑ§×¨Òµµ¯³ö¿ò End-->	
+					<!-- æ‰€å­¦ä¸“ä¸šå¼¹å‡ºæ¡† End-->	
 				    <input name="major" type="hidden" id="major" value="{#$resume_basic.major#}" />
 	             	<input name="major_cn" type="hidden" id="major_cn" value="{#$resume_basic.major_cn#}" />
 				</td>
 				<td>&nbsp;</td>
 			  </tr>
 			   <tr>
-				<td align="right"><span class="nec">¹¤×÷¾­Ñé</span>£º</td>
+				<td align="right"><span class="nec">å·¥ä½œç»éªŒ</span>ï¼š</td>
 				<td>
 					<div style="position:relateve;">
 	             	 	<div id="experience_menu" class="input_text_200_bg">{#$resume_basic.experience_cn#}</div>	
 	             	 	<div class="menu" id="menu2">
 		              		<ul>
-		              			{#qishi_get_classify  set="ÀàĞÍ:QS_experience,ÁĞ±íÃû:c_experience"#}
-		              			<li id="-1" title="Ó¦½ìÉú">Ó¦½ìÉú</li>
+		              			{#qishi_get_classify  set="ç±»å‹:QS_experience,åˆ—è¡¨å:c_experience"#}
+		              			<li id="-1" title="åº”å±Šç”Ÿ">åº”å±Šç”Ÿ</li>
 		              			{#foreach from=$c_experience item=list#}
 		              			<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 		              			{#/foreach#}
@@ -832,10 +832,10 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				<td>&nbsp;</td>
 			  </tr>
 			  <tr>
-				<td align="right"><span class="nec">ÊÖ»ú</span>£º</td>
+				<td align="right"><span class="nec">æ‰‹æœº</span>ï¼š</td>
 				<td>
 					{#if $user.mobile_audit=="1"#}
-					{#$resume_basic.telephone#} <a href="javascript:;" class="audit_mobile">ĞŞ¸Ä</a>
+					{#$resume_basic.telephone#} <a href="javascript:;" class="audit_mobile">ä¿®æ”¹</a>
 					<input name="mobile" type="hidden" id="mobile" class="input_text_200" value="{#$resume_basic.telephone#}" />
 					{#else#}
 					<input name="mobile" id="mobile" type="text" class="input_text_200" value="{#$resume_basic.telephone#}" />
@@ -846,36 +846,36 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 		    </table>
 			  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 			  <tr>
-				<td width="125" align="right"><span class="nec">ÓÊÏä</span>£º</td>
+				<td width="125" align="right"><span class="nec">é‚®ç®±</span>ï¼š</td>
 				<td>
 					{#if $user.email_audit=="1"#}
-					{#$user.email#} <a href="javascript:;" class="audit_email">ĞŞ¸Ä</a>
+					{#$user.email#} <a href="javascript:;" class="audit_email">ä¿®æ”¹</a>
 					<input name="email"  id="email" type="hidden" class="input_text_200" value="{#$user.email#}" />
 					{#else#}
 					<input name="email" id="email" type="text" class="input_text_200" value="{#$user.email#}" />
-					{#/if#}&nbsp;<label><input name="email_notify" type="checkbox" value="1" checked="checked"/>½ÓÊÕÃæÊÔÑûÇë</label>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					{#/if#}&nbsp;<label><input name="email_notify" type="checkbox" value="1" checked="checked"/>æ¥æ”¶é¢è¯•é‚€è¯·</label>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 			  </tr>
 			</table>
 			
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 			  <tr>
-				<td width="125" align="right">Éí¸ß£º</td>
+				<td width="125" align="right">èº«é«˜ï¼š</td>
 				<td width="220"><input name="height" id="height" type="text" class="input_text_200_bgsg" value="{#$resume_basic.height#}" /> </td>
 				<td>&nbsp;</td>
 			  </tr>
 			  <tr class="jobmain">
-				<td width="125" align="right">¼®¹á£º</td>
+				<td width="125" align="right">ç±è´¯ï¼š</td>
 				<td><input name="householdaddress" type="text" class="input_text_200" id="householdaddress"  value="{#$resume_basic.householdaddress#}" /> </td>
 				<td>&nbsp;</td>
 			  </tr>
 			  <tr>
-				<td align="right">»éÒö×´¿ö£º</td>
+				<td align="right">å©šå§»çŠ¶å†µï¼š</td>
 				<td>
 				<div id="marriage_radio">
 				<input name="marriage" id="marriage" type="hidden" value="{#$resume_basic.marriage#}" />
 				<input name="marriage_cn" id="marriage_cn" type="hidden" value="{#$resume_basic.marriage_cn#}" />
-				  <div class="input_radio{#if $resume_basic.marriage==1#} select{#/if#}" id="1">Î´»é</div>
-				  <div class="input_radio{#if $resume_basic.marriage==2#} select{#/if#}" id="2">ÒÑ»é</div>			  
+				  <div class="input_radio{#if $resume_basic.marriage==1#} select{#/if#}" id="1">æœªå©š</div>
+				  <div class="input_radio{#if $resume_basic.marriage==2#} select{#/if#}" id="2">å·²å©š</div>			  
 				  <div class="clear"></div>
 				  </div>
 			    </td>
@@ -886,7 +886,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" > 
 				  <tr>
 					<td width="125" align="right"> </td> 
-					<td><input type="submit" name="basic_info_save" id="basic_info_save" value="±£´æ"  class="but100lan"/><input type="button" name="" id="close_basic_info" value="È¡Ïû"  class="but100hui"/>
+					<td><input type="submit" name="basic_info_save" id="basic_info_save" value="ä¿å­˜"  class="but100lan"/><input type="button" name="" id="close_basic_info" value="å–æ¶ˆ"  class="but100hui"/>
 					</td>
 				  </tr>
 			 </table>
@@ -918,8 +918,8 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				$.post("?act=ajax_save_basic_info",{pid:pid,fullname:fullname,title:title,display_name:display_name,sex:sex,sex_cn:sex_cn,birthdate:birthdate,residence:residence,education:education,education_cn:education_cn,experience:experience,experience_cn:experience_cn,mobile:mobile,email:email,email_notify:email_notify,height:height,householdaddress:householdaddress,marriage:marriage,marriage_cn:marriage_cn,major:major,major_cn:major_cn},function(result){
 					if(result=="success"){
 						dialog({
-		                    title: 'ÏµÍ³ÌáÊ¾',
-		                    content: "±£´æ³É¹¦!",
+		                    title: 'ç³»ç»Ÿæç¤º',
+		                    content: "ä¿å­˜æˆåŠŸ!",
 		                    width:300
 		                }).show();
 						$("#base_info_title").html(fullname);
@@ -942,7 +942,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					}else
 					{
 						dialog({
-		                    title: 'ÏµÍ³ÌáÊ¾',
+		                    title: 'ç³»ç»Ÿæç¤º',
 		                    content: ''+result+'',
 		                    width:300
 		                }).show();
@@ -962,38 +962,38 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 			});
 		  });
 		</script>
-		<!--¸öÈËĞÅÏ¢ end -->
+		<!--ä¸ªäººä¿¡æ¯ end -->
 
-		<!-- ¸öÈËÇóÖ°ÒâÏò start -->
+		<!-- ä¸ªäººæ±‚èŒæ„å‘ start -->
 			<div class="titleH2">
-				<span>ÇóÖ°ÒâÏò</span>
+				<span>æ±‚èŒæ„å‘</span>
 				<a style="width:20px; height:20px; background: url({#$QISHI.site_template#}images/13.gif) no-repeat 3px -379px; margin:10px 30px 0 0;*margin-top:-30px; float: right;" href="javascript:;" id="base_update"> </a>
 			</div>
-			<!-- ÇóÖ°ÒâÏò show -->
+			<!-- æ±‚èŒæ„å‘ show -->
 			<div class="base_table" id="base_update_show"> 
 				<div class="c-resume-info-show">
 					<div class="info-list">
-						<div class="all-row">ÇóÖ°×´Ì¬£º<span id="base_current_cn">{#$resume_basic.current_cn#}</span></div>
-						<div class="all-row">¹¤×÷ĞÔÖÊ£º<span id="base_nature_cn">{#$resume_basic.nature_cn#}</span></div>
-						<div class="all-row">ÆÚÍûĞĞÒµ£º<span id="base_trade_cn">{#$resume_basic.trade_cn#}</span></div>
-						<div class="all-row">ÆÚÍûÖ°Î»£º<span id="base_intention_jobs">{#$resume_basic.intention_jobs#}</span></div>
-						<div class="all-row">¹¤×÷µØÇø£º<span id="base_district_cn">{#$resume_basic.district_cn#}</span></div>
-						<div class="all-row">ÆÚÍûĞ½×Ê£º<span id="base_wage_cn">{#$resume_basic.wage_cn#}</span></div>
+						<div class="all-row">æ±‚èŒçŠ¶æ€ï¼š<span id="base_current_cn">{#$resume_basic.current_cn#}</span></div>
+						<div class="all-row">å·¥ä½œæ€§è´¨ï¼š<span id="base_nature_cn">{#$resume_basic.nature_cn#}</span></div>
+						<div class="all-row">æœŸæœ›è¡Œä¸šï¼š<span id="base_trade_cn">{#$resume_basic.trade_cn#}</span></div>
+						<div class="all-row">æœŸæœ›èŒä½ï¼š<span id="base_intention_jobs">{#$resume_basic.intention_jobs#}</span></div>
+						<div class="all-row">å·¥ä½œåœ°åŒºï¼š<span id="base_district_cn">{#$resume_basic.district_cn#}</span></div>
+						<div class="all-row">æœŸæœ›è–ªèµ„ï¼š<span id="base_wage_cn">{#$resume_basic.wage_cn#}</span></div>
 					</div>
 				</div>
 			</div>
-			<!-- ÇóÖ°ÒâÏò form -->
+			<!-- æ±‚èŒæ„å‘ form -->
 			<div id="base_update_part" style="display:none;"> 
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" >
-				<!-- Ä¿Ç°×´Ì¬  ¿ªÊ¼-->
+				<!-- ç›®å‰çŠ¶æ€  å¼€å§‹-->
 				<tr>
-					<td width="127" align="right"><span class="nec">Ä¿Ç°×´Ì¬£º</span></td>
+					<td width="127" align="right"><span class="nec">ç›®å‰çŠ¶æ€ï¼š</span></td>
 					<td colspan="2">
 						<div style="position:relateve;">
 				             	 	<div id="current_menu" class="input_text_200_bg">{#$resume_basic.current_cn#}</div>	
 				             	 	<div class="menu" id="menuc">
 					              		<ul>
-					              			{#qishi_get_classify  set="ÀàĞÍ:QS_current,ÁĞ±íÃû:c_current"#}
+					              			{#qishi_get_classify  set="ç±»å‹:QS_current,åˆ—è¡¨å:c_current"#}
 					              			{#foreach from=$c_current item=list#}
 					              			<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 					              			{#/foreach#}
@@ -1004,14 +1004,14 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 		             	<input name="current_cn" type="hidden" id="current_cn" value="{#$resume_basic.current_cn#}" />
 					</td>
 				  </tr>
-				<!-- Ä¿Ç°×´Ì¬ ½áÊø --> 
+				<!-- ç›®å‰çŠ¶æ€ ç»“æŸ --> 
 				<tr>
-					<td width="127" align="right"><span class="nec">¹¤×÷ĞÔÖÊ£º</span></td>
+					<td width="127" align="right"><span class="nec">å·¥ä½œæ€§è´¨ï¼š</span></td>
 					<td colspan="2">
 						<div id="nature_radio">
 							<input name="nature" id="nature" type="hidden" value="{#$resume_basic.nature#}" />
 							<input name="nature_cn" id="nature_cn" type="hidden" value="{#$resume_basic.nature_cn#}" />
-							{#qishi_get_classify  set="ÀàĞÍ:QS_jobs_nature,ÁĞ±íÃû:c_nature"#}
+							{#qishi_get_classify  set="ç±»å‹:QS_jobs_nature,åˆ—è¡¨å:c_nature"#}
 							{#foreach from=$c_nature item=list#}
 							<div class="input_radio {#if $list.id==$resume_basic.nature#}select{#/if#}" id="{#$list.id#}">{#$list.categoryname#}</div>
 							{#/foreach#}			  
@@ -1020,11 +1020,11 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					</td>
 				</tr>
 				<tr class="jobmain">
-					<td width="127" align="right" valign="top" style="padding-top:16px;"><span class="nec">ÆÚÍûĞĞÒµ£º</span></td>
+					<td width="127" align="right" valign="top" style="padding-top:16px;"><span class="nec">æœŸæœ›è¡Œä¸šï¼š</span></td>
 					<td style="position:relative">
 						<div id="jobsTrad" style="width:200px;">
-							<div class="input_text_200_bg ucc-default" id="tradText">ÇëÑ¡Ôñ</div>
-							<!-- ÆÚÍûĞĞÒµµ¯³ö¿ò -->
+							<div class="input_text_200_bg ucc-default" id="tradText">è¯·é€‰æ‹©</div>
+							<!-- æœŸæœ›è¡Œä¸šå¼¹å‡ºæ¡† -->
 							<div class="aui_outer" id="aui_outer">
 								<table class="aui_border">
 									<tbody>
@@ -1037,13 +1037,13 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 																<td class="aui_main">
 																	<div class="aui_content">
 																		<div class="items jquery-localdata">
-																			<div class="selector-header"><span class="selector-title">ĞĞÒµÑ¡Ôñ</span><div></div><span id="tr-selector-save" class="selector-save">È·¶¨</span><span class="selector-close">X</span><div class="clear"></div></div>
+																			<div class="selector-header"><span class="selector-title">è¡Œä¸šé€‰æ‹©</span><div></div><span id="tr-selector-save" class="selector-save">ç¡®å®š</span><span class="selector-close">X</span><div class="clear"></div></div>
 
-																			<div class="data-row-head"><div class="data-row"><div class="data-row-side">×î¶àÑ¡ <strong class="text-warning">3</strong> Ïî&nbsp;&nbsp;ÒÑÑ¡ <strong id="arstrade" class="text-warning">0</strong> Ïî</div><div id="result-list-trade" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
+																			<div class="data-row-head"><div class="data-row"><div class="data-row-side">æœ€å¤šé€‰ <strong class="text-warning">3</strong> é¡¹&nbsp;&nbsp;å·²é€‰ <strong id="arstrade" class="text-warning">0</strong> é¡¹</div><div id="result-list-trade" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
 																			<div class="item-table">
 																				<table class="options-table options-table-7">
 																					<tbody class="item-list"><tr><td class="bno"><table><tbody id="trad_list">
-																						<!-- ÁĞ±íÄÚÈİ -->
+																						<!-- åˆ—è¡¨å†…å®¹ -->
 																					</tbody></table></td></tr>
 																					</tbody>
 																				</table>
@@ -1060,18 +1060,18 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 									</tbody>
 								</table>
 							</div>
-							<!-- ÆÚÍûĞĞÒµµ¯³ö¿ò End-->
+							<!-- æœŸæœ›è¡Œä¸šå¼¹å‡ºæ¡† End-->
 						    <input name="trade_cn" id="trade_cn" type="hidden" value="{#$resume_basic.trade_cn#}" />
 						    <input name="trade" id="trade" type="hidden" value="{#$resume_basic.trade#}" />
 						</div>
 					</td>
 				  </tr>
 				   <tr class="jobmain">
-					<td width="127" align="right" valign="top" style="padding-top:16px;"><span class="nec">ÆÚÍûÖ°Î»£º</span></td>
+					<td width="127" align="right" valign="top" style="padding-top:16px;"><span class="nec">æœŸæœ›èŒä½ï¼š</span></td>
 					<td style="position:relative">
 						<div id="jobsSort" style="width:200px;">
-							<div class="input_text_200_bg ucc-default" id="jobText">ÇëÑ¡Ôñ</div>
-							<!-- ÆÚÍûÖ°Î»µ¯³ö¿ò -->
+							<div class="input_text_200_bg ucc-default" id="jobText">è¯·é€‰æ‹©</div>
+							<!-- æœŸæœ›èŒä½å¼¹å‡ºæ¡† -->
 							<div class="aui_outer" id="aui_outer_job">
 								<table class="aui_border">
 									<tbody>
@@ -1084,11 +1084,11 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 																<td class="aui_main">
 																	<div class="aui_content" style="padding: 0px;">
 																		<div class="LocalDataMultiC">
-																			<div class="selector-header"><span class="selector-title">Ö°Î»Ñ¡Ôñ</span><div></div><span id="jb-selector-save" class="selector-save">È·¶¨</span><span class="selector-close">X</span><div class="clear"></div></div>
+																			<div class="selector-header"><span class="selector-title">èŒä½é€‰æ‹©</span><div></div><span id="jb-selector-save" class="selector-save">ç¡®å®š</span><span class="selector-close">X</span><div class="clear"></div></div>
 
-																			<div class="data-row-head"><div class="data-row"><div class="data-row-side">×î¶àÑ¡ <strong class="text-warning">3</strong> Ïî&nbsp;&nbsp;ÒÑÑ¡ <strong id="ars" class="text-warning">0</strong> Ïî</div><div id="result-list-job" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
+																			<div class="data-row-head"><div class="data-row"><div class="data-row-side">æœ€å¤šé€‰ <strong class="text-warning">3</strong> é¡¹&nbsp;&nbsp;å·²é€‰ <strong id="ars" class="text-warning">0</strong> é¡¹</div><div id="result-list-job" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
 																			<div class="data-row-list data-row-main" id="job_list">
-																				<!-- ÁĞ±íÄÚÈİ -->
+																				<!-- åˆ—è¡¨å†…å®¹ -->
 																			</div>
 																		</div>
 																	</div>
@@ -1102,7 +1102,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 									</tbody>
 								</table>
 							</div>
-							<!-- ÆÚÍûÖ°Î»µ¯³ö¿ò End-->
+							<!-- æœŸæœ›èŒä½å¼¹å‡ºæ¡† End-->
 						    <input name="intention_jobs" id="intention_jobs" type="hidden" value="{#$resume_basic.intention_jobs#}" />
 						    <input name="intention_jobs_id" id="intention_jobs_id"  type="hidden" value="{#$resume_jobs_id#}" />
 					    </div>
@@ -1110,10 +1110,10 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				  </tr> 
 				 
 				  <tr class="jobmain">
-					<td width="127" align="right"><span class="nec">¹¤×÷µØÇø£º</span></td>
+					<td width="127" align="right"><span class="nec">å·¥ä½œåœ°åŒºï¼š</span></td>
 					<td  id="jobsCity" style="position:relative">
-						<div class="input_text_200_bg ucc-default" id="cityText">ÇëÑ¡Ôñ</div>
-						<!-- ¹¤×÷µØÇøµ¯³ö¿ò -->
+						<div class="input_text_200_bg ucc-default" id="cityText">è¯·é€‰æ‹©</div>
+						<!-- å·¥ä½œåœ°åŒºå¼¹å‡ºæ¡† -->
 						<div class="aui_outer" id="aui_outer_city">
 							<table class="aui_border">
 								<tbody>
@@ -1126,11 +1126,11 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 															<td class="aui_main">
 																<div class="aui_content" style="padding: 0px;">
 																	<div class="LocalDataMultiC" style="width:623px;">
-																		<div class="selector-header"><span class="selector-title">µØÇøÑ¡Ôñ</span><div></div><span id="ct-selector-save" class="selector-save">È·¶¨</span><span class="selector-close">X</span><div class="clear"></div></div>
+																		<div class="selector-header"><span class="selector-title">åœ°åŒºé€‰æ‹©</span><div></div><span id="ct-selector-save" class="selector-save">ç¡®å®š</span><span class="selector-close">X</span><div class="clear"></div></div>
 
-																		<div class="data-row-head"><div class="data-row"><div class="data-row-side data-row-side-c">×î¶àÑ¡ <strong class="text-warning">3</strong> Ïî&nbsp;&nbsp;ÒÑÑ¡ <strong id="arscity" class="text-warning">0</strong> Ïî</div><div id="result-list-city" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
+																		<div class="data-row-head"><div class="data-row"><div class="data-row-side data-row-side-c">æœ€å¤šé€‰ <strong class="text-warning">3</strong> é¡¹&nbsp;&nbsp;å·²é€‰ <strong id="arscity" class="text-warning">0</strong> é¡¹</div><div id="result-list-city" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
 																		<div class="data-row-list data-row-main" id="city_list">
-																			<!-- ÁĞ±íÄÚÈİ -->
+																			<!-- åˆ—è¡¨å†…å®¹ -->
 																		</div>
 																	</div>
 																</div>
@@ -1144,19 +1144,19 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 								</tbody>
 							</table>
 						</div>
-						<!-- ¹¤×÷µØÇøµ¯³ö¿ò End-->
+						<!-- å·¥ä½œåœ°åŒºå¼¹å‡ºæ¡† End-->
 					    <input name="district" id="district" type="hidden" value="{#$resume_district_id#}" />
 					    <input name="district_cn" id="district_cn"  type="hidden" value="{#$resume_basic.district_cn#}" />
 					</td>
 				  </tr> 
 		 		<tr>
-					<td width="127" align="right"><span class="nec">ÆÚÍûĞ½×Ê£º</span></td>
+					<td width="127" align="right"><span class="nec">æœŸæœ›è–ªèµ„ï¼š</span></td>
 					<td colspan="2">
 						<div style="position:relateve;">
 		             	 	<div id="wage_menu" class="input_text_200_bg">{#$resume_basic.wage_cn#}</div>	
 		             	 	<div class="menu" id="menu3">
 			              		<ul>
-			              			{#qishi_get_classify  set="ÀàĞÍ:QS_wage,ÁĞ±íÃû:c_wage"#}
+			              			{#qishi_get_classify  set="ç±»å‹:QS_wage,åˆ—è¡¨å:c_wage"#}
 			              			{#foreach from=$c_wage item=list#}
 			              			<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 			              			{#/foreach#}
@@ -1169,7 +1169,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				  </tr> 
 			          <tr>
 						<td width="125" align="right"> </td> 
-						<td><input type="submit" name="basic_save" id="basic_save" value="±£´æ"  class="but100lan"/><input type="button" name="" id="close_basic" value="È¡Ïû"  class="but100hui"/>
+						<td><input type="submit" name="basic_save" id="basic_save" value="ä¿å­˜"  class="but100lan"/><input type="button" name="" id="close_basic" value="å–æ¶ˆ"  class="but100hui"/>
 						</td>
 					  </tr>
 			</table>
@@ -1194,8 +1194,8 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 			$.post("?act=ajax_save_basic",{pid:pid,intention_jobs:intention_jobs,intention_jobs_id:intention_jobs_id,trade_cn:trade_cn,trade:trade,district:district,district_cn:district_cn,nature:nature,nature_cn:nature_cn,current:current,current_cn:current_cn,wage:wage,wage_cn:wage_cn},function(result){
 				if(result=="success"){
 					dialog({
-		                title: 'ÏµÍ³ÌáÊ¾',
-		                content: '±£´æ³É¹¦',
+		                title: 'ç³»ç»Ÿæç¤º',
+		                content: 'ä¿å­˜æˆåŠŸ',
 		                width:300
 		            }).show();
 					$("#base_intention_jobs").html(intention_jobs);
@@ -1210,7 +1210,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					$("#base_update").show();
 				}else{
 					dialog({
-		                title: 'ÏµÍ³ÌáÊ¾',
+		                title: 'ç³»ç»Ÿæç¤º',
 		                content: ''+result+'',
 		                width:300
 		            }).show();
@@ -1233,38 +1233,38 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 
 		});
 		</script>
-		<!-- ¸öÈËÇóÖ°ÒâÏò end -->
+		<!-- ä¸ªäººæ±‚èŒæ„å‘ end -->
 
-		<!-- ½ÌÓı¾­Àú start  -->
+		<!-- æ•™è‚²ç»å† start  -->
 	  <div class="addresume2">
 		
 	    	<div class="titleH2">
-				<div class="lt h2-title">½ÌÓı¾­Àú</div>
+				<div class="lt h2-title">æ•™è‚²ç»å†</div>
 				<div class="add" id="add_education" 
-				{#if $resume_education#}style="display:block;"{#else#}style="display:none;"{#/if#}><input type="button"   id="nav_add_education" value="Ìí¼Ó"  class="but55lan_add"/></div><!--µ±½ÌÓı¾­Àú´æÔÚ£¬ÔòÏÔÊ¾Õâ¸ö°´Å¥ -->
+				{#if $resume_education#}style="display:block;"{#else#}style="display:none;"{#/if#}><input type="button"   id="nav_add_education" value="æ·»åŠ "  class="but55lan_add"/></div><!--å½“æ•™è‚²ç»å†å­˜åœ¨ï¼Œåˆ™æ˜¾ç¤ºè¿™ä¸ªæŒ‰é’® -->
 				<div class="clear"></div>
 			</div> 
 			<div id="education_list_box"></div> 
-			<!--Î´Ìí¼Ó½ÌÓı¾­ÀúÏÔÊ¾Ìí¼Ó°´Å¥ -->
-			<!--Ìí¼Ó±íµ¥£¬Ä¬ÈÏÊÇÒş²Ø -->
+			<!--æœªæ·»åŠ æ•™è‚²ç»å†æ˜¾ç¤ºæ·»åŠ æŒ‰é’® -->
+			<!--æ·»åŠ è¡¨å•ï¼Œé»˜è®¤æ˜¯éšè— -->
 		    <div class="addbox" id="education_add_form">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" >		  
 					<tr>
-						<td width="100" align="left">Ñ§Ğ£Ãû³Æ£º</td>
+						<td width="100" align="left">å­¦æ ¡åç§°ï¼š</td>
 						<td><input name="school" id="school" type="text" class="input_text_200"      value="" /></td>
 					</tr>
 					<tr>
-						<td width="100" align="left">×¨ÒµÃû³Æ£º</td>
+						<td width="100" align="left">ä¸“ä¸šåç§°ï¼š</td>
 						<td><input name="speciality" id="speciality" type="text" class="input_text_200"      value="" /></td>
 					</tr>
 					<tr>
-						<td width="100" align="left">Ñ§Àú£º</td>
+						<td width="100" align="left">å­¦å†ï¼š</td>
 						<td>
 							<div style="position:relateve;">
-								<div id="edu_education_menu" class="input_text_200_bg">ÇëÑ¡Ôñ</div>	
+								<div id="edu_education_menu" class="input_text_200_bg">è¯·é€‰æ‹©</div>	
 								<div class="menu" id="menu4">
 									<ul>
-									{#qishi_get_classify  set="ÀàĞÍ:QS_education,ÁĞ±íÃû:c_education"#}
+									{#qishi_get_classify  set="ç±»å‹:QS_education,åˆ—è¡¨å:c_education"#}
 									{#foreach from=$c_education item=list#}
 									<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 									{#/foreach#}
@@ -1276,13 +1276,13 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 						</td>
 					</tr>
 					<tr>
-						<td width="100" align="left" >¾Í¶ÁÊ±¼ä£º</td>
+						<td width="100" align="left" >å°±è¯»æ—¶é—´ï¼š</td>
 						<td >
 							<table border="0" cellpadding="0" cellspacing="0" >
 								<tr>
 									<td width="90" style="padding:0px" class="infoContent">
 										<div class="timeSel">
-											<div class="input_text_60_bg input_text_60_bg_s date_input" id="edu_start_year_box">Äê·İ</div>
+											<div class="input_text_60_bg input_text_60_bg_s date_input" id="edu_start_year_box">å¹´ä»½</div>
 											<input name="edu_start_year" id="edu_start_year" type="hidden" value="" />
 											<div class="setBox" id="">
 								                <i class="prevIcon"></i>
@@ -1293,15 +1293,15 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 									</td>
 									<td width="80" style="padding:0px" class="infoContent">
 										<div style="position:relateve;" class="timeSel monthSel">
-											<div class="input_text_60_bg input_text_60_bg_s date_input" id="edu_start_month_box">9ÔÂ</div>
+											<div class="input_text_60_bg input_text_60_bg_s date_input" id="edu_start_month_box">9æœˆ</div>
 											<div class="setBox"><ul class="smbYear"></ul></div>
 										</div>
-										<input name="edu_start_month" type="hidden" id="edu_start_month" value="9ÔÂ" />
+										<input name="edu_start_month" type="hidden" id="edu_start_month" value="9æœˆ" />
 									</td>
-									<td width="20" style="padding:0px">&nbsp;ÖÁ&nbsp;</td>
+									<td width="20" style="padding:0px">&nbsp;è‡³&nbsp;</td>
 									<td class="edu_td_h infoContent" width="90" style="padding:0px">
 										<div class="timeSel">
-											<div class="input_text_60_bg input_text_60_bg_s date_input" id="edu_end_year_box">Äê·İ</div>
+											<div class="input_text_60_bg input_text_60_bg_s date_input" id="edu_end_year_box">å¹´ä»½</div>
 											<input name="edu_end_year" id="edu_end_year" type="hidden" value="" />
 											<div class="setBox" id="">
 								                <i class="prevIcon"></i>
@@ -1312,12 +1312,12 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 									</td>
 									<td class="edu_td_h infoContent" style="padding:0px">
 										<div style="position:relateve;" class="timeSel monthSel">
-											<div id="edu_end_month_box" class="input_text_60_bg input_text_60_bg_s date_input">7ÔÂ</div>
+											<div id="edu_end_month_box" class="input_text_60_bg input_text_60_bg_s date_input">7æœˆ</div>
 											<div class="setBox"><ul class="smbYear"></ul></div>
 										</div>
-										<input name="edu_end_month" type="hidden" id="edu_end_month" value="7ÔÂ" />
+										<input name="edu_end_month" type="hidden" id="edu_end_month" value="7æœˆ" />
 									</td>
-									<td style="padding-left:10px;"><input type="checkbox" id="edu_now" style="vertical-align:-1px">&nbsp;&nbsp;ÖÁ½ñ<input type="hidden" id="edu_todate" name="edu_todate" value="0"></td>
+									<td style="padding-left:10px;"><input type="checkbox" id="edu_now" style="vertical-align:-1px">&nbsp;&nbsp;è‡³ä»Š<input type="hidden" id="edu_todate" name="edu_todate" value="0"></td>
 								</tr>
 							</table>						
 						</td>
@@ -1325,7 +1325,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					<tr>
 						<td width="100" align="left"> </td>
 						<input type="hidden" name="edu_id" id="edu_id">
-						<td><input type="submit" name="save_education" id="save_education" value="±£´æ"  class="but100lan"/><input type="button" name="" id="close_education_form" value="È¡Ïû"  class="but100hui"/>
+						<td><input type="submit" name="save_education" id="save_education" value="ä¿å­˜"  class="but100lan"/><input type="button" name="" id="close_education_form" value="å–æ¶ˆ"  class="but100hui"/>
 						</td>
 					</tr>
 				</table>
@@ -1334,7 +1334,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				$(document).ready(function(){
 					$("#save_education").click(function(){
 						$(this).attr('disabled', 'disabled');
-						$(this).val('ÕıÔÚ±£´æ...');
+						$(this).val('æ­£åœ¨ä¿å­˜...');
 						var pid="{#$pid#}";
 						var id=$("#edu_id").val();
 						var school = $("#school").val();
@@ -1350,23 +1350,23 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 						$.post("?act=save_education",{id:id,pid:pid,school:school,speciality:speciality,education:education,education_cn:education_cn,edu_start_year:edu_start_year,edu_start_month:edu_start_month,edu_end_year:edu_end_year,edu_end_month:edu_end_month,edu_todate:edu_todate},function(result){
 							if(result=="success"){
 								dialog({
-				                    title: 'ÏµÍ³ÌáÊ¾',
-				                    content: "±£´æ³É¹¦!",
+				                    title: 'ç³»ç»Ÿæç¤º',
+				                    content: "ä¿å­˜æˆåŠŸ!",
 				                    width:300
 				                }).show();
 				                $("#save_education").removeAttr('disabled');
-								$("#save_education").val('±£´æ');
+								$("#save_education").val('ä¿å­˜');
 								$("#education_add_form").slideUp("slow");
 								$("#add_education").show();
 							}else{
 								dialog({
-				                    title: 'ÏµÍ³ÌáÊ¾',
+				                    title: 'ç³»ç»Ÿæç¤º',
 				                    content: ""+result+"",
 				                    width:300,
 				                    cancelDisplay: false,
 				                    cancel: function () {
 								        $("#save_education").removeAttr('disabled');
-										$("#save_education").val('±£´æ');
+										$("#save_education").val('ä¿å­˜');
 								    }
 				                }).show();
 				                return false;
@@ -1406,30 +1406,30 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 							    $("#edu_education_cn").val(data["education_cn"]);
 							    $("#edu_education_menu").html(data["education_cn"]);
 							    $("#edu_start_year").val(data["startyear"]);
-							    $("#edu_start_year_div").html(data["startyear"]+"Äê");
+							    $("#edu_start_year_div").html(data["startyear"]+"å¹´");
 							    $("#edu_start_month").val(data["startmonth"]);
-							    $("#edu_start_month_menu").html(data["startmonth"]+"ÔÂ");
+							    $("#edu_start_month_menu").html(data["startmonth"]+"æœˆ");
 							    if(todate != 1) {
 								    $("#edu_end_year").val(data["endyear"]);
-								    $("#edu_end_year_div").html(data["endyear"]+"Äê");
+								    $("#edu_end_year_div").html(data["endyear"]+"å¹´");
 								    $("#edu_end_month").val(data["endmonth"]);
-								    $("#edu_end_month_menu").html(data["endmonth"]+"ÔÂ");
+								    $("#edu_end_month_menu").html(data["endmonth"]+"æœˆ");
 							    }
 						});
 					});
 					$(".del_education").live("click",function(){
 						$("#education_add_form").hide();
 						var del_education=dialog();
-						del_education.title('É¾³ı');
+						del_education.title('åˆ é™¤');
 						del_education.width('300');
-						del_education.content("¼ÓÔØÖĞ...");
+						del_education.content("åŠ è½½ä¸­...");
 						del_education.showModal();
 						$(".DialogClose").live('click',function() {
 					        del_education.close().remove();
 					    });
 						$.get("personal_ajax.php?act=del_resume_edu&pid="+$(this).attr("pid")+"&id="+$(this).attr("edu_id"), function(rst) {
 							del_education.content(''+rst+'');
-							// É¾³ı²Ù×÷
+							// åˆ é™¤æ“ä½œ
 							$(".DialogSubmit").click(function(){
 								var id=$("input[name=id]").val();
 								var pid=$("input[name=pid]").val();
@@ -1437,8 +1437,8 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 										$(".FloatBox").css("display","none");
 										$(".FloatBg").css("display","none");
 										dialog({
-						                    title: 'ÏµÍ³ÌáÊ¾',
-						                    content: "É¾³ı³É¹¦",
+						                    title: 'ç³»ç»Ÿæç¤º',
+						                    content: "åˆ é™¤æˆåŠŸ",
 						                    width:300
 						                }).show();
 						                del_education.close().remove();
@@ -1451,34 +1451,34 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					});
 				});
 			</script>
-		<!-- ½ÌÓı¾­Àú  end -->
-		<!-- ¹¤×÷¾­Àú start -->
+		<!-- æ•™è‚²ç»å†  end -->
+		<!-- å·¥ä½œç»å† start -->
       	<div class="titleH2">
-			<div class="lt h2-title">¹¤×÷¾­Àú</div>
-			<div class="add" id="add_work" {#if $resume_work#}style="display:block;"{#else#}style="display:none;"{#/if#}><input type="button"   id="nav_add_work" value="Ìí¼Ó"  class="but55lan_add"/></div><!--µ±¹¤×÷¾­Àú´æÔÚ£¬ÔòÏÔÊ¾Õâ¸ö°´Å¥ -->
+			<div class="lt h2-title">å·¥ä½œç»å†</div>
+			<div class="add" id="add_work" {#if $resume_work#}style="display:block;"{#else#}style="display:none;"{#/if#}><input type="button"   id="nav_add_work" value="æ·»åŠ "  class="but55lan_add"/></div><!--å½“å·¥ä½œç»å†å­˜åœ¨ï¼Œåˆ™æ˜¾ç¤ºè¿™ä¸ªæŒ‰é’® -->
 			<div class="clear"></div>
 		</div>
 			
 			<div id="work_list_box"></div>
-			<!--Ìí¼Ó±íµ¥£¬Ä¬ÈÏÊÇÒş²Ø -->
+			<!--æ·»åŠ è¡¨å•ï¼Œé»˜è®¤æ˜¯éšè— -->
 		    <div class="addbox" id="work_add_form">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" >		  
 					   <tr>
-						<td width="100" align="left">¹«Ë¾Ãû³Æ£º</td>
+						<td width="100" align="left">å…¬å¸åç§°ï¼š</td>
 						<td><input name="companyname" id="companyname" type="text" class="input_text_200" value="" /></td>
 					  </tr>
 					<tr>
-						<td width="100" align="left">Ö°Î»Ãû³Æ£º</td>
+						<td width="100" align="left">èŒä½åç§°ï¼š</td>
 						<td><input name="jobs" id="jobs" type="text" class="input_text_200" value="" /></td>
 					  </tr>
-						<td width="100" align="left" >ÈÎÖ°Ê±¼ä£º</td>
+						<td width="100" align="left" >ä»»èŒæ—¶é—´ï¼š</td>
 						<td >
 			
 						<table border="0" cellpadding="0" cellspacing="0" >
                           <tr>
                             <td width="90" style="padding:0px" class="infoContent">
                             	<div class="timeSel">
-								    <div class="input_text_60_bg input_text_60_bg_s date_input" id="work_start_year_box">Äê·İ</div>
+								    <div class="input_text_60_bg input_text_60_bg_s date_input" id="work_start_year_box">å¹´ä»½</div>
 					                <input name="work_start_year" id="work_start_year" type="hidden" value="" />
 					                <div class="setBox" id="">
 						                <i class="prevIcon"></i>
@@ -1489,15 +1489,15 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
                             </td>
                             <td width="80" style="padding:0px" class="infoContent">
                             	<div style="position:relateve;" class="timeSel monthSel">
-				             	 	<div id="work_start_month_box" class="input_text_60_bg input_text_60_bg_s date_input">ÔÂ·İ</div>
+				             	 	<div id="work_start_month_box" class="input_text_60_bg input_text_60_bg_s date_input">æœˆä»½</div>
 				             	 	<div class="setBox"><ul class="smbYear"></ul></div>
 					            </div>
 					            <input name="work_start_month" type="hidden" id="work_start_month" value="" />
                             </td>
-                            <td width="20" style="padding:0px">&nbsp;ÖÁ&nbsp;</td>
+                            <td width="20" style="padding:0px">&nbsp;è‡³&nbsp;</td>
                             <td class="work_td_h infoContent" width="90" style="padding:0px">
                             	<div class="timeSel">
-								    <div class="input_text_60_bg input_text_60_bg_s date_input" id="work_end_year_box">Äê·İ</div>
+								    <div class="input_text_60_bg input_text_60_bg_s date_input" id="work_end_year_box">å¹´ä»½</div>
 					                <input name="work_end_year" id="work_end_year" type="hidden" value="" />
 					                <div class="setBox" id="">
 						                <i class="prevIcon"></i>
@@ -1508,18 +1508,18 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
                             </td>
                             <td class="work_td_h infoContent" style="padding:0px">
                             	<div style="position:relateve;" class="timeSel monthSel">
-				             	 	<div id="work_end_month_box" class="input_text_60_bg input_text_60_bg_s date_input">ÔÂ·İ</div>
+				             	 	<div id="work_end_month_box" class="input_text_60_bg input_text_60_bg_s date_input">æœˆä»½</div>
 				             	 	<div class="setBox"><ul class="smbYear"></ul></div>
 					            </div>
 					            <input name="work_end_month" type="hidden" id="work_end_month" value="" />
                             </td>
-                            <td style="padding-left:10px;"><input type="checkbox" id="work_now" style="vertical-align:-1px">&nbsp;&nbsp;ÖÁ½ñ<input type="hidden" id="work_todate" name="work_todate" value="0"></td>
+                            <td style="padding-left:10px;"><input type="checkbox" id="work_now" style="vertical-align:-1px">&nbsp;&nbsp;è‡³ä»Š<input type="hidden" id="work_todate" name="work_todate" value="0"></td>
                           </tr>
                         </table>						
 						</td>
 					  </tr>
 					  <tr>
-						<td width="100" align="left">¹¤×÷Ö°Ôğ£º</td>
+						<td width="100" align="left">å·¥ä½œèŒè´£ï¼š</td>
 						<td>
 						<textarea name="achievements" id="achievements" cols="" rows="" class="input_textarea_500"></textarea>
 						</td>
@@ -1527,7 +1527,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					   <tr>
 						<td width="100" align="left"> </td>
 						<input type="hidden" name="work_id" id="work_id">
-						<td><input type="submit" name="save_work" id="save_work" value="±£´æ"  class="but100lan"/><input type="button" name="" id="close_work_form" value="È¡Ïû"  class="but100hui"/>
+						<td><input type="submit" name="save_work" id="save_work" value="ä¿å­˜"  class="but100lan"/><input type="button" name="" id="close_work_form" value="å–æ¶ˆ"  class="but100hui"/>
 						</td>
 					  </tr>
 			  </table>
@@ -1536,7 +1536,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				$(document).ready(function(){
 					$("#save_work").click(function(){
 						$(this).attr('disabled', 'disabled');
-						$(this).val('ÕıÔÚ±£´æ...');
+						$(this).val('æ­£åœ¨ä¿å­˜...');
 						var pid="{#$pid#}";
 						var id=$("#work_id").val();
 						var companyname = $("#companyname").val();
@@ -1550,23 +1550,23 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 						$.post("?act=save_work",{id:id,pid:pid,companyname:companyname,jobs:jobs,work_start_year:work_start_year,work_start_month:work_start_month,work_end_year:work_end_year,work_end_month:work_end_month,achievements:achievements,work_todate:work_todate},function(result){
 							if(result=="success"){
 								dialog({
-				                    title: 'ÏµÍ³ÌáÊ¾',
-				                    content: "±£´æ³É¹¦",
+				                    title: 'ç³»ç»Ÿæç¤º',
+				                    content: "ä¿å­˜æˆåŠŸ",
 				                    width:300
 				                }).show();
 				                $("#save_work").removeAttr('disabled');
-				                $("#save_work").val('±£´æ');
+				                $("#save_work").val('ä¿å­˜');
 								$("#work_add_form").slideUp("slow");
 								$("#add_work").show();
 							}else{
 								dialog({
-				                    title: 'ÏµÍ³ÌáÊ¾',
+				                    title: 'ç³»ç»Ÿæç¤º',
 				                    content: ""+result+"",
 				                    width:300,
 				                    cancelDisplay: false,
 				                    cancel: function () {
 								        $("#save_work").removeAttr('disabled');
-				                		$("#save_work").val('±£´æ');
+				                		$("#save_work").val('ä¿å­˜');
 								    }
 				                }).show();
 				                return false;
@@ -1602,14 +1602,14 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 							    $("#companyname").val(data["companyname"]);
 							    $("#jobs").val(data["jobs"]);
 							    $("#work_start_year").val(data["startyear"]);
-							    $("#work_start_year_div").html(data["startyear"]+"Äê");
+							    $("#work_start_year_div").html(data["startyear"]+"å¹´");
 							    $("#work_start_month").val(data["startmonth"]);
-							    $("#work_start_month_menu").html(data["startmonth"]+"ÔÂ");
+							    $("#work_start_month_menu").html(data["startmonth"]+"æœˆ");
 							    if (todate != 1) {
 								    $("#work_end_year").val(data["endyear"]);
-								    $("#work_end_year_div").html(data["endyear"]+"Äê");
+								    $("#work_end_year_div").html(data["endyear"]+"å¹´");
 								    $("#work_end_month").val(data["endmonth"]);
-								    $("#work_end_month_menu").html(data["endmonth"]+"ÔÂ");
+								    $("#work_end_month_menu").html(data["endmonth"]+"æœˆ");
 							    }
 							    $("#achievements").val(data["achievements"]);
 						});
@@ -1617,9 +1617,9 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					$(".del_work").live("click",function(){
 						$("#work_add_form").hide();
 						var del_work=dialog();
-						del_work.title('É¾³ı');
+						del_work.title('åˆ é™¤');
 						del_work.width('300');
-						del_work.content("¼ÓÔØÖĞ...");
+						del_work.content("åŠ è½½ä¸­...");
 						del_work.showModal();
 						$(".DialogClose").live('click',function() {
 					      del_work.close().remove();
@@ -1633,8 +1633,8 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 										$(".FloatBox").css("display","none");
 										$(".FloatBg").css("display","none");
 										dialog({
-						                    title: 'ÏµÍ³ÌáÊ¾',
-						                    content: "É¾³ı³É¹¦",
+						                    title: 'ç³»ç»Ÿæç¤º',
+						                    content: "åˆ é™¤æˆåŠŸ",
 						                    width:300
 						                }).showModal();
 						                del_work.close().remove();
@@ -1647,35 +1647,35 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					});
 				});
 			</script>
-			<!-- ¹¤×÷¾­Àú end -->
-			<!-- ¹¤×÷¾­Àú start -->
+			<!-- å·¥ä½œç»å† end -->
+			<!-- å·¥ä½œç»å† start -->
 	      	<div class="titleH2">
-				<div class="lt h2-title">ÅàÑµ¾­Àú</div>
+				<div class="lt h2-title">åŸ¹è®­ç»å†</div>
 				<div class="add" id="add_training" 
-				{#if $resume_training#}style="display:block;"{#else#}style="display:none;"{#/if#}><input type="button"   id="nav_add_training" value="Ìí¼Ó"  class="but55lan_add"/></div>
-				<!--µ±ÅàÑµ¾­Àú´æÔÚ£¬ÔòÏÔÊ¾Õâ¸ö°´Å¥ -->
+				{#if $resume_training#}style="display:block;"{#else#}style="display:none;"{#/if#}><input type="button"   id="nav_add_training" value="æ·»åŠ "  class="but55lan_add"/></div>
+				<!--å½“åŸ¹è®­ç»å†å­˜åœ¨ï¼Œåˆ™æ˜¾ç¤ºè¿™ä¸ªæŒ‰é’® -->
 				<div class="clear"></div>
 			</div>		
 			<div id="training_list_box"></div> 
-			<!--Ìí¼Ó±íµ¥£¬Ä¬ÈÏÊÇÒş²Ø -->
+			<!--æ·»åŠ è¡¨å•ï¼Œé»˜è®¤æ˜¯éšè— -->
 		    <div class="addbox" id="training_add_form">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" >		  
 					   <tr>
-						<td width="100" align="left">ÅàÑµ»ú¹¹£º</td>
+						<td width="100" align="left">åŸ¹è®­æœºæ„ï¼š</td>
 						<td><input name="agency" id="agency" type="text" class="input_text_200" value="" /></td>
 					  </tr>
 					<tr>
-						<td width="100" align="left">ÅàÑµ¿Î³Ì£º</td>
+						<td width="100" align="left">åŸ¹è®­è¯¾ç¨‹ï¼š</td>
 						<td><input name="course" id="course" type="text" class="input_text_200" value="" /></td>
 					  </tr>
-						<td width="100" align="left" >ÅàÑµÊ±¼ä£º</td>
+						<td width="100" align="left" >åŸ¹è®­æ—¶é—´ï¼š</td>
 						<td >
 			
 						<table border="0" cellpadding="0" cellspacing="0" >
                           <tr>
                             <td width="90" style="padding:0px" class="infoContent">
                             	<div class="timeSel">
-								    <div class="input_text_60_bg input_text_60_bg_s date_input" id="training_start_year_box">Äê·İ</div>
+								    <div class="input_text_60_bg input_text_60_bg_s date_input" id="training_start_year_box">å¹´ä»½</div>
 					                <input name="training_start_year" id="training_start_year" type="hidden" value="" />
 					                <div class="setBox" id="">
 						                <i class="prevIcon"></i>
@@ -1686,15 +1686,15 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
                             </td>
                             <td width="80" style="padding:0px" class="infoContent">
                             	<div style="position:relateve;" class="timeSel monthSel">
-				             	 	<div id="training_start_month_box" class="input_text_60_bg input_text_60_bg_s date_input">ÔÂ·İ</div>
+				             	 	<div id="training_start_month_box" class="input_text_60_bg input_text_60_bg_s date_input">æœˆä»½</div>
 				             	 	<div class="setBox"><ul class="smbYear"></ul></div>
 					            </div>
 					            <input name="training_start_month" type="hidden" id="training_start_month" value="" />
                             </td>
-                            <td width="20" style="padding:0px">&nbsp;ÖÁ&nbsp;</td>
+                            <td width="20" style="padding:0px">&nbsp;è‡³&nbsp;</td>
                             <td class="training_td_h infoContent" width="90" style="padding:0px">
                             	<div class="timeSel">
-								    <div class="input_text_60_bg input_text_60_bg_s date_input" id="training_end_year_box">Äê·İ</div>
+								    <div class="input_text_60_bg input_text_60_bg_s date_input" id="training_end_year_box">å¹´ä»½</div>
 					                <input name="training_end_year" id="training_end_year" type="hidden" value="" />
 					                <div class="setBox" id="">
 						                <i class="prevIcon"></i>
@@ -1705,14 +1705,14 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
                             </td>
                             <td class="training_td_h infoContent" style="padding:0px">
                             	<div style="position:relateve;" class="timeSel monthSel">
-				             	 	<div id="training_end_month_box" class="input_text_60_bg input_text_60_bg_s date_input">ÔÂ·İ</div>
+				             	 	<div id="training_end_month_box" class="input_text_60_bg input_text_60_bg_s date_input">æœˆä»½</div>
 				             	 	<div class="setBox"><ul class="smbYear"></ul></div>
 					            </div>
 					            <input name="training_end_month" type="hidden" id="training_end_month" value="" />
                             </td>
-                            <td style="padding-left:10px;"><input type="checkbox" id="training_now" style="vertical-align:-1px">&nbsp;&nbsp;ÖÁ½ñ<input type="hidden" id="training_todate" name="training_todate" value="0"></td>
+                            <td style="padding-left:10px;"><input type="checkbox" id="training_now" style="vertical-align:-1px">&nbsp;&nbsp;è‡³ä»Š<input type="hidden" id="training_todate" name="training_todate" value="0"></td>
                           </tr>
-                          <!-- ½áÊøÊ±¼äÌí¼ÓÖÁ½ñ -->
+                          <!-- ç»“æŸæ—¶é—´æ·»åŠ è‡³ä»Š -->
                           <script type="text/javascript">
                           	ToDate("#edu_now","#edu_todate",".edu_td_h");
                           	ToDate("#work_now","#work_todate",".work_td_h");
@@ -1730,12 +1730,12 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
                           		});
                           	}
                           </script>
-                          <!-- ½áÊøÊ±¼äÌí¼ÓÖÁ½ñ End-->
+                          <!-- ç»“æŸæ—¶é—´æ·»åŠ è‡³ä»Š End-->
                         </table>						
 						</td>
 					  </tr>
 					  <tr>
-						<td width="100" align="left">ÅàÑµÄÚÈİ£º</td>
+						<td width="100" align="left">åŸ¹è®­å†…å®¹ï¼š</td>
 						<td>
 						<textarea name="description" id="description" cols="" rows="" class="input_textarea_500"></textarea>
 						</td>
@@ -1743,7 +1743,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					   <tr>
 						<td width="100" align="left"> </td>
 						<input type="hidden" name="training_id" id="training_id">
-						<td><input type="submit" name="save_training" id="save_training" value="±£´æ"  class="but100lan"/><input type="button" name="" id="close_training_form" value="È¡Ïû"  class="but100hui"/>
+						<td><input type="submit" name="save_training" id="save_training" value="ä¿å­˜"  class="but100lan"/><input type="button" name="" id="close_training_form" value="å–æ¶ˆ"  class="but100hui"/>
 						</td>
 					  </tr>
 			  </table>
@@ -1752,7 +1752,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				$(document).ready(function(){
 					$("#save_training").click(function(){
 						$(this).attr('disabled', 'disabled')
-				        $(this).val('ÕıÔÚ±£´æ...');
+				        $(this).val('æ­£åœ¨ä¿å­˜...');
 						var pid="{#$pid#}";
 						var id=$("#training_id").val();
 						var agency = $("#agency").val();
@@ -1766,23 +1766,23 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 						$.post("?act=save_training",{id:id,pid:pid,agency:agency,course:course,training_start_year:training_start_year,training_start_month:training_start_month,training_end_year:training_end_year,training_end_month:training_end_month,description:description,training_todate:training_todate},function(result){
 							if(result=="success"){
 								dialog({
-				                    title: 'ÏµÍ³ÌáÊ¾',
-				                    content: "±£´æ³É¹¦",
+				                    title: 'ç³»ç»Ÿæç¤º',
+				                    content: "ä¿å­˜æˆåŠŸ",
 				                    width:300
 				                }).show();
 				                $("#save_training").removeAttr('disabled');
-				                $("#save_training").val('±£´æ');
+				                $("#save_training").val('ä¿å­˜');
 								$("#training_add_form").slideUp("slow");
 								$("#add_training").show();
 							}else{
 								dialog({
-				                    title: 'ÏµÍ³ÌáÊ¾',
+				                    title: 'ç³»ç»Ÿæç¤º',
 				                    content: ""+result+"",
 				                    width:300,
 				                    cancelDisplay: false,
 				                    cancel: function () {
 								        $("#save_training").removeAttr('disabled');
-				                		$("#save_training").val('±£´æ');
+				                		$("#save_training").val('ä¿å­˜');
 								    }
 				                }).show();
 				                return false;
@@ -1819,14 +1819,14 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 							    $("#agency").val(data["agency"]);
 							    $("#course").val(data["course"]);
 							    $("#training_start_year").val(data["startyear"]);
-							    $("#training_start_year_div").html(data["startyear"]+"Äê");
+							    $("#training_start_year_div").html(data["startyear"]+"å¹´");
 							    $("#training_start_month").val(data["startmonth"]);
-							    $("#training_start_month_menu").html(data["startmonth"]+"ÔÂ");
+							    $("#training_start_month_menu").html(data["startmonth"]+"æœˆ");
 							    if (todate != 1) {
 								    $("#training_end_year").val(data["endyear"]);
-								    $("#training_end_year_div").html(data["endyear"]+"Äê");
+								    $("#training_end_year_div").html(data["endyear"]+"å¹´");
 								    $("#training_end_month").val(data["endmonth"]);
-								    $("#training_end_month_menu").html(data["endmonth"]+"ÔÂ");
+								    $("#training_end_month_menu").html(data["endmonth"]+"æœˆ");
 							    }
 							    $("#description").val(data["description"]);
 						});
@@ -1834,9 +1834,9 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					$(".del_training").live("click",function(){
 						$("#training_add_form").hide();
 						var del_training=dialog();
-						del_training.title('É¾³ı');
+						del_training.title('åˆ é™¤');
 						del_training.width('300');
-						del_training.content("¼ÓÔØÖĞ...");
+						del_training.content("åŠ è½½ä¸­...");
 						del_training.showModal();
 						$(".DialogClose").live('click',function() {
 					      del_training.close().remove();
@@ -1851,8 +1851,8 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 										$(".FloatBox").css("display","none");
 										$(".FloatBg").css("display","none");
 										dialog({
-						                    title: 'ÏµÍ³ÌáÊ¾',
-						                    content: "É¾³ı³É¹¦!",
+						                    title: 'ç³»ç»Ÿæç¤º',
+						                    content: "åˆ é™¤æˆåŠŸ!",
 						                    width:300
 						                }).showModal();
 						                del_training.close().remove();
@@ -1865,29 +1865,29 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					});
 				});
 			</script>
-			<!-- ÅàÑµ¾­Àú end -->
-			<!-- ÓïÑÔÄÜÁ¦ start -->	
+			<!-- åŸ¹è®­ç»å† end -->
+			<!-- è¯­è¨€èƒ½åŠ› start -->	
 			<div class="titleH2">
-				<div class="lt h2-title">ÓïÑÔÄÜÁ¦</div>
+				<div class="lt h2-title">è¯­è¨€èƒ½åŠ›</div>
 				<div class="add" id="add_language" 
-				{#if $resume_language#}style="display:block;"{#else#}style="display:none;"{#/if#}><input type="button"   id="nav_add_language" value="Ìí¼Ó"  class="but55lan_add"/></div>
-				<!--µ±ÅàÑµ¾­Àú´æÔÚ£¬ÔòÏÔÊ¾Õâ¸ö°´Å¥ -->
+				{#if $resume_language#}style="display:block;"{#else#}style="display:none;"{#/if#}><input type="button"   id="nav_add_language" value="æ·»åŠ "  class="but55lan_add"/></div>
+				<!--å½“åŸ¹è®­ç»å†å­˜åœ¨ï¼Œåˆ™æ˜¾ç¤ºè¿™ä¸ªæŒ‰é’® -->
 				<div class="clear"></div>
 			</div>		
 			<div id="language_list_box"></div> 
-			<!--Ìí¼Ó±íµ¥£¬Ä¬ÈÏÊÇÒş²Ø -->
+			<!--æ·»åŠ è¡¨å•ï¼Œé»˜è®¤æ˜¯éšè— -->
 				<div class="addbox" id="language_add_form"  style="border:0px; ">
 					 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" >
-						<td width="80" align="left" >ÓïÑÔÄÜÁ¦£º</td>
+						<td width="80" align="left" >è¯­è¨€èƒ½åŠ›ï¼š</td>
 						<td > 
 						<table border="0" cellpadding="0" cellspacing="0" >
                           <tr>
                             <td width="110" style="padding:0px">
                             	<div style="position:relateve;">
-				             	 	<div id="language_div" class="input_text_70_bg">ÓïÑÔ</div>
+				             	 	<div id="language_div" class="input_text_70_bg">è¯­è¨€</div>
 				             	 	<div class="menu" id="language_menu">
 					              		<ul>
-										{#qishi_get_classify  set="ÀàĞÍ:QS_language,ÁĞ±íÃû:c_language"#}
+										{#qishi_get_classify  set="ç±»å‹:QS_language,åˆ—è¡¨å:c_language"#}
 				              			{#foreach from=$c_language item=list#}
 											<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 				              			{#/foreach#} 
@@ -1899,10 +1899,10 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
                             </td>
                             <td width="80" style="padding:0px">
                             	<div style="position:relateve;"> 
-				             	 	<div id="language_level_div" class="input_text_70_bg">³Ì¶È</div>
+				             	 	<div id="language_level_div" class="input_text_70_bg">ç¨‹åº¦</div>
 				             	 	<div class="menu" id="language_level_menu">
 					              		<ul>
-										{#qishi_get_classify  set="ÀàĞÍ:QS_language_level,ÁĞ±íÃû:c_language_level"#}
+										{#qishi_get_classify  set="ç±»å‹:QS_language_level,åˆ—è¡¨å:c_language_level"#}
 				              			{#foreach from=$c_language_level item=list#}
 											<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 				              			{#/foreach#}  
@@ -1919,7 +1919,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					   <tr>
 						<td width="80" align="left"> </td>
 						<input type="hidden" name="language_id" id="language_id">
-						<td><input type="submit" name="save_language" id="save_language" value="±£´æ"  class="but100lan"/><input type="button" name="" id="close_language_form" value="È¡Ïû"  class="but100hui"/>
+						<td><input type="submit" name="save_language" id="save_language" value="ä¿å­˜"  class="but100lan"/><input type="button" name="" id="close_language_form" value="å–æ¶ˆ"  class="but100hui"/>
 						</td>
 					  </tr>
 			  </table>
@@ -1928,7 +1928,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				$(document).ready(function(){
 					$("#save_language").click(function(){
 						$(this).attr('disabled', 'disabled');
-				        $(this).val('ÕıÔÚ±£´æ...');
+				        $(this).val('æ­£åœ¨ä¿å­˜...');
 						var pid="{#$pid#}";
 						var id=$("#language_id").val(); 
 						var language = $("#language").val();
@@ -1938,23 +1938,23 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 						$.post("?act=save_language",{id:id,pid:pid,language:language,language_cn:language_cn,language_level:language_level,language_level_cn:language_level_cn},function(result){
 							if(result=="success"){
 								dialog({
-				                    title: 'ÏµÍ³ÌáÊ¾',
-				                    content: "±£´æ³É¹¦!",
+				                    title: 'ç³»ç»Ÿæç¤º',
+				                    content: "ä¿å­˜æˆåŠŸ!",
 				                    width:300
 				                }).show();
 				                $("#save_language").removeAttr('disabled');
-				                $("#save_language").val('±£´æ');
+				                $("#save_language").val('ä¿å­˜');
 								$("#language_add_form").slideUp("slow");
 								$("#add_language").show();
 							}else{
 								dialog({
-				                    title: 'ÏµÍ³ÌáÊ¾',
+				                    title: 'ç³»ç»Ÿæç¤º',
 				                    content: ""+result+"",
 				                    width:300,
 				                    cancelDisplay: false,
 				                    cancel: function () {
 								        $("#save_language").removeAttr('disabled');
-				                		$("#save_language").val('±£´æ');
+				                		$("#save_language").val('ä¿å­˜');
 								    }
 				                }).show();
 				                 return false;
@@ -1991,11 +1991,11 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					$(".del_language").live("click",function(){
 						$("#language_add_form").hide();
 						var del_language=dialog();
-						del_language.title('É¾³ı');
+						del_language.title('åˆ é™¤');
 						del_language.width('300');
-						del_language.content("¼ÓÔØÖĞ...");
+						del_language.content("åŠ è½½ä¸­...");
 						del_language.showModal();
-						/* ¹Ø±Õ */
+						/* å…³é—­ */
 			            $(".DialogClose").live('click',function() {
 			              del_language.close().remove();
 			            });
@@ -2008,8 +2008,8 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 										$(".FloatBox").css("display","none");
 										$(".FloatBg").css("display","none");
 										dialog({
-						                    title: 'ÏµÍ³ÌáÊ¾',
-						                    content: "É¾³ı³É¹¦!",
+						                    title: 'ç³»ç»Ÿæç¤º',
+						                    content: "åˆ é™¤æˆåŠŸ!",
 						                    width:300
 						                }).showModal();
 										del_language.close().remove();
@@ -2022,32 +2022,32 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					});
 				});
 			</script>
-			<!-- ÓïÑÔÄÜÁ¦ end -->
-			<!-- »ñµÃÖ¤Êé start -->	
+			<!-- è¯­è¨€èƒ½åŠ› end -->
+			<!-- è·å¾—è¯ä¹¦ start -->	
 			<div class="titleH2">
-				<div class="lt h2-title">»ñµÃÖ¤Êé</div>
+				<div class="lt h2-title">è·å¾—è¯ä¹¦</div>
 				<div class="add" id="add_credent" 
-				{#if $resume_credent#}style="display:block;"{#else#}style="display:none;"{#/if#}><input type="button"   id="nav_add_credent" value="Ìí¼Ó"  class="but55lan_add"/></div>
-				<!--µ±ÅàÑµ¾­Àú´æÔÚ£¬ÔòÏÔÊ¾Õâ¸ö°´Å¥ -->
+				{#if $resume_credent#}style="display:block;"{#else#}style="display:none;"{#/if#}><input type="button"   id="nav_add_credent" value="æ·»åŠ "  class="but55lan_add"/></div>
+				<!--å½“åŸ¹è®­ç»å†å­˜åœ¨ï¼Œåˆ™æ˜¾ç¤ºè¿™ä¸ªæŒ‰é’® -->
 				<div class="clear"></div>
 			</div>		
 			<div id="credent_list_box"></div>
 			
-			<!--Ìí¼Ó±íµ¥£¬Ä¬ÈÏÊÇÒş²Ø -->
+			<!--æ·»åŠ è¡¨å•ï¼Œé»˜è®¤æ˜¯éšè— -->
 				<div class="addbox" id="credent_add_form">
 			      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" >		  
 					   <tr>
-						<td width="100" align="left">Ö¤ÊéÃû³Æ£º</td>
+						<td width="100" align="left">è¯ä¹¦åç§°ï¼š</td>
 						<td><input name="credent" id="credent" type="text" class="input_text_200" value="" /></td>
 					  </tr> 
-						<td width="100" align="left" >»ñµÃÊ±¼ä£º</td>
+						<td width="100" align="left" >è·å¾—æ—¶é—´ï¼š</td>
 						<td >
 			
 						<table border="0" cellpadding="0" cellspacing="0" >
                           <tr>
                             <td width="90" style="padding:0px" class="infoContent">
                             	<div class="timeSel">
-								    <div class="input_text_60_bg input_text_60_bg_s date_input" id="credent_year_box">Äê·İ</div>
+								    <div class="input_text_60_bg input_text_60_bg_s date_input" id="credent_year_box">å¹´ä»½</div>
 					                <input name="credent_year" id="credent_year" type="hidden" value="" />
 					                <div class="setBox" id="">
 						                <i class="prevIcon"></i>
@@ -2058,7 +2058,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
                             </td>
                             <td width="80" style="padding:0px" class="infoContent">
                             	<div style="position:relateve;" class="timeSel monthSel">
-				             	 	<div id="credent_month_box" class="input_text_60_bg input_text_60_bg_s date_input">ÔÂ·İ</div>
+				             	 	<div id="credent_month_box" class="input_text_60_bg input_text_60_bg_s date_input">æœˆä»½</div>
 				             	 	<div class="setBox"><ul class="smbYear"></ul></div>
 					            </div>
 					            <input name="credent_month" type="hidden" id="credent_month" value="" />
@@ -2071,7 +2071,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					   <tr>
 						<td width="100" align="left"> </td>
 						<input type="hidden" name="credent_id" id="credent_id">
-						<td><input type="submit" name="save_credent" id="save_credent" value="±£´æ"  class="but100lan"/><input type="button" name="" id="close_credent_form" value="È¡Ïû"  class="but100hui"/>
+						<td><input type="submit" name="save_credent" id="save_credent" value="ä¿å­˜"  class="but100lan"/><input type="button" name="" id="close_credent_form" value="å–æ¶ˆ"  class="but100hui"/>
 						</td>
 					
 					  </tr>
@@ -2170,7 +2170,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 			  $(document).ready(function(){
 					$("#save_credent").click(function(){
 						$(this).attr('disabled', 'disabled');
-				        $(this).val('ÕıÔÚ±£´æ...');
+				        $(this).val('æ­£åœ¨ä¿å­˜...');
 						var pid="{#$pid#}";
 						var id=$("#credent_id").val(); 
 						var credent = $("#credent").val();
@@ -2180,24 +2180,24 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 						$.post("?act=save_credent",{id:id,pid:pid,credent:credent,credent_year:credent_year,credent_month:credent_month,credent_img:credent_img},function(result){
 							if(result=="success"){
 								dialog({
-				                    title: 'ÏµÍ³ÌáÊ¾',
-				                    content: "±£´æ³É¹¦",
+				                    title: 'ç³»ç»Ÿæç¤º',
+				                    content: "ä¿å­˜æˆåŠŸ",
 				                    width:300
 				                }).show();
 				                $("#save_credent").removeAttr('disabled');
-				                $("#save_credent").val('±£´æ');
+				                $("#save_credent").val('ä¿å­˜');
 								$("#credent_add_form").slideUp("slow");
 								$("#add_credent").show();
 								$(".credent_upload_photo img").attr("src",'');
 							}else{
 								dialog({
-				                    title: 'ÏµÍ³ÌáÊ¾',
+				                    title: 'ç³»ç»Ÿæç¤º',
 				                    content:""+result+"",
 				                    width:300,
 				                    cancelDisplay: false,
 				                    cancel: function () {
 								        $("#save_credent").removeAttr('disabled');
-				                		$("#save_credent").val('±£´æ');
+				                		$("#save_credent").val('ä¿å­˜');
 				                	}
 				                }).show();
 				                 return false;
@@ -2222,9 +2222,9 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 							    $("#credent_id").val(data["id"]); 
 								
 							    $("#credent").val(data["name"]);  
-							    $("#credent_year_div").html(data["year"]+'Äê');
+							    $("#credent_year_div").html(data["year"]+'å¹´');
 							    $("#credent_year").val(data["year"]);
-							    $("#credent_month_menu_div").html(data["month"]+'ÔÂ');
+							    $("#credent_month_menu_div").html(data["month"]+'æœˆ');
 							    $("#credent_month").val(data["month"]); 
 								$("#show_credent_photo").show(); 
 								$("#credent_img").val(data['images']);
@@ -2235,9 +2235,9 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					$(".del_credent").live("click",function(){
 						$("#credent_add_form").hide();
 						var del_credent=dialog();
-						del_credent.title('É¾³ı');
+						del_credent.title('åˆ é™¤');
 						del_credent.width('300');
-						del_credent.content("¼ÓÔØÖĞ...");
+						del_credent.content("åŠ è½½ä¸­...");
 						del_credent.showModal();
 						$(".DialogClose").live('click',function() {
 			              del_credent.close().remove();
@@ -2251,8 +2251,8 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 										$(".FloatBox").css("display","none");
 										$(".FloatBg").css("display","none");
 										dialog({
-						                    title: 'ÏµÍ³ÌáÊ¾',
-						                    content: "É¾³ı³É¹¦!",
+						                    title: 'ç³»ç»Ÿæç¤º',
+						                    content: "åˆ é™¤æˆåŠŸ!",
 						                    width:300
 						                }).show();
 										del_credent.close().remove();
@@ -2266,10 +2266,10 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				}); 
 			  </script>
 			</div>
-		<!-- »ñµÃÖ¤Êé end -->
-		<!-- ×ÔÎÒÃèÊö start specialty -->	
+		<!-- è·å¾—è¯ä¹¦ end -->
+		<!-- è‡ªæˆ‘æè¿° start specialty -->	
 		<div class="titleH2">
-			<div class="lt h2-title">×ÔÎÒÃèÊö</div>
+			<div class="lt h2-title">è‡ªæˆ‘æè¿°</div>
 			<div class="add" id="edit_specialty" {#if $resume_basic.specialty#}style="display:block;"{#else#}style="display:none;"{#/if#}><a style="width:20px; height:20px; background: url({#$QISHI.site_template#}images/13.gif) no-repeat 3px -379px; margin:2px 30px 0 0;*margin-top:-30px; float: right;" href="javascript:;" class="empty_add_specialty"></a></div>
 			<div class="clear"></div>
 		</div>
@@ -2280,9 +2280,9 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 		</div>
 		{#else#}
 		<div class="noinfo">	
-		 	 <div class="txt">¿Í¹ÛÈ«ÃæµÄ×ÔÎÒÆÀ¼Û¸üÈİÒ×»ñµÃÆóÒµµÄºÃ¸Ğ£¬¿ìÀ´ÍêÉÆÒÔ»ñµÃHRµÄÇ×íù£¡</div>
+		 	 <div class="txt">å®¢è§‚å…¨é¢çš„è‡ªæˆ‘è¯„ä»·æ›´å®¹æ˜“è·å¾—ä¼ä¸šçš„å¥½æ„Ÿï¼Œå¿«æ¥å®Œå–„ä»¥è·å¾—HRçš„äº²çï¼</div>
 			 <div class="addbut">
-			 	<input type="button" name="" value="×ÔÎÒÃèÊö"  class="but130lan_add empty_add_specialty"/>
+			 	<input type="button" name="" value="è‡ªæˆ‘æè¿°"  class="but130lan_add empty_add_specialty"/>
 			 </div>
 		</div>
 		{#/if#}
@@ -2290,7 +2290,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 		<div class="addbox" id="specialty_add_form" style="border-top: 0;">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" >
 				<tr>
-					<td width="80" align="left" valign="top">×ÔÎÒÃèÊö£º</td>
+					<td width="80" align="left" valign="top">è‡ªæˆ‘æè¿°ï¼š</td>
 					<td>
 					<textarea name="specialty" id="specialty" style="width: 500px;height: 110px;">{#$resume_basic.specialty#}</textarea>
 					</td>
@@ -2299,8 +2299,8 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					<td width="80" align="left"> </td>
 					<td>
 					<input type="hidden" name="pid" id="specialty_pid" value="{#$pid#}">
-					<input type="submit" value="±£´æ"  id="specialty_save_submit" class="but100lan"/>
-					<input type="button" name="" id="close_specialty_form" value="È¡Ïû"  class="but100hui"/>
+					<input type="submit" value="ä¿å­˜"  id="specialty_save_submit" class="but100lan"/>
+					<input type="button" name="" id="close_specialty_form" value="å–æ¶ˆ"  class="but100hui"/>
 					</td>
 				</tr> 
 			</table>
@@ -2331,7 +2331,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				else
 				{
 					dialog({
-		                title: 'ÏµÍ³ÌáÊ¾',
+		                title: 'ç³»ç»Ÿæç¤º',
 		                content: ""+data+"",
 		                width:300
 		            }).show();
@@ -2339,16 +2339,16 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 			});
 		});
 		</script>
-		<!-- ×ÔÎÒÃèÊö end -->
-		<!-- ÌØ³¤±êÇ© start  -->
-		<div class="titleH2 h2-title">ÌØ³¤±êÇ©</div>
+		<!-- è‡ªæˆ‘æè¿° end -->
+		<!-- ç‰¹é•¿æ ‡ç­¾ start  -->
+		<div class="titleH2 h2-title">ç‰¹é•¿æ ‡ç­¾</div>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 			<tr>
-				<td width="117" align="right" valign="top" style="vertical-align:middle;">ÌØ³¤±êÇ©£º</td>
+				<td width="117" align="right" valign="top" style="vertical-align:middle;">ç‰¹é•¿æ ‡ç­¾ï¼š</td>
 				<td style="position:relative;">
 					<div class="showchecktag"></div>
-		              <div class="input_checkbox_add ucc-default">Ìí¼Ó</div>	
-		              <!-- Ö°Î»ÁÁµãµ¯³ö¿ò -->
+		              <div class="input_checkbox_add ucc-default">æ·»åŠ </div>	
+		              <!-- èŒä½äº®ç‚¹å¼¹å‡ºæ¡† -->
 						<div class="aui_outer" id="aui_outer_tag">
 							<table class="aui_border">
 								<tbody>
@@ -2361,13 +2361,13 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 															<td class="aui_main">
 																<div class="aui_content">
 																	<div class="items jquery-localdata">
-																		<div class="selector-header"><span class="selector-title">ÌØ³¤±êÇ©Ñ¡Ôñ</span><span id="tag-selector-save" class="selector-save">È·¶¨</span><span class="selector-close">X</span></div>
+																		<div class="selector-header"><span class="selector-title">ç‰¹é•¿æ ‡ç­¾é€‰æ‹©</span><span id="tag-selector-save" class="selector-save">ç¡®å®š</span><span class="selector-close">X</span></div>
 
-																		<div class="data-row-head"><div class="data-row"><div class="data-row-side">×î¶àÑ¡ <strong class="text-warning">5</strong> Ïî&nbsp;&nbsp;ÒÑÑ¡ <strong id="arstag" class="text-warning">0</strong> Ïî</div><div id="result-list-tag" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
+																		<div class="data-row-head"><div class="data-row"><div class="data-row-side">æœ€å¤šé€‰ <strong class="text-warning">5</strong> é¡¹&nbsp;&nbsp;å·²é€‰ <strong id="arstag" class="text-warning">0</strong> é¡¹</div><div id="result-list-tag" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
 																		<div class="item-table">
 																			<table class="options-table options-table-7">
 																				<tbody class="item-list"><tr><td class="bno"><table><tbody id="tag_list">
-																					<!-- ÁĞ±íÄÚÈİ -->
+																					<!-- åˆ—è¡¨å†…å®¹ -->
 																				</tbody></table></td></tr>
 																				</tbody>
 																			</table>
@@ -2386,14 +2386,14 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 						</div>
 						<input name="tag" type="hidden" id="tag" value="{#$resume_basic.tag#}" />
 					    <input name="tag_cn" type="hidden" id="tag_cn" value="{#$resume_basic.tag_cn#}"  pid="{#$resume_basic.id#}"/>
-					<!-- Ö°Î»ÁÁµãµ¯³ö¿ò End-->
+					<!-- èŒä½äº®ç‚¹å¼¹å‡ºæ¡† End-->
 			</tr>
 		</table>
-		<!-- ÌØ³¤±êÇ© end  -->
-		<!-- ¸½¼şÉÏ´« start -->
-		<div class="titleH2 h2-title">¸½¼şÉÏ´«</div>
+		<!-- ç‰¹é•¿æ ‡ç­¾ end  -->
+		<!-- é™„ä»¶ä¸Šä¼  start -->
+		<div class="titleH2 h2-title">é™„ä»¶ä¸Šä¼ </div>
 		<div class="resume-upload clearfix">
-			<div class="left-type f-left">ÉÏ´«Í¼Æ¬£º</div>
+			<div class="left-type f-left">ä¸Šä¼ å›¾ç‰‡ï¼š</div>
 			<div class="right-content f-left">
 				<div class="{#if $resume_img#}has-upload{#else#}has-uploadmb{#/if#} clearfix has-upload-img">
 					{#if $resume_img#}
@@ -2401,8 +2401,8 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 					<div class="has-upload-block f-left">
 						<div class="has-img"><img src="{#$QISHI.site_dir#}data/photo/{#$img_list.img#}" title="{#$img_list.title#}" width="148" height="148" /></div>
 						<div class="has-img-ctrl clearfix">
-							<a href="javascript:;" class="f-left underline note" imgId="{#$img_list.id#}" title="{#$img_list.title#}">±¸×¢</a>
-							<a href="javascript:;" class="f-right underline del" imgId="{#$img_list.id#}">É¾³ı</a>
+							<a href="javascript:;" class="f-left underline note" imgId="{#$img_list.id#}" title="{#$img_list.title#}">å¤‡æ³¨</a>
+							<a href="javascript:;" class="f-right underline del" imgId="{#$img_list.id#}">åˆ é™¤</a>
 						</div>
 					</div>
 					{#/foreach#}
@@ -2410,15 +2410,15 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				</div>
 				<div class="upload-ctrl clearfix">
 					<div class="f-left rimgup">
-						<div class="but55lan_add">ÉÏ´«</div>
+						<div class="but55lan_add">ä¸Šä¼ </div>
 						<input class="filestyle" type="file" value="" name="resume_img" id="resume_img">
 					</div>
-					<p class="f-left">×î¶àÉÏ´«4ÕÅ£¬Ã¿ÕÅ×î´ó800KB,Ö§³Öjpg/gif/bmp/png¸ñÊ½ <br />½¨ÒéÉÏ´«ÇåÎú×ÔÈ»Éú»îÕÕ£¬»òÕßÄúµÄ×¨Òµ´ú±í×÷Æ·¡£</p>
+					<p class="f-left">æœ€å¤šä¸Šä¼ 4å¼ ï¼Œæ¯å¼ æœ€å¤§800KB,æ”¯æŒjpg/gif/bmp/pngæ ¼å¼ <br />å»ºè®®ä¸Šä¼ æ¸…æ™°è‡ªç„¶ç”Ÿæ´»ç…§ï¼Œæˆ–è€…æ‚¨çš„ä¸“ä¸šä»£è¡¨ä½œå“ã€‚</p>
 				</div>
 			</div>
 		</div>
 		<script>
-		// ÉÏ´«Í¼Æ¬ 
+		// ä¸Šä¼ å›¾ç‰‡ 
 	  	$("#resume_img").live('change', function() {
 			credent();
 		});
@@ -2427,7 +2427,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
             var extStart = filepath.lastIndexOf(".");
             var ext = filepath.substring(extStart, filepath.length).toUpperCase();
             if (ext != ".BMP" && ext != ".PNG" && ext != ".GIF" && ext != ".JPG" && ext != ".JPEG") {
-            	alert("Í¼Æ¬ÏŞÓÚbmp,png,gif,jpeg,jpg¸ñÊ½");
+            	alert("å›¾ç‰‡é™äºbmp,png,gif,jpeg,jpgæ ¼å¼");
                 return false;
             }
 			$.ajaxFileUpload ({
@@ -2437,34 +2437,34 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				dataType : 'json',
 				success : function (data, status){
 					switch(data){
-						case "-1":alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÉÏ´«Ä¿Â¼²»´æÔÚ!");return false;
-						case "-2":alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÉÏ´«Ä¿Â¼ÎŞ·¨Ğ´Èë!");return false;
-						case "-3":alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÄãÑ¡ÔñµÄÎÄ¼şÎŞ·¨ÉÏ´«");return false;
-						case "-4":alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÎÄ¼ş´óĞ¡³¬¹ıÏŞÖÆ");return false;
-						case "-5":alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÎÄ¼şÀàĞÍ´íÎó£¡");return false;
-						case -6:alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÎÄ¼şÉÏ´«³ö´í£¡");return false;
-						case -7:alert("ÉÏ´«Í¼Æ¬Ê§°Ü£º¸½¼şÍ¼Æ¬Ö»ÄÜÉÏ´«4ÕÅ");return false;
+						case "-1":alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šä¸Šä¼ ç›®å½•ä¸å­˜åœ¨!");return false;
+						case "-2":alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šä¸Šä¼ ç›®å½•æ— æ³•å†™å…¥!");return false;
+						case "-3":alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šä½ é€‰æ‹©çš„æ–‡ä»¶æ— æ³•ä¸Šä¼ ");return false;
+						case "-4":alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šæ–‡ä»¶å¤§å°è¶…è¿‡é™åˆ¶");return false;
+						case "-5":alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šæ–‡ä»¶ç±»å‹é”™è¯¯ï¼");return false;
+						case -6:alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šæ–‡ä»¶ä¸Šä¼ å‡ºé”™ï¼");return false;
+						case -7:alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šé™„ä»¶å›¾ç‰‡åªèƒ½ä¸Šä¼ 4å¼ ");return false;
 						default:
-							var imgHtml ='<div class="has-upload-block f-left"><div class="has-img"><img src="{#$QISHI.site_dir#}data/photo/'+data['url']+'" title="" width="148" height="148" /></div><div class="has-img-ctrl clearfix"><a href="javascript:;" class="f-left underline note" imgId="'+data['id']+'">±¸×¢</a><a href="javascript:;" class="f-right underline del" imgId="'+data['id']+'">É¾³ı</a></div></div>';
+							var imgHtml ='<div class="has-upload-block f-left"><div class="has-img"><img src="{#$QISHI.site_dir#}data/photo/'+data['url']+'" title="" width="148" height="148" /></div><div class="has-img-ctrl clearfix"><a href="javascript:;" class="f-left underline note" imgId="'+data['id']+'">å¤‡æ³¨</a><a href="javascript:;" class="f-right underline del" imgId="'+data['id']+'">åˆ é™¤</a></div></div>';
 							$(".has-upload-img").append(imgHtml);
 						break;
 					} 
 				}
 			})
 		}
-		// É¾³ı
+		// åˆ é™¤
 		$(".del").live('click', function(event) {
 			var id=$(this).attr("imgId");
 			var del_img=dialog();
-		    del_img.title('ÏµÍ³ÌáÊ¾');
-		    del_img.content('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text">É¾³ıºóÎŞ·¨»Ö¸´£¬ÄúÈ·¶¨ÒªÉ¾³ıÂğ£¿</span></div></div><div class="center-btn-wrap"><input type="button" value="È·¶¨" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="È¡Ïû" class="btn-65-30grey btn-big-font DialogClose" /></div>');
+		    del_img.title('ç³»ç»Ÿæç¤º');
+		    del_img.content('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text">åˆ é™¤åæ— æ³•æ¢å¤ï¼Œæ‚¨ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ</span></div></div><div class="center-btn-wrap"><input type="button" value="ç¡®å®š" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="å–æ¶ˆ" class="btn-65-30grey btn-big-font DialogClose" /></div>');
 		    del_img.width('300');
 		    del_img.showModal();
-		    /* ¹Ø±Õ */
+		    /* å…³é—­ */
 		    $(".DialogClose").live('click',function() {
 		      del_img.close().remove();
 		    });
-		    // È·¶¨
+		    // ç¡®å®š
 		    $(".DialogSubmit").click(function() 
 		    {
 		    	$.post('?act=ajax_resume_img_del', {"id":id}, function(data){
@@ -2473,21 +2473,21 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 		    	});
 		    });
 		});
-		// ±¸×¢
+		// å¤‡æ³¨
 		$(".note").live('click', function(event) {
 			var note_button =$(this);
 			var id=$(this).attr("imgId");
 			var note_img=dialog();
 			var title=$(this).attr("title");
-		    note_img.title('ÏµÍ³ÌáÊ¾');
-		    note_img.content('<div class="img-edit-dialog dialog-block"><div class="dialog-item clearfix"><div class="d-type f-left">¸½¼şÃèÊö</div><div class="d-content f-left"><textarea id="note_title" cols="30" rows="10" class="dialog-textarea">'+title+'</textarea></div></div><div class="center-btn-wrap"><input type="button" value="±£´æ" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="È¡Ïû" class="btn-65-30grey btn-big-font DialogClose" /></div></div>');
+		    note_img.title('ç³»ç»Ÿæç¤º');
+		    note_img.content('<div class="img-edit-dialog dialog-block"><div class="dialog-item clearfix"><div class="d-type f-left">é™„ä»¶æè¿°</div><div class="d-content f-left"><textarea id="note_title" cols="30" rows="10" class="dialog-textarea">'+title+'</textarea></div></div><div class="center-btn-wrap"><input type="button" value="ä¿å­˜" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="å–æ¶ˆ" class="btn-65-30grey btn-big-font DialogClose" /></div></div>');
 		    note_img.width('300');
 		    note_img.showModal();
-		    /* ¹Ø±Õ */
+		    /* å…³é—­ */
 		    $(".DialogClose").live('click',function() {
 		      note_img.close().remove();
 		    });
-		    // È·¶¨
+		    // ç¡®å®š
 		    $(".DialogSubmit").click(function() 
 		    {	var title= $("#note_title").val();
 		    	$.post('?act=ajax_resume_img_title_save', {"id":id,"title":title}, function(data){
@@ -2498,44 +2498,44 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 
 		});
 		</script>
-		<!-- ¸½¼şÉÏ´« end  -->
-		<!-- word ¼òÀúÉÏ´« start -->
-		<div class="titleH2 h2-title">word¼òÀú</div>
+		<!-- é™„ä»¶ä¸Šä¼  end  -->
+		<!-- word ç®€å†ä¸Šä¼  start -->
+		<div class="titleH2 h2-title">wordç®€å†</div>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 			<!-- <tr>
 				<td class="resume-upload" align="left" valign="top" style="padding-top:8px;padding-left: 50px;">
 					{#if $resume_basic.word_resume#}
 					<div class="f-left" style="margin-right: 10px;">
 						<div class="f-left">{#$resume_basic.word_resume#}</div>
-						<div class="f-left"><a href="{#$QISHI.site_dir#}data/word/{#$resume_basic.word_resume#}" style="color:#0180cf;margin-right: 10px;">ÏÂÔØ</a></div>
-						<div class="f-left"><a href="javascript:;" resume_id="{#$resume_basic.id#}" class="word_del" style="color:#0180cf">É¾³ı</a></div>
+						<div class="f-left"><a href="{#$QISHI.site_dir#}data/word/{#$resume_basic.word_resume#}" style="color:#0180cf;margin-right: 10px;">ä¸‹è½½</a></div>
+						<div class="f-left"><a href="javascript:;" resume_id="{#$resume_basic.id#}" class="word_del" style="color:#0180cf">åˆ é™¤</a></div>
 						<div class="clear"></div>
 					</div>
 					{#/if#}
 					<div class="f-left rimgup">
-						<div class="but55lan_add">{#if $resume_basic.word_resume#}¸ü»»{#else#}ÉÏ´«{#/if#}</div>
+						<div class="but55lan_add">{#if $resume_basic.word_resume#}æ›´æ¢{#else#}ä¸Šä¼ {#/if#}</div>
 						<input class="filestyle" type="file" value="" name="word_resume" id="word_resume">
 					</div>
-					<p class="f-left"style="height:32px;line-height:32px;margin-left: 70px;">ÇëÉÏ´«.DOC¸ñÊ½µÄ¸½¼ş(ÎÄ¼ş´óĞ¡2MÒÔÄÚ)</p>
+					<p class="f-left"style="height:32px;line-height:32px;margin-left: 70px;">è¯·ä¸Šä¼ .DOCæ ¼å¼çš„é™„ä»¶(æ–‡ä»¶å¤§å°2Mä»¥å†…)</p>
 					<div class="clear"></div>
 				</td>
 			</tr> -->
 			<tr>
-				<td align="right" width="117px">¸½¼ş¼òÀú£º</td>
+				<td align="right" width="117px">é™„ä»¶ç®€å†ï¼š</td>
 				<td class="resume-upload" align="left" valign="top">
 					{#if $resume_basic.word_resume#}
 					<div class="f-left" style="margin-right: 10px;">
 						<div class="f-left">{#$resume_basic.word_resume#}</div>
-						<div class="f-left"><a href="{#$QISHI.site_dir#}data/word/{#$resume_basic.word_resume#}" style="color:#0180cf;margin-right: 10px;">&nbsp;&nbsp;ÏÂÔØ</a></div>
-						<div class="f-left"><a href="javascript:;" resume_id="{#$resume_basic.id#}" class="word_del" style="color:#0180cf">É¾³ı</a></div>
+						<div class="f-left"><a href="{#$QISHI.site_dir#}data/word/{#$resume_basic.word_resume#}" style="color:#0180cf;margin-right: 10px;">&nbsp;&nbsp;ä¸‹è½½</a></div>
+						<div class="f-left"><a href="javascript:;" resume_id="{#$resume_basic.id#}" class="word_del" style="color:#0180cf">åˆ é™¤</a></div>
 						<div class="clear"></div>
 					</div>
 					{#else#}
 					<div class="f-left rimgup">
-						<div class="but55lan_add">{#if $resume_basic.word_resume#}¸ü»»{#else#}ÉÏ´«{#/if#}</div>
+						<div class="but55lan_add">{#if $resume_basic.word_resume#}æ›´æ¢{#else#}ä¸Šä¼ {#/if#}</div>
 						<input class="filestyle" type="file" value="" name="word_resume" id="word_resume">
 					</div>
-					<p class="f-left"style="height:32px;line-height:32px;margin-left:67px;color:#999">ÇëÉÏ´«.DOC¸ñÊ½µÄ¸½¼ş(ÎÄ¼ş´óĞ¡2MÒÔÄÚ)</p>
+					<p class="f-left"style="height:32px;line-height:32px;margin-left:67px;color:#999">è¯·ä¸Šä¼ .DOCæ ¼å¼çš„é™„ä»¶(æ–‡ä»¶å¤§å°2Mä»¥å†…)</p>
 					<div class="clear"></div>
 					{#/if#}	
 				</td>
@@ -2545,17 +2545,17 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				<td align="right" width="117px"></td>
 				<td class="resume-upload" align="left" valign="top">
 					<div class="f-left rimgup">
-						<div class="but55lan_add">¸ü»»</div>
+						<div class="but55lan_add">æ›´æ¢</div>
 						<input class="filestyle" type="file" value="" name="word_resume" id="word_resume">
 					</div>
-					<p class="f-left"style="height:32px;line-height:32px;margin-left:67px;color:#999">ÇëÉÏ´«.DOC¸ñÊ½µÄ¸½¼ş(ÎÄ¼ş´óĞ¡2MÒÔÄÚ)</p>
+					<p class="f-left"style="height:32px;line-height:32px;margin-left:67px;color:#999">è¯·ä¸Šä¼ .DOCæ ¼å¼çš„é™„ä»¶(æ–‡ä»¶å¤§å°2Mä»¥å†…)</p>
 					<div class="clear"></div>
 				</td>
 			</tr>	
 			{#/if#}	
 		</table>
 		<script>
-		// ÉÏ´«word 
+		// ä¸Šä¼ word 
 	  	$("#word_resume").live('change',function() {
   			credent_();
 		});
@@ -2564,7 +2564,7 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
             var extStart = filepath.lastIndexOf(".");
             var ext = filepath.substring(extStart, filepath.length).toUpperCase();
             if (ext != ".DOC") {
-                alert("ÎÄ¼ş½öÏŞÓÚ.doc¸ñÊ½");
+                alert("æ–‡ä»¶ä»…é™äº.docæ ¼å¼");
                 return false;
             }
 			$.ajaxFileUpload ({
@@ -2574,12 +2574,12 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				dataType : 'json',
 				success : function (data, status){
 					switch(data){
-						case -1:alert("ÉÏ´«wordÊ§°Ü£ºÉÏ´«Ä¿Â¼²»´æÔÚ!");return false;
-						case -2:alert("ÉÏ´«wordÊ§°Ü£ºÉÏ´«Ä¿Â¼ÎŞ·¨Ğ´Èë!");return false;
-						case -3:alert("ÉÏ´«wordÊ§°Ü£ºÄãÑ¡ÔñµÄÎÄ¼şÎŞ·¨ÉÏ´«");return false;
-						case -4:alert("ÉÏ´«wordÊ§°Ü£ºÎÄ¼ş´óĞ¡³¬¹ıÏŞÖÆ");return false;
-						case -5:alert("ÉÏ´«wordÊ§°Ü£ºÎÄ¼şÀàĞÍ´íÎó£¡");return false;
-						case -6:alert("ÉÏ´«wordÊ§°Ü£ºÎÄ¼şÉÏ´«³ö´í£¡");return false;
+						case -1:alert("ä¸Šä¼ wordå¤±è´¥ï¼šä¸Šä¼ ç›®å½•ä¸å­˜åœ¨!");return false;
+						case -2:alert("ä¸Šä¼ wordå¤±è´¥ï¼šä¸Šä¼ ç›®å½•æ— æ³•å†™å…¥!");return false;
+						case -3:alert("ä¸Šä¼ wordå¤±è´¥ï¼šä½ é€‰æ‹©çš„æ–‡ä»¶æ— æ³•ä¸Šä¼ ");return false;
+						case -4:alert("ä¸Šä¼ wordå¤±è´¥ï¼šæ–‡ä»¶å¤§å°è¶…è¿‡é™åˆ¶");return false;
+						case -5:alert("ä¸Šä¼ wordå¤±è´¥ï¼šæ–‡ä»¶ç±»å‹é”™è¯¯ï¼");return false;
+						case -6:alert("ä¸Šä¼ wordå¤±è´¥ï¼šæ–‡ä»¶ä¸Šä¼ å‡ºé”™ï¼");return false;
 						default:
 							window.location.reload();
 						break;
@@ -2587,19 +2587,19 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 				}
 			})
 		}
-		// É¾³ı word
+		// åˆ é™¤ word
 		$(".word_del").live('click', function(event) {
 			var pid=$(this).attr("resume_id");
 			var word_del=dialog();
-		    word_del.title('ÏµÍ³ÌáÊ¾');
-		    word_del.content('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text">É¾³ıºóÎŞ·¨»Ö¸´£¬ÄúÈ·¶¨ÒªÉ¾³ıÂğ£¿</span></div></div><div class="center-btn-wrap"><input type="button" value="È·¶¨" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="È¡Ïû" class="btn-65-30grey btn-big-font DialogClose" /></div>');
+		    word_del.title('ç³»ç»Ÿæç¤º');
+		    word_del.content('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text">åˆ é™¤åæ— æ³•æ¢å¤ï¼Œæ‚¨ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ</span></div></div><div class="center-btn-wrap"><input type="button" value="ç¡®å®š" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="å–æ¶ˆ" class="btn-65-30grey btn-big-font DialogClose" /></div>');
 		    word_del.width('300');
 		    word_del.showModal();
-		    /* ¹Ø±Õ */
+		    /* å…³é—­ */
 		    $(".DialogClose").live('click',function() {
 		      word_del.close().remove();
 		    });
-		    // È·¶¨
+		    // ç¡®å®š
 		    $(".DialogSubmit").click(function() 
 		    {
 		    	$.post('?act=word_del', {"pid":pid}, function(data){
@@ -2609,12 +2609,12 @@ $("#resumePhotosButton_w").die().live('click', function(event) {
 		    });
 		});
 		</script>
-		<!-- word ¼òÀúÉÏ´« end -->
+		<!-- word ç®€å†ä¸Šä¼  end -->
 		<div class="finish-wrap">
 			<form action="?act=edit_resume_save" method="post">
 				<input type="hidden" name="pid" value="{#$resume_basic.id#}"/>
 				<input type="hidden" name="make" value="{#$smarty.get.make#}"/>
-				<input type="submit" value="·¢²¼¼òÀú" class="finish-btn" />
+				<input type="submit" value="å‘å¸ƒç®€å†" class="finish-btn" />
 			</form>
 		</div>
 	  </div>

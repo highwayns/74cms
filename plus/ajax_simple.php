@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ajax Î¢ÕĞÆ¸
+ * 74cms ajax å¾®æ‹›è˜
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -14,7 +14,7 @@ require_once(dirname(dirname(__FILE__)).'/include/common.inc.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'add';
 if ($_PLUG['simple']['p_install']==1)
 {
-showmsg('¹ÜÀíÔ±ÒÑ¹Ø±Õ¸ÃÄ£¿é£¡',1);
+showmsg('ç®¡ç†å‘˜å·²å…³é—­è¯¥æ¨¡å—ï¼',1);
 }
 require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 $db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
@@ -34,18 +34,18 @@ elseif ($act=="addsave")
 	$postcaptcha = trim($_POST['postcaptcha']);
 	if($captcha['verify_simple']=='1' && empty($postcaptcha))
 	{
-		showmsg("ÇëÌîĞ´ÑéÖ¤Âë",1);
+		showmsg("è¯·å¡«å†™éªŒè¯ç ",1);
  	}
 	if ($captcha['verify_simple']=='1' &&  strcasecmp($_SESSION['imageCaptcha_content'],$postcaptcha)!=0)
 	{
-		showmsg("ÑéÖ¤Âë´íÎó",1);
+		showmsg("éªŒè¯ç é”™è¯¯",1);
 	}
 	$setsqlarr['audit']=intval($_CFG['simple_add_audit']);
-	$setsqlarr['jobname']=trim($_POST['jobname'])?trim($_POST['jobname']):showmsg('ÄúÃ»ÓĞÌîĞ´Ö°Î»Ãû³Æ£¡',1);
+	$setsqlarr['jobname']=trim($_POST['jobname'])?trim($_POST['jobname']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™èŒä½åç§°ï¼',1);
 	$setsqlarr['amount']=intval($_POST['amount']);
-	$setsqlarr['comname']=trim($_POST['comname'])?trim($_POST['comname']):showmsg('ÄúÃ»ÓĞÌîĞ´µ¥Î»Ãû³Æ£¡',1);
-	$setsqlarr['contact']=trim($_POST['contact'])?trim($_POST['contact']):showmsg('ÄúÃ»ÓĞÌîĞ´ÁªÏµÈË£¡',1);
-	$setsqlarr['tel']=trim($_POST['tel'])?trim($_POST['tel']):showmsg('ÄúÃ»ÓĞÌîĞ´ÁªÏµµç»°£¡',1);
+	$setsqlarr['comname']=trim($_POST['comname'])?trim($_POST['comname']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™å•ä½åç§°ï¼',1);
+	$setsqlarr['contact']=trim($_POST['contact'])?trim($_POST['contact']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»äººï¼',1);
+	$setsqlarr['tel']=trim($_POST['tel'])?trim($_POST['tel']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»ç”µè¯ï¼',1);
 	if(preg_match("/^\d*$/",$setsqlarr['tel']))
 	{
 		if ($captcha['simple_tel_repeat']=='0')
@@ -54,13 +54,13 @@ elseif ($act=="addsave")
 			$info=$db->getone($sql);
 			if (!empty($info))
 			{
-			showmsg('µç»°ºÅÂëÒÑ¾­´æÔÚ£¡',1);
+			showmsg('ç”µè¯å·ç å·²ç»å­˜åœ¨ï¼',1);
 			}
 		}
 	}
 	else
 	{
-	showmsg('µç»°ºÅÂë¸ñÊ½´íÎó£¡',1);
+	showmsg('ç”µè¯å·ç æ ¼å¼é”™è¯¯ï¼',1);
 	}
 	$setsqlarr['district']=intval($_POST['district']);
 	$setsqlarr['sdistrict']=intval($_POST['sdistrict']);
@@ -75,7 +75,7 @@ elseif ($act=="addsave")
 	{
 	$setsqlarr['deadline']=strtotime("{$validity} day");
 	}
-	$setsqlarr['pwd']=trim($_POST['pwd'])?trim($_POST['pwd']):showmsg('ÄúÃ»ÓĞÌîĞ´¹ÜÀíÃÜÂë£¡',1);
+	$setsqlarr['pwd']=trim($_POST['pwd'])?trim($_POST['pwd']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™ç®¡ç†å¯†ç ï¼',1);
 	$setsqlarr['pwd_hash']=substr(md5(uniqid().mt_rand()),mt_rand(0,6),6);
 	$setsqlarr['pwd']=md5(md5($setsqlarr['pwd']).$setsqlarr['pwd_hash'].$QS_pwdhash);
 	$setsqlarr['addip']=$online_ip;
@@ -84,19 +84,19 @@ elseif ($act=="addsave")
 	$setsqlarr['key']=$setsqlarr['jobname'].$setsqlarr['comname'].$setsqlarr['address'].$setsqlarr['detailed'];
 	$setsqlarr['key']="{$setsqlarr['jobname']} {$setsqlarr['comname']} ".$sp->extracttag($setsqlarr['key']);
 	$setsqlarr['key']=$sp->pad($setsqlarr['key']);
-	$link[0]['text'] = "·µ»ØÎ¢ÕĞÆ¸ÁĞ±í";
+	$link[0]['text'] = "è¿”å›å¾®æ‹›è˜åˆ—è¡¨";
 	$link[0]['href'] =url_rewrite('QS_simplelist');
 	if($db->inserttable(table('simple'),$setsqlarr))
 	{
 		if ($setsqlarr['audit']<>1)
 		{
-		$str="£¬ÇëµÈ´ı¹ÜÀíÔ±ÉóºË";
+		$str="ï¼Œè¯·ç­‰å¾…ç®¡ç†å‘˜å®¡æ ¸";
 		}
-		showmsg("Ìí¼Ó³É¹¦{$str}£¡",2,$link);
+		showmsg("æ·»åŠ æˆåŠŸ{$str}ï¼",2,$link);
 	}
 	else
 	{
-	showmsg("Ìí¼ÓÊ§°Ü£¡",0);
+	showmsg("æ·»åŠ å¤±è´¥ï¼",0);
 	}
 }
 elseif ($act=="delsimple")
@@ -116,13 +116,13 @@ elseif ($act=="exe_delsimple")
 		if ($thispwd==$info['pwd'])
 		{
 		$db->query("Delete from ".table('simple')." WHERE id = '{$id}'");
-		$link[0]['text'] = "·µ»ØÎ¢ÕĞÆ¸ÁĞ±í";
+		$link[0]['text'] = "è¿”å›å¾®æ‹›è˜åˆ—è¡¨";
 		$link[0]['href'] =url_rewrite('QS_simplelist');
-		showmsg("É¾³ı³É¹¦£¡",2,$link);
+		showmsg("åˆ é™¤æˆåŠŸï¼",2,$link);
 		}
 		else
 		{
-			showmsg("¹ÜÀíÃÜÂë´íÎó",1);
+			showmsg("ç®¡ç†å¯†ç é”™è¯¯",1);
 		}
 }
 elseif ($act=="refreshsimple")
@@ -142,13 +142,13 @@ elseif ($act=="exe_refreshsimple")
 		if ($thispwd==$info['pwd'])
 		{
 		$db->query("update ".table('simple')."  SET refreshtime='".time()."' WHERE id = '{$id}'");
-		$link[0]['text'] = "·µ»ØÎ¢ÕĞÆ¸ÁĞ±í";
+		$link[0]['text'] = "è¿”å›å¾®æ‹›è˜åˆ—è¡¨";
 		$link[0]['href'] =url_rewrite('QS_simplelist');
-		showmsg("Ë¢ĞÂ³É¹¦£¡",2,$link);
+		showmsg("åˆ·æ–°æˆåŠŸï¼",2,$link);
 		}
 		else
 		{
-			showmsg("¹ÜÀíÃÜÂë´íÎó",1);
+			showmsg("ç®¡ç†å¯†ç é”™è¯¯",1);
 		}
 }
 elseif ($act=="editsimple")
@@ -169,11 +169,11 @@ elseif ($act=="editsave")
 	$postcaptcha = trim($_POST['postcaptcha']);
 	if($captcha['verify_simple']=='1' && empty($postcaptcha))
 	{
-		showmsg("ÇëÌîĞ´ÑéÖ¤Âë",1);
+		showmsg("è¯·å¡«å†™éªŒè¯ç ",1);
  	}
 	if ($captcha['verify_simple']=='1' &&  strcasecmp($_SESSION['imageCaptcha_content'],$postcaptcha)!=0)
 	{
-		showmsg("ÑéÖ¤Âë´íÎó",1);
+		showmsg("éªŒè¯ç é”™è¯¯",1);
 	}
 	$id=intval($_POST['id']);
 	$pwd=trim($_POST['pwd']);
@@ -181,19 +181,19 @@ elseif ($act=="editsave")
 	$thispwd=md5(md5($pwd).$info['pwd_hash'].$QS_pwdhash);
 	if ($thispwd!=$info['pwd'])
 	{
-		showmsg("¹ÜÀíÃÜÂë´íÎó",1);
+		showmsg("ç®¡ç†å¯†ç é”™è¯¯",1);
 	}
 	if ($_CFG['simple_edit_audit']!="-1")
 	{
 	$setsqlarr['audit']=intval($_CFG['simple_edit_audit']);
 	}
-	$setsqlarr['jobname']=trim($_POST['jobname'])?trim($_POST['jobname']):showmsg('ÄúÃ»ÓĞÌîĞ´Ö°Î»Ãû³Æ£¡',1);
+	$setsqlarr['jobname']=trim($_POST['jobname'])?trim($_POST['jobname']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™èŒä½åç§°ï¼',1);
 	$setsqlarr['amount']=intval($_POST['amount']);
-	$setsqlarr['comname']=trim($_POST['comname'])?trim($_POST['comname']):showmsg('ÄúÃ»ÓĞÌîĞ´µ¥Î»Ãû³Æ£¡',1);
-	$setsqlarr['contact']=trim($_POST['contact'])?trim($_POST['contact']):showmsg('ÄúÃ»ÓĞÌîĞ´ÁªÏµÈË£¡',1);
+	$setsqlarr['comname']=trim($_POST['comname'])?trim($_POST['comname']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™å•ä½åç§°ï¼',1);
+	$setsqlarr['contact']=trim($_POST['contact'])?trim($_POST['contact']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»äººï¼',1);
 	if ($_CFG['simple_tel_edit']=="1")
 	{
-		$setsqlarr['tel']=trim($_POST['tel'])?trim($_POST['tel']):showmsg('ÄúÃ»ÓĞÌîĞ´ÁªÏµµç»°£¡',1);
+		$setsqlarr['tel']=trim($_POST['tel'])?trim($_POST['tel']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»ç”µè¯ï¼',1);
 		if(preg_match("/^\d*$/",$setsqlarr['tel']))
 		{
 			if ($captcha['simple_tel_repeat']=='0')
@@ -202,7 +202,7 @@ elseif ($act=="editsave")
 				$info=$db->getone($sql);
 				if (!empty($info))
 				{
-				showmsg('µç»°ºÅÂëÒÑ¾­´æÔÚ£¡',1);
+				showmsg('ç”µè¯å·ç å·²ç»å­˜åœ¨ï¼',1);
 				}
 			}
 		}	
@@ -224,19 +224,19 @@ elseif ($act=="editsave")
 	$setsqlarr['key']=$setsqlarr['jobname'].$setsqlarr['comname'].$setsqlarr['address'].$setsqlarr['detailed'];
 	$setsqlarr['key']="{$setsqlarr['jobname']} {$setsqlarr['comname']} ".$sp->extracttag($setsqlarr['key']);
 	$setsqlarr['key']=$sp->pad($setsqlarr['key']);
-	$link[0]['text'] = "·µ»ØÎ¢ÕĞÆ¸ÁĞ±í";
+	$link[0]['text'] = "è¿”å›å¾®æ‹›è˜åˆ—è¡¨";
 	$link[0]['href'] =url_rewrite('QS_simplelist');
 	if($db->updatetable(table('simple'),$setsqlarr," id='{$id}' "))
 	{
 		if ($_CFG['simple_edit_audit']>1)
 		{
-		$str="£¬ÇëµÈ´ı¹ÜÀíÔ±ÉóºË";
+		$str="ï¼Œè¯·ç­‰å¾…ç®¡ç†å‘˜å®¡æ ¸";
 		}
-		showmsg("ĞŞ¸Ä³É¹¦{$str}£¡",2,$link);
+		showmsg("ä¿®æ”¹æˆåŠŸ{$str}ï¼",2,$link);
 	}
 	else
 	{
-	showmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
+	showmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
 	}
 }
 elseif($act =='check_tel')
@@ -289,20 +289,20 @@ elseif($act == "get_simple_tel"){
 	$id=intval($_GET['id']);
 	$sql = "select contact,tel from ".table('simple')." where id=".$id;
 	$tel = $db->getone($sql);
-	exit("ÁªÏµ·½Ê½£º".$tel['tel']." ".$tel['contact']);
+	exit("è”ç³»æ–¹å¼ï¼š".$tel['tel']." ".$tel['contact']);
 }
 elseif($act == "get_simple_detailed"){
 	$id=intval($_GET['id']);
 	$sql = "select detailed from ".table('simple')." where id=".$id;
 	$detailed = $db->getone($sql);
-	exit("ÒªÇó£º".$detailed['detailed'].'<a href="javascript:void(0);" class="hidden_detailed" id="'.$id.'">[ÊÕÆğ]</a>');
+	exit("è¦æ±‚ï¼š".$detailed['detailed'].'<a href="javascript:void(0);" class="hidden_detailed" id="'.$id.'">[æ”¶èµ·]</a>');
 }
 elseif($act == "hidden_simple_detailed"){
 	$id=intval($_GET['id']);
 	$sql = "select detailed from ".table('simple')." where id=".$id;
 	$detailed = $db->getone($sql);
 	$detailed['detailed'] = cut_str($detailed['detailed'],40,0,"...");
-	exit("ÒªÇó£º".$detailed['detailed'].'<a href="javascript:void(0);" class="show_detailed" id="'.$id.'">[Õ¹¿ª]</a>');
+	exit("è¦æ±‚ï¼š".$detailed['detailed'].'<a href="javascript:void(0);" class="show_detailed" id="'.$id.'">[å±•å¼€]</a>');
 }
 elseif($act == "get_sdistrict"){
 	$id = intval($_GET['id']);

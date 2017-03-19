@@ -1,4 +1,4 @@
-CSS.AllowImportant
+﻿CSS.AllowImportant
 TYPE: bool
 DEFAULT: false
 VERSION: 3.1.0

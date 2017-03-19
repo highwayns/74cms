@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÏµÍ³ÉèÖÃ
+ * 74cms ç³»ç»Ÿè®¾ç½®
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -14,7 +14,7 @@ require_once(dirname(__FILE__).'/../data/config.php');
 require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'set';
 check_permissions($_SESSION['admin_purview'],"site_set");
-$smarty->assign('pageheader',"ÍøÕ¾ÅäÖÃ");
+$smarty->assign('pageheader',"ç½‘ç«™é…ç½®");
 if($act == 'set')
 {	
 	get_token();
@@ -33,12 +33,12 @@ elseif($act == 'site_setsave')
 			$web_logo=_asUpFiles($upfiles_dir, "web_logo", 1024*2, 'jpg/gif/png',"logo");
 			if(!$db->query("UPDATE ".table('config')." SET value='$web_logo' WHERE name='web_logo'"))
 			{
-				//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-				write_log("ºóÌ¨ÉèÖÃÍøÕ¾LOGOÊ§°Ü", $_SESSION['admin_name'],3);
-				adminmsg('¸üÐÂÕ¾µãÉèÖÃÊ§°Ü', 1);
+				//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+				write_log("åŽå°è®¾ç½®ç½‘ç«™LOGOå¤±è´¥", $_SESSION['admin_name'],3);
+				adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1);
 			}
-			//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("ºóÌ¨³É¹¦ÉèÖÃÍøÕ¾LOGO", $_SESSION['admin_name'],3);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("åŽå°æˆåŠŸè®¾ç½®ç½‘ç«™LOGO", $_SESSION['admin_name'],3);
 		}
 
 		if($_FILES['body_bgimg']['name'])
@@ -46,33 +46,33 @@ elseif($act == 'site_setsave')
 			$body_bgimg=_asUpFiles($upfiles_dir, "body_bgimg", 1024*2, 'jpg/gif/png',"body_bg_img");
 			if(!$db->query("UPDATE ".table('config')." SET value='$body_bgimg' WHERE name='body_bgimg'"))
 			{
-				//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-				write_log("ºóÌ¨ÉèÖÃÍøÕ¾±³¾°Ê§°Ü", $_SESSION['admin_name'],3);
-				adminmsg('¸üÐÂÕ¾µãÉèÖÃÊ§°Ü', 1);
+				//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+				write_log("åŽå°è®¾ç½®ç½‘ç«™èƒŒæ™¯å¤±è´¥", $_SESSION['admin_name'],3);
+				adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1);
 			}
-			//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("ºóÌ¨³É¹¦ÉèÖÃÍøÕ¾±³¾°", $_SESSION['admin_name'],3);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("åŽå°æˆåŠŸè®¾ç½®ç½‘ç«™èƒŒæ™¯", $_SESSION['admin_name'],3);
 		}
 		if($_POST['set_body_bgimg_defaule']==1)
 		{
 			@unlink($upfiles_dir.$_CFG["body_bgimg"]);
 			if(!$db->query("UPDATE ".table('config')." SET value='' WHERE name='body_bgimg'"))
 			{
-				//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-				write_log("ºóÌ¨ÉèÖÃÍøÕ¾Ä¬ÈÏ±³¾°Ê§°Ü", $_SESSION['admin_name'],3);
-				adminmsg('¸üÐÂÕ¾µãÉèÖÃÊ§°Ü', 1);
+				//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+				write_log("åŽå°è®¾ç½®ç½‘ç«™é»˜è®¤èƒŒæ™¯å¤±è´¥", $_SESSION['admin_name'],3);
+				adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1);
 			}
-			//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("ºóÌ¨³É¹¦ÉèÖÃÍøÕ¾Ä¬ÈÏ±³¾°", $_SESSION['admin_name'],3);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("åŽå°æˆåŠŸè®¾ç½®ç½‘ç«™é»˜è®¤èƒŒæ™¯", $_SESSION['admin_name'],3);
 		}
 		foreach($_POST as $k => $v)
 		{
-		!$db->query("UPDATE ".table('config')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('¸üÐÂÕ¾µãÉèÖÃÊ§°Ü', 1):"";
+		!$db->query("UPDATE ".table('config')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1):"";
 		}
 		refresh_cache('config');
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦ÉèÖÃÍøÕ¾ÅäÖÃ", $_SESSION['admin_name'],3);
-		adminmsg("±£´æ³É¹¦£¡",2);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åŽå°æˆåŠŸè®¾ç½®ç½‘ç«™é…ç½®", $_SESSION['admin_name'],3);
+		adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'map')
 {
@@ -95,22 +95,22 @@ elseif($act == 'set_save')
 	check_permissions($_SESSION['admin_purview'],"mb_set");
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('¸üÐÂÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('æ›´æ–°è®¾ç½®å¤±è´¥', 1):"";
 	}
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('text')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('¸üÐÂÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('text')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('æ›´æ–°è®¾ç½®å¤±è´¥', 1):"";
 	}
 	refresh_cache('config');
 	refresh_cache('text');
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦¸üÐÂÉèÖÃ", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸæ›´æ–°è®¾ç½®", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'search')
 {
 	get_token();
-	$smarty->assign('pageheader',"ËÑË÷ÉèÖÃ");
+	$smarty->assign('pageheader',"æœç´¢è®¾ç½®");
 	$smarty->assign('config',$_CFG);
 	$smarty->display('set/admin_set_search.htm');
 }
@@ -120,12 +120,12 @@ elseif($act == 'search_save')
 	check_permissions($_SESSION['admin_purview'],"set_search");
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('¸üÐÂÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('æ›´æ–°è®¾ç½®å¤±è´¥', 1):"";
 	}
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦¸üÐÂËÑË÷ÉèÖÃ", $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸæ›´æ–°æœç´¢è®¾ç½®", $_SESSION['admin_name'],3);
 	refresh_cache('config');
-	write_log("ÅäÖÃËÑË÷ÉèÖÃ", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2);
+	write_log("é…ç½®æœç´¢è®¾ç½®", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 ?>

@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-  //¼ÆËã»ñµÃ»ı·ÖÊıÁ¿
+  //è®¡ç®—è·å¾—ç§¯åˆ†æ•°é‡
   $("#week").keyup(function(){  
     if((/^(\+|-)?\d+$/.test($(this).val())) && $(this).val()>={#$QISHI.payment_min#})
     { 
@@ -42,12 +42,12 @@ $(document).ready(function()
   },
     messages: {
     week: {
-    required: "ÇëÊäÈëÕ¹Ê¾ÆÚÏŞ",
-  digits: "Õ¹Ê¾ÆÚÏŞ±ØĞëÊÇÕûÊı",
-    min: jQuery.format("Õ¹Ê¾ÆÚÏŞ²»ÄÜµÍÓÚ1ÖÜ")
+    required: "è¯·è¾“å…¥å±•ç¤ºæœŸé™",
+  digits: "å±•ç¤ºæœŸé™å¿…é¡»æ˜¯æ•´æ•°",
+    min: jQuery.format("å±•ç¤ºæœŸé™ä¸èƒ½ä½äº1å‘¨")
    },
    payment_name:{
-    required: "ÇëÑ¡ÔñÖ§¸¶·½Ê½"
+    required: "è¯·é€‰æ‹©æ”¯ä»˜æ–¹å¼"
    }
   },
   errorPlacement: function(error, element) {
@@ -65,7 +65,7 @@ $(document).ready(function()
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
 
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ÔöÖµ·şÎñ</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > å¢å€¼æœåŠ¡</div>
 
 <div class="usermain">
   <div class="leftmenu  com link_bk">
@@ -76,22 +76,22 @@ $(document).ready(function()
   
  	<div class="bbox1 link_bk my_account intrgration">
 		<div class="topnav">
-      <div class="titleH1"><div class="h1-title">ÔöÖµ·şÎñ</div></div>
+      <div class="titleH1"><div class="h1-title">å¢å€¼æœåŠ¡</div></div>
       <div class="navs link_bk clearfix">
-        <a href="company_service.php?act=adv_list" class="se">ÉêÇë¹ã¸æÎ»</a>
+        <a href="company_service.php?act=adv_list" class="se">ç”³è¯·å¹¿å‘Šä½</a>
       </div>
     </div>
 
 	 	<div style="height:30px;"></div>
   		<div class="bar">
   			<div class="bar_step1">
-  				<p>ÌîĞ´¶©µ¥</p>
+  				<p>å¡«å†™è®¢å•</p>
   			</div>
   			<div class="bar_step2 hui">
-  				<p>È·ÈÏ¶©µ¥</p>
+  				<p>ç¡®è®¤è®¢å•</p>
   			</div>
   			<div class="bar_step3 hui">
-  				<p>Ìá½»¶©µ¥</p>
+  				<p>æäº¤è®¢å•</p>
   			</div>
   		</div>
       <form id="Form1" name="Form1" method="post" action="?act=order_adv_add_save" enctype="multipart/form-data" >
@@ -99,18 +99,18 @@ $(document).ready(function()
   			<table>
   				<tbody>
   					<tr>
-  						<td height="30" width="100">¹ã¸æÎ»Ãû³Æ£º</td>
+  						<td height="30" width="100">å¹¿å‘Šä½åç§°ï¼š</td>
   						<td><strong>{#$advinfo.categoryname#}</strong>
                <input type="hidden" name="advid" id="advid" value="{#$advinfo.id#}">
               </td>
   					</tr>
   					<tr>
-  						<td height="30" width="100">Õ¹Ê¾ÆÚÏŞ£º</td>
-  						<td><input type="text" name="week" id="week" class="input_text_100"/>&nbsp;&nbsp;ÖÜ</td>
+  						<td height="30" width="100">å±•ç¤ºæœŸé™ï¼š</td>
+  						<td><input type="text" name="week" id="week" class="input_text_100"/>&nbsp;&nbsp;å‘¨</td>
   					</tr>
             <tr id="count">
-              <td height="30" width="100">Ó¦¸¶½ğ¶î£º</td>
-              <td><span id="show_val">0</span> Ôª <span style="display:none" id="points_expense">(<span id="show_points_val">0</span> »ı·Ö)</span></td>
+              <td height="30" width="100">åº”ä»˜é‡‘é¢ï¼š</td>
+              <td><span id="show_val">0</span> å…ƒ <span style="display:none" id="points_expense">(<span id="show_points_val">0</span> ç§¯åˆ†)</span></td>
               <input type="hidden" name="expense_input" id="expense_input">
               <input type="hidden" name="points_expense_input" id="points_expense_input">
             </tr>
@@ -120,9 +120,9 @@ $(document).ready(function()
   				<tbody>
             {#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
   					<tr>
-  						<td height="30" width="100">Ö§¸¶·½Ê½£º</td>
-  						<td width="150"><input type="radio" name="payment_name" value="points" checked/>&nbsp;&nbsp;ÕË»§»ı·Ö</td>
-  						<td><p>(ÄúµÄÕË»§Ê£Óà<span>{#$points#}</span>µã»ı·Ö)</p></td>
+  						<td height="30" width="100">æ”¯ä»˜æ–¹å¼ï¼š</td>
+  						<td width="150"><input type="radio" name="payment_name" value="points" checked/>&nbsp;&nbsp;è´¦æˆ·ç§¯åˆ†</td>
+  						<td><p>(æ‚¨çš„è´¦æˆ·å‰©ä½™<span>{#$points#}</span>ç‚¹ç§¯åˆ†)</p></td>
   					</tr>
             {#section name=payment loop=$payment#}
   					<tr>
@@ -134,7 +134,7 @@ $(document).ready(function()
             {#else#}
             {#section name=payment loop=$payment#}
             <tr>
-              <td height="30" width="100">{#if $smarty.section.payment.index==0#}³äÖµ·½Ê½£º{#/if#}</td>
+              <td height="30" width="100">{#if $smarty.section.payment.index==0#}å……å€¼æ–¹å¼ï¼š{#/if#}</td>
               <td width="150"><input {#if $smarty.section.payment.index==0#}checked{#/if#} type="radio" name="payment_name" value="{#$payment[payment].typename#}" id="payment_name" />&nbsp;&nbsp;<img src="{#$QISHI.site_dir#}include/payment/logo/{#$payment[payment].typename#}.gif" alt=""/></td>
               <td> <p>({#$payment[payment].p_introduction#})</p></td>
             </tr>
@@ -143,7 +143,7 @@ $(document).ready(function()
 
   				</tbody>
   			</table>
-  			<input class="but130lan intrgration_but" type="submit" name="submit" value="³äÖµ">
+  			<input class="but130lan intrgration_but" type="submit" name="submit" value="å……å€¼">
   		</div> 
       </form>
   	</div>

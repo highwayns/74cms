@@ -1,4 +1,4 @@
-(function($){
+﻿(function($){
     $.fn.hoverDelay = function(options){
         var defaults = {
             hoverDuring: 300,

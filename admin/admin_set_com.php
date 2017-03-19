@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÆóÒµÉèÖÃ
+ * 74cms ä¼ä¸šè®¾ç½®
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -14,7 +14,7 @@ require_once(dirname(__FILE__).'/../data/config.php');
 require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_company_fun.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'set';
-$smarty->assign('pageheader',"ÆóÒµÉèÖÃ");
+$smarty->assign('pageheader',"ä¼ä¸šè®¾ç½®");
 check_permissions($_SESSION['admin_purview'],"set_com");
 if($act == 'set')
 {	
@@ -29,17 +29,17 @@ elseif($act == 'set_save')
 	check_token();
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('¸üÐÂÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°è®¾ç½®å¤±è´¥', 1):"";
 	}
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('text')." SET value='$v' WHERE name='$k'")?adminmsg('¸üÐÂÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('text')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°è®¾ç½®å¤±è´¥', 1):"";
 	}
 	refresh_cache('config');
 	refresh_cache('text');	
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦¸üÐÂËÑË÷ÉèÖÃ", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸæ›´æ–°æœç´¢è®¾ç½®", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'modeselect')
 {
@@ -52,12 +52,12 @@ elseif($act == 'modeselect_save')
  	check_token();
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k' LIMIT 1")?adminmsg('±£´æÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k' LIMIT 1")?adminmsg('ä¿å­˜å¤±è´¥', 1):"";
 	}
 	refresh_cache('config');
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦¸üÐÂÅäÖÃ", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸæ›´æ–°é…ç½®", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'set_points')
 {
@@ -76,22 +76,22 @@ elseif($act == 'set_points_save')
 	foreach($ids as $k =>  $id)
 	{
 	$id=intval($id);
-	!$db->query("UPDATE ".table('members_points_rule')." SET value='{$value[$k]}', operation='{$operation[$k]}' WHERE id='{$id}' LIMIT 1")?adminmsg('±£´æÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('members_points_rule')." SET value='{$value[$k]}', operation='{$operation[$k]}' WHERE id='{$id}' LIMIT 1")?adminmsg('ä¿å­˜å¤±è´¥', 1):"";
 	}
 	refresh_points_rule_cache();
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦¸üÐÂ»ý·Ö¹æÔò", $_SESSION['admin_name'],3);
-	adminmsg("¸üÐÂÉèÖÃ³É¹¦£¡",2);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸæ›´æ–°ç§¯åˆ†è§„åˆ™", $_SESSION['admin_name'],3);
+	adminmsg("æ›´æ–°è®¾ç½®æˆåŠŸï¼",2);
 }
 elseif($act == 'set_points_config_save')
 {
 	check_token();
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k' LIMIT 1")?adminmsg('±£´æÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k' LIMIT 1")?adminmsg('ä¿å­˜å¤±è´¥', 1):"";
 	}
 	refresh_cache('config');
-	adminmsg("±£´æ³É¹¦£¡",2);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'set_meal')
 {
@@ -111,7 +111,7 @@ elseif($act == 'set_meal_add')
 elseif($act == 'set_meal_add_save')
 {
 	check_token();
-	$setsqlarr['setmeal_name']=trim($_POST['setmeal_name'])?trim($_POST['setmeal_name']):adminmsg('Ì×²ÍÃû³Æ²»ÄÜÎª¿Õ£¡',1);
+	$setsqlarr['setmeal_name']=trim($_POST['setmeal_name'])?trim($_POST['setmeal_name']):adminmsg('å¥—é¤åç§°ä¸èƒ½ä¸ºç©ºï¼',1);
 	$setsqlarr['days']=intval($_POST['days']);
 	$setsqlarr['original_price']=intval($_POST['original_price']);
 	$setsqlarr['expense']=intval($_POST['expense']);
@@ -139,25 +139,25 @@ elseif($act == 'set_meal_add_save')
 	$setsqlarr['apply']=intval($_POST['apply']);
 	$setsqlarr['added']=trim($_POST['added']);
 	/**
-	 * 2014-01-26ÐÂÔöstart
+	 * 2014-01-26æ–°å¢žstart
 	 */
 	$setsqlarr['refresh_jobs_space']=intval($_POST['refresh_jobs_space']);
 	$setsqlarr['refresh_jobs_time']=intval($_POST['refresh_jobs_time']);
-	//2015-01-09Ð½×Ê¶ÌÐÅÉèÖÃ set_sms 
+	//2015-01-09è–ªèµ„çŸ­ä¿¡è®¾ç½® set_sms 
 	$setsqlarr['set_sms'] = intval($_POST['set_sms']);
 	if ($db->inserttable(table('setmeal'),$setsqlarr))
 		{
-			//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("ºóÌ¨³É¹¦Ìí¼ÓÌ×²Í", $_SESSION['admin_name'],3);
-			$link[0]['text'] = "·µ»ØÌ×²ÍÉèÖÃ";
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("åŽå°æˆåŠŸæ·»åŠ å¥—é¤", $_SESSION['admin_name'],3);
+			$link[0]['text'] = "è¿”å›žå¥—é¤è®¾ç½®";
 			$link[0]['href'] ="?act=set_meal";
-			adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+			adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 		}
 		else
 		{
-			//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("ºóÌ¨Ìí¼ÓÌ×²ÍÊ§°Ü", $_SESSION['admin_name'],3);
-			adminmsg("Ìí¼ÓÊ§°Ü£¡",0);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("åŽå°æ·»åŠ å¥—é¤å¤±è´¥", $_SESSION['admin_name'],3);
+			adminmsg("æ·»åŠ å¤±è´¥ï¼",0);
 		}
 }
 elseif($act == 'set_meal_edit')
@@ -170,7 +170,7 @@ elseif($act == 'set_meal_edit')
 elseif($act == 'set_meal_edit_save')
 {
 	check_token();
-	$setsqlarr['setmeal_name']=trim($_POST['setmeal_name'])?trim($_POST['setmeal_name']):adminmsg('Ì×²ÍÃû³Æ²»ÄÜÎª¿Õ£¡',1);
+	$setsqlarr['setmeal_name']=trim($_POST['setmeal_name'])?trim($_POST['setmeal_name']):adminmsg('å¥—é¤åç§°ä¸èƒ½ä¸ºç©ºï¼',1);
 	$setsqlarr['days']=intval($_POST['days']);
 	$setsqlarr['original_price']=intval($_POST['original_price']);
 	$setsqlarr['expense']=intval($_POST['expense']);
@@ -196,25 +196,25 @@ elseif($act == 'set_meal_edit_save')
 	$setsqlarr['apply']=intval($_POST['apply']);
 	$setsqlarr['added']=trim($_POST['added']);
 	/**
-	 * 2014-01-26ÐÂÔöstart
+	 * 2014-01-26æ–°å¢žstart
 	 */
 	$setsqlarr['refresh_jobs_space']=intval($_POST['refresh_jobs_space']);
 	$setsqlarr['refresh_jobs_time']=intval($_POST['refresh_jobs_time']);
-	//2015-01-09Ð½×Ê¶ÌÐÅÉèÖÃ set_sms 
+	//2015-01-09è–ªèµ„çŸ­ä¿¡è®¾ç½® set_sms 
 	$setsqlarr['set_sms'] = intval($_POST['set_sms']);
 	if ($db->updatetable(table('setmeal'),$setsqlarr," id=".intval($_POST['id'])))
 		{
-			//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("ºóÌ¨³É¹¦ÐÞ¸ÄÌ×²Í", $_SESSION['admin_name'],3);
-			$link[0]['text'] = "·µ»ØÌ×²ÍÉèÖÃ";
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("åŽå°æˆåŠŸä¿®æ”¹å¥—é¤", $_SESSION['admin_name'],3);
+			$link[0]['text'] = "è¿”å›žå¥—é¤è®¾ç½®";
 			$link[0]['href'] ="?act=set_meal";
-			adminmsg("ÉèÖÃ³É¹¦£¡",2,$link);
+			adminmsg("è®¾ç½®æˆåŠŸï¼",2,$link);
 		}
 		else
 		{
-			//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("ºóÌ¨ÐÞ¸ÄÌ×²ÍÊ§°Ü", $_SESSION['admin_name'],3);
-			adminmsg("ÉèÖÃÊ§°Ü£¡",0);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("åŽå°ä¿®æ”¹å¥—é¤å¤±è´¥", $_SESSION['admin_name'],3);
+			adminmsg("è®¾ç½®å¤±è´¥ï¼",0);
 		}
 }
 elseif($act == 'set_meal_del')
@@ -222,24 +222,24 @@ elseif($act == 'set_meal_del')
 	check_token();
 		if (del_setmeal_one(intval($_GET['id'])))
 		{
-		adminmsg("É¾³ý³É¹¦£¡",2);
+		adminmsg("åˆ é™¤æˆåŠŸï¼",2);
 		}
 		else
 		{
-		adminmsg("É¾³ýÊ§°Ü£¡",0);
+		adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 		}
 }
 elseif($act == 'reg_service_save')
 {
 	check_token();
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨¸üÐÂÅäÖÃÎÄ¼þ", $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æ›´æ–°é…ç½®æ–‡ä»¶", $_SESSION['admin_name'],3);
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k' LIMIT 1")?adminmsg('±£´æÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k' LIMIT 1")?adminmsg('ä¿å­˜å¤±è´¥', 1):"";
 	}
 	refresh_cache('config');
-	adminmsg("±£´æ³É¹¦£¡",2);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 	exit();
 }
 ?>

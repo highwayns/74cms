@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ÆóÒµ»áÔ±ÖĞĞÄ
+ * 74cms ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,19 +15,19 @@ $smarty->assign('leftmenu',"index");
 if ($act=='index')
 {
 	$uid=intval($_SESSION['uid']);
-	$smarty->assign('title','ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
-	//Ê×Ò³¶¥²¿ÌáÊ¾ĞÅÏ¢(Ì×²Í»òÕß»ı·ÖÒÑÊ§Ğ§»ò¿ìÊ§Ğ§Ê±ÌáĞÑ)
+	$smarty->assign('title','ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
+	//é¦–é¡µé¡¶éƒ¨æç¤ºä¿¡æ¯(å¥—é¤æˆ–è€…ç§¯åˆ†å·²å¤±æ•ˆæˆ–å¿«å¤±æ•ˆæ—¶æé†’)
 	$message = array();
 	if ($_CFG['operation_mode']=='1' || $_CFG['operation_mode']=='3')
 	{
 		$my_points = get_user_points($uid);
 		if($my_points < $_CFG['points_min_remind'] && intval($my_points) > 0 && !empty($_CFG['points_min_remind']))
 		{
-			$message[] = 'ÌáĞÑ£ºÄúµÄ»ı·Ö²»×ã£¬Îª±ÜÃâÔì³É²»±ØÒªµÄÂé·³£¬Çë<a href="company_service.php?act=order_add">Á¢¼´³äÖµ</a>';
+			$message[] = 'æé†’ï¼šæ‚¨çš„ç§¯åˆ†ä¸è¶³ï¼Œä¸ºé¿å…é€ æˆä¸å¿…è¦çš„éº»çƒ¦ï¼Œè¯·<a href="company_service.php?act=order_add">ç«‹å³å……å€¼</a>';
 		}
 		elseif(intval($my_points) <= 0 && !empty($_CFG['points_min_remind']))
 		{
-			$message[] = 'ÌáĞÑ£ºÄúµÄ»ı·ÖÒÑÎª0£¬Îª±ÜÃâÔì³É²»±ØÒªµÄÂé·³£¬Çë<a href="company_service.php?act=order_add">Á¢¼´³äÖµ</a>';
+			$message[] = 'æé†’ï¼šæ‚¨çš„ç§¯åˆ†å·²ä¸º0ï¼Œä¸ºé¿å…é€ æˆä¸å¿…è¦çš„éº»çƒ¦ï¼Œè¯·<a href="company_service.php?act=order_add">ç«‹å³å……å€¼</a>';
 		}
 		$smarty->assign('points',$my_points);
 	}
@@ -35,19 +35,19 @@ if ($act=='index')
 	{
 		$my_setmeal = get_user_setmeal($uid);
 		if(time()>$my_setmeal['endtime'] && $my_setmeal['endtime'] > 0 && !empty($_CFG['meal_min_remind'])){
-			$message[] = 'ÌáĞÑ£ºÄúµÄÌ×²ÍÒÑµ½ÆÚ£¬Îª±ÜÃâÔì³É²»±ØÒªµÄÂé·³£¬Çë<a href="company_service.php?act=setmeal_list" target="_blank">Éı¼¶Ì×²Í</a>';
+			$message[] = 'æé†’ï¼šæ‚¨çš„å¥—é¤å·²åˆ°æœŸï¼Œä¸ºé¿å…é€ æˆä¸å¿…è¦çš„éº»çƒ¦ï¼Œè¯·<a href="company_service.php?act=setmeal_list" target="_blank">å‡çº§å¥—é¤</a>';
 		}
 		elseif(($my_setmeal['endtime']-time())/86400 <=$_CFG['meal_min_remind']  && $my_setmeal['endtime'] > 0 && !empty($_CFG['meal_min_remind']))
 		{
-			$message[] = 'ÌáĞÑ£ºÄúµÄÌ×²Í¿ìµ½ÆÚ£¬Îª±ÜÃâÔì³É²»±ØÒªµÄÂé·³£¬Çë<a href="company_service.php?act=setmeal_list" target="_blank">Éı¼¶Ì×²Í</a>';
+			$message[] = 'æé†’ï¼šæ‚¨çš„å¥—é¤å¿«åˆ°æœŸï¼Œä¸ºé¿å…é€ æˆä¸å¿…è¦çš„éº»çƒ¦ï¼Œè¯·<a href="company_service.php?act=setmeal_list" target="_blank">å‡çº§å¥—é¤</a>';
 		}
 		$smarty->assign('setmeal',$my_setmeal);
 	}
 	$smarty->assign('message',$message);
 	$smarty->assign('company',$company_profile);
-	//µÇÂ¼Ê±¼ä
+	//ç™»å½•æ—¶é—´
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
-	//ÅĞ¶ÏÊÇ·ñÊÇ×Ô¼ºµÇÂ¼µÄ»¹ÊÇºóÌ¨¹ÜÀíÔ±µÇÂ¼µÄ
+	//åˆ¤æ–­æ˜¯å¦æ˜¯è‡ªå·±ç™»å½•çš„è¿˜æ˜¯åå°ç®¡ç†å‘˜ç™»å½•çš„
 	if($_SESSION['no_self'])
 	{
 		$smarty->assign('loginlog',get_loginlog_two($uid,'1001'));
@@ -57,15 +57,15 @@ if ($act=='index')
 		$smarty->assign('loginlog',get_loginlog_one($uid,'1001'));
 	}
 	$smarty->assign('user',$user);
-	//Í³¼ÆÖ°Î»Êı
+	//ç»Ÿè®¡èŒä½æ•°
 	$smarty->assign('total_audit_jobs',$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs')." WHERE uid=".$uid));
 	$smarty->assign('total_noaudit_jobs',$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs_tmp')." WHERE uid=".$uid." AND audit=2"));
 	$smarty->assign('total_nolook_resume',$db->get_total("SELECT COUNT(*) AS num FROM ".table('personal_jobs_apply')." WHERE company_uid=".$uid." AND personal_look=1"));
 	$smarty->assign('total_down_resume',$db->get_total("SELECT COUNT(*) AS num FROM ".table('company_down_resume')." WHERE company_uid=".$uid));
 	$smarty->assign('total_favorites_resume',$db->get_total("SELECT COUNT(*) AS num FROM ".table('company_favorites')." WHERE company_uid=".$uid));
-	//ÍÆ¼ö¼òÀú
+	//æ¨èç®€å†
 	$smarty->assign('concern_id',get_concern_id($uid));
-	//ÏûÏ¢ÌáĞÑ
+	//æ¶ˆæ¯æé†’
 	$smarty->assign('msg_total1',$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$uid}' OR msgtouid='{$uid}') AND `new`='2' AND `replyuid`<>'{$uid}'"));
 	$smarty->assign('msg_total2',$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$uid}' OR msgtouid='{$uid}') AND `new`='1' AND `replyuid`<>'{$uid}'"));
 	$smarty->display('member_company/company_index.htm');

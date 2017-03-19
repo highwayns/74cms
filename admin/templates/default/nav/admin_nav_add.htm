@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -25,35 +25,35 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="toptip">
-<h2>ÌáÊ¾£º</h2>
+<h2>æç¤ºï¼š</h2>
 <p>
-Èç¹ûÊÇ±¾Õ¾µÄÍøÖ·£¬¿ÉËõĞ´ÎªÓë¸ùÄ¿Â¼Ïà¶ÔµØÖ·£¬Èç index.php<br />
-ÆäËûÇé¿ö¶¼Ó¦¸ÃÊäÈëÍêÕûµÄÍøÖ·£¬Èç£ºhttp://www.74cms.com/bbs£»
+å¦‚æœæ˜¯æœ¬ç«™çš„ç½‘å€ï¼Œå¯ç¼©å†™ä¸ºä¸æ ¹ç›®å½•ç›¸å¯¹åœ°å€ï¼Œå¦‚ index.php<br />
+å…¶ä»–æƒ…å†µéƒ½åº”è¯¥è¾“å…¥å®Œæ•´çš„ç½‘å€ï¼Œå¦‚ï¼šhttp://www.74cms.com/bbsï¼›
 </p>
 </div>
-<div class="toptit">ĞÂÔöµ¼º½À¸</div>
+<div class="toptit">æ–°å¢å¯¼èˆªæ </div>
   <form action="?act=site_navigation_add_save" method="post"   name="form1" id="form1"> 
   {#$inputtoken#}
 <table border="0" cellspacing="5" cellpadding="1" >
 		<tr>
-            <td width="100" align="right">ÀàĞÍ£º</td>
+            <td width="100" align="right">ç±»å‹ï¼š</td>
             <td>
-			<label><input name="urltype" type="radio" value="0" checked="checked"    />ÏµÍ³ÄÚÈİ</label>
+			<label><input name="urltype" type="radio" value="0" checked="checked"    />ç³»ç»Ÿå†…å®¹</label>
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<label><input name="urltype" type="radio" value="1"    />ÆäËûÁ´½Ó</label>
+			<label><input name="urltype" type="radio" value="1"    />å…¶ä»–é“¾æ¥</label>
 			</td>
 		</tr>
           <tr>
-            <td width="100" align="right">À¸Ä¿Ãû³Æ(±ØÌî)£º</td>
+            <td width="100" align="right">æ ç›®åç§°(å¿…å¡«)ï¼š</td>
             <td><input name="title" type="text"  class="input_text_200" id="title" value="" maxlength="30"/></td>
           </tr>
           <tr class="http" style=" display:none">
-            <td align="right">Á´½ÓµØÖ·£º</td>
+            <td align="right">é“¾æ¥åœ°å€ï¼š</td>
             <td><input name="url" type="text"  class="input_text_200" id="url" value="" maxlength="180"/>
      </td>
           </tr>
 		  <tr class="sys">
-            <td align="right">ÏµÍ³Ò³Ãæ£º</td>
+            <td align="right">ç³»ç»Ÿé¡µé¢ï¼š</td>
             <td>
 			<select name="systemalias" style="width:205px; font-size:12px;"  onchange="selChangesystemalias(this.value)">
 			 {#foreach from=$syspage item=list#}
@@ -64,15 +64,15 @@ $(document).ready(function()
 			</td>
           </tr>
 		   <tr class="sys">
-            <td align="right">ÏµÍ³Ò³ÃæID£º</td>
+            <td align="right">ç³»ç»Ÿé¡µé¢IDï¼š</td>
             <td><input name="pagealias" type="text" value="" class="input_text_200" /></td>
           </tr>
 		  <tr class="sys">
-            <td align="right">·ÖÀàID£º</td>
-            <td><input name="list_id" type="text" value="" class="input_text_200" /> Èç¸ÃÀ¸Ä¿ÎªĞÅÏ¢ÁĞ±íÒ³ÔòĞèÒªÌîĞ´·ÖÀàID</td>
+            <td align="right">åˆ†ç±»IDï¼š</td>
+            <td><input name="list_id" type="text" value="" class="input_text_200" /> å¦‚è¯¥æ ç›®ä¸ºä¿¡æ¯åˆ—è¡¨é¡µåˆ™éœ€è¦å¡«å†™åˆ†ç±»ID</td>
           </tr>
 		  <tr >
-            <td align="right">Àà±ğ£º</td>
+            <td align="right">ç±»åˆ«ï¼š</td>
             <td>
 			 {#foreach from=$category item=list#}
 			<label>
@@ -84,31 +84,31 @@ $(document).ready(function()
 			</td>
           </tr>
           <tr>
-            <td align="right">´ò¿ª·½Ê½£º</td>
+            <td align="right">æ‰“å¼€æ–¹å¼ï¼š</td>
             <td><label>
               <input name="target" type="radio" value="_blank" checked="checked" />
-              ĞÂ´°¿Ú</label>
+              æ–°çª—å£</label>
               &nbsp;&nbsp;&nbsp;&nbsp;
               <label>
                 <input name="target" type="radio" value="_self">
-                µ±Ç°´°¿Ú</label></td>
+                å½“å‰çª—å£</label></td>
           </tr>
           <tr>
-            <td align="right">ÏÔÊ¾Ë³Ğò£º</td>
+            <td align="right">æ˜¾ç¤ºé¡ºåºï¼š</td>
             <td><input name="navigationorder" type="text"  class="input_text_200" id="navigationorder" value="0" maxlength="3"  />            </td>
           </tr>
           <tr>
-            <td align="right">ÊÇ·ñÏÔÊ¾£º</td>
+            <td align="right">æ˜¯å¦æ˜¾ç¤ºï¼š</td>
             <td><label>
               <input name="display" type="radio" value="1"  checked="checked" />
-              ÏÔÊ¾</label>
+              æ˜¾ç¤º</label>
               &nbsp;&nbsp;&nbsp;&nbsp;
               <label>
                 <input name="display" type="radio" value="0">
-                Òş²Ø</label>            </td>
+                éšè—</label>            </td>
           </tr>
 		       <tr>
-            <td align="right">ÏÔÊ¾ÑÕÉ«£º</td>
+            <td align="right">æ˜¾ç¤ºé¢œè‰²ï¼š</td>
             <td>
 			<div class="color_layer">	
 			 <input type="text" name="tit_color" id="tit_color" style="display:none">
@@ -118,7 +118,7 @@ $(document).ready(function()
 			</td>
           </tr>
 		  <tr>
-            <td align="right">µ¼º½¹ØÁª±ê¼Ç£º</td>
+            <td align="right">å¯¼èˆªå…³è”æ ‡è®°ï¼š</td>
             <td>
  <input name="tag" type="text"  class="input_text_200" id="tag" value="" maxlength="30"/>
 			</td>
@@ -126,8 +126,8 @@ $(document).ready(function()
           <tr>
             <td align="right">&nbsp;</td>
             <td height="80">
-			<input type="submit" name="Submit3" value="È·¶¨Ìá½»" class="admin_submit"   />
-<input name="submit222" type="button" class="admin_submit"    value="·µ »Ø" onclick="Javascript:window.history.go(-1)"/></td>
+			<input type="submit" name="Submit3" value="ç¡®å®šæäº¤" class="admin_submit"   />
+<input name="submit222" type="button" class="admin_submit"    value="è¿” å›" onclick="Javascript:window.history.go(-1)"/></td>
           </tr>
         </table>
   </form>

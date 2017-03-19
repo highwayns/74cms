@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Swipe 2.0
  *
  * Brad Birdsall

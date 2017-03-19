@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms °²×°Ïòµ¼º¯Êı
+ * 74cms å®‰è£…å‘å¯¼å‡½æ•°
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 if(!defined('IN_QISHI'))
@@ -58,21 +58,21 @@ function table($table)
 	$checked_dirs[$k]['dir'] = $dir;
         if (!file_exists(QISHI_ROOT_PATH .'/'. $dir))
         {
-            $checked_dirs[$k]['read'] = '<span style="color:red;">Ä¿Â¼²»´æÔÚ</span>';
-			$checked_dirs[$k]['write'] = '<span style="color:red;">Ä¿Â¼²»´æÔÚ</span>';
+            $checked_dirs[$k]['read'] = '<span style="color:red;">ç›®å½•ä¸å­˜åœ¨</span>';
+			$checked_dirs[$k]['write'] = '<span style="color:red;">ç›®å½•ä¸å­˜åœ¨</span>';
         }
 		else
 		{		
         if (is_readable(QISHI_ROOT_PATH.'/'.$dir))
         {
-            $checked_dirs[$k]['read'] = '<span style="color:green;">¡Ì¿É¶Á</span>';
+            $checked_dirs[$k]['read'] = '<span style="color:green;">âˆšå¯è¯»</span>';
         }else{
-            $checked_dirs[$k]['read'] = '<span sylt="color:red;">¡Á²»¿É¶Á</span>';
+            $checked_dirs[$k]['read'] = '<span sylt="color:red;">Ã—ä¸å¯è¯»</span>';
         }
         if(is_writable(QISHI_ROOT_PATH.'/'.$dir)){
-        	$checked_dirs[$k]['write'] = '<span style="color:green;">¡Ì¿ÉĞ´</span>';
+        	$checked_dirs[$k]['write'] = '<span style="color:green;">âˆšå¯å†™</span>';
         }else{
-        	$checked_dirs[$k]['write'] = '<span style="color:red;">¡Á²»¿ÉĞ´</span>';
+        	$checked_dirs[$k]['write'] = '<span style="color:red;">Ã—ä¸å¯å†™</span>';
         }
 		}
     }
@@ -99,10 +99,10 @@ function get_cache($cachename)
 	}
 	else
 	{
-	exit("»º´æÎÄ¼şÒâÍâ¶ªÊ§£¬Çëµ½½øÈëºóÌ¨¸üĞÂ»º´æ£¡");
+	exit("ç¼“å­˜æ–‡ä»¶æ„å¤–ä¸¢å¤±ï¼Œè¯·åˆ°è¿›å…¥åå°æ›´æ–°ç¼“å­˜ï¼");
 	}
 }
-//¸üĞÂ»º´æ
+//æ›´æ–°ç¼“å­˜
 function refresh_cache($cachename)
 {
 	global $db;
@@ -195,11 +195,11 @@ function write_static_cache($cache_file_path, $config_arr)
 		$fp = @fopen($cache_file_path, 'wb+');
 		if (!$fp)
 		{
-			exit('Éú³É»º´æÎÄ¼şÊ§°Ü');
+			exit('ç”Ÿæˆç¼“å­˜æ–‡ä»¶å¤±è´¥');
 		}
 		if (!@fwrite($fp, trim($content)))
 		{
-			exit('Éú³É»º´æÎÄ¼şÊ§°Ü');
+			exit('ç”Ÿæˆç¼“å­˜æ–‡ä»¶å¤±è´¥');
 		}
 		@fclose($fp);
 	}
@@ -207,7 +207,7 @@ function write_static_cache($cache_file_path, $config_arr)
 function makejs_classify()
 {
 	global $db;
-	$content = "//JavaScript Document Éú³ÉÊ±¼ä£º".date("Y-m-d  H:i:s")."\n\n";
+	$content = "//JavaScript Document ç”Ÿæˆæ—¶é—´ï¼š".date("Y-m-d  H:i:s")."\n\n";
 	$sql = "select * from ".table('category_district')." where parentid=0 order BY category_order desc,id asc";
 	$list=$db->getall($sql);
 	foreach($list as $parent)
@@ -375,7 +375,7 @@ function makejs_classify()
 	$content .= "var QS_hunter_rank=new Array(".implode(',',$rank).");\n";
 	$content .= "var QS_language=new Array(".implode(',',$language).");\n";
 	/*
-		Éú³É×¨Òµ·ÖÀàjs
+		ç”Ÿæˆä¸“ä¸šåˆ†ç±»js
 	*/
 	$sql = "select * from ".table('category_major')." where parentid=0 order BY category_order desc,id asc";
 	$list=$db->getall($sql);
@@ -414,14 +414,14 @@ function makejs_classify()
 	}
 	$fp = @fopen(QISHI_ROOT_PATH . 'data/cache_classify.js', 'wb+');
 	if (!$fp){
-			exit('Éú³ÉJSÎÄ¼şÊ§°Ü');
+			exit('ç”ŸæˆJSæ–‡ä»¶å¤±è´¥');
 		}
 	if (strcasecmp(QISHI_DBCHARSET,"utf8")!=0)
 	{
 	$content=iconv(QISHI_DBCHARSET,"utf-8//IGNORE",$content);
 	}
 	 if (!@fwrite($fp, trim($content))){
-			exit('Ğ´ÈëJSÎÄ¼şÊ§°Ü');
+			exit('å†™å…¥JSæ–‡ä»¶å¤±è´¥');
 		}
 	@fclose($fp);
 }

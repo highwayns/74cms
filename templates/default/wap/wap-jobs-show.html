@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
@@ -6,7 +6,7 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>{#$show.jobs_name#} - {#$QISHI.site_name#}</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="./css/common.css" rel="stylesheet" type="text/css" />
 <link href="./css/user.css" rel="stylesheet" type="text/css" />
@@ -17,19 +17,19 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
-	// ÊÕ²ØÖ°Î»
+	// æ”¶è—èŒä½
 	$("#collect_job").click(function(){
 		var id = {#$smarty.get.id#};
 		$.post("personal/wap_user.php?act=add_favorites",{id:id},function(data){
 			if(data=="ok"){
-				alert("ÊÕ²ØÖ°Î»³É¹¦");
+				alert("æ”¶è—èŒä½æˆåŠŸ");
 				window.location.reload();
 			}else if(data=="err"){
-				alert("ÊÕ²ØÖ°Î»Ê§°Ü");
+				alert("æ”¶è—èŒä½å¤±è´¥");
 				window.location.reload();
 			}else{
 				alert(data);
@@ -37,14 +37,14 @@ $(document).ready(function()
 			}
 		});
 	});
-	// µ¯³ö¿ò
+	// å¼¹å‡ºæ¡†
 	  function showFloatBox() {
 	    $("body").prepend("<div class=\"menu_bg_layer\"></div>");
 	    $(".menu_bg_layer").height($(document).height());
 	    $(".menu_bg_layer").css({ width: $(document).width(), position: "absolute",left:"0", top:"0","z-index":"1","background-color":"#000000"});
 	    $(".menu_bg_layer").css("opacity",0.3);
 	  }
-	// ÉêÇëÖ°Î»
+	// ç”³è¯·èŒä½
 	$("#jobs_apply").click(function(){
 		showFloatBox();
 		$(".choose_menu").css({ top: ($(window).height() - $('.choose_menu').outerHeight())/2 + $(document).scrollTop() });
@@ -63,10 +63,10 @@ $(document).ready(function()
 				$(".menu_bg_layer").remove();
 				$.post("personal/wap_apply.php?act=apply_add",{jobs_id:jobs_id,jobs_name:jobs_name,company_id:company_id,company_name:company_name,company_uid:company_uid,resume_id:resume_id,resume_title:resume_title},function(data){
 					if(data=="ok"){
-						alert("ÉêÇëÖ°Î»³É¹¦");
+						alert("ç”³è¯·èŒä½æˆåŠŸ");
 						window.location.reload();
 					}else if(data=="err"){
-						alert("ÉêÇëÖ°Î»Ê§°Ü");
+						alert("ç”³è¯·èŒä½å¤±è´¥");
 						window.location.reload();
 					}else{
 						alert(data);
@@ -74,7 +74,7 @@ $(document).ready(function()
 					}
 				});
 			}else{
-				alert("ÇëÑ¡Ôñ¼òÀú");
+				alert("è¯·é€‰æ‹©ç®€å†");
 			}
 		});
 		$("#but_right").click(function(){
@@ -101,26 +101,26 @@ $(document).ready(function()
 </div>
 
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="./index.php";'>
-    <div class="box"><img src="./images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="./images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="./wap-jobs-list.php";'>
-    <div class="box"><img src="./images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="./images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="./wap-resume-list.php";'>
-    <div class="box"><img src="./images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="./images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="./wap-news-list.php";'>
-    <div class="box"><img src="./images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="./images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 
-<!-- Ö°Î»ÏêÇéÊÕ²ØÍ¶µİÒ³Ãæ -->
+<!-- èŒä½è¯¦æƒ…æ”¶è—æŠ•é€’é¡µé¢ -->
 <div class="job_show_combox" onclick="window.location.href='{#$show.company_url#}'">
 	<h1>{#$show.companyname#}</h1>
 	<div class="show"></div>
@@ -130,12 +130,12 @@ $(document).ready(function()
 	<div class="txt_box">
 		<h4 class="jobname">{#$show.jobs_name#}</h4>
 		<div class="detail">
-			Ğ½×Ê´ıÓö£º<span class="money">{#$show.wage_cn#}</span><br />
-			Ë¢ĞÂÈÕÆÚ£º{#$show.refreshtime|date_format:"%Y-%m-%d"#}<br />
-			ÕĞÆ¸ÈËÊı£º{#$show.amount#}ÈË<br />
-			Ö°Î»Àà±ğ£º{#$show.category_cn#}<br />
-			ÕĞÆ¸Ìõ¼ş£º{#$show.sex_cn#}&nbsp;|&nbsp;{#$show.education_cn#}&nbsp;|&nbsp;{#$show.experience_cn#}<br />
-			¹¤×÷µØµã£º{#$show.district_cn#}
+			è–ªèµ„å¾…é‡ï¼š<span class="money">{#$show.wage_cn#}</span><br />
+			åˆ·æ–°æ—¥æœŸï¼š{#$show.refreshtime|date_format:"%Y-%m-%d"#}<br />
+			æ‹›è˜äººæ•°ï¼š{#$show.amount#}äºº<br />
+			èŒä½ç±»åˆ«ï¼š{#$show.category_cn#}<br />
+			æ‹›è˜æ¡ä»¶ï¼š{#$show.sex_cn#}&nbsp;|&nbsp;{#$show.education_cn#}&nbsp;|&nbsp;{#$show.experience_cn#}<br />
+			å·¥ä½œåœ°ç‚¹ï¼š{#$show.district_cn#}
 		</div>
 		<div class="welfare">
 			<ul>
@@ -149,7 +149,7 @@ $(document).ready(function()
 </div>
 
 <div class="job_show_box">
-	<h2>Ö°Î»ÃèÊö</h2>
+	<h2>èŒä½æè¿°</h2>
 	<div class="txt_box">
 		{#$show.contents|nl2br#}
 	</div>
@@ -162,19 +162,19 @@ $(document).ready(function()
 	<div class="shadow_box"></div>
 	<div class="del_box">
 		<div class="del_box_l">
-			<div class="delivery_but" id="jobs_apply">Í¶µİ¼òÀú</div>
+			<div class="delivery_but" id="jobs_apply">æŠ•é€’ç®€å†</div>
 		</div>
 		<div class="del_box_r">
-			<div class="favorites done" id="collect_job">ÊÕ²ØÖ°Î»</div>
+			<div class="favorites done" id="collect_job">æ”¶è—èŒä½</div>
 		</div>
 		<div class="clear"></div>
 	</div>
 </div>
 {#/if#}
 
-<!-- µ¯³ö¿ò -->
+<!-- å¼¹å‡ºæ¡† -->
 <div class="menu choose_menu" style="display:none;position:absolute;z-index:1;">
-	<div class="menu_title">ÇëÑ¡Ôñ¼òÀú</div>
+	<div class="menu_title">è¯·é€‰æ‹©ç®€å†</div>
 	<ul>
 		{#foreach from=$resume_list item=list#}
 		<li ><label for="r_{#$list.id#}" ><input type="radio" name="resume_list" id="r_{#$list.id#}" value="{#$list.id#}" title="{#$list.title#}"/>{#$list.title#}</label></li>
@@ -182,10 +182,10 @@ $(document).ready(function()
 	</ul>
 	<div class="choose_but">
 		<div class="but_left" id="but_left">
-			<a>Í¶µİ</a>
+			<a>æŠ•é€’</a>
 		</div>
 		<div class="but_right" id="but_right">
-			<a>È¡Ïû</a>
+			<a>å–æ¶ˆ</a>
 		</div>
 		<div class="clear"></div>
 	</div>

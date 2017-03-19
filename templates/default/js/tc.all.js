@@ -1,10 +1,9 @@
-/***
- * 弹出层插件
-***/
+﻿/***
+ * 寮瑰嚭灞傛彃浠?***/
 function popWin(obj){
-	var _z=9000;//新对象的z-index
-	var _mv=false;//移动标记
-	var _x,_y;//鼠标离控件左上角的相对位置		
+	var _z=9000;//鏂板璞＄殑z-index
+	var _mv=false;//绉诲姩鏍囪
+	var _x,_y;//榧犳爣绂绘帶浠跺乏涓婅鐨勭浉瀵逛綅缃?	
 	var _obj= $("#"+obj);
 	var _wid= _obj.width();
 	var _hei= _obj.height();
@@ -17,28 +16,26 @@ function popWin(obj){
 			
 	_tit.mousedown(function(e){
 		_mv=true;
-		_x=e.pageX-parseInt(_obj.css("left"));//获得左边位置
-		_y=e.pageY-parseInt(_obj.css("top"));//获得上边位置
-		_obj.css({	"z-index":_z-(-1)}).fadeTo(50,.5);//点击后开始拖动并透明显示
+		_x=e.pageX-parseInt(_obj.css("left"));//鑾峰緱宸﹁竟浣嶇疆
+		_y=e.pageY-parseInt(_obj.css("top"));//鑾峰緱涓婅竟浣嶇疆
+		_obj.css({	"z-index":_z-(-1)}).fadeTo(50,.5);//鐐瑰嚮鍚庡紑濮嬫嫋鍔ㄥ苟閫忔槑鏄剧ず
 	});
 	_tit.mouseup(function(e){
 		_mv=false;
-		_obj.fadeTo("fast",1);//松开鼠标后停止移动并恢复成不透明				 
+		_obj.fadeTo("fast",1);//鏉惧紑榧犳爣鍚庡仠姝㈢Щ鍔ㄥ苟鎭㈠鎴愪笉閫忔槑				 
 	
 	});
 	
 	$(document).mousemove(function(e){
 		if(_mv){
-			var x=e.pageX-_x;//移动时根据鼠标位置计算控件左上角的绝对位置
-			if(x<=0){x=0};
+			var x=e.pageX-_x;//绉诲姩鏃舵牴鎹紶鏍囦綅缃绠楁帶浠跺乏涓婅鐨勭粷瀵逛綅缃?			if(x<=0){x=0};
 			x=Math.min($(document).width()-_wid,x)-5;
 			var y=e.pageY-_y;
 			if(y<=0){y=0};
 			y=Math.min($(document).height()-_hei,y)-5;
 			_obj.css({
 				top:y,left:x
-			});//控件新位置
-		}
+			});//鎺т欢鏂颁綅缃?		}
 	});
 
 			_cls.live("click",function(){

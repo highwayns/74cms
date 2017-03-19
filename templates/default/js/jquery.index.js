@@ -1,4 +1,4 @@
-function index(dir,templatedir)
+ï»¿function index(dir,templatedir)
 {
 	$(".lazyload div img").lazyload({ placeholder: templatedir+"images/index/84.gif", effect:"fadeIn" });
 	$(".banner").KinSlideshow({
@@ -14,7 +14,7 @@ function index(dir,templatedir)
 	});
 	function index_search_location()
 	{
-		$("body").append('<div id="pageloadingbox">Ò³Ãæ¼ÓÔØÖĞ....</div><div id="pageloadingbg"></div>');
+		$("body").append('<div id="pageloadingbox">é¡µé¢åŠ è½½ä¸­....</div><div id="pageloadingbg"></div>');
 		$("#pageloadingbg").css("opacity", 0.5);
 
 		 var sotype=$("#topsotype").val();
@@ -23,7 +23,7 @@ function index(dir,templatedir)
 	 	}else{
 	 		var sotype_code = "QS_resumelist";
 	 	}
-	 	var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+	 	var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
 		var key=$("#index-search-key").val();
 		if (patrn.exec(key))
 		{
@@ -39,7 +39,7 @@ function index(dir,templatedir)
 	}
 	$("#index-search-key").focus(function()
 	{
-	 var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+	 var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
 	 var key=$(this).val();
 		if (patrn.exec(key))
 		{
@@ -56,10 +56,10 @@ function index(dir,templatedir)
 		function (data,textStatus)
 		{	
 			$(".jobs_content ul").html(data);
-			$.joblisttip(".comtip",dir+"plus/ajax_common.php?act=joblisttip","ÔØÈëÖĞ...",'comvtipshow');
+			$.joblisttip(".comtip",dir+"plus/ajax_common.php?act=joblisttip","è½½å…¥ä¸­...",'comvtipshow');
 		}
 	);
-	//ÏÂ²¿×ó±ßÀ¸µã»÷Ğ§¹û
+	//ä¸‹éƒ¨å·¦è¾¹æ ç‚¹å‡»æ•ˆæœ
 	$(".jobs_area .category_wrap ul li").click(function(){
 		var idx=$(this).index(".jobs_area .category_wrap ul li");
 		$(this).addClass("select").siblings().removeClass("select");
@@ -70,18 +70,18 @@ function index(dir,templatedir)
 			function (data,textStatus)
 			{	
 				$(".jobs_content ul").html(data);
-				$.joblisttip(".comtip",dir+"plus/ajax_common.php?act=joblisttip","ÔØÈëÖĞ...",'comvtipshow');
+				$.joblisttip(".comtip",dir+"plus/ajax_common.php?act=joblisttip","è½½å…¥ä¸­...",'comvtipshow');
 			}
 		);		
 	});
-	// Ö°Î»Ñ¡Ïî¿¨
+	// èŒä½é€‰é¡¹å¡
 	$(".topjobs").click(function(){
 		$(".topjobs").removeClass("active");
 		$(this).addClass("active");
 		$(".list_content ul").css("display","none");
 		$("."+$(this).attr("listname")).css("display","block");
 	});
-	//Ñ¡Ïî¿¨ÇĞ»»
+	//é€‰é¡¹å¡åˆ‡æ¢
 	$(".nav_item>li").each(function(){
 		$(this).click(function(){
 			$(this).addClass("active");
@@ -90,22 +90,22 @@ function index(dir,templatedir)
 			$(".bulletin>div.bull_content").eq(bull_index).show().siblings().not( ".bulletin_nav" ).hide();
 		})
 	});
-	//Ö°Î»¼òÀúÇĞ»»µã»÷ÊÂ¼ş
+	//èŒä½ç®€å†åˆ‡æ¢ç‚¹å‡»äº‹ä»¶
 	$(".selemenu").click(function(){
 		var txt = $(this).text();
-		if (txt == "¼òÀú") {
+		if (txt == "ç®€å†") {
 			$("#topsotype").val("2");
-			$(".seletxt").text("¼òÀú");
-			$(".selemenu").text("Ö°Î»");
+			$(".seletxt").text("ç®€å†");
+			$(".selemenu").text("èŒä½");
 			$(".selemenu").hide();
 		}else{
 			$("#topsotype").val("1");
-			$(".seletxt").text("Ö°Î»");
-			$(".selemenu").text("¼òÀú");
+			$(".seletxt").text("èŒä½");
+			$(".selemenu").text("ç®€å†");
 			$(".selemenu").hide();
 		};
 	});
-	// Ö°Î»¼òÀúÇĞ»»
+	// èŒä½ç®€å†åˆ‡æ¢
 	$("#selectbox").hover(function(){
 		$(this).find(".selemenu").show();
 	}, function(){
@@ -116,7 +116,7 @@ function get_right_menu(arr){
 	$(".leftMenu li").hover(function(){
 		var liwidth=$(this).width();
 		var leftMenuH=$(".leftMenu").height()+43;
-		// ¶ÁÈ¡Êı¾İ==ÏÔÊ¾
+		// è¯»å–æ•°æ®==æ˜¾ç¤º
 		var html = '<div class="show">';
 		subclass = arr[$(this).attr("id")];
 		if(subclass){
@@ -126,7 +126,7 @@ function get_right_menu(arr){
 		$(".show").html(html);		
 		
 		$(this).addClass("select").siblings().removeClass("select");
-		//½«htmlĞ´Èë show divÖĞ---ÏÈÖ´ĞĞempty()
+		//å°†htmlå†™å…¥ show divä¸­---å…ˆæ‰§è¡Œempty()
 		$(".leftmenu_box").empty();
 		$(".leftmenu_box").append(html).css({"top":"0","left":"220px","display":"block","overflow":"auto"});
 		

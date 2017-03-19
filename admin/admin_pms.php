@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÏûÏ¢
+ * 74cms æ¶ˆæ¯
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_pms_fun.php');
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'list';
 check_permissions($_SESSION['admin_purview'],"help");
-$smarty->assign('pageheader',"ÏûÏ¢");	
+$smarty->assign('pageheader',"æ¶ˆæ¯");	
 $smarty->assign('act',$act);
 if($act == 'list')
 {
@@ -58,18 +58,18 @@ elseif($act == 'add_pms_sys_save')
 		$setsqlarr['spms_type']=intval($_POST['spms_type']);
 		$setsqlarr['dateline']=time();
 		$setsqlarr['message']=trim($_POST['message']);
-		$link[0]['text'] = "¼ÌÐøÌí¼Ó";
+		$link[0]['text'] = "ç»§ç»­æ·»åŠ ";
 		$link[0]['href'] = '?act=add_pms_sys';
-		$link[1]['text'] = "·µ»ØÁÐ±í";
+		$link[1]['text'] = "è¿”å›žåˆ—è¡¨";
 		$link[1]['href'] = '?act=list';
-		!$db->inserttable(table('pms_sys'),$setsqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+		!$db->inserttable(table('pms_sys'),$setsqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 	}
 	else
 	{
 		$tosuername=explode("\n",$_POST['us']);
 		if (count($tosuername)==0 || empty($tosuername))
 		{
-		adminmsg("ÓÃ»§ÃûÌîÐ´´íÎó£¡",1);
+		adminmsg("ç”¨æˆ·åå¡«å†™é”™è¯¯ï¼",1);
 		}
 		else
 		{
@@ -100,16 +100,16 @@ elseif($act == 'add_pms_sys_save')
  			}
 			if ($s>0)
 			{
-			$link[0]['text'] = "¼ÌÐøÌí¼Ó";
+			$link[0]['text'] = "ç»§ç»­æ·»åŠ ";
 			$link[0]['href'] = '?act=add_pms_sys';
-			$link[1]['text'] = "·µ»ØÁÐ±í";
+			$link[1]['text'] = "è¿”å›žåˆ—è¡¨";
 			$link[1]['href'] = '?act=list';
-			write_log("·¢ËÍÏûÏ¢,¹²·¢¸øÁË {$s} ¸ö»áÔ±", $_SESSION['admin_name'],3);
-			adminmsg("·¢ËÍ³É¹¦£¡¹²·¢¸øÁË {$s} ¸ö»áÔ±",2,$link);
+			write_log("å‘é€æ¶ˆæ¯,å…±å‘ç»™äº† {$s} ä¸ªä¼šå‘˜", $_SESSION['admin_name'],3);
+			adminmsg("å‘é€æˆåŠŸï¼å…±å‘ç»™äº† {$s} ä¸ªä¼šå‘˜",2,$link);
 			}
 			else
 			{
-			adminmsg("·¢ËÍÊ§°Ü£¡Çë¼ì²é»áÔ±Ãû³ÆÊÇ·ñÕýÈ·",0);
+			adminmsg("å‘é€å¤±è´¥ï¼è¯·æ£€æŸ¥ä¼šå‘˜åç§°æ˜¯å¦æ­£ç¡®",0);
 			}			
 		}
 	}
@@ -118,16 +118,16 @@ elseif($act =='pms_sys_del')
 {
 	check_token();
 	$id=$_REQUEST['id'];
-	if (empty($id)) adminmsg("ÇëÑ¡ÔñÏîÄ¿£¡",1);
+	if (empty($id)) adminmsg("è¯·é€‰æ‹©é¡¹ç›®ï¼",1);
 	$n=del_pms_sys($id);
 	if ($n)
 	{
-	write_log("É¾³ýÏûÏ¢,¹²É¾³ý {$n} ÐÐ£¡", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ý³É¹¦ ¹²É¾³ý {$n} ÐÐ£¡",2);
+	write_log("åˆ é™¤æ¶ˆæ¯,å…±åˆ é™¤ {$n} è¡Œï¼", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸ å…±åˆ é™¤ {$n} è¡Œï¼",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'pms_edit')
@@ -147,11 +147,11 @@ elseif($act == 'pms_editsave')
 		$setsqlarr['spms_usertype']=intval($_POST['spms_usertype']);
 		$setsqlarr['spms_type']=intval($_POST['spms_type']);
 		$setsqlarr['message']=trim($_POST['message']);
-		$link[0]['text'] = "¼ÌÐøÌí¼Ó";
+		$link[0]['text'] = "ç»§ç»­æ·»åŠ ";
 		$link[0]['href'] = '?act=add_pms_sys';
-		$link[1]['text'] = "²é¿´ÐÞ¸Ä½á¹û";
+		$link[1]['text'] = "æŸ¥çœ‹ä¿®æ”¹ç»“æžœ";
 		$link[1]['href'] = "?act=pms_edit&id=".$id;
-		write_log("ÐÞ¸ÄidÎª".$id."µÄÏûÏ¢", $_SESSION['admin_name'],3);
-		!$db->updatetable(table('pms_sys'),$setsqlarr," spmid=".$id."")?adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0):adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);
+		write_log("ä¿®æ”¹idä¸º".$id."çš„æ¶ˆæ¯", $_SESSION['admin_name'],3);
+		!$db->updatetable(table('pms_sys'),$setsqlarr," spmid=".$id."")?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 ?>

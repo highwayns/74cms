@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¼Æ»®ÈÎÎñ Ã¿ÈÕÊı¾İÍ³¼Æ
+ * 74cms è®¡åˆ’ä»»åŠ¡ æ¯æ—¥æ•°æ®ç»Ÿè®¡
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 if(!defined('IN_QISHI'))
@@ -16,7 +16,7 @@ die('Access Denied!');
 ignore_user_abort(true);
 set_time_limit(180);
 	global $_CFG;
-	//¸ÚÎ»·ÖÀà
+	//å²—ä½åˆ†ç±»
 	$result = $db->query("SELECT * FROM ".table('category_jobs')." WHERE parentid=0");	
 	while($row = $db->fetch_array($result))
 	{
@@ -29,7 +29,7 @@ set_time_limit(180);
 		$sql = "UPDATE ".table('category_jobs')." SET stat_jobs='{$jobtotal}',stat_resume='{$resumetotal}'  WHERE id='{$row['id']}' LIMIT 1";
 		$db->query($sql);			
 	}
-	//µØÇø·ÖÀà
+	//åœ°åŒºåˆ†ç±»
 	$result = $db->query("SELECT * FROM ".table('category_district')." WHERE parentid=0");	
 	while($row = $db->fetch_array($result))
 	{
@@ -42,7 +42,7 @@ set_time_limit(180);
 		$sql = "UPDATE ".table('category_district')." SET stat_jobs='{$jobtotal}',stat_resume='{$resumetotal}'  WHERE id='{$row['id']}' LIMIT 1";
 		$db->query($sql);			
 	}
-	//ÆäËû·ÖÀà
+	//å…¶ä»–åˆ†ç±»
 	$result = $db->query("SELECT * FROM ".table('category')." ");	
 	while($row = $db->fetch_array($result))
 	{
@@ -67,7 +67,7 @@ set_time_limit(180);
 		$sql = "UPDATE ".table('category')." SET stat_jobs='{$jobtotal}',stat_resume='{$resumetotal}'  WHERE c_id='{$row['c_id']}' LIMIT 1";
 		$db->query($sql);			
 	}
-	//¸üĞÂ·ÖÀà»º´æ
+	//æ›´æ–°åˆ†ç±»ç¼“å­˜
 	$cache_file_path =QISHI_ROOT_PATH. "data/cache_category.php";
 	$sql = "SELECT * FROM ".table('category')."  ORDER BY c_order DESC,c_id ASC";
 	$result = $db->query($sql);
@@ -85,7 +85,7 @@ set_time_limit(180);
 		}
 	
 	
-	//¸üĞÂÈÎÎñÊ±¼ä±í
+	//æ›´æ–°ä»»åŠ¡æ—¶é—´è¡¨
 	if ($crons['weekday']>=0)
 	{
 	$weekday=array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');

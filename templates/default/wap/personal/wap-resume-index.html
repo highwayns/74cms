@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>¸öÈË»áÔ±ÖĞĞÄ</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ä¸ªäººä¼šå‘˜ä¸­å¿ƒ</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="../css/common.css" rel="stylesheet" type="text/css" />
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
@@ -17,54 +17,54 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
-	// Ë¢ĞÂ¼òÀú
+	// åˆ·æ–°ç®€å†
 	$(".resume_refresh").click(function(){
 		var id=$(this).attr("pid");
 		$.get("?act=resume_refresh&pid="+id+"", function(data){
 		    if(data=="ok"){
-		    	alert("Ë¢ĞÂ¼òÀú³É¹¦£¡");
+		    	alert("åˆ·æ–°ç®€å†æˆåŠŸï¼");
 		    	window.location.reload();
 		    }else if(data="err"){
-		    	alert("Ë¢ĞÂ¼òÀúÊ§°Ü£¡");
+		    	alert("åˆ·æ–°ç®€å†å¤±è´¥ï¼");
 		    	window.location.reload();
 		    }else{
 		    	alert(data);
 		    }
 		  });
 	});
-	// É¾³ı¼òÀú
+	// åˆ é™¤ç®€å†
 	$(".resume_del").click(function(){
 		var id=$(this).attr("pid");
-		if (!confirm("È·ÈÏÒªÉ¾³ı£¿")) {
+		if (!confirm("ç¡®è®¤è¦åˆ é™¤ï¼Ÿ")) {
             window.event.returnValue = false;
         }
         else
         {
         	$.get("?act=resume_del&pid="+id+"", function(data){
 		    if(data=="ok"){
-		    	// alert("É¾³ı¼òÀú³É¹¦");
+		    	// alert("åˆ é™¤ç®€å†æˆåŠŸ");
 		    	window.location.reload();
 		    }else if(data=="err"){
-		    	alert("É¾³ı¼òÀúÊ§°Ü£¡");
+		    	alert("åˆ é™¤ç®€å†å¤±è´¥ï¼");
 		    }else{
 		    	alert(data);
 		    }
 		  });
         }
 	});
-	// ÉêÇë¸ß¼¶¼òÀú
+	// ç”³è¯·é«˜çº§ç®€å†
 	$("#resume_talent").click(function(){
 		var id=$(this).attr("pid");
 		$.get("?act=resume_talent&pid="+id+"", function(data){
 		    if(data=="ok"){
-		    	alert("ÉêÇë¸ß¼¶¼òÀú,ÇëµÈ´ı¹ÜÀíÔ±ÉóºË£¡");
+		    	alert("ç”³è¯·é«˜çº§ç®€å†,è¯·ç­‰å¾…ç®¡ç†å‘˜å®¡æ ¸ï¼");
 		    	window.location.reload();
 		    }else if(data=="err"){
-		    	alert("ÉêÇëÊ§°Ü£¡");
+		    	alert("ç”³è¯·å¤±è´¥ï¼");
 		    }else{
 		    	alert(data);
 		    }
@@ -76,43 +76,43 @@ $(document).ready(function()
 <body>
 <div class=""></div>
 <div class="sub_head_top">
-	<div class="title">ÎÒµÄ¼òÀú</div>
+	<div class="title">æˆ‘çš„ç®€å†</div>
 	<div class="back" id="pageback"><img src="../images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="../images/2.jpg"  border="0"/></a></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="../index.php";'>
-    <div class="box"><img src="../images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="../images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-jobs-list.php";'>
-    <div class="box"><img src="../images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="../images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-resume-list.php";'>
-    <div class="box"><img src="../images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="../images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-news-list.php";'>
-    <div class="box"><img src="../images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="../images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 
-<!-- ¼òÀú¹ÜÀíÊ×Ò³ -->
+<!-- ç®€å†ç®¡ç†é¦–é¡µ -->
 <div class="resume_bbox">
-	<!-- ¼òÀú¹ÜÀí -->
+	<!-- ç®€å†ç®¡ç† -->
 	{#foreach from=$resume_list item=list#}
 	<div class="resume_box">
 		<div class="detail">
 			<div class="detail_t1">
-				<div class="resume_name">{#$list.title#}<span>{#if $list.audit=="1"#}{#elseif $list.audit=="2"#}[<i class="audit">ÉóºËÖĞ</i>]{#else#}[<i class="audit">ÉóºËÎ´Í¨¹ı</i>]{#/if#}</span></div>
+				<div class="resume_name">{#$list.title#}<span>{#if $list.audit=="1"#}{#elseif $list.audit=="2"#}[<i class="audit">å®¡æ ¸ä¸­</i>]{#else#}[<i class="audit">å®¡æ ¸æœªé€šè¿‡</i>]{#/if#}</span></div>
 				<div class="resume_centent">
 					<div class="resume_centent_l">
-						µÈ¼¶£º{#if $list.talent=="2"#}<span style="color:#FF6600">¸ß¼¶</span>{#elseif $list.talent=="3"#}¸ß¼¶´ıÉó{#else#}ÆÕÍ¨&nbsp;&nbsp;<a href="javascript:;"class="update" id="resume_talent" pid="{#$list.id#}">[Éı¼¶¼òÀú]</a>{#/if#}<br />Ë¢ĞÂ£º{#$list.refreshtime|date_format:"%Y-%m-%d %H:%M"#}
+						ç­‰çº§ï¼š{#if $list.talent=="2"#}<span style="color:#FF6600">é«˜çº§</span>{#elseif $list.talent=="3"#}é«˜çº§å¾…å®¡{#else#}æ™®é€š&nbsp;&nbsp;<a href="javascript:;"class="update" id="resume_talent" pid="{#$list.id#}">[å‡çº§ç®€å†]</a>{#/if#}<br />åˆ·æ–°ï¼š{#$list.refreshtime|date_format:"%Y-%m-%d %H:%M"#}
 					</div>
 					<div class="resume_centent_r">
-						ÍêÕû¶È£º{#$list.complete_percent#}%(<span class="bad">{#if $list.level=="1"#} ²î {#elseif $list.level=="2"#}Á¼{#else#}ÓÅ{#/if#} </span>)<br />ÏÂÔØ/ä¯ÀÀ£º{#$list.countdown#}/{#$list.click#}
+						å®Œæ•´åº¦ï¼š{#$list.complete_percent#}%(<span class="bad">{#if $list.level=="1"#} å·® {#elseif $list.level=="2"#}è‰¯{#else#}ä¼˜{#/if#} </span>)<br />ä¸‹è½½/æµè§ˆï¼š{#$list.countdown#}/{#$list.click#}
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -128,38 +128,38 @@ $(document).ready(function()
 				<div class="list_icon">
 					{#if $list.audit=="1"#}
 					<a class=" resume_refresh" pid="{#$list.id#}">
-						<img src="../images/resume_1.gif" alt="" /><br />Ë¢ĞÂ
+						<img src="../images/resume_1.gif" alt="" /><br />åˆ·æ–°
 					</a>
 					{#else#}
 					<a class="hui" pid="{#$list.id#}">
-						<img src="../images/resume_1_hui.gif" alt="" /><br />Ë¢ĞÂ
+						<img src="../images/resume_1_hui.gif" alt="" /><br />åˆ·æ–°
 					</a>
 					{#/if#}
 				</div>
 				<div class="list_icon">
 					<a href="?act=resume_one&pid={#$list.id#}" >
-						<img src="../images/resume_2.gif" alt="" /><br />ĞŞ¸Ä
+						<img src="../images/resume_2.gif" alt="" /><br />ä¿®æ”¹
 					</a>
 				</div>
 				<div class="list_icon">
 					<a href="../wap-resume-show.php?id={#$list.id#}">
-						<img src="../images/resume_3.gif" alt="" /><br />Ô¤ÀÀ
+						<img src="../images/resume_3.gif" alt="" /><br />é¢„è§ˆ
 					</a>
 				</div>
 				<div class="list_icon">
 					{#if $list.audit=="1"#}
 					<a href="?act=resume_privacy&pid={#$list.id#}" >
-						<img src="../images/resume_4.gif" alt="" /><br />¹«¿ª
+						<img src="../images/resume_4.gif" alt="" /><br />å…¬å¼€
 					</a>
 					{#else#}
 					<a class="hui">
-						<img src="../images/resume_4_hui.gif" alt="" /><br />¹«¿ª
+						<img src="../images/resume_4_hui.gif" alt="" /><br />å…¬å¼€
 					</a>
 					{#/if#}
 				</div>
 				<div class="list_icon">
 					<a class="resume_del" pid="{#$list.id#}">
-						<img src="../images/resume_5.gif" alt="" /><br />É¾³ı
+						<img src="../images/resume_5.gif" alt="" /><br />åˆ é™¤
 					</a>
 				</div>
 				<div class="clear"></div>
@@ -169,8 +169,8 @@ $(document).ready(function()
 	{#/foreach#}
 </div>
 
-<!-- ´´½¨ĞÂ¼òÀú°´Å¥ -->
-<div class="make_new_resume_but" onclick="window.location.href='?act=make_resume'" style="cursor: pointer;">´´½¨ĞÂ¼òÀú</div>
+<!-- åˆ›å»ºæ–°ç®€å†æŒ‰é’® -->
+<div class="make_new_resume_but" onclick="window.location.href='?act=make_resume'" style="cursor: pointer;">åˆ›å»ºæ–°ç®€å†</div>
 <!-- footer -->
 {#include file="wap/footer.htm"#}
 </body>

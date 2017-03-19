@@ -1,4 +1,4 @@
-Attr.AllowedFrameTargets
+﻿Attr.AllowedFrameTargets
 TYPE: lookup
 DEFAULT: array()
 --DESCRIPTION--

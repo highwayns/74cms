@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,17 +6,17 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-		´ËÁĞ±íÎªÄúÏµÍ³·¢ËÍµÄÓÊ¼şÁĞ±í
+		æ­¤åˆ—è¡¨ä¸ºæ‚¨ç³»ç»Ÿå‘é€çš„é‚®ä»¶åˆ—è¡¨
 	</p>
 </div>
 <div class="seltpye_x">
-		<div class="left">É¸Ñ¡ÀàĞÍ</div>	
+		<div class="left">ç­›é€‰ç±»å‹</div>	
 		<div class="right">
-		<a href="{#"state:"|qishi_parse_url#}" {#if $smarty.get.state==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"state:1"|qishi_parse_url#}" {#if $smarty.get.state=="1"#}class="select"{#/if#}>·¢ËÍ³É¹¦</a>
-		<a href="{#"state:2"|qishi_parse_url#}" {#if $smarty.get.state=="2"#}class="select"{#/if#}>·¢ËÍÊ§°Ü</a>
+		<a href="{#"state:"|qishi_parse_url#}" {#if $smarty.get.state==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"state:1"|qishi_parse_url#}" {#if $smarty.get.state=="1"#}class="select"{#/if#}>å‘é€æˆåŠŸ</a>
+		<a href="{#"state:2"|qishi_parse_url#}" {#if $smarty.get.state=="2"#}class="select"{#/if#}>å‘é€å¤±è´¥</a>
 		<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
@@ -26,19 +26,19 @@
     <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
     <tr>
       <td  width="120" class="admin_list_tit admin_list_first">
-     <label id="chkAll"><input type="checkbox" name="" title="È«Ñ¡/·´Ñ¡" id="chk"/>×´Ì¬</label>	 </td>
-      <td class="admin_list_tit" width="13%">·¢ËÍÕÊºÅ</td>
-	  <td class="admin_list_tit" width="13%">ÊÕ¼şµØÖ·</td>
-	  <td  class="admin_list_tit">ÓÊ¼şÖ÷Ìâ</td>
-      <td  class="admin_list_tit">ÓÊ¼şÄÚÈİ</td>
-      <td width="110"  align="center"  class="admin_list_tit">·¢ËÍÊ±¼ä</td>
+     <label id="chkAll"><input type="checkbox" name="" title="å…¨é€‰/åé€‰" id="chk"/>çŠ¶æ€</label>	 </td>
+      <td class="admin_list_tit" width="13%">å‘é€å¸å·</td>
+	  <td class="admin_list_tit" width="13%">æ”¶ä»¶åœ°å€</td>
+	  <td  class="admin_list_tit">é‚®ä»¶ä¸»é¢˜</td>
+      <td  class="admin_list_tit">é‚®ä»¶å†…å®¹</td>
+      <td width="110"  align="center"  class="admin_list_tit">å‘é€æ—¶é—´</td>
     </tr>
 	{#foreach from=$list item=list#}
 	 <tr>
       <td class="admin_list admin_list_first">
 	     <input type="checkbox" name="id[]"  value="{#$list.id#}"/>
-		 {#if $list.state=="1"#}<span style="color: #009900">·¢ËÍ³É¹¦</span>{#/if#}
-		 {#if $list.state=="2"#}<span style="color: #666666">·¢ËÍÊ§°Ü</span>{#/if#}
+		 {#if $list.state=="1"#}<span style="color: #009900">å‘é€æˆåŠŸ</span>{#/if#}
+		 {#if $list.state=="2"#}<span style="color: #666666">å‘é€å¤±è´¥</span>{#/if#}
 	  </td>
 	  <td  class="admin_list">{#$list.send_from#}</td>
 	  <td  class="admin_list">{#$list.send_to#}</td>
@@ -50,7 +50,7 @@
   </table>
   
 	{#if !$list#}
-	<div class="admin_list_no_info">Ã»ÓĞÈÎºÎĞÅÏ¢£¡</div>
+	<div class="admin_list_no_info">æ²¡æœ‰ä»»ä½•ä¿¡æ¯ï¼</div>
 	{#/if#}
   </form>	
    <table width="100%" border="0" cellspacing="10"  class="admin_list_btm">
@@ -62,20 +62,20 @@
 			<div class="seh">
 			    <div class="keybox"><input name="key" type="text"   value="{#$smarty.get.key#}" /></div>
 			    <div class="selbox">
-					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"ÓÊ¼şÖ÷Ìâ"#}" readonly="true"/>
+					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"é‚®ä»¶ä¸»é¢˜"#}" readonly="true"/>
 						<div>
 								<input name="key_type" id="key_type" type="hidden" value="{#$smarty.get.key_type|default:"1"#}" />
 												<div id="sehmenu" class="seh_menu">
 														<ul>
-														<li id="1" title="ÓÊ¼şÖ÷Ìâ">ÓÊ¼şÖ÷Ìâ</li>
-														<li id="2" title="ÊÕ¼şµØÖ·">ÊÕ¼şµØÖ·</li>
-														<li id="3" title="·¢ËÍÕÊºÅ">·¢ËÍÕÊºÅ</li>
+														<li id="1" title="é‚®ä»¶ä¸»é¢˜">é‚®ä»¶ä¸»é¢˜</li>
+														<li id="2" title="æ”¶ä»¶åœ°å€">æ”¶ä»¶åœ°å€</li>
+														<li id="3" title="å‘é€å¸å·">å‘é€å¸å·</li>
 														</ul>
 												</div>
 						</div>				
 				</div>
 				<div class="sbtbox">
-				<input type="submit" name="" class="sbt" id="sbt" value="ËÑË÷"/>
+				<input type="submit" name="" class="sbt" id="sbt" value="æœç´¢"/>
 				</div>
 				<div class="clear"></div>
 		  </div>

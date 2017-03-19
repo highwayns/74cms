@@ -1,4 +1,4 @@
-/* 
+﻿/* 
 * QSdialog 1.0
 * http://www.74cms.com/
 * Date: 2011-5-15 
@@ -9,8 +9,8 @@ $.fn.QSdialog=function(options){
 	var defaults = {
     DialogAddObj:"body",	
 	DialogAddType:"append",	
-	DialogClosed:"�ر�",
-	DialogTitle:"ϵͳ��ʾ",
+	DialogClosed:"关闭",
+	DialogTitle:"系统提示",
 	DialogWidth:"420",
 	DialogHeight:"auto",
 	DialogCssName:"",
@@ -23,7 +23,7 @@ $.fn.QSdialog=function(options){
 	temp_float="<div class=\"FloatBg\"  style=\"height:"+$(document).height()+"px;width:"+$(document).width()+"px;filter:alpha(opacity=0);opacity:0;\"></div>";
 	temp_float+="<div class=\"FloatBox\">";
 	temp_float+="<div class=\"Box\">";
-	temp_float+="<div class=\"title\"><h4></h4><span class=\"DialogClose\" title=\"�ر�\"></span></div>";
+	temp_float+="<div class=\"title\"><h4></h4><span class=\"DialogClose\" title=\"关闭\"></span></div>";
 	temp_float+="<div class=\"content link_lan\"><div class=\"wait\"></div></div>";
 	temp_float+="</div>";
 	temp_float+="</div>";

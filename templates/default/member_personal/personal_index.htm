@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_personal.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
@@ -16,7 +16,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {	
-	// µÚÒ»´Î×¢²á½øÈë»áÔ±ÖĞĞÄ£¬ÏÔÊ¾Òıµ¼
+	// ç¬¬ä¸€æ¬¡æ³¨å†Œè¿›å…¥ä¼šå‘˜ä¸­å¿ƒï¼Œæ˜¾ç¤ºå¼•å¯¼
 	var mode = $.cookie('isFirstReg');
 	if (mode == 1) {
 		$("#mask").height($(document).height());
@@ -45,9 +45,9 @@ $(document).ready(function()
 		});
 		$.cookie('isFirstReg',0);
 	};
-	// ÏÔÊ¾µÚÒ»ÌõÌáĞÑ£¬ÆäÓàµÄÏÈÒş²Ø
+	// æ˜¾ç¤ºç¬¬ä¸€æ¡æé†’ï¼Œå…¶ä½™çš„å…ˆéšè—
 	$(".company-index-tip .index-tip").eq(0).show().siblings('.index-tip').hide();
-	// ²Ù×÷¶¥²¿ÌáĞÑ´úÂë
+	// æ“ä½œé¡¶éƒ¨æé†’ä»£ç 
 	$(".ctip_close").die().live('click', function(event) {
 		$(this).closest('.index-tip').addClass('istip').slideUp(600);
 		var leng = $(".company-index-tip .index-tip").not(".istip").length;
@@ -62,7 +62,7 @@ $(document).ready(function()
 		    }, 600);
 		}
 	});
-//¸öÈË×ÊÁÏÒÑÉêÇëÖ°Î»Êó±ê¸ĞÓ¦
+//ä¸ªäººèµ„æ–™å·²ç”³è¯·èŒä½é¼ æ ‡æ„Ÿåº”
 $(".mli .imgbox").hover(
 	function () {
 		$(this).addClass("h");
@@ -77,18 +77,18 @@ $(".imgbox").click(function(){
 $.get("?act=ajax_get_interest_jobs&pid="+$(".myresume").first().attr("pid"), function(result){
 	$("#interest_jobs_list").html(result);
 });
-//ÒşË½ÉèÖÃ
+//éšç§è®¾ç½®
 $(".resume_privacy").click(function(){
 	var pid = $(this).attr("pid");
 	var url = "personal_ajax.php?act=privacy&pid="+pid;
 	var myDialog = dialog();
-	myDialog.content("¼ÓÔØÖĞ...");
-    myDialog.title('ÒşË½ÉèÖÃ');
+	myDialog.content("åŠ è½½ä¸­...");
+    myDialog.title('éšç§è®¾ç½®');
     myDialog.width('550');
     myDialog.showModal();
     $.get(url, function(data){
         myDialog.content(data);
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
@@ -98,13 +98,13 @@ $(".del_resume").click(function(){
 	var pid = $(this).attr("pid");
 	var url = "personal_ajax.php?act=del_resume&pid="+pid;
 	var myDialog = dialog();
-	myDialog.content("¼ÓÔØÖĞ...");
-    myDialog.title('É¾³ı¼òÀú');
+	myDialog.content("åŠ è½½ä¸­...");
+    myDialog.title('åˆ é™¤ç®€å†');
     myDialog.width('350');
     myDialog.showModal();
     $.get(url, function(data){
         myDialog.content(data);
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
@@ -115,21 +115,21 @@ $(".refresh_resume").click(function(){
 	$.get("personal_ajax.php?act=refresh_resume&id="+pid,function(result){
 		if(result=="1"){
 			dialog({
-			  title: 'ÎÂÜ°ÌáÊ¾',
-			  content: "Ë¢ĞÂ³É¹¦",
+			  title: 'æ¸©é¦¨æç¤º',
+			  content: "åˆ·æ–°æˆåŠŸ",
 			  width:'300px'
 			}).showModal();
 			location.reload();
 		}else{
 			dialog({
-			  title: 'ÎÂÜ°ÌáÊ¾',
+			  title: 'æ¸©é¦¨æç¤º',
 			  content: ""+result+"",
 			  width:'300px'
 			}).showModal();
 		}
 	});
 });
-	// ÏÂÀ­
+	// ä¸‹æ‹‰
 	$('.resume-choose').on('click', function(e){
 		$(this).find('.resume-choose-list').stop().slideToggle('fast');
 		$(this).find('.choose-span').toggleClass('beselect');
@@ -155,15 +155,15 @@ $(".refresh_resume").click(function(){
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<!-- Òıµ¼ -->
+<!-- å¼•å¯¼ -->
 <div id="mask"></div>
 <div id="searchTip">
-	<div class="stepD"><a>ÏÂÒ»²½</a><span title="¹Ø±Õ">¹Ø±Õ</span></div>
-    <div class="stepE"><a class="p">ÉÏÒ»²½</a><a>ÏÂÒ»²½</a><span title="¹Ø±Õ">¹Ø±Õ</span></div>
-    <div class="stepF"><a class="p">ÉÏÒ»²½</a><a>ÏÂÒ»²½</a><span title="¹Ø±Õ">¹Ø±Õ</span></div>
+	<div class="stepD"><a>ä¸‹ä¸€æ­¥</a><span title="å…³é—­">å…³é—­</span></div>
+    <div class="stepE"><a class="p">ä¸Šä¸€æ­¥</a><a>ä¸‹ä¸€æ­¥</a><span title="å…³é—­">å…³é—­</span></div>
+    <div class="stepF"><a class="p">ä¸Šä¸€æ­¥</a><a>ä¸‹ä¸€æ­¥</a><span title="å…³é—­">å…³é—­</span></div>
 </div>
-<!-- Òıµ¼ end-->
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a></div>
+<!-- å¼•å¯¼ end-->
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a></div>
 <div class="usermain">
   <div class="leftmenu link_bk">
   	 {#include file="member_personal/left.htm"#}
@@ -189,36 +189,36 @@ $(".refresh_resume").click(function(){
 				  	<img name="" src="{#$QISHI.site_dir#}data/avatar/100/{#$user.avatars#}?rand={#$rand#}" width="100" height="100" alt="" />
 				  	{#/if#}
 				  </div>
-				  <a href="personal_user.php?act=avatars"  class="edit">ĞŞ¸ÄÍ·Ïñ</a>
+				  <a href="personal_user.php?act=avatars"  class="edit">ä¿®æ”¹å¤´åƒ</a>
 		  		</div>
 				<div class="cbox">
-				  	<div class="name  h1-title">{#$user.username#}<span>(uid:{#$user.uid#})</span><a href="personal_user.php?act=userprofile" class="personal-edit">±à¼­</a></div>
+				  	<div class="name  h1-title">{#$user.username#}<span>(uid:{#$user.uid#})</span><a href="personal_user.php?act=userprofile" class="personal-edit">ç¼–è¾‘</a></div>
 					<div class="txt">
 					{#if $sms.open=="1"#}
 						{#if $user.mobile_audit=="1"#}
-						<span class="m">ÊÖ»úÈÏÖ¤£º</span>&nbsp;<span style="color:#009900">ÒÑÈÏÖ¤</span>&nbsp;{#else#}<span class="m n">ÊÖ»úÈÏÖ¤£º</span>&nbsp;<a href="personal_user.php?act=authenticate"><span style="color:#FF0000">Î´ÈÏÖ¤</span></a>&nbsp;
+						<span class="m">æ‰‹æœºè®¤è¯ï¼š</span>&nbsp;<span style="color:#009900">å·²è®¤è¯</span>&nbsp;{#else#}<span class="m n">æ‰‹æœºè®¤è¯ï¼š</span>&nbsp;<a href="personal_user.php?act=authenticate"><span style="color:#FF0000">æœªè®¤è¯</span></a>&nbsp;
 						{#/if#}{#$user.mobile#}<br />
 					{#/if#}
 					{#if $user.email_audit=="1"#}
-					<span class="e">ÓÊÏäÈÏÖ¤£º</span>&nbsp;<span style="color:#009900">ÒÑÈÏÖ¤</span>&nbsp;{#else#}<span class="e n">ÓÊÏäÈÏÖ¤£º</span>&nbsp;<a href="personal_user.php?act=authenticate"><span style="color:#FF0000">Î´ÈÏÖ¤</span></a>&nbsp;{#/if#}{#$user.email#}<br />
+					<span class="e">é‚®ç®±è®¤è¯ï¼š</span>&nbsp;<span style="color:#009900">å·²è®¤è¯</span>&nbsp;{#else#}<span class="e n">é‚®ç®±è®¤è¯ï¼š</span>&nbsp;<a href="personal_user.php?act=authenticate"><span style="color:#FF0000">æœªè®¤è¯</span></a>&nbsp;{#/if#}{#$user.email#}<br />
 					
 					{#if $user.weixin_openid#}
-					<span class="w">Î¢ĞÅ°î¶¨£º</span>&nbsp;<span style="color:#009900">ÒÑ°ó¶¨</span>&nbsp;{#else#}<span class="w n">Î¢ĞÅ°ó¶¨£º</span>&nbsp;<a href="personal_user.php?act=authenticate"><span style="color:#FF0000">Î´°ó¶¨</span></a>&nbsp;{#/if#}<br />
+					<span class="w">å¾®ä¿¡é‚¦å®šï¼š</span>&nbsp;<span style="color:#009900">å·²ç»‘å®š</span>&nbsp;{#else#}<span class="w n">å¾®ä¿¡ç»‘å®šï¼š</span>&nbsp;<a href="personal_user.php?act=authenticate"><span style="color:#FF0000">æœªç»‘å®š</span></a>&nbsp;{#/if#}<br />
 
- 					ÏµÍ³ÏûÏ¢£ºÎ´¶Á{#if $msg_total1>0#}<span><a style="color:#FF0000" href="personal_user.php?act=pm&msgtype=1">({#$msg_total1#})</a></span>{#else#}<a style="color:#FF0000" href="personal_user.php?act=pm&msgtype=1">(0)</a>{#/if#}&nbsp;ÒÑ¶Á{#if $msg_total2>0#}<span><a style="color:#666666" href="personal_user.php?act=pm&msgtype=1">({#$msg_total2#})</a></span>{#else#}<a style="color:#666666" href="personal_user.php?act=pm&msgtype=1">(0)</a>{#/if#}<br />
+ 					ç³»ç»Ÿæ¶ˆæ¯ï¼šæœªè¯»{#if $msg_total1>0#}<span><a style="color:#FF0000" href="personal_user.php?act=pm&msgtype=1">({#$msg_total1#})</a></span>{#else#}<a style="color:#FF0000" href="personal_user.php?act=pm&msgtype=1">(0)</a>{#/if#}&nbsp;å·²è¯»{#if $msg_total2>0#}<span><a style="color:#666666" href="personal_user.php?act=pm&msgtype=1">({#$msg_total2#})</a></span>{#else#}<a style="color:#666666" href="personal_user.php?act=pm&msgtype=1">(0)</a>{#/if#}<br />
 					</div>
 				</div>
 				<div class="rbox">
 				  <div class="mli">
 				  	<div class="imgbox" mark="apply_jobs">
 					  <div class="count">{#$count_apply#}</div>
-					  <div class="txt">ÒÑÉêÇëÖ°Î»</div>
+					  <div class="txt">å·²ç”³è¯·èŒä½</div>
 					</div>
 				  </div>
 				  <div class="mli">
 				  	<div class="imgbox" mark="interview">
 					  <div class="count">{#$count_interview#}</div>
-					  <div class="txt">ÃæÊÔÑûÇë</div>
+					  <div class="txt">é¢è¯•é‚€è¯·</div>
 					</div>
 				  </div>
 				  <div class="clear"></div>
@@ -240,27 +240,27 @@ $(".refresh_resume").click(function(){
         	</div>
         </div>
 	<div class="txt">
-		¹«¿ª×´Ì¬£º{#if $my_resume[list].display=="1"#}¹«¿ª{#else#}±£ÃÜ{#/if#}<br>
-		ÕæÊµĞÕÃû£º{#$my_resume[list].fullname#}<br />
-		¸üĞÂÊ±¼ä£º{#$my_resume[list].refreshtime|date_format:"%Y-%m-%d %H:%M"#}<br />
-	  	ÉóºË×´Ì¬£º{#if $my_resume[list].audit=="1"#}<span style="color:#009900">ÉóºËÍ¨¹ı</span>{#elseif $my_resume[list].audit=="2"#}<span style="color:#FF0000">ÉóºËÖĞ</span>{#else#}<span style="color:#FF0000">ÉóºËÎ´Í¨¹ı</span>{#/if#}<br />
+		å…¬å¼€çŠ¶æ€ï¼š{#if $my_resume[list].display=="1"#}å…¬å¼€{#else#}ä¿å¯†{#/if#}<br>
+		çœŸå®å§“åï¼š{#$my_resume[list].fullname#}<br />
+		æ›´æ–°æ—¶é—´ï¼š{#$my_resume[list].refreshtime|date_format:"%Y-%m-%d %H:%M"#}<br />
+	  	å®¡æ ¸çŠ¶æ€ï¼š{#if $my_resume[list].audit=="1"#}<span style="color:#009900">å®¡æ ¸é€šè¿‡</span>{#elseif $my_resume[list].audit=="2"#}<span style="color:#FF0000">å®¡æ ¸ä¸­</span>{#else#}<span style="color:#FF0000">å®¡æ ¸æœªé€šè¿‡</span>{#/if#}<br />
 	  </div>
 	</div>
 	<div class="cbox">
-		<div class="imgbox1-{#$my_resume[list].complete_percent#}"></div><!--imgbox1-40 ÊÇ40%   imgbox1-55ÊÇ55%-->	
-	    <div class="imgboxtit">¼òÀúÍêÕû¶È£º{#$my_resume[list].complete_percent#}%</div>
+		<div class="imgbox1-{#$my_resume[list].complete_percent#}"></div><!--imgbox1-40 æ˜¯40%   imgbox1-55æ˜¯55%-->	
+	    <div class="imgboxtit">ç®€å†å®Œæ•´åº¦ï¼š{#$my_resume[list].complete_percent#}%</div>
 	</div>
 	<div class="cbox">
-		<div class="imgbox2-{#$my_resume[list].level#}"></div><!--imgbox2-1 ÊÇ²î   imgbox2-2 Á¼  imgbox2-3 ÓÅ-->		
-	    <div class="imgboxtit">¼òÀúÖÊÁ¿</div>
+		<div class="imgbox2-{#$my_resume[list].level#}"></div><!--imgbox2-1 æ˜¯å·®   imgbox2-2 è‰¯  imgbox2-3 ä¼˜-->		
+	    <div class="imgboxtit">ç®€å†è´¨é‡</div>
 	</div>
 	<div class="rbox">
 		<div class="but">
-			<a class="refresh_resume" pid="{#$my_resume[list].id#}" href="javascript:void(0);">Ë¢ĞÂ¼òÀú</a>
-			<a href="personal_resume.php?act=edit_resume&pid={#$my_resume[list].id#}">ĞŞ¸Ä¼òÀú</a>
-			<a target="_blank" href="{#"QS_jobslist,jobcategory:$my_resume[list].interestjobs"|qishi_url#}" class="o">Æ¥ÅäÖ°Î»</a>
+			<a class="refresh_resume" pid="{#$my_resume[list].id#}" href="javascript:void(0);">åˆ·æ–°ç®€å†</a>
+			<a href="personal_resume.php?act=edit_resume&pid={#$my_resume[list].id#}">ä¿®æ”¹ç®€å†</a>
+			<a target="_blank" href="{#"QS_jobslist,jobcategory:$my_resume[list].interestjobs"|qishi_url#}" class="o">åŒ¹é…èŒä½</a>
 		</div>	
-	    <div class="bottomlink link_lan"><a target="_blank" href="{#$my_resume[list].resume_url#}">Ô¤ÀÀ¼òÀú</a><a class="resume_privacy" pid="{#$my_resume[list].id#}" href="javascript:void(0);">ÒşË½ÉèÖÃ</a><a url="personal_ajax.php?act=del_resume&pid={#$my_resume[list].id#}" href="javascript:void(0);" class="del_resume" pid="{#$my_resume[list].id#}">É¾³ı¼òÀú</a></div>
+	    <div class="bottomlink link_lan"><a target="_blank" href="{#$my_resume[list].resume_url#}">é¢„è§ˆç®€å†</a><a class="resume_privacy" pid="{#$my_resume[list].id#}" href="javascript:void(0);">éšç§è®¾ç½®</a><a url="personal_ajax.php?act=del_resume&pid={#$my_resume[list].id#}" href="javascript:void(0);" class="del_resume" pid="{#$my_resume[list].id#}">åˆ é™¤ç®€å†</a></div>
 	</div>
 	<div class="clear"></div>
 </div>
@@ -268,16 +268,16 @@ $(".refresh_resume").click(function(){
 {#else#}
 <div class="no-rec-box">
 	<p>
-		¼òÀúÊÇÇóÖ°µÄÀûÆ÷£¬ÌîĞ´¼òÀú²ÅÄÜ¸ü¿ìÕÒµ½ºÃ¹¤×÷£¡<br />
-		È¥ÌîĞ´Ò»·İÓÅÖÊµÄ¼òÀú°É£¬ÈÏÕæµÄÈË£¬²ÅÄÜÈÃÈÏÕæµÄÆóÒµÕÒÉÏÄã£¡
+		ç®€å†æ˜¯æ±‚èŒçš„åˆ©å™¨ï¼Œå¡«å†™ç®€å†æ‰èƒ½æ›´å¿«æ‰¾åˆ°å¥½å·¥ä½œï¼<br />
+		å»å¡«å†™ä¸€ä»½ä¼˜è´¨çš„ç®€å†å§ï¼Œè®¤çœŸçš„äººï¼Œæ‰èƒ½è®©è®¤çœŸçš„ä¼ä¸šæ‰¾ä¸Šä½ ï¼
 	</p>
-	<input type="button" value="´´½¨¼òÀú" class="creat-resume" onclick="window.location.href='personal_resume.php?act=make1'"/>
+	<input type="button" value="åˆ›å»ºç®€å†" class="creat-resume" onclick="window.location.href='personal_resume.php?act=make1'"/>
 </div>
 {#/if#}
 	<div class="personal-rec-jobs">
 		<div class="p-rec-job-top clearfix">
-			<h2 class="f-left">ÍÆ¼öÖ°Î»</h2>
-			<a target="_blank" href="{#"QS_jobslist"|qishi_url#}" class="underline f-right">²é¿´¸ü¶à>></a>
+			<h2 class="f-left">æ¨èèŒä½</h2>
+			<a target="_blank" href="{#"QS_jobslist"|qishi_url#}" class="underline f-right">æŸ¥çœ‹æ›´å¤š>></a>
 		</div>
 		<div class="p-rec-data">
 			<div id="interest_jobs_list"></div>

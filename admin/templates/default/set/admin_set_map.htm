@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script src="http://api.map.baidu.com/api?v=1.2" type="text/javascript"></script>
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
@@ -7,15 +7,15 @@
   <div class="clear"></div>
 </div>
 <div class="toptip link_lan">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-µç×ÓµØÍ¼APIµÄ·şÎñÊÇÓÉ<a href="http://openapi.baidu.com/map/index.html" target="_blank"><strong>°Ù¶È</strong></a>Ìá¹©£¬ÈÎºÎ·ÇÓ¯ÀûĞÔÍøÕ¾¾ù¿ÉÊ¹ÓÃ¡£Çë²ÎÔÄ<a href="http://openapi.baidu.com/map/terms.html" target="_blank"><strong>Ê¹ÓÃÌõ¿î</strong></a>»ñµÃÏêÏ¸ĞÅÏ¢¡£<br />
-        ÈçÓÃÓÚÉÌÒµÓÃÍ¾£¬ĞèÒªÍ¬°Ù¶ÈµØÍ¼ÁíĞĞ´ï³ÉĞ­Òé»ò»ñµÃ°Ù¶ÈµØÍ¼µÄÊéÃæĞí¿É
-        Ê¹ÓÃµç×ÓµØÍ¼£¬°Ù¶ÈµØÍ¼ÏàÓ¦µÄak¡£ ÏÖÔÚ¾ÍÈ¥<a href="http://lbsyun.baidu.com/apiconsole/key?application=key" target="_blank">ÉêÇë</a>
+ç”µå­åœ°å›¾APIçš„æœåŠ¡æ˜¯ç”±<a href="http://openapi.baidu.com/map/index.html" target="_blank"><strong>ç™¾åº¦</strong></a>æä¾›ï¼Œä»»ä½•éç›ˆåˆ©æ€§ç½‘ç«™å‡å¯ä½¿ç”¨ã€‚è¯·å‚é˜…<a href="http://openapi.baidu.com/map/terms.html" target="_blank"><strong>ä½¿ç”¨æ¡æ¬¾</strong></a>è·å¾—è¯¦ç»†ä¿¡æ¯ã€‚<br />
+        å¦‚ç”¨äºå•†ä¸šç”¨é€”ï¼Œéœ€è¦åŒç™¾åº¦åœ°å›¾å¦è¡Œè¾¾æˆåè®®æˆ–è·å¾—ç™¾åº¦åœ°å›¾çš„ä¹¦é¢è®¸å¯
+        ä½¿ç”¨ç”µå­åœ°å›¾ï¼Œç™¾åº¦åœ°å›¾ç›¸åº”çš„akã€‚ ç°åœ¨å°±å»<a href="http://lbsyun.baidu.com/apiconsole/key?application=key" target="_blank">ç”³è¯·</a>
 
 </p>
 </div>
-<div class="toptit">µç×ÓµØÍ¼ÉèÖÃ</div>
+<div class="toptit">ç”µå­åœ°å›¾è®¾ç½®</div>
   <form action="admin_set.php?act=site_setsave" method="post"  name="form1" id="form1">
   {#$inputtoken#}
     <table width="100%" border="0" cellspacing="5" cellpadding="0">
@@ -24,27 +24,27 @@
         
 		<!-- -->
         <tr>
-          <td width="120" align="right">°Ù¶ÈµØÍ¼AK:</td>
+          <td width="120" align="right">ç™¾åº¦åœ°å›¾AK:</td>
           <td width="200" height="25"><input name="map_ak" type="text" value="{#$config.map_ak#}"  id="map_ak"  class="input_text_200"  style="color:#009900; font-weight:bold"/></td>
         </tr>
         <tr>
-          <td width="120" align="right">Ä¬ÈÏÖĞĞÄµãX×ø±ê£º</td>
+          <td width="120" align="right">é»˜è®¤ä¸­å¿ƒç‚¹Xåæ ‡ï¼š</td>
           <td width="200" height="25"><input name="map_center_x" type="text" value="{#$config.map_center_x#}"  id="map_center_x"  class="input_text_200"  style="color:#009900; font-weight:bold"/></td>
-          <td>ÍÆ¶¯µç×ÓµØÍ¼£¬ÏµÍ³½«×Ô¶¯»ñÈ¡×ø±ê</td>
+          <td>æ¨åŠ¨ç”µå­åœ°å›¾ï¼Œç³»ç»Ÿå°†è‡ªåŠ¨è·å–åæ ‡</td>
         </tr>
         <tr>
-          <td align="right">Ä¬ÈÏÖĞĞÄµãY×ø±ê£º</td>
+          <td align="right">é»˜è®¤ä¸­å¿ƒç‚¹Yåæ ‡ï¼š</td>
           <td height="25"><input name="map_center_y" type="text" value="{#$config.map_center_y#}"  id="map_center_y"  class="input_text_200" style="color:#009900; font-weight:bold"/></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
-          <td align="right">Ä¬ÈÏËõ·Å¼¶±ğ£º</td>
+          <td align="right">é»˜è®¤ç¼©æ”¾çº§åˆ«ï¼š</td>
           <td height="25"><input name="map_zoom" type="text" value="{#$config.map_zoom#}" id="map_zoom"   class="input_text_200" style="color: #009900; font-weight:bold"/></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td align="right">&nbsp;</td>
-          <td height="25"><input name="submit" type="submit" class="admin_submit"    value="±£´æĞŞ¸Ä"/></td>
+          <td height="25"><input name="submit" type="submit" class="admin_submit"    value="ä¿å­˜ä¿®æ”¹"/></td>
           <td>&nbsp;</td>
         </tr>
         
@@ -58,8 +58,8 @@
   </form>
 </div>
 <script type="text/javascript">
-var map = new BMap.Map("container");       // ´´½¨µØÍ¼ÊµÀı   
-var point = new BMap.Point({#$config.map_center_x#},{#$config.map_center_y#});  // ´´½¨µã×ø±ê   
+var map = new BMap.Map("container");       // åˆ›å»ºåœ°å›¾å®ä¾‹   
+var point = new BMap.Point({#$config.map_center_x#},{#$config.map_center_y#});  // åˆ›å»ºç‚¹åæ ‡   
 map.centerAndZoom(point, {#$config.map_zoom#}); 
 map.addControl(new BMap.NavigationControl());   
 map.addEventListener("moveend", function(){   

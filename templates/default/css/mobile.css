@@ -1,11 +1,10 @@
-/***
-***此样式文件为移动端宣传页面样式，不与其他页面样式冲突。
-***/
+﻿/***
+***姝ゆ牱寮忔枃浠朵负绉诲姩绔浼犻〉闈㈡牱寮忥紝涓嶄笌鍏朵粬椤甸潰鏍峰紡鍐茬獊銆?***/
 /*CSS reset*/
 body { margin:0px;background-color: #ffffff;font-family:Arial,"Microsoft Yahei",sans-serif; font-size:12px; color:#000000; height:100%}
 h1,h2,h3,h4,h5,form,p,ul{ margin:0px; padding:0px;font-weight: normal;}
 ul, ol{list-style: none;}
-input,textarea {font-family:Arial,"宋体",sans-serif;font-size:14px; color: #666666;outline: none;border:0;margin:0;padding:0;}
+input,textarea {font-family:Arial,"瀹嬩綋",sans-serif;font-size:14px; color: #666666;outline: none;border:0;margin:0;padding:0;}
 li {padding:0px; margin:0px;list-style-type:none;}
 a{text-decoration:none;}
 img{border:0;}
@@ -19,7 +18,7 @@ input.checkbox{position: relative;top:2px;margin-right: 7px;}
 input.radio{position: relative;top:2px;margin-right: 5px;}
 .container{width: 1000px;margin:0 auto;}
 
-/*头部*/
+/*澶撮儴*/
 #mobile-header{width: 100%;height: 100px;background-color: #fff;}
 #mobile-header .container{height: 100%;}
 #mobile-header .m-logo{padding-top: 15px;overflow: hidden;height: 70px;}
@@ -62,7 +61,7 @@ input.radio{position: relative;top:2px;margin-right: 5px;}
 #banner-block .wap .a-text-wrap .wap-input{width: 400px;height: 40px;line-height: 40px;background: url(../images/mobile/wap-input.jpg) no-repeat 0px 0px;font-size: 16px;color:#333;padding-left: 20px;}
 #banner-block .wap .a-text-wrap .wap-code{margin-left: 290px;margin-top: 35px;text-align: center;width: 140px;}
 #banner-block .wap .a-text-wrap .wap-code p{color:#fff;font-size: 16px;margin-top: 8px;}
-/*微信*/
+/*寰俊*/
 #banner-block .banner-wrap.wechat{background: url(../images/mobile/banner-wechat.jpg) no-repeat top center #22ac38;}
 #banner-block .wechat .chatpage-img{position: absolute;top:164px;left:127px;}
 #banner-block .wechat .a-text-wrap{position: absolute;left:487px;top:90px;color:#fff;width: 398px;}
@@ -74,7 +73,7 @@ input.radio{position: relative;top:2px;margin-right: 5px;}
 #banner-block .wechat .a-text-wrap .wechat-sreach{padding-left: 80px;width: 319px;height: 56px;line-height: 56px;font-size: 16px;background: url(../images/mobile/wechat-input.png) no-repeat 0px 0px;margin-bottom: 32px;}
 #banner-block .wechat .a-text-wrap p{font-size: 14px;line-height: 20px;}
 
-/*android-iOS通用*/
+/*android-iOS閫氱敤*/
 .mobile-app-sp{height: 368px;}
 .mobile-app-sp .mobile-app-item{width: 250px;text-align: center;padding-top: 50px;}
 .mobile-app-sp .mobile-app-item .ma-icon{width: 120px;height: 120px;margin:0 auto 30px auto;background: url(../images/mobile/ai-icon.png) no-repeat;}
@@ -109,7 +108,7 @@ input.radio{position: relative;top:2px;margin-right: 5px;}
 .m-main .m-row.wap .wap-phone-block{margin-left: 139px;margin-top:80px;width: 192px;height: 290px;background: url(../images/mobile/ios-phone.png) no-repeat 0px 0px;position: relative;}
 .m-main .m-row.wap .wap-phone-block img{margin-top: 60px;margin-left:16px;}
 .m-main .m-row.wap .wap-phone-block .wap-sp-block{position: absolute;top:16px;left:-72px;width: 322px;height: 225px;background: url(../images/mobile/wap-sp-img.png) no-repeat 0px 0px;}
-/*微信*/
+/*寰俊*/
 .wechat-top-title{width: 100%;margin-top: 45px;height: 60px;border-top: 1px solid #ccc;}
 .wechat-top-title h2{padding:0 45px 0 20px;font-size: 20px;color:#333;margin-top: -14px;float: left;background: url(../images/mobile/little-yuan.jpg) no-repeat 223px center #fff;}
 .m-main .m-row.weixin .wechat-left-text{padding:115px 0 0 110px;}
@@ -129,6 +128,6 @@ input.radio{position: relative;top:2px;margin-right: 5px;}
 .m-main .m-row.weixin .wechat-left-img .wechat-phone{position: absolute;left:0;bottom:0;width: 192px;height: 290px;background: url(../images/mobile/ios-phone.png) no-repeat 0px 0px;}
 .m-main .m-row.weixin .wechat-left-img .wechat-phone img{margin:60px 0 0 16px;;}
 .m-main .m-row.weixin .wechat-left-img .wechat-enlarge.enlarge2{background-position: 0px -231px;top:60px;left:90px;}
-/*底部*/
+/*搴曢儴*/
 #footer{border-top: 1px solid #ccc;background-color: #fff;height: 100px;padding-top: 23px;line-height: 26px;font-size: 12px;color:#333;font-family: "SimSun";text-align: center;}
 #footer a{color:#009900;font-style: italic;text-decoration: underline;margin-right:10px;}

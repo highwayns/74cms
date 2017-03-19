@@ -1,9 +1,9 @@
-
-/*ÕĞÆ¸»áÏêÇé*/
+ï»¿
+/*æ‹›è˜ä¼šè¯¦æƒ…*/
 .rec_info{position:relative;border:1px solid #ccc;padding:5px;margin-bottom:10px;_zoom:1;}
 .rec_info .info_bbox{padding:20px 40px;background-color:#F5F5F5;}
 .rec_info .info_bbox .streamer{position:absolute;top:0;right:0;width:109px;height:108px;background:url(../images/17.png) right top no-repeat;+z-index:999999;}
-/*ÕĞÆ¸»áĞÂÑùÊ½*/
+/*æ‹›è˜ä¼šæ–°æ ·å¼*/
 .jobfairlist {padding-bottom:15px;}
 .jobfairlist .listtit{color:#7f7f7f;font-weight:bold;font-size:14px;height:39px;}
 .jobfairlist .list{border-bottom:1px dashed #cccccc;color:#7f7f7f;height:39px;line-height:39px;overflow:hidden;}
@@ -28,7 +28,7 @@
 .rec_info .info_bbox .info_but{float:left;}
 .rec_info .info_bbox .info_but input{margin-top:25px;display:block;}
 
-/*ÕĞÆ¸»áÁĞ±íÒ³*/
+/*æ‹›è˜ä¼šåˆ—è¡¨é¡µ*/
 .rec_banner{margin-bottom:10px;width:1000px;}
 .rec_banner p{font-size:18px;color:#fff;line-height:35px;}
 .rec_info .info_bbox .streamer.st_hui{background: url(../images/19.gif) right top no-repeat;}
@@ -67,7 +67,7 @@
 .present .pre_content ul{margin-left:15px;float:left;}
 .present .pre_content ul li{line-height:30px;width:270px;float:left;}
 .present .pre_content .map{margin-top:10px;}
-/*²Î»áÆóÒµ*/
+/*å‚ä¼šä¼ä¸š*/
 .acceding{margin-top:20px;padding-left:23px;font-size:14px;font-family:"microsoft yahei";line-height:30px;margin-bottom:30px;color:#666;width: 100%;}
 .acceding tr{/*background:url(../images/11.jpg) repeat-x bottom;*/}
 .acceding tr th{color:#333;border-bottom:1px dashed #ccc;}

@@ -1,12 +1,12 @@
-<?php
+﻿<?php
  /*
- * 74cms ���ӵ��ղؼ�
+ * 74cms 添加到收藏夹
  * ============================================================================
- * ��Ȩ����: ��ʿ���磬����������Ȩ����
- * ��վ��ַ: http://www.74cms.com��
+ * 版权所有: 骑士网络，并保留所有权利。
+ * 网站地址: http://www.74cms.com；
  * ----------------------------------------------------------------------------
- * �ⲻ��һ��������������ֻ���ڲ�������ҵĿ�ĵ�ǰ���¶Գ����������޸ĺ�
- * ʹ�ã��������Գ���������κ���ʽ�κ�Ŀ�ĵ��ٷ�����
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -44,7 +44,7 @@ if ($_SESSION['utype']!='2')
 	    <tr>
 			<td width="20" align="right"></td>
 			<td class="ajax_app">
-				�����Ǹ��˻�Ա�ſ����ղ�ְλ��
+				必须是个人会员才可以收藏职位！
 			</td>
 	    </tr>
 	</table>');
@@ -57,21 +57,21 @@ if ($user['status']=="2")
 	    <tr>
 			<td width="20" align="right"></td>
 			<td class="ajax_app">
-				�����˺Ŵ�����ͣ״̬������ϵ����Ա��Ϊ��������в�����
+				您的账号处于暂停状态，请联系管理员设为正常后进行操作！
 			</td>
 	    </tr>
 	</table>');
 }
 if ($act=="add")
 {
-	$id=isset($_GET['id'])?trim($_GET['id']):exit("������"); 
+	$id=isset($_GET['id'])?trim($_GET['id']):exit("出错了"); 
 	if(add_favorites($id,$_SESSION['uid'])==0)
 	{
 	exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 	    <tr>
 			<td width="20" align="right"></td>
 			<td class="ajax_app">
-				����ʧ�ܣ��ղؼ����Ѿ����ڴ�ְλ
+				添加失败，收藏夹中已经存在此职位
 			</td>
 	    </tr>
 	</table>');
@@ -95,10 +95,10 @@ function DialogClose()
     <tr>
 		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/big-yes.png" /></td>
 		<td>
-			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">���ӳɹ�!</strong>
+			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">添加成功!</strong>
 			<div style="border-top:1px #CCCCCC solid; line-height:180%; margin-top:10px; padding-top:10px; height:50px;margin-left:20px"  class="dialog_closed">
-			<a href="<?php echo get_member_url(2,true)?>personal_apply.php?act=favorites" style="color:#0180cf;text-decoration:none;" class="underline">�鿴ְλ�ղؼ�</a><br />
-			<a href="javascript:void(0)"  class="DialogClose underline" style="color:#0180cf;text-decoration:none;">�������</a>
+			<a href="<?php echo get_member_url(2,true)?>personal_apply.php?act=favorites" style="color:#0180cf;text-decoration:none;" class="underline">查看职位收藏夹</a><br />
+			<a href="javascript:void(0)"  class="DialogClose underline" style="color:#0180cf;text-decoration:none;">添加完成</a>
 			</div>
 		</td>
     </tr>

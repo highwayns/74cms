@@ -1,20 +1,20 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¹ÜÀíÖĞĞÄ ÆóÒµÓÃ»§Ïà¹Øº¯Êı
+ * 74cms ç®¡ç†ä¸­å¿ƒ ä¼ä¸šç”¨æˆ·ç›¸å…³å‡½æ•°
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
  if(!defined('IN_QISHI'))
  {
 die('Access Denied!');
  }
- //******************************Ö°Î»²¿·Ö**********************************
-//»ñÈ¡Ö°Î»ĞÅÏ¢ÁĞ±í
+ //******************************èŒä½éƒ¨åˆ†**********************************
+//è·å–èŒä½ä¿¡æ¯åˆ—è¡¨
 function get_jobs($offset,$perpage,$get_sql= '')
 {
 	global $db,$timestamp;
@@ -83,7 +83,7 @@ function distribution_jobs($id)
 								}
 						}
 				}
-				//¼ì²âÍê±Ï
+				//æ£€æµ‹å®Œæ¯•
 				$j=array_map('addslashes',$j);
 				if (!empty($t1))
 				{
@@ -179,7 +179,7 @@ function get_jobs_one($id)
 	$val['contact']=$db->getone("select * from ".table('jobs_contact')." where pid='{$id}' LIMIT 1");
 	return $val;
 }
-//É¾³ıÖ°Î»
+//åˆ é™¤èŒä½
 function del_jobs($id)
 {
 	global $db;
@@ -201,7 +201,7 @@ function del_jobs($id)
 		if (!$db->query("Delete from ".table('jobs_search_stickrtime')." WHERE id IN ({$sqlin})")) return false;
 		if (!$db->query("Delete from ".table('jobs_search_wage')." WHERE id IN ({$sqlin})")) return false;
 		if (!$db->query("Delete from ".table('jobs_tag')." WHERE pid IN ({$sqlin}) ")) return false;
-		write_log("É¾³ıÖ°Î»idÎª".$sqlin."µÄÖ°Î»,¹²É¾³ı".$return."ĞĞ", $_SESSION['admin_name'],3);
+		write_log("åˆ é™¤èŒä½idä¸º".$sqlin."çš„èŒä½,å…±åˆ é™¤".$return."è¡Œ", $_SESSION['admin_name'],3);
 		return $return;
 	}
 	else
@@ -209,7 +209,7 @@ function del_jobs($id)
 	return false;
 	}
 }
-//ĞŞ¸ÄÖ°Î»ÉóºË×´Ì¬
+//ä¿®æ”¹èŒä½å®¡æ ¸çŠ¶æ€
 function edit_jobs_audit($id,$audit,$reason,$pms_notice='1')
 {
 	global $db,$_CFG;
@@ -224,17 +224,17 @@ function edit_jobs_audit($id,$audit,$reason,$pms_notice='1')
 		$return=$return+$db->affected_rows();
 		if (!$db->query("update  ".table('jobs_tmp')." SET audit={$audit}  WHERE id IN ({$sqlin})")) return false;
 		$return=$return+$db->affected_rows();
-		write_log("½«Ö°Î»idÎª".$sqlin."µÄÖ°Î»,ÉóºË×´Ì¬ÉèÖÃÎª".$audit."¹²´¦Àí".$return."ĞĞ", $_SESSION['admin_name'],3);
+		write_log("å°†èŒä½idä¸º".$sqlin."çš„èŒä½,å®¡æ ¸çŠ¶æ€è®¾ç½®ä¸º".$audit."å…±å¤„ç†".$return."è¡Œ", $_SESSION['admin_name'],3);
 		distribution_jobs($id);
-			//·¢ËÍÕ¾ÄÚĞÅ
+			//å‘é€ç«™å†…ä¿¡
 			if ($pms_notice=='1')
 			{
 					$result = $db->query("SELECT * FROM ".table('jobs')." WHERE id IN ({$sqlin})  UNION ALL  SELECT * FROM ".table('jobs_tmp')." WHERE id IN ({$sqlin})");
-					$reason=$reason==''?'Ô­Òò£ºÎ´Öª':'Ô­Òò£º'.$reason;
+					$reason=$reason==''?'åŸå› ï¼šæœªçŸ¥':'åŸå› ï¼š'.$reason;
 					while($list = $db->fetch_array($result))
 					{
 						$user_info=get_user($list['uid']);
-						$setsqlarr['message']=$audit=='1'?"Äú·¢²¼µÄÖ°Î»£º{$list['jobs_name']},³É¹¦Í¨¹ıÍøÕ¾¹ÜÀíÔ±ÉóºË£¡":"Äú·¢²¼µÄÖ°Î»£º{$list['jobs_name']},Î´Í¨¹ıÍøÕ¾¹ÜÀíÔ±ÉóºË,{$reason}";
+						$setsqlarr['message']=$audit=='1'?"æ‚¨å‘å¸ƒçš„èŒä½ï¼š{$list['jobs_name']},æˆåŠŸé€šè¿‡ç½‘ç«™ç®¡ç†å‘˜å®¡æ ¸ï¼":"æ‚¨å‘å¸ƒçš„èŒä½ï¼š{$list['jobs_name']},æœªé€šè¿‡ç½‘ç«™ç®¡ç†å‘˜å®¡æ ¸,{$reason}";
 						$setsqlarr['msgtype']=1;
 						$setsqlarr['msgtouid']=$user_info['uid'];
 						$setsqlarr['msgtoname']=$user_info['username'];
@@ -244,7 +244,7 @@ function edit_jobs_audit($id,$audit,$reason,$pms_notice='1')
 						$db->inserttable(table('pms'),$setsqlarr);
 					 }
 			}
-			//ÉóºËÎ´Í¨¹ıÔö¼ÓÔ­Òò
+			//å®¡æ ¸æœªé€šè¿‡å¢åŠ åŸå› 
 			if($audit=='3'){
 				foreach($id as $list){
 					$auditsqlarr['jobs_id']=$list;
@@ -253,10 +253,10 @@ function edit_jobs_audit($id,$audit,$reason,$pms_notice='1')
 					$db->inserttable(table('audit_reason'),$auditsqlarr);
 				}
 			}
-			//·¢ËÍÓÊ¼ş
+			//å‘é€é‚®ä»¶
 			$mailconfig=get_cache('mailconfig');
 			$sms=get_cache('sms_config');
-			if ($audit=="1" && $mailconfig['set_jobsallow']=="1")//ÉóºËÍ¨¹ı
+			if ($audit=="1" && $mailconfig['set_jobsallow']=="1")//å®¡æ ¸é€šè¿‡
 			{
 					$result = $db->query("SELECT * FROM ".table('jobs')." WHERE id IN ({$sqlin})  UNION ALL  SELECT * FROM ".table('jobs_tmp')." WHERE id IN ({$sqlin})");
 					while($list = $db->fetch_array($result))
@@ -268,7 +268,7 @@ function edit_jobs_audit($id,$audit,$reason,$pms_notice='1')
 						}
 					}
 			}
-			if ($audit=="3" && $mailconfig['set_jobsnotallow']=="1")//ÉóºËÎ´Í¨¹ı
+			if ($audit=="3" && $mailconfig['set_jobsnotallow']=="1")//å®¡æ ¸æœªé€šè¿‡
 			{
 					$result = $db->query("SELECT * FROM ".table('jobs')." WHERE id IN ({$sqlin})  UNION ALL  SELECT * FROM ".table('jobs_tmp')." WHERE id IN ({$sqlin}) ");
 					while($list = $db->fetch_array($result))
@@ -294,7 +294,7 @@ function edit_jobs_audit($id,$audit,$reason,$pms_notice='1')
 					}
 			}
 			//sms
-			if ($audit=="3" && $sms['open']=="1" && $sms['set_jobsnotallow']=="1" )//ÈÏÖ¤Î´Í¨¹ı
+			if ($audit=="3" && $sms['open']=="1" && $sms['set_jobsnotallow']=="1" )//è®¤è¯æœªé€šè¿‡
 			{
 				$result = $db->query("SELECT * FROM ".table('jobs')." WHERE id IN ({$sqlin})  UNION ALL  SELECT * FROM ".table('jobs_tmp')." WHERE id IN ({$sqlin}) ");
 					while($list = $db->fetch_array($result))
@@ -360,7 +360,7 @@ function refresh_company($uid,$refresjobs=false)
 		$return=$return+$db->affected_rows();
 		}
 	}
-	write_log("Ë¢ĞÂÆóÒµuidÎª".$sqlin."µÄÆóÒµ,¹²Ë¢ĞÂ".$return."ĞĞ", $_SESSION['admin_name'],3);
+	write_log("åˆ·æ–°ä¼ä¸šuidä¸º".$sqlin."çš„ä¼ä¸š,å…±åˆ·æ–°".$return."è¡Œ", $_SESSION['admin_name'],3);
 	return $return;
 }
 function refresh_jobs($id)
@@ -384,7 +384,7 @@ function refresh_jobs($id)
 		if (!$db->query("update  ".table('jobs_search_stickrtime')."  SET refreshtime='{$time}' WHERE id IN ({$sqlin})")) return false;
 		if (!$db->query("update  ".table('jobs_search_wage')."  SET refreshtime='{$time}' WHERE id IN ({$sqlin})")) return false;
 	}
-	write_log("Ë¢ĞÂÖ°Î»idÎª".$sqlin."µÄÖ°Î»,¹²Ë¢ĞÂ".$return."ĞĞ", $_SESSION['admin_name'],3);
+	write_log("åˆ·æ–°èŒä½idä¸º".$sqlin."çš„èŒä½,å…±åˆ·æ–°".$return."è¡Œ", $_SESSION['admin_name'],3);
 	return $return;
 }
 function delay_jobs($id,$days)
@@ -412,7 +412,7 @@ function delay_jobs($id,$days)
 			$deadline=strtotime("+{$days} day");
 			}
 			$total++;
-			//»ı·ÖÄ£Ê½
+			//ç§¯åˆ†æ¨¡å¼
 			if($_CFG['operation_mode']=='1')
 			{
 				$user_points = get_user_points(intval($row['uid']));
@@ -437,11 +437,11 @@ function delay_jobs($id,$days)
 					report_deal(intval($row['uid']),$ptype,$points);
 				}
 			}
-			//Ì×²ÍÄ£Ê½
+			//å¥—é¤æ¨¡å¼
 			elseif($_CFG['operation_mode']=='2')
 			{
 				$setmeal=get_user_setmeal(intval($row['uid']));
-				//ÑÓÆÚÊ±¼ä³¬¹ıÁËÌ×²ÍÊ±¼ä(»òÕßÌ×²Í¹ıÆÚÒ²Âú×ãÕâ¸öÌõ¼ş)
+				//å»¶æœŸæ—¶é—´è¶…è¿‡äº†å¥—é¤æ—¶é—´(æˆ–è€…å¥—é¤è¿‡æœŸä¹Ÿæ»¡è¶³è¿™ä¸ªæ¡ä»¶)
 				if($setmeal['endtime']<$deadline && $setmeal['endtime']<>'0')
 				{
 					$fail++;
@@ -452,14 +452,14 @@ function delay_jobs($id,$days)
 				if (!$db->query("update  ".table('jobs_tmp')." SET deadline='{$deadline}'  WHERE id='{$row['id']}'  LIMIT 1")) return false;
 				$return=$return+$db->affected_rows();
 			}
-			//»ìºÏÄ£Ê½
+			//æ··åˆæ¨¡å¼
 			elseif($_CFG['operation_mode']=='3')
 			{
 				$setmeal=get_user_setmeal(intval($row['uid']));
-				//¸Ã»áÔ±ÎŞÌ×²Í»òÕß¹ıÆÚ
+				//è¯¥ä¼šå‘˜æ— å¥—é¤æˆ–è€…è¿‡æœŸ
 				if(empty($setmeal) || ($setmeal['endtime']<time() && $setmeal['endtime']<>'0'))
 				{
-					//ºóÌ¨¿ªÍ¨   ×ª»ı·ÖÏû·Ñ
+					//åå°å¼€é€š   è½¬ç§¯åˆ†æ¶ˆè´¹
 					if ($_CFG['setmeal_to_points']=="1")
 					{
 						$user_points = get_user_points(intval($row['uid']));
@@ -492,7 +492,7 @@ function delay_jobs($id,$days)
 				else
 				{
 					$setmeal=get_user_setmeal(intval($row['uid']));
-					//ÑÓÆÚÊ±¼ä³¬¹ıÁËÌ×²ÍÊ±¼ä
+					//å»¶æœŸæ—¶é—´è¶…è¿‡äº†å¥—é¤æ—¶é—´
 					if($setmeal['endtime']<$deadline && $setmeal['endtime']<>'0')
 					{
 						$fail++;
@@ -506,8 +506,8 @@ function delay_jobs($id,$days)
 			}
 		}
 	}
-	//·µ»Ø : ×Ü¹²Êı , ³É¹¦Êı , Ê§°ÜÊı
-	write_log("ÑÓÆÚÖ°Î»idÎª".$sqlin."µÄÖ°Î»,¹²´¦Àí".$total."ĞĞ£¬ÑÓÆÚ³É¹¦".$return."Ê§°Ü".$fail, $_SESSION['admin_name'],3);
+	//è¿”å› : æ€»å…±æ•° , æˆåŠŸæ•° , å¤±è´¥æ•°
+	write_log("å»¶æœŸèŒä½idä¸º".$sqlin."çš„èŒä½,å…±å¤„ç†".$total."è¡Œï¼Œå»¶æœŸæˆåŠŸ".$return."å¤±è´¥".$fail, $_SESSION['admin_name'],3);
 	return $total.','.$return.','.$fail;
 	
 }
@@ -546,12 +546,12 @@ function delay_meal($id,$days)
 			}
 		}
 	}
-	write_log("ÑÓÆÚÆóÒµuidÎª".$sqlin."µÄÆóÒµÌ×²Í,¹²ÑÓÆÚ".$return."ĞĞ", $_SESSION['admin_name'],3);
+	write_log("å»¶æœŸä¼ä¸šuidä¸º".$sqlin."çš„ä¼ä¸šå¥—é¤,å…±å»¶æœŸ".$return."è¡Œ", $_SESSION['admin_name'],3);
 	return $return;
 	
 }
-//******************************ÆóÒµ²¿·Ö**********************************
- //»ñÈ¡ÆóÒµÁĞ±í
+//******************************ä¼ä¸šéƒ¨åˆ†**********************************
+ //è·å–ä¼ä¸šåˆ—è¡¨
  function get_company($offset,$perpage,$get_sql= '',$mode=1)
 {
 	global $db;
@@ -570,7 +570,7 @@ function delay_meal($id,$days)
 	return $row_arr;
 }
 
-//»ñÈ¡µ¥ÌõÆóÒµ×ÊÁÏ
+//è·å–å•æ¡ä¼ä¸šèµ„æ–™
 function get_company_one_id($id)
 {
 	global $db;
@@ -588,7 +588,7 @@ function get_company_one_uid($uid)
 	$val=$db->getone($sql);
 	return $val;
 }
- //¸ü¸ÄÆóÒµÈÏÖ¤×´Ì¬
+ //æ›´æ”¹ä¼ä¸šè®¤è¯çŠ¶æ€
 function edit_company_audit($uid,$audit,$reason,$pms_notice)
 {
 	global $db,$_CFG;	
@@ -602,17 +602,17 @@ function edit_company_audit($uid,$audit,$reason,$pms_notice)
 		if (!$db->query("update  ".table('company_profile')." SET audit='{$audit}'  WHERE uid IN ({$sqlin})")) return false;
 		if (!$db->query("update  ".table('jobs')." SET company_audit='{$audit}'  WHERE uid IN ({$sqlin})")) return false;
 		if (!$db->query("update  ".table('jobs_tmp')." SET company_audit='{$audit}'  WHERE uid IN ({$sqlin})")) return false;
-		write_log("½«ÆóÒµuidÎª".$sqlin."µÄÆóÒµµÄÈÏÖ¤×´Ì¬ĞŞ¸ÄÎª".$audit, $_SESSION['admin_name'],3);
-		//·¢ËÍÕ¾ÄÚĞÅ
+		write_log("å°†ä¼ä¸šuidä¸º".$sqlin."çš„ä¼ä¸šçš„è®¤è¯çŠ¶æ€ä¿®æ”¹ä¸º".$audit, $_SESSION['admin_name'],3);
+		//å‘é€ç«™å†…ä¿¡
 		if ($pms_notice=='1')
 		{
-			$reasonpm=$reason==''?'ÎŞ':$reason;
-			if($audit=='1') {$note='³É¹¦Í¨¹ıÍøÕ¾¹ÜÀíÔ±ÉóºË!';}elseif($audit=='2'){$note='ÕıÔÚÉóºËÖĞ!';}else{$note='Î´Í¨¹ıÍøÕ¾¹ÜÀíÔ±ÉóºË£¡';}
+			$reasonpm=$reason==''?'æ— ':$reason;
+			if($audit=='1') {$note='æˆåŠŸé€šè¿‡ç½‘ç«™ç®¡ç†å‘˜å®¡æ ¸!';}elseif($audit=='2'){$note='æ­£åœ¨å®¡æ ¸ä¸­!';}else{$note='æœªé€šè¿‡ç½‘ç«™ç®¡ç†å‘˜å®¡æ ¸ï¼';}
 			$result = $db->query("SELECT companyname,uid FROM ".table('company_profile')." WHERE uid IN ({$sqlin})");
 			while($list = $db->fetch_array($result))
 			{
 				$user_info=get_user($list['uid']);
-				$setsqlarr['message']="ÄúµÄ¹«Ë¾£º{$list['companyname']},".$note.'ÆäËûËµÃ÷£º'.$reasonpm;
+				$setsqlarr['message']="æ‚¨çš„å…¬å¸ï¼š{$list['companyname']},".$note.'å…¶ä»–è¯´æ˜ï¼š'.$reasonpm;
 				$setsqlarr['msgtype']=1;
 				$setsqlarr['msgtouid']=$user_info['uid'];
 				$setsqlarr['msgtoname']=$user_info['username'];
@@ -622,9 +622,9 @@ function edit_company_audit($uid,$audit,$reason,$pms_notice)
 				$db->inserttable(table('pms'),$setsqlarr);
 			 }
 		}
-		//ÉóºËÎ´Í¨¹ıÔö¼ÓÔ­Òò
+		//å®¡æ ¸æœªé€šè¿‡å¢åŠ åŸå› 
 		if($audit=='3'){
-			$reasona=$reason==''?'Ô­Òò£ºÎŞ':'Ô­Òò£º'.$reason;
+			$reasona=$reason==''?'åŸå› ï¼šæ— ':'åŸå› ï¼š'.$reason;
 			foreach($uid as $list){
 				$auditsqlarr['company_id']=$list;
 				$auditsqlarr['reason']=$reasona;
@@ -635,11 +635,11 @@ function edit_company_audit($uid,$audit,$reason,$pms_notice)
 		
 		if ($audit=='1') 
 		{
-		//3.4Éı¼¶ĞŞ¸Ä×¢Òâ,Ö»ÓĞ»ı·ÖÄ£Ê½½±Àø»ı·Ö
-		//3.5Éı¼¶ĞŞ¸Ä×¢Òâ£¬»ı·ÖºÍ»ìºÏÄ£Ê½¶¼½±Àø»ı·Ö
+		//3.4å‡çº§ä¿®æ”¹æ³¨æ„,åªæœ‰ç§¯åˆ†æ¨¡å¼å¥–åŠ±ç§¯åˆ†
+		//3.5å‡çº§ä¿®æ”¹æ³¨æ„ï¼Œç§¯åˆ†å’Œæ··åˆæ¨¡å¼éƒ½å¥–åŠ±ç§¯åˆ†
 			if($_CFG['operation_mode']=='1' || ($_CFG['operation_mode']=='3' && $_CFG['setmeal_to_points']=='1')){
 				$points_rule=get_cache('points_rule');
-				if ($points_rule['company_auth']['value']>0)//Èç¹ûÉèÖÃÁËÈÏÖ¤ÔùËÍ»ı·Ö
+				if ($points_rule['company_auth']['value']>0)//å¦‚æœè®¾ç½®äº†è®¤è¯èµ é€ç§¯åˆ†
 				{
 					gift_points($sqlin,'companyauth',$points_rule['company_auth']['type'],$points_rule['company_auth']['value']);
 				}
@@ -647,7 +647,7 @@ function edit_company_audit($uid,$audit,$reason,$pms_notice)
 		}
 		$mailconfig=get_cache('mailconfig');
 		$sms=get_cache('sms_config');
-		if ($audit=="1" && $mailconfig['set_licenseallow']=="1")//ÈÏÖ¤Í¨¹ı
+		if ($audit=="1" && $mailconfig['set_licenseallow']=="1")//è®¤è¯é€šè¿‡
 		{
 			$result = $db->query("SELECT * FROM ".table('company_profile')." WHERE uid IN ({$sqlin})");
 				while($list = $db->fetch_array($result))
@@ -659,7 +659,7 @@ function edit_company_audit($uid,$audit,$reason,$pms_notice)
 					}
 				}
 		}
-		if ($audit=="3" && $mailconfig['set_licensenotallow']=="1")//ÈÏÖ¤Î´Í¨¹ı
+		if ($audit=="3" && $mailconfig['set_licensenotallow']=="1")//è®¤è¯æœªé€šè¿‡
 		{
 			$result = $db->query("SELECT * FROM ".table('company_profile')." WHERE uid IN ({$sqlin})");
 				while($list = $db->fetch_array($result))
@@ -685,7 +685,7 @@ function edit_company_audit($uid,$audit,$reason,$pms_notice)
 				}
 		}
 		//sms
-		if ($audit=="3" && $sms['open']=="1" && $sms['set_licensenotallow']=="1" )//ÈÏÖ¤Î´Í¨¹ı
+		if ($audit=="3" && $sms['open']=="1" && $sms['set_licensenotallow']=="1" )//è®¤è¯æœªé€šè¿‡
 		{
 			$result = $db->query("SELECT * FROM ".table('company_profile')." WHERE uid IN ({$sqlin})");
 				while($list = $db->fetch_array($result))
@@ -704,7 +704,7 @@ function edit_company_audit($uid,$audit,$reason,$pms_notice)
 	return false;
 }
  
-//É¾³ıÆóÒµ×ÊÁÏ£¬uid=array
+//åˆ é™¤ä¼ä¸šèµ„æ–™ï¼Œuid=array
 function del_company($uid)
 {
 	global $db,$certificate_dir;
@@ -718,7 +718,7 @@ function del_company($uid)
 		@unlink($certificate_dir.$row['certificate_img']);
 		}
 		if (!$db->query("Delete from ".table('company_profile')." WHERE uid IN ({$sqlin})")) return false;
-		write_log("É¾³ıÆóÒµuidÎª".$sqlin."µÄÆóÒµ×ÊÁÏ", $_SESSION['admin_name'],3);
+		write_log("åˆ é™¤ä¼ä¸šuidä¸º".$sqlin."çš„ä¼ä¸šèµ„æ–™", $_SESSION['admin_name'],3);
 	return true;
 	}
 	return false;
@@ -744,13 +744,13 @@ function del_company_alljobs($uid)
 		$db->query("Delete from ".table('jobs_search_stickrtime')." WHERE uid IN ({$sqlin})");
 		$db->query("Delete from ".table('jobs_search_wage')." WHERE uid IN ({$sqlin})");
 		$db->query("Delete from ".table('jobs_tag')." WHERE uid IN ({$sqlin})");
-		write_log("É¾³ıÆóÒµuidÎª".$sqlin."µÄÆóÒµ·¢²¼µÄÖ°Î»", $_SESSION['admin_name'],3);
+		write_log("åˆ é™¤ä¼ä¸šuidä¸º".$sqlin."çš„ä¼ä¸šå‘å¸ƒçš„èŒä½", $_SESSION['admin_name'],3);
 		return true;
 	}
 	return false;
 }
-//******************************¶©µ¥¹ÜÀí**********************************
-//¶©µ¥ÁĞ±í
+//******************************è®¢å•ç®¡ç†**********************************
+//è®¢å•åˆ—è¡¨
 function get_order_list($offset,$perpage,$get_sql= '')
 {
 	global $db;
@@ -760,7 +760,7 @@ function get_order_list($offset,$perpage,$get_sql= '')
 	while($row = $db->fetch_array($result))
 	{
 		if($row['payment_name'] == 'points'){
-			$row['payment_name']='»ı·Ö';
+			$row['payment_name']='ç§¯åˆ†';
 		}else{
 			$row['payment_name']=get_payment_info($row['payment_name'],true);
 		} 
@@ -768,7 +768,7 @@ function get_order_list($offset,$perpage,$get_sql= '')
 	}
 	return $row_arr;
 }
-//»ñÈ¡¶©µ¥
+//è·å–è®¢å•
 function get_order_one($id=0)
 {
 	global $db;
@@ -778,7 +778,7 @@ function get_order_one($id=0)
 	$val['payment_username']=get_user($val['uid']);
 	return $val;
 }
-//È¡Ïû¶©µ¥
+//å–æ¶ˆè®¢å•
 function del_order($id)
 {
 	global $db;
@@ -787,12 +787,12 @@ function del_order($id)
 	if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
 	{
 		if (!$db->query("Delete from ".table('order')." WHERE id IN (".$sqlin.")  AND is_paid=1 ")) return false;
-		write_log("È¡Ïû¶©µ¥idÎª".$sqlin."µÄ¶©µ¥", $_SESSION['admin_name'],3);	
+		write_log("å–æ¶ˆè®¢å•idä¸º".$sqlin."çš„è®¢å•", $_SESSION['admin_name'],3);	
 		return true;
 	}
 	return false;
 }
-//»ñÈ¡³äÖµÖ§¸¶·½Ê½Ãû³Æ
+//è·å–å……å€¼æ”¯ä»˜æ–¹å¼åç§°
 function get_payment_info($typename,$name=false)
 {
 	global $db;
@@ -819,7 +819,7 @@ function get_meal_members_list($offset,$perpage,$get_sql= '')
 	}
 	return $row_arr;
 }
-//»ñÈ¡»áÔ±µÄÌ×²Í±ä¸ü¼ÇÂ¼
+//è·å–ä¼šå‘˜çš„å¥—é¤å˜æ›´è®°å½•
 function get_meal_members_log($offset,$perpage,$get_sql= '',$mode='1')
 {
 	global $db;
@@ -846,7 +846,7 @@ function get_meal_members_log($offset,$perpage,$get_sql= '',$mode='1')
 	}
 	return $row_arr;
 }
-//É¾³ıÆóÒµ»áÔ±Ì×²Í±ä¸ü¼ÇÂ¼
+//åˆ é™¤ä¼ä¸šä¼šå‘˜å¥—é¤å˜æ›´è®°å½•
 function del_meal_log($id)
 {
 	global $db;
@@ -855,7 +855,7 @@ function del_meal_log($id)
 	if (!preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin)) return false;
 	if (!$db->query("Delete from ".table('members_charge_log')." WHERE log_id IN ({$sqlin})")) return false;
 	$num=$db->affected_rows();
-	write_log("É¾³ıÆóÒµ»áÔ±Ì×²Í±ä¸ü¼ÇÂ¼idÎª".$sqlin."µÄÌ×²Í±ä¸ü¼ÇÂ¼,¹²É¾³ı".$num."ĞĞ", $_SESSION['admin_name'],3);
+	write_log("åˆ é™¤ä¼ä¸šä¼šå‘˜å¥—é¤å˜æ›´è®°å½•idä¸º".$sqlin."çš„å¥—é¤å˜æ›´è®°å½•,å…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
 	return $db->affected_rows();
 }
 
@@ -871,7 +871,7 @@ function get_member_list($offset,$perpage,$get_sql= '')
 		$row['company_url']=url_rewrite('QS_companyshow',array('id'=>$row['id'])); 
 		$address = $db->getone("select log_address,log_id,log_uid from ".table("members_log")." where log_type = '1000' and log_uid = ".$row['uid']." order by log_id asc limit 1");
 		$row['ipAddress'] = $address['log_address']; 
-		//¹ËÎÊ
+		//é¡¾é—®
 		$consultant = $db->getone("SELECT id,name FROM ".table('consultant')." WHERE id =".intval($row['consultant']));
 		$row['con_name'] = $consultant['name'];
 		$row_arr[] = $row;
@@ -891,13 +891,13 @@ function delete_company_user($uid)
 		if (!$db->query("Delete from ".table('members_points')." WHERE uid IN (".$sqlin.")")) return false;
 		if (!$db->query("Delete from ".table('order')." WHERE uid IN (".$sqlin.")")) return false;
 		if (!$db->query("Delete from ".table('members_setmeal')." WHERE uid IN (".$sqlin.")")) return false; 
-		write_log("É¾³ı»áÔ±uidÎª".$sqlin, $_SESSION['admin_name'],3);
+		write_log("åˆ é™¤ä¼šå‘˜uidä¸º".$sqlin, $_SESSION['admin_name'],3);
 		return true;		
 	}
 	return false;
 }
-//******************************ÆäËû**********************************
-//»ñÈ¡»áÔ±ĞÅÏ¢£¬·µ»ØÓÃ»§ÃûµÈÏà¹ØĞÅÏ¢
+//******************************å…¶ä»–**********************************
+//è·å–ä¼šå‘˜ä¿¡æ¯ï¼Œè¿”å›ç”¨æˆ·åç­‰ç›¸å…³ä¿¡æ¯
 function get_user_points($uid)
 {
 	global $db;
@@ -905,7 +905,7 @@ function get_user_points($uid)
 	$points=$db->getone($sql);
 	return $points['points'];
 }
-//»ñÈ¡»ı·Ö¹æÔò
+//è·å–ç§¯åˆ†è§„åˆ™
 function get_points_rule()
 {
 	global $db;
@@ -914,12 +914,12 @@ function get_points_rule()
 	return $list;
 }
 //-------------------------------------------------------
-//¸¶¿îºó¿ªÍ¨
+//ä»˜æ¬¾åå¼€é€š
 function order_paid($v_oid)
 {
 	global $db,$timestamp,$_CFG;
 	$order=$db->getone("select * from ".table('order')." WHERE oid ='{$v_oid}' AND is_paid= '1' LIMIT 1 ");
-	if($order['pay_type'] == '1'  || $order['pay_type'] == '4')			//Ì×²Í»ı·ÖÖ§¸¶
+	if($order['pay_type'] == '1'  || $order['pay_type'] == '4')			//å¥—é¤ç§¯åˆ†æ”¯ä»˜
 	{
 		$user=get_user($order['uid']);
 		$sql = "UPDATE ".table('order')." SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='{$v_oid}' LIMIT 1 ";
@@ -933,46 +933,46 @@ function order_paid($v_oid)
 		{
 				report_deal($order['uid'],1,$order['points']);				
 				$user_points=get_user_points($order['uid']);
-				$notes="²Ù×÷ÈË£º{$_SESSION['admin_name']},ËµÃ÷£ºÈ·ÈÏÊÕ¿î¡£ÊÕ¿î½ğ¶î£º{$order['amount']} ¡£".date('Y-m-d H:i',time())."Í¨¹ı£º".get_payment_info($order['payment_name'],true)." ³É¹¦³äÖµ ".$order['amount']."Ôª£¬(+{$order['points']})£¬(Ê£Óà:{$user_points}),¶©µ¥:{$v_oid}";					
+				$notes="æ“ä½œäººï¼š{$_SESSION['admin_name']},è¯´æ˜ï¼šç¡®è®¤æ”¶æ¬¾ã€‚æ”¶æ¬¾é‡‘é¢ï¼š{$order['amount']} ã€‚".date('Y-m-d H:i',time())."é€šè¿‡ï¼š".get_payment_info($order['payment_name'],true)." æˆåŠŸå……å€¼ ".$order['amount']."å…ƒï¼Œ(+{$order['points']})ï¼Œ(å‰©ä½™:{$user_points}),è®¢å•:{$v_oid}";					
 				write_memberslog($order['uid'],1,9001,$user['username'],$notes);
-				//»áÔ±Ì×²Í±ä¸ü¼ÇÂ¼¡£¹ÜÀíÔ±ºóÌ¨ÉèÖÃ»áÔ±¶©µ¥¹ºÂò³É¹¦¡£4±íÊ¾£º¹ÜÀíÔ±ºóÌ¨¿ªÍ¨
+				//ä¼šå‘˜å¥—é¤å˜æ›´è®°å½•ã€‚ç®¡ç†å‘˜åå°è®¾ç½®ä¼šå‘˜è®¢å•è´­ä¹°æˆåŠŸã€‚4è¡¨ç¤ºï¼šç®¡ç†å‘˜åå°å¼€é€š
 				write_setmeallog($order['uid'],$user['username'],$notes,4,$order['amount'],$ismoney,1,1);
 		}
 		if ($order['setmeal']>0)
 		{
 				set_members_setmeal($order['uid'],$order['setmeal']);
 				$setmeal=get_setmeal_one($order['setmeal']);
-				$notes="²Ù×÷ÈË£º{$_SESSION['admin_name']},ËµÃ÷£ºÈ·ÈÏÊÕ¿î£¬ÊÕ¿î½ğ¶î£º{$order['amount']} ¡£".date('Y-m-d H:i',time())."Í¨¹ı£º".get_payment_info($order['payment_name'],true)." ³É¹¦³äÖµ ".$order['amount']."Ôª²¢¿ªÍ¨{$setmeal['setmeal_name']}";
+				$notes="æ“ä½œäººï¼š{$_SESSION['admin_name']},è¯´æ˜ï¼šç¡®è®¤æ”¶æ¬¾ï¼Œæ”¶æ¬¾é‡‘é¢ï¼š{$order['amount']} ã€‚".date('Y-m-d H:i',time())."é€šè¿‡ï¼š".get_payment_info($order['payment_name'],true)." æˆåŠŸå……å€¼ ".$order['amount']."å…ƒå¹¶å¼€é€š{$setmeal['setmeal_name']}";
 				write_memberslog($order['uid'],1,9002,$user['username'],$notes);
-				//»áÔ±Ì×²Í±ä¸ü¼ÇÂ¼¡£¹ÜÀíÔ±ºóÌ¨ÉèÖÃ»áÔ±¶©µ¥¹ºÂò³É¹¦¡£4±íÊ¾£º¹ÜÀíÔ±ºóÌ¨¿ªÍ¨
+				//ä¼šå‘˜å¥—é¤å˜æ›´è®°å½•ã€‚ç®¡ç†å‘˜åå°è®¾ç½®ä¼šå‘˜è®¢å•è´­ä¹°æˆåŠŸã€‚4è¡¨ç¤ºï¼šç®¡ç†å‘˜åå°å¼€é€š
 				write_setmeallog($order['uid'],$user['username'],$notes,4,$order['amount'],$ismoney,2,1);
 		
 		}
 	}
-	elseif($order['pay_type'] == '2')		//¹ã¸æÎ»Ö§¸¶
+	elseif($order['pay_type'] == '2')		//å¹¿å‘Šä½æ”¯ä»˜
 	{	 
-		$sql = "UPDATE ".table('order')." SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='{$v_oid}' LIMIT 1 ";	//is_paid =2 ÎªÈ·¶¨Ö§¸¶
+		$sql = "UPDATE ".table('order')." SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='{$v_oid}' LIMIT 1 ";	//is_paid =2 ä¸ºç¡®å®šæ”¯ä»˜
 		if (!$db->query($sql)) return false; 
-		write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÉêÇë¹ã¸æÎ»£º<strong>{$order['description']}</strong>£¬(»¨·Ñ£º {$order['amount']})¡£",1,1020,"ÉêÇë¹ã¸æÎ»","-{$order['amount']}","{$user_points}"); 
+		write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ç”³è¯·å¹¿å‘Šä½ï¼š<strong>{$order['description']}</strong>ï¼Œ(èŠ±è´¹ï¼š {$order['amount']})ã€‚",1,1020,"ç”³è¯·å¹¿å‘Šä½","-{$order['amount']}","{$user_points}"); 
 	}
-	elseif($order['pay_type'] == '3')		//¶ÌĞÅÖ§¸¶
+	elseif($order['pay_type'] == '3')		//çŸ­ä¿¡æ”¯ä»˜
 	{	
 		$user=get_user($order['uid']);
 		$sql = "UPDATE ".table('order')." SET is_paid= '2',payment_time='{$timestamp}' WHERE oid='{$v_oid}' LIMIT 1 ";
 		if (!$db->query($sql)) return false;
-		if($order['setmeal'] > 0){	//²é¿´¶ÌĞÅÌ×²Í
-			set_members_sms($order['uid'],intval($order['setmeal']));	//Ö§¸¶³É¹¦£¬ÏòÓÃ»§Ôö¼Ó¶ÌĞÅÌõÊı
+		if($order['setmeal'] > 0){	//æŸ¥çœ‹çŸ­ä¿¡å¥—é¤
+			set_members_sms($order['uid'],intval($order['setmeal']));	//æ”¯ä»˜æˆåŠŸï¼Œå‘ç”¨æˆ·å¢åŠ çŸ­ä¿¡æ¡æ•°
 			$user_points = get_user_setmeal($order['uid']);
-			write_memberslog($_SESSION['uid'],1,9003,$_SESSION['username'],"¶ÌĞÅ³äÖµÌ×²Í£º<strong>{$order['description']}</strong>£¬(- {$order['amount']})£¬(Ê£Óà:{$user_points['set_sms']})",1,1020,"ÉêÇë¹ã¸æÎ»","- {$order['amount']}","{$user_points['set_sms']}");
+			write_memberslog($_SESSION['uid'],1,9003,$_SESSION['username'],"çŸ­ä¿¡å……å€¼å¥—é¤ï¼š<strong>{$order['description']}</strong>ï¼Œ(- {$order['amount']})ï¼Œ(å‰©ä½™:{$user_points['set_sms']})",1,1020,"ç”³è¯·å¹¿å‘Šä½","- {$order['amount']}","{$user_points['set_sms']}");
 		}
 	} 
-		//·¢ËÍÓÊ¼ş
+		//å‘é€é‚®ä»¶
 	$mailconfig=get_cache('mailconfig');
 	if ($mailconfig['set_payment']=="1" && $user['email_audit']=="1")
 	{
 	dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_mail.php?uid=".$order['uid']."&key=".asyn_userkey($order['uid'])."&act=set_payment");
 	}
-	//·¢ËÍÓÊ¼şÍê±Ï
+	//å‘é€é‚®ä»¶å®Œæ¯•
 	//sms
 	$sms=get_cache('sms_config');
 	if ($sms['open']=="1" && $sms['set_payment']=="1"  && $user['mobile_audit']=="1")
@@ -980,7 +980,7 @@ function order_paid($v_oid)
 	dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_sms.php?uid=".$order['uid']."&key=".asyn_userkey($order['uid'])."&act=set_payment");
 	}
 	//sms
-	write_log("½«¶©µ¥ºÅÎª".$v_oid."µÄ¶©µ¥ÉèÖÃÎªÈ·ÈÏÊÕ¿î", $_SESSION['admin_name'],3);
+	write_log("å°†è®¢å•å·ä¸º".$v_oid."çš„è®¢å•è®¾ç½®ä¸ºç¡®è®¤æ”¶æ¬¾", $_SESSION['admin_name'],3);
 	return true;
 }
 function report_deal($uid,$i_type=1,$points=0)
@@ -1022,7 +1022,7 @@ function gift_points($uid,$gift,$ptype,$points)
 				report_deal($vuid,$ptype,$points);
 				$user=get_user($vuid);
 				$mypoints=get_user_points($vuid);
-				write_memberslog($vuid,1,9001,$user['username']," ³ÉÎªÒÑÈÏÖ¤ÆóÒµ({$operator}{$points})£¬(Ê£Óà:{$mypoints})",1,1013,"ÈÏÖ¤ÓªÒµÖ´ÕÕ","{$operator}{$points}","{$mypoints}");
+				write_memberslog($vuid,1,9001,$user['username']," æˆä¸ºå·²è®¤è¯ä¼ä¸š({$operator}{$points})ï¼Œ(å‰©ä½™:{$mypoints})",1,1013,"è®¤è¯è¥ä¸šæ‰§ç…§","{$operator}{$points}","{$mypoints}");
 				$db->query("INSERT INTO ".table('members_handsel')." (uid,htype,addtime) VALUES ('{$vuid}', '{$gift}','{$time}')");			
 				}
 			}			
@@ -1059,8 +1059,8 @@ function del_setmeal_one($id)
 {
 	global $db;
 	if (!$db->query("Delete from ".table('setmeal')." WHERE id=".intval($id)." ")) return false;
-	//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨É¾³ıidÎª".$id."µÄÌ×²Í", $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åå°åˆ é™¤idä¸º".$id."çš„å¥—é¤", $_SESSION['admin_name'],3);
 	return true;
 }
 function set_members_setmeal($uid,$setmealid)
@@ -1112,7 +1112,7 @@ function set_members_setmeal($uid,$setmealid)
 	distribution_jobs_uid($uid);
 	return true;
 }
-//ÆóÒµÍÆ¹ã
+//ä¼ä¸šæ¨å¹¿
 function get_promotion_cat($available='')
 {
 	global $db;
@@ -1157,12 +1157,12 @@ function del_promotion($id)
 	foreach ($id as $did)
 	{
 		$info=$db->getone("select p.*,m.username from ".table('promotion')." AS p INNER JOIN  ".table('members')." as m ON p.cp_uid=m.uid WHERE p.cp_id='".intval($did)."' LIMIT 1");
-		write_memberslog($info['cp_uid'],1,3006,$info['username'],"¹ÜÀíÔ±È¡ÏûÍÆ¹ã£¬Ö°Î»ID:{$info['cp_jobid']}");
+		write_memberslog($info['cp_uid'],1,3006,$info['username'],"ç®¡ç†å‘˜å–æ¶ˆæ¨å¹¿ï¼ŒèŒä½ID:{$info['cp_jobid']}");
 		cancel_promotion($info['cp_jobid'],$info['cp_promotionid']);
 		$db->query("Delete from ".table('promotion')." WHERE cp_id ='".intval($did)."'");
 		$n+=$db->affected_rows();
 	}
-	write_log("É¾³ıÍÆ¹ãidÎª".$id."µÄÍÆ¹ã,¹²É¾³ı".$n."ĞĞ", $_SESSION['admin_name'],3);
+	write_log("åˆ é™¤æ¨å¹¿idä¸º".$id."çš„æ¨å¹¿,å…±åˆ é™¤".$n."è¡Œ", $_SESSION['admin_name'],3);
 	return $n;
 }
 function get_promotion_one($id)
@@ -1259,7 +1259,7 @@ function cancel_promotion($jobid,$promotionid)
 		return	true;
 	}
 }
-//»ñÈ¡Ö°Î»µÄÉóºËÈÕÖ¾
+//è·å–èŒä½çš„å®¡æ ¸æ—¥å¿—
 function get_jobsaudit_one($jobs_id){
 	global $db;
 	$sql = "select * from ".table('audit_reason')."  WHERE jobs_id='".intval($jobs_id)."' ORDER BY id DESC";
@@ -1285,51 +1285,51 @@ function edit_setmeal_notes($setarr,$setmeal){
 	if($diff_arr){
 		foreach($diff_arr as $key=>$value){
 			if($key=='jobs_ordinary'){
-				$str.="ÆÕÍ¨Ö°Î»£º{$setmeal['jobs_ordinary']}-{$setarr['jobs_ordinary']}";
+				$str.="æ™®é€šèŒä½ï¼š{$setmeal['jobs_ordinary']}-{$setarr['jobs_ordinary']}";
 			}elseif($key=='download_resume_ordinary'){
-				$str.=",ÏÂÔØÆÕÍ¨ÈË²Å¼òÀú£º{$setmeal['download_resume_ordinary']}-{$setarr['download_resume_ordinary']}";
+				$str.=",ä¸‹è½½æ™®é€šäººæ‰ç®€å†ï¼š{$setmeal['download_resume_ordinary']}-{$setarr['download_resume_ordinary']}";
 			}elseif($key=='download_resume_senior'){
-				$str.=",ÏÂÔØ¸ß¼¶ÈË²Å¼òÀú£º{$setmeal['download_resume_senior']}-{$setarr['download_resume_senior']}";
+				$str.=",ä¸‹è½½é«˜çº§äººæ‰ç®€å†ï¼š{$setmeal['download_resume_senior']}-{$setarr['download_resume_senior']}";
 			}elseif($key=='interview_ordinary'){
-				$str.=",ÑûÇëÆÕÍ¨ÈË²ÅÃæÊÔÊı£º{$setmeal['interview_ordinary']}-{$setarr['interview_ordinary']}";
+				$str.=",é‚€è¯·æ™®é€šäººæ‰é¢è¯•æ•°ï¼š{$setmeal['interview_ordinary']}-{$setarr['interview_ordinary']}";
 			}elseif($key=='interview_senior'){
-				$str.=",ÑûÇë¸ß¼¶ÈË²ÅÃæÊÔÊı£º{$setmeal['interview_senior']}-{$setarr['interview_senior']}";
+				$str.=",é‚€è¯·é«˜çº§äººæ‰é¢è¯•æ•°ï¼š{$setmeal['interview_senior']}-{$setarr['interview_senior']}";
 			}elseif($key=='talent_pool'){
-				$str.=",ÈË²Å¿âÈİÁ¿£º{$setmeal['talent_pool']}-{$setarr['talent_pool']}";
+				$str.=",äººæ‰åº“å®¹é‡ï¼š{$setmeal['talent_pool']}-{$setarr['talent_pool']}";
 			}elseif($key=='recommend_num'){
-				$str.=",ÔÊĞíÍÆ¼öÖ°Î»Êı£º{$setmeal['recommend_num']}-{$setarr['recommend_num']}";
+				$str.=",å…è®¸æ¨èèŒä½æ•°ï¼š{$setmeal['recommend_num']}-{$setarr['recommend_num']}";
 			}elseif($key=='recommend_days'){
-				$str.=",ÍÆ¼öÖ°Î»ÌìÊıÉè¶¨£º{$setmeal['recommend_days']}-{$setarr['recommend_days']}";
+				$str.=",æ¨èèŒä½å¤©æ•°è®¾å®šï¼š{$setmeal['recommend_days']}-{$setarr['recommend_days']}";
 			}elseif($key=='stick_num'){
-				$str.=",ÔÊĞíÖÃ¶¥Ö°Î»Êı£º{$setmeal['stick_num']}-{$setarr['stick_num']}";
+				$str.=",å…è®¸ç½®é¡¶èŒä½æ•°ï¼š{$setmeal['stick_num']}-{$setarr['stick_num']}";
 			}elseif($key=='stick_days'){
-				$str.=",ÖÃ¶¥ÌìÊıÉè¶¨£º{$setmeal['stick_days']}-{$setarr['stick_days']}";
+				$str.=",ç½®é¡¶å¤©æ•°è®¾å®šï¼š{$setmeal['stick_days']}-{$setarr['stick_days']}";
 			}elseif($key=='emergency_num'){
-				$str.=",ÔÊĞí½ô¼±Ö°Î»Êı£º{$setmeal['emergency_num']}-{$setarr['emergency_num']}";
+				$str.=",å…è®¸ç´§æ€¥èŒä½æ•°ï¼š{$setmeal['emergency_num']}-{$setarr['emergency_num']}";
 			}elseif($key=='emergency_days'){
-				$str.=",½ô¼±Ö°Î»ÌìÊıÉè¶¨£º{$setmeal['emergency_days']}-{$setarr['emergency_days']}";
+				$str.=",ç´§æ€¥èŒä½å¤©æ•°è®¾å®šï¼š{$setmeal['emergency_days']}-{$setarr['emergency_days']}";
 			}elseif($key=='highlight_num'){
-				$str.=",ÔÊĞíÌ×É«Ö°Î»Êı£º{$setmeal['highlight_num']}-{$setarr['highlight_num']}";
+				$str.=",å…è®¸å¥—è‰²èŒä½æ•°ï¼š{$setmeal['highlight_num']}-{$setarr['highlight_num']}";
 			}elseif($key=='highlight_days'){
-				$str.=",Ì×É«Ö°Î»ÌìÊıÉè¶¨£º{$setmeal['highlight_days']}-{$setarr['highlight_days']}";
+				$str.=",å¥—è‰²èŒä½å¤©æ•°è®¾å®šï¼š{$setmeal['highlight_days']}-{$setarr['highlight_days']}";
 			}elseif($key=='jobsfair_num'){
-				$str.=",²Î¼ÓÕĞÆ¸»áÊı£º{$setmeal['jobsfair_num']}-{$setarr['jobsfair_num']}";
+				$str.=",å‚åŠ æ‹›è˜ä¼šæ•°ï¼š{$setmeal['jobsfair_num']}-{$setarr['jobsfair_num']}";
 			}elseif($key=='change_templates'){
-					$flag=$setmeal['change_templates']=='1'?'ÔÊĞí':'²»ÔÊĞí';
-					$flag1=$setarr['change_templates']=='1'?'ÔÊĞí':'²»ÔÊĞí';
-				$str.=",×ÔÓÉÇĞ»»Ä£°å£º{$flag}-{$flag1}";
+					$flag=$setmeal['change_templates']=='1'?'å…è®¸':'ä¸å…è®¸';
+					$flag1=$setarr['change_templates']=='1'?'å…è®¸':'ä¸å…è®¸';
+				$str.=",è‡ªç”±åˆ‡æ¢æ¨¡æ¿ï¼š{$flag}-{$flag1}";
 			}elseif($key=='map_open'){
-					$flag=$setmeal['map_open']=='1'?'ÔÊĞí':'²»ÔÊĞí';
-					$flag1=$setarr['map_open']=='1'?'ÔÊĞí':'²»ÔÊĞí';
-				$str.=",µç×ÓµØÍ¼£º{$flag}-{$flag1}";
+					$flag=$setmeal['map_open']=='1'?'å…è®¸':'ä¸å…è®¸';
+					$flag1=$setarr['map_open']=='1'?'å…è®¸':'ä¸å…è®¸';
+				$str.=",ç”µå­åœ°å›¾ï¼š{$flag}-{$flag1}";
 			}elseif($key=='endtime'){
-				if($setarr['endtime']=='1970-01-01') $setarr['endtime']='ÎŞÏŞÆÚ';
-				$str.=",ĞŞ¸ÄÌ×²Íµ½ÆÚÊ±¼ä£º{$setmeal['endtime']}~{$setarr['endtime']}";
+				if($setarr['endtime']=='1970-01-01') $setarr['endtime']='æ— é™æœŸ';
+				$str.=",ä¿®æ”¹å¥—é¤åˆ°æœŸæ—¶é—´ï¼š{$setmeal['endtime']}~{$setarr['endtime']}";
 			}elseif($key=='log_amount' && $value){
-				$str.=",ÊÕÈ¡Ì×²Í½ğ¶î£º{$value} Ôª";
+				$str.=",æ”¶å–å¥—é¤é‡‘é¢ï¼š{$value} å…ƒ";
 			}
 		}
-		$strend=$str?"²Ù×÷ÈË£º{$_SESSION['admin_name']}¡£ËµÃ÷£º".$str:'';
+		$strend=$str?"æ“ä½œäººï¼š{$_SESSION['admin_name']}ã€‚è¯´æ˜ï¼š".$str:'';
 		return $strend;
 	}else{
 		return '';
@@ -1356,7 +1356,7 @@ function get_consultant($offset,$perpage,$get_sql= '')
 function del_consultant($id){
 	global $db;
 	$db->query("delete from ".table('consultant')." where id=".$id);
-	write_log("É¾³ı¹ËÎÊidÎª".$id."µÄ¹ËÎÊ", $_SESSION['admin_name'],3);
+	write_log("åˆ é™¤é¡¾é—®idä¸º".$id."çš„é¡¾é—®", $_SESSION['admin_name'],3);
 	return true;
 }
 function set_user_status($status,$uid)

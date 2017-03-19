@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ÆóÒµ»áÔ±ÖÐÐÄ
+ * 74cms ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 if(!defined('IN_QISHI')) die('Access Denied!');
@@ -39,9 +39,9 @@ require_once(QISHI_ROOT_PATH.'include/fun_company.php');
 	}
 	elseif ($_SESSION['utype']!='1') 
 	{
-	$link[0]['text'] = "»áÔ±ÖÐÐÄ";
+	$link[0]['text'] = "ä¼šå‘˜ä¸­å¿ƒ";
 	$link[0]['href'] = url_rewrite('QS_login');
-	showmsg('Äú·ÃÎÊµÄÒ³ÃæÐèÒª ÆóÒµ»áÔ± µÇÂ¼£¡',1,$link);
+	showmsg('æ‚¨è®¿é—®çš„é¡µé¢éœ€è¦ ä¼ä¸šä¼šå‘˜ ç™»å½•ï¼',1,$link);
 	}
 	$act = !empty($_GET['act']) ? trim($_GET['act']) : 'index';
 	$smarty->cache = false;
@@ -52,9 +52,9 @@ require_once(QISHI_ROOT_PATH.'include/fun_company.php');
 	}
 	if ($user['status']=="2" && $act!='index' && $act!='user_status'  && $act!='user_status_save') 
 	{
-		$link[0]['text'] = "·µ»Ø»áÔ±ÖÐÐÄÊ×Ò³";
+		$link[0]['text'] = "è¿”å›žä¼šå‘˜ä¸­å¿ƒé¦–é¡µ";
 		$link[0]['href'] = 'company_index.php?act=';
-	exit(showmsg('ÄúµÄÕËºÅ´¦ÓÚÔÝÍ£×´Ì¬£¬ÇëÁªÏµ¹ÜÀíÔ±ÉèÎªÕý³£ºó½øÐÐ²Ù×÷£¡',1,$link));	
+	exit(showmsg('æ‚¨çš„è´¦å·å¤„äºŽæš‚åœçŠ¶æ€ï¼Œè¯·è”ç³»ç®¡ç†å‘˜è®¾ä¸ºæ­£å¸¸åŽè¿›è¡Œæ“ä½œï¼',1,$link));	
 	}
 	elseif (empty($user))
 	{
@@ -66,21 +66,21 @@ require_once(QISHI_ROOT_PATH.'include/fun_company.php');
 
 	if ($_CFG['login_com_audit_email'] && $user['email_audit']=="0" && $act!='authenticate' && $act!='user_email' && $act!='user_mobile')
 	{
-		$link[0]['text'] = "ÈÏÖ¤ÓÊÏä";
+		$link[0]['text'] = "è®¤è¯é‚®ç®±";
 		$link[0]['href'] = 'company_user.php?act=authenticate';
-		$link[1]['text'] = "ÍøÕ¾Ê×Ò³";
+		$link[1]['text'] = "ç½‘ç«™é¦–é¡µ";
 		$link[1]['href'] = $_CFG['site_dir'];
-		showmsg('ÄúµÄÓÊÏäÎ´ÈÏÖ¤£¬ÈÏÖ¤ºó²ÅÄÜ½øÐÐÆäËû²Ù×÷£¡',1,$link,true,6);
+		showmsg('æ‚¨çš„é‚®ç®±æœªè®¤è¯ï¼Œè®¤è¯åŽæ‰èƒ½è¿›è¡Œå…¶ä»–æ“ä½œï¼',1,$link,true,6);
 		exit();
 	}
 	$sms=get_cache('sms_config');
 	if ($_CFG['login_com_audit_mobile'] && $user['mobile_audit']=="0" && $act!='authenticate' && $act!='user_mobile' && $act!='user_email' && $sms['open']=="1")
 	{
-		$link[0]['text'] = "ÈÏÖ¤ÊÖ»ú";
+		$link[0]['text'] = "è®¤è¯æ‰‹æœº";
 		$link[0]['href'] = 'company_user.php?act=authenticate';
-		$link[1]['text'] = "ÍøÕ¾Ê×Ò³";
+		$link[1]['text'] = "ç½‘ç«™é¦–é¡µ";
 		$link[1]['href'] = $_CFG['site_dir'];
-		showmsg('ÄúµÄÊÖ»úÎ´ÈÏÖ¤£¬ÈÏÖ¤ºó²ÅÄÜ½øÐÐÆäËû²Ù×÷£¡',1,$link,true,6);
+		showmsg('æ‚¨çš„æ‰‹æœºæœªè®¤è¯ï¼Œè®¤è¯åŽæ‰èƒ½è¿›è¡Œå…¶ä»–æ“ä½œï¼',1,$link,true,6);
 		exit();
 	}
 	$smarty->assign('sms',$sms);
@@ -90,7 +90,7 @@ require_once(QISHI_ROOT_PATH.'include/fun_company.php');
 	{
 		$company_profile = array_map("addslashes",$company_profile);
 		$smarty->assign('company_url',url_rewrite('QS_companyshow',array('id'=>$company_profile['id'])));
-		// ÆóÒµÊÇ·ñÍêÉÆ×ÊÁÏ
+		// ä¼ä¸šæ˜¯å¦å®Œå–„èµ„æ–™
 		$cominfo_flge=true;
 		$array=array("companyname","nature","trade","district","scale","address","contact","telephone","email","contents");
 		foreach ($company_profile as $key => $value){
@@ -110,7 +110,7 @@ require_once(QISHI_ROOT_PATH.'include/fun_company.php');
 	$smarty->assign('userindexurl','company_index.php');
 	if ($_SESSION['handsel_userlogin'])
 	{
-	//µÚÒ»´ÎµÇÂ¼ÌáÊ¾
+	//ç¬¬ä¸€æ¬¡ç™»å½•æç¤º
 	$smarty->assign('handsel_userlogin',$_SESSION['handsel_userlogin']);
 	unset($_SESSION['handsel_userlogin']);
 	}

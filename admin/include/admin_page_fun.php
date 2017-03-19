@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¹ÜÀíÖĞĞÄ Ä£¿éÉèÖÃ
+ * 74cms ç®¡ç†ä¸­å¿ƒ æ¨¡å—è®¾ç½®
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
  if(!defined('IN_QISHI'))
@@ -21,7 +21,7 @@ function get_page($offset,$perpage,$get_sql= '')
 	$val=$db->getall($sql);
 	return $val;
 }
-//»ñÈ¡µ¥¸öÄ£¿é
+//è·å–å•ä¸ªæ¨¡å—
 function get_page_one($id)
 {
 	global $db,$_CFG;
@@ -29,7 +29,7 @@ function get_page_one($id)
 	$info=$db->getone($sql);
 	return $info;
 }
-//¼ì²âµ÷ÓÃÃûÊÇ·ñÖØ¸´
+//æ£€æµ‹è°ƒç”¨åæ˜¯å¦é‡å¤
 function ck_page_alias($alias,$noid=NULL){
 global $db;
 	if ($noid)
@@ -123,7 +123,7 @@ if (!file_exists($dir))
  }
 return true;
 }
-//¸ü¸ÄÒ³ÃæURL
+//æ›´æ”¹é¡µé¢URL
 function set_page_url($pid,$url,$norewrite)
 {
 	global $db;
@@ -149,7 +149,7 @@ function set_page_url($pid,$url,$norewrite)
 	}
 	return false;
 }
-//¸ü¸ÄÒ³Ãæ»º´æ
+//æ›´æ”¹é¡µé¢ç¼“å­˜
 function set_page_caching($pid,$caching,$nocaching)
 {
 	global $db;
@@ -167,7 +167,7 @@ function set_page_caching($pid,$caching,$nocaching)
 	}
 	return false;
 }
-//¸ñÊ½»¯Â·¾¶
+//æ ¼å¼åŒ–è·¯å¾„
 function formatting_dir($dir)
 {
 $path="../".$dir;

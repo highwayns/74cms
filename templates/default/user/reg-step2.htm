@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/reg.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/jobs.css" rel="stylesheet" type="text/css" />
@@ -36,13 +36,13 @@ $(document).ready(function($) {
 		messages: {
 			password: 
 			{
-				required: "ÇëÌîĞ´ÃÜÂë",
-				minlength: jQuery.format("ÌîĞ´²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-				maxlength: jQuery.format("ÌîĞ´²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+				required: "è¯·å¡«å†™å¯†ç ",
+				minlength: jQuery.format("å¡«å†™ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+				maxlength: jQuery.format("å¡«å†™ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
 			},
 			rpassword: {
-				required: "ÇëÌîĞ´ÃÜÂë",
-				equalTo: "Á½´ÎÊäÈëµÄÃÜÂë²»Í¬"
+				required: "è¯·å¡«å†™å¯†ç ",
+				equalTo: "ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸åŒ"
 			}
 		},
 		errorPlacement: function(error, element) {
@@ -54,14 +54,14 @@ $(document).ready(function($) {
 		    error.appendTo(element.parent().next());
 		}
 	});
-	// ÏÂÀ­²Ù×÷
+	// ä¸‹æ‹‰æ“ä½œ
 	menuDown("#menu_nature","#nature","#nature_cn","#menu_nature_li","348px");
 	menuDown("#menu_scale","#scale","#scale_cn","#menu_scale_li","348px");
 	function menuDown(menuId,input,input_cn,menuList,width){
 		$(menuId).click(function(){
 			$(menuList).css("width",width);
 			$(menuList).slideDown('fast');
-			//Éú³É±³¾°
+			//ç”ŸæˆèƒŒæ™¯
 			$(menuId).before("<div class=\"menu_bg_layer\"></div>");
 			$(".menu_bg_layer").height($(document).height());
 			$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute", left: "0", top: "0" , "z-index": "0", "background-color": "#ffffff"});
@@ -83,7 +83,7 @@ $(document).ready(function($) {
 		});
 	};
 	allaround('{#$QISHI.site_dir#}');
-	// ÏÔÊ¾ĞĞÒµ
+	// æ˜¾ç¤ºè¡Œä¸š
 	$("#jobsTrad").hoverDelay({
 		    hoverEvent: function(){
 		        $("#divTradCate").show();
@@ -92,16 +92,16 @@ $(document).ready(function($) {
                 $("#divTradCate").hide();
             }
 		});
-	// ÏÔÊ¾µØÇø
+	// æ˜¾ç¤ºåœ°åŒº
 	$("#jobsCity").hoverDelay({
 		    hoverEvent: function(){
 		        $("#divCityCate").show();
-		        var dx = $("#divCityCate").offset().left; // »ñÈ¡µ¯³ö¿òµÄx×ø±ê
-		        var dwidth = $("#divCityCate").outerWidth(true); // »ñÈ¡µ¯³ö¿òµÄ¿í¶È
-		        var lastx = dx + dwidth; // ¼ÓÉÏµ¯³ö¿òµÄ¿í¶È»ñÈ¡µ¯³ö¿ò×îÓÒ±ßµÄx×ø±ê
+		        var dx = $("#divCityCate").offset().left; // è·å–å¼¹å‡ºæ¡†çš„xåæ ‡
+		        var dwidth = $("#divCityCate").outerWidth(true); // è·å–å¼¹å‡ºæ¡†çš„å®½åº¦
+		        var lastx = dx + dwidth; // åŠ ä¸Šå¼¹å‡ºæ¡†çš„å®½åº¦è·å–å¼¹å‡ºæ¡†æœ€å³è¾¹çš„xåæ ‡
 	 			$("#divCityCate li").each(function(index, el) {
 	 				var that = $(this);
-	 				var sx = that.offset().left; // »ñÈ¡µ±Ç°liµÄx×ø±ê
+	 				var sx = that.offset().left; // è·å–å½“å‰liçš„xåæ ‡
 	 				that.hoverDelay({
 					    hoverEvent: function(){
 					        if(that.find('.subcate').length > 0) {
@@ -109,9 +109,9 @@ $(document).ready(function($) {
 			 					var tharsub = that.find('.subcate');
 			 					var thap = that.find('p');
 			 					thap.css("border-bottom","0px");
-			 					var swidth = tharsub.outerWidth(true); // »ñÈ¡Èı¼¶µ¯³ö¿òµÄ¿í¶È
-			 					if((lastx - sx) < swidth) { // ÅĞ¶ÏliÓëµ¯³ö¿ò×îÓÒ±ßµÄ¾àÀëÊÇ·ñ´óÓÚÈı¼¶µ¯³ö¿òµÄ¿í¶È
-			 						tharsub.css("left",-265); // Èç¹ûĞ¡ÓÚ¾Í¸Ä±äÈı¼¶µ¯³ö¿òx·½ÏòµÄÎ»ÖÃ
+			 					var swidth = tharsub.outerWidth(true); // è·å–ä¸‰çº§å¼¹å‡ºæ¡†çš„å®½åº¦
+			 					if((lastx - sx) < swidth) { // åˆ¤æ–­liä¸å¼¹å‡ºæ¡†æœ€å³è¾¹çš„è·ç¦»æ˜¯å¦å¤§äºä¸‰çº§å¼¹å‡ºæ¡†çš„å®½åº¦
+			 						tharsub.css("left",-265); // å¦‚æœå°äºå°±æ”¹å˜ä¸‰çº§å¼¹å‡ºæ¡†xæ–¹å‘çš„ä½ç½®
 			 					}
 			 					tharsub.show();
 			 				} else {
@@ -137,32 +137,32 @@ $(document).ready(function($) {
 </script>
 </head>
 <body>
-	<!-- Í·²¿ -->
+	<!-- å¤´éƒ¨ -->
 	{#include file="user/reg_header.htm"#}
 	<!-- main -->
 	<div class="container">
 		<div class="step_wrap">
 			<div class="three-step-bar clearfix">
-				<div class="step tstep1 f-left"><i class="step-icon">1</i>ÉèÖÃµÇÂ¼Ãû</div>
-				<div class="step tstep2 f-left active"><i class="step-icon">2</i>ÌîĞ´ÕË»§ĞÅÏ¢</div>
-				<div class="step tstep3 f-left"><i class="step-icon">3</i>×¢²á³É¹¦</div>
+				<div class="step tstep1 f-left"><i class="step-icon">1</i>è®¾ç½®ç™»å½•å</div>
+				<div class="step tstep2 f-left active"><i class="step-icon">2</i>å¡«å†™è´¦æˆ·ä¿¡æ¯</div>
+				<div class="step tstep3 f-left"><i class="step-icon">3</i>æ³¨å†ŒæˆåŠŸ</div>
 			</div>
 		</div>
 		<div class="reg-main clearfix">
 			<form action="?act=reg_step3" method="post" id="Form1">
 			<div class="reg-left-form f-left">
-				<h2 class="reg-title">ÕË»§ĞÅÏ¢</h2>
+				<h2 class="reg-title">è´¦æˆ·ä¿¡æ¯</h2>
 				<div class="reg-form-item clearfix">
-					<div class="reg-form-type f-left">ÃÜÂë</div>
+					<div class="reg-form-type f-left">å¯†ç </div>
 					<div class="reg-form-content f-left">
-						<input type="password" name="password" id="password" class="text text-lg span350" placeholder="ÇëÊäÈëÓÃ»§ÃÜÂë" />
+						<input type="password" name="password" id="password" class="text text-lg span350" placeholder="è¯·è¾“å…¥ç”¨æˆ·å¯†ç " />
 					</div>
 					<div class="verification f-left"></div>
 				</div>
 				<div class="reg-form-item clearfix">
-					<div class="reg-form-type f-left">ÖØ¸´ÃÜÂë</div>
+					<div class="reg-form-type f-left">é‡å¤å¯†ç </div>
 					<div class="reg-form-content f-left">
-						<input type="password" name="rpassword" id="rpassword" class="text text-lg span350" placeholder="ÖØ¸´ÊäÈëÓÃ»§ÃÜÂë" />
+						<input type="password" name="rpassword" id="rpassword" class="text text-lg span350" placeholder="é‡å¤è¾“å…¥ç”¨æˆ·å¯†ç " />
 					</div>
 					<div class="verification f-left"></div>
 				</div>
@@ -175,7 +175,7 @@ $(document).ready(function($) {
 						<input type="hidden" name="reg_type" value="{#$sqlarr.reg_type#}"/>
 						<input type="hidden" name="mobile" value="{#$sqlarr.mobile#}"/>
 						<input type="hidden" name="token" value="{#$token#}"/>
-						<input type="submit" value="ÏÂÒ»²½" class="btn btn-lg blue span1" />
+						<input type="submit" value="ä¸‹ä¸€æ­¥" class="btn btn-lg blue span1" />
 					</div>
 				</div>
 			</div>

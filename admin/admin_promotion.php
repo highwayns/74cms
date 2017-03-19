@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÆóÒµÍÆ¹ã
+ * 74cms ä¼ä¸šæŽ¨å¹¿
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_company_fun.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'list';
 check_permissions($_SESSION['admin_purview'],"com_promotion");
-$smarty->assign('pageheader',"ÆóÒµÍÆ¹ã");
+$smarty->assign('pageheader',"ä¼ä¸šæŽ¨å¹¿");
 if($act == 'list')
 {
 	get_token();
@@ -80,19 +80,19 @@ elseif($act == 'promotion_save')
 	$setsqlarr['cp_days']=intval($_POST['days']);
 	if ($setsqlarr['cp_days']==0)
 	{
-		adminmsg("ÇëÌîÐ´ÍÆ¹ãÌìÊý",1);
+		adminmsg("è¯·å¡«å†™æŽ¨å¹¿å¤©æ•°",1);
 	}
 	$setsqlarr['cp_jobid']=intval($_POST['jobid']);
 	$setsqlarr['cp_promotionid']=intval($_POST['promotionid']);
 	if (check_promotion($setsqlarr['cp_jobid'],$setsqlarr['cp_promotionid']))
 	{
-		adminmsg("´ËÖ°Î»ÕýÔÚÖ´ÐÐ´ËÍÆ¹ã£¡ÇëÑ¡ÔñÆäËûÖ°Î»»òÕßÆäËûÍÆ¹ã·½°¸",1);
+		adminmsg("æ­¤èŒä½æ­£åœ¨æ‰§è¡Œæ­¤æŽ¨å¹¿ï¼è¯·é€‰æ‹©å…¶ä»–èŒä½æˆ–è€…å…¶ä»–æŽ¨å¹¿æ–¹æ¡ˆ",1);
 	}
 	else
 	{
 		if ($setsqlarr['cp_promotionid']=="4")
 		{
-		$setsqlarr['cp_val']=!empty($_POST['val'])?$_POST['val']:adminmsg("ÇëÑ¡ÔñÑÕÉ«",1);
+		$setsqlarr['cp_val']=!empty($_POST['val'])?$_POST['val']:adminmsg("è¯·é€‰æ‹©é¢œè‰²",1);
 		}
 		$setsqlarr['cp_starttime']=time();
 		$setsqlarr['cp_endtime']=strtotime("{$setsqlarr['cp_days']} day");
@@ -105,12 +105,12 @@ elseif($act == 'promotion_save')
 		{
 		$u=get_user($setsqlarr['cp_uid']);
 		$promotion=get_promotion_cat_one($setsqlarr['cp_promotionid']);
-		write_memberslog($u['uid'],1,3004,$u['username'],"¹ÜÀíÔ±Ôö¼ÓÍÆ¹ã£º{$promotion['cat_name']},Ö°Î»ID£º{$setsqlarr['cp_jobid']}");
+		write_memberslog($u['uid'],1,3004,$u['username'],"ç®¡ç†å‘˜å¢žåŠ æŽ¨å¹¿ï¼š{$promotion['cat_name']},èŒä½IDï¼š{$setsqlarr['cp_jobid']}");
 		set_job_promotion($setsqlarr['cp_jobid'],$setsqlarr['cp_promotionid'],$setsqlarr['cp_val']);
-		write_log("Ìí¼ÓÍÆ¹ã£º{$promotion['cat_name']},Ö°Î»ID£º{$setsqlarr['cp_jobid']}", $_SESSION['admin_name'],3);
-		$link[0]['text'] = "·µ»ØÁÐ±í";
+		write_log("æ·»åŠ æŽ¨å¹¿ï¼š{$promotion['cat_name']},èŒä½IDï¼š{$setsqlarr['cp_jobid']}", $_SESSION['admin_name'],3);
+		$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 		$link[0]['href'] = "?act=list";
-		adminmsg("Ìí¼Ó³É¹¦",2,$link);		
+		adminmsg("æ·»åŠ æˆåŠŸ",2,$link);		
 		}
 	}
 }
@@ -153,10 +153,10 @@ elseif($act == 'promotion_edit_save')
 		 	$db->query("UPDATE ".table('jobs')." SET highlight='{$setsqlarr['cp_val']}' WHERE id='{$jobid}' ");
 			$db->query("UPDATE ".table('jobs_tmp')." SET highlight='{$setsqlarr['cp_val']}' WHERE id='{$jobid}' ");
 		}
-		write_log("ÐÞ¸ÄÍÆ¹ãidÎª".$setsqlarr['cp_id']."µÄÍÆ¹ã", $_SESSION['admin_name'],3);
-		$link[0]['text'] = "ÍÆ¹ãÁÐ±í";
+		write_log("ä¿®æ”¹æŽ¨å¹¿idä¸º".$setsqlarr['cp_id']."çš„æŽ¨å¹¿", $_SESSION['admin_name'],3);
+		$link[0]['text'] = "æŽ¨å¹¿åˆ—è¡¨";
 		$link[0]['href'] ="?act=list";
-		adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);
+		adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 	}	
 }
 elseif($act == 'promotion_del')
@@ -164,11 +164,11 @@ elseif($act == 'promotion_del')
 	get_token();
 	if ($n=del_promotion($_POST['id']))
 	{
-	adminmsg("È¡Ïû³É¹¦£¡¹²È¡Ïû {$n} ÐÐ",2);
+	adminmsg("å–æ¶ˆæˆåŠŸï¼å…±å–æ¶ˆ {$n} è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("È¡ÏûÊ§°Ü£¡",0);
+	adminmsg("å–æ¶ˆå¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'category')
@@ -189,7 +189,7 @@ elseif($act == 'edit_category')
 elseif($act=='edit_category_save')
 {	
 	check_token();
-	$setsqlarr['cat_name']=trim($_POST['cat_name'])?trim($_POST['cat_name']):adminmsg('ÄúÃ»ÓÐÌîÐ´·½°¸Ãû³Æ£¡',1);
+	$setsqlarr['cat_name']=trim($_POST['cat_name'])?trim($_POST['cat_name']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™æ–¹æ¡ˆåç§°ï¼',1);
 	$setsqlarr['cat_available']=intval($_POST['cat_available']);
 	$setsqlarr['cat_minday']=intval($_POST['cat_minday']);
 	$setsqlarr['cat_maxday']=intval($_POST['cat_maxday']);
@@ -199,13 +199,13 @@ elseif($act=='edit_category_save')
 	$wheresql=" cat_id='".intval($_POST['id'])."'";
 		if ($db->updatetable(table('promotion_category'),$setsqlarr,$wheresql))
 		{
-		$link[0]['text'] = "·½°¸ÁÐ±í";
+		$link[0]['text'] = "æ–¹æ¡ˆåˆ—è¡¨";
 		$link[0]['href'] ="?act=category";
-		adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);
+		adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 		}
 		else
 		{
-		adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0);
+		adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
 		}
 }
 ?>

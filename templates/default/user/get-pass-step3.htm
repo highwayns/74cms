@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/reg.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type="text/javascript" language="javascript"></script>
@@ -17,7 +17,7 @@ $(document).ready(function()
 	$(function() {
 		$('.four-step-bar .step:last').css({'margin-right':0});
 	});
-	// ±íµ¥ÑéÖ¤
+	// è¡¨å•éªŒè¯
 	$("#Form1").validate({
 		success: function(lable) {
 				lable.text(" ").addClass("ver-success");
@@ -38,14 +38,14 @@ $(document).ready(function()
 		messages: {
 			password:
 			{
-				required: "ÇëÊäÈëÃÜÂë",
-				minlength: jQuery.format("ÌîĞ´²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-				maxlength: jQuery.format("ÌîĞ´²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+				required: "è¯·è¾“å…¥å¯†ç ",
+				minlength: jQuery.format("å¡«å†™ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+				maxlength: jQuery.format("å¡«å†™ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
 			},
 			rpassword:
 			{
-				required: "ÇëÈ·ÈÏÃÜÂë",
-    			equalTo: "Á½´ÎÊäÈëµÄÃÜÂë²»Í¬"
+				required: "è¯·ç¡®è®¤å¯†ç ",
+    			equalTo: "ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸åŒ"
 			}
 		},
 		errorPlacement: function(error, element) {
@@ -61,33 +61,33 @@ $(document).ready(function()
 </script>
 </head>
 <body class="login_body">
-	<!-- Í·²¿ -->
+	<!-- å¤´éƒ¨ -->
 	{#include file="user/reg_header.htm"#}
 	<!-- main -->
 	<div class="container">
 		<div class="step_wrap">
 			<div class="four-step-bar clearfix">
-				<div class="step tstep1 f-left"><i class="step-icon">1</i>ÌîĞ´ÕË»§Ãû</div>
-				<div class="step tstep2 f-left"><i class="step-icon">2</i>ÑéÖ¤Éí·İ</div>
-				<div class="step tstep3 f-left active"><i class="step-icon">3</i>ÉèÖÃĞÂÃÜÂë</div>
-				<div class="step tstep4 f-left"><i class="step-icon">4</i>ÕÒ»Ø³É¹¦</div>
+				<div class="step tstep1 f-left"><i class="step-icon">1</i>å¡«å†™è´¦æˆ·å</div>
+				<div class="step tstep2 f-left"><i class="step-icon">2</i>éªŒè¯èº«ä»½</div>
+				<div class="step tstep3 f-left active"><i class="step-icon">3</i>è®¾ç½®æ–°å¯†ç </div>
+				<div class="step tstep4 f-left"><i class="step-icon">4</i>æ‰¾å›æˆåŠŸ</div>
 			</div>
 		</div>
-		<!-- ÉèÖÃÃÜÂë -->
+		<!-- è®¾ç½®å¯†ç  -->
 		<div class="reg-main clearfix">
 			<form action="?act=get_pass_save" id="Form1" method="post">
 				<div class="reg-left-form f-left">
 					<div class="reg-form-item clearfix">
-						<div class="reg-form-type f-left">ĞÂÃÜÂë</div>
+						<div class="reg-form-type f-left">æ–°å¯†ç </div>
 						<div class="reg-form-content f-left">
-							<input type="password" name="password" id="password" class="text text-lg span350" placeholder="ÇëÊäÈëĞÂÃÜÂë" />
+							<input type="password" name="password" id="password" class="text text-lg span350" placeholder="è¯·è¾“å…¥æ–°å¯†ç " />
 						</div>
 						<div class="verification f-left"></div>
 					</div>
 					<div class="reg-form-item clearfix">
-						<div class="reg-form-type f-left">È·ÈÏÃÜÂë</div>
+						<div class="reg-form-type f-left">ç¡®è®¤å¯†ç </div>
 						<div class="reg-form-content f-left">
-							<input type="password" name="rpassword" id="rpassword" class="text text-lg span350" placeholder="ÖØ¸´ĞÂÃÜÂë" />
+							<input type="password" name="rpassword" id="rpassword" class="text text-lg span350" placeholder="é‡å¤æ–°å¯†ç " />
 						</div>
 						<div class="verification f-left"></div>
 					</div>
@@ -96,7 +96,7 @@ $(document).ready(function()
 						<div class="reg-form-content f-left">
 							<input type="hidden" name="uid" value="{#$userinfo.uid#}"/>
 							<input type="hidden" name="token" value="{#$token#}"/>
-							<input type="submit" value="Ìá½»" class="btn btn-lg blue span1" />
+							<input type="submit" value="æäº¤" class="btn btn-lg blue span1" />
 						</div>
 					</div>
 				</div>

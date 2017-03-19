@@ -1,17 +1,17 @@
-// ¼ÓÈëÈË²Å¿â
+ï»¿// åŠ å…¥äººæ‰åº“
 function allfavorites(ajaxurl)
 {
-	//È«Ñ¡·´Ñ¡
+	//å…¨é€‰åé€‰
 	$("input[name='selectall']").unbind().click(function(){$("#infolists :checkbox").attr('checked',$(this).is(':checked'))});
 	$(".add_favoritesr").unbind().click(function(){	
 		var myDialog = dialog();
 		var url=ajaxurl+"user/user_favorites_resume.php?id="+$(this).attr("resume_id")+"&act=add";
 	    $.get(url, function(data){
 	        myDialog.content(data);
-	        myDialog.title('ÊÕ²Ø¼òÀú');
+	        myDialog.title('æ”¶è—ç®€å†');
 	        myDialog.width('500');
 	        myDialog.showModal();
-	        /* ¹Ø±Õ */
+	        /* å…³é—­ */
 	        $(".DialogClose").live('click',function() {
 	          myDialog.close().remove();
 	        });
@@ -24,8 +24,8 @@ function allfavorites(ajaxurl)
 		if ($("#infolists .infolist-row input:checked").length==0)
 			{
 				var myDialog = dialog();
-				myDialog.content("ÇëÑ¡Ôñ¼òÀú");
-		        myDialog.title('ÏµÍ³ÌáÊ¾');
+				myDialog.content("è¯·é€‰æ‹©ç®€å†");
+		        myDialog.title('ç³»ç»Ÿæç¤º');
 		        myDialog.width('300');
 		        myDialog.showModal();
 			}
@@ -37,10 +37,10 @@ function allfavorites(ajaxurl)
 				var url_=ajaxurl+"user/user_favorites_resume.php?id="+jidArr.join("-")+"&act=add";
 			    $.get(url_, function(data){
 			        myDialog.content(data);
-			        myDialog.title('ÊÕ²Ø¼òÀú');
+			        myDialog.title('æ”¶è—ç®€å†');
 			        myDialog.width('500');
 			        myDialog.showModal();
-			        /* ¹Ø±Õ */
+			        /* å…³é—­ */
 			        $(".DialogClose").live('click',function() {
 			          myDialog.close().remove();
 			        });

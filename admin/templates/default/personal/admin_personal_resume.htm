@@ -1,33 +1,33 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript" src="js/jquery.userinfotip-min.js"></script>
 <script type="text/javascript" src="js/jquery.entrustinfotip-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
 	$("#ButAudit").QSdialog({
-	DialogTitle:"ÇëÑ¡Ôñ",
+	DialogTitle:"è¯·é€‰æ‹©",
 	DialogContent:"#AuditSet",
 	DialogContentType:"id",
 	DialogAddObj:"#OpAudit",	
 	DialogAddType:"html"	
 	});
 	$("#ButTalent").QSdialog({
-	DialogTitle:"ÇëÑ¡Ôñ",
+	DialogTitle:"è¯·é€‰æ‹©",
 	DialogContent:"#TalentSet",
 	DialogContentType:"id",
 	DialogAddObj:"#OpTalent",	
 	DialogAddType:"html"	
 	});	
 	$("#ButPhotoresume").QSdialog({
-	DialogTitle:"ÇëÑ¡Ôñ",
+	DialogTitle:"è¯·é€‰æ‹©",
 	DialogContent:"#PhotoresumeSet",
 	DialogContentType:"id",
 	DialogAddObj:"#OpPhotoresume",	
 	DialogAddType:"html"	
 	});
-	//µã»÷ÅúÁ¿É¾³ı	
+	//ç‚¹å‡»æ‰¹é‡åˆ é™¤	
 	$("#ButDel").click(function(){
-		if (confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿'))
+		if (confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ'))
 		{
 			$("form[name=form1]").attr("action",$("form[name=form1]").attr("action")+"&delete=true");
 			$("form[name=form1]").submit()
@@ -37,7 +37,7 @@ $(document).ready(function()
 			$("form[name=form1]").attr("action",$("form[name=form1]").attr("action")+"&refresh=ok");
 			$("form[name=form1]").submit()
 	});
-	//×İÏòÁĞ±íÅÅĞò
+	//çºµå‘åˆ—è¡¨æ’åº
 	$(".listod .txt").each(function(i){
 	var li=$(this).children(".select");
 	var htm="<a href=\""+li.attr("href")+"\" class=\""+li.attr("class")+"\">"+li.text()+"</a>";
@@ -70,9 +70,9 @@ $(document).ready(function()
 </div>
 
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-¿É¼û¼òÀúÊÇÖ¸£ºÉóºËÍ¨¹ı,È«¹«¿ªµÄ¼òÀú¡£·´Ö®Îª·Ç¿É¼û¼òÀú<br />
+å¯è§ç®€å†æ˜¯æŒ‡ï¼šå®¡æ ¸é€šè¿‡,å…¨å…¬å¼€çš„ç®€å†ã€‚åä¹‹ä¸ºéå¯è§ç®€å†<br />
 </p>
 </div>
 
@@ -80,9 +80,9 @@ $(document).ready(function()
 <div class="seltpye_y">
 
 	<div class="tit link_lan">
-	<strong>¼òÀúÁĞ±í</strong><span>(¹²ÕÒµ½{#$total_val#}Ìõ)</span>
-	<a href="?act=list">[»Ö¸´Ä¬ÈÏ]</a>
-	<div class="pli link_bk"><u>Ã¿Ò³ÏÔÊ¾£º</u>
+	<strong>ç®€å†åˆ—è¡¨</strong><span>(å…±æ‰¾åˆ°{#$total_val#}æ¡)</span>
+	<a href="?act=list">[æ¢å¤é»˜è®¤]</a>
+	<div class="pli link_bk"><u>æ¯é¡µæ˜¾ç¤ºï¼š</u>
 	<a href="{#"perpage:10"|qishi_parse_url#}" {#if $smarty.get.perpage=="10"#}class="select"{#/if#}>10</a>
 	<a href="{#"perpage:20"|qishi_parse_url#}" {#if $smarty.get.perpage=="20"#}class="select"{#/if#}>20</a>
 	<a href="{#"perpage:30"|qishi_parse_url#}" {#if $smarty.get.perpage=="30"#}class="select"{#/if#}>30</a>
@@ -91,20 +91,20 @@ $(document).ready(function()
 	</div>
 	</div>	
     <div class="list">
-	  <div class="t">¿É¼û×´Ì¬</div>	  
+	  <div class="t">å¯è§çŠ¶æ€</div>	  
 	  <div class="txt link_lan">
-	 	<a href="{#"tabletype:1"|qishi_parse_url#}" {#if $smarty.get.tabletype=="1"#}class="select"{#/if#}>¿É¼û¼òÀú<span>({#$total.0#})</span></a>
-		<a href="{#"tabletype:2"|qishi_parse_url#}" {#if $smarty.get.tabletype=="2"#}class="select"{#/if#}>·Ç¿É¼û¼òÀú<span>({#$total.1#})</span></a>
+	 	<a href="{#"tabletype:1"|qishi_parse_url#}" {#if $smarty.get.tabletype=="1"#}class="select"{#/if#}>å¯è§ç®€å†<span>({#$total.0#})</span></a>
+		<a href="{#"tabletype:2"|qishi_parse_url#}" {#if $smarty.get.tabletype=="2"#}class="select"{#/if#}>éå¯è§ç®€å†<span>({#$total.1#})</span></a>
 	  </div>
     </div>
 	{#if $smarty.get.tabletype=="2"#}
 	<div class="list">
-	  <div class="t">ÉóºË×´Ì¬</div>	  
+	  <div class="t">å®¡æ ¸çŠ¶æ€</div>	  
 	  <div class="txt link_lan">
-	 	<a href="{#"audit:"|qishi_parse_url#}" {#if $smarty.get.audit==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"audit:1"|qishi_parse_url#}" {#if $smarty.get.audit=="1"#}class="select"{#/if#}>ÉóºËÍ¨¹ı<span>({#$total.2#})</span></a>
-		<a href="{#"audit:2"|qishi_parse_url#}" {#if $smarty.get.audit=="2"#}class="select"{#/if#}>µÈ´ıÉóºË<span>({#$total.3#})</span></a>
-		<a href="{#"audit:3"|qishi_parse_url#}" {#if $smarty.get.audit=="3"#}class="select"{#/if#}>ÉóºËÎ´Í¨¹ı<span>({#$total.4#})</span></a>
+	 	<a href="{#"audit:"|qishi_parse_url#}" {#if $smarty.get.audit==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"audit:1"|qishi_parse_url#}" {#if $smarty.get.audit=="1"#}class="select"{#/if#}>å®¡æ ¸é€šè¿‡<span>({#$total.2#})</span></a>
+		<a href="{#"audit:2"|qishi_parse_url#}" {#if $smarty.get.audit=="2"#}class="select"{#/if#}>ç­‰å¾…å®¡æ ¸<span>({#$total.3#})</span></a>
+		<a href="{#"audit:3"|qishi_parse_url#}" {#if $smarty.get.audit=="3"#}class="select"{#/if#}>å®¡æ ¸æœªé€šè¿‡<span>({#$total.4#})</span></a>
 	  </div>
     </div>
 	  {#/if#}
@@ -112,57 +112,57 @@ $(document).ready(function()
 	
 
 	<div class="list" >
-	  <div class="t">¼òÀúµÈ¼¶</div>	  
+	  <div class="t">ç®€å†ç­‰çº§</div>	  
 	  <div class="txt link_lan">
-	 	<a href="{#"talent:"|qishi_parse_url#}" {#if $smarty.get.talent==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"talent:1"|qishi_parse_url#}" {#if $smarty.get.talent=="1"#}class="select"{#/if#}>ÆÕÍ¨ÈË²Å</a>
-		<a href="{#"talent:2"|qishi_parse_url#}" {#if $smarty.get.talent=="2"#}class="select"{#/if#}>¸ß¼¶ÈË²Å</a>
-		<a href="{#"talent:3"|qishi_parse_url#}" {#if $smarty.get.talent=="3"#}class="select"{#/if#}>´ı¿ªÍ¨¸ß¼¶ÈË²Å</a>
+	 	<a href="{#"talent:"|qishi_parse_url#}" {#if $smarty.get.talent==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"talent:1"|qishi_parse_url#}" {#if $smarty.get.talent=="1"#}class="select"{#/if#}>æ™®é€šäººæ‰</a>
+		<a href="{#"talent:2"|qishi_parse_url#}" {#if $smarty.get.talent=="2"#}class="select"{#/if#}>é«˜çº§äººæ‰</a>
+		<a href="{#"talent:3"|qishi_parse_url#}" {#if $smarty.get.talent=="3"#}class="select"{#/if#}>å¾…å¼€é€šé«˜çº§äººæ‰</a>
 	  </div>
     </div>
 	
 	
 	<div class="list" >
-	  <div class="t">ÕÕÆ¬¿É¼û</div>	  
+	  <div class="t">ç…§ç‰‡å¯è§</div>	  
 	  <div class="txt link_lan">
-	 	<a href="{#"photo_display:"|qishi_parse_url#}" {#if $smarty.get.photo_display==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"photo_display:1"|qishi_parse_url#}" {#if $smarty.get.photo_display=="1"#}class="select"{#/if#}>¿É¼û</a>
-		<a href="{#"photo_display:2"|qishi_parse_url#}" {#if $smarty.get.photo_display=="2"#}class="select"{#/if#}>²»¿É¼û</a>
+	 	<a href="{#"photo_display:"|qishi_parse_url#}" {#if $smarty.get.photo_display==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"photo_display:1"|qishi_parse_url#}" {#if $smarty.get.photo_display=="1"#}class="select"{#/if#}>å¯è§</a>
+		<a href="{#"photo_display:2"|qishi_parse_url#}" {#if $smarty.get.photo_display=="2"#}class="select"{#/if#}>ä¸å¯è§</a>
 	  </div>
     </div>
 	
 	
 	
 	<div class="list" >
-	  <div class="t">ÕÕÆ¬ÉóºË</div>	  
+	  <div class="t">ç…§ç‰‡å®¡æ ¸</div>	  
 	  <div class="txt link_lan">
-	 	<a href="{#"photo_audit:"|qishi_parse_url#}" {#if $smarty.get.photo_audit==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"photo_audit:1"|qishi_parse_url#}" {#if $smarty.get.photo_audit=="1"#}class="select"{#/if#}>ÕÕÆ¬ÉóºËÍ¨¹ı</a>
-		<a href="{#"photo_audit:2"|qishi_parse_url#}" {#if $smarty.get.photo_audit=="2"#}class="select"{#/if#}>ÕÕÆ¬´ıÉóºË</a>
-		<a href="{#"photo_audit:3"|qishi_parse_url#}" {#if $smarty.get.photo_audit=="3"#}class="select"{#/if#}>ÕÕÆ¬ÉóºËÎ´Í¨¹ı</a>
+	 	<a href="{#"photo_audit:"|qishi_parse_url#}" {#if $smarty.get.photo_audit==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"photo_audit:1"|qishi_parse_url#}" {#if $smarty.get.photo_audit=="1"#}class="select"{#/if#}>ç…§ç‰‡å®¡æ ¸é€šè¿‡</a>
+		<a href="{#"photo_audit:2"|qishi_parse_url#}" {#if $smarty.get.photo_audit=="2"#}class="select"{#/if#}>ç…§ç‰‡å¾…å®¡æ ¸</a>
+		<a href="{#"photo_audit:3"|qishi_parse_url#}" {#if $smarty.get.photo_audit=="3"#}class="select"{#/if#}>ç…§ç‰‡å®¡æ ¸æœªé€šè¿‡</a>
 	  </div>
     </div>
 	
 	 
 	
 	<div class="list" >
-	  <div class="t">Ìí¼ÓÊ±¼ä</div>	  
+	  <div class="t">æ·»åŠ æ—¶é—´</div>	  
 	  <div class="txt link_lan">
-	 	<a href="{#"addtimesettr:"|qishi_parse_url#}" {#if $smarty.get.addtimesettr==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"addtimesettr:3"|qishi_parse_url#}" {#if $smarty.get.addtimesettr=="3"#}class="select"{#/if#}>ÈıÌìÄÚ</a>
-		<a href="{#"addtimesettr:7"|qishi_parse_url#}" {#if $smarty.get.addtimesettr=="7"#}class="select"{#/if#}>Ò»ÖÜÄÚ</a>
-		<a href="{#"addtimesettr:30"|qishi_parse_url#}" {#if $smarty.get.addtimesettr=="30"#}class="select"{#/if#}>Ò»ÔÂÄÚ</a>
+	 	<a href="{#"addtimesettr:"|qishi_parse_url#}" {#if $smarty.get.addtimesettr==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"addtimesettr:3"|qishi_parse_url#}" {#if $smarty.get.addtimesettr=="3"#}class="select"{#/if#}>ä¸‰å¤©å†…</a>
+		<a href="{#"addtimesettr:7"|qishi_parse_url#}" {#if $smarty.get.addtimesettr=="7"#}class="select"{#/if#}>ä¸€å‘¨å†…</a>
+		<a href="{#"addtimesettr:30"|qishi_parse_url#}" {#if $smarty.get.addtimesettr=="30"#}class="select"{#/if#}>ä¸€æœˆå†…</a>
 
 	  </div>
     </div>
 	
 	<div class="list" >
-	  <div class="t">Ë¢ĞÂÊ±¼ä</div>	  
+	  <div class="t">åˆ·æ–°æ—¶é—´</div>	  
 	  <div class="txt link_lan">
-	 	<a href="{#"settr:"|qishi_parse_url#}" {#if $smarty.get.settr==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"settr:3"|qishi_parse_url#}" {#if $smarty.get.settr=="3"#}class="select"{#/if#}>ÈıÌìÄÚ</a>
-		<a href="{#"settr:7"|qishi_parse_url#}" {#if $smarty.get.settr=="7"#}class="select"{#/if#}>Ò»ÖÜÄÚ</a>
-		<a href="{#"settr:30"|qishi_parse_url#}" {#if $smarty.get.settr=="30"#}class="select"{#/if#}>Ò»ÔÂÄÚ</a>
+	 	<a href="{#"settr:"|qishi_parse_url#}" {#if $smarty.get.settr==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"settr:3"|qishi_parse_url#}" {#if $smarty.get.settr=="3"#}class="select"{#/if#}>ä¸‰å¤©å†…</a>
+		<a href="{#"settr:7"|qishi_parse_url#}" {#if $smarty.get.settr=="7"#}class="select"{#/if#}>ä¸€å‘¨å†…</a>
+		<a href="{#"settr:30"|qishi_parse_url#}" {#if $smarty.get.settr=="30"#}class="select"{#/if#}>ä¸€æœˆå†…</a>
 
 		
 	  </div>
@@ -176,16 +176,16 @@ $(document).ready(function()
   <table width="100%" border="0" cellpadding="0" cellspacing="0"   class="link_lan">
     <tr>
       <td    class="admin_list_tit admin_list_first" >
-     <label id="chkAll"><input type="checkbox" name=" " title="È«Ñ¡/·´Ñ¡" id="chk"/>ĞÕÃû</label>	 </td>
+     <label id="chkAll"><input type="checkbox" name=" " title="å…¨é€‰/åé€‰" id="chk"/>å§“å</label>	 </td>
      
-	   <td   align="center"  width="80" class="admin_list_tit">ÍêÕûÖ¸Êı </td>
-	  <td  align="center"  width="6%" class="admin_list_tit">µÈ¼¶</td>
-	   <td align="center"  width="10%"  class="admin_list_tit">ÉóºË×´Ì¬</td> 
-      <td   align="center" width="8%" class="admin_list_tit">¹«¿ª</td>
-	  <td align="center" width="8%" class="admin_list_tit">ÕÕÆ¬</td>
-      <td align="center" width="12%"  class="admin_list_tit">Ìí¼ÓÊ±¼ä</td>
-	  <td align="center"  width="12%"  class="admin_list_tit">Ë¢ĞÂÊ±¼ä</td>
-      <td align="center"  width="15%" class="admin_list_tit">²Ù×÷</td>
+	   <td   align="center"  width="80" class="admin_list_tit">å®Œæ•´æŒ‡æ•° </td>
+	  <td  align="center"  width="6%" class="admin_list_tit">ç­‰çº§</td>
+	   <td align="center"  width="10%"  class="admin_list_tit">å®¡æ ¸çŠ¶æ€</td> 
+      <td   align="center" width="8%" class="admin_list_tit">å…¬å¼€</td>
+	  <td align="center" width="8%" class="admin_list_tit">ç…§ç‰‡</td>
+      <td align="center" width="12%"  class="admin_list_tit">æ·»åŠ æ—¶é—´</td>
+	  <td align="center"  width="12%"  class="admin_list_tit">åˆ·æ–°æ—¶é—´</td>
+      <td align="center"  width="15%" class="admin_list_tit">æ“ä½œ</td>
     </tr>
 	{#foreach from=$resumelist item=list#}
 	<tr>
@@ -193,13 +193,13 @@ $(document).ready(function()
 	  <input name="id[]" type="checkbox" id="id" value="{#$list.id#}"  />
 		<a href="{#$list.resume_url#}" target="_blank">{#$list.fullname#}</a>
 		{#if $list.talent=="3"#}
-		<span style="color: #FF0000">[´ı¿ªÍ¨¸ß¼¶ÈË²Å]</span>
+		<span style="color: #FF0000">[å¾…å¼€é€šé«˜çº§äººæ‰]</span>
 		{#/if#}
 		{#if $list.photo_img<>""#}
-		<span style="color: #009900"  class="vtip" title="<img src={#$QISHI.resume_photo_dir_thumb#}{#$list.photo_img#}  border=0  align=absmiddle>">[ÕÕÆ¬]</span>
+		<span style="color: #009900"  class="vtip" title="<img src={#$QISHI.resume_photo_dir_thumb#}{#$list.photo_img#}  border=0  align=absmiddle>">[ç…§ç‰‡]</span>
 		{#/if#}	
-		<a href="admin_mail.php?act=send&email={#$list.email#}&uid={#$list.uid#}"> <img src="images/email.gif" border="0" title="·¢ËÍÓÊ¼ş" /></a>	
-		 {#if $list.telephone#}<a href="admin_sms.php?act=send&mobile={#$list.telephone#}&uid={#$list.uid#}"><img src="images/sms.gif" border="0" title="·¢ËÍ¶ÌĞÅ" /></a>{#/if#}	
+		<a href="admin_mail.php?act=send&email={#$list.email#}&uid={#$list.uid#}"> <img src="images/email.gif" border="0" title="å‘é€é‚®ä»¶" /></a>	
+		 {#if $list.telephone#}<a href="admin_sms.php?act=send&mobile={#$list.telephone#}&uid={#$list.uid#}"><img src="images/sms.gif" border="0" title="å‘é€çŸ­ä¿¡" /></a>{#/if#}	
 		  </td>
 	 <td align="center"  class="admin_list">
 	 <div style="width:100%; border:1px #CCCCCC solid; padding:1px; text-align:left; position:relative; font-size:0px">
@@ -208,39 +208,39 @@ $(document).ready(function()
 	 </div>	</td>
 	
       <td align="center"  class="admin_list">
-	  {#if $list.talent=="1"#}ÆÕÍ¨{#/if#}
-	  {#if $list.talent=="2"#}<span style="color: #009900">¸ß¼¶</span>{#/if#}
-	  {#if $list.talent=="3"#}<span style="color: #FF0000">´ı¿ªÍ¨</span>{#/if#}	  </td>
+	  {#if $list.talent=="1"#}æ™®é€š{#/if#}
+	  {#if $list.talent=="2"#}<span style="color: #009900">é«˜çº§</span>{#/if#}
+	  {#if $list.talent=="3"#}<span style="color: #FF0000">å¾…å¼€é€š</span>{#/if#}	  </td>
 	   <td align="center"  class="admin_list">
-	   {#if $list.audit=="1"#}ÉóºËÍ¨¹ı{#/if#}
-	   {#if $list.audit=="2"#}<span style="color: #FF6600">µÈ´ıÉóºË</span>{#/if#}
-	   {#if $list.audit=="3"#}<span style="color: #666666">ÉóºËÎ´Í¨¹ı</span>{#/if#}	   </td>   
+	   {#if $list.audit=="1"#}å®¡æ ¸é€šè¿‡{#/if#}
+	   {#if $list.audit=="2"#}<span style="color: #FF6600">ç­‰å¾…å®¡æ ¸</span>{#/if#}
+	   {#if $list.audit=="3"#}<span style="color: #666666">å®¡æ ¸æœªé€šè¿‡</span>{#/if#}	   </td>   
       <td align="center"  class="admin_list">
 	  {#if $list.display=="1"#}
-	  		¹«¿ª
+	  		å…¬å¼€
 	  {#else#}
-	  		°ë¹«¿ª
+	  		åŠå…¬å¼€
 	  {#/if#}	  </td>
       <td align="center"  class="admin_list">
 	   {#if $list.photo==""#}
-	  ÎŞÕÕÆ¬
+	  æ— ç…§ç‰‡
 	  {#else#}
 	  	 {#if $list.photo_audit=="1"#}
-		 ÉóºËÍ¨¹ı{#if $list.photo_display<>"1"#}[²»¿É¼û]{#/if#}
+		 å®¡æ ¸é€šè¿‡{#if $list.photo_display<>"1"#}[ä¸å¯è§]{#/if#}
 		 {#/if#}
-		 {#if $list.photo_audit=="2"#}<span style="color:#FF0000">µÈ´ıÉóºË</span>{#/if#}
+		 {#if $list.photo_audit=="2"#}<span style="color:#FF0000">ç­‰å¾…å®¡æ ¸</span>{#/if#}
 		 {#if $list.photo_audit=="3"#}
-		 ÉóºËÎ´Í¨¹ı 
+		 å®¡æ ¸æœªé€šè¿‡ 
 		 {#/if#}
 	  {#/if#}	  </td>
       <td align="center"  class="admin_list">{#$list.addtime|date_format:"%Y-%m-%d"#}</td>
 	  <td align="center"  class="admin_list">{#$list.refreshtime|date_format:"%Y-%m-%d"#}</td>
       <td align="center"  class="admin_list">
-		<a href="admin_memberslog.php?uid={#$list.uid#}">ÈÕÖ¾</a>
+		<a href="admin_memberslog.php?uid={#$list.uid#}">æ—¥å¿—</a>
 		&nbsp;
-		<a href="?act=resume_show&id={#$list.id#}&uid={#$list.uid#}" >²é¿´</a>
+		<a href="?act=resume_show&id={#$list.id#}&uid={#$list.uid#}" >æŸ¥çœ‹</a>
 		&nbsp;
-		<a href="?act=management&id={#$list.uid#}"  target="_blank" class="userinfo"  id="{#$list.uid#}">¹ÜÀí</a>	 
+		<a href="?act=management&id={#$list.uid#}"  target="_blank" class="userinfo"  id="{#$list.uid#}">ç®¡ç†</a>	 
 	&nbsp;
 	  </td>
     </tr>
@@ -251,39 +251,39 @@ $(document).ready(function()
   <span id="OpPhotoresume"></span>
  </form>
 {#if !$resumelist#}
-<div class="admin_list_no_info">Ã»ÓĞÈÎºÎĞÅÏ¢£¡</div>
+<div class="admin_list_no_info">æ²¡æœ‰ä»»ä½•ä¿¡æ¯ï¼</div>
 {#/if#}
 <table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">
       <tr>
         <td>
-<input type="button" class="admin_submit" id="ButAudit" value="ÉóºË¼òÀú" />
-<input type="button" class="admin_submit" id="ButTalent" value="ÈË²ÅµÈ¼¶" />  
-<input type="button" class="admin_submit" id="ButPhotoresume" value="ÉóºËÕÕÆ¬" />
-<input type="button" class="admin_submit" id="Butrefresh" value="Ë¢ĞÂ"/>
-<input type="button" class="admin_submit" id="ButDel" value="É¾³ı"/>
+<input type="button" class="admin_submit" id="ButAudit" value="å®¡æ ¸ç®€å†" />
+<input type="button" class="admin_submit" id="ButTalent" value="äººæ‰ç­‰çº§" />  
+<input type="button" class="admin_submit" id="ButPhotoresume" value="å®¡æ ¸ç…§ç‰‡" />
+<input type="button" class="admin_submit" id="Butrefresh" value="åˆ·æ–°"/>
+<input type="button" class="admin_submit" id="ButDel" value="åˆ é™¤"/>
 		</td>
         <td width="305" align="right">
 		<form id="formseh" name="formseh" method="get" action="?">	
 			<div class="seh">
 			    <div class="keybox"><input name="key" type="text"   value="{#$smarty.get.key#}" /></div>
 			    <div class="selbox">
-					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"ĞÕÃû"#}" readonly="true"/>
+					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"å§“å"#}" readonly="true"/>
 						<div>
 								<input name="key_type" id="key_type" type="hidden" value="{#$smarty.get.key_type|default:"1"#}" />
 												<div id="sehmenu" class="seh_menu">
 														<ul>
-														<li id="1" title="ĞÕÃû">ĞÕÃû</li>
+														<li id="1" title="å§“å">å§“å</li>
 														<li id="2" title="ID">ID</li>
 														<li id="3" title="UID">UID</li>
-														<li id="4" title="µç»°">µç»°</li>
-														<li id="6" title="µØÖ·">µØÖ·</li>
+														<li id="4" title="ç”µè¯">ç”µè¯</li>
+														<li id="6" title="åœ°å€">åœ°å€</li>
 														</ul>
 												</div>
 						</div>				
 				</div>
 				<div class="sbtbox">
 				<input name="act" type="hidden" value="list" />
-				<input type="submit" name="" class="sbt" id="sbt" value="ËÑË÷"/>
+				<input type="submit" name="" class="sbt" id="sbt" value="æœç´¢"/>
 				</div>
 				<div class="clear"></div>
 		  </div>
@@ -299,30 +299,30 @@ $(document).ready(function()
   <table width="100%" border="0" align="center" cellpadding="0" cellspacing="6" >
     <tr>
       <td height="30">&nbsp;</td>
-      <td height="30"><strong  style="color:#0066CC; font-size:14px;">½«ËùÑ¡¼òÀúÉèÖÃÎª£º</strong></td>
+      <td height="30"><strong  style="color:#0066CC; font-size:14px;">å°†æ‰€é€‰ç®€å†è®¾ç½®ä¸ºï¼š</strong></td>
     </tr>
 	      <tr>
       <td width="40" height="25">&nbsp;</td>
       <td>
 	  <label >
                       <input name="audit" type="radio" value="1" checked="checked" id="success" />
-                      ÉóºËÍ¨¹ı </label>	  </td>
+                      å®¡æ ¸é€šè¿‡ </label>	  </td>
     </tr>
     <tr>
       <td width="40" height="25">&nbsp;</td>
       <td width="400"><label >
                       <input type="radio" name="audit" value="3"  id="fail"/>
-                       ÉóºËÎ´Í¨¹ı</label></td>
+                       å®¡æ ¸æœªé€šè¿‡</label></td>
     </tr>
     <tr>
       <td width="50" height="25">&nbsp;</td>
       <td>
                       <label><input type="checkbox" name="pms_notice" value="1"  checked="checked"/>
-					  Õ¾ÄÚĞÅÍ¨Öª
+					  ç«™å†…ä¿¡é€šçŸ¥
                        </label></td>
     </tr>
 	<tr style="display:none" id="reason">
-      <td width="40" height="25" >ÀíÓÉ£º</td>
+      <td width="40" height="25" >ç†ç”±ï¼š</td>
       <td>
          <textarea name="reason" id="reason" cols="40" style="font-size:12px"></textarea>            
       </td>
@@ -330,7 +330,7 @@ $(document).ready(function()
     <tr>
       <td height="25">&nbsp;</td>
       <td><span style="border-top: 1px #A3C7DA solid;">
-        <input type="submit" name="set_audit" value="È·¶¨" class="admin_submit">
+        <input type="submit" name="set_audit" value="ç¡®å®š" class="admin_submit">
       </span></td>
     </tr>		  
   </table>
@@ -339,23 +339,23 @@ $(document).ready(function()
   <table width="100%" border="0" align="center" cellpadding="0" cellspacing="6" >
     <tr>
       <td height="30">&nbsp;</td>
-      <td height="30"><strong  style="color:#0066CC; font-size:14px;">½«ËùÑ¡¼òÀúÉèÖÃÎª£º</strong></td>
+      <td height="30"><strong  style="color:#0066CC; font-size:14px;">å°†æ‰€é€‰ç®€å†è®¾ç½®ä¸ºï¼š</strong></td>
     </tr>
 	      <tr>
       <td width="27" height="25">&nbsp;</td>
       <td>
 	  <label >
                       <input name="talent" type="radio" value="1" checked="checked"  />
-                      ÆÕÍ¨ÈË²Å </label>	  </td>
+                      æ™®é€šäººæ‰ </label>	  </td>
     </tr>
     <tr>
       <td width="27" height="25">&nbsp;</td>
-      <td width="425"><label ><input type="radio" name="talent" value="2"  />¸ß¼¶ÈË²Å</label>	  </td>
+      <td width="425"><label ><input type="radio" name="talent" value="2"  />é«˜çº§äººæ‰</label>	  </td>
     </tr>
     <tr>
       <td height="25">&nbsp;</td>
       <td><span style="border-top: 1px #A3C7DA solid;">
-        <input type="submit" name="set_talent" value="È·¶¨" class="admin_submit">
+        <input type="submit" name="set_talent" value="ç¡®å®š" class="admin_submit">
       </span></td>
     </tr>
   </table>
@@ -364,32 +364,32 @@ $(document).ready(function()
   <table width="100%" border="0" align="center" cellpadding="0" cellspacing="6" >
     <tr>
       <td height="30">&nbsp;</td>
-      <td height="30"><strong  style="color:#0066CC; font-size:14px;">½«ËùÑ¡¼òÀúÉèÖÃÎª£º</strong></td>
+      <td height="30"><strong  style="color:#0066CC; font-size:14px;">å°†æ‰€é€‰ç®€å†è®¾ç½®ä¸ºï¼š</strong></td>
     </tr>
 	      <tr>
       <td width="27" height="25">&nbsp;</td>
       <td>
 	  <label >
                       <input name="photoaudit" type="radio" value="1" checked="checked" id="yes_audit"/>
-                      ÕÕÆ¬ÉóºËÍ¨¹ı </label>	  </td>
+                      ç…§ç‰‡å®¡æ ¸é€šè¿‡ </label>	  </td>
     </tr>
     <tr>
       <td width="27" height="25">&nbsp;</td>
       <td width="425"><label >
                       <input type="radio" name="photoaudit" value="3" id="not_audit"/>
-                       ÕÕÆ¬ÉóºËÎ´Í¨¹ı</label></td>
+                       ç…§ç‰‡å®¡æ ¸æœªé€šè¿‡</label></td>
     </tr>
     <tr style="display:none" id="is_del_img">
       <td width="27" height="25">&nbsp;</td>
       <td>
                       <label><input type="checkbox" name="is_del_img" value="1"/>
-					  ÊÇ·ñÉ¾³ıÏàÓ¦ÕÕÆ¬
+					  æ˜¯å¦åˆ é™¤ç›¸åº”ç…§ç‰‡
                        </label></td>
     </tr>
     <tr>
       <td height="25">&nbsp;</td>
       <td><span style="border-top: 1px #A3C7DA solid;">
-        <input type="submit" name="set_photoaudit" value="È·¶¨" class="admin_submit">
+        <input type="submit" name="set_photoaudit" value="ç¡®å®š" class="admin_submit">
       </span></td>
     </tr>		  
   </table>

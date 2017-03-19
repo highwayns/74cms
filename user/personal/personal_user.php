@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ¸öÈË»áÔ±ÖÐÐÄ
+ * 74cms ä¸ªäººä¼šå‘˜ä¸­å¿ƒ
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ $smarty->assign('leftmenu',"user");
 if ($act=='binding')
 {
 	$smarty->assign('user',$user);
-	$smarty->assign('title','ÕËºÅ°ó¶¨ - »áÔ±ÖÐÐÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','è´¦å·ç»‘å®š - ä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->display('member_personal/personal_binding.htm');
 }
 elseif ($act=='userprofile')
@@ -27,16 +27,16 @@ elseif ($act=='userprofile')
 	$smarty->assign('send_mobile_key',$_SESSION['send_mobile_key']);
 	$smarty->assign('send_email_key',$_SESSION['send_email_key']);
 	$smarty->assign('user',$user);
-	$smarty->assign('title','¸öÈË×ÊÁÏ - »áÔ±ÖÐÐÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','ä¸ªäººèµ„æ–™ - ä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('userprofile',get_userprofile($_SESSION['uid']));
-	// ÐÂ×¢²á»áÔ± ÓÊÏäµ÷È¡×¢²áÓÊÏä
+	// æ–°æ³¨å†Œä¼šå‘˜ é‚®ç®±è°ƒå–æ³¨å†Œé‚®ç®±
 	$smarty->assign('user',$user);
 	$smarty->display('member_personal/personal_userprofile.htm');
 }
 elseif ($act=='userprofile_save')
 {
 	$setsqlarr['uid']=intval($_SESSION['uid']);
-	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):showmsg('ÇëÌîÐ´ÓÊÏä£¡',1);
+	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):showmsg('è¯·å¡«å†™é‚®ç®±ï¼',1);
 	if($user['email_audit']!="1")
 	{
 		$members['email']=$setsqlarr['email'];
@@ -45,7 +45,7 @@ elseif ($act=='userprofile_save')
 		$db->updatetable(table("resume"),$resume,array("uid"=>intval($_SESSION['uid'])));
 		unset($members['email'],$resume['email']);
 	}
-	$setsqlarr['phone']=trim($_POST['mobile'])?trim($_POST['mobile']):showmsg('ÇëÌîÐ´ÊÖ»úºÅ£¡',1);
+	$setsqlarr['phone']=trim($_POST['mobile'])?trim($_POST['mobile']):showmsg('è¯·å¡«å†™æ‰‹æœºå·ï¼',1);
 	if($user['mobile_audit']!="1")
 	{
 		$members['mobile']=$setsqlarr['phone'];
@@ -54,16 +54,16 @@ elseif ($act=='userprofile_save')
 		$db->updatetable(table("resume"),$resume,array("uid"=>intval($_SESSION['uid'])));
 		unset($members['mobile'],$resume['telephone']);
 	}
-	$setsqlarr['realname']=trim($_POST['realname'])?trim($_POST['realname']):showmsg('ÇëÌîÐ´ÕæÊµÐÕÃû£¡',1);
-	$setsqlarr['sex']=intval($_POST['sex'])?intval($_POST['sex']):showmsg('ÇëÑ¡ÔñÐÔ±ð£¡',1);
+	$setsqlarr['realname']=trim($_POST['realname'])?trim($_POST['realname']):showmsg('è¯·å¡«å†™çœŸå®žå§“åï¼',1);
+	$setsqlarr['sex']=intval($_POST['sex'])?intval($_POST['sex']):showmsg('è¯·é€‰æ‹©æ€§åˆ«ï¼',1);
 	$setsqlarr['sex_cn']=trim($_POST['sex_cn']);
-	$setsqlarr['birthday']=intval($_POST['birthday'])?intval($_POST['birthday']):showmsg('ÇëÑ¡Ôñ³öÉúÄê·Ý',1);
-	$setsqlarr['residence']=trim($_POST['residence'])?trim($_POST['residence']):showmsg('ÇëÌîÐ´ÏÖ¾Ó×¡µØ£¡',1);
-	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):showmsg('ÇëÑ¡ÔñÑ§Àú',1);
+	$setsqlarr['birthday']=intval($_POST['birthday'])?intval($_POST['birthday']):showmsg('è¯·é€‰æ‹©å‡ºç”Ÿå¹´ä»½',1);
+	$setsqlarr['residence']=trim($_POST['residence'])?trim($_POST['residence']):showmsg('è¯·å¡«å†™çŽ°å±…ä½åœ°ï¼',1);
+	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):showmsg('è¯·é€‰æ‹©å­¦åŽ†',1);
 	$setsqlarr['education_cn']=trim($_POST['education_cn']);
-	$setsqlarr['major']=intval($_POST['major'])?intval($_POST['major']):showmsg('ÇëÑ¡Ôñ×¨Òµ',1);
+	$setsqlarr['major']=intval($_POST['major'])?intval($_POST['major']):showmsg('è¯·é€‰æ‹©ä¸“ä¸š',1);
 	$setsqlarr['major_cn']=trim($_POST['major_cn']);
-	$setsqlarr['experience']=intval($_POST['experience'])?intval($_POST['experience']):showmsg('ÇëÑ¡Ôñ¹¤×÷¾­Ñé',1);
+	$setsqlarr['experience']=intval($_POST['experience'])?intval($_POST['experience']):showmsg('è¯·é€‰æ‹©å·¥ä½œç»éªŒ',1);
 	$setsqlarr['experience_cn']=trim($_POST['experience_cn']);
 	$setsqlarr['height']=intval($_POST['height']);
 	$setsqlarr['householdaddress']=trim($_POST['householdaddress']);
@@ -72,22 +72,22 @@ elseif ($act=='userprofile_save')
 	if (get_userprofile($_SESSION['uid']))
 	{
 	$wheresql=" uid='".intval($_SESSION['uid'])."'";
-	write_memberslog($_SESSION['uid'],2,1005,$_SESSION['username'],"ÐÞ¸ÄÁË¸öÈË×ÊÁÏ");
-	!$db->updatetable(table('members_info'),$setsqlarr,$wheresql)?showmsg("ÐÞ¸ÄÊ§°Ü£¡",0):showmsg("ÐÞ¸Ä³É¹¦£¡",2);
+	write_memberslog($_SESSION['uid'],2,1005,$_SESSION['username'],"ä¿®æ”¹äº†ä¸ªäººèµ„æ–™");
+	!$db->updatetable(table('members_info'),$setsqlarr,$wheresql)?showmsg("ä¿®æ”¹å¤±è´¥ï¼",0):showmsg("ä¿®æ”¹æˆåŠŸï¼",2);
 	}
 	else
 	{
 	$setsqlarr['uid']=intval($_SESSION['uid']);
-	write_memberslog($_SESSION['uid'],2,1005,$_SESSION['username'],"ÐÞ¸ÄÁË¸öÈË×ÊÁÏ");
-	!$db->inserttable(table('members_info'),$setsqlarr)?showmsg("ÐÞ¸ÄÊ§°Ü£¡",0):showmsg("ÐÞ¸Ä³É¹¦£¡",2);
+	write_memberslog($_SESSION['uid'],2,1005,$_SESSION['username'],"ä¿®æ”¹äº†ä¸ªäººèµ„æ–™");
+	!$db->inserttable(table('members_info'),$setsqlarr)?showmsg("ä¿®æ”¹å¤±è´¥ï¼",0):showmsg("ä¿®æ”¹æˆåŠŸï¼",2);
 	}
 }
-//Í·Ïñ
+//å¤´åƒ
 elseif ($act=='avatars')
 {
 	$uid = intval($_SESSION['uid']);
 	$smarty->assign('total',$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$uid}' OR msgtouid='{$uid}') AND `new`='1'"));
-	$smarty->assign('title','¸öÈËÍ·Ïñ - »áÔ±ÖÐÐÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','ä¸ªäººå¤´åƒ - ä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('user',$user);
 	$smarty->assign('rand',rand(1,100));
 	$smarty->display('member_personal/personal_avatars.htm');
@@ -95,7 +95,7 @@ elseif ($act=='avatars')
 elseif ($act=='avatars_ready')
 {
 	require_once(QISHI_ROOT_PATH.'include/cut_upload.php');
-	!$_FILES['avatars']['name']?showmsg('ÇëÉÏ´«Í¼Æ¬£¡',1):"";
+	!$_FILES['avatars']['name']?showmsg('è¯·ä¸Šä¼ å›¾ç‰‡ï¼',1):"";
 	$up_dir_original="../../data/avatar/original/";
 	$up_dir_100="../../data/avatar/100/";
 	$up_dir_48="../../data/avatar/48/";
@@ -113,19 +113,19 @@ elseif ($act=='avatars_ready')
 	// makethumb($up_dir_original.$setsqlarr['avatars'],$up_dir_100.date("Y/m/d/"),100,100);
 	// makethumb($up_dir_original.$setsqlarr['avatars'],$up_dir_48.date("Y/m/d/"),48,48);
 	$wheresql=" uid='".$_SESSION['uid']."'";
-	write_memberslog($_SESSION['uid'],2,1006 ,$_SESSION['username'],"ÐÞ¸ÄÁË¸öÈËÍ·Ïñ");
-	$db->updatetable(table('members'),$setsqlarr,$wheresql)?exit($setsqlarr['avatars']):showmsg('±£´æÊ§°Ü£¡',1);
+	write_memberslog($_SESSION['uid'],2,1006 ,$_SESSION['username'],"ä¿®æ”¹äº†ä¸ªäººå¤´åƒ");
+	$db->updatetable(table('members'),$setsqlarr,$wheresql)?exit($setsqlarr['avatars']):showmsg('ä¿å­˜å¤±è´¥ï¼',1);
 	}
 	else
 	{
-	showmsg('±£´æÊ§°Ü£¡',1);
+	showmsg('ä¿å­˜å¤±è´¥ï¼',1);
 	}
 }
 elseif ($act=='avatars_save')
 {	
-	$savePath = "../../data/avatar/100/";  //Í¼Æ¬´æ´¢Â·¾¶
-	$savePathThumb = "../../data/avatar/48/";  //Í¼Æ¬´æ´¢Â·¾¶
-	$savePicName = time();//Í¼Æ¬´æ´¢Ãû³Æ
+	$savePath = "../../data/avatar/100/";  //å›¾ç‰‡å­˜å‚¨è·¯å¾„
+	$savePathThumb = "../../data/avatar/48/";  //å›¾ç‰‡å­˜å‚¨è·¯å¾„
+	$savePicName = time();//å›¾ç‰‡å­˜å‚¨åç§°
 	$file_src = $savePath.$savePicName."_src.jpg";
 	$filename150 = $savePath.$savePicName.".jpg"; 
 	$filename50 = $savePathThumb.$savePicName.".jpg"; 
@@ -141,52 +141,52 @@ elseif ($act=='avatars_save')
 	$rs['picUrl'] = $savePicName.".jpg";
 	$setsqlarr['avatars']=$savePicName.".jpg";
 	$wheresql=" uid='".$_SESSION['uid']."'";
-	$db->updatetable(table('members'),$setsqlarr,$wheresql)?print json_encode($rs):showmsg('±£´æÊ§°Ü£¡',1);
-	write_memberslog($_SESSION['uid'],2,1006 ,$_SESSION['username'],"ÐÞ¸ÄÁË¸öÈËÍ·Ïñ");
+	$db->updatetable(table('members'),$setsqlarr,$wheresql)?print json_encode($rs):showmsg('ä¿å­˜å¤±è´¥ï¼',1);
+	write_memberslog($_SESSION['uid'],2,1006 ,$_SESSION['username'],"ä¿®æ”¹äº†ä¸ªäººå¤´åƒ");
 }
-//ÐÞ¸ÄÃÜÂë
+//ä¿®æ”¹å¯†ç 
 elseif ($act=='password_edit')
 {
 	$uid = intval($_SESSION['uid']);
 	$smarty->assign('total',$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$uid}' OR msgtouid='{$uid}') AND `new`='1'"));
-	$smarty->assign('title','ÐÞ¸ÄÃÜÂë - ¸öÈË»áÔ±ÖÐÐÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','ä¿®æ”¹å¯†ç  - ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->display('member_personal/personal_password.htm');
 }
-//±£´æÐÞ¸ÄÃÜÂë
+//ä¿å­˜ä¿®æ”¹å¯†ç 
 elseif ($act=='save_password')
 {
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
 	$arr['username']=$_SESSION['username'];
-	$arr['oldpassword']=trim($_POST['oldpassword'])?trim($_POST['oldpassword']):showmsg('ÇëÊäÈë¾ÉÃÜÂë£¡',1);
-	$arr['password']=trim($_POST['password'])?trim($_POST['password']):showmsg('ÇëÊäÈëÐÂÃÜÂë£¡',1);
-	if ($arr['password']!=trim($_POST['password1'])) showmsg('Á½´ÎÊäÈëÃÜÂë²»ÏàÍ¬£¬ÇëÖØÐÂÊäÈë£¡',1);
+	$arr['oldpassword']=trim($_POST['oldpassword'])?trim($_POST['oldpassword']):showmsg('è¯·è¾“å…¥æ—§å¯†ç ï¼',1);
+	$arr['password']=trim($_POST['password'])?trim($_POST['password']):showmsg('è¯·è¾“å…¥æ–°å¯†ç ï¼',1);
+	if ($arr['password']!=trim($_POST['password1'])) showmsg('ä¸¤æ¬¡è¾“å…¥å¯†ç ä¸ç›¸åŒï¼Œè¯·é‡æ–°è¾“å…¥ï¼',1);
 	$info=edit_password($arr);
-	if ($info==-1) showmsg('¾ÉÃÜÂëÊäÈë´íÎó£¬ÇëÖØÐÂÊäÈë£¡',1);
+	if ($info==-1) showmsg('æ—§å¯†ç è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼',1);
 	if ($info==$_SESSION['username']){
-			//·¢ËÍÓÊ¼þ
+			//å‘é€é‚®ä»¶
 			$mailconfig=get_cache('mailconfig');
 			if ($mailconfig['set_editpwd']=="1" && $user['email_audit']=="1")
 			{
 			dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_mail.php?uid=".$_SESSION['uid']."&key=".asyn_userkey($_SESSION['uid'])."&act=set_editpwd&newpassword=".$arr['password']);
 			}
-			//ÓÊ¼þ·¢ËÍÍê±Ï
+			//é‚®ä»¶å‘é€å®Œæ¯•
 			//sms
 			$sms=get_cache('sms_config');
 			if ($sms['open']=="1" && $sms['set_editpwd']=="1"  && $user['mobile_audit']=="1")
 			{
 			dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_sms.php?uid=".$_SESSION['uid']."&key=".asyn_userkey($_SESSION['uid'])."&act=set_editpwd&newpassword=".$arr['password']);
 			}
-	 write_memberslog($_SESSION['uid'],2,1004 ,$_SESSION['username'],"ÐÞ¸ÄÃÜÂë");
-	 showmsg('ÃÜÂëÐÞ¸Ä³É¹¦£¡',2);
+	 write_memberslog($_SESSION['uid'],2,1004 ,$_SESSION['username'],"ä¿®æ”¹å¯†ç ");
+	 showmsg('å¯†ç ä¿®æ”¹æˆåŠŸï¼',2);
 	 }
 }
-//±£´æÐÞ¸ÄÓÃ»§Ãû
+//ä¿å­˜ä¿®æ”¹ç”¨æˆ·å
 elseif ($act=='save_username')
 {
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
 	$arr['uid']=$_SESSION['uid'];
 	$_POST['newusername'] = utf8_to_gbk($_POST['newusername']);
-	$arr['newusername']=trim($_POST['newusername'])?trim($_POST['newusername']):showmsg('ÐÂÓÃ»§Ãû£¡',1);
+	$arr['newusername']=trim($_POST['newusername'])?trim($_POST['newusername']):showmsg('æ–°ç”¨æˆ·åï¼',1);
 	$row_newname = $db->getone("SELECT * FROM ".table('members')." WHERE username='{$arr['newusername']}' LIMIT 1");
 	if($row_newname)
 	{
@@ -203,11 +203,11 @@ elseif ($act=='authenticate')
 	$smarty->assign('total',$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$uid}' OR msgtouid='{$uid}') AND `new`='1'"));
 	$smarty->assign('user',$user);
 	$smarty->assign('re_audit',$_GET['re_audit']);
-	$smarty->assign('title','ÑéÖ¤ÓÊÏä - ¸öÈË»áÔ±ÖÐÐÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','éªŒè¯é‚®ç®± - ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$_SESSION['send_key']=mt_rand(100000, 999999);
 	$smarty->assign('send_key',$_SESSION['send_key']);
 	/**
-	 * Î¢ÐÅÉ¨Ãè°ó¶¨start
+	 * å¾®ä¿¡æ‰«æç»‘å®šstart
 	 */
     if(intval($_CFG['weixin_apiopen'])==1 && intval($_CFG['weixin_scan_bind'])==1 && !$user['weixin_openid']){
 	    $scene_id = mt_rand(20000001,30000000);
@@ -227,39 +227,39 @@ elseif ($act=='authenticate')
 		$smarty->assign('qrcode_img','');
 	}
     /**
-     * Î¢ÐÅÉ¨Ãè°ó¶¨end
+     * å¾®ä¿¡æ‰«æç»‘å®šend
      */
 	$smarty->display('member_personal/personal_authenticate.htm');
 }
 elseif ($act=='feedback')
 {
-	$smarty->assign('title','ÓÃ»§·´À¡ - ¸öÈË»áÔ±ÖÐÐÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','ç”¨æˆ·åé¦ˆ - ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('feedback',get_feedback($_SESSION['uid']));
 	$smarty->display('member_personal/personal_feedback.htm');
 }
-//±£´æÓÃ»§·´À¡
+//ä¿å­˜ç”¨æˆ·åé¦ˆ
 elseif ($act=='feedback_save')
 {
 	$get_feedback=get_feedback($_SESSION['uid']);
 	if (count($get_feedback)>=5) 
 	{
-	showmsg('·´À¡ÐÅÏ¢²»ÄÜ³¬¹ý5Ìõ£¡',1);
+	showmsg('åé¦ˆä¿¡æ¯ä¸èƒ½è¶…è¿‡5æ¡ï¼',1);
 	exit();
 	}
 	$setsqlarr['infotype']=intval($_POST['infotype']);
-	$setsqlarr['feedback']=trim($_POST['feedback'])?trim($_POST['feedback']):showmsg('ÇëÌîÐ´ÄÚÈÝ£¡',1);
+	$setsqlarr['feedback']=trim($_POST['feedback'])?trim($_POST['feedback']):showmsg('è¯·å¡«å†™å†…å®¹ï¼',1);
 	$setsqlarr['uid']=$_SESSION['uid'];
 	$setsqlarr['usertype']=$_SESSION['utype'];
 	$setsqlarr['username']=$_SESSION['username'];
 	$setsqlarr['addtime']=$timestamp;
-	write_memberslog($_SESSION['uid'],2,7001,$_SESSION['username'],"Ìí¼Ó·´À¡ÐÅÏ¢");
-	!$db->inserttable(table('feedback'),$setsqlarr)?showmsg("Ìí¼ÓÊ§°Ü£¡",0):showmsg("Ìí¼Ó³É¹¦£¬ÇëµÈ´ý¹ÜÀíÔ±»Ø¸´£¡",2);
+	write_memberslog($_SESSION['uid'],2,7001,$_SESSION['username'],"æ·»åŠ åé¦ˆä¿¡æ¯");
+	!$db->inserttable(table('feedback'),$setsqlarr)?showmsg("æ·»åŠ å¤±è´¥ï¼",0):showmsg("æ·»åŠ æˆåŠŸï¼Œè¯·ç­‰å¾…ç®¡ç†å‘˜å›žå¤ï¼",2);
 }
-//É¾³ýÓÃ»§·´À¡
+//åˆ é™¤ç”¨æˆ·åé¦ˆ
 elseif ($act=='del_feedback')
 {
 	$id=intval($_GET['id']);
-	del_feedback($id,$_SESSION['uid'])?showmsg('É¾³ý³É¹¦£¡',2):showmsg('É¾³ýÊ§°Ü£¡',1);
+	del_feedback($id,$_SESSION['uid'])?showmsg('åˆ é™¤æˆåŠŸï¼',2):showmsg('åˆ é™¤å¤±è´¥ï¼',1);
 }
 elseif ($act=='pm')
 {
@@ -275,7 +275,7 @@ elseif ($act=='pm')
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$sql="SELECT p.* FROM ".table('pms').' AS p'.$joinsql.$wheresql.$orderby;
-	//»ñÈ¡Ëù²é¿´ÏûÏ¢µÄpmid , ²¢ÇÒ½«ÆäÐÞ¸ÄÎªÒÑ¶Á
+	//èŽ·å–æ‰€æŸ¥çœ‹æ¶ˆæ¯çš„pmid , å¹¶ä¸”å°†å…¶ä¿®æ”¹ä¸ºå·²è¯»
 	$pmid = update_pms_read($offset, $perpage,$sql);
 	if(!empty($pmid))
 	{
@@ -288,7 +288,7 @@ elseif ($act=='pm')
 	get_pms_no_num();
 	$smarty->assign('pms',get_pms($offset,$perpage,$sql));
 	$smarty->assign('total',$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$uid}' OR msgtouid='{$uid}') AND `new`='1'"));
-	$smarty->assign('title','¶ÌÏûÏ¢ - »áÔ±ÖÐÐÄ - '.$_CFG['site_name']);	
+	$smarty->assign('title','çŸ­æ¶ˆæ¯ - ä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);	
 	$smarty->assign('page',$page->show(3));
 	$smarty->assign('uid',$uid);  
 	$smarty->display('member_personal/personal_user_pm.htm');
@@ -302,30 +302,30 @@ elseif ($act=='pm_del')
 	{
 	$db->query("Delete from ".table('pms')." WHERE pmid='{$pms['pmid']}'");
 	}
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] = "?act=pm";
-	//Í³¼ÆÏûÏ¢
+	//ç»Ÿè®¡æ¶ˆæ¯
 	$pmscount=$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$_SESSION['uid']}' OR msgtouid='{$_SESSION['uid']}') AND `new`='1' AND `replyuid`<>'{$_SESSION['uid']}'");
 	setcookie('QS[pmscount]',$pmscount, $expire,$QS_cookiepath,$QS_cookiedomain);
-	showmsg("²Ù×÷³É¹¦£¡",2,$link);
+	showmsg("æ“ä½œæˆåŠŸï¼",2,$link);
 }
 elseif ($act=='del_qq_binding')
 {
 	$db->query("UPDATE ".table('members')." SET qq_openid = ''  WHERE uid='{$_SESSION[uid]}' LIMIT 1");
-	exit('½â³ýÌÚÑ¶QQ°ó¶¨³É¹¦£¡');
+	exit('è§£é™¤è…¾è®¯QQç»‘å®šæˆåŠŸï¼');
 }
 elseif ($act=='del_sina_binding')
 {
 	$db->query("UPDATE ".table('members')." SET sina_access_token = ''  WHERE uid='{$_SESSION[uid]}' LIMIT 1");
-	exit('½â³ýÐÂÀËÎ¢²©°ó¶¨³É¹¦£¡');
+	exit('è§£é™¤æ–°æµªå¾®åšç»‘å®šæˆåŠŸï¼');
 }
 elseif ($act=='del_taobao_binding')
 {
 	$db->query("UPDATE ".table('members')." SET taobao_access_token = ''  WHERE uid='{$_SESSION[uid]}' LIMIT 1");
-	exit('½â³ýÌÔ±¦ÕËºÅ°ó¶¨³É¹¦£¡');
+	exit('è§£é™¤æ·˜å®è´¦å·ç»‘å®šæˆåŠŸï¼');
 }
 
-//»áÔ±µÇÂ¼ÈÕÖ¾
+//ä¼šå‘˜ç™»å½•æ—¥å¿—
 elseif ($act=='login_log')
 {
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
@@ -341,7 +341,7 @@ elseif ($act=='login_log')
 	$offset=($currenpage-1)*$perpage;
 	$smarty->assign('loginlog',get_user_loginlog($offset, $perpage,$wheresql));
 	$smarty->assign('page',$page->show(3));
-	$smarty->assign('title','»áÔ±µÇÂ¼ÈÕÖ¾ - ÆóÒµ»áÔ±ÖÐÐÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','ä¼šå‘˜ç™»å½•æ—¥å¿— - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->display('member_personal/personal_user_loginlog.htm');
 }elseif($act == 'demo'){
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php'); 

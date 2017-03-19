@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript"> 
 $(document).ready(function()
 {
@@ -19,14 +19,14 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-ĞÂÔöÄ£°åÖ»Ğè½«Ä£°åÎÄ¼şÉÏ´«ÖÁ ./templatesÄ¿Â¼ÏÂ£¬¸ü¶àÄ£°æÇëµ½ <a href="http://www.74cms.com/bbs" target="_blank" style="color:#009900">[ÂÛÌ³]</a> »ñÈ¡¡£<br />
-      Ê¹ÓÃÓëÆïÊ¿CMS²»Í¬°æ±¾µÄÄ£°åÒ×²úÉú´íÎó<br />
-      Èç¹ûÄúÊìÏ¤htmlÓï·¨£¬Ôò¿ÉÒÔ²Î¿¼ <a href="http://www.74cms.com/handbook" target="_blank" style="color:#009900">[Ä£°æ¿ª·¢ÊÖ²á]</a> ×Ô¶¨Òå·ç¸ñÄ£°æ¡£
+æ–°å¢æ¨¡æ¿åªéœ€å°†æ¨¡æ¿æ–‡ä»¶ä¸Šä¼ è‡³ ./templatesç›®å½•ä¸‹ï¼Œæ›´å¤šæ¨¡ç‰ˆè¯·åˆ° <a href="http://www.74cms.com/bbs" target="_blank" style="color:#009900">[è®ºå›]</a> è·å–ã€‚<br />
+      ä½¿ç”¨ä¸éª‘å£«CMSä¸åŒç‰ˆæœ¬çš„æ¨¡æ¿æ˜“äº§ç”Ÿé”™è¯¯<br />
+      å¦‚æœæ‚¨ç†Ÿæ‚‰htmlè¯­æ³•ï¼Œåˆ™å¯ä»¥å‚è€ƒ <a href="http://www.74cms.com/handbook" target="_blank" style="color:#009900">[æ¨¡ç‰ˆå¼€å‘æ‰‹å†Œ]</a> è‡ªå®šä¹‰é£æ ¼æ¨¡ç‰ˆã€‚
 </p>
 </div>
-<div class="toptit">µ±Ç°Ä£°å</div>
+<div class="toptit">å½“å‰æ¨¡æ¿</div>
 <table width="460" border="0" cellspacing="12" cellpadding="0" class="link_lan"  >
     <tr>
       <td width="225">
@@ -34,28 +34,28 @@ $(document).ready(function()
 	  </a>
 	  </td>
       <td width="220" class="link_lan" style="line-height:180%">
-	  Ãû³Æ£º{#$templates.info.name#}<br />
-        °æ±¾£º{#$templates.info.version#}<br />
-        ×÷Õß£º<a href="{#$templates.info.authorurl#}" target="_blank">{#$templates.info.author#}</a><br />
-		Ä£°æID£º{#$templates.dir#}
+	  åç§°ï¼š{#$templates.info.name#}<br />
+        ç‰ˆæœ¬ï¼š{#$templates.info.version#}<br />
+        ä½œè€…ï¼š<a href="{#$templates.info.authorurl#}" target="_blank">{#$templates.info.author#}</a><br />
+		æ¨¡ç‰ˆIDï¼š{#$templates.dir#}
 		<br />
-	  <input type="button" name="Submit22" value="±¸·İ´ËÄ£°å" class="admin_submit"    onclick="window.location='?act=backup&tpl_name={#$templates.dir#}&{#$urltoken#}'"  style="margin-top:10px;"/>
-	  <input type="button" name="Submit22" value="±à¼­Ä£°å" class="admin_submit"    onclick="window.location='?act=edit'"  style="margin-top:10px;"/>
+	  <input type="button" name="Submit22" value="å¤‡ä»½æ­¤æ¨¡æ¿" class="admin_submit"    onclick="window.location='?act=backup&tpl_name={#$templates.dir#}&{#$urltoken#}'"  style="margin-top:10px;"/>
+	  <input type="button" name="Submit22" value="ç¼–è¾‘æ¨¡æ¿" class="admin_submit"    onclick="window.location='?act=edit'"  style="margin-top:10px;"/>
 	  </td>
     </tr>
   </table>
-	<div class="toptit">¿ÉÓÃÄ£°å</div>
+	<div class="toptit">å¯ç”¨æ¨¡æ¿</div>
 	{#foreach from=$list item=li#}
 	  <div style="float:left; width:240px;  text-align:center; padding:15px; line-height:180%"  class="link_lan tpl_list">
-	  <a href="?act=set&tpl_dir={#$li.dir#}&{#$urltoken#}" onclick="return confirm('ÄãÈ·¶¨ÒªÊ¹ÓÃ´ËÄ£°åÂğ£¿(ÌáÊ¾£ºÆµ·±¸ü»»Ä£°æ»áÓ°ÏìÍøÕ¾ÅÅÃû)')">
+	  <a href="?act=set&tpl_dir={#$li.dir#}&{#$urltoken#}" onclick="return confirm('ä½ ç¡®å®šè¦ä½¿ç”¨æ­¤æ¨¡æ¿å—ï¼Ÿ(æç¤ºï¼šé¢‘ç¹æ›´æ¢æ¨¡ç‰ˆä¼šå½±å“ç½‘ç«™æ’å)')">
 	  <img src="../templates/{#$li.dir#}/thumbnail.jpg" alt="{#$li.info.name#}" width="225" height="136" border="1"  style="border: #CCCCCC;"/>
 	  </a>
 	  <br />
 	 <strong>{#$li.info.name#}</strong>
 	 <br />
-	{#$li.info.version#} (×÷Õß:<a href="{#$li.info.authorurl#}" target="_blank">{#$li.info.author#}</a>)
+	{#$li.info.version#} (ä½œè€…:<a href="{#$li.info.authorurl#}" target="_blank">{#$li.info.author#}</a>)
 	 <br />
-	Ä£°æID£º{#$li.dir#}
+	æ¨¡ç‰ˆIDï¼š{#$li.dir#}
 	 </div>
 	{#/foreach#}
 	<div class="clear"></div>

@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>{#if $smarty.get.streetid#}{#"QS_street,"|cat:$smarty.get.streetid|qishi_categoryname#}{#else#}°´µÀÂ·ËÑË÷{#/if#}  - Ö°Î»ÁĞ±í  - {#$QISHI.site_name#}</title>
-<meta name="description" content="{#$QISHI.site_name#} - °´µÀÂ·ËÑË÷ - ÕĞÆ¸¸ÚÎ»">
-<meta name="keywords" content="{#$QISHI.site_name#},Ö°Î»ĞÅÏ¢">
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>{#if $smarty.get.streetid#}{#"QS_street,"|cat:$smarty.get.streetid|qishi_categoryname#}{#else#}æŒ‰é“è·¯æœç´¢{#/if#}  - èŒä½åˆ—è¡¨  - {#$QISHI.site_name#}</title>
+<meta name="description" content="{#$QISHI.site_name#} - æŒ‰é“è·¯æœç´¢ - æ‹›è˜å²—ä½">
+<meta name="keywords" content="{#$QISHI.site_name#},èŒä½ä¿¡æ¯">
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <meta http-equiv="X-UA-Compatible" content="edge"><meta name="renderer" content="webkit">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
@@ -22,7 +22,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//ÏêÏ¸ÏÂÀ­
+	//è¯¦ç»†ä¸‹æ‹‰
 	$('.list-item-ctrl').each(function(){
 		if ($(this).hasClass('ishow')) {
 			$(this).parent().next().show();
@@ -41,7 +41,7 @@ $(document).ready(function()
 	});
 	allaround("{#$QISHI.site_dir#}");
 	jobslist();
-	// ºÏ²¢¹«Ë¾Ö°Î»µ¯³ö
+	// åˆå¹¶å…¬å¸èŒä½å¼¹å‡º
 	$(".mjob_name").hover(function(){
 		$(this).find(".merger_job_info").show();
 	}, function(){
@@ -78,7 +78,7 @@ $(document).ready(function()
 		$('.infolist-row').removeClass('infolist-row').addClass('infolist-row');
 	});
 	$(".infolists .merger_com_box:last").css({"border-bottom":"0"});
-	//µ¥¸öÖ°Î»  ÏÂÀ­ÏÔÊ¾
+	//å•ä¸ªèŒä½  ä¸‹æ‹‰æ˜¾ç¤º
 	$(".xiala").click(function(){
 		if($(this).hasClass("ishow")) {
 			$(this).parent().next().hide();
@@ -89,11 +89,11 @@ $(document).ready(function()
 		}
 	});
 	$("#infolists .infolist-row:last").css("border-bottom","none");
-	//ÉêÇëÖ°Î»
+	//ç”³è¯·èŒä½
 	apply_jobs("{#$QISHI.site_dir#}");
-	// ÊÕ²ØÖ°Î»
+	// æ”¶è—èŒä½
 	favorites("{#$QISHI.site_dir#}");
-	// ºÏ²¢¹«Ë¾
+	// åˆå¹¶å…¬å¸
 	var com_list= $.cookie('com_list');
 	if(com_list ==1)
 	{
@@ -115,7 +115,7 @@ $(document).ready(function()
 		generateBackground();
 	});
 	$("#infolists .list:last").css("border-bottom","none");
-	// ÕıÔÚ¼ÓÔØ
+	// æ­£åœ¨åŠ è½½
 	function generateBackground() {
 		var backgroundHtm = '<div id="bonfire-pageloader"><div class="bonfire-pageloader-icon"></div></div>';
 		var html = jQuery('body');
@@ -136,35 +136,35 @@ $(document).ready(function()
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
 <div class="page_location link_bk">
-µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.index_url#}">Ê×Ò³</a>&nbsp;>&nbsp;<a href="{#"QS_jobs"|qishi_url#}">ÕĞÆ¸ĞÅÏ¢</a>&nbsp;>&nbsp;°´µÀÂ·ËÑË÷
+å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.index_url#}">é¦–é¡µ</a>&nbsp;>&nbsp;<a href="{#"QS_jobs"|qishi_url#}">æ‹›è˜ä¿¡æ¯</a>&nbsp;>&nbsp;æŒ‰é“è·¯æœç´¢
 </div>
 <div class="container">
 	<div id="filterSearch">
 		<div class="search-tab clearfix">
-			<a href="{#"QS_jobslist"|qishi_url#}" class="s-tab-item f-left">¸ß¼¶ËÑË÷</a>
-			<a href="{#"QS_street"|qishi_url#}" class="s-tab-item f-left active">µÀÂ·ËÑË÷</a>
+			<a href="{#"QS_jobslist"|qishi_url#}" class="s-tab-item f-left">é«˜çº§æœç´¢</a>
+			<a href="{#"QS_street"|qishi_url#}" class="s-tab-item f-left active">é“è·¯æœç´¢</a>
 		</div>
 		<div class="fliter-wrap fwnob">
-			<input type="hidden" detype="QS_street" id="searcnbtn" value="ËÑ&nbsp;Ë÷" />
+			<input type="hidden" detype="QS_street" id="searcnbtn" value="æœ&nbsp;ç´¢" />
 			<input type="hidden" name="sort" id="sort" value="{#$smarty.get.sort#}">
 			<input type="hidden" name="page" id="page" value="{#$smarty.get.page#}">
 			<input type="hidden" name="streetid" id="streetid" value="{#$smarty.get.streetid#}">
 			<div class="filter-list-wrap clearfix">
-				<div class="fl-type f-left">×ÖÄ¸¼ìË÷£º</div>
+				<div class="fl-type f-left">å­—æ¯æ£€ç´¢ï¼š</div>
 				<div class="fl-content r-choice f-left" id="street_letter"></div>
 			</div>
 			<div class="filter-list-wrap clearfix abline">
-				<div class="fl-type f-left streetkeytext">¹Ø¼ü×Ö¼ìË÷£º</div>
+				<div class="fl-type f-left streetkeytext">å…³é”®å­—æ£€ç´¢ï¼š</div>
 				<div class="fl-content r-choice f-left streetkey">
 					<div class="keyboxtag"><input name="key" id="key" type="text" /></div>
-					<div class="keysub"><a class="se" href="javascript:;" id="sosub">ËÑË÷</a></div>
+					<div class="keysub"><a class="se" href="javascript:;" id="sosub">æœç´¢</a></div>
 				</div>
 				<div class="line"></div>
 			</div>
 			<div class="filter-list-wrap clearfix">
-				<div class="fl-type f-left">ÈÈÃÅµÀÂ·£º</div>
+				<div class="fl-type f-left">çƒ­é—¨é“è·¯ï¼š</div>
 				<div class="fl-content r-choice f-left" id="show_street">
-					{#qishi_get_classify set="ÁĞ±íÃû:c_jobs,ÀàĞÍ:QS_street,ÏÔÊ¾ÊıÄ¿:30"#}
+					{#qishi_get_classify set="åˆ—è¡¨å:c_jobs,ç±»å‹:QS_street,æ˜¾ç¤ºæ•°ç›®:30"#}
 					{#foreach from=$c_jobs item=li#}
 					<div class="fl-content-li{#if $li.c_id == $smarty.get.streetid#} select{#/if#}" type="streetid" code="{#$li.c_id#}">{#$li.categoryname#}</div>
 					{#/foreach#}
@@ -173,21 +173,21 @@ $(document).ready(function()
 		</div>
 	</div>
 </div>
-<!--Ö°Î»ÁĞ±í -->
-{#qishi_jobs_list  set="·ÖÒ³ÏÔÊ¾:1,ÁĞ±íÃû:jobslist,ÁĞ±íÒ³:QS_street,Ìî²¹×Ö·û:...,Ö°Î»Ãû³¤¶È:13,ºÏ²¢:$smarty.cookie.com_list,ÆóÒµÃû³¤¶È:19,ÃèÊö³¤¶È:135,µÀÂ·:GET[streetid],ÅÅĞò:GET[sort]"#}
+<!--èŒä½åˆ—è¡¨ -->
+{#qishi_jobs_list  set="åˆ†é¡µæ˜¾ç¤º:1,åˆ—è¡¨å:jobslist,åˆ—è¡¨é¡µ:QS_street,å¡«è¡¥å­—ç¬¦:...,èŒä½åé•¿åº¦:13,åˆå¹¶:$smarty.cookie.com_list,ä¼ä¸šåé•¿åº¦:19,æè¿°é•¿åº¦:135,é“è·¯:GET[streetid],æ’åº:GET[sort]"#}
 <div class="jobinfolists">
 	<div class="tit">
 		<div class="sort">
-			<span class="job_list_type">ÅÅĞò</span>
-			<a href="{#"QS_street,sort:-page:1-streetid:"|cat:$smarty.get.streetid|qishi_url#}" {#if $smarty.get.sort==""#}class="slect"{#/if#}>×ÛºÏÅÅĞò</a>
-			<a href="{#"QS_street,sort:rtime-page:1-streetid:"|cat:$smarty.get.streetid|qishi_url#}" {#if $smarty.get.sort=="rtime"#}class="slect"{#/if#}>¸üĞÂÊ±¼ä</a>
+			<span class="job_list_type">æ’åº</span>
+			<a href="{#"QS_street,sort:-page:1-streetid:"|cat:$smarty.get.streetid|qishi_url#}" {#if $smarty.get.sort==""#}class="slect"{#/if#}>ç»¼åˆæ’åº</a>
+			<a href="{#"QS_street,sort:rtime-page:1-streetid:"|cat:$smarty.get.streetid|qishi_url#}" {#if $smarty.get.sort=="rtime"#}class="slect"{#/if#}>æ›´æ–°æ—¶é—´</a>
 			{#if $smarty.get.key==""#}
-			<a href="{#"QS_street,sort:wage-page:1-streetid:"|cat:$smarty.get.streetid|qishi_url#}" {#if $smarty.get.sort=="wage"#}class="slect"{#/if#}>Ğ½×Ê´ıÓö</a>
+			<a href="{#"QS_street,sort:wage-page:1-streetid:"|cat:$smarty.get.streetid|qishi_url#}" {#if $smarty.get.sort=="wage"#}class="slect"{#/if#}>è–ªèµ„å¾…é‡</a>
 			{#/if#}
 		</div>
 		<div class="sort">
-			<span class="job_list_type">É¸Ñ¡</span>
-			<label class="merger_company"><input type="checkbox" name="" id="merge_com_btn" /> ºÏ²¢¹«Ë¾</label>
+			<span class="job_list_type">ç­›é€‰</span>
+			<label class="merger_company"><input type="checkbox" name="" id="merge_com_btn" /> åˆå¹¶å…¬å¸</label>
 		</div>
 		<div class="pagerow">
 			<div class="pageminnav">{#$pagemin#}</div>
@@ -196,13 +196,13 @@ $(document).ready(function()
 	</div>
 	<div class="infolists" id="infolists">
 		<div class="infolists-head clearfix">
-			<label class="f-left"><input type="checkbox" name="selectall" id="selectall" class="checkbox" />È«Ñ¡</label>
-			<div class="all-ctrl f-left"><input type="button" value="ÉêÇëÖ°Î»" class="all-down-btn deliver" /></div>
-			<div class="all-ctrl f-left"><a href="javascript:;" class="collect-link collecter">ÊÕ²ØÖ°Î»</a></div>
+			<label class="f-left"><input type="checkbox" name="selectall" id="selectall" class="checkbox" />å…¨é€‰</label>
+			<div class="all-ctrl f-left"><input type="button" value="ç”³è¯·èŒä½" class="all-down-btn deliver" /></div>
+			<div class="all-ctrl f-left"><a href="javascript:;" class="collect-link collecter">æ”¶è—èŒä½</a></div>
 			{#if $smarty.cookie.com_list!='1'#}
 			<div class="list-tab f-right">
-				<a href="javascript:;" id="list" class="tab-item tab-list">ÁĞ±í</a>
-				<a href="javascript:;" id="detail" class="tab-item tab-detail">ÏêÏ¸</a>
+				<a href="javascript:;" id="list" class="tab-item tab-list">åˆ—è¡¨</a>
+				<a href="javascript:;" id="detail" class="tab-item tab-detail">è¯¦ç»†</a>
 			</div>
 			{#/if#}
 		</div>
@@ -210,11 +210,11 @@ $(document).ready(function()
 		<div class="info-list-wrap">
 			{#foreach from=$jobslist item=list#}
 			{#if $smarty.cookie.com_list=='1'#}
-			<!-- ºÏ²¢¹«Ë¾ -->
+			<!-- åˆå¹¶å…¬å¸ -->
 			<div class="merger_com_box">
 				<h2><a href="{#$list.0.company_url#}" target="_black">{#$list.0.companyname#}</a> 
 					{#if $list.0.company_audit=="1"#}
-					<img src="{#$QISHI.site_template#}images/yan.gif" alt="" class="vtip" title="ÆóÒµÒÑÈÏÖ¤"/>
+					<img src="{#$QISHI.site_template#}images/yan.gif" alt="" class="vtip" title="ä¼ä¸šå·²è®¤è¯"/>
 					{#/if#}
 				</h2>
 				<div class="merger_job_list">
@@ -223,35 +223,35 @@ $(document).ready(function()
 						<div class="merger_job_type mjob_name">
 							<div class="m_jobname_box">
 								<input type="checkbox" name="jid" value="{#$job_list.id#}" class="checkbox" /><a target="_black" href="{#$job_list.jobs_url#}" class="mjob_name_link">{#$job_list.jobs_name#}</a>
-								{#if $job_list.stick=="1"#}<img title="ÖÃ¶¥ĞÅÏ¢" src="{#$QISHI.site_template#}images/ding.jpg" border="0" class="vtip"/>{#/if#}
-					            {#if $job_list.emergency=="1"#}<img title="½ô¼±ÕĞÆ¸" src="{#$QISHI.site_template#}images/iconji.gif" border="0" class="vtip" />{#/if#}
-					            {#if $job_list.recommend=="1"#}<img title="ÍÆ¼öÖ°Î»" src="{#$QISHI.site_template#}images/iconjian.gif" border="0" class="vtip" />{#/if#}
-					            {#if $job_list.graduate=="1"#}<img title="»¶Ó­Ó¦½ìÉúÍ¶µİ¼òÀú" src="{#$QISHI.site_template#}images/ying.jpg" border="0" class="vtip"/>{#/if#}
-					            <!-- µ¯³ö¿ò -->
+								{#if $job_list.stick=="1"#}<img title="ç½®é¡¶ä¿¡æ¯" src="{#$QISHI.site_template#}images/ding.jpg" border="0" class="vtip"/>{#/if#}
+					            {#if $job_list.emergency=="1"#}<img title="ç´§æ€¥æ‹›è˜" src="{#$QISHI.site_template#}images/iconji.gif" border="0" class="vtip" />{#/if#}
+					            {#if $job_list.recommend=="1"#}<img title="æ¨èèŒä½" src="{#$QISHI.site_template#}images/iconjian.gif" border="0" class="vtip" />{#/if#}
+					            {#if $job_list.graduate=="1"#}<img title="æ¬¢è¿åº”å±Šç”ŸæŠ•é€’ç®€å†" src="{#$QISHI.site_template#}images/ying.jpg" border="0" class="vtip"/>{#/if#}
+					            <!-- å¼¹å‡ºæ¡† -->
 								<div class="merger_job_info">
 									<div class="merger_sanjiao"></div>
 									<div class="mjob_pop_top">
 										<div class="pop_top_left">
 											<h3><a target="_black" href="{#$job_list.company_url#}">{#$job_list.companyname#}</a>
 												{#if $job_list.company_audit=="1"#}
-						                      	<img src="{#$QISHI.site_template#}images/yan.gif" alt="" title="ÆóÒµÒÑÈÏÖ¤" class="vtip" />
+						                      	<img src="{#$QISHI.site_template#}images/yan.gif" alt="" title="ä¼ä¸šå·²è®¤è¯" class="vtip" />
 						                     	{#/if#}
 											</h3>
 											<div class="pop_job_name"><a target="_black" href="{#$job_list.jobs_url#}">{#$job_list.jobs_name#}</a></div>
 										</div>
 										<div class="pop_top_right">
-											<input type="button" value="ÉêÇëÖ°Î»" jobs_id="{#$job_list.id#}" id="{#$job_list.id#}" class="merger_btn app_jobs" />
-											<a href="javascript:void(0);" jobs_id="{#$job_list.id#}" class="pop_collect add_favorites">ÊÕ²Ø</a>
+											<input type="button" value="ç”³è¯·èŒä½" jobs_id="{#$job_list.id#}" id="{#$job_list.id#}" class="merger_btn app_jobs" />
+											<a href="javascript:void(0);" jobs_id="{#$job_list.id#}" class="pop_collect add_favorites">æ”¶è—</a>
 										</div>
 										<div class="clear"></div>
 									</div>
 									<div class="pop_job_description">
-										<div class="description_item">Ö°Î»Àà±ğ£º{#$job_list.category_cn#}</div>
-										<div class="description_item">ÕĞÆ¸ÈËÊı£º{#$job_list.amount#} ÈË</div>
-										<div class="description_item">Ğ½×Ê´ıÓö£º{#$job_list.wage_cn#}</div>
-										<div class="description_item">Ñ§ÀúÒªÇó£º{#$job_list.education_cn#}</div>
-										<div class="description_item">¹¤×÷¾­Ñé£º{#$job_list.experience_cn#}</div>
-										<div class="description_item">¹¤×÷µØµã£º{#$job_list.district_cn#}</div>
+										<div class="description_item">èŒä½ç±»åˆ«ï¼š{#$job_list.category_cn#}</div>
+										<div class="description_item">æ‹›è˜äººæ•°ï¼š{#$job_list.amount#} äºº</div>
+										<div class="description_item">è–ªèµ„å¾…é‡ï¼š{#$job_list.wage_cn#}</div>
+										<div class="description_item">å­¦å†è¦æ±‚ï¼š{#$job_list.education_cn#}</div>
+										<div class="description_item">å·¥ä½œç»éªŒï¼š{#$job_list.experience_cn#}</div>
+										<div class="description_item">å·¥ä½œåœ°ç‚¹ï¼š{#$job_list.district_cn#}</div>
 										<div class="clear"></div>
 									</div>
 									<div class="pop_fuli">
@@ -260,7 +260,7 @@ $(document).ready(function()
 						                {#/foreach#}
 									</div>
 									<div class="pop_job_detail">
-										<p>¸ÚÎ»Ö°Ôğ£º</p>
+										<p>å²—ä½èŒè´£ï¼š</p>
 										<p>
 											{#$job_list.contents#}
 										</p>
@@ -268,30 +268,30 @@ $(document).ready(function()
 								</div>
 							</div>
 						</div>
-						<div class="merger_job_type mjob_area">µØÇø£º{#$job_list.district_cn#}</div>
-						<div class="merger_job_type mjob_money">ÔÂĞ½£º {#$job_list.wage_cn#}</div>
-						<div class="merger_job_type mjob_xueli">¾­Ñé£º{#$job_list.experience_cn#}</div>
-						<div class="merger_job_type mjob_exp">Ñ§Àú£º{#$job_list.education_cn#}</div>
+						<div class="merger_job_type mjob_area">åœ°åŒºï¼š{#$job_list.district_cn#}</div>
+						<div class="merger_job_type mjob_money">æœˆè–ªï¼š {#$job_list.wage_cn#}</div>
+						<div class="merger_job_type mjob_xueli">ç»éªŒï¼š{#$job_list.experience_cn#}</div>
+						<div class="merger_job_type mjob_exp">å­¦å†ï¼š{#$job_list.education_cn#}</div>
 						<div class="merger_job_type mjob_time">{#$job_list.refreshtime_cn#}</div>
 						<div class="clear"></div>
 					</div>
 					{#/foreach#}
-					<div class="another_job link_lan">¸ÃÆóÒµ¹²·¢²¼ÁË <span>{#$list.0.count#}</span> ¸öÖ°Î»¡£<a target="_blank" href="{#$list.0.count_url#}">Á¢¼´²é¿´&gt;&gt;</a></div>
+					<div class="another_job link_lan">è¯¥ä¼ä¸šå…±å‘å¸ƒäº† <span>{#$list.0.count#}</span> ä¸ªèŒä½ã€‚<a target="_blank" href="{#$list.0.count_url#}">ç«‹å³æŸ¥çœ‹&gt;&gt;</a></div>
 				</div>
 			</div>
-			<!-- ºÏ²¢¹«Ë¾½áÊø -->
+			<!-- åˆå¹¶å…¬å¸ç»“æŸ -->
 			{#else#}
-			<!-- Ö°Î»Ä£Ê½ -->
+			<!-- èŒä½æ¨¡å¼ -->
 			<div class="infolist-row">
 				<div class="info-list-block job clearfix">
 					<div class="list-item item1 f-left">
 						<input type="checkbox" name="jid" value="{#$list.id#}" id="" class="checkbox" /><a href="{#$list.jobs_url#}" target="_blank" class="underline">{#$list.jobs_name#}</a>
-						{#if $list.stick=="1"#}<img title="ÖÃ¶¥ĞÅÏ¢" src="{#$QISHI.site_template#}images/ding.jpg" border="0" class="vtip"/>{#/if#}
-						{#if $list.emergency=="1"#}<img title="½ô¼±ÕĞÆ¸" src="{#$QISHI.site_template#}images/iconji.gif" border="0" class="vtip" />{#/if#}
-						{#if $list.recommend=="1"#}<img title="ÍÆ¼öÖ°Î»" src="{#$QISHI.site_template#}images/iconjian.gif" border="0" class="vtip" />{#/if#}
-						{#if $list.graduate=="1"#}<img title="»¶Ó­Ó¦½ìÉúÍ¶µİ¼òÀú" src="{#$QISHI.site_template#}images/ying.jpg" border="0" class="vtip"/>{#/if#}
+						{#if $list.stick=="1"#}<img title="ç½®é¡¶ä¿¡æ¯" src="{#$QISHI.site_template#}images/ding.jpg" border="0" class="vtip"/>{#/if#}
+						{#if $list.emergency=="1"#}<img title="ç´§æ€¥æ‹›è˜" src="{#$QISHI.site_template#}images/iconji.gif" border="0" class="vtip" />{#/if#}
+						{#if $list.recommend=="1"#}<img title="æ¨èèŒä½" src="{#$QISHI.site_template#}images/iconjian.gif" border="0" class="vtip" />{#/if#}
+						{#if $list.graduate=="1"#}<img title="æ¬¢è¿åº”å±Šç”ŸæŠ•é€’ç®€å†" src="{#$QISHI.site_template#}images/ying.jpg" border="0" class="vtip"/>{#/if#}
 					</div>
-					<div class="list-item item2 f-left"><a href="{#$list.company_url#}" target="_blank" class="underline job-company">{#$list.companyname#} {#if $list.company_audit=="1"#}<img src="{#$QISHI.site_template#}images/yan.gif" alt="ÒÑÑéÖ¤" />{#/if#}{#if $QISHI.operation_mode>="2" &&  $list.setmeal_id>1 #} <img src="{#$QISHI.site_dir#}data/setmealimg/{#$list.setmeal_id#}.gif" border="0" title="{#$list.setmeal_name#}" class="vtip" />{#/if#}</a></div>
+					<div class="list-item item2 f-left"><a href="{#$list.company_url#}" target="_blank" class="underline job-company">{#$list.companyname#} {#if $list.company_audit=="1"#}<img src="{#$QISHI.site_template#}images/yan.gif" alt="å·²éªŒè¯" />{#/if#}{#if $QISHI.operation_mode>="2" &&  $list.setmeal_id>1 #} <img src="{#$QISHI.site_dir#}data/setmealimg/{#$list.setmeal_id#}.gif" border="0" title="{#$list.setmeal_name#}" class="vtip" />{#/if#}</a></div>
 					<div class="list-item item3 f-left"><span>{#$list.wage_cn#}</span></div>
 					<div class="list-item item4 f-left">{#$list.district_cn#}</div>
 					<div class="list-item item5 f-left">{#$list.refreshtime_cn#}</div>
@@ -299,24 +299,24 @@ $(document).ready(function()
 				</div>
 				<div class="info-list-detail clearfix">
 					<div class="info-text f-left">
-						<p>Ñ§ÀúÒªÇó£º{#$list.education_cn|default:"²»ÏŞ"#}&nbsp;&nbsp;|&nbsp;&nbsp;¹¤×÷¾­Ñé£º{#$list.experience_cn#}&nbsp;&nbsp;|&nbsp;&nbsp;Ö°Î»ĞÔÖÊ£º{#$list.nature_cn|default:"È«Ö°"#}&nbsp;&nbsp;|&nbsp;&nbsp;ÕĞÆ¸ÈËÊı£º{#$list.amount#}ÈË&nbsp;&nbsp;|&nbsp;&nbsp;ĞÔ±ğÒªÇó£º{#$list.sex_cn|default:"²»ÏŞ"#}</p>
-						<div>¸ÚÎ»Ö°Ôğ£º{#$list.briefly#}</div>
+						<p>å­¦å†è¦æ±‚ï¼š{#$list.education_cn|default:"ä¸é™"#}&nbsp;&nbsp;|&nbsp;&nbsp;å·¥ä½œç»éªŒï¼š{#$list.experience_cn#}&nbsp;&nbsp;|&nbsp;&nbsp;èŒä½æ€§è´¨ï¼š{#$list.nature_cn|default:"å…¨èŒ"#}&nbsp;&nbsp;|&nbsp;&nbsp;æ‹›è˜äººæ•°ï¼š{#$list.amount#}äºº&nbsp;&nbsp;|&nbsp;&nbsp;æ€§åˆ«è¦æ±‚ï¼š{#$list.sex_cn|default:"ä¸é™"#}</p>
+						<div>å²—ä½èŒè´£ï¼š{#$list.briefly#}</div>
 					</div>
 					<div class="info-control f-left">
-						<input type="button" value="ÉêÇëÖ°Î»" jobs_id="{#$list.id#}" class="apply-job-btn app_jobs" />
+						<input type="button" value="ç”³è¯·èŒä½" jobs_id="{#$list.id#}" class="apply-job-btn app_jobs" />
 						<p><a href="javascript:;" class="collect-btn add_favorites" jobs_id="{#$list.id#}"></a></p>
 					</div>
 				</div>
 				<div class="clear"></div>
 			</div>
-			<!-- Ö°Î»Ä£Ê½½áÊø -->
+			<!-- èŒä½æ¨¡å¼ç»“æŸ -->
 			{#/if#}
 			{#/foreach#}
 		</div>
 		<div class="infolists-head clearfix" style="border-top:1px solid #cccccc;border-bottom:none;">
-			<label class="f-left"><input type="checkbox" name="selectall" id="selectall" class="checkbox" />È«Ñ¡</label>
-			<div class="all-ctrl f-left"><input type="button" value="ÉêÇëÖ°Î»" class="all-down-btn deliver" /></div>
-			<div class="all-ctrl f-left"><a href="javascript:;" class="collect-link collecter">ÊÕ²ØÖ°Î»</a></div>
+			<label class="f-left"><input type="checkbox" name="selectall" id="selectall" class="checkbox" />å…¨é€‰</label>
+			<div class="all-ctrl f-left"><input type="button" value="ç”³è¯·èŒä½" class="all-down-btn deliver" /></div>
+			<div class="all-ctrl f-left"><a href="javascript:;" class="collect-link collecter">æ”¶è—èŒä½</a></div>
 		</div>
 			{#if $page#}
 			<table border="0" align="center" cellpadding="0" cellspacing="0" class="link_bk">
@@ -326,7 +326,7 @@ $(document).ready(function()
 	      		</table>
 			{#/if#}
 		{#else#}
-		<div class="emptytip">±§Ç¸£¬Ã»ÓĞ·ûºÏ´ËÌõ¼şµÄĞÅÏ¢£¡</div>
+		<div class="emptytip">æŠ±æ­‰ï¼Œæ²¡æœ‰ç¬¦åˆæ­¤æ¡ä»¶çš„ä¿¡æ¯ï¼</div>
 		{#/if#}
 	</div>
 </div>

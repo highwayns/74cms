@@ -1,7 +1,7 @@
-<script type="text/javascript">
+ï»¿<script type="text/javascript">
 $(document).ready(function()
 {
-//»áÔ±ÖĞĞÄ¶¥²¿ËÑË÷Ö°Î»¼òÀúÇĞ»» 
+//ä¼šå‘˜ä¸­å¿ƒé¡¶éƒ¨æœç´¢èŒä½ç®€å†åˆ‡æ¢ 
 $("#usertopselectbox").hover(
   function () {
   $(this).find(".#selmenu").show();
@@ -18,28 +18,28 @@ $(".leftmenu .meunbox li[class!='h']").hover(
      $(this).css("background-color","#FFFFFF");
   }
 );
-//»áÔ±ÖĞĞÄ¶¥²¿ËÑË÷Ö°Î»¼òÀúÇĞ»» µã»÷Ñ¡Ôñ´¥·¢ÊÂ¼ş
+//ä¼šå‘˜ä¸­å¿ƒé¡¶éƒ¨æœç´¢èŒä½ç®€å†åˆ‡æ¢ ç‚¹å‡»é€‰æ‹©è§¦å‘äº‹ä»¶
 $("#usertopselectbox .selmenu").click(function(){
 
 		var txt=$(this).text();
 		
-		if (txt=="¼òÀú")
+		if (txt=="ç®€å†")
 		{
 		$("#topsotype").val('2');
-		$("#seltxt").text('¼òÀú');
-		$("#selmenu").text('Ö°Î»');
+		$("#seltxt").text('ç®€å†');
+		$("#selmenu").text('èŒä½');
 		$("#selmenu").hide();
 		}
 		else
 		{
 		$("#topsotype").val('1');
-		$("#seltxt").text('Ö°Î»');
-		$("#selmenu").text('¼òÀú');
+		$("#seltxt").text('èŒä½');
+		$("#selmenu").text('ç®€å†');
 		$("#selmenu").hide();
 		}
 });
 
-//ËùÓĞÌá½»°´Å¥Ğ§¹û
+//æ‰€æœ‰æäº¤æŒ‰é’®æ•ˆæœ
 $("input[type='submit'],input[type='button']").hover(
   function () {
     $(this).addClass("hover");
@@ -48,7 +48,7 @@ $("input[type='submit'],input[type='button']").hover(
     $(this).removeClass("hover");
   }
 );
-//ËùÓĞ¶àÑ¡°´Å¥Ğ§¹û
+//æ‰€æœ‰å¤šé€‰æŒ‰é’®æ•ˆæœ
 $(".input_checkbox,.input_checkbox_add").hover(
   function () {
     $(this).addClass("h");
@@ -57,11 +57,11 @@ $(".input_checkbox,.input_checkbox_add").hover(
     $(this).removeClass("h");
   }
 );
-//È«Ñ¡
+//å…¨é€‰
 $('#chk').click(function(){$("#form1 :checkbox").attr('checked',$("#chk").is(':checked'))});
 $('#chk2').click(function(){$("#form1 :checkbox").attr('checked',$("#chk2").is(':checked'))});
 });
-// ÓÒ²àÆ¯¸¡
+// å³ä¾§æ¼‚æµ®
 $(function(){
 	$(".guwen").click(function(){
 		$(this).hide();
@@ -86,59 +86,59 @@ $(document).ready(function() {
 <div class="meun1">
   		<div class="meun2">
   		<div class="meunbox">
-			<div class="menu_top"><a href="company_index.php">ÖĞĞÄÊ×Ò³</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;{#if $company_url#}<a target="_black" href="{#$company_url#}">Ô¤ÀÀÆóÒµ</a>{#else#}<a href="company_info.php?act=company_profile" onClick="return confirm('ÎŞ·¨Ô¤ÀÀ,ÄúÃ»ÓĞÍêÉÆÆóÒµ×ÊÁÏ,ÏÖÔÚÈ¥ÍêÉÆÆóÒµ×ÊÁÏ£¿')">Ô¤ÀÀÆóÒµ</a>{#/if#}
+			<div class="menu_top"><a href="company_index.php">ä¸­å¿ƒé¦–é¡µ</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;{#if $company_url#}<a target="_black" href="{#$company_url#}">é¢„è§ˆä¼ä¸š</a>{#else#}<a href="company_info.php?act=company_profile" onClick="return confirm('æ— æ³•é¢„è§ˆ,æ‚¨æ²¡æœ‰å®Œå–„ä¼ä¸šèµ„æ–™,ç°åœ¨å»å®Œå–„ä¼ä¸šèµ„æ–™ï¼Ÿ')">é¢„è§ˆä¼ä¸š</a>{#/if#}
 			</div>
 		</div>
 		<div class="meunbox">
-		  <div class="tit"><div class="t c1">Ö°Î»¹ÜÀí</div></div>
+		  <div class="tit"><div class="t c1">èŒä½ç®¡ç†</div></div>
 		  	<div class="linktxt">
 				<ul>
-				<li {#if $smarty.get.act=="addjobs"#}class="h"{#/if#}><a href="company_jobs.php?act=addjobs">·¢²¼Ö°Î»</a></li>
-				<li {#if $smarty.get.act=="jobs" || $smarty.get.act=="editjobs"#}class="h"{#/if#}><a href="company_jobs.php?act=jobs">¹ÜÀíÖ°Î»</a></li>
+				<li {#if $smarty.get.act=="addjobs"#}class="h"{#/if#}><a href="company_jobs.php?act=addjobs">å‘å¸ƒèŒä½</a></li>
+				<li {#if $smarty.get.act=="jobs" || $smarty.get.act=="editjobs"#}class="h"{#/if#}><a href="company_jobs.php?act=jobs">ç®¡ç†èŒä½</a></li>
 				</ul>
 			</div>
 		</div>
 		
 		<div class="meunbox">
-		  <div class="tit"><div class="t c2">¼òÀú¹ÜÀí</div></div>
+		  <div class="tit"><div class="t c2">ç®€å†ç®¡ç†</div></div>
 		  	<div class="linktxt">
 				<ul>
-				<li {#if $smarty.get.act=="interview_list"#}class="h"{#/if#}><a href="company_recruitment.php?act=interview_list">ÃæÊÔÑûÇë</a></li>
-				<li {#if $smarty.get.act=="apply_jobs"#}class="h"{#/if#}><a href="company_recruitment.php?act=apply_jobs">ÊÕµ½µÄ¼òÀú</a></li>
-				<li {#if $smarty.get.act=="down_resume_list"#}class="h"{#/if#}><a href="company_recruitment.php?act=down_resume_list">ÒÑÏÂÔØµÄ¼òÀú</a></li>
-				<li {#if $smarty.get.act=="favorites_list"#}class="h"{#/if#}><a href="company_recruitment.php?act=favorites_list">ÊÕ²ØµÄ¼òÀú</a></li>
+				<li {#if $smarty.get.act=="interview_list"#}class="h"{#/if#}><a href="company_recruitment.php?act=interview_list">é¢è¯•é‚€è¯·</a></li>
+				<li {#if $smarty.get.act=="apply_jobs"#}class="h"{#/if#}><a href="company_recruitment.php?act=apply_jobs">æ”¶åˆ°çš„ç®€å†</a></li>
+				<li {#if $smarty.get.act=="down_resume_list"#}class="h"{#/if#}><a href="company_recruitment.php?act=down_resume_list">å·²ä¸‹è½½çš„ç®€å†</a></li>
+				<li {#if $smarty.get.act=="favorites_list"#}class="h"{#/if#}><a href="company_recruitment.php?act=favorites_list">æ”¶è—çš„ç®€å†</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="meunbox">
-		  <div class="tit"><div class="t c4">»áÔ±·şÎñ</div></div>
+		  <div class="tit"><div class="t c4">ä¼šå‘˜æœåŠ¡</div></div>
 		  	<div class="linktxt">
 				<ul>
 				{#if $QISHI.operation_mode=="1"#}
-				<li {#if $smarty.get.act=="j_account"#}class="h"{#/if#}><a href="company_service.php?act=j_account">ÎÒµÄÕË»§</a></li>
+				<li {#if $smarty.get.act=="j_account"#}class="h"{#/if#}><a href="company_service.php?act=j_account">æˆ‘çš„è´¦æˆ·</a></li>
 				{#elseif $QISHI.operation_mode=="2"#}
-				<li {#if $smarty.get.act=="t_account"#}class="h"{#/if#}><a href="company_service.php?act=t_account">ÎÒµÄÕË»§</a></li>
+				<li {#if $smarty.get.act=="t_account"#}class="h"{#/if#}><a href="company_service.php?act=t_account">æˆ‘çš„è´¦æˆ·</a></li>
 				{#elseif $QISHI.operation_mode=="3"#}
-				<li {#if $smarty.get.act=="j_account" || $smarty.get.act=="t_account"#}class="h"{#/if#}><a href="company_service.php?act=j_account">ÎÒµÄÕË»§</a></li>
+				<li {#if $smarty.get.act=="j_account" || $smarty.get.act=="t_account"#}class="h"{#/if#}><a href="company_service.php?act=j_account">æˆ‘çš„è´¦æˆ·</a></li>
 				{#/if#}
 				{#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
-				<li {#if $smarty.get.act=="order_add" || $smarty.get.act=="setmeal_list" || $smarty.get.act=="order_list" || $smarty.get.act=="payment" || $smarty.get.act=="setmeal_order_add" || $smarty.get.act=="gifts"#}class="h"{#/if#}><a href="company_service.php?act=order_add">³äÖµ¶©µ¥</a></li>
+				<li {#if $smarty.get.act=="order_add" || $smarty.get.act=="setmeal_list" || $smarty.get.act=="order_list" || $smarty.get.act=="payment" || $smarty.get.act=="setmeal_order_add" || $smarty.get.act=="gifts"#}class="h"{#/if#}><a href="company_service.php?act=order_add">å……å€¼è®¢å•</a></li>
 				{#elseif $QISHI.operation_mode=="2"#}
-				<li {#if $smarty.get.act=="setmeal_list" || $smarty.get.act=="order_list" || $smarty.get.act=="payment" || $smarty.get.act=="setmeal_order_add"#}class="h"{#/if#}><a href="company_service.php?act=setmeal_list">³äÖµ¶©µ¥</a></li>
+				<li {#if $smarty.get.act=="setmeal_list" || $smarty.get.act=="order_list" || $smarty.get.act=="payment" || $smarty.get.act=="setmeal_order_add"#}class="h"{#/if#}><a href="company_service.php?act=setmeal_list">å……å€¼è®¢å•</a></li>
 				{#/if#}
-				<li {#if $smarty.get.act=="tpl"#}class="h"{#/if#}><a href="company_promotion.php?act=tpl">ÆóÒµÄ£°å</a></li>
+				<li {#if $smarty.get.act=="tpl"#}class="h"{#/if#}><a href="company_promotion.php?act=tpl">ä¼ä¸šæ¨¡æ¿</a></li>
 				</ul>
 			</div>
 		</div>
 		
 			<div class="meunbox last">
-		  <div class="tit"><div class="t c5">ÕËºÅ¹ÜÀí</div></div>
+		  <div class="tit"><div class="t c5">è´¦å·ç®¡ç†</div></div>
 		  	<div class="linktxt">
 				<ul>
-				<li {#if $smarty.get.act=="company_profile" || $smarty.get.act=="company_logo" || $smarty.get.act=="company_map_set"#}class="h"{#/if#}><a href="company_info.php?act=company_profile">ÆóÒµ×ÊÁÏ</a></li>
-				<li{#if $smarty.get.act=="authenticate" || $smarty.get.act=="company_auth" || $smarty.get.act=="login_log"#} class="h"{#/if#}><a href="company_user.php?act=authenticate">°²È«ÈÏÖ¤</a></li>
-				<li {#if $smarty.get.act=="pm"#}class="h"{#/if#}><a href="company_user.php?act=pm">ÎÒµÄÏûÏ¢</a></li>
-				<li><a href="{#"QS_login"|qishi_url#}?act=logout">ÍË³öµÇÂ¼</a></li>
+				<li {#if $smarty.get.act=="company_profile" || $smarty.get.act=="company_logo" || $smarty.get.act=="company_map_set"#}class="h"{#/if#}><a href="company_info.php?act=company_profile">ä¼ä¸šèµ„æ–™</a></li>
+				<li{#if $smarty.get.act=="authenticate" || $smarty.get.act=="company_auth" || $smarty.get.act=="login_log"#} class="h"{#/if#}><a href="company_user.php?act=authenticate">å®‰å…¨è®¤è¯</a></li>
+				<li {#if $smarty.get.act=="pm"#}class="h"{#/if#}><a href="company_user.php?act=pm">æˆ‘çš„æ¶ˆæ¯</a></li>
+				<li><a href="{#"QS_login"|qishi_url#}?act=logout">é€€å‡ºç™»å½•</a></li>
 				</ul>
 			</div>
 		</div>
@@ -146,20 +146,20 @@ $(document).ready(function() {
 		</div>
 	</div>
 
-	<!-- ÓÒ²àÆ¯¸¡×é¼ş -->
+	<!-- å³ä¾§æ¼‚æµ®ç»„ä»¶ -->
 {#if $consultant#}
 <div class="guwen_bbox">
-		<div class="guwen">ÆóÒµ¹ËÎÊ</div>
+		<div class="guwen">ä¼ä¸šé¡¾é—®</div>
 		<div class="guwen_open" style="display:none;">
 			<div class="open_box">
 				<span class="guwen_close"></span>
-				<div class="guwen_blc">ÆóÒµ¹ËÎÊ</div>
+				<div class="guwen_blc">ä¼ä¸šé¡¾é—®</div>
 				<div class="guwen_top">
 					<div class="guwen_avater"><img src="{#$QISHI.site_dir#}data/images/{#$consultant.pic#}" alt="" width="55" height="70"></div>
-					<p>¿Í·ş£º{#$consultant.name#}</p>
+					<p>å®¢æœï¼š{#$consultant.name#}</p>
 				</div>
 				<div class="guwen_btn_box">
-					<a href="http://wpa.qq.com/msgrd?v=3&uin={#$consultant.qq#}&site=qq&menu=yes" class="guwen_btn">Á¢¼´×ÉÑ¯</a>
+					<a href="http://wpa.qq.com/msgrd?v=3&uin={#$consultant.qq#}&site=qq&menu=yes" class="guwen_btn">ç«‹å³å’¨è¯¢</a>
 				</div>
 			</div>
 		</div>

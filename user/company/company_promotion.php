@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ÆóÒµ»áÔ±ÖĞĞÄ
+ * 74cms ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -17,18 +17,18 @@ if ($act=='tpl')
 {
 		if (!$cominfo_flge)
 		{
-		$link[0]['text'] = "ÌîĞ´ÆóÒµ×ÊÁÏ";
+		$link[0]['text'] = "å¡«å†™ä¼ä¸šèµ„æ–™";
 		$link[0]['href'] = 'company_info.php?act=company_profile';
-		showmsg("ÇëÏÈÌîĞ´ÄúµÄÆóÒµ×ÊÁÏ£¡",1,$link);
+		showmsg("è¯·å…ˆå¡«å†™æ‚¨çš„ä¼ä¸šèµ„æ–™ï¼",1,$link);
 		}
-	$smarty->assign('title','Ñ¡ÔñÄ£°æ - ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','é€‰æ‹©æ¨¡ç‰ˆ - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('comtpl',get_comtpl());
 	if ($company_profile['tpl']=="")
 	{
 	$company_profile['tpl']=$_CFG['tpl_company'];
 	}
 	if($_CFG['operation_mode']=='2' || $_CFG['operation_mode']=='3'){
-		$setmeal=get_user_setmeal($_SESSION['uid']);//»ñÈ¡»áÔ±Ì×²Í
+		$setmeal=get_user_setmeal($_SESSION['uid']);//è·å–ä¼šå‘˜å¥—é¤
 		$smarty->assign('setmeal',$setmeal);
 	}
 	$smarty->assign('mytpl',$company_profile['tpl']);
@@ -44,36 +44,36 @@ elseif ($act=='tpl_save')
 	}
 	if ($company_profile['tpl']==$seltpl)
 	{
-	showmsg("ÉèÖÃ³É¹¦£¡",2);
+	showmsg("è®¾ç½®æˆåŠŸï¼",2);
 	}
 	$comtpl=get_comtpl_one($seltpl);
 	if (empty($comtpl))
 	{
-		showmsg("Ä£°æÑ¡Ôñ´íÎó",0);
+		showmsg("æ¨¡ç‰ˆé€‰æ‹©é”™è¯¯",0);
 	}
 	if($_CFG['operation_mode']=='1'){
 		$user_points=get_user_points($_SESSION['uid']);
 		if ($comtpl['tpl_val']>$user_points)
 		{
-			$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+			$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 			$link[0]['href'] = 'javascript:history.go(-1)';
-			$link[1]['text'] = "³äÖµ»ı·Ö";
+			$link[1]['text'] = "å……å€¼ç§¯åˆ†";
 			$link[1]['href'] = 'company_service.php?act=order_add';
-			showmsg("ÄãµÄ".$_CFG['points_byname']."²»¹»½øĞĞ´Ë´Î²Ù×÷£¬ÇëÏÈ³äÖµ£¡",1,$link);
+			showmsg("ä½ çš„".$_CFG['points_byname']."ä¸å¤Ÿè¿›è¡Œæ­¤æ¬¡æ“ä½œï¼Œè¯·å…ˆå……å€¼ï¼",1,$link);
 		}
 	}elseif($_CFG['operation_mode']=='2'||$_CFG['operation_mode']=='3'){
-		$setmeal=get_user_setmeal($_SESSION['uid']);//»ñÈ¡»áÔ±Ì×²Í
-		$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+		$setmeal=get_user_setmeal($_SESSION['uid']);//è·å–ä¼šå‘˜å¥—é¤
+		$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 		$link[0]['href'] = 'javascript:history.go(-1)';
-		$link[1]['text'] = "ÖØĞÂ¿ªÍ¨·şÎñ";
+		$link[1]['text'] = "é‡æ–°å¼€é€šæœåŠ¡";
 		$link[1]['href'] = 'company_service.php?act=setmeal_list';
 		if ($setmeal['endtime']<time() && $setmeal['endtime']<>"0")
 		{					
-			showmsg("ÄúµÄ·şÎñÒÑ¾­µ½ÆÚ£¬ÇëÖØĞÂ¿ªÍ¨",1,$link);
+			showmsg("æ‚¨çš„æœåŠ¡å·²ç»åˆ°æœŸï¼Œè¯·é‡æ–°å¼€é€š",1,$link);
 		}
 		if ($setmeal['change_templates']=='0')
 		{
-			showmsg("ÄãµÄÌ×²Í{$setmeal['setmeal_name']},Ã»ÓĞ×ÔÓÉÇĞ»»Ä£°åµÄÈ¨ÏŞ£¬Çë¾¡¿ì¿ªÍ¨ĞÂÌ×²Í",1,$link);
+			showmsg("ä½ çš„å¥—é¤{$setmeal['setmeal_name']},æ²¡æœ‰è‡ªç”±åˆ‡æ¢æ¨¡æ¿çš„æƒé™ï¼Œè¯·å°½å¿«å¼€é€šæ–°å¥—é¤",1,$link);
 		}
 	}
 	$setsqlarr['tpl']=$seltpl;
@@ -86,13 +86,13 @@ elseif ($act=='tpl_save')
 		{
 		report_deal($_SESSION['uid'],2,$comtpl['tpl_val']);
 		$user_points=get_user_points($_SESSION['uid']);
-		write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÉèÖÃÆóÒµÄ£°æ£º{$comtpl['tpl_name']}£¬(-{$comtpl['tpl_val']})£¬(Ê£Óà:{$user_points})",1,1022,"Ñ¡ÔñÄ£°å","-{$comtpl['tpl_val']}","{$user_points}");
+		write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"è®¾ç½®ä¼ä¸šæ¨¡ç‰ˆï¼š{$comtpl['tpl_name']}ï¼Œ(-{$comtpl['tpl_val']})ï¼Œ(å‰©ä½™:{$user_points})",1,1022,"é€‰æ‹©æ¨¡æ¿","-{$comtpl['tpl_val']}","{$user_points}");
 		}
 	}elseif($_CFG['operation_mode']=='2'||$_CFG['operation_mode']=='3'){
-		write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"Ì×²Í£º{$setmeal['setmeal_name']}£¬¿É×ÔÓÉÇĞ»»Ä£°å£¬ÉèÖÃÆóÒµÄ£°æ£º{$comtpl['tpl_name']}",2,1022,"Ñ¡ÔñÄ£°å","0","0");
+		write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"å¥—é¤ï¼š{$setmeal['setmeal_name']}ï¼Œå¯è‡ªç”±åˆ‡æ¢æ¨¡æ¿ï¼Œè®¾ç½®ä¼ä¸šæ¨¡ç‰ˆï¼š{$comtpl['tpl_name']}",2,1022,"é€‰æ‹©æ¨¡æ¿","0","0");
 	}
-	write_memberslog($_SESSION['uid'],1,8007,$_SESSION['username'],"ÉèÖÃÆóÒµÄ£°æ£º{$comtpl['tpl_name']}");
-	showmsg("ÉèÖÃ³É¹¦£¡",2);
+	write_memberslog($_SESSION['uid'],1,8007,$_SESSION['username'],"è®¾ç½®ä¼ä¸šæ¨¡ç‰ˆï¼š{$comtpl['tpl_name']}");
+	showmsg("è®¾ç½®æˆåŠŸï¼",2);
 }
 unset($smarty);
 ?>

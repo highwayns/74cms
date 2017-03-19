@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <meta name="renderer" content="webkit"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,9 +31,9 @@ $(document).ready(function()
 	$("#Form1 input, #Form1 textarea, #Form1 select").each(function(index, el) {
 		$(this).attr('_value', jQuery(this).val());
 	});
-	//°ó¶¨beforeunloadÊÂ¼ş
+	//ç»‘å®šbeforeunloadäº‹ä»¶
 	function is_form_changed() {
-		//¼ì²âÒ³ÃæÊÇ·ñÓĞ±£´æ°´Å¥
+		//æ£€æµ‹é¡µé¢æ˜¯å¦æœ‰ä¿å­˜æŒ‰é’®
 		var t_save = $("#submitsave");
 		if(t_save.length>0) {
 			var is_changed = false;
@@ -52,24 +52,24 @@ $(document).ready(function()
 	}
 	if ($.browser.msie){
 	    window.onunload = function(){
-	        return "ÄúÕıÔÚ±à¼­µÄÄÚÈİÉĞÎ´±£´æ£¬È·¶¨ÒªÀë¿ª´ËÒ³Âğ£¿";
+	        return "æ‚¨æ­£åœ¨ç¼–è¾‘çš„å†…å®¹å°šæœªä¿å­˜ï¼Œç¡®å®šè¦ç¦»å¼€æ­¤é¡µå—ï¼Ÿ";
 	    }
 	}
 	else{
 	    window.onbeforeunload = function(){
 	        if (is_form_changed()) {
-				return 'ÄúÕıÔÚ±à¼­µÄÄÚÈİÉĞÎ´±£´æ£¬È·¶¨ÒªÀë¿ª´ËÒ³Âğ£¿';
+				return 'æ‚¨æ­£åœ¨ç¼–è¾‘çš„å†…å®¹å°šæœªä¿å­˜ï¼Œç¡®å®šè¦ç¦»å¼€æ­¤é¡µå—ï¼Ÿ';
 			}
 	    }
 	}
 	allaround('{#$QISHI.site_dir#}');
-	// ËùÊôĞĞÒµÌî³äÊı¾İ
+	// æ‰€å±è¡Œä¸šå¡«å……æ•°æ®
 	trade_filldata("#trad_list", QS_trade, "#aui_outer", "#result-list-trade", "#trade_result_show", "#trade", "{#$QISHI.site_dir#}");
-	// ËùÔÚµØÇøÌî³äÊı¾İ
+	// æ‰€åœ¨åœ°åŒºå¡«å……æ•°æ®
 	city_filldata("#city_list", QS_city_parent, QS_city, "#result-list-city", "#aui_outer_city", "#city_result_show", "#district", "{#$QISHI.site_dir#}");
-	// ËùÔÚ½ÖµÀÑ¡Ôñ
+	// æ‰€åœ¨è¡—é“é€‰æ‹©
 	street_filldata("#street_list", "#street");
-	//·¶ÀıÕ¹¿ª
+	//èŒƒä¾‹å±•å¼€
 	$("#model").click(function(){	$("#cp").toggle()});
 	menuDown("#nature_menu","#nature","#nature_cn","#menu1","218px");
 	menuDown("#scale_menu","#scale","#scale_cn","#menu2","218px");
@@ -78,7 +78,7 @@ $(document).ready(function()
 		$(menuId).click(function(){
 			$(menuList).css("width",width);
 			$(menuList).slideDown('fast');
-			//Éú³É±³¾°
+			//ç”ŸæˆèƒŒæ™¯
 			$(menuId).parent("div").before("<div class=\"menu_bg_layer\"></div>");
 			$(".menu_bg_layer").height($(document).height());
 			$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute", left: "0", top: "0" , "z-index": "0", "background-color": "#ffffff"});
@@ -101,11 +101,11 @@ $(document).ready(function()
 		});
 	}
 	
-	// ÊÖ»úºÅÂëÑéÖ¤   
+	// æ‰‹æœºå·ç éªŒè¯   
 	jQuery.validator.addMethod("isPhoneNumber", function(value, element) {   
 	    var tel = /^((0\d{2,3}-[2-9][0-9]{6,7})|(0\d{2,3}[2-9][0-9]{6,7})|([2-9][0-9]{6,7})|(1[35847]\d{9}))$/;
 	    return this.optional(element) || (tel.test(value));
-	}, "ÇëÕıÈ·ÌîĞ´ÁªÏµµç»°");
+	}, "è¯·æ­£ç¡®å¡«å†™è”ç³»ç”µè¯");
 	$("#Form1").validate({
  //debug: true,
 // onsubmit:false,
@@ -139,39 +139,39 @@ $(document).ready(function()
 	},
     messages: {
     companyname: {
-    required: "ÇëÊäÈëÆóÒµÃû³Æ",
-    minlength: jQuery.format("ÆóÒµÃû³Æ²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-	maxlength: jQuery.format("ÆóÒµÃû³Æ²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+    required: "è¯·è¾“å…¥ä¼ä¸šåç§°",
+    minlength: jQuery.format("ä¼ä¸šåç§°ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+	maxlength: jQuery.format("ä¼ä¸šåç§°ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
    },
    nature: {
-    required: jQuery.format("ÇëÑ¡ÔñÆóÒµĞÔÖÊ")
+    required: jQuery.format("è¯·é€‰æ‹©ä¼ä¸šæ€§è´¨")
    },
     trade: {
-    required: jQuery.format("ÇëÑ¡ÔñËùÊôĞĞÒµ")
+    required: jQuery.format("è¯·é€‰æ‹©æ‰€å±è¡Œä¸š")
    },
     district: {
-    required: jQuery.format("ÇëÑ¡ÔñËùÔÚµØÇø")
+    required: jQuery.format("è¯·é€‰æ‹©æ‰€åœ¨åœ°åŒº")
    },
    scale: {
-    required: jQuery.format("ÇëÑ¡ÔñÆóÒµ¹æÄ£")
+    required: jQuery.format("è¯·é€‰æ‹©ä¼ä¸šè§„æ¨¡")
    },
    contents: {
-	required: jQuery.format("ÇëÌîĞ´¹«Ë¾¼ò½é"),
-	minlength: jQuery.format("¹«Ë¾¼ò½éÄÚÈİ²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û")
+	required: jQuery.format("è¯·å¡«å†™å…¬å¸ç®€ä»‹"),
+	minlength: jQuery.format("å…¬å¸ç®€ä»‹å†…å®¹ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦")
    },
    contact: {
-    required: jQuery.format("ÇëÌîĞ´ÁªÏµÈË")
+    required: jQuery.format("è¯·å¡«å†™è”ç³»äºº")
    },
     telephone: {
-    required: jQuery.format("ÇëÌîĞ´ÁªÏµµç»°"),
-	isPhoneNumber: jQuery.format("ÇëÕıÈ·ÌîĞ´ÁªÏµµç»°")
+    required: jQuery.format("è¯·å¡«å†™è”ç³»ç”µè¯"),
+	isPhoneNumber: jQuery.format("è¯·æ­£ç¡®å¡«å†™è”ç³»ç”µè¯")
    },
    address: {
-    required: jQuery.format("ÇëÌîĞ´ÁªÏµµØÖ·")
+    required: jQuery.format("è¯·å¡«å†™è”ç³»åœ°å€")
    },
    email: {
-    required: jQuery.format("ÇëÌîĞ´µç×ÓÓÊÏä"),
-	email: jQuery.format("ÇëÕıÈ·ÌîĞ´µç×ÓÓÊÏä")
+    required: jQuery.format("è¯·å¡«å†™ç”µå­é‚®ç®±"),
+	email: jQuery.format("è¯·æ­£ç¡®å¡«å†™ç”µå­é‚®ç®±")
    } 
   },
   errorPlacement: function(error, element) {
@@ -194,7 +194,7 @@ $(document).ready(function()
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
 
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ÆóÒµ×ÊÁÏ</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > ä¼ä¸šèµ„æ–™</div>
 
 <div class="usermain">
   <div class="leftmenu link_bk">
@@ -205,30 +205,30 @@ $(document).ready(function()
 	  <div class="addjob link_bk">
 	    <div class="topnav">
 			<div class="titleH1" style="+padding-top:0;margin-top:0;">
-				<div class="h1-title">ÆóÒµ×ÊÁÏ</div>
+				<div class="h1-title">ä¼ä¸šèµ„æ–™</div>
 			</div>
 			<div class="navs">
-				<a href="?act=company_profile" class="se">»ù±¾×ÊÁÏ</a>
-				<a href="?act=company_logo">ÆóÒµLogo</a>
-				<a href="?act=company_map_open">µØÍ¼±ê×¢</a>
+				<a href="?act=company_profile" class="se">åŸºæœ¬èµ„æ–™</a>
+				<a href="?act=company_logo">ä¼ä¸šLogo</a>
+				<a href="?act=company_map_open">åœ°å›¾æ ‡æ³¨</a>
 				<div class="clear"></div>
 			</div>
 		</div>
 		<form id="Form1" name="Form1" method="post" action="?act=company_profile_save" >
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" style="margin-top:20px;">
 		  <tr>
-			<td width="125" align="right"><span class="nec">ÆóÒµÃû³Æ</span>£º</td>
-			<td width="230">{#if $company_profile.audit==1#}{#$company_profile.companyname#}<span class="vtip c" title="ÄúÒÑ¾­Í¨¹ıÓªÒµÖ´ÕÕÈÏÖ¤£¬ÒªĞŞ¸ÄÆóÒµÃûÇëÁªÏµ¹ÜÀíÔ±£¡"></span>{#else#}<input name="companyname" type="text" class="input_text_200" id="companyname" maxlength="80"   value="{#$company_profile.companyname#}"/>{#/if#}</td>
+			<td width="125" align="right"><span class="nec">ä¼ä¸šåç§°</span>ï¼š</td>
+			<td width="230">{#if $company_profile.audit==1#}{#$company_profile.companyname#}<span class="vtip c" title="æ‚¨å·²ç»é€šè¿‡è¥ä¸šæ‰§ç…§è®¤è¯ï¼Œè¦ä¿®æ”¹ä¼ä¸šåè¯·è”ç³»ç®¡ç†å‘˜ï¼"></span>{#else#}<input name="companyname" type="text" class="input_text_200" id="companyname" maxlength="80"   value="{#$company_profile.companyname#}"/>{#/if#}</td>
 			<td>&nbsp;</td>
 		  </tr>
 		  <tr>
-			<td width="125" align="right"><span class="nec">ÆóÒµĞÔÖÊ</span>£º</td>
+			<td width="125" align="right"><span class="nec">ä¼ä¸šæ€§è´¨</span>ï¼š</td>
 			<td width="230">
 				<div style="position:relateve;">
-             	 	<div id="nature_menu" class="input_text_200_bg">{#$company_profile.nature_cn|default:"ÇëÑ¡Ôñ"#}</div>	
+             	 	<div id="nature_menu" class="input_text_200_bg">{#$company_profile.nature_cn|default:"è¯·é€‰æ‹©"#}</div>	
              	 	<div class="menu" id="menu1">
 	              		<ul>
-	              			{#qishi_get_classify set="ÁĞ±íÃû:c_nature,ÀàĞÍ:QS_company_type"#}
+	              			{#qishi_get_classify set="åˆ—è¡¨å:c_nature,ç±»å‹:QS_company_type"#}
 	              			{#foreach from=$c_nature item=list#}
 	              			<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 	              			{#/foreach#}
@@ -241,10 +241,10 @@ $(document).ready(function()
 			<td>&nbsp;</td>
 		  </tr>
 		  <tr class="jobmain">
-			<td align="right"><span class="nec">ËùÊôĞĞÒµ</span>£º</td>
+			<td align="right"><span class="nec">æ‰€å±è¡Œä¸š</span>ï¼š</td>
 			<td id="jobsTrad" style="position:relative;z-index:1;">
-				<div class="input_text_200_bg ucc-default" id="tradText">{#$company_profile.trade_cn|default:"ÇëÑ¡Ôñ"#}</div>
-				<!-- ËùÊôĞĞÒµµ¯³ö¿ò -->
+				<div class="input_text_200_bg ucc-default" id="tradText">{#$company_profile.trade_cn|default:"è¯·é€‰æ‹©"#}</div>
+				<!-- æ‰€å±è¡Œä¸šå¼¹å‡ºæ¡† -->
 				<div class="aui_outer" id="aui_outer">
 					<table class="aui_border">
 						<tbody>
@@ -257,12 +257,12 @@ $(document).ready(function()
 													<td class="aui_main">
 														<div class="aui_content">
 															<div class="items jquery-localdata">
-																<div class="selector-header"><span class="selector-title">ĞĞÒµÑ¡Ôñ</span><div></div><span class="selector-close">X</span><div class="clear"></div></div>
+																<div class="selector-header"><span class="selector-title">è¡Œä¸šé€‰æ‹©</span><div></div><span class="selector-close">X</span><div class="clear"></div></div>
 
 																<div class="item-table">
 																	<table class="options-table options-table-7">
 																		<tbody class="item-list"><tr><td class="bno"><table><tbody id="trad_list">
-																			<!-- ÁĞ±íÄÚÈİ -->
+																			<!-- åˆ—è¡¨å†…å®¹ -->
 																		</tbody></table></td></tr>
 																		</tbody>
 																	</table>
@@ -279,20 +279,20 @@ $(document).ready(function()
 						</tbody>
 					</table>
 				</div>
-				<!-- ËùÊôĞĞÒµµ¯³ö¿ò End-->
+				<!-- æ‰€å±è¡Œä¸šå¼¹å‡ºæ¡† End-->
 				<input type="hidden" id="trade" name="trade" value="{#$company_profile.trade#}">
 				<input type="hidden" id="trade_cn" name="trade_cn" value="{#$company_profile.trade_cn#}">
 			</td>
 			<td>&nbsp;</td>
 		  </tr>
 		   <tr>
-			<td align="right"><span class="nec">ÆóÒµ¹æÄ£</span>£º</td>
+			<td align="right"><span class="nec">ä¼ä¸šè§„æ¨¡</span>ï¼š</td>
 			<td>
 				<div style="position:relateve;">
-             	 	<div id="scale_menu" class="input_text_200_bg">{#$company_profile.scale_cn|default:"ÇëÑ¡Ôñ"#}</div>	
+             	 	<div id="scale_menu" class="input_text_200_bg">{#$company_profile.scale_cn|default:"è¯·é€‰æ‹©"#}</div>	
              	 	<div class="menu" id="menu2">
 	              		<ul>
-	              			{#qishi_get_classify set="ÁĞ±íÃû:c_scale,ÀàĞÍ:QS_scale"#}
+	              			{#qishi_get_classify set="åˆ—è¡¨å:c_scale,ç±»å‹:QS_scale"#}
 	              			{#foreach from=$c_scale item=list#}
 	              			<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 	              			{#/foreach#}
@@ -305,33 +305,33 @@ $(document).ready(function()
 			<td>&nbsp;</td>
 		  </tr>
 		   <tr>
-			<td align="right">×¢²á×Ê½ğ£º</td>
+			<td align="right">æ³¨å†Œèµ„é‡‘ï¼š</td>
 			<td colspan="2">
 			  <table border="0" cellpadding="0" cellspacing="0" >
 	              <tr>
 	                <td width="80" style="padding:0px"><input name="registered" type="text" class="input_text_100" id="registered" maxlength="20"   value="{#$company_profile.registered#}"/></td>
-	                <td width="20" align="center" style="padding:0px">Íò</td>
+	                <td width="20" align="center" style="padding:0px">ä¸‡</td>
 	                <td width="80"  style="padding:0px">
 	                	<div style="position:relateve;">
-		             	 	<div id="currency_menu" class="input_text_60_bg">{#$company_profile.currency|default:"ÈËÃñ±Ò"#}</div>	
+		             	 	<div id="currency_menu" class="input_text_60_bg">{#$company_profile.currency|default:"äººæ°‘å¸"#}</div>	
 		             	 	<div class="menu" id="menu3">
 			              		<ul>
-			              			<li title="ÈËÃñ±Ò">ÈËÃñ±Ò</li>
-			              			<li title="ÃÀÔª">ÃÀÔª</li>
+			              			<li title="äººæ°‘å¸">äººæ°‘å¸</li>
+			              			<li title="ç¾å…ƒ">ç¾å…ƒ</li>
 			              		</ul>
 			              	</div>
 			            </div>				
-		             	 <input name="currency" type="hidden" id="currency" value="{#$company_profile.currency|default:"ÈËÃñ±Ò"#}" />
+		             	 <input name="currency" type="hidden" id="currency" value="{#$company_profile.currency|default:"äººæ°‘å¸"#}" />
 	                </td>
 	              </tr>
 	            </table>
 			</td>
 		  </tr>
 		  <tr class="jobmain">
-			<td width="125" align="right"><span class="nec">ËùÔÚµØÇø</span>£º</td>
+			<td width="125" align="right"><span class="nec">æ‰€åœ¨åœ°åŒº</span>ï¼š</td>
 			<td width="230" id="jobsCity" style="position:relative;">
 				<div class="input_text_200_bg ucc-default" id="cityText">{#$company_profile.district_cn#}</div>
-				<!-- ËùÔÚµØÇøµ¯³ö¿ò -->
+				<!-- æ‰€åœ¨åœ°åŒºå¼¹å‡ºæ¡† -->
 				<div class="aui_outer" id="aui_outer_city">
 					<table class="aui_border">
 						<tbody>
@@ -344,10 +344,10 @@ $(document).ready(function()
 													<td class="aui_main">
 														<div class="aui_content" style="padding: 0px;">
 															<div class="LocalDataMultiC" style="width:623px;">
-																<div class="selector-header"><span class="selector-title">µØÇøÑ¡Ôñ</span><div></div><span class="selector-close">X</span><div class="clear"></div></div>
+																<div class="selector-header"><span class="selector-title">åœ°åŒºé€‰æ‹©</span><div></div><span class="selector-close">X</span><div class="clear"></div></div>
 
 																<div class="data-row-list data-row-main" id="city_list">
-																	<!-- ÁĞ±íÄÚÈİ -->
+																	<!-- åˆ—è¡¨å†…å®¹ -->
 																</div>
 															</div>
 														</div>
@@ -361,7 +361,7 @@ $(document).ready(function()
 						</tbody>
 					</table>
 				</div>
-				<!-- ËùÔÚµØÇøµ¯³ö¿ò End-->
+				<!-- æ‰€åœ¨åœ°åŒºå¼¹å‡ºæ¡† End-->
 				<input id="district" type="hidden" value="{#$company_profile.district#}" name="district">
 	            <input id="sdistrict" type="hidden" value="{#$company_profile.sdistrict#}" name="sdistrict">
 	            <input id="districtID" type="hidden" value="">
@@ -370,10 +370,10 @@ $(document).ready(function()
 			<td>&nbsp;</td>
 		  </tr>
 		  <tr>
-			<td width="125" align="right">ËùÔÚ½ÖµÀ£º</td>
+			<td width="125" align="right">æ‰€åœ¨è¡—é“ï¼š</td>
 			<td width="230" style="position:relative;">
-				<div class="input_text_200_bg ucc-default" id="streetText">{#$company_profile.street_cn|default:"Î´±ê×¢½ÖµÀ"#}</div>
-				<!-- ËùÔÚ½ÖµÀµ¯³ö¿ò -->
+				<div class="input_text_200_bg ucc-default" id="streetText">{#$company_profile.street_cn|default:"æœªæ ‡æ³¨è¡—é“"#}</div>
+				<!-- æ‰€åœ¨è¡—é“å¼¹å‡ºæ¡† -->
 				<div class="aui_outer" id="aui_outer_street">
 					<table class="aui_border">
 						<tbody>
@@ -386,13 +386,13 @@ $(document).ready(function()
 													<td class="aui_main">
 														<div class="aui_content">
 															<div class="items jquery-localdata">
-																<div class="selector-header"><span class="selector-title">ËùÔÚ½ÖµÀ</span><div></div><span class="selector-close">X</span><div class="clear"></div></div>
+																<div class="selector-header"><span class="selector-title">æ‰€åœ¨è¡—é“</span><div></div><span class="selector-close">X</span><div class="clear"></div></div>
 
 																<div class="item-table">
 																	<table class="options-table options-table-7">
 																		<tbody class="item-list"><tr><td class="bno"><table><tbody id="street_list"><tr>
-																			<!-- ÁĞ±íÄÚÈİ -->
-																			{#qishi_get_classify set="ÀàĞÍ:QS_street,ÁĞ±íÃû:list"#}
+																			<!-- åˆ—è¡¨å†…å®¹ -->
+																			{#qishi_get_classify set="ç±»å‹:QS_street,åˆ—è¡¨å:list"#}
 																			{#section name=lis loop=$list#}
 																			{#if $smarty.section.lis.index%6 == 0 && $smarty.section.lis.index != 0#}
 																				</tr><tr><td><label class="selectra" data="{#$list[lis].c_id#},{#$list[lis].categoryname#}">{#$list[lis].categoryname#}</label></td>
@@ -416,41 +416,41 @@ $(document).ready(function()
 						</tbody>
 					</table>
 				</div>
-				<!-- ËùÔÚ½ÖµÀµ¯³ö¿ò End-->
+				<!-- æ‰€åœ¨è¡—é“å¼¹å‡ºæ¡† End-->
 				<input type="hidden" id="street" name="street" value="{#$company_profile.street#}">
 				<input type="hidden" id="street_cn" name="street_cn" value="{#$company_profile.street_cn#}">
 			</td>
 			<td>&nbsp;</td> 
 		  </tr>
 		  <tr>
-			<td width="125" align="right"><span class="nec">ÁªÏµÈË</span>£º</td>
+			<td width="125" align="right"><span class="nec">è”ç³»äºº</span>ï¼š</td>
 			<td width="230"><input name="contact" type="text" class="input_text_200" id="contact" maxlength="80"   value="{#$company_profile.contact#}"/></td>
-			<td><label><input name="contact_show" type="checkbox" value="1" {#if $company_profile.contact_show<>"0"#}checked="checked"{#/if#}/>&nbsp;ÁªÏµÈËÔÚÆóÒµ½éÉÜÒ³ÏÔÊ¾</label></td>
+			<td><label><input name="contact_show" type="checkbox" value="1" {#if $company_profile.contact_show<>"0"#}checked="checked"{#/if#}/>&nbsp;è”ç³»äººåœ¨ä¼ä¸šä»‹ç»é¡µæ˜¾ç¤º</label></td>
 		  </tr>
 		  <tr>
-			<td width="125" align="right"><span class="nec">ÁªÏµµç»°</span>£º</td>
+			<td width="125" align="right"><span class="nec">è”ç³»ç”µè¯</span>ï¼š</td>
 			<td width="230"><input name="telephone" type="text" class="input_text_200" id="telephone" maxlength="80"   value="{#if $company_profile.telephone#}{#$company_profile.telephone#}{#else#}{#$user.mobile#}{#/if#}"/></td>
-			<td><label><input name="telephone_show" type="checkbox" value="1" {#if $company_profile.telephone_show<>"0"#}checked="checked"{#/if#}/>&nbsp;ÁªÏµµç»°ÔÚÆóÒµ½éÉÜÖĞÏÔÊ¾</label>&nbsp;</td>
+			<td><label><input name="telephone_show" type="checkbox" value="1" {#if $company_profile.telephone_show<>"0"#}checked="checked"{#/if#}/>&nbsp;è”ç³»ç”µè¯åœ¨ä¼ä¸šä»‹ç»ä¸­æ˜¾ç¤º</label>&nbsp;</td>
 		  </tr>
 		  <tr>
-			<td width="125" align="right"><span class="nec">ÁªÏµÓÊÏä</span>£º</td>
+			<td width="125" align="right"><span class="nec">è”ç³»é‚®ç®±</span>ï¼š</td>
 			<td width="230"><input name="email" type="text" class="input_text_200" id="email" maxlength="80"   value="{#if $company_profile.email#}{#$company_profile.email#}{#else#}{#$user.email#}{#/if#}"/></td>
-			<td><label><input name="email_show" type="checkbox" value="1" {#if $company_profile.email_show<>"0"#}checked="checked"{#/if#}/>&nbsp;ÁªÏµÓÊÏäÔÚÆóÒµ½éÉÜÖĞÏÔÊ¾</label></td>
+			<td><label><input name="email_show" type="checkbox" value="1" {#if $company_profile.email_show<>"0"#}checked="checked"{#/if#}/>&nbsp;è”ç³»é‚®ç®±åœ¨ä¼ä¸šä»‹ç»ä¸­æ˜¾ç¤º</label></td>
 		  </tr>
 		   <tr>
-			<td width="125" align="right">¹«Ë¾ÍøÖ·£º</td>
+			<td width="125" align="right">å…¬å¸ç½‘å€ï¼š</td>
 			<td width="230"><input name="website" type="text" class="input_text_200" id="website" maxlength="80" value="{#$company_profile.website#}"/></td>
 			<td>&nbsp;</td>
 		  </tr>
 	    </table>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 		  <tr>
-			<td width="125" align="right"><span class="nec">ÏêÏ¸µØÖ·</span>£º</td>
+			<td width="125" align="right"><span class="nec">è¯¦ç»†åœ°å€</span>ï¼š</td>
 			<td width="500"><input name="address" type="text" class="input_text_500" id="address" maxlength="80"   value="{#$company_profile.address#}"/></td>
 			<td>&nbsp;</td>
 		  </tr>
 		  <tr>
-			<td width="125" align="right" valign="top"><span class="nec">¹«Ë¾¼ò½é</span>£º</td>
+			<td width="125" align="right" valign="top"><span class="nec">å…¬å¸ç®€ä»‹</span>ï¼š</td>
 			<td width="500">
 				<textarea id="contents" name="contents" style="width:600px;height:300px;visibility:hidden;">{#$company_profile.contents#}</textarea>
 				<script type="text/javascript">
@@ -469,17 +469,17 @@ $(document).ready(function()
 		  </tr>
 		  <tr>
 			<td width="125" align="right" valign="top">&nbsp;</td>
-			<td width="500" align="right"><a href="javascript:void(0);" id="model" style="display:inline-block;margin-top:-18px;_margin-top:-15px;color:#0180CF;*margin-top:5px;">[·¶Àı]</a></td>
+			<td width="500" align="right"><a href="javascript:void(0);" id="model" style="display:inline-block;margin-top:-18px;_margin-top:-15px;color:#0180CF;*margin-top:5px;">[èŒƒä¾‹]</a></td>
 			<td>&nbsp;</td>
 		  </tr>
 	    </table>
 		  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall s" style="margin-top:5px;display:none" id="cp">
 		  <tr>
-			<td width="125" align="right" valign="top">¹«Ë¾¼ò½é·¶Àı£º</td>
-			<td width="500" bgcolor="#F5F5F5" style="line-height:22px;padding-left:10px;padding-right:10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XXX¼¼ÊõÓĞÏŞ¹«Ë¾³ÉÁ¢ÓÚ2000Äê,ÊÇXXXÍ¶×ÊÓĞÏŞ¹«Ë¾ÓëÃÀ¹úXXX¹«Ë¾ºÏ×ÊĞË½¨µÄÖĞÍâºÏ×ÊÆóÒµ,Òı½øÃÀ¹úº£XXX×¨Àû¼¼Êõ,×¨Òµ´ÓÊÂXXÑĞ¾¿¿ª·¢ºÍÉú²úÓ¦ÓÃ.<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¹«Ë¾2002Äê±»XXÈÏ¶¨Îª¸ßĞÂ¼¼ÊõÆóÒµ,ÊÇÄ¿Ç°¹úÄÚÎ¨Ò»µÄÒ»¼Ò¼ÈÉú²úXXXÓÖÉú²úXµÄÉú²ú³§¼Ò,Ö÷Òª²úÆ·ÓĞ¸÷XX,XXÁĞ²úÆ·XXXµÈ.<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ä¿Ç°,XX¹«Ë¾ÓµÓĞ×Ü×Ê²úXÒÚÔª,Éú²ú¼Ó¹¤»ùµØÕ¼µØXXÓàÄ¶,¾ßÓĞÒ»´ÎĞÔXXÍòÓà¶ÖµÄXX´¢´æÄÜÁ¦,¾ßÓĞ×ÔÓª½ø³ö¿ÚÈ¨,ÊÇÄ¿Ç°¹úÄÚ×î¾ßÊµÁ¦XXÉú²ú¹©Ó¦ÉÌÖ®Ò».<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ÓÃÏÈ½ø,³ÉÊì,ÊÊÓÃµÄ¼¼Êõ·şÎñXXÊÂÒµ ,ÊÇX¹«Ë¾µÄÆóÒµ×ÚÖ¼,¹«Ë¾ÔÚÒı½øĞÂ¼¼ÊõµÄÍ¬Ê±,²»¶Ï¸ù¾İXXXÊµ¼ÊÇé¿öÔÚÓ¦ÓÃ·½Ãæ½øĞĞÑĞ¾¿ÓëÍÆ¹ãÁ¢×ãXXX,ÃæÏòÈ«¹ú,×ßÏòÊÀ½çÊÇXX¹«Ë¾µÄ·¢Õ¹Ä¿±ê,Ä¿Ç°XXX¹«Ë¾µÄ²úÆ·³ıÔÚX´óÁ¿Ê¹ÓÃÍâ,ÒÑ¾­´òÈëÁË½­ËÕ,Õã½­,ºÓÄÏ,°²»Õ,ºşÄÏ,½­Î÷,ËÄ´¨,ºş±±,¹ã¶«µÈÊ®Óà¸öÊ¡·İ,Í¬Ê±¹«Ë¾Éú²úµÄXXXÒÑ¾­·µÏúÃÀ¹ú,²¢ÔÚ¶íÂŞË¹,¹şÈø¿ËË¹Ì¹¿ªÊ¼Ó¦ÓÃ,ÒÑ³É¹¦½øÈë¹ú¼ÊÊĞ³¡.</td>
+			<td width="125" align="right" valign="top">å…¬å¸ç®€ä»‹èŒƒä¾‹ï¼š</td>
+			<td width="500" bgcolor="#F5F5F5" style="line-height:22px;padding-left:10px;padding-right:10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XXXæŠ€æœ¯æœ‰é™å…¬å¸æˆç«‹äº2000å¹´,æ˜¯XXXæŠ•èµ„æœ‰é™å…¬å¸ä¸ç¾å›½XXXå…¬å¸åˆèµ„å…´å»ºçš„ä¸­å¤–åˆèµ„ä¼ä¸š,å¼•è¿›ç¾å›½æµ·XXXä¸“åˆ©æŠ€æœ¯,ä¸“ä¸šä»äº‹XXç ”ç©¶å¼€å‘å’Œç”Ÿäº§åº”ç”¨.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;å…¬å¸2002å¹´è¢«XXè®¤å®šä¸ºé«˜æ–°æŠ€æœ¯ä¼ä¸š,æ˜¯ç›®å‰å›½å†…å”¯ä¸€çš„ä¸€å®¶æ—¢ç”Ÿäº§XXXåˆç”Ÿäº§Xçš„ç”Ÿäº§å‚å®¶,ä¸»è¦äº§å“æœ‰å„XX,XXåˆ—äº§å“XXXç­‰.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ç›®å‰,XXå…¬å¸æ‹¥æœ‰æ€»èµ„äº§Xäº¿å…ƒ,ç”Ÿäº§åŠ å·¥åŸºåœ°å åœ°XXä½™äº©,å…·æœ‰ä¸€æ¬¡æ€§XXä¸‡ä½™å¨çš„XXå‚¨å­˜èƒ½åŠ›,å…·æœ‰è‡ªè¥è¿›å‡ºå£æƒ,æ˜¯ç›®å‰å›½å†…æœ€å…·å®åŠ›XXç”Ÿäº§ä¾›åº”å•†ä¹‹ä¸€.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ç”¨å…ˆè¿›,æˆç†Ÿ,é€‚ç”¨çš„æŠ€æœ¯æœåŠ¡XXäº‹ä¸š ,æ˜¯Xå…¬å¸çš„ä¼ä¸šå®—æ—¨,å…¬å¸åœ¨å¼•è¿›æ–°æŠ€æœ¯çš„åŒæ—¶,ä¸æ–­æ ¹æ®XXXå®é™…æƒ…å†µåœ¨åº”ç”¨æ–¹é¢è¿›è¡Œç ”ç©¶ä¸æ¨å¹¿ç«‹è¶³XXX,é¢å‘å…¨å›½,èµ°å‘ä¸–ç•Œæ˜¯XXå…¬å¸çš„å‘å±•ç›®æ ‡,ç›®å‰XXXå…¬å¸çš„äº§å“é™¤åœ¨Xå¤§é‡ä½¿ç”¨å¤–,å·²ç»æ‰“å…¥äº†æ±Ÿè‹,æµ™æ±Ÿ,æ²³å—,å®‰å¾½,æ¹–å—,æ±Ÿè¥¿,å››å·,æ¹–åŒ—,å¹¿ä¸œç­‰åä½™ä¸ªçœä»½,åŒæ—¶å…¬å¸ç”Ÿäº§çš„XXXå·²ç»è¿”é”€ç¾å›½,å¹¶åœ¨ä¿„ç½—æ–¯,å“ˆè¨å…‹æ–¯å¦å¼€å§‹åº”ç”¨,å·²æˆåŠŸè¿›å…¥å›½é™…å¸‚åœº.</td>
 			<td>&nbsp;</td>
 		  </tr>
 		  </table>
@@ -487,7 +487,7 @@ $(document).ready(function()
 		  {#if $company_jobs #}
 		  <tr>
 			<td align="right" width="125">&nbsp;</td>
-			<td width="230"><label style="color:#FF9900;"><input name="telephone_to_jobs" type="checkbox" value="1"/> &nbsp;ĞŞ¸ÄÁªÏµ·½Ê½Í¬²½µ½Ö°Î»</label></td>
+			<td width="230"><label style="color:#FF9900;"><input name="telephone_to_jobs" type="checkbox" value="1"/> &nbsp;ä¿®æ”¹è”ç³»æ–¹å¼åŒæ­¥åˆ°èŒä½</label></td>
 			<td>&nbsp;</td>
 		  </tr>
 		  {#/if#}
@@ -495,7 +495,7 @@ $(document).ready(function()
 		  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 		  <tr>
 			<td align="right" width="125">&nbsp;</td>
-			<td width="130"><input type="submit" value="±£´æ" id="save_profile" class="but100lan" onclick="$(window).unbind('beforeunload');"/></td>
+			<td width="130"><input type="submit" value="ä¿å­˜" id="save_profile" class="but100lan" onclick="$(window).unbind('beforeunload');"/></td>
 			<td>&nbsp;</td>
 		  </tr>
 		  </table>

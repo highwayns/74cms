@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -22,9 +22,9 @@ $(document).ready(function()
 		}
 	});
 	
-	//È«Ñ¡
+	//å…¨é€‰
 	$('#categorychkAll').click(function(){$("#form1 :checkbox").attr('checked',$("#chk").attr('checked'))});
-	//µã»÷´óÀà£¬Ñ¡ÔñĞ¡Àà
+	//ç‚¹å‡»å¤§ç±»ï¼Œé€‰æ‹©å°ç±»
 	$(".Bcheck").click(function()
 	{
 		SetCat($(this).attr("id"));
@@ -37,7 +37,7 @@ $(document).ready(function()
 		$(".Scheck_"+$(this).val()).attr("checked",$(this).attr("checked"));
 		$(".Scheck_"+$(this).val()).attr("checked",$(this).attr("checked"));
 	});
-	//µã»÷×ÓÀà ÊÍ·Å¸¸¼¶µÄ¹´Ñ¡
+	//ç‚¹å‡»å­ç±» é‡Šæ”¾çˆ¶çº§çš„å‹¾é€‰
 	$(":checkbox[class^='Scheck_']").live('click', function()
 	{
 		if ($(this).attr("checked")==false)
@@ -48,15 +48,15 @@ $(document).ready(function()
 			$(".Bcheck[id="+$(".middle_"+pid).attr("id")+"]").attr("checked","");
 		}
 	});
-	//É¾³ı
+	//åˆ é™¤
 	$("#ButDel").click(function(){
 		var num=$(":checkbox[checked][id!='chk']").length;
 		if (num==0)
 		{
-			alert("ÄúÃ»ÓĞÑ¡ÔñÏîÄ¿");
+			alert("æ‚¨æ²¡æœ‰é€‰æ‹©é¡¹ç›®");
 			return false;
 		}
-		if (confirm("ÄãÑ¡ÔñÁË"+num+"¸ö²Ëµ¥£¬É¾³ı¶¥¼¶²Ëµ¥Í¬Ê±½«É¾³ıÆä×Ó²Ëµ¥£¬È·¶¨¶¼ÒªÉ¾³ıÂğ£¿"))
+		if (confirm("ä½ é€‰æ‹©äº†"+num+"ä¸ªèœå•ï¼Œåˆ é™¤é¡¶çº§èœå•åŒæ—¶å°†åˆ é™¤å…¶å­èœå•ï¼Œç¡®å®šéƒ½è¦åˆ é™¤å—ï¼Ÿ"))
 		{
 			$("form[name=form1]").attr("action","?act=del_menu");
 			$("form[name=form1]").submit()
@@ -95,24 +95,24 @@ $(document).ready(function()
 			 		html+="<td align=\"center\"  class=\"admin_list\">"+val[3]+"</td>";
 			 		html+="<td align=\"center\"  class=\"admin_list\">"+val[5]+"</td>";
 			 		if(val[6]==1){
-			 			html+="<td align=\"center\"  class=\"admin_list\"><font color=\"green\">ÏÔÊ¾</font></td>";
+			 			html+="<td align=\"center\"  class=\"admin_list\"><font color=\"green\">æ˜¾ç¤º</font></td>";
 			 		}else{
-			 			html+="<td align=\"center\"  class=\"admin_list\"><font color=\"grey\">Òş²Ø</font></td>";
+			 			html+="<td align=\"center\"  class=\"admin_list\"><font color=\"grey\">éšè—</font></td>";
 			 		}
 			 		
 			   		html+="<td align=\"center\"  class=\"admin_list\">";
 			  		html+="<input name=\"menu_order[]\" type=\"text\"  value=\""+val[2]+"\" class=\"input_text_50\"/>";
 			  		html+="</td>";
 			  		html+="<td class=\"admin_list\">";			
-			  		<!-- html+="<a href=\"?act=add_district&parentid="+val[0]+"\">´Ë²Ëµ¥ÏÂ¼Ó×Ó²Ëµ¥</a>&nbsp;&nbsp;&nbsp;&nbsp;";	   -->
-			 		html+="<a href=\"?act=edit_menu&id="+val[0]+"\">ĞŞ¸Ä</a>&nbsp;&nbsp;&nbsp;&nbsp;";	
-					html+="<a onclick=\"return confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')\" href=\"?act=del_menu&id="+val[0]+"&{#$urltoken#}\">É¾³ı</a>";
+			  		<!-- html+="<a href=\"?act=add_district&parentid="+val[0]+"\">æ­¤èœå•ä¸‹åŠ å­èœå•</a>&nbsp;&nbsp;&nbsp;&nbsp;";	   -->
+			 		html+="<a href=\"?act=edit_menu&id="+val[0]+"\">ä¿®æ”¹</a>&nbsp;&nbsp;&nbsp;&nbsp;";	
+					html+="<a onclick=\"return confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')\" href=\"?act=del_menu&id="+val[0]+"&{#$urltoken#}\">åˆ é™¤</a>";
 					html+="</td>";	
 					html+="</tr>";
 					i++;
 					}
 					$("#tr_"+pid).after(html);
-					//Èç¹û´óÀàÒÑ¾­Ñ¡Ôñ£¬ÔòĞ¡ÀàÒ²¹´Ñ¡
+					//å¦‚æœå¤§ç±»å·²ç»é€‰æ‹©ï¼Œåˆ™å°ç±»ä¹Ÿå‹¾é€‰
 					if ($(".Bcheck[id="+pid+"]").attr("checked"))
 					{
 					$(".Scheck_"+pid).attr("checked","true");
@@ -130,9 +130,9 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-É¾³ı¶¥¼¶²Ëµ¥½«»á×Ô¶¯É¾³ı´Ë²Ëµ¥ÏÂµÄ×Ó²Ëµ¥¡£<br />
+åˆ é™¤é¡¶çº§èœå•å°†ä¼šè‡ªåŠ¨åˆ é™¤æ­¤èœå•ä¸‹çš„å­èœå•ã€‚<br />
 </p>
 </div>
   <form id="form1" name="form1" method="post" action="?act=menu_all_save">
@@ -140,16 +140,16 @@ $(document).ready(function()
   <table width="100%" border="0" cellpadding="0" cellspacing="0" id="list" class="link_lan"  >
     <tr>
       <td height="26" class="admin_list_tit admin_list_first" >
-      <label id="categorychkAll"><input type="checkbox" name=" " title="È«Ñ¡/·´Ñ¡" id="chk" />
-      Î¢ĞÅ×Ô¶¨Òå²Ëµ¥</label>
+      <label id="categorychkAll"><input type="checkbox" name=" " title="å…¨é€‰/åé€‰" id="chk" />
+      å¾®ä¿¡è‡ªå®šä¹‰èœå•</label>
 	 
 	  </td>
-	  <td width="160"   align="center"  class="admin_list_tit">²Ëµ¥¹Ø¼ü×Ö</td>
-	  <td width="160"   align="center"  class="admin_list_tit">²Ëµ¥ÀàĞÍ</td>
-	  <td width="230"   align="center"  class="admin_list_tit">Á´½ÓµØÖ·</td>
-	  <td width="30"   align="center"  class="admin_list_tit">×´Ì¬</td>
-	  <td width="160"   align="center"  class="admin_list_tit">ÅÅĞò</td>
-      <td width="260"   align="center" class="admin_list_tit">²Ù×÷</td>
+	  <td width="160"   align="center"  class="admin_list_tit">èœå•å…³é”®å­—</td>
+	  <td width="160"   align="center"  class="admin_list_tit">èœå•ç±»å‹</td>
+	  <td width="230"   align="center"  class="admin_list_tit">é“¾æ¥åœ°å€</td>
+	  <td width="30"   align="center"  class="admin_list_tit">çŠ¶æ€</td>
+	  <td width="160"   align="center"  class="admin_list_tit">æ’åº</td>
+      <td width="260"   align="center" class="admin_list_tit">æ“ä½œ</td>
     </tr>
     {#if $menu#}
 	  {#foreach from=$menu item=list#}
@@ -170,22 +170,22 @@ $(document).ready(function()
 	   {#$list.url#}
 	  </td>
 	  <td align="center"  class="admin_list">
-	   {#if $list.status=="1"#}<font color="green">ÏÔÊ¾</font>{#else#}<font color="grey">Òş²Ø</font>{#/if#}
+	   {#if $list.status=="1"#}<font color="green">æ˜¾ç¤º</font>{#else#}<font color="grey">éšè—</font>{#/if#}
 	  </td>
 	   <td align="center"  class="admin_list">
 	   <input name="menu_order[]" type="text"  value="{#$list.menu_order#}" class="input_text_50"/>
 	  </td>
       <td class="admin_list">
-	  <a href="?act=add_menu&parentid={#$list.id#}">´Ë²Ëµ¥ÏÂ¼Ó×Ó²Ëµ¥</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="?act=edit_menu&id={#$list.id#}">ĞŞ¸Ä</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	  <a href="?act=add_menu&parentid={#$list.id#}">æ­¤èœå•ä¸‹åŠ å­èœå•</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="?act=edit_menu&id={#$list.id#}">ä¿®æ”¹</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
-			  <a onclick="return confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')" href="?act=del_menu&id={#$list.id#}&{#$urltoken#}">É¾³ı</a>
+			  <a onclick="return confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')" href="?act=del_menu&id={#$list.id#}&{#$urltoken#}">åˆ é™¤</a>
 			 </td>
     </tr>
       {#/foreach#}
       {#else#}
 		  <tr >
 			  <td  class="admin_list"  style="padding-left:10px;">
-			   Ã»ÓĞÈÎºÎĞÅÏ¢!
+			   æ²¡æœ‰ä»»ä½•ä¿¡æ¯!
 			  </td>
 			   <td align="center"  class="admin_list">&nbsp;
 			  </td>
@@ -199,10 +199,10 @@ $(document).ready(function()
 	<table width="100%" border="0" cellspacing="10"  class="admin_list_btm">
 <tr>
         <td>
-		<input name="ButSave" type="submit" class="admin_submit" id="ButSave" value="±£´æ²Ëµ¥"/>
-        <input name="ButADD" type="button" class="admin_submit" id="ButADD" value="Ìí¼Ó²Ëµ¥"  onclick="window.location='?act=add_menu'"/>
-		<input name="ButDel" type="button" class="admin_submit" id="ButDel"  value="É¾³ıËùÑ¡" />
-        <input name="create_menu" id="create_menu" type="button" class="admin_submit"    value="Í¬²½²Ëµ¥"/>
+		<input name="ButSave" type="submit" class="admin_submit" id="ButSave" value="ä¿å­˜èœå•"/>
+        <input name="ButADD" type="button" class="admin_submit" id="ButADD" value="æ·»åŠ èœå•"  onclick="window.location='?act=add_menu'"/>
+		<input name="ButDel" type="button" class="admin_submit" id="ButDel"  value="åˆ é™¤æ‰€é€‰" />
+        <input name="create_menu" id="create_menu" type="button" class="admin_submit"    value="åŒæ­¥èœå•"/>
 		</td>
         <td width="305" align="right">
 	  

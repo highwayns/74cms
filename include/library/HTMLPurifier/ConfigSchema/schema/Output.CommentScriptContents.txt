@@ -1,4 +1,4 @@
-Output.CommentScriptContents
+﻿Output.CommentScriptContents
 TYPE: bool
 VERSION: 2.0.0
 DEFAULT: true

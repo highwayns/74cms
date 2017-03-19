@@ -1,4 +1,4 @@
-// JavaScript Document
+﻿// JavaScript Document
 jQuery.extend({
 
     createUploadIframe: function(id, uri)

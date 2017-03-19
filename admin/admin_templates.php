@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Ä£°åÉèÖÃ
+ * 74cms æ¨¡æ¿è®¾ç½®
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -14,7 +14,7 @@ require_once(dirname(__FILE__).'/../data/config.php');
 require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_templates_fun.php');
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'list';
-$smarty->assign('pageheader',"Ä£°åÉèÖÃ");
+$smarty->assign('pageheader',"æ¨¡æ¿è®¾ç½®");
 $smarty->assign('act',$act);
 if($act == 'list')
 {
@@ -46,7 +46,7 @@ elseif ($act == 'backup')
 	$tpl = trim($_REQUEST['tpl_name']);
 	if (dirname($tpl)<>'.')
 	{
-	adminmsg("²Ù×÷Ê§°Ü£¡",0);
+	adminmsg("æ“ä½œå¤±è´¥ï¼",0);
 	}
 	$filename = '../temp/backup_templates/' . $tpl . '_' . date('Ymd') . '.zip';
 	$zip = new PHPZip;
@@ -57,7 +57,7 @@ elseif ($act == 'backup')
 		}
 		else
 		{
-		adminmsg("²Ù×÷Ê§°Ü£¡",0);
+		adminmsg("æ“ä½œå¤±è´¥ï¼",0);
 		}
 	}
 elseif ($act == 'set')
@@ -66,15 +66,15 @@ elseif ($act == 'set')
 	check_permissions($_SESSION['admin_purview'],"tpl_edit");
 	$templates_info=get_templates_info("../templates/".trim($_REQUEST['tpl_dir'])."/info.txt");
 	$tpl_dir = trim($_REQUEST['tpl_dir'])."/";
-	!$db->query("UPDATE ".table('config')." SET value='{$tpl_dir}' WHERE name='template_dir'")?adminmsg('ÉèÖÃÊ§°Ü',1):"";
+	!$db->query("UPDATE ".table('config')." SET value='{$tpl_dir}' WHERE name='template_dir'")?adminmsg('è®¾ç½®å¤±è´¥',1):"";
 	refresh_cache("config");
 		$dir="../temp/templates_c/".$tpl_dir;
 		if (!file_exists($dir)) mkdir($dir);
 		$dir="../temp/caches/".$tpl_dir;
 		if (!file_exists($dir)) mkdir($dir);
-	$link[0]['text'] = "·µ»ØÄ£°åÁÐ±í";
+	$link[0]['text'] = "è¿”å›žæ¨¡æ¿åˆ—è¡¨";
 	$link[0]['href'] ="?act=list";
-	adminmsg('±£´æ³É¹¦', 2,$link);
+	adminmsg('ä¿å­˜æˆåŠŸ', 2,$link);
 }
 elseif ($act == 'edit')
 {
@@ -100,7 +100,7 @@ elseif ($act == 'edit')
 		}
 		else
 		{
-		adminmsg('¶ÁÈ¡Ä£°åÄ¿Â¼³ö´í£¬Çë¼ì²é¶ÁÐ´È¨ÏÞ', 0);
+		adminmsg('è¯»å–æ¨¡æ¿ç›®å½•å‡ºé”™ï¼Œè¯·æ£€æŸ¥è¯»å†™æƒé™', 0);
 		}
 	$smarty->assign('list',$list);
 	$templates['dir']=$tpl_dir;
@@ -115,9 +115,9 @@ elseif ($act == 'edit_file')
 	check_permissions($_SESSION['admin_purview'],"tpl_edit");
 	$file = $_GET['tpl_name'];
 	$file_dir='../templates/'.$_GET['tpl_dir'].'/'.$file;
-	if (substr($file_dir,-4)==".php") exit(adminmsg('´ò¿ªÄ¿±êÄ£°åÎÄ¼þÊ§°Ü', 0));
+	if (substr($file_dir,-4)==".php") exit(adminmsg('æ‰“å¼€ç›®æ ‡æ¨¡æ¿æ–‡ä»¶å¤±è´¥', 0));
 	if(!$handle = @fopen($file_dir, 'rb')){
-	adminmsg('´ò¿ªÄ¿±êÄ£°åÎÄ¼þÊ§°Ü', 0);
+	adminmsg('æ‰“å¼€ç›®æ ‡æ¨¡æ¿æ–‡ä»¶å¤±è´¥', 0);
 	}
 	$tpl['content'] = fread($handle, filesize($file_dir));
 	$tpl['content'] = htmlentities($tpl['content'], ENT_QUOTES, QISHI_CHARSET);
@@ -134,7 +134,7 @@ elseif ($act == 'do_edit')
 	$tpl_name = !empty($_POST['tpl_name']) ? trim($_POST['tpl_name']) : '';
 	$tpl_content = !empty($_POST['tpl_content']) ? deep_stripslashes($_POST['tpl_content']) : '';
 		if(empty($tpl_name)){
-	adminmsg('±£´æÄ£°åÎÄ¼þ³ö´í', 0);
+	adminmsg('ä¿å­˜æ¨¡æ¿æ–‡ä»¶å‡ºé”™', 0);
 		}
 		$temp_arr = explode(".", $tpl_name);
 		$file_ext = array_pop($temp_arr);
@@ -147,23 +147,23 @@ elseif ($act == 'do_edit')
 		}		
 		$file_dir='../templates/'.$_POST['tpl_dir'].'/'.$tpl_name;
 		if(!$handle = @fopen($file_dir, 'wb')){
-		adminmsg("´ò¿ªÄ¿±êÄ£°æÎÄ¼þ $tpl_name Ê§°Ü£¬Çë¼ì²éÄ£°æÄ¿Â¼µÄÈ¨ÏÞ",0);
+		adminmsg("æ‰“å¼€ç›®æ ‡æ¨¡ç‰ˆæ–‡ä»¶ $tpl_name å¤±è´¥ï¼Œè¯·æ£€æŸ¥æ¨¡ç‰ˆç›®å½•çš„æƒé™",0);
 		}
 		if(fwrite($handle, $tpl_content) === false){
-			adminmsg('Ð´ÈëÄ¿±ê $tpl_name Ê§°Ü,Çë¼ì²é¶ÁÐ´È¨ÏÞ',0);
+			adminmsg('å†™å…¥ç›®æ ‡ $tpl_name å¤±è´¥,è¯·æ£€æŸ¥è¯»å†™æƒé™',0);
 		}
 		fclose($handle);
-		$link[0]['text'] = "¼ÌÐø±à¼­´ËÎÄ¼þ";
+		$link[0]['text'] = "ç»§ç»­ç¼–è¾‘æ­¤æ–‡ä»¶";
 		$link[0]['href'] =$_SERVER['HTTP_REFERER'];
-		$link[1]['text'] = "·µ»ØÄ£°åÎÄ¼þÁÐ±í";
+		$link[1]['text'] = "è¿”å›žæ¨¡æ¿æ–‡ä»¶åˆ—è¡¨";
 		$link[1]['href'] ="?act=edit&tpl_dir=".$_POST['tpl_dir'];
-		adminmsg('±à¼­Ä£°å³É¹¦',2,$link);
+		adminmsg('ç¼–è¾‘æ¨¡æ¿æˆåŠŸ',2,$link);
 }
 elseif ($act == 'com_tpl')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"tpl_company");
-	$smarty->assign('pageheader',"Ä£°åÉèÖÃ");	
+	$smarty->assign('pageheader',"æ¨¡æ¿è®¾ç½®");	
 	$smarty->assign('navlabel',"com_tpl");	
 	$smarty->assign('list',get_user_tpl(1,"tpl_company"));
 	$smarty->display('tpl/admin_com_tpl_list.htm');
@@ -173,7 +173,7 @@ elseif ($act == 'com_tpl_save')
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"tpl_company");
 	$tpl_company=trim($_POST['tpl_company']);
-	!$db->query("UPDATE ".table('config')." SET value='{$tpl_company}' WHERE name='tpl_company'")?adminmsg('¸üÐÂÕ¾µãÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='{$tpl_company}' WHERE name='tpl_company'")?adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1):"";
 	refresh_cache('config');
 	$tpl_id=$_POST['tpl_id'];
 	if (is_array($_POST['tpl_id']) && count($_POST['tpl_id'])>0)
@@ -182,11 +182,11 @@ elseif ($act == 'com_tpl_save')
 				$setsqlarr['tpl_name']=trim($_POST['tpl_name'][$i]);
 				$setsqlarr['tpl_display']=intval($_POST['tpl_display'][$i]);
 				$setsqlarr['tpl_val']=intval($_POST['tpl_val'][$i]);
-				!$db->updatetable(table('tpl'),$setsqlarr," tpl_id=".intval($_POST['tpl_id'][$i]))?adminmsg("±£´æ¼ÓÊ§°Ü£¡",0):"";
+				!$db->updatetable(table('tpl'),$setsqlarr," tpl_id=".intval($_POST['tpl_id'][$i]))?adminmsg("ä¿å­˜åŠ å¤±è´¥ï¼",0):"";
 		}
 
 	}
-	adminmsg("±£´æ³É¹¦£¡",2);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 
 }
 elseif ($act == 'refresh_tpl')
@@ -209,13 +209,13 @@ elseif ($act == 'refresh_tpl')
 	{
 	$db->query("Delete from ".table('tpl')." WHERE  ".implode(" and ",$dararray)." AND  tpl_type='$type'");
 	}
-	adminmsg('Ë¢ÐÂ³É¹¦',2);
+	adminmsg('åˆ·æ–°æˆåŠŸ',2);
 }
 elseif ($act == 'resume_tpl')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"tpl_resume");
-	$smarty->assign('pageheader',"Ä£°åÉèÖÃ");	
+	$smarty->assign('pageheader',"æ¨¡æ¿è®¾ç½®");	
 	$smarty->assign('navlabel',"resume_tpl");
 	$smarty->assign('list',get_user_tpl(2,"tpl_resume"));
 	$smarty->display('tpl/admin_resume_tpl_list.htm');
@@ -225,7 +225,7 @@ elseif ($act == 'resume_tpl_save')
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"tpl_resume");
 	$tpl_personal=trim($_POST['tpl_personal']);
-	!$db->query("UPDATE ".table('config')." SET value='{$tpl_personal}' WHERE name='tpl_personal'")?adminmsg('¸üÐÂÕ¾µãÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='{$tpl_personal}' WHERE name='tpl_personal'")?adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1):"";
 	refresh_cache('config');
 	$tpl_id=$_POST['tpl_id'];
 	if (is_array($_POST['tpl_id']) && count($_POST['tpl_id'])>0)
@@ -234,12 +234,12 @@ elseif ($act == 'resume_tpl_save')
 				$setsqlarr['tpl_name']=trim($_POST['tpl_name'][$i]);
 				$setsqlarr['tpl_display']=intval($_POST['tpl_display'][$i]);
 				$setsqlarr['tpl_val']=intval($_POST['tpl_val'][$i]);
-				!$db->updatetable(table('tpl'),$setsqlarr," tpl_id=".intval($_POST['tpl_id'][$i]))?adminmsg("±£´æ¼ÓÊ§°Ü£¡",0):"";
+				!$db->updatetable(table('tpl'),$setsqlarr," tpl_id=".intval($_POST['tpl_id'][$i]))?adminmsg("ä¿å­˜åŠ å¤±è´¥ï¼",0):"";
 
 		}
 
 	}
-	adminmsg("±£´æ³É¹¦£¡",2);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 
 }
 ?>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Lite template_fetch_compile_include template internal module
  *

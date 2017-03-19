@@ -1,4 +1,4 @@
-function getStyle(obj,name)
+锘縡unction getStyle(obj,name)
 {
 	if(obj.currentStyle)
 	{
@@ -106,13 +106,13 @@ function startMove(obj,att,add)
 		  }
 		  tab();
 	  }
-	  var timer = setInterval(oNext.onclick,3000) //滚动间隔时间设置
+	  var timer = setInterval(oNext.onclick,3000) //婊氬姩闂撮殧鏃堕棿璁剧疆
 	  oDiv.onmouseover = function()
 	  {
 		  clearInterval(timer)
 	  }
 	   oDiv.onmouseout = function()
 	  {
-		  timer = setInterval(oNext.onclick,3000) //滚动间隔时间设置
+		  timer = setInterval(oNext.onclick,3000) //婊氬姩闂撮殧鏃堕棿璁剧疆
 	  }
   }

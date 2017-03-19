@@ -1,20 +1,20 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
 	{#include file="category/admin_category_nav.htm"#}
   <div class="clear"></div>
 </div>
-<div class="toptit">ĞŞ¸Ä·ÖÀà</div>
+<div class="toptit">ä¿®æ”¹åˆ†ç±»</div>
 <form id="form1" name="form1" method="post" action="?act=edit_category_save">
 {#$inputtoken#}
 <table width="100%" border="0" cellspacing="6" cellpadding="0" style="border-bottom:1px #96B7E2 dashed">
   <tr>
-    <td width="120" align="right">Ãû³Æ:</td>
+    <td width="120" align="right">åç§°:</td>
     <td><input name="c_name" type="text" class="input_text_200"  value="{#$category.c_name#}" /></td>
   </tr>
     <tr>
-    <td width="120" align="right">ÅÅĞò:</td>
+    <td width="120" align="right">æ’åº:</td>
     <td>	
 	<input name="c_order" type="text" class="input_text_200"  value="{#$category.c_order#}" />
 	<input name="c_alias" type="hidden" value="{#$category.c_alias#}" />
@@ -22,18 +22,18 @@
 	</td>
   </tr>
    <tr>
-    <td width="120" align="right">Ê××ÖÄ¸Ë÷Òı:</td>
+    <td width="120" align="right">é¦–å­—æ¯ç´¢å¼•:</td>
     <td>	
 	<input name="c_index" type="text" class="input_text_200" maxlength="60"  value="{#$category.c_index#}"  /> 
-	<span class="admin_note">Èç£º·ÖÀàÃû³ÆÎª£º¶¦ÔªÊ±´úÖĞĞÄÔòÎª£º<strong>d</strong></span>
+	<span class="admin_note">å¦‚ï¼šåˆ†ç±»åç§°ä¸ºï¼šé¼å…ƒæ—¶ä»£ä¸­å¿ƒåˆ™ä¸ºï¼š<strong>d</strong></span>
 	</td>
   </tr>
    {#if $category.c_alias=="QS_officebuilding"#}
    <tr>
-    <td width="120" align="right">ËµÃ÷:</td>
+    <td width="120" align="right">è¯´æ˜:</td>
     <td>	
 	<input name="c_note" type="text" class="input_text_200" maxlength="60"  value="{#$category.c_note#}"  /> 
-	<span class="admin_note">Èç£º½¨ÉèÓë¶«»·Â·½»²æ¿Ú¶¦ÔªÊ±´úÖĞĞÄ</span>
+	<span class="admin_note">å¦‚ï¼šå»ºè®¾ä¸ä¸œç¯è·¯äº¤å‰å£é¼å…ƒæ—¶ä»£ä¸­å¿ƒ</span>
 	</td>
   </tr>
   {#/if#}
@@ -43,8 +43,8 @@
     <td width="120"> </td>
     <td>
 	<input name="c_id" type="hidden" value="{#$category.c_id#}" />
-	<input type="submit" name="save" value="±£´æ" class="admin_submit" />
-		  <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="window.location='?act=show_category&alias={#$category.c_alias#}'"/>
+	<input type="submit" name="save" value="ä¿å­˜" class="admin_submit" />
+		  <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="window.location='?act=show_category&alias={#$category.c_alias#}'"/>
 	
 	</td>
   </tr>

@@ -1,4 +1,4 @@
-Attr.IDPrefixLocal
+﻿Attr.IDPrefixLocal
 TYPE: string
 VERSION: 1.2.0
 DEFAULT: ''

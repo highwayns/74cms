@@ -1,24 +1,24 @@
-	var cut_div;  //²Ã¼õÍ¼Æ¬Íâ¿òdiv
-	var cut_img;  //²Ã¼õÍ¼Æ¬
-	var imgdefw;  //Í¼Æ¬Ä¬ÈÏ¿í¶È
-	var imgdefh;  //Í¼Æ¬Ä¬ÈÏ¸ß¶È
-	var offsetx = 100; //Í¼Æ¬Î»ÖÃÎ»ÒÆx
-	var offsety = -225; //Í¼Æ¬Î»ÖÃÎ»ÒÆy
-	var divx = 320; //Íâ¿ò¿í¶È
-	var divy = 300; //Íâ¿ò¸ß¶È
-	var cutx = 120;  //²Ã¼õ¿í¶È
-	var cuty = 150;  //²Ã¼õ¸ß¶È
-	var zoom = 1; //Ëõ·Å±ÈÀı
+ï»¿	var cut_div;  //è£å‡å›¾ç‰‡å¤–æ¡†div
+	var cut_img;  //è£å‡å›¾ç‰‡
+	var imgdefw;  //å›¾ç‰‡é»˜è®¤å®½åº¦
+	var imgdefh;  //å›¾ç‰‡é»˜è®¤é«˜åº¦
+	var offsetx = 100; //å›¾ç‰‡ä½ç½®ä½ç§»x
+	var offsety = -225; //å›¾ç‰‡ä½ç½®ä½ç§»y
+	var divx = 320; //å¤–æ¡†å®½åº¦
+	var divy = 300; //å¤–æ¡†é«˜åº¦
+	var cutx = 120;  //è£å‡å®½åº¦
+	var cuty = 150;  //è£å‡é«˜åº¦
+	var zoom = 1; //ç¼©æ”¾æ¯”ä¾‹
 
-	var zmin = 0.1; //×îĞ¡±ÈÀı
-	var zmax = 1.2; //×î´ó±ÈÀı
-	var grip_pos = 10; //ÍÏ¶¯¿éÎ»ÖÃ0-×î×ó 10 ×îÓÒ
-	var img_grip; //ÍÏ¶¯¿é
-	var img_track; //ÍÏ¶¯Ìõ
-	var grip_y; //ÍÏ¶¯¿éyÖµ
-	var grip_minx; //ÍÏ¶¯¿éx×îĞ¡Öµ
-	var grip_maxx; //ÍÏ¶¯¿éx×î´óÖµ	
-//Í¼Æ¬³õÊ¼»¯
+	var zmin = 0.1; //æœ€å°æ¯”ä¾‹
+	var zmax = 1.2; //æœ€å¤§æ¯”ä¾‹
+	var grip_pos = 10; //æ‹–åŠ¨å—ä½ç½®0-æœ€å·¦ 10 æœ€å³
+	var img_grip; //æ‹–åŠ¨å—
+	var img_track; //æ‹–åŠ¨æ¡
+	var grip_y; //æ‹–åŠ¨å—yå€¼
+	var grip_minx; //æ‹–åŠ¨å—xæœ€å°å€¼
+	var grip_maxx; //æ‹–åŠ¨å—xæœ€å¤§å€¼	
+//å›¾ç‰‡åˆå§‹åŒ–
 function imageinit(){
 	cut_div = document.getElementById('cut_div');
 	cut_img = document.getElementById('cut_img');
@@ -51,7 +51,7 @@ function imageinit(){
 	cut_img.onDrag = when_Drag;
 }
 
-//Í¼Æ¬Öğ²½Ëõ·Å
+//å›¾ç‰‡é€æ­¥ç¼©æ”¾
 function imageresize(flag){
     if(flag){
 		zoom = zoom * 1.5;
@@ -67,12 +67,12 @@ function imageresize(flag){
 	img_grip.style.left = (grip_minx + (grip_pos / 10 * (grip_maxx - grip_minx))) + "px";
 }
 
-//»ñµÃstyleÀïÃæ¶¨Î»
+//è·å¾—styleé‡Œé¢å®šä½
 function getStylepos(e){  
 	return {x:parseInt(e.style.left), y:parseInt(e.style.top)}; 
 }
 
-//»ñµÃ¾ø¶Ô¶¨Î»
+//è·å¾—ç»å¯¹å®šä½
 function getPosition(e){  
 	var t=e.offsetTop;  
 	var l=e.offsetLeft;  
@@ -83,7 +83,7 @@ function getPosition(e){
 	return {x:l, y:t}; 
 }
 
-//¼ì²éÍ¼Æ¬Î»ÖÃ
+//æ£€æŸ¥å›¾ç‰‡ä½ç½®
 function checkcutpos(){
 	var imgpos = getStylepos(cut_img);
 	
@@ -99,12 +99,12 @@ function checkcutpos(){
 	else if(imgpos.y < min_y) cut_img.style.top = min_y + 'px';
 }
 
-//Í¼Æ¬ÍÏ¶¯Ê±´¥·¢
+//å›¾ç‰‡æ‹–åŠ¨æ—¶è§¦å‘
 function when_Drag(clientX , clientY){
 	checkcutpos();
 }
 
-//»ñµÃÍ¼Æ¬²Ã¼õÎ»ÖÃ
+//è·å¾—å›¾ç‰‡è£å‡ä½ç½®
 function getcutpos(){
 	var imgpos = getStylepos(cut_img);
 	var x = offsetx - imgpos.x;
@@ -114,7 +114,7 @@ function getcutpos(){
 	return true;
 }
 
-//Ëõ·ÅÌõ³õÊ¼»¯
+//ç¼©æ”¾æ¡åˆå§‹åŒ–
 function gripinit(){
 	img_grip = document.getElementById('img_grip');
 	img_track = document.getElementById('img_track');
@@ -132,7 +132,7 @@ function gripinit(){
 
 }
 
-//Ëõ·ÅÌõÍÏ¶¯Ê±´¥·¢
+//ç¼©æ”¾æ¡æ‹–åŠ¨æ—¶è§¦å‘
 function grip_Drag(clientX , clientY){
 	var posx = clientX;
 	img_grip.style.top = grip_y + "px";
@@ -154,11 +154,11 @@ function grip_Drag(clientX , clientY){
 	checkcutpos();
 }
 
-//Ò³ÃæÔØÈë³õÊ¼»¯
+//é¡µé¢è½½å…¥åˆå§‹åŒ–
 function avatarinit(){
 	imageinit();
 	gripinit();
-	//Ë¢ĞÂ²Ã¼ôºóµÄÍ¼Æ¬
+	//åˆ·æ–°è£å‰ªåçš„å›¾ç‰‡
 	document.getElementById('cutimg_l').src = document.getElementById('cutimg_l').src + '?' + (new   Date().getTime());
 	document.getElementById('cutimg_m').src = document.getElementById('cutimg_m').src + '?' + (new   Date().getTime());
 	//document.getElementById('cutimg_s').src = document.getElementById('cutimg_s').src + '?' + (new   Date().getTime());

@@ -1,19 +1,19 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ¹ÜÀíÖĞĞÄ 
+ * 74cms ç®¡ç†ä¸­å¿ƒ 
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
  */
  if(!defined('IN_QISHI'))
  {
 	die('Access Denied!');
  }
-//¼ì²âÎÄÕÂ±êÌâÊÇ·ñÖØ¸´
+//æ£€æµ‹æ–‡ç« æ ‡é¢˜æ˜¯å¦é‡å¤
 function ck_article_title($val)
 {
 	global $db;
@@ -22,14 +22,14 @@ function ck_article_title($val)
 	return $alist;
 }
 ///--------------------------------
-//»ñÈ¡¹«Ë¾ĞÅÏ¢
+//è·å–å…¬å¸ä¿¡æ¯
 function get_companyinfo($val)
 {
 	global $db;
 	$sql = "select * from ".table('company_profile')." where companyname='{$val}' AND  robot=1 LIMIT 1";
 	return $db->getone($sql);
 }
-//¼ì²âÖ°Î»Ãû³ÆÊÇ·ñÓĞÖØ¸´
+//æ£€æµ‹èŒä½åç§°æ˜¯å¦æœ‰é‡å¤
 function ck_jobs_name($val,$uid)
 {
 	global $db;
@@ -38,7 +38,7 @@ function ck_jobs_name($val,$uid)
 	$alist=$db->getone($sql);
 	return $alist;
 }
-//Æ¥ÅäÆóÒµĞÔÖÊ
+//åŒ¹é…ä¼ä¸šæ€§è´¨
 function locoyspider_company_nature($str=NULL)
 {
 	global $db,$locoyspider;
@@ -51,26 +51,26 @@ function locoyspider_company_nature($str=NULL)
 	}
 	else
 	{
-		if($str=='Íâ×Ê£¨Å·ÃÀ£©' || $str=='Íâ×Ê£¨·ÇÅ·ÃÀ£©'){
-			$default=array("id"=>49,"cn"=>'ÍâÉÌ¶À×Ê');
-		}elseif($str=='ºÏ×Ê'){
-			$default=array("id"=>48,"cn"=>'ºÏ×Ê');
-		}elseif($str=='¹úÆó'){
-			$default=array("id"=>46,"cn"=>'¹úÆó');
-		}elseif($str=='ÃñÓª¹«Ë¾'){
-			$default=array("id"=>47,"cn"=>'ÃñÓª');
-		}elseif($str=='¹úÄÚÉÏÊĞ¹«Ë¾'){
-			$default=array("id"=>51,"cn"=>'ÉÏÊĞ¹«Ë¾');
-		}elseif($str=='ÊÂÒµµ¥Î»'){
-			$default=array("id"=>53,"cn"=>'ÊÂÒµµ¥Î»');
+		if($str=='å¤–èµ„ï¼ˆæ¬§ç¾ï¼‰' || $str=='å¤–èµ„ï¼ˆéæ¬§ç¾ï¼‰'){
+			$default=array("id"=>49,"cn"=>'å¤–å•†ç‹¬èµ„');
+		}elseif($str=='åˆèµ„'){
+			$default=array("id"=>48,"cn"=>'åˆèµ„');
+		}elseif($str=='å›½ä¼'){
+			$default=array("id"=>46,"cn"=>'å›½ä¼');
+		}elseif($str=='æ°‘è¥å…¬å¸'){
+			$default=array("id"=>47,"cn"=>'æ°‘è¥');
+		}elseif($str=='å›½å†…ä¸Šå¸‚å…¬å¸'){
+			$default=array("id"=>51,"cn"=>'ä¸Šå¸‚å…¬å¸');
+		}elseif($str=='äº‹ä¸šå•ä½'){
+			$default=array("id"=>53,"cn"=>'äº‹ä¸šå•ä½');
 		}else{
-			$default=array("id"=>54,"cn"=>'ÆäËü');
+			$default=array("id"=>54,"cn"=>'å…¶å®ƒ');
 		}
 		return $default;
 
 	}
 }
-//Æ¥ÅäÆóÒµĞĞÒµ
+//åŒ¹é…ä¼ä¸šè¡Œä¸š
 function locoyspider_company_trade($str=NULL)
 {	
 	global $db,$locoyspider;
@@ -96,7 +96,7 @@ function locoyspider_company_trade($str=NULL)
 		}
 	}
 }
-//Æ¥ÅäÖ°Î»·ÖÀà
+//åŒ¹é…èŒä½åˆ†ç±»
 function locoyspider_jobs_category($str=NULL)
 {
 	global $db,$locoyspider;
@@ -115,19 +115,19 @@ function locoyspider_jobs_category($str=NULL)
 		$sql = "select id,parentid,categoryname from ".table('category_jobs');
 		$info=$db->getall($sql);
 		$return=locoyspider_search_str($info,$str,"categoryname");
-		//Æ¥Åäµ½ÁË
+		//åŒ¹é…åˆ°äº†
 		if(!empty($return)){
-			//ËüÊÇÒ»¼¶µÄÇé¿ö
+			//å®ƒæ˜¯ä¸€çº§çš„æƒ…å†µ
 			if($return['parentid']==0){
 				return array("topclass"=>$return['id'],"category"=>0,"subclass"=>0,"category_cn"=>$return['categoryname']);
 			}else{
 				$sql2 = "select id,parentid,categoryname from ".table('category_jobs')." where id=".intval($return['parentid']);
 				$info2=$db->getone($sql2);
-				//¶ş¼¶µÄÇé¿ö
+				//äºŒçº§çš„æƒ…å†µ
 				if($info2['parentid']==0){
 					return array("topclass"=>$info2['id'],"category"=>$return['id'],"subclass"=>0,"category_cn"=>$return['categoryname']);
 				}
-				//Èı¼¶µÄÇé¿ö
+				//ä¸‰çº§çš„æƒ…å†µ
 				else{
 					$sql3 = "select id,parentid,categoryname from ".table('category_jobs')." where id=".intval($info2['parentid']);
 					$info3=$db->getone($sql3);
@@ -137,14 +137,14 @@ function locoyspider_jobs_category($str=NULL)
 			}
 
 		}
-		//Ã»ÓĞÆ¥Åäµ½
+		//æ²¡æœ‰åŒ¹é…åˆ°
 		else{
 			return $default;
 		}
 		
 	}
 }
-//Æ¥ÅäÆóÒµµØÇø
+//åŒ¹é…ä¼ä¸šåœ°åŒº
 function locoyspider_company_district($str=NULL)
 {
 	global $db,$locoyspider;
@@ -170,7 +170,7 @@ function locoyspider_company_district($str=NULL)
 		}
 	}
 }
-//Æ¥Åä¹¤×÷µØÇø
+//åŒ¹é…å·¥ä½œåœ°åŒº
 function locoyspider_jobs_district($str=NULL)
 {
 	global $db,$locoyspider;
@@ -196,7 +196,7 @@ function locoyspider_jobs_district($str=NULL)
 		}
 	}
 }
-//Æ¥ÅäÆóÒµ¹æÄ£
+//åŒ¹é…ä¼ä¸šè§„æ¨¡
 function locoyspider_company_scale($str=NULL)
 {
 	global $db,$locoyspider;
@@ -207,30 +207,30 @@ function locoyspider_company_scale($str=NULL)
 	{
 		return $default;
 	}
-	elseif(trim($str)=='ÉÙÓÚ50ÈË'){
-		return array("id"=>'80',"cn"=>'20ÈËÒÔÏÂ');
+	elseif(trim($str)=='å°‘äº50äºº'){
+		return array("id"=>'80',"cn"=>'20äººä»¥ä¸‹');
 	}
-	elseif(trim($str)=='50-150ÈË'){
-		return array("id"=>'81',"cn"=>'20-99ÈË');
+	elseif(trim($str)=='50-150äºº'){
+		return array("id"=>'81',"cn"=>'20-99äºº');
 	}
-	elseif(trim($str)=='150-500ÈË'){
-		return array("id"=>'82',"cn"=>'100-499ÈË');
+	elseif(trim($str)=='150-500äºº'){
+		return array("id"=>'82',"cn"=>'100-499äºº');
 	}
-	elseif(trim($str)=='500-1000ÈË'){
-		return array("id"=>'83',"cn"=>'500-999ÈË');
+	elseif(trim($str)=='500-1000äºº'){
+		return array("id"=>'83',"cn"=>'500-999äºº');
 	}
-	elseif(trim($str)=='1000-5000ÈË' || trim($str)=='5000-10000ÈË'){
-		return array("id"=>'84',"cn"=>'1000-9999ÈË');
+	elseif(trim($str)=='1000-5000äºº' || trim($str)=='5000-10000äºº'){
+		return array("id"=>'84',"cn"=>'1000-9999äºº');
 	}
-	elseif(trim($str)=='10000ÈËÒÔÉÏ'){
-		return array("id"=>'85',"cn"=>'10000ÈËÒÔÉÏ');
+	elseif(trim($str)=='10000äººä»¥ä¸Š'){
+		return array("id"=>'85',"cn"=>'10000äººä»¥ä¸Š');
 	}
 	else
 	{
 		return $default;		
 	}
 }
-//Æ¥ÅäÆóÒµ×¢²á×Ê½ğ
+//åŒ¹é…ä¼ä¸šæ³¨å†Œèµ„é‡‘
 function locoyspider_company_registered($str=NULL)
 {
 	global $locoyspider;
@@ -243,7 +243,7 @@ function locoyspider_company_registered($str=NULL)
 		return array("registered"=>$str,"currency"=>"");
 	}
 }
-//Æ¥ÅäÖ°Î»ĞÔÖÊ
+//åŒ¹é…èŒä½æ€§è´¨
 function locoyspider_jobs_nature($str=NULL)
 {
 	global $db,$locoyspider;
@@ -270,7 +270,7 @@ function locoyspider_jobs_nature($str=NULL)
 		}
 	}
 }
-//Æ¥ÅäÖ°Î» ĞÔ±ğ
+//åŒ¹é…èŒä½ æ€§åˆ«
 function locoyspider_jobs_sex($str=NULL)
 {	
 	return get_locoyspider_jobs_sex($str);
@@ -278,17 +278,17 @@ function locoyspider_jobs_sex($str=NULL)
 function get_locoyspider_jobs_sex($sex_cn=NULL,$sex=NULL)
 {
 		global $locoyspider;
-		if ($sex_cn=="ÄĞ" || $sex=="1")
+		if ($sex_cn=="ç”·" || $sex=="1")
 		{
-		return array("id"=>1,"cn"=>"ÄĞ");
+		return array("id"=>1,"cn"=>"ç”·");
 		}
-		elseif ($sex_cn=="Å®" ||  $sex=="2")
+		elseif ($sex_cn=="å¥³" ||  $sex=="2")
 		{
-		return array("id"=>2,"cn"=>"Å®");
+		return array("id"=>2,"cn"=>"å¥³");
 		}
-		elseif ($sex_cn=="²»ÏŞ"  ||  $sex=="3")
+		elseif ($sex_cn=="ä¸é™"  ||  $sex=="3")
 		{
-		return array("id"=>3,"cn"=>"²»ÏŞ");
+		return array("id"=>3,"cn"=>"ä¸é™");
 		}
 		else
 		{
@@ -302,7 +302,7 @@ function get_locoyspider_jobs_sex($sex_cn=NULL,$sex=NULL)
 			}
 		}
 }
-//Æ¥ÅäÖ°Î» ÕĞÆ¸ÈËÊı
+//åŒ¹é…èŒä½ æ‹›è˜äººæ•°
 function locoyspider_jobs_amount($str=NULL)
 {
 	global $locoyspider;
@@ -316,7 +316,7 @@ function locoyspider_jobs_amount($str=NULL)
 		return mt_rand(intval($locoyspider['jobs_amount_min']),intval($locoyspider['jobs_amount_max']));
 	}
 }
-//Æ¥ÅäÒªÇóÑ§Àú
+//åŒ¹é…è¦æ±‚å­¦å†
 function locoyspider_jobs_education($str=NULL)
 {
 	global $db,$locoyspider;
@@ -342,7 +342,7 @@ function locoyspider_jobs_education($str=NULL)
 		}
 	}
 }
-//Æ¥ÅäÒªÇó¹¤×÷¾­Ñé1(Ä£ºıÆ¥Åä²»ÊÊºÏ51job²É¼¯)
+//åŒ¹é…è¦æ±‚å·¥ä½œç»éªŒ1(æ¨¡ç³ŠåŒ¹é…ä¸é€‚åˆ51jobé‡‡é›†)
 function locoyspider_jobs_experience($str=NULL)
 {
 	global $db,$locoyspider;
@@ -368,24 +368,24 @@ function locoyspider_jobs_experience($str=NULL)
 		}
 	}
 }
-//Æ¥ÅäÒªÇó¹¤×÷¾­Ñé3(ÊÊºÏ51job²É¼¯)
+//åŒ¹é…è¦æ±‚å·¥ä½œç»éªŒ3(é€‚åˆ51jobé‡‡é›†)
 function get_experience($str=NULL){
 	$str=intval($str);
 	$arr=array();
-	if($str=="1Äê" || $str=="2Äê"){
-		$arr=array('id'=>76,'cn'=>'1-3Äê');
-	}elseif($str=="3-4Äê"){
-		$arr=array('id'=>77,'cn'=>'3-5Äê');
-	}elseif($str=="5-7Äê" || $str=="8-9Äê"){
-		$arr=array('id'=>78,'cn'=>'5-10Äê');
-	}elseif($str=="10ÄêÒÔÉÏ"){
-		$arr=array('id'=>79,'cn'=>'10ÄêÒÔÉÏ');
+	if($str=="1å¹´" || $str=="2å¹´"){
+		$arr=array('id'=>76,'cn'=>'1-3å¹´');
+	}elseif($str=="3-4å¹´"){
+		$arr=array('id'=>77,'cn'=>'3-5å¹´');
+	}elseif($str=="5-7å¹´" || $str=="8-9å¹´"){
+		$arr=array('id'=>78,'cn'=>'5-10å¹´');
+	}elseif($str=="10å¹´ä»¥ä¸Š"){
+		$arr=array('id'=>79,'cn'=>'10å¹´ä»¥ä¸Š');
 	}else{
-		$arr=array('id'=>74,'cn'=>'ÎŞ¾­Ñé');
+		$arr=array('id'=>74,'cn'=>'æ— ç»éªŒ');
 	}
 	return $arr;
 }
-//Æ¥ÅäĞ½×Ê´ıÓö
+//åŒ¹é…è–ªèµ„å¾…é‡
 /*function locoyspider_jobs_wage($str=NULL)
 {
 	global $db,$locoyspider;
@@ -411,7 +411,7 @@ function get_experience($str=NULL){
 		}
 	}
 }*/
-//ĞŞ¸ÄºóµÄÆ¥ÅäĞ½×Ê´ıÓö
+//ä¿®æ”¹åçš„åŒ¹é…è–ªèµ„å¾…é‡
 function locoyspider_jobs_wage($str=NULL)
 {
 	global $db,$locoyspider;
@@ -424,24 +424,24 @@ function locoyspider_jobs_wage($str=NULL)
 	}
 	else
 	{
-		if($str=='ÃæÒé'){
-			return array('id'=>55,'cn'=>'ÃæÒé');
-		}elseif($str=="1500ÒÔÏÂ"){
-			return array('id'=>56,'cn'=>'1000~1500Ôª/ÔÂ');
+		if($str=='é¢è®®'){
+			return array('id'=>55,'cn'=>'é¢è®®');
+		}elseif($str=="1500ä»¥ä¸‹"){
+			return array('id'=>56,'cn'=>'1000~1500å…ƒ/æœˆ');
 		}elseif($str=="1500-1999"){
-			return array('id'=>57,'cn'=>'1500~2000Ôª/ÔÂ');
+			return array('id'=>57,'cn'=>'1500~2000å…ƒ/æœˆ');
 		}elseif($str=="2000-2999"){
-			return array('id'=>58,'cn'=>'2000~3000Ôª/ÔÂ');
+			return array('id'=>58,'cn'=>'2000~3000å…ƒ/æœˆ');
 		}elseif($str=="3000-4499"){
-			return array('id'=>59,'cn'=>'3000~5000Ôª/ÔÂ');
+			return array('id'=>59,'cn'=>'3000~5000å…ƒ/æœˆ');
 		}elseif($str=="4500-5999" || $str=="6000-7999" || $str=="8000-9999"){
-			return array('id'=>60,'cn'=>'5000~10000Ôª/ÔÂ');
+			return array('id'=>60,'cn'=>'5000~10000å…ƒ/æœˆ');
 		}else{
-			return array('id'=>61,'cn'=>'1ÍòÒÔÉÏ/ÔÂ');
+			return array('id'=>61,'cn'=>'1ä¸‡ä»¥ä¸Š/æœˆ');
 		}
 	}
 }
-//Éú³Éµ½ÆÚÊ±¼ä
+//ç”Ÿæˆåˆ°æœŸæ—¶é—´
 function locoyspider_jobs_deadline()
 {
 	global $locoyspider;
@@ -456,27 +456,27 @@ function locoyspider_jobs_deadline()
 	return strtotime("".mt_rand($jobs_days_min,$jobs_days_max)." day");
 	}
 }
-//²É¼¯×¢²á»áÔ±
+//é‡‡é›†æ³¨å†Œä¼šå‘˜
 function locoyspider_user_register($email=NULL,$utype='1')
 {
 	global $db,$locoyspider,$QS_pwdhash;
 	$setsqlarr['username']=$locoyspider['reg_usname'].uniqid().time();
 	$setsqlarr['pwd_hash']=res_randstr();
 		//reg_password
-		if ($locoyspider['reg_password_tpye']=="1")//ÃÜÂë=ÓÃ»§Ãû
+		if ($locoyspider['reg_password_tpye']=="1")//å¯†ç =ç”¨æˆ·å
 		{
 			$pwd=$setsqlarr['username'];
 		}
-		elseif ($locoyspider['reg_password_tpye']=="3")//ÃÜÂë=¹Ì¶¨ÉèÖÃÖµ
+		elseif ($locoyspider['reg_password_tpye']=="3")//å¯†ç =å›ºå®šè®¾ç½®å€¼
 		{
 			$pwd=$locoyspider['reg_password'];
 		}
 		else
 		{
-			$pwd=res_randstr(7);//³¤¶ÈÎª7µÄËæ»ú×Ö·û´®
+			$pwd=res_randstr(7);//é•¿åº¦ä¸º7çš„éšæœºå­—ç¬¦ä¸²
 		}
 		//email
-		if (empty($email) || !preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$email))//ÕıÔòĞ£Ñéemail
+		if (empty($email) || !preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$email))//æ­£åˆ™æ ¡éªŒemail
 		{
 			$email=time().uniqid().$locoyspider['reg_email'];
 		}
@@ -484,7 +484,7 @@ function locoyspider_user_register($email=NULL,$utype='1')
 	$setsqlarr['email']=$email;
 	$setsqlarr['utype']=$utype;
 	$setsqlarr['reg_time']=time();
-	$setsqlarr['robot']=1;//±ê¼ÇÎª²É¼¯
+	$setsqlarr['robot']=1;//æ ‡è®°ä¸ºé‡‡é›†
 	$reg_id=$db->inserttable(table('members'),$setsqlarr,true);
 	if (!$reg_id) return false;
 	if($utype=='1'){
@@ -493,7 +493,7 @@ function locoyspider_user_register($email=NULL,$utype='1')
 	}
 	return $reg_id;
 }
-//Ìí¼ÓÖ°Î»
+//æ·»åŠ èŒä½
 function locoyspider_addjobs($companyinfo)
 {
 		global $locoyspider,$db;
@@ -502,8 +502,8 @@ function locoyspider_addjobs($companyinfo)
 		$jobssetsqlarr['company_id']=$companyinfo['id'];		
 		$jobssetsqlarr['company_addtime']=$companyinfo['addtime'];
 		$jobssetsqlarr['jobs_name']=trim($_POST['jobs_name']);
-		if (empty($jobssetsqlarr['jobs_name']))  exit("Ö°Î»Ãû³Æ¶ªÊ§");
-		if (ck_jobs_name($jobssetsqlarr['jobs_name'],$jobssetsqlarr['uid'])) exit("Ö°Î»Ãû³ÆÓĞÖØ¸´");
+		if (empty($jobssetsqlarr['jobs_name']))  exit("èŒä½åç§°ä¸¢å¤±");
+		if (ck_jobs_name($jobssetsqlarr['jobs_name'],$jobssetsqlarr['uid'])) exit("èŒä½åç§°æœ‰é‡å¤");
 		$jobssetsqlarr['contents']=html2text($_POST['jobs_contents']);
 			$nature=locoyspider_jobs_nature(trim($_POST['jobs_nature']));
 		$jobssetsqlarr['nature']=$nature['id'];
@@ -511,12 +511,12 @@ function locoyspider_addjobs($companyinfo)
 			$sex=locoyspider_jobs_sex(trim($_POST['jobs_sex']));
 		$jobssetsqlarr['sex']=$sex['id'];
 		$jobssetsqlarr['sex_cn']=$sex['cn'];
-		//ÄêÁäÒªÇó
+		//å¹´é¾„è¦æ±‚
 		$jobssetsqlarr['age']=trim($_POST['jobs_age']);
 		$jobssetsqlarr['amount']=locoyspider_jobs_amount(trim($_POST['jobs_amount']));
 		$jobs_category=trim($_POST['jobs_category'])?trim($_POST['jobs_category']):$jobssetsqlarr['jobs_name'];
 			$category=locoyspider_jobs_category($jobs_category);//$_POST['jobs_category']
-		//Ò»¼¶
+		//ä¸€çº§
 		$jobssetsqlarr['topclass']=$category['topclass'];
 		$jobssetsqlarr['category']=$category['category'];
 		$jobssetsqlarr['subclass']=$category['subclass'];
@@ -529,7 +529,7 @@ function locoyspider_addjobs($companyinfo)
 		$jobssetsqlarr['district']=$district['district'];
 		$jobssetsqlarr['sdistrict']=$district['sdistrict'];
 		$jobssetsqlarr['district_cn']=$district['district_cn'];
-		//½ÖµÀid ºÍ ½ÖµÀ
+		//è¡—é“id å’Œ è¡—é“
 		$jobssetsqlarr['street']=$companyinfo['street'];		
 		$jobssetsqlarr['street_cn']=$companyinfo['street_cn'];
 			$education=locoyspider_jobs_education(trim($_POST['jobs_education']));
@@ -553,15 +553,15 @@ function locoyspider_addjobs($companyinfo)
 		$jobssetsqlarr['display']=$locoyspider['jobs_display'];
 		$jobssetsqlarr['robot']=1;
 		$pid=$db->inserttable(table('jobs'),$jobssetsqlarr,true);
-		if (!$pid) exit("Ìí¼ÓÕĞÆ¸ĞÅÏ¢Ê§°Ü");
-		//Ö°Î»ÁªÏµ·½Ê½
+		if (!$pid) exit("æ·»åŠ æ‹›è˜ä¿¡æ¯å¤±è´¥");
+		//èŒä½è”ç³»æ–¹å¼
 		$setsqlarr_contact['contact']=trim($_POST['contact']);
 		//QQ
 		$setsqlarr_contact['qq']=trim($_POST['qq']);
 		$setsqlarr_contact['telephone']=trim($_POST['telephone']);
 		$setsqlarr_contact['address']=trim($_POST['address']);
 		$setsqlarr_contact['email']=check_email(trim($_POST['email']));
-			//3.4ĞÂÔö×Ö¶Î,3.5Ò²ÓĞ
+			//3.4æ–°å¢å­—æ®µ,3.5ä¹Ÿæœ‰
 		$setsqlarr_contact['contact_show']=1;
 		$setsqlarr_contact['telephone_show']=1;
 		$setsqlarr_contact['email_show']=1;
@@ -570,7 +570,7 @@ function locoyspider_addjobs($companyinfo)
 
 		$setsqlarr_contact['notify']=$locoyspider['jobs_notify'];
 		$setsqlarr_contact['pid']=$pid;
-		if (!$db->inserttable(table('jobs_contact'),$setsqlarr_contact)) exit("Ìí¼ÓÕĞÆ¸ÁªÏµ·½Ê½Ê§°Ü");
+		if (!$db->inserttable(table('jobs_contact'),$setsqlarr_contact)) exit("æ·»åŠ æ‹›è˜è”ç³»æ–¹å¼å¤±è´¥");
 		//------
 		$searchtab['id']=$pid;
 		$searchtab['uid']=$jobssetsqlarr['uid'];
@@ -608,14 +608,14 @@ function locoyspider_addjobs($companyinfo)
 		$db->inserttable(table('jobs_search_key'),$searchtab);
 		require_once(ADMIN_ROOT_PATH.'include/admin_company_fun.php');
 		distribution_jobs($pid);
-		exit("Ìí¼Ó³É¹¦");	
+		exit("æ·»åŠ æˆåŠŸ");	
 }
-//Ìí¼ÓÆóÒµ
+//æ·»åŠ ä¼ä¸š
 function locoyspider_addcompany($companyname)
 {
 	global $locoyspider,$db;
 		$setsqlarr['uid']=locoyspider_user_register(check_email(trim($_POST['email'])));
-		if ($setsqlarr['uid']=="") exit("Ìí¼Ó»áÔ±³ö´í");
+		if ($setsqlarr['uid']=="") exit("æ·»åŠ ä¼šå‘˜å‡ºé”™");
 		$setsqlarr['companyname']=$companyname;
 			$nature=locoyspider_company_nature(trim($_POST['nature']));
 		$setsqlarr['nature']=$nature['id'];
@@ -631,8 +631,8 @@ function locoyspider_addcompany($companyname)
 		$setsqlarr['scale']=$scale['id'];
 		$setsqlarr['scale_cn']=$scale['cn'];
 	 		$registered=locoyspider_company_registered(trim($_POST['registered']));
-		$setsqlarr['registered']=$registered['registered'];//×¢²á×Ê½ğ
-		$setsqlarr['currency']=$registered['currency'];//×¢²á×Ê½ğµ¥Î»£¨ÈËÃñ±Ò or ÃÀÔª£©
+		$setsqlarr['registered']=$registered['registered'];//æ³¨å†Œèµ„é‡‘
+		$setsqlarr['currency']=$registered['currency'];//æ³¨å†Œèµ„é‡‘å•ä½ï¼ˆäººæ°‘å¸ or ç¾å…ƒï¼‰
 		$setsqlarr['address']=trim($_POST['address']);
 		$setsqlarr['contact']=trim($_POST['contact']);
 		$setsqlarr['telephone']=trim($_POST['telephone']);
@@ -643,15 +643,15 @@ function locoyspider_addcompany($companyname)
 		$setsqlarr['addtime']=time();
 		$setsqlarr['refreshtime']=time();
 		$setsqlarr['robot']=1;
-			//3.4ĞÂÔö×Ö¶Î,3.5Ò²ÓĞ
+			//3.4æ–°å¢å­—æ®µ,3.5ä¹Ÿæœ‰
 		$setsqlarr['contact_show']=1;
 		$setsqlarr['telephone_show']=1;
 		$setsqlarr['email_show']=1;
 		$setsqlarr['address_show']=1;
-		if (!$db->inserttable(table('company_profile'),$setsqlarr)) exit("Ìí¼ÓÆóÒµ³ö´í");
+		if (!$db->inserttable(table('company_profile'),$setsqlarr)) exit("æ·»åŠ ä¼ä¸šå‡ºé”™");
 		return true;
 }
-//»ñÈ¡Ëæ»ú×Ö·û´®
+//è·å–éšæœºå­—ç¬¦ä¸²
 function res_randstr($length=6)
 {
 	$hash='';
@@ -663,7 +663,7 @@ function res_randstr($length=6)
 	}   
 	return $hash;   
 }
-//Ä£ºıËÑË÷
+//æ¨¡ç³Šæœç´¢
 function locoyspider_search_str($arr,$str,$arrinname)
 {
 		global $locoyspider;
@@ -687,15 +687,15 @@ function locoyspider_search_str($arr,$str,$arrinname)
 			}	
 }
 /*
- * ¹¦ÄÜ£ºĞŞÕı¿ó¹¤²É¼¯µÄÍ¼Æ¬Éú³ÉµÄemail
- * params£º´ıĞŞÕıµÄemail
- * return£ºĞŞÕıºóµÄemail
+ * åŠŸèƒ½ï¼šä¿®æ­£çŸ¿å·¥é‡‡é›†çš„å›¾ç‰‡ç”Ÿæˆçš„email
+ * paramsï¼šå¾…ä¿®æ­£çš„email
+ * returnï¼šä¿®æ­£åçš„email
  */
 function check_email($val)
 {
 	$str_email = strtolower($val);
-	$str_email=str_replace(' ','',$str_email);//É¾³ıµô°ë½Ç¿Õ¸ñ
-	$str_email=str_replace('¡¡','',$str_email);//É¾³ıµôÈ«½Ç¿Õ¸ñ
+	$str_email=str_replace(' ','',$str_email);//åˆ é™¤æ‰åŠè§’ç©ºæ ¼
+	$str_email=str_replace('ã€€','',$str_email);//åˆ é™¤æ‰å…¨è§’ç©ºæ ¼
 	$str_email=str_replace('c0m','com',$str_email);
 	$str_email=str_replace('-com','.com',$str_email);
 	$str_email=stripslashes($str_email);

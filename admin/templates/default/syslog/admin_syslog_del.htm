@@ -1,17 +1,17 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <link href="css/date_input.css" rel="stylesheet" type="text/css" />
  <script src="js/jquery.date_input.js" type='text/javascript' language="javascript"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//µã»÷ÅúÁ¿É¾³ı
+	//ç‚¹å‡»æ‰¹é‡åˆ é™¤
 	$("#ButPidel").click(function(){
-		if (confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿'))
+		if (confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ'))
 		{
 			$("form[name=form1]").submit()
 		}
 	});
-	//ÈÕÆÚ
+	//æ—¥æœŸ
 	$(function() { 
 	$(".date_input").date_input(); 
 	});
@@ -26,27 +26,27 @@ $(document).ready(function()
 </div>
 
 <div class="toptip">
-	<h2>ÌáÊ¾£ºÇëÊäÈëÉ¸Ñ¡Ìõ¼ş,É¾³ıºó½«²»¿É»Ö¸´,½÷É÷²Ù×÷£¡</h2>
+	<h2>æç¤ºï¼šè¯·è¾“å…¥ç­›é€‰æ¡ä»¶,åˆ é™¤åå°†ä¸å¯æ¢å¤,è°¨æ…æ“ä½œï¼</h2>
 
 </div>
   <form id="form1" name="form1" method="post" action="?act=pidel_syslog_del">
   {#$inputtoken#}
   <table width="100%" border="0" cellpadding="4" cellspacing="0"  class="link_lan">
 		<tr width="300">
-          <td height="30" width="90" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> ´íÎóÀàĞÍ£º</td>
+          <td height="30" width="90" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> é”™è¯¯ç±»å‹ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 			<input name="l_type[]" type="checkbox"  checked="checked" value="1"/>MYSQL 
 			<input name="l_type[]" type="checkbox"  checked="checked"  value="2"/>MAIL 
 		  </td>
         </tr>
 		<tr width="300">
-          <td height="30" width="90" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> ¿ªÊ¼Ê±¼ä£º</td>
+          <td height="30" width="90" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> å¼€å§‹æ—¶é—´ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 			<input name="starttime" type="text"  class="input_text_150 date_input"  value=""/>
 		  </td>
         </tr>
 		<tr width="300">
-          <td height="30" width="90" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> ½áÊøÊ±¼ä£º</td>
+          <td height="30" width="90" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> ç»“æŸæ—¶é—´ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 			<input name="endtime" type="text"  class="input_text_150 date_input"  value=""/>
 		  </td>
@@ -57,8 +57,8 @@ $(document).ready(function()
 <table width="100%" border="0" cellspacing="10"  class="admin_list_btm">
 <tr>
         <td>
-		<input name="" type="button" class="admin_submit" id="ButPidel"  value="ÅúÁ¿É¾³ı"/>
-		<input name="" type="button" class="admin_submit" id="goback"  value="È¡Ïû" onClick="window.history.go(-1)"/>
+		<input name="" type="button" class="admin_submit" id="ButPidel"  value="æ‰¹é‡åˆ é™¤"/>
+		<input name="" type="button" class="admin_submit" id="goback"  value="å–æ¶ˆ" onClick="window.history.go(-1)"/>
 		</td>
     </tr>
   </table>

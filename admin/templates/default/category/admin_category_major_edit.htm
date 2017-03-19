@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,24 +6,24 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-ÕıÊ½Ê¹ÓÃºóÉ¾³ı·ÖÀà»áµ¼ÖÂÓë´Ë·ÖÀà¹ØÁªµÄĞÅÏ¢Àà±ğ¶ªÊ§£¬ĞŞ¸Ä²»»áÊÜÓ°Ïì¡£<br />
+æ­£å¼ä½¿ç”¨ååˆ é™¤åˆ†ç±»ä¼šå¯¼è‡´ä¸æ­¤åˆ†ç±»å…³è”çš„ä¿¡æ¯ç±»åˆ«ä¸¢å¤±ï¼Œä¿®æ”¹ä¸ä¼šå—å½±å“ã€‚<br />
 </p>
 </div>
-<div class="toptit">ĞŞ¸Ä·ÖÀà</div>
+<div class="toptit">ä¿®æ”¹åˆ†ç±»</div>
 <form id="form1" name="form1" method="post" action="?act=edit_major_category_save">
 {#$inputtoken#}
 <table width="100%" border="0" cellspacing="6" cellpadding="0" >
  <tr>
-    <td width="120" align="right">ËùÊô·ÖÀà:</td>
+    <td width="120" align="right">æ‰€å±åˆ†ç±»:</td>
     <td>
 	<select name="parentid">
-	  <option value="0" {#if "0"==$category.parentid#}selected="selected"{#/if#}>¶¥¼¶·ÖÀà</option>
-	  {#qishi_get_classify set="ÁĞ±íÃû:major,ÀàĞÍ:QS_major,id:0"#}{#foreach from=$major item=list#}
+	  <option value="0" {#if "0"==$category.parentid#}selected="selected"{#/if#}>é¡¶çº§åˆ†ç±»</option>
+	  {#qishi_get_classify set="åˆ—è¡¨å:major,ç±»å‹:QS_major,id:0"#}{#foreach from=$major item=list#}
 	  <option value="{#$list.id#}" {#if $list.id==$category.parentid#}selected="selected"{#/if#}>{#$list.categoryname#}</option>
-	  {#qishi_get_classify set="ÁĞ±íÃû:sub_major,ÀàĞÍ:QS_major,id:$list.id"#}{#foreach from=$sub_major item=s_list#}
-	  <option value="{#$s_list.id#}" {#if $s_list.id==$category.parentid#}selected="selected"{#/if#}>©À©¤{#$s_list.categoryname#}</option>
+	  {#qishi_get_classify set="åˆ—è¡¨å:sub_major,ç±»å‹:QS_major,id:$list.id"#}{#foreach from=$sub_major item=s_list#}
+	  <option value="{#$s_list.id#}" {#if $s_list.id==$category.parentid#}selected="selected"{#/if#}>â”œâ”€{#$s_list.categoryname#}</option>
 	  {#/foreach#}
 	{#/foreach#}
 	
@@ -31,17 +31,17 @@
 	</td>
  </tr>
   <tr>
-    <td width="120" align="right">Ãû³Æ:</td>
+    <td width="120" align="right">åç§°:</td>
     <td><input name="categoryname" type="text" class="input_text_200"  value="{#$category.categoryname#}"/></td>
   </tr>
    <tr>
-    <td width="120" align="right">ÅÅĞò:</td>
+    <td width="120" align="right">æ’åº:</td>
     <td><input name="category_order" type="text" class="input_text_200"  value="{#$category.category_order#}"/></td>
   </tr>
   <tr>
-    <td width="120" align="right">·¶Àı:</td>
+    <td width="120" align="right">èŒƒä¾‹:</td>
     <td><textarea name="content" cols="70" rows="7" style="font-size:12px;"/>{#$category.content#}</textarea><br />
-<span style="color:#666666">×¢£ºÖ»Èı¼¶·ÖÀàÌí¼Ó·¶Àı¼´¿É</span>
+<span style="color:#666666">æ³¨ï¼šåªä¸‰çº§åˆ†ç±»æ·»åŠ èŒƒä¾‹å³å¯</span>
     </td>
   </tr>
 </table>
@@ -51,8 +51,8 @@
     <td width="120"> </td>
     <td>
 	<input name="id" type="hidden" value="{#$category.id#}" />
-	<input type="submit" name="addsave" value="±£´æ" class="admin_submit" />
-		  <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="window.location='?act=major'"/>
+	<input type="submit" name="addsave" value="ä¿å­˜" class="admin_submit" />
+		  <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="window.location='?act=major'"/>
 	
 	</td>
   </tr>

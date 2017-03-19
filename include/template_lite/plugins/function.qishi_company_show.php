@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_company_show($params, &$smarty)
 { 
 	global $db,$_CFG;
@@ -8,13 +8,13 @@ function tpl_function_qishi_company_show($params, &$smarty)
 	$a=explode(':',$str);
 		switch ($a[0])
 		{
-		case "ÆóÒµID":
+		case "ä¼ä¸šID":
 			$aset['id'] = $a[1];
 			break;
-		case "ÆóÒµ½éÉÜ³¤¶È":
+		case "ä¼ä¸šä»‹ç»é•¿åº¦":
 			$aset['companynamelen'] = $a[1];
 			break;
-		case "ÁÐ±íÃû":
+		case "åˆ—è¡¨å":
 			$aset['listname'] = $a[1];
 			break;
 		}
@@ -36,9 +36,9 @@ function tpl_function_qishi_company_show($params, &$smarty)
 		{
 			$profile['company_url']=url_rewrite('QS_companyshow',array('id'=>$profile['id']));
 			$profile['company_profile']=htmlspecialchars_decode($profile['contents'],ENT_QUOTES);
-			// ÔÚÕÐÖ°Î»
+			// åœ¨æ‹›èŒä½
 			$profile['jobs_num']=$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs')." WHERE uid='{$profile['uid']}' ");
-			// ¸ÐÐËÈ¤¼òÀú
+			// æ„Ÿå…´è¶£ç®€åŽ†
 			$profile['resume_num']=$db->get_total("SELECT COUNT(*) AS num FROM ".table('company_favorites')." WHERE company_uid='{$profile['uid']}' ");
 
 			if($profile['website']){

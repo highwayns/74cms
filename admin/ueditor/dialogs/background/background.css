@@ -1,4 +1,4 @@
-.wrapper{ width: 424px;margin: 10px auto; zoom:1;position: relative}
+ï»¿.wrapper{ width: 424px;margin: 10px auto; zoom:1;position: relative}
 .tabbody{height:225px;}
 .tabbody .panel { position: absolute;width:100%; height:100%;background: #fff; display: none;}
 .tabbody .focus { display: block;}
@@ -25,7 +25,7 @@ div.alignment,#custom{margin-left: 23px;margin-left: 28px\9;}
 #repeatType{width:100px;}
 
 
-/* Í¼Æ¬¹ÜÀíÑùÊ½ */
+/* å›¾ç‰‡ç®¡ç†æ ·å¼ */
 #imgManager {
     width: 100%;
     height: 225px;

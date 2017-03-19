@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>¸öÈË»áÔ±ÖĞĞÄ</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ä¸ªäººä¼šå‘˜ä¸­å¿ƒ</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="../css/common.css" rel="stylesheet" type="text/css" />
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
@@ -17,19 +17,19 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
 	{#if $interview#}
 	$(".more").click(function(){
 		$(this).hide();
-		//$(".interview_list_content").last().attr('did')µÄÒâË¼ÊÇµÃµ½  interview_list_contentÕâ¸ö·¶Î§ÄÚµÄ×îºóÒ»¸öÔªËØµÄdidÊôĞÔÖµ
+		//$(".interview_list_content").last().attr('did')çš„æ„æ€æ˜¯å¾—åˆ°  interview_list_contentè¿™ä¸ªèŒƒå›´å†…çš„æœ€åä¸€ä¸ªå…ƒç´ çš„didå±æ€§å€¼
 		var offset=$(".interview_list_content").last().attr('did');
 		$.get("{#$QISHI.wap_domain#}/plus/wap_ajax.php?act=ajax_interview_list&offset="+(offset)+"&rows=5", function(result){
 		    if(result=="-1"){
 		    	$(".more").show();
-		    	$(".more").html("Ã»ÓĞ¸ü¶àµÄÃæÊÔÑûÇëÁË");
+		    	$(".more").html("æ²¡æœ‰æ›´å¤šçš„é¢è¯•é‚€è¯·äº†");
 		    }else{
 		    	$(".interview_list").append(result);
 		    	$(".more").show();
@@ -43,32 +43,32 @@ $(document).ready(function()
 <body>
 <div class=""></div>
 <div class="sub_head_top">
-	<div class="title">ÃæÊÔÑûÇë</div>
+	<div class="title">é¢è¯•é‚€è¯·</div>
 	<div class="back" id="pageback"><img src="../images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="../images/2.jpg"  border="0"/></a></div>
 </div>
 
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="../index.php";'>
-    <div class="box"><img src="../images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="../images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-jobs-list.php";'>
-    <div class="box"><img src="../images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="../images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-resume-list.php";'>
-    <div class="box"><img src="../images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="../images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-news-list.php";'>
-    <div class="box"><img src="../images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="../images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 
-<!-- ÃæÊÔÑûÇëÒ³Ãæ -->
+<!-- é¢è¯•é‚€è¯·é¡µé¢ -->
 <div class="interview_list">
 	{#if $interview#}
 	{#foreach from=$interview  item=list#}
@@ -76,7 +76,7 @@ $(document).ready(function()
 		<div class="list_centent_left">
 			<h4>{#$list.company_name#}</h4>
 			<div class="l_bottom">
-				<div class="l_bottom_l">ÑûÇëÄúÃæÊÔ&nbsp;&nbsp;"{#$list.jobs_name #}"</div>
+				<div class="l_bottom_l">é‚€è¯·æ‚¨é¢è¯•&nbsp;&nbsp;"{#$list.jobs_name #}"</div>
 				<div class="l_bottom_r">{#$list.interview_addtime|date_format:"%Y-%m-%d"#}</div>
 				<div class="clear"></div>
 			</div>
@@ -86,11 +86,11 @@ $(document).ready(function()
 	</div>
 	{#/foreach#}
 	{#else#}
-	<!-- <div class="list_centent_left" align="center">±§Ç¸£¬Ã»ÓĞ·ûºÏ´ËÌõ¼şµÄĞÅÏ¢£¡</div> -->
-	<div class="no_inter">Äú»¹Ã»ÓĞÊÕµ½ÃæÊÔÑûÇë</div>
+	<!-- <div class="list_centent_left" align="center">æŠ±æ­‰ï¼Œæ²¡æœ‰ç¬¦åˆæ­¤æ¡ä»¶çš„ä¿¡æ¯ï¼</div> -->
+	<div class="no_inter">æ‚¨è¿˜æ²¡æœ‰æ”¶åˆ°é¢è¯•é‚€è¯·</div>
 	{#/if#}
 </div>
-<div class="more">²é¿´¸ü¶à</div>
+<div class="more">æŸ¥çœ‹æ›´å¤š</div>
 <!-- footer -->
 {#include file="wap/footer.htm"#}
 </body>

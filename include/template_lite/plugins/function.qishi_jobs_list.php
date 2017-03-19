@@ -1,6 +1,6 @@
-<?php
+ï»¿<?php
 /*********************************************
-*ÆïÊ¿Ö°Î»ÁĞ±í
+*éª‘å£«èŒä½åˆ—è¡¨
 * *******************************************/
 function tpl_function_qishi_jobs_list($params, &$smarty)
 {
@@ -11,118 +11,118 @@ foreach($arrset as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "ÁĞ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
-	case "ÏÔÊ¾ÊıÄ¿":
+	case "æ˜¾ç¤ºæ•°ç›®":
 		$aset['row'] = $a[1];
 		break;
-	case "¿ªÊ¼Î»ÖÃ":
+	case "å¼€å§‹ä½ç½®":
 		$aset['start'] = $a[1];
 		break;
-	case "Ö°Î»Ãû³¤¶È":
+	case "èŒä½åé•¿åº¦":
 		$aset['jobslen'] = $a[1];
 		break;
-	case "ÆóÒµÃû³¤¶È":
+	case "ä¼ä¸šåé•¿åº¦":
 		$aset['companynamelen'] = $a[1];
 		break;
-	case "ÃèÊö³¤¶È":
+	case "æè¿°é•¿åº¦":
 		$aset['brieflylen'] = $a[1];
 		break;
-	case "Ìî²¹×Ö·û":
+	case "å¡«è¡¥å­—ç¬¦":
 		$aset['dot'] = $a[1];
 		break;
-	case "Ó¦½ìÉúÖ°Î»":
+	case "åº”å±Šç”ŸèŒä½":
 		$aset['graduate'] = $a[1];
 		break;
-	case "Ö°Î»·ÖÀà":
+	case "èŒä½åˆ†ç±»":
 		$aset['jobcategory'] = $a[1];
 		break;
-	case "Ö°Î»´óÀà":
+	case "èŒä½å¤§ç±»":
 		$aset['category'] = $a[1];
 		break;
-	case "Ö°Î»Ğ¡Àà":
+	case "èŒä½å°ç±»":
 		$aset['subclass'] = $a[1];
 		break;
-	case "µØÇø·ÖÀà":
+	case "åœ°åŒºåˆ†ç±»":
 		$aset['citycategory'] = $a[1];
 		break;
-	case "µØÇø´óÀà":
+	case "åœ°åŒºå¤§ç±»":
 		$aset['district'] = $a[1];
 		break;
-	case "µØÇøĞ¡Àà":
+	case "åœ°åŒºå°ç±»":
 		$aset['sdistrict'] = $a[1];
 		break;
-	case "µÀÂ·":
+	case "é“è·¯":
 		$aset['street'] = $a[1];
 		break;
-	case "Ğ´×ÖÂ¥":
+	case "å†™å­—æ¥¼":
 		$aset['officebuilding'] = $a[1];
 		break;
-	case "±êÇ©":
+	case "æ ‡ç­¾":
 		$aset['tag'] = $a[1];
 		break;
-	case "ĞĞÒµ":
+	case "è¡Œä¸š":
 		$aset['trade'] = $a[1];
 		break;
-	case "Ñ§Àú":
+	case "å­¦å†":
 		$aset['education'] = $a[1];
 		break;
-	case "¹¤×÷¾­Ñé":
+	case "å·¥ä½œç»éªŒ":
 		$aset['experience'] = $a[1];
 		break;
-	case "¹¤×Ê":
+	case "å·¥èµ„":
 		$aset['wage'] = $a[1];
 		break;
-	case "Ö°Î»ĞÔÖÊ":
+	case "èŒä½æ€§è´¨":
 		$aset['nature'] = $a[1];
 		break;
-	case "¹«Ë¾¹æÄ£":
+	case "å…¬å¸è§„æ¨¡":
 		$aset['scale'] = $a[1];
 		break;
-	case "½ô¼±ÕĞÆ¸":
+	case "ç´§æ€¥æ‹›è˜":
 		$aset['emergency'] = $a[1];
 		break;
-	case "ÍÆ¼ö":
+	case "æ¨è":
 		$aset['recommend'] = $a[1];
 		break;
-	case "¹Ø¼ü×Ö":
+	case "å…³é”®å­—":
 		$aset['key'] = $a[1];
 		break;
-	case "¹Ø¼ü×ÖÀàĞÍ":
+	case "å…³é”®å­—ç±»å‹":
 		$aset['keytype'] = $a[1];
 		break;
-	case "ÈÕÆÚ·¶Î§":
+	case "æ—¥æœŸèŒƒå›´":
 		$aset['settr'] = $a[1];
 		break;
-	case "ÅÅĞò":
+	case "æ’åº":
 		$aset['displayorder'] = $a[1];
 		break;
-	case "·ÖÒ³ÏÔÊ¾":
+	case "åˆ†é¡µæ˜¾ç¤º":
 		$aset['page'] = $a[1];
 		break;
-	case "»áÔ±UID":
+	case "ä¼šå‘˜UID":
 		$aset['uid'] = $a[1];
 		break;
-	case "¹«Ë¾Ò³Ãæ":
+	case "å…¬å¸é¡µé¢":
 		$aset['companyshow'] = $a[1];
 		break;
-	case "Ö°Î»Ò³Ãæ":
+	case "èŒä½é¡µé¢":
 		$aset['jobsshow'] = $a[1];
 		break;
-	case "ÁĞ±íÒ³":
+	case "åˆ—è¡¨é¡µ":
 		$aset['listpage'] = $a[1];
 		break;
-	case "ºÏ²¢":
+	case "åˆå¹¶":
 		$aset['mode'] = $a[1];
 		break;
-	case "¹«Ë¾ÁĞ±íÃû":
+	case "å…¬å¸åˆ—è¡¨å":
 		$aset['comlistname'] = $a[1];
 		break;
-	case "¹«Ë¾Ö°Î»Ò³Ãæ":
+	case "å…¬å¸èŒä½é¡µé¢":
 		$aset['companyjobs'] = $a[1];
 		break;
-	case "µ¥¸ö¹«Ë¾ÏÔÊ¾Ö°Î»Êı":
+	case "å•ä¸ªå…¬å¸æ˜¾ç¤ºèŒä½æ•°":
 		$aset['companyjobs_row'] = $a[1];
 		break;
 	}
@@ -146,7 +146,7 @@ $openorderby=false;
 if (isset($aset['displayorder']))
 {
 		$arr=explode('>',$aset['displayorder']);
-		// ÅÅĞò·½Ê½
+		// æ’åºæ–¹å¼
 		if($arr[1]=='desc'){
 			$arr[1]="desc";
 		}
@@ -203,7 +203,7 @@ else
 	$orderbysql=" ORDER BY stick DESC , refreshtime DESC , setmeal_id desc ";
 	$jobstable=table('jobs_search_stickrtime');
 }
-//Ó¦½ìÉúÖ°Î»	
+//åº”å±Šç”ŸèŒä½	
 if (isset($aset['graduate']) && !empty($aset['graduate']))
 {
 	$wheresql.=" AND graduate=1 ";
@@ -449,7 +449,7 @@ if (isset($aset['key']) && !empty($aset['key']))
 	$orderbysql=" ORDER BY refreshtime DESC,id desc ";
 	$jobstable=table('jobs_search_key');
 }
-/* ËÑË÷ Ê±¼ä·¶Î§ */
+/* æœç´¢ æ—¶é—´èŒƒå›´ */
 $moth=intval($_CFG['search_time']);
 if($moth>0)
 {
@@ -535,7 +535,7 @@ if (isset($aset['page']))
 			{
 				$row['briefly']=strip_tags($row['contents']);
 			}
-			$row['amount']=$row['amount']=="0"?'Èô¸É':$row['amount'];
+			$row['amount']=$row['amount']=="0"?'è‹¥å¹²':$row['amount'];
 			$row['briefly_']=strip_tags($row['contents']);
 			$row['companyname_']=$row['companyname'];
 			$row['companyname']=cut_str($row['companyname'],$aset['companynamelen'],0,$aset['dot']);
@@ -550,16 +550,16 @@ if (isset($aset['page']))
 			{
 				$row['tag_cn']=array();
 			}
-			//ºÏ²¢¹«Ë¾ ÏÔÊ¾Ä£Ê½
+			//åˆå¹¶å…¬å¸ æ˜¾ç¤ºæ¨¡å¼
 			if($aset['mode']==1)
 			{
-				//Í³¼Æµ¥¸ö¹«Ë¾·ûºÏÌõ¼şÖ°Î»Êı
+				//ç»Ÿè®¡å•ä¸ªå…¬å¸ç¬¦åˆæ¡ä»¶èŒä½æ•°
 				$count_com = $db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs')."  WHERE  company_id=".$row['company_id']);
 				$row['count']= $count_com;
 				$row['count_url']= $row['company_url'];
 				$list[$row['company_id']][] = $row;
 			}
-			//Ö°Î»ÁĞ±í ÏÔÊ¾Ä£Ê½
+			//èŒä½åˆ—è¡¨ æ˜¾ç¤ºæ¨¡å¼
 			else
 			{
 				$list[] = $row;

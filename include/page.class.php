@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ·ÖÒ³
+ * 74cms åˆ†é¡µ
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 if(!defined('IN_QISHI'))
@@ -15,10 +15,10 @@ die('Access Denied!');
 }
 class page{
  var $page_name="page";
- var $next_page='ÏÂÒ»Ò³';
- var $pre_page='ÉÏÒ»Ò³';
- var $first_page='Ê×Ò³';
- var $last_page='Î²Ò³';
+ var $next_page='ä¸‹ä¸€é¡µ';
+ var $pre_page='ä¸Šä¸€é¡µ';
+ var $first_page='é¦–é¡µ';
+ var $last_page='å°¾é¡µ';
  var $pre_bar='<<';
  var $next_bar='>>';
  var $format_left='';
@@ -165,7 +165,7 @@ class page{
 
  /**
 
-  * »ñÈ¡ÏÔÊ¾Ìø×ª°´Å¥µÄ´úÂë
+  * èŽ·å–æ˜¾ç¤ºè·³è½¬æŒ‰é’®çš„ä»£ç 
 
   *
 
@@ -208,7 +208,7 @@ class page{
 
  /**
 
-  * »ñÈ¡mysql Óï¾äÖÐlimitÐèÒªµÄÖµ
+  * èŽ·å–mysql è¯­å¥ä¸­limitéœ€è¦çš„å€¼
 
   *
 
@@ -228,7 +228,7 @@ class page{
 
  /**
 
-  * ¿ØÖÆ·ÖÒ³ÏÔÊ¾·ç¸ñ£¨Äã¿ÉÒÔÔö¼ÓÏàÓ¦µÄ·ç¸ñ£©
+  * æŽ§åˆ¶åˆ†é¡µæ˜¾ç¤ºé£Žæ ¼ï¼ˆä½ å¯ä»¥å¢žåŠ ç›¸åº”çš„é£Žæ ¼ï¼‰
 
   *
 
@@ -248,40 +248,40 @@ class page{
 
    case '1':
 
-    $this->next_page='ÏÂÒ»Ò³';
+    $this->next_page='ä¸‹ä¸€é¡µ';
 
-    $this->pre_page='ÉÏÒ»Ò³';
+    $this->pre_page='ä¸Šä¸€é¡µ';
 
-    return $this->pre_page().$this->nowbar().$this->next_page().'µÚ'.$this->select().'Ò³';
+    return $this->pre_page().$this->nowbar().$this->next_page().'ç¬¬'.$this->select().'é¡µ';
 
     break;
 
    case '2':
 
-    $this->next_page='ÏÂÒ»Ò³';
+    $this->next_page='ä¸‹ä¸€é¡µ';
 
-    $this->pre_page='ÉÏÒ»Ò³';
+    $this->pre_page='ä¸Šä¸€é¡µ';
 
-    $this->first_page='Ê×Ò³';
+    $this->first_page='é¦–é¡µ';
 
-    $this->last_page='Î²Ò³';
+    $this->last_page='å°¾é¡µ';
 
-    return $this->first_page().$this->pre_page().'[µÚ'.$this->nowindex.'Ò³]'.$this->next_page().$this->last_page().'µÚ'.$this->select().'Ò³';
+    return $this->first_page().$this->pre_page().'[ç¬¬'.$this->nowindex.'é¡µ]'.$this->next_page().$this->last_page().'ç¬¬'.$this->select().'é¡µ';
 
     break;
 
    case '3':
 
-    $this->next_page='ÏÂÒ»Ò³';
+    $this->next_page='ä¸‹ä¸€é¡µ';
 
-    $this->pre_page='ÉÏÒ»Ò³';
+    $this->pre_page='ä¸Šä¸€é¡µ';
 
-    $this->first_page='Ê×Ò³';
+    $this->first_page='é¦–é¡µ';
 
-    $this->last_page='Î²Ò³';
+    $this->last_page='å°¾é¡µ';
 
 
-    return $this->first_page()."".$this->pre_page()."".$this->nowbar("","select")."".$this->next_page()."".$this->last_page()."<li class=\"page_all\">".$this->nowindex."/".$this->totalpage."Ò³</li><div class=\"clear\"></div>";
+    return $this->first_page()."".$this->pre_page()."".$this->nowbar("","select")."".$this->next_page()."".$this->last_page()."<li class=\"page_all\">".$this->nowindex."/".$this->totalpage."é¡µ</li><div class=\"clear\"></div>";
 
     break;
 
@@ -291,7 +291,7 @@ class page{
 
     $this->pre_page='<';
 
-    return "<span>".$this->nowindex."/".$this->totalpage."Ò³</span>".$this->pre_page().$this->next_page()."<div class=\"clear\"></div>";
+    return "<span>".$this->nowindex."/".$this->totalpage."é¡µ</span>".$this->pre_page().$this->next_page()."<div class=\"clear\"></div>";
 
     break;
 
@@ -303,32 +303,32 @@ class page{
 	
 	case '6':
 
-    return "µÚ".$this->nowindex."/".$this->totalpage."Ò³";
+    return "ç¬¬".$this->nowindex."/".$this->totalpage."é¡µ";
 
     break;
-  case '7':// »ý·ÖÉÌ³Ç Ð¡Ò³
+  case '7':// ç§¯åˆ†å•†åŸŽ å°é¡µ
 
     $this->next_page='>';
 
     $this->pre_page='<';
 
-    return $this->pre_page()."<li><b style='color:#ff9900'>".$this->nowindex."</b>/".$this->totalpage."Ò³</li>".$this->next_page()."<div class=\"clear\"></div>";
+    return $this->pre_page()."<li><b style='color:#ff9900'>".$this->nowindex."</b>/".$this->totalpage."é¡µ</li>".$this->next_page()."<div class=\"clear\"></div>";
 
     break;
-  // ´øÌø×ª·ÖÒ³
+  // å¸¦è·³è½¬åˆ†é¡µ
   case '8':
 
-    $this->next_page='ÏÂÒ»Ò³';
+    $this->next_page='ä¸‹ä¸€é¡µ';
 
-    $this->pre_page='ÉÏÒ»Ò³';
+    $this->pre_page='ä¸Šä¸€é¡µ';
 
-    $this->first_page='Ê×Ò³';
+    $this->first_page='é¦–é¡µ';
 
-    $this->last_page='Î²Ò³';
+    $this->last_page='å°¾é¡µ';
 
-    $this->go_page='Ìø×ª';
+    $this->go_page='è·³è½¬';
 
-    return $this->first_page()."".$this->pre_page()."".$this->nowbar("","select")."".$this->next_page()."".$this->last_page()."<li class=\"page_all\">".$this->nowindex."/".$this->totalpage."Ò³</li><li style='line-height:23px;'>".$this->go_page()."</li><div class=\"clear\"></div>";
+    return $this->first_page()."".$this->pre_page()."".$this->nowbar("","select")."".$this->next_page()."".$this->last_page()."<li class=\"page_all\">".$this->nowindex."/".$this->totalpage."é¡µ</li><li style='line-height:23px;'>".$this->go_page()."</li><div class=\"clear\"></div>";
 
     break;
   }
@@ -348,7 +348,7 @@ class page{
       }
       $page_input.='<input type="hidden" name="'.$key.'" value="'.$value.'">';
    }
-   return '<form method="GET" class="page_form">'.$page_input.'µ½ <input type="text" name="page" size="1" class="page_input"> Ò³ <input type="submit" class="page_submit" value="'.$this->go_page.'"></form>';
+   return '<form method="GET" class="page_form">'.$page_input.'åˆ° <input type="text" name="page" size="1" class="page_input"> é¡µ <input type="submit" class="page_submit" value="'.$this->go_page.'"></form>';
   }
 
  function _set_url($url="")

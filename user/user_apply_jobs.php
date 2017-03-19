@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÉêÇëÖ°Î»
+ * 74cms ç”³è¯·èŒä½
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -45,7 +45,7 @@ if ($_SESSION['utype']!='2')
 		    <tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					±ØĞëÊÇ¸öÈË»áÔ±²Å¿ÉÒÔÍ¶¼òÀú£¡
+					å¿…é¡»æ˜¯ä¸ªäººä¼šå‘˜æ‰å¯ä»¥æŠ•ç®€å†ï¼
 				</td>
 		    </tr>
 		</table>');
@@ -58,14 +58,14 @@ if ($user['status']=="2")
 		    <tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					ÄúµÄÕËºÅ´¦ÓÚÔİÍ£×´Ì¬£¬ÇëÁªÏµ¹ÜÀíÔ±ÉèÎªÕı³£ºó½øĞĞ²Ù×÷£¡
+					æ‚¨çš„è´¦å·å¤„äºæš‚åœçŠ¶æ€ï¼Œè¯·è”ç³»ç®¡ç†å‘˜è®¾ä¸ºæ­£å¸¸åè¿›è¡Œæ“ä½œï¼
 				</td>
 		    </tr>
 		</table>');
 }
 if ($act=="app")
 {		
-		$id=isset($_GET['id'])?$_GET['id']:exit("id ¶ªÊ§");
+		$id=isset($_GET['id'])?$_GET['id']:exit("id ä¸¢å¤±");
 		$jobs=app_get_jobs($id);
 		if (empty($jobs))
 		{
@@ -73,7 +73,7 @@ if ($act=="app")
 			    <tr>
 					<td width="20" align="right"></td>
 					<td class="ajax_app">
-						Í¶¼òÀúÊ§°Ü£¡
+						æŠ•ç®€å†å¤±è´¥ï¼
 					</td>
 			    </tr>
 			</table>');
@@ -81,12 +81,12 @@ if ($act=="app")
 		$resume_list=get_auditresume_list($_SESSION['uid']);
 		if (empty($resume_list))
 		{
-		$str="<a href=\"".get_member_url(2,true)."personal_resume.php?act=resume_list\">[²é¿´ÎÒµÄ¼òÀú]</a>";		
+		$str="<a href=\"".get_member_url(2,true)."personal_resume.php?act=resume_list\">[æŸ¥çœ‹æˆ‘çš„ç®€å†]</a>";		
 		exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 			    <tr>
 					<td width="20" align="right"></td>
 					<td class="ajax_app">
-						Í¶¼òÀúÊ§°Ü£¬ÄúÃ»ÓĞÌîĞ´¼òÀú»òÕß¼òÀú²»¿É¼û '.$str.'
+						æŠ•ç®€å†å¤±è´¥ï¼Œæ‚¨æ²¡æœ‰å¡«å†™ç®€å†æˆ–è€…ç®€å†ä¸å¯è§ '.$str.'
 					</td>
 			    </tr>
 			</table>');
@@ -103,29 +103,29 @@ $("#resumeid").change(function(){
 	var  url='../resume/resume-show.php?id='+resumeid+'';
 	$("#resume_yl").attr("href",url);
 })
-//¼ÆËã½ñÌìÉêÇëÊıÁ¿
+//è®¡ç®—ä»Šå¤©ç”³è¯·æ•°é‡
 var app_max="<?php echo $_CFG['apply_jobs_max'] ?>";
 var app_today="<?php echo get_now_applyjobs_num($_SESSION['uid']) ?>";
 $(".ajax_app_tip > span:eq(0)").html(app_max);
 $(".ajax_app_tip > span:eq(1)").html(app_today);
 $(".ajax_app_tip > span:eq(2)").html(app_max-app_today);
-//ÑéÖ¤
+//éªŒè¯
 $("#ajax_app").click(function() {
 	if (app_max-app_today==0 || app_max-app_today<0 )
 	{
-	alert("Äú½ñÌìÍ¶¼òÀúÊıÁ¿ÒÑ¾­³¬³ö×î´óÏŞÖÆ£¡");
+	alert("æ‚¨ä»Šå¤©æŠ•ç®€å†æ•°é‡å·²ç»è¶…å‡ºæœ€å¤§é™åˆ¶ï¼");
 	}
 	else if ($(".ajax_app :checkbox[checked]").length>(app_max-app_today))
 	{
-	alert("Äú½ñÌì»¹¿ÉÒÔÍ¶µİ"+(app_max-app_today)+"¸ö¼òÀú£¬ÒÑÑ¡Ö°Î»³¬³öÁË×î´óÏŞÖÆ£¡");
+	alert("æ‚¨ä»Šå¤©è¿˜å¯ä»¥æŠ•é€’"+(app_max-app_today)+"ä¸ªç®€å†ï¼Œå·²é€‰èŒä½è¶…å‡ºäº†æœ€å¤§é™åˆ¶ï¼");
 	}
 	else if ($(".ajax_app :checkbox[checked]").length==0)
 	{
-	alert("ÇëÑ¡ÔñÍ¶µİµÄÖ°Î»£¡");
+	alert("è¯·é€‰æ‹©æŠ•é€’çš„èŒä½ï¼");
 	}
 	else if ($("#resumeid").val()=="")
 	{
-	alert("ÇëÑ¡ÔñÄãµÄ¼òÀú£¡");
+	alert("è¯·é€‰æ‹©ä½ çš„ç®€å†ï¼");
 	}
 	else
 	{
@@ -156,7 +156,7 @@ $("#ajax_app").click(function() {
 				$("#notice").hide();
 				$("#waiting").hide();
 				$("#app_ok").hide();
-				$("#error_msg").html("ÄúÍ¶µİ¹ı´ËÖ°Î»£¬²»ÄÜÖØ¸´Í¶µİ");
+				$("#error_msg").html("æ‚¨æŠ•é€’è¿‡æ­¤èŒä½ï¼Œä¸èƒ½é‡å¤æŠ•é€’");
 				$("#error").show();
 			}
 			else
@@ -165,7 +165,7 @@ $("#ajax_app").click(function() {
 				$("#notice").hide();
 				$("#waiting").hide();
 				$("#app_ok").hide();
-				$("#error_msg").html("Í¶µİÊ§°Ü£¡"+data);
+				$("#error_msg").html("æŠ•é€’å¤±è´¥ï¼"+data);
 				$("#error").show();
 			}
 	 	 })
@@ -174,7 +174,7 @@ $("#ajax_app").click(function() {
 </script>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="app">
     <tr>
-		<td width="120" align="right" valign="top">ÉêÇëÖ°Î»£º</td>
+		<td width="120" align="right" valign="top">ç”³è¯·èŒä½ï¼š</td>
 		<td class="ajax_app">
 			<ul>
 			 <?php
@@ -190,7 +190,7 @@ $("#ajax_app").click(function() {
 		</td>
     </tr>
     <tr>
-		<td width="120" align="right">Ñ¡Ôñ¼òÀú£º</td>
+		<td width="120" align="right">é€‰æ‹©ç®€å†ï¼š</td>
 		<td>
 			<select  name="resumeid"  id="resumeid">
 				<?php 
@@ -202,28 +202,28 @@ $("#ajax_app").click(function() {
 				}
 				?>
 			</select>
-			<a href="" target="_blank" id="resume_yl" style="color:#0180cf">[Ô¤ÀÀ]</a>
+			<a href="" target="_blank" id="resume_yl" style="color:#0180cf">[é¢„è§ˆ]</a>
 			
 		</td>
     </tr>
     <tr>
-		<td align="right">ÆäËûËµÃ÷£º</td>
+		<td align="right">å…¶ä»–è¯´æ˜ï¼š</td>
 		<td>
 			<textarea name="notes" id="notes"  style="width:300px; height:60px; line-height:180%; font-size:12px;border:1px solid #e2e2e2;resize:both"></textarea>
 		</td>
     </tr>
     <tr>
-		<td align="right">Õ¾ÄÚĞÅÍ¨Öª¶Ô·½£º</td>
+		<td align="right">ç«™å†…ä¿¡é€šçŸ¥å¯¹æ–¹ï¼š</td>
 		<td>
 			 <label><input type="checkbox" name="pms_notice" id="pms_notice" value="1"  checked="checked"/>
-		  Õ¾ÄÚĞÅÍ¨Öª
+		  ç«™å†…ä¿¡é€šçŸ¥
 		   </label>
 		</td>
     </tr>
     <tr>
 		<td></td>
 		<td>
-			<input type="button" name="Submit"  id="ajax_app" class="but130lan" value="Í¶µİ" />
+			<input type="button" name="Submit"  id="ajax_app" class="but130lan" value="æŠ•é€’" />
 		</td>
     </tr>
 </table>
@@ -232,7 +232,7 @@ $("#ajax_app").click(function() {
     <tbody>
     	<tr>
     		<td class="dialog_bottom">
-		    	<div class="dialog_tip"></div><div class="dialog_text ajax_app_tip">ÄúÃ¿Ìì¿ÉÒÔÍ¶µİ<span></span>´Î¼òÀú£¬½ñÌìÒÑ¾­Í¶µİÁË<span></span>´Î£¬»¹¿ÉÒÔÍ¶µİ<span></span>´Î</div>
+		    	<div class="dialog_tip"></div><div class="dialog_text ajax_app_tip">æ‚¨æ¯å¤©å¯ä»¥æŠ•é€’<span></span>æ¬¡ç®€å†ï¼Œä»Šå¤©å·²ç»æŠ•é€’äº†<span></span>æ¬¡ï¼Œè¿˜å¯ä»¥æŠ•é€’<span></span>æ¬¡</div>
 		    	<div class="clear"></div>
 		    </td>
     	</tr>
@@ -243,17 +243,17 @@ $("#ajax_app").click(function() {
     <td align="center" height="60"><img src="<?php echo  $_CFG['site_template']?>images/30.gif"  border="0"/></td>
   </tr>
   <tr>
-    <td align="center" >ÇëÉÔºó...</td>
+    <td align="center" >è¯·ç¨å...</td>
   </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="app_ok" style="display:none">
     <tr>
 		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/big-yes.png" /></td>
 		<td>
-			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">Í¶µİ³É¹¦!</strong>
+			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">æŠ•é€’æˆåŠŸ!</strong>
 			<div style="border-top:1px #CCCCCC solid; line-height:180%; margin-top:10px; padding-top:10px; height:50px;margin-left:20px"  class="dialog_closed">
-			<a href="<?php echo get_member_url(2,true)?>personal_apply.php?act=apply_jobs" style="color:#0180cf;text-decoration:none;" class="underline">²é¿´ÒÑÍ¶µİµÄÖ°Î»</a><br />
-			<a href="javascript:void(0)"  class="DialogClose underline" style="color:#0180cf;text-decoration:none;">Í¶µİÍê³É</a>
+			<a href="<?php echo get_member_url(2,true)?>personal_apply.php?act=apply_jobs" style="color:#0180cf;text-decoration:none;" class="underline">æŸ¥çœ‹å·²æŠ•é€’çš„èŒä½</a><br />
+			<a href="javascript:void(0)"  class="DialogClose underline" style="color:#0180cf;text-decoration:none;">æŠ•é€’å®Œæˆ</a>
 			</div>
 		</td>
     </tr>
@@ -268,20 +268,20 @@ $("#ajax_app").click(function() {
 
 elseif ($act=="app_save")
 {
-	$jobsid=isset($_POST['jobsid'])?$_POST['jobsid']:exit("³ö´íÁË");
-	$resumeid=isset($_POST['resumeid'])?intval($_POST['resumeid']):exit("³ö´íÁË");
+	$jobsid=isset($_POST['jobsid'])?$_POST['jobsid']:exit("å‡ºé”™äº†");
+	$resumeid=isset($_POST['resumeid'])?intval($_POST['resumeid']):exit("å‡ºé”™äº†");
 	$notes=isset($_POST['notes'])?trim($_POST['notes']):"";
 	$pms_notice=intval($_POST['pms_notice']);
 	$jobsarr=app_get_jobs($jobsid);
 	if (empty($jobsarr))
 	{
-	exit("Ö°Î»¶ªÊ§");
+	exit("èŒä½ä¸¢å¤±");
 	}
 	$resume_basic=get_resume_basic($_SESSION['uid'],$resumeid);
 	$resume_basic = array_map("addslashes", $resume_basic);
 	if (empty($resume_basic))
 	{
-	exit("¼òÀú¶ªÊ§");
+	exit("ç®€å†ä¸¢å¤±");
 	}
 	$i=0;
 	foreach($jobsarr as $jobs)
@@ -321,15 +321,15 @@ elseif ($act=="app_save")
 					{
 						$success = dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_sms.php?uid={$_SESSION['uid']}&key=".asyn_userkey($_SESSION['uid'])."&act=jobs_apply&jobs_id=".$jobs['id']."&jobs_name=".$jobs['jobs_name'].'&jobs_uid='.$jobs['uid']."&personal_fullname=".$resume_basic['fullname']."&mobile=".$comuser['mobile']);
 					}
-					//Õ¾ÄÚĞÅ
+					//ç«™å†…ä¿¡
 					if($pms_notice=='1'){
 						$user=$db->getone("select username from ".table('members')." where uid ={$jobs['uid']} limit 1");
 						$jobs_url=url_rewrite('QS_jobsshow',array('id'=>$jobs['id']));
 						$resume_url=url_rewrite('QS_resumeshow',array('id'=>$resumeid));
-						$message=$resume_basic['fullname'].'ÉêÇëÁËÄú·¢²¼µÄÖ°Î»£º<a href="'.$jobs_url.'" target="_blank">'.$jobs['jobs_name'].'</a>,<a href="'.$resume_url.'" target="_blank">µã»÷²é¿´</a>';
+						$message=$resume_basic['fullname'].'ç”³è¯·äº†æ‚¨å‘å¸ƒçš„èŒä½ï¼š<a href="'.$jobs_url.'" target="_blank">'.$jobs['jobs_name'].'</a>,<a href="'.$resume_url.'" target="_blank">ç‚¹å‡»æŸ¥çœ‹</a>';
 						write_pmsnotice($jobs['uid'],$user['username'],$message);
 					}
-					write_memberslog($_SESSION['uid'],2,1301,$_SESSION['username'],"Í¶µİÁË¼òÀú£¬Ö°Î»:{$jobs['jobs_name']}");
+					write_memberslog($_SESSION['uid'],2,1301,$_SESSION['username'],"æŠ•é€’äº†ç®€å†ï¼ŒèŒä½:{$jobs['jobs_name']}");
 			}
 			$i=$i+1;
 	 }

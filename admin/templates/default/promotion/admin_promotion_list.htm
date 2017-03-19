@@ -1,12 +1,12 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript" src="js/jquery.userinfotip-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//µã»÷ÅúÁ¿È¡Ïû	
+	//ç‚¹å‡»æ‰¹é‡å–æ¶ˆ	
 	$("#ButDel").click(function(){
 		
-		if (confirm('ÄãÈ·¶¨ÒªÈ¡ÏûÍÆ¹ãÂğ£¿'))
+		if (confirm('ä½ ç¡®å®šè¦å–æ¶ˆæ¨å¹¿å—ï¼Ÿ'))
 		{
 			$("form[name=form1]").submit()
 		}
@@ -21,29 +21,29 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-ÏµÍ³½«×Ô¶¯È¡Ïûµ½ÆÚµÄÆóÒµÍÆ¹ã¡£<br />
-´ËÁĞ±í²»ÏÔÊ¾µ½ÆÚ¡¢Í£Ö¹¡¢Î´Í¨¹ıÉóºËµÈÖ°Î»µÄÍÆ¹ãĞÅÏ¢¡£<br />
+ç³»ç»Ÿå°†è‡ªåŠ¨å–æ¶ˆåˆ°æœŸçš„ä¼ä¸šæ¨å¹¿ã€‚<br />
+æ­¤åˆ—è¡¨ä¸æ˜¾ç¤ºåˆ°æœŸã€åœæ­¢ã€æœªé€šè¿‡å®¡æ ¸ç­‰èŒä½çš„æ¨å¹¿ä¿¡æ¯ã€‚<br />
 </p>
 </div>
 <div class="seltpye_x">
-		<div class="left">µ½ÆÚÊ±¼ä</div>	
+		<div class="left">åˆ°æœŸæ—¶é—´</div>	
 		<div class="right">
-		<a href="{#"settr:"|qishi_parse_url#}" {#if $smarty.get.settr==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"settr:0"|qishi_parse_url#}" {#if $smarty.get.settr=="0"#}class="select"{#/if#}>ÒÑ¾­µ½ÆÚ</a>
-		<a href="{#"settr:3"|qishi_parse_url#}" {#if $smarty.get.settr=="3"#}class="select"{#/if#}>ÈıÌìÄÚµ½ÆÚ</a>
-		<a href="{#"settr:7"|qishi_parse_url#}" {#if $smarty.get.settr=="7"#}class="select"{#/if#}>Ò»ÖÜÄÚµ½ÆÚ</a>
-		<a href="{#"settr:30"|qishi_parse_url#}" {#if $smarty.get.settr=="30"#}class="select"{#/if#}>Ò»ÔÂÄÚµ½ÆÚ</a>
-		<a href="{#"settr:90"|qishi_parse_url#}" {#if $smarty.get.settr=="90"#}class="select"{#/if#}>ÈıÔÂÄÚµ½ÆÚ</a>
+		<a href="{#"settr:"|qishi_parse_url#}" {#if $smarty.get.settr==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"settr:0"|qishi_parse_url#}" {#if $smarty.get.settr=="0"#}class="select"{#/if#}>å·²ç»åˆ°æœŸ</a>
+		<a href="{#"settr:3"|qishi_parse_url#}" {#if $smarty.get.settr=="3"#}class="select"{#/if#}>ä¸‰å¤©å†…åˆ°æœŸ</a>
+		<a href="{#"settr:7"|qishi_parse_url#}" {#if $smarty.get.settr=="7"#}class="select"{#/if#}>ä¸€å‘¨å†…åˆ°æœŸ</a>
+		<a href="{#"settr:30"|qishi_parse_url#}" {#if $smarty.get.settr=="30"#}class="select"{#/if#}>ä¸€æœˆå†…åˆ°æœŸ</a>
+		<a href="{#"settr:90"|qishi_parse_url#}" {#if $smarty.get.settr=="90"#}class="select"{#/if#}>ä¸‰æœˆå†…åˆ°æœŸ</a>
 		<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
 </div>
 <div class="seltpye_x">
-		<div class="left">ÍÆ¹ã·½°¸</div>	
+		<div class="left">æ¨å¹¿æ–¹æ¡ˆ</div>	
 		<div class="right">
-		<a href="{#"promotionid:"|qishi_parse_url#}" {#if $smarty.get.promotionid==""#}class="select"{#/if#}>²»ÏŞ</a>
+		<a href="{#"promotionid:"|qishi_parse_url#}" {#if $smarty.get.promotionid==""#}class="select"{#/if#}>ä¸é™</a>
 		{#foreach from=$cat item=li#}
 		<a href="{#"promotionid:"|cat:$li.cat_id|qishi_parse_url#}" {#if $smarty.get.promotionid==$li.cat_id#}class="select"{#/if#}>{#$li.cat_name#}</a>
 		{#/foreach#}
@@ -56,12 +56,12 @@ $(document).ready(function()
     <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
     <tr>
       <td  width="30%" class="admin_list_tit admin_list_first">
-     <label id="chkAll"><input type="checkbox" name="" title="È«Ñ¡/·´Ñ¡" id="chk"/>ÍÆ¹ãÖ°Î»</label>	 </td>
-	  <td  width="20%" class="admin_list_tit">ËùÊô¹«Ë¾</td>
-	  <td  align="center"  class="admin_list_tit">»áÔ±ID</td>
-      <td align="center"  class="admin_list_tit">¿ªÊ¼Ê±¼ä</td>
-      <td  align="center"  class="admin_list_tit">µ½ÆÚÊ±¼ä</td>	  
-      <td width="10%" align="center"  class="admin_list_tit">²Ù×÷</td>
+     <label id="chkAll"><input type="checkbox" name="" title="å…¨é€‰/åé€‰" id="chk"/>æ¨å¹¿èŒä½</label>	 </td>
+	  <td  width="20%" class="admin_list_tit">æ‰€å±å…¬å¸</td>
+	  <td  align="center"  class="admin_list_tit">ä¼šå‘˜ID</td>
+      <td align="center"  class="admin_list_tit">å¼€å§‹æ—¶é—´</td>
+      <td  align="center"  class="admin_list_tit">åˆ°æœŸæ—¶é—´</td>	  
+      <td width="10%" align="center"  class="admin_list_tit">æ“ä½œ</td>
     </tr>
 	{#foreach from=$list item=list#}
 	 <tr>
@@ -89,40 +89,40 @@ $(document).ready(function()
 	  {#$list.cp_uid#}	   </td>
       <td align="center"  class="admin_list">
 	  {#if $list.cp_starttime=="0"#}
-		ÎŞÏŞÖÆ
+		æ— é™åˆ¶
 		{#else#}
 		{#$list.cp_starttime|date_format:"%Y-%m-%d"#}
 		{#/if#}	  </td>
       <td align="center"  class="admin_list">
 	  {#if $list.cp_endtime=="0"#}
-		ÎŞÏŞÖÆ
+		æ— é™åˆ¶
 		{#else#}
 					{#if $list.cp_endtime < $smarty.now#}
-					<span style="color:#FF6600">ÒÑ¾­µ½ÆÚ</span>
+					<span style="color:#FF6600">å·²ç»åˆ°æœŸ</span>
 					{#else#}
 					{#$list.cp_endtime|date_format:"%Y-%m-%d"#}
 					{#/if#}
 		{#/if#}	  </td>	  
       <td align="center"  class="admin_list">
-	  <a href="?act=promotion_edit&id={#$list.cp_id#}">ĞŞ¸Ä</a>
+	  <a href="?act=promotion_edit&id={#$list.cp_id#}">ä¿®æ”¹</a>
 	  &nbsp;
-	<a href="admin_company.php?act=management&id={#$list.cp_uid#}"  target="_blank" class="userinfo"  id="{#$list.cp_uid#}">¹ÜÀí</a>
+	<a href="admin_company.php?act=management&id={#$list.cp_uid#}"  target="_blank" class="userinfo"  id="{#$list.cp_uid#}">ç®¡ç†</a>
 
     </tr>
 	{#/foreach#}
   </table>
   
 	{#if !$list#}
-	<div class="admin_list_no_info">Ã»ÓĞÈÎºÎĞÅÏ¢£¡</div>
+	<div class="admin_list_no_info">æ²¡æœ‰ä»»ä½•ä¿¡æ¯ï¼</div>
 	{#/if#}
   </form>
 	
    <table width="100%" border="0" cellspacing="10"  class="admin_list_btm">
 	<tr>
       <td>
-       <input type="button" name="Submit22" value="Ìí¼ÓÍÆ¹ã" class="admin_submit"    onclick="window.location='?act=promotion_add'"/>
+       <input type="button" name="Submit22" value="æ·»åŠ æ¨å¹¿" class="admin_submit"    onclick="window.location='?act=promotion_add'"/>
 	   
-		<input type="button" name="ButDel" id="ButDel" value="È¡ÏûÍÆ¹ã" class="admin_submit" />
+		<input type="button" name="ButDel" id="ButDel" value="å–æ¶ˆæ¨å¹¿" class="admin_submit" />
 	  </td>
       <td width="305">
 	  
@@ -133,22 +133,22 @@ $(document).ready(function()
 			<div class="seh">
 			    <div class="keybox"><input name="key" type="text"   value="{#$smarty.get.key#}" /></div>
 			    <div class="selbox">
-					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"Ö°Î»Ãû"#}" readonly="true"/>
+					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"èŒä½å"#}" readonly="true"/>
 						<div>
 								<input name="key_type" id="key_type" type="hidden" value="{#$smarty.get.key_type|default:"1"#}" />
 												<div id="sehmenu" class="seh_menu">
 														<ul>
-														<li id="1" title="Ö°Î»Ãû">Ö°Î»Ãû</li>
-														<li id="2" title="¹«Ë¾Ãû">¹«Ë¾Ãû</li>
-														<li id="3" title="Ö°Î»ID">Ö°Î»ID</li>
-														<li id="4" title="¹«Ë¾ID">¹«Ë¾ID</li>
-														<li id="5" title="»áÔ±ID">»áÔ±ID</li>
+														<li id="1" title="èŒä½å">èŒä½å</li>
+														<li id="2" title="å…¬å¸å">å…¬å¸å</li>
+														<li id="3" title="èŒä½ID">èŒä½ID</li>
+														<li id="4" title="å…¬å¸ID">å…¬å¸ID</li>
+														<li id="5" title="ä¼šå‘˜ID">ä¼šå‘˜ID</li>
 														</ul>
 												</div>
 						</div>				
 				</div>
 				<div class="sbtbox">
-				<input type="submit" name="" class="sbt" id="sbt" value="ËÑË÷"/>
+				<input type="submit" name="" class="sbt" id="sbt" value="æœç´¢"/>
 				</div>
 				<div class="clear"></div>
 		  </div>

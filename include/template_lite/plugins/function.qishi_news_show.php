@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_news_show($params, &$smarty)
 {
 global $db;
@@ -8,10 +8,10 @@ foreach($arr as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "×ÊÑ¶ID":
+	case "èµ„è®¯ID":
 		$aset['id'] = $a[1];
 		break;
-	case "ÁÐ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
 	}
@@ -55,7 +55,7 @@ if(!$prev){
 }
 $next = $db->getone("select id,title from ".table('article')." where id>".$val['id']." and type_id=".$val['type_id']." limit 1");
 if(!$next){
-	$val['next'] = "Ã»ÓÐÁË";
+	$val['next'] = "æ²¡æœ‰äº†";
 }else{
 	$val['next'] = 1;
 	$val['next_title'] = $next['title'];

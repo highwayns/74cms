@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_companyjobs_list($params, &$smarty)
 {
 global $db,$_CFG;
@@ -8,61 +8,61 @@ foreach($arrset as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "ÁĞ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
-	case "ÏÔÊ¾ÊıÄ¿":
+	case "æ˜¾ç¤ºæ•°ç›®":
 		$aset['row'] = $a[1];
 		break;
-	case "ÍÆ¼ö":
+	case "æ¨è":
 		$aset['recommend'] = $a[1];
 		break;
-	case "¿ªÊ¼Î»ÖÃ":
+	case "å¼€å§‹ä½ç½®":
 		$aset['start'] = $a[1];
 		break;
-	case "Ö°Î»Ãû³¤¶È":
+	case "èŒä½åé•¿åº¦":
 		$aset['jobslen'] = $a[1];
 		break;
-	case "ÏÔÊ¾Ö°Î»":
+	case "æ˜¾ç¤ºèŒä½":
 		$aset['jobsrow'] = $a[1];
 		break;
-	case "ÆóÒµÃû³¤¶È":
+	case "ä¼ä¸šåé•¿åº¦":
 		$aset['companynamelen'] = $a[1];
 		break;
-	case "µØÇø´óÀà":
+	case "åœ°åŒºå¤§ç±»":
 		$aset['district'] = $a[1];
 		break;
-	case "µØÇøĞ¡Àà":
+	case "åœ°åŒºå°ç±»":
 		$aset['sdistrict'] = $a[1];
 		break;
-	case "Ìî²¹×Ö·û":
+	case "å¡«è¡¥å­—ç¬¦":
 		$aset['dot'] = $a[1];
 		break;
-	case "ĞĞÒµ":
+	case "è¡Œä¸š":
 		$aset['trade'] = $a[1];
 		break;
-	case "ÈÕÆÚ·¶Î§":
+	case "æ—¥æœŸèŒƒå›´":
 		$aset['settr'] = $a[1];
 		break;		
-	case "½ô¼±ÕĞÆ¸":
+	case "ç´§æ€¥æ‹›è˜":
 		$aset['emergency'] = $a[1];
 		break;
-	case "ÅÅĞò":
+	case "æ’åº":
 		$aset['displayorder'] = $a[1];
 		break;
-	case "·ÖÒ³ÏÔÊ¾":
+	case "åˆ†é¡µæ˜¾ç¤º":
 		$aset['paged'] = $a[1];
 		break;
-	case "¹«Ë¾Ò³Ãæ":
+	case "å…¬å¸é¡µé¢":
 		$aset['companyshow'] = $a[1];
 		break;
-	case "Ö°Î»Ò³Ãæ":
+	case "èŒä½é¡µé¢":
 		$aset['jobsshow'] = $a[1];
 		break;
-	case "Ö°Î»·ÖÀà":
+	case "èŒä½åˆ†ç±»":
 		$aset['jobscategory'] = $a[1];
 		break;
-	case "Í³¼ÆÖ°Î»":
+	case "ç»Ÿè®¡èŒä½":
 		$aset['countjobs'] = $a[1];
 		break;
 	}
@@ -80,7 +80,7 @@ $aset['jobsshow']=isset($aset['jobsshow'])?$aset['jobsshow']:'QS_jobsshow';
 if (isset($aset['displayorder']))
 {
 		$arr=explode('>',$aset['displayorder']);
-		// ÅÅĞò·½Ê½
+		// æ’åºæ–¹å¼
 		if($arr[1]=='desc'){
 			$arr[1]="desc";
 		}
@@ -168,7 +168,7 @@ if (isset($aset['district'])  && $aset['district']<>'')
 	$wheresql.=" AND district=".intval($aset['district'])." ";
 	}
 }
-//Â¥²ã Ö°Î»
+//æ¥¼å±‚ èŒä½
 if (isset($aset['jobscategory'])  && $aset['jobscategory']<>'')
 {
 	$jobscategory=trim($aset['jobscategory']);

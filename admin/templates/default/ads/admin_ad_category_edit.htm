@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,12 +6,12 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
- ×Ô¶¨Òå¹ã¸æÎ»µ÷ÓÃÃû²»¿ÉÒÔÒÔ ¡°QS_¡±¿ªÍ·
+ è‡ªå®šä¹‰å¹¿å‘Šä½è°ƒç”¨åä¸å¯ä»¥ä»¥ â€œQS_â€å¼€å¤´
 </p>
 </div>
-<div class="toptit">ĞŞ¸Ä¹ã¸æÎ»£º<span style="color:#006699">{#$ad_category.categoryname#}</span></div>
+<div class="toptit">ä¿®æ”¹å¹¿å‘Šä½ï¼š<span style="color:#006699">{#$ad_category.categoryname#}</span></div>
   <form action="?act=ad_category_edit_save" method="post"  name="form1" id="form1">
      
     <table width="100%" border="0" cellspacing="0" cellpadding="4" class="link_lan"  >
@@ -19,7 +19,7 @@
       <tr>
         <td style=" line-height:220%; color:#666666;"><table width="700" border="0" cellspacing="4" cellpadding="4">
           <tr>
-            <td width="181" align="right">¹ã¸æÎ»Ãû³Æ£º</td>
+            <td width="181" align="right">å¹¿å‘Šä½åç§°ï¼š</td>
             <td width="498">
               {#if $ad_category.admin_set=="1"#}
               {#$ad_category.categoryname#}
@@ -29,42 +29,42 @@
             </td>
           </tr>
 		  <tr>
-            <td width="181" align="right">µ÷ÓÃÃû³Æ£º</td>
+            <td width="181" align="right">è°ƒç”¨åç§°ï¼š</td>
             <td width="498">
               {#if $ad_category.admin_set=="1"#}
               {#$ad_category.alias#}
               {#else#}
 			<input name="alias" type="text" class="input_text_200" id="alias" maxlength="50" value="{#$ad_category.alias#}"/>
-           <span style="color: #999999"> µ÷ÓÃÃû³ÆÓÃÓÚÔÚÄ£°åÖĞµ÷ÓÃ´Ë¹ã¸æÎ»</span>
+           <span style="color: #999999"> è°ƒç”¨åç§°ç”¨äºåœ¨æ¨¡æ¿ä¸­è°ƒç”¨æ­¤å¹¿å‘Šä½</span>
            {#/if#}
 			</td>
           </tr>
           <tr>
-            <td align="right">ËùÊôÀàĞÍ£º</td>
+            <td align="right">æ‰€å±ç±»å‹ï¼š</td>
             <td>
               {#if $ad_category.admin_set=="1"#}
               {#$type#}
               {#else#}
-			 <label><input type="radio" name="type_id" value="1" {#if $ad_category.type_id=="1"#}checked="checked"{#/if#}/>ÎÄ×Ö</label>
+			 <label><input type="radio" name="type_id" value="1" {#if $ad_category.type_id=="1"#}checked="checked"{#/if#}/>æ–‡å­—</label>
 &nbsp;&nbsp;&nbsp;&nbsp;
  <label><input name="type_id" type="radio" value="2" {#if $ad_category.type_id=="2"#}checked="checked"{#/if#}/>
- Í¼Æ¬</label>
+ å›¾ç‰‡</label>
 &nbsp;&nbsp;&nbsp;&nbsp;
- <label><input type="radio" name="type_id" value="3" {#if $ad_category.type_id=="3"#}checked="checked"{#/if#}/>´úÂë</label>
+ <label><input type="radio" name="type_id" value="3" {#if $ad_category.type_id=="3"#}checked="checked"{#/if#}/>ä»£ç </label>
 &nbsp;&nbsp;&nbsp;&nbsp;
  <label><input type="radio" name="type_id" value="4" {#if $ad_category.type_id=="4"#}checked="checked"{#/if#}/>FLASH</label>
 &nbsp;&nbsp;&nbsp;&nbsp;
- <label><input type="radio" name="type_id" value="5" {#if $ad_category.type_id=="5"#}checked="checked"{#/if#}/>¸¡¶¯</label>
+ <label><input type="radio" name="type_id" value="5" {#if $ad_category.type_id=="5"#}checked="checked"{#/if#}/>æµ®åŠ¨</label>
 &nbsp;&nbsp;&nbsp;&nbsp;
- <label><input type="radio" name="type_id" value="6" {#if $ad_category.type_id=="6"#}checked="checked"{#/if#}/>ÊÓÆµ</label>
+ <label><input type="radio" name="type_id" value="6" {#if $ad_category.type_id=="6"#}checked="checked"{#/if#}/>è§†é¢‘</label>
 &nbsp;&nbsp;&nbsp;&nbsp;
       {#/if#}
 		  </td>
           </tr>
           <tr>
-            <td width="181" align="right">ÊÛ¼Û£º</td>
-            <td width="498"><input name="expense" type="text" class="input_text_200" id="expense" maxlength="5" value="{#$ad_category.expense#}"/> »ı·Ö
-           <span style="color: #999999"> 0ÎªÃâ·Ñ</span>
+            <td width="181" align="right">å”®ä»·ï¼š</td>
+            <td width="498"><input name="expense" type="text" class="input_text_200" id="expense" maxlength="5" value="{#$ad_category.expense#}"/> ç§¯åˆ†
+           <span style="color: #999999"> 0ä¸ºå…è´¹</span>
       </td>
           </tr>
           <tr>
@@ -73,9 +73,9 @@
 			{#$inputtoken#}
 			<input name="id" type="hidden" value="{#$ad_category.id#}" />
       <input name="admin_set" type="hidden" value="{#$ad_category.admin_set#}" />
-			<input type="submit" name="Submit3" value="È·¶¨Ìá½»" class="admin_submit"   />
+			<input type="submit" name="Submit3" value="ç¡®å®šæäº¤" class="admin_submit"   />
 			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="Javascript:window.history.go(-1)"/>
+      <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="Javascript:window.history.go(-1)"/>
 			</td>
           </tr>
         </table></td>

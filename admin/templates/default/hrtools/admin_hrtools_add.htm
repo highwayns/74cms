@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -11,21 +11,21 @@ $(document).ready(function()
 	{#include file="hrtools/admin_hrtools_nav.htm"#}
   <div class="clear"></div>
 </div>
-<div class="toptit">Ìí¼ÓÎÄµµ</div>
+<div class="toptit">æ·»åŠ æ–‡æ¡£</div>
   <form action="?act=addsave" method="post" enctype="multipart/form-data" name="FormData" id="FormData" >
   {#$inputtoken#}
     <table width="100%" border="0" cellpadding="3" cellspacing="0" class="admin_table">
       <tr>
-        <td width="120" align="right" style="border:0px" >ÎÄµµÃû³Æ£º</td>
+        <td width="120" align="right" style="border:0px" >æ–‡æ¡£åç§°ï¼š</td>
         <td style="border:0px">
 		<input name="h_filename" type="text"  class="input_text_200" maxlength="45"/>		</td>
       </tr>
       <tr>
-        <td align="right" >ËùÊô·ÖÀà£º</td>
+        <td align="right" >æ‰€å±åˆ†ç±»ï¼š</td>
         <td >
 		
 		<div>		
-		<input type="text" value="{#$smarty.get.h_typeid_cn|default:"ÇëÑ¡Ôñ"#}"  readonly="readonly" name="h_typeid_cn" id="h_typeid_cn" class="input_text_200 input_text_selsect"/>
+		<input type="text" value="{#$smarty.get.h_typeid_cn|default:"è¯·é€‰æ‹©"#}"  readonly="readonly" name="h_typeid_cn" id="h_typeid_cn" class="input_text_200 input_text_selsect"/>
 		<input name="h_typeid" id="h_typeid" type="hidden" value="{#$smarty.get.h_typeid#}" />
 		<div id="menu1" class="menu">
 			<ul>	
@@ -37,7 +37,7 @@ $(document).ready(function()
 		  </div>		 </td>
       </tr>
       <tr>
-        <td align="right" ><span style="border:0px">ÑÕÉ«£º</span></td>
+        <td align="right" ><span style="border:0px">é¢œè‰²ï¼š</span></td>
         <td > 
 		  <script type="text/javascript" src="js/jquery.iColorPicker.js"></script>
           <input name="h_color"  id="h_color" type="text"  class="iColorPicker input_text_200" onclick="iColorShow('h_color','icp_h_color')"/>
@@ -45,35 +45,35 @@ $(document).ready(function()
         </td>
       </tr>
       <tr>
-        <td align="right" >¼Ó´Ö£º</td>
+        <td align="right" >åŠ ç²—ï¼š</td>
         <td ><label>
           <input type="checkbox" name="h_strong" value="1" />
         </label></td>
       </tr>
       <tr>
-        <td align="right" >ÉÏ´«ÎÄ¼ş£º</td>
-        <td ><input type="file" name="upfile"    onkeydown="alert('Çëµã»÷ÓÒ²à¡°ä¯ÀÀ¡±Ñ¡ÔñÄúµçÄÔÉÏµÄÎÄ¼ş£¡');return false"   style="height:21px; width:210px; border:1px #999999 solid" />
-		<span class="admin_note">Ö»ÄÜÉÏ´«doc/ppt/xls/rtfÎÄ¼ş</span>
+        <td align="right" >ä¸Šä¼ æ–‡ä»¶ï¼š</td>
+        <td ><input type="file" name="upfile"    onkeydown="alert('è¯·ç‚¹å‡»å³ä¾§â€œæµè§ˆâ€é€‰æ‹©æ‚¨ç”µè„‘ä¸Šçš„æ–‡ä»¶ï¼');return false"   style="height:21px; width:210px; border:1px #999999 solid" />
+		<span class="admin_note">åªèƒ½ä¸Šä¼ doc/ppt/xls/rtfæ–‡ä»¶</span>
 		</td>
       </tr>
       <tr>
-        <td align="right" >»òÌîĞ´ÎÄ¼şÂ·¾¶£º</td>
+        <td align="right" >æˆ–å¡«å†™æ–‡ä»¶è·¯å¾„ï¼š</td>
         <td > 
           <input name="url" type="text"  class="input_text_200" maxlength="200"/>
-		  <span class="admin_note">Èç:http://www.123.com/abc/123.doc</span>
+		  <span class="admin_note">å¦‚:http://www.123.com/abc/123.doc</span>
          </td>
       </tr>
 	   <tr>
-        <td align="right" >ÅÅĞò£º</td>
+        <td align="right" >æ’åºï¼š</td>
         <td > 
           <input name="h_order" type="text"  class="input_text_200" maxlength="3" value="0"/>
 		  
-		  <span class="admin_note">Êı×ÖÔ½´ó£¬ÅÅĞòÔ½¿¿Ç°</span>
+		  <span class="admin_note">æ•°å­—è¶Šå¤§ï¼Œæ’åºè¶Šé å‰</span>
          </td>
       </tr>
       <tr>
         <td align="right" >&nbsp;</td>
-        <td height="50" ><input type="submit" name="Submit" value="Ìí¼Ó" class="admin_submit"   />&nbsp;</td>
+        <td height="50" ><input type="submit" name="Submit" value="æ·»åŠ " class="admin_submit"   />&nbsp;</td>
       </tr>
     </table>
   </form>

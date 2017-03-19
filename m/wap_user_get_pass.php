@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
  * 74cms WAP
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -19,29 +19,29 @@ $smarty->cache = false;
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'enter';
 if ($act=='enter')
 {
-	$smarty->assign('title','ÕÒ»ØÃÜÂë - '.$_CFG['site_name']);
+	$smarty->assign('title','æ‰¾å›å¯†ç  - '.$_CFG['site_name']);
 	$captcha=get_cache('captcha');
 	$smarty->assign('verify_getpwd',$captcha['verify_getpwd']);
 	$smarty->assign('sms',get_cache('sms_config'));
 	$smarty->assign('step',"1");
 	$smarty->display('wap/wap-alter-password.html');
 }
-//ÕÒ»ØÃÜÂëµÚ2²½
+//æ‰¾å›å¯†ç ç¬¬2æ­¥
 elseif ($act=='get_pass')
 {
 
 	$captcha=get_cache('captcha');
 	$postcaptcha = trim($_POST['postcaptcha']);
-	$postusername=trim($_POST['username'])?trim($_POST['username']):exit('ÇëÌîĞ´ÓÃ»§Ãû');
+	$postusername=trim($_POST['username'])?trim($_POST['username']):exit('è¯·å¡«å†™ç”¨æˆ·å');
 	if (empty($_POST['email']) || !preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$_POST['email']))
 	{
-	echo 'µç×ÓÓÊÏä¸ñÊ½´íÎó£¡';
+	echo 'ç”µå­é‚®ç®±æ ¼å¼é”™è¯¯ï¼';
 	}
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
 	$userinfo=get_user_inusername($postusername);
 	if (empty($userinfo) || $userinfo['email']<>$_POST['email'])
 	{
-	echo 'ÓÃ»§Ãû»ò×¢²áÓÊÏäÌîĞ´´íÎó';
+	echo 'ç”¨æˆ·åæˆ–æ³¨å†Œé‚®ç®±å¡«å†™é”™è¯¯';
 	}
 	else
 	{
@@ -49,18 +49,18 @@ elseif ($act=='get_pass')
 			$mailconfig=get_cache('mailconfig');
 			$arr['username']=$userinfo['username'];
 			$arr['password'] = rand(100000,999999).randstr();
-				if (smtp_mail($userinfo['email'],"ÕÒ»ØÃÜÂë","ÄúµÄĞÂÃÜÂëÎª£º".$arr['password']))
+				if (smtp_mail($userinfo['email'],"æ‰¾å›å¯†ç ","æ‚¨çš„æ–°å¯†ç ä¸ºï¼š".$arr['password']))
 				{
 					$md5password=md5(md5($arr['password']).$userinfo['pwd_hash'].$QS_pwdhash);
 					if (!$db->query( "UPDATE ".table('members')." SET password = '$md5password'  WHERE uid='{$userinfo['uid']}'"))
 					{
-					echo 'ÃÜÂëĞŞ¸ÄÊ§°Ü';
+					echo 'å¯†ç ä¿®æ”¹å¤±è´¥';
 					}
-					echo 'ÃÜÂëĞŞ¸Ä³É¹¦Çë²é¿´ÄúµÄÓÊÏä';
+					echo 'å¯†ç ä¿®æ”¹æˆåŠŸè¯·æŸ¥çœ‹æ‚¨çš„é‚®ç®±';
 				}
 				else
 				{
-					echo 'ÓÊ¼ş·¢ËÍÊ§°Ü£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±';
+					echo 'é‚®ä»¶å‘é€å¤±è´¥ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜';
 				}
 	}
 }

@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>¸öÈË»áÔ±ÖĞĞÄ</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ä¸ªäººä¼šå‘˜ä¸­å¿ƒ</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="../css/common.css" rel="stylesheet" type="text/css" />
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
@@ -17,7 +17,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
@@ -27,37 +27,37 @@ $(document).ready(function()
 <body>
 <div class=""></div>
 <div class="sub_head_top">
-	<div class="title">ÍêÉÆ¼òÀú</div>
+	<div class="title">å®Œå–„ç®€å†</div>
 	<div class="back" id="pageback"><img src="../images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="../images/2.jpg"  border="0"/></a></div>
 </div>
 
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="../index.php";'>
-    <div class="box"><img src="../images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="../images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-jobs-list.php";'>
-    <div class="box"><img src="../images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="../images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-resume-list.php";'>
-    <div class="box"><img src="../images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="../images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-news-list.php";'>
-    <div class="box"><img src="../images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="../images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 
-<!-- ÍêÉÆ¼òÀúÒ³Ãæ -->
+<!-- å®Œå–„ç®€å†é¡µé¢ -->
 <div class="comlpete_top">
 	<div class="complete_top_l"><div id="show_modify_resume_one">{#$resume_one.title#}</div><input class="complete_top_l" type="text" id="input_modify_resume_one" value="{#$resume_one.title#}" style="display:none;border:none"></div>
 	<div class="complete_top_r">
-		<div class="modify_name" id="modify_name">ĞŞ¸ÄÃû³Æ</div>
-		<div class="modify_name" id="modify_name_save" style="display:none">±£´æ</div>
+		<div class="modify_name" id="modify_name">ä¿®æ”¹åç§°</div>
+		<div class="modify_name" id="modify_name_save" style="display:none">ä¿å­˜</div>
 	</div>
 	<div class="clear"></div>
 </div>
@@ -74,14 +74,14 @@ $(document).ready(function()
 		$.post("?act=resume_name_save", {"resume_id":resume_id,"title":resvalue} , function(data) {
 
 			if(data == "ok") {
-				alert("ĞŞ¸Ä³É¹¦£¡");
+				alert("ä¿®æ”¹æˆåŠŸï¼");
 				$("#show_modify_resume_one").html(resvalue);
 				$("#show_modify_resume_one").show();
 				$("#input_modify_resume_one").hide();
 				$("#modify_name_save").hide();
 				$("#modify_name").show();
 			} else if(data == "err") {
-				alert("ĞŞ¸ÄÊ§°Ü£¡");
+				alert("ä¿®æ”¹å¤±è´¥ï¼");
 				window.location.reload();
 			} else {
 				alert(data);
@@ -92,7 +92,7 @@ $(document).ready(function()
 </script>
 <div class="complete_mid">
 	<div class="complete_mid_l">
-		<div class="resume_bar">¼òÀúÍêÕû¶È£º</div>
+		<div class="resume_bar">ç®€å†å®Œæ•´åº¦ï¼š</div>
 		<div class="resume_bar bar">
 			<div class="bar_bg"></div>
 			<div class="bar_blue" style="width:{#$resume_one.complete_percent#}%;"></div>
@@ -100,52 +100,52 @@ $(document).ready(function()
 		<div class="resume_bar">{#$resume_one.complete_percent#}%</div>
 		<div class="clear"></div>
 	</div>
-	<div class="complete_mid_r">µÈ¼¶£º{#if $list.talent=="2"#}¸ß¼¶{#elseif $list.talent=="3"#}¸ß¼¶´ıÉó{#else#}ÆÕÍ¨&nbsp;&nbsp;	{#/if#}</div>
+	<div class="complete_mid_r">ç­‰çº§ï¼š{#if $list.talent=="2"#}é«˜çº§{#elseif $list.talent=="3"#}é«˜çº§å¾…å®¡{#else#}æ™®é€š&nbsp;&nbsp;	{#/if#}</div>
 	<div class="clear"></div>
 </div>
 <div class="complete_main">
 	<div class="complete_list">
 		<div class="complete_list_c" onclick="window.location.href='?act=resume_basic&pid={#$resume_one.id#}'">
-			<div class="list_c_t1"><span>»ù±¾ĞÅÏ¢</span></div>
-			<div class="list_c_t2">{#if $resume_basic#}<span class="full">ÒÑÌîĞ´</span>{#else#}<span class="nofull">Î´ÌîĞ´</span>{#/if#}</div>
+			<div class="list_c_t1"><span>åŸºæœ¬ä¿¡æ¯</span></div>
+			<div class="list_c_t2">{#if $resume_basic#}<span class="full">å·²å¡«å†™</span>{#else#}<span class="nofull">æœªå¡«å†™</span>{#/if#}</div>
 			<div class="list_c_t3"><a><img src="../images/34.gif" alt="" /></a></div>
 			<div class="clear"></div>
 		</div>
 		<div class="complete_list_c" onclick="window.location.href='?act=resume_jobs&pid={#$resume_one.id#}'">
-			<div class="list_c_t1"><span>ÇóÖ°ÒâÏò</span></div>
-			<div class="list_c_t2">{#if $resume_jobs#}<span class="full">ÒÑÌîĞ´</span>{#else#}<span class="nofull">Î´ÌîĞ´</span>{#/if#}</div>
+			<div class="list_c_t1"><span>æ±‚èŒæ„å‘</span></div>
+			<div class="list_c_t2">{#if $resume_jobs#}<span class="full">å·²å¡«å†™</span>{#else#}<span class="nofull">æœªå¡«å†™</span>{#/if#}</div>
 			<div class="list_c_t3"><a><img src="../images/34.gif" alt="" /></a></div>
 			<div class="clear"></div>
 		</div>
 		<div class="complete_list_c" onclick="window.location.href='?act=resume_work_list&pid={#$resume_one.id#}'">
-			<div class="list_c_t1"><span>¹¤×÷¾­Àú</span></div>
-			<div class="list_c_t2">{#if $resume_work#}<span class="full">ÒÑÌîĞ´</span>{#else#}<span class="nofull">Î´ÌîĞ´</span>{#/if#}</div>
+			<div class="list_c_t1"><span>å·¥ä½œç»å†</span></div>
+			<div class="list_c_t2">{#if $resume_work#}<span class="full">å·²å¡«å†™</span>{#else#}<span class="nofull">æœªå¡«å†™</span>{#/if#}</div>
 			<div class="list_c_t3"><a><img src="../images/34.gif" alt="" /></a></div>
 			<div class="clear"></div>
 		</div>
 		<div class="complete_list_c" onclick="window.location.href='?act=resume_education&pid={#$resume_one.id#}'" >
-			<div class="list_c_t1"><span>½ÌÓı¾­Àú</span></div>
-			<div class="list_c_t2">{#if $resume_education#}<span class="full">ÒÑÌîĞ´</span>{#else#}<span class="nofull">Î´ÌîĞ´</span>{#/if#}</div>
+			<div class="list_c_t1"><span>æ•™è‚²ç»å†</span></div>
+			<div class="list_c_t2">{#if $resume_education#}<span class="full">å·²å¡«å†™</span>{#else#}<span class="nofull">æœªå¡«å†™</span>{#/if#}</div>
 			<div class="list_c_t3"><a><img src="../images/34.gif" alt="" /></a></div>
 			<div class="clear"></div>
 		</div>
 		<div class="complete_list_c" onclick="window.location.href='?act=resume_train&pid={#$resume_one.id#}'" >
-			<div class="list_c_t1"><span>ÅàÑµ¾­Àú</span></div>
-			<div class="list_c_t2">{#if $resume_training#}<span class="full">ÒÑÌîĞ´</span>{#else#}<span class="nofull">Î´ÌîĞ´</span>{#/if#}</div>
+			<div class="list_c_t1"><span>åŸ¹è®­ç»å†</span></div>
+			<div class="list_c_t2">{#if $resume_training#}<span class="full">å·²å¡«å†™</span>{#else#}<span class="nofull">æœªå¡«å†™</span>{#/if#}</div>
 			<div class="list_c_t3"><a><img src="../images/34.gif" alt="" /></a></div>
 			<div class="clear"></div>
 		</div>
 		<div class="complete_list_c" onclick="window.location.href='?act=resume_specialty&pid={#$resume_one.id#}'">
-			<div class="list_c_t1"><span>×ÔÎÒÃèÊö</span></div>
-			<div class="list_c_t2">{#if $resume_basic.specialty#}<span class="full">ÒÑÌîĞ´</span>{#else#}<span class="nofull">Î´ÌîĞ´</span>{#/if#}</div>
+			<div class="list_c_t1"><span>è‡ªæˆ‘æè¿°</span></div>
+			<div class="list_c_t2">{#if $resume_basic.specialty#}<span class="full">å·²å¡«å†™</span>{#else#}<span class="nofull">æœªå¡«å†™</span>{#/if#}</div>
 			<div class="list_c_t3"><img src="../images/34.gif" alt="" /></div>
 			<div class="clear"></div>
 		</div>
 	</div>
 </div>
 <div class="complete_but">
-	<div class="save_resume"><a href="">±£´æ</a></div>
-	<div class="preview"><a href="../wap-resume-show.php?id={#$resume_one.id#}">Ô¤ÀÀ¼òÀú</a></div>
+	<div class="save_resume"><a href="">ä¿å­˜</a></div>
+	<div class="preview"><a href="../wap-resume-show.php?id={#$resume_one.id#}">é¢„è§ˆç®€å†</a></div>
 	<div class="clear"></div>
 </div>
 

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms »áÔ±×¢²á
+ * 74cms ä¼šå‘˜æ³¨å†Œ
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -37,7 +37,7 @@ if(!$_SESSION['uid'] && !$_SESSION['username'] && !$_SESSION['utype'] &&  $_COOK
 	header("Location:".url_rewrite('QS_login'));
 	}
 }
-//¼¤»îÕË»§
+//æ¿€æ´»è´¦æˆ·
 elseif ($act=='activate')
 {
 	if (defined('UC_API')){
@@ -57,7 +57,7 @@ elseif ($act=='activate')
 				}
 				else
 				{
-				showmsg('¼¤»îÊ§°Ü£¬ÓÃ»§Ãû´íÎó£¡',0);
+				showmsg('æ¿€æ´»å¤±è´¥ï¼Œç”¨æˆ·åé”™è¯¯ï¼',0);
 				}
 				$smarty->display('user/activate.htm');
 	}
@@ -68,39 +68,39 @@ elseif ($act=='activate_save')
 		if($activateinfo>0)
 		{
 			$login_url=user_login($_SESSION['activate_username'],$_POST['pwd'],1,false);
-			$link[0]['text'] = "½øÈë»áÔ±ÖĞĞÄ";
+			$link[0]['text'] = "è¿›å…¥ä¼šå‘˜ä¸­å¿ƒ";
 			$link[0]['href'] = $login_url['qs_login'];
-			$link[1]['text'] = "ÍøÕ¾Ê×Ò³";
+			$link[1]['text'] = "ç½‘ç«™é¦–é¡µ";
 			$link[1]['href'] = $_CFG['site_dir'];
 			$_SESSION['activate_username']="";
-			showmsg('¼¤»î³É¹¦£¬¼´½«½øÈë»áÔ±ÖĞĞÄ£¡',2,$link);
+			showmsg('æ¿€æ´»æˆåŠŸï¼Œå³å°†è¿›å…¥ä¼šå‘˜ä¸­å¿ƒï¼',2,$link);
 			exit(); 
 		}
 		else
 		{
 			if ($activateinfo==-10)
 			{
-			$html="ÃÜÂëÊäÈë´íÎó";
+			$html="å¯†ç è¾“å…¥é”™è¯¯";
 			}
 			elseif($activateinfo==-1)
 			{
-			$html="¼¤»î»áÔ±ÀàĞÍ¶ªÊ§";
+			$html="æ¿€æ´»ä¼šå‘˜ç±»å‹ä¸¢å¤±";
 			}
 			elseif($activateinfo==-2)
 			{
-			$html="µç×ÓÓÊÏäÓĞÖØ¸´";
+			$html="ç”µå­é‚®ç®±æœ‰é‡å¤";
 			}
 			elseif($activateinfo==-3)
 			{
-			$html="ÊÖ»úÓĞÖØ¸´";
+			$html="æ‰‹æœºæœ‰é‡å¤";
 			}
 			elseif($activateinfo==-4)
 			{
-			$html="ÓÃ»§ÃûÓĞÖØ¸´";
+			$html="ç”¨æˆ·åæœ‰é‡å¤";
 			}
 			else
 			{
-			$html="Ô­ÒòÎ´Öª";
+			$html="åŸå› æœªçŸ¥";
 			}
 			unset($_SESSION['uid']);
 			unset($_SESSION['username']);
@@ -113,9 +113,9 @@ elseif ($act=='activate_save')
 			unset($_SESSION['activate_username']);
 			unset($_SESSION['activate_email']);
 			unset($_SESSION["openid"]);
-			$link[0]['text'] = "ÖØĞÂµÇÂ¼";
+			$link[0]['text'] = "é‡æ–°ç™»å½•";
 			$link[0]['href'] = url_rewrite('QS_login');
-			showmsg("¼¤»îÊ§°Ü£¬Ô­Òò£º{$html}",0,$link);
+			showmsg("æ¿€æ´»å¤±è´¥ï¼ŒåŸå› ï¼š{$html}",0,$link);
 			exit();
 		}
 }
@@ -123,17 +123,17 @@ elseif ($_SESSION['username'] && $_SESSION['utype'] &&  $_COOKIE['QS']['username
 {
 	header("Location:".get_member_url($_SESSION['utype']));
 }
-// ×¢²áµÚÒ»²½
+// æ³¨å†Œç¬¬ä¸€æ­¥
 elseif ($act=='reg')
 {
-	if ($_CFG['closereg']=='1')showmsg("ÍøÕ¾ÔİÍ£»áÔ±×¢²á£¬ÇëÉÔºóÔÙ´Î³¢ÊÔ£¡",1);
+	if ($_CFG['closereg']=='1')showmsg("ç½‘ç«™æš‚åœä¼šå‘˜æ³¨å†Œï¼Œè¯·ç¨åå†æ¬¡å°è¯•ï¼",1);
 	if(intval($_GET['type'])==3 && $_PLUG['hunter']['p_install']==1){
-		showmsg("¹ÜÀíÔ±ÒÑ¹Ø±ÕÁÔÍ·Ä£¿é,½ûÖ¹×¢²á£¡",1);
+		showmsg("ç®¡ç†å‘˜å·²å…³é—­çŒå¤´æ¨¡å—,ç¦æ­¢æ³¨å†Œï¼",1);
 	}
 	if(intval($_GET['type'])==4 && $_PLUG['train']['p_install']==1){
-		showmsg("¹ÜÀíÔ±ÒÑ¹Ø±ÕÅàÑµÄ£¿é,½ûÖ¹×¢²á£¡",1);
+		showmsg("ç®¡ç†å‘˜å·²å…³é—­åŸ¹è®­æ¨¡å—,ç¦æ­¢æ³¨å†Œï¼",1);
 	}
-	$smarty->assign('title','»áÔ±×¢²á - '.$_CFG['site_name']);
+	$smarty->assign('title','ä¼šå‘˜æ³¨å†Œ - '.$_CFG['site_name']);
 	$token=substr(md5(mt_rand(100000, 999999)), 8,16);
 	$_SESSION['reg_token']=$token;
 	$smarty->assign('token',$token);
@@ -141,27 +141,27 @@ elseif ($act=='reg')
 	$smarty->assign('verify_userreg',$captcha['verify_userreg']);
 	$smarty->display('user/reg-step1.htm');
 }
-// ×¢²áµÚ¶ş²½ Í¨¹ıÊÖ»ú
+// æ³¨å†Œç¬¬äºŒæ­¥ é€šè¿‡æ‰‹æœº
 elseif($act =="reg_step2")
 {
 	global $_CFG;
 	if(empty($_POST['token']) || $_POST['token']!=$_SESSION['reg_token'])
 	{
-		$link[0]['text'] = "×¢²áÊ§°Ü,ÖØĞÂ×¢²á";
+		$link[0]['text'] = "æ³¨å†Œå¤±è´¥,é‡æ–°æ³¨å†Œ";
 		$link[0]['href'] = "?act=reg";
-		showmsg("×¢²áÊ§°Ü£¬·ÇÕı³£Á´½Ó",0,$link);
+		showmsg("æ³¨å†Œå¤±è´¥ï¼Œéæ­£å¸¸é“¾æ¥",0,$link);
 	}
-	$sqlarr['utype']=$_POST['utype']?intval($_POST['utype']):showmsg('ÇëÑ¡Ôñ»áÔ±ÀàĞÍ');
-	$sqlarr['mobile']=$_POST['mobile']?trim($_POST['mobile']):showmsg('ÇëÊäÈëÊÖ»úºÅ');
+	$sqlarr['utype']=$_POST['utype']?intval($_POST['utype']):showmsg('è¯·é€‰æ‹©ä¼šå‘˜ç±»å‹');
+	$sqlarr['mobile']=$_POST['mobile']?trim($_POST['mobile']):showmsg('è¯·è¾“å…¥æ‰‹æœºå·');
 	$sqlarr['reg_type']=1;
 	$token=substr(md5(mt_rand(100000, 999999)), 8,16);
 	$_SESSION['reg_token']=$token;
 	$smarty->assign('token',$token);
-	$smarty->assign('title','»áÔ±×¢²á - '.$_CFG['site_name']);
+	$smarty->assign('title','ä¼šå‘˜æ³¨å†Œ - '.$_CFG['site_name']);
 	$smarty->assign('sqlarr',$sqlarr);
 	$smarty->display('user/reg-step2.htm');
 }
-// Í¨¹ıÓÊÏä
+// é€šè¿‡é‚®ç®±
 elseif($act =="reg_step2_email")
 {
 	global $_CFG;
@@ -174,72 +174,72 @@ elseif($act =="reg_step2_email")
 		$end_time=$time+24*3600;
 		if($end_time<time())
 		{
-			$link[0]['text'] = "ÖØĞÂ×¢²á";
+			$link[0]['text'] = "é‡æ–°æ³¨å†Œ";
 			$link[0]['href'] = "?act=reg";
-			showmsg("×¢²áÊ§°Ü,Á´½Ó¹ıÆÚ",0,$link);
+			showmsg("æ³¨å†Œå¤±è´¥,é“¾æ¥è¿‡æœŸ",0,$link);
 		}
 		$key_str=substr(md5($email.$time),8,16);
 		if($key_str!=$key)
 		{
-			$link[0]['text'] = "ÖØĞÂ×¢²á";
+			$link[0]['text'] = "é‡æ–°æ³¨å†Œ";
 			$link[0]['href'] = "?act=reg";
-			showmsg("×¢²áÊ§°Ü,key´íÎó",0,$link);
+			showmsg("æ³¨å†Œå¤±è´¥,keyé”™è¯¯",0,$link);
 		}
 		$token=substr(md5(mt_rand(100000, 999999)), 8,16);
 		$_SESSION['reg_token']=$token;
 		$smarty->assign('token',$token);
-		$sqlarr['utype']=$_GET['utype']?intval($_GET['utype']):showmsg('ÇëÑ¡Ôñ»áÔ±ÀàĞÍ');
-		$sqlarr['email']=$_GET['email']?trim($_GET['email']):showmsg('ÇëÊäÈëÓÊÏä');
+		$sqlarr['utype']=$_GET['utype']?intval($_GET['utype']):showmsg('è¯·é€‰æ‹©ä¼šå‘˜ç±»å‹');
+		$sqlarr['email']=$_GET['email']?trim($_GET['email']):showmsg('è¯·è¾“å…¥é‚®ç®±');
 	}
 	else
 	{
 		if(empty($_POST['token']) || $_POST['token']!=$_SESSION['reg_token'])
 		{
-			$link[0]['text'] = "×¢²áÊ§°Ü,ÖØĞÂ×¢²á";
+			$link[0]['text'] = "æ³¨å†Œå¤±è´¥,é‡æ–°æ³¨å†Œ";
 			$link[0]['href'] = "?act=reg";
-			showmsg("×¢²áÊ§°Ü£¬·ÇÕı³£Á´½Ó",0,$link);
+			showmsg("æ³¨å†Œå¤±è´¥ï¼Œéæ­£å¸¸é“¾æ¥",0,$link);
 		}
-		$sqlarr['utype']=$_POST['utype']?intval($_POST['utype']):showmsg('ÇëÑ¡Ôñ»áÔ±ÀàĞÍ');
-		$sqlarr['email']=$_POST['email']?trim($_POST['email']):showmsg('ÇëÊäÈëÓÊÏä');
+		$sqlarr['utype']=$_POST['utype']?intval($_POST['utype']):showmsg('è¯·é€‰æ‹©ä¼šå‘˜ç±»å‹');
+		$sqlarr['email']=$_POST['email']?trim($_POST['email']):showmsg('è¯·è¾“å…¥é‚®ç®±');
 		$token=substr(md5(mt_rand(100000, 999999)), 8,16);
 		$_SESSION['reg_token']=$token;
 		$smarty->assign('token',$token);
 	}
 	$sqlarr['reg_type']=2;
 	$smarty->assign('sqlarr',$sqlarr);
-	$smarty->assign('title','»áÔ±×¢²á - '.$_CFG['site_name']);
+	$smarty->assign('title','ä¼šå‘˜æ³¨å†Œ - '.$_CFG['site_name']);
 	$smarty->display('user/reg-step2.htm');
 }
-// ±£´æ×¢²áĞÅÏ¢
+// ä¿å­˜æ³¨å†Œä¿¡æ¯
 elseif($act =="reg_step3")
 {
 	global $db,$QS_pwdhash,$_CFG,$timestamp;
 	if(empty($_POST['token']) || $_POST['token']!=$_SESSION['reg_token'])
 	{
-		$link[0]['text'] = "×¢²áÊ§°Ü,ÖØĞÂ×¢²á";
+		$link[0]['text'] = "æ³¨å†Œå¤±è´¥,é‡æ–°æ³¨å†Œ";
 		$link[0]['href'] = "?act=reg";
-		showmsg("×¢²áÊ§°Ü£¬·ÇÕı³£Á´½Ó",0,$link);
+		showmsg("æ³¨å†Œå¤±è´¥ï¼Œéæ­£å¸¸é“¾æ¥",0,$link);
 	}
 	unset($_SESSION['reg_token']);
-	// ×¢²áĞÅÏ¢
-	$reg_type=$_POST['reg_type']?intval($_POST['reg_type']):showmsg("×¢²á·½Ê½´íÎó");
-	$member_type=$_POST['utype']?intval($_POST['utype']):showmsg("Ñ¡Ôñ×¢²á»áÔ±");
-	$password=$_POST['password']?trim($_POST['password']):showmsg("ÇëÊäÈëÃÜÂë");
+	// æ³¨å†Œä¿¡æ¯
+	$reg_type=$_POST['reg_type']?intval($_POST['reg_type']):showmsg("æ³¨å†Œæ–¹å¼é”™è¯¯");
+	$member_type=$_POST['utype']?intval($_POST['utype']):showmsg("é€‰æ‹©æ³¨å†Œä¼šå‘˜");
+	$password=$_POST['password']?trim($_POST['password']):showmsg("è¯·è¾“å…¥å¯†ç ");
 	if($reg_type==1)
 	{
-		$mobile=$_POST['mobile']?trim($_POST['mobile']):showmsg("×¢²áÊÖ»úºÅ¶ªÊ§");
+		$mobile=$_POST['mobile']?trim($_POST['mobile']):showmsg("æ³¨å†Œæ‰‹æœºå·ä¸¢å¤±");
 		$rst=user_register($reg_type,$password,$member_type,"",$mobile,false);
 	}
 	else
 	{
-		$email=$_POST['email']?trim($_POST['email']):showmsg("×¢²áÓÊÏäºÅ¶ªÊ§");
+		$email=$_POST['email']?trim($_POST['email']):showmsg("æ³¨å†Œé‚®ç®±å·ä¸¢å¤±");
 		$rst=user_register($reg_type,$password,$member_type,$email,"",$uc_reg=true);
 	}
 	if($rst>0)
 	{
 		$user=get_user_inid($rst);
 
-		// ÆóÒµĞÅÏ¢
+		// ä¼ä¸šä¿¡æ¯
 		if($member_type==1 && !empty($com_setarr))
 		{
 			$com_setarr['uid']=intval($rst);
@@ -254,32 +254,32 @@ elseif($act =="reg_step3")
 		{
 		switch ($user['utype']) {
 			case '1':
-				$utype_cn='ÆóÒµ'; 
+				$utype_cn='ä¼ä¸š'; 
 				break;
 			case '2':
-				$utype_cn='¸öÈË'; 
+				$utype_cn='ä¸ªäºº'; 
 				break;
 			case '3':
-				$utype_cn='ÁÔÍ·'; 
+				$utype_cn='çŒå¤´'; 
 				break;
 			case '4':
-				$utype_cn='ÅàÑµ'; 
+				$utype_cn='åŸ¹è®­'; 
 				break;
 		}
 		dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_mail.php?uid=".$user['uid']."&key=".asyn_userkey($user['uid'])."&sendemail=".$email."&sendusername=".$user['username']."&sendpassword=".$password."&utype=".$utype_cn."&act=reg");
 		}
 		$user['uc_url']=$login_js['uc_login'];
 		$user['url']=$login_js['qs_login'];
-		$smarty->assign('title','»áÔ±×¢²á - '.$_CFG['site_name']);
+		$smarty->assign('title','ä¼šå‘˜æ³¨å†Œ - '.$_CFG['site_name']);
 		$smarty->assign('user',$user);
 		setcookie("isFirstReg",1, time()+3600*24);
 		$smarty->display('user/reg-step3.htm');
 	}
 	else
 	{
-		$link[0]['text'] = "×¢²áÊ§°Ü,ÖØĞÂ×¢²á";
+		$link[0]['text'] = "æ³¨å†Œå¤±è´¥,é‡æ–°æ³¨å†Œ";
 		$link[0]['href'] = "?act=reg";
-		showmsg("×¢²áÊ§°Ü",0,$link);
+		showmsg("æ³¨å†Œå¤±è´¥",0,$link);
 	}
 }
 unset($smarty);

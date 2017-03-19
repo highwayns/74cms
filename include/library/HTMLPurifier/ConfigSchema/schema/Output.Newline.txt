@@ -1,4 +1,4 @@
-Output.Newline
+﻿Output.Newline
 TYPE: string/null
 VERSION: 2.0.1
 DEFAULT: NULL

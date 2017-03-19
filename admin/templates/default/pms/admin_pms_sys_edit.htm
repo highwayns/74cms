@@ -1,8 +1,8 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
-//ÑéÖ¤
+//éªŒè¯
 $(document).ready(function() {
  $("#FormData").validate({
  //debug: true,
@@ -19,9 +19,9 @@ $(document).ready(function() {
     messages:
 	{
     message: {
-    required: "ÇëÊäÈëÄÚÈİ",
-    minlength: jQuery.format("ÄÚÈİ²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-	maxlength: jQuery.format("ÄÚÈİ²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+    required: "è¯·è¾“å…¥å†…å®¹",
+    minlength: jQuery.format("å†…å®¹ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+	maxlength: jQuery.format("å†…å®¹ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
    }
   },
   errorPlacement: function(error, element) {
@@ -43,45 +43,45 @@ $(document).ready(function() {
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-´ËĞŞ¸ÄÎŞ·¨Ó°ÏìÒÑ¾­ÊÕµ½ÏûÏ¢µÄÓÃ»§<br />
+æ­¤ä¿®æ”¹æ— æ³•å½±å“å·²ç»æ”¶åˆ°æ¶ˆæ¯çš„ç”¨æˆ·<br />
 </p>
 </div>
-<div class="toptit">ĞŞ¸ÄÏûÏ¢</div>
+<div class="toptit">ä¿®æ”¹æ¶ˆæ¯</div>
   <form action="?act=pms_editsave" method="post"   name="FormData" id="FormData" >
   {#$inputtoken#}
     <table width="100%" border="0" cellpadding="5" cellspacing="0"  class="admin_table">
       <tr>
-        <td width="100" align="right" >½ÓÊÜ»áÔ±£º</td>
+        <td width="100" align="right" >æ¥å—ä¼šå‘˜ï¼š</td>
         <td >
-		<label><input name="spms_usertype" type="radio" value="0" {#if $pms.spms_usertype=="0"#}checked="checked"{#/if#} />È«²¿»áÔ±</label>
+		<label><input name="spms_usertype" type="radio" value="0" {#if $pms.spms_usertype=="0"#}checked="checked"{#/if#} />å…¨éƒ¨ä¼šå‘˜</label>
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<label><input type="radio" name="spms_usertype" value="1"  {#if $pms.spms_usertype=="1"#}checked="checked"{#/if#}/>½öÆóÒµ»áÔ± </label>
+		<label><input type="radio" name="spms_usertype" value="1"  {#if $pms.spms_usertype=="1"#}checked="checked"{#/if#}/>ä»…ä¼ä¸šä¼šå‘˜ </label>
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<label><input type="radio" name="spms_usertype" value="2" {#if $pms.spms_usertype=="2"#}checked="checked"{#/if#} />½ö¸öÈË»áÔ± </label>
+		<label><input type="radio" name="spms_usertype" value="2" {#if $pms.spms_usertype=="2"#}checked="checked"{#/if#} />ä»…ä¸ªäººä¼šå‘˜ </label>
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<label><input type="radio" name="spms_usertype" value="3" {#if $pms.spms_usertype=="3"#}checked="checked"{#/if#} />½öÁÔÍ·¹ËÎÊ </label>
+		<label><input type="radio" name="spms_usertype" value="3" {#if $pms.spms_usertype=="3"#}checked="checked"{#/if#} />ä»…çŒå¤´é¡¾é—® </label>
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<label><input type="radio" name="spms_usertype" value="4" {#if $pms.spms_usertype=="4"#}checked="checked"{#/if#} />½öÅàÑµ»ú¹¹ </label>
+		<label><input type="radio" name="spms_usertype" value="4" {#if $pms.spms_usertype=="4"#}checked="checked"{#/if#} />ä»…åŸ¹è®­æœºæ„ </label>
 		</td>
       </tr>
       <tr>
-        <td align="right" >ÀàĞÍ£º</td>
+        <td align="right" >ç±»å‹ï¼š</td>
         <td >
-		<label><input name="spms_type" type="radio" value="1" {#if $pms.spms_type=="1"#}checked="checked"{#/if#}/>ÆÕÍ¨ÏûÏ¢</label>
+		<label><input name="spms_type" type="radio" value="1" {#if $pms.spms_type=="1"#}checked="checked"{#/if#}/>æ™®é€šæ¶ˆæ¯</label>
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<label><input type="radio" name="spms_type" value="2"  {#if $pms.spms_type=="2"#}checked="checked"{#/if#}/>×¢²áÌáĞÑ </label>
+		<label><input type="radio" name="spms_type" value="2"  {#if $pms.spms_type=="2"#}checked="checked"{#/if#}/>æ³¨å†Œæé†’ </label>
 		</td>
       </tr>
 	   
       <tr>
-        <td align="right" valign="top" >ÏûÏ¢ÄÚÈİ£º</td>
+        <td align="right" valign="top" >æ¶ˆæ¯å†…å®¹ï¼š</td>
         <td > <textarea name="message" id="message" style="width:400px; height:150px; font-size:12px; line-height:180%">{#$pms.message#}</textarea></td>
       </tr>
       <tr>
         <td align="right" >&nbsp;<input name="id" type="hidden" value="{#$pms.spmid#}" /></td>
-        <td height="60" valign="top" ><input type="submit" name="Submit" value="±£´æ" class="admin_submit"   /></td>
+        <td height="60" valign="top" ><input type="submit" name="Submit" value="ä¿å­˜" class="admin_submit"   /></td>
       </tr>
     </table>
    

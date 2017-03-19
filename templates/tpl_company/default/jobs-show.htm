@@ -1,11 +1,11 @@
-{#qishi_jobs_show set="ÁĞ±íÃû:show,Ö°Î»ID:GET[id]"#}{#qishi_company_show set="ÁĞ±íÃû:company,ÆóÒµID:"|cat:$show.company_id#}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿{#qishi_jobs_show set="åˆ—è¡¨å:show,èŒä½ID:GET[id]"#}{#qishi_company_show set="åˆ—è¡¨å:company,ä¼ä¸šID:"|cat:$show.company_id#}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
 <title>{#$show.jobs_name#} - {#$show.companyname#} - {#$QISHI.site_name#}</title>
-<meta name="description" content="{#$show.companyname#}ÕĞÆ¸{#$show.jobs_name#}">
+<meta name="description" content="{#$show.companyname#}æ‹›è˜{#$show.jobs_name#}">
 <meta name="keywords" content="{#$show.jobs_name#},{#$show.companyname#}">
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
@@ -19,7 +19,7 @@
 <SCRIPT TYPE="text/javascript">
 $(document).ready(function(){
 	$.ajaxSetup ({
-		cache: false //¹Ø±ÕAJAXÏàÓ¦µÄ»º´æ
+		cache: false //å…³é—­AJAXç›¸åº”çš„ç¼“å­˜
 	});
 	var id="{#$show.id#}";
 	var company_id="{#$show.company_id#}";
@@ -30,7 +30,7 @@ $(document).ready(function(){
 			$(".click").html(data);
 		 }
 	);
-	/* ÁªÏµ·½Ê½ */
+	/* è”ç³»æ–¹å¼ */
 	$.get("{#$QISHI.site_dir#}plus/ajax_contact.php", { "id": id,"time":tsTimeStamp,"act":"jobs_contact"},
 		function (data,textStatus)
 		 {			
@@ -48,28 +48,28 @@ $(document).ready(function(){
 			 }
 		);
 	});
-	// µã»÷²é¿´´óÍ¼
+	// ç‚¹å‡»æŸ¥çœ‹å¤§å›¾
 	$(".img_big_show").click(function() {
 		dialog({
-			title: 'ÆóÒµ·ç²É',
+			title: 'ä¼ä¸šé£é‡‡',
 		    content: $("#focus")
 		}).showModal();
 	});
-	//ÊÕ²ØÖ°Î»
+	//æ”¶è—èŒä½
 	favoritesJob_dialog('.add_favorites','{#$QISHI.site_dir#}user/user_favorites_job.php?id={#$show.id#}&act=add');
-	//ÉêÇëÖ°Î»
+	//ç”³è¯·èŒä½
 	applyJob_dialog(".app_jobs","{#$QISHI.site_dir#}user/user_apply_jobs.php");
-	//¾Ù±¨ĞÅÏ¢
+	//ä¸¾æŠ¥ä¿¡æ¯
 	reportJob_dialog(".report_button","{#$QISHI.site_dir#}user/user_report.php");
-	// ÓÃ»§µÇÂ¼
+	// ç”¨æˆ·ç™»å½•
 	$(".ajax_user_login").live('click',function(){
-		var myDialog = dialog();// ³õÊ¼»¯Ò»¸ö´øÓĞloadingÍ¼±êµÄ¿Õ¶Ô»°¿ò
+		var myDialog = dialog();// åˆå§‹åŒ–ä¸€ä¸ªå¸¦æœ‰loadingå›¾æ ‡çš„ç©ºå¯¹è¯æ¡†
 		jQuery.ajax({
 		    url: '{#$QISHI.site_dir#}user/user_ajax_login.php',
 		    success: function (data) {
 		    	myDialog.width(475);
-		        myDialog.content(data);// Ìî³ä¶Ô»°¿òÄÚÈİ
-		        myDialog.title('ÓÃ»§µÇÂ¼');// Ìî³ä¶Ô»°¿òÄÚÈİ
+		        myDialog.content(data);// å¡«å……å¯¹è¯æ¡†å†…å®¹
+		        myDialog.title('ç”¨æˆ·ç™»å½•');// å¡«å……å¯¹è¯æ¡†å†…å®¹
 		    	myDialog.showModal();
 		    }
 		});
@@ -79,24 +79,24 @@ $(document).ready(function(){
 </head>
 <body>
 {#include file="header.htm"#}
-	<!-- µ±Ç°Î»ÖÃ -->
+	<!-- å½“å‰ä½ç½® -->
 	<div class="page_location link_bk">
-		µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a>><a href="{#"QS_jobs"|qishi_url#}">ÕĞÆ¸ĞÅÏ¢</a>>{#$company.companyname#}
+		å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a>><a href="{#"QS_jobs"|qishi_url#}">æ‹›è˜ä¿¡æ¯</a>>{#$company.companyname#}
 	</div>
-	<!-- Ö÷ÌåÄÚÈİ -->
+	<!-- ä¸»ä½“å†…å®¹ -->
 	<div class="container">
 		<div class="company-wrap clearfix">
-			<!-- ×ó±ß -->
+			<!-- å·¦è¾¹ -->
 			<div class="com-left">
 				<div class="compnay-main">
 					<div class="c-top-wrap clearfix">
-						<div class="c-logo f-left"><img src="{#$company.logo#}" alt="¹«Ë¾logo" width="198" height="68" /></div>
+						<div class="c-logo f-left"><img src="{#$company.logo#}" alt="å…¬å¸logo" width="198" height="68" /></div>
 						<div class="c-name f-left">
 							<h2>{#$company.companyname#}
 								{#if $company.audit=="1"#}
-									<img title="ÆóÒµÒÑÈÏÖ¤" src="{#$QISHI.site_template#}images/yesyan.jpg" border="0" />
+									<img title="ä¼ä¸šå·²è®¤è¯" src="{#$QISHI.site_template#}images/yesyan.jpg" border="0" />
 								{#else#}
-									<img title="ÆóÒµÎ´ÈÏÖ¤" src="{#$QISHI.site_template#}images/noyan.jpg" border="0" />
+									<img title="ä¼ä¸šæœªè®¤è¯" src="{#$QISHI.site_template#}images/noyan.jpg" border="0" />
 								{#/if#}
 								{#if $company.pay_user == '1'#}
 									
@@ -108,19 +108,19 @@ $(document).ready(function(){
 						</div>
 					</div>
 					<div class="company-control clearfix">
-						<a href="{#"QS_companyshow,id:"|cat:$company.id|qishi_url#}" class="c-control-item f-left">ÆóÒµÖ÷Ò³</a>
-						<a href="{#"QS_companyinfo,id:"|cat:$company.id|qishi_url#}" class="c-control-item f-left">¹«Ë¾½éÉÜ</a>
-						<a href="{#"QS_companyjobs,id:"|cat:$company.id|qishi_url#}" class="c-control-item f-left active">ÕĞÆ¸Ö°Î»</a>
+						<a href="{#"QS_companyshow,id:"|cat:$company.id|qishi_url#}" class="c-control-item f-left">ä¼ä¸šä¸»é¡µ</a>
+						<a href="{#"QS_companyinfo,id:"|cat:$company.id|qishi_url#}" class="c-control-item f-left">å…¬å¸ä»‹ç»</a>
+						<a href="{#"QS_companyjobs,id:"|cat:$company.id|qishi_url#}" class="c-control-item f-left active">æ‹›è˜èŒä½</a>
 					</div>
-					<!-- Ö°Î»ÏêÇé -->
+					<!-- èŒä½è¯¦æƒ… -->
 					<div class="job-main">
 						<div class="job-top">
 							<h3 class="job-name">{#$show.jobs_name#}</h3>
 							<div class="job-company clearfix"><a href="{#$show.company_url#}" class="f-left">{#$show.companyname#}</a></div>
 							<div class="job-watch-info clearfix">
-								<div class="add-time f-left">¸üĞÂÊ±¼ä£º{#$show.refreshtime|date_format:"%Y-%m-%d %H:%M"#}</div>
-								<div class="watch f-left">ä¯ÀÀ<span><em class="times click"></em></span>´Î</div>
-								<div class="resumes-man f-left"><span>{#$show.countresume#}</span>ÈËÍ¶µİ¼òÀú</div>
+								<div class="add-time f-left">æ›´æ–°æ—¶é—´ï¼š{#$show.refreshtime|date_format:"%Y-%m-%d %H:%M"#}</div>
+								<div class="watch f-left">æµè§ˆ<span><em class="times click"></em></span>æ¬¡</div>
+								<div class="resumes-man f-left"><span>{#$show.countresume#}</span>äººæŠ•é€’ç®€å†</div>
 							</div>
 							{#if $show.tag_cn#}
 							<div class="welfare-box clearfix">
@@ -129,40 +129,40 @@ $(document).ready(function(){
 								{#/foreach#}
 							</div>
 							{#/if#}
-							<!-- ¹ıÆÚÍ¼±ê  ÉêÇë ÊÕ²Ø-->
+							<!-- è¿‡æœŸå›¾æ ‡  ç”³è¯· æ”¶è—-->
 							<div class="app-job-item clearfix">
 								{#if $show.jobs_gq==1#}
 								<img src="{#$QISHI.site_template#}images/job_gq.gif" />
 								{#elseif $show.jobs_gq==2#}
 								<img src="{#$QISHI.site_template#}images/job_sx.gif" />
 								{#else#}
-								<div class="apply-btn f-left"><a href="javascript:;" class="app-button app_jobs" style="display: block;line-height:34px;text-align: center;" jobs_id="{#$show.id#}">ÉêÇëÖ°Î»</a></div>
-								<a href="javascript:;" class="collect {#if $show.check_fav=='1'#}done{#/if#} f-left add_favorites">ÊÕ²Ø</a>
+								<div class="apply-btn f-left"><a href="javascript:;" class="app-button app_jobs" style="display: block;line-height:34px;text-align: center;" jobs_id="{#$show.id#}">ç”³è¯·èŒä½</a></div>
+								<a href="javascript:;" class="collect {#if $show.check_fav=='1'#}done{#/if#} f-left add_favorites">æ”¶è—</a>
 								{#/if#}
 							</div>
 						</div>
 						<div class="job-block">
-							<h3 class="c-left-title">Ö°Î»ĞÅÏ¢</h3>
+							<h3 class="c-left-title">èŒä½ä¿¡æ¯</h3>
 							<div class="job-info-detail clearfix">
-								<div class="job-id-item f-left">¹¤×Ê´ıÓö£º<span>{#$show.wage_cn#} {#if $show.negotiable == 1#}(¿ÉÃæÒé){#else#}{#/if#}</span></div>
-								<div class="job-id-item f-left">Ö°Î»ĞÔÖÊ£º{#$show.nature_cn#}</div>
-								<div class="job-id-item f-left">ÄêÁäÒªÇó£º{#if $show.age=="-"#}²»ÏŞ{#else#}{#$show.age#}Ëê{#/if#}</div>
-								<div class="job-id-item f-left">ÕĞÆ¸ÈËÊı£º{#$show.amount#}ÈË</div>
-								<div class="job-id-item f-left">Ö°Î»Àà±ğ£º{#$show.category_cn#}</div>
-								<div class="job-id-item f-left">ĞÔ±ğÒªÇó£º{#$show.sex_cn#}</div>
-								<div class="job-id-item f-left">¹¤×÷µØÇø£º{#$show.district_ch#}{#if $show.sdistrict_ch#}-{#$show.sdistrict_ch#}{#/if#}</div>
-								<div class="job-id-item f-left">Ñ§ÀúÒªÇó£º{#$show.education_cn#}</div>
-								<div class="job-id-item f-left">¹¤×÷¾­Ñé£º{#$show.experience_cn#}&nbsp;{#if $show.graduate=="1"#}(Ó¦½ìÉúÒà¿É){#/if#}</div>
+								<div class="job-id-item f-left">å·¥èµ„å¾…é‡ï¼š<span>{#$show.wage_cn#} {#if $show.negotiable == 1#}(å¯é¢è®®){#else#}{#/if#}</span></div>
+								<div class="job-id-item f-left">èŒä½æ€§è´¨ï¼š{#$show.nature_cn#}</div>
+								<div class="job-id-item f-left">å¹´é¾„è¦æ±‚ï¼š{#if $show.age=="-"#}ä¸é™{#else#}{#$show.age#}å²{#/if#}</div>
+								<div class="job-id-item f-left">æ‹›è˜äººæ•°ï¼š{#$show.amount#}äºº</div>
+								<div class="job-id-item f-left">èŒä½ç±»åˆ«ï¼š{#$show.category_cn#}</div>
+								<div class="job-id-item f-left">æ€§åˆ«è¦æ±‚ï¼š{#$show.sex_cn#}</div>
+								<div class="job-id-item f-left">å·¥ä½œåœ°åŒºï¼š{#$show.district_ch#}{#if $show.sdistrict_ch#}-{#$show.sdistrict_ch#}{#/if#}</div>
+								<div class="job-id-item f-left">å­¦å†è¦æ±‚ï¼š{#$show.education_cn#}</div>
+								<div class="job-id-item f-left">å·¥ä½œç»éªŒï¼š{#$show.experience_cn#}&nbsp;{#if $show.graduate=="1"#}(åº”å±Šç”Ÿäº¦å¯){#/if#}</div>
 							</div>
 						</div>
 						<div class="job-block">
-							<h3 class="c-left-title">Ö°Î»ÃèÊö</h3>
+							<h3 class="c-left-title">èŒä½æè¿°</h3>
 							<div class="job-info-content clearfix">
 								{#$show.contents|nl2br#}
 							</div>
 						</div>
 						<div class="job-block">
-							<h3 class="c-left-title">ÁªÏµ·½Ê½</h3>
+							<h3 class="c-left-title">è”ç³»æ–¹å¼</h3>
 							<div class="com-contact">
 								<div id="jobs_contact"></div>
 								{#if $company.map_open=="1" && $company.map_x && $company.map_y#}
@@ -183,37 +183,37 @@ $(document).ready(function(){
 											<div style="width:100%;height:300px;border:1px #CCCCCC solid; margin:0 auto;" id="map"></div>
 										</div>
 										<div class="map_r">
-											<b>ÖÜ±ß²éÑ¯</b>
+											<b>å‘¨è¾¹æŸ¥è¯¢</b>
 											<ul>
 												<li>
-													<label for="hotel"><input type="checkbox" value="¾Æµê" id="hotel"  class="serch"/>&nbsp;¾Æµê</label>
+													<label for="hotel"><input type="checkbox" value="é…’åº—" id="hotel"  class="serch"/>&nbsp;é…’åº—</label>
 												</li>
 												<li>
-													<label for="catering"><input type="checkbox" value="²ÍÒû" id="catering"  class="serch"/>&nbsp;²ÍÒû</label>
+													<label for="catering"><input type="checkbox" value="é¤é¥®" id="catering"  class="serch"/>&nbsp;é¤é¥®</label>
 												</li>
 												<li>
-													<label for="supermarket"><input type="checkbox" value="³¬ÊĞ" id="supermarket" class="serch"/>&nbsp;³¬ÊĞ</label>
+													<label for="supermarket"><input type="checkbox" value="è¶…å¸‚" id="supermarket" class="serch"/>&nbsp;è¶…å¸‚</label>
 												</li>
 												<li>
-													<label for="bank"><input type="checkbox" value="ÒøĞĞ" id="bank" class="serch"/>&nbsp;ÒøĞĞ</label>
+													<label for="bank"><input type="checkbox" value="é“¶è¡Œ" id="bank" class="serch"/>&nbsp;é“¶è¡Œ</label>
 												</li>
 												<li>
-													<label for="hospital"><input type="checkbox" value="Ò½Ôº" id="hospital" class="serch"/>&nbsp;Ò½Ôº</label>
+													<label for="hospital"><input type="checkbox" value="åŒ»é™¢" id="hospital" class="serch"/>&nbsp;åŒ»é™¢</label>
 												</li>
 												<li>
-													<label for="scholl"><input type="checkbox" value="Ñ§Ğ£" id="scholl" class="serch"/>&nbsp;Ñ§Ğ£</label>
+													<label for="scholl"><input type="checkbox" value="å­¦æ ¡" id="scholl" class="serch"/>&nbsp;å­¦æ ¡</label>
 												</li>
 												<li>
-													<label for="bus"><input type="checkbox" value="¹«½»" id="bus" class="serch"/>&nbsp;¹«½»</label>
+													<label for="bus"><input type="checkbox" value="å…¬äº¤" id="bus" class="serch"/>&nbsp;å…¬äº¤</label>
 												</li>
 											</ul>
 										</div>
 										<div class="clear"></div>
 										<div class="map_bottom">
-											<h4>ÏßÂ·²éÑ¯</h4>
-											<span>Æğµã£º<input type="text" name="start" value="" class="addr_inpt"/></span>
-											<span>ÖÕµã£º<input type="text" name="end" value="{#$company.address#}" class="addr_inpt" readonly/></span>
-											<span><input type="button" value="¹«½»²éÑ¯" class="bus_submit"/></span>
+											<h4>çº¿è·¯æŸ¥è¯¢</h4>
+											<span>èµ·ç‚¹ï¼š<input type="text" name="start" value="" class="addr_inpt"/></span>
+											<span>ç»ˆç‚¹ï¼š<input type="text" name="end" value="{#$company.address#}" class="addr_inpt" readonly/></span>
+											<span><input type="button" value="å…¬äº¤æŸ¥è¯¢" class="bus_submit"/></span>
 										</div>
 										<div id="r-result" style="margin-bottom: 10px;"></div>
 									</div>
@@ -223,11 +223,11 @@ $(document).ready(function(){
 										map.centerAndZoom(point, {#$company.map_zoom#});
 										map.setZoom({#$QISHI.map_zoom#});
 										var opts = {type: BMAP_NAVIGATION_CONTROL_SMALL,anchor: BMAP_ANCHOR_TOP_RIGHT}
-										map.addControl(new BMap.NavigationControl(opts)); //Ìí¼ÓÓã¹Ç
-										// ´´½¨±ê×¢
+										map.addControl(new BMap.NavigationControl(opts)); //æ·»åŠ é±¼éª¨
+										// åˆ›å»ºæ ‡æ³¨
 										var qs_marker = new BMap.Marker(point);           
 										map.addOverlay(qs_marker);
-										// ¹Ø¼ü×Ö¼ìË÷
+										// å…³é”®å­—æ£€ç´¢
 										$(".serch").click(function(){
 											var search_key = "["+getSelectVal()+"]";
 											if(search_key=="[]"){
@@ -241,7 +241,7 @@ $(document).ready(function(){
 											local.searchInBounds(search_key, map.getBounds());
 											}
 										});
-										// »ñÈ¡ ¹Ø¼ü×Ö·½·¨
+										// è·å– å…³é”®å­—æ–¹æ³•
 										function getSelectVal() {
 											var a_cn = new Array();
 											$(":checkbox[checked][class='serch']").each(function(index, el) {
@@ -250,7 +250,7 @@ $(document).ready(function(){
 											});
 											return a_cn.join(",");
 										}
-										// ¹«½»²éÑ¯
+										// å…¬äº¤æŸ¥è¯¢
 										$(".bus_submit").click(function() {
 											var start =$("input[name=start]").val();
 											var end =$("input[name=end]").val();
@@ -260,36 +260,36 @@ $(document).ready(function(){
 											});
 											transit.search(""+start+"", ""+end+"");
 											}else{
-											alert("ÊäÈëÆğµã£¡");
+											alert("è¾“å…¥èµ·ç‚¹ï¼");
 											}
 										});
 									</script>
 								</div>
 								{#/if#}
-								<div class="job-warning">ÌáÊ¾£ºÔÚÓ¦Æ¸¹ı³ÌÖĞÓÃÈËµ¥Î»ÒÔÈÎºÎÃûÒåÏòÓ¦Æ¸ÕßÊÕÈ¡·ÑÓÃ¶¼ÊôÓÚÎ¥·¨ÄÚÈİ£¡</div>
+								<div class="job-warning">æç¤ºï¼šåœ¨åº”è˜è¿‡ç¨‹ä¸­ç”¨äººå•ä½ä»¥ä»»ä½•åä¹‰å‘åº”è˜è€…æ”¶å–è´¹ç”¨éƒ½å±äºè¿æ³•å†…å®¹ï¼</div>
 								<div class="job-bottom-share clearfix">
-									<!-- ¹ıÆÚÍ¼±ê  ÉêÇë ÊÕ²Ø-->
+									<!-- è¿‡æœŸå›¾æ ‡  ç”³è¯· æ”¶è—-->
 									<div class="app-job-item f-left">
 										{#if $show.jobs_gq==1#}
 										<img src="{#$QISHI.site_template#}images/job_gq.gif" />
 										{#elseif $show.jobs_gq==2#}
 										<img src="{#$QISHI.site_template#}images/job_sx.gif" />
 										{#else#}
-										<div class="apply-btn f-left"><a href="javascript:;" class="app-button app_jobs" style="display: block;line-height:34px;text-align: center;" jobs_id="{#$show.id#}">ÉêÇëÖ°Î»</a></div>
-										<a href="javascript:;" class="collect {#if $show.check_fav=='1'#}done{#/if#} f-left add_favorites" jobs_id="{#$show.id#}">ÊÕ²Ø</a>
+										<div class="apply-btn f-left"><a href="javascript:;" class="app-button app_jobs" style="display: block;line-height:34px;text-align: center;" jobs_id="{#$show.id#}">ç”³è¯·èŒä½</a></div>
+										<a href="javascript:;" class="collect {#if $show.check_fav=='1'#}done{#/if#} f-left add_favorites" jobs_id="{#$show.id#}">æ”¶è—</a>
 										{#/if#}
 									</div>
 									<div class="share-box f-right">
-										<div class="jubao"><a class="report_button" href="javascript:void(0);" jobs_id="{#$smarty.get.id#}" jobs_name="{#$show.jobs_name#}" jobs_addtime="{#$show.addtime#}">¾Ù±¨</a></div>
+										<div class="jubao"><a class="report_button" href="javascript:void(0);" jobs_id="{#$smarty.get.id#}" jobs_name="{#$show.jobs_name#}" jobs_addtime="{#$show.addtime#}">ä¸¾æŠ¥</a></div>
 										<div class="share-item clearfix">
-											<span class="f-left">·ÖÏíµ½</span>
+											<span class="f-left">åˆ†äº«åˆ°</span>
 											<div class="bdsharebuttonbox f-left">
 												<a href="#" class="bds_more" data-cmd="more"></a>
-												<a href="#" class="bds_qzone" data-cmd="qzone" title="·ÖÏíµ½QQ¿Õ¼ä"></a>
-												<a href="#" class="bds_tsina" data-cmd="tsina" title="·ÖÏíµ½ĞÂÀËÎ¢²©"></a>
-												<a href="#" class="bds_tqq" data-cmd="tqq" title="·ÖÏíµ½ÌÚÑ¶Î¢²©"></a>
-												<a href="#" class="bds_renren" data-cmd="renren" title="·ÖÏíµ½ÈËÈËÍø"></a>
-												<a href="#" class="bds_weixin" data-cmd="weixin" title="·ÖÏíµ½Î¢ĞÅ"></a>
+												<a href="#" class="bds_qzone" data-cmd="qzone" title="åˆ†äº«åˆ°QQç©ºé—´"></a>
+												<a href="#" class="bds_tsina" data-cmd="tsina" title="åˆ†äº«åˆ°æ–°æµªå¾®åš"></a>
+												<a href="#" class="bds_tqq" data-cmd="tqq" title="åˆ†äº«åˆ°è…¾è®¯å¾®åš"></a>
+												<a href="#" class="bds_renren" data-cmd="renren" title="åˆ†äº«åˆ°äººäººç½‘"></a>
+												<a href="#" class="bds_weixin" data-cmd="weixin" title="åˆ†äº«åˆ°å¾®ä¿¡"></a>
 											</div>
 											<script>
 												window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
@@ -300,55 +300,55 @@ $(document).ready(function(){
 							</div>
 						</div>
 						<div class="com-left-block">
-						<h3 class="c-left-title">ÆäËûÖ°Î»</h3>
+						<h3 class="c-left-title">å…¶ä»–èŒä½</h3>
 						<div class="company-jobs-list clearfix">
-							{#qishi_jobs_list set="ÁĞ±íÃû:jobs,Ìî²¹×Ö·û:...,Ö°Î»Ãû³¤¶È:14,ÏÔÊ¾ÊıÄ¿:8,»áÔ±UID:"|cat:$show.uid#}
+							{#qishi_jobs_list set="åˆ—è¡¨å:jobs,å¡«è¡¥å­—ç¬¦:...,èŒä½åé•¿åº¦:14,æ˜¾ç¤ºæ•°ç›®:8,ä¼šå‘˜UID:"|cat:$show.uid#}
 			  				{#foreach from=$jobs item=list#}
 							<div class="c-jobs-item f-left">
 								<div class="job-name"><a href="{#$list.jobs_url#}" target="_blank">{#$list.jobs_name#}</a></div>
-								<div class="job-info"><span>{#$list.education_cn#}</span> | <span>{#$list.experience_cn#}</span> | <span>{#if $list.age=="-"#}²»ÏŞ{#else#}{#$list.age#}Ëê{#/if#}</span></div>
+								<div class="job-info"><span>{#$list.education_cn#}</span> | <span>{#$list.experience_cn#}</span> | <span>{#if $list.age=="-"#}ä¸é™{#else#}{#$list.age#}å²{#/if#}</span></div>
 								<div class="job-pay">{#$list.wage_cn#}</div>
 								<div class="job-area">{#$list.district_cn#}</div>
 							</div>
 							{#/foreach#}
 						</div>
-						<div class="job-all clearfix"><a href="{#$QISHI.site_dir#}jobs/jobs-list.php" class="f-right">È«²¿Ö°Î»>></a></div>
+						<div class="job-all clearfix"><a href="{#$QISHI.site_dir#}jobs/jobs-list.php" class="f-right">å…¨éƒ¨èŒä½>></a></div>
 					</div>
 					</div>
 				</div>
 			</div>
-			<!-- ÓÒ±ß -->
+			<!-- å³è¾¹ -->
 			<div class="com-right">
 				<div class="ring-group clearfix">
 					<div class="ring-item f-left">
 						<h4 class="resumes">{#$company.resume_processing#}%</h4>
-						<p>¼òÀú´¦ÀíÂÊ</p>
+						<p>ç®€å†å¤„ç†ç‡</p>
 					</div>
 					<div class="ring-item f-left">
 						<h4 class="jobs">{#$company.jobs_num#}</h4>
-						<p>ÔÚÕĞÖ°Î»</p>
+						<p>åœ¨æ‹›èŒä½</p>
 					</div>
 					<div class="ring-item f-left">
 						<h4 class="interest">{#$company.resume_num#}</h4>
-						<p>¸ĞĞËÈ¤¼òÀú</p>
+						<p>æ„Ÿå…´è¶£ç®€å†</p>
 					</div>
 				</div>
 				<div class="c-right-block">
-					<h3 class="c-right-title">¹«Ë¾ÃûÆ¬</h3>
+					<h3 class="c-right-title">å…¬å¸åç‰‡</h3>
 					<ul class="company-info-list">
-						<li>ĞÔÖÊ£º{#$company.nature_cn#}</li>
-						<li>ĞĞÒµ£º{#$company.trade_cn#}</li>
-						<li>¹æÄ££º{#$company.scale_cn#}</li>
-						<li>µØÇø£º{#$company.district_cn#}</li>
+						<li>æ€§è´¨ï¼š{#$company.nature_cn#}</li>
+						<li>è¡Œä¸šï¼š{#$company.trade_cn#}</li>
+						<li>è§„æ¨¡ï¼š{#$company.scale_cn#}</li>
+						<li>åœ°åŒºï¼š{#$company.district_cn#}</li>
 						{#if $company.website#}
-						<li>ÍøÖ·£º<a target="_blank" href="{#$company.website#}" rel="nofollow">{#$company.website#}</a></li>
+						<li>ç½‘å€ï¼š<a target="_blank" href="{#$company.website#}" rel="nofollow">{#$company.website#}</a></li>
 						{#/if#}
 					</ul>
 				</div>
 				<div class="c-right-block">
-					<h3 class="c-right-title">ÊÖ»úä¯ÀÀ</h3>
+					<h3 class="c-right-title">æ‰‹æœºæµè§ˆ</h3>
 					<div class="com-code">
-						<img src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}plus/url_qrcode.php?url={#$company.company_url#}" alt="É¨Ãè¶şÎ¬Âë" width="100" height="100" />
+						<img src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}plus/url_qrcode.php?url={#$company.company_url#}" alt="æ‰«æäºŒç»´ç " width="100" height="100" />
 					</div>
 				</div>
 			</div>

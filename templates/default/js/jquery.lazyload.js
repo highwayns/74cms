@@ -1,10 +1,10 @@
-(function($) {
+﻿(function($) {
     $.fn.lazyload = function(options) {
         var settings = {
             threshold: 0,
             failurelimit: 0,
             event: "scroll",
-            effect: "show",//Ĭ��Ч��Ϊshow
+            effect: "show",//默认效果为show
             container: window
         };
         if (options) {

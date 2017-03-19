@@ -1,4 +1,4 @@
-/**
+﻿/**
  * FusionCharts: Flash Player detection and Chart embedding.
  * Version 1.2.3F ( 22 November 2008) - Specialized for FusionChartsFREE 
  * 					Checking Flash Version >=6 and added updateChartXML() for FREE Charts.

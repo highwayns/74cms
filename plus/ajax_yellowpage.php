@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ajax ¼ÓÔØ¹«Ë¾Ö°Î»¸ü¶à
+ * 74cms ajax åŠ è½½å…¬å¸èŒä½æ›´å¤š
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -24,10 +24,10 @@ if ($act=='get_companyjobslist')
 		{
 			$jobs_url=url_rewrite("QS_jobsshow",array('id'=>$li['id']));
 			$jobs_name=cut_str($li['jobs_name'],"10",0,"..");
-			$comjobshtml.="<li><div class=\"j_name\"><a href=\"{$jobs_url}\" target=\"_blank\">{$jobs_name}<span class=\"ji\"></span></a><span class=\"j_time\">".date('Y-m-d',$li['addtime'])." ¸üĞÂ</span></div><p><span>Ñ§ÀúÒªÇó£º{$li['education_cn']}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>¹¤×÷¾­Ñé£º{$li['experience_cn']}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>¹¤×÷µØµã£º{$li['district_cn']}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>Ğ½×Ê´ıÓö£º<em>{$li['wage_cn']}</em></span></p></li>";
+			$comjobshtml.="<li><div class=\"j_name\"><a href=\"{$jobs_url}\" target=\"_blank\">{$jobs_name}<span class=\"ji\"></span></a><span class=\"j_time\">".date('Y-m-d',$li['addtime'])." æ›´æ–°</span></div><p><span>å­¦å†è¦æ±‚ï¼š{$li['education_cn']}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>å·¥ä½œç»éªŒï¼š{$li['experience_cn']}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>å·¥ä½œåœ°ç‚¹ï¼š{$li['district_cn']}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>è–ªèµ„å¾…é‡ï¼š<em>{$li['wage_cn']}</em></span></p></li>";
 		}
 		$jobslist_url = url_rewrite("QS_companyjobs",array("id"=>$companyid));
-		$comjobshtml.="<p class=\"more\"><a target=\"_blank\" href=\"".$jobslist_url."\">²é¿´¸ü¶à>></a></p>";
+		$comjobshtml.="<p class=\"more\"><a target=\"_blank\" href=\"".$jobslist_url."\">æŸ¥çœ‹æ›´å¤š>></a></p>";
 		exit($comjobshtml);
 	}
 	else

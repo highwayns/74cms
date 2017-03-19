@@ -1,53 +1,47 @@
-<?php
+﻿<?php
 
 /**
  * Created by JetBrains PhpStorm.
  * User: taoqili
  * Date: 12-7-18
- * Time: 上午11: 32
- * UEditor编辑器通用上传类
- */
+ * Time: 涓婂崍11: 32
+ * UEditor缂栬緫鍣ㄩ€氱敤涓婁紶绫? */
 class Uploader
 {
-    private $fileField; //文件域名
-    private $file; //文件上传对象
-    private $base64; //文件上传对象
-    private $config; //配置信息
-    private $oriName; //原始文件名
-    private $fileName; //新文件名
-    private $fullName; //完整文件名,即从当前配置目录开始的URL
-    private $filePath; //完整文件名,即从当前配置目录开始的URL
-    private $fileSize; //文件大小
-    private $fileType; //文件类型
-    private $stateInfo; //上传状态信息,
-    private $stateMap = array( //上传状态映射表，国际化用户需考虑此处数据的国际化
-        "SUCCESS", //上传成功标记，在UEditor中内不可改变，否则flash判断会出错
-        "文件大小超出 upload_max_filesize 限制",
-        "文件大小超出 MAX_FILE_SIZE 限制",
-        "文件未被完整上传",
-        "没有文件被上传",
-        "上传文件为空",
-        "ERROR_TMP_FILE" => "临时文件错误",
-        "ERROR_TMP_FILE_NOT_FOUND" => "找不到临时文件",
-        "ERROR_SIZE_EXCEED" => "文件大小超出网站限制",
-        "ERROR_TYPE_NOT_ALLOWED" => "文件类型不允许",
-        "ERROR_CREATE_DIR" => "目录创建失败",
-        "ERROR_DIR_NOT_WRITEABLE" => "目录没有写权限",
-        "ERROR_FILE_MOVE" => "文件保存时出错",
-        "ERROR_FILE_NOT_FOUND" => "找不到上传文件",
-        "ERROR_WRITE_CONTENT" => "写入文件内容错误",
-        "ERROR_UNKNOWN" => "未知错误",
-        "ERROR_DEAD_LINK" => "链接不可用",
-        "ERROR_HTTP_LINK" => "链接不是http链接",
-        "ERROR_HTTP_CONTENTTYPE" => "链接contentType不正确"
+    private $fileField; //鏂囦欢鍩熷悕
+    private $file; //鏂囦欢涓婁紶瀵硅薄
+    private $base64; //鏂囦欢涓婁紶瀵硅薄
+    private $config; //閰嶇疆淇℃伅
+    private $oriName; //鍘熷鏂囦欢鍚?    private $fileName; //鏂版枃浠跺悕
+    private $fullName; //瀹屾暣鏂囦欢鍚?鍗充粠褰撳墠閰嶇疆鐩綍寮€濮嬬殑URL
+    private $filePath; //瀹屾暣鏂囦欢鍚?鍗充粠褰撳墠閰嶇疆鐩綍寮€濮嬬殑URL
+    private $fileSize; //鏂囦欢澶у皬
+    private $fileType; //鏂囦欢绫诲瀷
+    private $stateInfo; //涓婁紶鐘舵€佷俊鎭?
+    private $stateMap = array( //涓婁紶鐘舵€佹槧灏勮〃锛屽浗闄呭寲鐢ㄦ埛闇€鑰冭檻姝ゅ鏁版嵁鐨勫浗闄呭寲
+        "SUCCESS", //涓婁紶鎴愬姛鏍囪锛屽湪UEditor涓唴涓嶅彲鏀瑰彉锛屽惁鍒檉lash鍒ゆ柇浼氬嚭閿?        "鏂囦欢澶у皬瓒呭嚭 upload_max_filesize 闄愬埗",
+        "鏂囦欢澶у皬瓒呭嚭 MAX_FILE_SIZE 闄愬埗",
+        "鏂囦欢鏈瀹屾暣涓婁紶",
+        "娌℃湁鏂囦欢琚笂浼?,
+        "涓婁紶鏂囦欢涓虹┖",
+        "ERROR_TMP_FILE" => "涓存椂鏂囦欢閿欒",
+        "ERROR_TMP_FILE_NOT_FOUND" => "鎵句笉鍒颁复鏃舵枃浠?,
+        "ERROR_SIZE_EXCEED" => "鏂囦欢澶у皬瓒呭嚭缃戠珯闄愬埗",
+        "ERROR_TYPE_NOT_ALLOWED" => "鏂囦欢绫诲瀷涓嶅厑璁?,
+        "ERROR_CREATE_DIR" => "鐩綍鍒涘缓澶辫触",
+        "ERROR_DIR_NOT_WRITEABLE" => "鐩綍娌℃湁鍐欐潈闄?,
+        "ERROR_FILE_MOVE" => "鏂囦欢淇濆瓨鏃跺嚭閿?,
+        "ERROR_FILE_NOT_FOUND" => "鎵句笉鍒颁笂浼犳枃浠?,
+        "ERROR_WRITE_CONTENT" => "鍐欏叆鏂囦欢鍐呭閿欒",
+        "ERROR_UNKNOWN" => "鏈煡閿欒",
+        "ERROR_DEAD_LINK" => "閾炬帴涓嶅彲鐢?,
+        "ERROR_HTTP_LINK" => "閾炬帴涓嶆槸http閾炬帴",
+        "ERROR_HTTP_CONTENTTYPE" => "閾炬帴contentType涓嶆纭?
     );
 
     /**
-     * 构造函数
-     * @param string $fileField 表单名称
-     * @param array $config 配置项
-     * @param bool $base64 是否解析base64编码，可省略。若开启，则$fileField代表的是base64编码的字符串表单名
-     */
+     * 鏋勯€犲嚱鏁?     * @param string $fileField 琛ㄥ崟鍚嶇О
+     * @param array $config 閰嶇疆椤?     * @param bool $base64 鏄惁瑙ｆ瀽base64缂栫爜锛屽彲鐪佺暐銆傝嫢寮€鍚紝鍒?fileField浠ｈ〃鐨勬槸base64缂栫爜鐨勫瓧绗︿覆琛ㄥ崟鍚?     */
     public function __construct($fileField, $config, $type = "upload")
     {
         $this->fileField = $fileField;
@@ -65,7 +59,7 @@ class Uploader
     }
 
     /**
-     * 上传文件的主处理方法
+     * 涓婁紶鏂囦欢鐨勪富澶勭悊鏂规硶
      * @return mixed
      */
     private function upFile()
@@ -94,19 +88,17 @@ class Uploader
         $this->fileName = $this->getFileName();
         $dirname = dirname($this->filePath);
 
-        //检查文件大小是否超出限制
-        if (!$this->checkSize()) {
+        //妫€鏌ユ枃浠跺ぇ灏忔槸鍚﹁秴鍑洪檺鍒?        if (!$this->checkSize()) {
             $this->stateInfo = $this->getStateInfo("ERROR_SIZE_EXCEED");
             return;
         }
 
-        //检查是否不允许的文件格式
-        if (!$this->checkType()) {
+        //妫€鏌ユ槸鍚︿笉鍏佽鐨勬枃浠舵牸寮?        if (!$this->checkType()) {
             $this->stateInfo = $this->getStateInfo("ERROR_TYPE_NOT_ALLOWED");
             return;
         }
 
-        //创建目录失败
+        //鍒涘缓鐩綍澶辫触
         if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
             $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
             return;
@@ -115,17 +107,16 @@ class Uploader
             return;
         }
 
-        //移动文件
-        if (!(move_uploaded_file($file["tmp_name"], $this->filePath) && file_exists($this->filePath))) { //移动失败
+        //绉诲姩鏂囦欢
+        if (!(move_uploaded_file($file["tmp_name"], $this->filePath) && file_exists($this->filePath))) { //绉诲姩澶辫触
             $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
-        } else { //移动成功
+        } else { //绉诲姩鎴愬姛
             $this->stateInfo = $this->stateMap[0];
         }
     }
 
     /**
-     * 处理base64编码的图片上传
-     * @return mixed
+     * 澶勭悊base64缂栫爜鐨勫浘鐗囦笂浼?     * @return mixed
      */
     private function upBase64()
     {
@@ -140,13 +131,12 @@ class Uploader
         $this->fileName = $this->getFileName();
         $dirname = dirname($this->filePath);
 
-        //检查文件大小是否超出限制
-        if (!$this->checkSize()) {
+        //妫€鏌ユ枃浠跺ぇ灏忔槸鍚﹁秴鍑洪檺鍒?        if (!$this->checkSize()) {
             $this->stateInfo = $this->getStateInfo("ERROR_SIZE_EXCEED");
             return;
         }
 
-        //创建目录失败
+        //鍒涘缓鐩綍澶辫触
         if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
             $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
             return;
@@ -155,17 +145,17 @@ class Uploader
             return;
         }
 
-        //移动文件
-        if (!(file_put_contents($this->filePath, $img) && file_exists($this->filePath))) { //移动失败
+        //绉诲姩鏂囦欢
+        if (!(file_put_contents($this->filePath, $img) && file_exists($this->filePath))) { //绉诲姩澶辫触
             $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
-        } else { //移动成功
+        } else { //绉诲姩鎴愬姛
             $this->stateInfo = $this->stateMap[0];
         }
 
     }
 
     /**
-     * 拉取远程图片
+     * 鎷夊彇杩滅▼鍥剧墖
      * @return mixed
      */
     private function saveRemote()
@@ -173,25 +163,23 @@ class Uploader
         $imgUrl = htmlspecialchars($this->fileField);
         $imgUrl = str_replace("&amp;", "&", $imgUrl);
 
-        //http开头验证
-        if (strpos($imgUrl, "http") !== 0) {
+        //http寮€澶撮獙璇?        if (strpos($imgUrl, "http") !== 0) {
             $this->stateInfo = $this->getStateInfo("ERROR_HTTP_LINK");
             return;
         }
-        //获取请求头并检测死链
-        $heads = get_headers($imgUrl);
+        //鑾峰彇璇锋眰澶村苟妫€娴嬫閾?        $heads = get_headers($imgUrl);
         if (!(stristr($heads[0], "200") && stristr($heads[0], "OK"))) {
             $this->stateInfo = $this->getStateInfo("ERROR_DEAD_LINK");
             return;
         }
-        //格式验证(扩展名验证和Content-Type验证)
+        //鏍煎紡楠岃瘉(鎵╁睍鍚嶉獙璇佸拰Content-Type楠岃瘉)
         $fileType = strtolower(strrchr($imgUrl, '.'));
         if (!in_array($fileType, $this->config['allowFiles']) || stristr($heads['Content-Type'], "image")) {
             $this->stateInfo = $this->getStateInfo("ERROR_HTTP_CONTENTTYPE");
             return;
         }
 
-        //打开输出缓冲区并获取远程图片
+        //鎵撳紑杈撳嚭缂撳啿鍖哄苟鑾峰彇杩滅▼鍥剧墖
         ob_start();
         $context = stream_context_create(
             array('http' => array(
@@ -211,13 +199,12 @@ class Uploader
         $this->fileName = $this->getFileName();
         $dirname = dirname($this->filePath);
 
-        //检查文件大小是否超出限制
-        if (!$this->checkSize()) {
+        //妫€鏌ユ枃浠跺ぇ灏忔槸鍚﹁秴鍑洪檺鍒?        if (!$this->checkSize()) {
             $this->stateInfo = $this->getStateInfo("ERROR_SIZE_EXCEED");
             return;
         }
 
-        //创建目录失败
+        //鍒涘缓鐩綍澶辫触
         if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
             $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
             return;
@@ -226,18 +213,17 @@ class Uploader
             return;
         }
 
-        //移动文件
-        if (!(file_put_contents($this->filePath, $img) && file_exists($this->filePath))) { //移动失败
+        //绉诲姩鏂囦欢
+        if (!(file_put_contents($this->filePath, $img) && file_exists($this->filePath))) { //绉诲姩澶辫触
             $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
-        } else { //移动成功
+        } else { //绉诲姩鎴愬姛
             $this->stateInfo = $this->stateMap[0];
         }
 
     }
 
     /**
-     * 上传错误检查
-     * @param $errCode
+     * 涓婁紶閿欒妫€鏌?     * @param $errCode
      * @return string
      */
     private function getStateInfo($errCode)
@@ -246,8 +232,7 @@ class Uploader
     }
 
     /**
-     * 获取文件扩展名
-     * @return string
+     * 鑾峰彇鏂囦欢鎵╁睍鍚?     * @return string
      */
     private function getFileExt()
     {
@@ -255,12 +240,11 @@ class Uploader
     }
 
     /**
-     * 重命名文件
-     * @return string
+     * 閲嶅懡鍚嶆枃浠?     * @return string
      */
     private function getFullName()
     {
-        //替换日期事件
+        //鏇挎崲鏃ユ湡浜嬩欢
         $t = time();
         $d = explode('-', date("Y-y-m-d-H-i-s"));
         $format = $this->config["pathFormat"];
@@ -273,13 +257,12 @@ class Uploader
         $format = str_replace("{ss}", $d[6], $format);
         $format = str_replace("{time}", $t, $format);
 
-        //过滤文件名的非法自负,并替换文件名
+        //杩囨护鏂囦欢鍚嶇殑闈炴硶鑷礋,骞舵浛鎹㈡枃浠跺悕
         $oriName = substr($this->oriName, 0, strrpos($this->oriName, '.'));
         $oriName = preg_replace("/[\|\?\"\<\>\/\*\\\\]+/", '', $oriName);
         $format = str_replace("{filename}", $oriName, $format);
 
-        //替换随机字符串
-        $randNum = rand(1, 10000000000) . rand(1, 10000000000);
+        //鏇挎崲闅忔満瀛楃涓?        $randNum = rand(1, 10000000000) . rand(1, 10000000000);
         if (preg_match("/\{rand\:([\d]*)\}/i", $format, $matches)) {
             $format = preg_replace("/\{rand\:[\d]*\}/i", substr($randNum, 0, $matches[1]), $format);
         }
@@ -289,15 +272,14 @@ class Uploader
     }
 
     /**
-     * 获取文件名
-     * @return string
+     * 鑾峰彇鏂囦欢鍚?     * @return string
      */
     private function getFileName () {
         return substr($this->filePath, strrpos($this->filePath, '/') + 1);
     }
 
     /**
-     * 获取文件完整路径
+     * 鑾峰彇鏂囦欢瀹屾暣璺緞
      * @return string
      */
     private function getFilePath()
@@ -313,8 +295,7 @@ class Uploader
     }
 
     /**
-     * 文件类型检测
-     * @return bool
+     * 鏂囦欢绫诲瀷妫€娴?     * @return bool
      */
     private function checkType()
     {
@@ -322,8 +303,7 @@ class Uploader
     }
 
     /**
-     * 文件大小检测
-     * @return bool
+     * 鏂囦欢澶у皬妫€娴?     * @return bool
      */
     private function  checkSize()
     {
@@ -331,8 +311,7 @@ class Uploader
     }
 
     /**
-     * 获取当前上传成功文件的各项信息
-     * @return array
+     * 鑾峰彇褰撳墠涓婁紶鎴愬姛鏂囦欢鐨勫悇椤逛俊鎭?     * @return array
      */
     public function getFileInfo()
     {

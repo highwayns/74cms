@@ -1,6 +1,6 @@
-jQuery.extend({   
+ï»¿jQuery.extend({   
     /** 
-      * Çå³ıµ±Ç°Ñ¡ÔñÄÚÈİ 
+      * æ¸…é™¤å½“å‰é€‰æ‹©å†…å®¹ 
       */   
      unselectContents: function(){   
         if(window.getSelection)   
@@ -11,7 +11,7 @@ jQuery.extend({
 });   
 jQuery.fn.extend({   
     /** 
-      * Ñ¡ÖĞÄÚÈİ 
+      * é€‰ä¸­å†…å®¹ 
       */   
      selectContents: function(){   
          $(this).each(function(i){   
@@ -41,7 +41,7 @@ jQuery.fn.extend({
          });   
      },   
     /** 
-      * ³õÊ¼»¯¶ÔÏóÒÔÖ§³Ö¹â±ê´¦²åÈëÄÚÈİ 
+      * åˆå§‹åŒ–å¯¹è±¡ä»¥æ”¯æŒå…‰æ ‡å¤„æ’å…¥å†…å®¹ 
       */   
      setCaret: function(){   
         if(!$.browser.msie) return;   
@@ -55,7 +55,7 @@ jQuery.fn.extend({
          .keyup(initSetCaret);   
      },   
     /** 
-      * ÔÚµ±Ç°¶ÔÏó¹â±ê´¦²åÈëÖ¸¶¨µÄÄÚÈİ 
+      * åœ¨å½“å‰å¯¹è±¡å…‰æ ‡å¤„æ’å…¥æŒ‡å®šçš„å†…å®¹ 
       */   
      insertAtCaret: function(textFeildValue){   
        var textObj = $(this).get(0);   

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms HR¹¤¾ßÏä
+ * 74cms HRå·¥å…·ç®±
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -18,7 +18,7 @@ check_permissions($_SESSION['admin_purview'],"hrtools");
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'list';
 $hrtools_updir="../data/hrtools/";
 $hrtools_dir="data/hrtools/";
-$smarty->assign('pageheader',"HR¹¤¾ßÏä");
+$smarty->assign('pageheader',"HRå·¥å…·ç®±");
 if($act == 'list')
 {
 	get_token();
@@ -59,14 +59,14 @@ elseif($act == 'edit')
 elseif($act == 'editsave')
 {
 	check_token();
-	$setsqlarr['h_filename']=!empty($_POST['h_filename'])?trim($_POST['h_filename']):adminmsg('ÎÄµµÃû³Æ²»ÄÜÎª¿Õ£¡',1);
-	$setsqlarr['h_typeid']=intval($_POST['h_typeid'])>0?intval($_POST['h_typeid']):adminmsg('ÇëÑ¡Ôñ·ÖÀà£¡',1);
+	$setsqlarr['h_filename']=!empty($_POST['h_filename'])?trim($_POST['h_filename']):adminmsg('æ–‡æ¡£åç§°ä¸èƒ½ä¸ºç©ºï¼',1);
+	$setsqlarr['h_typeid']=intval($_POST['h_typeid'])>0?intval($_POST['h_typeid']):adminmsg('è¯·é€‰æ‹©åˆ†ç±»ï¼',1);
 	$setsqlarr['h_color']=trim($_POST['h_color']);
 	$setsqlarr['h_strong']=intval($_POST['h_strong']);
 	$setsqlarr['h_order']=intval($_POST['h_order']);
 	if (empty($_FILES['upfile']['name']) && empty($_POST['url']))
 	{
-	adminmsg('ÇëÉÏ´«ÎÄ¼ş»òÕßÌîĞ´ÎÄ¼şÂ·¾¶£¡',1);
+	adminmsg('è¯·ä¸Šä¼ æ–‡ä»¶æˆ–è€…å¡«å†™æ–‡ä»¶è·¯å¾„ï¼',1);
 	}
 	if ($_FILES['upfile']['name'])
 		{
@@ -75,7 +75,7 @@ elseif($act == 'editsave')
 			$setsqlarr['h_fileurl']=_asUpFiles($hrtools_updir,"upfile",3000,'doc/ppt/xls/rtf',true);
 			if (empty($setsqlarr['h_fileurl']))
 			{
-			adminmsg('ÉÏ´«ÎÄ¼şÊ§°Ü£¡',1);
+			adminmsg('ä¸Šä¼ æ–‡ä»¶å¤±è´¥ï¼',1);
 			}
 			$setsqlarr['h_fileurl']=$hrtools_dir.date("Y/m/").$setsqlarr['h_fileurl'];
 		}
@@ -83,10 +83,10 @@ elseif($act == 'editsave')
 		{
 			$setsqlarr['h_fileurl']=trim($_POST['url']);
 		}
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = '?';
-	write_log("ĞŞ¸ÄidÎª".intval($_POST['id'])."µÄhr¹¤¾ß", $_SESSION['admin_name'],3);
-	!$db->updatetable(table('hrtools'),$setsqlarr," h_id=".intval($_POST['id'])."")?adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0):adminmsg("ĞŞ¸Ä³É¹¦£¡",2,$link);
+	write_log("ä¿®æ”¹idä¸º".intval($_POST['id'])."çš„hrå·¥å…·", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('hrtools'),$setsqlarr," h_id=".intval($_POST['id'])."")?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'add')
 {
@@ -98,14 +98,14 @@ elseif($act == 'add')
 elseif($act == 'addsave')
 {	
 	check_token();
-	$setsqlarr['h_filename']=!empty($_POST['h_filename'])?trim($_POST['h_filename']):adminmsg('ÎÄµµÃû³Æ²»ÄÜÎª¿Õ£¡',1);
-	$setsqlarr['h_typeid']=intval($_POST['h_typeid'])>0?intval($_POST['h_typeid']):adminmsg('ÇëÑ¡Ôñ·ÖÀà£¡',1);
+	$setsqlarr['h_filename']=!empty($_POST['h_filename'])?trim($_POST['h_filename']):adminmsg('æ–‡æ¡£åç§°ä¸èƒ½ä¸ºç©ºï¼',1);
+	$setsqlarr['h_typeid']=intval($_POST['h_typeid'])>0?intval($_POST['h_typeid']):adminmsg('è¯·é€‰æ‹©åˆ†ç±»ï¼',1);
 	$setsqlarr['h_color']=trim($_POST['h_color']);
 	$setsqlarr['h_strong']=intval($_POST['h_strong']);
 	$setsqlarr['h_order']=intval($_POST['h_order']);
 	if (empty($_FILES['upfile']['name']) && empty($_POST['url']))
 	{
-	adminmsg('ÇëÉÏ´«ÎÄ¼ş»òÕßÌîĞ´ÎÄ¼şÂ·¾¶£¡',1);
+	adminmsg('è¯·ä¸Šä¼ æ–‡ä»¶æˆ–è€…å¡«å†™æ–‡ä»¶è·¯å¾„ï¼',1);
 	}
 	if ($_FILES['upfile']['name'])
 		{
@@ -114,7 +114,7 @@ elseif($act == 'addsave')
 			$setsqlarr['h_fileurl']=_asUpFiles($hrtools_updir,"upfile",3000,'doc/ppt/xls/rtf',true);
 			if (empty($setsqlarr['h_fileurl']))
 			{
-			adminmsg('ÉÏ´«ÎÄ¼şÊ§°Ü£¡',1);
+			adminmsg('ä¸Šä¼ æ–‡ä»¶å¤±è´¥ï¼',1);
 			}
 			$setsqlarr['h_fileurl']=$hrtools_dir.date("Y/m/").$setsqlarr['h_fileurl'];
 		}
@@ -122,12 +122,12 @@ elseif($act == 'addsave')
 		{
 			$setsqlarr['h_fileurl']=trim($_POST['url']);
 		}
-	$link[0]['text'] = "¼ÌĞøÌí¼Ó";
+	$link[0]['text'] = "ç»§ç»­æ·»åŠ ";
 	$link[0]['href'] = "?act=add&h_typeid={$setsqlarr['h_typeid']}&h_typeid_cn={$_POST['h_typeid_cn']}";
-	$link[1]['text'] = "·µ»ØÁĞ±í";
+	$link[1]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[1]['href'] = '?';
-	write_log("Ìí¼Óhr¹¤¾ß:".$setsqlarr['h_filename'], $_SESSION['admin_name'],3);
-	!$db->inserttable(table('hrtools'),$setsqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+	write_log("æ·»åŠ hrå·¥å…·:".$setsqlarr['h_filename'], $_SESSION['admin_name'],3);
+	!$db->inserttable(table('hrtools'),$setsqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'hrtools_del')
 {
@@ -135,12 +135,12 @@ elseif($act == 'hrtools_del')
 	$id=$_REQUEST['id'];
 	if ($num=del_hrtools($id))
 	{
-	write_log("É¾³ıhr¹¤¾ß,¹²É¾³ı".$num."ĞĞ", $_SESSION['admin_name'],3);	
-	adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı".$num."ĞĞ",2);
+	write_log("åˆ é™¤hrå·¥å…·,å…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);	
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ıÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'category')
@@ -168,7 +168,7 @@ elseif($act == 'add_category_save')
 				$setsqlarr['c_name']=trim($_POST['c_name'][$i]);
 				$setsqlarr['c_order']=intval($_POST['c_order'][$i]);	
 				$setsqlarr['c_adminset']=0;		
-				!$db->inserttable(table('hrtools_category'),$setsqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):"";
+				!$db->inserttable(table('hrtools_category'),$setsqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
@@ -177,16 +177,16 @@ elseif($act == 'add_category_save')
 	}
 	if ($num==0)
 	{
-	adminmsg("Ìí¼ÓÊ§°Ü,Êı¾İ²»ÍêÕû",1);
+	adminmsg("æ·»åŠ å¤±è´¥,æ•°æ®ä¸å®Œæ•´",1);
 	}
 	else
 	{
-	$link[0]['text'] = "·µ»Ø·ÖÀà¹ÜÀí";
+	$link[0]['text'] = "è¿”å›åˆ†ç±»ç®¡ç†";
 	$link[0]['href'] = '?act=category';
-	$link[1]['text'] = "¼ÌĞøÌí¼Ó";
+	$link[1]['text'] = "ç»§ç»­æ·»åŠ ";
 	$link[1]['href'] = "?act=category_add";
-	write_log("Ìí¼Óhr¹¤¾ß·ÖÀà,¹²Ìí¼Ó".$num."¸ö·ÖÀà", $_SESSION['admin_name'],3);
-	adminmsg("Ìí¼Ó³É¹¦£¡¹²Ìí¼Ó".$num."¸ö·ÖÀà",2,$link);
+	write_log("æ·»åŠ hrå·¥å…·åˆ†ç±»,å…±æ·»åŠ ".$num."ä¸ªåˆ†ç±»", $_SESSION['admin_name'],3);
+	adminmsg("æ·»åŠ æˆåŠŸï¼å…±æ·»åŠ ".$num."ä¸ªåˆ†ç±»",2,$link);
 	}
 }
 elseif($act == 'edit_category')
@@ -201,14 +201,14 @@ elseif($act == 'edit_category_save')
 {
 	check_token();
 	$id=intval($_POST['id']);	
-	$setsqlarr['c_name']=!empty($_POST['c_name'])?trim($_POST['c_name']):adminmsg('ÇëÌîĞ´·ÖÀàÃû³Æ£¡',1);
+	$setsqlarr['c_name']=!empty($_POST['c_name'])?trim($_POST['c_name']):adminmsg('è¯·å¡«å†™åˆ†ç±»åç§°ï¼',1);
 	$setsqlarr['c_order']=intval($_POST['c_order']);
-	$link[0]['text'] = "²é¿´ĞŞ¸Ä½á¹û";
+	$link[0]['text'] = "æŸ¥çœ‹ä¿®æ”¹ç»“æœ";
 	$link[0]['href'] = '?act=edit_category&id='.$id;
-	$link[1]['text'] = "·µ»Ø·ÖÀà¹ÜÀí";
+	$link[1]['text'] = "è¿”å›åˆ†ç±»ç®¡ç†";
 	$link[1]['href'] = '?act=category';
-	write_log("ĞŞ¸ÄidÎª".$id."µÄ·ÖÀà", $_SESSION['admin_name'],3);
-	!$db->updatetable(table('hrtools_category'),$setsqlarr," c_id=".$id."")?adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0):adminmsg("ĞŞ¸Ä³É¹¦£¡",2,$link);
+	write_log("ä¿®æ”¹idä¸º".$id."çš„åˆ†ç±»", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('hrtools_category'),$setsqlarr," c_id=".$id."")?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'del_category')
 {
@@ -216,12 +216,12 @@ elseif($act == 'del_category')
 	$id=$_REQUEST['id'];
 	if ($num=del_hrtools_category($id))
 	{
-	write_log("É¾³ıhr¹¤¾ß·ÖÀà,¹²É¾³ı".$num."ĞĞ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı".$num."ĞĞ",2);
+	write_log("åˆ é™¤hrå·¥å…·åˆ†ç±»,å…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ıÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 

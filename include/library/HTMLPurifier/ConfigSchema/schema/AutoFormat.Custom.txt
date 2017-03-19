@@ -1,4 +1,4 @@
-AutoFormat.Custom
+﻿AutoFormat.Custom
 TYPE: list
 VERSION: 2.0.1
 DEFAULT: array()

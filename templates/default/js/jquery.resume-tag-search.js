@@ -1,4 +1,4 @@
-function tagso(templatedir,dir,jobslisturl,getarr,district_id)
+ï»¿function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 {
 	var  href="javascript:void(0);";
 	get=getarr.split(",");
@@ -13,7 +13,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 	opthtm+='<input name="inforow" type="hidden" value="'+get[5]+'" />';
 	opthtm+='<input name="page" type="hidden" value="1" />';
 	opthtm+='</div>';
-	opthtm+='<div class="litit csel">±êÇ©£º</div>';
+	opthtm+='<div class="litit csel">æ ‡ç­¾ï¼š</div>';
 	opthtm+='<div class="littxt min">';
 	opthtm+='<ul class="link_bk min">';
 	if (get[4]=='')
@@ -38,7 +38,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 		}
 		else
 		{
-			alert('²ÎÊı´íÎó');
+			alert('å‚æ•°é”™è¯¯');
 		}
 	}
 	opthtm+='</ul>';
@@ -47,7 +47,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 	opthtm+='<div class="clear"></div>';
 	if (get[0]=='')
 	{
-		opthtm+='<div class="litit csel">Ö°Î»£º</div>';
+		opthtm+='<div class="litit csel">èŒä½ï¼š</div>';
 		opthtm+='<div class="littxt">';
 		opthtm+='<ul class="link_bk">';
 		var len=QS_jobs_parent.length;
@@ -64,7 +64,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 			arr    =QS_jobs_parent[i].split(",");
 			opthtm+='<li class="hide"><a href="'+href+'" id="category-'+arr[0]+'"  class="opt">'+arr[1]+'</a></li>';
 			}
-			opthtm+='<li class="more"><a href="'+href+'">¸ü¶à</a></li>';
+			opthtm+='<li class="more"><a href="'+href+'">æ›´å¤š</a></li>';
 		}
 		opthtm+='</ul>';
 		opthtm+='<div class="clear"></div>';
@@ -79,7 +79,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 			arr    =QS_jobs_parent[i].split(",");
 			if (arr[0]==get[0])categoryname=arr[1];
 		}
-		opthtm+='<div class="litit csel">Ö°Î»£º</div>';
+		opthtm+='<div class="litit csel">èŒä½ï¼š</div>';
 		opthtm+='<div class="littxt">';
 		opthtm+='<ul class="link_bk">';
 		if (categoryname)
@@ -88,20 +88,20 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 			var b="";
 			if (subclassstr)
 			{
-				b="<span>¨‹</span>";
+				b="<span>â–¼</span>";
 			}
 		opthtm+='<li><span  id="category-'+get[0]+'">'+categoryname+'</span>'+b+'</li>';
 		}
 		else
 		{
-			alert('²ÎÊı´íÎó');
+			alert('å‚æ•°é”™è¯¯');
 		}
 		opthtm+='</ul>';
 		opthtm+='<div class="clear"></div>';
 		opthtm+='</div>';	
 		opthtm+='<div class="clear"></div>';
 		subclassstr=QS_jobs[get[0]];
-		if (subclassstr)//Èç¹ûÓĞ×ÓÀà
+		if (subclassstr)//å¦‚æœæœ‰å­ç±»
 		{
 				if (get[1]=='')
 				{
@@ -109,7 +109,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 					var len=arrsubclass.length;
 					if (len>0)
 					{
-							opthtm+='<div class="litit csel">Ö°Î»×ÓÀà£º</div>';
+							opthtm+='<div class="litit csel">èŒä½å­ç±»ï¼š</div>';
 							opthtm+='<div class="littxt">';
 							opthtm+='<ul class="link_bk">';		
 							minlen=len>12?11:len;
@@ -125,7 +125,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 								arr    =arrsubclass[i].split(",");
 								opthtm+='<li class="hide"><a href="'+href+'" id="subclass-'+arr[0]+'"  class="opt">'+arr[1]+'</a></li>';
 								}
-								opthtm+='<li class="more"><a href="'+href+'">¸ü¶à</a></li>';
+								opthtm+='<li class="more"><a href="'+href+'">æ›´å¤š</a></li>';
 							}
 							opthtm+='</ul>';
 							opthtm+='<div class="clear"></div>';
@@ -144,7 +144,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 					}
 					if(subclassname)
 					{
-						opthtm+='<div class="litit csel">Ö°Î»×ÓÀà£º</div>';
+						opthtm+='<div class="litit csel">èŒä½å­ç±»ï¼š</div>';
 						opthtm+='<div class="littxt">';
 						opthtm+='<ul class="link_bk">';
 						opthtm+='<li><span  id="subclass-'+get[1]+'">'+subclassname+'</span></li>';
@@ -157,7 +157,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 		}
 	}
 	if(district_id>0){
-		opthtm+='<div class="litit csel">µØÇø£º</div>';
+		opthtm+='<div class="litit csel">åœ°åŒºï¼š</div>';
 		opthtm+='<div class="littxt">';
 		opthtm+='<ul class="link_bk min">';
 		set_arr =QS_city[district_id].split("|");
@@ -175,7 +175,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 			arr    =set_arr[i].split(",");
 			opthtm+='<li class="hide"><a href="'+href+'" id="sdistrict-'+arr[0]+'"  class="opt">'+arr[1]+'</a></li>';
 			}
-			opthtm+='<li class="more"><a href="'+href+'">¸ü¶à</a></li>';
+			opthtm+='<li class="more"><a href="'+href+'">æ›´å¤š</a></li>';
 		}
 		opthtm+='</ul>';
 		opthtm+='<div class="clear"></div>';
@@ -184,7 +184,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 	}else{
 		if (get[2]=='')
 		{
-			opthtm+='<div class="litit csel">µØÇø£º</div>';
+			opthtm+='<div class="litit csel">åœ°åŒºï¼š</div>';
 			opthtm+='<div class="littxt">';
 			opthtm+='<ul class="link_bk min">';
 			var len=QS_city_parent.length;
@@ -201,7 +201,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 				arr    =QS_city_parent[i].split(",");
 				opthtm+='<li class="hide"><a href="'+href+'" id="district-'+arr[0]+'"  class="opt">'+arr[1]+'</a></li>';
 				}
-				opthtm+='<li class="more"><a href="'+href+'">¸ü¶à</a></li>';
+				opthtm+='<li class="more"><a href="'+href+'">æ›´å¤š</a></li>';
 			}
 			opthtm+='</ul>';
 			opthtm+='<div class="clear"></div>';
@@ -216,7 +216,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 				arr    =QS_city_parent[i].split(",");
 				if (arr[0]==get[2])districtname=arr[1];
 			}
-			opthtm+='<div class="litit csel">µØÇø£º</div>';
+			opthtm+='<div class="litit csel">åœ°åŒºï¼š</div>';
 			opthtm+='<div class="littxt">';
 			opthtm+='<ul class="link_bk">';
 			if (districtname)
@@ -225,20 +225,20 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 				var b="";
 				if (sdistrictstr)
 				{
-					b="<span>¨‹</span>";
+					b="<span>â–¼</span>";
 				}
 			opthtm+='<li><span  id="district-'+get[2]+'">'+districtname+'</span>'+b+'</li>';
 			}
 			else
 			{
-				alert('²ÎÊı´íÎó');
+				alert('å‚æ•°é”™è¯¯');
 			}
 			opthtm+='</ul>';
 			opthtm+='<div class="clear"></div>';
 			opthtm+='</div>';	
 			opthtm+='<div class="clear"></div>';
 			sdistrictstr=QS_city[get[2]];
-			if (sdistrictstr)//Èç¹ûÓĞ×ÓÀà
+			if (sdistrictstr)//å¦‚æœæœ‰å­ç±»
 			{
 					if (get[3]=='')
 					{
@@ -246,7 +246,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 						var len=arrsubclass.length;
 						if (len>0)
 						{
-								opthtm+='<div class="litit csel">µØÇø×ÓÀà£º</div>';
+								opthtm+='<div class="litit csel">åœ°åŒºå­ç±»ï¼š</div>';
 								opthtm+='<div class="littxt">';
 								opthtm+='<ul class="link_bk">';		
 								minlen=len>12?11:len;
@@ -262,7 +262,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 									arr    =arrsubclass[i].split(",");
 									opthtm+='<li class="hide"><a href="'+href+'" id="sdistrict-'+arr[0]+'"  class="opt">'+arr[1]+'</a></li>';
 									}
-									opthtm+='<li class="more"><a href="'+href+'">¸ü¶à</a></li>';
+									opthtm+='<li class="more"><a href="'+href+'">æ›´å¤š</a></li>';
 								}
 								opthtm+='</ul>';
 								opthtm+='<div class="clear"></div>';
@@ -280,7 +280,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 						}
 						if(subclassname)
 						{
-							opthtm+='<div class="litit csel">µØÇø×ÓÀà£º</div>';
+							opthtm+='<div class="litit csel">åœ°åŒºå­ç±»ï¼š</div>';
 							opthtm+='<div class="littxt">';
 							opthtm+='<ul class="link_bk">';
 							opthtm+='<li><span  id="sdistrict-'+get[3]+'">'+subclassname+'</span></li>';
@@ -294,21 +294,21 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 		}
 	}
 	opthtm+='<div class="bottomheight"></div>';
-	opthtm+='<div class="myselbox" id="myselbox"><div class="left">ÒÑÑ¡Ìõ¼ş£º</div><div class="optcentet"></div><div class="right"><div class="clearoptall"><a  href="'+href+'" class="clearall">Çå³ıËùÓĞ</a></div></div><div class="clear"></div>';
+	opthtm+='<div class="myselbox" id="myselbox"><div class="left">å·²é€‰æ¡ä»¶ï¼š</div><div class="optcentet"></div><div class="right"><div class="clearoptall"><a  href="'+href+'" class="clearall">æ¸…é™¤æ‰€æœ‰</a></div></div><div class="clear"></div>';
 	opthtm+='</div>';
 	$("#resumesearchbox").html(opthtm);
-	//´ò¿ª¸ü¶àÑ¡Ïî
+	//æ‰“å¼€æ›´å¤šé€‰é¡¹
 	$(".more a").click(function ()
 	{
 		if ($(this).parent().prev().css('display')=='none')
 		{
 			$(this).parent().prevAll('.hide').css("display",'block');
-			$(this).html('ÊÕÆğ').blur();
+			$(this).html('æ”¶èµ·').blur();
 		}
 		else
 		{
 			$(this).parent().prevAll('.hide').css("display",'none');
-			$(this).html('¸ü¶à').blur();
+			$(this).html('æ›´å¤š').blur();
 		}
 	
 	});	
@@ -318,39 +318,39 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 		selbox=$("#myselbox .optcentet");
 		if (get[4])	{
 		var optval=$('#resumetag-'+get[4]).html();
-		selbox.append('<a href="'+href+'" class="clearopt" id="resumetag-'+get[4]+'" title="µã»÷È¡Ïû"><u>±êÇ©:</u>'+optval+'</a>');
+		selbox.append('<a href="'+href+'" class="clearopt" id="resumetag-'+get[4]+'" title="ç‚¹å‡»å–æ¶ˆ"><u>æ ‡ç­¾:</u>'+optval+'</a>');
 		}
 		if (get[0])	{
 		var optval=$('#category-'+get[0]).html();
-		selbox.append('<a href="'+href+'" class="clearopt" id="category-'+get[0]+'" title="µã»÷È¡Ïû"><u>Ö°Î»:</u>'+optval+'</a>');
+		selbox.append('<a href="'+href+'" class="clearopt" id="category-'+get[0]+'" title="ç‚¹å‡»å–æ¶ˆ"><u>èŒä½:</u>'+optval+'</a>');
 		}
 		if (get[1])	{
 		var optval=$('#subclass-'+get[1]).html();
-		selbox.append('<a href="'+href+'" class="clearopt" id="subclass-'+get[1]+'" title="µã»÷È¡Ïû"><u>Ö°Î»×ÓÀà:</u>'+optval+'</a>');
+		selbox.append('<a href="'+href+'" class="clearopt" id="subclass-'+get[1]+'" title="ç‚¹å‡»å–æ¶ˆ"><u>èŒä½å­ç±»:</u>'+optval+'</a>');
 		}
 		if (get[2])	{
 		var optval=$('#district-'+get[2]).html();
-		selbox.append('<a href="'+href+'" class="clearopt" id="district-'+get[2]+'" title="µã»÷È¡Ïû"><u>µØÇø:</u>'+optval+'</a>');
+		selbox.append('<a href="'+href+'" class="clearopt" id="district-'+get[2]+'" title="ç‚¹å‡»å–æ¶ˆ"><u>åœ°åŒº:</u>'+optval+'</a>');
 		}
 		if (get[3])	{
 		var optval=$('#sdistrict-'+get[3]).html();
-		selbox.append('<a href="'+href+'" class="clearopt" id="sdistrict-'+get[3]+'" title="µã»÷È¡Ïû"><u>µØÇø×ÓÀà:</u>'+optval+'</a>');
+		selbox.append('<a href="'+href+'" class="clearopt" id="sdistrict-'+get[3]+'" title="ç‚¹å‡»å–æ¶ˆ"><u>åœ°åŒºå­ç±»:</u>'+optval+'</a>');
 		}
 		selbox.append('<div class="clear"></div>');
 		$("#jobsearchbox").css('padding-bottom',0);
 		$("#myselbox").show();
-		//É¾³ıµ¥¸ö
+		//åˆ é™¤å•ä¸ª
 		$(".clearopt").click(function () {
 			var opt=$(this).attr('id');
 			opt=opt.split("-");
 		$("#searcform input[name="+opt[0]+"]").val('');
-		if (opt[0]=="category") $("#searcform input[name='subclass']").val('');//È¡Ïû´óÀà£¬Í¬Ê±È¡Ïû×ÓÀà
-		if (opt[0]=="district") $("#searcform input[name='sdistrict']").val('');//È¡Ïû´óÀà£¬Í¬Ê±È¡Ïû×ÓÀà
+		if (opt[0]=="category") $("#searcform input[name='subclass']").val('');//å–æ¶ˆå¤§ç±»ï¼ŒåŒæ—¶å–æ¶ˆå­ç±»
+		if (opt[0]=="district") $("#searcform input[name='sdistrict']").val('');//å–æ¶ˆå¤§ç±»ï¼ŒåŒæ—¶å–æ¶ˆå­ç±»
 			setTimeout(function() {
 		search_location();
 		}, 1);
 		});
-		//É¾³ıËùÓĞ
+		//åˆ é™¤æ‰€æœ‰
 		$(".clearall").click(function () {
 		$("#searcform input[type='hidden']").val('');
 		$("#searcform input[name='key']").val('');
@@ -359,7 +359,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 		}, 1);
 		});	
 	}
-	//´ÓÏîÄ¿Ñ¡Ôñ
+	//ä»é¡¹ç›®é€‰æ‹©
 	$(".opt").click(function (){
 	var opt=$(this).attr('id');
 	    opt=opt.split("-");
@@ -370,7 +370,7 @@ function tagso(templatedir,dir,jobslisturl,getarr,district_id)
 	});
 	function search_location()
 	{
-		$("body").append('<div id="pageloadingbox">Ò³Ãæ¼ÓÔØÖĞ....</div><div id="pageloadingbg"></div>');
+		$("body").append('<div id="pageloadingbox">é¡µé¢åŠ è½½ä¸­....</div><div id="pageloadingbg"></div>');
 		$("#pageloadingbg").css("opacity", 0.5);
 		var category=$("#searcform input[name=category]").val();
 		var subclass=$("#searcform input[name=subclass]").val();

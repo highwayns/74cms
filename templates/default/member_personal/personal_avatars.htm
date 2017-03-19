@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
 <title>{#$title#}</title>
 <meta http-equiv="X-UA-Compatible" content="edge"><meta name="renderer" content="webkit">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="��ʿCMS" />
+<meta name="author" content="骑士CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_personal.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
@@ -16,10 +16,10 @@
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
 
-<div class="page_location link_bk">��ǰλ�ã�<a href="{#$QISHI.site_dir#}">��ҳ</a> > <a href="{#$userindexurl#}">��Ա����</a> > ͷ��</div>
-<!-- ������ -->
-<div class="photoTrad" id="photoTrad">�����ϴ������Ժ�</div>
-<!-- ������ End-->
+<div class="page_location link_bk">当前位置：<a href="{#$QISHI.site_dir#}">首页</a> > <a href="{#$userindexurl#}">会员中心</a> > 头像</div>
+<!-- 进度条 -->
+<div class="photoTrad" id="photoTrad">正在上传，请稍后！</div>
+<!-- 进度条 End-->
 <div class="usermain">
   <div class="leftmenu link_bk">
    {#include file="member_personal/left.htm"#}
@@ -34,15 +34,15 @@
  	    	<div class="topnav">
 			  
 			<div class="titleH1">
-				<div class="h1-title">�˺Ź���</div>
+				<div class="h1-title">账号管理</div>
 			</div>
 					
 			<div class="navs link_bk">
-				<a href="?act=userprofile">��������</a>
-				  <a href="?act=authenticate">�˺Ű�ȫ</a>
-				  <a href="?act=avatars" class="se">�ҵ�ͷ��</a>
-				  <a href="?act=pm">�ҵ���Ϣ{#if $total#}<span class="h">({#$total#})</span>{#/if#}</a>
-				   <a href="?act=login_log">��¼��־</a>
+				<a href="?act=userprofile">基本资料</a>
+				  <a href="?act=authenticate">账号安全</a>
+				  <a href="?act=avatars" class="se">我的头像</a>
+				  <a href="?act=pm">我的消息{#if $total#}<span class="h">({#$total#})</span>{#/if#}</a>
+				   <a href="?act=login_log">登录日志</a>
 				  <div class="clear"></div>
 			</div>
 	  	</div>

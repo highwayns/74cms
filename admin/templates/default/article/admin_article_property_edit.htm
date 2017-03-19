@@ -1,21 +1,21 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
 	{#include file="article/admin_article_nav.htm"#}
   <div class="clear"></div>
 </div>
-<div class="toptit">ĞŞ¸ÄÊôĞÔ·ÖÀà</div>
+<div class="toptit">ä¿®æ”¹å±æ€§åˆ†ç±»</div>
 <form id="form1" name="form1" method="post" action="?act=edit_property_save">
 <div id="html_tpl">
 {#$inputtoken#}
 <table width="100%" border="0" cellspacing="6" cellpadding="0" style="border-bottom:1px #96B7E2 dashed">
   <tr>
-    <td width="120" align="right">ÊôĞÔÃû³Æ:</td>
+    <td width="120" align="right">å±æ€§åç§°:</td>
     <td><input name="categoryname" type="text" class="input_text_200"  value="{#$property.categoryname#}" maxlength=""/></td>
   </tr>
     <tr>
-    <td width="120" align="right">ÅÅĞò:</td>
+    <td width="120" align="right">æ’åº:</td>
     <td><input name="category_order" type="text" class="input_text_200"  value="{#$property.category_order#}" maxlength=""/></td>
   </tr>
 </table>
@@ -26,9 +26,9 @@
     <td width="120"> </td>
     <td>
 	<input name="id" type="hidden" value="{#$property.id#}" />
-	<input type="submit" name="addsave" value="±£´æ" class="admin_submit" />
+	<input type="submit" name="addsave" value="ä¿å­˜" class="admin_submit" />
 	
-		  <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="history.go(-1)"/>
+		  <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="history.go(-1)"/>
 	
 	</td>
   </tr>

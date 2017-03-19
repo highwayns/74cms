@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 define('IN_QISHI', true);
 $alias="QS_login";
 require_once(dirname(__FILE__).'/../include/common.inc.php');
@@ -17,21 +17,21 @@ elseif($act == 'binding_save')
 	$fromUsername = trim($_POST['from']);
 	if(empty($fromUsername)){
 		$smarty->assign("from",$_POST['from']);
-		$smarty->assign('err',"°ó¶¨Ê§°Ü£¡Çë·µ»ØÎ¢ÐÅÖØÐÂ°ó¶¨");
+		$smarty->assign('err',"ç»‘å®šå¤±è´¥ï¼è¯·è¿”å›žå¾®ä¿¡é‡æ–°ç»‘å®š");
 		$smarty->display('wap/wap-binding.html');
 		die;
 	}
 	$username = trim($_POST['username']);
 	if(empty($username)){
 		$smarty->assign("from",$_POST['from']);
-		$smarty->assign('err',"ÇëÊäÈëÓÃ»§Ãû");
+		$smarty->assign('err',"è¯·è¾“å…¥ç”¨æˆ·å");
 		$smarty->display('wap/wap-binding.html');
 		die;
 	}
 	$password = trim($_POST['password']);
 	if(empty($password)){
 		$smarty->assign("from",$_POST['from']);
-		$smarty->assign('err',"ÇëÊäÈëÃÜÂë");
+		$smarty->assign('err',"è¯·è¾“å…¥å¯†ç ");
 		$smarty->display('wap/wap-binding.html');
 		die;
 	}
@@ -41,7 +41,7 @@ elseif($act == 'binding_save')
 	if(!empty($usinfo)){
 		if($usinfo['weixin_openid']){
 			$smarty->assign("from",$_POST['from']);
-			$smarty->assign('err',"ÄúÒÑ°ó¶¨ÁËÎ¢ÐÅÕÊºÅ");
+			$smarty->assign('err',"æ‚¨å·²ç»‘å®šäº†å¾®ä¿¡å¸å·");
 			$smarty->display('wap/wap-binding.html');
 			die;
 		}
@@ -58,7 +58,7 @@ elseif($act == 'binding_save')
 			$success == true;
 			$db->query("update ".table('members')." set `weixin_openid`='".$fromUsername."',`weixin_nick`='".$w_userinfo['nickname']."',bindingtime=".time()." where uid=".$usinfo['uid']);
 			require_once(QISHI_ROOT_PATH.'include/fun_wap.php');
-			// °ó¶¨Î¢ÐÅ »ñµÃ»ý·Ö
+			// ç»‘å®šå¾®ä¿¡ èŽ·å¾—ç§¯åˆ†
 			$rule=get_cache('points_rule');
 			if ($rule['company_wx_points']['value']>0)
 			{
@@ -72,7 +72,7 @@ elseif($act == 'binding_save')
 				$user_points=get_user_points($_SESSION['uid']);
 				$operator=$rule['company_wx_points']['type']=="1"?"+":"-";
 				$_SESSION['handsel_company_wx_points']=$_CFG['points_byname'].$operator.$rule['company_wx_points']['value'];
-				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username']," °ó¶¨Î¢ÐÅ£¬{$_CFG['points_byname']}({$operator}{$rule['company_wx_points']['value']})£¬(Ê£Óà:{$user_points})",1,1016,"°ó¶¨Î¢ÐÅ","{$operator}{$rule['company_wx_points']['value']}","{$user_points}");
+				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username']," ç»‘å®šå¾®ä¿¡ï¼Œ{$_CFG['points_byname']}({$operator}{$rule['company_wx_points']['value']})ï¼Œ(å‰©ä½™:{$user_points})",1,1016,"ç»‘å®šå¾®ä¿¡","{$operator}{$rule['company_wx_points']['value']}","{$user_points}");
 				}
 			}
 			if (wap_user_login($username,$password))
@@ -92,12 +92,12 @@ elseif($act == 'binding_save')
 		}
 		if($success == false){
 				$smarty->assign("from",$_POST['from']);
-				$smarty->assign('err',"ÓÃ»§Ãû»òÃÜÂë´íÎó!");
+				$smarty->assign('err',"ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯!");
 				$smarty->display('wap/wap-binding.html');
 		}
 	}else{
 			$smarty->assign("from",$_POST['from']);
-			$smarty->assign('err',"ÓÃ»§Ãû»òÃÜÂë´íÎó!");
+			$smarty->assign('err',"ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯!");
 			$smarty->display('wap/wap-binding.html');
 	}
 		
@@ -111,21 +111,21 @@ elseif($act == 'change_binding_save')
 	$fromUsername = trim($_POST['from']);
 	if(empty($fromUsername)){
 		$smarty->assign("from",$_POST['from']);
-		$smarty->assign('err',"°ó¶¨Ê§°Ü£¡Çë·µ»ØÎ¢ÐÅÖØÐÂ°ó¶¨");
+		$smarty->assign('err',"ç»‘å®šå¤±è´¥ï¼è¯·è¿”å›žå¾®ä¿¡é‡æ–°ç»‘å®š");
 		$smarty->display('wap/wap-change-binding.html');
 		die;
 	}
 	$username = trim($_POST['username']);
 	if(empty($username)){
 		$smarty->assign("from",$_POST['from']);
-		$smarty->assign('err',"ÇëÊäÈëÓÃ»§Ãû");
+		$smarty->assign('err',"è¯·è¾“å…¥ç”¨æˆ·å");
 		$smarty->display('wap/wap-change-binding.html');
 		die;
 	}
 	$password = trim($_POST['password']);
 	if(empty($password)){
 		$smarty->assign("from",$_POST['from']);
-		$smarty->assign('err',"ÇëÊäÈëÃÜÂë");
+		$smarty->assign('err',"è¯·è¾“å…¥å¯†ç ");
 		$smarty->display('wap/wap-change-binding.html');
 		die;
 	}
@@ -165,12 +165,12 @@ elseif($act == 'change_binding_save')
 		}
 		if($success == false){
 				$smarty->assign("from",$_POST['from']);
-				$smarty->assign('err',"ÓÃ»§Ãû»òÃÜÂë´íÎó!");
+				$smarty->assign('err',"ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯!");
 				$smarty->display('wap/wap-change-binding.html');
 		}
 	}else{
 			$smarty->assign("from",$_POST['from']);
-			$smarty->assign('err',"ÓÃ»§Ãû»òÃÜÂë´íÎó!");
+			$smarty->assign('err',"ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯!");
 			$smarty->display('wap/wap-change-binding.html');
 	}
 		

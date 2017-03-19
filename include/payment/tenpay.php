@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /**
- * 74cms ²Æ¸¶Í¨Ö§¸¶²å¼ş
+ * 74cms è´¢ä»˜é€šæ”¯ä»˜æ’ä»¶
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 
@@ -14,57 +14,57 @@
  {
  	die('Access Denied!');
  }
-//Éú³ÉÖ§¸¶´úÂë
+//ç”Ÿæˆæ”¯ä»˜ä»£ç 
 function get_code($order, $payment)
     {
 	global $_CFG;
 	if (!is_array($order) ||!is_array($payment))  return false;
-	$bargainor_id = trim($payment['partnerid']);////ÉÌ»§±àºÅ
-	$key=trim($payment['ytauthkey']);//MD5ÃÜÔ¿
-	$return_url=$order['v_url'];//·µ»Øurl,µØÖ·Ó¦Îª¾ø¶ÔÂ·¾¶,´øÓĞhttpĞ­Òé
+	$bargainor_id = trim($payment['partnerid']);////å•†æˆ·ç¼–å·
+	$key=trim($payment['ytauthkey']);//MD5å¯†é’¥
+	$return_url=$order['v_url'];//è¿”å›url,åœ°å€åº”ä¸ºç»å¯¹è·¯å¾„,å¸¦æœ‰httpåè®®
 	//date_default_timezone_set(PRC);
     $strDate = date("Ymd");
     $strTime = date("His");
-    $randNum = rand(1000, 9999);//4Î»Ëæ»úÊı
-    $strReq = $strTime . $randNum;//10Î»ĞòÁĞºÅ,¿ÉÒÔ×ÔĞĞµ÷Õû¡£	
-    $transaction_id = $bargainor_id . $strDate . $strReq;/* ²Æ¸¶Í¨½»Ò×µ¥ºÅ£¬¹æÔòÎª£º10Î»ÉÌ»§ºÅ+8Î»Ê±¼ä£¨YYYYmmdd)+10Î»Á÷Ë®ºÅ */
-	$sp_billno = $order['oid'];//¶©µ¥ºÅ ÉÌ¼Ò¶©µ¥ºÅ,³¤¶ÈÈô³¬¹ı32Î»£¬È¡Ç°32Î»¡£²Æ¸¶Í¨Ö»¼ÇÂ¼ÉÌ¼Ò¶©µ¥ºÅ£¬²»±£Ö¤Î¨Ò»¡£
-	//$total_fee ="1";/* ÉÌÆ·¼Û¸ñ£¨°üº¬ÔË·Ñ£©£¬ÒÔ·ÖÎªµ¥Î» */
-	$total_fee =intval($order['v_amount'])*100;/* ÉÌÆ·¼Û¸ñ£¨°üº¬ÔË·Ñ£©£¬ÒÔ·ÖÎªµ¥Î» */
-	$desc = "¶©µ¥ºÅ£º" . $transaction_id;
-	/* ´´½¨Ö§¸¶ÇëÇó¶ÔÏó */
+    $randNum = rand(1000, 9999);//4ä½éšæœºæ•°
+    $strReq = $strTime . $randNum;//10ä½åºåˆ—å·,å¯ä»¥è‡ªè¡Œè°ƒæ•´ã€‚	
+    $transaction_id = $bargainor_id . $strDate . $strReq;/* è´¢ä»˜é€šäº¤æ˜“å•å·ï¼Œè§„åˆ™ä¸ºï¼š10ä½å•†æˆ·å·+8ä½æ—¶é—´ï¼ˆYYYYmmdd)+10ä½æµæ°´å· */
+	$sp_billno = $order['oid'];//è®¢å•å· å•†å®¶è®¢å•å·,é•¿åº¦è‹¥è¶…è¿‡32ä½ï¼Œå–å‰32ä½ã€‚è´¢ä»˜é€šåªè®°å½•å•†å®¶è®¢å•å·ï¼Œä¸ä¿è¯å”¯ä¸€ã€‚
+	//$total_fee ="1";/* å•†å“ä»·æ ¼ï¼ˆåŒ…å«è¿è´¹ï¼‰ï¼Œä»¥åˆ†ä¸ºå•ä½ */
+	$total_fee =intval($order['v_amount'])*100;/* å•†å“ä»·æ ¼ï¼ˆåŒ…å«è¿è´¹ï¼‰ï¼Œä»¥åˆ†ä¸ºå•ä½ */
+	$desc = "è®¢å•å·ï¼š" . $transaction_id;
+	/* åˆ›å»ºæ”¯ä»˜è¯·æ±‚å¯¹è±¡ */
     $reqHandler = new PayRequestHandler();
     $reqHandler->init();
     $reqHandler->setKey($key);
-	$reqHandler->setParameter("bargainor_id", $bargainor_id);			//ÉÌ»§ºÅ
-	$reqHandler->setParameter("sp_billno", $sp_billno);					//ÉÌ»§¶©µ¥ºÅ
-	$reqHandler->setParameter("transaction_id", $transaction_id);		//²Æ¸¶Í¨½»Ò×µ¥ºÅ
-	$reqHandler->setParameter("total_fee", $total_fee);					//ÉÌÆ·×Ü½ğ¶î,ÒÔ·ÖÎªµ¥Î»
-	$reqHandler->setParameter("return_url", $return_url);				//·µ»Ø´¦ÀíµØÖ·
-	$reqHandler->setParameter("desc", $desc);	//ÉÌÆ·Ãû³Æ
+	$reqHandler->setParameter("bargainor_id", $bargainor_id);			//å•†æˆ·å·
+	$reqHandler->setParameter("sp_billno", $sp_billno);					//å•†æˆ·è®¢å•å·
+	$reqHandler->setParameter("transaction_id", $transaction_id);		//è´¢ä»˜é€šäº¤æ˜“å•å·
+	$reqHandler->setParameter("total_fee", $total_fee);					//å•†å“æ€»é‡‘é¢,ä»¥åˆ†ä¸ºå•ä½
+	$reqHandler->setParameter("return_url", $return_url);				//è¿”å›å¤„ç†åœ°å€
+	$reqHandler->setParameter("desc", $desc);	//å•†å“åç§°
 	$reqHandler->setParameter("spbill_create_ip", $_SERVER['REMOTE_ADDR']);
 	$reqUrl = $reqHandler->getRequestURL();
 	$def_url  ="<a href=\"".$reqUrl."\" target=\"_blank\"><img src=\"".$_CFG['site_template']."images/25.gif\" border=\"0\"/></a>";
-	$def_url  ="<input type=\"button\" class=\"but130lan intrgration_but\" value=\"È·ÈÏÖ§¸¶\"  onclick=\"javascript:window.open('".$reqUrl."')\"/>";
+	$def_url  ="<input type=\"button\" class=\"but130lan intrgration_but\" value=\"ç¡®è®¤æ”¯ä»˜\"  onclick=\"javascript:window.open('".$reqUrl."')\"/>";
 	 return $def_url;
     }
 /**
- * ÏìÓ¦²Ù×÷
+ * å“åº”æ“ä½œ
 */
 function respond()
 {
 $payment= get_payment_info('tenpay');
 $key = $payment['ytauthkey'];
-/* ´´½¨Ö§¸¶Ó¦´ğ¶ÔÏó */
+/* åˆ›å»ºæ”¯ä»˜åº”ç­”å¯¹è±¡ */
 $resHandler = new PayResponseHandler();
 $resHandler->setKey($key);
 	if($resHandler->isTenpaySign())
 	{
-	//ÉÌ»§µ¥ºÅ
+	//å•†æˆ·å•å·
 	$sp_billno = $resHandler->getParameter("sp_billno");
-	//²Æ¸¶Í¨½»Ò×µ¥ºÅ
+	//è´¢ä»˜é€šäº¤æ˜“å•å·
 	$transaction_id = $resHandler->getParameter("transaction_id");
-	//½ğ¶î,ÒÔ·ÖÎªµ¥Î»
+	//é‡‘é¢,ä»¥åˆ†ä¸ºå•ä½
 	$total_fee = $resHandler->getParameter("total_fee");
 	$pay_result = $resHandler->getParameter("pay_result");
 		if( "0" == $pay_result ) 
@@ -83,15 +83,15 @@ $resHandler->setKey($key);
 }
 function pay_info()
 {
-$arr['p_introduction']="²Æ¸¶Í¨¼ò¶ÌÃèÊö£º";
-$arr['notes']="²Æ¸¶Í¨ÏêÏ¸ÃèÊö£º";
-$arr['partnerid']="²Æ¸¶Í¨ÉÌ»§±àºÅ£º";
-$arr['ytauthkey']="²Æ¸¶Í¨MD5 ÃÜÔ¿£º";
-$arr['fee']="²Æ¸¶Í¨½»Ò×ÊÖĞø·Ñ£º";
+$arr['p_introduction']="è´¢ä»˜é€šç®€çŸ­æè¿°ï¼š";
+$arr['notes']="è´¢ä»˜é€šè¯¦ç»†æè¿°ï¼š";
+$arr['partnerid']="è´¢ä»˜é€šå•†æˆ·ç¼–å·ï¼š";
+$arr['ytauthkey']="è´¢ä»˜é€šMD5 å¯†é’¥ï¼š";
+$arr['fee']="è´¢ä»˜é€šäº¤æ˜“æ‰‹ç»­è´¹ï¼š";
 return $arr;
 }
 //----------------------------------------------------
-//²Æ¸¶Í¨×Ô´øclass
+//è´¢ä»˜é€šè‡ªå¸¦class
 class PayRequestHandler extends RequestHandler {
 	
 	function __construct() {
@@ -99,62 +99,62 @@ class PayRequestHandler extends RequestHandler {
 	}
 	
 	function PayRequestHandler() {
-		//Ä¬ÈÏÖ§¸¶Íø¹ØµØÖ·
+		//é»˜è®¤æ”¯ä»˜ç½‘å…³åœ°å€
 		$this->setGateURL("https://www.tenpay.com/cgi-bin/v1.0/pay_gate.cgi");	
 	}
 	
 	/**
 	*@Override
-	*³õÊ¼»¯º¯Êı£¬Ä¬ÈÏ¸øÒ»Ğ©²ÎÊı¸³Öµ£¬Èçcmdno,dateµÈ¡£
+	*åˆå§‹åŒ–å‡½æ•°ï¼Œé»˜è®¤ç»™ä¸€äº›å‚æ•°èµ‹å€¼ï¼Œå¦‚cmdno,dateç­‰ã€‚
 	*/
 	function init() {
-		//ÈÎÎñ´úÂë
+		//ä»»åŠ¡ä»£ç 
 		$this->setParameter("cmdno", "1");
 		
-		//ÈÕÆÚ
+		//æ—¥æœŸ
 		$this->setParameter("date",  date("Ymd"));
 		
-		//ÉÌ»§ºÅ
+		//å•†æˆ·å·
 		$this->setParameter("bargainor_id", "");
 		
-		//²Æ¸¶Í¨½»Ò×µ¥ºÅ
+		//è´¢ä»˜é€šäº¤æ˜“å•å·
 		$this->setParameter("transaction_id", "");
 		
-		//ÉÌ¼Ò¶©µ¥ºÅ
+		//å•†å®¶è®¢å•å·
 		$this->setParameter("sp_billno", "");
 		
-		//ÉÌÆ·¼Û¸ñ£¬ÒÔ·ÖÎªµ¥Î»
+		//å•†å“ä»·æ ¼ï¼Œä»¥åˆ†ä¸ºå•ä½
 		$this->setParameter("total_fee", "");
 		
-		//»õ±ÒÀàĞÍ
+		//è´§å¸ç±»å‹
 		$this->setParameter("fee_type",  "1");
 		
-		//·µ»Øurl
+		//è¿”å›url
 		$this->setParameter("return_url",  "");
 		
-		//×Ô¶¨Òå²ÎÊı
+		//è‡ªå®šä¹‰å‚æ•°
 		$this->setParameter("attach",  "");
 		
-		//ÓÃ»§ip
+		//ç”¨æˆ·ip
 		$this->setParameter("spbill_create_ip",  "");
 		
-		//ÉÌÆ·Ãû³Æ
+		//å•†å“åç§°
 		$this->setParameter("desc",  "");
 		
-		//ÒøĞĞ±àÂë
+		//é“¶è¡Œç¼–ç 
 		$this->setParameter("bank_type",  "0");
 		
-		//×Ö·û¼¯±àÂë
+		//å­—ç¬¦é›†ç¼–ç 
 		$this->setParameter("cs",  "gbk");
 		
-		//ÕªÒª
+		//æ‘˜è¦
 		$this->setParameter("sign",  "");
 		
 	}
 	
 	/**
 	*@Override
-	*´´½¨Ç©Ãû
+	*åˆ›å»ºç­¾å
 	*/
 	function createSign() {
 		$cmdno = $this->getParameter("cmdno");
@@ -189,7 +189,7 @@ class PayRequestHandler extends RequestHandler {
 		
 		$this->setParameter("sign", $sign);
 		
-		//debugĞÅÏ¢
+		//debugä¿¡æ¯
 		$this->_setDebugInfo($signPars . " => sign:" . $sign);
 		
 	}
@@ -212,7 +212,7 @@ class PayResponseHandler extends ResponseHandler {
 		$key = $this->getKey();
 		
 		$signPars = "";
-		//×éÖ¯Ç©Ãû´®
+		//ç»„ç»‡ç­¾åä¸²
 		$signPars = "cmdno=" . $cmdno . "&" .
 				"pay_result=" . $pay_result . "&" .
 				"date=" . $date . "&" .
@@ -227,7 +227,7 @@ class PayResponseHandler extends ResponseHandler {
 		
 		$tenpaySign = strtolower($this->getParameter("sign"));
 		
-		//debugĞÅÏ¢
+		//debugä¿¡æ¯
 		$this->_setDebugInfo($signPars . " => sign:" . $sign .
 				" tenpaySign:" . $this->getParameter("sign"));
 		
@@ -238,16 +238,16 @@ class PayResponseHandler extends ResponseHandler {
 }
 class RequestHandler {
 	
-	/** Íø¹ØurlµØÖ· */
+	/** ç½‘å…³urlåœ°å€ */
 	var $gateUrl;
 	
-	/** ÃÜÔ¿ */
+	/** å¯†é’¥ */
 	var $key;
 	
-	/** ÇëÇóµÄ²ÎÊı */
+	/** è¯·æ±‚çš„å‚æ•° */
 	var $parameters;
 	
-	/** debugĞÅÏ¢ */
+	/** debugä¿¡æ¯ */
 	var $debugInfo;
 	
 	function __construct() {
@@ -262,56 +262,56 @@ class RequestHandler {
 	}
 	
 	/**
-	*³õÊ¼»¯º¯Êı¡£
+	*åˆå§‹åŒ–å‡½æ•°ã€‚
 	*/
 	function init() {
 		//nothing to do
 	}
 	
 	/**
-	*»ñÈ¡Èë¿ÚµØÖ·,²»°üº¬²ÎÊıÖµ
+	*è·å–å…¥å£åœ°å€,ä¸åŒ…å«å‚æ•°å€¼
 	*/
 	function getGateURL() {
 		return $this->gateUrl;
 	}
 	
 	/**
-	*ÉèÖÃÈë¿ÚµØÖ·,²»°üº¬²ÎÊıÖµ
+	*è®¾ç½®å…¥å£åœ°å€,ä¸åŒ…å«å‚æ•°å€¼
 	*/
 	function setGateURL($gateUrl) {
 		$this->gateUrl = $gateUrl;
 	}
 	
 	/**
-	*»ñÈ¡ÃÜÔ¿
+	*è·å–å¯†é’¥
 	*/
 	function getKey() {
 		return $this->key;
 	}
 	
 	/**
-	*ÉèÖÃÃÜÔ¿
+	*è®¾ç½®å¯†é’¥
 	*/
 	function setKey($key) {
 		$this->key = $key;
 	}
 	
 	/**
-	*»ñÈ¡²ÎÊıÖµ
+	*è·å–å‚æ•°å€¼
 	*/
 	function getParameter($parameter) {
 		return $this->parameters[$parameter];
 	}
 	
 	/**
-	*ÉèÖÃ²ÎÊıÖµ
+	*è®¾ç½®å‚æ•°å€¼
 	*/
 	function setParameter($parameter, $parameterValue) {
 		$this->parameters[$parameter] = $parameterValue;
 	}
 	
 	/**
-	*»ñÈ¡ËùÓĞÇëÇóµÄ²ÎÊı
+	*è·å–æ‰€æœ‰è¯·æ±‚çš„å‚æ•°
 	*@return array
 	*/
 	function getAllParameters() {
@@ -319,7 +319,7 @@ class RequestHandler {
 	}
 	
 	/**
-	*»ñÈ¡´ø²ÎÊıµÄÇëÇóURL
+	*è·å–å¸¦å‚æ•°çš„è¯·æ±‚URL
 	*/
 	function getRequestURL() {
 	
@@ -331,7 +331,7 @@ class RequestHandler {
 			$reqPar .= $k . "=" . urlencode($v) . "&";
 		}
 		
-		//È¥µô×îºóÒ»¸ö&
+		//å»æ‰æœ€åä¸€ä¸ª&
 		$reqPar = substr($reqPar, 0, strlen($reqPar)-1);
 		
 		$requestURL = $this->getGateURL() . "?" . $reqPar;
@@ -341,14 +341,14 @@ class RequestHandler {
 	}
 		
 	/**
-	*»ñÈ¡debugĞÅÏ¢
+	*è·å–debugä¿¡æ¯
 	*/
 	function getDebugInfo() {
 		return $this->debugInfo;
 	}
 	
 	/**
-	*ÖØ¶¨Ïòµ½²Æ¸¶Í¨Ö§¸¶
+	*é‡å®šå‘åˆ°è´¢ä»˜é€šæ”¯ä»˜
 	*/
 	function doSend() {
 		header("Location:" . $this->getRequestURL());
@@ -356,7 +356,7 @@ class RequestHandler {
 	}
 	
 	/**
-	*´´½¨md5ÕªÒª,¹æÔòÊÇ:°´²ÎÊıÃû³Æa-zÅÅĞò,Óöµ½¿ÕÖµµÄ²ÎÊı²»²Î¼ÓÇ©Ãû¡£
+	*åˆ›å»ºmd5æ‘˜è¦,è§„åˆ™æ˜¯:æŒ‰å‚æ•°åç§°a-zæ’åº,é‡åˆ°ç©ºå€¼çš„å‚æ•°ä¸å‚åŠ ç­¾åã€‚
 	*/
 	function createSign() {
 		$signPars = "";
@@ -372,13 +372,13 @@ class RequestHandler {
 		
 		$this->setParameter("sign", $sign);
 		
-		//debugĞÅÏ¢
+		//debugä¿¡æ¯
 		$this->_setDebugInfo($signPars . " => sign:" . $sign);
 		
 	}	
 	
 	/**
-	*ÉèÖÃdebugĞÅÏ¢
+	*è®¾ç½®debugä¿¡æ¯
 	*/
 	function _setDebugInfo($debugInfo) {
 		$this->debugInfo = $debugInfo;
@@ -387,13 +387,13 @@ class RequestHandler {
 }
 class ResponseHandler  {
 	
-	/** ÃÜÔ¿ */
+	/** å¯†é’¥ */
 	var $key;
 	
-	/** Ó¦´ğµÄ²ÎÊı */
+	/** åº”ç­”çš„å‚æ•° */
 	var $parameters;
 	
-	/** debugĞÅÏ¢ */
+	/** debugä¿¡æ¯ */
 	var $debugInfo;
 	
 	function __construct() {
@@ -416,35 +416,35 @@ class ResponseHandler  {
 	}
 		
 	/**
-	*»ñÈ¡ÃÜÔ¿
+	*è·å–å¯†é’¥
 	*/
 	function getKey() {
 		return $this->key;
 	}
 	
 	/**
-	*ÉèÖÃÃÜÔ¿
+	*è®¾ç½®å¯†é’¥
 	*/	
 	function setKey($key) {
 		$this->key = $key;
 	}
 	
 	/**
-	*»ñÈ¡²ÎÊıÖµ
+	*è·å–å‚æ•°å€¼
 	*/	
 	function getParameter($parameter) {
 		return $this->parameters[$parameter];
 	}
 	
 	/**
-	*ÉèÖÃ²ÎÊıÖµ
+	*è®¾ç½®å‚æ•°å€¼
 	*/	
 	function setParameter($parameter, $parameterValue) {
 		$this->parameters[$parameter] = $parameterValue;
 	}
 	
 	/**
-	*»ñÈ¡ËùÓĞÇëÇóµÄ²ÎÊı
+	*è·å–æ‰€æœ‰è¯·æ±‚çš„å‚æ•°
 	*@return array
 	*/
 	function getAllParameters() {
@@ -452,9 +452,9 @@ class ResponseHandler  {
 	}	
 	
 	/**
-	*ÊÇ·ñ²Æ¸¶Í¨Ç©Ãû,¹æÔòÊÇ:°´²ÎÊıÃû³Æa-zÅÅĞò,Óöµ½¿ÕÖµµÄ²ÎÊı²»²Î¼ÓÇ©Ãû¡£
-	*true:ÊÇ
-	*false:·ñ
+	*æ˜¯å¦è´¢ä»˜é€šç­¾å,è§„åˆ™æ˜¯:æŒ‰å‚æ•°åç§°a-zæ’åº,é‡åˆ°ç©ºå€¼çš„å‚æ•°ä¸å‚åŠ ç­¾åã€‚
+	*true:æ˜¯
+	*false:å¦
 	*/	
 	function isTenpaySign() {
 		$signPars = "";
@@ -470,7 +470,7 @@ class ResponseHandler  {
 		
 		$tenpaySign = strtolower($this->getParameter("sign"));
 				
-		//debugĞÅÏ¢
+		//debugä¿¡æ¯
 		$this->_setDebugInfo($signPars . " => sign:" . $sign .
 				" tenpaySign:" . $this->getParameter("sign"));
 		
@@ -479,15 +479,15 @@ class ResponseHandler  {
 	}
 	
 	/**
-	*»ñÈ¡debugĞÅÏ¢
+	*è·å–debugä¿¡æ¯
 	*/	
 	function getDebugInfo() {
 		return $this->debugInfo;
 	}
 	
 	/**
-	*ÏÔÊ¾´¦Àí½á¹û¡£
-	*@param $show_url ÏÔÊ¾´¦Àí½á¹ûµÄurlµØÖ·,¾ø¶ÔurlµØÖ·µÄĞÎÊ½(http://www.xxx.com/xxx.php)¡£
+	*æ˜¾ç¤ºå¤„ç†ç»“æœã€‚
+	*@param $show_url æ˜¾ç¤ºå¤„ç†ç»“æœçš„urlåœ°å€,ç»å¯¹urlåœ°å€çš„å½¢å¼(http://www.xxx.com/xxx.php)ã€‚
 	*/	
 	function doShow($show_url) {
 		$strHtml = "<html><head>\r\n" .
@@ -503,8 +503,8 @@ class ResponseHandler  {
 	}
 	
 	/**
-	 * ÊÇ·ñ²Æ¸¶Í¨Ç©Ãû
-	 * @param signParameterArray Ç©ÃûµÄ²ÎÊıÊı×é
+	 * æ˜¯å¦è´¢ä»˜é€šç­¾å
+	 * @param signParameterArray ç­¾åçš„å‚æ•°æ•°ç»„
 	 * @return boolean
 	 */	
 	function _isTenpaySign($signParameterArray) {
@@ -522,7 +522,7 @@ class ResponseHandler  {
 		
 		$tenpaySign = strtolower($this->getParameter("sign"));
 				
-		//debugĞÅÏ¢
+		//debugä¿¡æ¯
 		$this->_setDebugInfo($signPars . " => sign:" . $sign .
 				" tenpaySign:" . $this->getParameter("sign"));
 		
@@ -532,7 +532,7 @@ class ResponseHandler  {
 	}
 	
 	/**
-	*ÉèÖÃdebugĞÅÏ¢
+	*è®¾ç½®debugä¿¡æ¯
 	*/	
 	function _setDebugInfo($debugInfo) {
 		$this->debugInfo = $debugInfo;

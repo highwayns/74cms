@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ajax·µ»Ø
+ * 74cms ajaxè¿”å›
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -176,15 +176,15 @@ elseif ($act=="top_loginform")
 	$contents='';
 	if ($_COOKIE['QS']['username'] && $_COOKIE['QS']['password'])
 	{
-		$contents='»¶Ó­&nbsp;&nbsp;<a href="{#$user_url#}" style="color:#339900">{#$username#}</a> µÇÂ¼£¡&nbsp;&nbsp;{#$pmscount_a#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$user_url#}">[»áÔ±ÖĞĞÄ]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$logout_url#}" >[ÍË³ö]</a>';
+		$contents='æ¬¢è¿&nbsp;&nbsp;<a href="{#$user_url#}" style="color:#339900">{#$username#}</a> ç™»å½•ï¼&nbsp;&nbsp;{#$pmscount_a#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$user_url#}">[ä¼šå‘˜ä¸­å¿ƒ]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$logout_url#}" >[é€€å‡º]</a>';
 	}
 	elseif ($_SESSION['activate_username'] && defined('UC_API'))
 	{
-		$contents=' &nbsp;&nbsp;ÄúµÄÕÊºÅ {#$activate_username#} Ğè¼¤»îºó²Å¿ÉÒÔÊ¹ÓÃ£¡ <a href="{#$activate_url#}" style="color:#339900">Á¢¼´¼¤»î</a>';
+		$contents=' &nbsp;&nbsp;æ‚¨çš„å¸å· {#$activate_username#} éœ€æ¿€æ´»åæ‰å¯ä»¥ä½¿ç”¨ï¼ <a href="{#$activate_url#}" style="color:#339900">ç«‹å³æ¿€æ´»</a>';
 	}
 	else
 	{	
-		$contents='»¶Ó­À´µ½{#$site_name#}£¡&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$login_url#}" >[µÇÂ¼]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$reg_url#}" >[Ãâ·Ñ×¢²á]</a>';
+		$contents='æ¬¢è¿æ¥åˆ°{#$site_name#}ï¼&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$login_url#}" >[ç™»å½•]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$reg_url#}" >[å…è´¹æ³¨å†Œ]</a>';
 	}
 		$contents=str_replace('{#$activate_username#}',$_SESSION['activate_username'],$contents);
 		$contents=str_replace('{#$site_name#}',$_CFG['site_name'],$contents);
@@ -196,7 +196,7 @@ elseif ($act=="top_loginform")
 		$user_url=$_CFG['site_dir']."user/company/company_index.php";
 			if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/company/company_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="¶ÌÏûÏ¢">ÏûÏ¢ '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/company/company_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="çŸ­æ¶ˆæ¯">æ¶ˆæ¯ '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='2')
@@ -204,7 +204,7 @@ elseif ($act=="top_loginform")
 			$user_url=$_CFG['site_dir']."user/personal/personal_index.php";
 			if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/personal/personal_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="¶ÌÏûÏ¢">ÏûÏ¢ '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/personal/personal_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="çŸ­æ¶ˆæ¯">æ¶ˆæ¯ '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='4')
@@ -212,7 +212,7 @@ elseif ($act=="top_loginform")
 			$user_url=$_CFG['site_dir']."user/train/train_index.php";
 			if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/train/train_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="¶ÌÏûÏ¢">ÏûÏ¢ '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/train/train_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="çŸ­æ¶ˆæ¯">æ¶ˆæ¯ '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='3')
@@ -220,7 +220,7 @@ elseif ($act=="top_loginform")
 			$user_url=$_CFG['site_dir']."user/hunter/hunter_index.php";
 			if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/hunter/hunter_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="¶ÌÏûÏ¢">ÏûÏ¢ '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/hunter/hunter_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="çŸ­æ¶ˆæ¯">æ¶ˆæ¯ '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		$contents=str_replace('{#$pmscount_a#}',$pmscount_a,$contents);
@@ -258,7 +258,7 @@ elseif ($act=="loginform")
 			$user_url=$_CFG['site_dir']."user/company/company_index.php";
 			 if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/company/company_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="¶ÌÏûÏ¢">ÏûÏ¢ '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/company/company_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="çŸ­æ¶ˆæ¯">æ¶ˆæ¯ '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='2')
@@ -266,7 +266,7 @@ elseif ($act=="loginform")
 			$user_url=$_CFG['site_dir']."user/personal/personal_index.php";
 			 if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/personal/personal_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="¶ÌÏûÏ¢">ÏûÏ¢ '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/personal/personal_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="çŸ­æ¶ˆæ¯">æ¶ˆæ¯ '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='4')
@@ -274,7 +274,7 @@ elseif ($act=="loginform")
 			$user_url=$_CFG['site_dir']."user/train/train_index.php";
 			 if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/train/train_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="¶ÌÏûÏ¢">ÏûÏ¢ '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/train/train_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="çŸ­æ¶ˆæ¯">æ¶ˆæ¯ '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='3')
@@ -282,7 +282,7 @@ elseif ($act=="loginform")
 			$user_url=$_CFG['site_dir']."user/hunter/hunter_index.php";
 			 if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/hunter/hunter_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="¶ÌÏûÏ¢">ÏûÏ¢ '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/hunter/hunter_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="çŸ­æ¶ˆæ¯">æ¶ˆæ¯ '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		$contents=str_replace('{#$pmscount_a#}',$pmscount_a,$contents);

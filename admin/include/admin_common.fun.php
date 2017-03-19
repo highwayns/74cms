@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¹ÜÀíÖĞĞÄ¹²ÓÃº¯Êı
+ * 74cms ç®¡ç†ä¸­å¿ƒå…±ç”¨å‡½æ•°
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
  if(!defined('IN_QISHI'))
@@ -40,10 +40,10 @@ function adminmsg($msg_detail, $msg_type = 0, $links = array(), $auto_redirect =
 	global $smarty;
     if (count($links) == 0)
     {
-        $links[0]['text'] = '·µ»ØÉÏÒ»Ò³';
+        $links[0]['text'] = 'è¿”å›ä¸Šä¸€é¡µ';
         $links[0]['href'] = 'javascript:history.go(-1)';
     }
-   $smarty->assign('ur_here',     'ÏµÍ³ÌáÊ¾');
+   $smarty->assign('ur_here',     'ç³»ç»Ÿæç¤º');
    $smarty->assign('msg_detail',  $msg_detail);
    $smarty->assign('msg_type',    $msg_type);
    $smarty->assign('links',       $links);
@@ -185,7 +185,7 @@ function nav_url_rewrite($alias=NULL,$get=NULL,$rewrite=true)
 {
 	global $_CFG,$_PAGE;
 	$url ='';
-	if ($_PAGE[$alias]['url']=='0' || $rewrite==false)//Ô­Ê¼Á´½Ó
+	if ($_PAGE[$alias]['url']=='0' || $rewrite==false)//åŸå§‹é“¾æ¥
 	{
 			if (!empty($get))
 			{
@@ -221,11 +221,11 @@ function write_static_cache($cache_file_path, $config_arr)
 		$fp = @fopen($cache_file_path, 'wb+');
 		if (!$fp)
 		{
-			exit('Éú³É»º´æÎÄ¼şÊ§°Ü');
+			exit('ç”Ÿæˆç¼“å­˜æ–‡ä»¶å¤±è´¥');
 		}
 		if (!@fwrite($fp, trim($content)))
 		{
-			exit('Éú³É»º´æÎÄ¼şÊ§°Ü');
+			exit('ç”Ÿæˆç¼“å­˜æ–‡ä»¶å¤±è´¥');
 		}
 		@fclose($fp);
 	}
@@ -336,7 +336,7 @@ function html2text($str){
 			}
 		}
 	}
-	$alltext = str_replace("¡¡"," ",$alltext);
+	$alltext = str_replace("ã€€"," ",$alltext);
 	$alltext = preg_replace("/&([^;&]*)(;|&)/","",$alltext);
 	$alltext = preg_replace("/[ ]+/s"," ",$alltext);
 	return $alltext;
@@ -346,7 +346,7 @@ function getsubdirs($dir) {
         if(!$dh = opendir($dir)) return $subdirs;
         while ($f = readdir($dh)) {
                 if($f =='.' || $f =='..') continue;
-                $path = $dir.'/'.$f;  //Èç¹ûÖ»Òª×ÓÄ¿Â¼Ãû, path = $f;
+                $path = $dir.'/'.$f;  //å¦‚æœåªè¦å­ç›®å½•å, path = $f;
 				$subdir=$f;
                 if(is_dir($path)) {
                         $subdirs[] = $subdir;
@@ -358,7 +358,7 @@ function getsubdirs($dir) {
 function makejs_classify()
 {
 	global $db;
-	$content = "//JavaScript Document Éú³ÉÊ±¼ä£º".date("Y-m-d  H:i:s")."\n\n";
+	$content = "//JavaScript Document ç”Ÿæˆæ—¶é—´ï¼š".date("Y-m-d  H:i:s")."\n\n";
 	$sql = "select * from ".table('category_district')." where parentid=0 order BY category_order desc,id asc";
 	$list=$db->getall($sql);
 	foreach($list as $parent)
@@ -490,7 +490,7 @@ function makejs_classify()
 	$content .= "var QS_resumetag=new Array(".implode(',',$resumetag).");\n";
 	$content .= "var QS_language=new Array(".implode(',',$language).");\n";
 	/*
-		Éú³É×¨Òµ·ÖÀàjs
+		ç”Ÿæˆä¸“ä¸šåˆ†ç±»js
 	*/
 	$sql = "select * from ".table('category_major')." where parentid=0 order BY category_order desc,id asc";
 	$list=$db->getall($sql);
@@ -529,25 +529,25 @@ function makejs_classify()
 	}
 	$fp = @fopen(QISHI_ROOT_PATH . 'data/cache_classify.js', 'wb+');
 	if (!$fp){
-			exit('Éú³ÉJSÎÄ¼şÊ§°Ü');
+			exit('ç”ŸæˆJSæ–‡ä»¶å¤±è´¥');
 		}
 	if (strcasecmp(QISHI_DBCHARSET,"utf8")!=0)
 	{
 	$content=iconv(QISHI_DBCHARSET,"utf-8//IGNORE",$content);
 	}
 	 if (!@fwrite($fp, trim($content))){
-			exit('Ğ´ÈëJSÎÄ¼şÊ§°Ü');
+			exit('å†™å…¥JSæ–‡ä»¶å¤±è´¥');
 		}
 	@fclose($fp);
 }
 function traverse($path) {
-    $current_dir = opendir("../".$path);    //opendir()·µ»ØÒ»¸öÄ¿Â¼¾ä±ú,Ê§°Ü·µ»Øfalse
+    $current_dir = opendir("../".$path);    //opendir()è¿”å›ä¸€ä¸ªç›®å½•å¥æŸ„,å¤±è´¥è¿”å›false
  
-    while(($file = readdir($current_dir)) !== false) {    //readdir()·µ»Ø´ò¿ªÄ¿Â¼¾ä±úÖĞµÄÒ»¸öÌõÄ¿
-        $sub_dir = $path . DIRECTORY_SEPARATOR . $file;    //¹¹½¨×ÓÄ¿Â¼Â·¾¶
+    while(($file = readdir($current_dir)) !== false) {    //readdir()è¿”å›æ‰“å¼€ç›®å½•å¥æŸ„ä¸­çš„ä¸€ä¸ªæ¡ç›®
+        $sub_dir = $path . DIRECTORY_SEPARATOR . $file;    //æ„å»ºå­ç›®å½•è·¯å¾„
         if($file == '.' || $file == '..') {
             continue;
-        } else {    //Èç¹ûÊÇÎÄ¼ş,Ö±½ÓÊä³ö
+        } else {    //å¦‚æœæ˜¯æ–‡ä»¶,ç›´æ¥è¾“å‡º
             // echo 'File in Directory ' . $path . ': ' . $file . '<br>';
             if(strpos(strtolower($file),"php")){
 				$f[] = $file;
@@ -597,7 +597,7 @@ function create_excel($top_str,$data){
 	}
 }
 /*
-¸üĞÂÎ¢ĞÅ²Ëµ¥Ê±»ñÈ¡²Ëµ¥jsonÊı¾İ
+æ›´æ–°å¾®ä¿¡èœå•æ—¶è·å–èœå•jsonæ•°æ®
  */
 function get_weixin_json_menu(){
 	global $db;
@@ -629,7 +629,7 @@ function get_weixin_json_menu(){
 	$menu['button'] = $arr;
 	return urldecode(json_encode($menu));
 }
-// »ñÈ¡ÓÊ¼şÏµÍ³ÈÕÖ¾
+// è·å–é‚®ä»¶ç³»ç»Ÿæ—¥å¿—
 function get_mail_log($offset, $perpage, $wheresql= '')
 {
 	global $db;

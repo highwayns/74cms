@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
@@ -6,21 +6,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_common.css" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_company.css" />
 <script src="{#$QISHI.site_template#}js/jquery.js"></script>
 <script>
 	$(document).ready(function() {
-		// Ì×²ÍÁĞ±í
+		// å¥—é¤åˆ—è¡¨
 		$('.account-item:nth-child(2n)').css({'margin-right':0});
 	});
 </script>
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > »áÔ±·şÎñ</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > ä¼šå‘˜æœåŠ¡</div>
 	<div class="usermain">
 		<div class="leftmenu com link_bk">
 			{#include file="member_company/left.htm"#}
@@ -28,75 +28,75 @@
 		<div class="rightmain">
 			<div class="bbox1 my_account">
 				<div class="topnav get_resume">
-					<div class="titleH1"><div class="h1-title">ÎÒµÄÕË»§</div></div>
+					<div class="titleH1"><div class="h1-title">æˆ‘çš„è´¦æˆ·</div></div>
 					<div class="navs link_bk">
 						{#if $QISHI.operation_mode == '1' || $QISHI.operation_mode == '3'#}
-						<a href="company_service.php?act=j_account" {#if $act=='j_account'#}class="se"{#/if#}>ÎÒµÄ»ı·Ö</a>
+						<a href="company_service.php?act=j_account" {#if $act=='j_account'#}class="se"{#/if#}>æˆ‘çš„ç§¯åˆ†</a>
 						{#/if#}
 						{#if $QISHI.operation_mode == '2' || $QISHI.operation_mode == '3'#}
-						<a href="company_service.php?act=t_account" {#if $act=='t_account'#}class="se"{#/if#}>ÎÒµÄÌ×²Í</a>
+						<a href="company_service.php?act=t_account" {#if $act=='t_account'#}class="se"{#/if#}>æˆ‘çš„å¥—é¤</a>
 						{#/if#}
 						<div class="clear"></div>
 					</div>
 				</div>
 				<div class="account-wrap">
 					<div class="account-top-block clearfix">
-						<div class="account-state f-left">ÕË»§×´Ì¬</div>
+						<div class="account-state f-left">è´¦æˆ·çŠ¶æ€</div>
 						<div class="a-state-content f-left">
 							{#if $QISHI.operation_mode == '2' || $QISHI.operation_mode == '3'#}
-							<span class="account-type">µ±Ç°Ì×²Í£º<span>{#$setmeal.setmeal_name#}</span><em>({#$setmeal.starttime|date_format:"%Y-%m-%d"#} ÖÁ {#if $setmeal.endtime=='0'#}--{#else#}{#$setmeal.endtime|date_format:"%Y-%m-%d"#}{#/if#})</em><a href="company_service.php?act=setmeal_list" class="underline">Éı¼¶VIPÌ×²Í</a></span>
+							<span class="account-type">å½“å‰å¥—é¤ï¼š<span>{#$setmeal.setmeal_name#}</span><em>({#$setmeal.starttime|date_format:"%Y-%m-%d"#} è‡³ {#if $setmeal.endtime=='0'#}--{#else#}{#$setmeal.endtime|date_format:"%Y-%m-%d"#}{#/if#})</em><a href="company_service.php?act=setmeal_list" class="underline">å‡çº§VIPå¥—é¤</a></span>
 							{#/if#}
 							{#if $QISHI.operation_mode == '1' || $QISHI.operation_mode == '3'#}
-							<span class="account-type last">µ±Ç°{#$QISHI.points_byname#}£º<span>{#$points#}</span>{#$QISHI.points_quantifier#}<a href="company_service.php?act=order_add" class="underline">»ı·Ö³äÖµ</a></span>
+							<span class="account-type last">å½“å‰{#$QISHI.points_byname#}ï¼š<span>{#$points#}</span>{#$QISHI.points_quantifier#}<a href="company_service.php?act=order_add" class="underline">ç§¯åˆ†å……å€¼</a></span>
 							{#/if#}
 						</div>
 					</div>
 					<div class="account-ctrl-bar clearfix">
-						<h3 class="f-left">Ì×²ÍÓàÁ¿</h3>
-						<a href="company_service.php?act=t_account&detail=1" class="f-right underline">Ì×²ÍÏû·ÑÃ÷Ï¸</a>
+						<h3 class="f-left">å¥—é¤ä½™é‡</h3>
+						<a href="company_service.php?act=t_account&detail=1" class="f-right underline">å¥—é¤æ¶ˆè´¹æ˜ç»†</a>
 					</div>
 					<div class="account-lost clearfix">
 						<div class="account-item f-left">
-							<div class="ai-text f-left">·¢²¼ÕĞÆ¸Ö°Î»</div>
+							<div class="ai-text f-left">å‘å¸ƒæ‹›è˜èŒä½</div>
 							<div class="ai-number f-left">{#$setmeal.jobs_ordinary#}/{#$setmeal_rule.jobs_ordinary#}</div>
 						</div>
 						<div class="account-item f-left">
-							<div class="ai-text f-left">ÏÂÔØÆÕÍ¨ÈË²Å¼òÀú</div>
+							<div class="ai-text f-left">ä¸‹è½½æ™®é€šäººæ‰ç®€å†</div>
 							<div class="ai-number f-left">{#$setmeal.download_resume_ordinary#}/{#$setmeal_rule.download_resume_ordinary#}</div>
 						</div>
 						<div class="account-item f-left">
-							<div class="ai-text f-left">ÏÂÔØ¸ß¼¶ÈË²Å¼òÀú</div>
+							<div class="ai-text f-left">ä¸‹è½½é«˜çº§äººæ‰ç®€å†</div>
 							<div class="ai-number f-left">{#$setmeal.download_resume_senior#}/{#$setmeal_rule.download_resume_senior#}</div>
 						</div>
 						<div class="account-item f-left">
-							<div class="ai-text f-left">ÑûÇëÆÕÍ¨ÈË²Å</div>
+							<div class="ai-text f-left">é‚€è¯·æ™®é€šäººæ‰</div>
 							<div class="ai-number f-left">{#$setmeal.interview_ordinary#}/{#$setmeal_rule.interview_ordinary#}</div>
 						</div>
 						<div class="account-item f-left">
-							<div class="ai-text f-left">ÑûÇë¸ß¼¶ÈË²Å</div>
+							<div class="ai-text f-left">é‚€è¯·é«˜çº§äººæ‰</div>
 							<div class="ai-number f-left">{#$setmeal.interview_senior#}/{#$setmeal_rule.interview_senior#}</div>
 						</div>
 						<div class="account-item f-left">
-							<div class="ai-text f-left">Ö°Î»ÍÆ¹ã-ÍÆ¼ö</div>
+							<div class="ai-text f-left">èŒä½æ¨å¹¿-æ¨è</div>
 							<div class="ai-number f-left">{#$setmeal.recommend_num#}/{#$setmeal_rule.recommend_num#}</div>
 						</div>
 						<div class="account-item f-left">
-							<div class="ai-text f-left">Ö°Î»ÍÆ¹ã-½ô¼±</div>
+							<div class="ai-text f-left">èŒä½æ¨å¹¿-ç´§æ€¥</div>
 							<div class="ai-number f-left">{#$setmeal.emergency_num#}/{#$setmeal_rule.emergency_num#}</div>
 						</div>
 						<div class="account-item f-left">
-							<div class="ai-text f-left">Ö°Î»ÍÆ¹ã-ÖÃ¶¥</div>
+							<div class="ai-text f-left">èŒä½æ¨å¹¿-ç½®é¡¶</div>
 							<div class="ai-number f-left">{#$setmeal.stick_num#}/{#$setmeal_rule.stick_num#}</div>
 						</div>
 						<div class="account-item f-left">
-							<div class="ai-text f-left">Ö°Î»ÍÆ¹ã-±äÉ«</div>
+							<div class="ai-text f-left">èŒä½æ¨å¹¿-å˜è‰²</div>
 							<div class="ai-number f-left">{#$setmeal.highlight_num#}/{#$setmeal_rule.highlight_num#}</div>
 						</div>
 					</div>
 					<div class="bottomtip">
-				 	   	<div class="tp h2-title">Ğ¡ÌùÊ¿</div>
-					   Ì×²ÍÓàÁ¿ÏÔÊ¾µÄÊı¶îÎªµ±Ç°Ê£Ì×²ÍÓàÊı/×ÜÊı£¬Èç£º·¢²¼ÕĞÆ¸Ö°Î»  18/20 ¼´Ì×²Í·¢²¼ÕĞÆ¸Ö°Î»×ÜÊı20£¬¿ÉÊ¹ÓÃÊı18¡£<br />
-						Èç¹ûºóÌ¨¿ªÍ¨Ì×²Íµş¼Ó·şÎñ£¬Ì×²ÍÓàÁ¿Êı¶î¿ÉÄÜ»á´óÓÚÎªµ±Ç°Ê£Ì×²Í×ÜÊı£¬Èç£ºÏÂÔØ¸ß¼¶ÈË²Å¼òÀú  38/20 ¼´Ì×²ÍÏÂÔØ¸ß¼¶ÈË²Å¼òÀú×ÜÊı20£¬»¹¿ÉÊ¹ÓÃÊı38¡£<br />
+				 	   	<div class="tp h2-title">å°è´´å£«</div>
+					   å¥—é¤ä½™é‡æ˜¾ç¤ºçš„æ•°é¢ä¸ºå½“å‰å‰©å¥—é¤ä½™æ•°/æ€»æ•°ï¼Œå¦‚ï¼šå‘å¸ƒæ‹›è˜èŒä½  18/20 å³å¥—é¤å‘å¸ƒæ‹›è˜èŒä½æ€»æ•°20ï¼Œå¯ä½¿ç”¨æ•°18ã€‚<br />
+						å¦‚æœåå°å¼€é€šå¥—é¤å åŠ æœåŠ¡ï¼Œå¥—é¤ä½™é‡æ•°é¢å¯èƒ½ä¼šå¤§äºä¸ºå½“å‰å‰©å¥—é¤æ€»æ•°ï¼Œå¦‚ï¼šä¸‹è½½é«˜çº§äººæ‰ç®€å†  38/20 å³å¥—é¤ä¸‹è½½é«˜çº§äººæ‰ç®€å†æ€»æ•°20ï¼Œè¿˜å¯ä½¿ç”¨æ•°38ã€‚<br />
 					</div>
 				</div>
 			</div>

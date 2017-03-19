@@ -1,4 +1,4 @@
-DateInput = (function($) { // Localise the $ function
+ï»¿DateInput = (function($) { // Localise the $ function
 
 function DateInput(el, opts) {
   if (typeof(opts) != "object") opts = {};
@@ -20,18 +20,18 @@ DateInput.DEFAULT_OPTS = {
 DateInput.prototype = {
   build: function() {
     var monthNav = $('<p class="month_nav">' +
-      '<span class="button prev" title="Ç°Ò»ÔÂ">&lt;&lt;</span>' +
+      '<span class="button prev" title="å‰ä¸€æœˆ">&lt;&lt;</span>' +
       ' <span class="month_name"></span> ' +
-      '<span class="button next" title="ºóÒ»ÔÂ">&gt;&gt;</span>' +
+      '<span class="button next" title="åä¸€æœˆ">&gt;&gt;</span>' +
       '</p>');
     this.monthNameSpan = $(".month_name", monthNav);
     $(".prev", monthNav).click(this.bindToObj(function() { this.moveMonthBy(-1); }));
     $(".next", monthNav).click(this.bindToObj(function() { this.moveMonthBy(1); }));
     
     var yearNav = $('<p class="year_nav">' +
-      '<span class="button prev" title="Ç°Ò»Äê">&lt;&lt;</span>' +
+      '<span class="button prev" title="å‰ä¸€å¹´">&lt;&lt;</span>' +
       ' <span class="year_name"></span> ' +
-      '<span class="button next" title="ºóÒ»Äê">&gt;&gt;</span>' +
+      '<span class="button next" title="åä¸€å¹´">&gt;&gt;</span>' +
       '</p>');
     this.yearNameSpan = $(".year_name", yearNav);
     $(".prev", yearNav).click(this.bindToObj(function() { this.moveMonthBy(-12); }));
@@ -385,7 +385,7 @@ $.date_input = { initialize: function(opts) {
 } };
 return DateInput;
 })(jQuery); // End localisation of the $ function
-jQuery.extend(DateInput.DEFAULT_OPTS, {  month_names: ["Ò»ÔÂ", "¶şÔÂ", "ÈıÔÂ", "ËÄÔÂ", "ÎåÔÂ", "ÁùÔÂ", "ÆßÔÂ", "°ËÔÂ", "¾ÅÔÂ", "Ê®ÔÂ", "Ê®Ò»ÔÂ", "Ê®¶şÔÂ"],  short_month_names: ["Ò»", "¶ş", "Èı", "ËÄ", "Îå", "Áù", "Æß", "°Ë", "¾Å", "Ê®", "Ê®Ò»", "Ê®¶ş"],  short_day_names: [ "ÈÕ","Ò»", "¶ş", "Èı", "ËÄ", "Îå", "Áù"]});
+jQuery.extend(DateInput.DEFAULT_OPTS, {  month_names: ["ä¸€æœˆ", "äºŒæœˆ", "ä¸‰æœˆ", "å››æœˆ", "äº”æœˆ", "å…­æœˆ", "ä¸ƒæœˆ", "å…«æœˆ", "ä¹æœˆ", "åæœˆ", "åä¸€æœˆ", "åäºŒæœˆ"],  short_month_names: ["ä¸€", "äºŒ", "ä¸‰", "å››", "äº”", "å…­", "ä¸ƒ", "å…«", "ä¹", "å", "åä¸€", "åäºŒ"],  short_day_names: [ "æ—¥","ä¸€", "äºŒ", "ä¸‰", "å››", "äº”", "å…­"]});
 $.extend(DateInput.DEFAULT_OPTS, {
   stringToDate: function(string) {
     var matches;

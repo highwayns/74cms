@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Í¶ËßÓë½¨ÒéÏà¹Øº¯Êı
+ * 74cms æŠ•è¯‰ä¸å»ºè®®ç›¸å…³å‡½æ•°
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
  if(!defined('IN_QISHI'))
@@ -63,7 +63,7 @@ function get_report_list($offset,$perpage,$get_sql= '',$type)
 	
 	return $row_arr;
 }
-//·´À¡ÉóºË
+//åé¦ˆå®¡æ ¸
 function report_audit($id,$audit,$type,$rid)
 {
 	global $db;
@@ -80,7 +80,7 @@ function report_audit($id,$audit,$type,$rid)
 			if (!$db->query("update  ".table('report_resume')." SET audit='".intval($audit)."'  WHERE id IN (".$sqlin.")")) return false;
 		}
 		$return=$return+$db->affected_rows();
-		//·¢ËÍÕ¾ÄÚĞÅ
+		//å‘é€ç«™å†…ä¿¡
 		if($type==1) {
 			$result = $db->query("SELECT * FROM ".table('report')." WHERE id IN ({$sqlin})");
 		} else {
@@ -91,19 +91,19 @@ function report_audit($id,$audit,$type,$rid)
 			$user_info=get_user($list['uid']);
 			if($type==1) {
 				$jobsurl=url_rewrite('QS_jobsshow',array('id'=>$list['jobs_id']));
-				$setsqlarr['message']="Äú¾Ù±¨µÄÖ°Î»£º<a href=\"{$jobsurl}\" target=\"_blank\">{$list['jobs_name']}</a>,¾­Æ½Ì¨ºËÊµÇé¿ö".($audit==2?"ÊôÊµ":"²»ÊôÊµ");
+				$setsqlarr['message']="æ‚¨ä¸¾æŠ¥çš„èŒä½ï¼š<a href=\"{$jobsurl}\" target=\"_blank\">{$list['jobs_name']}</a>,ç»å¹³å°æ ¸å®æƒ…å†µ".($audit==2?"å±å®":"ä¸å±å®");
 			} else {
-				// ÆóÒµ¾Ù±¨¼òÀú »ñµÃ»ı·Ö
+				// ä¼ä¸šä¸¾æŠ¥ç®€å† è·å¾—ç§¯åˆ†
 				if ($audit==2 && $rule['company_report_resume_points']['value']>0)
 				{
 
 					report_deal($_SESSION['uid'],$rule['company_report_resume_points']['type'],$rule['company_report_resume_points']['value']);
 					$user_points=get_user_points($_SESSION['uid']);
 					$operator=$rule['company_report_resume_points']['type']=="1"?"+":"-";
-					write_memberslog($user_info['uid'],1,9001,$user_info['username']," ÆóÒµ¾Ù±¨¼òÀú£¬{$_CFG['points_byname']}({$operator}{$rule['company_report_resume_points']['value']})£¬(Ê£Óà:{$user_points})",1,1016,"ÆóÒµ¾Ù±¨¼òÀú","{$operator}{$rule['company_report_resume_points']['value']}","{$user_points}");
+					write_memberslog($user_info['uid'],1,9001,$user_info['username']," ä¼ä¸šä¸¾æŠ¥ç®€å†ï¼Œ{$_CFG['points_byname']}({$operator}{$rule['company_report_resume_points']['value']})ï¼Œ(å‰©ä½™:{$user_points})",1,1016,"ä¼ä¸šä¸¾æŠ¥ç®€å†","{$operator}{$rule['company_report_resume_points']['value']}","{$user_points}");
 				}
 				$resumeurl=url_rewrite('QS_resumeshow',array('id'=>$list['resume_id']));
-				$setsqlarr['message']="Äú¾Ù±¨µÄ¼òÀú£º<a href=\"{$resumeurl}\" target=\"_blank\">{$list['title']}</a>,ÕæÊµĞÕÃû£º{$list['fullname']},¾­Æ½Ì¨ºËÊµÇé¿ö".($audit==2?"ÊôÊµ":"²»ÊôÊµ");
+				$setsqlarr['message']="æ‚¨ä¸¾æŠ¥çš„ç®€å†ï¼š<a href=\"{$resumeurl}\" target=\"_blank\">{$list['title']}</a>,çœŸå®å§“åï¼š{$list['fullname']},ç»å¹³å°æ ¸å®æƒ…å†µ".($audit==2?"å±å®":"ä¸å±å®");
 			}
 			$setsqlarr['msgtype']=1;
 			$setsqlarr['msgtouid']=$user_info['uid'];

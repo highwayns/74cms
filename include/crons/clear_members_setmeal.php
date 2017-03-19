@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¼Æ»®ÈÎÎñ Ã¿ÔÂÇå³ý»áÔ±³ÁÓàÈÕÖ¾
+ * 74cms è®¡åˆ’ä»»åŠ¡ æ¯æœˆæ¸…é™¤ä¼šå‘˜æ²‰ä½™æ—¥å¿—
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 if(!defined('IN_QISHI'))
@@ -18,7 +18,7 @@ die('Access Denied!');
 	$result = $db->query("select * from ".table('members_setmeal')." where endtime<>0 and endtime<$time ");
 	while($row = $db->fetch_array($result))
 	{
-		//ÖØÐÂÉèÖÃÌ×²Í
+		//é‡æ–°è®¾ç½®å¥—é¤
 		$setmeal=$db->getone("select * from ".table('setmeal')." WHERE id = ".intval($_CFG['reset_service'])." AND display=1 LIMIT 1");
 		$setsqlarr['effective']=1;
 		$setsqlarr['setmeal_id']=$setmeal['id'];
@@ -62,7 +62,7 @@ die('Access Denied!');
 		$db->updatetable(table('jobs_tmp'),$setmeal_jobs," uid=".intval($row['uid'])." AND add_mode='2' ");
 		distribution_jobs_uid(intval($row['uid']));
 	}
-	//¸üÐÂÈÎÎñÊ±¼ä±í
+	//æ›´æ–°ä»»åŠ¡æ—¶é—´è¡¨
 	if ($crons['weekday']>=0)
 	{
 	$weekday=array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
@@ -137,7 +137,7 @@ die('Access Denied!');
 									}
 							}
 					}
-					//¼ì²âÍê±Ï
+					//æ£€æµ‹å®Œæ¯•
 					$j=array_map('addslashes',$j);
 					if (!empty($t1))
 					{

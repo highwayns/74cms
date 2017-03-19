@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>¸öÈË»áÔ±ÖĞĞÄ</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ä¸ªäººä¼šå‘˜ä¸­å¿ƒ</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="../css/common.css" rel="stylesheet" type="text/css" />
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
@@ -18,17 +18,17 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-  //´ò¿ª¶¥²¿²Ëµ¥   
+  //æ‰“å¼€é¡¶éƒ¨èœå•   
   $("#topmenu_sub").click( function () { 
     $("#topmenu").slideToggle("fast");
   });
 
-  //ĞÔ±ğµ¥Ñ¡
+  //æ€§åˆ«å•é€‰
   $("#sex_radio .input_radio").click(function(){
       $("#sex").val($(this).val());
   });
 
-  // ´´½¨¼òÀúµ¯³ö¿ò
+  // åˆ›å»ºç®€å†å¼¹å‡ºæ¡†
   function showFloatBox() {
     $("body").prepend("<div class=\"menu_bg_layer\"></div>");
     $(".menu_bg_layer").height($(document).height());
@@ -36,31 +36,31 @@ $(document).ready(function()
     $(".menu_bg_layer").css("opacity",0.3);
   }
 
-  // ³öÉúÄê·İÌî³ä
+  // å‡ºç”Ÿå¹´ä»½å¡«å……
   var myDate = new Date();
   var y = myDate.getFullYear();
   y = y-18;
   var ymin = y-35;
   var yearHtm = "";
   for (i=y; i>=ymin; i--) {
-    yearHtm+="<li title=\""+i+"\">"+i+"Äê</li>";
+    yearHtm+="<li title=\""+i+"\">"+i+"å¹´</li>";
   }
   $("#menuYear ul").html(yearHtm);
 
-  // ³öÉúÄê·İµã»÷
+  // å‡ºç”Ÿå¹´ä»½ç‚¹å‡»
   $("#year_menu").click(function(){
     showFloatBox();
     $("#menuYear").css({ top: ($(window).height() - $('#menuYear').outerHeight())/2 + $(document).scrollTop() });
     $("#menuYear").show();
     $("#menuYear li").click(function(){
       $("#birthdate").val($(this).attr("title"));
-      $("#year_text").html($(this).attr("title")+"Äê");
+      $("#year_text").html($(this).attr("title")+"å¹´");
       $("#menuYear").hide();
       $(".menu_bg_layer").remove();
     });
   });
 
-  // ×î¸ßÑ§Àúµã»÷
+  // æœ€é«˜å­¦å†ç‚¹å‡»
   $("#education_menu").click(function(){
     showFloatBox();
     $("#menuEducation").css({ top: ($(window).height() - $('#menuEducation').outerHeight())/2 + $(document).scrollTop() });
@@ -74,7 +74,7 @@ $(document).ready(function()
     });
   });
 
-  // ¹¤×÷¾­Ñéµã»÷
+  // å·¥ä½œç»éªŒç‚¹å‡»
   $("#experience_menu").click(function(){
     showFloatBox();
     $("#menuExperience").css({ top: ($(window).height() - $('#menuExperience').outerHeight())/2 + $(document).scrollTop() });
@@ -87,13 +87,13 @@ $(document).ready(function()
       $(".menu_bg_layer").remove();
     });
   });
-  // ¹Ø±Õµ¯³ö¿ò
+  // å…³é—­å¼¹å‡ºæ¡†
     $(".choose_close").click(function(event) {
       $(this).parent().hide();
       $(".menu_bg_layer").remove();
     });
 
-  // ajaxÌá½»±£´æ¼òÀú
+  // ajaxæäº¤ä¿å­˜ç®€å†
   $("#resume_save").click(function(event) {
     var pid = {#$smarty.get.pid#}
     var title = $("input[name=title]").val();
@@ -116,10 +116,10 @@ $(document).ready(function()
     $.post('?act=resume_basic_save', {"pid":pid,"title":title,"fullname":fullname,"sex":sex,"sex_cn":sex_cn,"birthdate":birthdate,"education":education,"education_cn":education_cn,"experience":experience,"experience_cn":experience_cn,"residence":residence,"telephone":telephone,"email":email,"wage":wage,"wage_cn":wage_cn,"nature":nature,"nature_cn":nature_cn}, 
       function(data) {
         if (data == "ok") {
-          alert("ĞŞ¸Ä»ù±¾ĞÅÏ¢³É¹¦");
+          alert("ä¿®æ”¹åŸºæœ¬ä¿¡æ¯æˆåŠŸ");
           window.location.reload();
         } else if(data == "err") {
-          alert("ĞŞ¸Ä»ù±¾ĞÅÏ¢Ê§°Ü");
+          alert("ä¿®æ”¹åŸºæœ¬ä¿¡æ¯å¤±è´¥");
           window.location.reload();
         } else {
           alert(data);
@@ -132,68 +132,68 @@ $(document).ready(function()
 <body>
 <div class=""></div>
 <div class="sub_head_top">
-	<div class="title">»ù±¾ĞÅÏ¢</div>
+	<div class="title">åŸºæœ¬ä¿¡æ¯</div>
 	<div class="back" id="pageback"><img src="../images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="../images/2.jpg"  border="0"/></a></div>
 </div>
 
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="../index.php";'>
-    <div class="box"><img src="../images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="../images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-jobs-list.php";'>
-    <div class="box"><img src="../images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="../images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-resume-list.php";'>
-    <div class="box"><img src="../images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="../images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-news-list.php";'>
-    <div class="box"><img src="../images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="../images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 <div class="make_resume_top">
-  <p>»ù±¾ĞÅÏ¢</p>
+  <p>åŸºæœ¬ä¿¡æ¯</p>
 </div>
 
 <form id="Form1" method="post" action="?act=make_resume_save" style="padding:0 10px;" >
     <table style="width:100%;border-collapse:collapse;">
       
         <tr>
-          <td class="make_resume_td_L">ÕæÊµĞÕÃû</td>
+          <td class="make_resume_td_L">çœŸå®å§“å</td>
           <td class="make_resume_td_R"><input type="text" name="fullname" class="make_resume_input" value="{#$resume_basic.fullname#}"/><span style="position: absolute;top:40px"></span></td>  
         </tr>
         <tr>
-          <td class="make_resume_td_L">ĞÔ±ğ</td>
+          <td class="make_resume_td_L">æ€§åˆ«</td>
           <td class="make_resume_td_R" id="sex_radio">
               {#if $resume_basic.sex==1 || $resume_basic.sex==""#}
-              <input class="input_radio" type="radio" name="sex_cn" value="1" title="ÄĞ" checked/>ÄĞ&nbsp;&nbsp;&nbsp;<input class="input_radio" type="radio" name="sex_cn" value="2" title="Å®"/>Å®
+              <input class="input_radio" type="radio" name="sex_cn" value="1" title="ç”·" checked/>ç”·&nbsp;&nbsp;&nbsp;<input class="input_radio" type="radio" name="sex_cn" value="2" title="å¥³"/>å¥³
               <input type="hidden" name="sex" id="sex" value="1"/>
               {#else#}
-              <input type="radio" name="sex_cn" value="1" title="ÄĞ"/>ÄĞ&nbsp;&nbsp;&nbsp;<input type="radio" name="sex_cn" value="2"  title="Å®" checked/>Å®
+              <input type="radio" name="sex_cn" value="1" title="ç”·"/>ç”·&nbsp;&nbsp;&nbsp;<input type="radio" name="sex_cn" value="2"  title="å¥³" checked/>å¥³
               <input type="hidden" name="sex" id="sex" value="2"/>
               {#/if#}
           </td>
         </tr>
         <tr>
-          <td class="make_resume_td_L">³öÉúÄê·İ</td>
+          <td class="make_resume_td_L">å‡ºç”Ÿå¹´ä»½</td>
           <td class="make_resume_td_R" id="year_menu">
             <div class="input_text_200_bg date_input" id="year_text">{#$resume_basic.birthdate#}</div>
             <img src="../images/35.gif" alt="" />
             <input name="birthdate" id="birthdate" type="hidden" value="{#$resume_basic.birthdate#}" />
           </td>
           <div class="menu choose_menu" id="menuYear" style="display:none;position:absolute;z-index:1;">
-            <div class="menu_title">³öÉúÄê·İ</div>
+            <div class="menu_title">å‡ºç”Ÿå¹´ä»½</div>
             <div class="choose_close"></div>
             <ul></ul>
           </div> 
         </tr>
         <tr>
-          <td class="make_resume_td_L">×î¸ßÑ§Àú</td>
+          <td class="make_resume_td_L">æœ€é«˜å­¦å†</td>
           <td class="make_resume_td_R" id="education_menu">
               <div class="input_text_200_bg" id="education_text">{#$resume_basic.education_cn#}<i></i></div>  
               <img src="../images/35.gif" alt="" />
@@ -201,10 +201,10 @@ $(document).ready(function()
               <input name="education_cn" type="hidden" id="education_cn" value="{#$resume_basic.education_cn#}" />
           </td> 
           <div class="menu choose_menu" id="menuEducation" style="display:none;position:absolute;z-index:1;">
-            <div class="menu_title">×î¸ßÑ§Àú</div>
+            <div class="menu_title">æœ€é«˜å­¦å†</div>
             <div class="choose_close"></div>
             <ul>
-              {#qishi_get_classify  set="ÀàĞÍ:QS_education,ÁĞ±íÃû:c_education"#}
+              {#qishi_get_classify  set="ç±»å‹:QS_education,åˆ—è¡¨å:c_education"#}
               {#foreach from=$c_education item=list#}
               <li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
               {#/foreach#}
@@ -212,7 +212,7 @@ $(document).ready(function()
           </div>     
         </tr>
         <tr>
-          <td class="make_resume_td_L">¹¤×÷¾­Ñé</td>
+          <td class="make_resume_td_L">å·¥ä½œç»éªŒ</td>
           <td class="make_resume_td_R" id="experience_menu">
               <div class="input_text_200_bg" id="experience_text">{#$resume_basic.experience_cn#}</div>  
               <img src="../images/35.gif" alt="" />
@@ -220,10 +220,10 @@ $(document).ready(function()
               <input name="experience_cn" type="hidden" id="experience_cn" value="{#$resume_basic.experience_cn#}" />
           </td>
           <div class="menu choose_menu" id="menuExperience" style="display:none;position:absolute;z-index:1;">
-            <div class="menu_title">¹¤×÷¾­Ñé</div>
+            <div class="menu_title">å·¥ä½œç»éªŒ</div>
             <div class="choose_close"></div>
             <ul>
-              {#qishi_get_classify  set="ÀàĞÍ:QS_experience,ÁĞ±íÃû:c_experience"#}
+              {#qishi_get_classify  set="ç±»å‹:QS_experience,åˆ—è¡¨å:c_experience"#}
               {#foreach from=$c_experience item=list#}
               <li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
               {#/foreach#}
@@ -231,21 +231,21 @@ $(document).ready(function()
           </div>
         </tr>
         <tr>
-          <td class="make_resume_td_L">ÏÖ¾Ó×¡µØ</td>
+          <td class="make_resume_td_L">ç°å±…ä½åœ°</td>
           <td class="make_resume_td_R">
            <input type="text" name="residence" class="make_resume_input" value="{#$resume_basic.residence#}"/>
           </td> 
         </tr>
         <tr>
-          <td class="make_resume_td_L">ÊÖ»ú</td>
+          <td class="make_resume_td_L">æ‰‹æœº</td>
           <td class="make_resume_td_R"><input name="telephone" id="telephone" type="text" class="make_resume_input" value="{#$resume_basic.telephone#}" /></td> 
         </tr>
         <tr>
-          <td class="make_resume_td_L">ÓÊÏä</td>
+          <td class="make_resume_td_L">é‚®ç®±</td>
           <td class="make_resume_td_R"><input name="email" id="email" type="text" class="make_resume_input" value="{#$resume_basic.email#}" /></td>  
         </tr>
     </table>
-    <input type="button" id="resume_save" value="±£´æĞÅÏ¢" class="personal_submit"/>
+    <input type="button" id="resume_save" value="ä¿å­˜ä¿¡æ¯" class="personal_submit"/>
 </form>
 {#include file="wap/footer.htm"#}
 </body>

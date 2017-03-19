@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÓÑÇéÁ´½Ó
+ * 74cms å‹æƒ…é“¾æ¥
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -17,7 +17,7 @@ require_once(ADMIN_ROOT_PATH.'include/upload.php');
 $upfiles_dir="../data/link/";
 $files_dir=$_CFG['site_dir']."data/link/";
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'list';
-$smarty->assign('pageheader',"ÓÑÇéÁ´½Ó");
+$smarty->assign('pageheader',"å‹æƒ…é“¾æ¥");
 if($act == 'list')
 {
 	get_token();
@@ -59,11 +59,11 @@ elseif($act == 'del_link')
 	$id=$_REQUEST['id'];
 	if ($num=del_link($id))
 	{
-	adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı".$num."ĞĞ",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ıÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 elseif($act =='add')
@@ -79,7 +79,7 @@ elseif($act =='addsave')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"link_add");
-	$setsqlarr['link_name']=$_POST['link_name']?trim($_POST['link_name']):adminmsg('Á´½ÓÃû³Æ²»ÄÜÎª¿Õ£¡',1);
+	$setsqlarr['link_name']=$_POST['link_name']?trim($_POST['link_name']):adminmsg('é“¾æ¥åç§°ä¸èƒ½ä¸ºç©ºï¼',1);
 	$setsqlarr['link_url']=$_POST['link_url'];
 	$setsqlarr['alias']=$_POST['alias'];
 	$setsqlarr['show_order'] =intval($_POST['show_order']);
@@ -91,7 +91,7 @@ elseif($act =='addsave')
 		$setsqlarr['link_logo']=_asUpFiles($upfiles_dir, "logo", 1024*2, 'jpg/gif/png',true);
 		if (empty($setsqlarr['link_logo']))
 		{
-		adminmsg('ÉÏ´«Í¼Æ¬³ö´í£¡',1);
+		adminmsg('ä¸Šä¼ å›¾ç‰‡å‡ºé”™ï¼',1);
 		}
 		else
 		{
@@ -102,13 +102,13 @@ elseif($act =='addsave')
 	{
 		$setsqlarr['link_logo']=trim($_POST['link_logo']);
 	}
-	$link[0]['text'] = "¼ÌĞøÌí¼ÓÁ´½Ó";
+	$link[0]['text'] = "ç»§ç»­æ·»åŠ é“¾æ¥";
 	$link[0]['href'] = '?act=add';
-	$link[1]['text'] = "·µ»ØÓÑÇéÁ´½ÓÁĞ±í";
+	$link[1]['text'] = "è¿”å›å‹æƒ…é“¾æ¥åˆ—è¡¨";
 	$link[1]['href'] = '?';
-	//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨Ìí¼ÓÓÑÇéÁ´½Ó", $_SESSION['admin_name'],3);
-	!$db->inserttable(table('link'),$setsqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åå°æ·»åŠ å‹æƒ…é“¾æ¥", $_SESSION['admin_name'],3);
+	!$db->inserttable(table('link'),$setsqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 }
 elseif($act =='edit')
 {
@@ -125,7 +125,7 @@ elseif($act =='editsave')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"link_edit");
-	$setsqlarr['link_name']=$_POST['link_name']?trim($_POST['link_name']):adminmsg('Á´½ÓÃû³Æ²»ÄÜÎª¿Õ£¡',1);
+	$setsqlarr['link_name']=$_POST['link_name']?trim($_POST['link_name']):adminmsg('é“¾æ¥åç§°ä¸èƒ½ä¸ºç©ºï¼',1);
 	$setsqlarr['link_url']=$_POST['link_url'];
 	$setsqlarr['alias']=$_POST['alias'];
 	$setsqlarr['show_order'] =intval($_POST['show_order']);
@@ -136,7 +136,7 @@ elseif($act =='editsave')
 		$setsqlarr['link_logo']=_asUpFiles($upfiles_dir, "logo", 1024*2, 'jpg/gif/png',true);
 		if (empty($setsqlarr['link_logo']))
 		{
-		adminmsg('ÉÏ´«Í¼Æ¬³ö´í£¡',1);
+		adminmsg('ä¸Šä¼ å›¾ç‰‡å‡ºé”™ï¼',1);
 		}
 		else
 		{
@@ -147,11 +147,11 @@ elseif($act =='editsave')
 	{
 		$setsqlarr['link_logo']=trim($_POST['link_logo']);
 	}
-	$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+	$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 	$link[0]['href'] = $_POST['url'];
-	//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨ĞŞ¸ÄÓÑÇéÁ´½Ó", $_SESSION['admin_name'],3);
-	!$db->updatetable(table('link'),$setsqlarr," link_id =".intval($_POST['id']))?adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0):adminmsg("ĞŞ¸Ä³É¹¦£¡",2,$link);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åå°ä¿®æ”¹å‹æƒ…é“¾æ¥", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('link'),$setsqlarr," link_id =".intval($_POST['id']))?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'category')
 {
@@ -172,21 +172,21 @@ elseif($act == 'add_category_save')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"link_category");	
-	$setsqlarr['categoryname']=$_POST['categoryname']?trim($_POST['categoryname']):adminmsg('ÄúÃ»ÓĞÌîĞ´·ÖÀàÃû³Æ£¡',1);
-	$setsqlarr['c_alias']=$_POST['c_alias']?trim($_POST['c_alias']):adminmsg('ÄúÃ»ÓĞÌîµ÷ÓÃÃû³Æ£¡',1);
-	substr($setsqlarr['c_alias'],0,3)=='QS_'?adminmsg('µ÷ÓÃÃû³Æ²»ÔÊĞí QS_ ¿ªÍ·£¡',1):'';
+	$setsqlarr['categoryname']=$_POST['categoryname']?trim($_POST['categoryname']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™åˆ†ç±»åç§°ï¼',1);
+	$setsqlarr['c_alias']=$_POST['c_alias']?trim($_POST['c_alias']):adminmsg('æ‚¨æ²¡æœ‰å¡«è°ƒç”¨åç§°ï¼',1);
+	substr($setsqlarr['c_alias'],0,3)=='QS_'?adminmsg('è°ƒç”¨åç§°ä¸å…è®¸ QS_ å¼€å¤´ï¼',1):'';
 	$category=get_link_category_name($setsqlarr['c_alias']);
 	if ($category)
 	{
-	adminmsg("µ÷ÓÃÃûÒÑ¾­´æÔÚ£¡",0);
+	adminmsg("è°ƒç”¨åå·²ç»å­˜åœ¨ï¼",0);
 	}
 	else
 	{
-	$link[0]['text'] = "·µ»Ø·ÖÀà¹ÜÀí";
+	$link[0]['text'] = "è¿”å›åˆ†ç±»ç®¡ç†";
 	$link[0]['href'] = '?act=category';
-	$link[1]['text'] = "¼ÌĞøÌí¼Ó·ÖÀà";
+	$link[1]['text'] = "ç»§ç»­æ·»åŠ åˆ†ç±»";
 	$link[1]['href'] = "?act=category_add";
-	!$db->inserttable(table('link_category'),$setsqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+	!$db->inserttable(table('link_category'),$setsqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 	}	
 }
 elseif($act == 'category_edit')
@@ -201,19 +201,19 @@ elseif($act == 'edit_category_save')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"link_category");	
-	$setsqlarr['categoryname']=$_POST['categoryname']?trim($_POST['categoryname']):adminmsg('ÄúÃ»ÓĞÌîĞ´·ÖÀàÃû³Æ£¡',1);
-	$setsqlarr['c_alias']=$_POST['c_alias']?trim($_POST['c_alias']):adminmsg('ÄúÃ»ÓĞÌîµ÷ÓÃÃû³Æ£¡',1);
-	substr($setsqlarr['c_alias'],0,3)=='QS_'?adminmsg('µ÷ÓÃÃû³Æ²»ÔÊĞí QS_ ¿ªÍ·£¡',1):'';
+	$setsqlarr['categoryname']=$_POST['categoryname']?trim($_POST['categoryname']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™åˆ†ç±»åç§°ï¼',1);
+	$setsqlarr['c_alias']=$_POST['c_alias']?trim($_POST['c_alias']):adminmsg('æ‚¨æ²¡æœ‰å¡«è°ƒç”¨åç§°ï¼',1);
+	substr($setsqlarr['c_alias'],0,3)=='QS_'?adminmsg('è°ƒç”¨åç§°ä¸å…è®¸ QS_ å¼€å¤´ï¼',1):'';
 	$category=get_link_category_name($setsqlarr['c_alias']);
 	if ($category && $category['id']<>$_POST['id'])
 	{
-	adminmsg("µ÷ÓÃÃûÒÑ¾­´æÔÚ£¡",0);
+	adminmsg("è°ƒç”¨åå·²ç»å­˜åœ¨ï¼",0);
 	}
 	else
 	{
-	$link[0]['text'] = "·µ»Ø·ÖÀà¹ÜÀí";
+	$link[0]['text'] = "è¿”å›åˆ†ç±»ç®¡ç†";
 	$link[0]['href'] = '?act=category';
-	!$db->updatetable(table('link_category'),$setsqlarr," id=".intval($_POST['id']))?adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0):adminmsg("ĞŞ¸Ä³É¹¦£¡",2,$link);
+	!$db->updatetable(table('link_category'),$setsqlarr," id=".intval($_POST['id']))?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 	}	
 }
 elseif($act == 'del_category')
@@ -223,11 +223,11 @@ elseif($act == 'del_category')
 	$id=$_REQUEST['id'];
 	if ($num=del_category($id))
 	{
-	adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı".$num."ĞĞ",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ıÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'link_set')
@@ -245,14 +245,14 @@ elseif($act == 'link_set_save')
 	check_permissions($_SESSION['admin_purview'],"mb_set");
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('¸üĞÂÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°è®¾ç½®å¤±è´¥', 1):"";
 	}
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('text')." SET value='$v' WHERE name='$k'")?adminmsg('¸üĞÂÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('text')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°è®¾ç½®å¤±è´¥', 1):"";
 	}
 	refresh_cache('config');
 	refresh_cache('text');
-	adminmsg("±£´æ³É¹¦£¡",2);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 ?>

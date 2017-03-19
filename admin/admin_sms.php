@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÓÊ¼şÉèÖÃ
+ * 74cms é‚®ä»¶è®¾ç½®
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -14,7 +14,7 @@ require_once(dirname(__FILE__).'/../data/config.php');
 require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'set_sms';
 check_permissions($_SESSION['admin_purview'],"set_sms");
-$smarty->assign('pageheader',"¶ÌĞÅÉèÖÃ");
+$smarty->assign('pageheader',"çŸ­ä¿¡è®¾ç½®");
 if($act == 'set_sms')
 {
 	get_token();
@@ -27,12 +27,12 @@ elseif($act == 'set_save')
 	check_token();
 	header("Cache-control: private");
 	foreach($_POST as $k => $v){
-	!$db->query("UPDATE ".table('sms_config')." SET value='$v' WHERE name='$k'")?adminmsg('¸üĞÂÕ¾µãÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('sms_config')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1):"";
 	}
-	//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨¸üĞÂÕ¾µãÉèÖÃ", $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åå°æ›´æ–°ç«™ç‚¹è®¾ç½®", $_SESSION['admin_name'],3);
 	refresh_cache('sms_config');
-	adminmsg("±£´æ³É¹¦£¡",2);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 if($act == 'testing')
 {
@@ -43,47 +43,47 @@ if($act == 'testing')
 elseif($act == 'sms_testing')
 {
 	check_token();
-	$txt="ÄúºÃ£¡ÕâÊÇÒ»Ìõ¼ì²â¶ÌĞÅÄ£¿éÅäÖÃµÄ¶ÌĞÅ¡£ÊÕµ½´Ë¶ÌĞÅ£¬ÒâÎ¶×ÅÄúµÄ¶ÌĞÅÄ£¿éÉèÖÃÕıÈ·£¡Äú¿ÉÒÔ½øĞĞÆäËü²Ù×÷ÁË£¡";
+	$txt="æ‚¨å¥½ï¼è¿™æ˜¯ä¸€æ¡æ£€æµ‹çŸ­ä¿¡æ¨¡å—é…ç½®çš„çŸ­ä¿¡ã€‚æ”¶åˆ°æ­¤çŸ­ä¿¡ï¼Œæ„å‘³ç€æ‚¨çš„çŸ­ä¿¡æ¨¡å—è®¾ç½®æ­£ç¡®ï¼æ‚¨å¯ä»¥è¿›è¡Œå…¶å®ƒæ“ä½œäº†ï¼";
 	$mobile=$_POST['mobile'];
 	if (!preg_match("/^(13|15|14|17|18)\d{9}$/",$mobile))
 	{
-	adminmsg("ÊÖ»úºÅÌîĞ´´íÎó£¬ÇëÖØĞÂÌîĞ´!",0);
+	adminmsg("æ‰‹æœºå·å¡«å†™é”™è¯¯ï¼Œè¯·é‡æ–°å¡«å†™!",0);
 	}
 	if($_POST['type']==1){
 		$r=captcha_send_sms($mobile,$txt);
 		if ($r=="success")
 		{
-			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨¶ÌĞÅ·¢ËÍ³É¹¦£¡", $_SESSION['admin_name'],3);
-		adminmsg('¶ÌĞÅ·¢ËÍ³É¹¦£¡',2);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°çŸ­ä¿¡å‘é€æˆåŠŸï¼", $_SESSION['admin_name'],3);
+		adminmsg('çŸ­ä¿¡å‘é€æˆåŠŸï¼',2);
 		}
 		else
 		{
-		adminmsg("¶ÌĞÅ·¢ËÍÊ§°Ü£¡$r",1);
+		adminmsg("çŸ­ä¿¡å‘é€å¤±è´¥ï¼$r",1);
 		}
 	}elseif($_POST['type']==2){
 		$r=send_sms($mobile,$txt);
 		if ($r=="success")
 		{
-			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨¶ÌĞÅ·¢ËÍ³É¹¦£¡", $_SESSION['admin_name'],3);
-		adminmsg('¶ÌĞÅ·¢ËÍ³É¹¦£¡',2);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°çŸ­ä¿¡å‘é€æˆåŠŸï¼", $_SESSION['admin_name'],3);
+		adminmsg('çŸ­ä¿¡å‘é€æˆåŠŸï¼',2);
 		}
 		else
 		{
-		adminmsg("¶ÌĞÅ·¢ËÍÊ§°Ü£¡$r",1);
+		adminmsg("çŸ­ä¿¡å‘é€å¤±è´¥ï¼$r",1);
 		}
 	}elseif($_POST['type']==3){
 		$r=free_send_sms($mobile,$txt);
 		if ($r=="success")
 		{
-			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨¶ÌĞÅ·¢ËÍ³É¹¦£¡", $_SESSION['admin_name'],3);
-		adminmsg('¶ÌĞÅ·¢ËÍ³É¹¦£¡',2);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°çŸ­ä¿¡å‘é€æˆåŠŸï¼", $_SESSION['admin_name'],3);
+		adminmsg('çŸ­ä¿¡å‘é€æˆåŠŸï¼',2);
 		}
 		else
 		{
-		adminmsg("¶ÌĞÅ·¢ËÍÊ§°Ü£¡$r",1);
+		adminmsg("çŸ­ä¿¡å‘é€å¤±è´¥ï¼$r",1);
 		}
 	}
 	
@@ -107,48 +107,48 @@ elseif($act == 'sms_rule_save')
 	check_token();
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('sms_config')." SET value='$v' WHERE name='$k'")?adminmsg('¸üĞÂÕ¾µãÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('sms_config')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1):"";
 	}
-	//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨ÉèÖÃ¶ÌĞÅÅäÖÃ£¡", $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åå°è®¾ç½®çŸ­ä¿¡é…ç½®ï¼", $_SESSION['admin_name'],3);
 	refresh_cache('sms_config');
-	adminmsg("±£´æ³É¹¦£¡",2);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'edit_tpl')
 {
 	get_token();
 	$templates_name=trim($_GET['templates_name']);
 	$label=array();
-	$label[]=array('{sitename}','ÍøÕ¾Ãû³Æ');
-	$label[]=array('{sitedomain}','ÍøÕ¾ÓòÃû');
-	//Éú³É±êÇ©
+	$label[]=array('{sitename}','ç½‘ç«™åç§°');
+	$label[]=array('{sitedomain}','ç½‘ç«™åŸŸå');
+	//ç”Ÿæˆæ ‡ç­¾
 	if ($templates_name=='set_reg')
 	{
-	$label[]=array('{username}','ÓÃ»§Ãû');
-	$label[]=array('{password}','ÃÜÂë');
+	$label[]=array('{username}','ç”¨æˆ·å');
+	$label[]=array('{password}','å¯†ç ');
 	}
 	elseif ($templates_name=='set_applyjobs')
 	{
-	$label[]=array('{personalfullname}','ÉêÇëÈË');
-	$label[]=array('{jobsname}','ÉêÇëÖ°Î»Ãû³Æ');
+	$label[]=array('{personalfullname}','ç”³è¯·äºº');
+	$label[]=array('{jobsname}','ç”³è¯·èŒä½åç§°');
 	}
 	elseif ($templates_name=='set_invite')
 	{
-	$label[]=array('{companyname}','ÑûÇë·½(¹«Ë¾Ãû³Æ)');
+	$label[]=array('{companyname}','é‚€è¯·æ–¹(å…¬å¸åç§°)');
 	}
 	elseif ($templates_name=='set_order')
 	{
-	$label[]=array('{paymenttpye}','¸¶¿î·½Ê½');
-	$label[]=array('{oid}','¶©µ¥ºÅ');
-	$label[]=array('{amount}','½ğ¶î');
+	$label[]=array('{paymenttpye}','ä»˜æ¬¾æ–¹å¼');
+	$label[]=array('{oid}','è®¢å•å·');
+	$label[]=array('{amount}','é‡‘é¢');
 	}
 	elseif ($templates_name=='set_editpwd')
 	{
-	$label[]=array('{newpassword}','ĞÂÃÜÂë');
+	$label[]=array('{newpassword}','æ–°å¯†ç ');
 	}
 	elseif ($templates_name=='set_jobsallow' || $templates_name=='set_jobsnotallow')
 	{
-	$label[]=array('{jobsname}','Ö°Î»Ãû³Æ');
+	$label[]=array('{jobsname}','èŒä½åç§°');
 	}
 	//-end
 	if ($templates_name)
@@ -167,18 +167,18 @@ elseif($act == 'templates_save')
 	check_token();
 	$templates_value=trim($_POST['templates_value']);
 	$templates_name=trim($_POST['templates_name']);
-	!$db->query("UPDATE ".table('sms_templates')." SET value='{$templates_value}' WHERE name='{$templates_name}'")?adminmsg('ÉèÖÃÊ§°Ü', 1):"";
-	$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+	!$db->query("UPDATE ".table('sms_templates')." SET value='{$templates_value}' WHERE name='{$templates_name}'")?adminmsg('è®¾ç½®å¤±è´¥', 1):"";
+	$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 	$link[0]['href'] ="?act=set_tpl";
 	refresh_cache('sms_templates');
-	//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦±£´æÄ£°å£¡", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2,$link);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åå°æˆåŠŸä¿å­˜æ¨¡æ¿ï¼", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'send')
 {
 	get_token();
-	$smarty->assign('pageheader',"¶ÌĞÅÓªÏú");
+	$smarty->assign('pageheader',"çŸ­ä¿¡è¥é”€");
 	
 	require_once(dirname(__FILE__).'/include/admin_smsqueue_fun.php');
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
@@ -212,21 +212,21 @@ elseif($act == 'sms_send')
 	$url=trim($_REQUEST['url']);
 	if (!$uid)
 	{
-	adminmsg('ÓÃ»§UID´íÎó£¡',0);
+	adminmsg('ç”¨æˆ·UIDé”™è¯¯ï¼',0);
 	}
 	if (empty($txt))
 	{
-	adminmsg('¶ÌĞÅÄÚÈİ²»ÄÜÎª¿Õ£¡',0);
+	adminmsg('çŸ­ä¿¡å†…å®¹ä¸èƒ½ä¸ºç©ºï¼',0);
 	}
 	if (empty($mobile))
 	{
-	adminmsg('ÊÖ»ú²»ÄÜÎª¿Õ£¡',0);
+	adminmsg('æ‰‹æœºä¸èƒ½ä¸ºç©ºï¼',0);
 	}
 	if (!preg_match("/^(13|15|14|17|18)\d{9}$/",$mobile))
 	{
-		$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+		$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 		$link[0]['href'] = "{$url}";
-		adminmsg("·¢ËÍÊ§°Ü£¡<strong>{$mobile}</strong> ²»ÊÇ±ê×¼µÄÊÖ»úºÅ¸ñÊ½",1,$link);
+		adminmsg("å‘é€å¤±è´¥ï¼<strong>{$mobile}</strong> ä¸æ˜¯æ ‡å‡†çš„æ‰‹æœºå·æ ¼å¼",1,$link);
 		
 	}
 	else
@@ -239,24 +239,24 @@ elseif($act == 'sms_send')
 			if ($r=="success")
 			{
 				$setsqlarr['s_sendtime']=time();
-				$setsqlarr['s_type']=1;//·¢ËÍ³É¹¦
+				$setsqlarr['s_type']=1;//å‘é€æˆåŠŸ
 				$db->inserttable(table('smsqueue'),$setsqlarr);
 				unset($setsqlarr);
-				//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-				write_log("ºóÌ¨³É¹¦·¢ËÍ¶ÌĞÅ£¡", $_SESSION['admin_name'],3);
-				$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+				//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+				write_log("åå°æˆåŠŸå‘é€çŸ­ä¿¡ï¼", $_SESSION['admin_name'],3);
+				$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 				$link[0]['href'] = "{$url}";
-				adminmsg("·¢ËÍ³É¹¦£¡",2,$link);
+				adminmsg("å‘é€æˆåŠŸï¼",2,$link);
 			}
 			else
 			{
 				$setsqlarr['s_sendtime']=time();
-				$setsqlarr['s_type']=2;//·¢ËÍÊ§°Ü
+				$setsqlarr['s_type']=2;//å‘é€å¤±è´¥
 				$db->inserttable(table('smsqueue'),$setsqlarr);
 				unset($setsqlarr);
-				$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+				$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 				$link[0]['href'] = "{$url}";
-				adminmsg("·¢ËÍÊ§°Ü£¬´íÎóÎ´Öª£¡",0,$link);
+				adminmsg("å‘é€å¤±è´¥ï¼Œé”™è¯¯æœªçŸ¥ï¼",0,$link);
 			}
 	}
 }
@@ -265,7 +265,7 @@ elseif ($act=='again_send')
 	$id=intval($_GET['id']);
 	if (empty($id))
 	{
-	adminmsg("ÇëÑ¡ÔñÒª·¢ËÍµÄÏîÄ¿£¡",1);
+	adminmsg("è¯·é€‰æ‹©è¦å‘é€çš„é¡¹ç›®ï¼",1);
 	}
 	$result = $db->getone("SELECT * FROM ".table('smsqueue')." WHERE  s_id = {$id} limit 1");
 	$wheresql=" s_id={$id} ";
@@ -273,16 +273,16 @@ elseif ($act=='again_send')
 	if ($r=='success')
 	{
 		$setsqlarr['s_sendtime']=time();
-		$setsqlarr['s_type']=1;//·¢ËÍ³É¹¦
+		$setsqlarr['s_type']=1;//å‘é€æˆåŠŸ
 		!$db->updatetable(table('smsqueue'),$setsqlarr,$wheresql);
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦·¢ËÍÏîÄ¿£¡", $_SESSION['admin_name'],3);
-		adminmsg('·¢ËÍ³É¹¦',2);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°æˆåŠŸå‘é€é¡¹ç›®ï¼", $_SESSION['admin_name'],3);
+		adminmsg('å‘é€æˆåŠŸ',2);
 	}else{
 		$setsqlarr['s_sendtime']=time();
 		$setsqlarr['s_type']=2;
 		!$db->updatetable(table('smsqueue'),$setsqlarr,$wheresql);
-		adminmsg('·¢ËÍÊ§°Ü',0);
+		adminmsg('å‘é€å¤±è´¥',0);
 	}
 		
 }
@@ -291,16 +291,16 @@ elseif ($act=='del')
 	$id=$_POST['id'];
 	if (empty($id))
 	{
-	adminmsg("ÇëÑ¡ÔñÏîÄ¿£¡",1);
+	adminmsg("è¯·é€‰æ‹©é¡¹ç›®ï¼",1);
 	}
 	if(!is_array($id)) $id=array($id);
 	$sqlin=implode(",",$id);
 	if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
 	{
 	$db->query("Delete from ".table('smsqueue')." WHERE s_id IN ({$sqlin}) ");
-	//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦É¾³ıÏîÄ¿£¡", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ı³É¹¦",2);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åå°æˆåŠŸåˆ é™¤é¡¹ç›®ï¼", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸ",2);
 	}
 }
 ?>

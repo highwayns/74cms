@@ -1,9 +1,9 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript" src="js/jquery.userinfotip-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//µã»÷ÅúÁ¿Í¶µİ
+	//ç‚¹å‡»æ‰¹é‡æŠ•é€’
 	$("#ButMailing").click(function(){
 		$("form[name=form1]").attr("action",$("form[name=form1]").attr("action")+"&uid={#$resume.uid#}&rid={#$resume.id#}");
 		$("form[name=form1]").submit();
@@ -18,50 +18,50 @@ $(document).ready(function()
 </div>
 
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-Î¯ÍĞÍ¶µİÊÇÖ¸£ºÔÚÎ¯ÍĞÊ±¼äÄÚ½«¼òÀúÍ¶µİµ½ºÏÊÊµÄÖ°Î»¡£<br />
+å§”æ‰˜æŠ•é€’æ˜¯æŒ‡ï¼šåœ¨å§”æ‰˜æ—¶é—´å†…å°†ç®€å†æŠ•é€’åˆ°åˆé€‚çš„èŒä½ã€‚<br />
 </p>
 </div>
 
 <div class="seltpye_y">
-	&nbsp;&nbsp;&nbsp;&nbsp;¼òÀú±êÌâ£º{#$resume.title#}&nbsp;&nbsp;&nbsp;&nbsp;ÕæÊµĞÕÃû£º{#$resume.fullname#}
+	&nbsp;&nbsp;&nbsp;&nbsp;ç®€å†æ ‡é¢˜ï¼š{#$resume.title#}&nbsp;&nbsp;&nbsp;&nbsp;çœŸå®å§“åï¼š{#$resume.fullname#}
 </div>
   <form id="form1" name="form1" method="post" action="?act=mailing">
   <table width="100%" border="0" cellpadding="0" cellspacing="0"   class="link_lan">
     <tr>
       <td   class="admin_list_tit admin_list_first">
-      <label id="chkAll"><input type="checkbox" name=" " title="È«Ñ¡/·´Ñ¡" id="chk"/>Ö°Î»Ãû³Æ</label></td>
-      <td  class="admin_list_tit"> ·¢²¼¹«Ë¾ </td>
-	<td align="center"  width="10%" class="admin_list_tit">ÉóºË×´Ì¬</td>
-	<td align="center" width="10%" class="admin_list_tit">¹«Ë¾¹æÄ£</td>
-	<td align="center" width="5%" class="admin_list_tit">ĞĞÒµ</td>
-	<td align="center"  width="8%" class="admin_list_tit">ĞÔ±ğÒªÇó</td>
-     	<td align="center" width="8%"  class="admin_list_tit">Ñ§ÀúÒªÇó</td>
-     	<td align="center" width="8%"  class="admin_list_tit">¹¤×Ê</td>
-      <td    width="100" align="center"  class="admin_list_tit">²Ù×÷</td>
+      <label id="chkAll"><input type="checkbox" name=" " title="å…¨é€‰/åé€‰" id="chk"/>èŒä½åç§°</label></td>
+      <td  class="admin_list_tit"> å‘å¸ƒå…¬å¸ </td>
+	<td align="center"  width="10%" class="admin_list_tit">å®¡æ ¸çŠ¶æ€</td>
+	<td align="center" width="10%" class="admin_list_tit">å…¬å¸è§„æ¨¡</td>
+	<td align="center" width="5%" class="admin_list_tit">è¡Œä¸š</td>
+	<td align="center"  width="8%" class="admin_list_tit">æ€§åˆ«è¦æ±‚</td>
+     	<td align="center" width="8%"  class="admin_list_tit">å­¦å†è¦æ±‚</td>
+     	<td align="center" width="8%"  class="admin_list_tit">å·¥èµ„</td>
+      <td    width="100" align="center"  class="admin_list_tit">æ“ä½œ</td>
     </tr>
 	{#foreach from=$jobs item=list#}
       <tr>
       	<td  class="admin_list admin_list_first">
      	   <input name="y_id[]" type="checkbox" id="y_id" value="{#$list.id#}"  />		
 		 <a href="{#$list.jobs_url#}" target="_blank"{#if $list.deadline<$smarty.now || $list.display == "2"#}style="color:#999999"{#/if#}  >{#$list.jobs_name#}</a>		 
-		 {#if $list.emergency == "1"#}&nbsp;<span style="color: #FF6600">[¼±Æ¸]</span>{#/if#}
-		{#if $list.recommend == "1"#}&nbsp;<span style="color: #339900">[ÍÆ¼ö]</span>{#/if#}
-		{#if $list.stick == "1"#}&nbsp;<span style="color: #FF3399">[ÖÃ¶¥]</span>{#/if#}
-		{#if $list.highlight != ""#}&nbsp;<span style="color: #6633CC">[±äÉ«]</span>{#/if#}
-		{#if $list.display == "2"#}&nbsp;<span style="color: #999999">[ÒÑÔİÍ£]</span>{#/if#}		
+		 {#if $list.emergency == "1"#}&nbsp;<span style="color: #FF6600">[æ€¥è˜]</span>{#/if#}
+		{#if $list.recommend == "1"#}&nbsp;<span style="color: #339900">[æ¨è]</span>{#/if#}
+		{#if $list.stick == "1"#}&nbsp;<span style="color: #FF3399">[ç½®é¡¶]</span>{#/if#}
+		{#if $list.highlight != ""#}&nbsp;<span style="color: #6633CC">[å˜è‰²]</span>{#/if#}
+		{#if $list.display == "2"#}&nbsp;<span style="color: #999999">[å·²æš‚åœ]</span>{#/if#}		
 	</td>
       	<td class="admin_list">
 		<a href="{#$list.company_url#}" target="_blank" style="color: #000000" title="{#$list.companyname#}">{#$list.companyname#}</a>
 	</td>
 	 <td class="admin_list" align="center">
 		{#if $list.audit == "1"#}
-		<span style="color: #009900">ÉóºËÍ¨¹ı</span>	
+		<span style="color: #009900">å®¡æ ¸é€šè¿‡</span>	
 		{#elseif $list.audit == "2"#}
-		<span style="color:#FF0000">µÈ´ıÉóºË</span>
+		<span style="color:#FF0000">ç­‰å¾…å®¡æ ¸</span>
 		{#elseif $list.audit == "3"#}
-		ÉóºËÎ´Í¨¹ı
+		å®¡æ ¸æœªé€šè¿‡
 		{#/if#}
 	</td>
 	<td class="admin_list"align="center" >
@@ -80,7 +80,7 @@ $(document).ready(function()
 		{#$list.wage_cn#}
 	</td>
         	<td class="admin_list" align="center" >	
-		<a href="?act=mailing&id={#$list.id#}&uid={#$resume.uid#}&rid={#$resume.id#}"  id="{#$list.uid#}">Í¶µİ</a> 
+		<a href="?act=mailing&id={#$list.id#}&uid={#$resume.uid#}&rid={#$resume.id#}"  id="{#$list.uid#}">æŠ•é€’</a> 
 	</td>
       </tr>
       {#/foreach#}   
@@ -90,12 +90,12 @@ $(document).ready(function()
   <span id="OpPhotoresume"></span>
  </form>
 {#if !$list#}
-<div class="admin_list_no_info">Ã»ÓĞÈÎºÎĞÅÏ¢£¡</div>
+<div class="admin_list_no_info">æ²¡æœ‰ä»»ä½•ä¿¡æ¯ï¼</div>
 {#/if#}
 <table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">
       <tr>
         <td>
-          <input name="ButMailing" type="button" class="admin_submit" id="ButMailing"    value="Í¶µİ"  />
+          <input name="ButMailing" type="button" class="admin_submit" id="ButMailing"    value="æŠ•é€’"  />
 		</td>
       </tr>
   </table>

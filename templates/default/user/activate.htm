@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gbk">
@@ -13,7 +13,7 @@ $(function() {
     var utype=$(this).attr("member-type");
     $(".utype").val(utype);
   })
-  // ±íµ¥ÑéÖ¤
+  // è¡¨å•éªŒè¯
   $("#Form1").validate({
     success: function(lable) {
         lable.text(" ").addClass("ver-success");
@@ -39,13 +39,13 @@ $(function() {
     messages: {
       password: 
       {
-        required: "ÇëÌîĞ´ÃÜÂë",
-        minlength: jQuery.format("ÌîĞ´²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-        maxlength: jQuery.format("ÌîĞ´²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+        required: "è¯·å¡«å†™å¯†ç ",
+        minlength: jQuery.format("å¡«å†™ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+        maxlength: jQuery.format("å¡«å†™ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
       },
       mobile: {
-        required: "ÇëÌîĞ´ÊÖ»úºÅ",
-        remote: jQuery.format("ÊÖ»úºÅÒÑ±»×¢²á")
+        required: "è¯·å¡«å†™æ‰‹æœºå·",
+        remote: jQuery.format("æ‰‹æœºå·å·²è¢«æ³¨å†Œ")
       }
     },
     errorPlacement: function(error, element) {
@@ -57,62 +57,62 @@ $(function() {
         error.appendTo(element.parent().next());
     }
   });
-  // ÊÖ»ú
+  // æ‰‹æœº
   jQuery.validator.addMethod("ismobile", function(value, element) { 
   var tel = /^(13|15|18|17)\d{9}$/;
   var $cstr= false;
   if (tel.test(value)) $cstr= true;
   return $cstr || this.optional(element); 
-  }, "ÇëÊäÈëÕıÈ·µÄÊÖ»úºÅ");
+  }, "è¯·è¾“å…¥æ­£ç¡®çš„æ‰‹æœºå·");
 });
 </script>
 </head>
 <body>
-  <!-- Í·²¿ -->
+  <!-- å¤´éƒ¨ -->
   {#include file="user/reg_header.htm"#}
   <!-- main -->
   <div class="container">
     <div class="third-reg-wrap">
-      <h1>Ö»²îÒ»²½£¬¼´¿É¼¤»îÄúµÄÕËºÅ</h1>
-      <p class="t-reg-tips">¿ìËÙÍê³ÉÕËºÅ¼¤»î<br />Íê³ÉÕËºÅ¼¤»îºó£¬¼´¿ÉÖ±½ÓµÇÂ¼Å¶£¡</p>
+      <h1>åªå·®ä¸€æ­¥ï¼Œå³å¯æ¿€æ´»æ‚¨çš„è´¦å·</h1>
+      <p class="t-reg-tips">å¿«é€Ÿå®Œæˆè´¦å·æ¿€æ´»<br />å®Œæˆè´¦å·æ¿€æ´»åï¼Œå³å¯ç›´æ¥ç™»å½•å“¦ï¼</p>
       <div class="t-reg-main clearfix">
         <div class="reg-left-form f-left">
           <form action="?act=activate_save" id="Form1" method="post">
           <div class="reg-form-item clearfix">
-            <div class="reg-form-type f-left">  ×¢²áÀàĞÍ</div>
+            <div class="reg-form-type f-left">  æ³¨å†Œç±»å‹</div>
             <div class="reg-form-content f-left">
               <div class="member-type-wrap clearfix">
-                <div class="member-type select f-left" member-type="2"><i class="member-icon m-icon1"></i>¸öÈË</div>
-                <div class="member-type f-left" member-type="1"><i class="member-icon m-icon2"></i>ÆóÒµ</div>
+                <div class="member-type select f-left" member-type="2"><i class="member-icon m-icon1"></i>ä¸ªäºº</div>
+                <div class="member-type f-left" member-type="1"><i class="member-icon m-icon2"></i>ä¼ä¸š</div>
               </div>
             </div>
           </div>
           <div class="reg-form-item clearfix">
-            <div class="reg-form-type f-left">ÓÃ»§Ãû</div>
+            <div class="reg-form-type f-left">ç”¨æˆ·å</div>
             <div class="reg-form-content f-left">
               {#$activate_username#}
             </div>
             <div class="verification f-left"  style="width: 180px;overflow: hidden;"></div>
           </div>
           <div class="reg-form-item clearfix">
-            <div class="reg-form-type f-left">ÓÊÏä</div>
+            <div class="reg-form-type f-left">é‚®ç®±</div>
             <div class="reg-form-content f-left">
               {#$activate_email#}
-              <input type="hidden" name="act_email" id="email" class="text text-lg span350" value="{#$activate_email#}" placeholder="ÇëÊäÈëÄúµÄÓÊÏä" />
+              <input type="hidden" name="act_email" id="email" class="text text-lg span350" value="{#$activate_email#}" placeholder="è¯·è¾“å…¥æ‚¨çš„é‚®ç®±" />
             </div>
             <div class="verification f-left"  style="width: 180px;overflow: hidden;"></div>
           </div>
           <div class="reg-form-item clearfix">
-            <div class="reg-form-type f-left">  ÃÜÂë</div>
+            <div class="reg-form-type f-left">  å¯†ç </div>
             <div class="reg-form-content f-left">
-              <input type="password" name="pwd" id="password" class="text text-lg span350" placeholder="ÃÜÂë" />
+              <input type="password" name="pwd" id="password" class="text text-lg span350" placeholder="å¯†ç " />
             </div>
             <div class="verification f-left" style="width: 110px;overflow: hidden;"></div>
           </div>
           <div class="reg-form-item clearfix">
-            <div class="reg-form-type f-left">  ÊÖ»ú</div>
+            <div class="reg-form-type f-left">  æ‰‹æœº</div>
             <div class="reg-form-content f-left">
-              <input type="text" name="mobile" id="mobile" class="text text-lg span350" placeholder="ÇëÊäÈëÄúµÄÊÖ»úºÅÂë" />
+              <input type="text" name="mobile" id="mobile" class="text text-lg span350" placeholder="è¯·è¾“å…¥æ‚¨çš„æ‰‹æœºå·ç " />
             </div>
             <div class="verification f-left"  style="width: 110px;overflow: hidden;"></div>
           </div>
@@ -120,7 +120,7 @@ $(function() {
             <div class="reg-form-type f-left">&nbsp;</div>
             <div class="reg-form-content f-left">
               <input type="hidden" name="member_type" class="utype" value="2"/>
-              <input type="submit" value="Á¢¼´¼¤»î" class="btn btn-lg blue span1" />
+              <input type="submit" value="ç«‹å³æ¿€æ´»" class="btn btn-lg blue span1" />
             </div>
           </div>
           </form>

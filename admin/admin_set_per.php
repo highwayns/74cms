@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¸öÈËÉèÖÃ
+ * 74cms ä¸ªäººè®¾ç½®
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -14,7 +14,7 @@ require_once(dirname(__FILE__).'/../data/config.php');
 require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'set';
 $smarty->assign('act',$act);
-$smarty->assign('pageheader',"¸öÈËÉèÖÃ");
+$smarty->assign('pageheader',"ä¸ªäººè®¾ç½®");
 check_permissions($_SESSION['admin_purview'],"set_per");	
 if($act == 'set')
 {
@@ -26,18 +26,18 @@ if($act == 'set')
 elseif($act == 'set_save')
 {
 	check_token();
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨¸üÐÂÉèÖÃ", $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æ›´æ–°è®¾ç½®", $_SESSION['admin_name'],3);
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('¸üÐÂÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°è®¾ç½®å¤±è´¥', 1):"";
 	}
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('text')." SET value='$v' WHERE name='$k'")?adminmsg('¸üÐÂÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('text')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°è®¾ç½®å¤±è´¥', 1):"";
 	}
 	refresh_cache('config');
 	refresh_cache('text');
-	adminmsg("±£´æ³É¹¦£¡",2);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 ?>

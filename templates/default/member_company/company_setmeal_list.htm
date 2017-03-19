@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_common.css" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_company.css" />
@@ -19,7 +19,7 @@
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ³äÖµ¶©µ¥</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > å……å€¼è®¢å•</div>
 	<div class="usermain">
 		<div class="leftmenu com link_bk">
 			{#include file="member_company/left.htm"#}
@@ -27,15 +27,15 @@
 		<div class="rightmain">
 			<div class="bbox1 my_account">
 				<div class="topnav get_resume">
-					<div class="titleH1"><div class="h1-title">³äÖµ/¶©µ¥</div></div>
+					<div class="titleH1"><div class="h1-title">å……å€¼/è®¢å•</div></div>
 					<div class="navs link_bk">
 						{#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
-						<a href="?act=order_add">»ı·Ö³äÖµ</a>
+						<a href="?act=order_add">ç§¯åˆ†å……å€¼</a>
 						{#/if#}
 						{#if $QISHI.operation_mode=="2" || $QISHI.operation_mode=="3"#}
-				        <a href="?act=setmeal_list" class="se">ÉêÇëVIPÌ×²Í</a>
+				        <a href="?act=setmeal_list" class="se">ç”³è¯·VIPå¥—é¤</a>
 						{#/if#}
-						<a href="?act=order_list">ÎÒµÄ¶©µ¥</a>
+						<a href="?act=order_list">æˆ‘çš„è®¢å•</a>
 						<div class="clear"></div>
 					</div>
 				</div>
@@ -46,8 +46,8 @@
 							<tr>
 								<th class="align-left" width="167">
 									<div class="vip-head">
-										<h3>VIPÌØÈ¨½éÉÜ</h3>
-										<div class="vip-contact">µç»°×ÉÑ¯£º<br /><span>{#$QISHI.top_tel#}</span></div>
+										<h3>VIPç‰¹æƒä»‹ç»</h3>
+										<div class="vip-contact">ç”µè¯å’¨è¯¢ï¼š<br /><span>{#$QISHI.top_tel#}</span></div>
 									</div>
 								</th>
 	  		 					{#section name=key loop=$setmeal#}
@@ -55,9 +55,9 @@
 									<div class="vip-head">
 										<h3>{#$setmeal[key].setmeal_name#}</h3>
 										{#if $setmeal[key].apply=='1'#}
-										<del>Ô­¼Û£º{#$setmeal[key].original_price#}Ôª</del>
-										<p>ÏÖ¼Û£º{#$setmeal[key].expense#}Ôª</p>
-										<input type="button" value="ÉêÇëÌ×²Í" class="vip-btn" onclick="window.location='?act=setmeal_order_add&setmealid={#$setmeal[key].id#}'"/>
+										<del>åŸä»·ï¼š{#$setmeal[key].original_price#}å…ƒ</del>
+										<p>ç°ä»·ï¼š{#$setmeal[key].expense#}å…ƒ</p>
+										<input type="button" value="ç”³è¯·å¥—é¤" class="vip-btn" onclick="window.location='?act=setmeal_order_add&setmealid={#$setmeal[key].id#}'"/>
 										{#/if#}
 									</div>
 								</th>
@@ -66,118 +66,118 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td class="align-left">×¨Êô±êÊ¶</td>
+								<td class="align-left">ä¸“å±æ ‡è¯†</td>
 								{#section name=key loop=$setmeal#}
 									{#if $setmeal[key].id=='1'#}
-									<td>ÎŞ</td>
+									<td>æ— </td>
 									{#else#}
 									<td><i class="vip-icon level{#$setmeal[key].id#}"></i></td>
 									{#/if#}
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">·¢²¼ÕĞÆ¸Ö°Î»Êı</td>
+								<td class="align-left">å‘å¸ƒæ‹›è˜èŒä½æ•°</td>
 								{#section name=key loop=$setmeal#}
 								<td>{#$setmeal[key].jobs_ordinary#}</td>
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">ÏÂÔØÆÕÍ¨¼òÀú</td>
+								<td class="align-left">ä¸‹è½½æ™®é€šç®€å†</td>
 								{#section name=key loop=$setmeal#}
 								<td>{#$setmeal[key].download_resume_ordinary#}</td>
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">ÏÂÔØ¸ß¼¶¼òÀú</td>
+								<td class="align-left">ä¸‹è½½é«˜çº§ç®€å†</td>
 								{#section name=key loop=$setmeal#}
 								<td>{#$setmeal[key].download_resume_senior#}</td>
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">ÑûÇëÆÕÍ¨ÈË²ÅÃæÊÔ</td>
+								<td class="align-left">é‚€è¯·æ™®é€šäººæ‰é¢è¯•</td>
 								{#section name=key loop=$setmeal#}
 								<td>{#$setmeal[key].interview_ordinary#}</td>
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">ÑûÇë¸ß¼¶ÈË²ÅÃæÊÔ</td>
+								<td class="align-left">é‚€è¯·é«˜çº§äººæ‰é¢è¯•</td>
 								{#section name=key loop=$setmeal#}
 								<td>{#$setmeal[key].interview_senior#}</td>
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">¼òÀúÊÕ²Ø¼ĞÈİÁ¿</td>
+								<td class="align-left">ç®€å†æ”¶è—å¤¹å®¹é‡</td>
 								{#section name=key loop=$setmeal#}
 								<td>{#$setmeal[key].talent_pool#}</td>
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">Ö°Î»ÍÆ¹ã-ÍÆ¼ö</td>
+								<td class="align-left">èŒä½æ¨å¹¿-æ¨è</td>
 								{#section name=key loop=$setmeal#}
 								<td>{#$setmeal[key].recommend_num#}</td>
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">Ö°Î»ÍÆ¹ã-ÖÃ¶¥</td>
+								<td class="align-left">èŒä½æ¨å¹¿-ç½®é¡¶</td>
 								{#section name=key loop=$setmeal#}
 								<td>{#$setmeal[key].stick_num#}</td>
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">Ö°Î»ÍÆ¹ã-½ô¼±</td>
+								<td class="align-left">èŒä½æ¨å¹¿-ç´§æ€¥</td>
 								{#section name=key loop=$setmeal#}
 								<td>{#$setmeal[key].emergency_num#}</td>
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">Ö°Î»ÍÆ¹ã-±äÉ«</td>
+								<td class="align-left">èŒä½æ¨å¹¿-å˜è‰²</td>
 								{#section name=key loop=$setmeal#}
 								<td>{#$setmeal[key].highlight_num#}</td>
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">²Î¼ÓÕĞÆ¸»á³¡´Î</td>
+								<td class="align-left">å‚åŠ æ‹›è˜ä¼šåœºæ¬¡</td>
 								{#section name=key loop=$setmeal#}
 								<td>{#$setmeal[key].jobsfair_num#}</td>
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">¿ªÍ¨µç×ÓµØÍ¼</td>
+								<td class="align-left">å¼€é€šç”µå­åœ°å›¾</td>
 								{#section name=key loop=$setmeal#}
 									{#if $setmeal[key].map_open=="1"#}
-									<td>ÔÊĞí</td>
+									<td>å…è®¸</td>
 									{#else#}
-									<td>²»ÔÊĞí</td>
+									<td>ä¸å…è®¸</td>
 									{#/if#}
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">×ÔÓÉÇĞ»»Ä£°å</td>
+								<td class="align-left">è‡ªç”±åˆ‡æ¢æ¨¡æ¿</td>
 								{#section name=key loop=$setmeal#}
 									{#if $setmeal[key].change_templates=="1"#}
-									<td>ÔÊĞí</td>
+									<td>å…è®¸</td>
 									{#else#}
-									<td>²»ÔÊĞí</td>
+									<td>ä¸å…è®¸</td>
 									{#/if#}
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">ÆäËû</td>
+								<td class="align-left">å…¶ä»–</td>
 								{#section name=key loop=$setmeal#}
 									{#if $setmeal[key].added!=""#}
 									<td>{#$setmeal[key].added#}</td>
 									{#else#}
-									<td>ÎŞ</td>
+									<td>æ— </td>
 									{#/if#}
 								{#/section#}
 							</tr>
 							<tr>
-								<td class="align-left">·şÎñÆÚ</td>
+								<td class="align-left">æœåŠ¡æœŸ</td>
 								{#section name=key loop=$setmeal#}
 									{#if $setmeal[key].days=="0"#}
-									<td>²»ÏŞ</td>
+									<td>ä¸é™</td>
 									{#else#}
-									<td>{#$setmeal[key].days#}Ìì</td>
+									<td>{#$setmeal[key].days#}å¤©</td>
 									{#/if#}
 								{#/section#}
 							</tr>
@@ -185,7 +185,7 @@
 					</table>
 				</div>
 				{#else#}
-				<div class="emptytip">Ã»ÓĞ¿ÉÉêÇëµÄÌ×²Í£¡</div>
+				<div class="emptytip">æ²¡æœ‰å¯ç”³è¯·çš„å¥—é¤ï¼</div>
 				{#/if#}
 			</div>
 		</div>

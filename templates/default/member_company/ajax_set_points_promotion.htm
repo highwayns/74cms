@@ -1,21 +1,21 @@
-<div class="content link_lan spread_dialog">
+ï»¿<div class="content link_lan spread_dialog">
 	<table width="480">
 		<tbody>
 			<tr height="50">
-				<td width="90">ÍÆ¹ãÖ°Î»£º</td>
+				<td width="90">æ¨å¹¿èŒä½ï¼š</td>
 				<td>{#$jobs_name#}</td>
 			</tr>
 			<tr height="30">
-				<td>ÍÆ¹ã·½°¸£º</td>
+				<td>æ¨å¹¿æ–¹æ¡ˆï¼š</td>
 				<td width="120">
 					{#$promotion_name#}
 				</td>
-				<td>(Ã¿ÌìÏûºÄ{#$points_perday#}{#$points_quantifier#}{#$points_byname#})</td>
+				<td>(æ¯å¤©æ¶ˆè€—{#$points_perday#}{#$points_quantifier#}{#$points_byname#})</td>
 			</tr>
 			<tr>
-				<td height="50">ÍÆ¹ãÆÚÏŞ£º</td>
+				<td height="50">æ¨å¹¿æœŸé™ï¼š</td>
 				<td><input name="days" type="text" class="input_text_200" id="days" maxlength="4" value=""/></td>
-				<td> Ìì</td>
+				<td> å¤©</td>
 			</tr>
 		    {#$color_list#}
 		              		
@@ -31,26 +31,26 @@
 			</tr>
 		</tbody>
 	</table>
-	<p>ÍÆ¹ãÌìÊı×îÉÙ£º{#$cat_minday#}Ìì<br />ÍÆ¹ãÆÚÃ¿ÌìÏûºÄ{#$points_byname#}£º{#$points_perday#}{#$points_quantifier#}{#$points_byname#}<br />ÍÆ¹ãÌìÊı×î¶à£º{#$cat_maxday#}Ìì</p>
+	<p>æ¨å¹¿å¤©æ•°æœ€å°‘ï¼š{#$cat_minday#}å¤©<br />æ¨å¹¿æœŸæ¯å¤©æ¶ˆè€—{#$points_byname#}ï¼š{#$points_perday#}{#$points_quantifier#}{#$points_byname#}<br />æ¨å¹¿å¤©æ•°æœ€å¤šï¼š{#$cat_maxday#}å¤©</p>
 </div>
 <div class="spread_but_box">
 	<input type="hidden" id="jobid" value="{#$jobid#}">
 	<input type="hidden" id="catid" value="{#$catid#}">
-	<input type="button" value="È·¶¨" class="but95cheng DialogSubmit"/>
-	<input type="button" value="È¡Ïû" class="but95hui DialogClose"/>
+	<input type="button" value="ç¡®å®š" class="but95cheng DialogSubmit"/>
+	<input type="button" value="å–æ¶ˆ" class="but95hui DialogClose"/>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-	//¼ÆËã×Ü»ı·Ö
+	//è®¡ç®—æ€»ç§¯åˆ†
 		$("#days").keyup(function(){	
 			var days_points={#$points_perday#};
 			var user_points={#$user_points#};
 			if((/^(\+|-)?\d+$/.test($(this).val())) && $(this).val()>={#$cat_minday#} && $(this).val()>0 && days_points>0)
 			{
-			$("#count").html("<br />ÄúÍÆ¹ãÌìÊıÎª<strong style=\"color:#009900\">&nbsp;&nbsp;"+$(this).val()+"&nbsp;&nbsp;</strong>Ìì£¬ĞèÒª¿Û³ı£º&nbsp;&nbsp;<strong style=\"color: #009900;\">"+$(this).val()*days_points+"</strong>&nbsp;&nbsp;{#$points_quantifier#}{#$points_byname#}£¬ÄúÄ¿Ç°¹²ÓĞ&nbsp;&nbsp;<strong style=\"color: #FF6600;\">"+user_points+"</strong>&nbsp;&nbsp;{#$points_quantifier#}{#$points_byname#}¡£<br /><br />");   
+			$("#count").html("<br />æ‚¨æ¨å¹¿å¤©æ•°ä¸º<strong style=\"color:#009900\">&nbsp;&nbsp;"+$(this).val()+"&nbsp;&nbsp;</strong>å¤©ï¼Œéœ€è¦æ‰£é™¤ï¼š&nbsp;&nbsp;<strong style=\"color: #009900;\">"+$(this).val()*days_points+"</strong>&nbsp;&nbsp;{#$points_quantifier#}{#$points_byname#}ï¼Œæ‚¨ç›®å‰å…±æœ‰&nbsp;&nbsp;<strong style=\"color: #FF6600;\">"+user_points+"</strong>&nbsp;&nbsp;{#$points_quantifier#}{#$points_byname#}ã€‚<br /><br />");   
 			}
 			else if($(this).val()<{#$cat_minday#}){
-				$("#count").html("ÍÆ¹ãÌìÊı²»ÄÜĞ¡ÓÚ<strong style=\"color: #FF6600;\">{#$cat_minday#}</strong>Ìì");
+				$("#count").html("æ¨å¹¿å¤©æ•°ä¸èƒ½å°äº<strong style=\"color: #FF6600;\">{#$cat_minday#}</strong>å¤©");
 			}
 			else
 			{
@@ -62,7 +62,7 @@ $(document).ready(function(){
 			$(menuId).click(function(){
 				$(menuList).css("width",width);
 				$(menuList).slideDown('fast');
-				//Éú³É±³¾°
+				//ç”ŸæˆèƒŒæ™¯
 				$(menuId).parent("div").before("<div class=\"menu_bg_layer\"></div>");
 				$(".menu_bg_layer").height($(".FloatBox").height());
 				$(".menu_bg_layer").css({ width: $(".FloatBox").width(), position: "absolute", left: "0", top: "0" , "z-index": "0", "background-color": "#ffffff"});

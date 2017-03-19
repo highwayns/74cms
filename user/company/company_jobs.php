@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ÆóÒµ»áÔ±ÖĞĞÄ
+ * 74cms ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -21,7 +21,7 @@ if ($act=='jobs')
 	switch($jobtype){
 		case 1:
 			$tabletype="all";
-			/* È«²¿Ö°Î» ×´Ì¬ É¸Ñ¡*/
+			/* å…¨éƒ¨èŒä½ çŠ¶æ€ ç­›é€‰*/
 			$state=intval($_GET["state"]);
 			if($state==1)
 			{	
@@ -51,7 +51,7 @@ if ($act=='jobs')
 			break;
 		case 3:
 			$tabletype="jobs_tmp";
-			/* Î´ÏÔÊ¾ ×´Ì¬ É¸Ñ¡*/
+			/* æœªæ˜¾ç¤º çŠ¶æ€ ç­›é€‰*/
 			$state=intval($_GET["state"]);
 			if($state==0)
 			{
@@ -71,7 +71,7 @@ if ($act=='jobs')
 			break;
 	}
 	/*
-		3.6 ÍÆ¹ã×´Ì¬
+		3.6 æ¨å¹¿çŠ¶æ€
 	*/
 	$generalize=trim($_GET['generalize']);
 	$generalize_arr = array("stick","highlight","emergency","recommend");
@@ -92,7 +92,7 @@ if ($act=='jobs')
 	$total_val=$db->get_total($total_sql);
 	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$offset=($page->nowindex-1)*$perpage;
-	$smarty->assign('title','Ö°Î»¹ÜÀí - ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','èŒä½ç®¡ç† - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('act',$act);
 	$smarty->assign('audit',$audit);
 	if ($tabletype=="all")
@@ -106,7 +106,7 @@ if ($act=='jobs')
 	$total[0]=$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs')." WHERE uid='{$_SESSION['uid']}' and audit=1 and display=1 ");
 	$total[1]=$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs_tmp')." WHERE uid='{$_SESSION['uid']}' AND audit=2 ");
 	$total[2]=$total[0]+$total[1];
-	//Í³¼ÆÃ¿¸ö·ÖÀàÖĞµÄÖ°Î»Êı
+	//ç»Ÿè®¡æ¯ä¸ªåˆ†ç±»ä¸­çš„èŒä½æ•°
 	$jobs_total[0]=$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs')." WHERE uid='{$_SESSION['uid']}' ");
 	$jobs_total[1]=$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs')." WHERE uid='{$_SESSION['uid']}'  UNION ALL  SELECT COUNT(*) AS num FROM ".table('jobs_tmp')." WHERE uid='{$_SESSION['uid']}' ");
 	$jobs_total[2]=$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs_tmp')." WHERE uid='{$_SESSION['uid']}'  AND audit=2 ");
@@ -120,7 +120,7 @@ if ($act=='jobs')
 	{
 		$smarty->assign('page',$page->show(3));
 	}
-	// ·¢²¼³É¹¦±ê¼Ç
+	// å‘å¸ƒæˆåŠŸæ ‡è®°
 	$addjobs_save_succeed=intval($_GET['addjobs_save_succeed']);
 	$jobs_one=get_jobs_one($addjobs_save_succeed);
 	$smarty->assign('jobs_one',$jobs_one);
@@ -135,7 +135,7 @@ elseif ($act=='addjobs')
 		{
 			$_SESSION['addrand']=rand(1000,5000);
 			$smarty->assign('addrand',$_SESSION['addrand']);
-			$smarty->assign('title','·¢²¼Ö°Î» - ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+			$smarty->assign('title','å‘å¸ƒèŒä½ - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 			$smarty->assign('company_profile',$company_profile);
 			if ($_CFG['operation_mode']=="3")
 			{
@@ -176,7 +176,7 @@ elseif ($act=='addjobs')
 				$smarty->assign('add_mode',1);
 			}
 			/**
-			 * 3.6ÓÅ»¯start
+			 * 3.6ä¼˜åŒ–start
 			 */
 			if ($add_mode=='1')
 			{
@@ -187,38 +187,38 @@ elseif ($act=='addjobs')
 					$total=$points_rule['jobs_add']['value'];
 					if ($total>$user_points)
 					{
-						$link[0]['text'] = "Á¢¼´³äÖµ";
+						$link[0]['text'] = "ç«‹å³å……å€¼";
 						$link[0]['href'] = 'company_service.php?act=order_add';
-						$link[1]['text'] = "»áÔ±ÖĞĞÄÊ×Ò³";
+						$link[1]['text'] = "ä¼šå‘˜ä¸­å¿ƒé¦–é¡µ";
 						$link[1]['href'] = 'company_index.php?act=';
-						showmsg("ÄãµÄ".$_CFG['points_byname']."²»×ã£¬Çë³äÖµºóÔÙ·¢²¼£¡",0,$link);
+						showmsg("ä½ çš„".$_CFG['points_byname']."ä¸è¶³ï¼Œè¯·å……å€¼åå†å‘å¸ƒï¼",0,$link);
 					}
 				}
 			}
 			elseif ($add_mode=='2')
 			{
-				$link[0]['text'] = "Á¢¼´¿ªÍ¨·şÎñ";
+				$link[0]['text'] = "ç«‹å³å¼€é€šæœåŠ¡";
 				$link[0]['href'] = 'company_service.php?act=setmeal_list';
-				$link[1]['text'] = "»áÔ±ÖĞĞÄÊ×Ò³";
+				$link[1]['text'] = "ä¼šå‘˜ä¸­å¿ƒé¦–é¡µ";
 				$link[1]['href'] = 'company_index.php?act=';
 				$setmeal=get_user_setmeal($_SESSION['uid']);
 				if ($setmeal['endtime']<time() && $setmeal['endtime']<>"0")
 				{					
-					showmsg("ÄúµÄ·şÎñÒÑ¾­µ½ÆÚ£¬ÇëÖØĞÂ¿ªÍ¨",1,$link);
+					showmsg("æ‚¨çš„æœåŠ¡å·²ç»åˆ°æœŸï¼Œè¯·é‡æ–°å¼€é€š",1,$link);
 				}
 				/*
-					ÏÔÊ¾ÖĞµÄÖ°Î»(ÉóºËÍ¨¹ı,ÉóºËÖĞ,Î´ÔİÍ£)
+					æ˜¾ç¤ºä¸­çš„èŒä½(å®¡æ ¸é€šè¿‡,å®¡æ ¸ä¸­,æœªæš‚åœ)
 				*/
 				$jobs_num= $db->get_total("select count(*) num from ".table("jobs")." where uid=$_SESSION[uid] and audit=1 and display=1 ");
 				$jobs_tmp_num= $db->get_total("select count(*) num from ".table("jobs_tmp")." where uid=$_SESSION[uid] and audit<>3 and display=1 ");
 				$com_jobs_num=$jobs_num+$jobs_tmp_num;
 				if ($com_jobs_num>=$setmeal['jobs_ordinary'])
 				{
-					showmsg("µ±Ç°ÏÔÊ¾µÄÖ°Î»ÒÑ¾­³¬¹ıÁË×î´óÏŞÖÆ£¬ÇëÉı¼¶·şÎñÌ×²Í£¡",1,$link);
+					showmsg("å½“å‰æ˜¾ç¤ºçš„èŒä½å·²ç»è¶…è¿‡äº†æœ€å¤§é™åˆ¶ï¼Œè¯·å‡çº§æœåŠ¡å¥—é¤ï¼",1,$link);
 				}
 			}
 			/**
-			 * 3.6ÓÅ»¯end
+			 * 3.6ä¼˜åŒ–end
 			 */
 
 			$captcha=get_cache('captcha');
@@ -227,9 +227,9 @@ elseif ($act=='addjobs')
 		}
 		else
 		{
-		$link[0]['text'] = "ÍêÉÆÆóÒµ×ÊÁÏ";
+		$link[0]['text'] = "å®Œå–„ä¼ä¸šèµ„æ–™";
 		$link[0]['href'] = 'company_info.php?act=company_profile';
-		showmsg("ÎªÁË´ïµ½¸üºÃµÄÕĞÆ¸Ğ§¹û£¬ÇëÏÈÍêÉÆÄúµÄÆóÒµ×ÊÁÏ£¡",1,$link);
+		showmsg("ä¸ºäº†è¾¾åˆ°æ›´å¥½çš„æ‹›è˜æ•ˆæœï¼Œè¯·å…ˆå®Œå–„æ‚¨çš„ä¼ä¸šèµ„æ–™ï¼",1,$link);
 		}
 }
 elseif ($act=='addjobs_save')
@@ -238,11 +238,11 @@ elseif ($act=='addjobs_save')
 	$postcaptcha = trim($_POST['postcaptcha']);
 	if($captcha['verify_addjob']=='1' && empty($postcaptcha))
 	{
-		showmsg("ÇëÌîĞ´ÑéÖ¤Âë",1);
+		showmsg("è¯·å¡«å†™éªŒè¯ç ",1);
  	}
 	if ($captcha['verify_addjob']=='1' && strcasecmp($_SESSION['imageCaptcha_content'],$postcaptcha)!=0)
 	{
-		showmsg("ÑéÖ¤Âë´íÎó",1);
+		showmsg("éªŒè¯ç é”™è¯¯",1);
 	}
 	$add_mode=trim($_POST['add_mode']);
 	if ($add_mode=='1')
@@ -254,11 +254,11 @@ elseif ($act=='addjobs_save')
 			$total=$points_rule['jobs_add']['value'];
 			if ($total>$user_points)
 			{
-				$link[0]['text'] = "Á¢¼´³äÖµ";
+				$link[0]['text'] = "ç«‹å³å……å€¼";
 				$link[0]['href'] = 'company_service.php?act=order_add';
-				$link[1]['text'] = "»áÔ±ÖĞĞÄÊ×Ò³";
+				$link[1]['text'] = "ä¼šå‘˜ä¸­å¿ƒé¦–é¡µ";
 				$link[1]['href'] = 'company_index.php?act=';
-				showmsg("ÄãµÄ".$_CFG['points_byname']."²»×ã£¬Çë³äÖµºóÔÙ·¢²¼£¡",0,$link);
+				showmsg("ä½ çš„".$_CFG['points_byname']."ä¸è¶³ï¼Œè¯·å……å€¼åå†å‘å¸ƒï¼",0,$link);
 			}
 		}
 		if($_CFG['operation_mode']=="1")
@@ -282,24 +282,24 @@ elseif ($act=='addjobs_save')
 	}
 	elseif ($add_mode=='2')
 	{
-		$link[0]['text'] = "Á¢¼´¿ªÍ¨·şÎñ";
+		$link[0]['text'] = "ç«‹å³å¼€é€šæœåŠ¡";
 		$link[0]['href'] = 'company_service.php?act=setmeal_list';
-		$link[1]['text'] = "»áÔ±ÖĞĞÄÊ×Ò³";
+		$link[1]['text'] = "ä¼šå‘˜ä¸­å¿ƒé¦–é¡µ";
 		$link[1]['href'] = 'company_index.php?act=';
 		$setmeal=get_user_setmeal($_SESSION['uid']);
 		if ($setmeal['endtime']<time() && $setmeal['endtime']<>"0")
 		{					
-			showmsg("ÄúµÄ·şÎñÒÑ¾­µ½ÆÚ£¬ÇëÖØĞÂ¿ªÍ¨",1,$link);
+			showmsg("æ‚¨çš„æœåŠ¡å·²ç»åˆ°æœŸï¼Œè¯·é‡æ–°å¼€é€š",1,$link);
 		}
 		/*
-			ÏÔÊ¾ÖĞµÄÖ°Î»(ÉóºËÍ¨¹ı,ÉóºËÖĞ,Î´ÔİÍ£)
+			æ˜¾ç¤ºä¸­çš„èŒä½(å®¡æ ¸é€šè¿‡,å®¡æ ¸ä¸­,æœªæš‚åœ)
 		*/
 		$jobs_num= $db->get_total("select count(*) num from ".table("jobs")." where uid=$_SESSION[uid] and audit=1 and display=1 ");
 		$jobs_tmp_num= $db->get_total("select count(*) num from ".table("jobs_tmp")." where uid=$_SESSION[uid] and audit<>3 and display=1 ");
 		$com_jobs_num=$jobs_num+$jobs_tmp_num;
 		if ($com_jobs_num>=$setmeal['jobs_ordinary'])
 		{
-			showmsg("µ±Ç°ÏÔÊ¾µÄÖ°Î»ÒÑ¾­³¬¹ıÁË×î´óÏŞÖÆ£¬ÇëÉı¼¶·şÎñÌ×²Í£¡",1,$link);
+			showmsg("å½“å‰æ˜¾ç¤ºçš„èŒä½å·²ç»è¶…è¿‡äº†æœ€å¤§é™åˆ¶ï¼Œè¯·å‡çº§æœåŠ¡å¥—é¤ï¼",1,$link);
 		}
 		$setsqlarr['setmeal_deadline']=$setmeal['endtime'];
 		$setsqlarr['setmeal_id']=$setmeal['setmeal_id'];
@@ -315,32 +315,32 @@ elseif ($act=='addjobs_save')
 	$setsqlarr['company_id']=$company_profile['id'];
 	$setsqlarr['company_addtime']=$company_profile['addtime'];
 	$setsqlarr['company_audit']=$company_profile['audit'];
-	$setsqlarr['jobs_name']=!empty($_POST['jobs_name'])?trim($_POST['jobs_name']):showmsg('ÄúÃ»ÓĞÌîĞ´Ö°Î»Ãû³Æ£¡',1);
+	$setsqlarr['jobs_name']=!empty($_POST['jobs_name'])?trim($_POST['jobs_name']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™èŒä½åç§°ï¼',1);
 	check_word($_CFG['filter'],$_POST['jobs_name'])?showmsg($_CFG['filter_tips'],0):'';
 	$setsqlarr['nature']=intval($_POST['nature']);
 	$setsqlarr['nature_cn']=trim($_POST['nature_cn']);
 	$setsqlarr['topclass']=intval($_POST['topclass']);
-	$setsqlarr['category']=!empty($_POST['category'])?intval($_POST['category']):showmsg('ÇëÑ¡ÔñÖ°Î»Àà±ğ£¡',1);
+	$setsqlarr['category']=!empty($_POST['category'])?intval($_POST['category']):showmsg('è¯·é€‰æ‹©èŒä½ç±»åˆ«ï¼',1);
 	$setsqlarr['subclass']=intval($_POST['subclass']);
 	$setsqlarr['category_cn']=trim($_POST['category_cn']);
 	$setsqlarr['amount']=intval($_POST['amount']);
-	$setsqlarr['district']=!empty($_POST['district'])?intval($_POST['district']):showmsg('ÇëÑ¡Ôñ¹¤×÷µØÇø£¡',1);
+	$setsqlarr['district']=!empty($_POST['district'])?intval($_POST['district']):showmsg('è¯·é€‰æ‹©å·¥ä½œåœ°åŒºï¼',1);
 	$setsqlarr['sdistrict']=intval($_POST['sdistrict']);
 	$setsqlarr['district_cn']=trim($_POST['district_cn']);
-	$setsqlarr['wage']=intval($_POST['wage'])?intval($_POST['wage']):showmsg('ÇëÑ¡ÔñĞ½×Ê´ıÓö£¡',1);		
+	$setsqlarr['wage']=intval($_POST['wage'])?intval($_POST['wage']):showmsg('è¯·é€‰æ‹©è–ªèµ„å¾…é‡ï¼',1);		
 	$setsqlarr['wage_cn']=trim($_POST['wage_cn']);
 	$setsqlarr['negotiable']=intval($_POST['negotiable']);
 	$setsqlarr['tag']=trim($_POST['tag']);
 	$setsqlarr['tag_cn']=trim($_POST['tag_cn']);
 	$setsqlarr['sex']=intval($_POST['sex']);
 	$setsqlarr['sex_cn']=trim($_POST['sex_cn']);
-	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):showmsg('ÇëÑ¡ÔñÑ§ÀúÒªÇó£¡',1);		
+	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):showmsg('è¯·é€‰æ‹©å­¦å†è¦æ±‚ï¼',1);		
 	$setsqlarr['education_cn']=trim($_POST['education_cn']);
-	$setsqlarr['experience']=intval($_POST['experience'])?intval($_POST['experience']):showmsg('ÇëÑ¡Ôñ¹¤×÷¾­Ñé£¡',1);		
+	$setsqlarr['experience']=intval($_POST['experience'])?intval($_POST['experience']):showmsg('è¯·é€‰æ‹©å·¥ä½œç»éªŒï¼',1);		
 	$setsqlarr['experience_cn']=trim($_POST['experience_cn']);
 	$setsqlarr['graduate']=intval($_POST['graduate']);
 	$setsqlarr['age']=trim($_POST['minage'])."-".trim($_POST['maxage']);
-	$setsqlarr['contents']=!empty($_POST['contents'])?trim($_POST['contents']):showmsg('ÄúÃ»ÓĞÌîĞ´Ö°Î»ÃèÊö£¡',1);
+	$setsqlarr['contents']=!empty($_POST['contents'])?trim($_POST['contents']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™èŒä½æè¿°ï¼',1);
 	check_word($_CFG['filter'],$_POST['contents'])?showmsg($_CFG['filter_tips'],0):'';
 	$setsqlarr['trade']=$company_profile['trade'];
 	$setsqlarr['trade_cn']=$company_profile['trade_cn'];
@@ -367,29 +367,29 @@ elseif ($act=='addjobs_save')
 	{
 	$setsqlarr['audit']=intval($_CFG['audit_unexaminedcom_addjob']);
 	} 
-	$setsqlarr_contact['contact']=!empty($_POST['contact'])?trim($_POST['contact']):showmsg('ÄúÃ»ÓĞÌîĞ´ÁªÏµÈË£¡',1);
+	$setsqlarr_contact['contact']=!empty($_POST['contact'])?trim($_POST['contact']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»äººï¼',1);
 	check_word($_CFG['filter'],$_POST['contact'])?showmsg($_CFG['filter_tips'],0):'';
-	$setsqlarr_contact['telephone']=!empty($_POST['telephone'])?trim($_POST['telephone']):showmsg('ÄúÃ»ÓĞÌîĞ´ÁªÏµµç»°£¡',1);
+	$setsqlarr_contact['telephone']=!empty($_POST['telephone'])?trim($_POST['telephone']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»ç”µè¯ï¼',1);
 	check_word($_CFG['filter'],$_POST['telephone'])?showmsg($_CFG['filter_tips'],0):'';
-	$setsqlarr_contact['address']=!empty($_POST['address'])?trim($_POST['address']):showmsg('ÄúÃ»ÓĞÌîĞ´ÁªÏµµØÖ·£¡',1);
+	$setsqlarr_contact['address']=!empty($_POST['address'])?trim($_POST['address']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»åœ°å€ï¼',1);
 	check_word($_CFG['filter'],$_POST['address'])?showmsg($_CFG['filter_tips'],0):'';
-	$setsqlarr_contact['email']=!empty($_POST['email'])?trim($_POST['email']):showmsg('ÄúÃ»ÓĞÌîĞ´ÁªÏµÓÊÏä£¡',1);
+	$setsqlarr_contact['email']=!empty($_POST['email'])?trim($_POST['email']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»é‚®ç®±ï¼',1);
 	check_word($_CFG['filter'],$_POST['email'])?showmsg($_CFG['filter_tips'],0):'';
-	$setsqlarr_contact['notify']=intval($_POST['notify']);//ÓÊ¼şÌáĞÑ
-	$setsqlarr_contact['notify_mobile']=intval($_POST['notify_mobile']);//ÊÖ»úÌáĞÑ
+	$setsqlarr_contact['notify']=intval($_POST['notify']);//é‚®ä»¶æé†’
+	$setsqlarr_contact['notify_mobile']=intval($_POST['notify_mobile']);//æ‰‹æœºæé†’
 	$setsqlarr_contact['contact_show']=intval($_POST['contact_show']);
 	$setsqlarr_contact['email_show']=intval($_POST['email_show']);
 	$setsqlarr_contact['telephone_show']=intval($_POST['telephone_show']);
 	$setsqlarr_contact['address_show']=intval($_POST['address_show']);
 	
-	//Ìí¼ÓÖ°Î»ĞÅÏ¢
+	//æ·»åŠ èŒä½ä¿¡æ¯
 	$pid=$db->inserttable(table('jobs'),$setsqlarr,true);
 	if(empty($pid)){
-		showmsg("Ìí¼ÓÊ§°Ü£¡",0);
+		showmsg("æ·»åŠ å¤±è´¥ï¼",0);
 	}
-	//Ìí¼ÓÁªÏµ·½Ê½
+	//æ·»åŠ è”ç³»æ–¹å¼
 	$setsqlarr_contact['pid']=$pid;
-	!$db->inserttable(table('jobs_contact'),$setsqlarr_contact)?showmsg("Ìí¼ÓÊ§°Ü£¡",0):'';
+	!$db->inserttable(table('jobs_contact'),$setsqlarr_contact)?showmsg("æ·»åŠ å¤±è´¥ï¼",0):'';
 	if ($add_mode=='1')
 	{
 		if ($points_rule['jobs_add']['value']>0)
@@ -397,7 +397,7 @@ elseif ($act=='addjobs_save')
 		report_deal($_SESSION['uid'],$points_rule['jobs_add']['type'],$points_rule['jobs_add']['value']);
 		$user_points=get_user_points($_SESSION['uid']);
 		$operator=$points_rule['jobs_add']['type']=="1"?"+":"-";
-		write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"·¢²¼ÁËÖ°Î»£º<strong>{$setsqlarr['jobs_name']}</strong>£¬({$operator}{$points_rule['jobs_add']['value']})£¬(Ê£Óà:{$user_points})",1,1001,"·¢²¼Ö°Î»","{$operator}{$points_rule['jobs_add']['value']}","{$user_points}");
+		write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"å‘å¸ƒäº†èŒä½ï¼š<strong>{$setsqlarr['jobs_name']}</strong>ï¼Œ({$operator}{$points_rule['jobs_add']['value']})ï¼Œ(å‰©ä½™:{$user_points})",1,1001,"å‘å¸ƒèŒä½","{$operator}{$points_rule['jobs_add']['value']}","{$user_points}");
 		}
 	}
 	elseif ($add_mode=='2')
@@ -408,7 +408,7 @@ elseif ($act=='addjobs_save')
 			$setmeal=get_user_setmeal($_SESSION['uid']);
 			$com_jobs= $db->getone("select count(*) num from ".table("jobs")." where uid=$_SESSION[uid] and (audit=1 or audit=2) and display=1 ");
 			$num=$setmeal['jobs_ordinary']-$com_jobs['num'];
-			write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"·¢²¼ÆÕÍ¨Ö°Î»:<strong>{$_POST['jobs_name']}</strong>£¬»¹¿ÉÒÔ·¢²¼ÆÕÍ¨Ö°Î»:<strong>{$num}</strong>Ìõ",2,1001,"·¢²¼Ö°Î»","1","{$setmeal['jobs_ordinary']}");
+			write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"å‘å¸ƒæ™®é€šèŒä½:<strong>{$_POST['jobs_name']}</strong>ï¼Œè¿˜å¯ä»¥å‘å¸ƒæ™®é€šèŒä½:<strong>{$num}</strong>æ¡",2,1001,"å‘å¸ƒèŒä½","1","{$setmeal['jobs_ordinary']}");
 		}
 		
 	}
@@ -454,9 +454,9 @@ elseif ($act=='addjobs_save')
 	$searchtab['map_y']=$setsqlarr['map_y'];
 	$db->inserttable(table('jobs_search_key'),$searchtab);
 	unset($searchtab);
-	add_jobs_tag($pid,$_SESSION['uid'],$_POST['tag'])?"":showmsg('±£´æÊ§°Ü£¡',0);
+	add_jobs_tag($pid,$_SESSION['uid'],$_POST['tag'])?"":showmsg('ä¿å­˜å¤±è´¥ï¼',0);
 	distribution_jobs($pid,$_SESSION['uid']);
-	write_memberslog($_SESSION['uid'],1,2001,$_SESSION['username'],"·¢²¼ÁËÖ°Î»£º{$setsqlarr['jobs_name']}");
+	write_memberslog($_SESSION['uid'],1,2001,$_SESSION['username'],"å‘å¸ƒäº†èŒä½ï¼š{$setsqlarr['jobs_name']}");
 	baidu_submiturl(url_rewrite('QS_jobsshow',array('id'=>$pid)),'addjob');
 	}
 	header("location:?act=jobs&addjobs_save_succeed=".$pid);
@@ -468,7 +468,7 @@ elseif ($act=='jobs_perform')
     $jobs_num=count($yid);
 	if (empty($yid))
 	{
-	showmsg("ÄãÃ»ÓĞÑ¡ÔñÖ°Î»£¡",1);
+	showmsg("ä½ æ²¡æœ‰é€‰æ‹©èŒä½ï¼",1);
 	}
 	
 	$refresh=!empty($_POST['refresh'])?$_POST['refresh']:$_GET['refresh'];
@@ -482,25 +482,25 @@ elseif ($act=='jobs_perform')
 			}
 			$jobs_info = get_jobs_one($yid,$_SESSION['uid']);
 			if($jobs_info['deadline']<time()){
-				showmsg("¸ÃÖ°Î»ÒÑµ½ÆÚ£¡",1);
+				showmsg("è¯¥èŒä½å·²åˆ°æœŸï¼",1);
 			}
 		}
-		//»ı·ÖÄ£Ê½
+		//ç§¯åˆ†æ¨¡å¼
 		if($_CFG['operation_mode']=='1')
 		{
 			$mode = 1;
-			//ÏŞÖÆË¢ĞÂÊ±¼ä
-			//×î½üÒ»´ÎµÄË¢ĞÂÊ±¼ä
+			//é™åˆ¶åˆ·æ–°æ—¶é—´
+			//æœ€è¿‘ä¸€æ¬¡çš„åˆ·æ–°æ—¶é—´
 			$refrestime=get_last_refresh_date($_SESSION['uid'],"1001",1);
 			$duringtime=time()-$refrestime['max(addtime)'];
 			$space = $_CFG['com_pointsmode_refresh_space']*60;
 			$refresh_time = get_today_refresh_times($_SESSION['uid'],"1001",1);
 			if($_CFG['com_pointsmode_refresh_time']!=0&&($refresh_time['count(*)']>=$_CFG['com_pointsmode_refresh_time']))
 			{
-			showmsg("Ã¿Ìì×î¶àÖ»ÄÜË¢ĞÂ".$_CFG['com_pointsmode_refresh_time']."´Î,Äú½ñÌìÒÑ³¬¹ı×î´óË¢ĞÂ´ÎÊıÏŞÖÆ£¡",2);	
+			showmsg("æ¯å¤©æœ€å¤šåªèƒ½åˆ·æ–°".$_CFG['com_pointsmode_refresh_time']."æ¬¡,æ‚¨ä»Šå¤©å·²è¶…è¿‡æœ€å¤§åˆ·æ–°æ¬¡æ•°é™åˆ¶ï¼",2);	
 			}
 			elseif($duringtime<=$space){
-			showmsg($_CFG['com_pointsmode_refresh_space']."·ÖÖÓÄÚ²»ÄÜÖØ¸´Ë¢ĞÂÖ°Î»£¡",2);
+			showmsg($_CFG['com_pointsmode_refresh_space']."åˆ†é’Ÿå†…ä¸èƒ½é‡å¤åˆ·æ–°èŒä½ï¼",2);
 			}
 			else 
 			{
@@ -511,85 +511,85 @@ elseif ($act=='jobs_perform')
 					$total_point=$jobs_num*$points_rule['jobs_refresh']['value'];
 					if ($total_point>$user_points && $points_rule['jobs_refresh']['type']=="2")
 					{
-							$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+							$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 							$link[0]['href'] = 'javascript:history.go(-1)';
-							$link[1]['text'] = "Á¢¼´³äÖµ";
+							$link[1]['text'] = "ç«‹å³å……å€¼";
 							$link[1]['href'] = 'company_service.php?act=order_add';
-					showmsg("ÄúµÄ".$_CFG['points_byname']."²»×ã£¬ÇëÏÈ³äÖµ£¡",0,$link);
+					showmsg("æ‚¨çš„".$_CFG['points_byname']."ä¸è¶³ï¼Œè¯·å…ˆå……å€¼ï¼",0,$link);
 					}
-					//¼Ó/¼õ »ı·Ö
+					//åŠ /å‡ ç§¯åˆ†
 					report_deal($_SESSION['uid'],$points_rule['jobs_refresh']['type'],$total_point);
 					$user_points=get_user_points($_SESSION['uid']);
 					$operator=$points_rule['jobs_refresh']['type']=="1"?"+":"-";
-					write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"Ë¢ĞÂÁË{$jobs_num}ÌõÖ°Î»£¬({$operator}{$total_point})£¬(Ê£Óà:{$user_points})",1,1003,"Ë¢ĞÂÖ°Î»","{$operator}{$total_point}","{$user_points}");
+					write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"åˆ·æ–°äº†{$jobs_num}æ¡èŒä½ï¼Œ({$operator}{$total_point})ï¼Œ(å‰©ä½™:{$user_points})",1,1003,"åˆ·æ–°èŒä½","{$operator}{$total_point}","{$user_points}");
 				}
 			}
 		}	
-		//Ì×²ÍÄ£Ê½
+		//å¥—é¤æ¨¡å¼
 		elseif($_CFG['operation_mode']=='2') 
 		{
 			$mode = 2;
-			//ÏŞÖÆË¢ĞÂÊ±¼ä
-			$link[0]['text'] = "Á¢¼´¿ªÍ¨·şÎñ";
+			//é™åˆ¶åˆ·æ–°æ—¶é—´
+			$link[0]['text'] = "ç«‹å³å¼€é€šæœåŠ¡";
 			$link[0]['href'] = 'company_service.php?act=setmeal_list';
-			$link[1]['text'] = "»áÔ±ÖĞĞÄÊ×Ò³";
+			$link[1]['text'] = "ä¼šå‘˜ä¸­å¿ƒé¦–é¡µ";
 			$link[1]['href'] = 'company_index.php?act=';
 			$setmeal=get_user_setmeal($_SESSION['uid']);
 			if (empty($setmeal))
 			{					
-				showmsg("Äú»¹Ã»ÓĞ¿ªÍ¨·şÎñ£¬Çë¿ªÍ¨",1,$link);
+				showmsg("æ‚¨è¿˜æ²¡æœ‰å¼€é€šæœåŠ¡ï¼Œè¯·å¼€é€š",1,$link);
 			}
 			elseif ($setmeal['endtime']<time() && $setmeal['endtime']<>"0")
 			{					
-				showmsg("ÄúµÄ·şÎñÒÑ¾­µ½ÆÚ£¬ÇëÖØĞÂ¿ªÍ¨",1,$link);
+				showmsg("æ‚¨çš„æœåŠ¡å·²ç»åˆ°æœŸï¼Œè¯·é‡æ–°å¼€é€š",1,$link);
 			}
 			else
 			{
-				//×î½üÒ»´ÎµÄË¢ĞÂÊ±¼ä
+				//æœ€è¿‘ä¸€æ¬¡çš„åˆ·æ–°æ—¶é—´
 				$refrestime=get_last_refresh_date($_SESSION['uid'],"1001",2);
 				$duringtime=time()-$refrestime['max(addtime)'];
 				$space = $setmeal['refresh_jobs_space']*60;
 				$refresh_time = get_today_refresh_times($_SESSION['uid'],"1001",2);
 				if($setmeal['refresh_jobs_time']!=0&&($refresh_time['count(*)']>=$setmeal['refresh_jobs_time']))
 				{
-				showmsg("Ã¿Ìì×î¶àÖ»ÄÜË¢ĞÂ".$setmeal['refresh_jobs_time']."´Î,Äú½ñÌìÒÑ³¬¹ı×î´óË¢ĞÂ´ÎÊıÏŞÖÆ£¡",2);
+				showmsg("æ¯å¤©æœ€å¤šåªèƒ½åˆ·æ–°".$setmeal['refresh_jobs_time']."æ¬¡,æ‚¨ä»Šå¤©å·²è¶…è¿‡æœ€å¤§åˆ·æ–°æ¬¡æ•°é™åˆ¶ï¼",2);
 				}
 				elseif($duringtime<=$space){
-				showmsg($setmeal['refresh_jobs_space']."·ÖÖÓÄÚ²»ÄÜÖØ¸´Ë¢ĞÂÖ°Î»£¡",2);	
+				showmsg($setmeal['refresh_jobs_space']."åˆ†é’Ÿå†…ä¸èƒ½é‡å¤åˆ·æ–°èŒä½ï¼",2);	
 				}
 			}
 		}
-		//»ìºÏÄ£Ê½
+		//æ··åˆæ¨¡å¼
 		elseif($_CFG['operation_mode']=='3') 
 		{
 			$setmeal=get_user_setmeal($_SESSION['uid']);
-			//¸Ã»áÔ±Ì×²Í¹ıÆÚ (Ì×²Í¹ıÆÚºó¾ÍÓÃ»ı·ÖÀ´Ë¢)
+			//è¯¥ä¼šå‘˜å¥—é¤è¿‡æœŸ (å¥—é¤è¿‡æœŸåå°±ç”¨ç§¯åˆ†æ¥åˆ·)
 			if($setmeal['endtime']<time() && $setmeal['endtime']<>"0")
 			{
-				//ºóÌ¨¿ªÍ¨  ·şÎñ³¬ÏŞÊ±ÆôÓÃ»ı·ÖÏû·Ñ
+				//åå°å¼€é€š  æœåŠ¡è¶…é™æ—¶å¯ç”¨ç§¯åˆ†æ¶ˆè´¹
 				if($_CFG['setmeal_to_points']=='1')
 				{
 					$mode = 1;
-					//ÓÃ»ı·ÖÀ´Ë¢ĞÂÖ°Î»µÄ»°->°´ÕÕ»ı·ÖÄ£Ê½ÏŞÖÆ->ÏÈ¿´ËüÊÇ·ñ³¬¹ı´ÎÊıÏŞÖÆºÍÊ±¼ä¼ä¸ô
+					//ç”¨ç§¯åˆ†æ¥åˆ·æ–°èŒä½çš„è¯->æŒ‰ç…§ç§¯åˆ†æ¨¡å¼é™åˆ¶->å…ˆçœ‹å®ƒæ˜¯å¦è¶…è¿‡æ¬¡æ•°é™åˆ¶å’Œæ—¶é—´é—´éš”
 					$refrestime=get_last_refresh_date($_SESSION['uid'],"1001",1);
 					$duringtime=time()-$refrestime['max(addtime)'];
 					$space = $setmeal['refresh_jobs_space']*60;
 					$refresh_time = get_today_refresh_times($_SESSION['uid'],"1001",1);
 					if($_CFG['com_pointsmode_refresh_time']!=0&&($refresh_time['count(*)']>=$_CFG['com_pointsmode_refresh_time']))
 					{
-						$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+						$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 						$link[0]['href'] = 'javascript:history.go(-1)';
-						$link[1]['text'] = "Ğø·ÑÑÓÆÚ";
+						$link[1]['text'] = "ç»­è´¹å»¶æœŸ";
 						$link[1]['href'] = 'company_service.php?act=setmeal_list';
-						showmsg("ÄúµÄÌ×²ÍÒÑ¾­¹ıÆÚ£¬Ë¢ĞÂÖ°Î»ĞèÏûºÄ»ı·Ö£¬µ«ÊÇÓÃ»ı·ÖË¢ĞÂÖ°Î»Ã¿Ìì×î¶àÖ»ÄÜË¢ĞÂ".$_CFG['com_pointsmode_refresh_time']."´Î,Äú½ñÌìÒÑ³¬¹ı×î´óË¢ĞÂ´ÎÊıÏŞÖÆ£¬ÇëĞø·ÑÑÓÆÚÌ×²Í£¡",2,$link);	
+						showmsg("æ‚¨çš„å¥—é¤å·²ç»è¿‡æœŸï¼Œåˆ·æ–°èŒä½éœ€æ¶ˆè€—ç§¯åˆ†ï¼Œä½†æ˜¯ç”¨ç§¯åˆ†åˆ·æ–°èŒä½æ¯å¤©æœ€å¤šåªèƒ½åˆ·æ–°".$_CFG['com_pointsmode_refresh_time']."æ¬¡,æ‚¨ä»Šå¤©å·²è¶…è¿‡æœ€å¤§åˆ·æ–°æ¬¡æ•°é™åˆ¶ï¼Œè¯·ç»­è´¹å»¶æœŸå¥—é¤ï¼",2,$link);	
 					}
 					elseif($duringtime<=$space)
 					{
-						$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+						$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 						$link[0]['href'] = 'javascript:history.go(-1)';
-						$link[1]['text'] = "Ğø·ÑÑÓÆÚ";
+						$link[1]['text'] = "ç»­è´¹å»¶æœŸ";
 						$link[1]['href'] = 'company_service.php?act=setmeal_list';
-						showmsg("ÄúµÄÌ×²ÍÒÑ¾­¹ıÆÚ£¬Ë¢ĞÂÖ°Î»ĞèÏûºÄ»ı·Ö£¬µ«ÊÇÓÃ»ı·ÖË¢ĞÂÖ°Î»".$_CFG['com_pointsmode_refresh_space']."·ÖÖÓÄÚ²»ÄÜÖØ¸´Ë¢ĞÂ£¡",2,$link);
+						showmsg("æ‚¨çš„å¥—é¤å·²ç»è¿‡æœŸï¼Œåˆ·æ–°èŒä½éœ€æ¶ˆè€—ç§¯åˆ†ï¼Œä½†æ˜¯ç”¨ç§¯åˆ†åˆ·æ–°èŒä½".$_CFG['com_pointsmode_refresh_space']."åˆ†é’Ÿå†…ä¸èƒ½é‡å¤åˆ·æ–°ï¼",2,$link);
 					}
 					else
 					{
@@ -600,162 +600,162 @@ elseif ($act=='jobs_perform')
 							$total_point=$jobs_num*$points_rule['jobs_refresh']['value'];
 							if ($total_point>$user_points && $points_rule['jobs_refresh']['type']=="2")
 							{
-								$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+								$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 								$link[0]['href'] = 'javascript:history.go(-1)';
-								$link[1]['text'] = "Ğø·ÑÑÓÆÚ";
+								$link[1]['text'] = "ç»­è´¹å»¶æœŸ";
 								$link[1]['href'] = 'company_service.php?act=setmeal_list';
-								$link[2]['text'] = "Á¢¼´³äÖµ";
+								$link[2]['text'] = "ç«‹å³å……å€¼";
 								$link[2]['href'] = 'company_service.php?act=order_add';
-								showmsg("ÄúµÄÌ×²ÍÒÑ¹ıÆÚ£¬ĞèÏûºÄ»ı·ÖÀ´Ë¢ĞÂÖ°Î»¡£µ«Ä¿Ç°ÄúµÄ".$_CFG['points_byname']."²»×ã£¬ÇëÏÈ³äÖµ»ı·Ö»òĞø·ÑÑÓÆÚÌ×²Í£¡",0,$link);
+								showmsg("æ‚¨çš„å¥—é¤å·²è¿‡æœŸï¼Œéœ€æ¶ˆè€—ç§¯åˆ†æ¥åˆ·æ–°èŒä½ã€‚ä½†ç›®å‰æ‚¨çš„".$_CFG['points_byname']."ä¸è¶³ï¼Œè¯·å…ˆå……å€¼ç§¯åˆ†æˆ–ç»­è´¹å»¶æœŸå¥—é¤ï¼",0,$link);
 							}
-							//¼Ó/¼õ »ı·Ö
+							//åŠ /å‡ ç§¯åˆ†
 							report_deal($_SESSION['uid'],$points_rule['jobs_refresh']['type'],$total_point);
 							$user_points=get_user_points($_SESSION['uid']);
 							$operator=$points_rule['jobs_refresh']['type']=="1"?"+":"-";
-							write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"Ë¢ĞÂÁË{$jobs_num}ÌõÖ°Î»£¬({$operator}{$total_point})£¬(Ê£Óà:{$user_points})",1,1003,"Ë¢ĞÂÖ°Î»","{$operator}{$total_point}","{$user_points}");
+							write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"åˆ·æ–°äº†{$jobs_num}æ¡èŒä½ï¼Œ({$operator}{$total_point})ï¼Œ(å‰©ä½™:{$user_points})",1,1003,"åˆ·æ–°èŒä½","{$operator}{$total_point}","{$user_points}");
 						}
 					}
 				}
-				//ºóÌ¨Ã»ÓĞ¿ªÍ¨  ·şÎñ³¬ÏŞÊ±ÆôÓÃ»ı·ÖÏû·Ñ
+				//åå°æ²¡æœ‰å¼€é€š  æœåŠ¡è¶…é™æ—¶å¯ç”¨ç§¯åˆ†æ¶ˆè´¹
 				else
 				{
-					$link[0]['text'] = "Á¢¼´¿ªÍ¨·şÎñ";
+					$link[0]['text'] = "ç«‹å³å¼€é€šæœåŠ¡";
 					$link[0]['href'] = 'company_service.php?act=setmeal_list';
-					$link[1]['text'] = "»áÔ±ÖĞĞÄÊ×Ò³";
+					$link[1]['text'] = "ä¼šå‘˜ä¸­å¿ƒé¦–é¡µ";
 					$link[1]['href'] = 'company_index.php?act=';
-					showmsg("ÄúµÄ·şÎñÒÑ¾­µ½ÆÚ£¬ÇëÖØĞÂ¿ªÍ¨",1,$link);
+					showmsg("æ‚¨çš„æœåŠ¡å·²ç»åˆ°æœŸï¼Œè¯·é‡æ–°å¼€é€š",1,$link);
 				}
 			}
-			//¸Ã»áÔ±Ì×²ÍÎ´¹ıÆÚ 
+			//è¯¥ä¼šå‘˜å¥—é¤æœªè¿‡æœŸ 
 			else
 			{
 				$mode = 2;
 				$points_rule=get_cache('points_rule');
 				$user_points=get_user_points($_SESSION['uid']);
-				//»ñÈ¡µ±ÌìË¢ĞÂµÄÖ°Î»Êı(ÔÚÌ×²ÍÄ£Ê½ÏÂË¢ĞÂµÄ)
+				//è·å–å½“å¤©åˆ·æ–°çš„èŒä½æ•°(åœ¨å¥—é¤æ¨¡å¼ä¸‹åˆ·æ–°çš„)
 				$refresh_time = get_today_refresh_times($_SESSION['uid'],"1001",2);
-				//µ±ÌìÊ£ÓàË¢ĞÂÖ°Î»Êı(ÔÚÌ×²ÍÄ£Ê½ÏÂË¢ĞÂµÄ)
+				//å½“å¤©å‰©ä½™åˆ·æ–°èŒä½æ•°(åœ¨å¥—é¤æ¨¡å¼ä¸‹åˆ·æ–°çš„)
 				$surplus_time =  $setmeal['refresh_jobs_time'] - $refresh_time['count(*)'];
-				//Ë¢ĞÂÖ°Î»Êı ´óÓÚ Ê£ÓàË¢ĞÂÖ°Î»Êı (³¬ÁË)
+				//åˆ·æ–°èŒä½æ•° å¤§äº å‰©ä½™åˆ·æ–°èŒä½æ•° (è¶…äº†)
 				if($setmeal['refresh_jobs_time']!=0&&($jobs_num>$surplus_time))
 				{
-					//ºóÌ¨¿ªÍ¨  ·şÎñ³¬ÏŞÊ±ÆôÓÃ»ı·ÖÏû·Ñ
+					//åå°å¼€é€š  æœåŠ¡è¶…é™æ—¶å¯ç”¨ç§¯åˆ†æ¶ˆè´¹
 					if($_CFG['setmeal_to_points']=='1')
 					{
-						//ÅĞ¶Ïµ±Ìì»ı·ÖË¢ĞÂÖ°Î»Êı ÊÇ·ñ ³¬¹ı´ÎÊıºÍ¼ä¸ôÏŞÖÆ
+						//åˆ¤æ–­å½“å¤©ç§¯åˆ†åˆ·æ–°èŒä½æ•° æ˜¯å¦ è¶…è¿‡æ¬¡æ•°å’Œé—´éš”é™åˆ¶
 						$refrestime=get_last_refresh_date($_SESSION['uid'],"1001",1);
 						$duringtime=time()-$refrestime['max(addtime)'];
 						$space = $_CFG['com_pointsmode_refresh_space']*60;
 						$refresh_time = get_today_refresh_times($_SESSION['uid'],"1001",1);
 						if($_CFG['com_pointsmode_refresh_time']!=0&&($refresh_time['count(*)']>=$_CFG['com_pointsmode_refresh_time']))
 						{
-						showmsg("Ë¢ĞÂÖ°Î»Êı³¬¹ıÁËÌ×²Í´ÎÊıÏŞÖÆ£¬Ë¢ĞÂÖ°Î»ĞèÏûºÄ»ı·Ö£¬Ã¿ÌìÓÃ»ı·ÖË¢ĞÂ×î¶àÖ»ÄÜË¢ĞÂ".$_CFG['com_pointsmode_refresh_time']."´Î,Äú½ñÌìÒÑ³¬¹ı×î´óË¢ĞÂ´ÎÊıÏŞÖÆ£¡",2);	
+						showmsg("åˆ·æ–°èŒä½æ•°è¶…è¿‡äº†å¥—é¤æ¬¡æ•°é™åˆ¶ï¼Œåˆ·æ–°èŒä½éœ€æ¶ˆè€—ç§¯åˆ†ï¼Œæ¯å¤©ç”¨ç§¯åˆ†åˆ·æ–°æœ€å¤šåªèƒ½åˆ·æ–°".$_CFG['com_pointsmode_refresh_time']."æ¬¡,æ‚¨ä»Šå¤©å·²è¶…è¿‡æœ€å¤§åˆ·æ–°æ¬¡æ•°é™åˆ¶ï¼",2);	
 						}
 						elseif($duringtime<=$space)
 						{
-						showmsg("Ë¢ĞÂÖ°Î»Êı³¬¹ıÁËÌ×²Í´ÎÊıÏŞÖÆ£¬Ë¢ĞÂÖ°Î»ĞèÏûºÄ»ı·Ö£¬²¢ÇÒ".$_CFG['com_pointsmode_refresh_space']."·ÖÖÓÄÚ²»ÄÜÖØ¸´Ë¢ĞÂÖ°Î»£¡",2);
+						showmsg("åˆ·æ–°èŒä½æ•°è¶…è¿‡äº†å¥—é¤æ¬¡æ•°é™åˆ¶ï¼Œåˆ·æ–°èŒä½éœ€æ¶ˆè€—ç§¯åˆ†ï¼Œå¹¶ä¸”".$_CFG['com_pointsmode_refresh_space']."åˆ†é’Ÿå†…ä¸èƒ½é‡å¤åˆ·æ–°èŒä½ï¼",2);
 						}
 						else
 						{
 							if($points_rule['jobs_refresh']['value']>0)
 							{
-								//³¬³öµÄÖ°Î»ÈôÏëË¢ĞÂ ËùĞèµÄ»ı·Ö
+								//è¶…å‡ºçš„èŒä½è‹¥æƒ³åˆ·æ–° æ‰€éœ€çš„ç§¯åˆ†
 								$beyond = $jobs_num - $surplus_time;
 								$surplus_total_point=$beyond*$points_rule['jobs_refresh']['value'];
-								//»áÔ±»ı·Ö²»×ãÒÔÂú×ã ËùĞè»ı·Ö
+								//ä¼šå‘˜ç§¯åˆ†ä¸è¶³ä»¥æ»¡è¶³ æ‰€éœ€ç§¯åˆ†
 								if ($surplus_total_point>$user_points && $points_rule['jobs_refresh']['type']=="2")
 								{
-									$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+									$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 									$link[0]['href'] = 'javascript:history.go(-1)';
-									$link[1]['text'] = "Ğø·ÑÑÓÆÚ";
+									$link[1]['text'] = "ç»­è´¹å»¶æœŸ";
 									$link[1]['href'] = 'company_service.php?act=setmeal_list';
-									$link[2]['text'] = "Á¢¼´³äÖµ";
+									$link[2]['text'] = "ç«‹å³å……å€¼";
 									$link[2]['href'] = 'company_service.php?act=order_add';
-									showmsg("ÄúË¢ĞÂÖ°Î»Êı³¬¹ıÁËÌ×²Í´ÎÊıÏŞÖÆ£¬³¬¹ıµÄ´ÎÊıĞèÏûºÄÄúµÄ»ı·Ö£¬µ«ÊÇÄúµÄ".$_CFG['points_byname']."²»×ã£¬ÇëÏÈ³äÖµ£¡",0,$link);
+									showmsg("æ‚¨åˆ·æ–°èŒä½æ•°è¶…è¿‡äº†å¥—é¤æ¬¡æ•°é™åˆ¶ï¼Œè¶…è¿‡çš„æ¬¡æ•°éœ€æ¶ˆè€—æ‚¨çš„ç§¯åˆ†ï¼Œä½†æ˜¯æ‚¨çš„".$_CFG['points_byname']."ä¸è¶³ï¼Œè¯·å…ˆå……å€¼ï¼",0,$link);
 								}
-								//ÅĞ¶Ï³¬³öµÄÖ°Î»ÊıÊÇ·ñ ´óÓÚ »ı·ÖÏŞÖÆ´ÎÊı
+								//åˆ¤æ–­è¶…å‡ºçš„èŒä½æ•°æ˜¯å¦ å¤§äº ç§¯åˆ†é™åˆ¶æ¬¡æ•°
 								if($beyond > $_CFG['com_pointsmode_refresh_time'] && $_CFG['com_pointsmode_refresh_time']!=0)
 								{
-									showmsg("ÄúË¢ĞÂÖ°Î»Êı³¬¹ıÁËÌ×²Í´ÎÊıÏŞÖÆ£¬³¬¹ıµÄÖ°Î»ÊıĞèÏûºÄÄúµÄ»ı·Ö£¬²¢ÇÒÒ²³¬¹ıÁË".$_CFG['points_byname']."ÏŞÖÆ´ÎÊı£¬ÇëÖØĞÂÑ¡ÔñÖ°Î»£¡",0);
+									showmsg("æ‚¨åˆ·æ–°èŒä½æ•°è¶…è¿‡äº†å¥—é¤æ¬¡æ•°é™åˆ¶ï¼Œè¶…è¿‡çš„èŒä½æ•°éœ€æ¶ˆè€—æ‚¨çš„ç§¯åˆ†ï¼Œå¹¶ä¸”ä¹Ÿè¶…è¿‡äº†".$_CFG['points_byname']."é™åˆ¶æ¬¡æ•°ï¼Œè¯·é‡æ–°é€‰æ‹©èŒä½ï¼",0);
 								}
 								for ($i=0; $i < $surplus_time; $i++) 
 								{ 
 									refresh_jobs($yid[$i],$_SESSION['uid']);
-									write_memberslog($_SESSION['uid'],1,2004,$_SESSION['username'],"Ë¢ĞÂÖ°Î»");
+									write_memberslog($_SESSION['uid'],1,2004,$_SESSION['username'],"åˆ·æ–°èŒä½");
 									write_refresh_log($_SESSION['uid'],2,1001);
 								}
 								for ($i=$surplus_time; $i < $jobs_num; $i++) 
 								{ 
 									refresh_jobs($yid[$i],$_SESSION['uid']);
-									write_memberslog($_SESSION['uid'],1,2004,$_SESSION['username'],"Ë¢ĞÂÖ°Î»");
+									write_memberslog($_SESSION['uid'],1,2004,$_SESSION['username'],"åˆ·æ–°èŒä½");
 									write_refresh_log($_SESSION['uid'],1,1001);
 								}
-								//¸üĞÂ»áÔ±»ı·Ö
-								//¼Ó/¼õ »ı·Ö
+								//æ›´æ–°ä¼šå‘˜ç§¯åˆ†
+								//åŠ /å‡ ç§¯åˆ†
 								report_deal($_SESSION['uid'],$points_rule['jobs_refresh']['type'],$surplus_total_point);
 								$user_points=get_user_points($_SESSION['uid']);
 								$operator=$points_rule['jobs_refresh']['type']=="1"?"+":"-";
-								write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"Ë¢ĞÂÁË{$jobs_num}ÌõÖ°Î»£¬({$operator}{$total_point})£¬(Ê£Óà:{$user_points})",1,1003,"Ë¢ĞÂÖ°Î»","{$operator}{$total_point}","{$user_points}");
-								showmsg("Ë¢ĞÂÖ°Î»³É¹¦£¡",2);
+								write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"åˆ·æ–°äº†{$jobs_num}æ¡èŒä½ï¼Œ({$operator}{$total_point})ï¼Œ(å‰©ä½™:{$user_points})",1,1003,"åˆ·æ–°èŒä½","{$operator}{$total_point}","{$user_points}");
+								showmsg("åˆ·æ–°èŒä½æˆåŠŸï¼",2);
 							}
 						}
 					}
-					//ºóÌ¨Ã»ÓĞ¿ªÍ¨  ·şÎñ³¬ÏŞÊ±ÆôÓÃ»ı·ÖÏû·Ñ
+					//åå°æ²¡æœ‰å¼€é€š  æœåŠ¡è¶…é™æ—¶å¯ç”¨ç§¯åˆ†æ¶ˆè´¹
 					else
 					{
-						$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+						$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 						$link[0]['href'] = 'javascript:history.go(-1)';
-						$link[1]['text'] = "Ğø·ÑÑÓÆÚ";
+						$link[1]['text'] = "ç»­è´¹å»¶æœŸ";
 						$link[1]['href'] = 'company_service.php?act=setmeal_list';
-						showmsg("ÄúË¢ĞÂÖ°Î»Êı³¬¹ıÁËÌ×²Í´ÎÊıÏŞÖÆ ! ",1,$link);
+						showmsg("æ‚¨åˆ·æ–°èŒä½æ•°è¶…è¿‡äº†å¥—é¤æ¬¡æ•°é™åˆ¶ ! ",1,$link);
 					}
 				}
-				//Ë¢ĞÂÖ°Î»Êı Ğ¡ÓÚ Ê£ÓàË¢ĞÂÖ°Î»Êı (Ã»³¬)
+				//åˆ·æ–°èŒä½æ•° å°äº å‰©ä½™åˆ·æ–°èŒä½æ•° (æ²¡è¶…)
 				else
 				{
-					//×î½üÒ»´ÎµÄË¢ĞÂÊ±¼ä
+					//æœ€è¿‘ä¸€æ¬¡çš„åˆ·æ–°æ—¶é—´
 					$refrestime=get_last_refresh_date($_SESSION['uid'],"1001",2);
 					$duringtime=time()-$refrestime['max(addtime)'];
 					$space = $setmeal['refresh_jobs_space']*60;
 					$refresh_time = get_today_refresh_times($_SESSION['uid'],"1001",2);
 					if($setmeal['refresh_jobs_time']!=0&&($refresh_time['count(*)']>=$setmeal['refresh_jobs_time']))
 					{
-					showmsg("Ã¿Ìì×î¶àÖ»ÄÜË¢ĞÂ".$setmeal['refresh_jobs_time']."´Î,Äú½ñÌìÒÑ³¬¹ı×î´óË¢ĞÂ´ÎÊıÏŞÖÆ£¡",2);
+					showmsg("æ¯å¤©æœ€å¤šåªèƒ½åˆ·æ–°".$setmeal['refresh_jobs_time']."æ¬¡,æ‚¨ä»Šå¤©å·²è¶…è¿‡æœ€å¤§åˆ·æ–°æ¬¡æ•°é™åˆ¶ï¼",2);
 					}
 					elseif($duringtime<=$space)
 					{
-					showmsg($setmeal['refresh_jobs_space']."·ÖÖÓÄÚ²»ÄÜÖØ¸´Ë¢ĞÂÖ°Î»£¡",2);	
+					showmsg($setmeal['refresh_jobs_space']."åˆ†é’Ÿå†…ä¸èƒ½é‡å¤åˆ·æ–°èŒä½ï¼",2);	
 					}
 				}
 			}
 		}
 		
 		refresh_jobs($yid,$_SESSION['uid']);
-		write_memberslog($_SESSION['uid'],1,2004,$_SESSION['username'],"Ë¢ĞÂÖ°Î»");
+		write_memberslog($_SESSION['uid'],1,2004,$_SESSION['username'],"åˆ·æ–°èŒä½");
 		for ($i=0; $i < $jobs_num; $i++) { 
 			write_refresh_log($_SESSION['uid'],$mode,1001);
 		}
-		showmsg("Ë¢ĞÂÖ°Î»³É¹¦£¡",2);
+		showmsg("åˆ·æ–°èŒä½æˆåŠŸï¼",2);
 	}
 	elseif ($delete)
 	{
 		if($n=del_jobs($yid,$_SESSION['uid']))
 		{
-			showmsg("É¾³ı³É¹¦£¡¹²É¾³ı {$n} ĞĞ",2);
+			showmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤ {$n} è¡Œ",2);
 		}
 		else
 		{
-			showmsg("É¾³ıÊ§°Ü£¡",2);
+			showmsg("åˆ é™¤å¤±è´¥ï¼",2);
 		}
 	} 
 	elseif (!empty($_REQUEST['display1']))
 	{
 		/*
-			ÏÔÊ¾ÖĞµÄÖ°Î»(ÉóºËÍ¨¹ı,ÉóºËÖĞ,Î´ÔİÍ£)
+			æ˜¾ç¤ºä¸­çš„èŒä½(å®¡æ ¸é€šè¿‡,å®¡æ ¸ä¸­,æœªæš‚åœ)
 		*/
 		if($_CFG['operation_mode']=='1'){
 			activate_jobs($yid,1,$_SESSION['uid']);
-			showmsg("ÉèÖÃ³É¹¦£¡",2);
+			showmsg("è®¾ç½®æˆåŠŸï¼",2);
 		}else{
 			$jobs_num= $db->get_total("select count(*) num from ".table("jobs")." where uid=$_SESSION[uid] and audit=1 and display=1 ");
 			$jobs_tmp_num= $db->get_total("select count(*) num from ".table("jobs_tmp")." where uid=$_SESSION[uid] and audit<>3 and display=1 ");
@@ -763,28 +763,28 @@ elseif ($act=='jobs_perform')
 			$setmeal= get_user_setmeal($_SESSION['uid']);
 			if ($com_jobs_num>=$setmeal['jobs_ordinary'])
 			{
-				showmsg("µ±Ç°ÏÔÊ¾µÄÖ°Î»ÒÑ¾­³¬¹ıÁË×î´óÏŞÖÆ£¬ÇëÉı¼¶·şÎñÌ×²Í£¬»ò½«²»ÕĞÆ¸µÄÖ°Î»ÉèÎª¹Ø±Õ£¡",1);
+				showmsg("å½“å‰æ˜¾ç¤ºçš„èŒä½å·²ç»è¶…è¿‡äº†æœ€å¤§é™åˆ¶ï¼Œè¯·å‡çº§æœåŠ¡å¥—é¤ï¼Œæˆ–å°†ä¸æ‹›è˜çš„èŒä½è®¾ä¸ºå…³é—­ï¼",1);
 			}else
 			{
 				activate_jobs($yid,1,$_SESSION['uid']);
-				showmsg("ÉèÖÃ³É¹¦£¡",2);
+				showmsg("è®¾ç½®æˆåŠŸï¼",2);
 			}
 		}
 	}
 	elseif (!empty($_REQUEST['display2']))
 	{
 	activate_jobs($yid,2,$_SESSION['uid']);
-	showmsg("ÉèÖÃ³É¹¦£¡",2);
+	showmsg("è®¾ç½®æˆåŠŸï¼",2);
 	}
 }
-//»ìºÏÄ£Ê½ÏÂ  :  ÅĞ¶ÏË¢ĞÂÖ°Î»ÊÇ·ñĞèÒªÏûºÄ»ı·Ö
+//æ··åˆæ¨¡å¼ä¸‹  :  åˆ¤æ–­åˆ·æ–°èŒä½æ˜¯å¦éœ€è¦æ¶ˆè€—ç§¯åˆ†
 elseif ($act=='ajax_mode_points')
 {
-	//ÒªË¢ĞÂµÄÖ°Î»Êı
+	//è¦åˆ·æ–°çš„èŒä½æ•°
 	$length = intval($_GET['length']);
 	$points_rule=get_cache('points_rule');
 	$setmeal=get_user_setmeal($_SESSION['uid']);
-	//¸Ã»áÔ±Ì×²Í¹ıÆÚ (Ì×²Í¹ıÆÚºó¾ÍÓÃ»ı·ÖÀ´²Ù×÷)
+	//è¯¥ä¼šå‘˜å¥—é¤è¿‡æœŸ (å¥—é¤è¿‡æœŸåå°±ç”¨ç§¯åˆ†æ¥æ“ä½œ)
 	if($setmeal['endtime']<time() && $setmeal['endtime']<>"0")
 	{
 		if($_CFG['setmeal_to_points']=='1' && $points_rule['jobs_refresh']['value']>"0")
@@ -792,11 +792,11 @@ elseif ($act=='ajax_mode_points')
 			exit('ok');
 		}
 	}
-	//»ñÈ¡µ±ÌìË¢ĞÂµÄÖ°Î»Êı(ÔÚÌ×²ÍÄ£Ê½ÏÂË¢ĞÂµÄ)
+	//è·å–å½“å¤©åˆ·æ–°çš„èŒä½æ•°(åœ¨å¥—é¤æ¨¡å¼ä¸‹åˆ·æ–°çš„)
 	$refresh_time = get_today_refresh_times($_SESSION['uid'],"1001",2);
-	//µ±ÌìÊ£ÓàË¢ĞÂÖ°Î»Êı(ÔÚÌ×²ÍÄ£Ê½ÏÂË¢ĞÂµÄ)
+	//å½“å¤©å‰©ä½™åˆ·æ–°èŒä½æ•°(åœ¨å¥—é¤æ¨¡å¼ä¸‹åˆ·æ–°çš„)
 	$surplus_time =  $setmeal['refresh_jobs_time'] - $refresh_time['count(*)'];
-	//Ë¢ĞÂÖ°Î»Êı ´óÓÚ Ê£ÓàË¢ĞÂÖ°Î»Êı (³¬ÁË)
+	//åˆ·æ–°èŒä½æ•° å¤§äº å‰©ä½™åˆ·æ–°èŒä½æ•° (è¶…äº†)
 	if($setmeal['refresh_jobs_time']!=0 && ($length>$surplus_time))
 	{
 		if($_CFG['setmeal_to_points']=='1' && $points_rule['jobs_refresh']['value']>"0")
@@ -809,7 +809,7 @@ elseif ($act=='ajax_mode_points')
 elseif ($act=='editjobs')
 {
 	$jobs=get_jobs_one(intval($_GET['id']),$_SESSION['uid']);
-	if (empty($jobs)) showmsg("²ÎÊı´íÎó£¡",1);
+	if (empty($jobs)) showmsg("å‚æ•°é”™è¯¯ï¼",1);
 	$jobs['contents'] = htmlspecialchars_decode($jobs['contents'],ENT_QUOTES);
 	if($jobs['age']){
 		$jobs_age = explode("-", $jobs['age']);
@@ -817,7 +817,7 @@ elseif ($act=='editjobs')
 		$jobs['maxage'] = $jobs_age[1];
 	}
 	$smarty->assign('user',$user);
-	$smarty->assign('title','ĞŞ¸ÄÖ°Î» - ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','ä¿®æ”¹èŒä½ - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('points_total',get_user_points($_SESSION['uid']));
 	$smarty->assign('points',get_cache('points_rule'));
 	$smarty->assign('jobs',$jobs);
@@ -836,54 +836,54 @@ elseif ($act=='editjobs_save')
 						$total=$points_rule['jobs_edit']['value'];
 						if ($total>$user_points)
 						{
-						$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+						$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 						$link[0]['href'] = 'javascript:history.go(-1)';
-						$link[1]['text'] = "Á¢¼´³äÖµ";
+						$link[1]['text'] = "ç«‹å³å……å€¼";
 						$link[1]['href'] = 'company_service.php?act=order_add';
-						showmsg("ÄãµÄ".$_CFG['points_byname']."²»×ã£¬Çë³äÖµºóÔÙ·¢²¼£¡",0,$link);
+						showmsg("ä½ çš„".$_CFG['points_byname']."ä¸è¶³ï¼Œè¯·å……å€¼åå†å‘å¸ƒï¼",0,$link);
 						}
 					}
 					
 	}
 	elseif ($add_mode=='2')
 	{
-					$link[0]['text'] = "Á¢¼´¿ªÍ¨·şÎñ";
+					$link[0]['text'] = "ç«‹å³å¼€é€šæœåŠ¡";
 					$link[0]['href'] = 'company_service.php?act=setmeal_list';
-					$link[1]['text'] = "»áÔ±ÖĞĞÄÊ×Ò³";
+					$link[1]['text'] = "ä¼šå‘˜ä¸­å¿ƒé¦–é¡µ";
 					$link[1]['href'] = 'company_index.php?act=';
 				$setmeal=get_user_setmeal($_SESSION['uid']);
 				if ($setmeal['endtime']<time() && $setmeal['endtime']<>"0")
 				{					
-					showmsg("ÄúµÄÌ×²ÍÒÑ¾­µ½ÆÚ£¬ÇëÖØĞÂ¿ªÍ¨",1,$link);
+					showmsg("æ‚¨çš„å¥—é¤å·²ç»åˆ°æœŸï¼Œè¯·é‡æ–°å¼€é€š",1,$link);
 				}
 	}
 
-	$setsqlarr['jobs_name']=!empty($_POST['jobs_name'])?trim($_POST['jobs_name']):showmsg('ÄúÃ»ÓĞÌîĞ´Ö°Î»Ãû³Æ£¡',1);
+	$setsqlarr['jobs_name']=!empty($_POST['jobs_name'])?trim($_POST['jobs_name']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™èŒä½åç§°ï¼',1);
 	check_word($_CFG['filter'],$_POST['jobs_name'])?showmsg($_CFG['filter_tips'],0):'';
 	$setsqlarr['nature']=intval($_POST['nature']);
 	$setsqlarr['nature_cn']=trim($_POST['nature_cn']);
 	$setsqlarr['topclass']=trim($_POST['topclass']);
-	$setsqlarr['category']=!empty($_POST['category'])?intval($_POST['category']):showmsg('ÇëÑ¡ÔñÖ°Î»Àà±ğ£¡',1);
+	$setsqlarr['category']=!empty($_POST['category'])?intval($_POST['category']):showmsg('è¯·é€‰æ‹©èŒä½ç±»åˆ«ï¼',1);
 	$setsqlarr['subclass']=trim($_POST['subclass']);
 	$setsqlarr['category_cn']=trim($_POST['category_cn']);
 	$setsqlarr['amount']=intval($_POST['amount']);
-	$setsqlarr['district']=!empty($_POST['district'])?intval($_POST['district']):showmsg('ÇëÑ¡Ôñ¹¤×÷µØÇø£¡',1);
+	$setsqlarr['district']=!empty($_POST['district'])?intval($_POST['district']):showmsg('è¯·é€‰æ‹©å·¥ä½œåœ°åŒºï¼',1);
 	$setsqlarr['sdistrict']=intval($_POST['sdistrict']);
 	$setsqlarr['district_cn']=trim($_POST['district_cn']);
-	$setsqlarr['wage']=intval($_POST['wage'])?intval($_POST['wage']):showmsg('ÇëÑ¡ÔñĞ½×Ê´ıÓö£¡',1);		
+	$setsqlarr['wage']=intval($_POST['wage'])?intval($_POST['wage']):showmsg('è¯·é€‰æ‹©è–ªèµ„å¾…é‡ï¼',1);		
 	$setsqlarr['wage_cn']=trim($_POST['wage_cn']);
 	$setsqlarr['negotiable']=intval($_POST['negotiable']);
 	$setsqlarr['tag']=trim($_POST['tag']);
 	$setsqlarr['tag_cn']=trim($_POST['tag_cn']);
 	$setsqlarr['sex']=intval($_POST['sex']);
 	$setsqlarr['sex_cn']=trim($_POST['sex_cn']);
-	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):showmsg('ÇëÑ¡ÔñÑ§ÀúÒªÇó£¡',1);		
+	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):showmsg('è¯·é€‰æ‹©å­¦å†è¦æ±‚ï¼',1);		
 	$setsqlarr['education_cn']=trim($_POST['education_cn']);
-	$setsqlarr['experience']=intval($_POST['experience'])?intval($_POST['experience']):showmsg('ÇëÑ¡Ôñ¹¤×÷¾­Ñé£¡',1);		
+	$setsqlarr['experience']=intval($_POST['experience'])?intval($_POST['experience']):showmsg('è¯·é€‰æ‹©å·¥ä½œç»éªŒï¼',1);		
 	$setsqlarr['experience_cn']=trim($_POST['experience_cn']);
 	$setsqlarr['graduate']=intval($_POST['graduate']);
 	$setsqlarr['age']=trim($_POST['minage'])."-".trim($_POST['maxage']);
-	$setsqlarr['contents']=!empty($_POST['contents'])?trim($_POST['contents']):showmsg('ÄúÃ»ÓĞÌîĞ´Ö°Î»ÃèÊö£¡',1); 
+	$setsqlarr['contents']=!empty($_POST['contents'])?trim($_POST['contents']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™èŒä½æè¿°ï¼',1); 
 	
 	check_word($_CFG['filter'],$_POST['contents'])?showmsg($_CFG['filter_tips'],0):'';
 	if ($add_mode=='1'){
@@ -896,7 +896,7 @@ elseif ($act=='editjobs_save')
 		$setsqlarr['setmeal_name']=$setmeal['setmeal_name'];
 		$setsqlarr['add_mode']=2;
 	}
-	// ĞŞ¸ÄÖ°Î» ¹ıÆÚÊ±¼äÎª
+	// ä¿®æ”¹èŒä½ è¿‡æœŸæ—¶é—´ä¸º
 	$setsqlarr['deadline']=strtotime("".intval($_CFG['company_add_days'])." day");
 	$setsqlarr['key']=$setsqlarr['jobs_name'].$company_profile['companyname'].$setsqlarr['category_cn'].$setsqlarr['district_cn'].$setsqlarr['contents'];
 	require_once(QISHI_ROOT_PATH.'include/splitword.class.php');
@@ -911,26 +911,26 @@ elseif ($act=='editjobs_save')
 	{
 	$_CFG['audit_unexaminedcom_editjob']<>"-1"?$setsqlarr['audit']=intval($_CFG['audit_unexaminedcom_editjob']):'';
 	}
-	$setsqlarr_contact['contact']=!empty($_POST['contact'])?trim($_POST['contact']):showmsg('ÄúÃ»ÓĞÌîĞ´ÁªÏµÈË£¡',1);
+	$setsqlarr_contact['contact']=!empty($_POST['contact'])?trim($_POST['contact']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»äººï¼',1);
 	check_word($_CFG['filter'],$_POST['contact'])?showmsg($_CFG['filter_tips'],0):'';
-	$setsqlarr_contact['telephone']=!empty($_POST['telephone'])?trim($_POST['telephone']):showmsg('ÄúÃ»ÓĞÌîĞ´ÁªÏµµç»°£¡',1);
+	$setsqlarr_contact['telephone']=!empty($_POST['telephone'])?trim($_POST['telephone']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»ç”µè¯ï¼',1);
 	check_word($_CFG['filter'],$_POST['telephone'])?showmsg($_CFG['filter_tips'],0):'';
-	$setsqlarr_contact['address']=!empty($_POST['address'])?trim($_POST['address']):showmsg('ÄúÃ»ÓĞÌîĞ´ÁªÏµµØÖ·£¡',1);
+	$setsqlarr_contact['address']=!empty($_POST['address'])?trim($_POST['address']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»åœ°å€ï¼',1);
 	check_word($_CFG['filter'],$_POST['address'])?showmsg($_CFG['filter_tips'],0):'';
-	$setsqlarr_contact['email']=!empty($_POST['email'])?trim($_POST['email']):showmsg('ÄúÃ»ÓĞÌîĞ´ÁªÏµÓÊÏä£¡',1);
+	$setsqlarr_contact['email']=!empty($_POST['email'])?trim($_POST['email']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»é‚®ç®±ï¼',1);
 	check_word($_CFG['filter'],$_POST['email'])?showmsg($_CFG['filter_tips'],0):'';
-	$setsqlarr_contact['notify']=intval($_POST['notify']);//ÓÊ¼şÌáĞÑ
-	$setsqlarr_contact['notify_mobile']=intval($_POST['notify_mobile']);//ÊÖ»úÌáĞÑ
+	$setsqlarr_contact['notify']=intval($_POST['notify']);//é‚®ä»¶æé†’
+	$setsqlarr_contact['notify_mobile']=intval($_POST['notify_mobile']);//æ‰‹æœºæé†’
 	
   	$setsqlarr_contact['contact_show']=intval($_POST['contact_show']);
 	$setsqlarr_contact['email_show']=intval($_POST['email_show']);
 	$setsqlarr_contact['telephone_show']=intval($_POST['telephone_show']);
 	$setsqlarr_contact['address_show']=intval($_POST['address_show']);
  
-	if (!$db->updatetable(table('jobs'), $setsqlarr," id='{$id}' AND uid='{$_SESSION['uid']}' ")) showmsg("±£´æÊ§°Ü£¡",0);
-	if (!$db->updatetable(table('jobs_tmp'), $setsqlarr," id='{$id}' AND uid='{$_SESSION['uid']}' ")) showmsg("±£´æÊ§°Ü£¡",0);
+	if (!$db->updatetable(table('jobs'), $setsqlarr," id='{$id}' AND uid='{$_SESSION['uid']}' ")) showmsg("ä¿å­˜å¤±è´¥ï¼",0);
+	if (!$db->updatetable(table('jobs_tmp'), $setsqlarr," id='{$id}' AND uid='{$_SESSION['uid']}' ")) showmsg("ä¿å­˜å¤±è´¥ï¼",0);
 	if (!$db->updatetable(table('jobs_contact'), $setsqlarr_contact," pid='{$id}' ")){
-		showmsg("±£´æÊ§°Ü£¡",0);
+		showmsg("ä¿å­˜å¤±è´¥ï¼",0);
 	}
 	if ($add_mode=='1')
 	{
@@ -939,7 +939,7 @@ elseif ($act=='editjobs_save')
 		report_deal($_SESSION['uid'],$points_rule['jobs_edit']['type'],$points_rule['jobs_edit']['value']);
 		$user_points=get_user_points($_SESSION['uid']);
 		$operator=$points_rule['jobs_edit']['type']=="1"?"+":"-";
-		write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ĞŞ¸ÄÖ°Î»£º<strong>{$setsqlarr['jobs_name']}</strong>£¬({$operator}{$points_rule['jobs_edit']['value']})£¬(Ê£Óà:{$user_points})",1,1002,"ĞŞ¸ÄÕĞÆ¸ĞÅÏ¢","{$operator}{$points_rule['jobs_edit']['value']}","{$user_points}");
+		write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ä¿®æ”¹èŒä½ï¼š<strong>{$setsqlarr['jobs_name']}</strong>ï¼Œ({$operator}{$points_rule['jobs_edit']['value']})ï¼Œ(å‰©ä½™:{$user_points})",1,1002,"ä¿®æ”¹æ‹›è˜ä¿¡æ¯","{$operator}{$points_rule['jobs_edit']['value']}","{$user_points}");
 		}
 		if ($days>0 && $points_rule['jobs_daily']['value']>0)
 		{
@@ -947,14 +947,14 @@ elseif ($act=='editjobs_save')
 		report_deal($_SESSION['uid'],$points_rule['jobs_daily']['type'],$points_day);
 		$user_points=get_user_points($_SESSION['uid']);
 		$operator=$points_rule['jobs_daily']['type']=="1"?"+":"-";
-		write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÑÓ³¤Ö°Î»({$_POST['jobs_name']})ÓĞĞ§ÆÚÎª{$_POST['days']}Ìì£¬({$operator}{$points_day})£¬(Ê£Óà:{$user_points})",1,1002,"ĞŞ¸ÄÕĞÆ¸ĞÅÏ¢","{$operator}{$points_day}","{$user_points}");
+		write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"å»¶é•¿èŒä½({$_POST['jobs_name']})æœ‰æ•ˆæœŸä¸º{$_POST['days']}å¤©ï¼Œ({$operator}{$points_day})ï¼Œ(å‰©ä½™:{$user_points})",1,1002,"ä¿®æ”¹æ‹›è˜ä¿¡æ¯","{$operator}{$points_day}","{$user_points}");
 		}
 	}	 
-	$link[0]['text'] = "Ö°Î»ÁĞ±í";
+	$link[0]['text'] = "èŒä½åˆ—è¡¨";
 	$link[0]['href'] = '?act=jobs';
-	$link[1]['text'] = "²é¿´ĞŞ¸Ä½á¹û";
+	$link[1]['text'] = "æŸ¥çœ‹ä¿®æ”¹ç»“æœ";
 	$link[1]['href'] = "?act=editjobs&id={$id}";
-	$link[2]['text'] = "»áÔ±ÖĞĞÄÊ×Ò³";
+	$link[2]['text'] = "ä¼šå‘˜ä¸­å¿ƒé¦–é¡µ";
 	$link[2]['href'] = "company_index.php";
 	//
 	$searchtab['nature']=$setsqlarr['nature'];
@@ -978,10 +978,10 @@ elseif ($act=='editjobs_save')
 	$searchtab['likekey']=$setsqlarr['jobs_name'].','.$company_profile['companyname'];
 	$db->updatetable(table('jobs_search_key'),$searchtab," id='{$id}' AND uid='{$_SESSION['uid']}' ");
 	unset($searchtab);
-	add_jobs_tag(intval($_POST['id']),$_SESSION['uid'],$_POST['tag'])?"":showmsg('±£´æÊ§°Ü£¡',0);
+	add_jobs_tag(intval($_POST['id']),$_SESSION['uid'],$_POST['tag'])?"":showmsg('ä¿å­˜å¤±è´¥ï¼',0);
 	distribution_jobs($id,$_SESSION['uid']);
-	write_memberslog($_SESSION['uid'],$_SESSION['utype'],2002,$_SESSION['username'],"ĞŞ¸ÄÁËÖ°Î»£º{$setsqlarr['jobs_name']}£¬Ö°Î»ID£º{$id}");
-	showmsg("ĞŞ¸Ä³É¹¦£¡",2,$link);
+	write_memberslog($_SESSION['uid'],$_SESSION['utype'],2002,$_SESSION['username'],"ä¿®æ”¹äº†èŒä½ï¼š{$setsqlarr['jobs_name']}ï¼ŒèŒä½IDï¼š{$id}");
+	showmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 elseif($act == "get_content_by_jobs_cat"){
 	$id = intval($_GET['id']);

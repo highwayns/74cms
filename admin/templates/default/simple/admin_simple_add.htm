@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script src="{#$QISHI.site_dir#}data/cache_classify.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(document).ready(function()
@@ -37,32 +37,32 @@ $("#FormData").validate({
 	},
     messages: {
     jobname: {
-    required: "ÇëÊäÈëÖ°Î»Ãû³Æ",
-    minlength: jQuery.format("Ö°Î»Ãû³Æ²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-	maxlength: jQuery.format("Ö°Î»Ãû³Æ²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+    required: "è¯·è¾“å…¥èŒä½åç§°",
+    minlength: jQuery.format("èŒä½åç§°ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+	maxlength: jQuery.format("èŒä½åç§°ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
    },
    amount: {
-    range: jQuery.format("ÇëÊäÈëÒ»¸ö½éÓÚ {0} ºÍ {1} Ö®¼äµÄÖµ")
+    range: jQuery.format("è¯·è¾“å…¥ä¸€ä¸ªä»‹äº {0} å’Œ {1} ä¹‹é—´çš„å€¼")
    },
    comname: {
-    required: "ÇëÊäÈë¹«Ë¾Ãû³Æ"
+    required: "è¯·è¾“å…¥å…¬å¸åç§°"
    },
    contact: {
-    required: "ÇëÊäÈëÁªÏµÈË"
+    required: "è¯·è¾“å…¥è”ç³»äºº"
    },
    tel: {
-    required: "ÇëÊäÈëÁªÏµµç»°",
-	digits: "ÁªÏµµç»°±ØĞëÊÇÊı×Ö",
-    minlength: jQuery.format("µç»°²»ÄÜ<{0}Î»Êı")
+    required: "è¯·è¾“å…¥è”ç³»ç”µè¯",
+	digits: "è”ç³»ç”µè¯å¿…é¡»æ˜¯æ•°å­—",
+    minlength: jQuery.format("ç”µè¯ä¸èƒ½<{0}ä½æ•°")
    },
     pwd: {
-    required: jQuery.format("ÇëÊäÈë¹ÜÀíÃÜÂë"),
-	minlength: jQuery.format("ÃÜÂë²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û")
+    required: jQuery.format("è¯·è¾“å…¥ç®¡ç†å¯†ç "),
+	minlength: jQuery.format("å¯†ç ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦")
    }
    ,
     detailed: {
-    required: jQuery.format("ÇëÊäÈë¾ßÌåÒªÇó"),
-	maxlength: jQuery.format("¾ßÌåÒªÇó²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+    required: jQuery.format("è¯·è¾“å…¥å…·ä½“è¦æ±‚"),
+	maxlength: jQuery.format("å…·ä½“è¦æ±‚ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
  
    }
   },
@@ -77,17 +77,17 @@ $("#FormData").validate({
         error.appendTo(element.parent());
 	}
     });
-	 //¾ßÌåÒªÇó
+	 //å…·ä½“è¦æ±‚
 	jQuery.validator.addMethod("ISdetailed", function(value, element) {
-	var str="ÇëÌîĞ´ÕĞÆ¸µÄ¾ßÌåÒªÇó£¬Èç£ºĞÔ±ğ£¬Ñ§Àú£¬ÄêÁä£¬¹¤×÷¾­Ñé£¬¹¤×Ê´ıÓöµÈÏà¹ØĞÅÏ¢";
+	var str="è¯·å¡«å†™æ‹›è˜çš„å…·ä½“è¦æ±‚ï¼Œå¦‚ï¼šæ€§åˆ«ï¼Œå­¦å†ï¼Œå¹´é¾„ï¼Œå·¥ä½œç»éªŒï¼Œå·¥èµ„å¾…é‡ç­‰ç›¸å…³ä¿¡æ¯";
 	var flag=true;
 	if (str==value)
 	{
 	flag=false;
 	}
 	return  flag || this.optional(element) ;
-	}, "ÇëÌîĞ´¾ßÌåÒªÇó");
-	/////ÑéÖ¤Âë²¿·Ö
+	}, "è¯·å¡«å†™å…·ä½“è¦æ±‚");
+	/////éªŒè¯ç éƒ¨åˆ†
 });
 </script>
 <div class="admin_main_nr_dbox">
@@ -97,41 +97,41 @@ $("#FormData").validate({
   <div class="clear"></div>
 </div>
 <form action="?act=simple_add_save" method="post"   name="FormData" id="FormData" >
-<div class="toptit">ĞÂÔöÎ¢ÕĞÆ¸</div>
+<div class="toptit">æ–°å¢å¾®æ‹›è˜</div>
 
   {#$inputtoken#}
 <table width="100%" border="0" cellspacing="8" cellpadding="0">
   <tr>
-    <td width="100" align="right"><strong  style="color:#FF0000">*</strong>ÕĞÆ¸Ö°Î»£º</td>
+    <td width="100" align="right"><strong  style="color:#FF0000">*</strong>æ‹›è˜èŒä½ï¼š</td>
     <td><input name="jobname" type="text" class="input_text_200" id="jobname" maxlength="20"></td>
   </tr>
   <tr>
-    <td align="right">ÕĞÆ¸ÈËÊı£º</td>
+    <td align="right">æ‹›è˜äººæ•°ï¼š</td>
     <td><input name="amount" type="text" id="amount" class="input_text_200" style="width:60px;" value="0" maxlength="3">
-	<span class="admin_note">ÌîĞ´Êı×Ö£¬"0"ÎªÈô¸É</span>	</td>
+	<span class="admin_note">å¡«å†™æ•°å­—ï¼Œ"0"ä¸ºè‹¥å¹²</span>	</td>
   </tr>
   <tr>
-    <td align="right"><strong  style="color:#FF0000">*</strong>¹«Ë¾Ãû³Æ£º</td>
+    <td align="right"><strong  style="color:#FF0000">*</strong>å…¬å¸åç§°ï¼š</td>
     <td><input name="comname" type="text" class="input_text_200" id="comname" maxlength="20"></td>
   </tr>
   <tr>
-    <td align="right"><strong  style="color:#FF0000">*</strong>ÁªÏµÈË£º</td>
+    <td align="right"><strong  style="color:#FF0000">*</strong>è”ç³»äººï¼š</td>
     <td><input name="contact" type="text" class="input_text_200" id="contact" maxlength="15"></td>
   </tr>
   <tr>
-    <td align="right"><strong  style="color:#FF0000">*</strong>ÁªÏµµç»°£º</td>
+    <td align="right"><strong  style="color:#FF0000">*</strong>è”ç³»ç”µè¯ï¼š</td>
     <td><input name="tel" type="text" class="input_text_200" id="tel" maxlength="25"></td>
   </tr>
   <tr>
-    <td align="right">ÁªÏµµØÖ·£º</td>
+    <td align="right">è”ç³»åœ°å€ï¼š</td>
     <td>
 		<div>
-		<input type="text" value="ÇëÑ¡Ôñ"  readonly="readonly" name="district_cn" id="district_cn" class="input_text_200 input_text_selsect"/>
+		<input type="text" value="è¯·é€‰æ‹©"  readonly="readonly" name="district_cn" id="district_cn" class="input_text_200 input_text_selsect"/>
 		<input name="district" id="district" type="hidden" value="{#$show.district#}" />
 		<input name="sdistrict" id="sdistrict" type="hidden" value="{#$show.sdistrict#}" />
 		<div id="menu2" class="dmenu shadow">
 			<ul>
-			{#qishi_get_classify set="ÁĞ±íÃû:c_province,ÀàĞÍ:QS_district,id:0"#}
+			{#qishi_get_classify set="åˆ—è¡¨å:c_province,ç±»å‹:QS_district,id:0"#}
 			{#foreach from=$c_province item=list#}
 			<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 			{#/foreach#}
@@ -142,35 +142,35 @@ $("#FormData").validate({
 	</td>
   </tr>
   <tr>
-    <td align="right"><strong  style="color:#FF0000">*</strong>¾ßÌåÒªÇó£º</td>
-    <td><textarea name="detailed" id="detailed" class="input_text_400" style="height:60px;" onblur="if(this.value==''){this.value='ÇëÌîĞ´ÕĞÆ¸µÄ¾ßÌåÒªÇó£¬Èç£ºĞÔ±ğ£¬Ñ§Àú£¬ÄêÁä£¬¹¤×÷¾­Ñé£¬¹¤×Ê´ıÓöµÈÏà¹ØĞÅÏ¢'}" onfocus="if(this.value=='ÇëÌîĞ´ÕĞÆ¸µÄ¾ßÌåÒªÇó£¬Èç£ºĞÔ±ğ£¬Ñ§Àú£¬ÄêÁä£¬¹¤×÷¾­Ñé£¬¹¤×Ê´ıÓöµÈÏà¹ØĞÅÏ¢'){this.value=''}">ÇëÌîĞ´ÕĞÆ¸µÄ¾ßÌåÒªÇó£¬Èç£ºĞÔ±ğ£¬Ñ§Àú£¬ÄêÁä£¬¹¤×÷¾­Ñé£¬¹¤×Ê´ıÓöµÈÏà¹ØĞÅÏ¢</textarea></td>
+    <td align="right"><strong  style="color:#FF0000">*</strong>å…·ä½“è¦æ±‚ï¼š</td>
+    <td><textarea name="detailed" id="detailed" class="input_text_400" style="height:60px;" onblur="if(this.value==''){this.value='è¯·å¡«å†™æ‹›è˜çš„å…·ä½“è¦æ±‚ï¼Œå¦‚ï¼šæ€§åˆ«ï¼Œå­¦å†ï¼Œå¹´é¾„ï¼Œå·¥ä½œç»éªŒï¼Œå·¥èµ„å¾…é‡ç­‰ç›¸å…³ä¿¡æ¯'}" onfocus="if(this.value=='è¯·å¡«å†™æ‹›è˜çš„å…·ä½“è¦æ±‚ï¼Œå¦‚ï¼šæ€§åˆ«ï¼Œå­¦å†ï¼Œå¹´é¾„ï¼Œå·¥ä½œç»éªŒï¼Œå·¥èµ„å¾…é‡ç­‰ç›¸å…³ä¿¡æ¯'){this.value=''}">è¯·å¡«å†™æ‹›è˜çš„å…·ä½“è¦æ±‚ï¼Œå¦‚ï¼šæ€§åˆ«ï¼Œå­¦å†ï¼Œå¹´é¾„ï¼Œå·¥ä½œç»éªŒï¼Œå·¥èµ„å¾…é‡ç­‰ç›¸å…³ä¿¡æ¯</textarea></td>
   </tr>
     <tr>
     <td align="right"> </td>
-    <td>²»ÄÜ´óÓÚ300×Ö·û
+    <td>ä¸èƒ½å¤§äº300å­—ç¬¦
 	<span id="textareaerr"></span>
 	</td>
   </tr>
   <tr>
-    <td align="right">ÓĞĞ§ÆÚ£º</td>
+    <td align="right">æœ‰æ•ˆæœŸï¼š</td>
     <td>	
-	<label><input type="radio" name="validity" value="7">7Ìì</label>&nbsp;&nbsp;
-	<label><input type="radio" name="validity" value="15">15Ìì</label>&nbsp;&nbsp;
+	<label><input type="radio" name="validity" value="7">7å¤©</label>&nbsp;&nbsp;
+	<label><input type="radio" name="validity" value="15">15å¤©</label>&nbsp;&nbsp;
 	<label><input name="validity" type="radio" value="30" checked>
-	30Ìì</label>&nbsp;&nbsp;
-	<label><input type="radio" name="validity" value="0">³¤ÆÚ</label>
-	<span class="simple_note">µ½ÆÚºóÏµÍ³½«×Ô¶¯É¾³ı</span>	</td>
+	30å¤©</label>&nbsp;&nbsp;
+	<label><input type="radio" name="validity" value="0">é•¿æœŸ</label>
+	<span class="simple_note">åˆ°æœŸåç³»ç»Ÿå°†è‡ªåŠ¨åˆ é™¤</span>	</td>
   </tr>
   <tr>
-    <td align="right"><strong  style="color:#FF0000">*</strong>¹ÜÀíÃÜÂë£º</td>
+    <td align="right"><strong  style="color:#FF0000">*</strong>ç®¡ç†å¯†ç ï¼š</td>
     <td><input name="pwd" type="text" class="input_text_200" id="pwd" style="width:100px;" maxlength="25">
-	<span class="admin_note">¹ÜÀíÃÜÂë¿ÉÓÃÓÚÇ°Ì¨ĞŞ¸ÄºÍÉ¾³ıĞÅÏ¢</span>	</td>
+	<span class="admin_note">ç®¡ç†å¯†ç å¯ç”¨äºå‰å°ä¿®æ”¹å’Œåˆ é™¤ä¿¡æ¯</span>	</td>
   </tr>
   <tr>
     <td align="right">&nbsp;</td>
     <td height="60"  >
 	
-	 <input type="submit" name="Submit3" value="Ìá½»" class="admin_submit"   />
+	 <input type="submit" name="Submit3" value="æäº¤" class="admin_submit"   />
  
 	</td>
   </tr>

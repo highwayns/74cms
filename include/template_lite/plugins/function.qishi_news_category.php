@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_news_category($params, &$smarty)
 {
 global $db,$_CFG;
@@ -8,28 +8,28 @@ foreach($arr as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "ÁÐ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
-	case "Ãû³Æ³¤¶È":
+	case "åç§°é•¿åº¦":
 		$aset['titlelen'] = $a[1];
 		break;
-	case "Ìî²¹×Ö·û":
+	case "å¡«è¡¥å­—ç¬¦":
 		$aset['dot'] = $a[1];
 		break;
-	case "¿ªÊ¼Î»ÖÃ":
+	case "å¼€å§‹ä½ç½®":
 		$aset['start'] = $a[1];
 		break;
-	case "×ÊÑ¶´óÀà":
+	case "èµ„è®¯å¤§ç±»":
 		$aset['classify'] = $a[1];
 		break;
-	case "×ÊÑ¶Ð¡Àà":
+	case "èµ„è®¯å°ç±»":
 		$aset['typeid'] = $a[1];
 		break;
-	case "Ò³Ãæ":
+	case "é¡µé¢":
 		$aset['showname'] = $a[1];
 		break;
-	case "ÏÔÊ¾ÊýÄ¿":
+	case "æ˜¾ç¤ºæ•°ç›®":
 		$aset['limit'] = $a[1];
 		break;
 	}

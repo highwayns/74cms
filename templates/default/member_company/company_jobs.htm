@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
@@ -16,73 +16,73 @@
 <script src="{#$QISHI.site_template#}js/jquery.reasontip-min.js" type='text/javascript' language="javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	// ·¢²¼Ö°Î» ³É¹¦ÌáÊ¾µ¯³ö
+	// å‘å¸ƒèŒä½ æˆåŠŸæç¤ºå¼¹å‡º
 	var addjobs_save_succeed="{#$jobs_one.id#}";
 	if(addjobs_save_succeed>0)
 	{
 		
 		var d=dialog({
-	        title: 'ÏµÍ³ÌáÊ¾',
+	        title: 'ç³»ç»Ÿæç¤º',
 	        content: $(".addjob-success-dialog"),
 	        cancelDisplay: false,
 	        cancel: function () {
 	        	window.location.href="?act=jobs";
 	        }
 	    }).showModal();
-	    // ÖÃ¶¥
+	    // ç½®é¡¶
 	    $(".set_promotion").live('click', function(event) {
 	    	d.close().remove();
 	    	set_promotion_dialog(".set_promotion");
 	    });
 	}
-	// µ¥¸ö¹Ø±Õ
+	// å•ä¸ªå…³é—­
 	$(".ctrl-close").click(function(event) {
 		var mycoDialog=dialog(),
 		url = $(this).attr("url");
-		mycoDialog.title('ÏµÍ³ÌáÊ¾');
-		mycoDialog.content('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text close-tips-text">¹Ø±Õºó½«²»¶ÔÍâÕ¹Ê¾ÕĞÆ¸ĞÅÏ¢£¬ÄúÈ·¶¨Òª¹Ø±ÕÂğ£¿</span></div></div><div class="center-btn-wrap"><input type="button" value="È·¶¨" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="È¡Ïû" class="btn-65-30grey btn-big-font DialogClose" /></div>');
+		mycoDialog.title('ç³»ç»Ÿæç¤º');
+		mycoDialog.content('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text close-tips-text">å…³é—­åå°†ä¸å¯¹å¤–å±•ç¤ºæ‹›è˜ä¿¡æ¯ï¼Œæ‚¨ç¡®å®šè¦å…³é—­å—ï¼Ÿ</span></div></div><div class="center-btn-wrap"><input type="button" value="ç¡®å®š" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="å–æ¶ˆ" class="btn-65-30grey btn-big-font DialogClose" /></div>');
 	    mycoDialog.width('300');
 	    mycoDialog.showModal();
-	    /* ¹Ø±Õ */
+	    /* å…³é—­ */
 	    $(".DialogClose").live('click',function() {
 	      mycoDialog.close().remove();
 	    });
-	    // È·¶¨
+	    // ç¡®å®š
 	    $(".DialogSubmit").click(function() {
 	    	if (url) {window.location.href=url};
 	    });
 	});
 	/*
-		¶¥²¿É¸Ñ¡ 36 
+		é¡¶éƒ¨ç­›é€‰ 36 
 	*/
 	$('.data-filter').on('click', function(e){
 		$(this).find('.filter-down').toggle();
-		// ¶¯Ì¬ÉèÖÃÏÂÀ­ÁĞ±í¿í¶È
+		// åŠ¨æ€è®¾ç½®ä¸‹æ‹‰åˆ—è¡¨å®½åº¦
 		var fWidth = $(this).find('.filter-span').outerWidth(true) - 2;
 		$(this).find(".filter-down").width(fWidth);
-		// µã»÷ÆäËûÎ»ÖÃÊÕÆğÏÂÀ­
+		// ç‚¹å‡»å…¶ä»–ä½ç½®æ”¶èµ·ä¸‹æ‹‰
 		$(document).one("click",function(){
 			$('.filter-down').hide();
 		});
 		e.stopPropagation();
-		//µã»÷ÏÂÀ­Ê±ÊÕÆğÆäËûÏÂÀ­
+		//ç‚¹å‡»ä¸‹æ‹‰æ—¶æ”¶èµ·å…¶ä»–ä¸‹æ‹‰
 		$(".data-filter").not($(this)).find('.filter-down').hide();
 	});
 	vtip_reason("{#$QISHI.site_dir#}","jobs_reason");
-	//»ı·ÖÄ£Ê½ÏÂË¢ĞÂÖ°Î»²Ù×÷ && $points_rule.jobs_refresh.value>"0"
+	//ç§¯åˆ†æ¨¡å¼ä¸‹åˆ·æ–°èŒä½æ“ä½œ && $points_rule.jobs_refresh.value>"0"
 	{#if $QISHI.operation_mode=="1"#}
 		$("#refresh").click(function(){
 			var length=$("#form1 :checkbox[name='y_id[]'][checked]").length;
 			var refresh_point="{#$points_rule.jobs_refresh.value#}";
 			var total_point=length*refresh_point;
-			var cof = confirm("Ë¢ĞÂÖ°Î»¿ÉÌá¸ßÖ°Î»ÅÅÃû£¬Ã¿ÌõÖ°Î»ÏûºÄ{#$points_rule.jobs_refresh.value#}{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}£¬ÄúÑ¡ÔñÁË"+length+"ÌõÖ°Î»£¬×Ü¹²ĞèÒªÏûºÄ"+total_point+"{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}£¬È·¶¨Ë¢ĞÂÂğ£¿");
+			var cof = confirm("åˆ·æ–°èŒä½å¯æé«˜èŒä½æ’åï¼Œæ¯æ¡èŒä½æ¶ˆè€—{#$points_rule.jobs_refresh.value#}{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}ï¼Œæ‚¨é€‰æ‹©äº†"+length+"æ¡èŒä½ï¼Œæ€»å…±éœ€è¦æ¶ˆè€—"+total_point+"{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}ï¼Œç¡®å®šåˆ·æ–°å—ï¼Ÿ");
 			if(cof) {
 				return true;
 			} else {
 				return false;
 			}
 		});
-	//»ìºÏÄ£Ê½ÏÂ Ë¢ĞÂÖ°Î»ĞèÒªÏûºÄ»ı·Ö²Ù×÷È·¶¨
+	//æ··åˆæ¨¡å¼ä¸‹ åˆ·æ–°èŒä½éœ€è¦æ¶ˆè€—ç§¯åˆ†æ“ä½œç¡®å®š
 	{#else#}
 		$(".refresh").click(function(){
 			// if($points_rule.jobs_refresh.value>"0") 
@@ -98,10 +98,10 @@ $(document).ready(function(){
 			}
 			{#if $QISHI.operation_mode=="3"#}
 			$.get("?act=ajax_mode_points&length="+length,function(result){
-				//ĞèÒªÏûºÄ»ı·Ö
+				//éœ€è¦æ¶ˆè€—ç§¯åˆ†
 				if(result=='ok')
 				{
-					var con= confirm("ÓÉÓÚÄúµÄÌ×²ÍÒÑ¹ıÆÚ»òÕß³¬³ö´ÎÊıÏŞÖÆ£¬ËùÒÔË¢ĞÂÖ°Î»ĞèÒªÏûºÄ»ı·Ö£¬Ã¿ÌõÖ°Î»ÏûºÄ{#$points_rule.jobs_refresh.value#}{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}£¬È·¶¨Ë¢ĞÂÂğ£¿")
+					var con= confirm("ç”±äºæ‚¨çš„å¥—é¤å·²è¿‡æœŸæˆ–è€…è¶…å‡ºæ¬¡æ•°é™åˆ¶ï¼Œæ‰€ä»¥åˆ·æ–°èŒä½éœ€è¦æ¶ˆè€—ç§¯åˆ†ï¼Œæ¯æ¡èŒä½æ¶ˆè€—{#$points_rule.jobs_refresh.value#}{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}ï¼Œç¡®å®šåˆ·æ–°å—ï¼Ÿ")
 					if(con)
 					{
 						if(jobsid)
@@ -110,12 +110,12 @@ $(document).ready(function(){
 						}
 						else
 						{
-							$("#refresh").val("Ë¢ĞÂÖ°Î»");
+							$("#refresh").val("åˆ·æ–°èŒä½");
 							$("#form1").submit();
 						}
 					}
 				}
-				//²»ĞèÒªÏûºÄ»ı·Ö
+				//ä¸éœ€è¦æ¶ˆè€—ç§¯åˆ†
 				else
 				{
 					if(jobsid)
@@ -124,7 +124,7 @@ $(document).ready(function(){
 					}
 					else
 					{
-						$("#refresh").val("Ë¢ĞÂÖ°Î»");
+						$("#refresh").val("åˆ·æ–°èŒä½");
 						$("#form1").submit();
 					}
 				}
@@ -136,15 +136,15 @@ $(document).ready(function(){
 				}
 				else
 				{
-					$("#refresh").val("Ë¢ĞÂÖ°Î»");
+					$("#refresh").val("åˆ·æ–°èŒä½");
 					$("#form1").submit();
 				}
 			{#/if#}
 		});
 	{#/if#}
-	// Ö°Î»ÍÆ¹ã
+	// èŒä½æ¨å¹¿
 	set_promotion_dialog(".set_promotion");
-	// ÍÆ¹ãÏÂÀ­
+	// æ¨å¹¿ä¸‹æ‹‰
 	$(".spread").toggle(function() {
 		$(this).find(".spread_but_group").slideDown("fast");
 		$(this).find("img").attr("src","{#$QISHI.site_template#}/images/spread_icon_up.gif");
@@ -152,12 +152,12 @@ $(document).ready(function(){
 		$(this).find(".spread_but_group").slideUp("fast");
 		$(this).find("img").attr("src","{#$QISHI.site_template#}/images/spread_icon.gif");
 	});
-	/*ÅúÁ¿ ¹Ø±ÕÖ°Î» */
+	/*æ‰¹é‡ å…³é—­èŒä½ */
 	$("#display2").click(function(){
 		var length=$("#form1 :checkbox[checked]").length;
 		if(length>0)
 		{
-			var cof = confirm("ÄúÊÇ·ñÒª¹Ø±ÕÄúÑ¡ÖĞµÄÖ°Î»£¬Äú¹²Ñ¡ÖĞ"+length+"¸öÖ°Î»,È·¶¨¹Ø±ÕÂğ£¿");
+			var cof = confirm("æ‚¨æ˜¯å¦è¦å…³é—­æ‚¨é€‰ä¸­çš„èŒä½ï¼Œæ‚¨å…±é€‰ä¸­"+length+"ä¸ªèŒä½,ç¡®å®šå…³é—­å—ï¼Ÿ");
 			if(cof) {
 				return true;
 			} else {
@@ -166,12 +166,12 @@ $(document).ready(function(){
 		}
 		else
 		{
-			alert("ÄúÃ»ÓĞÑ¡ÖĞÖ°Î»£¡");
+			alert("æ‚¨æ²¡æœ‰é€‰ä¸­èŒä½ï¼");
 			return false;
 		}
 		
 	});
-	// É¾³ıµ¯³ö
+	// åˆ é™¤å¼¹å‡º
 	delete_dialog('.ctrl-del','#form1');
 	
 });
@@ -180,7 +180,7 @@ $(document).ready(function(){
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
 
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > Ö°Î»¹ÜÀí</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > èŒä½ç®¡ç†</div>
 <div class="usermain">
   <div class="leftmenu  com link_bk">
   	 {#include file="member_company/left.htm"#}
@@ -189,38 +189,38 @@ $(document).ready(function(){
  	<div class="bbox1 link_bk my_account">
 		<div class="topnav">
 			<div class="topnav get_resume">
-				<div class="titleH1"><div class="h1-title">¹ÜÀíÖ°Î»</div></div>
+				<div class="titleH1"><div class="h1-title">ç®¡ç†èŒä½</div></div>
 				<div class="navs link_bk">
 					<a href="?act={#$act#}&jobtype=" {#if $smarty.get.jobtype==""#}class="se"{#/if#}>
-					·¢²¼ÖĞÖ°Î»<span >({#$jobs_total[0]#})</span></a>
+					å‘å¸ƒä¸­èŒä½<span >({#$jobs_total[0]#})</span></a>
 					<a href="?act={#$act#}&jobtype=2" {#if $smarty.get.jobtype=="2"#}class="se"{#/if#}>
-					ÉóºËÖĞÖ°Î»<span >({#$jobs_total[2]#})</span></a>
-					<a href="?act={#$act#}&jobtype=3" {#if $smarty.get.jobtype=="3"#}class="se"{#/if#}>Î´ÏÔÊ¾Ö°Î»<span class="check">({#$jobs_total[3]#})</span></a>
+					å®¡æ ¸ä¸­èŒä½<span >({#$jobs_total[2]#})</span></a>
+					<a href="?act={#$act#}&jobtype=3" {#if $smarty.get.jobtype=="3"#}class="se"{#/if#}>æœªæ˜¾ç¤ºèŒä½<span class="check">({#$jobs_total[3]#})</span></a>
 					<a href="?act={#$act#}&jobtype=1" {#if $smarty.get.jobtype=="1"#}class="se"{#/if#}>
-					È«²¿Ö°Î»<span >({#$jobs_total[1]#})</span></a>
+					å…¨éƒ¨èŒä½<span >({#$jobs_total[1]#})</span></a>
 					<div class="clear"></div>
 				</div>
 			</div>
 			{#if $QISHI.operation_mode=="2" || $QISHI.operation_mode=="3"#}
-			<div class="addjob-number">×î´óÖ°Î»²¢·¢ÊıÎª<span>{#$setmeal.jobs_ordinary#}</span>¸ö£¬ÏÖ·¢²¼ÖĞ<span>{#$total[2]#}</span>¸öÖ°Î»¡£</div>
+			<div class="addjob-number">æœ€å¤§èŒä½å¹¶å‘æ•°ä¸º<span>{#$setmeal.jobs_ordinary#}</span>ä¸ªï¼Œç°å‘å¸ƒä¸­<span>{#$total[2]#}</span>ä¸ªèŒä½ã€‚</div>
 			{#/if#}
 		</div>
 		<form id="form1" name="form1" method="post" action="?act=jobs_perform">
-		<!-- ĞÂµÄ·¢²¼ÖĞÖ°Î» -->
+		<!-- æ–°çš„å‘å¸ƒä¸­èŒä½ -->
 		{#if $smarty.get.jobtype==""#}
 		<div class="company-data-list">
 			<div class="c-data-top com-job-ma clearfix">
-				<div class="item f-left check-item"><input type="checkbox" name="chkAll"   id="chk" title="È«Ñ¡/·´Ñ¡" /></div>
-				<div class="item f-left top-item1">Ö°Î»Ãû³Æ</div>
+				<div class="item f-left check-item"><input type="checkbox" name="chkAll"   id="chk" title="å…¨é€‰/åé€‰" /></div>
+				<div class="item f-left top-item1">èŒä½åç§°</div>
 				<div class="item f-left top-item3">
 					<div class="data-filter span4">
-						<span class="filter-span">{#if $smarty.get.generalize_cn==''#}ÍÆ¹ã×´Ì¬{#else#}{#$smarty.get.generalize_cn#}{#/if#}<i class="filter-icon"></i></span>
+						<span class="filter-span">{#if $smarty.get.generalize_cn==''#}æ¨å¹¿çŠ¶æ€{#else#}{#$smarty.get.generalize_cn#}{#/if#}<i class="filter-icon"></i></span>
 						<ul class="filter-down">  
-							<li><a href="{#"generalize:,generalize_cn:È«²¿"|qishi_parse_url#}">È«²¿</a></li>
-							<li><a href="{#"generalize:stick,generalize_cn:ÖÃ¶¥"|qishi_parse_url#}">ÖÃ¶¥</a></li>
-							<li><a href="{#"generalize:highlight,generalize_cn:Ì×É«"|qishi_parse_url#}">Ì×É«</a></li>
-							<li><a href="{#"generalize:emergency,generalize_cn:½ô¼±"|qishi_parse_url#}">½ô¼±</a></li>
-							<li><a href="{#"generalize:recommend,generalize_cn:ÍÆ¼ö"|qishi_parse_url#}">ÍÆ¼ö</a></li>
+							<li><a href="{#"generalize:,generalize_cn:å…¨éƒ¨"|qishi_parse_url#}">å…¨éƒ¨</a></li>
+							<li><a href="{#"generalize:stick,generalize_cn:ç½®é¡¶"|qishi_parse_url#}">ç½®é¡¶</a></li>
+							<li><a href="{#"generalize:highlight,generalize_cn:å¥—è‰²"|qishi_parse_url#}">å¥—è‰²</a></li>
+							<li><a href="{#"generalize:emergency,generalize_cn:ç´§æ€¥"|qishi_parse_url#}">ç´§æ€¥</a></li>
+							<li><a href="{#"generalize:recommend,generalize_cn:æ¨è"|qishi_parse_url#}">æ¨è</a></li>
 						</ul>
 					</div>
 				</div>
@@ -233,32 +233,32 @@ $(document).ready(function(){
 					<div class="c-item f-left content1">
 						<div class="job-ma-block">
 							<div><a href="{#$li.jobs_url#}" target="_blank" class="name-link underline" title="{#$li.jobs_name_#}">{#$li.jobs_name#}</a></div>
-							<p>Ó¦Æ¸¼òÀú£º{#$li.countresume#} | ¸üĞÂÊ±¼ä£º{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#} <a  href="{#if $QISHI.operation_mode=="1"#}?act=jobs_perform&refresh=1&y_id={#$li.id#}{#else#}javascript:;{#/if#}" jobsid="{#$li.id#}" class="data-ctrl underline refresh">[Ë¢ĞÂ]</a></p>
+							<p>åº”è˜ç®€å†ï¼š{#$li.countresume#} | æ›´æ–°æ—¶é—´ï¼š{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#} <a  href="{#if $QISHI.operation_mode=="1"#}?act=jobs_perform&refresh=1&y_id={#$li.id#}{#else#}javascript:;{#/if#}" jobsid="{#$li.id#}" class="data-ctrl underline refresh">[åˆ·æ–°]</a></p>
 							<div class="job-ma-ctrl">
-								<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">ĞŞ¸Ä</a>&nbsp;<a href="{#"QS_resumelist,jobcategory:"|cat:$li.jobcategory|qishi_url#}" class="data-ctrl underline" target="_blank">Æ¥Åä</a>&nbsp;<a url="?act=jobs_perform&display2=1&y_id={#$li.id#}" href="javascript:;" class="data-ctrl underline ctrl-close">¹Ø±Õ</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">É¾³ı</a>
+								<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">ä¿®æ”¹</a>&nbsp;<a href="{#"QS_resumelist,jobcategory:"|cat:$li.jobcategory|qishi_url#}" class="data-ctrl underline" target="_blank">åŒ¹é…</a>&nbsp;<a url="?act=jobs_perform&display2=1&y_id={#$li.id#}" href="javascript:;" class="data-ctrl underline ctrl-close">å…³é—­</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">åˆ é™¤</a>
 							</div>
 						</div>
 					</div>
 					<div class="c-item f-left content3">
 						{#if $li.stick!=1#}
-							<a  href="javascript:void(0);" class="data-ctrl set_promotion" catid="3" jobid="{#$li.id#}">ÖÃ¶¥</a>
+							<a  href="javascript:void(0);" class="data-ctrl set_promotion" catid="3" jobid="{#$li.id#}">ç½®é¡¶</a>
 						{#else#}
-							<a  href="javascript:void(0);" class="data-ctrl underline" style="color:#999" title="¸ÃÖ°Î»ÒÑÖÃ¶¥">ÖÃ¶¥</a>
+							<a  href="javascript:void(0);" class="data-ctrl underline" style="color:#999" title="è¯¥èŒä½å·²ç½®é¡¶">ç½®é¡¶</a>
 						{#/if#}
 						{#if $li.highlight==""#}
-						<a  href="javascript:void(0);" class="data-ctrl set_promotion" catid="4" jobid="{#$li.id#}">±äÉ«</a><br />
+						<a  href="javascript:void(0);" class="data-ctrl set_promotion" catid="4" jobid="{#$li.id#}">å˜è‰²</a><br />
 						{#else#}
-						<a  href="javascript:void(0);" class="data-ctrl underline" style="color:#999" title="¸ÃÖ°Î»ÒÑ±äÉ«">±äÉ«</a><br />
+						<a  href="javascript:void(0);" class="data-ctrl underline" style="color:#999" title="è¯¥èŒä½å·²å˜è‰²">å˜è‰²</a><br />
 						{#/if#}
 						{#if $li.emergency=="0"#}
-						<a href="javascript:void(0);" class="data-ctrl set_promotion" catid="2" jobid="{#$li.id#}">½ô¼±</a>
+						<a href="javascript:void(0);" class="data-ctrl set_promotion" catid="2" jobid="{#$li.id#}">ç´§æ€¥</a>
 						{#else#}
-						<a  href="javascript:void(0);" class="data-ctrl underline" style="color:#999" title="¸ÃÖ°Î»ÒÑ¾­ĞĞ½ô¼±ÍÆ¹ã">½ô¼±</a>
+						<a  href="javascript:void(0);" class="data-ctrl underline" style="color:#999" title="è¯¥èŒä½å·²ç»è¡Œç´§æ€¥æ¨å¹¿">ç´§æ€¥</a>
 						{#/if#}
 						{#if $li.recommend=="0"#}
-						<a href="javascript:void(0);" class="data-ctrl set_promotion" catid="1" jobid="{#$li.id#}">ÍÆ¼ö</a>
+						<a href="javascript:void(0);" class="data-ctrl set_promotion" catid="1" jobid="{#$li.id#}">æ¨è</a>
 						{#else#}
-						<a  href="javascript:void(0);" class="data-ctrl underline" style="color:#999" title="¸ÃÖ°Î»ÒÑ¾­ĞĞ½ô¼±ÍÆ¼ö">ÍÆ¼ö</a>
+						<a  href="javascript:void(0);" class="data-ctrl underline" style="color:#999" title="è¯¥èŒä½å·²ç»è¡Œç´§æ€¥æ¨è">æ¨è</a>
 						{#/if#}
 					</div>
 				</div>
@@ -266,32 +266,32 @@ $(document).ready(function(){
 			{#/foreach#}
 			<div class="c-data-row last">
 				<div class="c-data-content apply_jobs clearfix">
-					<div class="c-item f-left check-item"><input type="checkbox" name="chkAll"   id="chk2" title="È«Ñ¡/·´Ñ¡" /></div>
+					<div class="c-item f-left check-item"><input type="checkbox" name="chkAll"   id="chk2" title="å…¨é€‰/åé€‰" /></div>
 					<div class="data-last-btn f-left">
 						{#if $QISHI.operation_mode=="3"#}
 						<input type="hidden" name="refresh" id="refresh" value="" />
-						<input type="button" name="refresh" class="btn-65-30blue refresh"  value="Ë¢ĞÂÖ°Î»"  id="refresh"/>
+						<input type="button" name="refresh" class="btn-65-30blue refresh"  value="åˆ·æ–°èŒä½"  id="refresh"/>
 						{#else#}
-						<input type="submit" name="refresh" class="btn-65-30blue refresh"  value="Ë¢ĞÂÖ°Î»"  id="refresh"/>
+						<input type="submit" name="refresh" class="btn-65-30blue refresh"  value="åˆ·æ–°èŒä½"  id="refresh"/>
 						{#/if#}
-						<input type="submit" value="¹Ø±Õ" name="display2" class="btn-65-30blue" id="display2"/>
-						<input type="button" name="delete" class="btn-65-30blue ctrl-del" value="É¾³ı" id="delete" act="?act=jobs_perform&delete=1"/>
+						<input type="submit" value="å…³é—­" name="display2" class="btn-65-30blue" id="display2"/>
+						<input type="button" name="delete" class="btn-65-30blue ctrl-del" value="åˆ é™¤" id="delete" act="?act=jobs_perform&delete=1"/>
 					</div>
 				</div>
 			</div>
 			{#else#}
-			<div class="c-data-row emptytip">Ã»ÓĞÕÒµ½¶ÔÓ¦µÄÖ°Î»ĞÅÏ¢</div>
+			<div class="c-data-row emptytip">æ²¡æœ‰æ‰¾åˆ°å¯¹åº”çš„èŒä½ä¿¡æ¯</div>
 			{#/if#}
 		</div>
 		{#/if#}
-		<!-- ÉóºËÖĞµÄ Ö°Î» -->
+		<!-- å®¡æ ¸ä¸­çš„ èŒä½ -->
 		{#if $smarty.get.jobtype=="2"#}
 		<div class="company-data-list">
 			<div class="c-data-top com-job-ma clearfix">
 				<div class="item f-left check-item"><input type="checkbox" name="chkAll"   id="chk"/></div>
-				<div class="item f-left top-item1">Ö°Î»Ãû³Æ</div>
-				<div class="item f-left top-item2">¹¤×÷µØÇø</div>
-				<div class="item f-left top-item3" style="text-align: center;">²Ù×÷</div>
+				<div class="item f-left top-item1">èŒä½åç§°</div>
+				<div class="item f-left top-item2">å·¥ä½œåœ°åŒº</div>
+				<div class="item f-left top-item3" style="text-align: center;">æ“ä½œ</div>
 			</div>
 			{#if $jobs#}
 			{#foreach from=$jobs item=li#}
@@ -301,12 +301,12 @@ $(document).ready(function(){
 					<div class="c-item f-left content1" style="width:535px;">
 						<div class="job-ma-block">
 							<div><a href="{#$li.jobs_url#}" target="_blank" class="name-link underline" title="{#$li.jobs_name_#}">{#$li.jobs_name#}</a></div>
-							<p>Ó¦Æ¸¼òÀú£º{#$li.countresume#} | ¸üĞÂÊ±¼ä£º{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#}</p>
+							<p>åº”è˜ç®€å†ï¼š{#$li.countresume#} | æ›´æ–°æ—¶é—´ï¼š{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#}</p>
 						</div>
 					</div>
 					<div class="c-item f-left content2" style="width:218px;">{#$li.district_cn#}</div>
 					<div class="c-item f-left content3">
-						<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">ĞŞ¸Ä</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">É¾³ı</a>
+						<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">ä¿®æ”¹</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">åˆ é™¤</a>
 					</div>
 				</div>
 			</div>
@@ -315,31 +315,31 @@ $(document).ready(function(){
 				<div class="c-data-content apply_jobs clearfix">
 					<div class="c-item f-left check-item"><input type="checkbox" name="chkAll"   id="chk2"/></div>
 					<div class="data-last-btn f-left">
-						<input type="button" name="delete" class="btn-65-30blue ctrl-del" value="É¾³ı" id="delete" act="?act=jobs_perform&delete=1"/>
+						<input type="button" name="delete" class="btn-65-30blue ctrl-del" value="åˆ é™¤" id="delete" act="?act=jobs_perform&delete=1"/>
 					</div>
 				</div>
 			</div>
 			{#else#}
-			<div class="c-data-row emptytip">Ã»ÓĞÕÒµ½¶ÔÓ¦µÄÖ°Î»ĞÅÏ¢</div>
+			<div class="c-data-row emptytip">æ²¡æœ‰æ‰¾åˆ°å¯¹åº”çš„èŒä½ä¿¡æ¯</div>
 			{#/if#}
 		</div>
 		{#/if#}
-		<!-- Î´ÏÔÊ¾ Ö°Î» -->
+		<!-- æœªæ˜¾ç¤º èŒä½ -->
 		{#if $smarty.get.jobtype=="3"#}
 		<div class="company-data-list">
 			<div class="c-data-top com-job-ma clearfix">
 				<div class="item f-left check-item"><input type="checkbox" name="chkAll"   id="chk"/></div>
-				<div class="item f-left top-item1">Ö°Î»Ãû³Æ</div>
+				<div class="item f-left top-item1">èŒä½åç§°</div>
 				<div class="item f-left top-item2">
 					<div class="data-filter span4">
-						<span class="filter-span">Ö°Î»×´Ì¬<i class="filter-icon"></i></span>
+						<span class="filter-span">èŒä½çŠ¶æ€<i class="filter-icon"></i></span>
 						<ul class="filter-down">
-							<li><a href="{#"state:1"|qishi_parse_url#}">Î´Í¨¹ı</a></li>
-							<li><a href="{#"state:2"|qishi_parse_url#}">ÒÑ¹Ø±Õ</a></li>
+							<li><a href="{#"state:1"|qishi_parse_url#}">æœªé€šè¿‡</a></li>
+							<li><a href="{#"state:2"|qishi_parse_url#}">å·²å…³é—­</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="item f-left top-item3" style="text-align: center;">²Ù×÷</div>
+				<div class="item f-left top-item3" style="text-align: center;">æ“ä½œ</div>
 			</div>
 			{#if $jobs#}
 			{#foreach from=$jobs item=li#}
@@ -349,15 +349,15 @@ $(document).ready(function(){
 					<div class="c-item f-left content1" style="width:535px;">
 						<div class="job-ma-block">
 							<div><a href="{#$li.jobs_url#}" target="_blank" class="name-link underline" title="{#$li.jobs_name_#}">{#$li.jobs_name#}</a></div>
-							<p>Ó¦Æ¸¼òÀú£º{#$li.countresume#} | ¸üĞÂÊ±¼ä£º{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#}</p>
+							<p>åº”è˜ç®€å†ï¼š{#$li.countresume#} | æ›´æ–°æ—¶é—´ï¼š{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#}</p>
 						</div>
 					</div>
 					<div class="c-item f-left content2" style="width:218px;">{#$li.status_cn#}</div>
 					<div class="c-item f-left content3">
 						{#if $li.status==2#}
-						<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">ĞŞ¸Ä</a>&nbsp;<a href="?act=jobs_perform&display1=1&y_id={#$li.id#}" class="data-ctrl underline">»Ö¸´</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">É¾³ı</a>
+						<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">ä¿®æ”¹</a>&nbsp;<a href="?act=jobs_perform&display1=1&y_id={#$li.id#}" class="data-ctrl underline">æ¢å¤</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">åˆ é™¤</a>
 						{#else#}
-						<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">É¾³ı</a>
+						<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">åˆ é™¤</a>
 						{#/if#}
 					</div>
 				</div>
@@ -367,33 +367,33 @@ $(document).ready(function(){
 				<div class="c-data-content apply_jobs clearfix">
 					<div class="c-item f-left check-item"><input type="checkbox" name="chkAll"   id="chk2"/></div>
 					<div class="data-last-btn f-left">
-						<input type="button" name="delete" class="btn-65-30blue ctrl-del" value="É¾³ı" id="delete" act="?act=jobs_perform&delete=1"/>
+						<input type="button" name="delete" class="btn-65-30blue ctrl-del" value="åˆ é™¤" id="delete" act="?act=jobs_perform&delete=1"/>
 					</div>
 				</div>
 			</div>
 			{#else#}
-			<div class="c-data-row emptytip">Ã»ÓĞÕÒµ½¶ÔÓ¦µÄÖ°Î»ĞÅÏ¢</div>
+			<div class="c-data-row emptytip">æ²¡æœ‰æ‰¾åˆ°å¯¹åº”çš„èŒä½ä¿¡æ¯</div>
 			{#/if#}
 		</div>
 		{#/if#}
-		<!-- È«²¿Ö°Î» Ö°Î» -->
+		<!-- å…¨éƒ¨èŒä½ èŒä½ -->
 		{#if $smarty.get.jobtype=="1"#}
 		<div class="company-data-list">
 			<div class="c-data-top com-job-ma clearfix">
 				<div class="item f-left check-item"><input type="checkbox" id="chk" name="chkAll"></div>
-				<div class="item f-left top-item1">Ö°Î»Ãû³Æ</div>
+				<div class="item f-left top-item1">èŒä½åç§°</div>
 				<div class="item f-left top-item2">
 					<div class="data-filter span4">
-						<span class="filter-span">Ö°Î»×´Ì¬<i class="filter-icon"></i></span>
+						<span class="filter-span">èŒä½çŠ¶æ€<i class="filter-icon"></i></span>
 						<ul class="filter-down">
-							<li><a href="{#"state:1"|qishi_parse_url#}">·¢²¼ÖĞ</a></li>
-							<li><a href="{#"state:2"|qishi_parse_url#}">ÉóºËÖĞ</a></li>
-							<li><a href="{#"state:3"|qishi_parse_url#}">Î´Í¨¹ı</a></li>
-							<li><a href="{#"state:4"|qishi_parse_url#}">ÒÑ¹Ø±Õ</a></li>
+							<li><a href="{#"state:1"|qishi_parse_url#}">å‘å¸ƒä¸­</a></li>
+							<li><a href="{#"state:2"|qishi_parse_url#}">å®¡æ ¸ä¸­</a></li>
+							<li><a href="{#"state:3"|qishi_parse_url#}">æœªé€šè¿‡</a></li>
+							<li><a href="{#"state:4"|qishi_parse_url#}">å·²å…³é—­</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="item f-left top-item3" style="text-align: center;">²Ù×÷</div>
+				<div class="item f-left top-item3" style="text-align: center;">æ“ä½œ</div>
 			</div>
 			{#if $jobs#}
 			{#foreach from=$jobs item=li#}
@@ -403,19 +403,19 @@ $(document).ready(function(){
 					<div class="c-item f-left content1" style="width:535px;">
 						<div class="job-ma-block">
 							<div><a href="{#$li.jobs_url#}" target="_blank" class="name-link underline" title="{#$li.jobs_name_#}">{#$li.jobs_name#}</a></div>
-							<p>Ó¦Æ¸¼òÀú£º{#$li.countresume#} | ¸üĞÂÊ±¼ä£º{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#}{#if $li.status==1#}  <a  href="{#if $QISHI.operation_mode=="1"#}?act=jobs_perform&refresh=1&y_id={#$li.id#}{#else#}javascript:;{#/if#}" jobsid="{#$li.id#}" class="data-ctrl underline refresh">[Ë¢ĞÂ]</a>{#/if#}</p>
+							<p>åº”è˜ç®€å†ï¼š{#$li.countresume#} | æ›´æ–°æ—¶é—´ï¼š{#$li.refreshtime|date_format:"%Y-%m-%d %H:%M"#}{#if $li.status==1#}  <a  href="{#if $QISHI.operation_mode=="1"#}?act=jobs_perform&refresh=1&y_id={#$li.id#}{#else#}javascript:;{#/if#}" jobsid="{#$li.id#}" class="data-ctrl underline refresh">[åˆ·æ–°]</a>{#/if#}</p>
 						</div>
 					</div>
 					<div class="c-item f-left content2" style="width:218px;"><span style="{#if $li.status==2 || $li.status==4#}color:red;{#elseif $li.status==3#}color:#FFB443;{#else#}{#/if#}">{#$li.status_cn#}</span></div>
 					<div class="c-item f-left content3">
 						{#if $li.status==1#}
-						<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">ĞŞ¸Ä</a>&nbsp;<a href="?act=jobs_perform&display2=1&y_id={#$li.id#}" class="data-ctrl underline">¹Ø±Õ</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">É¾³ı</a>
+						<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">ä¿®æ”¹</a>&nbsp;<a href="?act=jobs_perform&display2=1&y_id={#$li.id#}" class="data-ctrl underline">å…³é—­</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">åˆ é™¤</a>
 						{#elseif $li.status==2#}
-						<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">ĞŞ¸Ä</a>&nbsp;<a href="?act=jobs_perform&display1=1&y_id={#$li.id#}" class="data-ctrl underline">»Ö¸´</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">É¾³ı</a>
+						<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">ä¿®æ”¹</a>&nbsp;<a href="?act=jobs_perform&display1=1&y_id={#$li.id#}" class="data-ctrl underline">æ¢å¤</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">åˆ é™¤</a>
 						{#elseif $li.status==3#}
-						<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">É¾³ı</a>
+						<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">åˆ é™¤</a>
 						{#else#}
-						<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">ĞŞ¸Ä</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">É¾³ı</a>
+						<a href="?act=editjobs&id={#$li.id#}" class="data-ctrl underline">ä¿®æ”¹</a>&nbsp;<a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=jobs_perform&delete=1&y_id={#$li.id#}">åˆ é™¤</a>
 						{#/if#}
 					</div>
 				</div>
@@ -423,14 +423,14 @@ $(document).ready(function(){
 			{#/foreach#}
 			<div class="c-data-row last">
 				<div class="c-data-content apply_jobs clearfix">
-					<div class="c-item f-left check-item"><input type="checkbox" name="chkAll"   id="chk2" title="È«Ñ¡/·´Ñ¡" /></div>
+					<div class="c-item f-left check-item"><input type="checkbox" name="chkAll"   id="chk2" title="å…¨é€‰/åé€‰" /></div>
 					<div class="data-last-btn f-left">
-						<input type="button" name="delete" class="btn-65-30blue ctrl-del" value="É¾³ı" id="delete" act="?act=jobs_perform&delete=1"/>
+						<input type="button" name="delete" class="btn-65-30blue ctrl-del" value="åˆ é™¤" id="delete" act="?act=jobs_perform&delete=1"/>
 					</div>
 				</div>
 			</div>
 			{#else#}
-			<div class="c-data-row emptytip">Ã»ÓĞÕÒµ½¶ÔÓ¦µÄÖ°Î»ĞÅÏ¢</div>
+			<div class="c-data-row emptytip">æ²¡æœ‰æ‰¾åˆ°å¯¹åº”çš„èŒä½ä¿¡æ¯</div>
 			{#/if#}
 		</div>
 		{#/if#}
@@ -449,28 +449,28 @@ $(document).ready(function(){
   <div class="clear"></div>
 </div>
 {#include file="user/footer.htm"#}
-<!-- ·¢²¼Ö°Î»³É¹¦µ¯³ö -->
+<!-- å‘å¸ƒèŒä½æˆåŠŸå¼¹å‡º -->
 <div class="addjob-success-dialog" style="display:none">
-	<div class="success-tip">Ö° Î» ·¢ ²¼ ³É ¹¦<a href="?act=addjobs" class="underline">¼ÌĞø·¢²¼Ö°Î»</a></div>
-	<p class="sns-tips">ÈÃÆóÒµÆ·ÅÆ¸üºì£¬ÈÃÕĞÆ¸Ğ§ÂÊ¸ü¸ß£¬<span>Á¢¼´·ÖÏí×ª·¢ÕĞÆ¸Ö°Î»°É£¡</span></p>
+	<div class="success-tip">èŒ ä½ å‘ å¸ƒ æˆ åŠŸ<a href="?act=addjobs" class="underline">ç»§ç»­å‘å¸ƒèŒä½</a></div>
+	<p class="sns-tips">è®©ä¼ä¸šå“ç‰Œæ›´çº¢ï¼Œè®©æ‹›è˜æ•ˆç‡æ›´é«˜ï¼Œ<span>ç«‹å³åˆ†äº«è½¬å‘æ‹›è˜èŒä½å§ï¼</span></p>
 	<style>.bdshare-button-style1-16 a, .bdshare-button-style1-16 .bds_more{padding-left: 0;}</style>
 	<div class="bdsharebuttonbox bdshare sns-block share clearfix">
-		<a href="#" class="sns-icon sina f-left " title="·ÖÏíµ½ĞÂÀËÎ¢²©" data-cmd="tsina"></a>
-		<a href="#" class="sns-icon renren f-left" title="·ÖÏíµ½ÈËÈËÍø" data-cmd="renren"></a>
-		<a href="#" class="sns-icon qzone f-left" title="·ÖÏíµ½QQ¿Õ¼ä" data-cmd="qzone"></a>
-		<a href="#" class="sns-icon t-weibo f-left" title="·ÖÏíµ½ÌÚÑ¶Î¢²©"data-cmd="tqq" ></a>
-		<a href="#" class="sns-icon qq f-left" title="·ÖÏíµ½QQºÃÓÑ" data-cmd="sqq"></a>
-		<a href="javascript:;" class="sns-icon weixin f-left" title="·ÖÏíµ½Î¢ĞÅ"></a>
+		<a href="#" class="sns-icon sina f-left " title="åˆ†äº«åˆ°æ–°æµªå¾®åš" data-cmd="tsina"></a>
+		<a href="#" class="sns-icon renren f-left" title="åˆ†äº«åˆ°äººäººç½‘" data-cmd="renren"></a>
+		<a href="#" class="sns-icon qzone f-left" title="åˆ†äº«åˆ°QQç©ºé—´" data-cmd="qzone"></a>
+		<a href="#" class="sns-icon t-weibo f-left" title="åˆ†äº«åˆ°è…¾è®¯å¾®åš"data-cmd="tqq" ></a>
+		<a href="#" class="sns-icon qq f-left" title="åˆ†äº«åˆ°QQå¥½å‹" data-cmd="sqq"></a>
+		<a href="javascript:;" class="sns-icon weixin f-left" title="åˆ†äº«åˆ°å¾®ä¿¡"></a>
 		<div class="weixin-code-box f-left">
 			<div class="weixin-border">
-				<img src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}plus/url_qrcode.php?url={#$jobs_one.jobs_url#}" alt="¶şÎ¬Âë" width="70" height="70" />
+				<img src="{#$QISHI.site_domain#}{#$QISHI.site_dir#}plus/url_qrcode.php?url={#$jobs_one.jobs_url#}" alt="äºŒç»´ç " width="70" height="70" />
 			</div>
-				<span>Î¢ĞÅÉ¨Ò»É¨</span>
+				<span>å¾®ä¿¡æ‰«ä¸€æ‰«</span>
 		</div>
-		<script>window._bd_share_config={"common":{"bdText":"{#$jobs_one.companyname#}ÔÚ@{#$QISHI.site_name#}  ·¢²¼ÁË×îĞÂÖ°Î» : {#$jobs_one.jobs_name#}(ÔÂĞ½ : {#$jobs_one.wage_cn#})","bdDesc":"ÏëÁË½â¸ü¶à×îĞÂÖ°Î»¼òÀú×ÊÑ¶Çë¹Ø×¢{#$QISHI.site_name#}","bdUrl":"{#$jobs_one.jobs_url#}","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+		<script>window._bd_share_config={"common":{"bdText":"{#$jobs_one.companyname#}åœ¨@{#$QISHI.site_name#}  å‘å¸ƒäº†æœ€æ–°èŒä½ : {#$jobs_one.jobs_name#}(æœˆè–ª : {#$jobs_one.wage_cn#})","bdDesc":"æƒ³äº†è§£æ›´å¤šæœ€æ–°èŒä½ç®€å†èµ„è®¯è¯·å…³æ³¨{#$QISHI.site_name#}","bdUrl":"{#$jobs_one.jobs_url#}","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 		</script>
 	</div>
-	<p class="succsee-more">ÎªÁËÎüÒı¸ü¶àÇóÖ°ÕßµÄ¹Ø×¢£¬½¨ÒéÄú£º<a href="javascript:;" class="underline set_promotion" catid="3" jobid="{#$jobs_one.id#}">ÖÃ¶¥Ö°Î»</a></p>
+	<p class="succsee-more">ä¸ºäº†å¸å¼•æ›´å¤šæ±‚èŒè€…çš„å…³æ³¨ï¼Œå»ºè®®æ‚¨ï¼š<a href="javascript:;" class="underline set_promotion" catid="3" jobid="{#$jobs_one.id#}">ç½®é¡¶èŒä½</a></p>
 </div>
 </body>
 </html>

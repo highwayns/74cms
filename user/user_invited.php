@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÑûÇëÃæÊÔ
+ * 74cms é‚€è¯·é¢è¯•
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -44,7 +44,7 @@ if ($_SESSION['utype']!='1')
 		    <tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					±ØĞëÊÇÆóÒµ»áÔ±²Å¿ÉÒÔÑûÇëÃæÊÔ£¡
+					å¿…é¡»æ˜¯ä¼ä¸šä¼šå‘˜æ‰å¯ä»¥é‚€è¯·é¢è¯•ï¼
 				</td>
 		    </tr>
 		</table>');
@@ -57,7 +57,7 @@ if ($user['status']=="2")
 		    <tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					ÄúµÄÕËºÅ´¦ÓÚÔİÍ£×´Ì¬£¬ÇëÁªÏµ¹ÜÀíÔ±ÉèÎªÕı³£ºó½øĞĞ²Ù×÷£¡
+					æ‚¨çš„è´¦å·å¤„äºæš‚åœçŠ¶æ€ï¼Œè¯·è”ç³»ç®¡ç†å‘˜è®¾ä¸ºæ­£å¸¸åè¿›è¡Œæ“ä½œï¼
 				</td>
 		    </tr>
 		</table>');
@@ -70,7 +70,7 @@ if (count($user_jobs)==0)
 		    <tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					ÑûÇëÊ§°Ü£¬ÄãÃ»ÓĞ·¢²¼ÕĞÆ¸ĞÅÏ¢»òÕßĞÅÏ¢Ã»ÓĞÉóºËÍ¨¹ı£¡
+					é‚€è¯·å¤±è´¥ï¼Œä½ æ²¡æœ‰å‘å¸ƒæ‹›è˜ä¿¡æ¯æˆ–è€…ä¿¡æ¯æ²¡æœ‰å®¡æ ¸é€šè¿‡ï¼
 				</td>
 		    </tr>
 		</table>');
@@ -98,12 +98,12 @@ if ($_CFG['operation_mode']=="2")
 {
  			if (empty($setmeal) || ($setmeal['endtime']<time() && $setmeal['endtime']<>"0"))
 			{
-				$str="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ÉêÇë·şÎñ]</a>";
+				$str="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ç”³è¯·æœåŠ¡]</a>";
 				exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 				    <tr>
 						<td width="20" align="right"></td>
 						<td class="ajax_app">
-							ÄúµÄ·şÎñÒÑµ½ÆÚ¡£Äú¿ÉÒÔ '.$str.'
+							æ‚¨çš„æœåŠ¡å·²åˆ°æœŸã€‚æ‚¨å¯ä»¥ '.$str.'
 						</td>
 				    </tr>
 				</table>');
@@ -121,15 +121,15 @@ if ($act=="invited")
 				$points=$resume['talent']=='2'?$points_rule['interview_invite_advanced']['value']:$points_rule['interview_invite']['value'];
 				if  ($mypoints<$points)
 				{
-					$str="<a href=\"".get_member_url(1,true)."company_service.php?act=order_add\">[³äÖµ{$_CFG['points_byname']}]</a>&nbsp;&nbsp;&nbsp;&nbsp;";
-					$str1="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ÉêÇë·şÎñ]</a>";
+					$str="<a href=\"".get_member_url(1,true)."company_service.php?act=order_add\">[å……å€¼{$_CFG['points_byname']}]</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+					$str1="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ç”³è¯·æœåŠ¡]</a>";
 					if (!empty($setmeal) && $_CFG['setmeal_to_points']=="1")
 					{
 						exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 						    <tr>
 								<td width="20" align="right"></td>
 								<td class="ajax_app">
-									ÄãµÄ·şÎñÒÑµ½ÆÚ»ò³¬³ö·şÎñÌõÊı¡£Äú¿ÉÒÔ '.$str.$str1.'
+									ä½ çš„æœåŠ¡å·²åˆ°æœŸæˆ–è¶…å‡ºæœåŠ¡æ¡æ•°ã€‚æ‚¨å¯ä»¥ '.$str.$str1.'
 								</td>
 						    </tr>
 						</table>');
@@ -140,15 +140,15 @@ if ($act=="invited")
 						    <tr>
 								<td width='20' align='right'></td>
 								<td class='ajax_app'>
-									ÄãµÄ{$_CFG['points_byname']}²»×ã£¬Çë³äÖµºóÏÂÔØ¡£".$str."
+									ä½ çš„{$_CFG['points_byname']}ä¸è¶³ï¼Œè¯·å……å€¼åä¸‹è½½ã€‚".$str."
 								</td>
 						    </tr>
 						</table>");
 					}
 				}
-				$tip="ÑûÇëÃæÊÔ½«¿Û³ı<span> {$points} </span>{$_CFG['points_quantifier']}{$_CFG['points_byname']}£¬ÄúÄ¿Ç°¹²ÓĞ<span> {$mypoints}</span>{$_CFG['points_quantifier']}{$_CFG['points_byname']}";
+				$tip="é‚€è¯·é¢è¯•å°†æ‰£é™¤<span> {$points} </span>{$_CFG['points_quantifier']}{$_CFG['points_byname']}ï¼Œæ‚¨ç›®å‰å…±æœ‰<span> {$mypoints}</span>{$_CFG['points_quantifier']}{$_CFG['points_byname']}";
 	}
-	/* ¼ì²âÊÇ·ñÏÂÔØ¹ı¸Ä¼òÀú »òÕßÊÇÉêÇë¹ı Ö°Î» */
+	/* æ£€æµ‹æ˜¯å¦ä¸‹è½½è¿‡æ”¹ç®€å† æˆ–è€…æ˜¯ç”³è¯·è¿‡ èŒä½ */
 	$row = $db->getone("select * from ".table('company_down_resume')." where company_uid={$_SESSION['uid']} and resume_id = ".intval($_GET['id'])." limit 1");
 	$row_apply=$db->getone("select * from ".table('personal_jobs_apply')." where company_uid={$_SESSION['uid']} and resume_id = ".intval($_GET['id'])." limit 1");
 	if(!$row && !$row_apply)
@@ -157,11 +157,11 @@ if ($act=="invited")
 		{
 			if ($resumeshow['talent']=='2')
 			{	
-				$tip="ÌáÊ¾£ºÄú»¹¿ÉÒÔÏÂÔØ<span> {$setmeal['download_resume_senior']}</span>·İ¸ß¼¶ÈË²Å¼òÀú";
+				$tip="æç¤ºï¼šæ‚¨è¿˜å¯ä»¥ä¸‹è½½<span> {$setmeal['download_resume_senior']}</span>ä»½é«˜çº§äººæ‰ç®€å†";
 			}
 			else
 			{	
-				$tip="ÌáÊ¾£ºÄú»¹¿ÉÒÔÏÂÔØ<span> {$setmeal['download_resume_ordinary']}</span>·İÆÕÍ¨ÈË²Å¼òÀú";
+				$tip="æç¤ºï¼šæ‚¨è¿˜å¯ä»¥ä¸‹è½½<span> {$setmeal['download_resume_ordinary']}</span>ä»½æ™®é€šäººæ‰ç®€å†";
 			}
 		}	
 		elseif($_CFG['operation_mode']=="1")
@@ -171,15 +171,15 @@ if ($act=="invited")
 			$mypoints=get_user_points($_SESSION['uid']);
 			if  ($mypoints<$points)
 			{
-				$str="<a href=\"".get_member_url(1,true)."company_service.php?act=order_add\">[³äÖµ{$_CFG['points_byname']}]</a>&nbsp;&nbsp;&nbsp;&nbsp;";
-				$str1="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ÉêÇë·şÎñ]</a>";
+				$str="<a href=\"".get_member_url(1,true)."company_service.php?act=order_add\">[å……å€¼{$_CFG['points_byname']}]</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+				$str1="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ç”³è¯·æœåŠ¡]</a>";
 				if (!empty($setmeal) && $_CFG['setmeal_to_points']=="1")
 				{
 					exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 					    <tr>
 							<td width="20" align="right"></td>
 							<td class="ajax_app">
-								ÄãµÄ·şÎñÒÑµ½ÆÚ»ò³¬³ö·şÎñÌõÊı¡£Äú¿ÉÒÔ '.$str.$str1.'
+								ä½ çš„æœåŠ¡å·²åˆ°æœŸæˆ–è¶…å‡ºæœåŠ¡æ¡æ•°ã€‚æ‚¨å¯ä»¥ '.$str.$str1.'
 							</td>
 					    </tr>
 					</table>');
@@ -190,13 +190,13 @@ if ($act=="invited")
 					    <tr>
 							<td width="20" align="right"></td>
 							<td class="ajax_app">
-								ÄãµÄ'.$_CFG['points_byname'].' ²»×ã£¬Çë³äÖµºóÏÂÔØ¡£'.$str.'
+								ä½ çš„'.$_CFG['points_byname'].' ä¸è¶³ï¼Œè¯·å……å€¼åä¸‹è½½ã€‚'.$str.'
 							</td>
 					    </tr>
 					</table>');
 				}			
 			}
-			$tip="ÏÂÔØ´Ë·İ¼òÀú½«¿Û³ı<span> {$points}</span>{$_CFG['points_quantifier']}{$_CFG['points_byname']}£¬ÄúÄ¿Ç°¹²ÓĞ<span> {$mypoints}</span>{$_CFG['points_quantifier']}{$_CFG['points_byname']}";
+			$tip="ä¸‹è½½æ­¤ä»½ç®€å†å°†æ‰£é™¤<span> {$points}</span>{$_CFG['points_quantifier']}{$_CFG['points_byname']}ï¼Œæ‚¨ç›®å‰å…±æœ‰<span> {$mypoints}</span>{$_CFG['points_quantifier']}{$_CFG['points_byname']}";
 		}
 ?>
 <script type="text/javascript">
@@ -204,7 +204,7 @@ $(".but100").hover(function(){$(this).addClass("but100_hover")},function(){$(thi
 $("#ajax_download_r").click(function() {
 		var id="<?php echo $id?>";
 		var tsTimeStamp= new Date().getTime();
-			$("#ajax_download_r").val("´¦ÀíÖĞ...");
+			$("#ajax_download_r").val("å¤„ç†ä¸­...");
 			$("#ajax_download_r").attr("disabled","disabled");
  			 var pms_notice=$("#pms_notice").attr("checked");
 			 if(pms_notice) pms_notice=1;else pms_notice=0;
@@ -217,7 +217,7 @@ $("#ajax_download_r").click(function() {
 				$("#ajax_download_table").hide();
 				$("#notice").hide();
 				$("#download_ok").show();
-				//Ë¢ĞÂÁªÏµµØÖ·
+				//åˆ·æ–°è”ç³»åœ°å€
 				$.get("<?php echo $_CFG['site_dir'] ?>plus/ajax_contact.php", { "id": id,"time":tsTimeStamp,"act":"resume_contact"},
 				function (data,textStatus)
 				 {	
@@ -229,29 +229,29 @@ $("#ajax_download_r").click(function() {
 			{
 				alert(data);
 			}
-			$("#ajax_download_r").val("ÏÂÔØ¼òÀú");
+			$("#ajax_download_r").val("ä¸‹è½½ç®€å†");
 			$("#ajax_download_r").attr("disabled","");
 	 	 })
 });
 </script>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="ajax_download_table">
 	<tr style='width:100%; margin:0px auto;'>
-			<div style='margin:0px auto;'><h3>±ØĞëÏÂÔØÍê³É¼òÀúºó ²Å¿ÉÒÔÑûÇëÃæÊÔ</h3></div>
+			<div style='margin:0px auto;'><h3>å¿…é¡»ä¸‹è½½å®Œæˆç®€å†å æ‰å¯ä»¥é‚€è¯·é¢è¯•</h3></div>
     </tr>
 
     <tr>
-		<td width="120" align="right">Õ¾ÄÚĞÅÍ¨Öª¶Ô·½£º</td>
+		<td width="120" align="right">ç«™å†…ä¿¡é€šçŸ¥å¯¹æ–¹ï¼š</td>
 		<td class="ajax_app">
 			
 			<label><input type="checkbox" name="pms_notice" id="pms_notice" value="1"  checked="checked"/>
-		  Õ¾ÄÚĞÅÍ¨Öª
+		  ç«™å†…ä¿¡é€šçŸ¥
 		   </label>
 		</td>
     </tr>
     <tr>
 		<td></td>
 		<td>
-			<input type="button" name="Submit"  id="ajax_download_r" class="but130lan" value="ÏÂÔØ¼òÀú" />
+			<input type="button" name="Submit"  id="ajax_download_r" class="but130lan" value="ä¸‹è½½ç®€å†" />
 		</td>
     </tr>
 </table>
@@ -266,12 +266,12 @@ $("#ajax_download_r").click(function() {
     <tr>
 		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/big-yes.png" /></td>
 		<td>
-			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">ÏÂÔØ³É¹¦!</strong>
+			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">ä¸‹è½½æˆåŠŸ!</strong>
 			<?php
 				if($_SESSION['utype']==1){
 			?>
 			<div style="border-top:1px #CCCCCC solid; line-height:180%; margin-top:10px; padding-top:10px; height:50px;margin-left:20px"  class="dialog_closed">
-			<a href="<?php echo get_member_url(1,true)?>company_recruitment.php?act=down_resume_list" style="color:#0180cf;text-decoration:none;" class="underline">²é¿´ÒÑÏÂÔØ¼òÀú</a><br />
+			<a href="<?php echo get_member_url(1,true)?>company_recruitment.php?act=down_resume_list" style="color:#0180cf;text-decoration:none;" class="underline">æŸ¥çœ‹å·²ä¸‹è½½ç®€å†</a><br />
 			<?php
 				}else{
 			?>
@@ -280,7 +280,7 @@ $("#ajax_download_r").click(function() {
 			<?php
 				}
 			?>
-			<a href="javascript:void(0)"  class="DialogClose underline" style="color:#0180cf;text-decoration:none;">ÏÂÔØÍê³É</a>
+			<a href="javascript:void(0)"  class="DialogClose underline" style="color:#0180cf;text-decoration:none;">ä¸‹è½½å®Œæˆ</a>
 			</div>
 		</td>
     </tr>
@@ -289,17 +289,17 @@ $("#ajax_download_r").click(function() {
 	die;
 	}
 ?>
-<!-- ÑûÇëÃæÊÔµ¯³ö -->
+<!-- é‚€è¯·é¢è¯•å¼¹å‡º -->
 <div class="interview-dialog dialog-block">
 	<div class="dialog-item clearfix">
-		<div class="d-type f-left">ÑûÇë¼òÀú£º</div>
+		<div class="d-type f-left">é‚€è¯·ç®€å†ï¼š</div>
 		<div class="d-content f-left"><?php echo $resume['fullname']; ?></div>
 	</div>
 	<div class="dialog-item clearfix">
-		<div class="d-type f-left">ÃæÊÔÖ°Î»£º</div>
+		<div class="d-type f-left">é¢è¯•èŒä½ï¼š</div>
 		<div class="data-filter d-content f-left">
 			<div class="dropdown">
-				<span class="dropdown-ctrl"><span class="jobtit">Ñ¡ÔñÖ°Î»</span><i class="drop-icon"></i></span>
+				<span class="dropdown-ctrl"><span class="jobtit">é€‰æ‹©èŒä½</span><i class="drop-icon"></i></span>
 				<ul class="dropdown-list">
 					<?php 
 					foreach ($user_jobs as $list)
@@ -315,41 +315,41 @@ $("#ajax_download_r").click(function() {
 		</div>
 	</div>
 	<div class="dialog-item clearfix">
-		<div class="d-type f-left">ÃæÊÔÈÕÆÚ£º</div>
+		<div class="d-type f-left">é¢è¯•æ—¥æœŸï¼š</div>
 		<div class="d-content f-left">
 			<span class="datepicker" style="padding: 0;"><input type="text" name="interview_time" id="interview_time" class="date-picker"/></span>
 		</div>
 	</div>
 	<div class="dialog-item clearfix">
-		<div class="d-type f-left">Í¨ÖªÄÚÈİ£º</div>
+		<div class="d-type f-left">é€šçŸ¥å†…å®¹ï¼š</div>
 		<div class="d-content f-left">
 			<textarea name="notes" id="notes" cols="30" rows="10" class="dialog-textarea"></textarea>
 		</div>
 	</div>
 	<div class="dialog-item clearfix">
-		<div class="d-type f-left">Õ¾ÄÚÍ¨Öª£º</div>
+		<div class="d-type f-left">ç«™å†…é€šçŸ¥ï¼š</div>
 		<div class="d-content f-left">
 			<div class="f-left"><label><input type="checkbox" name="pms_notice" id="pms_notice" value="1"  checked="checked"/>
-		  Õ¾ÄÚĞÅÍ¨Öª</label></div>
+		  ç«™å†…ä¿¡é€šçŸ¥</label></div>
 		</div>
 	</div>
 	<div class="dialog-item clearfix">
-		<div class="d-type f-left">¶ÌĞÅÍ¨Öª£º</div>
+		<div class="d-type f-left">çŸ­ä¿¡é€šçŸ¥ï¼š</div>
 		<div class="d-content f-left">
-			<div class="f-left"><label><input  type="checkbox" name="sms_notice" id="sms_notice" class="checkbox" />ÊÇ</label></div>
+			<div class="f-left"><label><input  type="checkbox" name="sms_notice" id="sms_notice" class="checkbox" />æ˜¯</label></div>
 		</div>
 	</div>
 
 	<div class="dialog-item clearfix">
 		<div class="d-type f-left">&nbsp;</div>
 		<div class="d-content f-left">
-			<input type="button" value="·¢ËÍ" class="btn-65-30blue btn-big-font DialogSubmit"/><input type="button" value="È¡Ïû" class="btn-65-30grey btn-big-font DialogClose" />
+			<input type="button" value="å‘é€" class="btn-65-30blue btn-big-font DialogSubmit"/><input type="button" value="å–æ¶ˆ" class="btn-65-30grey btn-big-font DialogClose" />
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
 $('input.date-picker').datePicker();
-/* Ö°Î»Ñ¡Ôñ */
+/* èŒä½é€‰æ‹© */
 $(".dropdown-ctrl").on('click',function() {
 	$('.dropdown-list').slideToggle('fast');
 });
@@ -372,7 +372,7 @@ elseif ($act=="invited_save")
 	$interview_time=trim($_GET['interview_time']);
 	if (check_interview($id,$jobs_id,$_SESSION['uid']))
 	{
-	exit("ÄúÒÑ¶Ô¸Ã¼òÀú¾­ĞĞ¹ıÃæÊÔÑûÇë,²»ÄÜÖØ¸´ÑûÇë£¡");
+	exit("æ‚¨å·²å¯¹è¯¥ç®€å†ç»è¡Œè¿‡é¢è¯•é‚€è¯·,ä¸èƒ½é‡å¤é‚€è¯·ï¼");
 	}
 	$jobs=get_jobs_one($jobs_id);
 	$addarr['resume_id']=$resume['id'];
@@ -385,11 +385,11 @@ elseif ($act=="invited_save")
 	{
 		if($resume['sex']==1)
 		{
-			$addarr['resume_name']=cut_str($resume['fullname'],1,0,"ÏÈÉú");	
+			$addarr['resume_name']=cut_str($resume['fullname'],1,0,"å…ˆç”Ÿ");	
 		}
 		elseif($resume['sex']==2)
 		{
-			$addarr['resume_name']=cut_str($resume['fullname'],1,0,"Å®Ê¿");
+			$addarr['resume_name']=cut_str($resume['fullname'],1,0,"å¥³å£«");
 		}
 	}
 	else
@@ -416,8 +416,8 @@ elseif ($act=="invited_save")
 	if ($_CFG['operation_mode']=="2")
 	{
 		$db->inserttable(table('company_interview'),$addarr);
-		// ÑûÇëÃæÊÔ ²»×ö Ì×²ÍÏŞÖÆ
-		write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"ÑûÇëÁË {$resume_user['username']} ÃæÊÔ");
+		// é‚€è¯·é¢è¯• ä¸åš å¥—é¤é™åˆ¶
+		write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"é‚€è¯·äº† {$resume_user['username']} é¢è¯•");
 	}		 
 	elseif($_CFG['operation_mode']=="1")
 	{
@@ -427,7 +427,7 @@ elseif ($act=="invited_save")
 		$ptype=$resumeshow['talent']=='2'?$points_rule['interview_invite_advanced']['type']:$points_rule['interview_invite']['type'];
 		if  ($mypoints<$points)
 		{
-			exit("ÄúµÄ»ı·Ö²»×ã,²»ÄÜ¾­ĞĞÑûÇëÃæÊÔ£¡");
+			exit("æ‚¨çš„ç§¯åˆ†ä¸è¶³,ä¸èƒ½ç»è¡Œé‚€è¯·é¢è¯•ï¼");
 		}
 		$db->inserttable(table('company_interview'),$addarr);
 		if ($points>0)
@@ -436,15 +436,15 @@ elseif ($act=="invited_save")
 			$user_points=get_user_points($_SESSION['uid']);
 			$operator=$ptype=="1"?"+":"-";
 			if($resume['talent']=='2'){
-				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÑûÇë {$resume_user['username']} ÃæÊÔ({$operator}{$points}),(Ê£Óà:{$user_points})",1,1007,"ÑûÇë¸ß¼¶ÈË²ÅÃæÊÔ","{$operator}{$points}","{$user_points}");
+				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"é‚€è¯· {$resume_user['username']} é¢è¯•({$operator}{$points}),(å‰©ä½™:{$user_points})",1,1007,"é‚€è¯·é«˜çº§äººæ‰é¢è¯•","{$operator}{$points}","{$user_points}");
 			}else{
-				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÑûÇë {$resume_user['username']} ÃæÊÔ({$operator}{$points}),(Ê£Óà:{$user_points})",1,1006,"ÑûÇëÆÕÍ¨ÈË²ÅÃæÊÔ","{$operator}{$points}","{$user_points}");
+				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"é‚€è¯· {$resume_user['username']} é¢è¯•({$operator}{$points}),(å‰©ä½™:{$user_points})",1,1006,"é‚€è¯·æ™®é€šäººæ‰é¢è¯•","{$operator}{$points}","{$user_points}");
 			}
-			write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"ÑûÇë {$resume_user['username']} ÃæÊÔ");
+			write_memberslog($_SESSION['uid'],1,6001,$_SESSION['username'],"é‚€è¯· {$resume_user['username']} é¢è¯•");
 		}		
 	}
 	/*
-		·¢ËÍ¶ÌĞÅÌáÊ¾ ²Ù×÷ 
+		å‘é€çŸ­ä¿¡æç¤º æ“ä½œ 
 	*/
 	$sms=get_cache('sms_config');
 	if($sms['open']=="1" && $sms['set_invite']=="1" && $sms_notice=="1")
@@ -452,21 +452,21 @@ elseif ($act=="invited_save")
 		$user=get_user_info($_SESSION['uid']);
 		$success = dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_sms.php?uid={$_SESSION['uid']}&key=".asyn_userkey($_SESSION['uid'])."&act=set_invite&companyname={$jobs['companyname']}&mobile={$resume_user['mobile']}");	
 	}
-	//Õ¾ÄÚĞÅ
+	//ç«™å†…ä¿¡
 	if($pms_notice=='1'){
 		$jobs_url=url_rewrite('QS_jobsshow',array('id'=>$jobs['id']));
 		$company_url=url_rewrite('QS_companyshow',array('id'=>$jobs['company_id']),false);
-		$message=$jobs['companyname']."ÑûÇëÄú²Î¼Ó¹«Ë¾ÃæÊÔ£¬ÃæÊÔÖ°Î»£º<a href=\"{$jobs_url}\" target=\"_blank\"> {$jobs['jobs_name']} </a>£¬<a href=\"{$company_url}\" target=\"_blank\">µã»÷²é¿´¹«Ë¾ÏêÇé</a>";
+		$message=$jobs['companyname']."é‚€è¯·æ‚¨å‚åŠ å…¬å¸é¢è¯•ï¼Œé¢è¯•èŒä½ï¼š<a href=\"{$jobs_url}\" target=\"_blank\"> {$jobs['jobs_name']} </a>ï¼Œ<a href=\"{$company_url}\" target=\"_blank\">ç‚¹å‡»æŸ¥çœ‹å…¬å¸è¯¦æƒ…</a>";
 		write_pmsnotice($resume['uid'],$resume_user['username'],$message);
 	}
 	$html='<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="invited_ok">
 	    <tr>
 			<td width="140" align="right"><img height="100" src="'.$_CFG['site_template'].'images/big-yes.png" /></td>
 			<td>
-				<strong style="font-size:14px ; color:#0066CC;margin-left:20px">ÑûÇë³É¹¦!</strong>
+				<strong style="font-size:14px ; color:#0066CC;margin-left:20px">é‚€è¯·æˆåŠŸ!</strong>
 				<div style="border-top:1px #CCCCCC solid; line-height:180%; margin-top:10px; padding-top:10px; height:50px;margin-left:20px"  class="dialog_closed">
-				<a href="'.get_member_url(1,true).'company_recruitment.php?act=interview_list" style="color:#0180cf;text-decoration:none;" class="underline">²é¿´ÎÒ·¢ÆğµÄÃæÊÔÑûÇë</a><br />
-				<a href="javascript:void(0)"  class="DialogClose underline" style="color:#0180cf;text-decoration:none;">ÑûÇëÍê³É</a>
+				<a href="'.get_member_url(1,true).'company_recruitment.php?act=interview_list" style="color:#0180cf;text-decoration:none;" class="underline">æŸ¥çœ‹æˆ‘å‘èµ·çš„é¢è¯•é‚€è¯·</a><br />
+				<a href="javascript:void(0)"  class="DialogClose underline" style="color:#0180cf;text-decoration:none;">é‚€è¯·å®Œæˆ</a>
 				</div>
 			</td>
 	    </tr>

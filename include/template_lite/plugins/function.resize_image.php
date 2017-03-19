@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template-Lite {resize_image} function plugin Using Image Magic
  *

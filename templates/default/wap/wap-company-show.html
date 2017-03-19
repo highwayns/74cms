@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
@@ -6,7 +6,7 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>{#$show.companyname#} - {#$QISHI.site_name#}</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <link href="css/company.css" rel="stylesheet" type="text/css" />
@@ -16,7 +16,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
@@ -31,7 +31,7 @@ $(document).ready(function()
 		$.get("{#$QISHI.wap_domain#}/plus/wap_ajax.php?act=ajaxcomjobslist&offset="+(offset+5)+"&rows=5&companyid={#$show.id#}", function(result){
 		    if(result=="-1"){
 		    	$(".more").show();
-		    	$(".more").html("Ã»ÓĞ¸ü¶àÖ°Î»ÁË");
+		    	$(".more").html("æ²¡æœ‰æ›´å¤šèŒä½äº†");
 		    }else{
 		    	$(".showlist").append(result);
 		    	$(".more").show();
@@ -62,29 +62,29 @@ $(document).ready(function()
 	<div class="menu" id="topmenu_sub"><a href="javascript:void(0);"><img src="images/2.jpg"  border="0"/></a></div>
 </div>
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 {#include file="top-menu.html"#}
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 <div class="company_show_box">
-  <div class="title"><h2>»ù±¾ĞÅÏ¢</h2></div>
+  <div class="title"><h2>åŸºæœ¬ä¿¡æ¯</h2></div>
   <div class="txt">
-ÆóÒµĞÔÖÊ£º{#$show.nature_cn#}<br />
-ËùÊôĞĞÒµ£º{#$show.trade_cn#}<br />
-×¢²á×Ê½ğ£º{#if $show.registered#}{#$show.registered#}{#$show.currency#}Íò{#else#}Î´ÌîĞ´{#/if#}<br />
-¹«Ë¾¹æÄ££º{#$show.scale_cn#}<br />
-ËùÔÚµØÇø£º{#$show.address#}<br />
+ä¼ä¸šæ€§è´¨ï¼š{#$show.nature_cn#}<br />
+æ‰€å±è¡Œä¸šï¼š{#$show.trade_cn#}<br />
+æ³¨å†Œèµ„é‡‘ï¼š{#if $show.registered#}{#$show.registered#}{#$show.currency#}ä¸‡{#else#}æœªå¡«å†™{#/if#}<br />
+å…¬å¸è§„æ¨¡ï¼š{#$show.scale_cn#}<br />
+æ‰€åœ¨åœ°åŒºï¼š{#$show.address#}<br />
   </div>
 </div>
 
 <div class="company_show_box">
-  <div class="title"><h2>¹«Ë¾¼ò½é</h2></div>
+  <div class="title"><h2>å…¬å¸ç®€ä»‹</h2></div>
   <div class="txt">
 {#$show.contents|nl2br#}</div>
 </div>
 
 <div class="company_show_box">
-  <div class="title"><h2>¸Ã¹«Ë¾ËùÓĞÖ°Î»</h2></div>
+  <div class="title"><h2>è¯¥å…¬å¸æ‰€æœ‰èŒä½</h2></div>
   <div class="joblist">
   	<div class="showlist">
   	{#foreach from=$show.jobslist item=li#}
@@ -95,9 +95,9 @@ $(document).ready(function()
 	{#/foreach#}
 	</div>
 	{#if $show.jobslist#}
-    <div class="more">²é¿´¸ü¶à</div>
+    <div class="more">æŸ¥çœ‹æ›´å¤š</div>
     {#else#}
-    <div class="more">Ã»ÓĞ¸ü¶àÖ°Î»ÁË</div>
+    <div class="more">æ²¡æœ‰æ›´å¤šèŒä½äº†</div>
     {#/if#}
   </div>
 </div>

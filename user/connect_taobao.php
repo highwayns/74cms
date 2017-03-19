@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÌÔ±¦ºÅÕÊºÅµÇÂ¼
+ * 74cms æ·˜å®å·å¸å·ç™»å½•
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -28,7 +28,7 @@ elseif($act == 'login' && !empty($code))
 	require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 	if (empty($code))
 	{
-	exit('²ÎÊı´íÎó£¡');
+	exit('å‚æ•°é”™è¯¯ï¼');
 	}
 	else
 	{
@@ -52,9 +52,9 @@ elseif($act == 'login' && !empty($code))
 	}
 	if (empty($token))
 	{
-	$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+	$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 	$link[0]['href'] = "{$_CFG['site_dir']}user/connect_taobao.php";
-	showmsg('µÇÂ¼Ê§°Ü£¡token»ñÈ¡Ê§°Ü',0);
+	showmsg('ç™»å½•å¤±è´¥ï¼tokenè·å–å¤±è´¥',0);
 	}
 	else
 	{
@@ -72,9 +72,9 @@ elseif($act == 'login' && !empty($code))
 					{
 					$time=time();
 					$db->query("UPDATE ".table('members')." SET taobao_access_token = '{$taobao_user_id}',taobao_nick='{$taobao_nickname}',bindingtime='{$time}' WHERE uid='{$_SESSION[uid]}' AND taobao_access_token='' LIMIT 1");
-					$link[0]['text'] = "½øÈë»áÔ±ÖĞĞÄ";
+					$link[0]['text'] = "è¿›å…¥ä¼šå‘˜ä¸­å¿ƒ";
 					$link[0]['href'] = get_member_url($_SESSION['utype']);
-					showmsg('°ó¶¨ÕÊºÅ³É¹¦£¡',2,$link);
+					showmsg('ç»‘å®šå¸å·æˆåŠŸï¼',2,$link);
 					}
 					else
 					{
@@ -96,9 +96,9 @@ elseif ($act=='reg')
 	{
 			
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php'); 
-		$smarty->assign('title','ÍêÉÆĞÅÏ¢ - '.$_CFG['site_name']);
+		$smarty->assign('title','å®Œå–„ä¿¡æ¯ - '.$_CFG['site_name']);
 		$smarty->assign('t_url',"?act=");
-		$smarty->assign('third_name',"ÌÔ±¦");
+		$smarty->assign('third_name',"æ·˜å®");
 		$smarty->assign('nickname',$_SESSION['taobao_nickname']);
 		$smarty->assign('openid',$_SESSION["taobao_access_token"]);
 		$smarty->assign('bindtype','taobao');
@@ -137,9 +137,9 @@ elseif ($act=='reg_save')
 		unset($_SESSION["taobao_access_token"]);
 		unset($_SESSION["taobao_nickname"]);
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
-		$link[0]['text'] = "·µ»ØÊ×Ò³";
+		$link[0]['text'] = "è¿”å›é¦–é¡µ";
 		$link[0]['href'] = "{$_CFG['site_dir']}";
-		showmsg('×¢²áÊ§°Ü£¡',0,$link);
+		showmsg('æ³¨å†Œå¤±è´¥ï¼',0,$link);
 	}
 	
 }

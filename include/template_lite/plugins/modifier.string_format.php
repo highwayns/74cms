@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * template_lite string_format modifier plugin
  *

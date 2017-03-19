@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÑéÖ¤ÓÊÏä
+ * 74cms éªŒè¯é‚®ç®±
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -18,32 +18,32 @@ $email=trim($_POST['email']);
 $send_key=trim($_POST['send_key']);
 if (empty($send_key) || $send_key<>$_SESSION['send_email_key'])
 {
-exit("Ğ§ÑéÂë´íÎó");
+exit("æ•ˆéªŒç é”™è¯¯");
 }
 if ($act=="send_code")
 {
 		if (empty($email) || !preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]w+)*$/",$email))
 		{
-		exit("ÓÊÏä¸ñÊ½´íÎó");
+		exit("é‚®ç®±æ ¼å¼é”™è¯¯");
 		}
 		$sql = "select * from ".table('members')." where email = '{$email}' LIMIT 1";
 		$userinfo=$db->getone($sql);
 		if ($userinfo && $userinfo['uid']<>$_SESSION['uid'])
 		{
-		exit("ÓÊÏäÒÑ¾­´æÔÚ£¡ÇëÌîĞ´ÆäËûÓÊÏä");
+		exit("é‚®ç®±å·²ç»å­˜åœ¨ï¼è¯·å¡«å†™å…¶ä»–é‚®ç®±");
 		}
 		elseif(!empty($userinfo['email']) && $userinfo['email_audit']=="1" && $userinfo['email']==$email)
 		{
-		exit("ÄãµÄÓÊÏä {$email} ÒÑ¾­Í¨¹ıÑéÖ¤£¡");
+		exit("ä½ çš„é‚®ç®± {$email} å·²ç»é€šè¿‡éªŒè¯ï¼");
 		}
 		else
 		{
 			if ($_SESSION['sendemail_time'] && (time()-$_SESSION['sendemail_time'])<10)
 			{
-			exit("Çë60ÃëºóÔÙ½øĞĞÑéÖ¤£¡");
+			exit("è¯·60ç§’åå†è¿›è¡ŒéªŒè¯ï¼");
 			}
 			$rand=mt_rand(100000, 999999);
-			if (smtp_mail($email,"{$_CFG['site_name']}ÓÊ¼şÈÏÖ¤","{$QISHI['site_name']}ÌáĞÑÄú£º<br>ÄúÕıÔÚ½øĞĞÓÊÏäÑéÖ¤£¬ÑéÖ¤ÂëÎª:<strong>{$rand}</strong>"))
+			if (smtp_mail($email,"{$_CFG['site_name']}é‚®ä»¶è®¤è¯","{$QISHI['site_name']}æé†’æ‚¨ï¼š<br>æ‚¨æ­£åœ¨è¿›è¡Œé‚®ç®±éªŒè¯ï¼ŒéªŒè¯ç ä¸º:<strong>{$rand}</strong>"))
 			{
 			$_SESSION['verify_email']=$email;
 			$_SESSION['email_rand']=$rand;
@@ -52,7 +52,7 @@ if ($act=="send_code")
 			}
 			else
 			{
-			exit("ÓÊÏäÅäÖÃ³ö´í£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±");
+			exit("é‚®ç®±é…ç½®å‡ºé”™ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜");
 			}
 		} 
 }
@@ -61,14 +61,14 @@ elseif ($act=="verify_code")
 	$verifycode=trim($_POST['verifycode']);
 	if (empty($verifycode) || empty($_SESSION['email_rand']) || $verifycode<>$_SESSION['email_rand'])
 	{
-		exit("ÑéÖ¤Âë´íÎó");
+		exit("éªŒè¯ç é”™è¯¯");
 	}
 	else
 	{
 			$uid=intval($_SESSION['uid']);
 			if (empty($uid))
 			{
-				exit("ÏµÍ³´íÎó£¬UID¶ªÊ§£¡");
+				exit("ç³»ç»Ÿé”™è¯¯ï¼ŒUIDä¸¢å¤±ï¼");
 			}
 			else
 			{
@@ -98,7 +98,7 @@ elseif ($act=="verify_code")
 							$user_points=get_user_points($_SESSION['uid']);
 							$operator=$rule['verifyemail']['type']=="1"?"+":"-";
 							$_SESSION['handsel_verifyemail']=$_CFG['points_byname'].$operator.$rule['verifyemail']['value'];
-							write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username']," ÓÊÏäÍ¨¹ıÑéÖ¤£¬{$_CFG['points_byname']}({$operator}{$rule['verifyemail']['value']})£¬(Ê£Óà:{$user_points})",1,1015,"ÓÊÏäÈÏÖ¤Í¨¹ı","{$operator}{$rule['verifyemail']['value']}","{$user_points}");
+							write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username']," é‚®ç®±é€šè¿‡éªŒè¯ï¼Œ{$_CFG['points_byname']}({$operator}{$rule['verifyemail']['value']})ï¼Œ(å‰©ä½™:{$user_points})",1,1015,"é‚®ç®±è®¤è¯é€šè¿‡","{$operator}{$rule['verifyemail']['value']}","{$user_points}");
 							}
 						}
 					}elseif ($_CFG['operation_train_mode']=='1' && $_SESSION['utype']=='4')
@@ -116,7 +116,7 @@ elseif ($act=="verify_code")
 							$user_points=get_user_points($_SESSION['uid']);
 							$operator=$rule['train_verifyemail']['type']=="1"?"+":"-";
 							$_SESSION['handsel_verifyemail']=$_CFG['train_points_byname'].$operator.$rule['train_verifyemail']['value'];
-							write_memberslog($_SESSION['uid'],4,9101,$_SESSION['username']," ÓÊÏäÍ¨¹ıÑéÖ¤£¬{$_CFG['train_points_byname']}({$operator}{$rule['train_verifyemail']['value']})£¬(Ê£Óà:{$user_points})");
+							write_memberslog($_SESSION['uid'],4,9101,$_SESSION['username']," é‚®ç®±é€šè¿‡éªŒè¯ï¼Œ{$_CFG['train_points_byname']}({$operator}{$rule['train_verifyemail']['value']})ï¼Œ(å‰©ä½™:{$user_points})");
 							}
 						}
 					}elseif ($_CFG['operation_hunter_mode']=='1' && $_SESSION['utype']=='3')
@@ -134,7 +134,7 @@ elseif ($act=="verify_code")
 							$user_points=get_user_points($_SESSION['uid']);
 							$operator=$rule['hunter_verifyemail']['type']=="1"?"+":"-";
 							$_SESSION['handsel_verifyemail']=$_CFG['hunter_points_byname'].$operator.$rule['hunter_verifyemail']['value'];
-							write_memberslog($_SESSION['uid'],3,9201,$_SESSION['username']," ÓÊÏäÍ¨¹ıÑéÖ¤£¬{$_CFG['hunter_points_byname']}({$operator}{$rule['hunter_verifyemail']['value']})£¬(Ê£Óà:{$user_points})");
+							write_memberslog($_SESSION['uid'],3,9201,$_SESSION['username']," é‚®ç®±é€šè¿‡éªŒè¯ï¼Œ{$_CFG['hunter_points_byname']}({$operator}{$rule['hunter_verifyemail']['value']})ï¼Œ(å‰©ä½™:{$user_points})");
 							}
 						}
 					}

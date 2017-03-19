@@ -1,4 +1,4 @@
-URI.DisableResources
+﻿URI.DisableResources
 TYPE: bool
 VERSION: 4.2.0
 DEFAULT: false

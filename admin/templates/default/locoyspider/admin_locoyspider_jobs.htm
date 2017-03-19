@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,81 +6,81 @@
   <div class="clear"></div>
 </div>
     <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
-	<p>»ğ³µÍ·²É¼¯¹æÔòÇëµ½ÂÛÌ³ÏÂÔØ£¡</p>
+	<h2>æç¤ºï¼š</h2>
+	<p>ç«è½¦å¤´é‡‡é›†è§„åˆ™è¯·åˆ°è®ºå›ä¸‹è½½ï¼</p>
 	</div>
 	
 	   <form action="?act=set_save" method="post"  name="form1" id="form1">
 	   {#$inputtoken#}
-	  <div class="toptit">ÕĞÆ¸ĞÅÏ¢²É¼¯ÉèÖÃ</div>
+	  <div class="toptit">æ‹›è˜ä¿¡æ¯é‡‡é›†è®¾ç½®</div>
 	   <table border="0" cellspacing="10" cellpadding="1" >
 	       <tr>
-        <td width="180" align="right"> Ä¬ÈÏÖ°Î»ÕĞÆ¸×´Ì¬£º</td>
+        <td width="180" align="right"> é»˜è®¤èŒä½æ‹›è˜çŠ¶æ€ï¼š</td>
         <td >
-		   <label><input name="jobs_display"  type="radio" value="1" {#if $show.jobs_display eq "1"#}checked="checked"{#/if#} />ÕĞÆ¸ÖĞ</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		 <label><input name="jobs_display"  type="radio" value="2" {#if $show.jobs_display eq "2"#}checked="checked"{#/if#} />ÔİÍ£ÕĞÆ¸</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		   <label><input name="jobs_display"  type="radio" value="1" {#if $show.jobs_display eq "1"#}checked="checked"{#/if#} />æ‹›è˜ä¸­</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 <label><input name="jobs_display"  type="radio" value="2" {#if $show.jobs_display eq "2"#}checked="checked"{#/if#} />æš‚åœæ‹›è˜</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</td>
       </tr>
 	       <tr>
-        <td width="180" align="right"> Ä¬ÈÏÖ°Î»ÉóºË×´Ì¬£º</td>
+        <td width="180" align="right"> é»˜è®¤èŒä½å®¡æ ¸çŠ¶æ€ï¼š</td>
         <td >
-		  <label><input name="jobs_audit"  type="radio" value="1" {#if $show.jobs_audit eq "1"#}checked="checked"{#/if#} />ÉóºËÍ¨¹ı</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	    <label><input name="jobs_audit"  type="radio" value="2" {#if $show.jobs_audit eq "2"#}checked="checked"{#/if#} />ÉóºËÖĞ</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  <label><input name="jobs_audit"  type="radio" value="1" {#if $show.jobs_audit eq "1"#}checked="checked"{#/if#} />å®¡æ ¸é€šè¿‡</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <label><input name="jobs_audit"  type="radio" value="2" {#if $show.jobs_audit eq "2"#}checked="checked"{#/if#} />å®¡æ ¸ä¸­</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		
-		   <label><input name="jobs_audit"  type="radio" value="3" {#if $show.jobs_audit eq "3"#}checked="checked"{#/if#} />ÉóºËÎ´Í¨¹ı</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		   <label><input name="jobs_audit"  type="radio" value="3" {#if $show.jobs_audit eq "3"#}checked="checked"{#/if#} />å®¡æ ¸æœªé€šè¿‡</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</td>
       </tr>
 	    
 	  <tr>
-        <td width="180" align="right"> Ä¬ÈÏÖ°Î»Ó¦Æ¸ÓÊ¼şÍ¨Öª£º</td>
+        <td width="180" align="right"> é»˜è®¤èŒä½åº”è˜é‚®ä»¶é€šçŸ¥ï¼š</td>
         <td >
 	
-		  <label><input name="jobs_notify"  type="radio" value="1" {#if $show.jobs_notify =="1"#}checked="checked"{#/if#} />Í¨Öª</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		      <label><input name="jobs_notify"  type="radio" value="0" {#if $show.jobs_notify =="0"#}checked="checked"{#/if#} />²»Í¨Öª</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  <label><input name="jobs_notify"  type="radio" value="1" {#if $show.jobs_notify =="1"#}checked="checked"{#/if#} />é€šçŸ¥</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      <label><input name="jobs_notify"  type="radio" value="0" {#if $show.jobs_notify =="0"#}checked="checked"{#/if#} />ä¸é€šçŸ¥</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</td>
       </tr>
 	     <tr>
-        <td width="180" align="right"> Ö°Î»ĞÔÖÊÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td width="180" align="right"> èŒä½æ€§è´¨æ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td >
-{#qishi_get_classify set="ÁĞ±íÃû:nature,ÀàĞÍ:QS_jobs_nature"#}
+{#qishi_get_classify set="åˆ—è¡¨å:nature,ç±»å‹:QS_jobs_nature"#}
 {#foreach from=$nature item=list#}
 <label><input type="radio" name="jobs_nature" value="{#$list.id#}"  {#if $show.jobs_nature == $list.id#}checked="checked"{#/if#} >{#$list.categoryname#}</label>
 {#/foreach#}
 </td>
       </tr>
 	  <tr>
-        <td width="180" align="right"> ĞÔ±ğÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td width="180" align="right"> æ€§åˆ«æ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td >
-		   <label><input name="jobs_sex"  type="radio" value="1" {#if $show.jobs_sex =="1"#}checked="checked"{#/if#}/>ÄĞ</label>&nbsp;&nbsp;&nbsp;
-		   <label><input name="jobs_sex"  type="radio" value="2" {#if $show.jobs_sex =="2"#}checked="checked"{#/if#}/>Å®</label>&nbsp;&nbsp;&nbsp;
-		   <label><input name="jobs_sex"  type="radio" value="0" {#if $show.jobs_sex =="0"#}checked="checked"{#/if#}/>Ëæ»ú<span style="color:#666666">(Ëæ»ú·¶Î§£ºÄĞ,Å®)</span></label>
+		   <label><input name="jobs_sex"  type="radio" value="1" {#if $show.jobs_sex =="1"#}checked="checked"{#/if#}/>ç”·</label>&nbsp;&nbsp;&nbsp;
+		   <label><input name="jobs_sex"  type="radio" value="2" {#if $show.jobs_sex =="2"#}checked="checked"{#/if#}/>å¥³</label>&nbsp;&nbsp;&nbsp;
+		   <label><input name="jobs_sex"  type="radio" value="0" {#if $show.jobs_sex =="0"#}checked="checked"{#/if#}/>éšæœº<span style="color:#666666">(éšæœºèŒƒå›´ï¼šç”·,å¥³)</span></label>
 	    </td>
       </tr>
 	  <tr>
-        <td width="180" align="right"> ÕĞÆ¸ÈËÊıÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td width="180" align="right"> æ‹›è˜äººæ•°æ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td >
  <input name="jobs_amount_min" type="text"  class="input_text_200" id="jobs_amount_min"   value="{#$show.jobs_amount_min#}" maxlength="3"  style="width:50px;"/>&nbsp;-&nbsp;<input name="jobs_amount_max" type="text"  class="input_text_200" id="jobs_amount_max"   value="{#$show.jobs_amount_max#}" maxlength="3"  style="width:50px;"/>
- Ëæ»úÈËÊı</td>
+ éšæœºäººæ•°</td>
       </tr>
 	  <tr>
-        <td width="180" align="right"> Ä¬ÈÏÓĞĞ§ÌìÊı£º</td>
+        <td width="180" align="right"> é»˜è®¤æœ‰æ•ˆå¤©æ•°ï¼š</td>
         <td >
  <input name="jobs_days_min" type="text"  class="input_text_200" id="jobs_days_min"   value="{#$show.jobs_days_min#}" maxlength="3"  style="width:50px;"/>&nbsp;-&nbsp;<input name="jobs_days_max" type="text"  class="input_text_200" id="jobs_days_max"   value="{#$show.jobs_days_max#}" maxlength="3"  style="width:50px;"/>
- Ëæ»úÌìÊı
+ éšæœºå¤©æ•°
 		</td>
       </tr>
 	  <tr>
-        <td width="180" align="right"> Ä¬ÈÏÖ°Î»·ÖÀàÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td width="180" align="right"> é»˜è®¤èŒä½åˆ†ç±»æ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td>
  
 <div>
-		{#qishi_get_classify set="ÁĞ±íÃû:li,ÀàĞÍ:QS_jobs,id:"|cat:$show.jobs_category#}
+		{#qishi_get_classify set="åˆ—è¡¨å:li,ç±»å‹:QS_jobs,id:"|cat:$show.jobs_category#}
 		<input type="text" value="{#foreach from=$li item=list#}{#if $list.id==$show.jobs_subclass#}{#$list.categoryname#}{#/if#}{#/foreach#}"  readonly="readonly" name="jobs_category_cn" id="jobs_category_cn" class="input_text_200 input_text_selsect"/>
 		<input name="jobs_category" id="jobs_category" type="hidden" value="{#$show.jobs_category#}" />
 		<input name="jobs_subclass" id="jobs_subclass" type="hidden" value="{#$show.jobs_subclass#}" />
 		<div id="menu5" class="dmenu shadow">
 			<ul>
-			{#qishi_get_classify set="ÁĞ±íÃû:jobs,ÀàĞÍ:QS_jobs"#}
+			{#qishi_get_classify set="åˆ—è¡¨å:jobs,ç±»å‹:QS_jobs"#}
 			{#foreach from=$jobs item=list#}
 			<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 			{#/foreach#}
@@ -94,16 +94,16 @@
 		</td>
       </tr>
 	    <tr>
-        <td align="right">¹¤×÷µØÇøÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td align="right">å·¥ä½œåœ°åŒºæ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td>
 	<div>
-		{#qishi_get_classify set="ÁĞ±íÃû:li,ÀàĞÍ:QS_district"#}
+		{#qishi_get_classify set="åˆ—è¡¨å:li,ç±»å‹:QS_district"#}
 		<input type="text" value="{#foreach from=$li item=list#}{#if $list.id==$show.jobs_district#}{#$list.categoryname#}{#/if#}{#/foreach#}"  readonly="readonly" name="jobs_district_cn" id="jobs_district_cn" class="input_text_200 input_text_selsect"/>
 		<input name="sdistrict" id="sdistrict" type="hidden" value="" />
 		<input name="jobs_district" id="jobs_district" type="hidden" value="{#$show.jobs_district#}" />
 		<div id="menu6" class="dmenu shadow">
 			<ul>
-			{#qishi_get_classify set="ÁĞ±íÃû:c_province,ÀàĞÍ:QS_district,id:0"#}
+			{#qishi_get_classify set="åˆ—è¡¨å:c_province,ç±»å‹:QS_district,id:0"#}
 			{#foreach from=$c_province item=list#}
 			<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 			{#/foreach#}
@@ -114,10 +114,10 @@
 	</td>
       </tr>
 	  <tr>
-        <td align="right">Ñ§ÀúÒªÇóÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td align="right">å­¦å†è¦æ±‚æ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td>
 	<div>
-	{#qishi_get_classify set="ÀàĞÍ:QS_education,ÁĞ±íÃû:li"#}
+	{#qishi_get_classify set="ç±»å‹:QS_education,åˆ—è¡¨å:li"#}
 		<input type="text" value="{#foreach from=$li item=list#}{#if $list.id==$show.jobs_education#}{#$list.categoryname#}{#/if#}{#/foreach#}"  readonly="readonly" name="jobs_education_cn" id="jobs_education_cn" class="input_text_200 input_text_selsect"/>
 		<input name="jobs_education" id="jobs_education" type="hidden" value="{#$show.jobs_education#}" />
 		<div id="menu7" class="menu">
@@ -131,11 +131,11 @@
 	</td>
       </tr>
 	  <tr>
-        <td align="right">¹¤×÷¾­ÑéÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td align="right">å·¥ä½œç»éªŒæ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td>
  
 	<div>
-	{#qishi_get_classify set="ÀàĞÍ:QS_experience,ÁĞ±íÃû:li"#}
+	{#qishi_get_classify set="ç±»å‹:QS_experience,åˆ—è¡¨å:li"#}
 		<input type="text" value="{#foreach from=$li item=list#}{#if $list.id==$show.jobs_experience#}{#$list.categoryname#}{#/if#}{#/foreach#}"  readonly="readonly" name="jobs_experience_cn" id="jobs_experience_cn" class="input_text_200 input_text_selsect"/>
 		<input name="jobs_experience" id="jobs_experience" type="hidden" value="{#$show.jobs_experience#}" />
 		<div id="menu8" class="menu">
@@ -149,10 +149,10 @@
 	</td>
       </tr>
 	  <tr>
-        <td align="right">Ğ½×Ê´ıÓöÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td align="right">è–ªèµ„å¾…é‡æ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td>
 	<div>
-	{#qishi_get_classify set="ÀàĞÍ:QS_wage,ÁĞ±íÃû:li"#}
+	{#qishi_get_classify set="ç±»å‹:QS_wage,åˆ—è¡¨å:li"#}
 		<input type="text" value="{#foreach from=$li item=list#}{#if $list.id==$show.jobs_wage#}{#$list.categoryname#}{#/if#}{#/foreach#}"  readonly="readonly" name="jobs_wage_cn" id="jobs_wage_cn" class="input_text_200 input_text_selsect"/>
 		<input name="jobs_wage" id="jobs_wage" type="hidden" value="{#$show.jobs_wage#}" />
 		<div id="menu9" class="menu">
@@ -169,7 +169,7 @@
 	        <tr>
         <td align="right">&nbsp;</td>
         <td height="50"><span style="font-size:14px;">
-          <input name="submit2222" type="submit" class="admin_submit"    value="±£´æĞŞ¸Ä"/>
+          <input name="submit2222" type="submit" class="admin_submit"    value="ä¿å­˜ä¿®æ”¹"/>
         </span></td>
       </tr>
     </table>

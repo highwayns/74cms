@@ -1,26 +1,26 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÎÄ¼şÉÏ´«
-|   @param: $dir      -- ´æ·ÅÄ¿Â¼,×îºó¼Ó"/" [×Ö´®] 
-|   @param: $file_var -- ±íµ¥±äÁ¿ [×Ö´®] 
-|   @param: $max_size -- Éè¶¨×î´óÉÏ´«Öµ,ÒÔkÎªµ¥Î». [ÕûÊı/¸¡µãÊı] 
-|   @param: $type     -- ÏŞ¶¨ºóê¡Ãû(Ğ¡Ğ´)£¬¶à¸öÓÃ"/"¸ô¿ª,²»ÏŞ¶¨ÔòÁô¿Õ [×Ö´®] 
-|   @param: $name     -- ÉÏ´«ºóÃüÃû,Áô¿ÕÔòÎªÔ­Ãû,trueÎªÏµÍ³Ëæ»ú¶¨Ãû [²¼ÁÖÖµ] 
-|   return: ÉÏ´«ºóÎÄ¼şÃû
+ * 74cms æ–‡ä»¶ä¸Šä¼ 
+|   @param: $dir      -- å­˜æ”¾ç›®å½•,æœ€ååŠ "/" [å­—ä¸²] 
+|   @param: $file_var -- è¡¨å•å˜é‡ [å­—ä¸²] 
+|   @param: $max_size -- è®¾å®šæœ€å¤§ä¸Šä¼ å€¼,ä»¥kä¸ºå•ä½. [æ•´æ•°/æµ®ç‚¹æ•°] 
+|   @param: $type     -- é™å®šåè¾å(å°å†™)ï¼Œå¤šä¸ªç”¨"/"éš”å¼€,ä¸é™å®šåˆ™ç•™ç©º [å­—ä¸²] 
+|   @param: $name     -- ä¸Šä¼ åå‘½å,ç•™ç©ºåˆ™ä¸ºåŸå,trueä¸ºç³»ç»Ÿéšæœºå®šå [å¸ƒæ—å€¼] 
+|   return: ä¸Šä¼ åæ–‡ä»¶å
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */ 
 function _asUpFiles($dir, $file_var, $max_size='', $type='', $name=false) 
 {
-if (!file_exists($dir)) adminmsg("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÉÏ´«Ä¿Â¼ ".$dir." ²»´æÔÚ!",0);
+if (!file_exists($dir)) adminmsg("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šä¸Šä¼ ç›®å½• ".$dir." ä¸å­˜åœ¨!",0);
 if (!is_writable($dir)) 
 {
-adminmsg("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÉÏ´«Ä¿Â¼ ".$dir." ÎŞ·¨Ğ´Èë!",0);
+adminmsg("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šä¸Šä¼ ç›®å½• ".$dir." æ— æ³•å†™å…¥!",0);
 exit(); 
 }
 $upfile=& $_FILES["$file_var"]; 
@@ -29,18 +29,18 @@ if (!($upfilename===''))
 { 
 if (!is_uploaded_file($upfile['tmp_name'])) 
 { 
-adminmsg('ÉÏ´«Í¼Æ¬Ê§°Ü£ºÄãÑ¡ÔñµÄÎÄ¼şÎŞ·¨ÉÏ´«',0);
+adminmsg('ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šä½ é€‰æ‹©çš„æ–‡ä»¶æ— æ³•ä¸Šä¼ ',0);
 exit(); 
 } 
 if ($max_size>0 && $upfile['size']/1024>$max_size) 
 { 
-adminmsg("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÎÄ¼ş´óĞ¡²»ÄÜ³¬¹ı  ".$max_size."KB",0);
+adminmsg("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šæ–‡ä»¶å¤§å°ä¸èƒ½è¶…è¿‡  ".$max_size."KB",0);
 exit(); 
 } 
 $ext_name = strtolower(str_replace(".", "", strrchr($upfilename, "."))); 
 if (!($type==='') && strpos($type, $ext_name)===false) 
 { 
-adminmsg("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÖ»ÔÊĞíÉÏ´« ".$type." µÄÎÄ¼ş£¡",0);
+adminmsg("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šåªå…è®¸ä¸Šä¼  ".$type." çš„æ–‡ä»¶ï¼",0);
 exit(); 
 }
 ($name==true)?$uploadname=time().mt_rand(100,999).".".$ext_name :'';
@@ -49,7 +49,7 @@ exit();
 //$uploadname = $name ? md5(uniqid(rand())).".".$ext_name : $upfilename; 
 if (!move_uploaded_file($upfile['tmp_name'], $dir.$uploadname)) 
 { 
-adminmsg('ÉÏ´«Í¼Æ¬Ê§°Ü£ºÎÄ¼şÉÏ´«³ö´í£¡',0);
+adminmsg('ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šæ–‡ä»¶ä¸Šä¼ å‡ºé”™ï¼',0);
  exit(); 
 } 
 return $uploadname; 
@@ -59,32 +59,32 @@ else
 return ''; 
 } 
 } 
-/*Í¼ÏóËõÂÔº¯Êı
-²ÎÊıËµÃ÷£º
-$srcfile Ô­Í¼µØÖ·£» 
-$dir  ĞÂÍ¼Ä¿Â¼ 
-$thumbwidth ËõĞ¡Í¼¿í×î´ó³ß´ç 
-$thumbheitht ËõĞ¡Í¼¸ß×î´ó³ß´ç 
-$ratio Ä¬ÈÏµÈ±ÈÀıËõ·Å Îª1ÊÇËõĞ¡µ½¹Ì¶¨³ß´ç¡£ 
+/*å›¾è±¡ç¼©ç•¥å‡½æ•°
+å‚æ•°è¯´æ˜ï¼š
+$srcfile åŸå›¾åœ°å€ï¼› 
+$dir  æ–°å›¾ç›®å½• 
+$thumbwidth ç¼©å°å›¾å®½æœ€å¤§å°ºå¯¸ 
+$thumbheitht ç¼©å°å›¾é«˜æœ€å¤§å°ºå¯¸ 
+$ratio é»˜è®¤ç­‰æ¯”ä¾‹ç¼©æ”¾ ä¸º1æ˜¯ç¼©å°åˆ°å›ºå®šå°ºå¯¸ã€‚ 
 */ 
 function makethumb($srcfile,$dir,$thumbwidth,$thumbheight,$ratio=0)
 { 
- //ÅĞ¶ÏÎÄ¼şÊÇ·ñ´æÔÚ 
+ //åˆ¤æ–­æ–‡ä»¶æ˜¯å¦å­˜åœ¨ 
 if (!file_exists($srcfile))return false;
- //Éú³ÉĞÂµÄÍ¬ÃûÎÄ¼ş£¬µ«Ä¿Â¼²»Í¬ 
+ //ç”Ÿæˆæ–°çš„åŒåæ–‡ä»¶ï¼Œä½†ç›®å½•ä¸åŒ 
 $imgname=explode('/',$srcfile); 
 $arrcount=count($imgname); 
 $dstfile = $dir.$imgname[$arrcount-1]; 
-//ËõÂÔÍ¼´óĞ¡ 
+//ç¼©ç•¥å›¾å¤§å° 
 $tow = $thumbwidth; 
 $toh = $thumbheight; 
 if($tow < 40) $tow = 40; 
 if($toh < 45) $toh = 45;    
- //»ñÈ¡Í¼Æ¬ĞÅÏ¢ 
+ //è·å–å›¾ç‰‡ä¿¡æ¯ 
     $im =''; 
     if($data = getimagesize($srcfile)) { 
         if($data[2] == 1) { 
-            $make_max = 0;//gif²»´¦Àí 
+            $make_max = 0;//gifä¸å¤„ç† 
             if(function_exists("imagecreatefromgif")) { 
                 $im = imagecreatefromgif($srcfile); 
             } 
@@ -114,7 +114,7 @@ if($toh < 45) $toh = 45;
         $ftow = $tow; 
         $ftoh = $toh; 
     } 
-    //ËõĞ¡Í¼Æ¬ 
+    //ç¼©å°å›¾ç‰‡ 
     if($srcw > $tow || $srch > $toh || $ratio) { 
         if(function_exists("imagecreatetruecolor") && function_exists("imagecopyresampled") && @$ni = imagecreatetruecolor($ftow, $ftoh)) { 
             imagecopyresampled($ni, $im, 0, 0, 0, 0, $ftow, $ftoh, $srcw, $srch); 
@@ -129,7 +129,7 @@ if($toh < 45) $toh = 45;
             imagepng($ni, $dstfile); 
         } 
     }else { 
-        //Ğ¡ÓÚ³ß´çÖ±½Ó¸´ÖÆ 
+        //å°äºå°ºå¯¸ç›´æ¥å¤åˆ¶ 
     copy($srcfile,$dstfile); 
     } 
     imagedestroy($im); 

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
  * 74cms WAP
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -80,14 +80,14 @@ elseif($act=="ajax_download_resume")
 		exit('-1');
 	}
 }
-// ÏÂÔØ¼òÀúÁªÏµ·½Ê½
+// ä¸‹è½½ç®€å†è”ç³»æ–¹å¼
 elseif($act=="ajax_download_resume_add")
 {
 	$resume_id=intval($_POST["resume_id"]);
 	$resume = resume_one($resume_id);
 	$company_info=get_company($_SESSION['uid']);
 	if($_SESSION["utype"]!=1){
-		exit("ÆóÒµ»áÔ±ÇëµÇÂ¼ºó²é¿´ÁªÏµ·½Ê½");
+		exit("ä¼ä¸šä¼šå‘˜è¯·ç™»å½•åæŸ¥çœ‹è”ç³»æ–¹å¼");
 	}
 	else
 	{
@@ -122,15 +122,15 @@ elseif($act=="ajax_download_resume_add")
 		{
 			if (empty($setmeal) || ($setmeal['endtime']<time() && $setmeal['endtime']<>"0"))
 			{
-				exit('ÄúµÄ·şÎñÒÑµ½ÆÚ,Äú¿ÉÒÔµÇÂ¼ÍøÒ³°æÉêÇë·şÎñ£¡');
+				exit('æ‚¨çš„æœåŠ¡å·²åˆ°æœŸ,æ‚¨å¯ä»¥ç™»å½•ç½‘é¡µç‰ˆç”³è¯·æœåŠ¡ï¼');
 			}
 			elseif ($resume['talent_']=='2' && $setmeal['download_resume_senior']<=0)
 			{
-				exit('ÄúÏÂÔØ¸ß¼¶ÈË²ÅÊıÁ¿ÒÑ¾­³¬³öÏŞÖÆ,Äú¿ÉÒÔµÇÂ¼ÍøÒ³°æÉêÇë·şÎñ£¡');
+				exit('æ‚¨ä¸‹è½½é«˜çº§äººæ‰æ•°é‡å·²ç»è¶…å‡ºé™åˆ¶,æ‚¨å¯ä»¥ç™»å½•ç½‘é¡µç‰ˆç”³è¯·æœåŠ¡ï¼');
 			}
 			elseif ($resume['talent_']=='1' && $setmeal['download_resume_ordinary']<=0)
 			{
-				exit('ÄãÏÂÔØ¼òÀúÊıÁ¿ÒÑ¾­³¬³öÁËÏŞÖÆ,Äú¿ÉÒÔµÇÂ¼ÍøÒ³°æÉêÇë·şÎñ£¡');
+				exit('ä½ ä¸‹è½½ç®€å†æ•°é‡å·²ç»è¶…å‡ºäº†é™åˆ¶,æ‚¨å¯ä»¥ç™»å½•ç½‘é¡µç‰ˆç”³è¯·æœåŠ¡ï¼');
 			}
 			else
 			{
@@ -146,11 +146,11 @@ elseif($act=="ajax_download_resume_add")
 			{
 				if (!empty($setmeal) && $_CFG['setmeal_to_points']=="1")
 				{
-					exit('ÄãµÄ·şÎñÒÑµ½ÆÚ»ò³¬³ö·şÎñÌõÊı¡£Äú¿ÉÒÔµÇÂ¼ÍøÒ³°æÉêÇë·şÎñ');
+					exit('ä½ çš„æœåŠ¡å·²åˆ°æœŸæˆ–è¶…å‡ºæœåŠ¡æ¡æ•°ã€‚æ‚¨å¯ä»¥ç™»å½•ç½‘é¡µç‰ˆç”³è¯·æœåŠ¡');
 				}
 				else
 				{
-					exit('ÄãµÄ'.$_CFG['points_byname'].' ²»×ã£¬Çë³äÖµºóÏÂÔØ');
+					exit('ä½ çš„'.$_CFG['points_byname'].' ä¸è¶³ï¼Œè¯·å……å€¼åä¸‹è½½');
 				}			
 			}else{
 				exit("ok");
@@ -198,15 +198,15 @@ elseif($act=="ajax_download_resume_add_save")
 					{
 					action_user_setmeal($_SESSION['uid'],"download_resume_senior");
 					$setmeal=get_user_setmeal($_SESSION['uid']);
-					write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄ¸ß¼¶¼òÀú,»¹¿ÉÒÔÏÂÔØ {$setmeal['download_resume_senior']} ·İ¸ß¼¶¼òÀú",2,1005,"ÏÂÔØ¸ß¼¶¼òÀú","1","{$setmeal['download_resume_senior']}");
-					write_memberslog($_SESSION['uid'],1,4001,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄ¼òÀú");
-					//Õ¾ÄÚĞÅ
+					write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„é«˜çº§ç®€å†,è¿˜å¯ä»¥ä¸‹è½½ {$setmeal['download_resume_senior']} ä»½é«˜çº§ç®€å†",2,1005,"ä¸‹è½½é«˜çº§ç®€å†","1","{$setmeal['download_resume_senior']}");
+					write_memberslog($_SESSION['uid'],1,4001,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„ç®€å†");
+					//ç«™å†…ä¿¡
 					if($pms_notice=='1'){
 						$company=$db->getone("select id,companyname  from ".table('company_profile')." where uid ={$_SESSION['uid']} limit 1");
 						// $user=$db->getone("select username from ".table('members')." where uid ={$resume['uid']} limit 1");
 						$resume_url=url_rewrite('QS_resume',array('id'=>$id));
 						$company_url=url_rewrite('QS_companyshow',array('id'=>$company['id']));
-						$message=$_SESSION['username']."ÏÂÔØÁËÄú·¢²¼µÄ¼òÀú£º<a href=\"{$resume_url}\" target=\"_blank\">{$resume['title']}</a>£¬<a href=\"$company_url\" target=\"_blank\">µã»÷²é¿´¹«Ë¾ÏêÇé</a>";
+						$message=$_SESSION['username']."ä¸‹è½½äº†æ‚¨å‘å¸ƒçš„ç®€å†ï¼š<a href=\"{$resume_url}\" target=\"_blank\">{$resume['title']}</a>ï¼Œ<a href=\"$company_url\" target=\"_blank\">ç‚¹å‡»æŸ¥çœ‹å…¬å¸è¯¦æƒ…</a>";
 						write_pmsnotice($resume['uid'],$ruser['username'],$message);
 					}
 					exit("ok");
@@ -218,15 +218,15 @@ elseif($act=="ajax_download_resume_add_save")
 					{
 					action_user_setmeal($_SESSION['uid'],"download_resume_ordinary");
 					$setmeal=get_user_setmeal($_SESSION['uid']);
-					write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄÆÕÍ¨¼òÀú,»¹¿ÉÒÔÏÂÔØ {$setmeal['download_resume_ordinary']} ·İÆÕÍ¨¼òÀú",2,1004,"ÏÂÔØÆÕÍ¨¼òÀú","1","{$setmeal['download_resume_ordinary']}");
-					write_memberslog($_SESSION['uid'],1,4001,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄ¼òÀú");
-					//Õ¾ÄÚĞÅ
+					write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„æ™®é€šç®€å†,è¿˜å¯ä»¥ä¸‹è½½ {$setmeal['download_resume_ordinary']} ä»½æ™®é€šç®€å†",2,1004,"ä¸‹è½½æ™®é€šç®€å†","1","{$setmeal['download_resume_ordinary']}");
+					write_memberslog($_SESSION['uid'],1,4001,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„ç®€å†");
+					//ç«™å†…ä¿¡
 					if($pms_notice=='1'){
 						$company=$db->getone("select id,companyname  from ".table('company_profile')." where uid ={$_SESSION['uid']} limit 1");
 						// $user=$db->getone("select username from ".table('members')." where uid ={$resume['uid']} limit 1");
 						$resume_url=url_rewrite('QS_resume',array('id'=>$id));
 						$company_url=url_rewrite('QS_companyshow',array('id'=>$company['id']));
-						$message=$_SESSION['username']."ÏÂÔØÁËÄú·¢²¼µÄ¼òÀú£º<a href=\"{$resume_url}\" target=\"_blank\">{$resume['title']}</a>£¬<a href=\"$company_url\" target=\"_blank\">µã»÷²é¿´¹«Ë¾ÏêÇé</a>";
+						$message=$_SESSION['username']."ä¸‹è½½äº†æ‚¨å‘å¸ƒçš„ç®€å†ï¼š<a href=\"{$resume_url}\" target=\"_blank\">{$resume['title']}</a>ï¼Œ<a href=\"$company_url\" target=\"_blank\">ç‚¹å‡»æŸ¥çœ‹å…¬å¸è¯¦æƒ…</a>";
 						write_pmsnotice($resume['uid'],$ruser['username'],$message);
 					}
 					exit("ok");
@@ -242,7 +242,7 @@ elseif($act=="ajax_download_resume_add_save")
 				$mypoints=get_user_points($_SESSION['uid']);
 				if  ($mypoints<$points)
 				{
-					exit("ÄúµÄ»ı·Ö²»×ã");
+					exit("æ‚¨çš„ç§¯åˆ†ä¸è¶³");
 				}
 				if (add_down_resume($resume_id,$_SESSION['uid'],$resume['uid'],$resume['title']))
 				{
@@ -252,18 +252,18 @@ elseif($act=="ajax_download_resume_add_save")
 					$user_points=get_user_points($_SESSION['uid']);
 					$operator=$ptype=="1"?"+":"-";
 					if($resume['talent_']=='2'){
-						write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄ¼òÀú({$operator}{$points}),(Ê£Óà:{$user_points})",1,1005,"ÏÂÔØ¸ß¼¶¼òÀú","{$operator}{$points}","{$user_points}");
+						write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„ç®€å†({$operator}{$points}),(å‰©ä½™:{$user_points})",1,1005,"ä¸‹è½½é«˜çº§ç®€å†","{$operator}{$points}","{$user_points}");
 					}elseif($resume['talent_']=='1'){
-						write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄ¼òÀú({$operator}{$points}),(Ê£Óà:{$user_points})",1,1004,"ÏÂÔØÆÕÍ¨¼òÀú","{$operator}{$points}","{$user_points}");
+						write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„ç®€å†({$operator}{$points}),(å‰©ä½™:{$user_points})",1,1004,"ä¸‹è½½æ™®é€šç®€å†","{$operator}{$points}","{$user_points}");
 					}
-					write_memberslog($_SESSION['uid'],1,4001,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄ¼òÀú");
-					//Õ¾ÄÚĞÅ
+					write_memberslog($_SESSION['uid'],1,4001,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„ç®€å†");
+					//ç«™å†…ä¿¡
 					if($pms_notice=='1'){
 						$company=$db->getone("select id,companyname  from ".table('company_profile')." where uid ={$_SESSION['uid']} limit 1");
 						// $user=$db->getone("select username from ".table('members')." where uid ={$resume['uid']} limit 1");
 						$resume_url=url_rewrite('QS_resume',array('id'=>$id));
 						$company_url=url_rewrite('QS_companyshow',array('id'=>$company['id']));
-						$message=$_SESSION['username']."ÏÂÔØÁËÄú·¢²¼µÄ¼òÀú£º<a href=\"{$resume_url}\" target=\"_blank\">{$resume['title']}</a>£¬<a href=\"$company_url\" target=\"_blank\">µã»÷²é¿´¹«Ë¾ÏêÇé</a>";
+						$message=$_SESSION['username']."ä¸‹è½½äº†æ‚¨å‘å¸ƒçš„ç®€å†ï¼š<a href=\"{$resume_url}\" target=\"_blank\">{$resume['title']}</a>ï¼Œ<a href=\"$company_url\" target=\"_blank\">ç‚¹å‡»æŸ¥çœ‹å…¬å¸è¯¦æƒ…</a>";
 						write_pmsnotice($resume['uid'],$ruser['username'],$message);
 					}
 					}

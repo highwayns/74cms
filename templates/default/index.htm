@@ -1,13 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />{#qishi_pageinfo set="ÁĞ±íÃû:page,µ÷ÓÃ:QS_index"#}
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />{#qishi_pageinfo set="åˆ—è¡¨å:page,è°ƒç”¨:QS_index"#}
 <title>{#$page.title#}</title>
 <meta name="description" content="{#$page.description#}">
 <meta name="keywords" content="{#$page.keywords#}">
 <meta http-equiv="X-UA-Compatible" content="edge">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/index.css" rel="stylesheet" type="text/css" />
@@ -20,7 +20,7 @@
 <script src="{#$QISHI.site_dir#}data/cache_classify.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
-	//Ñ¡Ïî¿¨ÇĞ»»
+	//é€‰é¡¹å¡åˆ‡æ¢
 	$(".n-tab-control>a").each(function(){
 		$(this).click(function(){
 			$(this).addClass("select"); 
@@ -29,16 +29,16 @@ jQuery(document).ready(function($) {
 			$(".news-tab-box>ul").eq(bull_index).show().siblings().hide();
 		})
 	});
-	//µÇÂ¼
+	//ç™»å½•
 	$.get('{#$QISHI.site_dir#}plus/ajax_user.php?act=loginform', function(data) {
 		$("#ajax_login").html(data);
-		// Ñ¡ÔñµÇÂ¼·½Ê½ 
+		// é€‰æ‹©ç™»å½•æ–¹å¼ 
 		var wxrun = '';
 		$('.loginicon').toggle(function(){
 			$('#pcLogin').hide();
 			$('#codeLogin').show();
-			$('#login-box h1').html('Î¢ĞÅµÇÂ¼');
-			$(this).attr('title', 'ÓÃ»§ÃûµÇÂ¼');
+			$('#login-box h1').html('å¾®ä¿¡ç™»å½•');
+			$(this).attr('title', 'ç”¨æˆ·åç™»å½•');
 			$(this).removeClass('wx').addClass('pc');
 			{#if $QISHI.weixin_apiopen=='1' && $QISHI.weixin_scan_login=='1' && $smarty.session.username==''#}
 			wxrun = window.setInterval(run, 5000);
@@ -53,19 +53,19 @@ jQuery(document).ready(function($) {
 		}, function(){
 			$('#pcLogin').show();
 			$('#codeLogin').hide();
-			$('#login-box h1').html('»áÔ±µÇÂ¼');
-			$(this).attr('title', 'Î¢ĞÅµÇÂ¼');
+			$('#login-box h1').html('ä¼šå‘˜ç™»å½•');
+			$(this).attr('title', 'å¾®ä¿¡ç™»å½•');
 			$(this).removeClass('pc').addClass('wx');
 			{#if $QISHI.weixin_apiopen=='1' && $QISHI.weixin_scan_login=='1' && $smarty.session.username==''#}
 			window.clearInterval(wxrun);
 			{#/if#}
 		});
 	});
-	// ×ó²àÏÂÀ­
+	// å·¦ä¾§ä¸‹æ‹‰
 	$.dropDownWidget(".job-sort-wrap");
-	// Ê×Ò³µÄÒ»Ğ©js
+	// é¦–é¡µçš„ä¸€äº›js
 	index("{#$QISHI.site_dir#}","{#$QISHI.site_template#}");
-	// ¹¤×÷µØÇøÌî³äÊı¾İ
+	// å·¥ä½œåœ°åŒºå¡«å……æ•°æ®
 	city_filldata("#city_list", QS_city_parent, QS_city, "#result-list-city", "#aui_outer_city", "#cityForIndexSearch", "#citycategory");
 	//
 	$('.floor-item:first').find('.floor-title').css({'margin-top':5});
@@ -77,65 +77,65 @@ jQuery(document).ready(function($) {
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
-<!-- Ö÷Ìå -->
+<!-- ä¸»ä½“ -->
 <div class="container-index">
 	<div class="complex-main clearfix">
 		<div class="complex-left f-left">
 			<div class="job-sort-wrap">
-				<div class="job-sort-control">È«²¿Ö°Î»·ÖÀà<i class="sotr-icon"></i></div>
+				<div class="job-sort-control">å…¨éƒ¨èŒä½åˆ†ç±»<i class="sotr-icon"></i></div>
 				<div class="job-sort-list"></div>
 				<div class="leftmenu_box"></div>
 			</div>
 			<div class="bolck-nav clearfix">
 				<a class="b-nav-item f-left" href="{#$QISHI.site_dir#}jobs" target="_blank">
 					<i class="b-nav-icon icon1"></i>
-					<p>ÕÒ¹¤×÷</p>
+					<p>æ‰¾å·¥ä½œ</p>
 				</a>
 				<a class="b-nav-item f-left" href="{#$QISHI.site_dir#}resume" target="_blank">
 					<i class="b-nav-icon icon2"></i>
-					<p>ÕÒÈË²Å</p>
+					<p>æ‰¾äººæ‰</p>
 				</a>
 				<a class="b-nav-item f-left" href="{#$QISHI.site_dir#}user/company/company_jobs.php?act=addjobs" target="_blank">
 					<i class="b-nav-icon icon9"></i>
-					<p>·¢Ö°Î»</p>
+					<p>å‘èŒä½</p>
 				</a>
 				<a class="b-nav-item f-left" href="{#$QISHI.site_dir#}user/personal/personal_resume.php?act=make1" target="_blank">
 					<i class="b-nav-icon icon4"></i>
-					<p>´´¼òÀú</p>
+					<p>åˆ›ç®€å†</p>
 				</a>
 				<a class="b-nav-item f-left" href="{#"QS_simplelist"|qishi_url#}" target="_blank">
 					<i class="b-nav-icon icon5"></i>
-					<p>Î¢ÉÌÈ¦</p>
+					<p>å¾®å•†åœˆ</p>
 				</a>
 				<a class="b-nav-item f-left" href="{#"QS_hrtoolsindex"|qishi_url#}" target="_blank">
 					<i class="b-nav-icon icon6"></i>
-					<p>HR¹¤¾ß</p>
+					<p>HRå·¥å…·</p>
 				</a>
 			</div>
 			<div class="news-tab">
 				<div class="n-tab-control clearfix">
-					<a href="javascript:;" class="f-left tab-ctrl select">¹«¸æ</a>
-					<a href="javascript:;" class="f-left tab-ctrl">×ÊÑ¶</a>
-					<a href="javascript:;" class="f-left tab-ctrl">°ïÖú</a>
+					<a href="javascript:;" class="f-left tab-ctrl select">å…¬å‘Š</a>
+					<a href="javascript:;" class="f-left tab-ctrl">èµ„è®¯</a>
+					<a href="javascript:;" class="f-left tab-ctrl">å¸®åŠ©</a>
 				</div>
 				<div class="news-tab-box">
-					<!-- ¹«¸æ -->
+					<!-- å…¬å‘Š -->
 					<ul>
-						{#qishi_notice_list set="ÁĞ±íÃû:notice,ÏÔÊ¾ÊıÄ¿:9,±êÌâ³¤¶È:12,·ÖÀà:1,Ìî²¹×Ö·û:..."#}
+						{#qishi_notice_list set="åˆ—è¡¨å:notice,æ˜¾ç¤ºæ•°ç›®:9,æ ‡é¢˜é•¿åº¦:12,åˆ†ç±»:1,å¡«è¡¥å­—ç¬¦:..."#}
 						{#foreach from=$notice item=list#}
 						<li><i class="tab-icon"></i><a href="{#$list.url#}" target="_blank" title="{#$list.title_#}" class="underline">{#$list.title#}</a></li>
 						{#/foreach#}
 					</ul>
-					<!-- ×ÊÑ¶ -->
+					<!-- èµ„è®¯ -->
 					<ul style="display: none;">
-						{#qishi_news_list set="ÁĞ±íÃû:news,ÏÔÊ¾ÊıÄ¿:9,±êÌâ³¤¶È:12,·ÖÀà:1,Ìî²¹×Ö·û:..."#}
+						{#qishi_news_list set="åˆ—è¡¨å:news,æ˜¾ç¤ºæ•°ç›®:9,æ ‡é¢˜é•¿åº¦:12,åˆ†ç±»:1,å¡«è¡¥å­—ç¬¦:..."#}
 						{#foreach from=$news item=list#}
 						<li><i class="tab-icon"></i><a href="{#$list.url#}" target="_blank" title="{#$list.title_#}" class="underline">{#$list.title#}</a></li>
 						{#/foreach#}
 					</ul>
-					<!-- °ïÖú -->
+					<!-- å¸®åŠ© -->
 					<ul style="display: none;">
-						{#qishi_help_list set="ÁĞ±íÃû:help,ÏÔÊ¾ÊıÄ¿:9,±êÌâ³¤¶È:12,Ìî²¹×Ö·û:..."#}
+						{#qishi_help_list set="åˆ—è¡¨å:help,æ˜¾ç¤ºæ•°ç›®:9,æ ‡é¢˜é•¿åº¦:12,å¡«è¡¥å­—ç¬¦:..."#}
 						{#foreach from=$help item=list#}
 						<li><i class="tab-icon"></i><a href="{#$list.url#}" target="_blank" title="{#$list.title_#}" class="underline">{#$list.title#}</a></li>
 						{#/foreach#}
@@ -144,23 +144,23 @@ jQuery(document).ready(function($) {
 			</div>
 		</div>
 		<div class="complex-center f-left">
-			<!-- ËÑË÷ -->
+			<!-- æœç´¢ -->
 			<div class="search-wrap clearfix">
 				<div class="search-box f-left">
 					<div class="search-type f-left">
-						<div title="ÕÒ¹¤×÷" code="QS_jobslist" data="ÇëÊäÈëÖ°Î»Ãû³Æ»òÆóÒµÃû³Æ" class="search-type-show"><span>ÕÒ¹¤×÷</span><i class="search-icon"></i></div>
-						<div title="ÕÒÈË²Å" code="QS_resumelist" data="ÇëÊäÈë¼òÀú¹Ø¼ü×Ö" class="search-type-drop"><a href="javascript:;">ÕÒÈË²Å</a></div>
+						<div title="æ‰¾å·¥ä½œ" code="QS_jobslist" data="è¯·è¾“å…¥èŒä½åç§°æˆ–ä¼ä¸šåç§°" class="search-type-show"><span>æ‰¾å·¥ä½œ</span><i class="search-icon"></i></div>
+						<div title="æ‰¾äººæ‰" code="QS_resumelist" data="è¯·è¾“å…¥ç®€å†å…³é”®å­—" class="search-type-drop"><a href="javascript:;">æ‰¾äººæ‰</a></div>
 					</div>
 					<div class="search-text f-left">
-						<input type="text" name="keyForIndexSearch" id="keyForIndexSearch" placeholder="ÇëÊäÈëÖ°Î»Ãû³Æ»òÆóÒµÃû³Æ" />
+						<input type="text" name="keyForIndexSearch" id="keyForIndexSearch" placeholder="è¯·è¾“å…¥èŒä½åç§°æˆ–ä¼ä¸šåç§°" />
 					</div>
 				</div>
 				<div class="search-box f-left">
-					<div class="search-area-box"><input type="text" name="cityForIndexSearch" id="cityForIndexSearch" placeholder="ÇëÊäÈë¹¤×÷µØÇø" /></div>
+					<div class="search-area-box"><input type="text" name="cityForIndexSearch" id="cityForIndexSearch" placeholder="è¯·è¾“å…¥å·¥ä½œåœ°åŒº" /></div>
 				</div>
-				<div class="search-submit f-left"><input type="button" name="btnForIndexSearch" id="btnForIndexSearch" code="QS_jobslist" value="ËÑË÷" class="search-submit" /></div>
+				<div class="search-submit f-left"><input type="button" name="btnForIndexSearch" id="btnForIndexSearch" code="QS_jobslist" value="æœç´¢" class="search-submit" /></div>
 				<input type="hidden" name="citycategory" id="citycategory" value="">
-				<!-- ¹¤×÷µØÇøµ¯³ö¿ò -->
+				<!-- å·¥ä½œåœ°åŒºå¼¹å‡ºæ¡† -->
 				<div class="aui_outer" id="aui_outer_city">
 					<table class="aui_border">
 						<tbody>
@@ -173,11 +173,11 @@ jQuery(document).ready(function($) {
 													<td class="aui_main">
 														<div class="aui_content" style="padding: 0px;">
 															<div class="LocalDataMultiC" style="width:623px;">
-																<div class="selector-header"><span class="selector-title">Ñ¡ÔñµØÇø</span><div></div><span id="ct-selector-save" class="selector-save">È·¶¨</span><span class="selector-close">X</span><div class="clear"></div></div>
+																<div class="selector-header"><span class="selector-title">é€‰æ‹©åœ°åŒº</span><div></div><span id="ct-selector-save" class="selector-save">ç¡®å®š</span><span class="selector-close">X</span><div class="clear"></div></div>
 
-																<div class="data-row-head"><div class="data-row"><div class="data-row-side data-row-side-c">×î¶àÑ¡ <strong class="text-warning">3</strong> Ïî&nbsp;&nbsp;ÒÑÑ¡ <strong id="arscity" class="text-warning">0</strong> Ïî</div><div id="result-list-city" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
+																<div class="data-row-head"><div class="data-row"><div class="data-row-side data-row-side-c">æœ€å¤šé€‰ <strong class="text-warning">3</strong> é¡¹&nbsp;&nbsp;å·²é€‰ <strong id="arscity" class="text-warning">0</strong> é¡¹</div><div id="result-list-city" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
 																<div class="data-row-list data-row-main" id="city_list">
-																	<!-- ÁĞ±íÄÚÈİ -->
+																	<!-- åˆ—è¡¨å†…å®¹ -->
 																</div>
 															</div>
 														</div>
@@ -191,11 +191,11 @@ jQuery(document).ready(function($) {
 						</tbody>
 					</table>
 				</div>
-				<!-- ¹¤×÷µØÇøµ¯³ö¿ò End-->
+				<!-- å·¥ä½œåœ°åŒºå¼¹å‡ºæ¡† End-->
 			</div>
-			<!-- ËÑË÷½áÊø -->
+			<!-- æœç´¢ç»“æŸ -->
 			<div class="swipe-wrap">
-				{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:6,µ÷ÓÃÃû³Æ:QS_indexfocus,ÁĞ±íÃû:ad"#}
+				{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:6,è°ƒç”¨åç§°:QS_indexfocus,åˆ—è¡¨å:ad"#}
 				<div id="playBox">
 					<div class="pre"></div>
 					<div class="next"></div>
@@ -214,7 +214,7 @@ jQuery(document).ready(function($) {
 				</div>
 			</div>
 			<div class="block-ad-wrap clearfix lazyload">
-				{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:6,µ÷ÓÃÃû³Æ:QS_indexrecommend,ÁĞ±íÃû:ad"#}
+				{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:6,è°ƒç”¨åç§°:QS_indexrecommend,åˆ—è¡¨å:ad"#}
 				{#if $ad#}
 					{#foreach from=$ad item=list#}
 					{#if $list.img_uid>0#}
@@ -238,35 +238,35 @@ jQuery(document).ready(function($) {
 		</div>
 		<div class="complex-right f-left">
 			<div class="login-block" id="ajax_login">
-				<h4>»áÔ±µÇÂ¼</h4>
+				<h4>ä¼šå‘˜ç™»å½•</h4>
 				<div class="login-wrap">
 					<div class="login-item">
-						<div class="login-text-box clearfix"><i class="login-icon user f-left"></i><div class="login-input f-left"><input type="text" name="" id="" placeholder="ÓÊÏä/ÊÖ»úºÅ/ÓÃ»§Ãû" /></div></div>
+						<div class="login-text-box clearfix"><i class="login-icon user f-left"></i><div class="login-input f-left"><input type="text" name="" id="" placeholder="é‚®ç®±/æ‰‹æœºå·/ç”¨æˆ·å" /></div></div>
 					</div>
 					<div class="login-item">
-						<div class="login-text-box clearfix"><i class="login-icon pass f-left"></i><div class="login-input f-left"><input type="password" name="" id="" placeholder="ÇëÊäÈëÃÜÂë" /></div></div>
+						<div class="login-text-box clearfix"><i class="login-icon pass f-left"></i><div class="login-input f-left"><input type="password" name="" id="" placeholder="è¯·è¾“å…¥å¯†ç " /></div></div>
 					</div>
 					<div class="login-item clearfix">
-						<label class="auto-login f-left"><input type="checkbox" name="" id="" />×Ô¶¯µÇÂ¼</label>
-						<a href="" class="forget underline f-right">Íü¼ÇÃÜÂë£¿</a>
+						<label class="auto-login f-left"><input type="checkbox" name="" id="" />è‡ªåŠ¨ç™»å½•</label>
+						<a href="" class="forget underline f-right">å¿˜è®°å¯†ç ï¼Ÿ</a>
 					</div>
 					<div class="login-item clearfix">
-						<div class="login-btn-box f-left"><input type="button" value="Á¢¼´µÇÂ¼" class="index-login-btn" /></div>
-						<div class="f-left"><input type="button" value="Ãâ·Ñ×¢²á" class="index-reg-btn" /></div>
+						<div class="login-btn-box f-left"><input type="button" value="ç«‹å³ç™»å½•" class="index-login-btn" /></div>
+						<div class="f-left"><input type="button" value="å…è´¹æ³¨å†Œ" class="index-reg-btn" /></div>
 					</div>
 					<div class="third-login clearfix">
-						<span class="f-left">ÆäËûÕË»§µÇÂ¼£º</span>
+						<span class="f-left">å…¶ä»–è´¦æˆ·ç™»å½•ï¼š</span>
 						<a href="" class="third-icon qq f-left"></a><a href="" class="third-icon sina f-left"></a><a href="" class="third-icon taobao f-left"></a>
 					</div>
 				</div>
 			</div>
 			<div class="urgent-block" id="emergencybox">
 				<div class="urgent-title clearfix">
-					<h4 class="f-left">½ô¼±ÕĞÆ¸</h4>
-					<a href="{#"QS_jobs"|qishi_url#}" class="underline f-right" target="_blank">¸ü¶à>></a>
+					<h4 class="f-left">ç´§æ€¥æ‹›è˜</h4>
+					<a href="{#"QS_jobs"|qishi_url#}" class="underline f-right" target="_blank">æ›´å¤š>></a>
 				</div>
 				<ul class="urgent-list">
-					{#qishi_jobs_list set="ÁĞ±íÃû:jobs,ÏÔÊ¾ÊıÄ¿:10,Ö°Î»Ãû³¤¶È:12,ÆóÒµÃû³¤¶È:12,½ô¼±ÕĞÆ¸:1,ÅÅĞò:refreshtime>desc"#}
+					{#qishi_jobs_list set="åˆ—è¡¨å:jobs,æ˜¾ç¤ºæ•°ç›®:10,èŒä½åé•¿åº¦:12,ä¼ä¸šåé•¿åº¦:12,ç´§æ€¥æ‹›è˜:1,æ’åº:refreshtime>desc"#}
 					{#foreach from=$jobs item=list#}
 					<li class="clearfix"><a href="{#$list.company_url#}" class="u-com f-left underline" target="_blank">{#$list.companyname#}</a><a href="{#$list.jobs_url#}" class="u-job f-left underline" title="{#$list.jobs_name_#}" target="_blank">{#$list.jobs_name#}</a></li>
 					{#/foreach#}
@@ -274,10 +274,10 @@ jQuery(document).ready(function($) {
 			</div>
 		</div>
 	</div>
-	<!-- ¹ã¸æÎ»¼¯ÖĞÇøÓò -->
+	<!-- å¹¿å‘Šä½é›†ä¸­åŒºåŸŸ -->
 	<div class="ad-area">
-		<!-- 1198*58 ¹ã¸æ  -->
-		{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:3,µ÷ÓÃÃû³Æ:QS_indextopimg,ÁĞ±íÃû:ad,ÎÄ×Ö³¤¶È:12"#}
+		<!-- 1198*58 å¹¿å‘Š  -->
+		{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:3,è°ƒç”¨åç§°:QS_indextopimg,åˆ—è¡¨å:ad,æ–‡å­—é•¿åº¦:12"#}
 		{#if $ad#}
 		{#foreach from=$ad item=list#}
 		<div class="ad-row clearfix lazyload">
@@ -285,15 +285,15 @@ jQuery(document).ready(function($) {
 		</div>
 		{#/foreach#}
 		{#/if#}
-		<!-- 392*58 ¹ã¸æ  ¸ñ×Ó¹ã¸æ-->
-		{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:6,µ÷ÓÃÃû³Æ:QS_indexcentreimg,ÁĞ±íÃû:ad,ÎÄ×Ö³¤¶È:12"#}
+		<!-- 392*58 å¹¿å‘Š  æ ¼å­å¹¿å‘Š-->
+		{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:6,è°ƒç”¨åç§°:QS_indexcentreimg,åˆ—è¡¨å:ad,æ–‡å­—é•¿åº¦:12"#}
 		{#if $ad#}
 		<div class="ad-row clearfix lazyload">
 			{#foreach from=$ad item=list#}
 			<div class="ad-item ad-31 f-left comimgtip">
 				<a href="{#$list.img_url#}" target="_blank"><img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/index/84.gif" alt="{#$list.img_explain#}" width="392" height="58" border="0" /></a>
 				{#if $list.jobs#}
-				<!-- Êó±êÖÁÉÏÏÔÊ¾ -->
+				<!-- é¼ æ ‡è‡³ä¸Šæ˜¾ç¤º -->
 				<div class="ad-more-info info31" style="display: none;">
 					<div class="ad-placeholder"></div>
 					<ul class="ad-job-list">
@@ -305,22 +305,22 @@ jQuery(document).ready(function($) {
 						<div class="companyname"><a href="{#$list.company_url#}" class="underline" target="_blank">{#$list.companyname#}</a></div>
 						<p>{#$list.briefly#}</p>
 					</div>
-					<a href="{#$list.company_url#}" class="ad-more" target="_blank">²é¿´¸ü¶àÄÚÈİ>></a>
+					<a href="{#$list.company_url#}" class="ad-more" target="_blank">æŸ¥çœ‹æ›´å¤šå†…å®¹>></a>
 				</div>
 				{#/if#}
 			</div>
 			{#/foreach#}
 		</div>
 		{#/if#}
-		<!-- 230x58 ¹ã¸æ  ¸ñ×Ó¹ã¸æ-->
-		{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:10,µ÷ÓÃÃû³Æ:QS_indexcentreimg_230x58,ÁĞ±íÃû:ad,ÎÄ×Ö³¤¶È:12"#}
+		<!-- 230x58 å¹¿å‘Š  æ ¼å­å¹¿å‘Š-->
+		{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:10,è°ƒç”¨åç§°:QS_indexcentreimg_230x58,åˆ—è¡¨å:ad,æ–‡å­—é•¿åº¦:12"#}
 		{#if $ad#}
 		<div class="ad-row a23058d clearfix lazyload">
 			{#foreach from=$ad item=list#}
 			<div class="ad-item ad-51 f-left comimgtip">
 				<a href="{#$list.img_url#}" target="_blank"><img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/index/84.gif" alt="{#$list.img_explain#}" width="230" height="58" border="0" /></a>
 				{#if $list.jobs#}
-				<!-- Êó±êÖÁÉÏÏÔÊ¾ -->
+				<!-- é¼ æ ‡è‡³ä¸Šæ˜¾ç¤º -->
 				<div class="ad-more-info info51" style="display: none;">
 					<div class="ad-placeholder"></div>
 					<ul class="ad-job-list">
@@ -332,7 +332,7 @@ jQuery(document).ready(function($) {
 						<div class="companyname"><a href="{#$list.company_url#}" class="underline" target="_blank">{#$list.companyname#}</a></div>
 						<p>{#$list.briefly#}</p>
 					</div>
-					<a href="{#$list.company_url#}" class="ad-more" target="_blank">²é¿´¸ü¶àÄÚÈİ>></a>
+					<a href="{#$list.company_url#}" class="ad-more" target="_blank">æŸ¥çœ‹æ›´å¤šå†…å®¹>></a>
 				</div>
 				{#/if#}
 			</div>
@@ -340,16 +340,16 @@ jQuery(document).ready(function($) {
 		</div>
 		{#/if#}
 	</div>
-	<!-- ¹ã¸æÎ»¼¯ÖĞÇøÓò½áÊø -->
-	<!-- ÁĞ±í-ÍÆ¼öÖ°Î» -->
+	<!-- å¹¿å‘Šä½é›†ä¸­åŒºåŸŸç»“æŸ -->
+	<!-- åˆ—è¡¨-æ¨èèŒä½ -->
 	<div class="index-data-wrap index-data-wrap-i7">
 		<div class="blue-line"></div>
 		<div class="data-title-box clearfix">
-			<h4 class="f-left">ÍÆ¼öÖ°Î»<span>Recommended Job</span></h4>
-			<a href="{#"QS_helplist,id:10"|qishi_url#}" class="f-right underline" target="_blank">ÎÒÊÇÕĞÆ¸µ¥Î»£¬ÎÒÏë³öÏÖÔÚÕâÀï</a>
+			<h4 class="f-left">æ¨èèŒä½<span>Recommended Job</span></h4>
+			<a href="{#"QS_helplist,id:10"|qishi_url#}" class="f-right underline" target="_blank">æˆ‘æ˜¯æ‹›è˜å•ä½ï¼Œæˆ‘æƒ³å‡ºç°åœ¨è¿™é‡Œ</a>
 		</div>
 		<div class="famous-list clearfix">
-			{#qishi_companyjobs_list set="ÁĞ±íÃû:comjob_recommend,ÏÔÊ¾ÊıÄ¿:12,ÏÔÊ¾Ö°Î»:3,ÍÆ¼ö:1,Í³¼ÆÖ°Î»:1"#}
+			{#qishi_companyjobs_list set="åˆ—è¡¨å:comjob_recommend,æ˜¾ç¤ºæ•°ç›®:12,æ˜¾ç¤ºèŒä½:3,æ¨è:1,ç»Ÿè®¡èŒä½:1"#}
 			{#foreach from=$comjob_recommend item=list#}
 			<div class="famous-items f-left">
 				<i class="fc-icon"></i>
@@ -357,16 +357,16 @@ jQuery(document).ready(function($) {
 					<a href="{#$list.company_url#}" class="underline" target="_balnk">{#$list.companyname#}{#if $QISHI.operation_mode>="2" &&  $list.setmeal_id>1 #} <img src="{#$QISHI.site_dir#}data/setmealimg/{#$list.setmeal_id#}.gif" border="0" title="{#$list.setmeal_name#}" class="vtip" />{#/if#}</a>
 					<div class="famous-more-info" style="display:none;">
 						<i class="fmi-icon"></i>
-						<div class="fmi-title">ÕĞÆ¸¸ÚÎ»</div>
+						<div class="fmi-title">æ‹›è˜å²—ä½</div>
 						<ul class="fmi-list">
-							{#qishi_jobs_list set="ÁĞ±íÃû:com_jobs_all,ÏÔÊ¾ÊıÄ¿:3,»áÔ±UID:$list.uid"#}
+							{#qishi_jobs_list set="åˆ—è¡¨å:com_jobs_all,æ˜¾ç¤ºæ•°ç›®:3,ä¼šå‘˜UID:$list.uid"#}
 							{#foreach from=$com_jobs_all item=job_li#}
 							<li class="clearfix">
 								<div class="fmi-jobname f-left"><a href="{#$job_li.jobs_url#}" class="underline" target="_balnk">{#$job_li.jobs_name#}</a></div><div class="fmi-time f-left"><span>{#$job_li.refreshtime_cn#}</span></div>
 							</li>
 							{#/foreach#}
 						</ul>
-						<p>¸ÃÆóÒµ¹²ÓĞ{#$list.jobs_num#}¸öÖ°Î»£¬<a href="{#"QS_companyjobs,id:$list.company_id"|qishi_url#}" target="_balnk" class="underline">²é¿´È«²¿</a></p>
+						<p>è¯¥ä¼ä¸šå…±æœ‰{#$list.jobs_num#}ä¸ªèŒä½ï¼Œ<a href="{#"QS_companyjobs,id:$list.company_id"|qishi_url#}" target="_balnk" class="underline">æŸ¥çœ‹å…¨éƒ¨</a></p>
 					</div>
 				</div>
 				<div class="famous-job">
@@ -379,9 +379,9 @@ jQuery(document).ready(function($) {
 			{#/foreach#}
 		</div>
 	</div>
-	<!-- ÁĞ±í-ÃûÆóÕĞÆ¸½áÊø -->
-	<!-- 1198*58 ¹ã¸æ  -->
-	{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:3,µ÷ÓÃÃû³Æ:QS_indexcenter,ÁĞ±íÃû:ad,ÎÄ×Ö³¤¶È:12"#}
+	<!-- åˆ—è¡¨-åä¼æ‹›è˜ç»“æŸ -->
+	<!-- 1198*58 å¹¿å‘Š  -->
+	{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:3,è°ƒç”¨åç§°:QS_indexcenter,åˆ—è¡¨å:ad,æ–‡å­—é•¿åº¦:12"#}
 	{#if $ad#}
 	<div class="ad-area">
 	{#foreach from=$ad item=list#}
@@ -391,15 +391,15 @@ jQuery(document).ready(function($) {
 	{#/foreach#}
 	</div>
 	{#/if#}
-	<!-- ÁĞ±í-×îĞÂÖ°Î» -->
+	<!-- åˆ—è¡¨-æœ€æ–°èŒä½ -->
 	<div class="index-data-wrap">
 		<div class="blue-line"></div>
 		<div class="data-title-box clearfix">
-			<h4 class="f-left">×îĞÂÖ°Î»<span>Latest Job</span></h4>
-			<a href="{#"QS_jobslist"|qishi_url#}" class="f-right underline" target="_blank">¸ü¶à>></a>
+			<h4 class="f-left">æœ€æ–°èŒä½<span>Latest Job</span></h4>
+			<a href="{#"QS_jobslist"|qishi_url#}" class="f-right underline" target="_blank">æ›´å¤š>></a>
 		</div>
 		<div class="newest-list clearfix">
-			{#qishi_companyjobs_list set="ÁĞ±íÃû:jobs,ÏÔÊ¾ÊıÄ¿:40,Ö°Î»Ãû³¤¶È:12,ÏÔÊ¾Ö°Î»:1,ÆóÒµÃû³¤¶È:12,ÅÅĞò:rtime>desc"#}
+			{#qishi_companyjobs_list set="åˆ—è¡¨å:jobs,æ˜¾ç¤ºæ•°ç›®:40,èŒä½åé•¿åº¦:12,æ˜¾ç¤ºèŒä½:1,ä¼ä¸šåé•¿åº¦:12,æ’åº:rtime>desc"#}
 			{#foreach from=$jobs item=list#}
 			<div class="newest-items f-left">
 				<i class="nc-icon"></i>
@@ -411,9 +411,9 @@ jQuery(document).ready(function($) {
 			{#/foreach#}
 		</div>
 	</div>
-	<!-- ÁĞ±í-×îĞÂÖ°Î»½áÊø -->
-	<!-- 1198*58 ¹ã¸æ  -->
-	{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:3,µ÷ÓÃÃû³Æ:QS_indexfootbanner,ÁĞ±íÃû:ad,ÎÄ×Ö³¤¶È:12"#}
+	<!-- åˆ—è¡¨-æœ€æ–°èŒä½ç»“æŸ -->
+	<!-- 1198*58 å¹¿å‘Š  -->
+	{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:3,è°ƒç”¨åç§°:QS_indexfootbanner,åˆ—è¡¨å:ad,æ–‡å­—é•¿åº¦:12"#}
 	{#if $ad#}
 	<div class="ad-area">
 	{#foreach from=$ad item=list#}
@@ -423,15 +423,15 @@ jQuery(document).ready(function($) {
 	{#/foreach#}
 	</div>
 	{#/if#}
-	<!-- ÁĞ±í-ÕÕÆ¬¼òÀú -->
+	<!-- åˆ—è¡¨-ç…§ç‰‡ç®€å† -->
 	<div class="index-data-wrap">
 		<div class="blue-line"></div>
 		<div class="data-title-box clearfix">
-			<h4 class="f-left">ÕÕÆ¬¼òÀú<span>Photo Resume</span></h4>
-			<a href="{#"QS_resumelist,photo:1"|qishi_url#}" class="f-right underline" target="_blank">¸ü¶à>></a>
+			<h4 class="f-left">ç…§ç‰‡ç®€å†<span>Photo Resume</span></h4>
+			<a href="{#"QS_resumelist,photo:1"|qishi_url#}" class="f-right underline" target="_blank">æ›´å¤š>></a>
 		</div>
 		<div class="photo-list clearfix">
-			{#qishi_resume_list set="ÁĞ±íÃû:resume,ÏÔÊ¾ÊıÄ¿:7,ÕÕÆ¬:1,ÒâÏòÖ°Î»³¤¶È:14,Ìî²¹×Ö·û:...,ÅÅĞò:rtime>desc"#}
+			{#qishi_resume_list set="åˆ—è¡¨å:resume,æ˜¾ç¤ºæ•°ç›®:7,ç…§ç‰‡:1,æ„å‘èŒä½é•¿åº¦:14,å¡«è¡¥å­—ç¬¦:...,æ’åº:rtime>desc"#}
 			{#foreach from=$resume item=list#}
 				<div class="photo-items f-left">
 					<div class="avater-box">
@@ -446,28 +446,28 @@ jQuery(document).ready(function($) {
 			{#/foreach#}
 		</div>
 	</div>
-	<!-- ÁĞ±í-ÕÕÆ¬¼òÀú½áÊø -->
-	<!-- ÁĞ±í-Ö°Î»µ¼º½ -->
+	<!-- åˆ—è¡¨-ç…§ç‰‡ç®€å†ç»“æŸ -->
+	<!-- åˆ—è¡¨-èŒä½å¯¼èˆª -->
 	<div class="index-data-wrap">
 		<div class="blue-line"></div>
 		<div class="data-title-box clearfix">
-			<h4 class="f-left">Ö°Î»µ¼º½<span>Jobs Navigation</span></h4>
+			<h4 class="f-left">èŒä½å¯¼èˆª<span>Jobs Navigation</span></h4>
 		</div>
 		<div class="job-build">
-			<!-- Â¥²ã1  -->
+			<!-- æ¥¼å±‚1  -->
 			<div class="floor-item">
-				<div class="floor-title"><em>1F</em><span>{#"QS_jobs,76"|qishi_categoryname#}&nbsp;¡¤&nbsp;{#"QS_jobs,77"|qishi_categoryname#}</span></div>
+				<div class="floor-title"><em>1F</em><span>{#"QS_jobs,76"|qishi_categoryname#}&nbsp;Â·&nbsp;{#"QS_jobs,77"|qishi_categoryname#}</span></div>
 				<div class="floor-box clearfix">
-					<!-- ·ÖÀà -->
+					<!-- åˆ†ç±» -->
 					<div class="floor-sort f-left">
-						{#qishi_get_classify set="ÁĞ±íÃû:subcate,ÀàĞÍ:QS_jobs_floor,ÏÔÊ¾ÊıÄ¿:20,id:76_77"#}
+						{#qishi_get_classify set="åˆ—è¡¨å:subcate,ç±»å‹:QS_jobs_floor,æ˜¾ç¤ºæ•°ç›®:20,id:76_77"#}
 						{#foreach from=$subcate item=list#}
 						<a href="{#"QS_jobslist,jobcategory:"|cat:74|cat:"."|cat:$list.parentid|cat:"."|cat:$list.id|qishi_url#}" class="f-sort-item f-left" target="_blank">{#$list.categoryname#}</a>
 						{#/foreach#}
 					</div>
-					<!-- Ö°Î» -->
+					<!-- èŒä½ -->
 					<div class="floor-jobs f-left">
-						{#qishi_companyjobs_list set="ÁĞ±íÃû:comjobs,ÏÔÊ¾ÊıÄ¿:10,ÏÔÊ¾Ö°Î»:3,Ö°Î»·ÖÀà:76_77"#}
+						{#qishi_companyjobs_list set="åˆ—è¡¨å:comjobs,æ˜¾ç¤ºæ•°ç›®:10,æ˜¾ç¤ºèŒä½:3,èŒä½åˆ†ç±»:76_77"#}
 						{#foreach from=$comjobs item=list#}
 						<div class="f-job-row">
 							<a href="{#$list.company_url#}" class="f-job-com underline" target="_blank">{#$list.companyname#}</a>
@@ -478,9 +478,9 @@ jQuery(document).ready(function($) {
 						{#/foreach#}
 
 					</div>
-					<!-- ¹ã¸æ Â¥²ã¹ã¸æ1 -->
+					<!-- å¹¿å‘Š æ¥¼å±‚å¹¿å‘Š1 -->
 					<div class="floor-ad-box f-left lazyload">
-						{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:4,µ÷ÓÃÃû³Æ:QS_floor_img1,ÁĞ±íÃû:ad,ÎÄ×Ö³¤¶È:12"#}
+						{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:4,è°ƒç”¨åç§°:QS_floor_img1,åˆ—è¡¨å:ad,æ–‡å­—é•¿åº¦:12"#}
 						{#if $ad#}
 						{#foreach from=$ad item=list#}
 						<div class="floor-ad"><a href="{#$list.img_url#}" target="_blank"><img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/index/84.gif" alt="{#$list.img_explain#}" width="378" height="60" border="0" /></a></div>
@@ -489,20 +489,20 @@ jQuery(document).ready(function($) {
 					</div>
 				</div>
 			</div>
-			<!-- Â¥²ã 2 -->
+			<!-- æ¥¼å±‚ 2 -->
 			<div class="floor-item">
-				<div class="floor-title"><em>2F</em><span>{#"QS_jobs,3"|qishi_categoryname#}&nbsp;¡¤&nbsp;{#"QS_jobs,5"|qishi_categoryname#}&nbsp;¡¤&nbsp;{#"QS_jobs,6"|qishi_categoryname#}</span></div>
+				<div class="floor-title"><em>2F</em><span>{#"QS_jobs,3"|qishi_categoryname#}&nbsp;Â·&nbsp;{#"QS_jobs,5"|qishi_categoryname#}&nbsp;Â·&nbsp;{#"QS_jobs,6"|qishi_categoryname#}</span></div>
 				<div class="floor-box clearfix">
-					<!-- ·ÖÀà -->
+					<!-- åˆ†ç±» -->
 					<div class="floor-sort f-left">
-						{#qishi_get_classify set="ÁĞ±íÃû:subcate,ÀàĞÍ:QS_jobs_floor,ÏÔÊ¾ÊıÄ¿:20,id:3_5_6"#}
+						{#qishi_get_classify set="åˆ—è¡¨å:subcate,ç±»å‹:QS_jobs_floor,æ˜¾ç¤ºæ•°ç›®:20,id:3_5_6"#}
 						{#foreach from=$subcate item=list#}
 						<a href="{#"QS_jobslist,jobcategory:"|cat:1|cat:"."|cat:$list.parentid|cat:"."|cat:$list.id|qishi_url#}" class="f-sort-item f-left" target="_blank">{#$list.categoryname#}</a>
 						{#/foreach#}
 					</div>
-					<!-- Ö°Î» -->
+					<!-- èŒä½ -->
 					<div class="floor-jobs f-left">
-						{#qishi_companyjobs_list set="ÁĞ±íÃû:comjobs,ÏÔÊ¾ÊıÄ¿:10,ÏÔÊ¾Ö°Î»:3,Ö°Î»·ÖÀà:3_5_6"#}
+						{#qishi_companyjobs_list set="åˆ—è¡¨å:comjobs,æ˜¾ç¤ºæ•°ç›®:10,æ˜¾ç¤ºèŒä½:3,èŒä½åˆ†ç±»:3_5_6"#}
 						{#foreach from=$comjobs item=list#}
 						<div class="f-job-row">
 							<a href="{#$list.company_url#}" class="f-job-com underline" target="_blank">{#$list.companyname#}</a>
@@ -513,9 +513,9 @@ jQuery(document).ready(function($) {
 						{#/foreach#}
 
 					</div>
-					<!-- ¹ã¸æ Â¥²ã¹ã¸æ1 -->
+					<!-- å¹¿å‘Š æ¥¼å±‚å¹¿å‘Š1 -->
 					<div class="floor-ad-box f-left lazyload">
-						{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:4,µ÷ÓÃÃû³Æ:QS_floor_img2,ÁĞ±íÃû:ad,ÎÄ×Ö³¤¶È:12"#}
+						{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:4,è°ƒç”¨åç§°:QS_floor_img2,åˆ—è¡¨å:ad,æ–‡å­—é•¿åº¦:12"#}
 						{#if $ad#}
 						{#foreach from=$ad item=list#}
 						<div class="floor-ad"><a href="{#$list.img_url#}" target="_blank"><img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/index/84.gif" alt="{#$list.img_explain#}" width="378" height="60" border="0" /></a></div>
@@ -524,20 +524,20 @@ jQuery(document).ready(function($) {
 					</div>
 				</div>
 			</div>
-			<!-- Â¥²ã 3 -->
+			<!-- æ¥¼å±‚ 3 -->
 			<div class="floor-item">
-				<div class="floor-title"><em>3F</em><span>{#"QS_jobs,117"|qishi_categoryname#}&nbsp;¡¤&nbsp;{#"QS_jobs,120"|qishi_categoryname#}&nbsp;¡¤&nbsp;{#"QS_jobs,121"|qishi_categoryname#}</span></div>
+				<div class="floor-title"><em>3F</em><span>{#"QS_jobs,117"|qishi_categoryname#}&nbsp;Â·&nbsp;{#"QS_jobs,120"|qishi_categoryname#}&nbsp;Â·&nbsp;{#"QS_jobs,121"|qishi_categoryname#}</span></div>
 				<div class="floor-box clearfix">
-					<!-- ·ÖÀà -->
+					<!-- åˆ†ç±» -->
 					<div class="floor-sort f-left">
-						{#qishi_get_classify set="ÁĞ±íÃû:subcate,ÀàĞÍ:QS_jobs_floor,ÏÔÊ¾ÊıÄ¿:20,id:117_120_121"#}
+						{#qishi_get_classify set="åˆ—è¡¨å:subcate,ç±»å‹:QS_jobs_floor,æ˜¾ç¤ºæ•°ç›®:20,id:117_120_121"#}
 						{#foreach from=$subcate item=list#}
 						<a href="{#"QS_jobslist,jobcategory:"|cat:116|cat:"."|cat:$list.parentid|cat:"."|cat:$list.id|qishi_url#}" class="f-sort-item f-left" target="_blank">{#$list.categoryname#}</a>
 						{#/foreach#}
 					</div>
-					<!-- Ö°Î» -->
+					<!-- èŒä½ -->
 					<div class="floor-jobs f-left">
-						{#qishi_companyjobs_list set="ÁĞ±íÃû:comjobs,ÏÔÊ¾ÊıÄ¿:10,ÏÔÊ¾Ö°Î»:3,Ö°Î»·ÖÀà:117_120_121"#}
+						{#qishi_companyjobs_list set="åˆ—è¡¨å:comjobs,æ˜¾ç¤ºæ•°ç›®:10,æ˜¾ç¤ºèŒä½:3,èŒä½åˆ†ç±»:117_120_121"#}
 						{#foreach from=$comjobs item=list#}
 						<div class="f-job-row">
 							<a href="{#$list.company_url#}" class="f-job-com underline" target="_blank">{#$list.companyname#}</a>
@@ -548,9 +548,9 @@ jQuery(document).ready(function($) {
 						{#/foreach#}
 
 					</div>
-					<!-- ¹ã¸æ Â¥²ã¹ã¸æ1 -->
+					<!-- å¹¿å‘Š æ¥¼å±‚å¹¿å‘Š1 -->
 					<div class="floor-ad-box f-left lazyload">
-						{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:4,µ÷ÓÃÃû³Æ:QS_floor_img3,ÁĞ±íÃû:ad,ÎÄ×Ö³¤¶È:12"#}
+						{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:4,è°ƒç”¨åç§°:QS_floor_img3,åˆ—è¡¨å:ad,æ–‡å­—é•¿åº¦:12"#}
 						{#if $ad#}
 						{#foreach from=$ad item=list#}
 						<div class="floor-ad"><a href="{#$list.img_url#}" target="_blank"><img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/index/84.gif" alt="{#$list.img_explain#}" width="378" height="60" border="0" /></a></div>
@@ -559,20 +559,20 @@ jQuery(document).ready(function($) {
 					</div>
 				</div>
 			</div>
-			<!-- Â¥²ã 4 -->
+			<!-- æ¥¼å±‚ 4 -->
 			<div class="floor-item">
-				<div class="floor-title"><em>4F</em><span>{#"QS_jobs,97"|qishi_categoryname#}&nbsp;¡¤&nbsp;{#"QS_jobs,98"|qishi_categoryname#}&nbsp;¡¤&nbsp;{#"QS_jobs,99"|qishi_categoryname#}</span></div>
+				<div class="floor-title"><em>4F</em><span>{#"QS_jobs,97"|qishi_categoryname#}&nbsp;Â·&nbsp;{#"QS_jobs,98"|qishi_categoryname#}&nbsp;Â·&nbsp;{#"QS_jobs,99"|qishi_categoryname#}</span></div>
 				<div class="floor-box clearfix">
-					<!-- ·ÖÀà -->
+					<!-- åˆ†ç±» -->
 					<div class="floor-sort f-left">
-						{#qishi_get_classify set="ÁĞ±íÃû:subcate,ÀàĞÍ:QS_jobs_floor,ÏÔÊ¾ÊıÄ¿:20,id:97_98_99"#}
+						{#qishi_get_classify set="åˆ—è¡¨å:subcate,ç±»å‹:QS_jobs_floor,æ˜¾ç¤ºæ•°ç›®:20,id:97_98_99"#}
 						{#foreach from=$subcate item=list#}
 						<a href="{#"QS_jobslist,jobcategory:"|cat:96|cat:"."|cat:$list.parentid|cat:"."|cat:$list.id|qishi_url#}" class="f-sort-item f-left" target="_blank">{#$list.categoryname#}</a>
 						{#/foreach#}
 					</div>
-					<!-- Ö°Î» -->
+					<!-- èŒä½ -->
 					<div class="floor-jobs f-left">
-						{#qishi_companyjobs_list set="ÁĞ±íÃû:comjobs,ÏÔÊ¾ÊıÄ¿:10,ÏÔÊ¾Ö°Î»:3,Ö°Î»·ÖÀà:97_98_99"#}
+						{#qishi_companyjobs_list set="åˆ—è¡¨å:comjobs,æ˜¾ç¤ºæ•°ç›®:10,æ˜¾ç¤ºèŒä½:3,èŒä½åˆ†ç±»:97_98_99"#}
 						{#foreach from=$comjobs item=list#}
 						<div class="f-job-row">
 							<a href="{#$list.company_url#}" class="f-job-com underline" target="_blank">{#$list.companyname#}</a>
@@ -583,9 +583,9 @@ jQuery(document).ready(function($) {
 						{#/foreach#}
 
 					</div>
-					<!-- ¹ã¸æ Â¥²ã¹ã¸æ1 -->
+					<!-- å¹¿å‘Š æ¥¼å±‚å¹¿å‘Š1 -->
 					<div class="floor-ad-box f-left lazyload">
-						{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:4,µ÷ÓÃÃû³Æ:QS_floor_img4,ÁĞ±íÃû:ad,ÎÄ×Ö³¤¶È:12"#}
+						{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:4,è°ƒç”¨åç§°:QS_floor_img4,åˆ—è¡¨å:ad,æ–‡å­—é•¿åº¦:12"#}
 						{#if $ad#}
 						{#foreach from=$ad item=list#}
 						<div class="floor-ad"><a href="{#$list.img_url#}" target="_blank"><img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/index/84.gif" alt="{#$list.img_explain#}" width="378" height="60" border="0" /></a></div>
@@ -594,20 +594,20 @@ jQuery(document).ready(function($) {
 					</div>
 				</div>
 			</div>
-			<!-- Â¥²ã 5 -->
+			<!-- æ¥¼å±‚ 5 -->
 			<div class="floor-item">
-				<div class="floor-title"><em>5F</em><span>{#"QS_jobs,50"|qishi_categoryname#}&nbsp;¡¤&nbsp;{#"QS_jobs,51"|qishi_categoryname#}&nbsp;¡¤&nbsp;{#"QS_jobs,52"|qishi_categoryname#}</span></div>
+				<div class="floor-title"><em>5F</em><span>{#"QS_jobs,50"|qishi_categoryname#}&nbsp;Â·&nbsp;{#"QS_jobs,51"|qishi_categoryname#}&nbsp;Â·&nbsp;{#"QS_jobs,52"|qishi_categoryname#}</span></div>
 				<div class="floor-box clearfix">
-					<!-- ·ÖÀà -->
+					<!-- åˆ†ç±» -->
 					<div class="floor-sort f-left">
-						{#qishi_get_classify set="ÁĞ±íÃû:subcate,ÀàĞÍ:QS_jobs_floor,ÏÔÊ¾ÊıÄ¿:20,id:50_51_52"#}
+						{#qishi_get_classify set="åˆ—è¡¨å:subcate,ç±»å‹:QS_jobs_floor,æ˜¾ç¤ºæ•°ç›®:20,id:50_51_52"#}
 						{#foreach from=$subcate item=list#}
 						<a href="{#"QS_jobslist,jobcategory:"|cat:49|cat:"."|cat:$list.parentid|cat:"."|cat:$list.id|qishi_url#}" class="f-sort-item f-left" target="_blank">{#$list.categoryname#}</a>
 						{#/foreach#}
 					</div>
-					<!-- Ö°Î» -->
+					<!-- èŒä½ -->
 					<div class="floor-jobs f-left">
-						{#qishi_companyjobs_list set="ÁĞ±íÃû:comjobs,ÏÔÊ¾ÊıÄ¿:10,ÏÔÊ¾Ö°Î»:3,Ö°Î»·ÖÀà:50_51_52"#}
+						{#qishi_companyjobs_list set="åˆ—è¡¨å:comjobs,æ˜¾ç¤ºæ•°ç›®:10,æ˜¾ç¤ºèŒä½:3,èŒä½åˆ†ç±»:50_51_52"#}
 						{#foreach from=$comjobs item=list#}
 						<div class="f-job-row">
 							<a href="{#$list.company_url#}" class="f-job-com underline" target="_blank">{#$list.companyname#}</a>
@@ -618,9 +618,9 @@ jQuery(document).ready(function($) {
 						{#/foreach#}
 
 					</div>
-					<!-- ¹ã¸æ Â¥²ã¹ã¸æ1 -->
+					<!-- å¹¿å‘Š æ¥¼å±‚å¹¿å‘Š1 -->
 					<div class="floor-ad-box f-left lazyload">
-						{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:4,µ÷ÓÃÃû³Æ:QS_floor_img5,ÁĞ±íÃû:ad,ÎÄ×Ö³¤¶È:12"#}
+						{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:4,è°ƒç”¨åç§°:QS_floor_img5,åˆ—è¡¨å:ad,æ–‡å­—é•¿åº¦:12"#}
 						{#if $ad#}
 						{#foreach from=$ad item=list#}
 						<div class="floor-ad"><a href="{#$list.img_url#}" target="_blank"><img original="{#$list.img_path#}" src="{#$QISHI.site_template#}images/index/84.gif" alt="{#$list.img_explain#}" width="378" height="60" border="0" /></a></div>
@@ -631,22 +631,22 @@ jQuery(document).ready(function($) {
 			</div>
 		</div>
 	</div>
-	<!-- ÁĞ±í-Ö°Î»µ¼º½½áÊø -->
-	<!-- ÁĞ±í-Ö°³¡×ÊÑ¶ -->
+	<!-- åˆ—è¡¨-èŒä½å¯¼èˆªç»“æŸ -->
+	<!-- åˆ—è¡¨-èŒåœºèµ„è®¯ -->
 	<div class="index-data-wrap">
 		<div class="blue-line"></div>
 		<div class="data-title-box clearfix">
-			<h4 class="f-left">Ö°³¡×ÊÑ¶<span>Workplace Information</span></h4>
-			<a href="{#"QS_news"|qishi_url#}" class="f-right underline" target="_blank">¸ü¶à>></a>
+			<h4 class="f-left">èŒåœºèµ„è®¯<span>Workplace Information</span></h4>
+			<a href="{#"QS_news"|qishi_url#}" class="f-right underline" target="_blank">æ›´å¤š>></a>
 		</div>
 		<div class="job-news-block clearfix">
 			<div class="jn-left f-left">
-				{#qishi_news_category set="ÁĞ±íÃû:newscategory,×ÊÑ¶´óÀà:1,ÏÔÊ¾ÊıÄ¿:4"#}
+				{#qishi_news_category set="åˆ—è¡¨å:newscategory,èµ„è®¯å¤§ç±»:1,æ˜¾ç¤ºæ•°ç›®:4"#}
 				{#section loop=$newscategory name=nclist#}
 				<div class="jn-box f-left">
 					<div class="jn-img f-left"><a href="{#"QS_newslist,id:$newscategory[nclist].id"|qishi_url#}" target="_blank"><img src="{#$QISHI.site_template#}images/news{#$smarty.section.nclist.index#}.jpg" width="163" height="98" border="0"></a></div>
 					<ul class="jn-list f-left">
-					{#qishi_news_list set="ÁĞ±íÃû:topnews,ÏÔÊ¾ÊıÄ¿:4,±êÌâ³¤¶È:18,×ÊÑ¶Ğ¡Àà:$newscategory[nclist].id,ÕªÒª³¤¶È:36,Ìî²¹×Ö·û:...,ÅÅĞò:id>desc"#}
+					{#qishi_news_list set="åˆ—è¡¨å:topnews,æ˜¾ç¤ºæ•°ç›®:4,æ ‡é¢˜é•¿åº¦:18,èµ„è®¯å°ç±»:$newscategory[nclist].id,æ‘˜è¦é•¿åº¦:36,å¡«è¡¥å­—ç¬¦:...,æ’åº:id>desc"#}
 					{#foreach from=$topnews item=toplist#}
 					<li><i class="jn-icon"></i><a target="_blank" href="{#$toplist.url#}" class="underline" title="{#$toplist.title_#}" target="_blank">{#$toplist.title#}</a></li>
 					{#/foreach#}
@@ -655,28 +655,28 @@ jQuery(document).ready(function($) {
 				{#/section#}
 			</div>
 			<ol class="jn-right f-left">
-				{#qishi_news_list set="ÁĞ±íÃû:news_list,ÏÔÊ¾ÊıÄ¿:8,±êÌâ³¤¶È:12,Ìî²¹×Ö·û:...,ÅÅĞò:click>desc"#}
+				{#qishi_news_list set="åˆ—è¡¨å:news_list,æ˜¾ç¤ºæ•°ç›®:8,æ ‡é¢˜é•¿åº¦:12,å¡«è¡¥å­—ç¬¦:...,æ’åº:click>desc"#}
 				{#section loop=$news_list name=nclist start=1#}
 				<li><span>{#$smarty.section.nclist.index#}</span><a href="{#$news_list[nclist].url#}" class="underline" target="_blank">{#$news_list[nclist].title#}</a></li>
 				{#/section#}
 			</ol>
 		</div>
 	</div>
-	<!-- ÁĞ±í-Ö°³¡×ÊÑ¶½áÊø -->
-	<!-- ÁĞ±í-ÓÑÇéÁ´½Ó -->
+	<!-- åˆ—è¡¨-èŒåœºèµ„è®¯ç»“æŸ -->
+	<!-- åˆ—è¡¨-å‹æƒ…é“¾æ¥ -->
 	<div class="index-data-wrap">
 		<div class="blue-line"></div>
 		<div class="data-title-box clearfix">
-			<h4 class="f-left">ÓÑÇéÁ´½Ó<span>Friendly Link</span></h4>
-			<a href="{#$QISHI.site_dir#}link/add_link.php" target="_blank"  class="f-right underline">ÉêÇë>></a>
+			<h4 class="f-left">å‹æƒ…é“¾æ¥<span>Friendly Link</span></h4>
+			<a href="{#$QISHI.site_dir#}link/add_link.php" target="_blank"  class="f-right underline">ç”³è¯·>></a>
 		</div>
 		<div class="friendly-link">
-			{#qishi_link set="ÁĞ±íÃû:link,ÏÔÊ¾ÊıÄ¿:100,µ÷ÓÃÃû³Æ:QS_index,ÀàĞÍ:1"#}
+			{#qishi_link set="åˆ—è¡¨å:link,æ˜¾ç¤ºæ•°ç›®:100,è°ƒç”¨åç§°:QS_index,ç±»å‹:1"#}
 			{#foreach from=$link item=list#}
 			<a href="{#$list.link_url#}" target="_blank" class="underline">{#$list.title#}</a>
 			{#/foreach#}
 		</div>
-		{#qishi_link  set="ÁĞ±íÃû:imglink,ÏÔÊ¾ÊıÄ¿:14,µ÷ÓÃÃû³Æ:QS_index,ÀàĞÍ:2"#}
+		{#qishi_link  set="åˆ—è¡¨å:imglink,æ˜¾ç¤ºæ•°ç›®:14,è°ƒç”¨åç§°:QS_index,ç±»å‹:2"#}
 		{#if $imglink#}
 		<div class="link_img">
 			{#foreach from=$imglink  item=list#}
@@ -686,9 +686,9 @@ jQuery(document).ready(function($) {
 		</div>
 		{#/if#}
 		</div>
-	<!-- ÁĞ±í-ÓÑÇéÁ´½Ó½áÊø -->
+	<!-- åˆ—è¡¨-å‹æƒ…é“¾æ¥ç»“æŸ -->
 </div>
-<!-- Ö÷Ìå½áÊø -->
+<!-- ä¸»ä½“ç»“æŸ -->
 {#include file="footer.htm"#}
 </body>
 </html>

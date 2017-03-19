@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script src="{#$QISHI.site_dir#}data/cache_classify.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 $(document).ready(function()
@@ -9,15 +9,15 @@ $(document).ready(function()
 	showmenu("#education_cn","#menu3","#education");
 	showmenu("#experience_cn","#menu4","#experience");
 	showmenu("#wage_cn","#menu5","#wage");
-	//ÉèÖÃĞÔ±ğÖĞÎÄ×Ö¶Î
+	//è®¾ç½®æ€§åˆ«ä¸­æ–‡å­—æ®µ
 	$("input[name='sex']").click(function(){$("#sex_cn").val($(this).attr("title"))	});
 	
-	//ÉèÖÃÖ°Î»ĞÔÖÊÖĞÎÄ×Ö¶Î
+	//è®¾ç½®èŒä½æ€§è´¨ä¸­æ–‡å­—æ®µ
 	$("input[name='nature']").click(function(){$("#nature_cn").val($(this).attr("title"))	});
 	jQuery.validator.addMethod("isPhoneNumber", function(value, element) {   
 	    var tel = /^((0\d{2,3}-[2-9][0-9]{6,7})|(0\d{2,3}[2-9][0-9]{6,7})|([2-9][0-9]{6,7})|(1[35847]\d{9}))$/;
 	    return this.optional(element) || (tel.test(value));
-	}, "ÇëÕıÈ·ÌîĞ´ÁªÏµµç»°");
+	}, "è¯·æ­£ç¡®å¡«å†™è”ç³»ç”µè¯");
 	$("#Form1").validate({
 	   rules:{
 	   jobs_name:{
@@ -54,47 +54,47 @@ $(document).ready(function()
 		},
 	    messages: {
 	    jobs_name: {
-	    required: "ÇëÊäÈëÖ°Î»Ãû³Æ",
-	    minlength: jQuery.format("Ö°Î»Ãû³Æ²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-		maxlength: jQuery.format("Ö°Î»Ãû³Æ²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+	    required: "è¯·è¾“å…¥èŒä½åç§°",
+	    minlength: jQuery.format("èŒä½åç§°ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+		maxlength: jQuery.format("èŒä½åç§°ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
 	   },
 	   amount: {
-	    required: "ÇëÊäÈëÕĞÆ¸ÈËÊı",
-	    range: jQuery.format("ÇëÊäÈëÒ»¸ö½éÓÚ {0} ºÍ {1} Ö®¼äµÄÖµ")
+	    required: "è¯·è¾“å…¥æ‹›è˜äººæ•°",
+	    range: jQuery.format("è¯·è¾“å…¥ä¸€ä¸ªä»‹äº {0} å’Œ {1} ä¹‹é—´çš„å€¼")
 	   },
 	    category: {
-	    required: jQuery.format("ÇëÑ¡ÔñÖ°Î»Àà±ğ£¬¾«È·Ñ¡ÔñÖ°Î»Àà±ğ¿ÉÒÔÓĞĞ§Ìá¸ßÕĞÆ¸Ğ§¹û")
+	    required: jQuery.format("è¯·é€‰æ‹©èŒä½ç±»åˆ«ï¼Œç²¾ç¡®é€‰æ‹©èŒä½ç±»åˆ«å¯ä»¥æœ‰æ•ˆæé«˜æ‹›è˜æ•ˆæœ")
 	   },
 	    district: {
-	    required: jQuery.format("ÇëÑ¡Ôñ¹¤×÷µØÇø")
+	    required: jQuery.format("è¯·é€‰æ‹©å·¥ä½œåœ°åŒº")
 	   },
 	   wage: {
-	    required: jQuery.format("ÇëÑ¡ÔñÔÂĞ½·¶Î§")
+	    required: jQuery.format("è¯·é€‰æ‹©æœˆè–ªèŒƒå›´")
 	   },
 	   education: {
-	    required: jQuery.format("ÇëÑ¡ÔñÑ§ÀúÒªÇó")
+	    required: jQuery.format("è¯·é€‰æ‹©å­¦å†è¦æ±‚")
 	   },
 	    experience: {
-	    required: jQuery.format("ÇëÑ¡Ôñ¹¤×÷¾­Ñé")
+	    required: jQuery.format("è¯·é€‰æ‹©å·¥ä½œç»éªŒ")
 	   },
 	   contents: {
-	    required: jQuery.format("ÇëÌîĞ´Ö°Î»ÃèÊö"),
-		minlength: jQuery.format("Ö°Î»ÃèÊöÄÚÈİ²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-		maxlength: jQuery.format("Ö°Î»ÃèÊöÄÚÈİ²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+	    required: jQuery.format("è¯·å¡«å†™èŒä½æè¿°"),
+		minlength: jQuery.format("èŒä½æè¿°å†…å®¹ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+		maxlength: jQuery.format("èŒä½æè¿°å†…å®¹ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
 	   },
 	   contact: {
-	    required: jQuery.format("ÇëÌîĞ´ÁªÏµÈË")
+	    required: jQuery.format("è¯·å¡«å†™è”ç³»äºº")
 	   },
 	    telephone: {
-	    required: jQuery.format("ÇëÌîĞ´ÁªÏµµç»°"),
-		isPhoneNumber: jQuery.format("ÇëÕıÈ·ÌîĞ´ÁªÏµµç»°")
+	    required: jQuery.format("è¯·å¡«å†™è”ç³»ç”µè¯"),
+		isPhoneNumber: jQuery.format("è¯·æ­£ç¡®å¡«å†™è”ç³»ç”µè¯")
 	   },
 	   address: {
-	    required: jQuery.format("ÇëÌîĞ´ÁªÏµµØÖ·")
+	    required: jQuery.format("è¯·å¡«å†™è”ç³»åœ°å€")
 	   },
 	   email: {
-	    required: jQuery.format("ÇëÌîĞ´µç×ÓÓÊÏä"),
-		email: jQuery.format("ÇëÕıÈ·ÌîĞ´µç×ÓÓÊÏä")
+	    required: jQuery.format("è¯·å¡«å†™ç”µå­é‚®ç®±"),
+		email: jQuery.format("è¯·æ­£ç¡®å¡«å†™ç”µå­é‚®ç®±")
 	   } 
 	  },
 	  errorPlacement: function(error, element) {
@@ -113,67 +113,67 @@ $(document).ready(function()
 	<div class="ptit"> {#$pageheader#}</div>
   <div class="clear"></div>
 </div>
-<div class="toptit">ĞŞ¸ÄÖ°Î»- <span style="color:#0066CC">{#$jobs.jobs_name#}</span> </div>
+<div class="toptit">ä¿®æ”¹èŒä½- <span style="color:#0066CC">{#$jobs.jobs_name#}</span> </div>
 <form id="Form1" name="Form1" method="post" action="?act=editjobs_save" >
 {#$inputtoken#}
   <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
 <tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">ËùÊô»áÔ±£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">æ‰€å±ä¼šå‘˜ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 {#$jobs.user.username#}
 		 </td>
       </tr>
 		<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">ËùÊôÆóÒµ£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">æ‰€å±ä¼ä¸šï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" class="link_lan">
             <a href="{#$jobs.company_url#}" target="_blank">{#$jobs.companyname#}</a>
 			 </td>
         </tr>
 		<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">Ë¢ĞÂÊ±¼ä£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">åˆ·æ–°æ—¶é—´ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" class="link_lan">
           {#$jobs.refreshtime|date_format:"%Y-%m-%d"#}
 			 </td>
         </tr>
 		 <tr>
-          <td width="110" height="30" align="right" bgcolor="#FFFFFF"  style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> Ö°Î»Ãû³Æ£º</td>
+          <td width="110" height="30" align="right" bgcolor="#FFFFFF"  style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> èŒä½åç§°ï¼š</td>
           <td  style=" border-bottom:1px #CCCCCC dashed"><input name="jobs_name" type="text" class="input_text_200" id="jobs_name" value="{#$jobs.jobs_name#}" maxlength="50" />
                </td>
         </tr>
         <tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span>  ÕĞÆ¸×´Ì¬£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span>  æ‹›è˜çŠ¶æ€ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
-		  <label><input name="display"  type="radio" value="1" {#if $jobs.display eq "1"#}checked="checked"{#/if#} />ÕĞÆ¸ÖĞ</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		 <label><input name="display"  type="radio" value="2" {#if $jobs.display eq "2"#}checked="checked"{#/if#} />ÔİÍ£ÕĞÆ¸</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  <label><input name="display"  type="radio" value="1" {#if $jobs.display eq "1"#}checked="checked"{#/if#} />æ‹›è˜ä¸­</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 <label><input name="display"  type="radio" value="2" {#if $jobs.display eq "2"#}checked="checked"{#/if#} />æš‚åœæ‹›è˜</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		 </td>
         </tr>
 		<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> ÉóºË×´Ì¬£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> å®¡æ ¸çŠ¶æ€ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
-		   <label><input name="audit"  type="radio" value="1" {#if $jobs.audit eq "1"#}checked="checked"{#/if#} />ÉóºËÍ¨¹ı</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		    <label><input name="audit"  type="radio" value="2" {#if $jobs.audit eq "2"#}checked="checked"{#/if#} />ÉóºËÖĞ</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		   <label><input name="audit"  type="radio" value="1" {#if $jobs.audit eq "1"#}checked="checked"{#/if#} />å®¡æ ¸é€šè¿‡</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    <label><input name="audit"  type="radio" value="2" {#if $jobs.audit eq "2"#}checked="checked"{#/if#} />å®¡æ ¸ä¸­</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		 
-		   <label><input name="audit"  type="radio" value="3" {#if $jobs.audit eq "3"#}checked="checked"{#/if#} />ÉóºËÎ´Í¨¹ı</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		   <label><input name="audit"  type="radio" value="3" {#if $jobs.audit eq "3"#}checked="checked"{#/if#} />å®¡æ ¸æœªé€šè¿‡</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		 </td>
         </tr>
        
 		 
 		<tr>
-          <td width="110" height="30" align="right" bgcolor="#FFFFFF"  style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> ĞÔ±ğÒªÇó£º</td>
+          <td width="110" height="30" align="right" bgcolor="#FFFFFF"  style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> æ€§åˆ«è¦æ±‚ï¼š</td>
           <td  style=" border-bottom:1px #CCCCCC dashed">
 		  
-		   <label><input name="sex"  type="radio" value="1"  title="ÄĞ" {#if $jobs.sex == "1"#}checked="checked"{#/if#} />ÄĞ</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		  <label><input name="sex"  type="radio" value="2"  title="Å®"  {#if $jobs.sex == "2"#}checked="checked"{#/if#} />Å®</label>
+		   <label><input name="sex"  type="radio" value="1"  title="ç”·" {#if $jobs.sex == "1"#}checked="checked"{#/if#} />ç”·</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  <label><input name="sex"  type="radio" value="2"  title="å¥³"  {#if $jobs.sex == "2"#}checked="checked"{#/if#} />å¥³</label>
 		  
 		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		   <label><input name="sex"  type="radio" value="3"  title="²»ÏŞ" {#if $jobs.sex == "3"#}checked="checked"{#/if#} />²»ÏŞ</label>
+		   <label><input name="sex"  type="radio" value="3"  title="ä¸é™" {#if $jobs.sex == "3"#}checked="checked"{#/if#} />ä¸é™</label>
 		   <input name="sex_cn" type="hidden" value="{#$jobs.sex_cn#}" id="sex_cn" />
 		  </td>
         </tr>
         <tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> Ö°Î»ĞÔÖÊ£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> èŒä½æ€§è´¨ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
-		  {#qishi_get_classify set="ÁĞ±íÃû:nature,ÀàĞÍ:QS_jobs_nature"#}
+		  {#qishi_get_classify set="åˆ—è¡¨å:nature,ç±»å‹:QS_jobs_nature"#}
 {#foreach from=$nature item=list#}
 <label><input type="radio" name="nature" value="{#$list.id#}" title="{#$list.categoryname#}" {#if $jobs.nature == $list.id#}checked="checked"{#/if#} >{#$list.categoryname#}</label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -182,26 +182,26 @@ $(document).ready(function()
 		  </td>
         </tr>
         <tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold;">*</span> ÕĞÆ¸ÈËÊı£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold;">*</span> æ‹›è˜äººæ•°ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><input name="amount" type="text" class="input_text_200" id="amount" value="{#$jobs.amount#}" maxlength="4" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
-            ÈË</td>
+            äºº</td>
         </tr>
         <tr>
-          <td height="30" align="right" bgcolor="#FFFFFF"style=" border-bottom:1px #CCCCCC dashed">ÓĞĞ§ÈÕÆÚ£º</td>
-          <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">·¢²¼ÈÕÆÚ£º{#$jobs.addtime|date_format:"%Y-%m-%d %H:%M"#}£¬½ØÖ¹ÈÕÆÚ£º{#$jobs.deadline|date_format:"%Y-%m-%d %H:%M"#}<input name="olddeadline" type="hidden" value="{#$jobs.deadline#}" /></td>
+          <td height="30" align="right" bgcolor="#FFFFFF"style=" border-bottom:1px #CCCCCC dashed">æœ‰æ•ˆæ—¥æœŸï¼š</td>
+          <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">å‘å¸ƒæ—¥æœŸï¼š{#$jobs.addtime|date_format:"%Y-%m-%d %H:%M"#}ï¼Œæˆªæ­¢æ—¥æœŸï¼š{#$jobs.deadline|date_format:"%Y-%m-%d %H:%M"#}<input name="olddeadline" type="hidden" value="{#$jobs.deadline#}" /></td>
         </tr>
         <tr>
-          <td height="30" align="right"   bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> Ö°Î»Àà±ğ£º</td>
+          <td height="30" align="right"   bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> èŒä½ç±»åˆ«ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 		   
 <div>
-		<input type="text" value="{#$jobs.category_cn|default:"ÇëÑ¡Ôñ"#}"  readonly="readonly" name="category_cn" id="category_cn" class="input_text_200 input_text_selsect"/>
+		<input type="text" value="{#$jobs.category_cn|default:"è¯·é€‰æ‹©"#}"  readonly="readonly" name="category_cn" id="category_cn" class="input_text_200 input_text_selsect"/>
 		<input name="topclass" id="topclass" type="hidden" value="{#$jobs.topclass#}" />
 		<input name="category" id="category" type="hidden" value="{#$jobs.category#}" />
 		<input name="subclass" id="subclass" type="hidden" value="{#$jobs.subclass#}" />
 		<div id="menu1" class="dmenu shadow">
 			<ul>
-			{#qishi_get_classify set="ÁĞ±íÃû:joblist,ÀàĞÍ:QS_jobs"#}
+			{#qishi_get_classify set="åˆ—è¡¨å:joblist,ç±»å‹:QS_jobs"#}
 			{#foreach from=$joblist item=list#}
 			<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 			{#/foreach#}
@@ -213,15 +213,15 @@ $(document).ready(function()
 		  </td>
         </tr>
         <tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> ¹¤×÷µØÇø£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> å·¥ä½œåœ°åŒºï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 		  <div>
-				<input type="text" value="{#$jobs.district_cn|default:"ÇëÑ¡Ôñ"#}"  readonly="readonly" name="district_cn" id="district_cn" class="input_text_200 input_text_selsect"/>
+				<input type="text" value="{#$jobs.district_cn|default:"è¯·é€‰æ‹©"#}"  readonly="readonly" name="district_cn" id="district_cn" class="input_text_200 input_text_selsect"/>
 		<input name="district" id="district" type="hidden" value="{#$jobs.district#}" />
 		<input name="sdistrict" id="sdistrict" type="hidden" value="{#$jobs.sdistrict#}" />
 		<div id="menu2" class="dmenu shadow">
 			<ul>
-			{#qishi_get_classify set="ÁĞ±íÃû:c_province,ÀàĞÍ:QS_district,id:0"#}
+			{#qishi_get_classify set="åˆ—è¡¨å:c_province,ç±»å‹:QS_district,id:0"#}
 			{#foreach from=$c_province item=list#}
 			<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 			{#/foreach#}
@@ -233,11 +233,11 @@ $(document).ready(function()
 		  </td>
         </tr>
 		   <tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"> Ñ§ÀúÒªÇó£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"> å­¦å†è¦æ±‚ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 		  <div>
-	{#qishi_get_classify set="ÀàĞÍ:QS_education,ÁĞ±íÃû:li"#}
-		<input type="text" value="{#$jobs.education_cn|default:"ÇëÑ¡Ôñ"#}"  readonly="readonly" name="education_cn" id="education_cn" class="input_text_200 input_text_selsect"/>
+	{#qishi_get_classify set="ç±»å‹:QS_education,åˆ—è¡¨å:li"#}
+		<input type="text" value="{#$jobs.education_cn|default:"è¯·é€‰æ‹©"#}"  readonly="readonly" name="education_cn" id="education_cn" class="input_text_200 input_text_selsect"/>
 		<input name="education" id="education" type="hidden" value="{#$jobs.education#}" />
 		<div id="menu3" class="menu">
 			<ul>
@@ -250,12 +250,12 @@ $(document).ready(function()
 		   </td>
           </tr>
 				<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">¹¤×÷¾­Ñé£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">å·¥ä½œç»éªŒï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 		 
 		 <div>
-	{#qishi_get_classify set="ÀàĞÍ:QS_experience,ÁĞ±íÃû:li"#}
-		<input type="text" value="{#$jobs.experience_cn|default:"ÇëÑ¡Ôñ"#}"  readonly="readonly" name="experience_cn" id="experience_cn" class="input_text_200 input_text_selsect"/>
+	{#qishi_get_classify set="ç±»å‹:QS_experience,åˆ—è¡¨å:li"#}
+		<input type="text" value="{#$jobs.experience_cn|default:"è¯·é€‰æ‹©"#}"  readonly="readonly" name="experience_cn" id="experience_cn" class="input_text_200 input_text_selsect"/>
 		<input name="experience" id="experience" type="hidden" value="{#$jobs.experience#}" />
 		<div id="menu4" class="menu">
 			<ul>
@@ -271,11 +271,11 @@ $(document).ready(function()
 				
         <tr>
           <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
-		  <span style="color:#FF3300; font-weight:bold">*</span> ÔÂĞ½·¶Î§£º</td>
+		  <span style="color:#FF3300; font-weight:bold">*</span> æœˆè–ªèŒƒå›´ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 		  <div>
-	{#qishi_get_classify set="ÀàĞÍ:QS_wage,ÁĞ±íÃû:li"#}
-		<input type="text" value="{#$jobs.wage_cn|default:"ÇëÑ¡Ôñ"#}"  readonly="readonly" name="wage_cn" id="wage_cn" class="input_text_200 input_text_selsect"/>
+	{#qishi_get_classify set="ç±»å‹:QS_wage,åˆ—è¡¨å:li"#}
+		<input type="text" value="{#$jobs.wage_cn|default:"è¯·é€‰æ‹©"#}"  readonly="readonly" name="wage_cn" id="wage_cn" class="input_text_200 input_text_selsect"/>
 		<input name="wage" id="wage" type="hidden" value="{#$jobs.wage#}" />
 		<div id="menu5" class="menu">
 			<ul>
@@ -290,69 +290,69 @@ $(document).ready(function()
 
         <tr>
           <td align="right" valign="top" bgcolor="#FFFFFF" >
-		  <span style="color:#FF3300; font-weight:bold">*</span> Ö°Î»ÃèÊö£º</td>
+		  <span style="color:#FF3300; font-weight:bold">*</span> èŒä½æè¿°ï¼š</td>
           <td bgcolor="#FFFFFF"  >
 		  <textarea name="contents" class="company_mb_textarea" id="contents" style="width:580px; height:180px;" >{#$jobs.contents#}</textarea>
             <br />
-            <div style="line-height:30px; height:30px;">&nbsp;ËµÃ÷£ºÇëÏêÏ¸ÃèÊö¸ÃÖ°Î»£¬ÄÚÈİ¿É°üÀ¨£ºÖ°Î»ÒªÇó£¬¸ÚÎ»Ö°ÔğµÈ¡£</div> 
+            <div style="line-height:30px; height:30px;">&nbsp;è¯´æ˜ï¼šè¯·è¯¦ç»†æè¿°è¯¥èŒä½ï¼Œå†…å®¹å¯åŒ…æ‹¬ï¼šèŒä½è¦æ±‚ï¼Œå²—ä½èŒè´£ç­‰ã€‚</div> 
 		</td>
         </tr>
 		<tr>
           <td height="30" align="right"  >
-		<span style="color:#FF3300; font-weight:bold">*</span> Ó¦½ìÉúÓ¦Æ¸£º</td>
+		<span style="color:#FF3300; font-weight:bold">*</span> åº”å±Šç”Ÿåº”è˜ï¼š</td>
           <td  >	 
-		  <label><input name="graduate" type="radio" value="0"  {#if $jobs.graduate=="0"#}checked="checked"{#/if#} />²»ÔÊĞí</label>
-		   <label><input type="radio" name="graduate" value="1"  {#if $jobs.graduate=="1"#}checked="checked"{#/if#} />ÔÊĞí</label>
+		  <label><input name="graduate" type="radio" value="0"  {#if $jobs.graduate=="0"#}checked="checked"{#/if#} />ä¸å…è®¸</label>
+		   <label><input type="radio" name="graduate" value="1"  {#if $jobs.graduate=="1"#}checked="checked"{#/if#} />å…è®¸</label>
 		  </td>
         </tr>
 		
 		</table>
 		
-<div class="toptit">ÁªÏµ·½Ê½</div>
+<div class="toptit">è”ç³»æ–¹å¼</div>
 		  <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
 		<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> Áª Ïµ ÈË£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> è” ç³» äººï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 		  <input name="contact" type="text" class="input_text_200" id="contact" value="{#$jobs.contact.contact#}" maxlength="15" />
-           <label><input name="contact_show"  type="checkbox" value="1" {#if $jobs.contact.contact_show=="1"#}checked="checked"{#/if#} />ÁªÏµÈËÔÚÖ°Î»ÏêÏ¸Ò³ÖĞÏÔÊ¾
+           <label><input name="contact_show"  type="checkbox" value="1" {#if $jobs.contact.contact_show=="1"#}checked="checked"{#/if#} />è”ç³»äººåœ¨èŒä½è¯¦ç»†é¡µä¸­æ˜¾ç¤º
 		  </td>
          </tr>
        	<!--	<tr>
-         <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold"> </span>ÁªÏµÈËQQºÅÂë£º</td>
+         <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold"> </span>è”ç³»äººQQå·ç ï¼š</td>
          <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
        		  <input name="qq" type="text" class="input_text_200" id="qq" maxlength="50" value="{#$jobs.contact.qq#}" />
-       		  <label><input name="qq_show"  type="checkbox" value="1" {#if $jobs.contact.qq_show=="1"#}checked="checked"{#/if#}/>ÁªÏµqqÔÚÖ°Î»ÏêÏ¸Ò³ÖĞÏÔÊ¾</label>
+       		  <label><input name="qq_show"  type="checkbox" value="1" {#if $jobs.contact.qq_show=="1"#}checked="checked"{#/if#}/>è”ç³»qqåœ¨èŒä½è¯¦ç»†é¡µä¸­æ˜¾ç¤º</label>
           </td>
        </tr> -->
 		<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> ÁªÏµµç»°£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> è”ç³»ç”µè¯ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 		  <input name="telephone" type="text" class="input_text_200" id="telephone" maxlength="35" value="{#$jobs.contact.telephone#}" />
-           <label><input name="telephone_show"  type="checkbox" value="1" {#if $jobs.contact.telephone_show=="1"#}checked="checked"{#/if#} />ÁªÏµµç»°ÔÚÖ°Î»ÏêÏ¸Ò³ÖĞÏÔÊ¾
+           <label><input name="telephone_show"  type="checkbox" value="1" {#if $jobs.contact.telephone_show=="1"#}checked="checked"{#/if#} />è”ç³»ç”µè¯åœ¨èŒä½è¯¦ç»†é¡µä¸­æ˜¾ç¤º
 		  </td>
         </tr>
 	<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> ÁªÏµÓÊÏä£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> è”ç³»é‚®ç®±ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><label>
           <input name="email" type="text" class="input_text_200" id="email" maxlength="80"  value="{#$jobs.contact.email#}"/>
           </label>
-           <label><input name="email_show"  type="checkbox" value="1" {#if $jobs.contact.email_show=="1"#}checked="checked"{#/if#} />ÁªÏµÓÊÏäÔÚÖ°Î»ÏêÏ¸Ò³ÖĞÏÔÊ¾
+           <label><input name="email_show"  type="checkbox" value="1" {#if $jobs.contact.email_show=="1"#}checked="checked"{#/if#} />è”ç³»é‚®ç®±åœ¨èŒä½è¯¦ç»†é¡µä¸­æ˜¾ç¤º
 		  </td>
         </tr>
         <tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> ÁªÏµµØÖ·£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF3300; font-weight:bold">*</span> è”ç³»åœ°å€ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 		  <input name="address" type="text" class="input_text_200" id="address" maxlength="50"  value="{#$jobs.contact.address#}"/>
-           <label><!-- <input name="address_show"  type="checkbox" value="1" {#if $jobs.contact.address_show=="1"#}checked="checked"{#/if#} />ÁªÏµµØÖ·ÔÚÖ°Î»ÏêÏ¸Ò³ÖĞÏÔÊ¾ -->
+           <label><!-- <input name="address_show"  type="checkbox" value="1" {#if $jobs.contact.address_show=="1"#}checked="checked"{#/if#} />è”ç³»åœ°å€åœ¨èŒä½è¯¦ç»†é¡µä¸­æ˜¾ç¤º -->
 		  </td>
         </tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">ÓÃÓÊÏä½ÓÊÕ¼òÀú?</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">ç”¨é‚®ç®±æ¥æ”¶ç®€å†?</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><label>
-            <input name="notify" type="radio" value="1" {#if $jobs.contact.notify eq 1#}checked="checked"{#/if#} /> ½ÓÊÕ
+            <input name="notify" type="radio" value="1" {#if $jobs.contact.notify eq 1#}checked="checked"{#/if#} /> æ¥æ”¶
           </label> &nbsp;&nbsp;&nbsp;
             <label>
-            <input type="radio" name="notify" value="0" {#if $jobs.contact.notify eq "0"#}checked="checked"{#/if#}/>²»½ÓÊÕ            </label> 
-            <span style="color: #666666"> &nbsp;&nbsp;&nbsp;(Ä¬ÈÏÎª½ÓÊÕ£ºµ±ÓĞÈË¸ø´Ë¸ÚÎ»Í¶µİ¼òÀúÊ±£¬ÏµÍ³»á·¢Ò»·İÍ¨ÖªÓÊ¼şÌáĞÑ²é¿´)</span></td>
+            <input type="radio" name="notify" value="0" {#if $jobs.contact.notify eq "0"#}checked="checked"{#/if#}/>ä¸æ¥æ”¶            </label> 
+            <span style="color: #666666"> &nbsp;&nbsp;&nbsp;(é»˜è®¤ä¸ºæ¥æ”¶ï¼šå½“æœ‰äººç»™æ­¤å²—ä½æŠ•é€’ç®€å†æ—¶ï¼Œç³»ç»Ÿä¼šå‘ä¸€ä»½é€šçŸ¥é‚®ä»¶æé†’æŸ¥çœ‹)</span></td>
         </tr>
 		
 		
@@ -364,8 +364,8 @@ $(document).ready(function()
               <input type="hidden" name="id"  value="{#$jobs.id#}" />
 			  <input type="hidden" name="company_id"  value="{#$jobs.company_id#}" />			  
 			  <input type="hidden" name="url"  value="{#$url#}" />
-              <input name="submit3" type="submit" class="admin_submit"    value="±£´æĞŞ¸Ä"/> 
-              <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="window.location.href='{#$url#}'"/>
+              <input name="submit3" type="submit" class="admin_submit"    value="ä¿å­˜ä¿®æ”¹"/> 
+              <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="window.location.href='{#$url#}'"/>
             </span></td>
           </tr>
   </table>
@@ -373,7 +373,7 @@ $(document).ready(function()
   	
 {#if $jobsaudit#}	
 <form id="Form2" name="Form2" method="post" action="?act=del_auditreason">
-<div class="toptit">Ö°Î»ÉóºËÈÕÖ¾</div>
+<div class="toptit">èŒä½å®¡æ ¸æ—¥å¿—</div>
 		<table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
 		{#foreach from=$jobsaudit item=list#}
 		<tr>
@@ -391,8 +391,8 @@ $(document).ready(function()
 		<tr>
             <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">&nbsp;</td>
             <td height="120" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="font-size:14px;">
-              <input name="submit3" type="submit" class="admin_submit"    value="É¾³ıËùÑ¡"/> 
-              <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="window.location.href='{#$url#}'"/>
+              <input name="submit3" type="submit" class="admin_submit"    value="åˆ é™¤æ‰€é€‰"/> 
+              <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="window.location.href='{#$url#}'"/>
             </span></td>
           </tr>
   </table>

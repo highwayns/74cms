@@ -1,11 +1,11 @@
-{#qishi_news_show set="ÁĞ±íÃû:show,×ÊÑ¶ID:GET[id]"#}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿{#qishi_news_show set="åˆ—è¡¨å:show,èµ„è®¯ID:GET[id]"#}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$show.title#} - {#$QISHI.site_name#}</title>
 <meta name="description" content="{#$show.description#}">
 <meta name="keywords" content="{#$show.keywords#}">
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
@@ -28,7 +28,7 @@ $(document).ready(function()
 		});
 		function news_search_location(key)
 		{
-			$("body").append('<div id="pageloadingbox">Ò³Ãæ¼ÓÔØÖĞ....</div><div id="pageloadingbg"></div>');
+			$("body").append('<div id="pageloadingbox">é¡µé¢åŠ è½½ä¸­....</div><div id="pageloadingbg"></div>');
 			$("#pageloadingbg").css("opacity", 0.5);
 			$.get("{#$QISHI.site_dir#}plus/ajax_search_location.php", {"act":"QS_newssearch","key":key},
 					function (data,textStatus)
@@ -37,14 +37,14 @@ $(document).ready(function()
 					 }
 				);
 		}
-		// µÈ±ÈÀıËõ·ÅÍ¼Æ¬
-		var w = $(".left_area .news_box").width();//ÈİÆ÷¿í¶È 
-	    $(".news_txt img").each(function(){//Èç¹ûÓĞºÜ¶àÍ¼Æ¬£¬ÎÒÃÇ¿ÉÒÔÊ¹ÓÃeach()±éÀú 
-	        var img_w = $(this).width();//Í¼Æ¬¿í¶È 
-	        var img_h = $(this).height();//Í¼Æ¬¸ß¶È 
-	        if(img_w>w){//Èç¹ûÍ¼Æ¬¿í¶È³¬³öÈİÆ÷¿í¶È--Òª³ÅÆÆÁË 
-	            var height = (w*img_h)/img_w; //¸ß¶ÈµÈ±ÈËõ·Å 
-	            $(this).css({"width":w,"height":height});//ÉèÖÃËõ·ÅºóµÄ¿í¶ÈºÍ¸ß¶È 
+		// ç­‰æ¯”ä¾‹ç¼©æ”¾å›¾ç‰‡
+		var w = $(".left_area .news_box").width();//å®¹å™¨å®½åº¦ 
+	    $(".news_txt img").each(function(){//å¦‚æœæœ‰å¾ˆå¤šå›¾ç‰‡ï¼Œæˆ‘ä»¬å¯ä»¥ä½¿ç”¨each()éå† 
+	        var img_w = $(this).width();//å›¾ç‰‡å®½åº¦ 
+	        var img_h = $(this).height();//å›¾ç‰‡é«˜åº¦ 
+	        if(img_w>w){//å¦‚æœå›¾ç‰‡å®½åº¦è¶…å‡ºå®¹å™¨å®½åº¦--è¦æ’‘ç ´äº† 
+	            var height = (w*img_h)/img_w; //é«˜åº¦ç­‰æ¯”ç¼©æ”¾ 
+	            $(this).css({"width":w,"height":height});//è®¾ç½®ç¼©æ”¾åçš„å®½åº¦å’Œé«˜åº¦ 
 	        } 
 	    });
 });
@@ -52,24 +52,24 @@ $(document).ready(function()
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
-<!-- µ±Ç°Î»ÖÃ -->
+<!-- å½“å‰ä½ç½® -->
 <div class="page_location link_bk">
-{#qishi_news_category set="ÁĞ±íÃû:category,Ãû³Æ³¤¶È:10,×ÊÑ¶Ğ¡Àà:"|cat:$show.type_id#}
-µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a>&nbsp;>&nbsp;<a href="{#"QS_news"|qishi_url#}">ĞÂÎÅ×ÊÑ¶</a>&nbsp;>&nbsp;
-<a href="{#$category.url#}">{#$category.title_#}</a>&nbsp;>&nbsp;ÕıÎÄ
+{#qishi_news_category set="åˆ—è¡¨å:category,åç§°é•¿åº¦:10,èµ„è®¯å°ç±»:"|cat:$show.type_id#}
+å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a>&nbsp;>&nbsp;<a href="{#"QS_news"|qishi_url#}">æ–°é—»èµ„è®¯</a>&nbsp;>&nbsp;
+<a href="{#$category.url#}">{#$category.title_#}</a>&nbsp;>&nbsp;æ­£æ–‡
 </div>
-	<!-- Ö÷ÌåÄÚÈİ -->
+	<!-- ä¸»ä½“å†…å®¹ -->
 	<div class="container link_bk">
 		
-		<!-- ×ó±ßÄÚÈİ -->
+		<!-- å·¦è¾¹å†…å®¹ -->
 		<div class="left_area">
 			<div class="news_box">
 				<div class="com_container">
 					<div class="title">{#$show.title#}</div>
 					<div class="news_dateil">
 						<div class="time">{#$show.addtime|date_format:"%Y-%m-%d %H:%M"#}</div>
-						<div class="time">²é¿´£º<span id="click"></span> ´Î</div>
-						<div><a href="javascript:window.print();">[´òÓ¡]</a> <a href="javascript:void(0);" onclick="window.external.addFavorite(parent.location.href,document.title);">[ÊÕ²Ø]</a></div>
+						<div class="time">æŸ¥çœ‹ï¼š<span id="click"></span> æ¬¡</div>
+						<div><a href="javascript:window.print();">[æ‰“å°]</a> <a href="javascript:void(0);" onclick="window.external.addFavorite(parent.location.href,document.title);">[æ”¶è—]</a></div>
 						<div class="clear"></div>
 					</div>
 					<div class="news_txt">
@@ -81,7 +81,7 @@ $(document).ready(function()
 						        <a class="bds_tsina"></a>
 						        <a class="bds_tqq"></a>
 						        <a class="bds_renren"></a>
-						        <span class="bds_more">¸ü¶à</span>
+						        <span class="bds_more">æ›´å¤š</span>
 						    </div>
 						<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=659075" ></script>
 						<script type="text/javascript" id="bdshell_js"></script>
@@ -95,16 +95,16 @@ $(document).ready(function()
 						<div class="next_page">
 							<div class="prev">
 								{#if $show.prev=="1"#}
-								<a href="{#$show.prev_url#}">ÉÏÒ»Æª£º{#$show.prev_title#}</a>
+								<a href="{#$show.prev_url#}">ä¸Šä¸€ç¯‡ï¼š{#$show.prev_title#}</a>
 								{#else#}
-								<a href="javascript:void(0);">ÉÏÒ»Æª£ºÃ»ÓĞÁË</a>
+								<a href="javascript:void(0);">ä¸Šä¸€ç¯‡ï¼šæ²¡æœ‰äº†</a>
 								{#/if#}
 							</div>
 							<div class="next">
 								{#if $show.next=="1"#}
-								<a href="{#$show.next_url#}">ÏÂÒ»Æª£º{#$show.next_title#}</a>
+								<a href="{#$show.next_url#}">ä¸‹ä¸€ç¯‡ï¼š{#$show.next_title#}</a>
 								{#else#}
-								<a href="javascript:void(0);">ÏÂÒ»Æª£ºÃ»ÓĞÁË</a>
+								<a href="javascript:void(0);">ä¸‹ä¸€ç¯‡ï¼šæ²¡æœ‰äº†</a>
 								{#/if#}
 							</div>
 							<div class="clear"></div>
@@ -115,16 +115,16 @@ $(document).ready(function()
 			</div>
 
 		</div>
-		<!-- ÓÒ±ßÄÚÈİ -->
+		<!-- å³è¾¹å†…å®¹ -->
 		<div class="right_area">
 			
 			<div class="right_box">
 				<div class="title_box">
-					<h5>×ÊÑ¶·ÖÀà</h5>
+					<h5>èµ„è®¯åˆ†ç±»</h5>
 				</div>
 				<div class="list">
 					<ul class="sort">
-						{#qishi_news_category set="ÁĞ±íÃû:categorylist,Ãû³Æ³¤¶È:7,×ÊÑ¶´óÀà:1"#}
+						{#qishi_news_category set="åˆ—è¡¨å:categorylist,åç§°é•¿åº¦:7,èµ„è®¯å¤§ç±»:1"#}
 						{#section loop=$categorylist name=list#}
 						<li {#if $smarty.section.list.index%2>0#}class="s"{#/if#}><a href="{#$categorylist[list].url#}" {#if $show.type_id==$categorylist[list].id#}class="select"{#/if#}>{#$categorylist[list].categoryname#}</a></li>
 						{#/section#}
@@ -135,16 +135,16 @@ $(document).ready(function()
 			</div>
 			<div class="right_search">
 				<div class="news_search"><input type="text" name="key" id="key" /></div>
-				<button class="news_sreach_but search_news">ËÑË÷</button>
+				<button class="news_sreach_but search_news">æœç´¢</button>
 			</div>
 			<div class="clear"></div>
 			<div class="right_box">
 				<div class="title_box">
-					<h5>Ïà¹ØÔÄ¶Á</h5>
+					<h5>ç›¸å…³é˜…è¯»</h5>
 				</div>
 				<div class="list">
 					<ul class="newest">
-						{#qishi_news_list set="ÁĞ±íÃû:news,×ÊÑ¶Ğ¡Àà:$show.type_id,ÏÔÊ¾ÊıÄ¿:7,±êÌâ³¤¶È:16,ÅÅĞò:article_order>desc"#}
+						{#qishi_news_list set="åˆ—è¡¨å:news,èµ„è®¯å°ç±»:$show.type_id,æ˜¾ç¤ºæ•°ç›®:7,æ ‡é¢˜é•¿åº¦:16,æ’åº:article_order>desc"#}
 						{#foreach from=$news item=list#}
 						<li><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></li>
 						{#/foreach#}
@@ -153,11 +153,11 @@ $(document).ready(function()
 			</div>
 			<div class="right_box">
 				<div class="title_box">
-					<h5>×îĞÂ×ÊÑ¶</h5>
+					<h5>æœ€æ–°èµ„è®¯</h5>
 				</div>
 				<div class="list">
 					<ul class="newest">
-						{#qishi_news_list set="ÁĞ±íÃû:news,ÏÔÊ¾ÊıÄ¿:7,±êÌâ³¤¶È:16,ÅÅĞò:id>desc"#}
+						{#qishi_news_list set="åˆ—è¡¨å:news,æ˜¾ç¤ºæ•°ç›®:7,æ ‡é¢˜é•¿åº¦:16,æ’åº:id>desc"#}
 						{#foreach from=$news item=list#}
 						<li><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></li>
 						{#/foreach#}
@@ -167,7 +167,7 @@ $(document).ready(function()
 		</div>
 		<div class="clear"></div>
 	</div>
-	<!-- Ö÷ÌåÄÚÈİ ½áÊø -->
+	<!-- ä¸»ä½“å†…å®¹ ç»“æŸ -->
 	{#include file="footer.htm"#}
 </body>
 </html>

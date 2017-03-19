@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit">{#$pageheader#}</div>
@@ -6,19 +6,19 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-<h2>ÌáÊ¾£º</h2>
+<h2>æç¤ºï¼š</h2>
 <p>
-Í¨¹ı¹ÜÀíÔ±ÉèÖÃ£¬Äú¿ÉÒÔ½øĞĞ±à¼­¹ÜÀíÔ±×ÊÁÏ¡¢È¨ÏŞ¡¢ÃÜÂëÒÔ¼°É¾³ı¹ÜÀíÔ±µÈ²Ù×÷£»
+é€šè¿‡ç®¡ç†å‘˜è®¾ç½®ï¼Œæ‚¨å¯ä»¥è¿›è¡Œç¼–è¾‘ç®¡ç†å‘˜èµ„æ–™ã€æƒé™ã€å¯†ç ä»¥åŠåˆ é™¤ç®¡ç†å‘˜ç­‰æ“ä½œï¼›
 </p>
 </div> 
   <table width="100%" border="0" cellpadding="0" cellspacing="0" id="list" class="link_lan">
     <tr>
-      <td class="admin_list_tit admin_list_first">ÓÃ»§Ãû</td>
-      <td  class="admin_list_tit">Í·ÏÎ</td>
-      <td  class="admin_list_tit">´´½¨Ê±¼ä</td>
-      <td  class="admin_list_tit">×îºóµÇÂ¼Ê±¼ä</td>
-      <td  class="admin_list_tit">×îºóµÇÂ¼ip</td>
-      <td width="230" align="center"  class="admin_list_tit">²Ù×÷</td>
+      <td class="admin_list_tit admin_list_first">ç”¨æˆ·å</td>
+      <td  class="admin_list_tit">å¤´è¡”</td>
+      <td  class="admin_list_tit">åˆ›å»ºæ—¶é—´</td>
+      <td  class="admin_list_tit">æœ€åç™»å½•æ—¶é—´</td>
+      <td  class="admin_list_tit">æœ€åç™»å½•ip</td>
+      <td width="230" align="center"  class="admin_list_tit">æ“ä½œ</td>
     </tr>
 	 {#foreach from=$list item=li#}
 	   <tr>
@@ -27,23 +27,23 @@
       <td   class="admin_list">{#$li.add_time|date_format:"%Y-%m-%d"#} </td>
       <td   class="admin_list">
 	  {#if $li.last_login_time=="0"#}
-		´ÓÎ´
+		ä»æœª
 		{#else#}
 		{#$li.last_login_time|date_format:"%Y-%m-%d"#}
 		{#/if#}
 	  </td>
       <td   class="admin_list">{#$li.last_login_ip#}</td>
       <td   class="admin_list">
-	  <a href="?act=loglist&adminname={#$li.admin_name#}" >¹ÜÀíÔ±ÈÕÖ¾</a>
+	  <a href="?act=loglist&adminname={#$li.admin_name#}" >ç®¡ç†å‘˜æ—¥å¿—</a>
 		&nbsp;&nbsp;
-		<a href="?act=users_set&id={#$li.admin_id#}">È¨ÏŞ</a>
+		<a href="?act=users_set&id={#$li.admin_id#}">æƒé™</a>
 		&nbsp;&nbsp;
-		<a href="?act=edit_users&id={#$li.admin_id#}" >ÏêÇé</a>
+		<a href="?act=edit_users&id={#$li.admin_id#}" >è¯¦æƒ…</a>
 		&nbsp;&nbsp;
-		<a href="?act=edit_users_pwd&id={#$li.admin_id#}" >ÃÜÂë</a>
+		<a href="?act=edit_users_pwd&id={#$li.admin_id#}" >å¯†ç </a>
 		{#if $admin_purview=="all"#}
 		&nbsp;&nbsp;
-		<a href="?act=del_users&id={#$li.admin_id#}&{#$urltoken#}" onclick="return confirm('È·¶¨ÒªÉ¾³ıÂğ£¿')">É¾³ı</a>
+		<a href="?act=del_users&id={#$li.admin_id#}&{#$urltoken#}" onclick="return confirm('ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')">åˆ é™¤</a>
 		{#/if#}		
 	  </td>
     </tr>
@@ -54,7 +54,7 @@
       <tr>
         <td>
 
-          <input type="button" name="add" value="Ìí¼Ó¹ÜÀíÔ±" class="admin_submit"   onclick="window.location.href='?act=add_users'" />
+          <input type="button" name="add" value="æ·»åŠ ç®¡ç†å‘˜" class="admin_submit"   onclick="window.location.href='?act=add_users'" />
         	
 		</td>
         <td width="305" align="right">

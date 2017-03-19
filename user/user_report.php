@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¾Ù±¨
+ * 74cms ä¸¾æŠ¥
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -44,7 +44,7 @@ if ($_SESSION['utype']!='2')
 		    <tr>
 				<td width="20" align="right"></td>
 				<td>
-					±ØĞëÊÇ¸öÈË»áÔ±²Å¿ÉÒÔ¾Ù±¨Ö°Î»ĞÅÏ¢£¡
+					å¿…é¡»æ˜¯ä¸ªäººä¼šå‘˜æ‰å¯ä»¥ä¸¾æŠ¥èŒä½ä¿¡æ¯ï¼
 				</td>
 		    </tr>
 		</table>');
@@ -57,14 +57,14 @@ if ($user['status']=="2")
 		    <tr>
 				<td width="20" align="right"></td>
 				<td>
-					ÄúµÄÕËºÅ´¦ÓÚÔİÍ£×´Ì¬£¬ÇëÁªÏµ¹ÜÀíÔ±ÉèÎªÕı³£ºó½øĞĞ²Ù×÷£¡
+					æ‚¨çš„è´¦å·å¤„äºæš‚åœçŠ¶æ€ï¼Œè¯·è”ç³»ç®¡ç†å‘˜è®¾ä¸ºæ­£å¸¸åè¿›è¡Œæ“ä½œï¼
 				</td>
 		    </tr>
 		</table>');
 }
 if ($act=="report")
 {		
-		$id=isset($_GET['jobs_id'])?$_GET['jobs_id']:exit("id ¶ªÊ§");
+		$id=isset($_GET['jobs_id'])?$_GET['jobs_id']:exit("id ä¸¢å¤±");
 		$jobs=app_get_jobs($id);
 		if (empty($jobs))
 		{
@@ -72,7 +72,7 @@ if ($act=="report")
 			    <tr>
 					<td width="20" align="right"></td>
 					<td>
-						¾Ù±¨ĞÅÏ¢Ê§°Ü£¡
+						ä¸¾æŠ¥ä¿¡æ¯å¤±è´¥ï¼
 					</td>
 			    </tr>
 			</table>');
@@ -83,7 +83,7 @@ if ($act=="report")
 			    <tr>
 					<td width="20" align="right"></td>
 					<td>
-						ÄúÒÑ¾­¾Ù±¨¹ı´ËÖ°Î»£¡
+						æ‚¨å·²ç»ä¸¾æŠ¥è¿‡æ­¤èŒä½ï¼
 					</td>
 			    </tr>
 			</table>');
@@ -91,14 +91,14 @@ if ($act=="report")
 ?>
 <script type="text/javascript">
 $(".but80").hover(function(){$(this).addClass("but80_hover")},function(){$(this).removeClass("but80_hover")});
-//¼ÆËã½ñÌìÉêÇëÊıÁ¿
+//è®¡ç®—ä»Šå¤©ç”³è¯·æ•°é‡
 
-//ÑéÖ¤
+//éªŒè¯
 $("#ajax_report").click(function() {
 	var content=$("#content").val();
 	if (content=="")
 	{
-	alert("ÇëÊäÈëÃèÊö");
+	alert("è¯·è¾“å…¥æè¿°");
 	}
 	else
 	{
@@ -120,7 +120,7 @@ $("#ajax_report").click(function() {
 				$("#report").hide();
 				$("#waiting").hide();
 				$("#app_ok").hide();
-				$("#error_msg").html("¾Ù±¨Ê§°Ü£¡"+data);
+				$("#error_msg").html("ä¸¾æŠ¥å¤±è´¥ï¼"+data);
 				$("#error").show();
 			}
 	 	 });
@@ -132,31 +132,31 @@ $("#ajax_report").click(function() {
 	<input type="hidden" id="jobs_name" value="<?php echo trim($_GET['jobs_name']);?>">
 	<input type="hidden" id="jobs_addtime" value="<?php echo trim($_GET['jobs_addtime']);?>">
 	<div class="report-item clearfix">
-		<div class="report-type f-left">¾Ù±¨Ô­Òò£º</div>
+		<div class="report-type f-left">ä¸¾æŠ¥åŸå› ï¼š</div>
 		<div class="report-content f-left">
-			<label><input type="radio" name="report_type"  class="radio" value="1" checked="checked"/>ĞÅÏ¢Ğé¼Ù<span>£¨ÂÒĞ´¡¢ÂÒÌîµÈÎŞÒâÒåÄÚÈİ£©</span></label>
-			<label><input type="radio" name="report_type"  class="radio" value="2" />µç»°²»Í¨<span>£¨µç»°¶à´ÎÎ´Í¨£©</span></label>
-			<label><input type="radio" name="report_type"  class="radio" value="3" />ÆäËüÔ­Òò<span>£¨ÈçÖĞ½éµÈ£©</span></label>
+			<label><input type="radio" name="report_type"  class="radio" value="1" checked="checked"/>ä¿¡æ¯è™šå‡<span>ï¼ˆä¹±å†™ã€ä¹±å¡«ç­‰æ— æ„ä¹‰å†…å®¹ï¼‰</span></label>
+			<label><input type="radio" name="report_type"  class="radio" value="2" />ç”µè¯ä¸é€š<span>ï¼ˆç”µè¯å¤šæ¬¡æœªé€šï¼‰</span></label>
+			<label><input type="radio" name="report_type"  class="radio" value="3" />å…¶å®ƒåŸå› <span>ï¼ˆå¦‚ä¸­ä»‹ç­‰ï¼‰</span></label>
 		</div>
 	</div>
 	<div class="report-item clearfix">
-		<div class="report-type f-left">Ïà¹ØÃèÊö£º</div>
+		<div class="report-type f-left">ç›¸å…³æè¿°ï¼š</div>
 		<div class="report-content f-left">
 			<textarea name="content" id="content" cols="30" rows="10"></textarea>
 		</div>
 	</div>
-	<span class="r-all-row">Ò»¾­ºËÊµ£¬ÎÒÃÇ»áÁ¢¼´... </span>
+	<span class="r-all-row">ä¸€ç»æ ¸å®ï¼Œæˆ‘ä»¬ä¼šç«‹å³... </span>
 	<div class="report-item clearfix">
 		<div class="report-type f-left">&nbsp;</div>
 		<div class="report-content f-left">
-			<p class="del-info">É¾³ıĞÅÏ¢£¬ÎªÃñ³ıº¦ </p>
-			<p class="del-info">Õ¾ÄÚĞÅÍ¨ÖªÄú </p>
+			<p class="del-info">åˆ é™¤ä¿¡æ¯ï¼Œä¸ºæ°‘é™¤å®³ </p>
+			<p class="del-info">ç«™å†…ä¿¡é€šçŸ¥æ‚¨ </p>
 		</div>
 	</div>
 	<div class="center-btn-box">
-		<input type="button" value="¾Ù±¨" class="btn-65-30blue btn-big-font " id="ajax_report"/><input type="button" value="È¡Ïû" class="btn-65-30grey btn-big-font DialogClose" />
+		<input type="button" value="ä¸¾æŠ¥" class="btn-65-30blue btn-big-font " id="ajax_report"/><input type="button" value="å–æ¶ˆ" class="btn-65-30grey btn-big-font DialogClose" />
 	</div>
-	<p class="jubao-tip" style="padding-left: 10px;">ÎÂÜ°ÌáÊ¾£ºÕÒ·İ¹¤×÷²»ÈİÒ×£¬ÇëÄúÈçÊµ¾Ù±¨Å¶£¡</p>
+	<p class="jubao-tip" style="padding-left: 10px;">æ¸©é¦¨æç¤ºï¼šæ‰¾ä»½å·¥ä½œä¸å®¹æ˜“ï¼Œè¯·æ‚¨å¦‚å®ä¸¾æŠ¥å“¦ï¼</p>
 </div>
 
 
@@ -165,14 +165,14 @@ $("#ajax_report").click(function() {
     <td align="center" height="60"><img src="<?php echo  $_CFG['site_template']?>images/30.gif"  border="0"/></td>
   </tr>
   <tr>
-    <td align="center" >ÇëÉÔºó...</td>
+    <td align="center" >è¯·ç¨å...</td>
   </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="app_ok" style="display:none">
     <tr>
 		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/big-yes.png" /></td>
 		<td>
-			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">¾Ù±¨³É¹¦£¬¹ÜÀíÔ±»áÈÏÕæ´¦Àí!</strong>
+			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">ä¸¾æŠ¥æˆåŠŸï¼Œç®¡ç†å‘˜ä¼šè®¤çœŸå¤„ç†!</strong>
 		</td>
     </tr>
 </table>
@@ -187,11 +187,11 @@ $("#ajax_report").click(function() {
 }
 elseif ($act=="app_save")
 {
-	$setsqlarr['content']=trim($_POST['content'])?trim($_POST['content']):exit("³ö´íÁË");
-	$setsqlarr['jobs_id']=$_POST['jobs_id']?intval($_POST['jobs_id']):exit("³ö´íÁË");
+	$setsqlarr['content']=trim($_POST['content'])?trim($_POST['content']):exit("å‡ºé”™äº†");
+	$setsqlarr['jobs_id']=$_POST['jobs_id']?intval($_POST['jobs_id']):exit("å‡ºé”™äº†");
 	$setsqlarr['uid']=intval($_SESSION['uid']);
 	$setsqlarr['addtime']=time();
-	$setsqlarr['report_type']=intval($_POST['report_type']); // Í¶ËßÀàĞÍ
+	$setsqlarr['report_type']=intval($_POST['report_type']); // æŠ•è¯‰ç±»å‹
 	if (strcasecmp(QISHI_DBCHARSET,"utf8")!=0)
 	{
 	$setsqlarr['content']=utf8_to_gbk($setsqlarr['content']);
@@ -199,7 +199,7 @@ elseif ($act=="app_save")
 	$jobsarr=app_get_jobs($setsqlarr['jobs_id']);
 	if (empty($jobsarr))
 	{
-	exit("Ö°Î»¶ªÊ§");
+	exit("èŒä½ä¸¢å¤±");
 	}
 	else
 	{

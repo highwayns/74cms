@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_pageinfo($params, &$smarty)
 {
 global $db,$_CFG;
@@ -8,13 +8,13 @@ foreach($arr as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "µ÷ÓÃ":
+	case "è°ƒç”¨":
 		$aset['alias'] = $a[1];
 		break;
-	case "ÁÐ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
-	case "·ÖÀàID":
+	case "åˆ†ç±»ID":
 		$aset['id'] = $a[1];
 		break;		
 	}

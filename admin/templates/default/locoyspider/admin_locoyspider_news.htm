@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,28 +6,28 @@
   <div class="clear"></div>
 </div>
     <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
-	<p>»ğ³µÍ·²É¼¯¹æÔòÇëµ½ÂÛÌ³ÏÂÔØ£¡</p>
+	<h2>æç¤ºï¼š</h2>
+	<p>ç«è½¦å¤´é‡‡é›†è§„åˆ™è¯·åˆ°è®ºå›ä¸‹è½½ï¼</p>
 	</div>
 	
    <form action="?act=set_save" method="post"  name="form1" id="form1">
    {#$inputtoken#}
-  <div class="toptit">×ÊÑ¶²É¼¯ÉèÖÃ</div>
+  <div class="toptit">èµ„è®¯é‡‡é›†è®¾ç½®</div>
     <table width="700" border="0" cellspacing="5" cellpadding="1" style=" margin-bottom:3px; margin-top:10px;">
       <tr>
-        <td width="180" align="right">Ä¬ÈÏÏÔÊ¾×´Ì¬£º</td>
+        <td width="180" align="right">é»˜è®¤æ˜¾ç¤ºçŠ¶æ€ï¼š</td>
         <td ><label >
           <input name="article_display" type="radio" id="article_display" value="1"  {#if $show.article_display=="1"#}checked="checked"{#/if#}/>
-          ÏÔÊ¾</label>
+          æ˜¾ç¤º</label>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <label  >
             <input type="radio" name="article_display" value="0" id="article_display"  {#if $show.article_display=="0"#}checked="checked"{#/if#}/>
-            ²»ÏÔÊ¾ </label></td>
+            ä¸æ˜¾ç¤º </label></td>
       </tr>
       <tr>
-        <td align="right">Ä¬ÈÏÊôĞÔ£º</td>
+        <td align="right">é»˜è®¤å±æ€§ï¼š</td>
         <td>
-		{#qishi_news_property set="ÁĞ±íÃû:property"#}
+		{#qishi_news_property set="åˆ—è¡¨å:property"#}
 		{#foreach from=$property item=list#}
 		 <label>
           <input name="article_focos" type="radio" value="{#$list.id#}" {#if $list.id==$show.article_focos#} checked="checked"{#/if#} />
@@ -39,7 +39,7 @@
       <tr>
         <td align="right">&nbsp;</td>
         <td height="50"><span style="font-size:14px;">
-          <input name="submit222" type="submit" class="admin_submit"    value="±£´æĞŞ¸Ä"/>
+          <input name="submit222" type="submit" class="admin_submit"    value="ä¿å­˜ä¿®æ”¹"/>
         </span></td>
       </tr>
     </table>

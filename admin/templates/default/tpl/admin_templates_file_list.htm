@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit">{#$pageheader#}</div>
@@ -6,37 +6,37 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-±à¼­Ç°Ç¿ÁÒ½¨ÒéÄúÏÈ×öÄ£°å±¸·İ<br />
-      Çë¾¡Á¿±ÜÃâÔÚÍøËÙ½ÏÂıÊ±±à¼­Ä£°å£¬ÒÔ·ÀÖ¹±à¼­¹ı³ÌÖĞ³ö´í¡£
+ç¼–è¾‘å‰å¼ºçƒˆå»ºè®®æ‚¨å…ˆåšæ¨¡æ¿å¤‡ä»½<br />
+      è¯·å°½é‡é¿å…åœ¨ç½‘é€Ÿè¾ƒæ…¢æ—¶ç¼–è¾‘æ¨¡æ¿ï¼Œä»¥é˜²æ­¢ç¼–è¾‘è¿‡ç¨‹ä¸­å‡ºé”™ã€‚
 </p>
 </div>
-<div class="toptit">±à¼­Ä£°å</div>
+<div class="toptit">ç¼–è¾‘æ¨¡æ¿</div>
  <table width="460" border="0" cellspacing="12" cellpadding="0"  style="line-height:180%">
     <tr>
       <td width="225"><a href="../" target="_blank"><img src="../templates/{#$templates.dir#}/thumbnail.jpg" alt="{#$templates.info.name#}" width="225" height="136" border="1"  style="border: #CCCCCC;" /></a></td>
-      <td width="220" class="link_lan">Ãû³Æ£º{#$templates.info.name#}<br />
-        °æ±¾£º{#$templates.info.version#}<br />
-        ×÷Õß£º<a href="{#$templates.info.authorurl#}" target="_blank">{#$templates.info.author#}</a> <br />
-		Ä£°æID£º{#$templates.dir#}
+      <td width="220" class="link_lan">åç§°ï¼š{#$templates.info.name#}<br />
+        ç‰ˆæœ¬ï¼š{#$templates.info.version#}<br />
+        ä½œè€…ï¼š<a href="{#$templates.info.authorurl#}" target="_blank">{#$templates.info.author#}</a> <br />
+		æ¨¡ç‰ˆIDï¼š{#$templates.dir#}
 		<br />
-	  <input type="button" name="Submit22" value="±¸·İ´ËÄ£°å" class="admin_submit"    onclick="window.location='?act=backup&tpl_name={#$templates.dir#}&{#$urltoken#}'"  style="margin-top:10px;"/>	  </td>
+	  <input type="button" name="Submit22" value="å¤‡ä»½æ­¤æ¨¡æ¿" class="admin_submit"    onclick="window.location='?act=backup&tpl_name={#$templates.dir#}&{#$urltoken#}'"  style="margin-top:10px;"/>	  </td>
     </tr>
   </table>
   <table width="100%" border="0" cellspacing="0"  id="list" class="link_lan">
         <tr >
-          <td class="admin_list_tit admin_list_first">Ä£°åÎÄ¼şÃû</td>
-          <td width="15%" align="center" class="admin_list_tit">ĞŞ¸ÄÊ±¼ä</td>
-          <td width="15%" align="center" class="admin_list_tit">´óĞ¡(×Ö½Ú)</td>
-          <td width="15%" align="center" class="admin_list_tit">²Ù×÷</td>
+          <td class="admin_list_tit admin_list_first">æ¨¡æ¿æ–‡ä»¶å</td>
+          <td width="15%" align="center" class="admin_list_tit">ä¿®æ”¹æ—¶é—´</td>
+          <td width="15%" align="center" class="admin_list_tit">å¤§å°(å­—èŠ‚)</td>
+          <td width="15%" align="center" class="admin_list_tit">æ“ä½œ</td>
         </tr>
 		{#section name=list loop=$list#}
         <tr>
           <td  class="admin_list admin_list_first"><a href="?act=edit_file&tpl_name={#$list[list].name#}&tpl_dir={#$templates.dir#}">{#$list[list].name#}</a></td>
           <td align="center" class="admin_list admin_list_first"> {#$list[list].modify_time#}</td>
           <td align="center" class="admin_list admin_list_first">{#$list[list].size#}</td>
-          <td align="center" class="admin_list admin_list_first"><a href="?act=edit_file&tpl_name={#$list[list].name#}&tpl_dir={#$templates.dir#}">±à¼­</a></td>
+          <td align="center" class="admin_list admin_list_first"><a href="?act=edit_file&tpl_name={#$list[list].name#}&tpl_dir={#$templates.dir#}">ç¼–è¾‘</a></td>
         </tr>
 		{#/section#}
   </table>

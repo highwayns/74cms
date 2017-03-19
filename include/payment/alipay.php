@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /**
- * 74cms Ö§¸¶±¦Ö§¸¶
+ * 74cms æ”¯ä»˜å®æ”¯ä»˜
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 
@@ -14,7 +14,7 @@
  {
  	die('Access Denied!');
  }
-//Éú³ÉÖ§¸¶´úÂë
+//ç”Ÿæˆæ”¯ä»˜ä»£ç 
 function get_code($order, $payment)
 {
 	global $_CFG;
@@ -29,11 +29,11 @@ $mainname		= $_CFG['site_name'];
 $sign_type		= "MD5";
 $_input_charset	= "GBK";
 $transport		= "http";
-$out_trade_no = $order['oid'];		//ÇëÓë¹óÍøÕ¾¶©µ¥ÏµÍ³ÖĞµÄÎ¨Ò»¶©µ¥ºÅÆ¥Åä
-$subject      =  "¶©µ¥ºÅ£º" . $out_trade_no;	
+$out_trade_no = $order['oid'];		//è¯·ä¸è´µç½‘ç«™è®¢å•ç³»ç»Ÿä¸­çš„å”¯ä¸€è®¢å•å·åŒ¹é…
+$subject      =  "è®¢å•å·ï¼š" . $out_trade_no;	
 $body         = $order['remark1'];
 $total_fee    = intval($order['v_amount']);
-//À©Õ¹¹¦ÄÜ²ÎÊı¡ª¡ªÄ¬ÈÏÖ§¸¶·½Ê½
+//æ‰©å±•åŠŸèƒ½å‚æ•°â€”â€”é»˜è®¤æ”¯ä»˜æ–¹å¼
 $pay_mode	  = $_POST['pay_bank'];
 if ($pay_mode == "directPay") {
 	$paymethod    = "directPay";
@@ -43,17 +43,17 @@ else {
 	$paymethod    = "bankPay";
 	$defaultbank  = $pay_mode;
 }
-$anti_phishing_key  = '';			//·ÀµöÓãÊ±¼ä´Á
-$exter_invoke_ip = '';				//»ñÈ¡¿Í»§¶ËµÄIPµØÖ·£¬½¨Òé£º±àĞ´»ñÈ¡¿Í»§¶ËIPµØÖ·µÄ³ÌĞò
-$extra_common_param = '';			//×Ô¶¨Òå²ÎÊı£¬¿É´æ·ÅÈÎºÎÄÚÈİ£¨³ı=¡¢&µÈÌØÊâ×Ö·ûÍâ£©£¬²»»áÏÔÊ¾ÔÚÒ³ÃæÉÏ
-$buyer_email		= '';			//Ä¬ÈÏÂò¼ÒÖ§¸¶±¦ÕËºÅ
-$royalty_type		= "";			//Ìá³ÉÀàĞÍ£¬¸ÃÖµÎª¹Ì¶¨Öµ£º10£¬²»ĞèÒªĞŞ¸Ä
+$anti_phishing_key  = '';			//é˜²é’“é±¼æ—¶é—´æˆ³
+$exter_invoke_ip = '';				//è·å–å®¢æˆ·ç«¯çš„IPåœ°å€ï¼Œå»ºè®®ï¼šç¼–å†™è·å–å®¢æˆ·ç«¯IPåœ°å€çš„ç¨‹åº
+$extra_common_param = '';			//è‡ªå®šä¹‰å‚æ•°ï¼Œå¯å­˜æ”¾ä»»ä½•å†…å®¹ï¼ˆé™¤=ã€&ç­‰ç‰¹æ®Šå­—ç¬¦å¤–ï¼‰ï¼Œä¸ä¼šæ˜¾ç¤ºåœ¨é¡µé¢ä¸Š
+$buyer_email		= '';			//é»˜è®¤ä¹°å®¶æ”¯ä»˜å®è´¦å·
+$royalty_type		= "";			//ææˆç±»å‹ï¼Œè¯¥å€¼ä¸ºå›ºå®šå€¼ï¼š10ï¼Œä¸éœ€è¦ä¿®æ”¹
 $royalty_parameters	= "";
 $parameter = array(
-        "service"			=> "create_direct_pay_by_user",	//½Ó¿ÚÃû³Æ£¬²»ĞèÒªĞŞ¸Ä
-        "payment_type"		=> "1",               			//½»Ò×ÀàĞÍ£¬²»ĞèÒªĞŞ¸Ä
+        "service"			=> "create_direct_pay_by_user",	//æ¥å£åç§°ï¼Œä¸éœ€è¦ä¿®æ”¹
+        "payment_type"		=> "1",               			//äº¤æ˜“ç±»å‹ï¼Œä¸éœ€è¦ä¿®æ”¹
 
-        //»ñÈ¡ÅäÖÃÎÄ¼ş(alipay_config.php)ÖĞµÄÖµ
+        //è·å–é…ç½®æ–‡ä»¶(alipay_config.php)ä¸­çš„å€¼
         "partner"			=> $partner,
         "seller_email"		=> $seller_email,
         "return_url"		=> $return_url,
@@ -61,35 +61,35 @@ $parameter = array(
         "_input_charset"	=> $_input_charset,
         "show_url"			=> $show_url,
 
-        //´Ó¶©µ¥Êı¾İÖĞ¶¯Ì¬»ñÈ¡µ½µÄ±ØÌî²ÎÊı
+        //ä»è®¢å•æ•°æ®ä¸­åŠ¨æ€è·å–åˆ°çš„å¿…å¡«å‚æ•°
         "out_trade_no"		=> $out_trade_no,
         "subject"			=> $subject,
         "body"				=> $body,
         "total_fee"			=> $total_fee,
 
-        //À©Õ¹¹¦ÄÜ²ÎÊı¡ª¡ªÍøÒøÌáÇ°
+        //æ‰©å±•åŠŸèƒ½å‚æ•°â€”â€”ç½‘é“¶æå‰
         "paymethod"			=> $paymethod,
         "defaultbank"		=> $defaultbank,
 
-        //À©Õ¹¹¦ÄÜ²ÎÊı¡ª¡ª·ÀµöÓã
+        //æ‰©å±•åŠŸèƒ½å‚æ•°â€”â€”é˜²é’“é±¼
         "anti_phishing_key"	=> $anti_phishing_key,
 		"exter_invoke_ip"	=> $exter_invoke_ip,
 
-		//À©Õ¹¹¦ÄÜ²ÎÊı¡ª¡ª×Ô¶¨Òå²ÎÊı
+		//æ‰©å±•åŠŸèƒ½å‚æ•°â€”â€”è‡ªå®šä¹‰å‚æ•°
 		"buyer_email"		=> $buyer_email,
         "extra_common_param"=> $extra_common_param,
 		
-		//À©Õ¹¹¦ÄÜ²ÎÊı¡ª¡ª·ÖÈó
+		//æ‰©å±•åŠŸèƒ½å‚æ•°â€”â€”åˆ†æ¶¦
         "royalty_type"		=> $royalty_type,
         "royalty_parameters"=> $royalty_parameters
 );
 $alipay = new alipay_service($parameter,$key,$sign_type);
 $sHtmlText = $alipay->build_form();
-$sHtmlText.="<input type=\"button\" class=\"but130lan intrgration_but\" value=\"È·ÈÏÖ§¸¶\"  onclick=\"document.forms['alipaysubmit'].submit()\"/>";
+$sHtmlText.="<input type=\"button\" class=\"but130lan intrgration_but\" value=\"ç¡®è®¤æ”¯ä»˜\"  onclick=\"document.forms['alipaysubmit'].submit()\"/>";
 return $sHtmlText;
 }
 /**
- * ÏìÓ¦²Ù×÷
+ * å“åº”æ“ä½œ
 */
 function respond()
 {
@@ -102,9 +102,9 @@ function respond()
 	$alipay = new alipay_notify($partner,$key,$sign_type,$_input_charset,$transport);
 	
 	$verify_result = $alipay->return_verify();
-	if($verify_result) {//ÑéÖ¤³É¹¦
-		$dingdan           = $_GET['out_trade_no'];		//»ñÈ¡¶©µ¥ºÅ
-		$total_fee         = $_GET['total_fee'];		//»ñÈ¡×Ü¼Û¸ñ
+	if($verify_result) {//éªŒè¯æˆåŠŸ
+		$dingdan           = $_GET['out_trade_no'];		//è·å–è®¢å•å·
+		$total_fee         = $_GET['total_fee'];		//è·å–æ€»ä»·æ ¼
 		return order_paid($dingdan);
 	}
 	else {
@@ -113,30 +113,30 @@ function respond()
 }
 function pay_info()
 {
-$arr['p_introduction']="Ö§¸¶±¦¼ò¶ÌÃèÊö£º";
-$arr['notes']="Ö§¸¶±¦ÏêÏ¸ÃèÊö£º";
-$arr['partnerid']="ºÏ×÷ÕßÉí·İ(Partner ID)£º";
-$arr['ytauthkey']="°²È«Ğ£ÑéÂë(Key)£º";
-$arr['fee']="Ö§¸¶±¦½»Ò×ÊÖĞø·Ñ£º";
-$arr['parameter1']="Ö§¸¶±¦ÕÊºÅ£º";
+$arr['p_introduction']="æ”¯ä»˜å®ç®€çŸ­æè¿°ï¼š";
+$arr['notes']="æ”¯ä»˜å®è¯¦ç»†æè¿°ï¼š";
+$arr['partnerid']="åˆä½œè€…èº«ä»½(Partner ID)ï¼š";
+$arr['ytauthkey']="å®‰å…¨æ ¡éªŒç (Key)ï¼š";
+$arr['fee']="æ”¯ä»˜å®äº¤æ˜“æ‰‹ç»­è´¹ï¼š";
+$arr['parameter1']="æ”¯ä»˜å®å¸å·ï¼š";
 return $arr;
 }
 //----------------------------------------------------
-//Ö§¸¶±¦×Ô´øclass
+//æ”¯ä»˜å®è‡ªå¸¦class
 class alipay_service {
 
-    var $gateway;			//Íø¹ØµØÖ·
-    var $_key;				//°²È«Ğ£ÑéÂë
-    var $mysign;			//Ç©Ãû½á¹û
-    var $sign_type;			//Ç©ÃûÀàĞÍ
-    var $parameter;			//ĞèÒªÇ©ÃûµÄ²ÎÊıÊı×é
-    var $_input_charset;    //×Ö·û±àÂë¸ñÊ½
+    var $gateway;			//ç½‘å…³åœ°å€
+    var $_key;				//å®‰å…¨æ ¡éªŒç 
+    var $mysign;			//ç­¾åç»“æœ
+    var $sign_type;			//ç­¾åç±»å‹
+    var $parameter;			//éœ€è¦ç­¾åçš„å‚æ•°æ•°ç»„
+    var $_input_charset;    //å­—ç¬¦ç¼–ç æ ¼å¼
 
-    /**¹¹Ôìº¯Êı
-	*´ÓÅäÖÃÎÄ¼ş¼°Èë¿ÚÎÄ¼şÖĞ³õÊ¼»¯±äÁ¿
-	*$parameter ĞèÒªÇ©ÃûµÄ²ÎÊıÊı×é
-	*$key °²È«Ğ£ÑéÂë
-	*$sign_type Ç©ÃûÀàĞÍ
+    /**æ„é€ å‡½æ•°
+	*ä»é…ç½®æ–‡ä»¶åŠå…¥å£æ–‡ä»¶ä¸­åˆå§‹åŒ–å˜é‡
+	*$parameter éœ€è¦ç­¾åçš„å‚æ•°æ•°ç»„
+	*$key å®‰å…¨æ ¡éªŒç 
+	*$sign_type ç­¾åç±»å‹
     */
     function alipay_service($parameter,$key,$sign_type) {
         $this->gateway		= "https://www.alipay.com/cooperate/gateway.do?";
@@ -144,26 +144,26 @@ class alipay_service {
         $this->sign_type	= $sign_type;
         $this->parameter	= para_filter($parameter);
 		
-        //Éè¶¨_input_charsetµÄÖµ,Îª¿ÕÖµµÄÇé¿öÏÂÄ¬ÈÏÎªGBK
+        //è®¾å®š_input_charsetçš„å€¼,ä¸ºç©ºå€¼çš„æƒ…å†µä¸‹é»˜è®¤ä¸ºGBK
         if($parameter['_input_charset'] == '')
             $this->parameter['_input_charset'] = 'GBK';
 
         $this->_input_charset   = $this->parameter['_input_charset'];
 
-        //»ñµÃÇ©Ãû½á¹û
-        $sort_array   = arg_sort($this->parameter);    //µÃµ½´Ó×ÖÄ¸aµ½zÅÅĞòºóµÄÇ©Ãû²ÎÊıÊı×é
+        //è·å¾—ç­¾åç»“æœ
+        $sort_array   = arg_sort($this->parameter);    //å¾—åˆ°ä»å­—æ¯aåˆ°zæ’åºåçš„ç­¾åå‚æ•°æ•°ç»„
         $this->mysign = build_mysign($sort_array,$this->_key,$this->sign_type);
     }
 
     /********************************************************************************/
 
-    /**¹¹Ôì±íµ¥Ìá½»HTML
-	*return ±íµ¥Ìá½»HTMLÎÄ±¾
+    /**æ„é€ è¡¨å•æäº¤HTML
+	*return è¡¨å•æäº¤HTMLæ–‡æœ¬
      */
     function build_form() {
-		//GET·½Ê½´«µİ
+		//GETæ–¹å¼ä¼ é€’
         $sHtml = "<form id='alipaysubmit' name='alipaysubmit' action='".$this->gateway."_input_charset=".$this->parameter['_input_charset']."' method='get' target='_blank'>";
-		//POST·½Ê½´«µİ£¨GETÓëPOST¶ş±ØÑ¡Ò»£©
+		//POSTæ–¹å¼ä¼ é€’ï¼ˆGETä¸POSTäºŒå¿…é€‰ä¸€ï¼‰
 		//$sHtml = "<form id='alipaysubmit' name='alipaysubmit' action='".$this->gateway."_input_charset=".$this->parameter['_input_charset']."' method='post'>";
 
         while (list ($key, $val) = each ($this->parameter)) {
@@ -173,7 +173,7 @@ class alipay_service {
         $sHtml = $sHtml."<input type='hidden' name='sign' value='".$this->mysign."'/>";
         $sHtml = $sHtml."<input type='hidden' name='sign_type' value='".$this->sign_type."'/>";
 
-		//submit°´Å¥¿Ø¼şÇë²»Òªº¬ÓĞnameÊôĞÔ
+		//submitæŒ‰é’®æ§ä»¶è¯·ä¸è¦å«æœ‰nameå±æ€§
         $sHtml = $sHtml."</form>";
 		
 		$sHtml = $sHtml."";
@@ -183,21 +183,21 @@ class alipay_service {
 
 }
 class alipay_notify {
-    var $gateway;           //Íø¹ØµØÖ·
-    var $_key;  			//°²È«Ğ£ÑéÂë
-    var $partner;           //ºÏ×÷»ï°éID
-    var $sign_type;         //Ç©Ãû·½Ê½ ÏµÍ³Ä¬ÈÏ
-    var $mysign;            //Ç©Ãû½á¹û
-    var $_input_charset;    //×Ö·û±àÂë¸ñÊ½
-    var $transport;         //·ÃÎÊÄ£Ê½
+    var $gateway;           //ç½‘å…³åœ°å€
+    var $_key;  			//å®‰å…¨æ ¡éªŒç 
+    var $partner;           //åˆä½œä¼™ä¼´ID
+    var $sign_type;         //ç­¾åæ–¹å¼ ç³»ç»Ÿé»˜è®¤
+    var $mysign;            //ç­¾åç»“æœ
+    var $_input_charset;    //å­—ç¬¦ç¼–ç æ ¼å¼
+    var $transport;         //è®¿é—®æ¨¡å¼
 
-    /**¹¹Ôìº¯Êı
-	*´ÓÅäÖÃÎÄ¼şÖĞ³õÊ¼»¯±äÁ¿
-	*$partner ºÏ×÷Éí·İÕßID
-	*$key °²È«Ğ£ÑéÂë
-	*$sign_type Ç©ÃûÀàĞÍ
-	*$_input_charset ×Ö·û±àÂë¸ñÊ½
-	*$transport ·ÃÎÊÄ£Ê½
+    /**æ„é€ å‡½æ•°
+	*ä»é…ç½®æ–‡ä»¶ä¸­åˆå§‹åŒ–å˜é‡
+	*$partner åˆä½œèº«ä»½è€…ID
+	*$key å®‰å…¨æ ¡éªŒç 
+	*$sign_type ç­¾åç±»å‹
+	*$_input_charset å­—ç¬¦ç¼–ç æ ¼å¼
+	*$transport è®¿é—®æ¨¡å¼
      */
     function alipay_notify($partner,$key,$sign_type,$_input_charset = "GBK",$transport= "https") {
 
@@ -214,11 +214,11 @@ class alipay_notify {
         $this->_input_charset   = $_input_charset;
     }
 
-/**¶Ônotify_urlµÄÈÏÖ¤
-*·µ»ØµÄÑéÖ¤½á¹û£ºtrue/false
+/**å¯¹notify_urlçš„è®¤è¯
+*è¿”å›çš„éªŒè¯ç»“æœï¼štrue/false
 */
 function notify_verify() {
-        //»ñÈ¡Ô¶³Ì·şÎñÆ÷ATN½á¹û£¬ÑéÖ¤ÊÇ·ñÊÇÖ§¸¶±¦·şÎñÆ÷·¢À´µÄÇëÇó
+        //è·å–è¿œç¨‹æœåŠ¡å™¨ATNç»“æœï¼ŒéªŒè¯æ˜¯å¦æ˜¯æ”¯ä»˜å®æœåŠ¡å™¨å‘æ¥çš„è¯·æ±‚
         if($this->transport == "https") {
             $veryfy_url = $this->gateway. "service=notify_verify" ."&partner=" .$this->partner. "&notify_id=".$_POST["notify_id"];
         } else {
@@ -226,21 +226,21 @@ function notify_verify() {
         }
         $veryfy_result = $this->get_verify($veryfy_url);
 
-        //Éú³ÉÇ©Ãû½á¹û
-		if(empty($_POST)) {							//ÅĞ¶ÏPOSTÀ´µÄÊı×éÊÇ·ñÎª¿Õ
+        //ç”Ÿæˆç­¾åç»“æœ
+		if(empty($_POST)) {							//åˆ¤æ–­POSTæ¥çš„æ•°ç»„æ˜¯å¦ä¸ºç©º
 			return false;
 		}
 		else {
-			$post          = para_filter($_POST);	//¶ÔËùÓĞPOST·µ»ØµÄ²ÎÊıÈ¥¿Õ
-			$sort_post     = arg_sort($post);	    //¶ÔËùÓĞPOST·´À¡»ØÀ´µÄÊı¾İÅÅĞò
-			$this->mysign  = build_mysign($sort_post,$this->_key,$this->sign_type);   //Éú³ÉÇ©Ãû½á¹û
+			$post          = para_filter($_POST);	//å¯¹æ‰€æœ‰POSTè¿”å›çš„å‚æ•°å»ç©º
+			$sort_post     = arg_sort($post);	    //å¯¹æ‰€æœ‰POSTåé¦ˆå›æ¥çš„æ•°æ®æ’åº
+			$this->mysign  = build_mysign($sort_post,$this->_key,$this->sign_type);   //ç”Ÿæˆç­¾åç»“æœ
 	
-			//Ğ´ÈÕÖ¾¼ÇÂ¼
+			//å†™æ—¥å¿—è®°å½•
 			log_result("veryfy_result=".$veryfy_result."\n notify_url_log:sign=".$_POST["sign"]."&mysign=".$this->mysign.",".create_linkstring($sort_post));
 	
-			//ÅĞ¶Ïveryfy_resultÊÇ·ñÎªture£¬Éú³ÉµÄÇ©Ãû½á¹ûmysignÓë»ñµÃµÄÇ©Ãû½á¹ûsignÊÇ·ñÒ»ÖÂ
-			//$veryfy_resultµÄ½á¹û²»ÊÇtrue£¬Óë·şÎñÆ÷ÉèÖÃÎÊÌâ¡¢ºÏ×÷Éí·İÕßID¡¢notify_idÒ»·ÖÖÓÊ§Ğ§ÓĞ¹Ø
-			//mysignÓësign²»µÈ£¬Óë°²È«Ğ£ÑéÂë¡¢ÇëÇóÊ±µÄ²ÎÊı¸ñÊ½£¨Èç£º´ø×Ô¶¨Òå²ÎÊıµÈ£©¡¢±àÂë¸ñÊ½ÓĞ¹Ø
+			//åˆ¤æ–­veryfy_resultæ˜¯å¦ä¸ºtureï¼Œç”Ÿæˆçš„ç­¾åç»“æœmysignä¸è·å¾—çš„ç­¾åç»“æœsignæ˜¯å¦ä¸€è‡´
+			//$veryfy_resultçš„ç»“æœä¸æ˜¯trueï¼Œä¸æœåŠ¡å™¨è®¾ç½®é—®é¢˜ã€åˆä½œèº«ä»½è€…IDã€notify_idä¸€åˆ†é’Ÿå¤±æ•ˆæœ‰å…³
+			//mysignä¸signä¸ç­‰ï¼Œä¸å®‰å…¨æ ¡éªŒç ã€è¯·æ±‚æ—¶çš„å‚æ•°æ ¼å¼ï¼ˆå¦‚ï¼šå¸¦è‡ªå®šä¹‰å‚æ•°ç­‰ï¼‰ã€ç¼–ç æ ¼å¼æœ‰å…³
 			if (preg_match("/true$/i",$veryfy_result) && $this->mysign == $_POST["sign"]) {
 				return true;
 			} else {
@@ -251,32 +251,32 @@ function notify_verify() {
 
     /********************************************************************************/
 
-    /**¶Ôreturn_urlµÄÈÏÖ¤
-	*return ÑéÖ¤½á¹û£ºtrue/false
+    /**å¯¹return_urlçš„è®¤è¯
+	*return éªŒè¯ç»“æœï¼štrue/false
      */
     function return_verify() {
-        //»ñÈ¡Ô¶³Ì·şÎñÆ÷ATN½á¹û£¬ÑéÖ¤ÊÇ·ñÊÇÖ§¸¶±¦·şÎñÆ÷·¢À´µÄÇëÇó
+        //è·å–è¿œç¨‹æœåŠ¡å™¨ATNç»“æœï¼ŒéªŒè¯æ˜¯å¦æ˜¯æ”¯ä»˜å®æœåŠ¡å™¨å‘æ¥çš„è¯·æ±‚
         if($this->transport == "https") {
             $veryfy_url = $this->gateway. "service=notify_verify" ."&partner=" .$this->partner. "&notify_id=".$_GET["notify_id"];
         } else {
             $veryfy_url = $this->gateway. "partner=".$this->partner."&notify_id=".$_GET["notify_id"];
         }
         $veryfy_result = $this->get_verify($veryfy_url);
-        //Éú³ÉÇ©Ãû½á¹û
-		if(empty($_GET)) {							//ÅĞ¶ÏGETÀ´µÄÊı×éÊÇ·ñÎª¿Õ
+        //ç”Ÿæˆç­¾åç»“æœ
+		if(empty($_GET)) {							//åˆ¤æ–­GETæ¥çš„æ•°ç»„æ˜¯å¦ä¸ºç©º
 			return false;
 		}
 		else {
-			$get          = para_filter($_GET);	    //¶ÔËùÓĞGET·´À¡»ØÀ´µÄÊı¾İÈ¥¿Õ
+			$get          = para_filter($_GET);	    //å¯¹æ‰€æœ‰GETåé¦ˆå›æ¥çš„æ•°æ®å»ç©º
 			$sort_get     = arg_sort($get);
-			$this->mysign  = build_mysign($sort_get,$this->_key,$this->sign_type);    //Éú³ÉÇ©Ãû½á¹û
+			$this->mysign  = build_mysign($sort_get,$this->_key,$this->sign_type);    //ç”Ÿæˆç­¾åç»“æœ
 			
-			//Ğ´ÈÕÖ¾¼ÇÂ¼
+			//å†™æ—¥å¿—è®°å½•
 			//log_result("veryfy_result=".$veryfy_result."\n return_url_log:sign=".$_GET["sign"]."&mysign=".$this->mysign."&".create_linkstring($sort_get));
 	
-			//ÅĞ¶Ïveryfy_resultÊÇ·ñÎªture£¬Éú³ÉµÄÇ©Ãû½á¹ûmysignÓë»ñµÃµÄÇ©Ãû½á¹ûsignÊÇ·ñÒ»ÖÂ
-			//$veryfy_resultµÄ½á¹û²»ÊÇtrue£¬Óë·şÎñÆ÷ÉèÖÃÎÊÌâ¡¢ºÏ×÷Éí·İÕßID¡¢notify_idÒ»·ÖÖÓÊ§Ğ§ÓĞ¹Ø
-			//mysignÓësign²»µÈ£¬Óë°²È«Ğ£ÑéÂë¡¢ÇëÇóÊ±µÄ²ÎÊı¸ñÊ½£¨Èç£º´ø×Ô¶¨Òå²ÎÊıµÈ£©¡¢±àÂë¸ñÊ½ÓĞ¹Ø
+			//åˆ¤æ–­veryfy_resultæ˜¯å¦ä¸ºtureï¼Œç”Ÿæˆçš„ç­¾åç»“æœmysignä¸è·å¾—çš„ç­¾åç»“æœsignæ˜¯å¦ä¸€è‡´
+			//$veryfy_resultçš„ç»“æœä¸æ˜¯trueï¼Œä¸æœåŠ¡å™¨è®¾ç½®é—®é¢˜ã€åˆä½œèº«ä»½è€…IDã€notify_idä¸€åˆ†é’Ÿå¤±æ•ˆæœ‰å…³
+			//mysignä¸signä¸ç­‰ï¼Œä¸å®‰å…¨æ ¡éªŒç ã€è¯·æ±‚æ—¶çš„å‚æ•°æ ¼å¼ï¼ˆå¦‚ï¼šå¸¦è‡ªå®šä¹‰å‚æ•°ç­‰ï¼‰ã€ç¼–ç æ ¼å¼æœ‰å…³
 			if (preg_match("/true$/i",$veryfy_result) && $this->mysign == $_GET["sign"]) {            
 				return true;
 			}else {
@@ -287,9 +287,9 @@ function notify_verify() {
 
     /********************************************************************************/
 
-    /**»ñÈ¡Ô¶³Ì·şÎñÆ÷ATN½á¹û
-	*$url Ö¸¶¨URLÂ·¾¶µØÖ·
-	*return ·şÎñÆ÷ATN½á¹û¼¯
+    /**è·å–è¿œç¨‹æœåŠ¡å™¨ATNç»“æœ
+	*$url æŒ‡å®šURLè·¯å¾„åœ°å€
+	*return æœåŠ¡å™¨ATNç»“æœé›†
      */
     function get_verify($url,$time_out = "60") {
         $urlarr     = parse_url($url);
@@ -326,32 +326,32 @@ function notify_verify() {
 
 }
 function build_mysign($sort_array,$key,$sign_type = "MD5") {
-    $prestr = create_linkstring($sort_array);     	//°ÑÊı×éËùÓĞÔªËØ£¬°´ÕÕ¡°²ÎÊı=²ÎÊıÖµ¡±µÄÄ£Ê½ÓÃ¡°&¡±×Ö·ûÆ´½Ó³É×Ö·û´®
-    $prestr = $prestr.$key;							//°ÑÆ´½ÓºóµÄ×Ö·û´®ÔÙÓë°²È«Ğ£ÑéÂëÖ±½ÓÁ¬½ÓÆğÀ´
-    $mysgin = sign($prestr,$sign_type);			    //°Ñ×îÖÕµÄ×Ö·û´®Ç©Ãû£¬»ñµÃÇ©Ãû½á¹û
+    $prestr = create_linkstring($sort_array);     	//æŠŠæ•°ç»„æ‰€æœ‰å…ƒç´ ï¼ŒæŒ‰ç…§â€œå‚æ•°=å‚æ•°å€¼â€çš„æ¨¡å¼ç”¨â€œ&â€å­—ç¬¦æ‹¼æ¥æˆå­—ç¬¦ä¸²
+    $prestr = $prestr.$key;							//æŠŠæ‹¼æ¥åçš„å­—ç¬¦ä¸²å†ä¸å®‰å…¨æ ¡éªŒç ç›´æ¥è¿æ¥èµ·æ¥
+    $mysgin = sign($prestr,$sign_type);			    //æŠŠæœ€ç»ˆçš„å­—ç¬¦ä¸²ç­¾åï¼Œè·å¾—ç­¾åç»“æœ
     return $mysgin;
 }	
 
 /********************************************************************************/
 
-/**°ÑÊı×éËùÓĞÔªËØ£¬°´ÕÕ¡°²ÎÊı=²ÎÊıÖµ¡±µÄÄ£Ê½ÓÃ¡°&¡±×Ö·ûÆ´½Ó³É×Ö·û´®
-	*$array ĞèÒªÆ´½ÓµÄÊı×é
-	*return Æ´½ÓÍê³ÉÒÔºóµÄ×Ö·û´®
+/**æŠŠæ•°ç»„æ‰€æœ‰å…ƒç´ ï¼ŒæŒ‰ç…§â€œå‚æ•°=å‚æ•°å€¼â€çš„æ¨¡å¼ç”¨â€œ&â€å­—ç¬¦æ‹¼æ¥æˆå­—ç¬¦ä¸²
+	*$array éœ€è¦æ‹¼æ¥çš„æ•°ç»„
+	*return æ‹¼æ¥å®Œæˆä»¥åçš„å­—ç¬¦ä¸²
 */
 function create_linkstring($array) {
     $arg  = "";
     while (list ($key, $val) = each ($array)) {
         $arg.=$key."=".$val."&";
     }
-    $arg = substr($arg,0,count($arg)-2);		     //È¥µô×îºóÒ»¸ö&×Ö·û
+    $arg = substr($arg,0,count($arg)-2);		     //å»æ‰æœ€åä¸€ä¸ª&å­—ç¬¦
     return $arg;
 }
 
 /********************************************************************************/
 
-/**³ıÈ¥Êı×éÖĞµÄ¿ÕÖµºÍÇ©Ãû²ÎÊı
-	*$parameter Ç©Ãû²ÎÊı×é
-	*return È¥µô¿ÕÖµÓëÇ©Ãû²ÎÊıºóµÄĞÂÇ©Ãû²ÎÊı×é
+/**é™¤å»æ•°ç»„ä¸­çš„ç©ºå€¼å’Œç­¾åå‚æ•°
+	*$parameter ç­¾åå‚æ•°ç»„
+	*return å»æ‰ç©ºå€¼ä¸ç­¾åå‚æ•°åçš„æ–°ç­¾åå‚æ•°ç»„
  */
 function para_filter($parameter) {
     $para = array();
@@ -364,9 +364,9 @@ function para_filter($parameter) {
 
 /********************************************************************************/
 
-/**¶ÔÊı×éÅÅĞò
-	*$array ÅÅĞòÇ°µÄÊı×é
-	*return ÅÅĞòºóµÄÊı×é
+/**å¯¹æ•°ç»„æ’åº
+	*$array æ’åºå‰çš„æ•°ç»„
+	*return æ’åºåçš„æ•°ç»„
  */
 function arg_sort($array) {
     ksort($array);
@@ -376,42 +376,42 @@ function arg_sort($array) {
 
 /********************************************************************************/
 
-/**Ç©Ãû×Ö·û´®
-	*$prestr ĞèÒªÇ©ÃûµÄ×Ö·û´®
-	*return Ç©Ãû½á¹û
+/**ç­¾åå­—ç¬¦ä¸²
+	*$prestr éœ€è¦ç­¾åçš„å­—ç¬¦ä¸²
+	*return ç­¾åç»“æœ
  */
 function sign($prestr,$sign_type) {
     $sign='';
     if($sign_type == 'MD5') {
         $sign = md5($prestr);
     }elseif($sign_type =='DSA') {
-        //DSA Ç©Ãû·½·¨´ıºóĞø¿ª·¢
-        die("DSA Ç©Ãû·½·¨´ıºóĞø¿ª·¢£¬ÇëÏÈÊ¹ÓÃMD5Ç©Ãû·½Ê½");
+        //DSA ç­¾åæ–¹æ³•å¾…åç»­å¼€å‘
+        die("DSA ç­¾åæ–¹æ³•å¾…åç»­å¼€å‘ï¼Œè¯·å…ˆä½¿ç”¨MD5ç­¾åæ–¹å¼");
     }else {
-        die("Ö§¸¶±¦Ôİ²»Ö§³Ö".$sign_type."ÀàĞÍµÄÇ©Ãû·½Ê½");
+        die("æ”¯ä»˜å®æš‚ä¸æ”¯æŒ".$sign_type."ç±»å‹çš„ç­¾åæ–¹å¼");
     }
     return $sign;
 }
 
 /********************************************************************************/
 
-// ÈÕÖ¾ÏûÏ¢,°ÑÖ§¸¶±¦·µ»ØµÄ²ÎÊı¼ÇÂ¼ÏÂÀ´
-// Çë×¢Òâ·şÎñÆ÷ÊÇ·ñ¿ªÍ¨fopenÅäÖÃ
+// æ—¥å¿—æ¶ˆæ¯,æŠŠæ”¯ä»˜å®è¿”å›çš„å‚æ•°è®°å½•ä¸‹æ¥
+// è¯·æ³¨æ„æœåŠ¡å™¨æ˜¯å¦å¼€é€šfopené…ç½®
 function  log_result($word) {
     $fp = fopen("log.txt","a");
     flock($fp, LOCK_EX) ;
-    fwrite($fp,"Ö´ĞĞÈÕÆÚ£º".strftime("%Y%m%d%H%M%S",time())."\n".$word."\n");
+    fwrite($fp,"æ‰§è¡Œæ—¥æœŸï¼š".strftime("%Y%m%d%H%M%S",time())."\n".$word."\n");
     flock($fp, LOCK_UN);
     fclose($fp);
 }
 
 /********************************************************************************/
 
-/**ÊµÏÖ¶àÖÖ×Ö·û±àÂë·½Ê½
-	*$input ĞèÒª±àÂëµÄ×Ö·û´®
-	*$_output_charset Êä³öµÄ±àÂë¸ñÊ½
-	*$_input_charset ÊäÈëµÄ±àÂë¸ñÊ½
-	*return ±àÂëºóµÄ×Ö·û´®
+/**å®ç°å¤šç§å­—ç¬¦ç¼–ç æ–¹å¼
+	*$input éœ€è¦ç¼–ç çš„å­—ç¬¦ä¸²
+	*$_output_charset è¾“å‡ºçš„ç¼–ç æ ¼å¼
+	*$_input_charset è¾“å…¥çš„ç¼–ç æ ¼å¼
+	*return ç¼–ç åçš„å­—ç¬¦ä¸²
  */
 function charset_encode($input,$_output_charset ,$_input_charset) {
     $output = "";
@@ -428,11 +428,11 @@ function charset_encode($input,$_output_charset ,$_input_charset) {
 
 /********************************************************************************/
 
-/**ÊµÏÖ¶àÖÖ×Ö·û½âÂë·½Ê½
-	*$input ĞèÒª½âÂëµÄ×Ö·û´®
-	*$_output_charset Êä³öµÄ½âÂë¸ñÊ½
-	*$_input_charset ÊäÈëµÄ½âÂë¸ñÊ½
-	*return ½âÂëºóµÄ×Ö·û´®
+/**å®ç°å¤šç§å­—ç¬¦è§£ç æ–¹å¼
+	*$input éœ€è¦è§£ç çš„å­—ç¬¦ä¸²
+	*$_output_charset è¾“å‡ºçš„è§£ç æ ¼å¼
+	*$_input_charset è¾“å…¥çš„è§£ç æ ¼å¼
+	*return è§£ç åçš„å­—ç¬¦ä¸²
  */
 function charset_decode($input,$_input_charset ,$_output_charset) {
     $output = "";
@@ -449,15 +449,15 @@ function charset_decode($input,$_input_charset ,$_output_charset) {
 
 /*********************************************************************************/
 
-/**ÓÃÓÚ·ÀµöÓã£¬µ÷ÓÃ½Ó¿Úquery_timestampÀ´»ñÈ¡Ê±¼ä´ÁµÄ´¦Àíº¯Êı
-×¢Òâ£ºÓÉÓÚµÍ°æ±¾µÄPHPÅäÖÃ»·¾³²»Ö§³ÖÔ¶³ÌXML½âÎö£¬Òò´Ë±ØĞë·şÎñÆ÷¡¢±¾µØµçÄÔÖĞ×°ÓĞÖ§³ÖDOMDocument¡¢SSLµÄPHPÅäÖÃ»·¾³¡£½¨Òé±¾µØµ÷ÊÔÊ±Ê¹ÓÃPHP¿ª·¢Èí¼ş
-*$partner ºÏ×÷Éí·İÕßID
-*return Ê±¼ä´Á×Ö·û´®
+/**ç”¨äºé˜²é’“é±¼ï¼Œè°ƒç”¨æ¥å£query_timestampæ¥è·å–æ—¶é—´æˆ³çš„å¤„ç†å‡½æ•°
+æ³¨æ„ï¼šç”±äºä½ç‰ˆæœ¬çš„PHPé…ç½®ç¯å¢ƒä¸æ”¯æŒè¿œç¨‹XMLè§£æï¼Œå› æ­¤å¿…é¡»æœåŠ¡å™¨ã€æœ¬åœ°ç”µè„‘ä¸­è£…æœ‰æ”¯æŒDOMDocumentã€SSLçš„PHPé…ç½®ç¯å¢ƒã€‚å»ºè®®æœ¬åœ°è°ƒè¯•æ—¶ä½¿ç”¨PHPå¼€å‘è½¯ä»¶
+*$partner åˆä½œèº«ä»½è€…ID
+*return æ—¶é—´æˆ³å­—ç¬¦ä¸²
 */
 function query_timestamp($partner) {
     $URL = "https://mapi.alipay.com/gateway.do?service=query_timestamp&partner=".$partner;
 	$encrypt_key = "";
-//ÈôÒªÊ¹ÓÃ·ÀµöÓã£¬ÇëÈ¡ÏûÏÂÃæµÄ4ĞĞ×¢ÊÍ
+//è‹¥è¦ä½¿ç”¨é˜²é’“é±¼ï¼Œè¯·å–æ¶ˆä¸‹é¢çš„4è¡Œæ³¨é‡Š
 //    $doc = new DOMDocument();
 //    $doc->load($URL);
 //    $itemEncrypt_key = $doc->getElementsByTagName( "encrypt_key" );

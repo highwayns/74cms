@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Lite template_generate_debug_output template internal module
  *

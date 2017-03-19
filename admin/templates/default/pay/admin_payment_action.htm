@@ -1,28 +1,28 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-°²×°ÔÚÏßÖ§¸¶²å¼şĞèÉêÇë¶ÔÓ¦ÔÚÏßÖ§¸¶·şÎñ¹«Ë¾µÄ·şÎñÕË»§¡£
+å®‰è£…åœ¨çº¿æ”¯ä»˜æ’ä»¶éœ€ç”³è¯·å¯¹åº”åœ¨çº¿æ”¯ä»˜æœåŠ¡å…¬å¸çš„æœåŠ¡è´¦æˆ·ã€‚
 </p>
 </div>
 <div class="toptit">
 {#if $smarty.get.type=="install"#}
-°²×°
+å®‰è£…
 {#else#}
-±à¼­
+ç¼–è¾‘
 {#/if#}
-Ö§¸¶·½Ê½
+æ”¯ä»˜æ–¹å¼
 </div>
 <form action="?act=save_payment" method="post" name="form1" id="form1">
 {#$inputtoken#}
 <table width="100%" border="0" cellspacing="0" cellpadding="6"  >
 <tr>
-<td align="right" style="border:0px;">²å¼şÃû³Æ£º</td>
+<td align="right" style="border:0px;">æ’ä»¶åç§°ï¼š</td>
  <td style="border:0px; color: #0066CC">
  <input name="id" type="hidden" value="{#$show.id#}" />
  <strong>{#$show.byname#}</strong>
@@ -90,14 +90,14 @@
  </tr>
 {#/if#}
 <tr>
-<td align="right">ÏÔÊ¾Ë³Ğò£º</td>
+<td align="right">æ˜¾ç¤ºé¡ºåºï¼š</td>
  <td><input name="listorder" type="text" class="input_text_400" value="{#$show.listorder#}" /></td>
  </tr>
  <tr>
 <td width="180" align="right"></td>
  <td>
- <input name="submit" type="submit" class="admin_submit"    value="Ìá½»"/>
-<input name="submit222" type="button" class="admin_submit"    value="·µ»ØÁĞ±í" onclick="Javascript:window.history.go(-1)"/>
+ <input name="submit" type="submit" class="admin_submit"    value="æäº¤"/>
+<input name="submit222" type="button" class="admin_submit"    value="è¿”å›åˆ—è¡¨" onclick="Javascript:window.history.go(-1)"/>
  </td>
  </tr>
 </table>

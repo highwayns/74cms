@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
  * 74cms SMS
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -18,37 +18,37 @@ $mobile=trim($_POST['mobile']);
 $send_key=trim($_POST['send_key']);
 if (empty($send_key) || $send_key<>$_SESSION['send_mobile_key'])
 {
-exit("Ğ§ÑéÂë´íÎó");
+exit("æ•ˆéªŒç é”™è¯¯");
 }
 $SMSconfig=get_cache('sms_config');
 if ($SMSconfig['open']!="1")
 {
-exit("¶ÌĞÅÄ£¿é´¦ÓÚ¹Ø±Õ×´Ì¬");
+exit("çŸ­ä¿¡æ¨¡å—å¤„äºå…³é—­çŠ¶æ€");
 }
 if ($act=="send_code")
 {
 		if (empty($mobile) || !preg_match("/^(13|15|14|17|18)\d{9}$/",$mobile))
 		{
-		exit("ÊÖ»úºÅ´íÎó");
+		exit("æ‰‹æœºå·é”™è¯¯");
 		}
 		$sql = "select * from ".table('members')." where mobile = '{$mobile}' LIMIT 1";
 		$userinfo=$db->getone($sql);
 		if ($userinfo && $userinfo['uid']<>$_SESSION['uid'])
 		{
-		exit("ÊÖ»úºÅÒÑ¾­´æÔÚ£¡ÇëÌîĞ´ÆäËûÊÖ»úºÅÂë");
+		exit("æ‰‹æœºå·å·²ç»å­˜åœ¨ï¼è¯·å¡«å†™å…¶ä»–æ‰‹æœºå·ç ");
 		}
 		elseif(!empty($userinfo['mobile']) && $userinfo['mobile_audit']=="1" && $userinfo['mobile']==$mobile)
 		{
-		exit("ÄãµÄÊÖ»úºÅ {$mobile} ÒÑ¾­Í¨¹ıÑéÖ¤£¡");
+		exit("ä½ çš„æ‰‹æœºå· {$mobile} å·²ç»é€šè¿‡éªŒè¯ï¼");
 		}
 		else
 		{
 			if ($_SESSION['send_time'] && (time()-$_SESSION['send_time'])<180)
 			{
-			exit("Çë180ÃëºóÔÙ½øĞĞÑéÖ¤£¡");
+			exit("è¯·180ç§’åå†è¿›è¡ŒéªŒè¯ï¼");
 			}
 			$rand=mt_rand(100000, 999999);	
-			$r=captcha_send_sms($mobile,"¸ĞĞ»ÄúÊ¹ÓÃ{$_CFG['site_name']}ÊÖ»úÈÏÖ¤,ÑéÖ¤ÂëÎª:{$rand}");
+			$r=captcha_send_sms($mobile,"æ„Ÿè°¢æ‚¨ä½¿ç”¨{$_CFG['site_name']}æ‰‹æœºè®¤è¯,éªŒè¯ç ä¸º:{$rand}");
 			if ($r=="success")
 			{
 			$_SESSION['mobile_rand']=$rand;
@@ -58,7 +58,7 @@ if ($act=="send_code")
 			}
 			else
 			{
-			exit("SMSÅäÖÃ³ö´í£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±");
+			exit("SMSé…ç½®å‡ºé”™ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜");
 			}
 		} 
 }
@@ -67,14 +67,14 @@ elseif ($act=="verify_code")
 	$verifycode=trim($_POST['verifycode']);
 	if (empty($verifycode) || empty($_SESSION['mobile_rand']) || $verifycode<>$_SESSION['mobile_rand'])
 	{
-		exit("ÑéÖ¤Âë´íÎó");
+		exit("éªŒè¯ç é”™è¯¯");
 	}
 	else
 	{
 			$uid=intval($_SESSION['uid']);
 			if (empty($uid))
 			{
-				exit("ÏµÍ³´íÎó£¬UID¶ªÊ§£¡");
+				exit("ç³»ç»Ÿé”™è¯¯ï¼ŒUIDä¸¢å¤±ï¼");
 			}
 			else
 			{
@@ -105,7 +105,7 @@ elseif ($act=="verify_code")
 							$user_points=get_user_points($_SESSION['uid']);
 							$operator=$rule['verifymobile']['type']=="1"?"+":"-";
 							$_SESSION['handsel_verifymobile']=$_CFG['points_byname'].$operator.$rule['verifymobile']['value'];
-							write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username']," ÊÖ»úÍ¨¹ıÑéÖ¤£¬{$_CFG['points_byname']}({$operator}{$rule['verifymobile']['value']})£¬(Ê£Óà:{$user_points})",1,1016,"ÊÖ»úÈÏÖ¤Í¨¹ı","{$operator}{$rule['verifymobile']['value']}","{$user_points}");
+							write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username']," æ‰‹æœºé€šè¿‡éªŒè¯ï¼Œ{$_CFG['points_byname']}({$operator}{$rule['verifymobile']['value']})ï¼Œ(å‰©ä½™:{$user_points})",1,1016,"æ‰‹æœºè®¤è¯é€šè¿‡","{$operator}{$rule['verifymobile']['value']}","{$user_points}");
 							}
 						}
 					}elseif ($_SESSION['utype']=='4' && $_CFG['operation_train_mode']=='1')
@@ -123,7 +123,7 @@ elseif ($act=="verify_code")
 							$user_points=get_user_points($_SESSION['uid']);
 							$operator=$rule['train_verifymobile']['type']=="1"?"+":"-";
 							$_SESSION['handsel_verifymobile']=$_CFG['train_points_byname'].$operator.$rule['train_verifymobile']['value'];
-							write_memberslog($_SESSION['uid'],4,9101,$_SESSION['username']," ÊÖ»úÍ¨¹ıÑéÖ¤£¬{$_CFG['train_points_byname']}({$operator}{$rule['train_verifymobile']['value']})£¬(Ê£Óà:{$user_points})");
+							write_memberslog($_SESSION['uid'],4,9101,$_SESSION['username']," æ‰‹æœºé€šè¿‡éªŒè¯ï¼Œ{$_CFG['train_points_byname']}({$operator}{$rule['train_verifymobile']['value']})ï¼Œ(å‰©ä½™:{$user_points})");
 							}
 						}
 					}elseif ($_SESSION['utype']=='3' && $_CFG['operation_hunter_mode']=='1')
@@ -141,7 +141,7 @@ elseif ($act=="verify_code")
 							$user_points=get_user_points($_SESSION['uid']);
 							$operator=$rule['hunter_verifymobile']['type']=="1"?"+":"-";
 							$_SESSION['handsel_verifymobile']=$_CFG['hunter_points_byname'].$operator.$rule['hunter_verifymobile']['value'];
-							write_memberslog($_SESSION['uid'],3,9201,$_SESSION['username']," ÊÖ»úÍ¨¹ıÑéÖ¤£¬{$_CFG['hunter_points_byname']}({$operator}{$rule['hunter_verifymobile']['value']})£¬(Ê£Óà:{$user_points})");
+							write_memberslog($_SESSION['uid'],3,9201,$_SESSION['username']," æ‰‹æœºé€šè¿‡éªŒè¯ï¼Œ{$_CFG['hunter_points_byname']}({$operator}{$rule['hunter_verifymobile']['value']})ï¼Œ(å‰©ä½™:{$user_points})");
 							}
 						}
 					}
@@ -150,7 +150,7 @@ elseif ($act=="verify_code")
 			}
 	}
 }
-// ¸öÈË·¢²¼¼òÀú ĞŞ¸Ä¼òÀúµÄÊ±ºò 
+// ä¸ªäººå‘å¸ƒç®€å† ä¿®æ”¹ç®€å†çš„æ—¶å€™ 
 elseif($act == "mobile_code")
 {
 	$verifycode=trim($_POST['mobile_code']);

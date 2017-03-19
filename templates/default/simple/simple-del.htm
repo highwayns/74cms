@@ -1,4 +1,4 @@
-<script type="text/javascript">
+ï»¿<script type="text/javascript">
 $(document).ready(function()
 {
 $("#form_simple_del").validate({
@@ -18,9 +18,9 @@ $("#form_simple_del").validate({
 	},
     messages: {
     pwd: {
-    required: "ÇëÊäÈëÃÜÂë",
-    minlength: jQuery.format("ÃÜÂë²»ÄÜ<{0}¸ö×Ö·û"),
-	remote: jQuery.format("¹ÜÀíÃÜÂë´íÎó")	
+    required: "è¯·è¾“å…¥å¯†ç ",
+    minlength: jQuery.format("å¯†ç ä¸èƒ½<{0}ä¸ªå­—ç¬¦"),
+	remote: jQuery.format("ç®¡ç†å¯†ç é”™è¯¯")	
    }
   },
   errorPlacement: function(error, element) {
@@ -32,7 +32,7 @@ $("#form_simple_del").validate({
         error.appendTo(element.parent());
 	}
     });
-	/////ÑéÖ¤Âë²¿·Ö
+	/////éªŒè¯ç éƒ¨åˆ†
 });
 </script>
 <form id="form_simple_del" name="form_simple_del" method="post" action="{#$QISHI.site_dir#}plus/ajax_simple.php?act=exe_delsimple">
@@ -40,7 +40,7 @@ $("#form_simple_del").validate({
     <table>
       <tbody>
         <tr>
-          <td>ÇëÊäÈë¹ÜÀíÃÜÂë£º</td>
+          <td>è¯·è¾“å…¥ç®¡ç†å¯†ç ï¼š</td>
           <td><input type="text" class="input_text_155" name="pwd" id="pwd" maxlength="25"/>
           </td>
         </tr>
@@ -49,13 +49,13 @@ $("#form_simple_del").validate({
           <td>
             <div>  
             <input name="id" type="hidden"  id="id" value="{#$id#}" /> 
-            <input type="submit" value="È·¶¨" class="but95_35lan" id="addsimple" />
+            <input type="submit" value="ç¡®å®š" class="but95_35lan" id="addsimple" />
           </td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="wei_jobs_tip">
-    <p>É¾³ıºó²»¿É»Ö¸´£¡</p>
+    <p>åˆ é™¤åä¸å¯æ¢å¤ï¼</p>
   </div>
 </form>

@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,18 +6,18 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-<h2>ÌáÊ¾£º</h2>
+<h2>æç¤ºï¼š</h2>
 <p>
-ÏµÍ³ÄÚÖÃ·ÖÀà²»¿ÉÒÔ±à¼­»òÕßÉ¾³ı<br />×Ô¶¨Òå·ÖÀàµ÷ÓÃÃû²»¿ÉÒÔÒÔ ¡°QS_¡±¿ªÍ·
+ç³»ç»Ÿå†…ç½®åˆ†ç±»ä¸å¯ä»¥ç¼–è¾‘æˆ–è€…åˆ é™¤<br />è‡ªå®šä¹‰åˆ†ç±»è°ƒç”¨åä¸å¯ä»¥ä»¥ â€œQS_â€å¼€å¤´
 </p>
 </div>
 
 		  <table width="100%" border="0" cellpadding="2" cellspacing="0" id="list" class="link_lan">
           <tr>
-            <td width="15%" class="admin_list_tit admin_list_first">µ÷ÓÃÃû³Æ</td>
-            <td class="admin_list_tit">·ÖÀàÃû³Æ</td>
-            <td width="15%" align="center" class="admin_list_tit">ÀàĞÍ</td>
-            <td width="15%" align="center" class="admin_list_tit">±à¼­</td>
+            <td width="15%" class="admin_list_tit admin_list_first">è°ƒç”¨åç§°</td>
+            <td class="admin_list_tit">åˆ†ç±»åç§°</td>
+            <td width="15%" align="center" class="admin_list_tit">ç±»å‹</td>
+            <td width="15%" align="center" class="admin_list_tit">ç¼–è¾‘</td>
             </tr>
 			{#foreach from=$list item=li#}
           <tr>
@@ -26,18 +26,18 @@
 			{#$li.categoryname#}			</td>
             <td align="center" class="admin_list">			
 			{#if $li.admin_set=="1"#}
-			<span style="color:#FF6600">ÏµÍ³ÄÚÖÃ</span>
+			<span style="color:#FF6600">ç³»ç»Ÿå†…ç½®</span>
 			{#else#}
-			×Ô¶¨Òå
+			è‡ªå®šä¹‰
 			{#/if#}			</td>
             <td align="center" class="admin_list">
 			{#if $li.admin_set!="1"#}
-			<a href="?act=site_navigation_category_edit&alias={#$li.alias#}"  >ĞŞ¸Ä</a>
+			<a href="?act=site_navigation_category_edit&alias={#$li.alias#}"  >ä¿®æ”¹</a>
 			&nbsp;&nbsp;&nbsp;
-			<a href="?act=site_navigation_category_del&id={#$li.id#}&{#$urltoken#}" onclick="return confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')">É¾³ı</a>
+			<a href="?act=site_navigation_category_del&id={#$li.id#}&{#$urltoken#}" onclick="return confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')">åˆ é™¤</a>
 			{#else#}
-			<span style="color:#999999">ĞŞ¸Ä</span>&nbsp;&nbsp;&nbsp;
-			<span style="color:#999999">É¾³ı</span>
+			<span style="color:#999999">ä¿®æ”¹</span>&nbsp;&nbsp;&nbsp;
+			<span style="color:#999999">åˆ é™¤</span>
 			
 			{#/if#}
 &nbsp;			</td>
@@ -47,7 +47,7 @@
 		  <table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">
       <tr>
         <td>
- <input type="button" name="Submit22" value="ĞÂÔöÀà±ğ" class="admin_submit"    onclick="window.location='?act=site_navigation_category_add'"/>
+ <input type="button" name="Submit22" value="æ–°å¢ç±»åˆ«" class="admin_submit"    onclick="window.location='?act=site_navigation_category_add'"/>
 		</td>
         <td width="305" align="right">		
 	    </td>

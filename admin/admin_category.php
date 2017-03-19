@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ·ÖÀà
+ * 74cms åˆ†ç±»
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_category_fun.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'district';
 check_permissions($_SESSION['admin_purview'],"site_category");
-$smarty->assign('pageheader',"·ÖÀà¹ÜÀí");
+$smarty->assign('pageheader',"åˆ†ç±»ç®¡ç†");
 if($act == 'grouplist')
 {
 	get_token();
@@ -32,29 +32,29 @@ elseif($act == 'add_group')
 elseif($act == 'add_group_save')
 {
 	check_token();
-	$setsqlarr['g_name']=!empty($_POST['g_name']) ?trim($_POST['g_name']) : adminmsg("ÇëÌîÐ´·Ö×éÃû",1);
-	$setsqlarr['g_alias']=!empty($_POST['g_alias']) ?trim($_POST['g_alias']) : adminmsg("ÇëÌîÐ´µ÷ÓÃÃû",1);
+	$setsqlarr['g_name']=!empty($_POST['g_name']) ?trim($_POST['g_name']) : adminmsg("è¯·å¡«å†™åˆ†ç»„å",1);
+	$setsqlarr['g_alias']=!empty($_POST['g_alias']) ?trim($_POST['g_alias']) : adminmsg("è¯·å¡«å†™è°ƒç”¨å",1);
 	$info=get_category_group_one($setsqlarr['g_alias']);
 	if (empty($info))
 	{
 		if (stripos($setsqlarr['g_alias'],"qs_")===0)
 		{
-			adminmsg("µ÷ÓÃÃû²»ÄÜÓÃ¡°qs_¡±¿ªÍ¨",0);
+			adminmsg("è°ƒç”¨åä¸èƒ½ç”¨â€œqs_â€å¼€é€š",0);
 		}
 		else
 		{
-			$link[0]['text'] = "·ÖÀà×éÁÐ±í";
+			$link[0]['text'] = "åˆ†ç±»ç»„åˆ—è¡¨";
 			$link[0]['href'] = '?act=grouplist';
-			$link[1]['text'] = "¼ÌÐøÌí¼Ó·ÖÀà×é";
+			$link[1]['text'] = "ç»§ç»­æ·»åŠ åˆ†ç±»ç»„";
 			$link[1]['href'] = "?act=add_group";
-			//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("ºóÌ¨Ìí¼Ó·ÖÀà£¡", $_SESSION['admin_name'],3);
-			$db->inserttable(table('category_group'),$setsqlarr)?adminmsg("Ìí¼Ó³É¹¦£¡",2,$link):adminmsg("Ìí¼ÓÊ§°Ü£¡",0);			
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("åŽå°æ·»åŠ åˆ†ç±»ï¼", $_SESSION['admin_name'],3);
+			$db->inserttable(table('category_group'),$setsqlarr)?adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link):adminmsg("æ·»åŠ å¤±è´¥ï¼",0);			
 		}
 	}
 	else
 	{
-	 adminmsg("Ìí¼ÓÊ§°Ü,µ÷ÓÃÃûÓÐÖØ¸´",0);
+	 adminmsg("æ·»åŠ å¤±è´¥,è°ƒç”¨åæœ‰é‡å¤",0);
 	}
 }
 elseif($act == 'edit_group')
@@ -67,33 +67,33 @@ elseif($act == 'edit_group')
 elseif($act == 'edit_group_save')
 {
 	check_token();
-	$setsqlarr['g_name']=!empty($_POST['g_name']) ?trim($_POST['g_name']) : adminmsg("ÇëÌîÐ´·Ö×éÃû",1);
-	$setsqlarr['g_alias']=!empty($_POST['g_alias']) ?trim($_POST['g_alias']) : adminmsg("ÇëÌîÐ´µ÷ÓÃÃû",1);
+	$setsqlarr['g_name']=!empty($_POST['g_name']) ?trim($_POST['g_name']) : adminmsg("è¯·å¡«å†™åˆ†ç»„å",1);
+	$setsqlarr['g_alias']=!empty($_POST['g_alias']) ?trim($_POST['g_alias']) : adminmsg("è¯·å¡«å†™è°ƒç”¨å",1);
 	$info=get_category_group_one($setsqlarr['g_alias']);
 	if (empty($info) || $info['g_id']==intval($_POST['g_id']))
 	{
 		if (stripos($setsqlarr['g_alias'],"qs_")===0)
 		{
-			adminmsg("µ÷ÓÃÃû²»ÄÜÓÃ¡°qs_¡±¿ªÍ¨",0);
+			adminmsg("è°ƒç”¨åä¸èƒ½ç”¨â€œqs_â€å¼€é€š",0);
 		}
 		else
 		{
-			$link[0]['text'] = "·ÖÀà×éÁÐ±í";
+			$link[0]['text'] = "åˆ†ç±»ç»„åˆ—è¡¨";
 			$link[0]['href'] = '?act=grouplist';
-			$link[1]['text'] = "²é¿´ÐÞ¸Ä½á¹û";
+			$link[1]['text'] = "æŸ¥çœ‹ä¿®æ”¹ç»“æžœ";
 			$link[1]['href'] = "?act=edit_group&alias=".$setsqlarr['g_alias'];
-			$db->updatetable(table('category_group'),$setsqlarr," g_id=".intval($_POST['g_id']))?'':adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0);
-			//Í¬Ê±ÐÞ¸Ä·ÖÀà×éÏÂµÄ·ÖÀà±ðÃû
+			$db->updatetable(table('category_group'),$setsqlarr," g_id=".intval($_POST['g_id']))?'':adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
+			//åŒæ—¶ä¿®æ”¹åˆ†ç±»ç»„ä¸‹çš„åˆ†ç±»åˆ«å
 			$catarr['c_alias']=$setsqlarr['g_alias'];
-			$db->updatetable(table('category'),$catarr," c_alias='".$_POST['old_g_alias']."'")?'':adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0);
-			//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("ºóÌ¨³É¹¦ÐÞ¸Ä·ÖÀà£¡", $_SESSION['admin_name'],3);
-			adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);						
+			$db->updatetable(table('category'),$catarr," c_alias='".$_POST['old_g_alias']."'")?'':adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("åŽå°æˆåŠŸä¿®æ”¹åˆ†ç±»ï¼", $_SESSION['admin_name'],3);
+			adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);						
 		}
 	}
 	else
 	{
-	 adminmsg("Ìí¼ÓÊ§°Ü,µ÷ÓÃÃûÓÐÖØ¸´",0);
+	 adminmsg("æ·»åŠ å¤±è´¥,è°ƒç”¨åæœ‰é‡å¤",0);
 	}
 }
 elseif($act == 'del_group')
@@ -102,11 +102,11 @@ elseif($act == 'del_group')
 	$alias=$_REQUEST['alias'];
 	if ($num=del_group($alias))
 	{
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."ÐÐ",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",1);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",1);
 	}
 }
 elseif($act == 'show_category')
@@ -128,18 +128,18 @@ elseif($act == 'category_save')
 				$setsqlarr['c_name']=trim($_POST['c_name'][$i]);
 				$setsqlarr['c_order']=intval($_POST['c_order'][$i]);
 				$setsqlarr['c_index']=getfirstchar($setsqlarr['c_name']);
-				!$db->updatetable(table('category'),$setsqlarr," c_id=".intval($_POST['c_id'][$i]))?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):"";
+				!$db->updatetable(table('category'),$setsqlarr," c_id=".intval($_POST['c_id'][$i]))?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
 		}
 
 	}
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦ÐÞ¸Ä·ÖÀà£¡", $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸä¿®æ”¹åˆ†ç±»ï¼", $_SESSION['admin_name'],3);
 	refresh_category_cache();
 	makejs_classify();
-	adminmsg("ÐÞ¸ÄÍê³É£¡",2);
+	adminmsg("ä¿®æ”¹å®Œæˆï¼",2);
 }
 elseif($act == 'add_category')
 {
@@ -162,7 +162,7 @@ elseif($act == 'add_category_save')
 				$setsqlarr['c_order']=intval($_POST['c_order'][$i]);
 				$setsqlarr['c_index']=getfirstchar($setsqlarr['c_name']);
 				$setsqlarr['c_note']=trim($_POST['c_note'][$i]);				
-				!$db->inserttable(table('category'),$setsqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):"";
+				!$db->inserttable(table('category'),$setsqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
@@ -171,19 +171,19 @@ elseif($act == 'add_category_save')
 	}
 	if ($num==0)
 	{
-	adminmsg("Ìí¼ÓÊ§°Ü,Êý¾Ý²»ÍêÕû",1);
+	adminmsg("æ·»åŠ å¤±è´¥,æ•°æ®ä¸å®Œæ•´",1);
 	}
 	else
 	{
-	$link[0]['text'] = "·µ»Ø·ÖÀàÁÐ±í";
+	$link[0]['text'] = "è¿”å›žåˆ†ç±»åˆ—è¡¨";
 	$link[0]['href'] = "?act=show_category&alias=".$setsqlarr['c_alias'];
-	$link[1]['text'] = "¼ÌÐøÌí¼Ó·ÖÀà";
+	$link[1]['text'] = "ç»§ç»­æ·»åŠ åˆ†ç±»";
 	$link[1]['href'] = "?act=add_category&alias=".$setsqlarr['c_alias'];
 	refresh_category_cache();
 	makejs_classify();
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦Ìí¼Ó·ÖÀà , ¹²Ìí¼Ó".$num."¸ö£¡", $_SESSION['admin_name'],3);
-	adminmsg("Ìí¼Ó³É¹¦£¡¹²Ìí¼Ó".$num."¸ö·ÖÀà",2,$link);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸæ·»åŠ åˆ†ç±» , å…±æ·»åŠ ".$num."ä¸ªï¼", $_SESSION['admin_name'],3);
+	adminmsg("æ·»åŠ æˆåŠŸï¼å…±æ·»åŠ ".$num."ä¸ªåˆ†ç±»",2,$link);
 	}
 }
 elseif($act == 'edit_category')
@@ -196,21 +196,21 @@ elseif($act == 'edit_category')
 elseif($act == 'edit_category_save')
 {
 	check_token();
-	$setsqlarr['c_name']=!empty($_POST['c_name']) ?trim($_POST['c_name']) : adminmsg("ÇëÌîÐ´Ãû³Æ",1);
+	$setsqlarr['c_name']=!empty($_POST['c_name']) ?trim($_POST['c_name']) : adminmsg("è¯·å¡«å†™åç§°",1);
 	$setsqlarr['c_order']=intval($_POST['c_order']);
 	$setsqlarr['c_parentid']=intval($_POST['c_parentid']);
 	$setsqlarr['c_index']=getfirstchar($setsqlarr['c_name']);
 	$setsqlarr['c_note']=trim($_POST['c_note']);				
-	!$db->updatetable(table('category'),$setsqlarr," c_id=".intval($_POST['c_id']))?adminmsg("±£´æÊ§°Ü£¡",0):"";
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	!$db->updatetable(table('category'),$setsqlarr," c_id=".intval($_POST['c_id']))?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] = '?act=show_category&alias='.$_POST['c_alias'];
-	$link[1]['text'] = "²é¿´ÐÞ¸Ä½á¹û";
+	$link[1]['text'] = "æŸ¥çœ‹ä¿®æ”¹ç»“æžœ";
 	$link[1]['href'] = "?act=edit_category&id=".intval($_POST['c_id']);
 	refresh_category_cache();
 	makejs_classify();
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦ÐÞ¸Ä·ÖÀà", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2,$link);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸä¿®æ”¹åˆ†ç±»", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'del_category')
 {
@@ -220,14 +220,14 @@ elseif($act == 'del_category')
 	{
 	refresh_category_cache();
 	makejs_classify();
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."ÐÐ",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",1);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",1);
 	}
 }
-//µØÇø--------------
+//åœ°åŒº--------------
 elseif($act == 'district')
 {
 	get_token();
@@ -245,14 +245,14 @@ elseif($act == 'district_all_save')
 		 
 				$setsqlarr['categoryname']=trim($_POST['categoryname'][$k]);
 				$setsqlarr['category_order']=intval($_POST['category_order'][$k]);
-				!$db->updatetable(table('category_district'),$setsqlarr," id=".intval($_POST['save_id'][$k]))?adminmsg("±£´æÊ§°Ü£¡",0):"";
+				!$db->updatetable(table('category_district'),$setsqlarr," id=".intval($_POST['save_id'][$k]))?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
  
 		}
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦¸üÐÂµØÇø·ÖÀà , ¹²¸üÐÂ".$num."¸ö", $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åŽå°æˆåŠŸæ›´æ–°åœ°åŒºåˆ†ç±» , å…±æ›´æ–°".$num."ä¸ª", $_SESSION['admin_name'],3);
 	}
-	//ÐÂÔöµÄÈë¿â
+	//æ–°å¢žçš„å…¥åº“
 	if (is_array($_POST['add_pid']) && count($_POST['add_pid'])>0)
 	{
 		for ($i =0; $i <count($_POST['add_pid']);$i++){
@@ -261,16 +261,16 @@ elseif($act == 'district_all_save')
 				$setsqlarr['categoryname']=trim($_POST['add_categoryname'][$i]);
 				$setsqlarr['category_order']=intval($_POST['add_category_order'][$i]);
 				$setsqlarr['parentid']=intval($_POST['add_pid'][$i]);	
-				!$db->inserttable(table('category_district'),$setsqlarr)?adminmsg("±£´æÊ§°Ü£¡",0):"";
+				!$db->inserttable(table('category_district'),$setsqlarr)?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
 		}
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦Ìí¼ÓµØÇø·ÖÀà , ¹²Ìí¼Ó".$num."¸ö", $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åŽå°æˆåŠŸæ·»åŠ åœ°åŒºåˆ†ç±» , å…±æ·»åŠ ".$num."ä¸ª", $_SESSION['admin_name'],3);
 	}
 	makejs_classify();
-	adminmsg("±£´æ³É¹¦£¡",2);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'del_district')
 {
@@ -279,13 +279,13 @@ elseif($act == 'del_district')
 	if ($num=del_district($id))
 	{
 	makejs_classify();
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦É¾³ýµØÇø·ÖÀà£¡¹²É¾³ý".$num."ÐÐ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."ÐÐ",2);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸåˆ é™¤åœ°åŒºåˆ†ç±»ï¼å…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",1);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",1);
 	}
 }
 elseif($act == 'edit_district')
@@ -298,16 +298,16 @@ elseif($act == 'edit_district')
 elseif($act == 'edit_district_save')
 {
 	check_token();
-	$setsqlarr['categoryname']=!empty($_POST['categoryname']) ?trim($_POST['categoryname']) : adminmsg("ÇëÌîÐ´Ãû³Æ",1);
+	$setsqlarr['categoryname']=!empty($_POST['categoryname']) ?trim($_POST['categoryname']) : adminmsg("è¯·å¡«å†™åç§°",1);
 	$setsqlarr['category_order']=intval($_POST['category_order']);
 	$setsqlarr['parentid']=intval($_POST['parentid']);				
-	!$db->updatetable(table('category_district'),$setsqlarr," id=".intval($_POST['id']))?adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0):"";
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	!$db->updatetable(table('category_district'),$setsqlarr," id=".intval($_POST['id']))?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):"";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] = '?act=district';
 	makejs_classify();
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦ÐÞ¸ÄµØÇø·ÖÀà£¡", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2,$link);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸä¿®æ”¹åœ°åŒºåˆ†ç±»ï¼", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'add_district')
 {
@@ -318,7 +318,7 @@ elseif($act == 'add_district')
 elseif($act == 'add_district_save')
 {
 	check_token();
-	//ÐÂÔöµÄÈë¿â
+	//æ–°å¢žçš„å…¥åº“
 	if (is_array($_POST['categoryname']) && count($_POST['categoryname'])>0)
 	{
 		for ($i =0; $i <count($_POST['categoryname']);$i++){
@@ -327,20 +327,20 @@ elseif($act == 'add_district_save')
 				$setsqlarr['categoryname']=trim($_POST['categoryname'][$i]);
 				$setsqlarr['category_order']=intval($_POST['category_order'][$i]);
 				$setsqlarr['parentid']=intval($_POST['parentid'][$i]);	
-				!$db->inserttable(table('category_district'),$setsqlarr)?adminmsg("±£´æÊ§°Ü£¡",0):"";
+				!$db->inserttable(table('category_district'),$setsqlarr)?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
 		}
 	}
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] = '?act=district';
 	makejs_classify();
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦Ìí¼ÓµØÇø·ÖÀà£¡±¾´ÎÌí¼ÓÁË{$num}¸ö·ÖÀà", $_SESSION['admin_name'],3);
-	adminmsg("Ìí¼Ó³É¹¦£¡±¾´ÎÌí¼ÓÁË{$num}¸ö·ÖÀà",2,$link);	
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸæ·»åŠ åœ°åŒºåˆ†ç±»ï¼æœ¬æ¬¡æ·»åŠ äº†{$num}ä¸ªåˆ†ç±»", $_SESSION['admin_name'],3);
+	adminmsg("æ·»åŠ æˆåŠŸï¼æœ¬æ¬¡æ·»åŠ äº†{$num}ä¸ªåˆ†ç±»",2,$link);	
 }
-///////---------------Ö°Î»·ÖÀà
+///////---------------èŒä½åˆ†ç±»
 elseif($act == 'jobs')
 {
 	get_token();
@@ -359,14 +359,14 @@ elseif($act == 'jobs_all_save')
 				$setsqlarr['categoryname']=trim($_POST['categoryname'][$i]);
 				$setsqlarr['category_order']=intval($_POST['category_order'][$i]);
 				$setsqlarr['content']=trim($_POST['content'][$i]);				
-				!$db->updatetable(table('category_jobs'),$setsqlarr," id=".intval($_POST['save_id'][$i]))?adminmsg("±£´æÊ§°Ü£¡",0):"";
+				!$db->updatetable(table('category_jobs'),$setsqlarr," id=".intval($_POST['save_id'][$i]))?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 		}
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦¸üÐÂÖ°Î»·ÖÀà£¡±¾´Î¸üÐÂÁË{$num}¸ö·ÖÀà", $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åŽå°æˆåŠŸæ›´æ–°èŒä½åˆ†ç±»ï¼æœ¬æ¬¡æ›´æ–°äº†{$num}ä¸ªåˆ†ç±»", $_SESSION['admin_name'],3);
 	}
-	//ÐÂÔöµÄÈë¿â
+	//æ–°å¢žçš„å…¥åº“
 	if (is_array($_POST['add_pid']) && count($_POST['add_pid'])>0)
 	{
 		for ($i =0; $i <count($_POST['add_pid']);$i++){
@@ -376,16 +376,16 @@ elseif($act == 'jobs_all_save')
 				$setsqlarr['category_order']=intval($_POST['add_category_order'][$i]);
 				$setsqlarr['content']=trim($_POST['content'][$i]);	
 				$setsqlarr['parentid']=intval($_POST['add_pid'][$i]);	
-				!$db->inserttable(table('category_jobs'),$setsqlarr)?adminmsg("±£´æÊ§°Ü£¡",0):"";
+				!$db->inserttable(table('category_jobs'),$setsqlarr)?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
 		}
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦Ìí¼ÓÖ°Î»·ÖÀà£¡±¾´ÎÌí¼ÓÁË{$num}¸ö·ÖÀà", $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åŽå°æˆåŠŸæ·»åŠ èŒä½åˆ†ç±»ï¼æœ¬æ¬¡æ·»åŠ äº†{$num}ä¸ªåˆ†ç±»", $_SESSION['admin_name'],3);
 	}
 	makejs_classify();
-	adminmsg("±£´æ³É¹¦£¡",2);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'del_jobs_category')
 {
@@ -393,13 +393,13 @@ elseif($act == 'del_jobs_category')
 	$id=$_REQUEST['id'];
 	if ($num=del_jobs_category($id))
 	{
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦É¾³ýÖ°Î»·ÖÀà£¡¹²É¾³ý".$num."ÐÐ", $_SESSION['admin_name'],3);
-		adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."ÐÐ",2);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åŽå°æˆåŠŸåˆ é™¤èŒä½åˆ†ç±»ï¼å…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
+		adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",1);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",1);
 	}
 }
 elseif($act == 'edit_jobs_category')
@@ -412,17 +412,17 @@ elseif($act == 'edit_jobs_category')
 elseif($act == 'edit_jobs_category_save')
 {
 	check_token();
-	$setsqlarr['categoryname']=!empty($_POST['categoryname']) ?trim($_POST['categoryname']) : adminmsg("ÇëÌîÐ´Ãû³Æ",1);
+	$setsqlarr['categoryname']=!empty($_POST['categoryname']) ?trim($_POST['categoryname']) : adminmsg("è¯·å¡«å†™åç§°",1);
 	$setsqlarr['category_order']=intval($_POST['category_order']);
 	$setsqlarr['content']=trim($_POST['content']);
 	$setsqlarr['parentid']=intval($_POST['parentid']);				
-	!$db->updatetable(table('category_jobs'),$setsqlarr," id=".intval($_POST['id']))?adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0):"";
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	!$db->updatetable(table('category_jobs'),$setsqlarr," id=".intval($_POST['id']))?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):"";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] = '?act=jobs';
 	makejs_classify();
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦ÐÞ¸ÄÖ°Î»·ÖÀà£¡", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2,$link);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸä¿®æ”¹èŒä½åˆ†ç±»ï¼", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'add_category_jobs')
 {
@@ -433,7 +433,7 @@ elseif($act == 'add_category_jobs')
 elseif($act == 'add_category_jobs_save')
 {
 	check_token();
-	//ÐÂÔöµÄÈë¿â
+	//æ–°å¢žçš„å…¥åº“
 	if (is_array($_POST['categoryname']) && count($_POST['categoryname'])>0)
 	{
 		for ($i =0; $i <count($_POST['categoryname']);$i++){
@@ -443,18 +443,18 @@ elseif($act == 'add_category_jobs_save')
 				$setsqlarr['category_order']=intval($_POST['category_order'][$i]);
 				$setsqlarr['content']=trim($_POST['content'][$i]);	
 				$setsqlarr['parentid']=intval($_POST['parentid'][$i]);	
-				!$db->inserttable(table('category_jobs'),$setsqlarr)?adminmsg("±£´æÊ§°Ü£¡",0):"";
+				!$db->inserttable(table('category_jobs'),$setsqlarr)?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
 		}
 	}
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] = '?act=jobs';
 	makejs_classify();
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦Ìí¼ÓÖ°Î»·ÖÀà£¡±¾´ÎÌí¼ÓÁË".$num."¸ö·ÖÀà", $_SESSION['admin_name'],3);
-	adminmsg("Ìí¼Ó³É¹¦£¡±¾´ÎÌí¼ÓÁË".$num."¸ö·ÖÀà",2,$link);	
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸæ·»åŠ èŒä½åˆ†ç±»ï¼æœ¬æ¬¡æ·»åŠ äº†".$num."ä¸ªåˆ†ç±»", $_SESSION['admin_name'],3);
+	adminmsg("æ·»åŠ æˆåŠŸï¼æœ¬æ¬¡æ·»åŠ äº†".$num."ä¸ªåˆ†ç±»",2,$link);	
 }
 elseif($act == 'colorlist')
 {
@@ -472,14 +472,14 @@ elseif($act == 'add_color')
 elseif($act == 'add_color_save')
 {
 	check_token();
-	$setsqlarr['value']=!empty($_POST['val']) ?trim($_POST['val']) : adminmsg("ÇëÑ¡ÔñÑÕÉ«",1);
-	$link[0]['text'] = "ÑÕÉ«ÁÐ±í";
+	$setsqlarr['value']=!empty($_POST['val']) ?trim($_POST['val']) : adminmsg("è¯·é€‰æ‹©é¢œè‰²",1);
+	$link[0]['text'] = "é¢œè‰²åˆ—è¡¨";
 	$link[0]['href'] = '?act=colorlist';
-	$link[1]['text'] = "¼ÌÐøÌí¼ÓÑÕÉ«";
+	$link[1]['text'] = "ç»§ç»­æ·»åŠ é¢œè‰²";
 	$link[1]['href'] = "?act=add_color";
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨Ìí¼ÓÑÕÉ«·ÖÀà£¡", $_SESSION['admin_name'],3);
-	$db->inserttable(table('color'),$setsqlarr)?adminmsg("Ìí¼Ó³É¹¦£¡",2,$link):adminmsg("Ìí¼ÓÊ§°Ü£¡",0);			
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æ·»åŠ é¢œè‰²åˆ†ç±»ï¼", $_SESSION['admin_name'],3);
+	$db->inserttable(table('color'),$setsqlarr)?adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link):adminmsg("æ·»åŠ å¤±è´¥ï¼",0);			
 
 }
 elseif($act == 'edit_color')
@@ -492,17 +492,17 @@ elseif($act == 'edit_color')
 elseif($act == 'edit_color_save')
 {
 	check_token();
-	$setsqlarr['value']=!empty($_POST['val']) ?trim($_POST['val']) : adminmsg("ÇëÑ¡ÔñÑÕÉ«",1);
+	$setsqlarr['value']=!empty($_POST['val']) ?trim($_POST['val']) : adminmsg("è¯·é€‰æ‹©é¢œè‰²",1);
 	$info=get_color_one($_POST['id']);
 	
-	$link[0]['text'] = "ÑÕÉ«ÁÐ±í";
+	$link[0]['text'] = "é¢œè‰²åˆ—è¡¨";
 	$link[0]['href'] = '?act=colorlist';
-	$link[1]['text'] = "²é¿´ÐÞ¸Ä½á¹û";
+	$link[1]['text'] = "æŸ¥çœ‹ä¿®æ”¹ç»“æžœ";
 	$link[1]['href'] = "?act=edit_color&id=".$_POST['id'];
-	$db->updatetable(table('color'),$setsqlarr," id=".intval($_POST['id']))?'':adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0);
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦ÐÞ¸ÄÑÕÉ«·ÖÀà£¡", $_SESSION['admin_name'],3);
-	adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);						
+	$db->updatetable(table('color'),$setsqlarr," id=".intval($_POST['id']))?'':adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸä¿®æ”¹é¢œè‰²åˆ†ç±»ï¼", $_SESSION['admin_name'],3);
+	adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);						
 	
 }
 elseif($act == 'del_color')
@@ -511,16 +511,16 @@ elseif($act == 'del_color')
 	$id=$_REQUEST['id'];
 	if ($num=del_color($id))
 	{
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦É¾³ýÑÕÉ«·ÖÀà£¡¹²É¾³ý".$num."ÐÐ", $_SESSION['admin_name'],3);
-		adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."ÐÐ",2);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åŽå°æˆåŠŸåˆ é™¤é¢œè‰²åˆ†ç±»ï¼å…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
+		adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",1);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",1);
 	}
 }
-///////---------------×¨Òµ·ÖÀà
+///////---------------ä¸“ä¸šåˆ†ç±»
 elseif($act == 'major')
 {
 	get_token();
@@ -538,14 +538,14 @@ elseif($act == 'major_all_save')
 			{	
 				$setsqlarr['categoryname']=trim($_POST['categoryname'][$i]);
 				$setsqlarr['category_order']=intval($_POST['category_order'][$i]);			
-				!$db->updatetable(table('category_major'),$setsqlarr," id=".intval($_POST['save_id'][$i]))?adminmsg("±£´æÊ§°Ü£¡",0):"";
+				!$db->updatetable(table('category_major'),$setsqlarr," id=".intval($_POST['save_id'][$i]))?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 		}
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦¸üÐÂ×¨Òµ·ÖÀà£¡±¾´Î¸üÐÂÁË{$num}¸ö·ÖÀà", $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åŽå°æˆåŠŸæ›´æ–°ä¸“ä¸šåˆ†ç±»ï¼æœ¬æ¬¡æ›´æ–°äº†{$num}ä¸ªåˆ†ç±»", $_SESSION['admin_name'],3);
 	}
-	//ÐÂÔöµÄÈë¿â
+	//æ–°å¢žçš„å…¥åº“
 	if (is_array($_POST['add_pid']) && count($_POST['add_pid'])>0)
 	{
 		for ($i =0; $i <count($_POST['add_pid']);$i++){
@@ -554,16 +554,16 @@ elseif($act == 'major_all_save')
 				$setsqlarr['categoryname']=trim($_POST['add_categoryname'][$i]);
 				$setsqlarr['category_order']=intval($_POST['add_category_order'][$i]);
 				$setsqlarr['parentid']=intval($_POST['add_pid'][$i]);	
-				!$db->inserttable(table('category_major'),$setsqlarr)?adminmsg("±£´æÊ§°Ü£¡",0):"";
+				!$db->inserttable(table('category_major'),$setsqlarr)?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
 		}
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦Ìí¼Ó×¨Òµ·ÖÀà£¡±¾´ÎÌí¼ÓÁË{$num}¸ö·ÖÀà", $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åŽå°æˆåŠŸæ·»åŠ ä¸“ä¸šåˆ†ç±»ï¼æœ¬æ¬¡æ·»åŠ äº†{$num}ä¸ªåˆ†ç±»", $_SESSION['admin_name'],3);
 	}
 	makejs_classify();
-	adminmsg("±£´æ³É¹¦£¡",2);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'del_major_category')
 {
@@ -571,13 +571,13 @@ elseif($act == 'del_major_category')
 	$id=$_REQUEST['id'];
 	if ($num=del_major_category($id))
 	{
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨³É¹¦É¾³ý×¨Òµ·ÖÀà£¡¹²É¾³ý".$num."ÐÐ", $_SESSION['admin_name'],3);
-		adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."ÐÐ",2);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åŽå°æˆåŠŸåˆ é™¤ä¸“ä¸šåˆ†ç±»ï¼å…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
+		adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",1);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",1);
 	}
 }
 elseif($act == 'edit_major_category')
@@ -590,16 +590,16 @@ elseif($act == 'edit_major_category')
 elseif($act == 'edit_major_category_save')
 {
 	check_token();
-	$setsqlarr['categoryname']=!empty($_POST['categoryname']) ?trim($_POST['categoryname']) : adminmsg("ÇëÌîÐ´Ãû³Æ",1);
+	$setsqlarr['categoryname']=!empty($_POST['categoryname']) ?trim($_POST['categoryname']) : adminmsg("è¯·å¡«å†™åç§°",1);
 	$setsqlarr['category_order']=intval($_POST['category_order']);
 	$setsqlarr['parentid']=intval($_POST['parentid']);				
-	!$db->updatetable(table('category_major'),$setsqlarr," id=".intval($_POST['id']))?adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0):"";
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	!$db->updatetable(table('category_major'),$setsqlarr," id=".intval($_POST['id']))?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):"";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] = '?act=major';
 	makejs_classify();
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦ÐÞ¸Ä×¨Òµ·ÖÀà£¡", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2,$link);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸä¿®æ”¹ä¸“ä¸šåˆ†ç±»ï¼", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'add_category_major')
 {
@@ -610,7 +610,7 @@ elseif($act == 'add_category_major')
 elseif($act == 'add_category_major_save')
 {
 	check_token();
-	//ÐÂÔöµÄÈë¿â
+	//æ–°å¢žçš„å…¥åº“
 	if (is_array($_POST['categoryname']) && count($_POST['categoryname'])>0)
 	{
 		for ($i =0; $i <count($_POST['categoryname']);$i++){
@@ -619,17 +619,17 @@ elseif($act == 'add_category_major_save')
 				$setsqlarr['categoryname']=trim($_POST['categoryname'][$i]);
 				$setsqlarr['category_order']=intval($_POST['category_order'][$i]);
 				$setsqlarr['parentid']=intval($_POST['parentid'][$i]);	
-				!$db->inserttable(table('category_major'),$setsqlarr)?adminmsg("±£´æÊ§°Ü£¡",0):"";
+				!$db->inserttable(table('category_major'),$setsqlarr)?adminmsg("ä¿å­˜å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
 		}
 	}
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] = '?act=major';
 	makejs_classify();
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦Ìí¼Ó×¨Òµ·ÖÀà£¡±¾´ÎÌí¼ÓÁË".$num."¸ö·ÖÀà", $_SESSION['admin_name'],3);
-	adminmsg("Ìí¼Ó³É¹¦£¡±¾´ÎÌí¼ÓÁË".$num."¸ö·ÖÀà",2,$link);	
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°æˆåŠŸæ·»åŠ ä¸“ä¸šåˆ†ç±»ï¼æœ¬æ¬¡æ·»åŠ äº†".$num."ä¸ªåˆ†ç±»", $_SESSION['admin_name'],3);
+	adminmsg("æ·»åŠ æˆåŠŸï¼æœ¬æ¬¡æ·»åŠ äº†".$num."ä¸ªåˆ†ç±»",2,$link);	
 }
 ?>

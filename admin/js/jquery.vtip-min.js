@@ -1,4 +1,4 @@
-/**
+﻿/**
 Vertigo Tip by www.vertigo-project.com
 Requires jQuery
 */

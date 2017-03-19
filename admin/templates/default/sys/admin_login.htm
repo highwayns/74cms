@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta http-equiv="X-UA-Compatible" content="IE=7">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
-<title>ÍøÕ¾ºóÌ¨¹ÜÀíÖĞĞÄ- Powered by 74CMS</title>
+<title>ç½‘ç«™åå°ç®¡ç†ä¸­å¿ƒ- Powered by 74CMS</title>
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 {#if $verify_adminlogin=="1"#}
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -16,18 +16,18 @@ $(document).ready(function()
 function imgcaptcha(inputID,imgdiv)
 {
 	$(inputID).focus(function(){
-		if ($(inputID).val()=="µã»÷»ñÈ¡ÑéÖ¤Âë")
+		if ($(inputID).val()=="ç‚¹å‡»è·å–éªŒè¯ç ")
 		{
 		$(inputID).val("");
 		$(inputID).css("color","#333333");
 		}
 		$(inputID).parent("div").css("position","relative");
-		//ÉèÖÃÑéÖ¤ÂëDIV
+		//è®¾ç½®éªŒè¯ç DIV
 		$(imgdiv).css({ position: "absolute", left:  $(inputID).width(), "bottom": "0px" , "z-index": "10", "background-color": "#FFFFFF", "border": "1px #A3C8DC solid","display": "none","margin-left": "15px"});
 		$(imgdiv).show();
 		if ($(imgdiv).html()=='')
 		{
-		$(imgdiv).append("<img src=\"../include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:3px;\" title=\"¿´²»ÇëÑéÖ¤Âë£¿µã»÷¸ü»»Ò»ÕÅ\"  border=\"0\"/>");
+		$(imgdiv).append("<img src=\"../include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:3px;\" title=\"çœ‹ä¸è¯·éªŒè¯ç ï¼Ÿç‚¹å‡»æ›´æ¢ä¸€å¼ \"  border=\"0\"/>");
 		}
 		$(imgdiv+" img").click(function()
 		{
@@ -64,19 +64,19 @@ imgcaptcha("#postcaptcha","#imgdiv");
         </table></td>
         <td width="300"><table width="100%" border="0" cellpadding="0" cellspacing="4">
           <tr>
-            <td width="75" height="26" align="right">ÓÃ»§Ãû£º</td>
+            <td width="75" height="26" align="right">ç”¨æˆ·åï¼š</td>
             <td ><input name="admin_name" type="text" maxlength="16" id="admin_name"  class="login_box_input"/></td>
           </tr>
           <tr>
-            <td height="26" align="right">ÃÜ&nbsp;&nbsp;&nbsp;&nbsp;Âë£º</td>
+            <td height="26" align="right">å¯†&nbsp;&nbsp;&nbsp;&nbsp;ç ï¼š</td>
             <td ><input name="admin_pwd" type="password" id="admin_pwd" value="" class="login_box_input"/></td>
           </tr>
 		   {#if $verify_adminlogin=="1"#}
           <tr>
-            <td height="26" align="right">ÑéÖ¤Âë£º</td>
+            <td height="26" align="right">éªŒè¯ç ï¼š</td>
             <td>
 			<div>
-			<input  class="login_box_input" name="postcaptcha" id="postcaptcha" type="text" value="µã»÷»ñÈ¡ÑéÖ¤Âë" style="color:#999999" />
+			<input  class="login_box_input" name="postcaptcha" id="postcaptcha" type="text" value="ç‚¹å‡»è·å–éªŒè¯ç " style="color:#999999" />
 			<div id="imgdiv"></div>
 			</div>
                
@@ -87,9 +87,9 @@ imgcaptcha("#postcaptcha","#imgdiv");
             <td height="30">&nbsp;</td>
             <td >
 			<div style="position:relative; padding-bottom:5px; padding-top:5px;">
-			<input class="login_box_rig_an" type="submit" name="Submit" value="µÇÂ¼" />&nbsp;&nbsp;&nbsp;&nbsp;<label>
+			<input class="login_box_rig_an" type="submit" name="Submit" value="ç™»å½•" />&nbsp;&nbsp;&nbsp;&nbsp;<label>
               <input name="rememberme" class="login_box_rememberme"   type="checkbox" id="rememberme" value="1" />
-¼Ç×¡ÎÒ</label></div>
+è®°ä½æˆ‘</label></div>
 <input type="hidden" name="act" value="do_login" />
 
 </td>
@@ -109,7 +109,7 @@ imgcaptcha("#postcaptcha","#imgdiv");
   <table width="530" border="0" align="center" cellpadding="0" cellspacing="0"  class="link_lan">
 
       <tr>
-        <td height="100" align="center"  style="color:#666666; line-height:180%; text-align:center">74cmsÊÇÒ»¸ö²ÉÓÃ PHP ºÍ MySQL ¹¹½¨µÄ¸ßĞ§ÈË²ÅÏµÍ³½â¾ö·½°¸ <a href="http://www.74cms.com/bbs" target="_blank">¼¼ÊõÂÛÌ³</a><br />
+        <td height="100" align="center"  style="color:#666666; line-height:180%; text-align:center">74cmsæ˜¯ä¸€ä¸ªé‡‡ç”¨ PHP å’Œ MySQL æ„å»ºçš„é«˜æ•ˆäººæ‰ç³»ç»Ÿè§£å†³æ–¹æ¡ˆ <a href="http://www.74cms.com/bbs" target="_blank">æŠ€æœ¯è®ºå›</a><br />
         Powered by <a href="http://www.74cms.com/" target="_blank"><em>74cms v {#$QISHI_VERSION#}</em></a> Copyright &copy;2015 </td>
       </tr>
     </table>

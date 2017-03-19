@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,19 +6,19 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-ÏµÍ³ÄÚÖÃ¹ã¸æÎ»²»ÄÜ±à¼­<br />×Ô¶¨Òå¹ã¸æÎ»µ÷ÓÃÃû²»¿ÉÒÔÒÔ ¡°QS_¡±¿ªÍ·
+ç³»ç»Ÿå†…ç½®å¹¿å‘Šä½ä¸èƒ½ç¼–è¾‘<br />è‡ªå®šä¹‰å¹¿å‘Šä½è°ƒç”¨åä¸å¯ä»¥ä»¥ â€œQS_â€å¼€å¤´
 </p>
 </div>
  
 		  <table width="100%" border="0" cellpadding="0" cellspacing="0" id="list" class="link_lan">
           <tr>
-            <td  class="admin_list_tit admin_list_first">¹ã¸æÎ»Ãû³Æ</td>
-            <td class="admin_list_tit">µ÷ÓÃÃû³Æ</td>
-            <td width="12%" align="center" class="admin_list_tit" >ÊôĞÔ</td>
-            <td width="12%" align="center" class="admin_list_tit">ÀàĞÍ</td>
-            <td width="12%" align="center" class="admin_list_tit">±à¼­</td>
+            <td  class="admin_list_tit admin_list_first">å¹¿å‘Šä½åç§°</td>
+            <td class="admin_list_tit">è°ƒç”¨åç§°</td>
+            <td width="12%" align="center" class="admin_list_tit" >å±æ€§</td>
+            <td width="12%" align="center" class="admin_list_tit">ç±»å‹</td>
+            <td width="12%" align="center" class="admin_list_tit">ç¼–è¾‘</td>
             </tr>
 			{#foreach from=$list item=li#}
 			
@@ -30,27 +30,27 @@
 			{#$li.alias#}
 			</td>
             <td align="center" class="admin_list" >
-			{#if $li.type_id=="1"#}ÎÄ×Ö
-	  {#elseif $li.type_id=="2"#}Í¼Æ¬
-	  {#elseif $li.type_id=="3"#}´úÂë
+			{#if $li.type_id=="1"#}æ–‡å­—
+	  {#elseif $li.type_id=="2"#}å›¾ç‰‡
+	  {#elseif $li.type_id=="3"#}ä»£ç 
 	  {#elseif $li.type_id=="4"#}FLASH
-	  {#elseif $li.type_id=="5"#}¸¡¶¯
-	  {#elseif $li.type_id=="6"#}ÊÓÆµ
+	  {#elseif $li.type_id=="5"#}æµ®åŠ¨
+	  {#elseif $li.type_id=="6"#}è§†é¢‘
 	  {#/if#}			</td>
             <td align="center" class="admin_list">
 			{#if $li.admin_set=="1"#}
-			<span style="color:#FF6600">ÏµÍ³ÄÚÖÃ</span>
+			<span style="color:#FF6600">ç³»ç»Ÿå†…ç½®</span>
 			{#else#}
-			×Ô¶¨Òå¹ã¸æÎ»
+			è‡ªå®šä¹‰å¹¿å‘Šä½
 			{#/if#}			</td>
             <td align="center" class="admin_list">
 			{#if $li.admin_set!="1"#}
-			<a href="?act=edit_ad_category&id={#$li.id#}"  >ĞŞ¸Ä</a>
+			<a href="?act=edit_ad_category&id={#$li.id#}"  >ä¿®æ”¹</a>
 			&nbsp;&nbsp;&nbsp;
-			<a href="?act=del_ad_category&id={#$li.id#}&{#$urltoken#}" onclick="return confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')">É¾³ı</a>
+			<a href="?act=del_ad_category&id={#$li.id#}&{#$urltoken#}" onclick="return confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')">åˆ é™¤</a>
 			{#else#}
-			<a href="?act=edit_ad_category&id={#$li.id#}"  >ĞŞ¸Ä</a>&nbsp;&nbsp;&nbsp;
-			<span style="color:#999999">É¾³ı</span>
+			<a href="?act=edit_ad_category&id={#$li.id#}"  >ä¿®æ”¹</a>&nbsp;&nbsp;&nbsp;
+			<span style="color:#999999">åˆ é™¤</span>
 			
 			{#/if#}			</td>
             </tr>
@@ -59,7 +59,7 @@
 		<table width="100%" border="0" cellspacing="10"  class="admin_list_btm">
 <tr>
       <td>
-       <input type="button" name="Submit22" value="ĞÂÔö¹ã¸æÎ»" class="admin_submit"    onclick="window.location='?act=ad_category_add'"/> 
+       <input type="button" name="Submit22" value="æ–°å¢å¹¿å‘Šä½" class="admin_submit"    onclick="window.location='?act=ad_category_add'"/> 
 	  </td>
       <td width="360">	  
 	  </td>

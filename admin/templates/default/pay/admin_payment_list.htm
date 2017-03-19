@@ -1,22 +1,22 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-°²×°ÔÚÏßÖ§¸¶²å¼şĞèÉêÇë¶ÔÓ¦ÔÚÏßÖ§¸¶·şÎñ¹«Ë¾µÄ·şÎñÕË»§¡£
+å®‰è£…åœ¨çº¿æ”¯ä»˜æ’ä»¶éœ€ç”³è¯·å¯¹åº”åœ¨çº¿æ”¯ä»˜æœåŠ¡å…¬å¸çš„æœåŠ¡è´¦æˆ·ã€‚
 </p>
 </div>
   <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="link_lan" id="list" >
     <tr>
-            <td width="15%"  class="admin_list_tit admin_list_first">Ãû³Æ</td>
-            <td width="34%" class="admin_list_tit">Ö§¸¶·½Ê½¼ò¶ÌÃèÊö</td>
-            <td align="center" class="admin_list_tit">ÊÖĞø·Ñ</td>
-            <td align="center" class="admin_list_tit">ÅÅĞò</td>
-            <td width="15%" align="center" class="admin_list_tit">²Ù×÷</td>
+            <td width="15%"  class="admin_list_tit admin_list_first">åç§°</td>
+            <td width="34%" class="admin_list_tit">æ”¯ä»˜æ–¹å¼ç®€çŸ­æè¿°</td>
+            <td align="center" class="admin_list_tit">æ‰‹ç»­è´¹</td>
+            <td align="center" class="admin_list_tit">æ’åº</td>
+            <td width="15%" align="center" class="admin_list_tit">æ“ä½œ</td>
     </tr>
 		 {#foreach from=$payment item=li#}
           <tr>
@@ -27,10 +27,10 @@
 			{#$li.listorder#}      </td>
             <td align="center" class="admin_list">
 				{#if $li.p_install==2#}
-				<a href="?act=uninstall_payment&id={#$li.id#}&{#$urltoken#}" onclick="return confirm('ÄãÈ·¶¨ÒªĞ¶ÔØÂğ£¿')">Ğ¶ÔØ</a> &nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="?act=action_payment&name={#$li.typename#}" >±à¼­</a>
+				<a href="?act=uninstall_payment&id={#$li.id#}&{#$urltoken#}" onclick="return confirm('ä½ ç¡®å®šè¦å¸è½½å—ï¼Ÿ')">å¸è½½</a> &nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="?act=action_payment&name={#$li.typename#}" >ç¼–è¾‘</a>
 				{#else#}
-				<a href="?act=action_payment&type=install&name={#$li.typename#}">°²×°</a>
+				<a href="?act=action_payment&type=install&name={#$li.typename#}">å®‰è£…</a>
 				{#/if#}				</td>
           </tr>
          

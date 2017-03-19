@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ¸öÈË»áÔ±ÖÐÐÄ
+ * 74cms ä¸ªäººä¼šå‘˜ä¸­å¿ƒ
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 if(!defined('IN_QISHI')) die('Access Denied!');
@@ -40,9 +40,9 @@ if ($_SESSION['uid']=='' || $_SESSION['username']=='' || intval($_SESSION['uid']
 }
 elseif ($_SESSION['utype']!='2')
 {
-	$link[0]['text'] = "»áÔ±ÖÐÐÄ";
+	$link[0]['text'] = "ä¼šå‘˜ä¸­å¿ƒ";
 	$link[0]['href'] = url_rewrite('QS_login');
-	showmsg('Äú·ÃÎÊµÄÒ³ÃæÐèÒª ¸öÈË»áÔ± µÇÂ¼£¡',1,$link);
+	showmsg('æ‚¨è®¿é—®çš„é¡µé¢éœ€è¦ ä¸ªäººä¼šå‘˜ ç™»å½•ï¼',1,$link);
 }
 	$act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'index';
 	$user=get_user_info($_SESSION['uid']);	
@@ -54,27 +54,27 @@ elseif ($_SESSION['utype']!='2')
 	}
 	elseif ($user['status']=="2" && $act!='index' && $act!='user_status'  && $act!='user_status_save') 
 	{
-		$link[0]['text'] = "·µ»Ø»áÔ±ÖÐÐÄÊ×Ò³";
+		$link[0]['text'] = "è¿”å›žä¼šå‘˜ä¸­å¿ƒé¦–é¡µ";
 		$link[0]['href'] = 'personal_index.php?act=';
-		exit(showmsg('ÄúµÄÕËºÅ´¦ÓÚÔÝÍ£×´Ì¬£¬ÇëÁªÏµ¹ÜÀíÔ±ÉèÎªÕý³£ºó½øÐÐ²Ù×÷£¡',1,$link));	
+		exit(showmsg('æ‚¨çš„è´¦å·å¤„äºŽæš‚åœçŠ¶æ€ï¼Œè¯·è”ç³»ç®¡ç†å‘˜è®¾ä¸ºæ­£å¸¸åŽè¿›è¡Œæ“ä½œï¼',1,$link));	
 	}
 	if ($_CFG['login_per_audit_email'] && $user['email_audit']=="0" && $act!='authenticate' && $act!='user_email' && $act!='user_mobile')
 	{
-		$link[0]['text'] = "ÈÏÖ¤ÓÊÏä";
+		$link[0]['text'] = "è®¤è¯é‚®ç®±";
 		$link[0]['href'] = 'personal_user.php?act=authenticate';
-		$link[1]['text'] = "ÍøÕ¾Ê×Ò³";
+		$link[1]['text'] = "ç½‘ç«™é¦–é¡µ";
 		$link[1]['href'] = $_CFG['site_dir'];
-		showmsg('ÄúµÄÓÊÏäÎ´ÈÏÖ¤£¬ÈÏÖ¤ºó²ÅÄÜ½øÐÐÆäËû²Ù×÷£¡',1,$link,true,6);
+		showmsg('æ‚¨çš„é‚®ç®±æœªè®¤è¯ï¼Œè®¤è¯åŽæ‰èƒ½è¿›è¡Œå…¶ä»–æ“ä½œï¼',1,$link,true,6);
 		exit();
 	}
 	$sms=get_cache('sms_config');
 	if ($_CFG['login_per_audit_mobile'] && $user['mobile_audit']=="0" && $act!='authenticate' && $act!='user_mobile' && $act!='user_email' && $sms['open']=="1")
 	{
-		$link[0]['text'] = "ÈÏÖ¤ÊÖ»ú";
+		$link[0]['text'] = "è®¤è¯æ‰‹æœº";
 		$link[0]['href'] = 'personal_user.php?act=authenticate';
-		$link[1]['text'] = "ÍøÕ¾Ê×Ò³";
+		$link[1]['text'] = "ç½‘ç«™é¦–é¡µ";
 		$link[1]['href'] = $_CFG['site_dir'];
-		showmsg('ÄúµÄÊÖ»úÎ´ÈÏÖ¤£¬ÈÏÖ¤ºó²ÅÄÜ½øÐÐÆäËû²Ù×÷£¡',1,$link,true,6);
+		showmsg('æ‚¨çš„æ‰‹æœºæœªè®¤è¯ï¼Œè®¤è¯åŽæ‰èƒ½è¿›è¡Œå…¶ä»–æ“ä½œï¼',1,$link,true,6);
 		exit();
 	}
 	$smarty->assign('user',$user);
@@ -82,7 +82,7 @@ elseif ($_SESSION['utype']!='2')
 	$auditresume = get_auditresume_list($_SESSION['uid'],2);
 	$smarty->assign('auditresume',$auditresume);
 	$smarty->assign('sms',$sms);
-	// ¼ì²âÊÇ·ñ ½ñÌìµÚÒ»´ÎµÇÂ¼
+	// æ£€æµ‹æ˜¯å¦ ä»Šå¤©ç¬¬ä¸€æ¬¡ç™»å½•
 	if($_SESSION['personal_login_first'] && $auditresum && $act!="edit_resume")
 	{
 		$smarty->assign('personal_login_first',$_SESSION['personal_login_first']);

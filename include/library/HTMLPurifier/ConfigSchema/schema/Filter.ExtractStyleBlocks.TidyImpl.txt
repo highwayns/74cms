@@ -1,4 +1,4 @@
-Filter.ExtractStyleBlocks.TidyImpl
+﻿Filter.ExtractStyleBlocks.TidyImpl
 TYPE: mixed/null
 VERSION: 3.1.0
 DEFAULT: NULL

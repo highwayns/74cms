@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,51 +6,51 @@
   <div class="clear"></div>
 </div>
 <div class="toptip link_lan"  >
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-ÍøÕ¾½ÓÈëQQµÇÂ¼ºó£¬ÓÃ»§Ö»ĞèÒªÊ¹ÓÃQQÕËºÅÃÜÂë¾Í¿ÉµÇÂ¼£¬¼ò»¯ÓÃ»§×¢²áÁ÷³Ì£¬¸üÓĞĞ§ÂÊµÄÌá¸ß×ª»¯ÓÃ»§Á÷Á¿£»
+ç½‘ç«™æ¥å…¥QQç™»å½•åï¼Œç”¨æˆ·åªéœ€è¦ä½¿ç”¨QQè´¦å·å¯†ç å°±å¯ç™»å½•ï¼Œç®€åŒ–ç”¨æˆ·æ³¨å†Œæµç¨‹ï¼Œæ›´æœ‰æ•ˆç‡çš„æé«˜è½¬åŒ–ç”¨æˆ·æµé‡ï¼›
 <br />
-½ÓÈëQQµÇÂ¼Ç°£¬ÍøÕ¾ĞèÊ×ÏÈ½øĞĞÉêÇë£¬»ñµÃ¶ÔÓ¦µÄappidÓëappkey£¬ÒÔ±£Ö¤ºóĞøÁ÷³ÌÖĞ¿ÉÕıÈ·¶ÔÍøÕ¾ÓëÓÃ»§½øĞĞÑéÖ¤ÓëÊÚÈ¨¡£ 
-ÏÖÔÚ¾ÍÈ¥<a href="http://connect.opensns.qq.com/apply" target="_blank">ÉêÇë</a></p>
+æ¥å…¥QQç™»å½•å‰ï¼Œç½‘ç«™éœ€é¦–å…ˆè¿›è¡Œç”³è¯·ï¼Œè·å¾—å¯¹åº”çš„appidä¸appkeyï¼Œä»¥ä¿è¯åç»­æµç¨‹ä¸­å¯æ­£ç¡®å¯¹ç½‘ç«™ä¸ç”¨æˆ·è¿›è¡ŒéªŒè¯ä¸æˆæƒã€‚ 
+ç°åœ¨å°±å»<a href="http://connect.opensns.qq.com/apply" target="_blank">ç”³è¯·</a></p>
 </div>
 
-<div class="toptit">QQ»¥ÉèÖÃ</div>
+<div class="toptit">QQäº’è®¾ç½®</div>
  
     <form action="?act=set_qq_save" method="post" name="form1" id="form1">
  {#$inputtoken#}
     <table width="700" border="0" cellspacing="6" cellpadding="1" style=" margin-bottom:3px;">
 	<tr>
-      <td width="150" align="right">¿ªÆôQQµÇÂ¼£º</td>
+      <td width="150" align="right">å¼€å¯QQç™»å½•ï¼š</td>
       <td  >
 	  <label>
-        <input name="qq_apiopen" type="radio"  value="1"  {#if $config.qq_apiopen=="1"#}checked=checked {#/if#}/>¿ªÆô</label>
+        <input name="qq_apiopen" type="radio"  value="1"  {#if $config.qq_apiopen=="1"#}checked=checked {#/if#}/>å¼€å¯</label>
 &nbsp;&nbsp;
 <label>
-        <input name="qq_apiopen" type="radio"  value="0"  {#if $config.qq_apiopen=="0"#}checked=checked {#/if#}/>¹Ø±Õ</label>
+        <input name="qq_apiopen" type="radio"  value="0"  {#if $config.qq_apiopen=="0"#}checked=checked {#/if#}/>å…³é—­</label>
 		&nbsp;&nbsp;
 </td>
     </tr>
 	<tr>
-      <td width="150" align="right">ÑéÖ¤·½Ê½£º</td>
+      <td width="150" align="right">éªŒè¯æ–¹å¼ï¼š</td>
       <td  >
 	  <label>
-        <input name="qq_logintype" type="radio"  value="1"  {#if $config.qq_logintype=="1"#}checked=checked {#/if#}/>client-sideÄ£Ê½
+        <input name="qq_logintype" type="radio"  value="1"  {#if $config.qq_logintype=="1"#}checked=checked {#/if#}/>client-sideæ¨¡å¼
 </label>
 &nbsp;&nbsp;
 <label>
-        <input name="qq_logintype" type="radio"  value="2"  {#if $config.qq_logintype=="2"#}checked=checked {#/if#}/>server-sideÄ£Ê½
+        <input name="qq_logintype" type="radio"  value="2"  {#if $config.qq_logintype=="2"#}checked=checked {#/if#}/>server-sideæ¨¡å¼
 </label>
 		&nbsp;&nbsp;
 </td>
     </tr>
 	<tr>
-      <td width="150" align="right">appid£º</td>
+      <td width="150" align="right">appidï¼š</td>
       <td  >
 	 <input name="qq_appid" type="text"  class="input_text_400"  value="{#$config.qq_appid#}"  />
 </td>
     </tr>
 	<tr>
-      <td width="150" align="right">appkey£º</td>
+      <td width="150" align="right">appkeyï¼š</td>
       <td  >
 	 <input name="qq_appkey" type="text"  class="input_text_400"  value="{#$config.qq_appkey#}"  />
 </td>
@@ -58,7 +58,7 @@
 	<tr>
 	  <td align="right" valign="top">&nbsp;</td>
 	  <td> 
-	    <input name="submit" type="submit" class="admin_submit"    value="±£´æ"/>
+	    <input name="submit" type="submit" class="admin_submit"    value="ä¿å­˜"/>
 	  </td>
 	  </tr>
   </table>

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
  * 74cms ajax
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -21,9 +21,9 @@ if($act == 'total')
 	$total_resume_talent=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume')." WHERE talent=3");
 	$total_payment_log=$db->get_total("SELECT COUNT(*) AS num FROM ".table('order')." WHERE is_paid=1 and utype=1");
 	$total_resume_photo_audit=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume')." WHERE photo_audit=2 ");
-	$total_feedback_replyinfo=$db->get_total("SELECT COUNT(*) AS num FROM ".table('feedback'));//Òâ¼ûÓë½¨Òé
-	$total_report=$db->get_total("SELECT COUNT(*) AS num FROM ".table('report')." ");//ËùÓĞÍ¶ËßÆóÒµĞÅÏ¢
-	$total_report1=$db->get_total("SELECT COUNT(*) AS num FROM ".table('report_resume')." ");//ËùÓĞÍ¶ËßÆóÒµĞÅÏ¢
+	$total_feedback_replyinfo=$db->get_total("SELECT COUNT(*) AS num FROM ".table('feedback'));//æ„è§ä¸å»ºè®®
+	$total_report=$db->get_total("SELECT COUNT(*) AS num FROM ".table('report')." ");//æ‰€æœ‰æŠ•è¯‰ä¼ä¸šä¿¡æ¯
+	$total_report1=$db->get_total("SELECT COUNT(*) AS num FROM ".table('report_resume')." ");//æ‰€æœ‰æŠ•è¯‰ä¼ä¸šä¿¡æ¯
 	$total_report=$total_report+$total_report1;
 	
 	$str="[{$total_jobs}]";
@@ -169,54 +169,54 @@ elseif($act == 'get_user_info')
 	$info=$db->getone("select * from ".table('members')." where uid='{$id}' LIMIT 1");
 	if (empty($info))
 	{
-	exit("»áÔ±ĞÅÏ¢²»´æÔÚ£¡¿ÉÄÜÒÑ¾­±»É¾³ı£¡");
+	exit("ä¼šå‘˜ä¿¡æ¯ä¸å­˜åœ¨ï¼å¯èƒ½å·²ç»è¢«åˆ é™¤ï¼");
 	}
-	$html="ÓÃ»§Ãû£º{$info['username']}&nbsp;&nbsp;<span style=\"color:#0033CC\">(uid:{$info['uid']})</span><br/>";
+	$html="ç”¨æˆ·åï¼š{$info['username']}&nbsp;&nbsp;<span style=\"color:#0033CC\">(uid:{$info['uid']})</span><br/>";
 	if (!empty($info['mobile']))
 	{
-	$mobile_audit=$info['mobile_audit']=="1"?'<span style="color:#009900">[ÒÑÑéÖ¤]</span>':'<span style="color:#FF9900">[Î´ÑéÖ¤]</span>';
+	$mobile_audit=$info['mobile_audit']=="1"?'<span style="color:#009900">[å·²éªŒè¯]</span>':'<span style="color:#FF9900">[æœªéªŒè¯]</span>';
 	$info['mobile']=$info['mobile'].$mobile_audit;
 	}
 	else
 	{
 	$info['mobile']='----';
 	}
-	$html.="ÊÖ»ú£º{$info['mobile']}<br/>";
-	$email_audit=$info['email_audit']=="1"?'<span style="color:#009900">[ÒÑÑéÖ¤]</span>':'<span style="color:#FF9900">[Î´ÑéÖ¤]</span>';
-	$html.="ÓÊÏä£º{$info['email']}{$email_audit}<br/>";
+	$html.="æ‰‹æœºï¼š{$info['mobile']}<br/>";
+	$email_audit=$info['email_audit']=="1"?'<span style="color:#009900">[å·²éªŒè¯]</span>':'<span style="color:#FF9900">[æœªéªŒè¯]</span>';
+	$html.="é‚®ç®±ï¼š{$info['email']}{$email_audit}<br/>";
 	$info['reg_time']=$info['reg_time']?date("Y/m/d H:i",$info['reg_time']):'----';
-	$html.="×¢²áÊ±¼ä£º{$info['reg_time']}<br/>";
+	$html.="æ³¨å†Œæ—¶é—´ï¼š{$info['reg_time']}<br/>";
 	$info['reg_ip']=$info['reg_ip']?$info['reg_ip']:'----';
-	$html.="×¢²áIP£º{$info['reg_ip']}<br/>";
+	$html.="æ³¨å†ŒIPï¼š{$info['reg_ip']}<br/>";
 	$info['last_login_time']=$info['last_login_time']?date("Y/m/d H:i",$info['last_login_time']):'----';
-	$html.="×îºóµÇÂ¼Ê±¼ä£º{$info['last_login_time']}<br/>";
+	$html.="æœ€åç™»å½•æ—¶é—´ï¼š{$info['last_login_time']}<br/>";
 	$info['last_login_ip']=$info['last_login_ip']?$info['last_login_ip']:'----';
-	$html.="×îºóµÇÂ¼IP£º{$info['last_login_ip']}<br/>";
+	$html.="æœ€åç™»å½•IPï¼š{$info['last_login_ip']}<br/>";
 	if ($info['utype']=="1")
 	{
 		$points=$db->getone("select points from ".table('members_points')." where uid = '{$id}'  LIMIT 1 ");
-		$html.="{$_CFG['points_byname']}£º{$points['points']}{$_CFG['points_quantifier']}<br/>";
+		$html.="{$_CFG['points_byname']}ï¼š{$points['points']}{$_CFG['points_quantifier']}<br/>";
 		$com=$db->getone("select companyname from ".table('company_profile')." where uid='{$id}' LIMIT 1");
 		if (empty($com['companyname']))
 		{
-		$com['companyname']="Î´ÌîĞ´";
+		$com['companyname']="æœªå¡«å†™";
 		}
-		$html.="¹«Ë¾Ãû³Æ£º{$com['companyname']}<br/>";
+		$html.="å…¬å¸åç§°ï¼š{$com['companyname']}<br/>";
 		$totaljob=$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs')."  where uid='{$id}'");
-		$html.="·¢²¼Ö°Î»£º{$totaljob}Ìõ<br/>";
+		$html.="å‘å¸ƒèŒä½ï¼š{$totaljob}æ¡<br/>";
 		if ($_CFG['operation_mode']>="2")
 		{
 			$setmeal=$db->getone("select * from ".table('members_setmeal')."  WHERE uid='{$id}' AND  effective=1 LIMIT 1");
 			if (!empty($setmeal))
 			{
-				$html.="·şÎñÌ×²Í£º{$setmeal['setmeal_name']}<br/>";
+				$html.="æœåŠ¡å¥—é¤ï¼š{$setmeal['setmeal_name']}<br/>";
 				if($setmeal['endtime']=='0')
 				{
-					$html.="·şÎñÆÚÏŞ£º".date("Y/m/d",$setmeal['starttime'])."-- ÖÁ½ñ";
+					$html.="æœåŠ¡æœŸé™ï¼š".date("Y/m/d",$setmeal['starttime'])."-- è‡³ä»Š";
 				}
 				else
 				{
-					$html.="·şÎñÆÚÏŞ£º".date("Y/m/d",$setmeal['starttime'])."--".date("Y/m/d",$setmeal['endtime']);
+					$html.="æœåŠ¡æœŸé™ï¼š".date("Y/m/d",$setmeal['starttime'])."--".date("Y/m/d",$setmeal['endtime']);
 				}
 			}
 		}
@@ -224,7 +224,7 @@ elseif($act == 'get_user_info')
 	if ($info['utype']=="2")
 	{
 		$totalresume=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume')."  where uid='{$id}'");
-		$html.="·¢²¼¼òÀú£º{$totalresume}Ìõ<br/>";
+		$html.="å‘å¸ƒç®€å†ï¼š{$totalresume}æ¡<br/>";
 	}
 	exit($html);
 }

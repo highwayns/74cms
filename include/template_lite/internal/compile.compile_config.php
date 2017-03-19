@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Lite compile config variables - template internal module
  *

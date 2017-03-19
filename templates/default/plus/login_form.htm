@@ -1,19 +1,19 @@
-<script>
+ï»¿<script>
 jQuery(document).ready(function($) {
-	//ÑéÖ¤
+	//éªŒè¯
 	$("form[id=Formlogin]").submit(function(e) {
 	e.preventDefault();
 		if ($("#username").val()=="")
 		{	
-			alert("ÇëÊäÈëÓÃ»§Ãû£¡");
+			alert("è¯·è¾“å…¥ç”¨æˆ·åï¼");
 		}
 		else if($("#password").val()=="")
 		{	
-			alert("ÇëÊäÈëÃÜÂë£¡");
+			alert("è¯·è¾“å…¥å¯†ç ï¼");
 		}
 		else
 		{
-			$("#login_submit").val("ÕıÔÚµÇÂ¼");
+			$("#login_submit").val("æ­£åœ¨ç™»å½•");
 			$("#login_submit").attr("disabled","disabled");
 			 if($("#expire").attr("checked")==true)
 			 {
@@ -28,10 +28,10 @@ jQuery(document).ready(function($) {
 		 	 {
 				if (data=="err")
 				{			
-					$("#login_submit").val("µÇÂ¼");
+					$("#login_submit").val("ç™»å½•");
 					$("#login_submit").removeAttr('disabled');
 					$("#password").attr("value","");
-					alert("ÓÃ»§Ãû»òÃÜÂë´íÎó£¡");
+					alert("ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯ï¼");
 				}
 				else
 				{
@@ -44,22 +44,22 @@ jQuery(document).ready(function($) {
 });
 </script>
 {#$weixin_html_header#}
-<h4>»áÔ±µÇÂ¼</h4>
+<h4>ä¼šå‘˜ç™»å½•</h4>
 <div class="login-wrap" id="pcLogin">
 	<form action="" id="Formlogin" method="post">
 	<div class="login-item">
-		<div class="login-text-box clearfix"><i class="login-icon user f-left"></i><div class="login-input f-left"><input type="text" name="username" id="username" placeholder="ÓÊÏä/ÊÖ»úºÅ/ÓÃ»§Ãû" /></div></div>
+		<div class="login-text-box clearfix"><i class="login-icon user f-left"></i><div class="login-input f-left"><input type="text" name="username" id="username" placeholder="é‚®ç®±/æ‰‹æœºå·/ç”¨æˆ·å" /></div></div>
 	</div>
 	<div class="login-item">
-		<div class="login-text-box clearfix"><i class="login-icon pass f-left"></i><div class="login-input f-left"><input type="password" name="password" id="password" placeholder="ÇëÊäÈëÃÜÂë" /></div></div>
+		<div class="login-text-box clearfix"><i class="login-icon pass f-left"></i><div class="login-input f-left"><input type="password" name="password" id="password" placeholder="è¯·è¾“å…¥å¯†ç " /></div></div>
 	</div>
 	<div class="login-item clearfix">
-		<label class="auto-login f-left"><input type="checkbox" name="expire" id="expire" value="7"/>×Ô¶¯µÇÂ¼</label>
-		<a href="{#$site_dir#}user/user_getpass.php" class="forget underline f-right">Íü¼ÇÃÜÂë£¿</a>
+		<label class="auto-login f-left"><input type="checkbox" name="expire" id="expire" value="7"/>è‡ªåŠ¨ç™»å½•</label>
+		<a href="{#$site_dir#}user/user_getpass.php" class="forget underline f-right">å¿˜è®°å¯†ç ï¼Ÿ</a>
 	</div>
 	<div class="login-item clearfix">
-		<div class="login-btn-box f-left"><input type="submit" value="Á¢¼´µÇÂ¼" class="index-login-btn" id="login_submit"/></div>
-		<div class="f-left"><input type="button" value="Ãâ·Ñ×¢²á" class="index-reg-btn" onclick='window.location.href="{#$reg_url#}"'/></div>
+		<div class="login-btn-box f-left"><input type="submit" value="ç«‹å³ç™»å½•" class="index-login-btn" id="login_submit"/></div>
+		<div class="f-left"><input type="button" value="å…è´¹æ³¨å†Œ" class="index-reg-btn" onclick='window.location.href="{#$reg_url#}"'/></div>
 	</div>
 	</form>
 	<div class="third-login clearfix">

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 class JSSDK {
   private $appId;
   private $appSecret;
@@ -11,15 +11,14 @@ class JSSDK {
   public function getSignPackage() {
     $jsapiTicket = $this->getJsApiTicket();
 
-    // 注意 URL 一定要动态获取，不能 hardcode.
+    // 娉ㄦ剰 URL 涓€瀹氳鍔ㄦ€佽幏鍙栵紝涓嶈兘 hardcode.
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
     $url = "$protocol$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
     $timestamp = time();
     $nonceStr = $this->createNonceStr();
 
-    // 这里参数的顺序要按照 key 值 ASCII 码升序排序
-    $string = "jsapi_ticket=$jsapiTicket&noncestr=$nonceStr&timestamp=$timestamp&url=$url";
+    // 杩欓噷鍙傛暟鐨勯『搴忚鎸夌収 key 鍊?ASCII 鐮佸崌搴忔帓搴?    $string = "jsapi_ticket=$jsapiTicket&noncestr=$nonceStr&timestamp=$timestamp&url=$url";
 
     $signature = sha1($string);
 
@@ -44,11 +43,11 @@ class JSSDK {
   }
 
   private function getJsApiTicket() {
-    // jsapi_ticket 应该全局存储与更新，以下代码以写入到文件中做示例
+    // jsapi_ticket 搴旇鍏ㄥ眬瀛樺偍涓庢洿鏂帮紝浠ヤ笅浠ｇ爜浠ュ啓鍏ュ埌鏂囦欢涓仛绀轰緥
     $data = json_decode(file_get_contents("jsapi_ticket.json"));
     if ($data->expire_time < time()) {
       $accessToken = $this->getAccessToken();
-      // 如果是企业号用以下 URL 获取 ticket
+      // 濡傛灉鏄紒涓氬彿鐢ㄤ互涓?URL 鑾峰彇 ticket
       // $url = "https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token=$accessToken";
       $url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$accessToken";
       $res = json_decode($this->httpGet($url));
@@ -68,10 +67,10 @@ class JSSDK {
   }
 
   private function getAccessToken() {
-    // access_token 应该全局存储与更新，以下代码以写入到文件中做示例
+    // access_token 搴旇鍏ㄥ眬瀛樺偍涓庢洿鏂帮紝浠ヤ笅浠ｇ爜浠ュ啓鍏ュ埌鏂囦欢涓仛绀轰緥
     $data = json_decode(file_get_contents("access_token.json"));
     if ($data->expire_time < time()) {
-      // 如果是企业号用以下URL获取access_token
+      // 濡傛灉鏄紒涓氬彿鐢ㄤ互涓婾RL鑾峰彇access_token
       // $url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=$this->appId&corpsecret=$this->appSecret";
       $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$this->appId&secret=$this->appSecret";
       $res = json_decode($this->httpGet($url));

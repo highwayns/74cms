@@ -1,17 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>Òâ¼û·´À¡</title>
+<title>æ„è§åé¦ˆ</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/suggest.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type="text/javascript" language="javascript"></script>
 <script src="{#$QISHI.site_template#}js/jquery.validate.min.js" type='text/javascript' language="javascript"></script>
 <script type="text/javascript">
-//ÑéÖ¤
+//éªŒè¯
 $(document).ready(function() {
 $("#Form1").validate({
 // debug: true,
@@ -36,14 +36,14 @@ $("#Form1").validate({
   },
     messages: {
       feedback: {
-    required: "ÇëÊäÈëÄÚÈİ"
+    required: "è¯·è¾“å…¥å†…å®¹"
    },
    tel: {
-    required: "ÇëÊäÈëÁªÏµ·½Ê½"
+    required: "è¯·è¾“å…¥è”ç³»æ–¹å¼"
    },
    postcaptcha: {
-    required: "ÇëÌîĞ´ÑéÖ¤Âë",
-  remote: jQuery.format("ÑéÖ¤Âë´íÎó")  
+    required: "è¯·å¡«å†™éªŒè¯ç ",
+  remote: jQuery.format("éªŒè¯ç é”™è¯¯")  
    }
   },
   errorPlacement: function(error, element) {
@@ -56,29 +56,29 @@ $("#Form1").validate({
   }
     });
 jQuery.validator.addMethod("IScaptchastr", function(value, element) {
-  var str="µã»÷»ñÈ¡ÑéÖ¤Âë";
+  var str="ç‚¹å‡»è·å–éªŒè¯ç ";
   var flag=true;
   if (str==value)
   {
   flag=false;
   }
   return  flag || this.optional(element) ;
-  }, "ÇëÌîĞ´ÑéÖ¤Âë");
+  }, "è¯·å¡«å†™éªŒè¯ç ");
 function imgcaptcha(inputID,imgdiv)
 {
   $(inputID).focus(function(){
-    if ($(inputID).val()=="µã»÷»ñÈ¡ÑéÖ¤Âë")
+    if ($(inputID).val()=="ç‚¹å‡»è·å–éªŒè¯ç ")
     {
     $(inputID).val("");
     $(inputID).css("color","#333333");
     }
     $(inputID).parent("div").css("position","relative");
-    //ÉèÖÃÑéÖ¤ÂëDIV
+    //è®¾ç½®éªŒè¯ç DIV
     $(imgdiv).css({ position: "absolute", left:  $(inputID).width(), "bottom": "0px" , "z-index": "10", "background-color": "#FFFFFF", "border": "1px #A3C8DC solid","display": "none","margin-left": "15px"});
     $(imgdiv).show();
     if ($(imgdiv).html()=='')
     {
-    $(imgdiv).append("<img src=\"{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:3px;\" title=\"¿´²»ÇëÑéÖ¤Âë£¿µã»÷¸ü»»Ò»ÕÅ\"  border=\"0\"/>");
+    $(imgdiv).append("<img src=\"{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:3px;\" title=\"çœ‹ä¸è¯·éªŒè¯ç ï¼Ÿç‚¹å‡»æ›´æ¢ä¸€å¼ \"  border=\"0\"/>");
     }
     $(imgdiv+" img").click(function()
     {
@@ -105,25 +105,25 @@ imgcaptcha("#postcaptcha","#imgdiv");
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
-<!-- µ±Ç°Î»ÖÃ -->
+<!-- å½“å‰ä½ç½® -->
 <div class="page_location link_bk">
-	µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a>>Òâ¼û·´À¡
+	å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a>>æ„è§åé¦ˆ
 </div>
-	<!-- Ö÷ÌåÄÚÈİ -->
+	<!-- ä¸»ä½“å†…å®¹ -->
 	<div class="container link_bk">
 		<div class="about_left">
-			{#qishi_explain_list set="ÁĞ±íÃû:explain,·ÖÀàID:1"#}
-		      <h2 class="about_tit">¹ØÓÚÎÒÃÇ</h2>
+			{#qishi_explain_list set="åˆ—è¡¨å:explain,åˆ†ç±»ID:1"#}
+		      <h2 class="about_tit">å…³äºæˆ‘ä»¬</h2>
 		      <ul>
 		        {#foreach from=$explain item=list#}
 		        <li><a href="{#$list.url#}" target="_blank">{#$list.title#}</a></li>
 		        {#/foreach#}
-				<li class="active"><a href="{#'QS_suggest'|qishi_url#}">Òâ¼û·´À¡</a></li>
+				<li class="active"><a href="{#'QS_suggest'|qishi_url#}">æ„è§åé¦ˆ</a></li>
 		      </ul>
 		</div>
 		<div class="about_right">
 			<div class="about_r_tit">
-				Òâ¼û·´À¡
+				æ„è§åé¦ˆ
 			</div>
 			<form action="suggest_submit.php" method="post" id="Form1" >
         <input type="hidden" name="input_token" value="{#$input_token#}">
@@ -131,34 +131,34 @@ imgcaptcha("#postcaptcha","#imgdiv");
 				<table>
 					<tbody>
 						<tr height="50">
-							<td>Òâ¼ûÀàĞÍ£º</td>
+							<td>æ„è§ç±»å‹ï¼š</td>
 							<td>
-								<input type="radio" name="infotype" value="1"  checked="checked"/>&nbsp;<span>½¨Òé</span>
-								<input type="radio" name="infotype" value="2" />&nbsp;<span>Òâ¼û</span>
-								<input type="radio" name="infotype" value="3" />&nbsp;<span>ÇóÖú</span>
-								<input type="radio" name="infotype" value="4" />&nbsp;<span>Í¶Ëß</span>
+								<input type="radio" name="infotype" value="1"  checked="checked"/>&nbsp;<span>å»ºè®®</span>
+								<input type="radio" name="infotype" value="2" />&nbsp;<span>æ„è§</span>
+								<input type="radio" name="infotype" value="3" />&nbsp;<span>æ±‚åŠ©</span>
+								<input type="radio" name="infotype" value="4" />&nbsp;<span>æŠ•è¯‰</span>
 							</td>
 						</tr>
 						<tr>
-							<td valign="top">·´À¡ÄÚÈİ£º</td>
-							<td><textarea name="feedback" id="feedback" placeholder="ËùÌá½»µÄ´íÎó¡¢½¨ÒéĞÅÏ¢£¬¾¡Á¿ÃèÊöÏêÏ¸£¬ÒÔ±ãÎÒÃÇ¸üºÃµÄĞŞ¸Ä£¡"></textarea></td>
+							<td valign="top">åé¦ˆå†…å®¹ï¼š</td>
+							<td><textarea name="feedback" id="feedback" placeholder="æ‰€æäº¤çš„é”™è¯¯ã€å»ºè®®ä¿¡æ¯ï¼Œå°½é‡æè¿°è¯¦ç»†ï¼Œä»¥ä¾¿æˆ‘ä»¬æ›´å¥½çš„ä¿®æ”¹ï¼"></textarea></td>
 						</tr>
 						<tr height="50">
-							<td>ÁªÏµ·½Ê½£º</td>
-							<td><input type="text" name="tel" id="tel" class="input_text_500" placeholder="ÄúµÄQQ¡¢ÓÊÏä»òÕßµç»°ÒÔ±ãºÍÄú¹µÍ¨£¬ÄúµÄĞÅÏ¢½ö¹¤×÷ÈËÔ±¿É¼û£¡" /></td>
+							<td>è”ç³»æ–¹å¼ï¼š</td>
+							<td><input type="text" name="tel" id="tel" class="input_text_500" placeholder="æ‚¨çš„QQã€é‚®ç®±æˆ–è€…ç”µè¯ä»¥ä¾¿å’Œæ‚¨æ²Ÿé€šï¼Œæ‚¨çš„ä¿¡æ¯ä»…å·¥ä½œäººå‘˜å¯è§ï¼" /></td>
 						</tr>
 						<tr height="50">
-							<td>ÑéÖ¤Âë£º</td>
+							<td>éªŒè¯ç ï¼š</td>
 							<td>
 								<div>
 								  <div id="imgdiv"></div>
-								  <input  class="input_text_300" name="postcaptcha" id="postcaptcha" type="text" value="µã»÷»ñÈ¡ÑéÖ¤Âë" style="color:#999999"/>
+								  <input  class="input_text_300" name="postcaptcha" id="postcaptcha" type="text" value="ç‚¹å‡»è·å–éªŒè¯ç " style="color:#999999"/>
 								</div>
 							</td>
 						</tr>
 						<tr height="50">
 							<td>&nbsp;</td>
-							<td><input type="submit" name="Submit" value="Ìá½»" class="but150cheng" /></td>
+							<td><input type="submit" name="Submit" value="æäº¤" class="but150cheng" /></td>
 						</tr>
 
 					</tbody>
@@ -168,7 +168,7 @@ imgcaptcha("#postcaptcha","#imgdiv");
 		</div>
 		<div class="clear"></div>
 	</div>
-	<!-- Ö÷ÌåÄÚÈİ ½áÊø -->
+	<!-- ä¸»ä½“å†…å®¹ ç»“æŸ -->
 {#include file="footer.htm"#}	
 </body>
 </html>

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
  * 74cms WAP
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -32,7 +32,7 @@ elseif ($act == 'index')
 		$smarty->display("wap/company/wap-user-company-index.html");
 	}
 }
-// ÆóÒµĞÅÏ¢
+// ä¼ä¸šä¿¡æ¯
 elseif($act=="company_info")
 {
 	$smarty->cache = false;
@@ -50,12 +50,12 @@ elseif($act=="company_info_save")
 	$company_info=get_company(intval($_SESSION['uid']));
 	$_POST=array_map("utf8_to_gbk", $_POST);
 	$setsqlarr['uid']=intval($_SESSION['uid']);
-	$setsqlarr['companyname']=trim($_POST['companyname'])?trim($_POST['companyname']):exit('ÄúÃ»ÓĞÊäÈëÆóÒµÃû³Æ£¡');
-	$setsqlarr['nature']=trim($_POST['nature'])?intval($_POST['nature']):exit('ÄúÑ¡ÔñÆóÒµĞÔÖÊ£¡');
+	$setsqlarr['companyname']=trim($_POST['companyname'])?trim($_POST['companyname']):exit('æ‚¨æ²¡æœ‰è¾“å…¥ä¼ä¸šåç§°ï¼');
+	$setsqlarr['nature']=trim($_POST['nature'])?intval($_POST['nature']):exit('æ‚¨é€‰æ‹©ä¼ä¸šæ€§è´¨ï¼');
 	$setsqlarr['nature_cn']=trim($_POST['nature_cn']);
-	$setsqlarr['trade']=trim($_POST['trade'])?intval($_POST['trade']):exit('ÄúÑ¡ÔñËùÊôĞĞÒµ£¡');
+	$setsqlarr['trade']=trim($_POST['trade'])?intval($_POST['trade']):exit('æ‚¨é€‰æ‹©æ‰€å±è¡Œä¸šï¼');
 	$setsqlarr['trade_cn']=trim($_POST['trade_cn']);
-	$setsqlarr['district']=intval($_POST['district'])>0?intval($_POST['district']):exit('ÄúÑ¡ÔñËùÊôµØÇø£¡');
+	$setsqlarr['district']=intval($_POST['district'])>0?intval($_POST['district']):exit('æ‚¨é€‰æ‹©æ‰€å±åœ°åŒºï¼');
 	$setsqlarr['sdistrict']=intval($_POST['sdistrict']);
 	$setsqlarr['district_cn']=trim($_POST['district_cn']);
 	if (intval($_POST['street'])>0)
@@ -63,16 +63,16 @@ elseif($act=="company_info_save")
 	$setsqlarr['street']=intval($_POST['street']);
 	$setsqlarr['street_cn']=trim($_POST['street_cn']);
 	}
-	$setsqlarr['scale']=trim($_POST['scale'])?trim($_POST['scale']):exit('ÄúÑ¡Ôñ¹«Ë¾¹æÄ££¡');
+	$setsqlarr['scale']=trim($_POST['scale'])?trim($_POST['scale']):exit('æ‚¨é€‰æ‹©å…¬å¸è§„æ¨¡ï¼');
 	$setsqlarr['scale_cn']=trim($_POST['scale_cn']);
 	$setsqlarr['registered']=trim($_POST['registered']);
 	$setsqlarr['currency']=trim($_POST['currency']);
-	$setsqlarr['address']=trim($_POST['address'])?trim($_POST['address']):exit('ÇëÌîĞ´Í¨Ñ¶µØÖ·£¡');
-	$setsqlarr['contact']=trim($_POST['contact'])?trim($_POST['contact']):exit('ÇëÌîĞ´ÁªÏµÈË£¡');
-	$setsqlarr['telephone']=trim($_POST['telephone'])?trim($_POST['telephone']):exit('ÇëÌîĞ´ÁªÏµµç»°£¡');
-	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):exit('ÇëÌîĞ´ÁªÏµÓÊÏä£¡');
+	$setsqlarr['address']=trim($_POST['address'])?trim($_POST['address']):exit('è¯·å¡«å†™é€šè®¯åœ°å€ï¼');
+	$setsqlarr['contact']=trim($_POST['contact'])?trim($_POST['contact']):exit('è¯·å¡«å†™è”ç³»äººï¼');
+	$setsqlarr['telephone']=trim($_POST['telephone'])?trim($_POST['telephone']):exit('è¯·å¡«å†™è”ç³»ç”µè¯ï¼');
+	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):exit('è¯·å¡«å†™è”ç³»é‚®ç®±ï¼');
 	$setsqlarr['website']=trim($_POST['website']);
-	$setsqlarr['contents']=trim($_POST['contents'])?trim($_POST['contents']):exit('ÇëÌîĞ´¹«Ë¾¼ò½é£¡');
+	$setsqlarr['contents']=trim($_POST['contents'])?trim($_POST['contents']):exit('è¯·å¡«å†™å…¬å¸ç®€ä»‹ï¼');
 	
 	
 	$setsqlarr['contact_show']=1;
@@ -85,7 +85,7 @@ elseif($act=="company_info_save")
 		$info=$db->getone("SELECT uid FROM ".table('company_profile')." WHERE companyname ='{$setsqlarr['companyname']}' AND uid<>'{$_SESSION['uid']}' LIMIT 1");
 		if(!empty($info))
 		{
-			exit("{$setsqlarr['companyname']}ÒÑ¾­´æÔÚ£¬Í¬¹«Ë¾ĞÅÏ¢²»ÄÜÖØ¸´×¢²á");
+			exit("{$setsqlarr['companyname']}å·²ç»å­˜åœ¨ï¼ŒåŒå…¬å¸ä¿¡æ¯ä¸èƒ½é‡å¤æ³¨å†Œ");
 		}
 	}
 	if ($company_info)
@@ -100,8 +100,8 @@ elseif($act=="company_info_save")
 				$jobarr['scale_cn']=$setsqlarr['scale_cn'];
 				$jobarr['street']=$setsqlarr['street'];
 				$jobarr['street_cn']=$setsqlarr['street_cn'];			
-				if (!$db->updatetable(table('jobs'),$jobarr," uid=".$setsqlarr['uid']."")) exit('ĞŞ¸Ä¹«Ë¾Ãû³Æ³ö´í£¡');
-				if (!$db->updatetable(table('jobs_tmp'),$jobarr," uid=".$setsqlarr['uid']."")) exit('ĞŞ¸Ä¹«Ë¾Ãû³Æ³ö´í£¡');
+				if (!$db->updatetable(table('jobs'),$jobarr," uid=".$setsqlarr['uid']."")) exit('ä¿®æ”¹å…¬å¸åç§°å‡ºé”™ï¼');
+				if (!$db->updatetable(table('jobs_tmp'),$jobarr," uid=".$setsqlarr['uid']."")) exit('ä¿®æ”¹å…¬å¸åç§°å‡ºé”™ï¼');
 				$soarray['trade']=$jobarr['trade'];
 				$soarray['scale']=$jobarr['scale'];
 				$soarray['street']=$setsqlarr['street'];
@@ -112,12 +112,12 @@ elseif($act=="company_info_save")
 				$db->updatetable(table('jobs_search_hot'),$soarray," uid=".$setsqlarr['uid']."");
 				$db->updatetable(table('jobs_search_key'),$soarray," uid=".$setsqlarr['uid']."");
 				unset($setsqlarr);
-				write_memberslog($_SESSION['uid'],$_SESSION['utype'],8001,$_SESSION['username'],"ĞŞ¸ÄÆóÒµ×ÊÁÏ");
+				write_memberslog($_SESSION['uid'],$_SESSION['utype'],8001,$_SESSION['username'],"ä¿®æ”¹ä¼ä¸šèµ„æ–™");
 				exit("1");
 			}
 			else
 			{
-				exit("±£´æÊ§°Ü£¡");
+				exit("ä¿å­˜å¤±è´¥ï¼");
 			}
 	}
 	else
@@ -129,12 +129,12 @@ elseif($act=="company_info_save")
 			if ($insertid)
 			{
 				baidu_submiturl(url_rewrite('QS_companyshow',array('id'=>$insertid)),'addcompany');
-				write_memberslog($_SESSION['uid'],$_SESSION['utype'],8001,$_SESSION['username'],"ÍêÉÆÆóÒµ×ÊÁÏ");
+				write_memberslog($_SESSION['uid'],$_SESSION['utype'],8001,$_SESSION['username'],"å®Œå–„ä¼ä¸šèµ„æ–™");
 				exit("1");
 			}
 			else
 			{
-				exit("±£´æÊ§°Ü£¡");
+				exit("ä¿å­˜å¤±è´¥ï¼");
 			}
 	}
 }

@@ -1,4 +1,4 @@
-Attr.DefaultInvalidImageAlt
+﻿Attr.DefaultInvalidImageAlt
 TYPE: string
 DEFAULT: 'Invalid image'
 --DESCRIPTION--

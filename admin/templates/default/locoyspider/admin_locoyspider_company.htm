@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,28 +6,28 @@
   <div class="clear"></div>
 </div>
     <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
-	<p>»ğ³µÍ·²É¼¯¹æÔòÇëµ½ÂÛÌ³ÏÂÔØ£¡</p>
+	<h2>æç¤ºï¼š</h2>
+	<p>ç«è½¦å¤´é‡‡é›†è§„åˆ™è¯·åˆ°è®ºå›ä¸‹è½½ï¼</p>
 	</div>
 	 <form action="?act=set_save" method="post"  name="form1" id="form1">
 	{#$inputtoken#}
-    <div class="toptit">ÆóÒµĞÅÏ¢²É¼¯ÉèÖÃ</div>
+    <div class="toptit">ä¼ä¸šä¿¡æ¯é‡‡é›†è®¾ç½®</div>
     <table width="100%" border="0" cellpadding="1" cellspacing="10" style=" margin-bottom:3px; margin-top:10px;">
       <tr>
-        <td width="180" align="right">Ä¬ÈÏÆóÒµÈÏÖ¤×´Ì¬£º</td>
+        <td width="180" align="right">é»˜è®¤ä¼ä¸šè®¤è¯çŠ¶æ€ï¼š</td>
         <td >
-		  <label><input name="company_audit"  type="radio" value="1" {#if $show.company_audit eq "1"#}checked="checked"{#/if#} />ÈÏÖ¤Í¨¹ı</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		 <label><input name="company_audit"  type="radio" value="2" {#if $show.company_audit eq "2"#}checked="checked"{#/if#} />µÈ´ıÈÏÖ¤</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		  <label><input name="company_audit"  type="radio" value="3" {#if $show.company_audit eq "3"#}checked="checked"{#/if#} />ÈÏÖ¤Î´Í¨¹ı</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		   <label><input name="company_audit"  type="radio" value="0" {#if $show.company_audit eq "0"#}checked="checked"{#/if#} />Î´ÈÏÖ¤</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  <label><input name="company_audit"  type="radio" value="1" {#if $show.company_audit eq "1"#}checked="checked"{#/if#} />è®¤è¯é€šè¿‡</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 <label><input name="company_audit"  type="radio" value="2" {#if $show.company_audit eq "2"#}checked="checked"{#/if#} />ç­‰å¾…è®¤è¯</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		  <label><input name="company_audit"  type="radio" value="3" {#if $show.company_audit eq "3"#}checked="checked"{#/if#} />è®¤è¯æœªé€šè¿‡</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		   <label><input name="company_audit"  type="radio" value="0" {#if $show.company_audit eq "0"#}checked="checked"{#/if#} />æœªè®¤è¯</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</td>
       </tr>
 	 
       <tr>
-        <td align="right">ÆóÒµĞÔÖÊÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td align="right">ä¼ä¸šæ€§è´¨æ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td>
 	<div>
-	{#qishi_get_classify set="ÀàĞÍ:QS_company_type,ÁĞ±íÃû:li"#}
+	{#qishi_get_classify set="ç±»å‹:QS_company_type,åˆ—è¡¨å:li"#}
 		<input type="text" value="{#foreach from=$li item=list#}{#if $list.id==$show.company_nature#}{#$list.categoryname#}{#/if#}{#/foreach#}"  readonly="readonly" name="company_nature_cn" id="company_nature_cn" class="input_text_200 input_text_selsect"/>
 		<input name="company_nature" id="company_nature" type="hidden" value="{#$show.company_nature#}" />
 		<div id="menu1" class="menu">
@@ -41,10 +41,10 @@
 	</td>
       </tr>
 <tr>
-        <td align="right">ÆóÒµĞĞÒµÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td align="right">ä¼ä¸šè¡Œä¸šæ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td>
 		<div>
-		{#qishi_get_classify set="ÁĞ±íÃû:li,ÀàĞÍ:QS_trade"#}
+		{#qishi_get_classify set="åˆ—è¡¨å:li,ç±»å‹:QS_trade"#}
 		<input type="text" value="{#foreach from=$li item=list#}{#if $list.id==$show.company_trade#}{#$list.categoryname#}{#/if#}{#/foreach#}"  readonly="readonly" name="company_trade_cn" id="company_trade_cn" class="input_text_200 input_text_selsect"/>
 		<input name="company_trade" id="company_trade" type="hidden" value="{#$show.company_trade#}" />
 		<div id="menu2" class="dmenu shadow">
@@ -58,16 +58,16 @@
 	</td>
       </tr>
 	  <tr>
-        <td align="right">ÆóÒµËùÔÚµØÇøÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td align="right">ä¼ä¸šæ‰€åœ¨åœ°åŒºæ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td>
 		<div>
-		{#qishi_get_classify set="ÁĞ±íÃû:li,ÀàĞÍ:QS_district"#}
+		{#qishi_get_classify set="åˆ—è¡¨å:li,ç±»å‹:QS_district"#}
 		<input type="text" value="{#foreach from=$li item=list#}{#if $list.id==$show.company_district#}{#$list.categoryname#}{#/if#}{#/foreach#}"  readonly="readonly" name="company_district_cn" id="company_district_cn" class="input_text_200 input_text_selsect"/>
 		<input name="district" id="district" type="hidden" value="" />
 		<input name="company_district" id="company_district" type="hidden" value="{#$show.company_district#}" />
 		<div id="menu3" class="dmenu shadow">
 			<ul>
-			{#qishi_get_classify set="ÁĞ±íÃû:c_province,ÀàĞÍ:QS_district,id:0"#}
+			{#qishi_get_classify set="åˆ—è¡¨å:c_province,ç±»å‹:QS_district,id:0"#}
 			{#foreach from=$c_province item=list#}
 			<li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 			{#/foreach#}
@@ -78,10 +78,10 @@
 	 </td>
       </tr>
 	    <tr>
-        <td align="right">ÆóÒµ¹æÄ£ÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td align="right">ä¼ä¸šè§„æ¨¡æ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td>
 	<div>
-	{#qishi_get_classify set="ÀàĞÍ:QS_scale,ÁĞ±íÃû:li"#}
+	{#qishi_get_classify set="ç±»å‹:QS_scale,åˆ—è¡¨å:li"#}
 		<input type="text" value="{#foreach from=$li item=list#}{#if $list.id==$show.company_scale#}{#$list.categoryname#}{#/if#}{#/foreach#}"  readonly="readonly" name="company_scale_cn" id="company_scale_cn" class="input_text_200 input_text_selsect"/>
 		<input name="company_scale" id="company_scale" type="hidden" value="{#$show.company_scale#}" />
 		<div id="menu4" class="menu">
@@ -96,16 +96,16 @@
 	</td>
       </tr>
 	  <tr>
-        <td align="right">×¢²á×Ê½ğÎŞ·¨Æ¥ÅäÔòÎª£º</td>
+        <td align="right">æ³¨å†Œèµ„é‡‘æ— æ³•åŒ¹é…åˆ™ä¸ºï¼š</td>
         <td >
-		<input name="company_registered" type="text"  class="input_text_200" id="company_registered"   value="{#$show.company_registered#}" style="width:80px;"/>&nbsp;Íò
-		<label><input name="company_currency"  type="radio" value="ÈËÃñ±Ò" {#if $show.company_currency eq "ÈËÃñ±Ò"#}checked="checked"{#/if#} />ÈËÃñ±Ò</label>&nbsp;&nbsp;
-		 <label><input name="company_currency"  type="radio" value="ÃÀÔª" {#if $show.company_currency eq "ÃÀÔª"#}checked="checked"{#/if#} />ÃÀÔª</label>&nbsp;&nbsp;</td>
+		<input name="company_registered" type="text"  class="input_text_200" id="company_registered"   value="{#$show.company_registered#}" style="width:80px;"/>&nbsp;ä¸‡
+		<label><input name="company_currency"  type="radio" value="äººæ°‘å¸" {#if $show.company_currency eq "äººæ°‘å¸"#}checked="checked"{#/if#} />äººæ°‘å¸</label>&nbsp;&nbsp;
+		 <label><input name="company_currency"  type="radio" value="ç¾å…ƒ" {#if $show.company_currency eq "ç¾å…ƒ"#}checked="checked"{#/if#} />ç¾å…ƒ</label>&nbsp;&nbsp;</td>
       </tr>
 	  <tr>
         <td align="right">&nbsp;</td>
         <td height="50"><span style="font-size:14px;">
-          <input name="submit2222" type="submit" class="admin_submit"    value="±£´æĞŞ¸Ä"/>
+          <input name="submit2222" type="submit" class="admin_submit"    value="ä¿å­˜ä¿®æ”¹"/>
         </span></td>
       </tr>
     </table>

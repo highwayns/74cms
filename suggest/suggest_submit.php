@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Òâ¼û·´À¡
+ * 74cms æ„è§åé¦ˆ
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -14,12 +14,12 @@ require_once(dirname(__FILE__).'/../include/common.inc.php');
 require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 $db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
 if($_SESSION['input_token']!="" && $_SESSION['input_token']==$_POST['input_token']){
-	$setsqlarr['infotype']=intval($_POST['infotype'])>0?intval($_POST['infotype']):showmsg("ÇëÑ¡ÔñÀàÐÍ£¡",1);
-	$setsqlarr['feedback']=trim($_POST['feedback'])?trim($_POST['feedback']):showmsg("ÇëÌîÐ´ÄÚÈÝ£¡",1);
-	$setsqlarr['tel']=trim($_POST['tel'])?trim($_POST['tel']):showmsg("ÇëÌîÐ´ÁªÏµ·½Ê½£¡",1);
+	$setsqlarr['infotype']=intval($_POST['infotype'])>0?intval($_POST['infotype']):showmsg("è¯·é€‰æ‹©ç±»åž‹ï¼",1);
+	$setsqlarr['feedback']=trim($_POST['feedback'])?trim($_POST['feedback']):showmsg("è¯·å¡«å†™å†…å®¹ï¼",1);
+	$setsqlarr['tel']=trim($_POST['tel'])?trim($_POST['tel']):showmsg("è¯·å¡«å†™è”ç³»æ–¹å¼ï¼",1);
 	$setsqlarr['addtime']=time();
-	!$db->inserttable(table('feedback'),$setsqlarr)?showmsg("Ìí¼ÓÊ§°Ü£¡",0):showmsg("Ìí¼Ó³É¹¦£¬¸ÐÐ»Äú¶Ô±¾Õ¾µÄÖ§³Ö£¡",2);
+	!$db->inserttable(table('feedback'),$setsqlarr)?showmsg("æ·»åŠ å¤±è´¥ï¼",0):showmsg("æ·»åŠ æˆåŠŸï¼Œæ„Ÿè°¢æ‚¨å¯¹æœ¬ç«™çš„æ”¯æŒï¼",2);
 }else{
-	showmsg("·Ç·¨²Ù×÷£¡",1);
+	showmsg("éžæ³•æ“ä½œï¼",1);
 }
 ?>

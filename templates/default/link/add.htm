@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>ÓÑÇéÁ´½ÓÉêÇë - {#$QISHI.site_name#}</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>å‹æƒ…é“¾æ¥ç”³è¯· - {#$QISHI.site_name#}</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
@@ -26,18 +26,18 @@ $(document).ready(function()
 function imgcaptcha(inputID,imgdiv)
 {
 	$(inputID).focus(function(){
-		if ($(inputID).val()=="µã»÷»ñÈ¡ÑéÖ¤Âë")
+		if ($(inputID).val()=="ç‚¹å‡»è·å–éªŒè¯ç ")
 		{
 		$(inputID).val("");
 		$(inputID).css("color","#333333");
 		}
 		$(inputID).parent("div").css("position","relative");
-		//ÉèÖÃÑéÖ¤ÂëDIV
+		//è®¾ç½®éªŒè¯ç DIV
 		$(imgdiv).css({ position: "absolute", left:  $(inputID).width(), "bottom": "0px" , "z-index": "10", "background-color": "#FFFFFF", "border": "1px #A3C8DC solid","display": "none","margin-left": "15px"});
 		$(imgdiv).show();
 		if ($(imgdiv).html()=='')
 		{
-		$(imgdiv).append("<img src=\"{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:3px;\" title=\"¿´²»ÇëÑéÖ¤Âë£¿µã»÷¸ü»»Ò»ÕÅ\"  border=\"0\"/>");
+		$(imgdiv).append("<img src=\"{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}\" id=\"getcode\" align=\"absmiddle\"  style=\"cursor:pointer; margin:3px;\" title=\"çœ‹ä¸è¯·éªŒè¯ç ï¼Ÿç‚¹å‡»æ›´æ¢ä¸€å¼ \"  border=\"0\"/>");
 		}
 		$(imgdiv+" img").click(function()
 		{
@@ -62,23 +62,23 @@ imgcaptcha("#postcaptcha","#imgdiv");
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
-  <!-- µ±Ç°Î»ÖÃ -->
+  <!-- å½“å‰ä½ç½® -->
   <div class="page_location link_bk">
-    µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a>&nbsp;>>&nbsp;ÓÑÇéÁ´½ÓÉêÇë
+    å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a>&nbsp;>>&nbsp;å‹æƒ…é“¾æ¥ç”³è¯·
   </div>
-  <!-- Ö÷ÌåÄÚÈİ -->
+  <!-- ä¸»ä½“å†…å®¹ -->
   <div class="container link_bk">
-    <!-- ×ó±ßÄÚÈİ -->
+    <!-- å·¦è¾¹å†…å®¹ -->
     <div class="left_area subscribe">
       <div class="left_tit_box">
-        <h5>ÓÑÇéÁ´½ÓÉêÇë</h5>
+        <h5>å‹æƒ…é“¾æ¥ç”³è¯·</h5>
       </div>
       <div class="company_list">
          <form action="?act=save" method="post">
         <div class="subscribe_box">
           <ul>
             <li>
-              <div class="w83" align="right"><font color="red" style="margin-right:3px;">*</font>ÉêÇëÒ³Ãæ£º</div>
+              <div class="w83" align="right"><font color="red" style="margin-right:3px;">*</font>ç”³è¯·é¡µé¢ï¼š</div>
               	<input name="alias" id="alias" type="hidden" value="QS_index" />
 	              <div class="input_box">
 	              	{#foreach from=$cat item=li#}
@@ -89,34 +89,34 @@ imgcaptcha("#postcaptcha","#imgdiv");
               <div class="clear"></div>
             </li>
             <li>
-              <div class="w83" align="right"><font color="red" style="margin-right:3px;">*</font>Á´½ÓÃû³Æ£º</div>
+              <div class="w83" align="right"><font color="red" style="margin-right:3px;">*</font>é“¾æ¥åç§°ï¼š</div>
               <div class="input_box"><input name="link_name" type="text" class="input_text_300" id="link_name" maxlength="20" value=""/></div>
               <div class="clear"></div>
             </li>
             <li>
-              <div class="w83" align="right"><font color="red" style="margin-right:3px;">*</font>Á´½ÓµØÖ·£º</div>
+              <div class="w83" align="right"><font color="red" style="margin-right:3px;">*</font>é“¾æ¥åœ°å€ï¼š</div>
               <div class="input_box"><input name="link_url" type="text" class="input_text_300" id="link_url" maxlength="30" value=""/></div>
               <div class="clear"></div>
             </li>
             <li>
-              <div class="w83" align="right">LOGOµØÖ·£º</div>
+              <div class="w83" align="right">LOGOåœ°å€ï¼š</div>
               <div class="input_box"><input name="link_logo" type="text" class="input_text_300" id="link_logo" maxlength="30" value=""/></div>
               <div class="clear"></div>
             </li>
             {#if $verify_link=="1"#}
             <li>
-              <div class="w83" align="right"><font color="red">*</font>ÑéÖ¤Âë£º</div>
+              <div class="w83" align="right"><font color="red">*</font>éªŒè¯ç ï¼š</div>
               <div class="input_box">
                 <div>
                 <div id="imgdiv"></div>
-                <input  class="input_text_300"    name="postcaptcha" id="postcaptcha" type="text" value="µã»÷»ñÈ¡ÑéÖ¤Âë" style="color:#999999"/>
+                <input  class="input_text_300"    name="postcaptcha" id="postcaptcha" type="text" value="ç‚¹å‡»è·å–éªŒè¯ç " style="color:#999999"/>
                </div>
               </div>
               <div class="clear"></div>
             </li>
              {#/if#}
             <li>
-              <div class="w83" align="right">ÉêÇëËµÃ÷£º</div>
+              <div class="w83" align="right">ç”³è¯·è¯´æ˜ï¼š</div>
               <div class="input_box">
               	<textarea name="app_notes" class="input_textarea_400"></textarea>
               </div>
@@ -124,7 +124,7 @@ imgcaptcha("#postcaptcha","#imgdiv");
             </li>
             <li>
               <div class="w83">&nbsp;</div>
-              <div class="input_box"><input type="submit" name="Submit" id="Submit" value="Ìá½»" class="but130lan" /></div>
+              <div class="input_box"><input type="submit" name="Submit" id="Submit" value="æäº¤" class="but130lan" /></div>
               <div class="clear"></div>
             </li>
             <div class="clear"></div>
@@ -133,11 +133,11 @@ imgcaptcha("#postcaptcha","#imgdiv");
         </form>
       </div>
     </div>
-    <!-- ÓÒ±ßÄÚÈİ -->
+    <!-- å³è¾¹å†…å®¹ -->
     <div class="right_area">
       <div class="right_box">
         <div class="title_box">
-          <h5>ÉêÇëËµÃ÷</h5>
+          <h5>ç”³è¯·è¯´æ˜</h5>
         </div>
         <div class="list sub_right">
           <p>{#$link_application_txt#}</p>
@@ -146,7 +146,7 @@ imgcaptcha("#postcaptcha","#imgdiv");
     </div>
     <div class="clear"></div>
   </div>
-  <!-- Ö÷ÌåÄÚÈİ ½áÊø -->
+  <!-- ä¸»ä½“å†…å®¹ ç»“æŸ -->
   {#include file="footer.htm"#}
 </body>
 </html>

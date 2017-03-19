@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_news_list($params, &$smarty)
 {
 global $db,$_CFG;
@@ -8,52 +8,52 @@ foreach($arrset as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "ÁĞ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
-	case "ÏÔÊ¾ÊıÄ¿":
+	case "æ˜¾ç¤ºæ•°ç›®":
 		$aset['row'] = $a[1];
 		break;
-	case "Í¼Æ¬":
+	case "å›¾ç‰‡":
 		$aset['img'] = $a[1];
 		break;
-	case "ÊôĞÔ":
+	case "å±æ€§":
 		$aset['attribute'] = $a[1];
 		break;
-	case "×ÊÑ¶´óÀà":
+	case "èµ„è®¯å¤§ç±»":
 		$aset['parentid'] = $a[1];
 		break;
-	case "×ÊÑ¶Ğ¡Àà":
+	case "èµ„è®¯å°ç±»":
 		$aset['type_id'] = $a[1];
 		break;
-	case "±êÌâ³¤¶È":
+	case "æ ‡é¢˜é•¿åº¦":
 		$aset['titlelen'] = $a[1];
 		break;
-	case "ÕªÒª³¤¶È":
+	case "æ‘˜è¦é•¿åº¦":
 		$aset['infolen'] = $a[1];
 		break;		
-	case "¿ªÊ¼Î»ÖÃ":
+	case "å¼€å§‹ä½ç½®":
 		$aset['start'] = $a[1];
 		break;
-	case "Ìî²¹×Ö·û":
+	case "å¡«è¡¥å­—ç¬¦":
 		$aset['dot'] = $a[1];
 		break;
-	case "ÈÕÆÚ·¶Î§":
+	case "æ—¥æœŸèŒƒå›´":
 		$aset['settr'] = $a[1];
 		break;
-	case "ÅÅĞò":
+	case "æ’åº":
 		$aset['displayorder'] = $a[1];
 		break;
-	case "¹Ø¼ü×Ö":
+	case "å…³é”®å­—":
 		$aset['key'] = $a[1];
 		break;
-	case "·ÖÒ³ÏÔÊ¾":
+	case "åˆ†é¡µæ˜¾ç¤º":
 		$aset['paged'] = $a[1];
 		break;
-	case "Ò³Ãæ":
+	case "é¡µé¢":
 		$aset['showname'] = $a[1];
 		break;
-	case "ÁĞ±íÒ³":
+	case "åˆ—è¡¨é¡µ":
 		$aset['listpang'] = $a[1];
 		break;
 	}
@@ -71,7 +71,7 @@ if ($aset['displayorder'])
 	if (strpos($aset['displayorder'],'>'))
 	{
 		$arr=explode('>',$aset['displayorder']);
-		// ÅÅĞò×Ö¶Î
+		// æ’åºå­—æ®µ
 		if($arr[0]=='click'){
 			$arr[0]="click";
 		}
@@ -87,7 +87,7 @@ if ($aset['displayorder'])
 		{
 			$arr[0]="";
 		}
-		// ÅÅĞò·½Ê½
+		// æ’åºæ–¹å¼
 		if($arr[1]=='desc'){
 			$arr[1]="desc";
 		}
@@ -168,7 +168,7 @@ while($row = $db->fetch_array($result))
 		}
 	$row['img']=$_CFG['thumb_dir'].$row['Small_img'];
 	$row['bimg']=$_CFG['upfiles_dir'].$row['Small_img'];
-	$row['isimg']=$row['Small_img']; // ²»´øÂ·¾¶£¬ÅĞ¶ÏÊÇ·ñÓĞËõÂÔÍ¼£¬ÔÚnews.htmÒ³ÃæÓÃµ½
+	$row['isimg']=$row['Small_img']; // ä¸å¸¦è·¯å¾„ï¼Œåˆ¤æ–­æ˜¯å¦æœ‰ç¼©ç•¥å›¾ï¼Œåœ¨news.htmé¡µé¢ç”¨åˆ°
 	$list[] = $row;
 }
 $smarty->assign($aset['listname'],$list);

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_common.css" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_company.css" />
@@ -23,29 +23,29 @@
 			$(this).parents('.c-data-content').next().hide();
 			$(this).parents('.c-data-row').css({'border-color':'#ccc'});
 		});
-		// ¶¥²¿É¸Ñ¡
+		// é¡¶éƒ¨ç­›é€‰
 		$('.data-filter').on('click', function(e){
 			$(this).find('.filter-down').toggle();
-			// ¶¯Ì¬ÉèÖÃÏÂÀ­ÁĞ±í¿í¶È
+			// åŠ¨æ€è®¾ç½®ä¸‹æ‹‰åˆ—è¡¨å®½åº¦
 			var fWidth = $(this).find('.filter-span').outerWidth(true) - 2;
 			$(this).find(".filter-down").width(fWidth);
-			// µã»÷ÆäËûÎ»ÖÃÊÕÆğÏÂÀ­
+			// ç‚¹å‡»å…¶ä»–ä½ç½®æ”¶èµ·ä¸‹æ‹‰
 			$(document).one("click",function(){
 				$('.filter-down').hide();
 			});
 			e.stopPropagation();
-			//µã»÷ÏÂÀ­Ê±ÊÕÆğÆäËûÏÂÀ­
+			//ç‚¹å‡»ä¸‹æ‹‰æ—¶æ”¶èµ·å…¶ä»–ä¸‹æ‹‰
 			$(".data-filter").not($(this)).find('.filter-down').hide();
 		})
-		// É¾³ıµ¯³ö
+		// åˆ é™¤å¼¹å‡º
 		delete_dialog('.ctrl-del','#form1');
-		// ·¢ËÍµ½ÓÊÏäµ¯³ö
+		// å‘é€åˆ°é‚®ç®±å¼¹å‡º
 		companySendToEmail_dialog('.db-btn.btn3','./company_ajax.php');
-		//²é¿´µ¯³ö
+		//æŸ¥çœ‹å¼¹å‡º
 		$('.check-detail').on('click', function(){
 			var notes =  $(this).attr('notes');
 			dialog({
-				title: 'Í¨ÖªÄÚÈİ',
+				title: 'é€šçŸ¥å†…å®¹',
 				content: notes,
 				width:350
 			}).showModal();
@@ -55,7 +55,7 @@
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ÃæÊÔÑûÇë</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > é¢è¯•é‚€è¯·</div>
 	<div class="usermain">
 		<div class="leftmenu com link_bk">
 			{#include file="member_company/left.htm"#}	
@@ -63,11 +63,11 @@
 		<div class="rightmain">
 			<div class="bbox1">
 				<div class="topnav get_resume">
-					<div class="titleH1"><div class="h1-title">ÃæÊÔÑûÇë</div></div>
+					<div class="titleH1"><div class="h1-title">é¢è¯•é‚€è¯·</div></div>
 					<div class="navs link_bk">
-						<a href="?act={#$act#}&look=" {#if $smarty.get.look==""#}class="se"{#/if#}>ËùÓĞ¼òÀú<span class="check">({#$count#})</span></a>
-						<a href="?act={#$act#}&look=1" {#if $smarty.get.look=="1"#}class="se"{#/if#}>¶Ô·½Î´²é¿´<span class="no_check">({#$count1#})</span></a>
-						<a href="?act={#$act#}&look=2" {#if $smarty.get.look=="2"#}class="se"{#/if#}>¶Ô·½ÒÑ²é¿´<span class="check">({#$count2#})</span></a>
+						<a href="?act={#$act#}&look=" {#if $smarty.get.look==""#}class="se"{#/if#}>æ‰€æœ‰ç®€å†<span class="check">({#$count#})</span></a>
+						<a href="?act={#$act#}&look=1" {#if $smarty.get.look=="1"#}class="se"{#/if#}>å¯¹æ–¹æœªæŸ¥çœ‹<span class="no_check">({#$count1#})</span></a>
+						<a href="?act={#$act#}&look=2" {#if $smarty.get.look=="2"#}class="se"{#/if#}>å¯¹æ–¹å·²æŸ¥çœ‹<span class="check">({#$count2#})</span></a>
 						<div class="clear"></div>
 					</div>
 				</div>
@@ -75,32 +75,32 @@
 				<div class="company-data-list">
 					<div class="c-data-top interview clearfix">
 						<div class="item f-left check-item"><input type="checkbox" name="chkAll" id="chk" class="checkbox" /></div>
-						<div class="item f-left top-item1">ĞÕÃû</div>
-						<div class="item f-left top-item2">»ù±¾ĞÅÏ¢</div>
+						<div class="item f-left top-item1">å§“å</div>
+						<div class="item f-left top-item2">åŸºæœ¬ä¿¡æ¯</div>
 						<div class="item f-left top-item3">
 							<div class="data-filter span2">
-								<span class="filter-span">{#if $smarty.get.jname#}{#$smarty.get.jname#}{#else#}ÃæÊÔÖ°Î»{#/if#}<i class="filter-icon"></i></span>
+								<span class="filter-span">{#if $smarty.get.jname#}{#$smarty.get.jname#}{#else#}é¢è¯•èŒä½{#/if#}<i class="filter-icon"></i></span>
 								<ul class="filter-down">
-									<li><a href="?act={#$act#}&jobsid=&jname=&look={#$smarty.get.look#}">È«²¿Ö°Î»</a></li>
+									<li><a href="?act={#$act#}&jobsid=&jname=&look={#$smarty.get.look#}">å…¨éƒ¨èŒä½</a></li>
 									{#foreach from=$filter_jobs item=list#}
 									<li><a href="?act={#$act#}&jobsid={#$list.jobs_id#}&jname={#$list.jobs_name#}&look={#$smarty.get.look#}">{#$list.jobs_name#}</a></li>
 									{#/foreach#}
 								</ul>
 							</div>
 						</div>
-						<div class="item f-left top-item4">Í¨ÖªÄÚÈİ</div>
+						<div class="item f-left top-item4">é€šçŸ¥å†…å®¹</div>
 						<div class="item f-left top-item5">
 							<div class="data-filter span4">
-								<span class="filter-span">{#if $smarty.get.look=='1'#}¶Ô·½Î´²é¿´{#elseif $smarty.get.look=='2'#}¶Ô·½ÒÑ²é¿´{#else#}²é¿´×´Ì¬{#/if#}<i class="filter-icon"></i></span>
+								<span class="filter-span">{#if $smarty.get.look=='1'#}å¯¹æ–¹æœªæŸ¥çœ‹{#elseif $smarty.get.look=='2'#}å¯¹æ–¹å·²æŸ¥çœ‹{#else#}æŸ¥çœ‹çŠ¶æ€{#/if#}<i class="filter-icon"></i></span>
 								<ul class="filter-down">
-									<li><a href="?act={#$act#}&jobsid={#$smarty.get.jobsid#}&jname={#$smarty.get.jname#}&look=">È«²¿</a></li>
-									<li><a href="?act={#$act#}&jobsid={#$smarty.get.jobsid#}&jname={#$smarty.get.jname#}&look=2">¶Ô·½ÒÑ²é¿´</a></li>
-									<li><a href="?act={#$act#}&jobsid={#$smarty.get.jobsid#}&jname={#$smarty.get.jname#}&look=1">¶Ô·½Î´²é¿´</a></li>
+									<li><a href="?act={#$act#}&jobsid={#$smarty.get.jobsid#}&jname={#$smarty.get.jname#}&look=">å…¨éƒ¨</a></li>
+									<li><a href="?act={#$act#}&jobsid={#$smarty.get.jobsid#}&jname={#$smarty.get.jname#}&look=2">å¯¹æ–¹å·²æŸ¥çœ‹</a></li>
+									<li><a href="?act={#$act#}&jobsid={#$smarty.get.jobsid#}&jname={#$smarty.get.jname#}&look=1">å¯¹æ–¹æœªæŸ¥çœ‹</a></li>
 								</ul>
 							</div>
 						</div>
-						<div class="item f-left top-item6">ÑûÇëÊ±¼ä</div>
-						<div class="item f-left top-item7">²Ù×÷</div>
+						<div class="item f-left top-item6">é‚€è¯·æ—¶é—´</div>
+						<div class="item f-left top-item7">æ“ä½œ</div>
 					</div>
 					{#if $resume#}
 					{#foreach from=$resume item=list#}
@@ -109,45 +109,45 @@
 						<div class="c-data-content interview clearfix">
 							<div class="c-item f-left check-item"><input type="checkbox" name="y_id[]" id="y_id" value="{#$list.did#}" class="checkbox" /></div>
 							<div class="c-item f-left content1"><a href="javascript:;" class="name-link underline">{#$list.resume_name#}</a></div>
-							<div class="c-item f-left content2">{#$list.age#}Ëê/{#$list.education_cn#}/{#$list.experience_cn#}</div>
+							<div class="c-item f-left content2">{#$list.age#}å²/{#$list.education_cn#}/{#$list.experience_cn#}</div>
 							<div class="c-item f-left content3">{#$list.jobs_name_#}</div>
-							<div class="c-item f-left content4"><a href="javascript:;" notes="{#if $list.notes#}{#$list.notes|nl2br#}{#else#}ÎŞÃæÊÔÑûÇëÍ¨ÖªÄÚÈİ{#/if#}" class="data-ctrl underline check-detail">²é¿´</a></div>
+							<div class="c-item f-left content4"><a href="javascript:;" notes="{#if $list.notes#}{#$list.notes|nl2br#}{#else#}æ— é¢è¯•é‚€è¯·é€šçŸ¥å†…å®¹{#/if#}" class="data-ctrl underline check-detail">æŸ¥çœ‹</a></div>
 							<div class="c-item f-left content5">
 								{#if $list.personal_look=="1"#}
-					   			¶Ô·½Î´²é¿´
+					   			å¯¹æ–¹æœªæŸ¥çœ‹
 					   			{#elseif $list.personal_look=="2"#}
-					   			¶Ô·½ÒÑ²é¿´
+					   			å¯¹æ–¹å·²æŸ¥çœ‹
 					   			{#/if#}
 							</div>
 							<div class="c-item f-left content6"><span class="data-time">{#$list.interview_addtime|date:"Y-m-d"#}</span></div>
-							<div class="c-item f-left content7"><a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=interview_del&y_id={#$list.did#}">É¾³ı</a></div>
+							<div class="c-item f-left content7"><a href="javascript:;" class="data-ctrl underline ctrl-del" url="?act=interview_del&y_id={#$list.did#}">åˆ é™¤</a></div>
 						</div>
 						<div class="data-detail">
 							<i class="arrow"></i>
 							{#if $list.resume_education_list#}
 							<div class="detail-block clearfix">
-								<div class="db-type f-left">½ÌÓı¾­Àú£º</div>
+								<div class="db-type f-left">æ•™è‚²ç»å†ï¼š</div>
 								<div class="db-content f-left">
 									{#foreach from=$list.resume_education_list item=edu_list#}
-									<p class="db-info"><span>{#$edu_list.startyear#}Äê{#$edu_list.startmonth#}ÔÂ-{#$edu_list.endyear#}Äê{#$edu_list.endmonth#}ÔÂ</span><span>{#$edu_list.school#}</span><span>{#$edu_list.speciality#}</span><span>{#$edu_list.education_cn#}</span></p>
+									<p class="db-info"><span>{#$edu_list.startyear#}å¹´{#$edu_list.startmonth#}æœˆ-{#$edu_list.endyear#}å¹´{#$edu_list.endmonth#}æœˆ</span><span>{#$edu_list.school#}</span><span>{#$edu_list.speciality#}</span><span>{#$edu_list.education_cn#}</span></p>
 									{#/foreach#}
 								</div>
 							</div>
 							{#/if#}
 							{#if $list.resume_work_list#}
 							<div class="detail-block clearfix">
-								<div class="db-type f-left">¹¤×÷¾­Àú£º</div>
+								<div class="db-type f-left">å·¥ä½œç»å†ï¼š</div>
 								<div class="db-content f-left">
 									{#foreach from=$list.resume_work_list item=w_list#}
-									<p class="db-info"><span>{#$w_list.startyear#}Äê{#$w_list.startmonth#}ÔÂ-{#$w_list.endyear#}Äê{#$w_list.endmonth#}ÔÂ</span><span>{#$w_list.companyname#}</span><span>{#$w_list.jobs#}</span></p>
+									<p class="db-info"><span>{#$w_list.startyear#}å¹´{#$w_list.startmonth#}æœˆ-{#$w_list.endyear#}å¹´{#$w_list.endmonth#}æœˆ</span><span>{#$w_list.companyname#}</span><span>{#$w_list.jobs#}</span></p>
 									{#/foreach#}
 								</div>
 							</div>
 							{#/if#}
 							<div class="detail-block clearfix">
-								<div class="db-type f-left">ÇóÖ°ÒâÏò£º</div>
+								<div class="db-type f-left">æ±‚èŒæ„å‘ï¼š</div>
 								<div class="db-content f-left">
-									<div class="job-flow"><span>ÆÚÍû¹¤×÷ĞÔÖÊ {#$list.nature_cn#}</span> | <span>ÆÚÍû¹¤×÷µØÇø {#$list.district_cn#}</span> | <span>ÆÚÍûĞ½×Ê <em>{#$list.wage_cn#}</em></span> | <span>ÆÚÍûÖ°Î» {#$list.intention_jobs#}</span> | <span>ÆÚÍûĞĞÒµ {#$list.trade_cn#}</span></div>
+									<div class="job-flow"><span>æœŸæœ›å·¥ä½œæ€§è´¨ {#$list.nature_cn#}</span> | <span>æœŸæœ›å·¥ä½œåœ°åŒº {#$list.district_cn#}</span> | <span>æœŸæœ›è–ªèµ„ <em>{#$list.wage_cn#}</em></span> | <span>æœŸæœ›èŒä½ {#$list.intention_jobs#}</span> | <span>æœŸæœ›è¡Œä¸š {#$list.trade_cn#}</span></div>
 								</div>
 							</div>
 							<div class="detail-block clearfix">
@@ -164,7 +164,7 @@
 					<div class="c-data-row">
 						<div class="c-data-content interview clearfix">
 							<div class="c-item f-left check-item"><input type="checkbox" name="y_id[]" id="y_id" value="{#$list.did#}" class="checkbox" /></div>
-							±»ÑûÇëÈË[{#$list.resume_name#}] µÄ¼òÀú¿ÉÄÜÒÑ±»É¾³ı£¬Äú¿ÉÒÔÉ¾³ı±¾ÌõĞÅÏ¢.	
+							è¢«é‚€è¯·äºº[{#$list.resume_name#}] çš„ç®€å†å¯èƒ½å·²è¢«åˆ é™¤ï¼Œæ‚¨å¯ä»¥åˆ é™¤æœ¬æ¡ä¿¡æ¯.	
 						</div>
 					</div>
 					{#/if#}
@@ -173,16 +173,16 @@
 						<div class="c-data-content apply_jobs clearfix">
 							<div class="c-item f-left check-item"><input type="checkbox" name="chkAll" id="chk2" class="checkbox" /></div>
 							<div class="data-last-btn f-left">
-								<input type="button" value="É¾³ı" class="btn-65-30blue ctrl-del" act="?act=interview_del" />
+								<input type="button" value="åˆ é™¤" class="btn-65-30blue ctrl-del" act="?act=interview_del" />
 							</div>
 						</div>
 					</div>
 					{#else#}
-					<div class="emptytip">Äú»¹Ã»ÓĞ·¢Æğ¹ıÃæÊÔÑûÇë£¡</div>
+					<div class="emptytip">æ‚¨è¿˜æ²¡æœ‰å‘èµ·è¿‡é¢è¯•é‚€è¯·ï¼</div>
 					{#/if#}
 				</div>
 				</form>
-				<!-- ÕâÀï¼Ó·ÖÒ³ -->
+				<!-- è¿™é‡ŒåŠ åˆ†é¡µ -->
 				{#if $page#}
 				<table border="0" align="center" cellpadding="0" cellspacing="0">
 		          	<tr>

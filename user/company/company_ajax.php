@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ÆóÒµ»áÔ±ÖĞĞÄajaxµ¯³ö¿ò
+ * 74cms ä¼ä¸šä¼šå‘˜ä¸­å¿ƒajaxå¼¹å‡ºæ¡†
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,12 +15,12 @@ if($act=="company_profile_save_succeed"){
 	$tpl='../../templates/'.$_CFG['template_dir']."member_company/ajax_companyprofile_save_succeed_box.htm";
 	$contents=file_get_contents($tpl);
 	if($company_profile['map_open'] == '1'){
-		$save_msg = 'Äú½ÓÏÂÀ´¾Í¿ÉÒÔ·¢²¼Ö°Î»À²£¡ <br />';
-		$opt_button = '<div class="but130cheng " onclick="javascript:location.href=\'company_jobs.php?act=addjobs\'">·¢²¼Ö°Î»</div>';
+		$save_msg = 'æ‚¨æ¥ä¸‹æ¥å°±å¯ä»¥å‘å¸ƒèŒä½å•¦ï¼ <br />';
+		$opt_button = '<div class="but130cheng " onclick="javascript:location.href=\'company_jobs.php?act=addjobs\'">å‘å¸ƒèŒä½</div>';
 	}else{ 
-		$save_msg = 'ÎªÁËÈÃÇóÖ°Õß¸üÖ±¹ÛµÄÁË½â¹«Ë¾ËùÔÚÎ»ÖÃ£¬ºÏÀí¼Æ»® <br />ÃæÊÔ³öĞĞÂ·Ïß£¬98%µÄÆóÒµÒÑ¿ªÍ¨ÁËµç×ÓµØÍ¼¡£';
-		$opt_button = '<div class="but130cheng" onclick="javascript:location.href=\'company_info.php?act=company_map_open\'">Á¢¼´¿ªÍ¨</div>
-		<div class="but130hui but_right" onclick="javascript:location.href=\'company_jobs.php?act=addjobs\'">·¢²¼Ö°Î»</div>';
+		$save_msg = 'ä¸ºäº†è®©æ±‚èŒè€…æ›´ç›´è§‚çš„äº†è§£å…¬å¸æ‰€åœ¨ä½ç½®ï¼Œåˆç†è®¡åˆ’ <br />é¢è¯•å‡ºè¡Œè·¯çº¿ï¼Œ98%çš„ä¼ä¸šå·²å¼€é€šäº†ç”µå­åœ°å›¾ã€‚';
+		$opt_button = '<div class="but130cheng" onclick="javascript:location.href=\'company_info.php?act=company_map_open\'">ç«‹å³å¼€é€š</div>
+		<div class="but130hui but_right" onclick="javascript:location.href=\'company_jobs.php?act=addjobs\'">å‘å¸ƒèŒä½</div>';
 	}
 	$contents=str_replace('{#$save_msg#}',$save_msg,$contents);
 	$contents=str_replace('{#$opt_button#}',$opt_button,$contents);
@@ -33,7 +33,7 @@ elseif($act=="user_email"){
 	$contents=str_replace('{#$email#}',$user["email"],$contents);
 	$contents=str_replace('{#$site_name#}',$_CFG['site_name'],$contents);
 	$contents=str_replace('{#$send_email_key#}',$_SESSION['send_email_key'],$contents);
-	$contents=str_replace('{#$notice#}','½ÓÊÕÖ°Î»ÉêÇëÓÊ¼ş',$contents);
+	$contents=str_replace('{#$notice#}','æ¥æ”¶èŒä½ç”³è¯·é‚®ä»¶',$contents);
 	$contents=str_replace('{#$site_template#}',$_CFG['site_template'],$contents);
 	exit($contents);
 }	
@@ -44,7 +44,7 @@ elseif($act=="user_mobile"){
 	$contents=str_replace('{#$mobile#}',$user["mobile"],$contents);
 	$contents=str_replace('{#$site_name#}',$_CFG['site_name'],$contents);
 	$contents=str_replace('{#$send_mobile_key#}',$_SESSION['send_mobile_key'],$contents);
-	$contents=str_replace('{#$notice#}','½ÓÊÕÖ°Î»ÉêÇëÍ¨Öª',$contents);
+	$contents=str_replace('{#$notice#}','æ¥æ”¶èŒä½ç”³è¯·é€šçŸ¥',$contents);
 	$contents=str_replace('{#$site_template#}',$_CFG['site_template'],$contents);
 	exit($contents);
 }
@@ -64,24 +64,24 @@ elseif($act=="edit_mobile"){
 	$contents=file_get_contents($tpl);
 	$_SESSION['send_mobile_key']=mt_rand(100000, 999999);
 	$contents=str_replace('{#$send_mobile_key#}',$_SESSION['send_mobile_key'],$contents);
-	$contents=str_replace('{#$notice#}','½ÓÊÕÖ°Î»ÉêÇëÍ¨Öª',$contents);
+	$contents=str_replace('{#$notice#}','æ¥æ”¶èŒä½ç”³è¯·é€šçŸ¥',$contents);
 	$contents=str_replace('{#$site_template#}',$_CFG['site_template'],$contents);
 	exit($contents);
 }
 elseif($act=="set_promotion"){
-	$catid = intval($_GET['catid'])?intval($_GET['catid']):exit("²ÎÊı´íÎó£¡");
-	$jobid = intval($_GET['jobid'])?intval($_GET['jobid']):exit("²ÎÊı´íÎó£¡");
-	$uid = intval($_SESSION['uid'])?intval($_SESSION['uid']):exit("²ÎÊı´íÎó£¡");
+	$catid = intval($_GET['catid'])?intval($_GET['catid']):exit("å‚æ•°é”™è¯¯ï¼");
+	$jobid = intval($_GET['jobid'])?intval($_GET['jobid']):exit("å‚æ•°é”™è¯¯ï¼");
+	$uid = intval($_SESSION['uid'])?intval($_SESSION['uid']):exit("å‚æ•°é”™è¯¯ï¼");
 	$jobinfo = get_jobs_one($jobid);
 	$promotion = get_promotion_category_one($catid);
 	if ($_CFG['operation_mode']=='2')
 	{
-		$setmeal=get_user_setmeal($uid);//»ñÈ¡»áÔ±Ì×²Í
+		$setmeal=get_user_setmeal($uid);//è·å–ä¼šå‘˜å¥—é¤
 		if($setmeal['endtime']<time() && $setmeal['endtime']<>'0'){
-			$end=1;//ÅĞ¶ÏÌ×²ÍÊÇ·ñµ½ÆÚ
+			$end=1;//åˆ¤æ–­å¥—é¤æ˜¯å¦åˆ°æœŸ
 			$tpl='../../templates/'.$_CFG['template_dir']."member_company/ajax_set_promotion_end.htm";
 		}else{
-			$data=get_setmeal_promotion($uid,$catid);//»ñÈ¡»áÔ±Ä³ÖÖÍÆ¹ãµÄÊ£ÓàÌõÊıºÍÌìÊı£¬Ãû³Æ£¬×ÜÌõÊı
+			$data=get_setmeal_promotion($uid,$catid);//è·å–ä¼šå‘˜æŸç§æ¨å¹¿çš„å‰©ä½™æ¡æ•°å’Œå¤©æ•°ï¼Œåç§°ï¼Œæ€»æ¡æ•°
 			$operation_mode=2;
 			$tpl='../../templates/'.$_CFG['template_dir']."member_company/ajax_set_setmeal_promotion.htm";
 		}
@@ -94,10 +94,10 @@ elseif($act=="set_promotion"){
 	}
 	elseif($_CFG['operation_mode']=='3')
 	{
-		$setmeal=get_user_setmeal($_SESSION['uid']);//»ñÈ¡»áÔ±Ì×²Í
+		$setmeal=get_user_setmeal($_SESSION['uid']);//è·å–ä¼šå‘˜å¥—é¤
 		if($setmeal['endtime']<time() && $setmeal['endtime']<>'0'){
 			if($_CFG['setmeal_to_points']!=1){
-				$end=1;//ÅĞ¶ÏÌ×²ÍÊÇ·ñµ½ÆÚ
+				$end=1;//åˆ¤æ–­å¥—é¤æ˜¯å¦åˆ°æœŸ
 				$tpl='../../templates/'.$_CFG['template_dir']."member_company/ajax_set_promotion_end.htm";
 			}else{
 				$operation_mode=1;
@@ -105,7 +105,7 @@ elseif($act=="set_promotion"){
 				$tpl='../../templates/'.$_CFG['template_dir']."member_company/ajax_set_points_promotion.htm";
 			}
 		}else{
-			$data=get_setmeal_promotion($uid,$catid);//»ñÈ¡»áÔ±Ä³ÖÖÍÆ¹ãµÄÊ£ÓàÌõÊıºÍÌìÊı£¬Ãû³Æ£¬×ÜÌõÊı
+			$data=get_setmeal_promotion($uid,$catid);//è·å–ä¼šå‘˜æŸç§æ¨å¹¿çš„å‰©ä½™æ¡æ•°å’Œå¤©æ•°ï¼Œåç§°ï¼Œæ€»æ¡æ•°
 			if($data['num']<1){
 				if($_CFG['setmeal_to_points']==1){
 					$operation_mode=1;
@@ -126,10 +126,10 @@ elseif($act=="set_promotion"){
 		if($catid=="4"){
 			$color = get_color();
 			$color_list = '<tr>
-				<td height="50">Ñ¡ÔñÑÕÉ«£º</td>
+				<td height="50">é€‰æ‹©é¢œè‰²ï¼š</td>
 				<td>
 					<div style="position:relateve;">
-	             	 	<div id="val_menu" class="input_text_70_bg">ÇëÑ¡Ôñ</div>	
+	             	 	<div id="val_menu" class="input_text_70_bg">è¯·é€‰æ‹©</div>	
 	             	 	<div class="menu" id="menu1">
 		              		<ul style="width:88px;">';
 			foreach ($color as $key => $value) {
@@ -153,13 +153,13 @@ elseif($act=="set_promotion"){
 		$contents=str_replace('{#$site_template#}',$_CFG['site_template'],$contents);
 		if($operation_mode==1){
 			if($promotion['cat_minday']=="0"){
-				$promotion['cat_minday'] = "²»ÏŞÖÆ";
+				$promotion['cat_minday'] = "ä¸é™åˆ¶";
 			}
 			if($promotion['cat_maxday']=="0"){
-				$promotion['cat_maxday'] = "²»ÏŞÖÆ";
+				$promotion['cat_maxday'] = "ä¸é™åˆ¶";
 			}
 			if($promotion['cat_points']=="0"){
-				$promotion['cat_points'] = "Ãâ·Ñ";
+				$promotion['cat_points'] = "å…è´¹";
 			}
 			$contents=str_replace('{#$user_points#}',$points,$contents);
 			$contents=str_replace('{#$points_perday#}',$promotion['cat_points'],$contents);
@@ -179,13 +179,13 @@ elseif($act=="set_promotion"){
 	exit($contents);
 }
 elseif($act=="promotion_add_save"){
-	$catid = intval($_POST['catid'])?intval($_POST['catid']):exit("ÇëÑ¡ÔñÍÆ¹ãÀàĞÍ£¡");
-	$jobid = intval($_POST['jobid'])?intval($_POST['jobid']):exit("Ö°Î»id¶ªÊ§£¡");
-	$days = intval($_POST['days'])?intval($_POST['days']):exit("ÇëÌîĞ´ÍÆ¹ãÌìÊı£¡");
-	$uid = intval($_SESSION['uid'])?intval($_SESSION['uid']):exit("UID¶ªÊ§£¡");
+	$catid = intval($_POST['catid'])?intval($_POST['catid']):exit("è¯·é€‰æ‹©æ¨å¹¿ç±»å‹ï¼");
+	$jobid = intval($_POST['jobid'])?intval($_POST['jobid']):exit("èŒä½idä¸¢å¤±ï¼");
+	$days = intval($_POST['days'])?intval($_POST['days']):exit("è¯·å¡«å†™æ¨å¹¿å¤©æ•°ï¼");
+	$uid = intval($_SESSION['uid'])?intval($_SESSION['uid']):exit("UIDä¸¢å¤±ï¼");
 
 	if($catid==4){
-		$val = intval($_POST['val'])?intval($_POST['val']):exit("ÇëÑ¡ÔñÑÕÉ«£¡");
+		$val = intval($_POST['val'])?intval($_POST['val']):exit("è¯·é€‰æ‹©é¢œè‰²ï¼");
 		$color = get_color_one($val);
 		$val_code = $color['value'];
 	}else{
@@ -194,13 +194,13 @@ elseif($act=="promotion_add_save"){
 	$jobs=get_jobs_one($jobid,$uid);
 	$jobs = array_map("addslashes", $jobs);
 	if($jobs['deadline']<time()){
-		exit("¸ÃÖ°Î»ÒÑµ½ÆÚ£¬ÇëÏÈÑÓÆÚ£¡");
+		exit("è¯¥èŒä½å·²åˆ°æœŸï¼Œè¯·å…ˆå»¶æœŸï¼");
 	}
 	if ($jobid>0 && $days>0)
 	{
 		$pro_cat=get_promotion_category_one($catid);
 		if($_CFG['operation_mode']=='3'){
-			$setmeal=get_setmeal_promotion($uid,$catid);//»ñÈ¡»áÔ±Ì×²Í
+			$setmeal=get_setmeal_promotion($uid,$catid);//è·å–ä¼šå‘˜å¥—é¤
 			$num=$setmeal['num'];
 			if(($setmeal['endtime']<time() && $setmeal['endtime']<>'0') || $num<=0){
 				if($_CFG['setmeal_to_points']==1){
@@ -210,7 +210,7 @@ elseif($act=="promotion_add_save"){
 						$user_points=get_user_points($uid);
 						if ($points>$user_points)
 						{
-							exit("ÄãµÄ".$_CFG['points_byname']."²»¹»½øĞĞ´Ë´Î²Ù×÷£¬ÇëÏÈ³äÖµ£¡");
+							exit("ä½ çš„".$_CFG['points_byname']."ä¸å¤Ÿè¿›è¡Œæ­¤æ¬¡æ“ä½œï¼Œè¯·å…ˆå……å€¼ï¼");
 						}else{
 							$_CFG['operation_mode']=1;
 						}
@@ -218,7 +218,7 @@ elseif($act=="promotion_add_save"){
 						$_CFG['operation_mode']=2;
 					}
 				}else{
-					exit("ÄãµÄÌ×²ÍÒÑµ½ÆÚ»òÌ×²ÍÄÚÊ£Óà{$pro_cat['cat_name']}²»¹»£¬Çë¾¡¿ì¿ªÍ¨ĞÂÌ×²Í");
+					exit("ä½ çš„å¥—é¤å·²åˆ°æœŸæˆ–å¥—é¤å†…å‰©ä½™{$pro_cat['cat_name']}ä¸å¤Ÿï¼Œè¯·å°½å¿«å¼€é€šæ–°å¥—é¤");
 				}
 			}else{
 				$_CFG['operation_mode']=2;
@@ -230,20 +230,20 @@ elseif($act=="promotion_add_save"){
 				$user_points=get_user_points($uid);
 				if ($points>$user_points)
 				{
-				exit("ÄãµÄ".$_CFG['points_byname']."²»¹»½øĞĞ´Ë´Î²Ù×÷£¬ÇëÏÈ³äÖµ£¡");
+				exit("ä½ çš„".$_CFG['points_byname']."ä¸å¤Ÿè¿›è¡Œæ­¤æ¬¡æ“ä½œï¼Œè¯·å…ˆå……å€¼ï¼");
 				}
 			}
 		}elseif($_CFG['operation_mode']=='2'){
-			$setmeal=get_setmeal_promotion($uid,$catid);//»ñÈ¡»áÔ±Ì×²Í
+			$setmeal=get_setmeal_promotion($uid,$catid);//è·å–ä¼šå‘˜å¥—é¤
 			$num=$setmeal['num'];
 			if(($setmeal['endtime']<time() && $setmeal['endtime']<>'0') || $num<=0){
-				exit("ÄãµÄÌ×²ÍÒÑµ½ÆÚ»òÌ×²ÍÄÚÊ£Óà{$pro_cat['cat_name']}²»¹»£¬Çë¾¡¿ì¿ªÍ¨ĞÂÌ×²Í");
+				exit("ä½ çš„å¥—é¤å·²åˆ°æœŸæˆ–å¥—é¤å†…å‰©ä½™{$pro_cat['cat_name']}ä¸å¤Ÿï¼Œè¯·å°½å¿«å¼€é€šæ–°å¥—é¤");
 			}
 		}
 		$info=get_promotion_one($jobid,$uid,$catid);
 		if (!empty($info))
 		{
-		exit("´ËÖ°Î»ÕıÔÚÍÆ¹ãÖĞ£¬ÇëÑ¡ÔñÆäËûÖ°Î»»òÆäËû·½°¸");
+		exit("æ­¤èŒä½æ­£åœ¨æ¨å¹¿ä¸­ï¼Œè¯·é€‰æ‹©å…¶ä»–èŒä½æˆ–å…¶ä»–æ–¹æ¡ˆ");
 		}
 		$setsqlarr['cp_available']=1;
 		$setsqlarr['cp_promotionid']=$catid;
@@ -255,7 +255,7 @@ elseif($act=="promotion_add_save"){
 		$setsqlarr['cp_val']=$val_code;
 		if ($setsqlarr['cp_promotionid']=="4" && empty($setsqlarr['cp_val']))
 		{
-		exit("ÇëÑ¡ÔñÑÕÉ«£¡");
+		exit("è¯·é€‰æ‹©é¢œè‰²ï¼");
 		}
 			if ($db->inserttable(table('promotion'),$setsqlarr))
 			{
@@ -264,27 +264,27 @@ elseif($act=="promotion_add_save"){
 				{
 					report_deal($uid,2,$points);
 					$user_points=get_user_points($uid);
-					write_memberslog($uid,1,9001,$_SESSION['username'],"{$pro_cat['cat_name']}£º<strong>{$jobs['jobs_name']}</strong>£¬ÍÆ¹ã {$days} Ìì£¬(-{$points})£¬(Ê£Óà:{$user_points})",1,1018,"{$pro_cat['cat_name']}","-{$points}","{$user_points}");
+					write_memberslog($uid,1,9001,$_SESSION['username'],"{$pro_cat['cat_name']}ï¼š<strong>{$jobs['jobs_name']}</strong>ï¼Œæ¨å¹¿ {$days} å¤©ï¼Œ(-{$points})ï¼Œ(å‰©ä½™:{$user_points})",1,1018,"{$pro_cat['cat_name']}","-{$points}","{$user_points}");
 				}elseif($_CFG['operation_mode']=='2'){
 					$user_pname=trim($_POST['pro_name']);
-					action_user_setmeal($uid,$user_pname); //¸üĞÂÌ×²ÍÖĞÏàÓ¦ÍÆ¹ã·½Ê½µÄÌõÊı
-					$setmeal=get_user_setmeal($uid);//»ñÈ¡»áÔ±Ì×²Í
-					write_memberslog($uid,1,9002,$_SESSION['username'],"{$pro_cat['cat_name']}£º<strong>{$jobs['jobs_name']}</strong>£¬ÍÆ¹ã {$days} Ìì£¬Ì×²ÍÄÚÊ£Óà{$pro_cat['cat_name']}ÌõÊı£º{$setmeal[$user_pname]}Ìõ¡£",2,1018,"{$pro_cat['cat_name']}","-{$days}","{$setmeal[$user_pname]}");//9002ÊÇÌ×²Í²Ù×÷
+					action_user_setmeal($uid,$user_pname); //æ›´æ–°å¥—é¤ä¸­ç›¸åº”æ¨å¹¿æ–¹å¼çš„æ¡æ•°
+					$setmeal=get_user_setmeal($uid);//è·å–ä¼šå‘˜å¥—é¤
+					write_memberslog($uid,1,9002,$_SESSION['username'],"{$pro_cat['cat_name']}ï¼š<strong>{$jobs['jobs_name']}</strong>ï¼Œæ¨å¹¿ {$days} å¤©ï¼Œå¥—é¤å†…å‰©ä½™{$pro_cat['cat_name']}æ¡æ•°ï¼š{$setmeal[$user_pname]}æ¡ã€‚",2,1018,"{$pro_cat['cat_name']}","-{$days}","{$setmeal[$user_pname]}");//9002æ˜¯å¥—é¤æ“ä½œ
 				}
-				write_memberslog($uid,1,3004,$_SESSION['username'],"{$pro_cat['cat_name']}£º<strong>{$jobs['jobs_name']}</strong>£¬ÍÆ¹ã {$days} Ìì¡£");
-				exit('ÍÆ¹ã³É¹¦£¡');
+				write_memberslog($uid,1,3004,$_SESSION['username'],"{$pro_cat['cat_name']}ï¼š<strong>{$jobs['jobs_name']}</strong>ï¼Œæ¨å¹¿ {$days} å¤©ã€‚");
+				exit('æ¨å¹¿æˆåŠŸï¼');
 			}
 	}
 	else
 	{
-	exit("ÍÆ¹ãÊ§°Ü£¡");
+	exit("æ¨å¹¿å¤±è´¥ï¼");
 	}
 }
-//¶©µ¥ÏêÇé
+//è®¢å•è¯¦æƒ…
 elseif($act=='order_detail')
 {
 	$uid = intval($_SESSION['uid']);
-	$order_id = intval($_GET['order_id'])?intval($_GET['order_id']):exit("¶©µ¥±àºÅ¶ªÊ§£¡");
+	$order_id = intval($_GET['order_id'])?intval($_GET['order_id']):exit("è®¢å•ç¼–å·ä¸¢å¤±ï¼");
 	$order =  $db->getone("SELECT * FROM ".table('order')." WHERE uid ='{$uid}' AND id='{$order_id}' LIMIT 1");
 	$tpl='../../templates/'.$_CFG['template_dir']."member_company/ajax_order_detail.htm";
 	$contents=file_get_contents($tpl);
@@ -292,24 +292,24 @@ elseif($act=='order_detail')
 	$contents=str_replace('{#$order_addtime#}',date('Y-m-d',$order['addtime']),$contents);
 	if($order['is_paid']=='1')
 	{
-		$contents=str_replace('{#$order_is_paid#}','Î´Íê³É',$contents);
-		$button = '<a href="?act=payment&order_id={#$order_id#}"><input type="button" value="Ö§¸¶" class="btn-65-30blue btn-big-font" /></a>';
+		$contents=str_replace('{#$order_is_paid#}','æœªå®Œæˆ',$contents);
+		$button = '<a href="?act=payment&order_id={#$order_id#}"><input type="button" value="æ”¯ä»˜" class="btn-65-30blue btn-big-font" /></a>';
 		$contents=str_replace('{#$button#}',$button,$contents);
 	}
 	else
 	{
-		$contents=str_replace('{#$order_is_paid#}','ÒÑÖ§¸¶',$contents);
-		$button = '<input type="button" value="ÒÑÖ§¸¶" class="btn-65-30blue btn-big-font" />';
+		$contents=str_replace('{#$order_is_paid#}','å·²æ”¯ä»˜',$contents);
+		$button = '<input type="button" value="å·²æ”¯ä»˜" class="btn-65-30blue btn-big-font" />';
 		$contents=str_replace('{#$button#}',$button,$contents);
 	}
 	$contents=str_replace('{#$order_des#}',$order['description'],$contents);
 	if($order['payment_name']!='points')
 	{
-		$contents=str_replace('{#$order_amount#}','£¤'.$order['amount'],$contents);
+		$contents=str_replace('{#$order_amount#}','ï¿¥'.$order['amount'],$contents);
 	}
 	else
 	{
-		$contents=str_replace('{#$order_amount#}','¶Ò»»'.$order['amount'].'»ı·Ö',$contents);
+		$contents=str_replace('{#$order_amount#}','å…‘æ¢'.$order['amount'].'ç§¯åˆ†',$contents);
 	}
 	$contents=str_replace('{#$order_payname#}',get_payment_info($order['payment_name'],ture),$contents);
 	if($order['notes'])
@@ -318,12 +318,12 @@ elseif($act=='order_detail')
 	}
 	else
 	{
-		$contents=str_replace('{#$order_note#}',"ÎŞ",$contents);
+		$contents=str_replace('{#$order_note#}',"æ— ",$contents);
 	}
 	$contents=str_replace('{#$order_id#}',$order['id'],$contents);
 	exit($contents);
 }
-//  ¼òÀú·¢ËÍµ½ÓÊÏä
+//  ç®€å†å‘é€åˆ°é‚®ç®±
 elseif($act == "sendtoemail")
 {
 	global $_CFG;
@@ -345,41 +345,41 @@ elseif($act == "sendtoemail")
 	$show_contact = false;
 	if($_CFG['showapplycontact']=='1' || $_CFG['showresumecontact']=='0')
 	{
-		$show_contact = '<p>ÊÖ»úºÅÂë£º'.$resume_basic["telephone"].' µç×ÓÓÊÏä£º'.$resume_basic["email"].'</p>';
+		$show_contact = '<p>æ‰‹æœºå·ç ï¼š'.$resume_basic["telephone"].' ç”µå­é‚®ç®±ï¼š'.$resume_basic["email"].'</p>';
 	}
 	else
 	{
-		$show_contact = '<p>ÁªÏµ·½Ê½£º<a href='.url_rewrite('QS_resumeshow',array('id'=>$resume_id)).'>µã»÷²é¿´</a></p>';
+		$show_contact = '<p>è”ç³»æ–¹å¼ï¼š<a href='.url_rewrite('QS_resumeshow',array('id'=>$resume_id)).'>ç‚¹å‡»æŸ¥çœ‹</a></p>';
 	}	
 	$htm='<div style="width: 900px;margin: 0 auto;font-size: 14px;">
 		<div style="margin-bottom:10px">
 			<div style="float: left;"><a href="'.$_CFG['site_dir'].'"><img src="'.$_CFG['site_domain'].$_CFG['upfiles_dir'].$_CFG['web_logo'].'" alt="'.$_CFG['site_name'].'" border="0" align="absmiddle" width=180 height=50 /></div>
-			<div style="float: right;padding-top:10px;">'.$templates.'¸üĞÂÊ±¼ä£º'.date("Y-m-d",$resume_basic["refreshtime"]).'</div>
+			<div style="float: right;padding-top:10px;">'.$templates.'æ›´æ–°æ—¶é—´ï¼š'.date("Y-m-d",$resume_basic["refreshtime"]).'</div>
 			<div style="clear:both"></div>
 		</div>
 		<div style="padding-bottom: 10px;">
-			<span style="font-size: 18px;font-weight: 700;">'.$resume_basic["fullname"].'</span><span>£¨'.$resume_basic["sex_cn"].'£¬'.$resume_basic["age"].'£©</span>
-			<p>Ñ§Àú£º'.$resume_basic["education_cn"].' | ×¨Òµ£º'.$resume_basic["major_cn"].' | ¹¤×÷¾­Ñé£º'.$resume_basic["experience_cn"].'Äê | ÏÖ¾Ó×¡µØ£º'.$resume_basic["residence"].'</p>
+			<span style="font-size: 18px;font-weight: 700;">'.$resume_basic["fullname"].'</span><span>ï¼ˆ'.$resume_basic["sex_cn"].'ï¼Œ'.$resume_basic["age"].'ï¼‰</span>
+			<p>å­¦å†ï¼š'.$resume_basic["education_cn"].' | ä¸“ä¸šï¼š'.$resume_basic["major_cn"].' | å·¥ä½œç»éªŒï¼š'.$resume_basic["experience_cn"].'å¹´ | ç°å±…ä½åœ°ï¼š'.$resume_basic["residence"].'</p>
 
 			'.$show_contact.$tag_str.'
 
 		</div>
 		<div style="padding-bottom: 10px;">
-			<p style="font-size: 16px;font-weight: 700;">ÇóÖ°ÒâÏò</p>
-			<p>ÆÚÍûÖ°Î»£º'.$resume_basic["intention_jobs"].'</p>
-			<p>ÆÚÍûĞ½×Ê£º'.$resume_basic["wage_cn"].'</p>
-			<p>ÆÚÍûµØÇø£º'.$resume_basic["district_cn"].'</p>
+			<p style="font-size: 16px;font-weight: 700;">æ±‚èŒæ„å‘</p>
+			<p>æœŸæœ›èŒä½ï¼š'.$resume_basic["intention_jobs"].'</p>
+			<p>æœŸæœ›è–ªèµ„ï¼š'.$resume_basic["wage_cn"].'</p>
+			<p>æœŸæœ›åœ°åŒºï¼š'.$resume_basic["district_cn"].'</p>
 		</div>
 		<div style="padding-bottom: 10px;">
-			<p style="font-size: 16px;font-weight: 700;">¹¤×÷¾­Ñé</p>';
+			<p style="font-size: 16px;font-weight: 700;">å·¥ä½œç»éªŒ</p>';
 				if(!empty($resume_work))
 				{
 					foreach ($resume_work as $value)
 					{
 						$htm.='<div>
 								<p style="font-size: 14px;font-weight: 700;">'.$value["companyname"].'</p>
-								<p>'.$value["startyear"].'Äê'.$value["startmonth"].'ÔÂ-'.$value["endyear"].'Äê'.$value["endmonth"].'ÔÂ '.$value["jobs"].'</p>
-								<div style="float: left;width: 100px;">¹¤×÷ÄÚÈİ£º</div>
+								<p>'.$value["startyear"].'å¹´'.$value["startmonth"].'æœˆ-'.$value["endyear"].'å¹´'.$value["endmonth"].'æœˆ '.$value["jobs"].'</p>
+								<div style="float: left;width: 100px;">å·¥ä½œå†…å®¹ï¼š</div>
 								<div style="float: right;width: 800px;">'.$value["achievements"].'</div>
 								<div style="clear:both"></div>
 							</div>'	;
@@ -388,7 +388,7 @@ elseif($act == "sendtoemail")
 				else
 				{
 					$htm.='<div>
-								Ã»ÓĞÌîĞ´¹¤×÷¾­Àú
+								æ²¡æœ‰å¡«å†™å·¥ä½œç»å†
 							</div>'	;
 				}
 				
@@ -396,15 +396,15 @@ elseif($act == "sendtoemail")
 		if($resume_basic["specialty"])
 		{
 			$htm.='<div style="padding-bottom: 10px;">
-				<p style="font-size: 16px;font-weight: 700;">×ÔÎÒÃèÊö</p>
+				<p style="font-size: 16px;font-weight: 700;">è‡ªæˆ‘æè¿°</p>
 				<p>'.$resume_basic["specialty"].'</p>
 			</div>';
 		}
 		$htm.='<div style="text-align: center;margin-top:20px">
-				¸Ã¼òÀúÀ´×Ô<a href="'.$_CFG["site_domain"].$_CFG["site_dir"].'">'.$_CFG["site_name"].'</a>
+				è¯¥ç®€å†æ¥è‡ª<a href="'.$_CFG["site_domain"].$_CFG["site_dir"].'">'.$_CFG["site_name"].'</a>
 			</div>
 		</div>';
-		$rst=smtp_mail($_GET['email'],"{$resume_basic['fullname']}µÄ¼òÀú",$htm);
+		$rst=smtp_mail($_GET['email'],"{$resume_basic['fullname']}çš„ç®€å†",$htm);
 		exit($rst);
 }
 unset($smarty);

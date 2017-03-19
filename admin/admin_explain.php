@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ËµÃ÷Ò³¹ÜÀí
+ * 74cms è¯´æ˜é¡µç®¡ç†
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_explain_fun.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'list';
 $smarty->assign('act',$act);
-$smarty->assign('pageheader',"ËµÃ÷Ò³");
+$smarty->assign('pageheader',"è¯´æ˜é¡µ");
 if($act == 'list')
 {
 	get_token();
@@ -57,7 +57,7 @@ elseif($act == 'edit')
 	$id = !empty($_GET['id']) ? intval($_GET['id']) : '';
 	$sql = "select * from ".table('explain')." where id=".$id." LIMIT 1";
 	$edit_article=$db->getone($sql);
-	$smarty->assign('edit_article',$edit_article);//¶ÁÈ¡Ö¸¶¨IDµÄËµÃ÷Ò³
+	$smarty->assign('edit_article',$edit_article);//è¯»å–æŒ‡å®šIDçš„è¯´æ˜é¡µ
 	$smarty->assign('get_explain_category',get_explain_category());
 	$smarty->display('explain/admin_explain_edit.htm');
 }
@@ -65,8 +65,8 @@ elseif($act == 'editsave')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"explain_edit");
-	$id = !empty($_POST['id']) ? intval($_POST['id']) : adminmsg('²ÎÊı´íÎó',1);
-	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('ËµÃ÷Ò³Ãû×Ö²»ÄÜÎª¿Õ£¡',1);
+	$id = !empty($_POST['id']) ? intval($_POST['id']) : adminmsg('å‚æ•°é”™è¯¯',1);
+	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('è¯´æ˜é¡µåå­—ä¸èƒ½ä¸ºç©ºï¼',1);
 	$setsqlarr['type_id']=trim($_POST['type_id'])?intval($_POST['type_id']):0;
 	$setsqlarr['content']=trim($_POST['content']);
 	$setsqlarr['tit_color']=trim($_POST['tit_color']);
@@ -76,12 +76,12 @@ elseif($act == 'editsave')
 	$setsqlarr['seo_keywords']=trim($_POST['seo_keywords']);
 	$setsqlarr['seo_description']=trim($_POST['seo_description']);
 	$setsqlarr['show_order']=intval($_POST['show_order']);
-	$link[0]['text'] = "·µ»ØËµÃ÷Ò³ÁĞ±í";
+	$link[0]['text'] = "è¿”å›è¯´æ˜é¡µåˆ—è¡¨";
 	$link[0]['href'] = '?';
-	$link[1]['text'] = "²é¿´ÒÑĞŞ¸ÄËµÃ÷Ò³";
+	$link[1]['text'] = "æŸ¥çœ‹å·²ä¿®æ”¹è¯´æ˜é¡µ";
 	$link[1]['href'] = "?act=edit&id=".$id;
-	write_log("ĞŞ¸ÄidÎª".$id."µÄËµÃ÷Ò³", $_SESSION['admin_name'],3);
- 	!$db->updatetable(table('explain'),$setsqlarr," id=".$id."")?adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0):adminmsg("ĞŞ¸Ä³É¹¦£¡",2,$link);
+	write_log("ä¿®æ”¹idä¸º".$id."çš„è¯´æ˜é¡µ", $_SESSION['admin_name'],3);
+ 	!$db->updatetable(table('explain'),$setsqlarr," id=".$id."")?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'add')
 {
@@ -96,7 +96,7 @@ elseif($act == 'addsave')
 {	
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"explain_add");
-	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('ËµÃ÷Ò³Ãû×Ö²»ÄÜÎª¿Õ£¡',1);
+	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):adminmsg('è¯´æ˜é¡µåå­—ä¸èƒ½ä¸ºç©ºï¼',1);
 	$setsqlarr['type_id']=trim($_POST['type_id'])?intval($_POST['type_id']):0;
 	$setsqlarr['content']=trim($_POST['content']);
 	$setsqlarr['tit_color']=trim($_POST['tit_color']);
@@ -107,17 +107,17 @@ elseif($act == 'addsave')
 	$setsqlarr['seo_description']=trim($_POST['seo_description']);
 	$setsqlarr['show_order']=intval($_POST['show_order']);
 	$setsqlarr['addtime']=$timestamp;
-	$link[0]['text'] = "¼ÌĞøÌí¼ÓËµÃ÷Ò³";
+	$link[0]['text'] = "ç»§ç»­æ·»åŠ è¯´æ˜é¡µ";
 	$link[0]['href'] = '?act=add&type_id='.$setsqlarr['type_id'];
-	$link[1]['text'] = "·µ»ØËµÃ÷Ò³ÁĞ±í";
+	$link[1]['text'] = "è¿”å›è¯´æ˜é¡µåˆ—è¡¨";
 	$link[1]['href'] = '?';
-	write_log("Ìí¼ÓËµÃ÷Ò³£º".$setsqlarr['title'], $_SESSION['admin_name'],3);
+	write_log("æ·»åŠ è¯´æ˜é¡µï¼š".$setsqlarr['title'], $_SESSION['admin_name'],3);
 	$insertid = $db->inserttable(table('explain'),$setsqlarr,1);
 	if(!$insertid){
-		adminmsg("Ìí¼ÓÊ§°Ü£¡",0);
+		adminmsg("æ·»åŠ å¤±è´¥ï¼",0);
 	}else{
 		baidu_submiturl(url_rewrite('QS_explainshow',array('id'=>$insertid)),'addexplain');
-		adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+		adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 	}
 }
 elseif($act == 'explain_del')
@@ -127,11 +127,11 @@ elseif($act == 'explain_del')
 	$id=$_REQUEST['id'];
 	if ($num=del_explain($id))
 	{
-	adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı".$num."ĞĞ",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ıÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'category')
@@ -161,7 +161,7 @@ elseif($act == 'add_category_save')
 			{		
 				$setsqlarr['categoryname']=trim($_POST['categoryname'][$i]);
 				$setsqlarr['category_order']=intval($_POST['category_order'][$i]);			
-				!$db->inserttable(table('explain_category'),$setsqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):"";
+				!$db->inserttable(table('explain_category'),$setsqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):"";
 				$num=$num+$db->affected_rows();
 			}
 
@@ -170,16 +170,16 @@ elseif($act == 'add_category_save')
 	}
 	if ($num==0)
 	{
-	adminmsg("Ìí¼ÓÊ§°Ü,Êı¾İ²»ÍêÕû",1);
+	adminmsg("æ·»åŠ å¤±è´¥,æ•°æ®ä¸å®Œæ•´",1);
 	}
 	else
 	{
-	$link[0]['text'] = "·µ»Ø·ÖÀà¹ÜÀí";
+	$link[0]['text'] = "è¿”å›åˆ†ç±»ç®¡ç†";
 	$link[0]['href'] = '?act=category';
-	$link[1]['text'] = "¼ÌĞøÌí¼Ó";
+	$link[1]['text'] = "ç»§ç»­æ·»åŠ ";
 	$link[1]['href'] = "?act=category_add";
-	write_log("Ìí¼Ó³É¹¦£¡¹²Ìí¼Ó".$num."¸ö·ÖÀà", $_SESSION['admin_name'],3);
-	adminmsg("Ìí¼Ó³É¹¦£¡¹²Ìí¼Ó".$num."¸ö·ÖÀà",2,$link);
+	write_log("æ·»åŠ æˆåŠŸï¼å…±æ·»åŠ ".$num."ä¸ªåˆ†ç±»", $_SESSION['admin_name'],3);
+	adminmsg("æ·»åŠ æˆåŠŸï¼å…±æ·»åŠ ".$num."ä¸ªåˆ†ç±»",2,$link);
 	}
 }
 elseif($act == 'edit_category')
@@ -196,14 +196,14 @@ elseif($act == 'edit_category_save')
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"explain_category");
 	$id=intval($_POST['id']);	
-	$setsqlarr['categoryname']=trim($_POST['categoryname'])?trim($_POST['categoryname']):adminmsg('ÇëÌîĞ´·ÖÀàÃû³Æ£¡',1);
+	$setsqlarr['categoryname']=trim($_POST['categoryname'])?trim($_POST['categoryname']):adminmsg('è¯·å¡«å†™åˆ†ç±»åç§°ï¼',1);
 	$setsqlarr['category_order']=intval($_POST['category_order']);
-	$link[0]['text'] = "²é¿´ĞŞ¸Ä½á¹û";
+	$link[0]['text'] = "æŸ¥çœ‹ä¿®æ”¹ç»“æœ";
 	$link[0]['href'] = '?act=edit_category&id='.$id;
-	$link[1]['text'] = "·µ»Ø·ÖÀà¹ÜÀí";
+	$link[1]['text'] = "è¿”å›åˆ†ç±»ç®¡ç†";
 	$link[1]['href'] = '?act=category';
-	write_log("ĞŞ¸ÄidÎª".$id."µÄ·ÖÀà", $_SESSION['admin_name'],3);
-	!$db->updatetable(table('explain_category'),$setsqlarr," id=".$id."")?adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0):adminmsg("ĞŞ¸Ä³É¹¦£¡",2,$link);
+	write_log("ä¿®æ”¹idä¸º".$id."çš„åˆ†ç±»", $_SESSION['admin_name'],3);
+	!$db->updatetable(table('explain_category'),$setsqlarr," id=".$id."")?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'del_category')
 {
@@ -212,12 +212,12 @@ elseif($act == 'del_category')
 	$id=$_REQUEST['id'];
 	if ($num=del_category($id))
 	{
-	write_log("É¾³ı·ÖÀà£¡¹²É¾³ı".$num."ĞĞ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı".$num."ĞĞ",2);
+	write_log("åˆ é™¤åˆ†ç±»ï¼å…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ıÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 

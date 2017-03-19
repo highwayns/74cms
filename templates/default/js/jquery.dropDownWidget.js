@@ -1,4 +1,4 @@
-/** Ê×Ò³×ó²àÖ°Î»Àà±ğÏÂÀ­ */
+ï»¿/** é¦–é¡µå·¦ä¾§èŒä½ç±»åˆ«ä¸‹æ‹‰ */
 jQuery.dropDownWidget = function(obj) {
 	var c = $(obj).find(".job-sort-control"), l = $(obj).find(".job-sort-list"), lhtml = '';
 	if (QS_jobs_parent) {
@@ -34,7 +34,7 @@ jQuery.dropDownWidget = function(obj) {
     	if (dataval) {return dataval.split(character)};
     }
     function MakeLi(subclass) {
-    	if (!QS_jobs[subclass]) {return "ÎŞ"};
+    	if (!QS_jobs[subclass]) {return "æ— "};
     	var liArray = QS_jobs[subclass].split("|");
 		var htmlstr='';
 		if (liArray) {
@@ -55,7 +55,7 @@ jQuery.dropDownWidget = function(obj) {
 		return htmlstr; 
 	}
 	function Make_Third_Li(subclass, thirdclass) {
-		if (!QS_jobs[thirdclass]) {return "ÎŞ"};
+		if (!QS_jobs[thirdclass]) {return "æ— "};
 		var tArray = QS_jobs[thirdclass].split("|");
 		var htmlstr1='';
 		if (tArray) {

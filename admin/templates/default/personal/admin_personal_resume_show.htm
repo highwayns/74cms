@@ -1,167 +1,167 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
   <div class="clear"></div>
 </div>
-<div class="toptit">»ù±¾ÉèÖÃ</div>
+<div class="toptit">åŸºæœ¬è®¾ç½®</div>
   <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
 		<tr>
-          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">¼òÀúÃû³Æ£º</td>
+          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ç®€å†åç§°ï¼š</td>
           <td bgcolor="#FFFFFF"  width="100" style=" border-bottom:1px #CCCCCC dashed">
 				{#$resume.title#}
 		 </td>
-          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">¹«¿ªÉèÖÃ£º</td>
+          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">å…¬å¼€è®¾ç½®ï¼š</td>
           <td bgcolor="#FFFFFF"  width="100" style=" border-bottom:1px #CCCCCC dashed">
 			  {#if $resume.display=="1"#}
-			  ¹«¿ª
+			  å…¬å¼€
 			  {#else#}
-			  °ë¹«¿ª
+			  åŠå…¬å¼€
 			  {#/if#}
 		 </td>
-          <td align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ĞÕÃû£º</td>
+          <td align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">å§“åï¼š</td>
           <td bgcolor="#FFFFFF"   style=" border-bottom:1px #CCCCCC dashed">
 			  {#$resume.lastname#}
 		 </td>
       </tr>
 		<tr>
-          <td align="right" width="100"  height="30" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">¼òÀúÍêÕû¶È£º</td>
+          <td align="right" width="100"  height="30" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ç®€å†å®Œæ•´åº¦ï¼š</td>
           <td bgcolor="#FFFFFF"  width="100" style=" border-bottom:1px #CCCCCC dashed">
 			{#$resume.complete_percent#}%
 		 </td>
-          <td align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">¼òÀúÉóºË£º</td>
+          <td align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ç®€å†å®¡æ ¸ï¼š</td>
           <td bgcolor="#FFFFFF" width="100" style=" border-bottom:1px #CCCCCC dashed">
-			  {#if $resume.audit=="1"#}ÒÑÍ¨¹ıÉóºË{#/if#}
-				{#if $resume.audit=="2"#}ÕıÔÚÉóºËÖĞ{#/if#}
+			  {#if $resume.audit=="1"#}å·²é€šè¿‡å®¡æ ¸{#/if#}
+				{#if $resume.audit=="2"#}æ­£åœ¨å®¡æ ¸ä¸­{#/if#}
 				{#if $resume.audit=="3"#}
-					ÉóºËÎ´Í¨¹ıÇëĞŞ¸Ä
+					å®¡æ ¸æœªé€šè¿‡è¯·ä¿®æ”¹
 				{#/if#}
 		 </td>
-          <td align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">¼òÀúµÈ¼¶£º</td>
+          <td align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ç®€å†ç­‰çº§ï¼š</td>
           <td bgcolor="#FFFFFF"  style=" border-bottom:1px #CCCCCC dashed">
 			  {#if $resume.talent=="2"#}
-			  <span style="color:#FF6600">¸ß¼¶</span>
+			  <span style="color:#FF6600">é«˜çº§</span>
 			  {#else#}
-				  ÆÕÍ¨
+				  æ™®é€š
 			 {#/if#}
 		 </td>
       </tr>
 		<tr>
-          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ÕÕÆ¬ÉóºË×´Ì¬£º</td>
+          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ç…§ç‰‡å®¡æ ¸çŠ¶æ€ï¼š</td>
           <td bgcolor="#FFFFFF"  width="100" style=" border-bottom:1px #CCCCCC dashed">
 			   {#if $resume.photo_img<>""#}
-				  {#if $resume.photo_audit=="1"#}ÒÑÍ¨¹ıÉóºË{#/if#}
-				  {#if $resume.photo_audit=="2"#}ÕıÔÚÉóºËÖĞ{#/if#}
-				  {#if $resume.photo_audit=="3"#}ÉóºËÎ´Í¨¹ı{#/if#}
+				  {#if $resume.photo_audit=="1"#}å·²é€šè¿‡å®¡æ ¸{#/if#}
+				  {#if $resume.photo_audit=="2"#}æ­£åœ¨å®¡æ ¸ä¸­{#/if#}
+				  {#if $resume.photo_audit=="3"#}å®¡æ ¸æœªé€šè¿‡{#/if#}
 				  {#else#}
-					Î´ÉÏ´«ÕÕÆ¬
+					æœªä¸Šä¼ ç…§ç‰‡
 				  {#/if#}			 
 		 </td>
-          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ÕÕÆ¬¹«¿ªÉèÖÃ£º</td>
+          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ç…§ç‰‡å…¬å¼€è®¾ç½®ï¼š</td>
           <td bgcolor="#FFFFFF"   colspan="3" style=" border-bottom:1px #CCCCCC dashed">
 			  {#if $resume.photo_img<>""#}
 				  	 {#if $resume.photo_display=="1"#}
-				     ¹«¿ª
+				     å…¬å¼€
 					 {#else#}
-					 ²»¹«¿ª
+					 ä¸å…¬å¼€
 				  	{#/if#}
 					{#else#}
-					Î´ÉÏ´«ÕÕÆ¬
+					æœªä¸Šä¼ ç…§ç‰‡
 				  {#/if#}			
 		 </td>
       </tr>
 		<tr>
-          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" >´´½¨Ê±¼ä£º</td>
+          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" >åˆ›å»ºæ—¶é—´ï¼š</td>
           <td bgcolor="#FFFFFF"  width="100" >
 			{#$resume.addtime|date_format:"%Y.%m.%d %H:%M"#}		
 		 </td>
-          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" >Ë¢ĞÂÊ±¼ä£º</td>
+          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" >åˆ·æ–°æ—¶é—´ï¼š</td>
           <td bgcolor="#FFFFFF"  width="100" >
 			{#$resume.refreshtime|date_format:"%Y.%m.%d %H:%M"#}		
 		 </td>
-          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" >µã»÷´ÎÊı£º</td>
+          <td  height="30" align="right" width="100" bgcolor="#FFFFFF" >ç‚¹å‡»æ¬¡æ•°ï¼š</td>
           <td bgcolor="#FFFFFF"  >
 			{#$resume.click#}		
 		 </td>
       </tr>
 		</table>
-<div class="toptit">»ù±¾ĞÅÏ¢ </div>
+<div class="toptit">åŸºæœ¬ä¿¡æ¯ </div>
   <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
 		<tr>
-          <td  height="30" align="right" width="80" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ĞÕÃû£º</td>
+          <td  height="30" align="right" width="80" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">å§“åï¼š</td>
           <td bgcolor="#FFFFFF"  width="100" style=" border-bottom:1px #CCCCCC dashed">
 				{#$resume.fullname#}
 		 </td>
-          <td  height="30" align="right" width="80" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ĞÔ±ğ£º</td>
+          <td  height="30" align="right" width="80" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">æ€§åˆ«ï¼š</td>
           <td bgcolor="#FFFFFF"  width="100" style=" border-bottom:1px #CCCCCC dashed">
 				{#$resume.sex_cn#}
 		 </td>
-          <td align="right" width="80" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ÄêÁä£º</td>
+          <td align="right" width="80" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">å¹´é¾„ï¼š</td>
           <td bgcolor="#FFFFFF"   width="100" style=" border-bottom:1px #CCCCCC dashed">
 				{#$resume.age#}
 		 </td>
-          <td align="right" width="80" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">Éí¸ß£º</td>
+          <td align="right" width="80" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">èº«é«˜ï¼š</td>
           <td bgcolor="#FFFFFF"  width="350" style=" border-bottom:1px #CCCCCC dashed">
-				{#if $resume.height=='0'#}Î´ÌîĞ´{#else#}{#/if#}
+				{#if $resume.height=='0'#}æœªå¡«å†™{#else#}{#/if#}
 		 </td>
           <td bgcolor="#FFFFFF" rowspan="4" width="80" style="border:1px solid #ccc;padding:3px">
 {#if $resume.photo_img<>""#} <img src="{#$QISHI.resume_photo_dir_thumb#}{#$resume.photo_img#}?wd={#$random#}"  />{#else#}<img src="{#$QISHI.resume_photo_dir_thumb#}no_photo.gif" />{#/if#}		 </td>
       </tr>
 		<tr>
-          <td align="right" width="80" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">Ñ§Àú£º</td>
+          <td align="right" width="80" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">å­¦å†ï¼š</td>
           <td bgcolor="#FFFFFF"  style=" border-bottom:1px #CCCCCC dashed">
 				{#$resume.education_cn#}
 		 </td>
-          <td height="30" width="80" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">»éÒö×´¿ö£º</td>
+          <td height="30" width="80" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">å©šå§»çŠ¶å†µï¼š</td>
           <td bgcolor="#FFFFFF" width="100" style=" border-bottom:1px #CCCCCC dashed;">
 				{#$resume.marriage_cn#}
 		 </td>
-          <td align="right" width="80" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">¹¤×÷¾­Ñé£º</td>
+          <td align="right" width="80" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">å·¥ä½œç»éªŒï¼š</td>
           <td bgcolor="#FFFFFF"  colspan="3" style=" border-bottom:1px #CCCCCC dashed">
 				{#$resume.experience_cn#}
 		 </td>
       </tr>
 		<tr>
-          <td height="30"  align="right" width="80"  bgcolor="#FFFFFF" >ÌØ³¤±êÇ©£º</td>
+          <td height="30"  align="right" width="80"  bgcolor="#FFFFFF" >ç‰¹é•¿æ ‡ç­¾ï¼š</td>
           <td bgcolor="#FFFFFF"  colspan="7" >
 				{#$resume.tag_cn#}
 		 </td>
       </tr>
 		</table>
-	<div class="toptit">ÇóÖ°ÒâÏò</div>
+	<div class="toptit">æ±‚èŒæ„å‘</div>
   <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
 		<tr>
-          <td height="30" width="130" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ÆÚÍû¸ÚÎ»ĞÔÖÊ£º</td>
+          <td height="30" width="130" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">æœŸæœ›å²—ä½æ€§è´¨ï¼š</td>
           <td bgcolor="#FFFFFF"  style=" border-bottom:1px #CCCCCC dashed;">
 				{#$resume.nature_cn#}
 		 </td>
      	 </tr>
 		<tr>
-          <td height="30" width="130" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ÆÚÍû¹¤×÷µØ£º</td>
+          <td height="30" width="130" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">æœŸæœ›å·¥ä½œåœ°ï¼š</td>
           <td bgcolor="#FFFFFF"  style=" border-bottom:1px #CCCCCC dashed;">
 				{#$resume.district_cn#}
 		 </td>
      	 </tr>
 		<tr>
-          <td height="30" width="130" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ÆÚÍûÔÂĞ½£º</td>
+          <td height="30" width="130" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">æœŸæœ›æœˆè–ªï¼š</td>
           <td bgcolor="#FFFFFF"  style=" border-bottom:1px #CCCCCC dashed;">
 				{#$resume.wage_cn#}
 		 </td>
      	 </tr>
 		<tr>
-          <td height="30" width="130" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">ÆÚÍû´ÓÊÂµÄ¸ÚÎ»£º</td>
+          <td height="30" width="130" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed;">æœŸæœ›ä»äº‹çš„å²—ä½ï¼š</td>
           <td bgcolor="#FFFFFF"  style=" border-bottom:1px #CCCCCC dashed;">
 				{#$resume.intention_jobs#}
 		 </td>
      	 </tr>
 		<tr>
-          <td height="30" width="130" align="right" bgcolor="#FFFFFF" >ÆÚÍû´ÓÊÂµÄĞĞÒµ£º</td>
+          <td height="30" width="130" align="right" bgcolor="#FFFFFF" >æœŸæœ›ä»äº‹çš„è¡Œä¸šï¼š</td>
           <td bgcolor="#FFFFFF" >
 				{#$resume.trade_cn#}
 		 </td>
      	 </tr>
 		</table>
-	<div class="toptit">¸öÈË¼ò½é</div>
+	<div class="toptit">ä¸ªäººç®€ä»‹</div>
 	{#if $resume.specialty#} 
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="10">
 	<tr>
@@ -169,20 +169,20 @@
 	  </tr>
 	</table>
 	{#else#}
-	<div style="height:40px; line-height:40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ÄúÃ»ÓĞÌîĞ´ÌØ³¤ÃèÊö¡£</div>
+	<div style="height:40px; line-height:40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;æ‚¨æ²¡æœ‰å¡«å†™ç‰¹é•¿æè¿°ã€‚</div>
 	{#/if#}
-	<div class="toptit">½ÌÓı¾­Àú</div>
+	<div class="toptit">æ•™è‚²ç»å†</div>
 		  {#if $resume_education#}
             <table width="100%" border="0" cellspacing="1" cellpadding="5"  class="link_lan">
               <tr>
-                <td width="180" height="23" align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399; ">ÆğÖ¹ÄêÔÂ</td>
-                <td align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">Ñ§Ğ£Ãû³Æ</td>
-                <td align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">×¨ÒµÃû³Æ</td>
-                <td align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">Ñ§Àú</td>
+                <td width="180" height="23" align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399; ">èµ·æ­¢å¹´æœˆ</td>
+                <td align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">å­¦æ ¡åç§°</td>
+                <td align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">ä¸“ä¸šåç§°</td>
+                <td align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">å­¦å†</td>
               </tr>
 			   {#foreach from=$resume_education item=list#}
   <tr>
-    <td height="23" align="center">{#$list.startyear#}Äê{#$list.startmonth#}ÔÂÖÁ{#$list.endyear#}Äê{#$list.endmonth#}</td>
+    <td height="23" align="center">{#$list.startyear#}å¹´{#$list.startmonth#}æœˆè‡³{#$list.endyear#}å¹´{#$list.endmonth#}</td>
     <td align="center">{#$list.school#}</td>
     <td align="center">{#$list.speciality#}</td>
     <td align="center">{#$list.education_cn#}</td>
@@ -190,63 +190,63 @@
               {#/foreach#}
             </table>
 			{#else#}
-			<div style="height:40px; line-height:40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ÄúÃ»ÓĞÌîĞ´½ÌÓı¾­Àú¡£</div>
+			<div style="height:40px; line-height:40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;æ‚¨æ²¡æœ‰å¡«å†™æ•™è‚²ç»å†ã€‚</div>
             {#/if#} 
-	<div class="toptit">¹¤×÷¾­Àú</div>
+	<div class="toptit">å·¥ä½œç»å†</div>
 		  {#if $resume_work#}
             <table width="100%" border="0" cellspacing="1" cellpadding="5"  class="link_lan">
               <tr>
-                <td width="180" height="23" align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399; ">ÆğÖ¹ÄêÔÂ</td>
-                <td  width="540"  align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">¹«Ë¾Ãû³Æ</td>
-                <td align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">Ö°Î»Ãû³Æ</td>
+                <td width="180" height="23" align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399; ">èµ·æ­¢å¹´æœˆ</td>
+                <td  width="540"  align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">å…¬å¸åç§°</td>
+                <td align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">èŒä½åç§°</td>
               </tr>
 			  {#foreach from=$resume_work item=list#}
 			  <tr>
-   				 <td height="23" align="center">{#$list.startyear#}Äê{#$list.startmonth#}ÔÂÖÁ{#$list.endyear#}Äê{#$list.endmonth#}</td>
+   				 <td height="23" align="center">{#$list.startyear#}å¹´{#$list.startmonth#}æœˆè‡³{#$list.endyear#}å¹´{#$list.endmonth#}</td>
 				<td align="center">{#$list.companyname#}</td>
 				<td align="center">{#$list.jobs#}</td>
 			  </tr>
              {#/foreach#}
             </table>
 			{#else#}
-			<div style="height:40px; line-height:40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ÄúÃ»ÓĞÌîĞ´¹¤×÷¾­Àú¡£</div>
+			<div style="height:40px; line-height:40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;æ‚¨æ²¡æœ‰å¡«å†™å·¥ä½œç»å†ã€‚</div>
             {#/if#} 
-	<div class="toptit">ÅàÑµ¾­Àú</div>
+	<div class="toptit">åŸ¹è®­ç»å†</div>
 			{#if $resume_training#}
               <table width="100%" border="0" cellspacing="1" cellpadding="5"  class="link_lan">
                 <tr>
-                  <td width="180" height="23" align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399; ">ÆğÖ¹ÄêÔÂ</td>
-                  <td width="540" align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">»ú¹¹Ãû³Æ</td>
-                  <td align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">ÅàÑµ¿Î³Ì</td>
+                  <td width="180" height="23" align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399; ">èµ·æ­¢å¹´æœˆ</td>
+                  <td width="540" align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">æœºæ„åç§°</td>
+                  <td align="center" style=" border-bottom:1px #CCCCCC dashed; color:#003399;">åŸ¹è®­è¯¾ç¨‹</td>
                 </tr>
 				{#foreach from=$resume_training item=list#}
 				  <tr>
-   				 <td height="23" align="center">{#$list.startyear#}Äê{#$list.startmonth#}ÔÂÖÁ{#$list.endyear#}Äê{#$list.endmonth#}</td>
+   				 <td height="23" align="center">{#$list.startyear#}å¹´{#$list.startmonth#}æœˆè‡³{#$list.endyear#}å¹´{#$list.endmonth#}</td>
 					<td align="center">{#$list.agency#}</td>
 					<td align="center">{#$list.course#}</td>
 				  </tr>
                 {#/foreach#}
               </table>
 			  {#else#}
-			<div style="height:40px; line-height:40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ÄúÃ»ÓĞÌîĞ´ÅàÑµ¾­Àú¡£</div>
+			<div style="height:40px; line-height:40px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;æ‚¨æ²¡æœ‰å¡«å†™åŸ¹è®­ç»å†ã€‚</div>
             {#/if#}
 
-<div class="toptit">ÁªÏµ·½Ê½</div>
+<div class="toptit">è”ç³»æ–¹å¼</div>
   <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
 <tr>
-          <td height="30" width="80" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">ÁªÏµµç»°£º</td>
+          <td height="30" width="80" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">è”ç³»ç”µè¯ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">
 			{#$resume.telephone#}
 		 </td>
       </tr>
 		<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">ÁªÏµÓÊÏä£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">è”ç³»é‚®ç®±ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" class="link_lan">
 			{#$resume.email#}
 			 </td>
         </tr>
 		<tr>
-          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">»§¼®ËùÔÚµØ£º</td>
+          <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">æˆ·ç±æ‰€åœ¨åœ°ï¼š</td>
           <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" class="link_lan">
 			{#$resume.householdaddress#}
 			 </td>
@@ -254,7 +254,7 @@
   </table>
 {#if $resumeaudit#}	
 <form id="Form2" name="Form2" method="post" action="?act=del_auditreason">
-<div class="toptit">¼òÀúÉóºËÈÕÖ¾</div>
+<div class="toptit">ç®€å†å®¡æ ¸æ—¥å¿—</div>
 		<table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
 		{#foreach from=$resumeaudit item=list#}
 		<tr>
@@ -272,8 +272,8 @@
 		<tr>
             <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">&nbsp;</td>
             <td height="50" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed"><span style="font-size:14px;">
-              <input name="submit3" type="submit" class="admin_submit"    value="É¾³ıËùÑ¡"/> 
-              <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="window.location.href='{#$url#}'"/>
+              <input name="submit3" type="submit" class="admin_submit"    value="åˆ é™¤æ‰€é€‰"/> 
+              <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="window.location.href='{#$url#}'"/>
             </span></td>
           </tr>
   </table>
@@ -283,7 +283,7 @@
 		<tr>
             <td height="30" align="right" bgcolor="#FFFFFF" >&nbsp;</td>
             <td height="50" bgcolor="#FFFFFF" ><span style="font-size:14px;">
-              <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="window.location.href='{#$url#}'"/>
+              <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="window.location.href='{#$url#}'"/>
             </span></td>
           </tr>
   </table>

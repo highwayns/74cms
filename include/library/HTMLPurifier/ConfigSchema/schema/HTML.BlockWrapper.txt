@@ -1,4 +1,4 @@
-HTML.BlockWrapper
+﻿HTML.BlockWrapper
 TYPE: string
 VERSION: 1.3.0
 DEFAULT: 'p'

@@ -1,4 +1,4 @@
-//½ØÈ¡×Ö·û
+ï»¿//æˆªå–å­—ç¬¦
 function limit(objString,num)
 {
 	if (num==0)
@@ -11,7 +11,7 @@ function limit(objString,num)
 	} 
 	return objString;
 }
-//´ò¿ªĞĞÒµ(´Ëº¯Êı½öÏŞ´´½¨ÕĞÆ¸»á²Î»áĞĞÒµ)
+//æ‰“å¼€è¡Œä¸š(æ­¤å‡½æ•°ä»…é™åˆ›å»ºæ‹›è˜ä¼šå‚ä¼šè¡Œä¸š)
 function OpentradeLayer(click_obj,input,input_cn,input_txt,showid,strlen)
 {
 	$(click_obj).click(function()
@@ -35,7 +35,7 @@ function OpentradeLayer(click_obj,input,input_cn,input_txt,showid,strlen)
 				});
 		
 	});
-	//È·¶¨Ñ¡Ôñ
+	//ç¡®å®šé€‰æ‹©
 	$(showid+" .Set").click(function()
 	{
 			var a_cn=new Array();
@@ -50,7 +50,7 @@ function OpentradeLayer(click_obj,input,input_cn,input_txt,showid,strlen)
 			$(input).val(a_id.join(","));
 			 DialogClose(showid);
 	});
-	//ÉèÖÃÒõÓ°
+	//è®¾ç½®é˜´å½±
 	function SetBoxBg(showid)
 	{
 				var FloatBoxWidth=$(showid+" .OpenFloatBox").width();
@@ -60,7 +60,7 @@ function OpentradeLayer(click_obj,input,input_cn,input_txt,showid,strlen)
 				$(showid+" .OpenFloatBoxBg").css({display:"block",width:(FloatBoxWidth+12)+"px",height:(FloatBoxHeight+12)+"px"});
 				$(showid+" .OpenFloatBoxBg").css({left:(FloatBoxLeft-5)+"px",top:(FloatBoxTop-5)+"px"});
 	}
-	//¹Ø±Õ
+	//å…³é—­
 	$(showid+" .OpenFloatBox .DialogClose").hover(function(){$(this).addClass("spanhover")},function(){$(this).removeClass("spanhover")});
 	$(showid+" .DialogClose").click(function(){DialogClose(showid);});
 	function DialogClose(showid)

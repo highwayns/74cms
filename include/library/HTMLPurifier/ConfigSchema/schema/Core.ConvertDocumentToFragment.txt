@@ -1,4 +1,4 @@
-Core.ConvertDocumentToFragment
+﻿Core.ConvertDocumentToFragment
 TYPE: bool
 DEFAULT: true
 --DESCRIPTION--

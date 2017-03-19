@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ¸öÈË»áÔ±ÖĞĞÄ
+ * 74cms ä¸ªäººä¼šå‘˜ä¸­å¿ƒ
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -31,7 +31,7 @@ if ($act=='down')
 	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
-	$smarty->assign('title',"Ë­ÏÂÔØµÄÎÒµÄ¼òÀú - ¸öÈË»áÔ±ÖĞĞÄ - {$_CFG['site_name']}");
+	$smarty->assign('title',"è°ä¸‹è½½çš„æˆ‘çš„ç®€å† - ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - {$_CFG['site_name']}");
 	$smarty->assign('mylist',get_com_downresume($offset,$perpage,$joinsql.$wheresql));
 	$smarty->assign('page',$page->show(3));
 	$smarty->assign('count',$total_val);
@@ -39,7 +39,7 @@ if ($act=='down')
 	$smarty->assign('resume_list',get_auditresume_list($_SESSION['uid']));
 	$smarty->display('member_personal/personal_downresume.htm');
 }
-//ÃæÊÔÑûÇë ÁĞ±í
+//é¢è¯•é‚€è¯· åˆ—è¡¨
 elseif ($act=='interview')
 {
 	$perpage=10;
@@ -58,7 +58,7 @@ elseif ($act=='interview')
 		$row=$db->getone($sql);
 		$smarty->assign('resume_title',$row["title"]);
 	}
-	//É¸Ñ¡ ÆÕÍ¨Ö°Î»ÃæÊÔ(0)  »¹ÊÇ¸ß¼¶Ö°Î»ÃæÊÔ(1)
+	//ç­›é€‰ æ™®é€šèŒä½é¢è¯•(0)  è¿˜æ˜¯é«˜çº§èŒä½é¢è¯•(1)
 	$jobs_type=intval($_GET['jobs_type']);
 	if($jobs_type != 1)
 	{
@@ -74,10 +74,10 @@ elseif ($act=='interview')
 	{
 		$smarty->assign('page',$page->show(3));
 	}
-	$smarty->assign('title','ÊÕµ½µÄÃæÊÔÑûÇë - ¸öÈË»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','æ”¶åˆ°çš„é¢è¯•é‚€è¯· - ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('act',$act);
-	$count[0]=count_interview($_SESSION['uid'],$jobs_type,1);  //Î´¿´
-	$count[1]=count_interview($_SESSION['uid'],$jobs_type,2);  //ÒÑ¿´
+	$count[0]=count_interview($_SESSION['uid'],$jobs_type,1);  //æœªçœ‹
+	$count[1]=count_interview($_SESSION['uid'],$jobs_type,2);  //å·²çœ‹
 	$count[2]=$count[0]+$count[1];
 	$smarty->assign('count',$count);
 	$smarty->assign('resume_list',get_interview_resumes($_SESSION['uid']));
@@ -85,33 +85,33 @@ elseif ($act=='interview')
 }
 elseif ($act=='set_interview')
 {
-	$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("ÄãÃ»ÓĞÑ¡ÔñÏîÄ¿£¡",1);
+	$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("ä½ æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 	$jobs_type=intval($_GET['jobs_type']);
 	$n=set_invitation($yid,$_SESSION['uid'],2);
 	if($n)
 	{
-		showmsg("ÉèÖÃ³É¹¦£¡",2);
+		showmsg("è®¾ç½®æˆåŠŸï¼",2);
 	}
 	else
 	{
-		showmsg("ÉèÖÃÊ§°Ü£¡",0);
+		showmsg("è®¾ç½®å¤±è´¥ï¼",0);
 	}
 }
 elseif ($act=='interview_del')
 {
-	$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("ÄãÃ»ÓĞÑ¡ÔñÏîÄ¿£¡",1);
+	$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("ä½ æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 	$jobs_type=intval($_GET['jobs_type']);
 	$n=del_interview($yid,$_SESSION['uid']);
 	if(intval($n) > 0)
 	{
-	showmsg("É¾³ı³É¹¦£¡¹²É¾³ı {$n} ĞĞ",2);
+	showmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤ {$n} è¡Œ",2);
 	}
 	else
 	{
-	showmsg("Ê§°Ü£¡",0);
+	showmsg("å¤±è´¥ï¼",0);
 	}
 }
-//Ö°Î»ÊÕ²Ø¼ĞÁĞ±í
+//èŒä½æ”¶è—å¤¹åˆ—è¡¨
 elseif ($act=='favorites')
 {
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
@@ -128,7 +128,7 @@ elseif ($act=='favorites')
 	$page = new page(array('total'=>$total_val, 'perpage'=>$perpage,'getarray'=>$_GET));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
-	$smarty->assign('title','Ö°Î»ÊÕ²Ø¼Ğ - ¸öÈË»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','èŒä½æ”¶è—å¤¹ - ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('act',$act);
 	$joinsql=" LEFT JOIN ".table('jobs')." as  j  ON f.jobs_id=j.id ";
 	$smarty->assign('favorites',get_favorites($offset,$perpage,$joinsql.$wheresql));
@@ -140,42 +140,42 @@ elseif ($act=='favorites')
 }
 elseif ($act=='del_favorites')
 {
-	$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("ÄãÃ»ÓĞÑ¡ÔñÏîÄ¿£¡",1);
+	$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("ä½ æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 	if($n=del_favorites($yid,$_SESSION['uid']))
 	{
-		showmsg("É¾³ı³É¹¦£¡¹²É¾³ı {$n} ĞĞ",2);
+		showmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤ {$n} è¡Œ",2);
 	}
 	else
 	{
-		showmsg("É¾³ıÊ§°Ü£¡",0);
+		showmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
-//ÉêÇëµÄÖ°Î»ÁĞ±í
+//ç”³è¯·çš„èŒä½åˆ—è¡¨
 elseif ($act=='apply_jobs')
 {
 	$joinsql = '';
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
 	$wheresql=" WHERE a.personal_uid='{$_SESSION['uid']}' ";
 	$resume_id =intval($_GET['resume_id']);
-	//É¸Ñ¡¼òÀú
+	//ç­›é€‰ç®€å†
 	if($resume_id>0)
 	{
 		$wheresql.=" AND  a.resume_id='{$resume_id}' ";	
 	}
-	//É¸Ñ¡ ¶Ô·½ÊÇ·ñÒÑ²é¿´
+	//ç­›é€‰ å¯¹æ–¹æ˜¯å¦å·²æŸ¥çœ‹
 	$aetlook=intval($_GET['aetlook']);
 	if($aetlook>0)
 	{
 		$wheresql.=" AND a.personal_look='{$aetlook}'";
 	}
-	//É¸Ñ¡ ÉêÇëÊ±¼ä
+	//ç­›é€‰ ç”³è¯·æ—¶é—´
 	$settr=intval($_GET['settr']);
 	if($settr>0)
 	{
 	$settr_val=strtotime("-".$settr." day");
 	$wheresql.=" AND a.apply_addtime>".$settr_val;
 	}
-	//É¸Ñ¡ ·´À¡ (1->ÆóÒµÎ´²é¿´  2->´ı·´À¡  3->ºÏÊÊ  4->²»ºÏÊÊ  5->´ı¶¨  6->Î´½ÓÍ¨)
+	//ç­›é€‰ åé¦ˆ (1->ä¼ä¸šæœªæŸ¥çœ‹  2->å¾…åé¦ˆ  3->åˆé€‚  4->ä¸åˆé€‚  5->å¾…å®š  6->æœªæ¥é€š)
 	$reply_id=intval($_GET['reply_id']);
 	if($reply_id == 1)
 	{
@@ -202,7 +202,7 @@ elseif ($act=='apply_jobs')
 		$wheresql.=" AND a.personal_look='2' AND a.is_reply=4 ";
 	}
 	$perpage=10;
-	//É¸Ñ¡ ÆÕÍ¨Ö°Î»(0) ºÍ ÁÔÍ·Ö°Î»(1)
+	//ç­›é€‰ æ™®é€šèŒä½(0) å’Œ çŒå¤´èŒä½(1)
 	$jobs_type=intval($_GET['jobs_type']);
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('personal_jobs_apply')." AS a {$wheresql} ";
 	$total_val=$db->get_total($total_sql);
@@ -211,32 +211,32 @@ elseif ($act=='apply_jobs')
 	$offset=($currenpage-1)*$perpage;
 	$joinsql.=" LEFT JOIN ".table('jobs')." AS j ON a.jobs_id=j.id ";
 	$smarty->assign('jobs_apply',get_apply_jobs($offset,$perpage,$joinsql,$wheresql));
-	$smarty->assign('title','ÒÑÉêÇëµÄÖ°Î» - ¸öÈË»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','å·²ç”³è¯·çš„èŒä½ - ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('act',$act);
 	if($total_val > $perpage)
 	{
 		$smarty->assign('page',$page->show(3));
 	}
-	$count[0]=count_personal_jobs_apply($jobs_type,$_SESSION['uid'],1); //Î´²é¿´
-	$count[1]=count_personal_jobs_apply($jobs_type,$_SESSION['uid'],2); //ÒÑ²é¿´
+	$count[0]=count_personal_jobs_apply($jobs_type,$_SESSION['uid'],1); //æœªæŸ¥çœ‹
+	$count[1]=count_personal_jobs_apply($jobs_type,$_SESSION['uid'],2); //å·²æŸ¥çœ‹
 	$count[2]=$count[0]+$count[1];
 	$smarty->assign('count',$count);
 	$smarty->assign('resume_list',get_apply_jobs_resumes($_SESSION['uid']));
 	$smarty->display('member_personal/personal_apply_jobs.htm');
 }
-//É¾³ı-ÉêÇëµÄÖ°Î»ÁĞ±í
+//åˆ é™¤-ç”³è¯·çš„èŒä½åˆ—è¡¨
 elseif ($act=='del_jobs_apply')
 {
-	$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("ÄãÃ»ÓĞÑ¡ÔñÏîÄ¿£¡",1);
+	$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:showmsg("ä½ æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 	$jobs_type=intval($_GET['jobs_type']);
 	$n=del_jobs_apply($yid,$_SESSION['uid']);
 	if(intval($n) > 0)
 	{
-		showmsg("É¾³ı³É¹¦£¡",2);
+		showmsg("åˆ é™¤æˆåŠŸï¼",2);
 	}
 	else
 	{
-		showmsg("É¾³ıÊ§°Ü£¡",0);
+		showmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 unset($smarty);

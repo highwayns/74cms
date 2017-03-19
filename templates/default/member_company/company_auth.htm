@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_common.css" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_company.css" />
@@ -14,7 +14,7 @@
 <script src="{#$QISHI.site_template#}js/ajaxfileupload.js" type='text/javascript' language="javascript"></script>
 <script>
 	$(document).ready(function() {
-		//ÉÏ´«ÓªÒµÖ´ÕÕ
+		//ä¸Šä¼ è¥ä¸šæ‰§ç…§
 		$("#certificate_img").die().live('change',function() {
   			credent();
 		});
@@ -23,7 +23,7 @@
             var extStart = filepath.lastIndexOf(".");
             var ext = filepath.substring(extStart, filepath.length).toUpperCase();
             if (ext != ".BMP" && ext != ".PNG" && ext != ".GIF" && ext != ".JPG" && ext != ".JPEG") {
-                alert("Í¼Æ¬ÏŞÓÚbmp,png,gif,jpeg,jpg¸ñÊ½");
+                alert("å›¾ç‰‡é™äºbmp,png,gif,jpeg,jpgæ ¼å¼");
                 return false;
             }
 			$.ajaxFileUpload ({
@@ -33,13 +33,13 @@
 				dataType : 'json',
 				success : function (data, status){
 					switch(data){
-						case -1 :alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÉÏ´«Ä¿Â¼²»´æÔÚ!");return false;break;
-						case -2 :alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÉÏ´«Ä¿Â¼ÎŞ·¨Ğ´Èë!");return false;break;
-						case -3 :alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÄãÑ¡ÔñµÄÎÄ¼şÎŞ·¨ÉÏ´«");return false;break;
-						case -4 :alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÎÄ¼ş´óĞ¡³¬¹ıÏŞÖÆ");return false;break;
-						case -5 :alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÎÄ¼şÀàĞÍ´íÎó£¡");return false;break;
-						case -6 :alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÎÄ¼şÉÏ´«³ö´í£¡");return false;break;
-						case -7 :alert("ÉÏ´«Í¼Æ¬Ê§°Ü£ºÆóÒµÍ¼Æ¬×î¶à·¢²¼8ÕÅ£¡");return false;break;
+						case -1 :alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šä¸Šä¼ ç›®å½•ä¸å­˜åœ¨!");return false;break;
+						case -2 :alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šä¸Šä¼ ç›®å½•æ— æ³•å†™å…¥!");return false;break;
+						case -3 :alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šä½ é€‰æ‹©çš„æ–‡ä»¶æ— æ³•ä¸Šä¼ ");return false;break;
+						case -4 :alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šæ–‡ä»¶å¤§å°è¶…è¿‡é™åˆ¶");return false;break;
+						case -5 :alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šæ–‡ä»¶ç±»å‹é”™è¯¯ï¼");return false;break;
+						case -6 :alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šæ–‡ä»¶ä¸Šä¼ å‡ºé”™ï¼");return false;break;
+						case -7 :alert("ä¸Šä¼ å›¾ç‰‡å¤±è´¥ï¼šä¼ä¸šå›¾ç‰‡æœ€å¤šå‘å¸ƒ8å¼ ï¼");return false;break;
 						default:
 							location.reload();
 						break;
@@ -52,7 +52,7 @@
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 	{#include file="user/header.htm"#}
-	<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ÈÏÖ¤¹ÜÀí</div>
+	<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > è®¤è¯ç®¡ç†</div>
 	<div class="usermain">
 		<div class="leftmenu com link_bk">
 			{#include file="member_company/left.htm"#}	
@@ -60,11 +60,11 @@
 		<div class="rightmain">
 			<div class="bbox1 my_account">
 				<div class="topnav get_resume">
-					<div class="titleH1"><div class="h1-title">°²È«ÈÏÖ¤</div></div>
+					<div class="titleH1"><div class="h1-title">å®‰å…¨è®¤è¯</div></div>
 					<div class="navs link_bk">
-						<a href="company_user.php?act=authenticate">ÕËºÅ°²È«</a>
-						<a href="company_info.php?act=company_auth" class="se">ÓªÒµÖ´ÕÕ</a>
-						<a href="company_user.php?act=login_log">µÇÂ¼ÈÕÖ¾</a>
+						<a href="company_user.php?act=authenticate">è´¦å·å®‰å…¨</a>
+						<a href="company_info.php?act=company_auth" class="se">è¥ä¸šæ‰§ç…§</a>
+						<a href="company_user.php?act=login_log">ç™»å½•æ—¥å¿—</a>
 						<div class="clear"></div>
 					</div>
 				</div>
@@ -72,36 +72,36 @@
 					{#if $company_profile.certificate_img == ""#}
 		  			<form action="?act=company_auth_save" method="post"  enctype="multipart/form-data" id="Form1">
 					<div class="upload-block clearfix">
-						<div class="upload-type f-left">ÉÏ´«ÓªÒµÖ´ÕÕ£º</div>
+						<div class="upload-type f-left">ä¸Šä¼ è¥ä¸šæ‰§ç…§ï¼š</div>
 						<div class="upload-content f-left">
-							<div class="but100_30lan">Ñ¡ÔñÍ¼Æ¬</div>
-							<input class="filestyle" type="file" name="certificate_img" id="certificate_img" value="Ñ¡ÔñÍ¼Æ¬" />
+							<div class="but100_30lan">é€‰æ‹©å›¾ç‰‡</div>
+							<input class="filestyle" type="file" name="certificate_img" id="certificate_img" value="é€‰æ‹©å›¾ç‰‡" />
 						</div>
 					</div>
 					</form>
 					{#elseif  $company_profile.certificate_img <> "" && $company_profile.audit =="2"#}
-					<div class="auth-tips ing">ÄúÌá½»µÄÓªÒµÖ´ÕÕ<span>ÕıÔÚÉóºËÖĞ</span>£¬ÇëÄÍĞÄµÈ´ı¡­¡­</div>
+					<div class="auth-tips ing">æ‚¨æäº¤çš„è¥ä¸šæ‰§ç…§<span>æ­£åœ¨å®¡æ ¸ä¸­</span>ï¼Œè¯·è€å¿ƒç­‰å¾…â€¦â€¦</div>
 					{#elseif $company_profile.certificate_img <> "" && $company_profile.audit =="1"#}
-					<div class="auth-tips success">¹§Ï²Äú£¬ÄúµÄÓªÒµÖ´ÕÕÒÑ<span>Í¨¹ıÉóºË</span>£¡</div>
+					<div class="auth-tips success">æ­å–œæ‚¨ï¼Œæ‚¨çš„è¥ä¸šæ‰§ç…§å·²<span>é€šè¿‡å®¡æ ¸</span>ï¼</div>
 					{#elseif $company_profile.certificate_img <> "" && $company_profile.audit =="3"#}
 					<form action="?act=company_auth_save" method="post"  enctype="multipart/form-data" id="Form1">
 					<div class="upload-block clearfix">
-						<div class="upload-type f-left">ÉÏ´«ÓªÒµÖ´ÕÕ£º</div>
+						<div class="upload-type f-left">ä¸Šä¼ è¥ä¸šæ‰§ç…§ï¼š</div>
 						<div class="upload-content f-left">
-							<div class="but100_30lan">Ñ¡ÔñÍ¼Æ¬</div>
-							<input class="filestyle" type="file" name="certificate_img" id="certificate_img" value="Ñ¡ÔñÍ¼Æ¬" />
+							<div class="but100_30lan">é€‰æ‹©å›¾ç‰‡</div>
+							<input class="filestyle" type="file" name="certificate_img" id="certificate_img" value="é€‰æ‹©å›¾ç‰‡" />
 						</div>
 					</div>
 					</form>
-					<div class="auth-tips error">ÄúÉÏ´«µÄÓªÒµÖ´ÕÕ<span>Î´Í¨¹ıÉóºË</span>£¬ÇëÖØĞÂÉÏ´«£¡</div>
+					<div class="auth-tips error">æ‚¨ä¸Šä¼ çš„è¥ä¸šæ‰§ç…§<span>æœªé€šè¿‡å®¡æ ¸</span>ï¼Œè¯·é‡æ–°ä¸Šä¼ ï¼</div>
 					{#/if#}
 					<div class="bottomtip">
-						<div class="tp h2-title">Ğ¡ÌùÊ¿</div>
-							ÓªÒµÖ´ÕÕÖ»×÷ÎªÍøÕ¾ºËÊµ¹ó¹«Ë¾ÕæÊµĞÔµÄ²ÄÁÏ£¬²»ÔÚÈÎºÎÒ³ÃæÏÔÊ¾£¬ÎÒÃÇ²»»áÒÔÈÎºÎĞÎÊ½¹«²¼ÄúµÄÖ´ÕÕĞÅÏ¢£¡<br>
-							Í¨¹ıÍøÕ¾ºËÊµºóÓªÒµÖ´ÕÕÎÒÃÇ½«Á¢¼´É¾³ı¡£<br>
-							¢Ù Í¨¹ıÈÏÖ¤ºóÄú½«»ñµÃ¸ü¶àÈ¨ÏŞ£»<br>
-							¢Ú Í¨¹ıÈÏÖ¤ºó¿ÉÔö¼ÓĞÅÏ¢µÄ¿ÉĞÅ¶È£¬³ÉÎª<strong>ÒÑÈÏÖ¤ÆóÒµ</strong>£»<br>
-							×¢£ºÉÏ´«ÓªÒµÖ´ÕÕ½ö¹©ÎÒÃÇÉóºË£¬¾ø²»»áÓÃÈÎºÎĞÎÊ½¶ÔÍâ¹«¿ª¡£
+						<div class="tp h2-title">å°è´´å£«</div>
+							è¥ä¸šæ‰§ç…§åªä½œä¸ºç½‘ç«™æ ¸å®è´µå…¬å¸çœŸå®æ€§çš„ææ–™ï¼Œä¸åœ¨ä»»ä½•é¡µé¢æ˜¾ç¤ºï¼Œæˆ‘ä»¬ä¸ä¼šä»¥ä»»ä½•å½¢å¼å…¬å¸ƒæ‚¨çš„æ‰§ç…§ä¿¡æ¯ï¼<br>
+							é€šè¿‡ç½‘ç«™æ ¸å®åè¥ä¸šæ‰§ç…§æˆ‘ä»¬å°†ç«‹å³åˆ é™¤ã€‚<br>
+							â‘  é€šè¿‡è®¤è¯åæ‚¨å°†è·å¾—æ›´å¤šæƒé™ï¼›<br>
+							â‘¡ é€šè¿‡è®¤è¯åå¯å¢åŠ ä¿¡æ¯çš„å¯ä¿¡åº¦ï¼Œæˆä¸º<strong>å·²è®¤è¯ä¼ä¸š</strong>ï¼›<br>
+							æ³¨ï¼šä¸Šä¼ è¥ä¸šæ‰§ç…§ä»…ä¾›æˆ‘ä»¬å®¡æ ¸ï¼Œç»ä¸ä¼šç”¨ä»»ä½•å½¢å¼å¯¹å¤–å…¬å¼€ã€‚
 					</div>
 				</div>
 			</div>

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¸öÈË
+ * 74cms ä¸ªäºº
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -133,7 +133,7 @@ if($act == 'list')
 	$total[4]=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume')." WHERE audit=3 ");
 	}
 	$smarty->assign('total',$total);
-	$smarty->assign('pageheader',"¼òÀúÁĞ±í");
+	$smarty->assign('pageheader',"ç®€å†åˆ—è¡¨");
 	$smarty->assign('resumelist',$resumelist);
 	$smarty->assign('page',$page->show(3));
 	$smarty->assign('total_val',$total_val);
@@ -142,17 +142,17 @@ if($act == 'list')
 elseif($act == 'perform')
 {
 		check_token();
-		$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("ÄãÃ»ÓĞÑ¡Ôñ¼òÀú£¡",1);
+		$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©ç®€å†ï¼",1);
 		if (!empty($_REQUEST['delete']))
 		{
 			check_permissions($_SESSION['admin_purview'],"resume_del");
 			if ($n=del_resume($id))
 			{
-			adminmsg("É¾³ı³É¹¦£¡¸ÃÉ¾³ı {$n} ĞĞ",2);
+			adminmsg("åˆ é™¤æˆåŠŸï¼è¯¥åˆ é™¤ {$n} è¡Œ",2);
 			}
 			else
 			{
-			adminmsg("É¾³ıÊ§°Ü£¡",0);
+			adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 			}
 		}
 		if (!empty($_POST['set_audit']))
@@ -161,31 +161,31 @@ elseif($act == 'perform')
 			$audit=$_POST['audit'];
 			$pms_notice=intval($_POST['pms_notice']);
 			$reason=trim($_POST['reason']);
-			!edit_resume_audit($id,$audit,$reason,$pms_notice)?adminmsg("ÉèÖÃÊ§°Ü£¡",0):adminmsg("ÉèÖÃ³É¹¦£¡",2,$link);
+			!edit_resume_audit($id,$audit,$reason,$pms_notice)?adminmsg("è®¾ç½®å¤±è´¥ï¼",0):adminmsg("è®¾ç½®æˆåŠŸï¼",2,$link);
 		}
 		
 		if (!empty($_POST['set_talent']))
 		{
 		check_permissions($_SESSION['admin_purview'],"resume_talent");
 		$talent=$_POST['talent'];
-		!edit_resume_talent($id,$talent)?adminmsg("ÉèÖÃÊ§°Ü£¡",0):adminmsg("ÉèÖÃ³É¹¦£¡",2,$link);
+		!edit_resume_talent($id,$talent)?adminmsg("è®¾ç½®å¤±è´¥ï¼",0):adminmsg("è®¾ç½®æˆåŠŸï¼",2,$link);
 		}
 		if (!empty($_POST['set_photoaudit']))
 		{
 		check_permissions($_SESSION['admin_purview'],"resume_photo_audit");
 		$photoaudit=$_POST['photoaudit'];
 		$is_del_img=intval($_POST['is_del_img']);
-		!edit_resume_photoaudit($id,$photoaudit,$is_del_img)?adminmsg("ÉèÖÃÊ§°Ü£¡",0):adminmsg("ÉèÖÃ³É¹¦£¡",2,$link);
+		!edit_resume_photoaudit($id,$photoaudit,$is_del_img)?adminmsg("è®¾ç½®å¤±è´¥ï¼",0):adminmsg("è®¾ç½®æˆåŠŸï¼",2,$link);
 		}
 		elseif (!empty($_GET['refresh']))
 		{
 			if($n=refresh_resume($id))
 			{
-			adminmsg("Ë¢ĞÂ³É¹¦£¡ÏìÓ¦ĞĞÊı {$n}",2);
+			adminmsg("åˆ·æ–°æˆåŠŸï¼å“åº”è¡Œæ•° {$n}",2);
 			}
 			else
 			{
-			adminmsg("Ë¢ĞÂÊ§°Ü£¡",0);
+			adminmsg("åˆ·æ–°å¤±è´¥ï¼",0);
 			}
 		}	
 }
@@ -239,7 +239,7 @@ elseif($act == 'members_list')
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$member = get_member_list($offset,$perpage,$wheresql.$oederbysql);
-	$smarty->assign('pageheader',"¸öÈË»áÔ±");
+	$smarty->assign('pageheader',"ä¸ªäººä¼šå‘˜");
 	$smarty->assign('member',$member);
 	$smarty->assign('page',$page->show(3));
 	$smarty->display('personal/admin_personal_user_list.htm');
@@ -248,25 +248,25 @@ elseif($act == 'delete_user')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"per_user_del");
-	$tuid =!empty($_POST['tuid'])?$_POST['tuid']:adminmsg("ÄãÃ»ÓĞÑ¡Ôñ»áÔ±£¡",1);
+	$tuid =!empty($_POST['tuid'])?$_POST['tuid']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©ä¼šå‘˜ï¼",1);
 	if ($_POST['delete'])
 	{
 		if ($_POST['delete_user']=='yes' && !delete_member($tuid))
 		{
-			adminmsg("É¾³ı»áÔ±Ê§°Ü£¡",0);
+			adminmsg("åˆ é™¤ä¼šå‘˜å¤±è´¥ï¼",0);
 		}
 		if ($_POST['delete_resume']=='yes' && !del_resume_for_uid($tuid))
 		{
-			adminmsg("É¾³ı¼òÀúÊ§°Ü£¡",0);
+			adminmsg("åˆ é™¤ç®€å†å¤±è´¥ï¼",0);
 		}
-		adminmsg("É¾³ı³É¹¦£¡",2);
+		adminmsg("åˆ é™¤æˆåŠŸï¼",2);
 	}
 }
 elseif($act == 'user_edit')
 {	
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"per_user_edit");
-	$smarty->assign('pageheader',"¸öÈË»áÔ±");
+	$smarty->assign('pageheader',"ä¸ªäººä¼šå‘˜");
 	$smarty->assign('user',get_member_one($_GET['tuid']));
 	$smarty->assign('resume',get_resume_uid($_GET['tuid']));
 	$smarty->assign('url',$_SERVER["HTTP_REFERER"]);
@@ -287,89 +287,89 @@ elseif($act == 'set_account_save')
 	$setsqlarr['qq_openid']='';
 	}
 	$thisuid=intval($_POST['thisuid']);	
-	if (strlen($setsqlarr['username'])<3) adminmsg('ÓÃ»§Ãû±ØĞëÎª3Î»ÒÔÉÏ£¡',1);
+	if (strlen($setsqlarr['username'])<3) adminmsg('ç”¨æˆ·åå¿…é¡»ä¸º3ä½ä»¥ä¸Šï¼',1);
 	$getusername=get_user_inusername($setsqlarr['username']);
 	if (!empty($getusername)  && $getusername['uid']<>$thisuid)
 	{
-	adminmsg("ÓÃ»§Ãû {$setsqlarr['username']}  ÒÑ¾­´æÔÚ£¡",1);
+	adminmsg("ç”¨æˆ·å {$setsqlarr['username']}  å·²ç»å­˜åœ¨ï¼",1);
 	}
-	//Èô¹´Ñ¡ÒÑÑéÖ¤£¬ÔòĞèÅĞ¶ÏÊÖ»úºÅÊÇ·ñÌîĞ´
+	//è‹¥å‹¾é€‰å·²éªŒè¯ï¼Œåˆ™éœ€åˆ¤æ–­æ‰‹æœºå·æ˜¯å¦å¡«å†™
 	if($setsqlarr['mobile_audit']==1)
 	{
 		if (empty($setsqlarr['mobile']))
 		{
-		adminmsg('ÊÖ»úºÅÂëÎª¿Õ£¡',1);
+		adminmsg('æ‰‹æœºå·ç ä¸ºç©ºï¼',1);
 		}
 	}
 	if (!empty($setsqlarr['mobile']) && !preg_match("/^(13|15|14|17|18)\d{9}$/",$setsqlarr['mobile']))
 	{
-	adminmsg('ÊÖ»úºÅÂë´íÎó£¡',1);
+	adminmsg('æ‰‹æœºå·ç é”™è¯¯ï¼',1);
 	}
 	$getemail=get_user_inemail($setsqlarr['email']);
 	if (!empty($getemail)  && $getemail['uid']<>$thisuid)
 	{
-	adminmsg("Email  {$setsqlarr['email']}  ÒÑ¾­´æÔÚ£¡",1);
+	adminmsg("Email  {$setsqlarr['email']}  å·²ç»å­˜åœ¨ï¼",1);
 	}
-	//Èô¹´Ñ¡ÒÑÑéÖ¤£¬ÔòĞèÅĞ¶ÏÊÖ»úºÅÊÇ·ñÌîĞ´
+	//è‹¥å‹¾é€‰å·²éªŒè¯ï¼Œåˆ™éœ€åˆ¤æ–­æ‰‹æœºå·æ˜¯å¦å¡«å†™
 	if($setsqlarr['mobile_audit']==1)
 	{
 		if (empty($setsqlarr['mobile']))
 		{
-		adminmsg('ÊÖ»úºÅÂëÎª¿Õ£¡',1);
+		adminmsg('æ‰‹æœºå·ç ä¸ºç©ºï¼',1);
 		}
 	}
 	if (!empty($setsqlarr['mobile']) && !preg_match("/^(13|15|14|17|18)\d{9}$/",$setsqlarr['mobile']))
 	{
-	adminmsg('ÊÖ»úºÅÂë´íÎó£¡',1);
+	adminmsg('æ‰‹æœºå·ç é”™è¯¯ï¼',1);
 	}
 	$getmobile=get_user_inmobile($setsqlarr['mobile']);
 	if (!empty($setsqlarr['mobile']) && !empty($getmobile)  && $getmobile['uid']<>$thisuid)
 	{
-	adminmsg("ÊÖ»úºÅ {$setsqlarr['mobile']}  ÒÑ¾­´æÔÚ£¡",1);
+	adminmsg("æ‰‹æœºå· {$setsqlarr['mobile']}  å·²ç»å­˜åœ¨ï¼",1);
 	}
 	if ($db->updatetable(table('members'),$setsqlarr," uid=".$thisuid.""))
 	{
 		$u['email']=$setsqlarr['email'];
 		$db->updatetable(table('resume'),$u," uid={$thisuid}");
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ĞŞ¸Ä»áÔ±uidÎª".$thisuid."µÄ»ù±¾ĞÅÏ¢", $_SESSION['admin_name'],3);
-		$link[0]['text'] = "·µ»ØÁĞ±í";
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("ä¿®æ”¹ä¼šå‘˜uidä¸º".$thisuid."çš„åŸºæœ¬ä¿¡æ¯", $_SESSION['admin_name'],3);
+		$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 		$link[0]['href'] = $_POST['url'];
-		adminmsg('ĞŞ¸Ä³É¹¦£¡',2,$link);
+		adminmsg('ä¿®æ”¹æˆåŠŸï¼',2,$link);
 	}
 	else
 	{
-		adminmsg('ĞŞ¸ÄÊ§°Ü£¡',1);
+		adminmsg('ä¿®æ”¹å¤±è´¥ï¼',1);
 	}
 }
 elseif($act == 'userpass_edit')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"per_user_edit");
-	if (strlen(trim($_POST['password']))<6) adminmsg('ĞÂÃÜÂë±ØĞëÎª6Î»ÒÔÉÏ£¡',1);
+	if (strlen(trim($_POST['password']))<6) adminmsg('æ–°å¯†ç å¿…é¡»ä¸º6ä½ä»¥ä¸Šï¼',1);
 	$user_info=get_member_one($_POST['memberuid']);
 	$pwd_hash=$user_info['pwd_hash'];
 	$md5password=md5(md5(trim($_POST['password'])).$pwd_hash.$QS_pwdhash);	
 		if ($db->query( "UPDATE ".table('members')." SET password = '{$md5password}'  WHERE uid='{$user_info['uid']}' LIMIT 1"))
 		{
-			$link[0]['text'] = "·µ»ØÁĞ±í";
+			$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 			$link[0]['href'] = $_POST['url'];
 			$member=get_member_one($user_info['uid']);
-			write_memberslog($member['uid'],1,1004,$member['username'],"¹ÜÀíÔ±ÔÚºóÌ¨ĞŞ¸ÄµÇÂ¼ÃÜÂë");
-			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("ĞŞ¸Ä»áÔ±uidÎª".$member['uid']."µÄÃÜÂë", $_SESSION['admin_name'],3);
-			adminmsg('²Ù×÷³É¹¦£¡',2,$link);
+			write_memberslog($member['uid'],1,1004,$member['username'],"ç®¡ç†å‘˜åœ¨åå°ä¿®æ”¹ç™»å½•å¯†ç ");
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("ä¿®æ”¹ä¼šå‘˜uidä¸º".$member['uid']."çš„å¯†ç ", $_SESSION['admin_name'],3);
+			adminmsg('æ“ä½œæˆåŠŸï¼',2,$link);
 		}
 		else
 		{
-			adminmsg('²Ù×÷Ê§°Ü£¡',1);
+			adminmsg('æ“ä½œå¤±è´¥ï¼',1);
 		}
 }
 elseif($act == 'members_add')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"per_user_add");
-	$smarty->assign('pageheader',"¸öÈË»áÔ±");
+	$smarty->assign('pageheader',"ä¸ªäººä¼šå‘˜");
 	$smarty->display('personal/admin_personal_user_add.htm');
 }
 elseif($act == 'members_add_save')
@@ -377,27 +377,27 @@ elseif($act == 'members_add_save')
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"per_user_add");	
 	require_once(ADMIN_ROOT_PATH.'include/admin_user_fun.php');
-	if (strlen(trim($_POST['username']))<3) adminmsg('ÓÃ»§Ãû±ØĞëÎª3Î»ÒÔÉÏ£¡',1);
-	if (strlen(trim($_POST['password']))<6) adminmsg('ÃÜÂë±ØĞëÎª6Î»ÒÔÉÏ£¡',1);
-	$sql['username'] = !empty($_POST['username']) ? trim($_POST['username']):adminmsg('ÇëÌîĞ´ÓÃ»§Ãû£¡',1);
-	$sql['password'] = !empty($_POST['password']) ? trim($_POST['password']):adminmsg('ÇëÌîĞ´ÃÜÂë£¡',1);	
+	if (strlen(trim($_POST['username']))<3) adminmsg('ç”¨æˆ·åå¿…é¡»ä¸º3ä½ä»¥ä¸Šï¼',1);
+	if (strlen(trim($_POST['password']))<6) adminmsg('å¯†ç å¿…é¡»ä¸º6ä½ä»¥ä¸Šï¼',1);
+	$sql['username'] = !empty($_POST['username']) ? trim($_POST['username']):adminmsg('è¯·å¡«å†™ç”¨æˆ·åï¼',1);
+	$sql['password'] = !empty($_POST['password']) ? trim($_POST['password']):adminmsg('è¯·å¡«å†™å¯†ç ï¼',1);	
 	if ($sql['password']<>trim($_POST['password1']))
 	{
-	adminmsg('Á½´ÎÊäÈëµÄÃÜÂë²»ÏàÍ¬£¡',1);
+	adminmsg('ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ç›¸åŒï¼',1);
 	}
-	$sql['utype'] = !empty($_POST['member_type']) ? intval($_POST['member_type']):adminmsg('ÄãÃ»ÓĞÑ¡Ôñ×¢²áÀàĞÍ£¡',1);
+	$sql['utype'] = !empty($_POST['member_type']) ? intval($_POST['member_type']):adminmsg('ä½ æ²¡æœ‰é€‰æ‹©æ³¨å†Œç±»å‹ï¼',1);
 	if (empty($_POST['email']) || !preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$_POST['email']))
 	{
-	adminmsg('µç×ÓÓÊÏä¸ñÊ½´íÎó£¡',1);
+	adminmsg('ç”µå­é‚®ç®±æ ¼å¼é”™è¯¯ï¼',1);
 	}
 	$sql['email']= trim($_POST['email']);
 	if (get_user_inusername($sql['username']))
 	{
-	adminmsg('¸ÃÓÃ»§ÃûÒÑ¾­±»Ê¹ÓÃ£¡',1);
+	adminmsg('è¯¥ç”¨æˆ·åå·²ç»è¢«ä½¿ç”¨ï¼',1);
 	}
 	if (get_user_inemail($sql['email']))
 	{
-	adminmsg('¸Ã Email ÒÑ¾­±»×¢²á£¡',1);
+	adminmsg('è¯¥ Email å·²ç»è¢«æ³¨å†Œï¼',1);
 	}
 	$sql['pwd_hash'] = randstr();
 	$sql['password'] = md5(md5($sql['password']).$sql['pwd_hash'].$QS_pwdhash);
@@ -406,26 +406,26 @@ elseif($act == 'members_add_save')
 	$insert_id=$db->inserttable(table('members'),$sql,true);
 	if ($insert_id)
 	{
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("Ìí¼ÓidÎª".$insert_id."µÄ¸öÈË»áÔ±", $_SESSION['admin_name'],3);
-		write_memberslog($insert_id,1,1000,$sql['username'],"¹ÜÀíÔ±ÔÚºóÌ¨ĞÂÔö»áÔ±");
-		$link[0]['text'] = "·µ»ØÁĞ±í";
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("æ·»åŠ idä¸º".$insert_id."çš„ä¸ªäººä¼šå‘˜", $_SESSION['admin_name'],3);
+		write_memberslog($insert_id,1,1000,$sql['username'],"ç®¡ç†å‘˜åœ¨åå°æ–°å¢ä¼šå‘˜");
+		$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 		$link[0]['href'] = "?act=members_list";
-		adminmsg('Ìí¼Ó³É¹¦£¡',2,$link);
+		adminmsg('æ·»åŠ æˆåŠŸï¼',2,$link);
 	}	
 }
 elseif($act == 'resume_show')
 {
 	check_permissions($_SESSION['admin_purview'],"resume_show");
-	$id =!empty($_REQUEST['id'])?intval($_REQUEST['id']):adminmsg("ÄãÃ»ÓĞÑ¡Ôñ¼òÀú£¡",1);
+	$id =!empty($_REQUEST['id'])?intval($_REQUEST['id']):adminmsg("ä½ æ²¡æœ‰é€‰æ‹©ç®€å†ï¼",1);
 	$uid =intval($_REQUEST['uid']);
-	$smarty->assign('pageheader',"²é¿´¼òÀú");
+	$smarty->assign('pageheader',"æŸ¥çœ‹ç®€å†");
 	$resume=get_resume_basic($uid,$id);
 	if (empty($resume))
 	{
-	$link[0]['text'] = "·µ»Ø¼òÀúÁĞ±í";
+	$link[0]['text'] = "è¿”å›ç®€å†åˆ—è¡¨";
 	$link[0]['href'] = '?act=list';
-	adminmsg('¼òÀú²»´æÔÚ»òÒÑ¾­±»É¾³ı£¡',1,$link);
+	adminmsg('ç®€å†ä¸å­˜åœ¨æˆ–å·²ç»è¢«åˆ é™¤ï¼',1,$link);
 	}
 	$smarty->assign('random',mt_rand());
 	$smarty->assign('time',time());
@@ -440,15 +440,15 @@ elseif($act == 'resume_show')
 elseif($act == 'del_auditreason')
 {	
 	check_permissions($_SESSION['admin_purview'],"resume_audit");
-	$id =!empty($_REQUEST['a_id'])?$_REQUEST['a_id']:adminmsg("ÄãÃ»ÓĞÑ¡ÔñÈÕÖ¾£¡",1);
+	$id =!empty($_REQUEST['a_id'])?$_REQUEST['a_id']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©æ—¥å¿—ï¼",1);
 $n=reasonaudit_del($id);
 	if ($n>0)
 	{
-	adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı {$n} ĞĞ",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤ {$n} è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ıÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'management')
@@ -485,13 +485,13 @@ elseif($act == 'userstatus_edit')
 	check_permissions($_SESSION['admin_purview'],"com_user_edit");
 	if(set_user_status(intval($_POST['status']),intval($_POST['userstatus_uid'])))
 	{
-		$link[0]['text'] = "·µ»ØÁĞ±í";
+		$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 		$link[0]['href'] = $_POST['url'];
-		adminmsg('²Ù×÷³É¹¦£¡',2,$link);
+		adminmsg('æ“ä½œæˆåŠŸï¼',2,$link);
 	}
 	else
 	{
-	adminmsg('²Ù×÷Ê§°Ü£¡',1);
+	adminmsg('æ“ä½œå¤±è´¥ï¼',1);
 	}
 }
 ?>

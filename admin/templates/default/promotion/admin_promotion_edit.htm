@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit">{#$pageheader#}</div>
@@ -6,68 +6,68 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-<h2>ÌáÊ¾£º</h2>
+<h2>æç¤ºï¼š</h2>
 <p>
-ÏµÍ³½«×Ô¶¯È¡Ïûµ½ÆÚµÄÆóÒµÍÆ¹ã¡£<br />
+ç³»ç»Ÿå°†è‡ªåŠ¨å–æ¶ˆåˆ°æœŸçš„ä¼ä¸šæ¨å¹¿ã€‚<br />
 </p>
 </div>
  <script type="text/javascript" src="js/jquery.iColorPicker.js"></script>
-  <div class="toptit">ĞŞ¸ÄÆóÒµÍÆ¹ã</div>
+  <div class="toptit">ä¿®æ”¹ä¼ä¸šæ¨å¹¿</div>
     <form id="form1" name="form1" method="post" action="?act=promotion_edit_save">
 	{#$inputtoken#}
 	<table width="100%" border="0" cellpadding="4" cellspacing="0"  class="link_lan" >
 
     <tr>
-      <td width="120" height="30" align="right"  style="border:0px;"  >ÍÆ¹ãÖ°Î»£º</td>
+      <td width="120" height="30" align="right"  style="border:0px;"  >æ¨å¹¿èŒä½ï¼š</td>
       <td    >
 	  <a href="{#$jobs.jobs_url#}" target="_blank">{#$jobs.jobs_name#}</a>
 	  </td>
     </tr>
     <tr>
-      <td height="30" align="right"  >Ö°Î»ËùÊôÆóÒµ£º</td>
+      <td height="30" align="right"  >èŒä½æ‰€å±ä¼ä¸šï¼š</td>
       <td   ><a href="{#$jobs.company_url#}" target="_blank">{#$jobs.companyname#}</a></td>
     </tr>
 	<tr>
-      <td height="30" align="right"  >»áÔ±ID£º</td>
+      <td height="30" align="right"  >ä¼šå‘˜IDï¼š</td>
       <td   >{#$jobs.uid#}</td>
 	</tr>
 	  <tr>
-      <td height="30" align="right"   width="120" style="border:0px;" >ÍÆ¹ã·½°¸£º</td>
+      <td height="30" align="right"   width="120" style="border:0px;" >æ¨å¹¿æ–¹æ¡ˆï¼š</td>
       <td   ><span style="color:#FF0000">{#$promotion.cat_name#}</span></td>
     </tr>
 	    <tr>
-      <td height="30" align="right"   width="120" style="border:0px;" >ÍÆ¹ãÆÚÏŞ£º</td>
+      <td height="30" align="right"   width="120" style="border:0px;" >æ¨å¹¿æœŸé™ï¼š</td>
       <td  >
 	  
 	  {#if $show.cp_endtime<$time#}
-				<span style="color:#FF6600">ÒÑ¾­µ½ÆÚ</span>
+				<span style="color:#FF6600">å·²ç»åˆ°æœŸ</span>
 				{#else#}
-				{#$show.cp_starttime|date_format:"%YÄê%mÔÂ%dÈÕ"#} ¡Ö {#$show.cp_endtime|date_format:"%YÄê%mÔÂ%dÈÕ"#}
+				{#$show.cp_starttime|date_format:"%Yå¹´%mæœˆ%dæ—¥"#} â‰ˆ {#$show.cp_endtime|date_format:"%Yå¹´%mæœˆ%dæ—¥"#}
 				{#/if#}
 	  </td>
     </tr>
     <tr>
-      <td height="30" align="right"  >ÑÓ³¤ÍÆ¹ãÊ±¼ä£º</td>
+      <td height="30" align="right"  >å»¶é•¿æ¨å¹¿æ—¶é—´ï¼š</td>
       <td   >
 	  <input name="endtime" type="hidden" value="{#$show.cp_endtime#}" />
 	  <input name="days"  id="days" type="text" class="input_text_200"   maxlength="3" value=""/>
-	  Ìì
+	  å¤©
 	  </td>
     </tr>
 	{#if $show.cp_promotionid=="4"#}
 	<tr>
-      <td height="30" align="right"  >ÑÕÉ«£º</td>
+      <td height="30" align="right"  >é¢œè‰²ï¼š</td>
       <td   > <input id="val" name="val" type="text" value="{#$show.cp_val#}" class="iColorPicker input_text_200"  onclick="iColorShow('val','icp_val')"/></td>
     </tr>
 	{#/if#}
   {#if $show.cp_promotionid=="5"#}
   <tr>
-      <td height="30" align="right"   width="120" style="border:0px;" >×Ô¶¯Ë¢ĞÂÊ±¼äµã£º</td>
+      <td height="30" align="right"   width="120" style="border:0px;" >è‡ªåŠ¨åˆ·æ–°æ—¶é—´ç‚¹ï¼š</td>
       <td   > <select name="hour">
-                <option value="8 Ê±" {#if $show.cp_hour==8#}selected="selected"{#/if#}>8 Ê±</option>
-                <option value="11 Ê±" {#if $show.cp_hour==11#}selected="selected"{#/if#}>11 Ê±</option>
-                <option value="14 Ê±" {#if $show.cp_hour==14#}selected="selected"{#/if#}>14 Ê±</option>
-                <option value="20 Ê±" {#if $show.cp_hour==20#}selected="selected"{#/if#}>20 Ê±</option>
+                <option value="8 æ—¶" {#if $show.cp_hour==8#}selected="selected"{#/if#}>8 æ—¶</option>
+                <option value="11 æ—¶" {#if $show.cp_hour==11#}selected="selected"{#/if#}>11 æ—¶</option>
+                <option value="14 æ—¶" {#if $show.cp_hour==14#}selected="selected"{#/if#}>14 æ—¶</option>
+                <option value="20 æ—¶" {#if $show.cp_hour==20#}selected="selected"{#/if#}>20 æ—¶</option>
               </select></td>
     </tr>
       {#/if#}
@@ -78,9 +78,9 @@
 	  <input name="jobid" type="hidden" value="{#$show.cp_jobid#}" />
  <input name="promotionid" type="hidden" value="{#$show.cp_promotionid#}" />
 	  <input name="id" type="hidden" value="{#$show.cp_id#}" />
-            <input name="submit3" type="submit" class="admin_submit"    value="ĞŞ¸Ä"/>
+            <input name="submit3" type="submit" class="admin_submit"    value="ä¿®æ”¹"/>
 	 
-            <input name="submit22" type="button" class="admin_submit"    value="·µ»Ø" onclick="Javascript:window.history.go(-1)"/>
+            <input name="submit22" type="button" class="admin_submit"    value="è¿”å›" onclick="Javascript:window.history.go(-1)"/>
        </td>
     </tr>	
   </table>

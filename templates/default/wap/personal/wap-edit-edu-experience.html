@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>¸öÈË»áÔ±ÖĞĞÄ</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ä¸ªäººä¼šå‘˜ä¸­å¿ƒ</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="../css/common.css" rel="stylesheet" type="text/css" />
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
@@ -17,12 +17,12 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
 
-	// ´´½¨¼òÀúµ¯³ö¿ò
+	// åˆ›å»ºç®€å†å¼¹å‡ºæ¡†
 	  function showFloatBox() {
 	    $("body").prepend("<div class=\"menu_bg_layer\"></div>");
 	    $(".menu_bg_layer").height($(document).height());
@@ -30,7 +30,7 @@ $(document).ready(function()
 	    $(".menu_bg_layer").css("opacity",0.3);
 	  }
  
-	  // ¿ªÊ¼Äê·İµã»÷
+	  // å¼€å§‹å¹´ä»½ç‚¹å‡»
 	  $("#startyear_menu").click(function(){
 	    showFloatBox();
 	    $("#menuStartYear").css({ top: ($(window).height() - $('#menuStartYear').outerHeight())/2 + $(document).scrollTop() });
@@ -43,7 +43,7 @@ $(document).ready(function()
 	    });
 	  });
     
-  	  // ¿ªÊ¼ÔÂ·İµã»÷
+  	  // å¼€å§‹æœˆä»½ç‚¹å‡»
 	  $("#startmonth_menu").click(function(){
 	    showFloatBox();
 	    $("#menuStartMonth").css({ top: ($(window).height() - $('#menuStartMonth').outerHeight())/2 + $(document).scrollTop() });
@@ -56,7 +56,7 @@ $(document).ready(function()
 	    });
 	  });
 
-	  // ½áÊøÄê·İµã»÷
+	  // ç»“æŸå¹´ä»½ç‚¹å‡»
 	  $("#endyear_menu").click(function(){
 	    showFloatBox();
 	    $("#menuEndtYear").css({ top: ($(window).height() - $('#menuEndtYear').outerHeight())/2 + $(document).scrollTop() });
@@ -69,7 +69,7 @@ $(document).ready(function()
 	    });
 	  });
   
-	  // ½áÊøÔÂ·İµã»÷
+	  // ç»“æŸæœˆä»½ç‚¹å‡»
 	  $("#endmonth_menu").click(function(){
 	    showFloatBox();
 	    $("#menuEndMonth").css({ top: ($(window).height() - $('#menuEndMonth').outerHeight())/2 + $(document).scrollTop() });
@@ -82,12 +82,12 @@ $(document).ready(function()
 	    });
 	  });
 
-	  // ¹Ø±Õµ¯³ö¿ò
+	  // å…³é—­å¼¹å‡ºæ¡†
 	  $(".choose_close").click(function(event) {
 	    $(this).parent().hide();
 	    $(".menu_bg_layer").remove();
 	  });
-	// Ìá½» ±íµ¥
+	// æäº¤ è¡¨å•
 	$("#work_submit").click(function(){
 		var resume_edu="{#$resume_edu#}";
 		if(resume_edu){
@@ -102,10 +102,10 @@ $(document).ready(function()
 		var endmonth =$("#endmonth").attr("data");
 		$.post("?act=resume_education_save",{id:id,pid:pid,school:school,speciality:speciality,startyear:startyear,startmonth:startmonth,endyear:endyear,endmonth:endmonth},function(data){
 			if(data=="ok"){
-				alert("Ìí¼Ó³É¹¦");
+				alert("æ·»åŠ æˆåŠŸ");
 				window.location.href="?act=resume_education&pid="+pid+"";
 			}else if(data=="err"){
-				alert("Ìí¼ÓÊ§°Ü");
+				alert("æ·»åŠ å¤±è´¥");
 			}else{
 				alert(data);
 			}
@@ -117,56 +117,56 @@ $(document).ready(function()
 <body>
 <div class=""></div>
 <div class="sub_head_top">
-	<div class="title">½ÌÓı¾­Àú</div>
+	<div class="title">æ•™è‚²ç»å†</div>
 	<div class="back" id="pageback"><img src="../images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="../images/2.jpg"  border="0"/></a></div>
 </div>
 
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="../index.php";'>
-    <div class="box"><img src="../images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="../images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-jobs-list.php";'>
-    <div class="box"><img src="../images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="../images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-resume-list.php";'>
-    <div class="box"><img src="../images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="../images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-news-list.php";'>
-    <div class="box"><img src="../images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="../images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 
-<!-- ±à¼­½ÌÓı¾­ÀúÒ³Ãæ -->
+<!-- ç¼–è¾‘æ•™è‚²ç»å†é¡µé¢ -->
 <form action="?act=resume_education_save" id="Form1" method="post">
 	<table class="edit_edu_exp">
 		<tbody>
 			<tr>
-				<td class="edit_edu_exp_l">Ñ§Ğ£Ãû³Æ</td>
+				<td class="edit_edu_exp_l">å­¦æ ¡åç§°</td>
 				<td class="edit_edu_exp_r"><input type="text" name="school" id="" class="edit_edu_exp_input" value="{#$resume_edu.school#}" /></td>
 			</tr>
 			<tr>
-				<td class="edit_edu_exp_l">×¨Òµ</td>
+				<td class="edit_edu_exp_l">ä¸“ä¸š</td>
 				<td class="edit_edu_exp_r"><input type="text" name="speciality" id="" class="edit_edu_exp_input" value="{#$resume_edu.speciality#}"/></td>
 			</tr>
 			<tr>
-				<td class="edit_edu_exp_l">¿ªÊ¼Ê±¼ä</td>
+				<td class="edit_edu_exp_l">å¼€å§‹æ—¶é—´</td>
 				<td class="edit_edu_exp_r">
-					<label id="startyear_menu"><div data="{#$resume_edu.startyear#}" name="startyear" id="startyear" class="edit_edu_exp_samll_input">{#$resume_edu.startyear#}</div>Äê<img src="../images/35.gif" alt="" /></label> 
-					<label id="startmonth_menu"><div data="{#$resume_edu.startmonth#}" name="startmonth" id="startmonth" class="edit_edu_exp_samll_input">{#$resume_edu.startmonth#}</div>ÔÂ<img src="../images/35.gif" alt="" /></label>
+					<label id="startyear_menu"><div data="{#$resume_edu.startyear#}" name="startyear" id="startyear" class="edit_edu_exp_samll_input">{#$resume_edu.startyear#}</div>å¹´<img src="../images/35.gif" alt="" /></label> 
+					<label id="startmonth_menu"><div data="{#$resume_edu.startmonth#}" name="startmonth" id="startmonth" class="edit_edu_exp_samll_input">{#$resume_edu.startmonth#}</div>æœˆ<img src="../images/35.gif" alt="" /></label>
 
 				<div class="menu choose_menu" id="menuStartYear" style="display:none;position:absolute;z-index:1;">
-		            <div class="menu_title">¿ªÊ¼Äê·İ</div>
+		            <div class="menu_title">å¼€å§‹å¹´ä»½</div>
             		<div class="choose_close"></div>
 		            <ul></ul>
 		        </div>  
 		        <div class="menu choose_menu" id="menuStartMonth" style="display:none;position:absolute;z-index:1;">
-		            <div class="menu_title">¿ªÊ¼ÔÂ·İ</div>
+		            <div class="menu_title">å¼€å§‹æœˆä»½</div>
             		<div class="choose_close"></div>
 		            <ul>
 		            	<li title="1">1</li>
@@ -185,18 +185,18 @@ $(document).ready(function()
 		        </div> 
 			</tr>
 			<tr>
-				<td class="edit_edu_exp_l">½áÊøÊ±¼ä</td>
+				<td class="edit_edu_exp_l">ç»“æŸæ—¶é—´</td>
 				<td class="edit_edu_exp_r">
-					<label id="endyear_menu"><div data="{#$resume_edu.endyear#}" name="endyear" id="endyear" class="edit_edu_exp_samll_input">{#$resume_edu.endyear#}</div>Äê<img src="../images/35.gif" alt="" /></label> 
-					<label id="endmonth_menu"><div data="{#$resume_edu.endmonth#}" name="endmonth" id="endmonth" class="edit_edu_exp_samll_input">{#$resume_edu.endmonth#}</div>ÔÂ<img src="../images/35.gif" alt="" /></label>
+					<label id="endyear_menu"><div data="{#$resume_edu.endyear#}" name="endyear" id="endyear" class="edit_edu_exp_samll_input">{#$resume_edu.endyear#}</div>å¹´<img src="../images/35.gif" alt="" /></label> 
+					<label id="endmonth_menu"><div data="{#$resume_edu.endmonth#}" name="endmonth" id="endmonth" class="edit_edu_exp_samll_input">{#$resume_edu.endmonth#}</div>æœˆ<img src="../images/35.gif" alt="" /></label>
 
 		       	<div class="menu choose_menu" id="menuEndtYear" style="display:none;position:absolute;z-index:1;">
-		            <div class="menu_title">½áÊøÄê·İ</div>
+		            <div class="menu_title">ç»“æŸå¹´ä»½</div>
             		<div class="choose_close"></div>
 		            <ul></ul>
 		        </div>
 		        <div class="menu choose_menu" id="menuEndMonth" style="display:none;position:absolute;z-index:1;">
-		            <div class="menu_title">½áÊøÔÂ·İ</div>
+		            <div class="menu_title">ç»“æŸæœˆä»½</div>
             		<div class="choose_close"></div>
 		            <ul>
 		            	<li title="1">1</li>
@@ -215,7 +215,7 @@ $(document).ready(function()
 		        </div> 
 			</tr>
 			<script type="text/javascript">
-				  // ¿ªÊ¼ºÍ½áÊøÄê·İÌî³ä
+				  // å¼€å§‹å’Œç»“æŸå¹´ä»½å¡«å……
 				  var myDate = new Date();
 				  var y = myDate.getFullYear();
 				  var ymin = y-35;
@@ -231,8 +231,8 @@ $(document).ready(function()
 	<input type="hidden" name="pid" value="{#$smarty.get.pid#}"/>
 </form>
 <div class="edit_edu_exp_but_group">
-	<div class="edit_exp_save_but"><a id="work_submit" style="cursor: pointer;">±£´æ</a></div>
-	<div class="edit_exp_cancel_but" onclick="window.location.href='?act=resume_education&pid={#$smarty.get.pid#}'" style="cursor: pointer;"><a>È¡Ïû</a></div>
+	<div class="edit_exp_save_but"><a id="work_submit" style="cursor: pointer;">ä¿å­˜</a></div>
+	<div class="edit_exp_cancel_but" onclick="window.location.href='?act=resume_education&pid={#$smarty.get.pid#}'" style="cursor: pointer;"><a>å–æ¶ˆ</a></div>
 	<div class="clear"></div>
 </div>
 

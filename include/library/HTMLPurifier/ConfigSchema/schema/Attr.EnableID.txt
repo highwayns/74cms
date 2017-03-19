@@ -1,4 +1,4 @@
-Attr.EnableID
+﻿Attr.EnableID
 TYPE: bool
 DEFAULT: false
 VERSION: 1.2.0

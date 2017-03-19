@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Lite compile custom function - template internal module
  *

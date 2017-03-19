@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once(dirname(__FILE__).'/../data/cache_config.php');
 $Shortcut = "[InternetShortcut]
 URL={$data['site_domain']}{$data['site_dir']}?lnk

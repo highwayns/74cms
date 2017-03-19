@@ -1,10 +1,10 @@
-/* ´Ëjs ÖĞ·½·¨ĞèÒªÒıÓÃ dialog-min.js*/
+ï»¿/* æ­¤js ä¸­æ–¹æ³•éœ€è¦å¼•ç”¨ dialog-min.js*/
 /*
-  delete_dialog  É¾³ıÌáÊ¾µ¯³ö¿ò 
-  @ className  ´¥·¢ÊÂ¼şµÄ class Ãû .ctrl-del 
-    µ¥¶ÀÉ¾³ı °üº¬url ÊôĞÔ É¾³ıÁ´½Ó
-    ÅúÁ¿É¾³ı °üº¬act ÊôĞÔ ±íµ¥Ìá½»µØÖ·
-  @ form   ÅúÁ¿É¾³ıÌá½»±íµ¥µÄ,±íµ¥id #form1
+  delete_dialog  åˆ é™¤æç¤ºå¼¹å‡ºæ¡† 
+  @ className  è§¦å‘äº‹ä»¶çš„ class å .ctrl-del 
+    å•ç‹¬åˆ é™¤ åŒ…å«url å±æ€§ åˆ é™¤é“¾æ¥
+    æ‰¹é‡åˆ é™¤ åŒ…å«act å±æ€§ è¡¨å•æäº¤åœ°å€
+  @ form   æ‰¹é‡åˆ é™¤æäº¤è¡¨å•çš„,è¡¨å•id #form1
 */
 function delete_dialog(className,form)
 {
@@ -13,15 +13,15 @@ function delete_dialog(className,form)
     var url=$(this).attr('url');
     var act=$(this).attr('act');
     var myDialog=dialog();
-    myDialog.title('ÏµÍ³ÌáÊ¾');
-    myDialog.content('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text">É¾³ıºóÎŞ·¨»Ö¸´£¬ÄúÈ·¶¨ÒªÉ¾³ıÂğ£¿</span></div></div><div class="center-btn-wrap"><input type="button" value="È·¶¨" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="È¡Ïû" class="btn-65-30grey btn-big-font DialogClose" /></div>');
+    myDialog.title('ç³»ç»Ÿæç¤º');
+    myDialog.content('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text">åˆ é™¤åæ— æ³•æ¢å¤ï¼Œæ‚¨ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ</span></div></div><div class="center-btn-wrap"><input type="button" value="ç¡®å®š" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="å–æ¶ˆ" class="btn-65-30grey btn-big-font DialogClose" /></div>');
     myDialog.width('300');
     myDialog.showModal();
-    /* ¹Ø±Õ */
+    /* å…³é—­ */
     $(".DialogClose").live('click',function() {
       myDialog.close().remove();
     });
-    // È·¶¨
+    // ç¡®å®š
     $(".DialogSubmit").click(function() 
     {
       if(url)
@@ -35,10 +35,10 @@ function delete_dialog(className,form)
   });
 }
 /*
-  inviteJob_dialog ÃæÊÔÑûÇëµ¯³ö¿ò
-  @className  ´¥·¢ÊÂ¼şµÄ class °üº¬ resume_idÊôĞÔ Îª¼òÀú id
-  @url ÇëÇóajax µÄphp µØÖ·
-  @utype »áÔ±ÀàĞÍ
+  inviteJob_dialog é¢è¯•é‚€è¯·å¼¹å‡ºæ¡†
+  @className  è§¦å‘äº‹ä»¶çš„ class åŒ…å« resume_idå±æ€§ ä¸ºç®€å† id
+  @url è¯·æ±‚ajax çš„php åœ°å€
+  @utype ä¼šå‘˜ç±»å‹
 */
 function inviteJob_dialog(className,url)
 {
@@ -47,27 +47,27 @@ function inviteJob_dialog(className,url)
     var tsTimeStamp= new Date().getTime();
     var url_=url+"?id="+id+"&act=invited&t="+tsTimeStamp;
     var myDialog = dialog();
-    myDialog.title('ÑûÇëÃæÊÔ');
-    myDialog.content("¼ÓÔØÖĞ...");
+    myDialog.title('é‚€è¯·é¢è¯•');
+    myDialog.content("åŠ è½½ä¸­...");
     myDialog.width('500');
     myDialog.showModal();
     jQuery.ajax({
         url: url_,
         success: function (data) {
             myDialog.content(data);
-            /* ¹Ø±Õ */
+            /* å…³é—­ */
             $(".DialogClose").live('click',function() {
               myDialog.close().remove();
             });
-            /* ÑûÇë²Ù×÷ */
+            /* é‚€è¯·æ“ä½œ */
             $(".DialogSubmit").click(function() 
             {
               var jobsid= $("#jobsid").val();
               if(jobsid=="")
               {
                 dialog({
-                    title: 'ÏµÍ³ÌáÊ¾',
-                    content: "Î´Ñ¡ÔñÖ°Î»£¡",
+                    title: 'ç³»ç»Ÿæç¤º',
+                    content: "æœªé€‰æ‹©èŒä½ï¼",
                     width:300
                 }).show();
               }
@@ -80,8 +80,8 @@ function inviteJob_dialog(className,url)
               if(interview_time=="")
               {
                 dialog({
-                    title: 'ÏµÍ³ÌáÊ¾',
-                    content: "ÃæÊÔÊ±¼ä²»ÄÜÎª¿Õ£¡",
+                    title: 'ç³»ç»Ÿæç¤º',
+                    content: "é¢è¯•æ—¶é—´ä¸èƒ½ä¸ºç©ºï¼",
                     width:300
                 }).show();
               }
@@ -90,15 +90,15 @@ function inviteJob_dialog(className,url)
               if(in_time<current_time)
               {
                 dialog({
-                    title: 'ÏµÍ³ÌáÊ¾',
-                    content: "ÃæÊÔÊ±¼ä²»ÄÜĞ¡ÓÚµ±Ç°Ê±¼ä£¡",
+                    title: 'ç³»ç»Ÿæç¤º',
+                    content: "é¢è¯•æ—¶é—´ä¸èƒ½å°äºå½“å‰æ—¶é—´ï¼",
                     width:300
                 }).show();
               }
-              // ±£´æ ÉêÇë
+              // ä¿å­˜ ç”³è¯·
               if(jobsid && interview_time && (in_time>=current_time))
               {
-                myDialog.content("ÕıÔÚÌá½»...");
+                myDialog.content("æ­£åœ¨æäº¤...");
                 $.get(url, {"jobs_id": jobsid,"id":id,"notes":notes,"pms_notice":pms_notice,"sms_notice":sms_notice,"interview_time":interview_time,"time":tsTimeStamp,"act":"invited_save"},
                 function (rdata)
                 {
@@ -111,9 +111,9 @@ function inviteJob_dialog(className,url)
   });
 }
 /*
-  companySendToEmail_dialog  ÆóÒµ»áÔ±ÖĞĞÄ ¼òÀú·¢ËÍµ½ÓÊÏä
-  @className  ´¥·¢ÊÂ¼şµÄ class °üº¬ ÊôĞÔ resume_idÎª¼òÀúid,uidÎª¼òÀúuid
-  @url ·¢ËÍÓÊ¼şphpµØÖ·
+  companySendToEmail_dialog  ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ ç®€å†å‘é€åˆ°é‚®ç®±
+  @className  è§¦å‘äº‹ä»¶çš„ class åŒ…å« å±æ€§ resume_idä¸ºç®€å†id,uidä¸ºç®€å†uid
+  @url å‘é€é‚®ä»¶phpåœ°å€
 */
 function companySendToEmail_dialog(className,url)
 {
@@ -121,8 +121,8 @@ function companySendToEmail_dialog(className,url)
       var resume_id =$(this).attr("resume_id");
       var uid=$(this).attr('uid');
       var myDialog = dialog();
-      myDialog.content('<div class="send-mail-dialog dialog-block"><div class="dialog-item clearfix"><div class="d-type f-left">µç×ÓÓÊÏä£º</div><div class="d-content f-left"><input type="text" class="edit-text" placeholder="Ö»ÄÜÊäÈëÒ»¸öÓÊÏäµØÖ·" id="SendToEmail"/></div></div><div class="dialog-item clearfix"><div class="d-type f-left">&nbsp;</div><div class="d-content f-left"><input type="button" value="·¢ËÍ" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="È¡Ïû" class="btn-65-30grey btn-big-font DialogClose" /></div></div></div>');
-      myDialog.title('·¢ËÍµ½ÓÊÏä');
+      myDialog.content('<div class="send-mail-dialog dialog-block"><div class="dialog-item clearfix"><div class="d-type f-left">ç”µå­é‚®ç®±ï¼š</div><div class="d-content f-left"><input type="text" class="edit-text" placeholder="åªèƒ½è¾“å…¥ä¸€ä¸ªé‚®ç®±åœ°å€" id="SendToEmail"/></div></div><div class="dialog-item clearfix"><div class="d-type f-left">&nbsp;</div><div class="d-content f-left"><input type="button" value="å‘é€" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="å–æ¶ˆ" class="btn-65-30grey btn-big-font DialogClose" /></div></div></div>');
+      myDialog.title('å‘é€åˆ°é‚®ç®±');
       myDialog.width('350');
       myDialog.showModal();
       $(".DialogClose").live('click',function() {
@@ -135,11 +135,11 @@ function companySendToEmail_dialog(className,url)
         isok= reg.test(email);
         if(isok)
         {
-          myDialog.content("ÕıÔÚ·¢ËÍÖĞ..");  
+          myDialog.content("æ­£åœ¨å‘é€ä¸­..");  
           $.get(url+'?act=sendtoemail&uid='+uid+'&resume_id='+resume_id+'&email='+email+'', function(data) {
             if(data==1)
             {
-              myDialog.content("¸Ã¼òÀúÒÑ¾­·¢ËÍµ½ÄúµÄÓÊÏä£¡");
+              myDialog.content("è¯¥ç®€å†å·²ç»å‘é€åˆ°æ‚¨çš„é‚®ç®±ï¼");
             }
             else
             {
@@ -150,8 +150,8 @@ function companySendToEmail_dialog(className,url)
         else
         {
           dialog({
-                    title: 'ÏµÍ³ÌáÊ¾',
-                    content: "ÇëÊäÈëÕıÈ·µÄÓÊÏä£¡",
+                    title: 'ç³»ç»Ÿæç¤º',
+                    content: "è¯·è¾“å…¥æ­£ç¡®çš„é‚®ç®±ï¼",
                     width:300
                 }).show();
         }
@@ -159,7 +159,7 @@ function companySendToEmail_dialog(className,url)
     })
 }
 /*
-  ÆóÒµÍÆ¹ã µ¯³ö¿ò
+  ä¼ä¸šæ¨å¹¿ å¼¹å‡ºæ¡†
 */
 function set_promotion_dialog(className)
 {
@@ -168,22 +168,22 @@ function set_promotion_dialog(className)
     var jobid = $(this).attr("jobid");
     var url="company_ajax.php?act=set_promotion&catid="+catid+"&jobid="+jobid;
     var myDialog = dialog();
-    myDialog.title('Ö°Î»ÍÆ¹ã');
-    myDialog.content("¼ÓÔØÖĞ...");
+    myDialog.title('èŒä½æ¨å¹¿');
+    myDialog.content("åŠ è½½ä¸­...");
     myDialog.width('490');
     myDialog.showModal();
     jQuery.ajax({
         url: url,
         success: function (data) {
             myDialog.content(data);
-            /* ¹Ø±Õ */
+            /* å…³é—­ */
             $(".DialogClose").live('click',function() {
               myDialog.close().remove();
             });
-            /* ÑûÇë²Ù×÷ */
+            /* é‚€è¯·æ“ä½œ */
             $(".DialogSubmit").click(function() 
             {
-              $(this).val("Ìá½»ÖĞ..");
+              $(this).val("æäº¤ä¸­..");
               $(this).attr("disabled","1");
               var jobid = $("#jobid").val();
               var catid = $("#catid").val();
@@ -201,7 +201,7 @@ function set_promotion_dialog(className)
   })
 }
 /*
-  ÆóÒµÏÂÔØÁªÏµ·½Ê½ µ¯³ö¿ò
+  ä¼ä¸šä¸‹è½½è”ç³»æ–¹å¼ å¼¹å‡ºæ¡†
 */
 function downResume_dialog(className,url,resume_id)
 {
@@ -210,38 +210,38 @@ function downResume_dialog(className,url,resume_id)
     var tsTimeStamp= new Date().getTime();
     var url_=url+"?id="+id+"&act=download&t="+tsTimeStamp;
     var myDialog = dialog();
-    myDialog.title('ÏÂÔØÁªÏµ·½Ê½');
-    myDialog.content("¼ÓÔØÖĞ...");
+    myDialog.title('ä¸‹è½½è”ç³»æ–¹å¼');
+    myDialog.content("åŠ è½½ä¸­...");
     myDialog.width('475');
     myDialog.showModal();
     $.get(url_, function(data){
         myDialog.content(data);
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
     });
   });
 }
-/* ÊÕ²Ø¼òÀú µ¯³ö*/
+/* æ”¶è—ç®€å† å¼¹å‡º*/
 function favoritesResume_dialog(className,url)
 {
   $(''+className+'').on('click', function(){
     var myDialog = dialog();
-    myDialog.title('¼ÓÈëÈË²Å¿â');
-    myDialog.content("¼ÓÔØÖĞ...");
+    myDialog.title('åŠ å…¥äººæ‰åº“');
+    myDialog.content("åŠ è½½ä¸­...");
     myDialog.width('500');
     myDialog.showModal();
     $.get(url, function(data){
         myDialog.content(data);
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
     });
   });
 }
-/* ¾Ù±¨¼òÀú µ¯³ö*/
+/* ä¸¾æŠ¥ç®€å† å¼¹å‡º*/
 function reportResume_dialog(className,url)
 {
   $(''+className+'').on('click', function(){
@@ -250,13 +250,13 @@ function reportResume_dialog(className,url)
     var resume_addtime = $(this).attr("resume_addtime");
     var url_=url+"?act=report&resume_id="+resume_id+"&full_name="+fullname+"&resume_addtime="+resume_addtime;
     var myDialog = dialog();
-    myDialog.title('¾Ù±¨¼òÀú');
-    myDialog.content("¼ÓÔØÖĞ...");
+    myDialog.title('ä¸¾æŠ¥ç®€å†');
+    myDialog.content("åŠ è½½ä¸­...");
     myDialog.width('500');
     myDialog.showModal();
     $.get(url_, function(data){
         myDialog.content(data);
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
@@ -265,7 +265,7 @@ function reportResume_dialog(className,url)
 }
 
 /*
-  ¸öÈËÉêÇëÖ°Î» 
+  ä¸ªäººç”³è¯·èŒä½ 
 */
 function applyJob_dialog(className,url)
 {
@@ -273,13 +273,13 @@ function applyJob_dialog(className,url)
       var jobs_id = $(this).attr("jobs_id");
       var url_=url+"?id="+jobs_id+"&act=app";
       var myDialog = dialog();
-      myDialog.title('ÉêÇëÖ°Î»');
-      myDialog.content("¼ÓÔØÖĞ...");
+      myDialog.title('ç”³è¯·èŒä½');
+      myDialog.content("åŠ è½½ä¸­...");
       myDialog.width('500');
       myDialog.showModal();
       $.get(url_, function(data){
           myDialog.content(data);
-          /* ¹Ø±Õ */
+          /* å…³é—­ */
           $(".DialogClose").live('click',function() {
             myDialog.close().remove();
           });
@@ -287,7 +287,7 @@ function applyJob_dialog(className,url)
     });
 }
 /*
-  ¸öÈË ÊÕ²ØÖ°Î»  
+  ä¸ªäºº æ”¶è—èŒä½  
 */
 function favoritesJob_dialog(className,url)
 {
@@ -295,10 +295,10 @@ function favoritesJob_dialog(className,url)
     var myDialog = dialog();
     $.get(url, function(data){
         myDialog.content(data);
-        myDialog.title('¼ÓÈëÊÕ²Ø');
+        myDialog.title('åŠ å…¥æ”¶è—');
         myDialog.width('500');
         myDialog.showModal();
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
@@ -306,7 +306,7 @@ function favoritesJob_dialog(className,url)
   });
 }
 /*
-  ¸öÈË ¾Ù±¨Ö°Î» 
+  ä¸ªäºº ä¸¾æŠ¥èŒä½ 
 */
 function reportJob_dialog(className,url)
 {
@@ -316,13 +316,13 @@ function reportJob_dialog(className,url)
     var jobs_addtime = $(this).attr("jobs_addtime");
     var url_=url+'?act=report&jobs_id='+jobs_id+'&jobs_name='+jobs_name+'&jobs_addtime='+jobs_addtime;
     var myDialog = dialog();
-    myDialog.title('¾Ù±¨Ö°Î»');
-    myDialog.content("¼ÓÔØÖĞ...");
+    myDialog.title('ä¸¾æŠ¥èŒä½');
+    myDialog.content("åŠ è½½ä¸­...");
     myDialog.width('500');
     myDialog.showModal();
     $.get(url_, function(data){
         myDialog.content(data);
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
@@ -330,37 +330,37 @@ function reportJob_dialog(className,url)
   });
 }
 /*
-  ÓÊÏäÑéÖ¤ µ¯³ö¿ò
+  é‚®ç®±éªŒè¯ å¼¹å‡ºæ¡†
 */
 function auditEmail_dialog(className,url)
 {
   $(''+className+'').on('click', function(){
     var myDialog = dialog();
-    myDialog.title('ÓÊÏäÑéÖ¤');
-    myDialog.content("¼ÓÔØÖĞ...");
+    myDialog.title('é‚®ç®±éªŒè¯');
+    myDialog.content("åŠ è½½ä¸­...");
     myDialog.width('500');
     myDialog.showModal();
     $.get(url, function(data){
         myDialog.content(data);
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
     });
   });
 }
-// ÑéÖ¤ ÊÖ»úµ¯³ö 
+// éªŒè¯ æ‰‹æœºå¼¹å‡º 
 function auditMobile_dialog(className,url)
 {
   $(''+className+'').on('click', function(){
     var myDialog = dialog();
-    myDialog.title('ÊÖ»úÑéÖ¤');
-    myDialog.content("¼ÓÔØÖĞ...");
+    myDialog.title('æ‰‹æœºéªŒè¯');
+    myDialog.content("åŠ è½½ä¸­...");
     myDialog.width('500');
     myDialog.showModal();
     $.get(url, function(data){
         myDialog.content(data);
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
@@ -368,30 +368,30 @@ function auditMobile_dialog(className,url)
     });
   });
 }
-/* ĞŞ¸ÄÊÖ»ú ÑéÖ¤Éí·İ */
+/* ä¿®æ”¹æ‰‹æœº éªŒè¯èº«ä»½ */
 function editMobile_dialog(className,url)
 {
   $(''+className+'').on('click', function(){
     var myDialog = dialog();
-    myDialog.title('ÑéÖ¤Éí·İ');
-    myDialog.content("¼ÓÔØÖĞ...");
+    myDialog.title('éªŒè¯èº«ä»½');
+    myDialog.content("åŠ è½½ä¸­...");
     myDialog.width('500');
     myDialog.showModal();
     var ajax_url_ = url.split(".");
     var ajax_url =ajax_url_[0];
     $.get(url, function(data){
         myDialog.content(data);
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
-        // ÑéÖ¤²Ù×÷
+        // éªŒè¯æ“ä½œ
         $("#postverify").live('click', function(){
           if($("#mobile_verifycode").val()=='')
           {
             dialog({
-              title: 'ÏµÍ³ÌáÊ¾',
-              content: 'ÇëÌîĞ´Ğ§ÑéÂë',
+              title: 'ç³»ç»Ÿæç¤º',
+              content: 'è¯·å¡«å†™æ•ˆéªŒç ',
               width:'300px'
             }).showModal();
           }
@@ -405,8 +405,8 @@ function editMobile_dialog(className,url)
                   myDialog.close().remove();
                   
                   var d = dialog();
-                  d.title('Éí·İÑéÖ¤');
-                  d.content("¼ÓÔØÖĞ...");
+                  d.title('èº«ä»½éªŒè¯');
+                  d.content("åŠ è½½ä¸­...");
                   d.width('500');
                   d.showModal();
                   $.get(ajax_url+'.php?act=edit_mobile', function(rst){
@@ -416,8 +416,8 @@ function editMobile_dialog(className,url)
               else
               {
                 dialog({
-                title: 'ÏµÍ³ÌáÊ¾',
-                content: 'ÑéÖ¤ÂëÌîĞ´´íÎó',
+                title: 'ç³»ç»Ÿæç¤º',
+                content: 'éªŒè¯ç å¡«å†™é”™è¯¯',
                 width:'300px'
                 }).showModal();
               }
@@ -427,7 +427,7 @@ function editMobile_dialog(className,url)
     });
   });
 }
-// ÕĞÆ¸»á ÔÚÏßÔ¤¶© µ¯¿ò
+// æ‹›è˜ä¼š åœ¨çº¿é¢„è®¢ å¼¹æ¡†
 function boothjobfair_dialog(className,url,id)
 {
   $(''+className+'').on('click', function(){
@@ -443,17 +443,17 @@ function boothjobfair_dialog(className,url,id)
     var myDialog = dialog();
     $.get(url_, function(data){
         myDialog.content(data);
-        myDialog.title('ÎÂÜ°ÌáÊ¾');
+        myDialog.title('æ¸©é¦¨æç¤º');
         myDialog.width('400');
         myDialog.showModal();
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
     });
   });
 }
-// ÕĞÆ¸»á µØÍ¼¶¨Î» µ¯¿ò
+// æ‹›è˜ä¼š åœ°å›¾å®šä½ å¼¹æ¡†
 function jobfairmap_dialog(className,url)
 {
   $(''+className+'').on('click', function(){
@@ -466,10 +466,10 @@ function jobfairmap_dialog(className,url)
     var myDialog = dialog();
     $.get(url_, function(data){
         myDialog.content(data);
-        myDialog.title('µØÍ¼¶¨Î»');
+        myDialog.title('åœ°å›¾å®šä½');
         myDialog.width('660');
         myDialog.showModal();
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".ui-dialog-close").live('click',function() {
           myDialog.close().remove();
           window.location.reload();

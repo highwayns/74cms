@@ -1,4 +1,4 @@
-Core.ColorKeywords
+﻿Core.ColorKeywords
 TYPE: hash
 VERSION: 2.0.0
 --DEFAULT--

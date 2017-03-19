@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>ÆóÒµ»áÔ±ÖĞĞÄ</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="../css/common.css" rel="stylesheet" type="text/css" />
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
@@ -17,19 +17,19 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
-	// Ö°Î»¹Ø±Õ
+	// èŒä½å…³é—­
 	$(".jobs_pause").click(function(){
 		var id = $(this).attr("jid");
 		$.post("?act=jobs_pause",{id:id},function(data){
 			if(data=="ok"){
-				alert("Ö°Î»¹Ø±Õ³É¹¦");
+				alert("èŒä½å…³é—­æˆåŠŸ");
 				window.location.reload();
 			}else if(data=="err"){
-				alert("Ö°Î»¹Ø±ÕÊ§°Ü");
+				alert("èŒä½å…³é—­å¤±è´¥");
 				window.location.reload();
 			}else{
 				alert(data);
@@ -37,15 +37,15 @@ $(document).ready(function()
 			}
 		});
 	});
-	// ¹Ø±ÕÖ°Î»»Ö¸´
+	// å…³é—­èŒä½æ¢å¤
 	$(".jobs_regain").click(function(){
 		var id = $(this).attr("jid");
 		$.post("?act=jobs_regain",{id:id},function(data){
 			if(data=="ok"){
-				alert("Ö°Î»»Ö¸´³É¹¦");
+				alert("èŒä½æ¢å¤æˆåŠŸ");
 				window.location.reload();
 			}else if(data=="err"){
-				alert("Ö°Î»»Ö¸´Ê§°Ü");
+				alert("èŒä½æ¢å¤å¤±è´¥");
 				window.location.reload();
 			}else{
 				alert(data);
@@ -53,15 +53,15 @@ $(document).ready(function()
 			}
 		});
 	});
-	// Ë¢ĞÂÖ°Î»
+	// åˆ·æ–°èŒä½
 	$(".jobs_refresh").click(function(){
 		var id = $(this).attr("jid");
 		$.post("?act=jobs_refresh",{id:id},function(data){
 			if(data=="ok"){
-				alert("Ë¢ĞÂÖ°Î»³É¹¦");
+				alert("åˆ·æ–°èŒä½æˆåŠŸ");
 				window.location.reload();
 			}else if(data=="err"){
-				alert("Ë¢ĞÂÖ°Î»Ê§°Ü");
+				alert("åˆ·æ–°èŒä½å¤±è´¥");
 				window.location.reload();
 			}else{
 				alert(data);
@@ -69,20 +69,20 @@ $(document).ready(function()
 			}
 		});
 	});
-	// É¾³ıÖ°Î»
+	// åˆ é™¤èŒä½
 	$(".jobs_del").click(function(){
 		var id = $(this).attr("jid");
-		if (!confirm("È·ÈÏÒªÉ¾³ı£¿")) {
+		if (!confirm("ç¡®è®¤è¦åˆ é™¤ï¼Ÿ")) {
             window.event.returnValue = false;
         }
         else
         {
 			$.post("?act=jobs_del",{id:id},function(data){
 				if(data=="ok"){
-					// alert("É¾³ıÖ°Î»³É¹¦");
+					// alert("åˆ é™¤èŒä½æˆåŠŸ");
 					window.location.reload();
 				}else if(data=="err"){
-					alert("É¾³ıÖ°Î»Ê§°Ü");
+					alert("åˆ é™¤èŒä½å¤±è´¥");
 					window.location.reload();
 				}else{
 					alert(data);
@@ -97,34 +97,34 @@ $(document).ready(function()
 <body>
 <div class=""></div>
 <div class="sub_head_top">
-	<div class="title">Ö°Î»¹ÜÀí</div>
+	<div class="title">èŒä½ç®¡ç†</div>
 	<div class="back" id="pageback"><img src="../images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="../images/2.jpg"  border="0"/></a></div>
 </div>
 
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="../index.php";'>
-    <div class="box"><img src="../images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="../images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-jobs-list.php";'>
-    <div class="box"><img src="../images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="../images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-resume-list.php";'>
-    <div class="box"><img src="../images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="../images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-news-list.php";'>
-    <div class="box"><img src="../images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="../images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 
-<!-- Ö°Î»¹ÜÀíÊ×Ò³ -->
+<!-- èŒä½ç®¡ç†é¦–é¡µ -->
 <div class="job_i_bbox">
-	<!-- Ö°Î»¹ÜÀí -->
+	<!-- èŒä½ç®¡ç† -->
 	{#if $row#}
 	{#foreach from=$row  item=list#}
 	<div class="job_i_box">
@@ -133,10 +133,10 @@ $(document).ready(function()
 				<div class="resume_name">{#$list.jobs_name_#}<span>[<i class="audit">{#$list.status_cn#}</i>]</span></div>
 				<div class="resume_centent">
 					<div class="resume_centent_l">
-						ÕĞÆ¸ÈËÊı£º{#$list.amount#}ÈË<br />Ë¢ĞÂ£º{#$list.refreshtime|date_format:'%Y-%m-%d'#}
+						æ‹›è˜äººæ•°ï¼š{#$list.amount#}äºº<br />åˆ·æ–°ï¼š{#$list.refreshtime|date_format:'%Y-%m-%d'#}
 					</div>
 					<div class="resume_centent_r">
-						½ØÖÁÈÕÆÚ£º{#$list.deadline|date_format:'%Y-%m-%d'#}<br />ÏÂÔØ/ä¯ÀÀ£º{#$list.countresume#}/{#$list.click#}
+						æˆªè‡³æ—¥æœŸï¼š{#$list.deadline|date_format:'%Y-%m-%d'#}<br />ä¸‹è½½/æµè§ˆï¼š{#$list.countresume#}/{#$list.click#}
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -151,53 +151,53 @@ $(document).ready(function()
 			<div class="but_list">
 				{#if $list.status==1#}
 				<div class="list_icon jobs_refresh" jid="{#$list.id#}">
-					<a><img src="../images/resume_1.gif" alt="" /><br />Ë¢ĞÂ</a>
+					<a><img src="../images/resume_1.gif" alt="" /><br />åˆ·æ–°</a>
 				</div>
 				{#else#}
 				<div class="list_icon">
-					<a><img src="../images/resume_1_hui.gif" alt="" /><br />Ë¢ĞÂ</a>
+					<a><img src="../images/resume_1_hui.gif" alt="" /><br />åˆ·æ–°</a>
 				</div>
 				{#/if#}
 				<div class="list_icon" onclick="window.location.href='?act=jobs_edit&id={#$list.id#}'">
 					<a>
-						<img src="../images/resume_2.gif" alt="" /><br />ĞŞ¸Ä
+						<img src="../images/resume_2.gif" alt="" /><br />ä¿®æ”¹
 					</a>
 				</div>
 				
 				{#if $list.status==1#}
 				<div class="list_icon">
 				<a href="../wap-resume-list.php?key=&district=&sdistrict=&education=&topclass={#$list.topclass#}&category={#$list.category#}&subclass={#$list.subclass#}&experience=">
-					<img src="../images/job_i_1.gif" alt="" /><br />Æ¥Åä
+					<img src="../images/job_i_1.gif" alt="" /><br />åŒ¹é…
 				</a>
 				</div>
 				{#else#}
 				<div class="list_icon hui">
-				<a><img src="../images/job_i_1_hui.gif" alt="" /><br />Æ¥Åä</a>
+				<a><img src="../images/job_i_1_hui.gif" alt="" /><br />åŒ¹é…</a>
 				</div>
 				{#/if#}
 				
 				{#if $list.status==1#}
 				<div class="list_icon jobs_pause" jid="{#$list.id#}">
 					<a>
-						<img src="../images/job_i_2.gif" alt="" /><br />¹Ø±Õ
+						<img src="../images/job_i_2.gif" alt="" /><br />å…³é—­
 					</a>
 				</div>
 				{#elseif $list.status==2#}
 				<div class="list_icon jobs_regain" jid="{#$list.id#}">
 					<a>
-						<img src="../images/job_i_3.gif" alt="" /><br />»Ö¸´
+						<img src="../images/job_i_3.gif" alt="" /><br />æ¢å¤
 					</a>
 				</div>
 				{#else#}
 				<div class="list_icon">
 					<a>
-						<img src="../images/job_i_2_hui.gif" alt="" /><br />¹Ø±Õ
+						<img src="../images/job_i_2_hui.gif" alt="" /><br />å…³é—­
 					</a>
 				</div>
 				{#/if#}
 				<div class="list_icon jobs_del" jid="{#$list.id#}">
 					<a>
-						<img src="../images/resume_5.gif" alt="" /><br />É¾³ı
+						<img src="../images/resume_5.gif" alt="" /><br />åˆ é™¤
 					</a>
 				</div>
 				<div class="clear"></div>
@@ -206,12 +206,12 @@ $(document).ready(function()
 	</div>
 	{#/foreach#}
 	{#else#}
-	<div class="no_inter">ÄúÃ»ÓĞ·¢²¼Ö°Î»</div>
+	<div class="no_inter">æ‚¨æ²¡æœ‰å‘å¸ƒèŒä½</div>
 	{#/if#}
 </div>
 
-<!-- ´´½¨ĞÂ¼òÀú°´Å¥ -->
-<div class="make_new_job_but" onclick="window.location.href='?act=jobs_add'">·¢²¼ĞÂÖ°Î»</div>
+<!-- åˆ›å»ºæ–°ç®€å†æŒ‰é’® -->
+<div class="make_new_job_but" onclick="window.location.href='?act=jobs_add'">å‘å¸ƒæ–°èŒä½</div>
 <!-- footer -->
 {#include file="wap/footer.htm"#}
 </body>

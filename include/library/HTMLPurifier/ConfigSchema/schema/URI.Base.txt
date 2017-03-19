@@ -1,4 +1,4 @@
-URI.Base
+﻿URI.Base
 TYPE: string/null
 VERSION: 2.1.0
 DEFAULT: NULL

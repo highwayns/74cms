@@ -1,11 +1,11 @@
-/*Ö°Î»ËÑË÷Ò³*/
+ï»¿/*èŒä½æœç´¢é¡µ*/
 .jobs_so{width:92%;margin:0 auto; margin-top:12px;border:1px #CACACA solid;background-color:#FFFFFF;height:40px; position:relative}
 .jobs_so .keyinput{height:25px; padding-top:6px; border:1px #FFFFFF solid; padding-left:10px; width:80%; font-size:16px; color:#333333}
 .jobs_so .clearkey{ position:absolute; top:10px; right:70px;}
 .jobs_so .clearkey img{ width:20px;}
 .jobs_so .so_sub{position:absolute; top:0px; right:0px; width:50px; height:40px; background-color:#F6F6F6; border-left:1px #CACACA solid;}
 .jobs_so .so_sub img{ margin-top:8px; margin-left:3px;}
-/*Ö°Î»ËÑË÷Ò³_¸ü¶àËÑË÷Ñ¡Ïî*/
+/*èŒä½æœç´¢é¡µ_æ›´å¤šæœç´¢é€‰é¡¹*/
 .jobs_so_menu{border-top:1px #CACACA solid;border-bottom:1px #CACACA solid;margin-top:12px; background-color:#FFFFFF;height:40px;width:100%;}
 .jobs_so_menu .menulistbox{ width:25%; float:left; height:40px;background:url(../images/20.jpg) no-repeat right center; line-height:40px; text-align:center; font-size:14px;}
 .jobs_so_menu .menulistbox.last{background:url(../images/21.jpg) no-repeat right center;}
@@ -19,7 +19,7 @@
 .jobs_list .list .t3 img{ padding-top:12px; width:16px;}
 .jobs_list .more{ width:100%;margin:0 auto; height:32px;line-height: 32px;background: url(../images/more_but_bg.jpg)top left repeat-x;text-align:center;border:1px #CACACA solid;margin-top:12px;font-size: 14px;color:#0180CF;}
 .jobs_list .more a{font-size: 14px;color:#0180CF;}
-/*Ö°Î»ÏêÏ¸Ò³*/
+/*èŒä½è¯¦ç»†é¡µ*/
 .jobs_show_combox{width:92%;margin:0 auto; margin-top:12px;border:1px #CACACA solid;background-color:#FFFFFF;height:40px; ; line-height:40px;position:relative; cursor:pointer}
 .jobs_show_combox h1{ padding-left:13px;font-size:14px; font-weight:normal}
 .jobs_show_combox h1 a{ color: #333333; text-decoration: none;}
@@ -33,7 +33,7 @@
 .jobs_show_box .txt.telbox{ width:70%;height:60px;}
 .jobs_show_box .telimg{ width:60px; height:60px; position:absolute; right:15px; top:45px;}
 
- /*Ö°Î»ÏêÇéÊÕ²ØÍ¶µİÒ³Ãæ*/
+ /*èŒä½è¯¦æƒ…æ”¶è—æŠ•é€’é¡µé¢*/
 .job_show_combox{position: relative; width:92%;margin:0 auto;margin-top: 10px;height:40px;line-height: 40px;border:1px solid #ccc;background-color: #fff;}
 .job_show_combox h1{padding-left: 13px;font-size: 14px;font-weight: normal;}
 .job_show_combox h1 a{text-decoration: none;color:#333;}
@@ -63,7 +63,7 @@
 .delivery_box .del_box .del_box_r .favorites.done{background-position: left 5px;}
 
 
-/*ĞÂµÄÖ°Î»ËÑË÷ÑùÊ½*/
+/*æ–°çš„èŒä½æœç´¢æ ·å¼*/
 .jobs_so_menus{width:100%;background-color: #fff;margin-top: 10px;}
 .jobs_so_menus .menulistboxs{float: left;width:25%;text-align: center;height:38px;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;cursor: pointer;}
 .jobs_so_menus .menulistboxs.select{border-bottom-color: #E17F00;}
@@ -77,14 +77,14 @@
 .so_complete i{font-style: normal;}
 .so_complete img{position: absolute;top:30%;right:12px;}
 
-/*µØÇøÑ¡Ôñ¿ò*/
+/*åœ°åŒºé€‰æ‹©æ¡†*/
 .area_choose{padding:0 10px;}
 .area_choose .area_left{float: left;width:50%;overflow-y: scroll;padding:0;background-color: #fff;height: 300px;}
 .area_choose .area_left .area_big{font-size: 12px;height:40px;line-height: 40px;color:#666;text-indent: 1em;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 .area_choose .area_right{float: left;width:50%;overflow-y: scroll;padding:0;background-color: #F0F0F0;height: 300px;}
 .area_choose .area_right .area_small{font-size: 12px;height:40px;line-height: 40px;color:#666;text-indent: 1em;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
 
-/*×ÊÑ¶Ò³Ãæ*/
+/*èµ„è®¯é¡µé¢*/
 .showlist .news_list{width:100%;height:40px;border-bottom: 1px solid #ccc;padding:2px 0;}
 .showlist .news_list .news_left{float: left;width:94%;}
 .showlist .news_list .news_left .news_tit{font-size: 14px;font-weight: normal;color:#333;line-height: 40px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}

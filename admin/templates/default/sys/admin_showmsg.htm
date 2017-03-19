@@ -1,16 +1,16 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
-	<div class="ptit">ÆïÊ¿ÈË²ÅÏµÍ³¹ÜÀíÖĞĞÄ</div>
+	<div class="ptit">éª‘å£«äººæ‰ç³»ç»Ÿç®¡ç†ä¸­å¿ƒ</div>
   <div class="clear"></div>
 </div>
-<div class="toptit">ÏµÍ³ÌáÊ¾</div>
+<div class="toptit">ç³»ç»Ÿæç¤º</div>
 <div class="showmsg">
 	  <div class="left {#if $msg_type=="0"#}m0{#elseif $msg_type=="1"#}m1{#else#}m2{#/if#}">
 	  </div>
 	   <div class="right">
 	   <h2>{#$msg_detail#}</h2>
-	   <div id="redirectionMsg">{#if $auto_redirect#}Èç¹ûÄú²»×ö³öÑ¡Ôñ£¬½«ÔÚ <span id="spanSeconds">{#$seconds#}</span> ÃëºóÌø×ªµ½µÚÒ»¸öÁ´½ÓµØÖ·¡£{#/if#}</div>
+	   <div id="redirectionMsg">{#if $auto_redirect#}å¦‚æœæ‚¨ä¸åšå‡ºé€‰æ‹©ï¼Œå°†åœ¨ <span id="spanSeconds">{#$seconds#}</span> ç§’åè·³è½¬åˆ°ç¬¬ä¸€ä¸ªé“¾æ¥åœ°å€ã€‚{#/if#}</div>
 	   <ul style="margin:0;list-style:none" >
 		{#foreach from=$links item=link#}
 		<li><a href="{#$link.href#}" {#if $link.target#} target="{#$link.target#}"{#/if#}>{#$link.text#}</a></li>

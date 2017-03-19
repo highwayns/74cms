@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template_Lite {html_checkbox} function plugin
  *

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÑéÖ¤Âë
+ * 74cms éªŒè¯ç 
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 header('Expires: Thu, 01 Jan 1970 00:00:00 GMT');
@@ -66,7 +66,7 @@ public function set_show_mode()
 	$this->noiseLine=$this->cfg['captcha_noiseline'];
 	$this->distortion=$this->cfg['captcha_distortion'];
 }
-public function initImage() //@³õÊ¼»¯ÑéÖ¤ÂëÍ¼Æ¬
+public function initImage() //@åˆå§‹åŒ–éªŒè¯ç å›¾ç‰‡
 {   
 	if(empty($this->width))
 	{
@@ -87,7 +87,7 @@ public function initImage() //@³õÊ¼»¯ÑéÖ¤ÂëÍ¼Æ¬
 	}
 	imagefill($this->image,0,0,$this->randBgColor);
 }
-public function randText($type)//@²úÉúËæ»ú×Ö·û
+public function randText($type)//@äº§ç”Ÿéšæœºå­—ç¬¦
 {    
 	$string='';
 	switch($type)
@@ -101,7 +101,7 @@ public function randText($type)//@²úÉúËæ»ú×Ö·û
 		$string=explode(',',$string);
 		break;
 		case 'cn':
-		$string="µ½,È¥,Çë,Ç®,ÇÒ,ÎÒ,Îª,Î´,Íø,ÎÊ,ÈË,Èç,ÈÃ,Ëû,Ì«,Ìõ,ÈÕ,Ò»,ÓĞ,Ôª,Òª,Ò²,ÅÌ,ÅÂ,Æ·,ÊÇ,ÉÏ,Ëµ,Ëã,Ê±,µÄ,µ½,¶¼,µÈ,µã,·¢,·Ö,·Ç,·á,·ñ,¸ö,¸ø,¸Õ,¹ı,¸æ,ºÃ,ºÍ,ºó,»á,»°,¾Í,½«,¼Ó,½Ó,¼±,¿´,¿â,¿ª,¿É,¿Õ,ÁË,À´,Àï,À²,ÀÏ,ÔÚ,×ö,ÔÙ,ÖĞ,×ß,Ïë,ÏÂ,Ğ´,ÏÈ,ĞÂ,²Å,´í,´Î,´Ë,´Ó,²»,°É,°Ñ,±í,Äã,ÄÜ,ÄÇ,ÄØ,Âğ,Âı,Ã¦,Ã´";
+		$string="åˆ°,å»,è¯·,é’±,ä¸”,æˆ‘,ä¸º,æœª,ç½‘,é—®,äºº,å¦‚,è®©,ä»–,å¤ª,æ¡,æ—¥,ä¸€,æœ‰,å…ƒ,è¦,ä¹Ÿ,ç›˜,æ€•,å“,æ˜¯,ä¸Š,è¯´,ç®—,æ—¶,çš„,åˆ°,éƒ½,ç­‰,ç‚¹,å‘,åˆ†,é,ä¸°,å¦,ä¸ª,ç»™,åˆš,è¿‡,å‘Š,å¥½,å’Œ,å,ä¼š,è¯,å°±,å°†,åŠ ,æ¥,æ€¥,çœ‹,åº“,å¼€,å¯,ç©º,äº†,æ¥,é‡Œ,å•¦,è€,åœ¨,åš,å†,ä¸­,èµ°,æƒ³,ä¸‹,å†™,å…ˆ,æ–°,æ‰,é”™,æ¬¡,æ­¤,ä»,ä¸,å§,æŠŠ,è¡¨,ä½ ,èƒ½,é‚£,å‘¢,å—,æ…¢,å¿™,ä¹ˆ";
 		require_once($this->rootpath."data/config.php");
 		if (strcasecmp(QISHI_DBCHARSET,"utf8")!=0)
 		{
@@ -114,7 +114,7 @@ public function randText($type)//@²úÉúËæ»ú×Ö·û
 	}
 	return $string;
 }
-public function createText()//@Êä³öÎÄ×Öµ½ÑéÖ¤Âë
+public function createText()//@è¾“å‡ºæ–‡å­—åˆ°éªŒè¯ç 
 {    
 	$text_array=$this->randText($this->textLang);
 	$this->textContent=implode('',$text_array);
@@ -139,7 +139,7 @@ public function createText()//@Êä³öÎÄ×Öµ½ÑéÖ¤Âë
 		imagettftext($this->image,$this->fontSize,mt_rand(-20,20),$i*$this->fontSize+($this->width/$this->textNum)-floor($this->fontSize/2),floor($this->height/2+$this->fontSize/2),$this->randFontColor,$this->fontFamily,$text_array[$i]);
 	}
 }
-public function createNoisePoint()//@Éú³É¸ÉÈÅµã
+public function createNoisePoint()//@ç”Ÿæˆå¹²æ‰°ç‚¹
 {    
 	for($i=0;$i<$this->noisePoint;$i++)
 	{
@@ -147,7 +147,7 @@ public function createNoisePoint()//@Éú³É¸ÉÈÅµã
 		imagesetpixel($this->image,mt_rand(0,$this->width),mt_rand(0,$this->height),$this->randFontColor);
 	}
 }
-public function getfontFamily()//»ñÈ¡×ÖÌå
+public function getfontFamily()//è·å–å­—ä½“
 {    
 	$dir =$this->rootpath.'data/font/'.$this->textLang."/";
 		if($handle = @opendir($dir))
@@ -164,7 +164,7 @@ public function getfontFamily()//»ñÈ¡×ÖÌå
 		}	
 	return 	$list;
 }
-public function createNoiseLine()//@²úÉú¸ÉÈÅÏß
+public function createNoiseLine()//@äº§ç”Ÿå¹²æ‰°çº¿
 {    
 	for($i=0;$i<$this->noiseLine;$i++)
 	{
@@ -172,7 +172,7 @@ public function createNoiseLine()//@²úÉú¸ÉÈÅÏß
 		imageline($this->image,0,mt_rand(0,$this->width),$this->width,mt_rand(0,$this->height),$this->randFontColor);
 	}
 }
-public function distortionText()//@Å¤ÇúÎÄ×Ö
+public function distortionText()//@æ‰­æ›²æ–‡å­—
 {    
 	$this->distortionImage=imagecreatetruecolor($this->width,$this->height);
 	imagefill($this->distortionImage,0,0,$this->randBgColor);
@@ -186,7 +186,7 @@ public function distortionText()//@Å¤ÇúÎÄ×Ö
 	}
 	$this->image=$this->distortionImage;
 }
-public function createImage()//@Éú³ÉÑéÖ¤ÂëÍ¼Æ¬
+public function createImage()//@ç”ŸæˆéªŒè¯ç å›¾ç‰‡
 {    
 	header('Expires: Thu, 01 Jan 1970 00:00:00 GMT');
 	// HTTP/1.1
@@ -194,15 +194,15 @@ public function createImage()//@Éú³ÉÑéÖ¤ÂëÍ¼Æ¬
 	header('Cache-Control: post-check=0, pre-check=0, max-age=0', false);
 	// HTTP/1.0
 	header('Pragma: no-cache');
-	$this->initImage(); //´´½¨»ù±¾Í¼Æ¬
-	$this->createText(); //Êä³öÑéÖ¤Âë×Ö·û
-	$this->createNoisePoint(); //²úÉú¸ÉÈÅµã
-	$this->createNoiseLine(); //²úÉú¸ÉÈÅÏß
-	if($this->distortion =="1")//Å¤ÇúÎÄ×Ö
+	$this->initImage(); //åˆ›å»ºåŸºæœ¬å›¾ç‰‡
+	$this->createText(); //è¾“å‡ºéªŒè¯ç å­—ç¬¦
+	$this->createNoisePoint(); //äº§ç”Ÿå¹²æ‰°ç‚¹
+	$this->createNoiseLine(); //äº§ç”Ÿå¹²æ‰°çº¿
+	if($this->distortion =="1")//æ‰­æ›²æ–‡å­—
 	{
 	$this->distortionText();
 	}
-	if($this->showBorder)//Ìí¼Ó±ß¿ò
+	if($this->showBorder)//æ·»åŠ è¾¹æ¡†
 	{
 	$color = ImageColorAllocate($this->image, $this->showBordercolor[0],$this->showBordercolor[1],$this->showBordercolor[2]);
 	imagerectangle($this->image,0,0,$this->width-1,$this->height-1,$color);

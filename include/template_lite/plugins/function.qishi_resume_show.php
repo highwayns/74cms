@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_resume_show($params, &$smarty)
 {
 global $db,$_CFG,$QS_cookiepath,$QS_cookiedomain;
@@ -8,10 +8,10 @@ foreach($arr as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "¼òÀúID":
+	case "ç®€åŽ†ID":
 		$aset['id'] = $a[1];
 		break;
-	case "ÁÐ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
 	}
@@ -28,7 +28,7 @@ if ($val)
 {
 	if(intval($_SESSION['uid'])>0 && intval($_SESSION['utype'])==1)
 	{
-		// ¼òÀú´¦ÀíÂÊ
+		// ç®€åŽ†å¤„ç†çŽ‡
 		$resume_applyed = $db->getone("select count(*) num from ".table("personal_jobs_apply")." where  company_uid=".intval($_SESSION['uid'])." and resume_id=$val[id] ");
 		if(!empty($resume_applyed))
 		{
@@ -38,7 +38,7 @@ if ($val)
 			$db->updatetable(table("company_profile"),$company_info,array("uid"=>$_SESSION['uid']));
 		}
 
-		//²é¿´ÊÇ·ñÒÑ¾­ÏÂÔØ¹ý¼òÀú
+		//æŸ¥çœ‹æ˜¯å¦å·²ç»ä¸‹è½½è¿‡ç®€åŽ†
 		$download = $db->getone("select did from ".table("company_down_resume")." where resume_id=$val[id] and company_uid=".intval($_SESSION['uid'])." ");
 		if(empty($download)){
 			if ($val['display_name']=="2")
@@ -49,9 +49,9 @@ if ($val)
 			elseif($val['display_name']=="3")
 			{
 				if($val['sex']==1){
-				$val['fullname']=cut_str($val['fullname'],1,0,"ÏÈÉú");
+				$val['fullname']=cut_str($val['fullname'],1,0,"å…ˆç”Ÿ");
 				}elseif($val['sex'] == 2){
-				$val['fullname']=cut_str($val['fullname'],1,0,"Å®Ê¿");
+				$val['fullname']=cut_str($val['fullname'],1,0,"å¥³å£«");
 				}
 			}
 			else
@@ -60,11 +60,11 @@ if ($val)
 				$val['fullname']=$val['fullname'];
 			}
 		}
-		//ÌáÊ¾ÐÅÏ¢
+		//æç¤ºä¿¡æ¯
 		$mes_apply = $db->getone("select jobs_name,apply_addtime from ".table('personal_jobs_apply')." where `resume_id`=".$val['id']." and  `company_uid`=".intval($_SESSION['uid'])." limit 1 ");
 		if($mes_apply)
 		{
-			$val['message'] = "Ó¦Æ¸Ö°Î»£º".$mes_apply['jobs_name']." Í¶µÝÊ±¼ä£º".date('Y-m-d',$mes_apply['apply_addtime']);
+			$val['message'] = "åº”è˜èŒä½ï¼š".$mes_apply['jobs_name']." æŠ•é€’æ—¶é—´ï¼š".date('Y-m-d',$mes_apply['apply_addtime']);
 		}
 		else
 		{
@@ -81,9 +81,9 @@ if ($val)
 		elseif($val['display_name']=="3")
 		{
 			if($val['sex']==1){
-			$val['fullname']=cut_str($val['fullname'],1,0,"ÏÈÉú");
+			$val['fullname']=cut_str($val['fullname'],1,0,"å…ˆç”Ÿ");
 			}elseif($val['sex'] == 2){
-			$val['fullname']=cut_str($val['fullname'],1,0,"Å®Ê¿");
+			$val['fullname']=cut_str($val['fullname'],1,0,"å¥³å£«");
 			}
 		}
 		else
@@ -142,7 +142,7 @@ if ($val)
 	}else{
 		$val['apply'] = 0;
 	}
-	/* ¼òÀú»îÔ¾¶È  ¸üÐÂÊ±¼ä Ö÷¶¯ÉêÇëÖ°Î»Êý  ä¯ÀÀÖ°Î»Êý */
+	/* ç®€åŽ†æ´»è·ƒåº¦  æ›´æ–°æ—¶é—´ ä¸»åŠ¨ç”³è¯·èŒä½æ•°  æµè§ˆèŒä½æ•° */
 	$vitality=0;
 	$val['refreshtime_cn']=daterange(time(),$val['refreshtime'],'Y-m-d',"#FF3300");
 	$timestr=time()-$val['refreshtime'];
@@ -166,7 +166,7 @@ if ($val)
 		$vitality+=2;
 	}
 	$val['vitality']=$vitality;
-	/*ÆóÒµ¹Ø×¢¶È start */
+	/*ä¼ä¸šå…³æ³¨åº¦ start */
 	$attention=0;
 	$val['com_down']=$db->get_total("select count(*) num from ".table("company_down_resume")." where resume_id=$val[id] and down_addtime>$time ");
 	
@@ -189,13 +189,13 @@ if ($val)
 	}
 	
 	$val['attention']=$attention;
-	/*ÆóÒµ¹Ø×¢¶È end */
-	//ÅÐ¶ÏÊÖ»ú¡¢Î¢ÐÅ¡¢ÓÊÏäÊÇ·ñÑéÖ¤
+	/*ä¼ä¸šå…³æ³¨åº¦ end */
+	//åˆ¤æ–­æ‰‹æœºã€å¾®ä¿¡ã€é‚®ç®±æ˜¯å¦éªŒè¯
 	$is_audit_phone = $db->getone("SELECT mobile_audit,email_audit,weixin_openid FROM ".table('members')." WHERE uid={$val['uid']}  LIMIT 1 ");
 	$val['is_audit_mobile'] = $is_audit_phone['mobile_audit'];
 	$val['is_audit_email'] = $is_audit_phone['email_audit'];
 	$val['is_audit_weixin'] = $is_audit_phone['weixin_openid'];
-	//¸öÈË×Ô¼ºÔ¤ÀÀ
+	//ä¸ªäººè‡ªå·±é¢„è§ˆ
 	if($_SESSION['utype'] == '2' && $_SESSION['uid'] == $val['uid'] ){
 		$val['isminesee'] = '1';
 	}

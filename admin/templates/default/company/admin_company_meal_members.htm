@@ -1,10 +1,10 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript" src="js/jquery.userinfotip-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
 	$("#Butdelay").QSdialog({
-	DialogTitle:"ÏµÍ³ÌáÊ¾",
+	DialogTitle:"ç³»ç»Ÿæç¤º",
 	DialogContent:"#delayset",
 	DialogContentType:"id",
 	DialogAddObj:"#Opdelay",	
@@ -19,9 +19,9 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
   <div class="seltpye_x">
-		<div class="left">Ì×²ÍÀàĞÍ</div>	
+		<div class="left">å¥—é¤ç±»å‹</div>	
 		<div class="right">
-		<a href="{#"setmeal_id:"|qishi_parse_url#}" {#if $smarty.get.setmeal_id==""#}class="select"{#/if#}>²»ÏŞ</a>
+		<a href="{#"setmeal_id:"|qishi_parse_url#}" {#if $smarty.get.setmeal_id==""#}class="select"{#/if#}>ä¸é™</a>
 		{#foreach from=$setmeal item=list#}
 		<a href="{#"setmeal_id:"|cat:$list.id|qishi_parse_url#}" {#if $smarty.get.setmeal_id==$list.id#}class="select"{#/if#}>{#$list.setmeal_name#}</a>
 		{#/foreach#}
@@ -30,13 +30,13 @@ $(document).ready(function()
 		<div class="clear"></div>
   </div>
   <div class="seltpye_x">
-		<div class="left">µ½ÆÚÊ±¼ä</div>	
+		<div class="left">åˆ°æœŸæ—¶é—´</div>	
 		<div class="right">
-		<a href="{#"settr:"|qishi_parse_url#}" {#if $smarty.get.settr==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"settr:-1"|qishi_parse_url#}" {#if $smarty.get.settr=="-1"#}class="select"{#/if#}>ÒÑ¾­µ½ÆÚ</a>
-		<a href="{#"settr:3"|qishi_parse_url#}" {#if $smarty.get.settr=="3"#}class="select"{#/if#}>ÈıÌìÄÚµ½ÆÚ</a>
-		<a href="{#"settr:7"|qishi_parse_url#}" {#if $smarty.get.settr=="7"#}class="select"{#/if#}>Ò»ÖÜÄÚµ½ÆÚ</a>
-		<a href="{#"settr:30"|qishi_parse_url#}" {#if $smarty.get.settr=="30"#}class="select"{#/if#}>Ò»ÔÂÄÚµ½ÆÚ</a>
+		<a href="{#"settr:"|qishi_parse_url#}" {#if $smarty.get.settr==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"settr:-1"|qishi_parse_url#}" {#if $smarty.get.settr=="-1"#}class="select"{#/if#}>å·²ç»åˆ°æœŸ</a>
+		<a href="{#"settr:3"|qishi_parse_url#}" {#if $smarty.get.settr=="3"#}class="select"{#/if#}>ä¸‰å¤©å†…åˆ°æœŸ</a>
+		<a href="{#"settr:7"|qishi_parse_url#}" {#if $smarty.get.settr=="7"#}class="select"{#/if#}>ä¸€å‘¨å†…åˆ°æœŸ</a>
+		<a href="{#"settr:30"|qishi_parse_url#}" {#if $smarty.get.settr=="30"#}class="select"{#/if#}>ä¸€æœˆå†…åˆ°æœŸ</a>
 		<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
@@ -47,13 +47,13 @@ $(document).ready(function()
   <table width="100%" border="0" cellpadding="0" cellspacing="0"   class="link_lan">
     <tr>
       <td  class="admin_list_tit admin_list_first" >
-      <label id="chkAll"><input type="checkbox" name=" " title="È«Ñ¡/·´Ñ¡" id="chk"/>¹«Ë¾Ãû³Æ</label></td>
-	   <td  class="admin_list_tit">ÓÃ»§Ãû</td>
-	   <td  class="admin_list_tit">Ì×²ÍÃû³Æ</td>
+      <label id="chkAll"><input type="checkbox" name=" " title="å…¨é€‰/åé€‰" id="chk"/>å…¬å¸åç§°</label></td>
+	   <td  class="admin_list_tit">ç”¨æˆ·å</td>
+	   <td  class="admin_list_tit">å¥—é¤åç§°</td>
       <td  class="admin_list_tit">email</td>     
-      <td     class="admin_list_tit">·şÎñ¿ªÊ¼Ê±¼ä</td>
-	  <td     class="admin_list_tit">·şÎñµ½ÆÚÊ±¼ä</td>
-      <td    align="center"  class="admin_list_tit" >²Ù×÷</td>
+      <td     class="admin_list_tit">æœåŠ¡å¼€å§‹æ—¶é—´</td>
+	  <td     class="admin_list_tit">æœåŠ¡åˆ°æœŸæ—¶é—´</td>
+      <td    align="center"  class="admin_list_tit" >æ“ä½œ</td>
     </tr>
 	{#foreach from=$member item=list#}
       <tr>
@@ -62,22 +62,22 @@ $(document).ready(function()
 		{#if $list.companyname#}
  	        {#$list.companyname#}
 		{#else#}
-		<span style="color:#FF0000">Î´ÍêÉÆÆóÒµ×ÊÁÏ</span>
+		<span style="color:#FF0000">æœªå®Œå–„ä¼ä¸šèµ„æ–™</span>
 		{#/if#}
 		</td>
 
       <td class="admin_list">
        {#$list.username#}
 		<span style="color:#CCCCCC">(uid:{#$list.uid#})</span>
-		<a href="admin_mail.php?act=send&email={#$list.email#}&uid={#$list.uid#}"> <img src="images/email.gif" border="0" title="·¢ËÍÓÊ¼ş" /></a>
-		 {#if $list.mobile#}<a href="admin_sms.php?act=send&mobile={#$list.mobile#}&uid={#$list.uid#}"><img src="images/sms.gif" border="0" title="·¢ËÍ¶ÌĞÅ" /></a>{#/if#}
+		<a href="admin_mail.php?act=send&email={#$list.email#}&uid={#$list.uid#}"> <img src="images/email.gif" border="0" title="å‘é€é‚®ä»¶" /></a>
+		 {#if $list.mobile#}<a href="admin_sms.php?act=send&mobile={#$list.mobile#}&uid={#$list.uid#}"><img src="images/sms.gif" border="0" title="å‘é€çŸ­ä¿¡" /></a>{#/if#}
 		</td>
 		 <td class="admin_list">
 		{#$list.setmeal_name#}
 		</td>
  		<td class="admin_list">
 		{#$list.email#}
-		{#if $list.email_audit=="1"#}<span style="color:#009900">[Ñé]</span>{#/if#}
+		{#if $list.email_audit=="1"#}<span style="color:#009900">[éªŒ]</span>{#/if#}
 		</td>
 		
        
@@ -86,22 +86,22 @@ $(document).ready(function()
 		</td>
 		<td   class="admin_list">
 		{#if $list.endtime=="0"#}
-		²»ÏŞÖÆ	
+		ä¸é™åˆ¶	
 		{#else#}
 			{#if $list.endtime>$smarty.now#}
 			{#$list.endtime|date_format:"%Y-%m-%d"#}
 			{#else#}
 			{#$list.endtime|date_format:"%Y-%m-%d"#}
-			<span style="color:#FF6600">(ÒÑµ½ÆÚ)</span>
+			<span style="color:#FF6600">(å·²åˆ°æœŸ)</span>
 			{#/if#}
 		{#/if#}
 		</td>       
         <td align="center" class="admin_list">
-		<a href="?act=user_edit&tuid={#$list.uid#}">ĞŞ¸Ä</a>
+		<a href="?act=user_edit&tuid={#$list.uid#}">ä¿®æ”¹</a>
 		&nbsp;
-		<a href="?act=meal_log&key_uid={#$list.uid#}&key_type=2&key_type_cn=UID">³äÖµ¼ÇÂ¼</a>
+		<a href="?act=meal_log&key_uid={#$list.uid#}&key_type=2&key_type_cn=UID">å……å€¼è®°å½•</a>
 		&nbsp;
-		<a href="?act=management&id={#$list.uid#}"  target="_blank"  class="userinfo"  id="{#$list.uid#}">¹ÜÀí</a>
+		<a href="?act=management&id={#$list.uid#}"  target="_blank"  class="userinfo"  id="{#$list.uid#}">ç®¡ç†</a>
 		</td>
       </tr>
       {#/foreach#}
@@ -109,29 +109,29 @@ $(document).ready(function()
  <span id="Opdelay"></span>
   </form>
 	{#if !$member#}
-	<div class="admin_list_no_info">Ã»ÓĞÈÎºÎĞÅÏ¢£¡</div>
+	<div class="admin_list_no_info">æ²¡æœ‰ä»»ä½•ä¿¡æ¯ï¼</div>
 	{#/if#}
 	<table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">
       <tr>
         <td>
-        <input type="button" name="Butdelay"  id="Butdelay" value="ÑÓÆÚ" class="admin_submit"/>
+        <input type="button" name="Butdelay"  id="Butdelay" value="å»¶æœŸ" class="admin_submit"/>
 		</td>
         <td width="305" align="right">
 		<form id="formseh" name="formseh" method="get" action="?">	
 			<div class="seh">
 			    <div class="keybox"><input name="key" type="text"   value="{#$smarty.get.key#}" /></div>
 			    <div class="selbox">
-					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"ÓÃ»§Ãû"#}" readonly="true"/>
+					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"ç”¨æˆ·å"#}" readonly="true"/>
 		
 						<div>
 								<input name="key_type" id="key_type" type="hidden" value="{#$smarty.get.key_type|default:"1"#}" />
 												<div id="sehmenu" class="seh_menu">
 														<ul>
-														<li id="1" title="ÓÃ»§Ãû">ÓÃ»§Ãû</li>
-														<li id="5" title="¹«Ë¾Ãû">¹«Ë¾Ãû</li>
+														<li id="1" title="ç”¨æˆ·å">ç”¨æˆ·å</li>
+														<li id="5" title="å…¬å¸å">å…¬å¸å</li>
 														<li id="2" title="UID">UID</li>
 														<li id="3" title="email">email</li>
-														<li id="4" title="ÊÖ»úºÅ">ÊÖ»úºÅ</li>
+														<li id="4" title="æ‰‹æœºå·">æ‰‹æœºå·</li>
 														</ul>
 												</div>
 						</div>	
@@ -139,7 +139,7 @@ $(document).ready(function()
 				</div>
 				<div class="sbtbox">
 				<input name="act" type="hidden" value="meal_members" />
-				<input type="submit" name="" class="sbt" id="sbt" value="ËÑË÷"/>
+				<input type="submit" name="" class="sbt" id="sbt" value="æœç´¢"/>
 				</div>
 				<div class="clear"></div>
 		  </div>
@@ -153,18 +153,18 @@ $(document).ready(function()
 		<table width="100%" border="0" align="center" cellpadding="0" cellspacing="6">
 			<tr>
 			  <td width="20" height="30">&nbsp;</td>
-			  <td height="30"><strong  style="color:#0066CC; font-size:14px;">ÑÓ³¤·şÎñµ½ÆÚÊ±¼ä£º</strong></td>
+			  <td height="30"><strong  style="color:#0066CC; font-size:14px;">å»¶é•¿æœåŠ¡åˆ°æœŸæ—¶é—´ï¼š</strong></td>
 			</tr>
 				  <tr>
 			  <td width="27" height="25">&nbsp;</td>
 			  <td>
-				<input name="days" type="text" class="input_text_150" id="days" value="1" maxlength="3"/>&nbsp;Ìì</td>
+				<input name="days" type="text" class="input_text_150" id="days" value="1" maxlength="3"/>&nbsp;å¤©</td>
 			</tr>
 		 
 			<tr>
 			  <td height="25">&nbsp;</td>
 			  <td>
-			  <input type="submit" name="set_delay" value="È·¶¨" class="admin_submit"/>
+			  <input type="submit" name="set_delay" value="ç¡®å®š" class="admin_submit"/>
 		 </td>
 			</tr>
 		  </table>

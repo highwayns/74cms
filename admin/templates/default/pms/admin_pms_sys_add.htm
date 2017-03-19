@@ -1,8 +1,8 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
-//ÑéÖ¤
+//éªŒè¯
 $(document).ready(function() {
  $("#FormData").validate({
  //debug: true,
@@ -19,9 +19,9 @@ $(document).ready(function() {
     messages:
 	{
     message: {
-    required: "ÇëÊäÈëÄÚÈİ",
-    minlength: jQuery.format("ÄÚÈİ²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-	maxlength: jQuery.format("ÄÚÈİ²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+    required: "è¯·è¾“å…¥å†…å®¹",
+    minlength: jQuery.format("å†…å®¹ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+	maxlength: jQuery.format("å†…å®¹ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
    }
   },
   errorPlacement: function(error, element) {
@@ -39,7 +39,7 @@ $(document).ready(function() {
 <script type="text/javascript">
 $(document).ready(function()
 {
-//ÑéÖ¤
+//éªŒè¯
 $(document).ready(function() {
  $("#FormData1").validate({
  //debug: true,
@@ -59,12 +59,12 @@ $(document).ready(function() {
     messages:
 	{
 	us: {
-    required: "ÇëÊäÈë»áÔ±Ãû£¬ÊäÈë¶à¸öÇë»»ĞĞÊäÈë"
+    required: "è¯·è¾“å…¥ä¼šå‘˜åï¼Œè¾“å…¥å¤šä¸ªè¯·æ¢è¡Œè¾“å…¥"
    },
     msg: {
-    required: "ÇëÊäÈëÏûÏ¢ÄÚÈİ",
-    minlength: jQuery.format("ÄÚÈİ²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-	maxlength: jQuery.format("ÄÚÈİ²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+    required: "è¯·è¾“å…¥æ¶ˆæ¯å†…å®¹",
+    minlength: jQuery.format("å†…å®¹ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+	maxlength: jQuery.format("å†…å®¹ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
    }
   },
   errorPlacement: function(error, element) {
@@ -85,39 +85,39 @@ $(document).ready(function() {
 	{#include file="pms/admin_pms_nav.htm"#}
   <div class="clear"></div>
 </div>
-<div class="toptit">ĞÂÔöÏµÍ³ÏûÏ¢</div>
+<div class="toptit">æ–°å¢ç³»ç»Ÿæ¶ˆæ¯</div>
   <form action="?act=add_pms_sys_save" method="post"   name="FormData" id="FormData" >
   {#$inputtoken#}
     <table width="100%" border="0" cellpadding="5" cellspacing="0"  class="admin_table">
       <tr>
-        <td width="100" align="right" >½ÓÊÜ»áÔ±£º</td>
+        <td width="100" align="right" >æ¥å—ä¼šå‘˜ï¼š</td>
         <td >
-		<label><input name="spms_usertype" type="radio" value="0" checked="checked" />È«²¿»áÔ±</label>
+		<label><input name="spms_usertype" type="radio" value="0" checked="checked" />å…¨éƒ¨ä¼šå‘˜</label>
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<label><input type="radio" name="spms_usertype" value="1" />½öÆóÒµ»áÔ± </label>
+		<label><input type="radio" name="spms_usertype" value="1" />ä»…ä¼ä¸šä¼šå‘˜ </label>
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<label><input type="radio" name="spms_usertype" value="2" />½ö¸öÈË»áÔ± </label>	
+		<label><input type="radio" name="spms_usertype" value="2" />ä»…ä¸ªäººä¼šå‘˜ </label>	
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<label><input type="radio" name="spms_usertype" value="3" />½öÁÔÍ·¹ËÎÊ </label>	
+		<label><input type="radio" name="spms_usertype" value="3" />ä»…çŒå¤´é¡¾é—® </label>	
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<label><input type="radio" name="spms_usertype" value="4" />½öÅàÑµ»ú¹¹ </label>	
+		<label><input type="radio" name="spms_usertype" value="4" />ä»…åŸ¹è®­æœºæ„ </label>	
 		
 		</td>
       </tr>
       <tr>
-        <td align="right" >ÀàĞÍ£º</td>
+        <td align="right" >ç±»å‹ï¼š</td>
         <td >
-		<label><input name="spms_type" type="radio" value="1" checked="checked" />ÆÕÍ¨ÏûÏ¢</label>
+		<label><input name="spms_type" type="radio" value="1" checked="checked" />æ™®é€šæ¶ˆæ¯</label>
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<label><input type="radio" name="spms_type" value="2" />×¢²áÌáĞÑ </label>		</td>
+		<label><input type="radio" name="spms_type" value="2" />æ³¨å†Œæé†’ </label>		</td>
       </tr>
       <tr>
-        <td align="right" valign="top" >ÏûÏ¢ÄÚÈİ£º</td>
+        <td align="right" valign="top" >æ¶ˆæ¯å†…å®¹ï¼š</td>
         <td > <textarea name="message" id="message" style="width:400px; height:150px; font-size:12px; line-height:180%"></textarea></td>
       </tr>
       <tr>
         <td align="right" >&nbsp;</td>
-        <td height="60" valign="top" ><input type="submit" name="Submit" value="Ìí¼Ó" class="admin_submit"   /></td>
+        <td height="60" valign="top" ><input type="submit" name="Submit" value="æ·»åŠ " class="admin_submit"   /></td>
       </tr>
     </table>
    
@@ -126,24 +126,24 @@ $(document).ready(function() {
   
   
   
-  <div class="toptit">·¢ËÍÖ¸¶¨»áÔ±ÏµÍ³ÏûÏ¢<span class="admin_note">´ËĞÅÏ¢²»»áÔÚÏûÏ¢ÁĞ±íÖĞÏÔÊ¾</span></div>
+  <div class="toptit">å‘é€æŒ‡å®šä¼šå‘˜ç³»ç»Ÿæ¶ˆæ¯<span class="admin_note">æ­¤ä¿¡æ¯ä¸ä¼šåœ¨æ¶ˆæ¯åˆ—è¡¨ä¸­æ˜¾ç¤º</span></div>
   <form action="?act=add_pms_sys_save" method="post"   name="FormData1" id="FormData1" >
   {#$inputtoken#}
     <table width="100%" border="0" cellpadding="5" cellspacing="0"  class="admin_table">
 	  <tr>
-    <td width="100" align="right" valign="top">½ÓÊÜÈË£º</td>
+    <td width="100" align="right" valign="top">æ¥å—äººï¼š</td>
     <td>
       <textarea name="us" id="us" style="width:400px; height:120px; font-size:12px; line-height:180%"></textarea>
 	  <br /><span class="admin_note">
-	  ¶à¸ö»áÔ±ÃûÇë»»ĞĞÊäÈë</span></td>
+	  å¤šä¸ªä¼šå‘˜åè¯·æ¢è¡Œè¾“å…¥</span></td>
     </tr>
       <tr>
-        <td align="right" valign="top" >ÏûÏ¢ÄÚÈİ£º</td>
+        <td align="right" valign="top" >æ¶ˆæ¯å†…å®¹ï¼š</td>
         <td > <textarea name="msg" id="msg" style="width:400px; height:120px; font-size:12px; line-height:180%"></textarea></td>
       </tr>
       <tr>
         <td align="right" >&nbsp;</td>
-        <td height="100" valign="top" ><input type="submit" name="Submit" value="Ìí¼Ó" class="admin_submit"   /></td>
+        <td height="100" valign="top" ><input type="submit" name="Submit" value="æ·»åŠ " class="admin_submit"   /></td>
       </tr>
     </table>
    

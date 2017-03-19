@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ºÏ×÷ÕÊºÅµÇÂ¼
+ * 74cms åˆä½œå¸å·ç™»å½•
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'qq_set';
 $smarty->assign('act',$act);
 $smarty->assign('navlabel',$act);
-$smarty->assign('pageheader',"µÚÈý·½ÕÊºÅµÇÂ¼");	
+$smarty->assign('pageheader',"ç¬¬ä¸‰æ–¹å¸å·ç™»å½•");	
 if($act == 'qq_set')
 {
 	check_permissions($_SESSION['admin_purview'],"set_qqconnect");	
@@ -29,11 +29,11 @@ elseif($act == 'set_qq_save')
 	check_token();
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('¸üÐÂÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°è®¾ç½®å¤±è´¥', 1):"";
 	}
 	refresh_cache('config');
-	write_log("ÉèÖÃµÚÈý·½µÇÂ¼QQ", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2);
+	write_log("è®¾ç½®ç¬¬ä¸‰æ–¹ç™»å½•QQ", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'sina_set')
 {
@@ -48,11 +48,11 @@ elseif($act == 'set_sina_save')
 	check_token();
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('¸üÐÂÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°è®¾ç½®å¤±è´¥', 1):"";
 	}
 	refresh_cache('config');
-	write_log("ÉèÖÃµÚÈý·½µÇÂ¼sina", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2);
+	write_log("è®¾ç½®ç¬¬ä¸‰æ–¹ç™»å½•sina", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'taobao_set')
 {
@@ -67,10 +67,10 @@ elseif($act == 'set_taobao_save')
 	check_token();
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('¸üÐÂÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°è®¾ç½®å¤±è´¥', 1):"";
 	}
 	refresh_cache('config');
-	write_log("ÉèÖÃµÚÈý·½µÇÂ¼taobao", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2);
+	write_log("è®¾ç½®ç¬¬ä¸‰æ–¹ç™»å½•taobao", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 ?>

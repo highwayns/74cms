@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -12,9 +12,9 @@ $(document).ready(function()
 		$(".Sclasst_"+$(this).attr("id")).hide();
 		}
 	});
-	//È«Ñ¡
+	//å…¨é€‰
 	$('#categorychkAll').click(function(){$("#form1 :checkbox").attr('checked',$("#chk").attr('checked'))});
-	//µã»÷´óÀà£¬Ñ¡ÔñĞ¡Àà
+	//ç‚¹å‡»å¤§ç±»ï¼Œé€‰æ‹©å°ç±»
 	$(".Bcheck").click(function()
 	{
 		SetCat($(this).attr("id"));
@@ -27,7 +27,7 @@ $(document).ready(function()
 		$(".Scheck_"+$(this).val()).attr("checked",$(this).attr("checked"));
 		$(".Scheck_"+$(this).val()).attr("checked",$(this).attr("checked"));
 	});
-	//µã»÷×ÓÀà ÊÍ·Å¸¸¼¶µÄ¹´Ñ¡
+	//ç‚¹å‡»å­ç±» é‡Šæ”¾çˆ¶çº§çš„å‹¾é€‰
 	$(":checkbox[class^='Scheck_']").live('click', function()
 	{
 		if ($(this).attr("checked")==false)
@@ -38,7 +38,7 @@ $(document).ready(function()
 			$(".Bcheck[id="+$(".middle_"+pid).attr("id")+"]").attr("checked","");
 		}
 	});
-	//Ìí¼Ó×Ó·ÖÀà
+	//æ·»åŠ å­åˆ†ç±»
 	$('.AddCat').live('click', function()
 	{
 		var pid=$(this).attr("id");
@@ -59,7 +59,7 @@ $(document).ready(function()
 		$(this).parent().parent().before(html);
 		//$(this).parent("tr").before(html);		
 	});	
-		//Ìí¼Ó¶¥²ã·ÖÀà
+		//æ·»åŠ é¡¶å±‚åˆ†ç±»
 	$(".AddCatPid").click(function()
 	{
 		 var html="<tr>";
@@ -78,15 +78,15 @@ $(document).ready(function()
 		html+="</tr>";
 		$(this).parent().parent().before(html);		
 	});	
-	//É¾³ı
+	//åˆ é™¤
 	$("#ButDel").click(function(){
 		var num=$(":checkbox[checked][id!='chk']").length;
 		if (num==0)
 		{
-			alert("ÄúÃ»ÓĞÑ¡ÔñÏîÄ¿");
+			alert("æ‚¨æ²¡æœ‰é€‰æ‹©é¡¹ç›®");
 			return false;
 		}
-		if (confirm("ÄãÑ¡ÔñÁË"+num+"¸ö·ÖÀà£¬É¾³ı¶¥¼¶·ÖÀàÍ¬Ê±½«É¾³ıÆä×ÓÀà£¬È·¶¨¶¼ÒªÉ¾³ıÂğ£¿"))
+		if (confirm("ä½ é€‰æ‹©äº†"+num+"ä¸ªåˆ†ç±»ï¼Œåˆ é™¤é¡¶çº§åˆ†ç±»åŒæ—¶å°†åˆ é™¤å…¶å­ç±»ï¼Œç¡®å®šéƒ½è¦åˆ é™¤å—ï¼Ÿ"))
 		{
 			$("form[name=form1]").attr("action","?act=del_major_category");
 			$("form[name=form1]").submit()
@@ -124,8 +124,8 @@ $(document).ready(function()
 			  		html+="<input name=\"category_order[]\" type=\"text\"  value=\""+val[2]+"\" class=\"input_text_50\"/>";
 			  		html+="</td>";
 			  		html+="<td class=\"admin_list\">";	  	  
-			 		html+="<a href=\"?act=edit_major_category&id="+val[0]+"\">ĞŞ¸Ä</a>&nbsp;&nbsp;&nbsp;&nbsp;";	
-					html+="<a onclick=\"return confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')\" href=\"?act=del_major_category&id="+val[0]+"&{#$urltoken#}\">É¾³ı</a>";
+			 		html+="<a href=\"?act=edit_major_category&id="+val[0]+"\">ä¿®æ”¹</a>&nbsp;&nbsp;&nbsp;&nbsp;";	
+					html+="<a onclick=\"return confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')\" href=\"?act=del_major_category&id="+val[0]+"&{#$urltoken#}\">åˆ é™¤</a>";
 					html+="</td>";	
 					html+="</tr>";
 					i++;
@@ -134,7 +134,7 @@ $(document).ready(function()
 					html+="<td  class=\"admin_list\"  style=\"padding-left:53px; color:#FF6600\">";
 					html+="<img src=\"images/cat_left2.gif\" border=\"0\" align=\"absmiddle\" />";
 					html+="<img src=\"images/act_add.gif\" border=\"0\" align=\"absmiddle\"  style=\" margin:5px;\" />";
-					html+="<span class=\"AddCat\" id=\""+pid+"\" style=\" text-decoration:underline; cursor:pointer\">Ôö¼Ó·ÖÀà</span>";
+					html+="<span class=\"AddCat\" id=\""+pid+"\" style=\" text-decoration:underline; cursor:pointer\">å¢åŠ åˆ†ç±»</span>";
 					html+="</td>";
 					html+="<td align=\"center\"  class=\"admin_list\">&nbsp;";					   
 					html+="</td>";
@@ -142,7 +142,7 @@ $(document).ready(function()
 					html+="</td>	";					
 					html+="</tr>";
 					$("#tr_"+pid).after(html);
-					//Èç¹û´óÀàÒÑ¾­Ñ¡Ôñ£¬ÔòĞ¡ÀàÒ²¹´Ñ¡
+					//å¦‚æœå¤§ç±»å·²ç»é€‰æ‹©ï¼Œåˆ™å°ç±»ä¹Ÿå‹¾é€‰
 					if ($(".Bcheck[id="+pid+"]").attr("checked"))
 					{
 					$(".Scheck_"+pid).attr("checked","true");
@@ -160,10 +160,10 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-ÕıÊ½ÔËÓªºóÉ¾³ı·ÖÀà»áµ¼ÖÂÓë´Ë·ÖÀà¹ØÁªµÄĞÅÏ¢Àà±ğ¶ªÊ§£¬ĞŞ¸Ä²»»áÊÜÓ°Ïì¡£<br />
-É¾³ı¶¥¼¶¼¶·ÖÀà½«»á×Ô¶¯É¾³ı´Ë·ÖÀàÏÂµÄ×Ó·ÖÀà¡£<br />
+æ­£å¼è¿è¥ååˆ é™¤åˆ†ç±»ä¼šå¯¼è‡´ä¸æ­¤åˆ†ç±»å…³è”çš„ä¿¡æ¯ç±»åˆ«ä¸¢å¤±ï¼Œä¿®æ”¹ä¸ä¼šå—å½±å“ã€‚<br />
+åˆ é™¤é¡¶çº§çº§åˆ†ç±»å°†ä¼šè‡ªåŠ¨åˆ é™¤æ­¤åˆ†ç±»ä¸‹çš„å­åˆ†ç±»ã€‚<br />
 </p>
 </div>
   <form id="form1" name="form1" method="post" action="?act=major_all_save">
@@ -171,12 +171,12 @@ $(document).ready(function()
   <table width="100%" border="0" cellpadding="0" cellspacing="0" id="list" class="link_lan"  >
     <tr>
       <td height="26" class="admin_list_tit admin_list_first" >
-      <label id="categorychkAll"><input type="checkbox" name=" " title="È«Ñ¡/·´Ñ¡" id="chk" />
-      Ö°Î»·ÖÀà</label>
+      <label id="categorychkAll"><input type="checkbox" name=" " title="å…¨é€‰/åé€‰" id="chk" />
+      èŒä½åˆ†ç±»</label>
 	 
 	  </td>
-	  <td width="160"   align="center"  class="admin_list_tit">ÅÅĞò</td>
-      <td width="260"   align="center" class="admin_list_tit">²Ù×÷</td>
+	  <td width="160"   align="center"  class="admin_list_tit">æ’åº</td>
+      <td width="260"   align="center" class="admin_list_tit">æ“ä½œ</td>
     </tr>
 	  {#foreach from=$district item=list#}
      <tr id="tr_{#$list.id#}">
@@ -189,7 +189,7 @@ $(document).ready(function()
 	   <input name="category_order[]" type="text"  value="{#$list.category_order#}" class="input_text_50"/>
 	  </td>
       <td class="admin_list">
-	  <a href="?act=add_category_major&parentid={#$list.id#}">´ËÀàÏÂ¼Ó×ÓÀà</a>
+	  <a href="?act=add_category_major&parentid={#$list.id#}">æ­¤ç±»ä¸‹åŠ å­ç±»</a>
 			 </td>
     </tr>
       {#/foreach#}
@@ -197,9 +197,9 @@ $(document).ready(function()
 	<table width="100%" border="0" cellspacing="10"  class="admin_list_btm">
 <tr>
         <td>
-		<input name="ButSave" type="submit" class="admin_submit" id="ButSave" value="±£´æ·ÖÀà"/>
-        <input name="ButADD" type="button" class="admin_submit" id="ButADD" value="Ìí¼Ó·ÖÀà"  onclick="window.location='?act=add_category_major'"/>
-		<input name="ButDel" type="button" class="admin_submit" id="ButDel"  value="É¾³ıËùÑ¡" />
+		<input name="ButSave" type="submit" class="admin_submit" id="ButSave" value="ä¿å­˜åˆ†ç±»"/>
+        <input name="ButADD" type="button" class="admin_submit" id="ButADD" value="æ·»åŠ åˆ†ç±»"  onclick="window.location='?act=add_category_major'"/>
+		<input name="ButDel" type="button" class="admin_submit" id="ButDel"  value="åˆ é™¤æ‰€é€‰" />
 		</td>
         <td width="305" align="right">
 	  

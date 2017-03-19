@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¹ÜÀíÔ±ÕË»§
+ * 74cms ç®¡ç†å‘˜è´¦æˆ·
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -14,7 +14,7 @@ require_once(dirname(__FILE__).'/../data/config.php');
 require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_users_fun.php');
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'list';
-$smarty->assign('pageheader',"ÍøÕ¾¹ÜÀíÔ±");
+$smarty->assign('pageheader',"ç½‘ç«™ç®¡ç†å‘˜");
 if($act == 'list')
 {
 	get_token();
@@ -38,39 +38,39 @@ if($act == 'list')
 elseif($act == 'add_users')
 {
 	get_token();
-	if ($_SESSION['admin_purview']<>"all")adminmsg("È¨ÏŞ²»×ã£¡",1);
+	if ($_SESSION['admin_purview']<>"all")adminmsg("æƒé™ä¸è¶³ï¼",1);
 	$smarty->assign('navlabel','add');	
 	$smarty->display('users/admin_users_add.htm');
 }
 elseif($act == 'add_users_save')
 {
 	check_token();
-	if ($_SESSION['admin_purview']<>"all")adminmsg("È¨ÏŞ²»×ã£¡",1);
-	$setsqlarr['admin_name']=trim($_POST['admin_name'])?trim($_POST['admin_name']):adminmsg('ÇëÌîĞ´ÓÃ»§Ãû£¡',1);
-	if (get_admin_one($setsqlarr['admin_name']))adminmsg('ÓÃ»§ÃûÒÑ¾­´æÔÚ£¡',1);
-	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):adminmsg('ÇëÌîĞ´email£¡',1);
-	if (!preg_match("/^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/",$setsqlarr['email']))adminmsg('email¸ñÊ½´íÎó£¡',1);
-	$password=trim($_POST['password'])?trim($_POST['password']):adminmsg('ÇëÌîĞ´ÃÜÂë',1);
-	if (strlen($password)<6)adminmsg('ÃÜÂë²»ÄÜÉÙÓÚ6Î»£¡',1);
-	if ($password<>trim($_POST['password1']))adminmsg('Á½´ÎÊäÈëµÄÃÜÂë²»ÏàÍ¬£¡',1);
-	$setsqlarr['rank']=trim($_POST['rank'])?trim($_POST['rank']):adminmsg('ÇëÌîĞ´Í·ÏÎ',1);
+	if ($_SESSION['admin_purview']<>"all")adminmsg("æƒé™ä¸è¶³ï¼",1);
+	$setsqlarr['admin_name']=trim($_POST['admin_name'])?trim($_POST['admin_name']):adminmsg('è¯·å¡«å†™ç”¨æˆ·åï¼',1);
+	if (get_admin_one($setsqlarr['admin_name']))adminmsg('ç”¨æˆ·åå·²ç»å­˜åœ¨ï¼',1);
+	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):adminmsg('è¯·å¡«å†™emailï¼',1);
+	if (!preg_match("/^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/",$setsqlarr['email']))adminmsg('emailæ ¼å¼é”™è¯¯ï¼',1);
+	$password=trim($_POST['password'])?trim($_POST['password']):adminmsg('è¯·å¡«å†™å¯†ç ',1);
+	if (strlen($password)<6)adminmsg('å¯†ç ä¸èƒ½å°‘äº6ä½ï¼',1);
+	if ($password<>trim($_POST['password1']))adminmsg('ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ç›¸åŒï¼',1);
+	$setsqlarr['rank']=trim($_POST['rank'])?trim($_POST['rank']):adminmsg('è¯·å¡«å†™å¤´è¡”',1);
 	$setsqlarr['add_time']=time();
 	$setsqlarr['last_login_time']=0;
-	$setsqlarr['last_login_ip']="´ÓÎ´";
+	$setsqlarr['last_login_ip']="ä»æœª";
 	$setsqlarr['pwd_hash']=randstr();
 	$setsqlarr['pwd']=md5($password.$setsqlarr['pwd_hash'].$QS_pwdhash);	
 	
 	if ($db->inserttable(table('admin'),$setsqlarr))
 	{
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨Ìí¼ÓÓÃ»§ÃûÎª".$setsqlarr['admin_name']."µÄ¹ÜÀíÔ±", $_SESSION['admin_name'],3);
-		$link[0]['text'] = "·µ»ØÁĞ±í";
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°æ·»åŠ ç”¨æˆ·åä¸º".$setsqlarr['admin_name']."çš„ç®¡ç†å‘˜", $_SESSION['admin_name'],3);
+		$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 		$link[0]['href'] ="?act=";
-		adminmsg('Ìí¼Ó³É¹¦£¡',2,$link);
+		adminmsg('æ·»åŠ æˆåŠŸï¼',2,$link);
 	}
 	else
 	{
-	adminmsg('Ìí¼ÓÊ§°Ü',1);
+	adminmsg('æ·»åŠ å¤±è´¥',1);
 	}	
 }
 elseif($act == 'del_users')
@@ -79,11 +79,11 @@ elseif($act == 'del_users')
 	$id=$_REQUEST['id'];
 	if ($num=del_users($id,$_SESSION['admin_purview']))
 	{
-	adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı".$num."ĞĞ",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ıÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'edit_users')
@@ -99,7 +99,7 @@ elseif($act == 'edit_users')
 	}
 	else
 	{
-	adminmsg("²ÎÊı´íÎó£¡",1);
+	adminmsg("å‚æ•°é”™è¯¯ï¼",1);
 	}
 }
 elseif($act == 'edit_users_pwd')
@@ -115,32 +115,32 @@ elseif($act == 'edit_users_pwd')
 	}
 	else
 	{
-	adminmsg("²ÎÊı´íÎó£¡",1);
+	adminmsg("å‚æ•°é”™è¯¯ï¼",1);
 	}
 }
-elseif($act == 'edit_users_info_save' && $_SESSION['admin_purview']=="all")//³¬¼¶¹ÜÀíÔ±²Å¿ÉÒÔĞŞ¸Ä×ÊÁÏ
+elseif($act == 'edit_users_info_save' && $_SESSION['admin_purview']=="all")//è¶…çº§ç®¡ç†å‘˜æ‰å¯ä»¥ä¿®æ”¹èµ„æ–™
 {
 	check_token();
 		$id=intval($_POST['id']);
 		$account=get_admin_account($id);
-		if ($account['purview']=="all")adminmsg("²ÎÊı´íÎó£¡",1);//³¬¼¶¹ÜÀíÔ±µÄ×ÊÁÏ²»ÄÜĞŞ¸Ä
-		$setsqlarr['admin_name']=trim($_POST['admin_name'])?trim($_POST['admin_name']):adminmsg('ÓÃ»§Ãû²»ÄÜÎª¿Õ£¡',1);
-		$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):adminmsg('email²»ÄÜÎª¿Õ£¡',1);
-		$setsqlarr['rank']=trim($_POST['rank'])?trim($_POST['rank']):adminmsg('Í·ÏÎ²»ÄÜÎª¿Õ£¡',1);
+		if ($account['purview']=="all")adminmsg("å‚æ•°é”™è¯¯ï¼",1);//è¶…çº§ç®¡ç†å‘˜çš„èµ„æ–™ä¸èƒ½ä¿®æ”¹
+		$setsqlarr['admin_name']=trim($_POST['admin_name'])?trim($_POST['admin_name']):adminmsg('ç”¨æˆ·åä¸èƒ½ä¸ºç©ºï¼',1);
+		$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):adminmsg('emailä¸èƒ½ä¸ºç©ºï¼',1);
+		$setsqlarr['rank']=trim($_POST['rank'])?trim($_POST['rank']):adminmsg('å¤´è¡”ä¸èƒ½ä¸ºç©ºï¼',1);
 			$sql = "select * from ".table('admin')." where admin_name = '".$$setsqlarr['admin_name']."' AND admin_id<>".$id;
 			$ck_info=$db->getone($sql);
-			if (!empty($ck_info))adminmsg("ÓÃ»§ÃûÓĞÖØ¸´£¡",1);
+			if (!empty($ck_info))adminmsg("ç”¨æˆ·åæœ‰é‡å¤ï¼",1);
 		if ($db->updatetable(table('admin'),$setsqlarr,' admin_id='.$id))
 		{
-			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("³¬¼¶¹ÜÀíÔ±³É¹¦ĞŞ¸Ä×ÊÁÏ", $_SESSION['admin_name'],3);
-			adminmsg("ĞŞ¸Ä³É¹¦£¡",2);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("è¶…çº§ç®¡ç†å‘˜æˆåŠŸä¿®æ”¹èµ„æ–™", $_SESSION['admin_name'],3);
+			adminmsg("ä¿®æ”¹æˆåŠŸï¼",2);
 		 }
 		 else
 		{
-			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("³¬¼¶¹ÜÀíÔ±ĞŞ¸Ä×ÊÁÏÊ§°Ü", $_SESSION['admin_name'],3);
-			adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("è¶…çº§ç®¡ç†å‘˜ä¿®æ”¹èµ„æ–™å¤±è´¥", $_SESSION['admin_name'],3);
+			adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
 		 }
 }
 elseif($act == 'edit_users_pwd_save')
@@ -150,46 +150,46 @@ elseif($act == 'edit_users_pwd_save')
 	$account=get_admin_account($id);
 	if ($account['purview']=="all" && $_SESSION['admin_purview']=="all")
 	{
-				if (strlen($_POST['password'])<6)adminmsg("ÃÜÂë³¤¶È²»ÄÜĞ¡ÓÚ6Î»£¡",1);
-				if ($_POST['password']<>$_POST['password1'])adminmsg("Á½´ÎÊäÈëµÄÃÜÂë²»Í¬£¡",1);		
+				if (strlen($_POST['password'])<6)adminmsg("å¯†ç é•¿åº¦ä¸èƒ½å°äº6ä½ï¼",1);
+				if ($_POST['password']<>$_POST['password1'])adminmsg("ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸åŒï¼",1);		
 				$md5_pwd=md5($_POST['old_password'].$account['pwd_hash'].$QS_pwdhash);
-				if ($md5_pwd<>$account['pwd'])adminmsg("¾ÉÃÜÂëÊäÈë´íÎó£¡",1);
+				if ($md5_pwd<>$account['pwd'])adminmsg("æ—§å¯†ç è¾“å…¥é”™è¯¯ï¼",1);
 				$setsqlarr['pwd']=md5($_POST['password'].$account['pwd_hash'].$QS_pwdhash);
 				if ($db->updatetable(table('admin'),$setsqlarr,' admin_id='.$id))
 				{
-					//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-					write_log("³¬¼¶¹ÜÀíÔ±³É¹¦ĞŞ¸ÄÃÜÂë", $_SESSION['admin_name'],3);
-					adminmsg("ĞŞ¸Ä³É¹¦£¡",2);
+					//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+					write_log("è¶…çº§ç®¡ç†å‘˜æˆåŠŸä¿®æ”¹å¯†ç ", $_SESSION['admin_name'],3);
+					adminmsg("ä¿®æ”¹æˆåŠŸï¼",2);
 				 }
 				 else
 				 {
-				 	//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-					write_log("³¬¼¶¹ÜÀíÔ±ĞŞ¸ÄÃÜÂëÊ§°Ü", $_SESSION['admin_name'],3);
-					adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
+				 	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+					write_log("è¶…çº§ç®¡ç†å‘˜ä¿®æ”¹å¯†ç å¤±è´¥", $_SESSION['admin_name'],3);
+					adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
 				 }
 	}
 	else
 	{
 				if ($_SESSION['admin_purview']=="all")
 				{
-					if (strlen($_POST['password'])<6)adminmsg("ÃÜÂë³¤¶È²»ÄÜĞ¡ÓÚ6Î»£¡",1);
+					if (strlen($_POST['password'])<6)adminmsg("å¯†ç é•¿åº¦ä¸èƒ½å°äº6ä½ï¼",1);
 					$setsqlarr['pwd']=md5($_POST['password'].$account['pwd_hash'].$QS_pwdhash);
-					//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-					write_log("¹ÜÀíÔ±ĞŞ¸ÄÃÜÂë", $_SESSION['admin_name'],3);
-					if (!$db->updatetable(table('admin'),$setsqlarr,' admin_id='.$id)) adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
+					//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+					write_log("ç®¡ç†å‘˜ä¿®æ”¹å¯†ç ", $_SESSION['admin_name'],3);
+					if (!$db->updatetable(table('admin'),$setsqlarr,' admin_id='.$id)) adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
 				}
 				else
 				{
-					if (strlen($_POST['password'])<6)adminmsg("ÃÜÂë³¤¶È²»ÄÜĞ¡ÓÚ6Î»£¡",1);
-					if ($_POST['password']<>$_POST['password1'])adminmsg("Á½´ÎÊäÈëµÄÃÜÂë²»Í¬£¡",1);		
+					if (strlen($_POST['password'])<6)adminmsg("å¯†ç é•¿åº¦ä¸èƒ½å°äº6ä½ï¼",1);
+					if ($_POST['password']<>$_POST['password1'])adminmsg("ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸åŒï¼",1);		
 					$md5_pwd=md5($_POST['old_password'].$account['pwd_hash'].$QS_pwdhash);
-					if ($md5_pwd<>$account['pwd'])adminmsg("¾ÉÃÜÂëÊäÈë´íÎó£¡",1);
+					if ($md5_pwd<>$account['pwd'])adminmsg("æ—§å¯†ç è¾“å…¥é”™è¯¯ï¼",1);
 					$setsqlarr['pwd']=md5($_POST['password'].$account['pwd_hash'].$QS_pwdhash);
-					//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-					write_log("¹ÜÀíÔ±ĞŞ¸ÄÃÜÂë", $_SESSION['admin_name'],3);
-					if (!$db->updatetable(table('admin'),$setsqlarr,' admin_id='.$id)) adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0);
+					//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+					write_log("ç®¡ç†å‘˜ä¿®æ”¹å¯†ç ", $_SESSION['admin_name'],3);
+					if (!$db->updatetable(table('admin'),$setsqlarr,' admin_id='.$id)) adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
 				}
-				 adminmsg("ĞŞ¸Ä³É¹¦£¡",2);
+				 adminmsg("ä¿®æ”¹æˆåŠŸï¼",2);
 	}
 }
 elseif($act == 'loglist')
@@ -197,7 +197,7 @@ elseif($act == 'loglist')
 	get_token();
 	$adminname=trim($_GET['adminname']);
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
-	if ($_SESSION['admin_purview']=="all")//³¬¼¶¹ÜÀíÔ±¿ÉÒÔ²é¿´ÈÎºÎ¹ÜÀíÔ±µÄÈÕÖ¾
+	if ($_SESSION['admin_purview']=="all")//è¶…çº§ç®¡ç†å‘˜å¯ä»¥æŸ¥çœ‹ä»»ä½•ç®¡ç†å‘˜çš„æ—¥å¿—
 	{
 		$wheresql="";
 	}
@@ -215,12 +215,12 @@ elseif($act == 'loglist')
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$list = get_admin_log($offset,$perpage,$wheresql);
-	$smarty->assign('pageheader',"µÇÂ¼ÈÕÖ¾");
-	$smarty->assign('list',$list);//ÁĞ±í
-	$smarty->assign('perpage',$perpage);//Ã¿Ò³ÏÔÊ¾ÊıÁ¿POST
+	$smarty->assign('pageheader',"ç™»å½•æ—¥å¿—");
+	$smarty->assign('list',$list);//åˆ—è¡¨
+	$smarty->assign('perpage',$perpage);//æ¯é¡µæ˜¾ç¤ºæ•°é‡POST
 		if ($total_val>$perpage)
 		{
-		$smarty->assign('page',$page->show(3));//·ÖÒ³·û
+		$smarty->assign('page',$page->show(3));//åˆ†é¡µç¬¦
 		}
 	$smarty->display('users/admin_users_log.htm');
 }
@@ -238,20 +238,20 @@ elseif($act == 'users_set_save')
 {
 	check_token();
 	$id=intval($_POST['id']);
-	if ($_SESSION['admin_purview']<>"all")adminmsg("È¨ÏŞ²»×ã£¡",1);
+	if ($_SESSION['admin_purview']<>"all")adminmsg("æƒé™ä¸è¶³ï¼",1);
 	$setsqlarr['purview']=$_POST['purview'];
 	$setsqlarr['purview']=implode(',',$setsqlarr['purview']);
 		if ($db->updatetable(table('admin'),$setsqlarr,' admin_id='.$id))
 		{
-			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("³É¹¦ÉèÖÃ¹ÜÀíÔ±È¨ÏŞ", $_SESSION['admin_name'],3);
-			adminmsg("ÉèÖÃ³É¹¦£¡",2);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("æˆåŠŸè®¾ç½®ç®¡ç†å‘˜æƒé™", $_SESSION['admin_name'],3);
+			adminmsg("è®¾ç½®æˆåŠŸï¼",2);
 		 }
 		 else
 		{
-			//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-			write_log("ÉèÖÃ¹ÜÀíÔ±È¨ÏŞÊ§°Ü", $_SESSION['admin_name'],3);
-			adminmsg("ÉèÖÃÊ§°Ü£¡",0);
+			//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+			write_log("è®¾ç½®ç®¡ç†å‘˜æƒé™å¤±è´¥", $_SESSION['admin_name'],3);
+			adminmsg("è®¾ç½®å¤±è´¥ï¼",0);
 		 }
 }
 ?>

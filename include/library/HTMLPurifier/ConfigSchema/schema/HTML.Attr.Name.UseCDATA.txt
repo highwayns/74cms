@@ -1,4 +1,4 @@
-HTML.Attr.Name.UseCDATA
+﻿HTML.Attr.Name.UseCDATA
 TYPE: bool
 DEFAULT: false
 VERSION: 4.0.0

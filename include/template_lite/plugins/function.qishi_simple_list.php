@@ -1,6 +1,6 @@
-<?php
+ï»¿<?php
 /*********************************************
-*Î¢ÕĞÆ¸
+*å¾®æ‹›è˜
 ********************************************/
 function tpl_function_qishi_simple_list($params, &$smarty)
 {
@@ -11,46 +11,46 @@ foreach($arrset as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "ÁĞ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
-	case "ÏÔÊ¾ÊıÄ¿":
+	case "æ˜¾ç¤ºæ•°ç›®":
 		$aset['row'] = $a[1];
 		break;
-	case "¿ªÊ¼Î»ÖÃ":
+	case "å¼€å§‹ä½ç½®":
 		$aset['start'] = $a[1];
 		break;
-	case "Ö°Î»Ãû³¤¶È":
+	case "èŒä½åé•¿åº¦":
 		$aset['jobslen'] = $a[1];
 		break;
-	case "ÆóÒµÃû³¤¶È":
+	case "ä¼ä¸šåé•¿åº¦":
 		$aset['companynamelen'] = $a[1];
 		break;
-	case "ÃèÊö³¤¶È":
+	case "æè¿°é•¿åº¦":
 		$aset['brieflylen'] = $a[1];
 		break;
-	case "Ìî²¹×Ö·û":
+	case "å¡«è¡¥å­—ç¬¦":
 		$aset['dot'] = $a[1];
 		break;	 
-	case "¹Ø¼ü×Ö":
+	case "å…³é”®å­—":
 		$aset['key'] = $a[1];
 		break;
-	case "¹Ø¼ü×ÖÀàĞÍ":
+	case "å…³é”®å­—ç±»å‹":
 		$aset['keytype'] = $a[1];
 		break;
-	case "ÈÕÆÚ·¶Î§":
+	case "æ—¥æœŸèŒƒå›´":
 		$aset['settr'] = $a[1];
 		break;
-	case "ÅÅĞò":
+	case "æ’åº":
 		$aset['displayorder'] = $a[1];
 		break;
-	case "·ÖÒ³ÏÔÊ¾":
+	case "åˆ†é¡µæ˜¾ç¤º":
 		$aset['page'] = $a[1];
 		break;
-	case "Ò³Ãæ":
+	case "é¡µé¢":
 		$aset['simpleshow'] = $a[1];
 		break;	
-	case "µØÇø·ÖÀà":
+	case "åœ°åŒºåˆ†ç±»":
 		$aset['citycategory'] = $a[1];
 		break;	
 	}
@@ -69,7 +69,7 @@ if (isset($aset['displayorder']))
 	if (strpos($aset['displayorder'],'>'))
 	{
 		$arr=explode('>',$aset['displayorder']);
-		// ÅÅĞò×Ö¶Î
+		// æ’åºå­—æ®µ
 		if($arr[0]=='refreshtime'){
 			$arr[0]="refreshtime";
 		}
@@ -85,7 +85,7 @@ if (isset($aset['displayorder']))
 		{
 			$arr[0]="";
 		}
-		// ÅÅĞò·½Ê½
+		// æ’åºæ–¹å¼
 		if($arr[1]=='desc'){
 			$arr[1]="desc";
 		}

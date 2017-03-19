@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/reg.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type="text/javascript" language="javascript"></script>
@@ -17,19 +17,19 @@ $(document).ready(function()
 	$(function() {
 		$('.four-step-bar .step:last').css({'margin-right':0});
 	});
-	// Á¢¼´½øÈëÓÊÏä
+	// ç«‹å³è¿›å…¥é‚®ç®±
 	gotoemail("#goto_email");
-	//ÑéÖ¤ÂëËæ»ú
+	//éªŒè¯ç éšæœº
 	$("#getcode").live('click',function(){
 		$(this).attr('src','{#$QISHI.site_dir#}include/imagecaptcha.php?t='+Math.random()+'');
 	});
-	// ÏÂÀ­²Ù×÷
+	// ä¸‹æ‹‰æ“ä½œ
 	menuDown("#getpass_menu","","","#menu1","348px");
 	function menuDown(menuId,input,input_cn,menuList,width){
 		$(menuId).click(function(){
 			$(menuList).css("width",width);
 			$(menuList).slideDown('fast');
-			//Éú³É±³¾°
+			//ç”ŸæˆèƒŒæ™¯
 			$(menuId).before("<div class=\"menu_bg_layer\"></div>");
 			$(".menu_bg_layer").height($(document).height());
 			$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute", left: "0", top: "0" , "z-index": "0", "background-color": "#ffffff"});
@@ -61,7 +61,7 @@ $(document).ready(function()
 			}
 		});
 	}
-	// ±íµ¥ÑéÖ¤
+	// è¡¨å•éªŒè¯
 	$("#Form1").validate({
 		success: function(lable) {
 				lable.text(" ").addClass("ver-success");
@@ -80,8 +80,8 @@ $(document).ready(function()
 		messages: {
 			mobile_vcode:
 			{
-				required: "ÇëÊäÈëÊÖ»úÑéÖ¤Âë",
-				remote: jQuery.format("ÑéÖ¤Âë´íÎó")	
+				required: "è¯·è¾“å…¥æ‰‹æœºéªŒè¯ç ",
+				remote: jQuery.format("éªŒè¯ç é”™è¯¯")	
 			}
 		},
 		errorPlacement: function(error, element) {
@@ -93,7 +93,7 @@ $(document).ready(function()
 		error.appendTo(element.parent().next());
 		}
 	});
-	// µã»÷·¢ËÍµ½ÊÖ»úÑéÖ¤Âë
+	// ç‚¹å‡»å‘é€åˆ°æ‰‹æœºéªŒè¯ç 
 	$("#sms_send").click(function() {
 		$.post('{#$QISHI.site_dir#}plus/ajax_user.php', {'act':'reg_send_sms','mobile':"{#$usinfo.mobile#}",'sms_type':'getpass'}, function(data) {
 			if($.trim(data)=='success')
@@ -107,7 +107,7 @@ $(document).ready(function()
 						SysSecond --;
 						$("#sms_send").hide();
 						$("#send_ok").show();
-						$("#send_ok").html( SysSecond +" ÃëºóÖØĞÂ·¢ËÍ");
+						$("#send_ok").html( SysSecond +" ç§’åé‡æ–°å‘é€");
 					} 
 					else 
 					{
@@ -125,7 +125,7 @@ $(document).ready(function()
 			}
 		});
 	});
-	// ÕÒ»ØÃÜÂë Ìá½»±íµ¥ºÍ·¢ËÍÓÊ¼ş
+	// æ‰¾å›å¯†ç  æäº¤è¡¨å•å’Œå‘é€é‚®ä»¶
 	$("#getpass_submit").click(function() {
 		var getpass_type=$("#getpass_type").val();
 		if(getpass_type==1)
@@ -137,7 +137,7 @@ $(document).ready(function()
 			var int_postcaptcha=$("#postcaptcha").val();
 			if(int_postcaptcha=="")
 			{
-				$("#postcaptcha_err").html('ÇëÊäÈëÑéÖ¤Âë').css('display', 'inline').removeClass('ver-success');
+				$("#postcaptcha_err").html('è¯·è¾“å…¥éªŒè¯ç ').css('display', 'inline').removeClass('ver-success');
 				$("#postcaptcha").focus();
 			}
 			else
@@ -160,7 +160,7 @@ $(document).ready(function()
 					}
 					else
 					{
-						$("#postcaptcha_err").html('ÑéÖ¤Âë´íÎó').css('display', 'inline').removeClass('ver-success');
+						$("#postcaptcha_err").html('éªŒè¯ç é”™è¯¯').css('display', 'inline').removeClass('ver-success');
 						$("#postcaptcha").focus();
 					}
 				});
@@ -172,40 +172,40 @@ $(document).ready(function()
 </script>
 </head>
 <body class="login_body">
-	<!-- Í·²¿ -->
+	<!-- å¤´éƒ¨ -->
 	{#include file="user/reg_header.htm"#}
 	<!-- main -->
 	<div class="container">
 		<div class="step_wrap">
 			<div class="four-step-bar clearfix">
-				<div class="step tstep1 f-left"><i class="step-icon">1</i>ÌîĞ´ÕË»§Ãû</div>
-				<div class="step tstep2 f-left active"><i class="step-icon">2</i>ÑéÖ¤Éí·İ</div>
-				<div class="step tstep3 f-left"><i class="step-icon">3</i>ÉèÖÃĞÂÃÜÂë</div>
-				<div class="step tstep4 f-left"><i class="step-icon">4</i>ÕÒ»Ø³É¹¦</div>
+				<div class="step tstep1 f-left"><i class="step-icon">1</i>å¡«å†™è´¦æˆ·å</div>
+				<div class="step tstep2 f-left active"><i class="step-icon">2</i>éªŒè¯èº«ä»½</div>
+				<div class="step tstep3 f-left"><i class="step-icon">3</i>è®¾ç½®æ–°å¯†ç </div>
+				<div class="step tstep4 f-left"><i class="step-icon">4</i>æ‰¾å›æˆåŠŸ</div>
 			</div>
 		</div>
-		<!-- ÊÖ»úÈÏÖ¤ -->
+		<!-- æ‰‹æœºè®¤è¯ -->
 		<div class="reg-main clearfix">
 			<form action="?act=get_pass_step3" id="Form1" method="post">
 			<div class="reg-left-form f-left">
 				<div class="reg-form-item clearfix">
-					<div class="reg-form-type long f-left">ÑéÖ¤·½Ê½</div>
+					<div class="reg-form-type long f-left">éªŒè¯æ–¹å¼</div>
 					<div class="reg-form-content f-left" >
 						<div class="drop-control width350">
 							<div class="drop-box" id="getpass_menu">
 								{#if $usinfo.mobile && $usinfo.mobile_audit==1#}
-								<span class="drop-txt">ÒÑÈÏÖ¤ÊÖ»ú</span>
+								<span class="drop-txt">å·²è®¤è¯æ‰‹æœº</span>
 								{#else#}
-								<span class="drop-txt">ÒÑÈÏÖ¤ÓÊÏä</span>
+								<span class="drop-txt">å·²è®¤è¯é‚®ç®±</span>
 								{#/if#}
 								<i class="drop-icon"></i>
 							</div>
 							<ul class="drop-list" id="menu1">
 								{#if $usinfo.mobile && $usinfo.mobile_audit==1#}
-								<li id="1" title="ÒÑÈÏÖ¤ÊÖ»ú"><a href="javascript:void(0);">ÒÑÈÏÖ¤ÊÖ»ú</a></li>
+								<li id="1" title="å·²è®¤è¯æ‰‹æœº"><a href="javascript:void(0);">å·²è®¤è¯æ‰‹æœº</a></li>
 								{#/if#}
 								{#if $usinfo.email#}
-								<li id="2" title="ÒÑÈÏÖ¤ÓÊÏä"><a href="javascript:void(0);" >ÒÑÈÏÖ¤ÓÊÏä</a></li>
+								<li id="2" title="å·²è®¤è¯é‚®ç®±"><a href="javascript:void(0);" >å·²è®¤è¯é‚®ç®±</a></li>
 								{#/if#}
 							</ul>
 						</div>
@@ -213,39 +213,39 @@ $(document).ready(function()
 				</div>
 				
 				<div class="reg-form-item clearfix">
-					<div class="reg-form-type long f-left">ÓÃ»§Ãû</div>
+					<div class="reg-form-type long f-left">ç”¨æˆ·å</div>
 					<div class="reg-form-content f-left"><span class="password-text">{#$usinfo.username#}</span></div>
 				</div>
 				
 				<div id="getpass_mobile" {#if $usinfo.mobile=='' || $usinfo.mobile_audit!=1#}style="display: none;"{#/if#}>
 					<div class="reg-form-item clearfix">
-						<div class="reg-form-type long f-left">ÒÑÈÏÖ¤ÊÖ»ú</div>
+						<div class="reg-form-type long f-left">å·²è®¤è¯æ‰‹æœº</div>
 						<div class="reg-form-content f-left"><span class="password-text">{#$usinfo.mobile_#}</span></div>
 					</div>
 					<div class="reg-form-item clearfix">
-						<div class="reg-form-type long f-left">ÑéÖ¤Âë</div>
+						<div class="reg-form-type long f-left">éªŒè¯ç </div>
 						<div class="reg-form-content f-left">
-							<input type="text" name="mobile_vcode" id="mobile_vcode" class="text text-lg span180" placeholder="ÑéÖ¤Âë" />
+							<input type="text" name="mobile_vcode" id="mobile_vcode" class="text text-lg span180" placeholder="éªŒè¯ç " />
 						</div>
 						<div class="reg-form-other f-left verification">
-							<a href="javascript:void(0)" class="btn short-text-btn" id="sms_send">Ãâ·Ñ»ñÈ¡¼¤»î¶ÌĞÅ</a>
-						<a id="send_ok" class="btn short-text-btn" style="display: none;"><span id="remainTime"></span>ÃëºóÖØĞÂ·¢ËÍ</a>
+							<a href="javascript:void(0)" class="btn short-text-btn" id="sms_send">å…è´¹è·å–æ¿€æ´»çŸ­ä¿¡</a>
+						<a id="send_ok" class="btn short-text-btn" style="display: none;"><span id="remainTime"></span>ç§’åé‡æ–°å‘é€</a>
 						</div>
 					</div>	
 				</div>
 				<div id="getpass_email" {#if $usinfo.email && $usinfo.email_audit==1 && ($usinfo.mobile=='' || $usinfo.mobile_audit!=1)#}{#else#}style="display: none;"{#/if#}>
 					<div class="reg-form-item clearfix">
-						<div class="reg-form-type long f-left">ÒÑÈÏÖ¤ÓÊÏä</div>
+						<div class="reg-form-type long f-left">å·²è®¤è¯é‚®ç®±</div>
 						<div class="reg-form-content f-left"><span class="password-text">{#$usinfo.email_#}</span></div>
 					</div>
 					<div class="reg-form-item clearfix">
-						<div class="reg-form-type long f-left">ÑéÖ¤Âë</div>
+						<div class="reg-form-type long f-left">éªŒè¯ç </div>
 						<div class="reg-form-content f-left">
-							<input type="text" name="postcaptcha" id="postcaptcha" class="text text-lg span180" placeholder="ÑéÖ¤Âë" />
+							<input type="text" name="postcaptcha" id="postcaptcha" class="text text-lg span180" placeholder="éªŒè¯ç " />
 						</div>
 						<div class="reg-form-other f-left verification">
 							<label class='error' id="postcaptcha_err"></label>
-							<div class="ver-box f-left"><img src="{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}" id="getcode" align="absmiddle"  style="cursor:pointer;width: 148px;height: 38px;" title="¿´²»ÇëÑéÖ¤Âë£¿µã»÷¸ü»»Ò»ÕÅ"  border="0" /></div>
+							<div class="ver-box f-left"><img src="{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}" id="getcode" align="absmiddle"  style="cursor:pointer;width: 148px;height: 38px;" title="çœ‹ä¸è¯·éªŒè¯ç ï¼Ÿç‚¹å‡»æ›´æ¢ä¸€å¼ "  border="0" /></div>
 						</div>
 					</div>
 				</div>
@@ -260,17 +260,17 @@ $(document).ready(function()
 						{#/if#}
 						<input type="hidden" name="uid" value="{#$usinfo.uid#}" />
 						<input type="hidden" name="token" value="{#$token#}"/>
-						<input type="button" value="Ìá½»" class="btn btn-lg blue span1" id="getpass_submit"/>
+						<input type="button" value="æäº¤" class="btn btn-lg blue span1" id="getpass_submit"/>
 					</div>
 				</div>
 			</div>
 			</form>
 			<div class="common-status" id="sucess_email" style="padding-top: 0;display: none;">
 				<div class="status-main">
-					<span><img src="{#$QISHI.site_template#}images/icon-success.png" alt="³É¹¦" /></span>ÓÊ¼ş·¢ËÍ³É¹¦
+					<span><img src="{#$QISHI.site_template#}images/icon-success.png" alt="æˆåŠŸ" /></span>é‚®ä»¶å‘é€æˆåŠŸ
 				</div>
-				<p>ÎÒÃÇÒÑ¾­ÏòÄúµÄÓÊÏä{#$usinfo.email#}·¢ËÍÁËÒ»·â¼¤»îÓÊ¼ş£¬Çëµã»÷ÓÊ¼şÖĞµÄÁ´½ÓÍê³ÉĞŞ¸Ä£¡</p>
-				<div class="status-btn"><a href="#" target="_blank" id="goto_email" email="{#$usinfo.email#}" class="btn btn-lg blue span2">Á¢¼´½øÈëÓÊÏä</a></div>
+				<p>æˆ‘ä»¬å·²ç»å‘æ‚¨çš„é‚®ç®±{#$usinfo.email#}å‘é€äº†ä¸€å°æ¿€æ´»é‚®ä»¶ï¼Œè¯·ç‚¹å‡»é‚®ä»¶ä¸­çš„é“¾æ¥å®Œæˆä¿®æ”¹ï¼</p>
+				<div class="status-btn"><a href="#" target="_blank" id="goto_email" email="{#$usinfo.email#}" class="btn btn-lg blue span2">ç«‹å³è¿›å…¥é‚®ç®±</a></div>
 			</div>
 		</div>
 	</div>

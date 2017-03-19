@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ÆóÒµ»áÔ±ÖÐÐÄ
+ * 74cms ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -14,27 +14,27 @@ require_once(dirname(__FILE__) . '/company_common.php');
 $smarty->assign('leftmenu',"index");
 if ($act=='report')
 {
-	$smarty->assign('title','¾Ù±¨ÐÅÏ¢ - ÆóÒµ»áÔ±ÖÐÐÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','ä¸¾æŠ¥ä¿¡æ¯ - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('url',$_SERVER['HTTP_REFERER']);
 	$smarty->display('member_company/company_report.htm');
 }
-//±£´æ¾Ù±¨ÐÅÏ¢
+//ä¿å­˜ä¸¾æŠ¥ä¿¡æ¯
 elseif ($act=='report_save')
 {
-	$link[0]['text'] = "·µ»ØÉÏÒ»Ò³£¡";
+	$link[0]['text'] = "è¿”å›žä¸Šä¸€é¡µï¼";
 	$link[0]['href'] = $_POST['url'];
 	if (check_resume_report($_SESSION['uid'],$_POST['resume_id']))
 	{
-	showmsg("ÄúÒÑ¾­¾Ù±¨¹ý´Ë¼òÀú£¡",1,$link);
+	showmsg("æ‚¨å·²ç»ä¸¾æŠ¥è¿‡æ­¤ç®€åŽ†ï¼",1,$link);
 	}
-	$setsqlarr['content']=trim($_POST['content'])?trim($_POST['content']):showmsg('ÇëÊäÈëÏà¹ØÃèÊö£¡',1);
-	$setsqlarr['resume_id']=$_POST['resume_id']?intval($_POST['resume_id']):showmsg('Ã»ÓÐ¼òÀúID',1);
-	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):showmsg('Ã»ÓÐ¼òÀú',1);
+	$setsqlarr['content']=trim($_POST['content'])?trim($_POST['content']):showmsg('è¯·è¾“å…¥ç›¸å…³æè¿°ï¼',1);
+	$setsqlarr['resume_id']=$_POST['resume_id']?intval($_POST['resume_id']):showmsg('æ²¡æœ‰ç®€åŽ†ID',1);
+	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):showmsg('æ²¡æœ‰ç®€åŽ†',1);
 	$setsqlarr['resume_addtime']=intval($_POST['resume_addtime']);
 	$setsqlarr['uid']=$_SESSION['uid'];
 	$setsqlarr['addtime']=time();
-	write_memberslog($_SESSION['uid'],2,7003,$_SESSION['username'],"¾Ù±¨¼òÀú({$_POST['resume_id']})");
-	!$db->inserttable(table('report_resume'),$setsqlarr)?showmsg("¾Ù±¨Ê§°Ü£¡",0,$link):showmsg("¾Ù±¨³É¹¦£¬¹ÜÀíÔ±»áÈÏÕæ´¦Àí£¡",2,$link);
+	write_memberslog($_SESSION['uid'],2,7003,$_SESSION['username'],"ä¸¾æŠ¥ç®€åŽ†({$_POST['resume_id']})");
+	!$db->inserttable(table('report_resume'),$setsqlarr)?showmsg("ä¸¾æŠ¥å¤±è´¥ï¼",0,$link):showmsg("ä¸¾æŠ¥æˆåŠŸï¼Œç®¡ç†å‘˜ä¼šè®¤çœŸå¤„ç†ï¼",2,$link);
 }
 unset($smarty);
 ?>

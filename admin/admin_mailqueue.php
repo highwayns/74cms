@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÓÊ¼þÈº·¢
+ * 74cms é‚®ä»¶ç¾¤å‘
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_mailqueue_fun.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'list';
 check_permissions($_SESSION['admin_purview'],"mailqueue");
-$smarty->assign('pageheader',"ÓÊ¼þÈº·¢");
+$smarty->assign('pageheader',"é‚®ä»¶ç¾¤å‘");
 if($act == 'list')
 {
 	get_token();
@@ -44,11 +44,11 @@ if($act == 'list')
 elseif($act == 'mailqueue_add')
 {
 	get_token();
-	$label[]=array('{sitename}','ÍøÕ¾Ãû³Æ');
-	$label[]=array('{sitedomain}','ÍøÕ¾ÓòÃû');
-	$label[]=array('{sitelogo}','ÍøÕ¾LOGO');
-	$label[]=array('{address}','ÁªÏµµØÖ·');
-	$label[]=array('{tel}','ÁªÏµµç»°');
+	$label[]=array('{sitename}','ç½‘ç«™åç§°');
+	$label[]=array('{sitedomain}','ç½‘ç«™åŸŸå');
+	$label[]=array('{sitelogo}','ç½‘ç«™LOGO');
+	$label[]=array('{address}','è”ç³»åœ°å€');
+	$label[]=array('{tel}','è”ç³»ç”µè¯');
 	$smarty->assign('label',$label);
 	$smarty->assign('navlabel','add');
 	$smarty->display('mailqueue/admin_mailqueue_add.htm');
@@ -56,31 +56,31 @@ elseif($act == 'mailqueue_add')
 elseif($act == 'mailqueue_add_save')
 {
 	check_token();
-	$setsqlarr['m_mail']=trim($_POST['m_mail'])?trim($_POST['m_mail']):adminmsg('ÓÊ¼þµØÖ·±ØÐëÌîÐ´£¡',1);
+	$setsqlarr['m_mail']=trim($_POST['m_mail'])?trim($_POST['m_mail']):adminmsg('é‚®ä»¶åœ°å€å¿…é¡»å¡«å†™ï¼',1);
 	if (!preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$setsqlarr['m_mail'])) 
     {
-	adminmsg('ÓÊÏä¸ñÊ½´íÎó£¡',1);
+	adminmsg('é‚®ç®±æ ¼å¼é”™è¯¯ï¼',1);
     }
 	$uid=$db->getone('select uid from '.table('members')." where email= '{$setsqlarr['m_mail']}' limit 1 ");
-	$setsqlarr['m_subject']=trim($_POST['m_subject'])?replace_label($_POST['m_subject']):adminmsg('ÓÊ¼þ±êÌâ±ØÐëÌîÐ´£¡',1);	
-	$setsqlarr['m_body']=trim($_POST['m_body'])?replace_label($_POST['m_body']):adminmsg('ÓÊ¼þÄÚÈÝ±ØÐëÌîÐ´£¡',1);
+	$setsqlarr['m_subject']=trim($_POST['m_subject'])?replace_label($_POST['m_subject']):adminmsg('é‚®ä»¶æ ‡é¢˜å¿…é¡»å¡«å†™ï¼',1);	
+	$setsqlarr['m_body']=trim($_POST['m_body'])?replace_label($_POST['m_body']):adminmsg('é‚®ä»¶å†…å®¹å¿…é¡»å¡«å†™ï¼',1);
 	$setsqlarr['m_addtime']=time();
 	$setsqlarr['m_uid']=$uid['uid'];
-	$link[0]['text'] = "¼ÌÐøÌí¼Ó";
+	$link[0]['text'] = "ç»§ç»­æ·»åŠ ";
 	$link[0]['href'] = '?act=mailqueue_add';
-	$link[1]['text'] = "·µ»ØÁÐ±í";
+	$link[1]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[1]['href'] = '?';
-	write_log("Ìí¼ÓÓÊ¼þ¶ÓÁÐ ", $_SESSION['admin_name'],3);
-	!$db->inserttable(table('mailqueue'),$setsqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+	write_log("æ·»åŠ é‚®ä»¶é˜Ÿåˆ— ", $_SESSION['admin_name'],3);
+	!$db->inserttable(table('mailqueue'),$setsqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'mailqueue_edit')
 {
 	get_token();
-	$label[]=array('{sitename}','ÍøÕ¾Ãû³Æ');
-	$label[]=array('{sitedomain}','ÍøÕ¾ÓòÃû');
-	$label[]=array('{sitelogo}','ÍøÕ¾LOGO');
-	$label[]=array('{address}','ÁªÏµµØÖ·');
-	$label[]=array('{tel}','ÁªÏµµç»°');
+	$label[]=array('{sitename}','ç½‘ç«™åç§°');
+	$label[]=array('{sitedomain}','ç½‘ç«™åŸŸå');
+	$label[]=array('{sitelogo}','ç½‘ç«™LOGO');
+	$label[]=array('{address}','è”ç³»åœ°å€');
+	$label[]=array('{tel}','è”ç³»ç”µè¯');
 	$smarty->assign('label',$label);
 	$smarty->assign('show',get_mailqueue_one($_GET['id']));
 	$smarty->display('mailqueue/admin_mailqueue_edit.htm');
@@ -88,28 +88,28 @@ elseif($act == 'mailqueue_edit')
 elseif($act == 'mailqueue_edit_save')
 {
 	check_token();
-	$setsqlarr['m_mail']=trim($_POST['m_mail'])?trim($_POST['m_mail']):adminmsg('ÓÊ¼þµØÖ·±ØÐëÌîÐ´£¡',1);
+	$setsqlarr['m_mail']=trim($_POST['m_mail'])?trim($_POST['m_mail']):adminmsg('é‚®ä»¶åœ°å€å¿…é¡»å¡«å†™ï¼',1);
 	if (!preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/", $setsqlarr['m_mail'])) 
     {
-	adminmsg('ÓÊÏä¸ñÊ½´íÎó£¡',1);
+	adminmsg('é‚®ç®±æ ¼å¼é”™è¯¯ï¼',1);
     }
-	$setsqlarr['m_subject']=trim($_POST['m_subject'])?replace_label($_POST['m_subject']):adminmsg('ÓÊ¼þ±êÌâ±ØÐëÌîÐ´£¡',1);
-	$setsqlarr['m_body']=trim($_POST['m_body'])?replace_label($_POST['m_body']):adminmsg('ÓÊ¼þÄÚÈÝ±ØÐëÌîÐ´£¡',1);
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	$setsqlarr['m_subject']=trim($_POST['m_subject'])?replace_label($_POST['m_subject']):adminmsg('é‚®ä»¶æ ‡é¢˜å¿…é¡»å¡«å†™ï¼',1);
+	$setsqlarr['m_body']=trim($_POST['m_body'])?replace_label($_POST['m_body']):adminmsg('é‚®ä»¶å†…å®¹å¿…é¡»å¡«å†™ï¼',1);
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] = '?';
 	$wheresql=" m_id='".intval($_POST['id'])."' ";
-	!$db->updatetable(table('mailqueue'),$setsqlarr,$wheresql)?adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0):adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);
+	!$db->updatetable(table('mailqueue'),$setsqlarr,$wheresql)?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'mailqueue_batchadd')
 {
 	get_token();
-	$label[]=array('{sitename}','ÍøÕ¾Ãû³Æ');
-	$label[]=array('{sitedomain}','ÍøÕ¾ÓòÃû');
-	$label[]=array('{username}','»áÔ±ÓÃ»§Ãû');
-	$label[]=array('{lastlogintime}','×îºóµÇÂ¼Ê±¼ä');
-	$label2[]=array('{sitelogo}','ÍøÕ¾LOGO');
-	$label2[]=array('{address}','ÁªÏµµØÖ·');
-	$label2[]=array('{tel}','ÁªÏµµç»°');
+	$label[]=array('{sitename}','ç½‘ç«™åç§°');
+	$label[]=array('{sitedomain}','ç½‘ç«™åŸŸå');
+	$label[]=array('{username}','ä¼šå‘˜ç”¨æˆ·å');
+	$label[]=array('{lastlogintime}','æœ€åŽç™»å½•æ—¶é—´');
+	$label2[]=array('{sitelogo}','ç½‘ç«™LOGO');
+	$label2[]=array('{address}','è”ç³»åœ°å€');
+	$label2[]=array('{tel}','è”ç³»ç”µè¯');
 	$smarty->assign('label',$label);
 	$smarty->assign('label2',array_merge($label,$label2));
 	$smarty->assign('navlabel','batchadd');
@@ -130,8 +130,8 @@ elseif($act == 'mailqueue_batchadd_save')
 		$data=strtotime("-{$selsettr} day");
 		$wheresql.=" last_login_time<".$data;
 	}
-	$m_subject=!empty($_POST['m_subject'])?trim($_POST['m_subject']):adminmsg('ÓÊ¼þ±êÌâ±ØÐëÌîÐ´£¡',1);	
-	$m_body=!empty($_POST['m_body'])?trim($_POST['m_body']):adminmsg('ÓÊ¼þÄÚÈÝ±ØÐëÌîÐ´£¡',1);
+	$m_subject=!empty($_POST['m_subject'])?trim($_POST['m_subject']):adminmsg('é‚®ä»¶æ ‡é¢˜å¿…é¡»å¡«å†™ï¼',1);	
+	$m_body=!empty($_POST['m_body'])?trim($_POST['m_body']):adminmsg('é‚®ä»¶å†…å®¹å¿…é¡»å¡«å†™ï¼',1);
 	$result = $db->query("SELECT * FROM ".table('members').$wheresql);
 	$n=0;
 	while($user = $db->fetch_array($result))
@@ -141,13 +141,13 @@ elseif($act == 'mailqueue_batchadd_save')
 		$setsqlarr['m_subject']=replace_label($m_subject,$user);	
 		$setsqlarr['m_body']=replace_label($m_body,$user);
 		$setsqlarr['m_addtime']=time();
-		!$db->inserttable(table('mailqueue'),$setsqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):'';
+		!$db->inserttable(table('mailqueue'),$setsqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):'';
 		$n++;
 	}
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] = '?';
-	write_log("ÅúÁ¿Ìí¼ÓÓÊ¼þ¶ÓÁÐ£¬¹²Ìí¼Ó {$n} ÐÐ ", $_SESSION['admin_name'],3);
-	adminmsg("Ìí¼Ó³É¹¦£¬¹²Ìí¼Ó {$n} ÐÐ ",2,$link);
+	write_log("æ‰¹é‡æ·»åŠ é‚®ä»¶é˜Ÿåˆ—ï¼Œå…±æ·»åŠ  {$n} è¡Œ ", $_SESSION['admin_name'],3);
+	adminmsg("æ·»åŠ æˆåŠŸï¼Œå…±æ·»åŠ  {$n} è¡Œ ",2,$link);
 }
 elseif($act == 'totalsend')
 {
@@ -164,7 +164,7 @@ elseif($act == 'totalsend')
 		$id=$_POST['id'];
 		if (empty($id))
 		{
-		adminmsg("ÇëÑ¡ÔñÏîÄ¿£¡",1);
+		adminmsg("è¯·é€‰æ‹©é¡¹ç›®ï¼",1);
 		}
 		if(!is_array($id)) $id=array($id);
 		$sqlin=implode(",",$id);
@@ -177,7 +177,7 @@ elseif($act == 'totalsend')
 			}
 			if (empty($idarr))
 			{
-				adminmsg("Ã»ÓÐ¿É·¢ËÍµÄÓÊ¼þ",1);
+				adminmsg("æ²¡æœ‰å¯å‘é€çš„é‚®ä»¶",1);
 			}
 			@file_put_contents(QISHI_ROOT_PATH."temp/send.txt", serialize($idarr));
 			header("Location:?act=send&senderr={$senderr}&intervaltime={$intervaltime}");
@@ -193,7 +193,7 @@ elseif($act == 'totalsend')
 			}
 			if (empty($idarr))
 			{
-				adminmsg("Ã»ÓÐ¿É·¢ËÍµÄÓÊ¼þ",1);
+				adminmsg("æ²¡æœ‰å¯å‘é€çš„é‚®ä»¶",1);
 			}
 			@file_put_contents(QISHI_ROOT_PATH."temp/send.txt", serialize($idarr));
 			header("Location:?act=send&senderr={$senderr}&intervaltime={$intervaltime}");
@@ -207,7 +207,7 @@ elseif($act == 'totalsend')
 			}
 			if (empty($idarr))
 			{
-				adminmsg("Ã»ÓÐ¿É·¢ËÍµÄÓÊ¼þ",1);
+				adminmsg("æ²¡æœ‰å¯å‘é€çš„é‚®ä»¶",1);
 			}
 			@file_put_contents(QISHI_ROOT_PATH."temp/send.txt", serialize($idarr));
 			header("Location:?act=send&senderr={$senderr}&intervaltime={$intervaltime}");
@@ -223,9 +223,9 @@ elseif($act == 'send')
 	$totalid=count($idarr);
 	if (empty($idarr))
 	{
-		$link[0]['text'] = "·µ»ØÓÊ¼þÁÐ¶Ó";
+		$link[0]['text'] = "è¿”å›žé‚®ä»¶åˆ—é˜Ÿ";
 		$link[0]['href'] = '?act=list';
-		adminmsg("ÈÎÎñÖ´ÐÐÍê±Ï!",2,$link);
+		adminmsg("ä»»åŠ¡æ‰§è¡Œå®Œæ¯•!",2,$link);
 	}
 	else
 	{
@@ -238,23 +238,23 @@ elseif($act == 'send')
 				$db->query("update  ".table('mailqueue')." SET m_type='2'  WHERE m_id = '".intval($m_id)."'  LIMIT 1");
 				if ($senderr=="2")
 				{
-				$link[0]['text'] = "·µ»ØÓÊ¼þÁÐ¶Ó";
+				$link[0]['text'] = "è¿”å›žé‚®ä»¶åˆ—é˜Ÿ";
 				$link[0]['href'] = '?act=list';
-				adminmsg('ÓÊ¼þ·¢ËÍ·¢Éú´íÎó£¡'.$senderr,0,$link);
+				adminmsg('é‚®ä»¶å‘é€å‘ç”Ÿé”™è¯¯ï¼'.$senderr,0,$link);
 				}
 				else
 				{
-				$link[0]['text'] = "·¢ËÍÏÂÒ»·â";
+				$link[0]['text'] = "å‘é€ä¸‹ä¸€å°";
 				$link[0]['href'] = "?act=send&senderr={$senderr}&intervaltime={$intervaltime}";
-				adminmsg("·¢Éú´íÎó£¬×¼±¸·¢ËÍÏÂÒ»·â£¬Ê£ÓàÈÎÎñ×ÜÊý£º".($totalid-1),0,$link,true,$intervaltime);
+				adminmsg("å‘ç”Ÿé”™è¯¯ï¼Œå‡†å¤‡å‘é€ä¸‹ä¸€å°ï¼Œå‰©ä½™ä»»åŠ¡æ€»æ•°ï¼š".($totalid-1),0,$link,true,$intervaltime);
 				}			
 			}
 			else
 			{
 			$db->query("update  ".table('mailqueue')." SET m_type='1',m_sendtime='".time()."'  WHERE m_id = '".intval($m_id)."'  LIMIT 1");
-			$link[0]['text'] = "·¢ËÍÏÂÒ»·â";
+			$link[0]['text'] = "å‘é€ä¸‹ä¸€å°";
 			$link[0]['href'] = "?act=send&senderr={$senderr}&intervaltime={$intervaltime}";
-			adminmsg("·¢ËÍ³É¹¦£¬×¼±¸·¢ËÍÏÂÒ»·â£¬Ê£ÓàÈÎÎñ×ÜÊý£º".($totalid-1),2,$link,true,$intervaltime);
+			adminmsg("å‘é€æˆåŠŸï¼Œå‡†å¤‡å‘é€ä¸‹ä¸€å°ï¼Œå‰©ä½™ä»»åŠ¡æ€»æ•°ï¼š".($totalid-1),2,$link,true,$intervaltime);
 			}
 	}	
 }
@@ -267,35 +267,35 @@ elseif($act == 'del')
 		$id=$_POST['id'];
 		if (empty($id))
 		{
-		adminmsg("ÇëÑ¡ÔñÏîÄ¿£¡",1);
+		adminmsg("è¯·é€‰æ‹©é¡¹ç›®ï¼",1);
 		}
 		if(!is_array($id)) $id=array($id);
 		$sqlin=implode(",",$id);
 		if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
 		{
 		$db->query("Delete from ".table('mailqueue')." WHERE m_id IN ({$sqlin}) ");
-		adminmsg("É¾³ý³É¹¦",2);
+		adminmsg("åˆ é™¤æˆåŠŸ",2);
 		}
 	}
 	elseif ($deltype===2)
 	{
 		$db->query("Delete from ".table('mailqueue')." WHERE m_type=0 ");
-		adminmsg("É¾³ý³É¹¦ $delnum",2);
+		adminmsg("åˆ é™¤æˆåŠŸ $delnum",2);
 	}
 	elseif ($deltype===3)
 	{
 		$db->query("Delete from ".table('mailqueue')." WHERE m_type=1 ");
-		adminmsg("É¾³ý³É¹¦",2);
+		adminmsg("åˆ é™¤æˆåŠŸ",2);
 	}
 	elseif ($deltype===4)
 	{
 		$db->query("Delete from ".table('mailqueue')." WHERE m_type=2 ");
-		adminmsg("É¾³ý³É¹¦",2);
+		adminmsg("åˆ é™¤æˆåŠŸ",2);
 	}
 	elseif ($deltype===5)
 	{
 		$db->query("Delete from ".table('mailqueue')."");
-		adminmsg("É¾³ý³É¹¦",2);
+		adminmsg("åˆ é™¤æˆåŠŸ",2);
 	}
 }
 ?>

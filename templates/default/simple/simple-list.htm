@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
-{#qishi_pageinfo set="ÁĞ±íÃû:page,µ÷ÓÃ:QS_simplelist"#}
+{#qishi_pageinfo set="åˆ—è¡¨å:page,è°ƒç”¨:QS_simplelist"#}
 <title>{#$page.title#}</title>
 <meta name="description" content="{#$page.description#}">
 <meta name="keywords" content="{#$page.keywords#}">
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <meta name="renderer" content="webkit"> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,52 +24,52 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	allaround("{#$QISHI.site_dir#}");
-	// ¹¤×÷µØÇøÌî³äÊı¾İ
+	// å·¥ä½œåœ°åŒºå¡«å……æ•°æ®
 	city_filldata("#city_list", QS_city_parent, QS_city, "#result-list-city", "#aui_outer_city", "#city_result_show", "#citycategory", "{#$QISHI.site_dir#}");
 	
-	//É¾³ıĞÅÏ¢
+	//åˆ é™¤ä¿¡æ¯
 	$(".delsimple").click(function(){
 		var url="{#$QISHI.site_dir#}plus/ajax_simple.php?act=delsimple&id="+$(this).attr("id");
 		var myDialog = dialog();
-		myDialog.title('É¾³ıĞÅÏ¢');
+		myDialog.title('åˆ é™¤ä¿¡æ¯');
         myDialog.width('500');
-        myDialog.content("¼ÓÔØÖĞ..");
+        myDialog.content("åŠ è½½ä¸­..");
         myDialog.showModal();
 	    $.get(url, function(data){
 	        myDialog.content(data);
 	    });
 	});
-	//Ë¢ĞÂĞÅÏ¢
+	//åˆ·æ–°ä¿¡æ¯
 	$(".refreshsimple").click(function(){
 		var url="{#$QISHI.site_dir#}plus/ajax_simple.php?act=refreshsimple&id="+$(this).attr("id");
 		var myDialog = dialog();
-		myDialog.title('Ë¢ĞÂĞÅÏ¢');
+		myDialog.title('åˆ·æ–°ä¿¡æ¯');
         myDialog.width('500');
-        myDialog.content("¼ÓÔØÖĞ...");
+        myDialog.content("åŠ è½½ä¸­...");
         myDialog.showModal();
 	    $.get(url, function(data){
 	        myDialog.content(data);
 	    });
 	});	
-	//±à¼­ĞÅÏ¢
+	//ç¼–è¾‘ä¿¡æ¯
 	$(".editsimple").click(function(){
 		var url="{#$QISHI.site_dir#}plus/ajax_simple.php?act=editsimple&id="+$(this).attr("id");
 		var myDialog = dialog();
-		myDialog.title('±à¼­ĞÅÏ¢');
+		myDialog.title('ç¼–è¾‘ä¿¡æ¯');
         myDialog.width('600');
-        myDialog.content("¼ÓÔØÖĞ...");
+        myDialog.content("åŠ è½½ä¸­...");
         myDialog.showModal();
 	    $.get(url, function(data){
 	        myDialog.content(data);
 	    });
 	});	
-	//·¢²¼Î¢ÕĞÆ¸
+	//å‘å¸ƒå¾®æ‹›è˜
 	$("#add").click(function(){
 		var url="{#$QISHI.site_dir#}plus/ajax_simple.php?act=add";
 		var myDialog = dialog();
-		myDialog.title('·¢²¼Î¢ÕĞÆ¸');
+		myDialog.title('å‘å¸ƒå¾®æ‹›è˜');
         myDialog.width('600');
-        myDialog.content("¼ÓÔØÖĞ...");
+        myDialog.content("åŠ è½½ä¸­...");
         myDialog.showModal();
 	    $.get(url, function(data){
 	        myDialog.content(data);
@@ -106,15 +106,15 @@ $(function(){
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
-	<!-- µ±Ç°Î»ÖÃ -->
+	<!-- å½“å‰ä½ç½® -->
 	<div class="page_location link_bk">
-		µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a>>Î¢ÉÌÈ¦
+		å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a>>å¾®å•†åœˆ
 	</div>
-	<!-- Ö÷ÌåÄÚÈİ -->
+	<!-- ä¸»ä½“å†…å®¹ -->
 	<div class="rec_banner" style="background:url({#$QISHI.site_template#}images/simple.jpg) no-repeat top center #248ee6
 "></div>
 	<div class="container link_bk">
-		{#qishi_ad set="ÏÔÊ¾ÊıÄ¿:1,µ÷ÓÃÃû³Æ:QS_simpleallimg,ÁĞ±íÃû:ad"#}
+		{#qishi_ad set="æ˜¾ç¤ºæ•°ç›®:1,è°ƒç”¨åç§°:QS_simpleallimg,åˆ—è¡¨å:ad"#}
 		{#if $ad#}
 		<div class="ad_1000" style="margin-bottom:15px;">
 			{#foreach from=$ad  item=list#}
@@ -124,7 +124,7 @@ $(function(){
 		{#/if#}
 		<div class="wei_left">
 			<div class="wei_tit">
-				<a href="{#"QS_simplelist"|qishi_url#}" class="select">Î¢ÕĞÆ¸</a>
+				<a href="{#"QS_simplelist"|qishi_url#}" class="select">å¾®æ‹›è˜</a>
 				<div class="clear"></div>
 			</div>
 			<div class="sreach jobmain" id="simple_form_search">
@@ -133,8 +133,8 @@ $(function(){
 						<div class="filter-item f-left">
 							<div class="choose-item">
 								<div class="choose-control">
-									<span class="cc-default" id="city_result_show">Ñ¡ÔñµØÇøÀà±ğ</span><i class="choose-icon"></i>
-									<!-- ¹¤×÷µØÇøµ¯³ö¿ò -->
+									<span class="cc-default" id="city_result_show">é€‰æ‹©åœ°åŒºç±»åˆ«</span><i class="choose-icon"></i>
+									<!-- å·¥ä½œåœ°åŒºå¼¹å‡ºæ¡† -->
 									<div class="aui_outer" id="aui_outer_city">
 										<table class="aui_border">
 											<tbody>
@@ -147,11 +147,11 @@ $(function(){
 																		<td class="aui_main">
 																			<div class="aui_content" style="padding: 0px;">
 																				<div class="LocalDataMultiC" style="width:623px;">
-																					<div class="selector-header"><span class="selector-title">µØÇøÑ¡Ôñ</span><div></div><span id="ct-selector-save" class="selector-save">È·¶¨</span><span class="selector-close">X</span><div class="clear"></div></div>
+																					<div class="selector-header"><span class="selector-title">åœ°åŒºé€‰æ‹©</span><div></div><span id="ct-selector-save" class="selector-save">ç¡®å®š</span><span class="selector-close">X</span><div class="clear"></div></div>
 
-																					<div class="data-row-head"><div class="data-row"><div class="data-row-side data-row-side-c">×î¶àÑ¡ <strong class="text-warning">3</strong> Ïî&nbsp;&nbsp;ÒÑÑ¡ <strong id="arscity" class="text-warning">0</strong> Ïî</div><div id="result-list-city" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
+																					<div class="data-row-head"><div class="data-row"><div class="data-row-side data-row-side-c">æœ€å¤šé€‰ <strong class="text-warning">3</strong> é¡¹&nbsp;&nbsp;å·²é€‰ <strong id="arscity" class="text-warning">0</strong> é¡¹</div><div id="result-list-city" class="result-list data-row-side-ra"></div></div><div class="cla"></div></div>
 																					<div class="data-row-list data-row-main" id="city_list">
-																						<!-- ÁĞ±íÄÚÈİ -->
+																						<!-- åˆ—è¡¨å†…å®¹ -->
 																					</div>
 																				</div>
 																			</div>
@@ -165,20 +165,20 @@ $(function(){
 											</tbody>
 										</table>
 									</div>
-									<!-- ¹¤×÷µØÇøµ¯³ö¿ò End-->
+									<!-- å·¥ä½œåœ°åŒºå¼¹å‡ºæ¡† End-->
 								</div>
 							</div>
 						</div>
 						<div class="keybox">
-					 		<input type="text" id="searckey" name="key" value="{#$smarty.get.key|default:ÇëÊäÈë¹Ø¼ü×Ö#}" />
+					 		<input type="text" id="searckey" name="key" value="{#$smarty.get.key|default:è¯·è¾“å…¥å…³é”®å­—#}" />
 					 	</div>
-						<input type="button" id="searcnbtn" detype="QS_simplelist" value="ËÑË÷" class="but100lan simpleso" />
+						<input type="button" id="searcnbtn" detype="QS_simplelist" value="æœç´¢" class="but100lan simpleso" />
 					</div>
 				</div>
 				<input id="citycategory" type="hidden" value="{#$smarty.get.citycategory#}" name="citycategory">
 			</div>
 			
-			{#qishi_simple_list  set="·ÖÒ³ÏÔÊ¾:1,ÁĞ±íÃû:simplelist,ÏÔÊ¾ÊıÄ¿:15,Ìî²¹×Ö·û:...,Ö°Î»Ãû³¤¶È:12,ÆóÒµÃû³¤¶È:18,ÃèÊö³¤¶È:40,¹Ø¼ü×Ö:GET[key],¹Ø¼ü×ÖÀàĞÍ:GET[keytype],µØÇø·ÖÀà:GET[citycategory],ÅÅĞò:refreshtime>desc"#}
+			{#qishi_simple_list  set="åˆ†é¡µæ˜¾ç¤º:1,åˆ—è¡¨å:simplelist,æ˜¾ç¤ºæ•°ç›®:15,å¡«è¡¥å­—ç¬¦:...,èŒä½åé•¿åº¦:12,ä¼ä¸šåé•¿åº¦:18,æè¿°é•¿åº¦:40,å…³é”®å­—:GET[key],å…³é”®å­—ç±»å‹:GET[keytype],åœ°åŒºåˆ†ç±»:GET[citycategory],æ’åº:refreshtime>desc"#}
 			{#if $simplelist#}
 			<div class="wei_list">
 				<ul>
@@ -188,15 +188,15 @@ $(function(){
 					<div class="date">{#$li.refreshtime_cn#}</div>
 					<ul>
 						<li>{#$li.comname#}</li>
-						<li>ÕĞÆ¸ÈËÊı£º{#if $li.amount=="0"#}Èô¸É{#else#}{#$li.amount#}{#/if#}ÈË</li>
-						<li>ÓĞĞ§ÆÚ½ØÖÁ£º{#if $li.deadline=="0"#}³¤ÆÚÓĞĞ§{#else#}{#$li.deadline|date_format:"%Y-%m-%d"#}{#/if#}</li>
-						<li class="tel">ÁªÏµ·½Ê½£º<a href="javascript:void(0);" class="show_tel" id="{#$li.id#}">[µã»÷²é¿´]</a></li>
+						<li>æ‹›è˜äººæ•°ï¼š{#if $li.amount=="0"#}è‹¥å¹²{#else#}{#$li.amount#}{#/if#}äºº</li>
+						<li>æœ‰æ•ˆæœŸæˆªè‡³ï¼š{#if $li.deadline=="0"#}é•¿æœŸæœ‰æ•ˆ{#else#}{#$li.deadline|date_format:"%Y-%m-%d"#}{#/if#}</li>
+						<li class="tel">è”ç³»æ–¹å¼ï¼š<a href="javascript:void(0);" class="show_tel" id="{#$li.id#}">[ç‚¹å‡»æŸ¥çœ‹]</a></li>
 						<div class="clear"></div>
 					</ul>
 					<div class="clear"></div>
-					<p>ÒªÇó£º{#$li.detailed#}{#if $li.show_detail#}<a href="javascript:void(0);" class="show_detailed" id="{#$li.id#}">[Õ¹¿ª]</a>{#/if#}</p>
-					<div class="add">µØÖ·£º{#$li.district_cn#}{#if $li.district_cn#}-{#$li.sdistrict_cn#}{#/if#}</div>
-					<div class="edit"><a href="javascript:void(0)" class="refreshsimple" id="{#$li.id#}">Ë¢ĞÂ</a>| <a href="javascript:void(0)" class="editsimple" id="{#$li.id#}">±à¼­</a> | <a href="javascript:void(0)" class="delsimple" id="{#$li.id#}">É¾³ı</a></div>
+					<p>è¦æ±‚ï¼š{#$li.detailed#}{#if $li.show_detail#}<a href="javascript:void(0);" class="show_detailed" id="{#$li.id#}">[å±•å¼€]</a>{#/if#}</p>
+					<div class="add">åœ°å€ï¼š{#$li.district_cn#}{#if $li.district_cn#}-{#$li.sdistrict_cn#}{#/if#}</div>
+					<div class="edit"><a href="javascript:void(0)" class="refreshsimple" id="{#$li.id#}">åˆ·æ–°</a>| <a href="javascript:void(0)" class="editsimple" id="{#$li.id#}">ç¼–è¾‘</a> | <a href="javascript:void(0)" class="delsimple" id="{#$li.id#}">åˆ é™¤</a></div>
 					<div class="clear"></div>
 				</li>
 				{#/foreach#}
@@ -212,25 +212,25 @@ $(function(){
 			{#else#}
 			<div class="wei_list" style="padding-top: 40px;">
 				<ul>
-					<div class="emptytip">±§Ç¸£¬Ã»ÓĞ·ûºÏ´ËÌõ¼şµÄĞÅÏ¢£¡</div>
+					<div class="emptytip">æŠ±æ­‰ï¼Œæ²¡æœ‰ç¬¦åˆæ­¤æ¡ä»¶çš„ä¿¡æ¯ï¼</div>
 				</ul>
 			</div>
 			{#/if#}
 
 		</div>
 		<div class="wei_right">
-			<input type="button" value="·¢²¼Î¢ÕĞÆ¸" class="but218cheng" id="add"/>
+			<input type="button" value="å‘å¸ƒå¾®æ‹›è˜" class="but218cheng" id="add"/>
 			<p>
-				Îª·½±ãÒ»Ğ©ÆÕ¹¤ÀàÆóÒµ(Èç·¹µê,µêÃæ,¸öÌå»§µÈ)·¢²¼ÕĞÆ¸ĞÅÏ¢£¬ÎÒÃÇÌØÔö¼ÓÁË¿ìËÙÍ¨µÀ£¬ÎŞĞè×¢²á¼´¿É·¢²¼¼ò¶ÌÕĞÆ¸ĞÅÏ¢£¡
+				ä¸ºæ–¹ä¾¿ä¸€äº›æ™®å·¥ç±»ä¼ä¸š(å¦‚é¥­åº—,åº—é¢,ä¸ªä½“æˆ·ç­‰)å‘å¸ƒæ‹›è˜ä¿¡æ¯ï¼Œæˆ‘ä»¬ç‰¹å¢åŠ äº†å¿«é€Ÿé€šé“ï¼Œæ— éœ€æ³¨å†Œå³å¯å‘å¸ƒç®€çŸ­æ‹›è˜ä¿¡æ¯ï¼
 			</p>
 			<p>
-				Èç¹ûÄú²»ÊÇÆÕ¹¤ÀàÆóÒµ£¬ÎÒÃÇ½¨ÒéÄú<a href="{#"QS_login"|qishi_url#}">¡¾×¢²á¡¿</a>³ÉÎªÆóÒµ»áÔ±£¬½öĞè¼¸ÃëÖÓÄú¾Í¿ÉÒÔÏíÊÜ¸ü¼ÓÍêÉÆµÄÍøÂçÕĞÆ¸·şÎñ¡£
+				å¦‚æœæ‚¨ä¸æ˜¯æ™®å·¥ç±»ä¼ä¸šï¼Œæˆ‘ä»¬å»ºè®®æ‚¨<a href="{#"QS_login"|qishi_url#}">ã€æ³¨å†Œã€‘</a>æˆä¸ºä¼ä¸šä¼šå‘˜ï¼Œä»…éœ€å‡ ç§’é’Ÿæ‚¨å°±å¯ä»¥äº«å—æ›´åŠ å®Œå–„çš„ç½‘ç»œæ‹›è˜æœåŠ¡ã€‚
 			</p>
 		</div>
 		<div class="clear"></div>
 	</div>
 	
-	<!-- Ö÷ÌåÄÚÈİ ½áÊø -->
+	<!-- ä¸»ä½“å†…å®¹ ç»“æŸ -->
 	{#include file="footer.htm"#}
 </body>
 </html>

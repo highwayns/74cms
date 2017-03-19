@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¾Ù±¨
+ * 74cms ä¸¾æŠ¥
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -44,7 +44,7 @@ if ($_SESSION['utype']!='1')
 		    <tr>
 				<td width="20" align="right"></td>
 				<td>
-					±ØĞëÊÇÆóÒµ»áÔ±²Å¿ÉÒÔ¾Ù±¨¼òÀúĞÅÏ¢£¡
+					å¿…é¡»æ˜¯ä¼ä¸šä¼šå‘˜æ‰å¯ä»¥ä¸¾æŠ¥ç®€å†ä¿¡æ¯ï¼
 				</td>
 		    </tr>
 		</table>');
@@ -57,14 +57,14 @@ if ($user['status']=="2")
 		    <tr>
 				<td width="20" align="right"></td>
 				<td>
-					ÄúµÄÕËºÅ´¦ÓÚÔİÍ£×´Ì¬£¬ÇëÁªÏµ¹ÜÀíÔ±ÉèÎªÕı³£ºó½øĞĞ²Ù×÷£¡
+					æ‚¨çš„è´¦å·å¤„äºæš‚åœçŠ¶æ€ï¼Œè¯·è”ç³»ç®¡ç†å‘˜è®¾ä¸ºæ­£å¸¸åè¿›è¡Œæ“ä½œï¼
 				</td>
 		    </tr>
 		</table>');
 }
 if ($act=="report")
 {		
-		$id=isset($_GET['resume_id'])?$_GET['resume_id']:exit("id ¶ªÊ§");
+		$id=isset($_GET['resume_id'])?$_GET['resume_id']:exit("id ä¸¢å¤±");
 		$resume=get_resume_basic($id);
 		if (empty($resume))
 		{
@@ -72,7 +72,7 @@ if ($act=="report")
 			    <tr>
 					<td width="20" align="right"></td>
 					<td>
-						¾Ù±¨ĞÅÏ¢Ê§°Ü£¡
+						ä¸¾æŠ¥ä¿¡æ¯å¤±è´¥ï¼
 					</td>
 			    </tr>
 			</table>');
@@ -84,7 +84,7 @@ if ($act=="report")
 			    <tr>
 					<td width="20" align="right"></td>
 					<td>
-						ÄúÒÑ¾­¾Ù±¨¹ı´Ë¼òÀú£¡
+						æ‚¨å·²ç»ä¸¾æŠ¥è¿‡æ­¤ç®€å†ï¼
 					</td>
 			    </tr>
 			</table>');
@@ -92,14 +92,14 @@ if ($act=="report")
 ?>
 <script type="text/javascript">
 $(".but80").hover(function(){$(this).addClass("but80_hover")},function(){$(this).removeClass("but80_hover")});
-//¼ÆËã½ñÌìÉêÇëÊıÁ¿
+//è®¡ç®—ä»Šå¤©ç”³è¯·æ•°é‡
 
-//ÑéÖ¤
+//éªŒè¯
 $("#ajax_report").click(function() {
 	var content=$("#content").val();
 	if (content=="")
 	{
-	alert("ÇëÊäÈëÃèÊö");
+	alert("è¯·è¾“å…¥æè¿°");
 	}
 	else
 	{
@@ -121,7 +121,7 @@ $("#ajax_report").click(function() {
 				$(".report-dialog").show();
 				$("#waiting").hide();
 				$("#app_ok").hide();
-				$("#error_msg").html("¾Ù±¨Ê§°Ü£¡"+data);
+				$("#error_msg").html("ä¸¾æŠ¥å¤±è´¥ï¼"+data);
 				$("#error").show();
 			}
 	 	 });
@@ -133,31 +133,31 @@ $("#ajax_report").click(function() {
 	<input type="hidden" id="full_name" value="<?php echo trim($_GET['full_name']);?>">
 	<input type="hidden" id="resume_addtime" value="<?php echo trim($_GET['resume_addtime']);?>">
 	<div class="report-item clearfix">
-		<div class="report-type f-left">¾Ù±¨Ô­Òò£º</div>
+		<div class="report-type f-left">ä¸¾æŠ¥åŸå› ï¼š</div>
 		<div class="report-content f-left">
-			<label><input type="radio" name="report_type"  class="radio" value="1" checked="checked"/>ĞÅÏ¢Ğé¼Ù<span>£¨ÂÒĞ´¡¢ÂÒÌîµÈÎŞÒâÒåÄÚÈİ£©</span></label>
-			<label><input type="radio" name="report_type"  class="radio" value="2" />µç»°²»Í¨<span>£¨µç»°¶à´ÎÎ´Í¨£©</span></label>
-			<label><input type="radio" name="report_type"  class="radio" value="3" />ÆäËüÔ­Òò<span>£¨ÈçÖĞ½éµÈ£©</span></label>
+			<label><input type="radio" name="report_type"  class="radio" value="1" checked="checked"/>ä¿¡æ¯è™šå‡<span>ï¼ˆä¹±å†™ã€ä¹±å¡«ç­‰æ— æ„ä¹‰å†…å®¹ï¼‰</span></label>
+			<label><input type="radio" name="report_type"  class="radio" value="2" />ç”µè¯ä¸é€š<span>ï¼ˆç”µè¯å¤šæ¬¡æœªé€šï¼‰</span></label>
+			<label><input type="radio" name="report_type"  class="radio" value="3" />å…¶å®ƒåŸå› <span>ï¼ˆå¦‚ä¸­ä»‹ç­‰ï¼‰</span></label>
 		</div>
 	</div>
 	<div class="report-item clearfix">
-		<div class="report-type f-left">Ïà¹ØÃèÊö£º</div>
+		<div class="report-type f-left">ç›¸å…³æè¿°ï¼š</div>
 		<div class="report-content f-left">
 			<textarea name="content" id="content" cols="30" rows="10"></textarea>
 		</div>
 	</div>
-	<span class="r-all-row">Ò»¾­ºËÊµ£¬ÎÒÃÇ»áÁ¢¼´... </span>
+	<span class="r-all-row">ä¸€ç»æ ¸å®ï¼Œæˆ‘ä»¬ä¼šç«‹å³... </span>
 	<div class="report-item clearfix">
 		<div class="report-type f-left">&nbsp;</div>
 		<div class="report-content f-left">
-			<p class="del-info">É¾³ıĞÅÏ¢£¬ÎªÃñ³ıº¦ </p>
-			<p class="del-info">Õ¾ÄÚĞÅÍ¨ÖªÄú </p>
+			<p class="del-info">åˆ é™¤ä¿¡æ¯ï¼Œä¸ºæ°‘é™¤å®³ </p>
+			<p class="del-info">ç«™å†…ä¿¡é€šçŸ¥æ‚¨ </p>
 		</div>
 	</div>
 	<div class="center-btn-box">
-		<input type="button" value="¾Ù±¨" class="btn-65-30blue btn-big-font " id="ajax_report"/><input type="button" value="È¡Ïû" class="btn-65-30grey btn-big-font DialogClose" />
+		<input type="button" value="ä¸¾æŠ¥" class="btn-65-30blue btn-big-font " id="ajax_report"/><input type="button" value="å–æ¶ˆ" class="btn-65-30grey btn-big-font DialogClose" />
 	</div>
-	<p class="jubao-tip" style="padding-left: 10px;">ÎÂÜ°ÌáÊ¾£ºÕÒ·İ¹¤×÷²»ÈİÒ×£¬ÇëÄúÈçÊµ¾Ù±¨Å¶£¡</p>
+	<p class="jubao-tip" style="padding-left: 10px;">æ¸©é¦¨æç¤ºï¼šæ‰¾ä»½å·¥ä½œä¸å®¹æ˜“ï¼Œè¯·æ‚¨å¦‚å®ä¸¾æŠ¥å“¦ï¼</p>
 </div>
 
 <table width="100%" border="0" cellspacing="5" cellpadding="0" id="waiting"  style="display:none">
@@ -165,14 +165,14 @@ $("#ajax_report").click(function() {
     <td align="center" height="60"><img src="<?php echo  $_CFG['site_template']?>images/30.gif"  border="0"/></td>
   </tr>
   <tr>
-    <td align="center" >ÇëÉÔºó...</td>
+    <td align="center" >è¯·ç¨å...</td>
   </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="app_ok" style="display:none">
     <tr>
 		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/big-yes.png" /></td>
 		<td>
-			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">¾Ù±¨³É¹¦£¬¹ÜÀíÔ±»áÈÏÕæ´¦Àí!</strong>
+			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">ä¸¾æŠ¥æˆåŠŸï¼Œç®¡ç†å‘˜ä¼šè®¤çœŸå¤„ç†!</strong>
 		</td>
     </tr>
 </table>
@@ -185,17 +185,17 @@ $("#ajax_report").click(function() {
 }
 elseif ($act=="app_save")
 {
-	$setsqlarr['content']=trim($_POST['content'])?trim($_POST['content']):exit("ÇëÌîĞ´Ïà¹ØÃèÊö£¡");
-	$setsqlarr['resume_id']=$_POST['resume_id']?intval($_POST['resume_id']):exit("¼òÀúid¶ªÊ§£¡");
+	$setsqlarr['content']=trim($_POST['content'])?trim($_POST['content']):exit("è¯·å¡«å†™ç›¸å…³æè¿°ï¼");
+	$setsqlarr['resume_id']=$_POST['resume_id']?intval($_POST['resume_id']):exit("ç®€å†idä¸¢å¤±ï¼");
 	$setsqlarr['resume_addtime']=intval($_POST['resume_addtime']);
 	$setsqlarr['uid']=intval($_SESSION['uid']);
 	$setsqlarr['addtime']=time();
-	$setsqlarr['report_type']=intval($_POST['report_type']); // Í¶ËßÀàĞÍ
+	$setsqlarr['report_type']=intval($_POST['report_type']); // æŠ•è¯‰ç±»å‹
 	$setsqlarr['content']=iconv("utf-8", "gbk", $setsqlarr['content']);
 	$resume=get_resume_basic($setsqlarr['resume_id']);
 	if (empty($resume))
 	{
-	exit("¼òÀú¶ªÊ§");
+	exit("ç®€å†ä¸¢å¤±");
 	}
 	else
 	{
@@ -207,11 +207,11 @@ elseif ($act=="app_save")
 		{
 			if($resume['sex']==1)
 			{
-				$setsqlarr['title']=cut_str($resume['fullname'],1,0,"ÏÈÉú");
+				$setsqlarr['title']=cut_str($resume['fullname'],1,0,"å…ˆç”Ÿ");
 			}
 			elseif($resume['sex'] == 2)
 			{
-				$setsqlarr['title']=cut_str($resume['fullname'],1,0,"Å®Ê¿");
+				$setsqlarr['title']=cut_str($resume['fullname'],1,0,"å¥³å£«");
 			}
 		}
 		else

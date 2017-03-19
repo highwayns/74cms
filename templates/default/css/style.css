@@ -1,13 +1,13 @@
-/********************内容样式***********************/
+﻿/********************鍐呭鏍峰紡***********************/
 .BodyMain{width:1200px;margin:0 auto; border:0px solid #0F0;  margin-top:10px;}
 
 
-/****************************薪酬报告*******************************/
+/****************************钖叕鎶ュ憡*******************************/
 
 .SalaryMain .SalaryTop{ height:46px;float:left;width:1178px; text-align:center;line-height: 50px;margin-bottom: 20px;border:1px solid #cccccc;padding-top:10px;padding-left:20px;}
 .SalaryMain .box{width:278px;height:30px;line-height:30px;font-size:14px;color:#ACACAC;border:1px solid #cccccc;background-color:#FFFFFF;padding-left:15px;position:relative;float:left;margin-right:20px;cursor:pointer;}
 .input_text_200_bgsala {width:282px; height:17px;border:1px solid  #CCCCCC ; font-size:12px;line-height:16px;padding:9px;background:url(../images/13.gif) no-repeat 282px -58px;cursor:pointer}
-.but180lansala { width:160px; height:37px; line-height:37px;font-size:15px; color:#FFFFFF; border:0px; background-color:#4095EF;font-family:"microsoft yahei","宋体"; cursor:pointer;}
+.but180lansala { width:160px; height:37px; line-height:37px;font-size:15px; color:#FFFFFF; border:0px; background-color:#4095EF;font-family:"microsoft yahei","瀹嬩綋"; cursor:pointer;}
 .but180lansala.hover{ background-color:#1478DC}
 .SalaryMain .box span{display:block;width:250px;height:30px;overflow:hidden;white-space: nowrap;text-overflow:ellipsis;text-align:left;}
 .SalaryMain .box i{position:absolute;right:15px;top:13px;width:0;height:0;font-size:0;line-height:0;border-color:#ccc transparent transparent transparent;_border-color:#ccc #ffffff #ffffff #ffffff;border-style:solid;border-width:6px;cursor:pointer;}
@@ -28,7 +28,7 @@
 .SalaryMain .SalaryBody .BodyLeft .BodyTitle a{float:right; margin-right:30px;background: url("../images/salary/img_Salary.gif")/*tpa=http://www.jinshangrc.com/content/newsnew/images/img_Salary.gif*/ -0px -133px; height:15px;padding-left:20px;line-height: normal;margin-top: 10px;}
 .SalaryMain .SalaryBody .BodyLeft .BodyContent{width:100%;}
 .SalaryMain .SalaryBody .BodyLeft .BodyContent .BodyPart{width:960px;border-bottom:1px #e1e8f0 dotted; margin:0 auto; padding-bottom:20px;margin-top: 20px;}
-.SalaryMain .SalaryBody .BodyLeft .BodyContent .ContentTitle{ font-family:"微软雅黑";font-size:16px;padding-bottom: 20px;}
+.SalaryMain .SalaryBody .BodyLeft .BodyContent .ContentTitle{ font-family:"寰蒋闆呴粦";font-size:16px;padding-bottom: 20px;}
 .SalaryMain .SalaryBody .BodyLeft .BodyContent .ContentTitle span{color: #FF6600;font-size:20px;}
 .SalaryMain .SalaryBody .BodyLeft .BodyContent .ContentNotice{color:#999;line-height: 20px;padding-top: 20px;}
 .SalaryMain .SalaryBody .BodyLeft .BodyContent .ContentNotice .Title{ font-weight:bold; vertical-align:top;}
@@ -75,7 +75,7 @@
 .tableB_x span{display:inline-block; width:55px;font-family: Arial; text-align:center;white-space: nowrap;}
 
 .tips{margin-left:20px;line-height:20px;width:667px;background:url("../company/images/errorpage.gif")/*tpa=http://www.jinshangrc.com/Content/company/images/errorpage.gif*/  0px 0px no-repeat;background-position:16px 16px;height:383px}
-.tips p{color:#000;font-size:16px;font-family:"黑体";font-weight:NORMAL; width:279px;padding-top: 200px;margin-left: 290px;}
+.tips p{color:#000;font-size:16px;font-family:"榛戜綋";font-weight:NORMAL; width:279px;padding-top: 200px;margin-left: 290px;}
 
 .BodyPart .imgPieCount{width:230px; float:left; text-align:center;}
 

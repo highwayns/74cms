@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms FLASH±¨±í
+ * 74cms FLASHæŠ¥è¡¨
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 if(!defined('IN_QISHI'))
@@ -40,7 +40,7 @@ function meal_log_pie($pie_type='1',$utype='1')
 	global $db,$_CFG;
 	$xml="meal_log_pie.xml";
 	$datelist=array();
-	$nowtime=mktime(0,0,0,0,0,date('Y'));//»ñÈ¡µ±Ç°ÄêµÄÊ±¼ä´Á
+	$nowtime=mktime(0,0,0,0,0,date('Y'));//è·å–å½“å‰å¹´çš„æ—¶é—´æˆ³
 	$result = $db->query("SELECT log_amount,log_addtime FROM ".table('members_charge_log')." WHERE log_mode={$_CFG['operation_mode']} AND  log_ismoney=2 AND log_addtime>{$nowtime} AND log_utype={$utype}");
 	while($row = $db->fetch_array($result))
 	{
@@ -50,13 +50,13 @@ function meal_log_pie($pie_type='1',$utype='1')
 		}elseif($pie_type=='2'){
 			$date=date('n',$row['log_addtime']);
 			if($date>=1 && $date<4){
-				$datelist['µÚÒ»¼¾¶È']+=$row['log_amount'];
+				$datelist['ç¬¬ä¸€å­£åº¦']+=$row['log_amount'];
 			}elseif($date>=4 && $date<=6){
-				$datelist['µÚ¶ş¼¾¶È']+=$row['log_amount'];
+				$datelist['ç¬¬äºŒå­£åº¦']+=$row['log_amount'];
 			}elseif($date>6 && $date<=9){
-				$datelist['µÚÈı¼¾¶È']+=$row['log_amount'];
+				$datelist['ç¬¬ä¸‰å­£åº¦']+=$row['log_amount'];
 			}elseif($date>9 && $date<=12){
-				$datelist['µÚËÄ¼¾¶È']+=$row['log_amount'];
+				$datelist['ç¬¬å››å­£åº¦']+=$row['log_amount'];
 			}
 		}
 	}		
@@ -67,7 +67,7 @@ function meal_train_log_pie($pie_type='1',$utype='1')
 	global $db,$_CFG;
 	$xml="meal_log_pie.xml";
 	$datelist=array();
-	$nowtime=mktime(0,0,0,0,0,date('Y'));//»ñÈ¡µ±Ç°ÄêµÄÊ±¼ä´Á
+	$nowtime=mktime(0,0,0,0,0,date('Y'));//è·å–å½“å‰å¹´çš„æ—¶é—´æˆ³
 	$result = $db->query("SELECT log_amount,log_addtime FROM ".table('members_charge_log')." WHERE log_mode={$_CFG['operation_train_mode']} AND  log_ismoney=2 AND log_addtime>{$nowtime} AND log_utype={$utype}");
 	while($row = $db->fetch_array($result))
 	{
@@ -77,13 +77,13 @@ function meal_train_log_pie($pie_type='1',$utype='1')
 		}elseif($pie_type=='2'){
 			$date=date('n',$row['log_addtime']);
 			if($date>=1 && $date<4){
-				$datelist['µÚÒ»¼¾¶È']+=$row['log_amount'];
+				$datelist['ç¬¬ä¸€å­£åº¦']+=$row['log_amount'];
 			}elseif($date>=4 && $date<=6){
-				$datelist['µÚ¶ş¼¾¶È']+=$row['log_amount'];
+				$datelist['ç¬¬äºŒå­£åº¦']+=$row['log_amount'];
 			}elseif($date>6 && $date<=9){
-				$datelist['µÚÈı¼¾¶È']+=$row['log_amount'];
+				$datelist['ç¬¬ä¸‰å­£åº¦']+=$row['log_amount'];
 			}elseif($date>9 && $date<=12){
-				$datelist['µÚËÄ¼¾¶È']+=$row['log_amount'];
+				$datelist['ç¬¬å››å­£åº¦']+=$row['log_amount'];
 			}
 		}
 	}		
@@ -94,7 +94,7 @@ function meal_hunter_log_pie($pie_type='1',$utype='3')
 	global $db,$_CFG;
 	$xml="meal_log_pie.xml";
 	$datelist=array();
-	$nowtime=mktime(0,0,0,0,0,date('Y'));//»ñÈ¡µ±Ç°ÄêµÄÊ±¼ä´Á
+	$nowtime=mktime(0,0,0,0,0,date('Y'));//è·å–å½“å‰å¹´çš„æ—¶é—´æˆ³
 	$result = $db->query("SELECT log_amount,log_addtime FROM ".table('members_charge_log')." WHERE log_mode={$_CFG['operation_hunter_mode']} AND  log_ismoney=2 AND log_addtime>{$nowtime} AND log_utype={$utype}");
 	while($row = $db->fetch_array($result))
 	{
@@ -104,13 +104,13 @@ function meal_hunter_log_pie($pie_type='1',$utype='3')
 		}elseif($pie_type=='2'){
 			$date=date('n',$row['log_addtime']);
 			if($date>=1 && $date<4){
-				$datelist['µÚÒ»¼¾¶È']+=$row['log_amount'];
+				$datelist['ç¬¬ä¸€å­£åº¦']+=$row['log_amount'];
 			}elseif($date>=4 && $date<=6){
-				$datelist['µÚ¶ş¼¾¶È']+=$row['log_amount'];
+				$datelist['ç¬¬äºŒå­£åº¦']+=$row['log_amount'];
 			}elseif($date>6 && $date<=9){
-				$datelist['µÚÈı¼¾¶È']+=$row['log_amount'];
+				$datelist['ç¬¬ä¸‰å­£åº¦']+=$row['log_amount'];
 			}elseif($date>9 && $date<=12){
-				$datelist['µÚËÄ¼¾¶È']+=$row['log_amount'];
+				$datelist['ç¬¬å››å­£åº¦']+=$row['log_amount'];
 			}
 		}
 	}		
@@ -122,7 +122,7 @@ function check_xml($xml)
 	$xmlname=ADMIN_ROOT_PATH."statement/{$xml}";
 	if (!is_writable(ADMIN_ROOT_PATH.'statement/'))
 	{
-	exit("ÇëÏÈ½«ºóÌ¨¡°statement¡±Ä¿Â¼ÉèÖÃ¿É¶ÁĞ´£¡");
+	exit("è¯·å…ˆå°†åå°â€œstatementâ€ç›®å½•è®¾ç½®å¯è¯»å†™ï¼");
 	}
 	if (file_exists($xmlname))
 	{
@@ -157,18 +157,18 @@ function write_xml($xml, $array)
 		$fp = @fopen($xmlname, 'wb+');
 		if (!$fp)
 		{
-			exit('ÉúxmlÎÄ¼şÊ§°Ü£¬ÇëÉèÖÃºóÌ¨Ä¿Â¼¡°statement¡±µÄ¶ÁĞ´È¨ÏŞ');
+			exit('ç”Ÿxmlæ–‡ä»¶å¤±è´¥ï¼Œè¯·è®¾ç½®åå°ç›®å½•â€œstatementâ€çš„è¯»å†™æƒé™');
 		}
 		if (!@fwrite($fp, trim($content)))
 		{
-			exit('ÉúxmlÎÄ¼şÊ§°Ü£¬ÇëÉèÖÃºóÌ¨Ä¿Â¼¡°statement¡±µÄ¶ÁĞ´È¨ÏŞ');
+			exit('ç”Ÿxmlæ–‡ä»¶å¤±è´¥ï¼Œè¯·è®¾ç½®åå°ç›®å½•â€œstatementâ€çš„è¯»å†™æƒé™');
 		}
 		@fclose($fp);
 	}
 }
 function write_client($xml,$array)
 {
-	$content = '<chart ShowAboutMenuItem="0"  numberPrefix=" "  exportEnabled="1" exportShowMenuItem="1" exportAtClient="1" exportHandler="fcExporter1" baseFont="ËÎÌå"  baseFontSize="14" bgColor="#FFFFFF" shadowAlpha="100" canvasBgColor="#FFFFFF"  >\n';
+	$content = '<chart ShowAboutMenuItem="0"  numberPrefix=" "  exportEnabled="1" exportShowMenuItem="1" exportAtClient="1" exportHandler="fcExporter1" baseFont="å®‹ä½“"  baseFontSize="14" bgColor="#FFFFFF" shadowAlpha="100" canvasBgColor="#FFFFFF"  >\n';
 	foreach($array as $key => $value)
 	{
 	$content .= "<set name='{$key}' value='{$value}' /> \n";
@@ -180,11 +180,11 @@ function write_client($xml,$array)
 		$fp = @fopen($xmlname, 'wb+');
 		if (!$fp)
 		{
-			exit('ÉúxmlÎÄ¼şÊ§°Ü£¬ÇëÉèÖÃºóÌ¨Ä¿Â¼¡°statement¡±µÄ¶ÁĞ´È¨ÏŞ');
+			exit('ç”Ÿxmlæ–‡ä»¶å¤±è´¥ï¼Œè¯·è®¾ç½®åå°ç›®å½•â€œstatementâ€çš„è¯»å†™æƒé™');
 		}
 		if (!@fwrite($fp, trim($content)))
 		{
-			exit('ÉúxmlÎÄ¼şÊ§°Ü£¬ÇëÉèÖÃºóÌ¨Ä¿Â¼¡°statement¡±µÄ¶ÁĞ´È¨ÏŞ');
+			exit('ç”Ÿxmlæ–‡ä»¶å¤±è´¥ï¼Œè¯·è®¾ç½®åå°ç›®å½•â€œstatementâ€çš„è¯»å†™æƒé™');
 		}
 		@fclose($fp);
 	}

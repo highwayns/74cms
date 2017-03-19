@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 	$(document).ready(function(){
  		$("#export_info").click(function(){
@@ -16,90 +16,90 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-<h2>ÌáÊ¾£º</h2>
+<h2>æç¤ºï¼š</h2>
 <p>
-	¶ÌĞÅÄÚÈİ²»ÄÜ³¬¹ı70¸ö×Ö£¡
+	çŸ­ä¿¡å†…å®¹ä¸èƒ½è¶…è¿‡70ä¸ªå­—ï¼
 </p>
 </div> 
- <div class="toptit">ĞÂÔö¶ÌĞÅÈÎÎñ</div>
+ <div class="toptit">æ–°å¢çŸ­ä¿¡ä»»åŠ¡</div>
     <form id="form1" name="form1" method="post"   action="?act=smsqueue_batchadd_save" >
 	{#$inputtoken#}
   <table width="100%" border="0" cellpadding="4" cellspacing="0"   >
   
     <tr>
-      <td width="120" height="30" align="right"  >ÊÕ¼ş»áÔ±£º</td>
+      <td width="120" height="30" align="right"  >æ”¶ä»¶ä¼šå‘˜ï¼š</td>
       <td  >
 	    <label>
 	    <input name="selutype" type="radio" value="0" checked="checked" id="noutype" />
-	    ²»ÏŞ
+	    ä¸é™
 		</label>
 		&nbsp;&nbsp;&nbsp;
 		 <label>
 	    <input type="radio" name="selutype" value="1"  />
-	    ÆóÒµ»áÔ±
+	    ä¼ä¸šä¼šå‘˜
 		</label>
 		
 		&nbsp;&nbsp;&nbsp;
 		 <label>
 	    <input type="radio" name="selutype" value="2"   />
-	    ¸öÈË»áÔ±
+	    ä¸ªäººä¼šå‘˜
 		</label>
 		&nbsp;&nbsp;&nbsp;
 		 <label>
 	    <input type="radio" name="selutype" value="3" />
-	    ÁÔÍ·¹ËÎÊ
+	    çŒå¤´é¡¾é—®
 		</label>
 		&nbsp;&nbsp;&nbsp;
 		 <label>
 	    <input type="radio" name="selutype" value="4" />
-	    ÅàÑµ»ú¹¹
+	    åŸ¹è®­æœºæ„
 		</label>
 		</td>
     </tr>
   	<tr>
-      <td width="120" height="30" align="right"  >ÑéÖ¤ÀàĞÍ£º</td>
+      <td width="120" height="30" align="right"  >éªŒè¯ç±»å‹ï¼š</td>
       <td>
-	    <label> <input name="verification" type="radio" value="" checked="checked" /> ²»ÏŞ</label>&nbsp;&nbsp;&nbsp; 
-		<label> <input name="verification" type="radio" value="1"  /> ÓÊÏäÒÑÑéÖ¤</label>&nbsp;&nbsp;&nbsp;
-	    <label> <input name="verification" type="radio" value="2" /> ÓÊÏäÎ´ÑéÖ¤</label>&nbsp;&nbsp;&nbsp;
-	    <label> <input name="verification" type="radio" value="3" /> ÊÖ»úÒÑÑéÖ¤</label>&nbsp;&nbsp;&nbsp;
-	    <label> <input name="verification" type="radio" value="4" /> ÊÖ»úÎ´ÑéÖ¤</label>&nbsp;&nbsp;&nbsp;
+	    <label> <input name="verification" type="radio" value="" checked="checked" /> ä¸é™</label>&nbsp;&nbsp;&nbsp; 
+		<label> <input name="verification" type="radio" value="1"  /> é‚®ç®±å·²éªŒè¯</label>&nbsp;&nbsp;&nbsp;
+	    <label> <input name="verification" type="radio" value="2" /> é‚®ç®±æœªéªŒè¯</label>&nbsp;&nbsp;&nbsp;
+	    <label> <input name="verification" type="radio" value="3" /> æ‰‹æœºå·²éªŒè¯</label>&nbsp;&nbsp;&nbsp;
+	    <label> <input name="verification" type="radio" value="4" /> æ‰‹æœºæœªéªŒè¯</label>&nbsp;&nbsp;&nbsp;
 		</td>
     </tr>
 	  <tr>
-      <td width="120" height="30" align="right"  >µÇÂ¼Ê±¼ä£º</td>
+      <td width="120" height="30" align="right"  >ç™»å½•æ—¶é—´ï¼š</td>
       <td  >
 	   <label>
 	    <input name="selsettr" type="radio" value="" checked="checked" />
-	    ²»ÏŞ
+	    ä¸é™
 		</label>
 		&nbsp;&nbsp;&nbsp;
 	    <label>
 	    <input name="selsettr" type="radio" value="7"  />
-	    Ò»ÖÜÎ´µÇÂ¼
+	    ä¸€å‘¨æœªç™»å½•
 		</label>
 		&nbsp;&nbsp;&nbsp;
 		 <label>
 	    <input type="radio" name="selsettr" value="30" />
-	    Ò»ÔÂÎ´µÇÂ¼
+	    ä¸€æœˆæœªç™»å½•
 		</label>
 		</td>
     </tr>
 	
 		  <tr>
-            <td width="100" align="right">·¢ËÍÄÚÈİ:</td>
+            <td width="100" align="right">å‘é€å†…å®¹:</td>
             <td>
 			  <textarea name="s_body" class="input_text_400" style="height:80px;"></textarea>
-			  <span class="admin_note">ÄÚÈİ³¬¹ı70¸ö×Ö·û½«×Ô¶¯½ØÈ¡</span>		    </td>
+			  <span class="admin_note">å†…å®¹è¶…è¿‡70ä¸ªå­—ç¬¦å°†è‡ªåŠ¨æˆªå–</span>		    </td>
           </tr>
 	  
 	  
 	      <tr>
       <td height="30" align="right"  >&nbsp;</td>
       <td height="50"  > 
-            <input name="submit3" type="submit" class="admin_submit"    value="Ìí¼Ó"/>
-       	    <input name="submit22" type="button" class="admin_submit"    value="·µ»Ø" onclick="Javascript:window.history.go(-1)"/>
-       	    <input name="submit22" type="button" class="admin_submit"  action="?act=export_info"  id="export_info" value="µ¼³öĞÅÏ¢" />
+            <input name="submit3" type="submit" class="admin_submit"    value="æ·»åŠ "/>
+       	    <input name="submit22" type="button" class="admin_submit"    value="è¿”å›" onclick="Javascript:window.history.go(-1)"/>
+       	    <input name="submit22" type="button" class="admin_submit"  action="?act=export_info"  id="export_info" value="å¯¼å‡ºä¿¡æ¯" />
        </td>
     </tr>
   </table>

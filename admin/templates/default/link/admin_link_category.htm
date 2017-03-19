@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,19 +6,19 @@
   <div class="clear"></div>
 </div>
     <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
-	<p>Í¨¹ıÓÑÇéÁ´½Ó·ÖÀà¿ÉÒÔÔÚ¶à¸öÒ³Ãæµ÷ÓÃ²»Í¬µÄÓÑÇéÁ´½Ó£¡</p>
+	<h2>æç¤ºï¼š</h2>
+	<p>é€šè¿‡å‹æƒ…é“¾æ¥åˆ†ç±»å¯ä»¥åœ¨å¤šä¸ªé¡µé¢è°ƒç”¨ä¸åŒçš„å‹æƒ…é“¾æ¥ï¼</p>
 	</div>
   <form id="form1" name="form1" method="post" action="?act=del_category">
   {#$inputtoken#}
     <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
     <tr>
       <td width="18%"  class="admin_list_tit admin_list_first" >
-	  <label id="chkAll"><input type="checkbox" name="chkAll"  id="chk" title="È«Ñ¡/·´Ñ¡" />·ÖÀàÃû³Æ</label></td>
+	  <label id="chkAll"><input type="checkbox" name="chkAll"  id="chk" title="å…¨é€‰/åé€‰" />åˆ†ç±»åç§°</label></td>
 	       
-            <td class="admin_list_tit">µ÷ÓÃÃû</td>
-		    <td width="15%" align="center"  class="admin_list_tit">ÀàĞÍ</td>
-            <td width="15%" align="center"   class="admin_list_tit">²Ù×÷</td>
+            <td class="admin_list_tit">è°ƒç”¨å</td>
+		    <td width="15%" align="center"  class="admin_list_tit">ç±»å‹</td>
+            <td width="15%" align="center"   class="admin_list_tit">æ“ä½œ</td>
 	
       </tr>
 	 {#foreach from=$link item=li#}
@@ -32,19 +32,19 @@
             <td  class="admin_list"  >{#$li.c_alias#}</td>
 			<td align="center"  class="admin_list">
 			{#if $li.c_sys=="1"#}
-			<span style="color:#FF6600">ÏµÍ³·ÖÀà</span>
+			<span style="color:#FF6600">ç³»ç»Ÿåˆ†ç±»</span>
 			{#else#}
-			×Ô¶¨Òå·ÖÀà
+			è‡ªå®šä¹‰åˆ†ç±»
 			{#/if#}
 			</td>
         <td align="center"  class="admin_list">
 		
 		{#if $li.c_sys=="1"#}
-			ĞŞ¸Ä&nbsp;&nbsp;&nbsp;É¾³ı
+			ä¿®æ”¹&nbsp;&nbsp;&nbsp;åˆ é™¤
 			{#else#}
-			<a href="?act=category_edit&alias={#$li.c_alias#}">ĞŞ¸Ä</a>
+			<a href="?act=category_edit&alias={#$li.c_alias#}">ä¿®æ”¹</a>
 		&nbsp;&nbsp;&nbsp;
-		<a href="?act=del_category&id={#$li.id#}&{#$urltoken#}"  onclick="return confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')">É¾³ı</a>
+		<a href="?act=del_category&id={#$li.id#}&{#$urltoken#}"  onclick="return confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')">åˆ é™¤</a>
 			{#/if#}
 	</td>
 	
@@ -56,8 +56,8 @@
 	<table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">
       <tr>
         <td>
-<input type="button" name="Submit" value="ĞÂÔö·ÖÀà" class="admin_submit"     onclick="window.location='?act=category_add'"/>
-<input name="del" type="submit" class="admin_submit" id="ButDel" value="É¾³ıËùÑ¡" onclick="return confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')"/>
+<input type="button" name="Submit" value="æ–°å¢åˆ†ç±»" class="admin_submit"     onclick="window.location='?act=category_add'"/>
+<input name="del" type="submit" class="admin_submit" id="ButDel" value="åˆ é™¤æ‰€é€‰" onclick="return confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')"/>
 		</td>
         <td width="305" align="right">		
 	    </td>

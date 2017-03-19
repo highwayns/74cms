@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ÓÑÇéÁ¬½ÓÉêÇë
+ * 74cms å‹æƒ…è¿æ¥ç”³è¯·
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -32,28 +32,28 @@ elseif ($act=="save")
 	$postcaptcha = trim($_POST['postcaptcha']);
 	if($captcha['verify_link']=='1' && empty($postcaptcha))
 	{
-		showmsg("ÇëÌîĞ´ÑéÖ¤Âë",1);
+		showmsg("è¯·å¡«å†™éªŒè¯ç ",1);
  	}
 	if ($captcha['verify_link']=='1' &&  strcasecmp($_SESSION['imageCaptcha_content'],$postcaptcha)!=0)
 	{
-		showmsg("ÑéÖ¤Âë´íÎó",1);
+		showmsg("éªŒè¯ç é”™è¯¯",1);
 	}
 	if ($_CFG['app_link']<>"1")
 	{
-	showmsg('ÒÑÍ£Ö¹×ÔÖúÉêÇëÁ´½Ó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±£¡',1);
+	showmsg('å·²åœæ­¢è‡ªåŠ©ç”³è¯·é“¾æ¥ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ï¼',1);
 	}
 	else
 	{
-	$setsqlarr['link_name']=trim($_POST['link_name'])?trim($_POST['link_name']):showmsg('ÄúÃ»ÓĞÌîĞ´Á´½ÓÃû³Æ£¡',1);
-	$setsqlarr['link_url']=trim($_POST['link_url'])?trim($_POST['link_url']):showmsg('ÄúÃ»ÓĞÌîĞ´Á´½ÓµØÖ·£¡',1);
+	$setsqlarr['link_name']=trim($_POST['link_name'])?trim($_POST['link_name']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™é“¾æ¥åç§°ï¼',1);
+	$setsqlarr['link_url']=trim($_POST['link_url'])?trim($_POST['link_url']):showmsg('æ‚¨æ²¡æœ‰å¡«å†™é“¾æ¥åœ°å€ï¼',1);
 	$setsqlarr['link_logo']=trim($_POST['link_logo']);
 	$setsqlarr['app_notes']=trim($_POST['app_notes']);
 	$setsqlarr['alias']=trim($_POST['alias']);
 	$setsqlarr['display']=2;
 	$setsqlarr['type_id']=2;
-	$link[0]['text'] = "·µ»ØÍøÕ¾Ê×Ò³";
+	$link[0]['text'] = "è¿”å›ç½‘ç«™é¦–é¡µ";
 	$link[0]['href'] =$_CFG['site_dir'];
-	!$db->inserttable(table('link'),$setsqlarr)?showmsg("Ìí¼ÓÊ§°Ü£¡",0):showmsg("Ìí¼Ó³É¹¦£¬ÇëµÈ´ı¹ÜÀíÔ±ÉóºË£¡",2,$link);
+	!$db->inserttable(table('link'),$setsqlarr)?showmsg("æ·»åŠ å¤±è´¥ï¼",0):showmsg("æ·»åŠ æˆåŠŸï¼Œè¯·ç­‰å¾…ç®¡ç†å‘˜å®¡æ ¸ï¼",2,$link);
 	}
 }
 unset($smarty);

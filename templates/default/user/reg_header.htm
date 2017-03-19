@@ -1,17 +1,17 @@
-	<div id="reg-head"{#if $header_nav=="login"#}style="margin:0"{#/if#}>
+ï»¿	<div id="reg-head"{#if $header_nav=="login"#}style="margin:0"{#/if#}>
 		<div class="container">
 			<div class="logo-box f-left">
 				<a href="{#$QISHI.site_dir#}" class="logo f-left"><img src="{#$QISHI.upfiles_dir#}{#$QISHI.web_logo#}" alt="{#$QISHI.site_name#}" width="261" height="70" border="0"/></a>
 				<a href="{#$QISHI.site_dir#}" class="back-index f-left"></a>
 			</div>
-			<div class="reg-tips f-left">{#if $header_nav=="getpass"#}ÃÜÂëÕÒ»Ø{#elseif $header_nav=="login"#}»¶Ó­µÇÂ¼{#else#}Ãâ·Ñ×¢²á{#/if#}</div>
+			<div class="reg-tips f-left">{#if $header_nav=="getpass"#}å¯†ç æ‰¾å›{#elseif $header_nav=="login"#}æ¬¢è¿ç™»å½•{#else#}å…è´¹æ³¨å†Œ{#/if#}</div>
 			<div class="top-right f-right">
 				{#if $header_nav=="login"#}
-				<p class="f-left">»¹Ã»ÓĞÕÊºÅ?</p>
-				<div class="f-left"><a href="user_reg.php" class="btn login-btn blue" style="color:#FFFFFF">Á¢¼´×¢²á</a></div>
+				<p class="f-left">è¿˜æ²¡æœ‰å¸å·?</p>
+				<div class="f-left"><a href="user_reg.php" class="btn login-btn blue" style="color:#FFFFFF">ç«‹å³æ³¨å†Œ</a></div>
 				{#else#}
-				<p class="f-left">ÎÒÒÑ×¢²á£¬ÏÖÔÚ¾Í</p>
-				<div class="f-left"><a href="login.php?act=login" class="btn login-btn blue" style="color:#FFFFFF">µÇÂ¼</a></div>
+				<p class="f-left">æˆ‘å·²æ³¨å†Œï¼Œç°åœ¨å°±</p>
+				<div class="f-left"><a href="login.php?act=login" class="btn login-btn blue" style="color:#FFFFFF">ç™»å½•</a></div>
 				{#/if#}
 			</div>
 		</div>

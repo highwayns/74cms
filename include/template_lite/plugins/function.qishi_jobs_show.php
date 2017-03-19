@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_jobs_show($params, &$smarty)
 {
 	global $db,$timestamp,$_CFG;
@@ -8,16 +8,16 @@ function tpl_function_qishi_jobs_show($params, &$smarty)
 	$a=explode(':',$str);
 		switch ($a[0])
 		{
-		case "Ö°Î»ID":
+		case "èŒä½ID":
 			$aset['id'] = $a[1];
 			break;
-		case "ÁĞ±íÃû":
+		case "åˆ—è¡¨å":
 			$aset['listname'] = $a[1];
 			break;
-		case "ÃèÊö³¤¶È":
+		case "æè¿°é•¿åº¦":
 			$aset['brieflylen'] = $a[1];
 			break;
-		case "Ìî²¹×Ö·û":
+		case "å¡«è¡¥å­—ç¬¦":
 			$aset['dot'] = $a[1];
 			break;
 		}
@@ -52,12 +52,12 @@ function tpl_function_qishi_jobs_show($params, &$smarty)
 	else
 	{
 		if(intval($_SESSION['uid'])>0 && intval($_SESSION['utype'])==2){
-			//¼ì²é¸ÃÖ°Î»ÊÇ·ñ¶Ô´Ë»áÔ±·¢ÆğÃæÊÔÑûÇë,²¢ÇÒ´Ë»áÔ±Ã»¿´
+			//æ£€æŸ¥è¯¥èŒä½æ˜¯å¦å¯¹æ­¤ä¼šå‘˜å‘èµ·é¢è¯•é‚€è¯·,å¹¶ä¸”æ­¤ä¼šå‘˜æ²¡çœ‹
 			$check_int = check_interview(intval($_SESSION['uid']),$val['id']);
 			if($check_int){
 				update_interview(intval($_SESSION['uid']),$val['id']);
 			}
-			//¼ì²é¸ÃÖ°Î»ÊÇ·ñ±»´Ë»áÔ±ÊÕ²Ø¹ı
+			//æ£€æŸ¥è¯¥èŒä½æ˜¯å¦è¢«æ­¤ä¼šå‘˜æ”¶è—è¿‡
 			$check_fav = check_favorites(intval($_SESSION['uid']),$val['id']);
 			if($check_fav)
 			{
@@ -68,7 +68,7 @@ function tpl_function_qishi_jobs_show($params, &$smarty)
 		{
 		$val['deadline']=$val['setmeal_deadline'];
 		}
-		$val['amount']=$val['amount']=="0"?'Èô¸É':$val['amount'];
+		$val['amount']=$val['amount']=="0"?'è‹¥å¹²':$val['amount'];
 		$val['jobs_url']=url_rewrite('QS_jobsshow',array('id'=>$val['id']));
 		$profile=GetJobsCompanyProfile($val['company_id']);
 		$val['company']=$profile;
@@ -171,7 +171,7 @@ function get_interest_jobs_id($uid)
 	}
 	return "";	
 }
-//»ñÈ¡ÒâÏòÖ°Î»
+//è·å–æ„å‘èŒä½
 function get_resume_jobs($pid)
 {
 	global $db;
@@ -179,7 +179,7 @@ function get_resume_jobs($pid)
 	$sql = "select * from ".table('resume_jobs')." where pid='{$pid}'  LIMIT 20" ;
 	return $db->getall($sql);
 }
-//Ä£ºıÆ¥Åä
+//æ¨¡ç³ŠåŒ¹é…
 function search_strs($arr,$str)
 {
 	foreach ($arr as $key =>$list)

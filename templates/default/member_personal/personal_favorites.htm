@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_common.css" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_personal.css" />
@@ -16,54 +16,54 @@
 <script src="{#$QISHI.site_template#}js/dialog-min-common.js" type="text/javascript" language="javascript"></script>
 <script>
 	$(document).ready(function() {
-		// ¶¥²¿É¸Ñ¡
+		// é¡¶éƒ¨ç­›é€‰
 		$('.data-filter').on('click', function(e){
 			$(this).find('.filter-down').toggle();
-			// ¶¯Ì¬ÉèÖÃÏÂÀ­ÁĞ±í¿í¶È
+			// åŠ¨æ€è®¾ç½®ä¸‹æ‹‰åˆ—è¡¨å®½åº¦
 			var fWidth = $(this).find('.filter-span').outerWidth(true) - 2;
 			$(this).find(".filter-down").width(fWidth);
-			// µã»÷ÆäËûÎ»ÖÃÊÕÆğÏÂÀ­
+			// ç‚¹å‡»å…¶ä»–ä½ç½®æ”¶èµ·ä¸‹æ‹‰
 			$(document).one("click",function(){
 				$('.filter-down').hide();
 			});
 			e.stopPropagation();
-			//µã»÷ÏÂÀ­Ê±ÊÕÆğÆäËûÏÂÀ­
+			//ç‚¹å‡»ä¸‹æ‹‰æ—¶æ”¶èµ·å…¶ä»–ä¸‹æ‹‰
 			$(".data-filter").not($(this)).find('.filter-down').hide();
 		});
-		// É¾³ıµ¯³ö
+		// åˆ é™¤å¼¹å‡º
 		delete_dialog('.ctrl-del','#form1');
 	});
 </script>
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > Ö°Î»ÊÕ²Ø¼Ğ</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > èŒä½æ”¶è—å¤¹</div>
 	<div class="usermain">
 		<div class="leftmenu link_bk">
 			{#include file="member_personal/left.htm"#}
 		</div>
 		<div class="rightmain">
 			<div class="bbox1 no-nav">
-				<div class="title_h1">Ö°Î»ÊÕ²Ø¼Ğ</div>
+				<div class="title_h1">èŒä½æ”¶è—å¤¹</div>
 				<form id="form1" name="form1" method="post" action="?act=del_favorites">
 				<div class="personal-data-list">
 					<div class="c-data-top collect-pack clearfix">
-						<div class="item f-left check-item"><input type="checkbox" name="chkAll"  id="chk" title="È«Ñ¡/·´Ñ¡" class="checkbox" /></div>
-						<div class="item f-left top-item1">Ö°Î»Ãû³Æ</div>
-						<div class="item f-left top-item2">¹«Ë¾Ãû³Æ</div>
-						<div class="item f-left top-item3">¹¤×÷µØÇø</div>
-						<div class="item f-left top-item4">Ğ½×Ê´ıÓö</div>
+						<div class="item f-left check-item"><input type="checkbox" name="chkAll"  id="chk" title="å…¨é€‰/åé€‰" class="checkbox" /></div>
+						<div class="item f-left top-item1">èŒä½åç§°</div>
+						<div class="item f-left top-item2">å…¬å¸åç§°</div>
+						<div class="item f-left top-item3">å·¥ä½œåœ°åŒº</div>
+						<div class="item f-left top-item4">è–ªèµ„å¾…é‡</div>
 						<div class="item f-left top-item5">
 							<div class="data-filter span4">
-								<span class="filter-span">{#if $smarty.get.settr_cn#}{#$smarty.get.settr_cn#}{#else#}ÊÕ²ØÊ±¼ä{#/if#}<i class="filter-icon"></i></span>
+								<span class="filter-span">{#if $smarty.get.settr_cn#}{#$smarty.get.settr_cn#}{#else#}æ”¶è—æ—¶é—´{#/if#}<i class="filter-icon"></i></span>
 								<ul class="filter-down">
-									<li><a href="{#"settr:,settr_cn:"|qishi_parse_url#}">È«²¿</a></li>
-									<li><a href="{#"settr:3,settr_cn:×î½üÈıÌì"|qishi_parse_url#}">×î½üÈıÌì</a></li>
-									<li><a href="{#"settr:7,settr_cn:×î½üÒ»ÖÜ"|qishi_parse_url#}">×î½üÒ»ÖÜ</a></li>
+									<li><a href="{#"settr:,settr_cn:"|qishi_parse_url#}">å…¨éƒ¨</a></li>
+									<li><a href="{#"settr:3,settr_cn:æœ€è¿‘ä¸‰å¤©"|qishi_parse_url#}">æœ€è¿‘ä¸‰å¤©</a></li>
+									<li><a href="{#"settr:7,settr_cn:æœ€è¿‘ä¸€å‘¨"|qishi_parse_url#}">æœ€è¿‘ä¸€å‘¨</a></li>
 								</ul>
 							</div>
 						</div>
-						<div class="item f-left top-item6">²Ù×÷</div>
+						<div class="item f-left top-item6">æ“ä½œ</div>
 					</div>
 					{#if $favorites#}
 						{#foreach from=$favorites item=list#}
@@ -76,32 +76,32 @@
 								<div class="c-item f-left content3" title="{#$list.district_cn#}">{#$list.district_cn#}</div>
 								<div class="c-item f-left content4"><span class="job-money">{#$list.wage_cn#}</span></div>
 								<div class="c-item f-left content5">{#$list.addtime|date_format:"%Y-%m-%d"#}</div>
-								<div class="c-item f-left content6"><a href="javascript:;" url="?act=del_favorites&y_id={#$list.did#}" class="data-ctrl underline ctrl-del">É¾³ı</a></div>
+								<div class="c-item f-left content6"><a href="javascript:;" url="?act=del_favorites&y_id={#$list.did#}" class="data-ctrl underline ctrl-del">åˆ é™¤</a></div>
 							</div>
 						</div>
 						{#else#}
 						<div class="c-data-row">
 							<div class="c-data-content interview36 clearfix">
 								<div class="c-item f-left check-item"><input type="checkbox" name="y_id[]" id="y_id" class="checkbox"  value="{#$list.did#}"/></div>
-								¸ÃÖ°Î» [{#$list.jobs_name#}] ¿ÉÄÜÒÑ±»É¾³ı£¬Äú¿ÉÒÔÉ¾³ı±¾ÌõĞÅÏ¢¡£
+								è¯¥èŒä½ [{#$list.jobs_name#}] å¯èƒ½å·²è¢«åˆ é™¤ï¼Œæ‚¨å¯ä»¥åˆ é™¤æœ¬æ¡ä¿¡æ¯ã€‚
 							</div>
 						</div>
 						{#/if#}
 						{#/foreach#}
 						<div class="c-data-row last">
 							<div class="c-data-content apply_jobs clearfix">
-								<div class="c-item f-left check-item"><input type="checkbox" name="chkAll"  id="chk2" title="È«Ñ¡/·´Ñ¡" class="checkbox" /></div>
+								<div class="c-item f-left check-item"><input type="checkbox" name="chkAll"  id="chk2" title="å…¨é€‰/åé€‰" class="checkbox" /></div>
 								<div class="data-last-btn f-left">
-									<input type="button" value="É¾³ı" class="btn-65-30blue ctrl-del" act="?act=del_favorites"/>
+									<input type="button" value="åˆ é™¤" class="btn-65-30blue ctrl-del" act="?act=del_favorites"/>
 								</div>
 							</div>
 						</div>
 					{#else#}
-					<div class="emptytip" style="margin:0 15px;">¶Ô²»Æğ£¡Ã»ÓĞÕÒµ½ÄúÒªµÄĞÅÏ¢£¡</div>
+					<div class="emptytip" style="margin:0 15px;">å¯¹ä¸èµ·ï¼æ²¡æœ‰æ‰¾åˆ°æ‚¨è¦çš„ä¿¡æ¯ï¼</div>
 					{#/if#}
 				</div>
 				</form>
-				<!-- ÕâÀï¼Ó·ÖÒ³ -->
+				<!-- è¿™é‡ŒåŠ åˆ†é¡µ -->
 				{#if $page#}
 				<table border="0" align="center" cellpadding="0" cellspacing="0">
 		          	<tr>

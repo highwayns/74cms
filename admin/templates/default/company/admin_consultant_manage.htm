@@ -1,9 +1,9 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript" src="js/jquery.userinfotip-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//µã»÷ÅúÁ¿ÖØÖÃ¹ËÎÊ
+	//ç‚¹å‡»æ‰¹é‡é‡ç½®é¡¾é—®
       $("#ButResetting").click(function(){
         $("form[name=form1]").submit()
       });
@@ -16,25 +16,25 @@ $(document).ready(function()
 </div>
 
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-ÖØÖÃ¹ËÎÊÊÇÖ¸£º¶ÔÒÑÓĞ¹ËÎÊÆóÒµ»áÔ±É¾³ıÆä¹ËÎÊ²¢½øĞĞÖØĞÂÉèÖÃ¡£<br />
+é‡ç½®é¡¾é—®æ˜¯æŒ‡ï¼šå¯¹å·²æœ‰é¡¾é—®ä¼ä¸šä¼šå‘˜åˆ é™¤å…¶é¡¾é—®å¹¶è¿›è¡Œé‡æ–°è®¾ç½®ã€‚<br />
 </p>
 </div>
 <div class="toptip">
-  <h2>¹ËÎÊĞÕÃû£º{#$consultant.name#}&nbsp;&nbsp;&nbsp;&nbsp;¹ËÎÊQQ£º{#$consultant.qq#}</h2>
+  <h2>é¡¾é—®å§“åï¼š{#$consultant.name#}&nbsp;&nbsp;&nbsp;&nbsp;é¡¾é—®QQï¼š{#$consultant.qq#}</h2>
 </div>
   <form id="form1" name="form1" method="post" action="?act=resetting">
   <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
     <tr>
       <td  class="admin_list_tit admin_list_first" >
-      <label id="chkAll"><input type="checkbox" name=" " title="È«Ñ¡/·´Ñ¡" id="chk"/>ÓÃ»§Ãû</label></td>
+      <label id="chkAll"><input type="checkbox" name=" " title="å…¨é€‰/åé€‰" id="chk"/>ç”¨æˆ·å</label></td>
       <td  class="admin_list_tit">email</td>
-    <td  class="admin_list_tit">ÊÖ»ú</td>
-      <td  class="admin_list_tit">ÆóÒµĞÅÏ¢</td>
-      <td width="13%"   align="center"   class="admin_list_tit">×¢²áÊ±¼ä</td>
-    <td width="13%"   align="center"   class="admin_list_tit">×îºóµÇÂ¼Ê±¼ä</td>
-      <td width="13%"  align="center"  class="admin_list_tit" >²Ù×÷</td>
+    <td  class="admin_list_tit">æ‰‹æœº</td>
+      <td  class="admin_list_tit">ä¼ä¸šä¿¡æ¯</td>
+      <td width="13%"   align="center"   class="admin_list_tit">æ³¨å†Œæ—¶é—´</td>
+    <td width="13%"   align="center"   class="admin_list_tit">æœ€åç™»å½•æ—¶é—´</td>
+      <td width="13%"  align="center"  class="admin_list_tit" >æ“ä½œ</td>
     </tr>
   {#foreach from=$members item=list#}
       <tr>
@@ -44,18 +44,18 @@ $(document).ready(function()
     <td class="admin_list">
     {#$list.email#}
     
-    {#if $list.email_audit=="1"#}<span style="color:#009900">[Ñé]</span>{#/if#}
-    <a href="admin_mail.php?act=send&email={#$list.email#}&uid={#$list.uid#}"> <img src="images/email.gif" border="0" title="·¢ËÍÓÊ¼ş" /></a>   
+    {#if $list.email_audit=="1"#}<span style="color:#009900">[éªŒ]</span>{#/if#}
+    <a href="admin_mail.php?act=send&email={#$list.email#}&uid={#$list.uid#}"> <img src="images/email.gif" border="0" title="å‘é€é‚®ä»¶" /></a>   
     </td>
      <td  class="admin_list">
-     {#if $list.mobile#}{#$list.mobile#}<a href="admin_sms.php?act=send&mobile={#$list.mobile#}&uid={#$list.uid#}"><img src="images/sms.gif" border="0" title="·¢ËÍ¶ÌĞÅ" /></a>
-{#else#}Î´ÌîĞ´{#/if#}
-    {#if $list.mobile_audit=="1"#}<span style="color:#009900">[Ñé]</span>{#/if#}
+     {#if $list.mobile#}{#$list.mobile#}<a href="admin_sms.php?act=send&mobile={#$list.mobile#}&uid={#$list.uid#}"><img src="images/sms.gif" border="0" title="å‘é€çŸ­ä¿¡" /></a>
+{#else#}æœªå¡«å†™{#/if#}
+    {#if $list.mobile_audit=="1"#}<span style="color:#009900">[éªŒ]</span>{#/if#}
     </td>
         <td class="admin_list">
     {#if $list.companyname#}
     <a href="{#$list.company_url#}" target="_blank">{#$list.companyname#}</a>
-    {#else#}<span style="color: #999999">Î´ÍêÉÆÆóÒµ×ÊÁÏ</span>
+    {#else#}<span style="color: #999999">æœªå®Œå–„ä¼ä¸šèµ„æ–™</span>
     {#/if#}
     </td>
     <td align="center" class="admin_list">
@@ -65,11 +65,11 @@ $(document).ready(function()
     {#if $list.last_login_time#}
     {#$list.last_login_time|date_format:"%Y-%m-%d"#}
     {#else#}
-    ´ÓÎ´µÇÂ¼
+    ä»æœªç™»å½•
     {#/if#}
     </td>       
         <td align="center" class="admin_list">
-    <a href="?act=resetting&uid={#$list.uid#}"  id="{#$list.uid#}">ÖØÖÃ</a>
+    <a href="?act=resetting&uid={#$list.uid#}"  id="{#$list.uid#}">é‡ç½®</a>
     </td>
       </tr>
       {#/foreach#}
@@ -79,12 +79,12 @@ $(document).ready(function()
   <span id="OpPhotoresume"></span>
  </form>
 {#if !$list#}
-<div class="admin_list_no_info">Ã»ÓĞÈÎºÎĞÅÏ¢£¡</div>
+<div class="admin_list_no_info">æ²¡æœ‰ä»»ä½•ä¿¡æ¯ï¼</div>
 {#/if#}
 <table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">
       <tr>
         <td>
-          <input name="ButResetting" type="button" class="admin_submit" id="ButResetting"    value="ÖØÖÃ"  />
+          <input name="ButResetting" type="button" class="admin_submit" id="ButResetting"    value="é‡ç½®"  />
 		</td>
       </tr>
   </table>

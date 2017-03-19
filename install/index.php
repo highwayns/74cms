@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms °²×°Ïòµ¼
+ * 74cms å®‰è£…å‘å¯¼
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -18,7 +18,7 @@ require_once(QISHI_ROOT_PATH . 'include/74cms_version.php');
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : '1';
 if(file_exists(QISHI_ROOT_PATH.'data/install.lock')&&$act!='5')
 {
-exit('ÄúÒÑ¾­°²×°¹ı±¾ÏµÍ³£¬Èç¹ûÏëÖØĞÂ°²×°£¬ÇëÉ¾³ıdataÄ¿Â¼ÏÂinstall.lockÎÄ¼ş');
+exit('æ‚¨å·²ç»å®‰è£…è¿‡æœ¬ç³»ç»Ÿï¼Œå¦‚æœæƒ³é‡æ–°å®‰è£…ï¼Œè¯·åˆ é™¤dataç›®å½•ä¸‹install.lockæ–‡ä»¶');
 }
 if($act =="1")
 {
@@ -34,7 +34,7 @@ if($act =="2")
 	$system_info['web_server'] = $_SERVER['SERVER_SOFTWARE'];
 	$system_info['php_ver'] = PHP_VERSION;
 	$system_info['max_filesize'] = ini_get('upload_max_filesize');
-	if (PHP_VERSION<5.0) exit("°²×°Ê§°Ü£¬ÇëÊ¹ÓÃPHP5.0¼°ÒÔÉÏ°æ±¾");
+	if (PHP_VERSION<5.0) exit("å®‰è£…å¤±è´¥ï¼Œè¯·ä½¿ç”¨PHP5.0åŠä»¥ä¸Šç‰ˆæœ¬");
 	$dir_check = check_dirs($need_check_dirs);
 	$install_smarty->assign("dir_check", $dir_check);
 	$install_smarty->assign("system_info", $system_info);
@@ -59,21 +59,21 @@ if($act =="4")
     $admin_email = isset($_POST['admin_email']) ? trim($_POST['admin_email']) : '';
 	if($dbhost == '' || $dbname == ''|| $dbuser == ''|| $admin_name == ''|| $admin_pwd == '' || $admin_pwd1 == '' || $admin_email == '')
 	{
-		install_showmsg('ÄúÌîĞ´µÄĞÅÏ¢²»ÍêÕû£¬ÇëºË¶Ô');
+		install_showmsg('æ‚¨å¡«å†™çš„ä¿¡æ¯ä¸å®Œæ•´ï¼Œè¯·æ ¸å¯¹');
 	}
 	if($admin_pwd != $admin_pwd1)
 	{
-		install_showmsg('ÄúÁ½´ÎÊäÈëµÄÃÜÂë²»Ò»ÖÂ');
+		install_showmsg('æ‚¨ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ä¸€è‡´');
 	}
 	if (!preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$admin_email))
 	{
-		install_showmsg('µç×ÓÓÊÏä¸ñÊ½´íÎó£¡');
+		install_showmsg('ç”µå­é‚®ç®±æ ¼å¼é”™è¯¯ï¼');
 	}
 	if(!$db = @mysql_connect($dbhost, $dbuser, $dbpass))
 	{
-		install_showmsg('Á¬½ÓÊı¾İ¿â´íÎó£¬ÇëºË¶ÔĞÅÏ¢ÊÇ·ñÕıÈ·');
+		install_showmsg('è¿æ¥æ•°æ®åº“é”™è¯¯ï¼Œè¯·æ ¸å¯¹ä¿¡æ¯æ˜¯å¦æ­£ç¡®');
 	}
-	if (mysql_get_server_info()<5.0) exit("°²×°Ê§°Ü£¬ÇëÊ¹ÓÃmysql5ÒÔÉÏ°æ±¾");
+	if (mysql_get_server_info()<5.0) exit("å®‰è£…å¤±è´¥ï¼Œè¯·ä½¿ç”¨mysql5ä»¥ä¸Šç‰ˆæœ¬");
 	if (mysql_get_server_info() > '4.1')
 	{
 		mysql_query("CREATE DATABASE IF NOT EXISTS `{$dbname}` DEFAULT CHARACTER SET ".QISHI_DBCHARSET, $db);
@@ -85,13 +85,13 @@ if($act =="4")
 	mysql_query("CREATE DATABASE IF NOT EXISTS `{$dbname}`;",$db);
 	if(!mysql_select_db($dbname))
 	{
-		install_showmsg('Ñ¡ÔñÊı¾İ¿â´íÎó£¬Çë¼ì²éÊÇ·ñÓµÓĞÈ¨ÏŞ»ò´æÔÚ´ËÊı¾İ¿â');
+		install_showmsg('é€‰æ‹©æ•°æ®åº“é”™è¯¯ï¼Œè¯·æ£€æŸ¥æ˜¯å¦æ‹¥æœ‰æƒé™æˆ–å­˜åœ¨æ­¤æ•°æ®åº“');
 	}
 	mysql_query("SET NAMES '".QISHI_DBCHARSET."',character_set_client=binary,sql_mode='';",$db);
 	ob_end_clean();
 	$html ="";
 	$html.= "<script type=\"text/javascript\">\n";
-	$html.= "$('#installing').append('<p>Êı¾İ¿â´´½¨³É¹¦£¡...</p>');\n";
+	$html.= "$('#installing').append('<p>æ•°æ®åº“åˆ›å»ºæˆåŠŸï¼...</p>');\n";
 	$html.= "var div = document.getElementById('installing');";
 	$html.= "div.scrollTop = div.scrollHeight;";
 	$html.= "</script>";
@@ -116,11 +116,11 @@ if($act =="4")
 	$fp = @fopen(QISHI_ROOT_PATH . 'data/config.php', 'wb+');
 	if (!$fp)
 	{
-		install_showmsg('´ò¿ªÅäÖÃÎÄ¼şÊ§°Ü');
+		install_showmsg('æ‰“å¼€é…ç½®æ–‡ä»¶å¤±è´¥');
 	}
 	if (!@fwrite($fp, trim($content)))
 	{
-		install_showmsg('Ğ´ÈëÅäÖÃÎÄ¼şÊ§°Ü');
+		install_showmsg('å†™å…¥é…ç½®æ–‡ä»¶å¤±è´¥');
 	}
 	@fclose($fp);
 	$site_domain = "http://".$_SERVER['HTTP_HOST'];
@@ -140,7 +140,7 @@ if($act =="4")
 	$install_smarty->display('step4.htm');
   	if(!$fp = @fopen(dirname(__FILE__).'/sql-structure.sql','rb'))
 	{
-		install_showmsg('´ò¿ªÎÄ¼şsql-structure.sql³ö´í£¬Çë¼ì²éÎÄ¼şÊÇ·ñ´æÔÚ');
+		install_showmsg('æ‰“å¼€æ–‡ä»¶sql-structure.sqlå‡ºé”™ï¼Œè¯·æ£€æŸ¥æ–‡ä»¶æ˜¯å¦å­˜åœ¨');
 	}
 	$query = '';
 	while(!feof($fp))
@@ -182,7 +182,7 @@ if($act =="4")
 	$query = '';
 	if(!$fp = @fopen(dirname(__FILE__).'/sql-data.sql','rb'))
 	{
-		install_showmsg('´ò¿ªÎÄ¼şsql-data.sql³ö´í£¬Çë¼ì²éÎÄ¼şÊÇ·ñ´æÔÚ');
+		install_showmsg('æ‰“å¼€æ–‡ä»¶sql-data.sqlå‡ºé”™ï¼Œè¯·æ£€æŸ¥æ–‡ä»¶æ˜¯å¦å­˜åœ¨');
 	}
 	while(!feof($fp))
 	{
@@ -202,7 +202,7 @@ if($act =="4")
 	@fclose($fp);	
 	$html ="";
 	$html.= "<script type=\"text/javascript\">\n";
-	$html.= "$('#installing').append('<p>»ù´¡Êı¾İÌí¼Ó³É¹¦£¡...</p>');\n";
+	$html.= "$('#installing').append('<p>åŸºç¡€æ•°æ®æ·»åŠ æˆåŠŸï¼...</p>');\n";
 	$html.= "var div = document.getElementById('installing');";
 	$html.= "div.scrollTop = div.scrollHeight;";
 	$html.= "</script>";
@@ -212,7 +212,7 @@ if($act =="4")
 	$query = '';
 	if(!$fp = @fopen(dirname(__FILE__).'/sql-hrtools.sql','rb'))
 	{
-		install_showmsg('´ò¿ªÎÄ¼şsql-hrtools.sql³ö´í£¬Çë¼ì²éÎÄ¼şÊÇ·ñ´æÔÚ');
+		install_showmsg('æ‰“å¼€æ–‡ä»¶sql-hrtools.sqlå‡ºé”™ï¼Œè¯·æ£€æŸ¥æ–‡ä»¶æ˜¯å¦å­˜åœ¨');
 	}
 	while(!feof($fp))
 	{
@@ -232,7 +232,7 @@ if($act =="4")
 	@fclose($fp);
 	$html ="";
 	$html.= "<script type=\"text/javascript\">\n";
-	$html.= "$('#installing').append('<p>hr¹¤¾ßÏäÊı¾İÌí¼Ó³É¹¦£¡...</p>');\n";
+	$html.= "$('#installing').append('<p>hrå·¥å…·ç®±æ•°æ®æ·»åŠ æˆåŠŸï¼...</p>');\n";
 	$html.= "var div = document.getElementById('installing');";
 	$html.= "div.scrollTop = div.scrollHeight;";
 	$html.= "</script>";
@@ -242,7 +242,7 @@ if($act =="4")
 	$query = '';
 	if(!$fp = @fopen(dirname(__FILE__).'/sql-hotword.sql','rb'))
 	{
-		install_showmsg('´ò¿ªÎÄ¼şsql-hotword.sql³ö´í£¬Çë¼ì²éÎÄ¼şÊÇ·ñ´æÔÚ');
+		install_showmsg('æ‰“å¼€æ–‡ä»¶sql-hotword.sqlå‡ºé”™ï¼Œè¯·æ£€æŸ¥æ–‡ä»¶æ˜¯å¦å­˜åœ¨');
 	}
 	while(!feof($fp))
 	{
@@ -262,7 +262,7 @@ if($act =="4")
 	@fclose($fp);
 	$html ="";
 	$html.= "<script type=\"text/javascript\">\n";
-	$html.= "$('#installing').append('<p>ÈÈÃÅ¹Ø¼ü´ÊÊı¾İÌí¼Ó³É¹¦£¡...</p>');\n";
+	$html.= "$('#installing').append('<p>çƒ­é—¨å…³é”®è¯æ•°æ®æ·»åŠ æˆåŠŸï¼...</p>');\n";
 	$html.= "var div = document.getElementById('installing');";
 	$html.= "div.scrollTop = div.scrollHeight;";
 	$html.= "</script>";
@@ -273,8 +273,8 @@ if($act =="4")
 	mysql_query("UPDATE `{$pre}config` SET value = '{$site_domain}' WHERE name = 'site_domain'", $db);
 	$pwd_hash=randstr();
 	$admin_md5pwd=md5($admin_pwd.$pwd_hash.$QS_pwdhash);
-	mysql_query("INSERT INTO `{$pre}admin` (admin_id,admin_name, email, pwd,pwd_hash, purview, rank,add_time, last_login_time, last_login_ip) VALUES (1, '$admin_name', '$admin_email', '$admin_md5pwd', '$pwd_hash', 'all','³¬¼¶¹ÜÀíÔ±', '$timestamp', '$timestamp', '')",$db);
-	//Éú³É¾²Ì¬»º´æ
+	mysql_query("INSERT INTO `{$pre}admin` (admin_id,admin_name, email, pwd,pwd_hash, purview, rank,add_time, last_login_time, last_login_ip) VALUES (1, '$admin_name', '$admin_email', '$admin_md5pwd', '$pwd_hash', 'all','è¶…çº§ç®¡ç†å‘˜', '$timestamp', '$timestamp', '')",$db);
+	//ç”Ÿæˆé™æ€ç¼“å­˜
 	require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 	$db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
 	unset($dbhost,$dbuser,$dbpass,$dbname);		
@@ -299,11 +299,11 @@ if($act =="4")
 	refresh_plug_cache();
 	refresh_category_cache();
 	refresh_points_rule_cache();			
-	//Éú³É·ÖÀàJS
+	//ç”Ÿæˆåˆ†ç±»JS
 	makejs_classify();
 	$html ="";
 	$html.= "<script type=\"text/javascript\">\n";
-	$html.= "$('#installing').append('<p>»º´æÊı¾İÌí¼Ó³É¹¦£¡...</p><p>°²×°Íê³É£¡</p>');\n";
+	$html.= "$('#installing').append('<p>ç¼“å­˜æ•°æ®æ·»åŠ æˆåŠŸï¼...</p><p>å®‰è£…å®Œæˆï¼</p>');\n";
 	$html.= "var div = document.getElementById('installing');";
 	$html.= "div.scrollTop = div.scrollHeight;";
 	$html.= "</script>";

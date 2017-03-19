@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+锘�<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>会员注册 - {#$QISHI.site_name#}</title>
-<meta name="author" content="骑士CMS" />
+<title>浼氬憳娉ㄥ唽 - {#$QISHI.site_name#}</title>
+<meta name="author" content="楠戝＋CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <link href="css/user.css" rel="stylesheet" type="text/css" />
@@ -16,14 +16,14 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//打开顶部菜单
+	//鎵撳紑椤堕儴鑿滃崟
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
 	//
 	$("#username").focus(function()
 	{
-		var patrn=/^(用户名)/i; 
+		var patrn=/^(鐢ㄦ埛鍚�)/i; 
 		var key=$("#username").val();
 		if (patrn.exec(key))
 		{
@@ -45,33 +45,33 @@ $(document).ready(function()
 <body>
 <div class="sub_bodybg"></div>
 <div class="sub_head_top">
-	<div class="title">注册会员类型</div>
+	<div class="title">娉ㄥ唽浼氬憳绫诲瀷</div>
 	<div class="back" id="pageback"><img src="images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="images/2.jpg"  border="0"/></a></div>
 </div>
 
 
-<!--快捷按钮 -->
+<!--蹇嵎鎸夐挳 -->
 {#include file="top-menu.html"#}
-<!--快捷按钮 -->
+<!--蹇嵎鎸夐挳 -->
 
 
-<!--注册类型 -->
+<!--娉ㄥ唽绫诲瀷 -->
 <div class="reg_sel link_bk">
   <div class="list">
-    <a class="box" style="display:block" href="{#$QISHI.wap_domain#}/wap_user_reg.php?act=form&type=1"><img src="images/28.jpg"  border="0"/><br />企业会员</a>
+    <a class="box" style="display:block" href="{#$QISHI.wap_domain#}/wap_user_reg.php?act=form&type=1"><img src="images/28.jpg"  border="0"/><br />浼佷笟浼氬憳</a>
   </div>
   <div class="list">
-    <a class="box" style="display:block" href="{#$QISHI.wap_domain#}/wap_user_reg.php?act=form&type=2"><img src="images/29.jpg"  border="0"/><br />个人会员</a>
+    <a class="box" style="display:block" href="{#$QISHI.wap_domain#}/wap_user_reg.php?act=form&type=2"><img src="images/29.jpg"  border="0"/><br />涓汉浼氬憳</a>
   </div>
   <div class="clear"></div>
 </div>
 
-<div class="reg_sel_tip link_blue">如果您已经有本站账号，请直接<a href="wap_login.php">登录</a></div>
+<div class="reg_sel_tip link_blue">濡傛灉鎮ㄥ凡缁忔湁鏈珯璐﹀彿锛岃鐩存帴<a href="wap_login.php">鐧诲綍</a></div>
 {#if $QISHI.qq_apiopen=="1" || $QISHI.sina_apiopen=="1"  || $QISHI.taobao_apiopen=="1"#}
 <div class="user_login_open">
   <div class="title">
-    <span >使用其他账号登录</span>
+    <span >浣跨敤鍏朵粬璐﹀彿鐧诲綍</span>
   </div>
 </div>
 <div class="user_login_open_img">

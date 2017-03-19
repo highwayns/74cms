@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_notice_show($params, &$smarty)
 {
 global $db;
@@ -8,10 +8,10 @@ foreach($arr as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "¹«¸æID":
+	case "å…¬å‘ŠID":
 		$aset['id'] = $a[1];
 		break;
-	case "ÁÐ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
 	}

@@ -1,4 +1,4 @@
-Output.FixInnerHTML
+﻿Output.FixInnerHTML
 TYPE: bool
 VERSION: 4.3.0
 DEFAULT: true

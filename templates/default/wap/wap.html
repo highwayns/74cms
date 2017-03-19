@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
@@ -6,7 +6,7 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>{#$QISHI.site_name#}</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <link href="css/index.css" rel="stylesheet" type="text/css" />
@@ -19,11 +19,11 @@ $(document).ready(function()
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
-	OpenCity("#district_input","#district_cn","#district","#sdistrict","ÇëÑ¡ÔñµØÇø");
+	OpenCity("#district_input","#district_cn","#district","#sdistrict","è¯·é€‰æ‹©åœ°åŒº");
 	//
 	$("#key").focus(function()
 	{
-		var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+		var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
 		var key=$("#key").val();
 		if (patrn.exec(key))
 		{
@@ -37,7 +37,7 @@ $(document).ready(function()
 		window.location.href=$(this).attr("url"); 
 	});
 	$(".searchbutton").click(function(){
-		var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+		var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
 		var key=$("#key").val();
 		if (patrn.exec(key))
 		{
@@ -72,53 +72,53 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 {#include file="top-menu.html"#}
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="d1 link_bk">
   <div class="list">
-    <div class="box"><a href="{#$QISHI.wap_domain#}/wap-jobs-list.php"><img src="images/10.jpg"  border="0"/><br />×îĞÂÖ°Î»</a></div>
+    <div class="box"><a href="{#$QISHI.wap_domain#}/wap-jobs-list.php"><img src="images/10.jpg"  border="0"/><br />æœ€æ–°èŒä½</a></div>
   </div>
   <div class="list">
-    <div class="box"><a href="{#$QISHI.wap_domain#}/wap-jobs-list.php?emergency=1"><img src="images/5.jpg"  border="0"/><br />½ô¼±ÕĞÆ¸</a></div>
+    <div class="box"><a href="{#$QISHI.wap_domain#}/wap-jobs-list.php?emergency=1"><img src="images/5.jpg"  border="0"/><br />ç´§æ€¥æ‹›è˜</a></div>
   </div>
   <div class="list">
-    <div class="box"><a href="{#$QISHI.wap_domain#}/wap-jobs-list.php?recommend=1"><img src="images/6.jpg"  border="0"/><br />ÍÆ¼öÖ°Î»</a></div>
+    <div class="box"><a href="{#$QISHI.wap_domain#}/wap-jobs-list.php?recommend=1"><img src="images/6.jpg"  border="0"/><br />æ¨èèŒä½</a></div>
   </div>
   <div class="list">
-    <div class="box"><a href="{#$QISHI.wap_domain#}/wap-resume-list.php?talent=2"><img src="images/7.jpg"  border="0"/><br />¸ß¼¶ÈË²Å</a></div>
+    <div class="box"><a href="{#$QISHI.wap_domain#}/wap-resume-list.php?talent=2"><img src="images/7.jpg"  border="0"/><br />é«˜çº§äººæ‰</a></div>
   </div>
   <div class="clear"></div>
 </div>
-<!--ËÑË÷ -->
+<!--æœç´¢ -->
 <div class="d2">
-  	<input name="key" type="text"  id="key"  class="keyinput" value="ÇëÊäÈë¹Ø¼ü×Ö"/>
+  	<input name="key" type="text"  id="key"  class="keyinput" value="è¯·è¾“å…¥å…³é”®å­—"/>
 	 <div class="more" id="clearkey"><img src="images/17.jpg"  border="0"/></div>
 </div>
 <div class="d3" id="district_input">
-  <div class="input"  id="district_cn">ÇëÑ¡ÔñµØÇø</div>
+  <div class="input"  id="district_cn">è¯·é€‰æ‹©åœ°åŒº</div>
   <input name="district" id="district" type="hidden" value="" />
 <input name="sdistrict" id="sdistrict" type="hidden" value="" />
   <div class="more"><img src="images/8.jpg"  border="0"/></div>
 </div>
 
 <div class="d4">
-  <div class="alist searchbutton" id="search_jobs"><a href="javascript:void(0);">ËÑÖ°Î»</a></div>
-  <div class="alist searchbutton" id="search_resume"><a href="javascript:void(0);" class="last">ËÑ¼òÀú</a></div>
+  <div class="alist searchbutton" id="search_jobs"><a href="javascript:void(0);">æœèŒä½</a></div>
+  <div class="alist searchbutton" id="search_resume"><a href="javascript:void(0);" class="last">æœç®€å†</a></div>
   <div class="clear"></div>
 </div>
 <div class="d5">
-  <div class="tit"><h2>½ô¼±ÕĞÆ¸</h2></div>
+  <div class="tit"><h2>ç´§æ€¥æ‹›è˜</h2></div>
 </div>
 
 <div class="d6">
 {#foreach from=$emergency_jobs item=list#}
 	<div class="list" url="{#$list.url#}">
 	  <div class="t1"><span><a href="{#$list.url#}">{#$list.jobs_name#}</a>
-		{#if $list.stick=="1"#}<img title="ÖÃ¶¥ĞÅÏ¢" src="images/ding.jpg" border="0" class="vtip"/>{#/if#}
-             		{#if $list.emergency=="1"#}<img title="½ô¼±ÕĞÆ¸" src="images/iconji.gif" border="0" class="vtip" />{#/if#}
-              	{#if $list.recommend=="1"#}<img title="ÍÆ¼öÖ°Î»" src="images/iconjian.gif" border="0" class="vtip" />{#/if#}
-            		{#if $list.graduate=="1"#}<img title="»¶Ó­Ó¦½ìÉúÍ¶µİ¼òÀú" src="images/ying.jpg" border="0" class="vtip"/>{#/if#}
+		{#if $list.stick=="1"#}<img title="ç½®é¡¶ä¿¡æ¯" src="images/ding.jpg" border="0" class="vtip"/>{#/if#}
+             		{#if $list.emergency=="1"#}<img title="ç´§æ€¥æ‹›è˜" src="images/iconji.gif" border="0" class="vtip" />{#/if#}
+              	{#if $list.recommend=="1"#}<img title="æ¨èèŒä½" src="images/iconjian.gif" border="0" class="vtip" />{#/if#}
+            		{#if $list.graduate=="1"#}<img title="æ¬¢è¿åº”å±Šç”ŸæŠ•é€’ç®€å†" src="images/ying.jpg" border="0" class="vtip"/>{#/if#}
 	  </span><br />
 {#$list.companyname#}</div>
 	  <div class="t2">{#$list.district_cn#}<br />{#$list.wage_cn#}</div>
@@ -126,7 +126,7 @@ $(document).ready(function()
 	  <div class="clear"></div>
 	</div>
 {#/foreach#}	
-    <a style="display:block;text-decoration:none" class="more link_bk" href="wap-jobs-list.php">¸ü¶àÖ°Î»...</a>	
+    <a style="display:block;text-decoration:none" class="more link_bk" href="wap-jobs-list.php">æ›´å¤šèŒä½...</a>	
 </div>
 {#include file="wap/footer.htm"#}
 

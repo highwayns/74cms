@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Test Harness for CodeMirror
  * JS-unit compatible tests here.  The two available assertions are
  * assertEquals (strict equality) and assertEquivalent (looser equivalency).

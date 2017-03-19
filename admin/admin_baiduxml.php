@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Éú³ÉHTML
+ * 74cms ç”ŸæˆHTML
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -14,7 +14,7 @@ require_once(dirname(__FILE__).'/../data/config.php');
 require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'xmllist';
 $smarty->assign('act',$act);
-$smarty->assign('pageheader',"°Ù¶È¿ª·ÅÆ½Ì¨");
+$smarty->assign('pageheader',"ç™¾åº¦å¼€æ”¾å¹³å°");
 if($act == 'xmllist')
 {
 $xmlset=get_cache('baiduxml');
@@ -35,7 +35,7 @@ foreach($flist as $key => $file)
 {
 	if (file_exists($xmldir.$file))
 	{
-	$flistd[$key]['file_type'] = $file==$xmlset['indexname']?'<span style="color:#FF6600">Ë÷ÒıÎÄµµ</span>':'×ÊÔ´ÎÄµµ';
+	$flistd[$key]['file_type'] = $file==$xmlset['indexname']?'<span style="color:#FF6600">ç´¢å¼•æ–‡æ¡£</span>':'èµ„æºæ–‡æ¡£';
 	$flistd[$key]['file_size'] = round(filesize($xmldir.$file)/1024/1024,2);
 	$flistd[$key]['file_time'] = filemtime($xmldir.$file);	
 	$flistd[$key]['file_url'] = $_CFG['site_domain'].$_CFG['site_dir'].$trimxmldir.$file;
@@ -56,11 +56,11 @@ elseif($act == 'setsave')
 		$_POST['xmlpagesize']=intval($_POST['xmlpagesize'])==0?1:intval($_POST['xmlpagesize']);
 		foreach($_POST as $k => $v)
 		{
-		!$db->query("UPDATE ".table('baiduxml')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('±£´æÊ§°Ü', 1):"";
+		!$db->query("UPDATE ".table('baiduxml')." SET value='{$v}' WHERE name='{$k}'")?adminmsg('ä¿å­˜å¤±è´¥', 1):"";
 		}
 		refresh_cache('baiduxml');
-		write_log("ĞŞ¸Ä°Ù¶È¿ª·ÅÆ½Ì¨ÅäÖÃ", $_SESSION['admin_name'],3);
-		adminmsg("±£´æ³É¹¦£¡",2);
+		write_log("ä¿®æ”¹ç™¾åº¦å¼€æ”¾å¹³å°é…ç½®", $_SESSION['admin_name'],3);
+		adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 elseif($act == 'del')
 {
@@ -69,15 +69,15 @@ elseif($act == 'del')
 	$file_name=$_POST['file_name'];
 	if (empty($file_name))
 	{
-	adminmsg("ÇëÑ¡ÔñÎÄµµ£¡",1);
+	adminmsg("è¯·é€‰æ‹©æ–‡æ¡£ï¼",1);
 	}
 	if (!is_array($file_name)) $file_name=array($file_name);
 	foreach($file_name as $f )
 	{
 	@unlink($xmldir.$f);
 	}
-	write_log("É¾³ı°Ù¶È¿ª·ÅÆ½Ì¨ÎÄµµ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ı³É¹¦£¡",2);
+	write_log("åˆ é™¤ç™¾åº¦å¼€æ”¾å¹³å°æ–‡æ¡£", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼",2);
 }
 elseif($act == 'make')
 {
@@ -130,7 +130,7 @@ elseif($act == 'make')
 	{
 		if ($total===0)
 		{
-		adminmsg("Ã»ÓĞÊı¾İ¿ÉÒÔÉú³É£¡",1);
+		adminmsg("æ²¡æœ‰æ•°æ®å¯ä»¥ç”Ÿæˆï¼",1);
 		}
 		else
 		{
@@ -144,11 +144,11 @@ elseif($act == 'make')
 				$index[]=array($_CFG['site_domain'].$_CFG['site_dir'].$xmlfile,$atime);
 			}
 			$baiduxml->XML_index_put($xmldir.$xmlset['indexname'],$index);
-			$link[0]['text'] = "²é¿´½á¹û";
+			$link[0]['text'] = "æŸ¥çœ‹ç»“æœ";
 			$link[0]['href'] = '?act=xmllist';
 			$pageli--;
 			$total=$total-$err;
-			adminmsg("Éú³ÉÍê³É£¡×Ü¼ÆÉú³É{$pageli}¸ö×ÊÔ´ÎÄµµ£¬1¸öË÷ÒıÎÄµµ£¬{$total}¸öÖ°Î»Éú³É³É¹¦£¬{$err}¸öÖ°Î»Éú³ÉÊ§°Ü",2,$link);
+			adminmsg("ç”Ÿæˆå®Œæˆï¼æ€»è®¡ç”Ÿæˆ{$pageli}ä¸ªèµ„æºæ–‡æ¡£ï¼Œ1ä¸ªç´¢å¼•æ–‡æ¡£ï¼Œ{$total}ä¸ªèŒä½ç”ŸæˆæˆåŠŸï¼Œ{$err}ä¸ªèŒä½ç”Ÿæˆå¤±è´¥",2,$link);
 		}	
 	}
 	else
@@ -157,16 +157,16 @@ elseif($act == 'make')
 		if ($baiduxml->XML_put($xmlname))
 		{
 		$pageli++;
-		$link[0]['text'] = "ÏµÍ³½«×Ô¶¯¼ÌĞø...";
+		$link[0]['text'] = "ç³»ç»Ÿå°†è‡ªåŠ¨ç»§ç»­...";
 		$link[0]['href'] = "?act=make&total=".$total."&pageli=".$pageli."&err=".$err;
-		adminmsg("{$xmlname}Éú³É³É¹¦,ÏµÍ³½«×Ô¶¯¼ÌĞø...", 1,$link,true,2);
+		adminmsg("{$xmlname}ç”ŸæˆæˆåŠŸ,ç³»ç»Ÿå°†è‡ªåŠ¨ç»§ç»­...", 1,$link,true,2);
 		exit();
 		}
 		else
 		{
-		$link[0]['text'] = "·µ»ØÁĞ±í";
+		$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 		$link[0]['href'] = '?act=xmllist';
-		adminmsg("Éú³ÉÊ§°Ü£¡",1,$link);
+		adminmsg("ç”Ÿæˆå¤±è´¥ï¼",1,$link);
 		}
 	}	
 }

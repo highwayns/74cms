@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÌÔ±¦ºÅÕÊºÅµÇÂ¼
+ * 74cms æ·˜å®å·å¸å·ç™»å½•
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -28,12 +28,12 @@ elseif($act == 'login' && !empty($top_parameters))
 	require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 	if (empty($top_sign))
 	{
-	exit('²ÎÊı´íÎó£¡');
+	exit('å‚æ•°é”™è¯¯ï¼');
 	}
 	$base64str=base64_encode(md5($top_parameters.$_CFG['taobao_appsecret'],TRUE ));
 	if ($base64str<>$top_sign)
 	{
-	exit('²ÎÊı·Ç·¨£¡');
+	exit('å‚æ•°éæ³•ï¼');
 	}
 	else
 	{
@@ -43,7 +43,7 @@ elseif($act == 'login' && !empty($top_parameters))
 	}
 	if (empty($token))
 	{
-	exit('µÇÂ¼Ê§°Ü£¡token»ñÈ¡Ê§°Ü');
+	exit('ç™»å½•å¤±è´¥ï¼tokenè·å–å¤±è´¥');
 	}
 	else
 	{
@@ -64,7 +64,7 @@ elseif($act == 'login' && !empty($top_parameters))
 					if (!empty($_SESSION['uid']) && !empty($_SESSION['utype']))
 					{
 					$db->query("UPDATE ".table('members')." SET taobao_access_token = '{$token}'  WHERE uid='{$_SESSION[uid]}' AND taobao_access_token='' LIMIT 1");
-					exit('°ó¶¨ÕÊºÅ³É¹¦£¡');
+					exit('ç»‘å®šå¸å·æˆåŠŸï¼');
 					}
 					else
 					{
@@ -84,7 +84,7 @@ elseif ($act=='reg')
 	else
 	{
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
-		$smarty->assign('title','ÍêÉÆĞÅÏ¢ - '.$_CFG['site_name']);
+		$smarty->assign('title','å®Œå–„ä¿¡æ¯ - '.$_CFG['site_name']);
 		$smarty->assign('t_url',"?act=");
 		$smarty->display('wap/wap-bind-taobao.html');
 	}
@@ -95,12 +95,12 @@ elseif ($act=='reg_save')
 	{
 		exit("access_token is empty");
 	}
-	$val['username']=!empty($_POST['username'])?trim(utf8_to_gbk($_POST['username'])):exit("ÊäÈëÓÃ»§Ãû");
-	$val['email']=!empty($_POST['email'])?trim($_POST['email']):exit("ÊäÈëÓÊÏä");
+	$val['username']=!empty($_POST['username'])?trim(utf8_to_gbk($_POST['username'])):exit("è¾“å…¥ç”¨æˆ·å");
+	$val['email']=!empty($_POST['email'])?trim($_POST['email']):exit("è¾“å…¥é‚®ç®±");
 	$val['member_type']=intval($_POST['member_type']);
-	$val['password']=!empty($_POST['password'])?trim($_POST['password']):exit("ÊäÈëÃÜÂë");
+	$val['password']=!empty($_POST['password'])?trim($_POST['password']):exit("è¾“å…¥å¯†ç ");
 	if($val['password']!=trim($_POST['rpassword'])){
-		exit("ÃÜÂë²»Ò»ÖÂ");
+		exit("å¯†ç ä¸ä¸€è‡´");
 	}	
 	require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 	$db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
@@ -109,7 +109,7 @@ elseif ($act=='reg_save')
 	$sql="select * from ".table("members")." where username='$val[username]' or email='$val[email]'";
 	$row = $db->getall($sql);
 	if(!empty($row)){
-		exit("ÓÃ»§Ãû»òÓÊÏäÒÑ¾­´æÔÚ£¡");
+		exit("ç”¨æˆ·åæˆ–é‚®ç®±å·²ç»å­˜åœ¨ï¼");
 	}
 	$userid=user_register($val['username'],$val['password'],$val['member_type'],$val['email']);
 	if ($userid)
@@ -123,7 +123,7 @@ elseif ($act=='reg_save')
 	{
 		unset($_SESSION["taobao_access_token"]);
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
-		exit('×¢²áÊ§°Ü£¡');
+		exit('æ³¨å†Œå¤±è´¥ï¼');
 	}
 	
 }

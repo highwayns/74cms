@@ -1,21 +1,21 @@
-<?php
+﻿<?php
 /**
- * 获取已上传的文件列表
+ * 鑾峰彇宸蹭笂浼犵殑鏂囦欢鍒楄〃
  * User: Jinqn
  * Date: 14-04-09
- * Time: 上午10:17
+ * Time: 涓婂崍10:17
  */
 include "Uploader.class.php";
 
-/* 判断类型 */
+/* 鍒ゆ柇绫诲瀷 */
 switch ($_GET['action']) {
-    /* 列出文件 */
+    /* 鍒楀嚭鏂囦欢 */
     case 'listfile':
         $allowFiles = $CONFIG['fileManagerAllowFiles'];
         $listSize = $CONFIG['fileManagerListSize'];
         $path = $CONFIG['fileManagerListPath'];
         break;
-    /* 列出图片 */
+    /* 鍒楀嚭鍥剧墖 */
     case 'listimage':
     default:
         $allowFiles = $CONFIG['imageManagerAllowFiles'];
@@ -24,12 +24,12 @@ switch ($_GET['action']) {
 }
 $allowFiles = substr(str_replace(".", "|", join("", $allowFiles)), 1);
 
-/* 获取参数 */
+/* 鑾峰彇鍙傛暟 */
 $size = isset($_GET['size']) ? htmlspecialchars($_GET['size']) : $listSize;
 $start = isset($_GET['start']) ? htmlspecialchars($_GET['start']) : 0;
 $end = $start + $size;
 
-/* 获取文件列表 */
+/* 鑾峰彇鏂囦欢鍒楄〃 */
 $path = $_SERVER['DOCUMENT_ROOT'] . (substr($path, 0, 1) == "/" ? "":"/") . $path;
 $files = getfiles($path, $allowFiles);
 if (!count($files)) {
@@ -41,17 +41,17 @@ if (!count($files)) {
     ));
 }
 
-/* 获取指定范围的列表 */
+/* 鑾峰彇鎸囧畾鑼冨洿鐨勫垪琛?*/
 $len = count($files);
 for ($i = min($end, $len) - 1, $list = array(); $i < $len && $i >= 0 && $i >= $start; $i--){
     $list[] = $files[$i];
 }
-//倒序
+//鍊掑簭
 //for ($i = $end, $list = array(); $i < $len && $i < $end; $i++){
 //    $list[] = $files[$i];
 //}
 
-/* 返回数据 */
+/* 杩斿洖鏁版嵁 */
 $result = json_encode(array(
     "state" => "SUCCESS",
     "list" => $list,
@@ -63,8 +63,7 @@ return $result;
 
 
 /**
- * 遍历获取目录下的指定类型的文件
- * @param $path
+ * 閬嶅巻鑾峰彇鐩綍涓嬬殑鎸囧畾绫诲瀷鐨勬枃浠? * @param $path
  * @param array $files
  * @return array
  */

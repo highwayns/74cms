@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms °²È«ÉèÖÃ
+ * 74cms å®‰å…¨è®¾ç½®
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -14,7 +14,7 @@ require_once(dirname(__FILE__).'/../data/config.php');
 require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'captcha';
 check_permissions($_SESSION['admin_purview'],"set_safety");
-$smarty->assign('pageheader',"°²È«ÉèÖÃ");
+$smarty->assign('pageheader',"å®‰å…¨è®¾ç½®");
 if($act == 'filte')
 {
 	get_token();
@@ -41,10 +41,10 @@ elseif($act == 'setsave')
 	check_token();
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('¸üÐÂÕ¾µãÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('config')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1):"";
 	}
 	refresh_cache('config');
-	adminmsg("±£´æ³É¹¦£¡",2);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 if($act == 'captcha')
 {
@@ -73,15 +73,15 @@ elseif($act == 'captcha_save')
 		}
 		if (empty($list))
 		{
-		adminmsg("ÐÞ¸ÄÊ§°Ü£¬Ê¹ÓÃÖÐÎÄÑéÖ¤ÂëÐèÒª°ÑÖÐÎÄºº×ÖµÄTTFÎÄ¼þÉÏ´«µ½ data/font/cn Ä¿Â¼ÏÂ",0);
+		adminmsg("ä¿®æ”¹å¤±è´¥ï¼Œä½¿ç”¨ä¸­æ–‡éªŒè¯ç éœ€è¦æŠŠä¸­æ–‡æ±‰å­—çš„TTFæ–‡ä»¶ä¸Šä¼ åˆ° data/font/cn ç›®å½•ä¸‹",0);
 		}
 	}
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('captcha')." SET value='$v' WHERE name='$k'")?adminmsg('¸üÐÂÕ¾µãÉèÖÃÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('captcha')." SET value='$v' WHERE name='$k'")?adminmsg('æ›´æ–°ç«™ç‚¹è®¾ç½®å¤±è´¥', 1):"";
 	}
 	refresh_cache('captcha');
-	write_log("ÅäÖÃ°²È«ÉèÖÃ", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2);
+	write_log("é…ç½®å®‰å…¨è®¾ç½®", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 ?>

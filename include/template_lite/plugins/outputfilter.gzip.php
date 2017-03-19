@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
  * Author: Mark Dickenson, akapanamajack@wildmail.com
  * You can stack multiple template display commands to have the entire page output as a compressed file.

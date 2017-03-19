@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms µÇÂ¼Ò³Ãæ
+ * 74cms ç™»å½•é¡µé¢
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -50,30 +50,30 @@ elseif($act == 'do_login')
  	$remember = isset($_POST['rememberme']) ? intval($_POST['rememberme']) : 0;
  	if($admin_name == '')
 	{
-	header("Location:?act=login&err=".urlencode('ÓÃ»§Ãû²»ÄÜÎª¿Õ'));
+	header("Location:?act=login&err=".urlencode('ç”¨æˆ·åä¸èƒ½ä¸ºç©º'));
 	exit();
  	}
  	elseif($admin_pwd == '')
 	{
-	header("Location:?act=login&err=".urlencode('ÃÜÂë²»ÄÜÎª¿Õ'));
+	header("Location:?act=login&err=".urlencode('å¯†ç ä¸èƒ½ä¸ºç©º'));
 	exit();
  	}
 	$captcha=get_cache('captcha');
 	if(empty($postcaptcha) && $captcha['verify_adminlogin']=='1')
 	{
-		header("Location:?act=login&err=".urlencode('ÑéÖ¤Âë²»ÄÜÎª¿Õ'));
+		header("Location:?act=login&err=".urlencode('éªŒè¯ç ä¸èƒ½ä¸ºç©º'));
 		exit();
  	}
 	if ($captcha['verify_adminlogin']=='1' && strcasecmp($_SESSION['imageCaptcha_content'],$postcaptcha)!=0)
 	{
-		write_log("<span style=\"color:#FF0000\">ÑéÖ¤ÂëÌîĞ´´íÎó</span>",$admin_name,2);
-		header("Location:?act=login&err=".urlencode('ÑéÖ¤ÂëÌîĞ´´íÎó'));
+		write_log("<span style=\"color:#FF0000\">éªŒè¯ç å¡«å†™é”™è¯¯</span>",$admin_name,2);
+		header("Location:?act=login&err=".urlencode('éªŒè¯ç å¡«å†™é”™è¯¯'));
 		exit();
 	}
  	elseif(check_admin($admin_name,$admin_pwd))
 	{
  		update_admin_info($admin_name);
-		write_log("³É¹¦µÇÂ¼",$admin_name);
+		write_log("æˆåŠŸç™»å½•",$admin_name);
  		if($remember == 1)
 		{
 			$admininfo=get_admin_one($admin_name);
@@ -84,8 +84,8 @@ elseif($act == 'do_login')
  	}
 	else
 	{
-		write_log("<span style=\"color:#FF0000\">ÓÃ»§Ãû»òÃÜÂë´íÎó</span>",$admin_name,2);
-		header("Location:?act=login&err=".urlencode('ÓÃ»§Ãû»òÃÜÂë´íÎó'));
+		write_log("<span style=\"color:#FF0000\">ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯</span>",$admin_name,2);
+		header("Location:?act=login&err=".urlencode('ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯'));
 		exit();
  	}
 header("Location: admin_index.php"); 

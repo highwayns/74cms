@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ajax·µ»Ø
+ * 74cms ajaxè¿”å›
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -17,7 +17,7 @@ if($act =='do_login')
 	$username=isset($_POST['username'])?trim($_POST['username']):"";
 	$password=isset($_POST['password'])?trim($_POST['password']):"";
 	$expire=isset($_POST['expire'])?intval($_POST['expire']):"";
-	$index_login=isset($_POST['index_login'])?intval($_POST['index_login']):0;//±ê¼ÇµÇÂ¼À´Ô´£¬Ê×Ò³²»ÒªÑéÖ¤Âë
+	$index_login=isset($_POST['index_login'])?intval($_POST['index_login']):0;//æ ‡è®°ç™»å½•æ¥æºï¼Œé¦–é¡µä¸è¦éªŒè¯ç 
 	$account_type=1;
 	if (preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$username))
 	{
@@ -172,18 +172,18 @@ elseif ($act=="top_loginform")
 	$contents='';
 	if ($_COOKIE['QS']['username'] && $_COOKIE['QS']['password'])
 	{
-		$contents='»¶Ó­&nbsp;&nbsp;<a href="{#$user_url#}" style="color:#339900">{#$username#}</a> µÇÂ¼£¡&nbsp;&nbsp;{#$pmscount_a#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$user_url#}" style="color:#0066cc">[»áÔ±ÖĞĞÄ]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$logout_url#}" style="color:#0066cc">[ÍË³ö]</a>';
+		$contents='æ¬¢è¿&nbsp;&nbsp;<a href="{#$user_url#}" style="color:#339900">{#$username#}</a> ç™»å½•ï¼&nbsp;&nbsp;{#$pmscount_a#}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$user_url#}" style="color:#0066cc">[ä¼šå‘˜ä¸­å¿ƒ]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$logout_url#}" style="color:#0066cc">[é€€å‡º]</a>';
 	}
 	elseif ($_SESSION['activate_username'] && defined('UC_API'))
 	{
-		$contents=' &nbsp;&nbsp;ÄúµÄÕÊºÅ {#$activate_username#} Ğè¼¤»îºó²Å¿ÉÒÔÊ¹ÓÃ£¡ <a href="{#$activate_url#}" style="color:#339900">Á¢¼´¼¤»î</a>';
+		$contents=' &nbsp;&nbsp;æ‚¨çš„å¸å· {#$activate_username#} éœ€æ¿€æ´»åæ‰å¯ä»¥ä½¿ç”¨ï¼ <a href="{#$activate_url#}" style="color:#339900">ç«‹å³æ¿€æ´»</a>';
 	}
 	else
 	{	
 		if (isset($_GET['block'])) {
-			$contents='ÄúºÃ£¬»¶Ó­·ÃÎÊ{#$site_name#}'.$block.'£¡';
+			$contents='æ‚¨å¥½ï¼Œæ¬¢è¿è®¿é—®{#$site_name#}'.$block.'ï¼';
 		} else {
-			$contents='»¶Ó­À´µ½{#$site_name#}£¡&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$login_url#}" style="color:#0066cc" >[µÇÂ¼]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$reg_url#}" style="color:#0066cc">[Ãâ·Ñ×¢²á]</a>';
+			$contents='æ¬¢è¿æ¥åˆ°{#$site_name#}ï¼&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$login_url#}" style="color:#0066cc" >[ç™»å½•]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{#$reg_url#}" style="color:#0066cc">[å…è´¹æ³¨å†Œ]</a>';
 		}
 	}
 		$contents=str_replace('{#$activate_username#}',$_SESSION['activate_username'],$contents);
@@ -196,7 +196,7 @@ elseif ($act=="top_loginform")
 		$user_url=$_CFG['site_dir']."user/company/company_index.php";
 			if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/company/company_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="¶ÌÏûÏ¢">ÏûÏ¢ '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/company/company_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="çŸ­æ¶ˆæ¯">æ¶ˆæ¯ '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='2')
@@ -204,7 +204,7 @@ elseif ($act=="top_loginform")
 			$user_url=$_CFG['site_dir']."user/personal/personal_index.php";
 			if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/personal/personal_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="¶ÌÏûÏ¢">ÏûÏ¢ '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/personal/personal_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="çŸ­æ¶ˆæ¯">æ¶ˆæ¯ '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='4')
@@ -212,7 +212,7 @@ elseif ($act=="top_loginform")
 			$user_url=$_CFG['site_dir']."user/train/train_index.php";
 			if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/train/train_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="¶ÌÏûÏ¢">ÏûÏ¢ '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/train/train_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="çŸ­æ¶ˆæ¯">æ¶ˆæ¯ '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		if ($_COOKIE['QS']['utype']=='3')
@@ -220,7 +220,7 @@ elseif ($act=="top_loginform")
 			$user_url=$_CFG['site_dir']."user/hunter/hunter_index.php";
 			if($_COOKIE['QS']['pmscount']>0)
 			 {
-			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/hunter/hunter_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="¶ÌÏûÏ¢">ÏûÏ¢ '.$_COOKIE['QS']['pmscount'].'</a>';
+			 $pmscount_a='<a href="'.$_CFG['site_dir'].'user/hunter/hunter_user.php?act=pm&new=1" style="padding:1px 4px; background-color:#FF6600; color:#FFFFFF;text-decoration:none" title="çŸ­æ¶ˆæ¯">æ¶ˆæ¯ '.$_COOKIE['QS']['pmscount'].'</a>';
 			 }
 		}
 		$contents=str_replace('{#$pmscount_a#}',$pmscount_a,$contents);
@@ -283,7 +283,7 @@ elseif ($act=="loginform")
 		if ($_CFG['qq_apiopen']==1 || $_CFG['sina_apiopen']==1 || $_CFG['taobao_apiopen']==1)
 		{
 			
-			$contents=str_replace('{#$third_tit#}',"ÆäËûÕË»§µÇÂ¼£º",$contents);
+			$contents=str_replace('{#$third_tit#}',"å…¶ä»–è´¦æˆ·ç™»å½•ï¼š",$contents);
 		}
 		else
 		{
@@ -308,7 +308,7 @@ elseif ($act=="loginform")
 		    $result_arr = json_decode($result,true);
 		    $ticket = urlencode($result_arr["ticket"]);
 		    $img_html = '<img width="120" height="120" src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket='.$ticket.'">';
-			$weixin_html = '<div id="codeLogin"><div class="code-login" id="login_container">'.$img_html.'</div><p>´ò¿ªÎ¢ĞÅÉ¨Ãè¶şÎ¬Âë</p></div>';
+			$weixin_html = '<div id="codeLogin"><div class="code-login" id="login_container">'.$img_html.'</div><p>æ‰“å¼€å¾®ä¿¡æ‰«æäºŒç»´ç </p></div>';
 			$weixin_html_header='<div class="wechat-login"><a href="javascript:;" class="loginicon wx"></a></div>';
 		}else{
 			$weixin_html_header='';
@@ -316,7 +316,7 @@ elseif ($act=="loginform")
 		}
 		$contents=str_replace('{#$weixin_html_header#}',$weixin_html_header,$contents);
 		$contents=str_replace('{#$weixin_html#}',$weixin_html,$contents);
-		// ÉÏÒ»´ÎµÇÂ¼Ê±¼ä
+		// ä¸Šä¸€æ¬¡ç™»å½•æ—¶é—´
 		if($_SESSION['username'])
 		{
 			if($_SESSION['no_self'])
@@ -324,12 +324,12 @@ elseif ($act=="loginform")
 				$log=$db->getone("SELECT * FROM ".table('members_log')." WHERE log_uid=$_SESSION[uid] AND log_type='1001' ORDER BY log_id DESC LIMIT 0,1");
 				if(!empty($log))
 				{
-					$last_login_time='ÉÏ´ÎµÇÂ¼£º'.date("Y-m-d H:i",$log['log_addtime']);
+					$last_login_time='ä¸Šæ¬¡ç™»å½•ï¼š'.date("Y-m-d H:i",$log['log_addtime']);
 				}
 				else
 				{
 					$log=$db->getone("SELECT reg_time from ".table("members")." where uid=$_SESSION[uid]");
-					$last_login_time='×¢²áÊ±¼ä£º'.date("Y-m-d H:i",$log['reg_time']);
+					$last_login_time='æ³¨å†Œæ—¶é—´ï¼š'.date("Y-m-d H:i",$log['reg_time']);
 				}
 				
 			}
@@ -338,12 +338,12 @@ elseif ($act=="loginform")
 				$log=$db->getone("SELECT * FROM ".table('members_log')." WHERE log_uid=$_SESSION[uid] AND log_type='1001' ORDER BY log_id DESC LIMIT 1,1");
 				if(!empty($log))
 				{
-					$last_login_time='ÉÏ´ÎµÇÂ¼£º'.date("Y-m-d H:i",$log['log_addtime']);
+					$last_login_time='ä¸Šæ¬¡ç™»å½•ï¼š'.date("Y-m-d H:i",$log['log_addtime']);
 				}
 				else
 				{
 					$log=$db->getone("SELECT reg_time from ".table("members")." where uid=$_SESSION[uid]");
-					$last_login_time='×¢²áÊ±¼ä£º'.date("Y-m-d H:i",$log['reg_time']);
+					$last_login_time='æ³¨å†Œæ—¶é—´ï¼š'.date("Y-m-d H:i",$log['reg_time']);
 				}
 			}
 		}
@@ -358,15 +358,15 @@ elseif ($act=="loginform")
 
 			$count_htm='<div code="'.$_CFG['site_dir'].'user/company/company_recruitment.php?act=interview_list" class="core-function f-left">
 					<div><a href="'.$_CFG['site_dir'].'user/company/company_recruitment.php?act=interview_list">'.intval($interview).'</a></div>
-					<p><a href="'.$_CFG['site_dir'].'user/company/company_recruitment.php?act=interview_list">ÃæÊÔÑûÇë</a></p>
+					<p><a href="'.$_CFG['site_dir'].'user/company/company_recruitment.php?act=interview_list">é¢è¯•é‚€è¯·</a></p>
 				</div>
 				<div code="'.$_CFG['site_dir'].'user/company/company_recruitment.php?act=apply_jobs" class="core-function f-left">
 					<div><a href="'.$_CFG['site_dir'].'user/company/company_recruitment.php?act=apply_jobs">'.intval($count_receivedresume).'</a></div>
-					<p><a href="'.$_CFG['site_dir'].'user/company/company_recruitment.php?act=apply_jobs">ÊÕµ½µÄ¼òÀú</a></p>
+					<p><a href="'.$_CFG['site_dir'].'user/company/company_recruitment.php?act=apply_jobs">æ”¶åˆ°çš„ç®€å†</a></p>
 				</div>
 				<div code="'.$_CFG['site_dir'].'user/company/company_recruitment.php?act=favorites_list" class="core-function last f-left">
 					<div><a href="'.$_CFG['site_dir'].'user/company/company_recruitment.php?act=favorites_list">'.intval($count_favorites).'</a></div>
-					<p><a href="'.$_CFG['site_dir'].'user/company/company_recruitment.php?act=favorites_list">ÊÕ²Ø¼Ğ</a></p>
+					<p><a href="'.$_CFG['site_dir'].'user/company/company_recruitment.php?act=favorites_list">æ”¶è—å¤¹</a></p>
 				</div>';
 			$contents=str_replace('{#$count#}',$count_htm,$contents);
 
@@ -381,15 +381,15 @@ elseif ($act=="loginform")
 
 			$count_htm='<div class="core-function f-left">
 					<div><a href="'.$_CFG['site_dir'].'user/personal/personal_apply.php?act=interview">'.intval($interview).'</a></div>
-					<p><a href="'.$_CFG['site_dir'].'user/personal/personal_apply.php?act=interview">ÃæÊÔÑûÇë</a></p>
+					<p><a href="'.$_CFG['site_dir'].'user/personal/personal_apply.php?act=interview">é¢è¯•é‚€è¯·</a></p>
 				</div>
 				<div class="core-function f-left">
 					<div><a href="'.$_CFG['site_dir'].'user/personal/personal_apply.php?act=apply_jobs">'.intval($count_apply).'</a></div>
-					<p><a href="'.$_CFG['site_dir'].'user/personal/personal_apply.php?act=apply_jobs">ÉêÇëÖ°Î»</a></p>
+					<p><a href="'.$_CFG['site_dir'].'user/personal/personal_apply.php?act=apply_jobs">ç”³è¯·èŒä½</a></p>
 				</div>
 				<div class="core-function last f-left">
 					<div><a href="'.$_CFG['site_dir'].'user/personal/personal_apply.php?act=favorites">'.intval($fav_num).'</a></div>
-					<p><a href="'.$_CFG['site_dir'].'user/personal/personal_apply.php?act=favorites">ÊÕ²Ø¼Ğ</a></p>
+					<p><a href="'.$_CFG['site_dir'].'user/personal/personal_apply.php?act=favorites">æ”¶è—å¤¹</a></p>
 				</div>';
 			$contents=str_replace('{#$count#}',$count_htm,$contents);
 		}
@@ -401,27 +401,27 @@ elseif ($act=="loginform")
 		$contents=str_replace('{#$activate_url#}',$_CFG['site_dir']."user/user_reg.php?act=activate",$contents);
 		exit($contents);
 }
-// ×¢²á·¢ËÍ¶ÌĞÅ/ÕÒ»ØÃÜÂë ¶ÌĞÅ
+// æ³¨å†Œå‘é€çŸ­ä¿¡/æ‰¾å›å¯†ç  çŸ­ä¿¡
 elseif($act == "reg_send_sms")
 {
 	$mobile=trim($_POST['mobile']);
 	$sms_type=$_POST['sms_type']?$_POST['sms_type']:"reg";
 	if (empty($mobile) || !preg_match("/^(13|15|14|17|18)\d{9}$/",$mobile))
 	{
-		exit("ÊÖ»úºÅ´íÎó");
+		exit("æ‰‹æœºå·é”™è¯¯");
 	}
 	$rand=mt_rand(100000, 999999);	
 	switch ($sms_type) {
 		case 'reg':
-			$sms_str="ÄúÕıÔÚ×¢²á{$_CFG['site_name']}µÄ»áÔ±,ÊÖ»úÑéÖ¤ÂëÎª:{$rand},´ËÑéÖ¤ÂëÓĞĞ§ÆÚÎª10·ÖÖÓ";
+			$sms_str="æ‚¨æ­£åœ¨æ³¨å†Œ{$_CFG['site_name']}çš„ä¼šå‘˜,æ‰‹æœºéªŒè¯ç ä¸º:{$rand},æ­¤éªŒè¯ç æœ‰æ•ˆæœŸä¸º10åˆ†é’Ÿ";
 			break;
 		case 'getpass':
-			$sms_str="ÄúÕıÔÚÕÒ»Ø{$_CFG['site_name']}µÄ»áÔ±ÃÜÂë,ÊÖ»úÑéÖ¤ÂëÎª:{$rand},´ËÑéÖ¤ÂëÓĞĞ§ÆÚÎª10·ÖÖÓ";
+			$sms_str="æ‚¨æ­£åœ¨æ‰¾å›{$_CFG['site_name']}çš„ä¼šå‘˜å¯†ç ,æ‰‹æœºéªŒè¯ç ä¸º:{$rand},æ­¤éªŒè¯ç æœ‰æ•ˆæœŸä¸º10åˆ†é’Ÿ";
 			break;
 	}
 	if($_SESSION['verify_mobile']==$mobile && time()<$_SESSION['send_time']+180)
 	{
-		exit("180ÃëÄÚ½öÄÜ»ñÈ¡Ò»´Î¶ÌĞÅÑéÖ¤Âë,ÇëÉÔºóÖØÊÔ");
+		exit("180ç§’å†…ä»…èƒ½è·å–ä¸€æ¬¡çŸ­ä¿¡éªŒè¯ç ,è¯·ç¨åé‡è¯•");
 	}
 	else
 	{
@@ -436,32 +436,32 @@ elseif($act == "reg_send_sms")
 	}
 	else
 	{
-	exit("SMSÅäÖÃ³ö´í£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±");
+	exit("SMSé…ç½®å‡ºé”™ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜");
 	}
 }
-// ÑéÖ¤×¢²á¶ÌĞÅ
+// éªŒè¯æ³¨å†ŒçŸ­ä¿¡
 elseif($act == "check_reg_send_sms")
 {
 	$mobile=trim($_POST['mobile']);
 	$time=time();
 	if (empty($mobile) || !preg_match("/^(13|15|14|18|17)\d{9}$/",$mobile))
 	{
-	exit("false");//ÊÖ»úºÅ´íÎó
+	exit("false");//æ‰‹æœºå·é”™è¯¯
 	}
 	if($mobile!=$_SESSION['verify_mobile'])
 	{
-	exit("false");//ÊÖ»úºÅ²»Ò»ÖÂ
+	exit("false");//æ‰‹æœºå·ä¸ä¸€è‡´
 	}
 	if($time>$_SESSION['send_time']+600)
 	{
-	exit("false");//ÑéÖ¤Âë¹ıÆÚ
+	exit("false");//éªŒè¯ç è¿‡æœŸ
 	}
 	$vcode_sms=intval($_POST['mobile_vcode']);
 	$mobile_rand=substr(md5($vcode_sms), 8,16);
-	if($mobile_rand!=$_SESSION['mobile_rand']){exit("false");}//ÑéÖ¤Âë´íÎó£¡
+	if($mobile_rand!=$_SESSION['mobile_rand']){exit("false");}//éªŒè¯ç é”™è¯¯ï¼
 	exit("true");
 }
-// ÕÒ»ØÃÜÂëÑéÖ¤ ÓÃ»§ÃûÓÊÏä ÊÖ»ú
+// æ‰¾å›å¯†ç éªŒè¯ ç”¨æˆ·åé‚®ç®± æ‰‹æœº
 elseif($act == "get_pass_check")
 {
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
@@ -480,7 +480,7 @@ elseif($act == "get_pass_check")
 	}
 	!empty($usinfo)?exit("true"):exit("false");
 }
-// ÕÒ»ØÃÜÂë ÅĞ¶ÏÊÇ·ñ °ó¶¨ÊÖ»ú ÓÊÏä Î¢ĞÅ
+// æ‰¾å›å¯†ç  åˆ¤æ–­æ˜¯å¦ ç»‘å®šæ‰‹æœº é‚®ç®± å¾®ä¿¡
 elseif($act == "get_pass_check_buding")
 {
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
@@ -510,59 +510,59 @@ elseif($act == "get_pass_check_buding")
 		exit('false');
 	}
 }
-// ÕÒ»ØÃÜÂë·¢ËÍÓÊ¼ş
+// æ‰¾å›å¯†ç å‘é€é‚®ä»¶
 elseif($act == "getpass_sendemail")
 {
 	global $QS_pwdhash;
-	$email=$_POST['email']?trim($_POST['email']):exit("ÓÊÏä³ö´í");
-	$username=$_POST['username']?iconv("utf-8", "gbk", trim($_POST['username'])):exit("Ã»ÓĞÓÃ»§Ãû");
-	$uid=$_POST['uid']?intval($_POST['uid']):exit("Ã»ÓĞÓÃ»§Ãû");
+	$email=$_POST['email']?trim($_POST['email']):exit("é‚®ç®±å‡ºé”™");
+	$username=$_POST['username']?iconv("utf-8", "gbk", trim($_POST['username'])):exit("æ²¡æœ‰ç”¨æˆ·å");
+	$uid=$_POST['uid']?intval($_POST['uid']):exit("æ²¡æœ‰ç”¨æˆ·å");
 	if (!preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$email))
 	{
-		exit("ÓÊÏä³ö´í");
+		exit("é‚®ç®±å‡ºé”™");
 	}
 	$time=time();
 	$key=substr(md5($username.$QS_pwdhash),8,16);
-	$email_str.=$username."ÄúºÃ£º<br>";
-	$email_str.="ÇëÔÚ24Ğ¡Ê±ÄÚµã»÷ÒÔÏÂÁ´½ÓÖØĞÂÉèÖÃÄúµÄÃÜÂë£º<br>";
+	$email_str.=$username."æ‚¨å¥½ï¼š<br>";
+	$email_str.="è¯·åœ¨24å°æ—¶å†…ç‚¹å‡»ä»¥ä¸‹é“¾æ¥é‡æ–°è®¾ç½®æ‚¨çš„å¯†ç ï¼š<br>";
 	$email_str.="<a href='".$_CFG['site_domain'].$_CFG['site_dir']."user/user_getpass.php?act=get_pass_step3_email&uid=$uid&key=$key&time=$time' target='_blank'>".$_CFG['site_domain'].$_CFG['site_dir']."user/user_getpass.php?act=get_pass_step3_email&uid=$uid&key=$key&time=$time</a><br>";
-	$email_str.="Èç¹ûÁ´½ÓÎŞ·¨µã»÷,Çë¸´ÖÆÕ³Ìùµ½ä¯ÀÀÆ÷·ÃÎÊ£¡<br>";
-	$email_str.="±¾ÓÊ¼şÓÉÏµÍ³·¢³ö,ÇëÎğ»Ø¸´£¡<br>";
-	$email_str.="ÈçÓĞÈÎºÎÒÉÎÊÇëÁªÏµÍøÕ¾¹Ù·½£º".$_CFG['top_tel']."";
+	$email_str.="å¦‚æœé“¾æ¥æ— æ³•ç‚¹å‡»,è¯·å¤åˆ¶ç²˜è´´åˆ°æµè§ˆå™¨è®¿é—®ï¼<br>";
+	$email_str.="æœ¬é‚®ä»¶ç”±ç³»ç»Ÿå‘å‡º,è¯·å‹¿å›å¤ï¼<br>";
+	$email_str.="å¦‚æœ‰ä»»ä½•ç–‘é—®è¯·è”ç³»ç½‘ç«™å®˜æ–¹ï¼š".$_CFG['top_tel']."";
 
-	if (smtp_mail($email,"{$_CFG['site_name']}-ÕÒ»ØÃÜÂë",$email_str))
+	if (smtp_mail($email,"{$_CFG['site_name']}-æ‰¾å›å¯†ç ",$email_str))
 	{
 		exit("success");
 	}
 	else
 	{
-		exit("ÓÊÏäÅäÖÃ³ö´í£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±");
+		exit("é‚®ç®±é…ç½®å‡ºé”™ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜");
 	}
 }
-//×¢²á·¢ËÍÓÊ¼ş
+//æ³¨å†Œå‘é€é‚®ä»¶
 elseif($act == "reg_sendemail")
 {
-	$email=$_POST['email']?trim($_POST['email']):exit("ÓÊÏä³ö´í1");
-	$utype=$_POST['utype']?intval($_POST['utype']):exit("ÓÊÏä³ö´í2");
+	$email=$_POST['email']?trim($_POST['email']):exit("é‚®ç®±å‡ºé”™1");
+	$utype=$_POST['utype']?intval($_POST['utype']):exit("é‚®ç®±å‡ºé”™2");
 	if (!preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$email))
 	{
-		exit("ÓÊÏä³ö´í3");
+		exit("é‚®ç®±å‡ºé”™3");
 	}
 	$time=time();
 	$key=substr(md5($email.$time),8,16);
-	$email_str.="ÄúºÃ,ÇëÔÚ24Ğ¡Ê±ÄÚµã»÷ÒÔÏÂÁ´½ÓÍê³É×¢²á£º<br>";
+	$email_str.="æ‚¨å¥½,è¯·åœ¨24å°æ—¶å†…ç‚¹å‡»ä»¥ä¸‹é“¾æ¥å®Œæˆæ³¨å†Œï¼š<br>";
 	$email_str.="<a href='".$_CFG['site_domain'].$_CFG['site_dir']."user/user_reg.php?act=reg_step2_email&email=$email&utype=$utype&key=$key&time=$time' target='_blank'>".$_CFG['site_domain'].$_CFG['site_dir']."user/user_reg.php?act=reg_step2_email&email=$email&utype=$utype&key=$key&time=$time</a><br>";
-	$email_str.="Èç¹ûÁ´½ÓÎŞ·¨µã»÷,Çë¸´ÖÆÕ³Ìùµ½ä¯ÀÀÆ÷·ÃÎÊ£¡<br>";
-	$email_str.="±¾ÓÊ¼şÓÉÏµÍ³·¢³ö,ÇëÎğ»Ø¸´£¡<br>";
-	$email_str.="ÈçÓĞÈÎºÎÒÉÎÊÇëÁªÏµÍøÕ¾¹Ù·½£º".$_CFG['top_tel']."";
+	$email_str.="å¦‚æœé“¾æ¥æ— æ³•ç‚¹å‡»,è¯·å¤åˆ¶ç²˜è´´åˆ°æµè§ˆå™¨è®¿é—®ï¼<br>";
+	$email_str.="æœ¬é‚®ä»¶ç”±ç³»ç»Ÿå‘å‡º,è¯·å‹¿å›å¤ï¼<br>";
+	$email_str.="å¦‚æœ‰ä»»ä½•ç–‘é—®è¯·è”ç³»ç½‘ç«™å®˜æ–¹ï¼š".$_CFG['top_tel']."";
 
-	if (smtp_mail($email,"{$_CFG['site_name']} - »áÔ±×¢²á",$email_str))
+	if (smtp_mail($email,"{$_CFG['site_name']} - ä¼šå‘˜æ³¨å†Œ",$email_str))
 	{
 		exit("success");
 	}
 	else
 	{
-		exit("ÓÊÏäÅäÖÃ³ö´í£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±");
+		exit("é‚®ç®±é…ç½®å‡ºé”™ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜");
 	}
 }
 ?>

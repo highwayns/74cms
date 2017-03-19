@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * template_lite tpl_create_timestamp function
  *

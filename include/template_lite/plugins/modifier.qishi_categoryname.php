@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 function tpl_modifier_qishi_categoryname($string)
 {
 		global $db;

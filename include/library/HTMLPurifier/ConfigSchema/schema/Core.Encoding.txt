@@ -1,4 +1,4 @@
-Core.Encoding
+﻿Core.Encoding
 TYPE: istring
 DEFAULT: 'utf-8'
 --DESCRIPTION--

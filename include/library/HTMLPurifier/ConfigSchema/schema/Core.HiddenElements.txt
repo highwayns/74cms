@@ -1,4 +1,4 @@
-Core.HiddenElements
+﻿Core.HiddenElements
 TYPE: lookup
 --DEFAULT--
 array (

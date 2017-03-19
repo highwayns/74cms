@@ -1,4 +1,4 @@
-/*Copyright(c)2009,www.supersite.me*/
+﻿/*Copyright(c)2009,www.supersite.me*/
 var imageUrl = '';
 function iColorShow(id, id2) {
     var eICP = jQuery("#" + id2).position();

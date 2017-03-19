@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,45 +6,45 @@
   <div class="clear"></div>
 </div>
     <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
-	<p>»ğ³µÍ·²É¼¯¹æÔòÇëµ½ÂÛÌ³ÏÂÔØ£¡</p>
+	<h2>æç¤ºï¼š</h2>
+	<p>ç«è½¦å¤´é‡‡é›†è§„åˆ™è¯·åˆ°è®ºå›ä¸‹è½½ï¼</p>
 	</div>
-	<div class="toptit">»ù±¾ÉèÖÃ</div>
+	<div class="toptit">åŸºæœ¬è®¾ç½®</div>
 	 <form action="?act=set_save" method="post"  name="form1" id="form1">
 	 {#$inputtoken#}
     <table width="700" border="0" cellspacing="5" cellpadding="1" style=" margin-bottom:3px;">
     <tr>
-      <td width="180" align="right">¿ªÆô²É¼¯½Ó¿Ú£º</td>
+      <td width="180" align="right">å¼€å¯é‡‡é›†æ¥å£ï¼š</td>
       <td ><label for="label">
         <input name="open" type="radio" id="label" value="1"  {#if $show.open=="1"#}checked="checked"{#/if#}/>
-        ¿ªÆô</label>
+        å¼€å¯</label>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <label for="label2">
 <input type="radio" name="open" value="0" id="label2"  {#if $show.open=="0"#}checked="checked"{#/if#}/>
-¹Ø±Õ </label></td>
+å…³é—­ </label></td>
     </tr>
     <tr>
       <td align="right">&nbsp;</td>
       <td height="50"><span style="font-size:14px;">
-        <input name="submit2" type="submit" class="admin_submit"    value="±£´æĞŞ¸Ä"/>
+        <input name="submit2" type="submit" class="admin_submit"    value="ä¿å­˜ä¿®æ”¹"/>
       </span></td>
     </tr>
   </table>
   </form>
-  <div class="toptit">Ä£ºıÆ¥Åä·§Öµ</div>
+  <div class="toptit">æ¨¡ç³ŠåŒ¹é…é˜€å€¼</div>
 	 <form action="?act=set_save" method="post"  name="form1" id="form1">
 	 {#$inputtoken#}
     <table width="100%" border="0" cellspacing="5" cellpadding="1" style=" margin-bottom:3px; margin-top:10px;">
     <tr>
-      <td width="180" align="right">Ä£ºıÆ¥Åä·§Öµ£º</td>
+      <td width="180" align="right">æ¨¡ç³ŠåŒ¹é…é˜€å€¼ï¼š</td>
       <td >
 	  <input name="search_threshold" type="text" class="input_text_200" id="search_threshold" value="{#$show.search_threshold#}" maxlength="3"/>
-	  <span style="color:#666666">(·¶Î§:1-100£¬ÈçÉèÖÃÎª100ÔòÎª¾«È·Æ¥Åä£¬ÍÆ¼öÉèÎª£º50-80)</span></td>
+	  <span style="color:#666666">(èŒƒå›´:1-100ï¼Œå¦‚è®¾ç½®ä¸º100åˆ™ä¸ºç²¾ç¡®åŒ¹é…ï¼Œæ¨èè®¾ä¸ºï¼š50-80)</span></td>
     </tr>
     <tr>
       <td align="right">&nbsp;</td>
       <td height="50"><span style="font-size:14px;">
-        <input name="submit2" type="submit" class="admin_submit"    value="±£´æĞŞ¸Ä"/>
+        <input name="submit2" type="submit" class="admin_submit"    value="ä¿å­˜ä¿®æ”¹"/>
       </span></td>
     </tr>
   </table>

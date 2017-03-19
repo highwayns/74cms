@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Î¢ÕÐÆ¸
+ * 74cms å¾®æ‹›è˜
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_simple_fun.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'list';
 $smarty->assign('act',$act);
-$smarty->assign('pageheader',"Î¢ÕÐÆ¸");
+$smarty->assign('pageheader',"å¾®æ‹›è˜");
 if($act == 'list')
 {
 	check_permissions($_SESSION['admin_purview'],"simple_list");	
@@ -85,16 +85,16 @@ elseif($act == 'simple_del')
 	$id=$_REQUEST['id'];
 	if (empty($id))
 	{
-	adminmsg("ÄúÃ»ÓÐÑ¡ÔñÏîÄ¿£¡",1);
+	adminmsg("æ‚¨æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 	}
 	if ($num=simple_del($id))
 	{
-	write_log("É¾³ýÎ¢ÉÌÈ¦¹²É¾³ý".$num."ÐÐ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."ÐÐ",2);
+	write_log("åˆ é™¤å¾®å•†åœˆå…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'simple_refresh')
@@ -104,21 +104,21 @@ elseif($act == 'simple_refresh')
 	$id=$_REQUEST['id'];
 	if (empty($id))
 	{
-	adminmsg("ÄúÃ»ÓÐÑ¡ÔñÏîÄ¿£¡",1);
+	adminmsg("æ‚¨æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 	}
 	if ($num=simple_refresh($id))
 	{
-	write_log("Ë¢ÐÂÎ¢ÉÌÈ¦¹²É¾³ý".$num."ÐÐ", $_SESSION['admin_name'],3);
-	adminmsg("Ë¢ÐÂ³É¹¦£¡¹²Ë¢ÐÂ {$num}ÐÐ ",2);
+	write_log("åˆ·æ–°å¾®å•†åœˆå…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ·æ–°æˆåŠŸï¼å…±åˆ·æ–° {$num}è¡Œ ",2);
 	}
 	else
 	{
-	adminmsg("Ë¢ÐÂÊ§°Ü£¡",0);
+	adminmsg("åˆ·æ–°å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'jobs_perform')
 {
-	//ÉóºË
+	//å®¡æ ¸
 	if(!empty($_POST['set_audit'])){
 		check_permissions($_SESSION['admin_purview'],"simple_audit");
 		check_token();
@@ -126,16 +126,16 @@ elseif($act == 'jobs_perform')
 		$audit=intval($_POST['audit']);
 		if (empty($id))
 		{
-		adminmsg("ÄúÃ»ÓÐÑ¡ÔñÏîÄ¿£¡",1);
+		adminmsg("æ‚¨æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 		}
 		if ($num=simple_audit($id,$audit))
 		{
-		write_log("ÉèÖÃÎ¢ÕÐÆ¸ÉóºË×´Ì¬Îª".$audit."¹²Ó°Ïì {$num}ÐÐ", $_SESSION['admin_name'],3);
-		adminmsg("ÉèÖÃ³É¹¦£¡¹²Ó°Ïì {$num}ÐÐ ",2);
+		write_log("è®¾ç½®å¾®æ‹›è˜å®¡æ ¸çŠ¶æ€ä¸º".$audit."å…±å½±å“ {$num}è¡Œ", $_SESSION['admin_name'],3);
+		adminmsg("è®¾ç½®æˆåŠŸï¼å…±å½±å“ {$num}è¡Œ ",2);
 		}
 		else
 		{
-		adminmsg("ÉèÖÃÊ§°Ü£¡",0);
+		adminmsg("è®¾ç½®å¤±è´¥ï¼",0);
 		}
 	}
 }
@@ -151,11 +151,11 @@ elseif($act == 'simple_add_save')
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"simple_add");
 	$setsqlarr['audit']=1;
-	$setsqlarr['jobname']=trim($_POST['jobname'])?trim($_POST['jobname']):adminmsg('ÄúÃ»ÓÐÌîÐ´Ö°Î»Ãû³Æ£¡',1);
+	$setsqlarr['jobname']=trim($_POST['jobname'])?trim($_POST['jobname']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™èŒä½åç§°ï¼',1);
 	$setsqlarr['amount']=intval($_POST['amount']);
-	$setsqlarr['comname']=trim($_POST['comname'])?trim($_POST['comname']):adminmsg('ÄúÃ»ÓÐÌîÐ´µ¥Î»Ãû³Æ£¡',1);
-	$setsqlarr['contact']=trim($_POST['contact'])?trim($_POST['contact']):adminmsg('ÄúÃ»ÓÐÌîÐ´ÁªÏµÈË£¡',1);
-	$setsqlarr['tel']=trim($_POST['tel'])?trim($_POST['tel']):adminmsg('ÄúÃ»ÓÐÌîÐ´ÁªÏµµç»°£¡',1);
+	$setsqlarr['comname']=trim($_POST['comname'])?trim($_POST['comname']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™å•ä½åç§°ï¼',1);
+	$setsqlarr['contact']=trim($_POST['contact'])?trim($_POST['contact']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»äººï¼',1);
+	$setsqlarr['tel']=trim($_POST['tel'])?trim($_POST['tel']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»ç”µè¯ï¼',1);
 	$setsqlarr['district']=intval($_POST['district']);
 	$setsqlarr['sdistrict']=intval($_POST['sdistrict']);
 	$district_cn = explode("/",trim($_POST['district_cn']));
@@ -170,7 +170,7 @@ elseif($act == 'simple_add_save')
 	{
 	$setsqlarr['deadline']=strtotime("{$validity} day");
 	}
-	$setsqlarr['pwd']=trim($_POST['pwd'])?trim($_POST['pwd']):adminmsg('ÄúÃ»ÓÐÌîÐ´¹ÜÀíÃÜÂë£¡',1);
+	$setsqlarr['pwd']=trim($_POST['pwd'])?trim($_POST['pwd']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™ç®¡ç†å¯†ç ï¼',1);
 	$setsqlarr['pwd_hash']=substr(md5(uniqid().mt_rand()),mt_rand(0,6),6);
 	$setsqlarr['pwd']=md5(md5($setsqlarr['pwd']).$setsqlarr['pwd_hash'].$QS_pwdhash);
 	$setsqlarr['addip']=$online_ip;
@@ -181,18 +181,18 @@ elseif($act == 'simple_add_save')
 	$setsqlarr['key']=$sp->pad($setsqlarr['key']);
 	if($db->inserttable(table('simple'),$setsqlarr))
 	{
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨Ìí¼ÓÖ°Î»Ãû³ÆÎª : ".$setsqlarr['jobname']."µÄÎ¢ÕÐÆ¸ ", $_SESSION['admin_name'],3);
-		$link[0]['text'] = "·µ»ØÁÐ±í";
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åŽå°æ·»åŠ èŒä½åç§°ä¸º : ".$setsqlarr['jobname']."çš„å¾®æ‹›è˜ ", $_SESSION['admin_name'],3);
+		$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 		$link[0]['href'] = '?act=list';
-		$link[1]['text'] = "¼ÌÐøÌí¼Ó";
+		$link[1]['text'] = "ç»§ç»­æ·»åŠ ";
 		$link[1]['href'] = "?act=simple_add";
-		write_log("Ìí¼ÓÎ¢ÕÐÆ¸£º".$setsqlarr['jobname'], $_SESSION['admin_name'],3);
-		adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+		write_log("æ·»åŠ å¾®æ‹›è˜ï¼š".$setsqlarr['jobname'], $_SESSION['admin_name'],3);
+		adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 	}
 	else
 	{
-		adminmsg("Ìí¼ÓÊ§°Ü£¡",0);
+		adminmsg("æ·»åŠ å¤±è´¥ï¼",0);
 	}	
 }
 elseif($act == 'simple_edit')
@@ -201,7 +201,7 @@ elseif($act == 'simple_edit')
 	$id=intval($_REQUEST['id']);
 	if (empty($id))
 	{
-	adminmsg("ÄúÃ»ÓÐÑ¡ÔñÏîÄ¿£¡",1);
+	adminmsg("æ‚¨æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 	}
 	check_permissions($_SESSION['admin_purview'],"simple_edit");
 	$sql = "select * from ".table('simple')." where id = '{$id}' LIMIT 1";
@@ -215,20 +215,20 @@ elseif($act == 'simple_edit_save')
 	$id=intval($_POST['id']);
 	if (empty($id))
 	{
-	adminmsg("ÄúÃ»ÓÐÑ¡ÔñÏîÄ¿£¡",1);
+	adminmsg("æ‚¨æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 	}
 	if ($_POST['pwd'])
 	{
 		$info=$db->getone("select * from ".table('simple')." where id = '{$id}' LIMIT 1");
 		$setsqlarr['pwd']=md5(md5($_POST['pwd']).$info['pwd_hash'].$QS_pwdhash);
 	}
-	$setsqlarr['jobname']=trim($_POST['jobname'])?trim($_POST['jobname']):adminmsg('ÄúÃ»ÓÐÌîÐ´Ö°Î»Ãû³Æ£¡',1);
+	$setsqlarr['jobname']=trim($_POST['jobname'])?trim($_POST['jobname']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™èŒä½åç§°ï¼',1);
 	$setsqlarr['amount']=intval($_POST['amount']);
-	$setsqlarr['comname']=trim($_POST['comname'])?trim($_POST['comname']):adminmsg('ÄúÃ»ÓÐÌîÐ´µ¥Î»Ãû³Æ£¡',1);
-	$setsqlarr['contact']=trim($_POST['contact'])?trim($_POST['contact']):adminmsg('ÄúÃ»ÓÐÌîÐ´ÁªÏµÈË£¡',1);
-	$setsqlarr['tel']=trim($_POST['tel'])?trim($_POST['tel']):adminmsg('ÄúÃ»ÓÐÌîÐ´ÁªÏµµç»°£¡',1);
-	$setsqlarr['district']=intval($_POST['district'])?intval($_POST['district']):adminmsg("ÄúÃ»ÓÐÑ¡ÔñµØÇø");
-	$setsqlarr['sdistrict']=intval($_POST['sdistrict'])?intval($_POST['sdistrict']):adminmsg("ÄúÃ»ÓÐÑ¡ÔñµØÇø");
+	$setsqlarr['comname']=trim($_POST['comname'])?trim($_POST['comname']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™å•ä½åç§°ï¼',1);
+	$setsqlarr['contact']=trim($_POST['contact'])?trim($_POST['contact']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»äººï¼',1);
+	$setsqlarr['tel']=trim($_POST['tel'])?trim($_POST['tel']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™è”ç³»ç”µè¯ï¼',1);
+	$setsqlarr['district']=intval($_POST['district'])?intval($_POST['district']):adminmsg("æ‚¨æ²¡æœ‰é€‰æ‹©åœ°åŒº");
+	$setsqlarr['sdistrict']=intval($_POST['sdistrict'])?intval($_POST['sdistrict']):adminmsg("æ‚¨æ²¡æœ‰é€‰æ‹©åœ°åŒº");
 	$district_cn = explode("/",trim($_POST['district_cn']));
 	$setsqlarr['district_cn']=$district_cn[0];
 	$setsqlarr['sdistrict_cn']=$district_cn[1];
@@ -247,16 +247,16 @@ elseif($act == 'simple_edit_save')
 	$setsqlarr['key']=$sp->pad($setsqlarr['key']);
 	if($db->updatetable(table('simple'),$setsqlarr," id='{$id}' "))
 	{
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨ÐÞ¸ÄidÎª".$id."µÄÎ¢ÕÐÆ¸ ", $_SESSION['admin_name'],3);
-		$link[0]['text'] = "·µ»ØÁÐ±í";
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åŽå°ä¿®æ”¹idä¸º".$id."çš„å¾®æ‹›è˜ ", $_SESSION['admin_name'],3);
+		$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 		$link[0]['href'] = '?act=list';
-		write_log("ÐÞ¸ÄidÎª£º".$id."Î¢ÕÐÆ¸ÐÅÏ¢", $_SESSION['admin_name'],3);
-		adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);
+		write_log("ä¿®æ”¹idä¸ºï¼š".$id."å¾®æ‹›è˜ä¿¡æ¯", $_SESSION['admin_name'],3);
+		adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 	}
 	else
 	{
-	adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0);
+	adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0);
 	}
 }
 ?>

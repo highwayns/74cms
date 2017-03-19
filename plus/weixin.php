@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 define('IN_QISHI', true);
 require_once(dirname(__FILE__).'/../include/plus.common.inc.php');
 define("TOKEN", $_CFG['weixin_apptoken']);
@@ -23,7 +23,7 @@ class wechatCallbackapiTest extends mysql
 	public $encrypt_type;
 	public $content;
 
-	//ÑéÖ¤Ç©Ãû
+	//éªŒè¯ç­¾å
 	public function valid()
     {
         $echoStr = $_GET["echostr"];
@@ -32,7 +32,7 @@ class wechatCallbackapiTest extends mysql
         	exit($echoStr);
         }
     }
-    //ÏìÓ¦ÏûÏ¢
+    //å“åº”æ¶ˆæ¯
     public function responseMsg()
     {
 		if(!$this->checkSignature())
@@ -46,10 +46,10 @@ class wechatCallbackapiTest extends mysql
 
 		$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
 		if (!empty($postStr)){
-			//½âÃÜ
+			//è§£å¯†
 			if ($this->encrypt_type == 'aes'){
 				$pc = new WXBizMsgCrypt(TOKEN, EncodingAESKey, APPID);                
-				$decryptMsg = "";  //½âÃÜºóµÄÃ÷ÎÄ
+				$decryptMsg = "";  //è§£å¯†åçš„æ˜æ–‡
 				$errCode = $pc->DecryptMsg($this->msg_signature, $this->timestamp, $this->nonce, $postStr, $decryptMsg);
 				$postStr = $decryptMsg;
 			}
@@ -59,7 +59,7 @@ class wechatCallbackapiTest extends mysql
             $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
             $rxType = trim($postObj->MsgType);
              
-            //ÏûÏ¢ÀàĞÍ·ÖÀë
+            //æ¶ˆæ¯ç±»å‹åˆ†ç¦»
             switch ($rxType)
             {
                 case "event":
@@ -72,9 +72,9 @@ class wechatCallbackapiTest extends mysql
                     $result = "unknown msg type: ".$rxType;
                     break;
             }
-            //¼ÓÃÜ
+            //åŠ å¯†
 			if ($this->encrypt_type == 'aes'){
-				$encryptMsg = ''; //¼ÓÃÜºóµÄÃÜÎÄ
+				$encryptMsg = ''; //åŠ å¯†åçš„å¯†æ–‡
 				$errCode = $pc->encryptMsg($result, $this->timeStamp, $this->nonce, $encryptMsg);
 				$result = $encryptMsg;
 			}
@@ -84,13 +84,13 @@ class wechatCallbackapiTest extends mysql
             exit;
         }
 	}	
-	//½ÓÊÕÊÂ¼şÏûÏ¢
+	//æ¥æ”¶äº‹ä»¶æ¶ˆæ¯
     private function receiveEvent($object)
     {
         switch ($object->Event)
         {
             case "subscribe":
-                $this->content = "»Ø¸´j·µ»Ø½ô¼±ÕĞÆ¸£¬»Ø¸´n·µ»Ø×îĞÂÕĞÆ¸£¡Äú¿ÉÒÔ³¢ÊÔÊäÈëÖ°Î»Ãû³ÆÈç¡°»á¼Æ¡±£¬ÏµÍ³½«»á·µ»ØÄúÒªÕÒµÄĞÅÏ¢£¬ÎÒÃÇÅ¬Á¦´òÔì×îÈËĞÔ»¯µÄ·şÎñÆ½Ì¨£¬Ğ»Ğ»¹Ø×¢¡£";
+                $this->content = "å›å¤jè¿”å›ç´§æ€¥æ‹›è˜ï¼Œå›å¤nè¿”å›æœ€æ–°æ‹›è˜ï¼æ‚¨å¯ä»¥å°è¯•è¾“å…¥èŒä½åç§°å¦‚â€œä¼šè®¡â€ï¼Œç³»ç»Ÿå°†ä¼šè¿”å›æ‚¨è¦æ‰¾çš„ä¿¡æ¯ï¼Œæˆ‘ä»¬åŠªåŠ›æ‰“é€ æœ€äººæ€§åŒ–çš„æœåŠ¡å¹³å°ï¼Œè°¢è°¢å…³æ³¨ã€‚";
                 break;
             case "SCAN":
                 $this->actionScan($object);
@@ -99,19 +99,19 @@ class wechatCallbackapiTest extends mysql
             	$this->check_weixin_open($object);
                 switch ($object->EventKey)
                 {
-                    case "binding"://°ó¶¨
+                    case "binding"://ç»‘å®š
                     	$this->clickBinding($object);
 						break;
-					case "apply_jobs"://ÉêÇëÖ°Î»ÁĞ±í
+					case "apply_jobs"://ç”³è¯·èŒä½åˆ—è¡¨
 						$this->clickApplyJobs($object);
 						break;
-					case "resume_refresh"://Ë¢ĞÂ¼òÀú
+					case "resume_refresh"://åˆ·æ–°ç®€å†
 						$this->clickResumeRefresh($object);
 						break;
-					case "interview"://ÑûÇëÃæÊÔÁĞ±í
+					case "interview"://é‚€è¯·é¢è¯•åˆ—è¡¨
 						$this->clickInterview($object);
 						break;
-                    default://ÆäËû·½Ê½ËÑË÷
+                    default://å…¶ä»–æ–¹å¼æœç´¢
                         $this->clickSearch($object);
                         break;
                 }
@@ -122,7 +122,7 @@ class wechatCallbackapiTest extends mysql
 		  $this->query($sql);
                 break;
             default:
-                $this->content = "»Ø¸´j·µ»Ø½ô¼±ÕĞÆ¸£¬»Ø¸´n·µ»Ø×îĞÂÕĞÆ¸£¡Äú¿ÉÒÔ³¢ÊÔÊäÈëÖ°Î»Ãû³ÆÈç¡°»á¼Æ¡±£¬ÏµÍ³½«»á·µ»ØÄúÒªÕÒµÄĞÅÏ¢£¬ÎÒÃÇÅ¬Á¦´òÔì×îÈËĞÔ»¯µÄ·şÎñÆ½Ì¨£¬Ğ»Ğ»¹Ø×¢¡£";
+                $this->content = "å›å¤jè¿”å›ç´§æ€¥æ‹›è˜ï¼Œå›å¤nè¿”å›æœ€æ–°æ‹›è˜ï¼æ‚¨å¯ä»¥å°è¯•è¾“å…¥èŒä½åç§°å¦‚â€œä¼šè®¡â€ï¼Œç³»ç»Ÿå°†ä¼šè¿”å›æ‚¨è¦æ‰¾çš„ä¿¡æ¯ï¼Œæˆ‘ä»¬åŠªåŠ›æ‰“é€ æœ€äººæ€§åŒ–çš„æœåŠ¡å¹³å°ï¼Œè°¢è°¢å…³æ³¨ã€‚";
                 break;
         }
         if(is_array($this->content)){
@@ -135,7 +135,7 @@ class wechatCallbackapiTest extends mysql
 
         return $result;
     }
-    //½ÓÊÕÎÄ±¾ÏûÏ¢
+    //æ¥æ”¶æ–‡æœ¬æ¶ˆæ¯
     private function receiveText($object)
     {
     	$this->check_weixin_open($object);
@@ -143,7 +143,7 @@ class wechatCallbackapiTest extends mysql
         $keyword = utf8_to_gbk($keyword);
 		$keyword = addslashes($keyword);
        
-        //×Ô¶¯»Ø¸´Ä£Ê½
+        //è‡ªåŠ¨å›å¤æ¨¡å¼
         $this->enterSearch($object,$keyword);
         if(is_array($this->content)){
             if (isset($this->content[0]['PicUrl'])){
@@ -155,7 +155,7 @@ class wechatCallbackapiTest extends mysql
         return $result;
     }
 
-    //»Ø¸´ÎÄ±¾ÏûÏ¢
+    //å›å¤æ–‡æœ¬æ¶ˆæ¯
     private function transmitText($object, $content)
     {
         $xmlTpl = "<xml>
@@ -170,7 +170,7 @@ class wechatCallbackapiTest extends mysql
         return $result;
     }
 
-    //»Ø¸´Í¼ÎÄÏûÏ¢
+    //å›å¤å›¾æ–‡æ¶ˆæ¯
     private function transmitNews($object, $newsArray)
     {
         if(!is_array($newsArray)){
@@ -201,7 +201,7 @@ $item_str</Articles>
         $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), count($newsArray));
         return $result;
     }
-    //ÑéÖ¤Ç©Ãû
+    //éªŒè¯ç­¾å
 	private function checkSignature()
 	{
 	    $signature = $_GET["signature"];
@@ -232,28 +232,28 @@ $item_str</Articles>
 	}
 	private function check_php_version($version) {
 		 $php_version = explode('-',phpversion());
-		 // strnatcasecmp( $php_version[0], $version ) 0±íÊ¾µÈÓÚ£¬1±íÊ¾´óÓÚ£¬-1±íÊ¾Ğ¡ÓÚ
+		 // strnatcasecmp( $php_version[0], $version ) 0è¡¨ç¤ºç­‰äºï¼Œ1è¡¨ç¤ºå¤§äºï¼Œ-1è¡¨ç¤ºå°äº
 		 $is_pass = strnatcasecmp($php_version[0],$version)>=0?true:false;
 		 return $is_pass;
 	}
-    //¼ì²éÍøÕ¾Î¢ĞÅ½Ó¿ÚÊÇ·ñ¿ªÆô
+    //æ£€æŸ¥ç½‘ç«™å¾®ä¿¡æ¥å£æ˜¯å¦å¼€å¯
 	private function check_weixin_open($object){
 		if(APIOPEN=='0')
 		{
-			$this->content="ÍøÕ¾Î¢ĞÅ½Ó¿ÚÒÑ¾­¹Ø±Õ";
+			$this->content="ç½‘ç«™å¾®ä¿¡æ¥å£å·²ç»å…³é—­";
 			$this->transmitText($object,$this->content);
 		}
 	}
-    //°ó¶¨ÊÂ¼ş
+    //ç»‘å®šäº‹ä»¶
 	private function clickBinding($object){
 		$usinfo = $this->get_user_info($object->FromUserName);
 		if(!empty($usinfo)){
-			$this->content="ÄúÒÑ¾­°ó¶¨¹ıÁË!";
+			$this->content="æ‚¨å·²ç»ç»‘å®šè¿‡äº†!";
 		}else{
-			$this->content="<a href='".WAP_DOMAIN."wap-binding.php?from=".$object->FromUserName."'>ÇëÏÈ°ó¶¨ÕÊºÅ</a>";
+			$this->content="<a href='".WAP_DOMAIN."wap-binding.php?from=".$object->FromUserName."'>è¯·å…ˆç»‘å®šå¸å·</a>";
 		}
 	}
-    //»ñÈ¡ÒÑÉêÇëÖ°Î»ÁĞ±í
+    //è·å–å·²ç”³è¯·èŒä½åˆ—è¡¨
 	private function clickApplyJobs($object){
 		$usinfo = $this->get_user_info($object->FromUserName);
 		if(!empty($usinfo)){
@@ -261,17 +261,17 @@ $item_str</Articles>
 			$apply_obj = $this->query("select * from ".table('personal_jobs_apply')." where personal_uid=".$uid);
 			while($row = $this->fetch_array($apply_obj)){
 				$jobs_url = WAP_DOMAIN."wap-jobs-show.php?id=".$row['jobs_id']."&from=".$object->FromUserName;
-				$look = intval($row['personal_look'])==1?"Î´²é¿´":"ÒÑ²é¿´";
-				$this->content.="¡¾".date('Y-m-d',$row['apply_addtime'])."¡¿¡¾".$look."¡¿\n<a href='".$jobs_url."'>".$row['jobs_name']."</a>\n".$row['company_name']."\n--------------------------\n";
+				$look = intval($row['personal_look'])==1?"æœªæŸ¥çœ‹":"å·²æŸ¥çœ‹";
+				$this->content.="ã€".date('Y-m-d',$row['apply_addtime'])."ã€‘ã€".$look."ã€‘\n<a href='".$jobs_url."'>".$row['jobs_name']."</a>\n".$row['company_name']."\n--------------------------\n";
 			}
 			if(empty($this->content)){
-				$this->content = "Ã»ÓĞÕÒµ½¶ÔÓ¦µÄĞÅÏ¢!";
+				$this->content = "æ²¡æœ‰æ‰¾åˆ°å¯¹åº”çš„ä¿¡æ¯!";
 			}
 		}else{
-			$this->content="<a href='".WAP_DOMAIN."wap-binding.php?from=".$object->FromUserName."'>ÇëÏÈ°ó¶¨ÕÊºÅ</a>";
+			$this->content="<a href='".WAP_DOMAIN."wap-binding.php?from=".$object->FromUserName."'>è¯·å…ˆç»‘å®šå¸å·</a>";
 		}
 	}
-    //Ë¢ĞÂ¼òÀú
+    //åˆ·æ–°ç®€å†
 	private function clickResumeRefresh($object){
 		$usinfo = $this->get_user_info($object->FromUserName);
 		if(!empty($usinfo)){
@@ -280,12 +280,12 @@ $item_str</Articles>
 			$this->query("update ".table('resume')." set refreshtime=".$time." where uid=".$uid);
 			$this->query("update ".table('resume_search_key')." set refreshtime=".$time." where uid=".$uid);
 			$this->query("update ".table('resume_search_rtime')." set refreshtime=".$time." where uid=".$uid);
-			$this->content = "Ë¢ĞÂ³É¹¦!";
+			$this->content = "åˆ·æ–°æˆåŠŸ!";
 		}else{
-			$this->content="<a href='".WAP_DOMAIN."wap-binding.php?from=".$object->FromUserName."'>ÇëÏÈ°ó¶¨ÕÊºÅ</a>";
+			$this->content="<a href='".WAP_DOMAIN."wap-binding.php?from=".$object->FromUserName."'>è¯·å…ˆç»‘å®šå¸å·</a>";
 		}
 	}
-    //»ñÈ¡ÃæÊÔÑûÇëÁĞ±í
+    //è·å–é¢è¯•é‚€è¯·åˆ—è¡¨
 	private function clickInterview($object){
 		$usinfo = $this->get_user_info($object->FromUserName);
 		if(!empty($usinfo)){
@@ -294,36 +294,36 @@ $item_str</Articles>
 			while($row = $this->fetch_array($interview_obj)){
 				$jobs_url = WAP_DOMAIN."wap-jobs-show.php?id=".$row['jobs_id']."&from=".$object->FromUserName;
 				$company_url = WAP_DOMAIN."wap-company-show.php?id=".$row['company_id']."&from=".$object->FromUserName;
-				$this->content.="¡¾".date('Y-m-d',$row['interview_addtime'])."¡¿\n<a href='".$company_url."'>".$row['company_name']."</a>ÑûÇëÄãÃæÊÔ<a href='".$jobs_url."'>".$row['jobs_name']."</a>\n--------------------------\n";
+				$this->content.="ã€".date('Y-m-d',$row['interview_addtime'])."ã€‘\n<a href='".$company_url."'>".$row['company_name']."</a>é‚€è¯·ä½ é¢è¯•<a href='".$jobs_url."'>".$row['jobs_name']."</a>\n--------------------------\n";
 			}
 			if(empty($this->content)){
-				$this->content = "Ã»ÓĞÕÒµ½¶ÔÓ¦µÄĞÅÏ¢!";
+				$this->content = "æ²¡æœ‰æ‰¾åˆ°å¯¹åº”çš„ä¿¡æ¯!";
 			}
 		}else{
-			$this->content="<a href='".WAP_DOMAIN."wap-binding.php?from=".$object->FromUserName."'>ÇëÏÈ°ó¶¨ÕÊºÅ</a>";
+			$this->content="<a href='".WAP_DOMAIN."wap-binding.php?from=".$object->FromUserName."'>è¯·å…ˆç»‘å®šå¸å·</a>";
 		}
 	}
-    //µã»÷ÆäËûÌõ¼şËÑË÷
+    //ç‚¹å‡»å…¶ä»–æ¡ä»¶æœç´¢
 	private function clickSearch($object){
 		$default_pic=ROOT."/data/images/".DEFAULT_PIC;
 		$first_pic=ROOT."/data/images/".FIRST_PIC;
 		switch ($object->EventKey)
 		{
-			case "newjobs"://×îĞÂÖ°Î»
+			case "newjobs"://æœ€æ–°èŒä½
 				$type=1;
 				$jobstable=table('jobs_search_rtime');	
 				break;
-			case "emergencyjobs"://½ô¼±ÕĞÆ¸
+			case "emergencyjobs"://ç´§æ€¥æ‹›è˜
 				$type=1;
 				$jobstable=table('jobs_search_rtime');
 				$wheresql=" where `emergency`=1 ";	
 				break;
-			case "recommendjobs"://ÍÆ¼öÖ°Î»
+			case "recommendjobs"://æ¨èèŒä½
 				$type=1;
 				$jobstable=table('jobs_search_rtime');
 				$wheresql=" where `recommend`=1 ";	
 				break;
-			case "resume"://×îĞÂ¼òÀú
+			case "resume"://æœ€æ–°ç®€å†
 				$type=2;
 				$jobstable=table('resume_search_rtime');	
 				break;
@@ -370,9 +370,9 @@ $item_str</Articles>
 					elseif($row['display_name']=="3")
 					{
 						if($row['sex']==1){
-						$fullname=cut_str($row['fullname'],1,0,"ÏÈÉú");
+						$fullname=cut_str($row['fullname'],1,0,"å…ˆç”Ÿ");
 						}elseif($row['sex'] == 2){
-						$fullname=cut_str($row['fullname'],1,0,"Å®Ê¿");
+						$fullname=cut_str($row['fullname'],1,0,"å¥³å£«");
 						}
 					}
 					else
@@ -388,40 +388,40 @@ $item_str</Articles>
 		}
 		if(empty($this->content))
 		{
-			$this->content="Ã»ÓĞÕÒµ½ÏàÓ¦µÄĞÅÏ¢";
+			$this->content="æ²¡æœ‰æ‰¾åˆ°ç›¸åº”çš„ä¿¡æ¯";
 		}
 	}
-    //É¨ÃèÊÂ¼ş
+    //æ‰«æäº‹ä»¶
 	private function actionScan($object){
 		$event_key = $object->EventKey;
 		if($event_key<=10000000)
 		{
 			$usinfo = $this->get_user_info($object->FromUserName);
 			if(!empty($usinfo)){
-				$this->content = "<a href='".WAP_DOMAIN."wap_login.php?act=weixin_login&openid=".$object->FromUserName."&uid=".$usinfo['uid']."&event_key=".$event_key."'>µã´ËÁ¢¼´µÇÂ¼".SITE_NAME."ÍøÒ³</a>";
+				$this->content = "<a href='".WAP_DOMAIN."wap_login.php?act=weixin_login&openid=".$object->FromUserName."&uid=".$usinfo['uid']."&event_key=".$event_key."'>ç‚¹æ­¤ç«‹å³ç™»å½•".SITE_NAME."ç½‘é¡µ</a>";
 			}else{
-				$this->content="<a href='".WAP_DOMAIN."wap-binding.php?from=".$object->FromUserName."'>ÇëÏÈ°ó¶¨ÕÊºÅ</a>";
+				$this->content="<a href='".WAP_DOMAIN."wap-binding.php?from=".$object->FromUserName."'>è¯·å…ˆç»‘å®šå¸å·</a>";
 			}
 		}
 		elseif($event_key>10000000 && $event_key<=20000000)
 		{
-			$this->content = "ÇëÑ¡Ôñ»áÔ±×¢²áÀàĞÍ.<a href='".WAP_DOMAIN."wap_login.php?act=weixin_reg&openid=".$object->FromUserName."&event_key=".$event_key."&utype=1'>ÆóÒµ»áÔ±</a>£»<a href='".WAP_DOMAIN."wap_login.php?act=weixin_reg&openid=".$object->FromUserName."&event_key=".$event_key."&utype=2'>¸öÈË»áÔ±</a>";
+			$this->content = "è¯·é€‰æ‹©ä¼šå‘˜æ³¨å†Œç±»å‹.<a href='".WAP_DOMAIN."wap_login.php?act=weixin_reg&openid=".$object->FromUserName."&event_key=".$event_key."&utype=1'>ä¼ä¸šä¼šå‘˜</a>ï¼›<a href='".WAP_DOMAIN."wap_login.php?act=weixin_reg&openid=".$object->FromUserName."&event_key=".$event_key."&utype=2'>ä¸ªäººä¼šå‘˜</a>";
 		}
 		elseif($event_key>20000000 && $event_key<=30000000)
 		{
 			$usinfo = $this->get_user_info($object->FromUserName);
 			if($usinfo){
-				$this->content="ÄúºÃ£¬ÄúµÄÕËºÅ(".$usinfo['username'].")ÒÑ³É¹¦ÉèÖÃ°²È«µÇÂ¼¡£<a href='".WAP_DOMAIN."wap-binding.php?act=change_binding&from=".$object->FromUserName."'>ÇĞ»»°ó¶¨</a>";
+				$this->content="æ‚¨å¥½ï¼Œæ‚¨çš„è´¦å·(".$usinfo['username'].")å·²æˆåŠŸè®¾ç½®å®‰å…¨ç™»å½•ã€‚<a href='".WAP_DOMAIN."wap-binding.php?act=change_binding&from=".$object->FromUserName."'>åˆ‡æ¢ç»‘å®š</a>";
 			}else{
 				$fp = @fopen(QISHI_ROOT_PATH . 'data/weixin/'.($event_key%10).'/'.$event_key.'.txt', 'wb+');
 				@fwrite($fp, $object->FromUserName);
 				@fclose($fp);
-				$this->content="°ó¶¨³É¹¦";
+				$this->content="ç»‘å®šæˆåŠŸ";
 			}
 		}
 	}
 	
-    //ÊäÈë¹Ø¼ü×ÖËÑË÷Ö°Î»
+    //è¾“å…¥å…³é”®å­—æœç´¢èŒä½
 	private function enterSearch($object,$keyword){
 		$default_pic=ROOT."/data/images/".DEFAULT_PIC;
 		$first_pic=ROOT."/data/images/".FIRST_PIC;
@@ -469,7 +469,7 @@ $item_str</Articles>
 		}
 		if(empty($this->content))
 		{
-			$this->content="Ã»ÓĞÕÒµ½°üº¬¹Ø¼ü×Ö {$keyword} µÄĞÅÏ¢£¬ÊÔÊÔÆäËû¹Ø¼ü×Ö";
+			$this->content="æ²¡æœ‰æ‰¾åˆ°åŒ…å«å…³é”®å­— {$keyword} çš„ä¿¡æ¯ï¼Œè¯•è¯•å…¶ä»–å…³é”®å­—";
 		}
 	}
 }

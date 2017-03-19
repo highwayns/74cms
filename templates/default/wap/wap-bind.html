@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>°ó¶¨ÕËºÅ</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ç»‘å®šè´¦å·</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="./css/common.css" rel="stylesheet" type="text/css" />
 <link href="./css/user.css" rel="stylesheet" type="text/css" />
@@ -17,11 +17,11 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
-	// µÚÈı·½°ó¶¨
+	// ç¬¬ä¸‰æ–¹ç»‘å®š
 	 $("#bind_but").click(function(){
 	 	var username=$("input[name=username]").val();
 	 	var member_type=$("input[name=member_type]:checked").val();
@@ -36,7 +36,7 @@ $(document).ready(function()
 	 	}
 	 	$.post(url,{username:username,member_type:member_type,password:password,rpassword:rpassword,email:email},function(data){
 	 		if(data=="reg_err"){
-	 			alert("×¢²áÊ§°Ü");
+	 			alert("æ³¨å†Œå¤±è´¥");
 	 			window.location.reload();
 	 		}else if(data=="ok"){
 	 			window.location.href='wap_login.php';
@@ -54,65 +54,65 @@ $(document).ready(function()
 <body>
 <div class=""></div>
 <div class="sub_head_top">
-	<div class="title">°ó¶¨ÕËºÅ</div>
+	<div class="title">ç»‘å®šè´¦å·</div>
 	<div class="back" id="pageback"><img src="./images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="./images/2.jpg"  border="0"/></a></div>
 </div>
 
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="./index.php";'>
-    <div class="box"><img src="./images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="./images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="./wap-jobs-list.php";'>
-    <div class="box"><img src="./images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="./images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="./wap-resume-list.php";'>
-    <div class="box"><img src="./images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="./images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="./wap-news-list.php";'>
-    <div class="box"><img src="./images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="./images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 
-<!-- °ó¶¨ÕËºÅ½çÃæ -->
+<!-- ç»‘å®šè´¦å·ç•Œé¢ -->
 <div class="bind_top">
-	<p>Ö»²îÒ»²½£¬¼´¿ÉÍê³ÉµÇÂ¼ÉèÖÃ</p>
+	<p>åªå·®ä¸€æ­¥ï¼Œå³å¯å®Œæˆç™»å½•è®¾ç½®</p>
 </div>
 
 <table class="bind_table">
 	<tbody>
 		<tr>
-			<td class="bind_t_left">ÓÃ»§Ãû</td>
+			<td class="bind_t_left">ç”¨æˆ·å</td>
 			<td class="bind_t_right"><input type="text" class="bind_input" name="username"/></td>
 		</tr>
 		<tr>
-			<td class="bind_t_left">»áÔ±ÀàĞÍ</td>
+			<td class="bind_t_left">ä¼šå‘˜ç±»å‹</td>
 			<td class="bind_t_right">
-				<label for="qy"><input type="radio" name="member_type" value="1" id="qy"/>ÆóÒµ»áÔ±</label>
-				<label for="gr"><input type="radio" name="member_type" value="2" id="gr"/>¸öÈË»áÔ±</label>
+				<label for="qy"><input type="radio" name="member_type" value="1" id="qy"/>ä¼ä¸šä¼šå‘˜</label>
+				<label for="gr"><input type="radio" name="member_type" value="2" id="gr"/>ä¸ªäººä¼šå‘˜</label>
 			</td>
 		</tr>
 		<tr>
-			<td class="bind_t_left">ÉèÖÃÃÜÂë</td>
+			<td class="bind_t_left">è®¾ç½®å¯†ç </td>
 			<td class="bind_t_right"><input type="password" class="bind_input" name="password"/></td>
 		</tr>
 		<tr>
-			<td class="bind_t_left">È·ÈÏÃÜÂë</td>
+			<td class="bind_t_left">ç¡®è®¤å¯†ç </td>
 			<td class="bind_t_right"><input type="password" class="bind_input" name="rpassword"/></td>
 		</tr>
 		<tr>
-			<td class="bind_t_left">µç×ÓÓÊÏä</td>
+			<td class="bind_t_left">ç”µå­é‚®ç®±</td>
 			<td class="bind_t_right"><input type="text" class="bind_input" name="email"/></td>
 		</tr>
 	</tbody>
 </table>
 
-<div class="bind_but" id="bind_but">Ìá½»</div>
+<div class="bind_but" id="bind_but">æäº¤</div>
 
 
 

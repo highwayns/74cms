@@ -1,4 +1,4 @@
-/*HR¹¤¾ßÏä*/
+ï»¿/*HRå·¥å…·ç®±*/
 .hr_box{border-top:1px solid #ccc;padding-bottom:45px;}
 .hr_box .hrtools-wrap{padding-left: 50px;}
 .hr_box .function_box{float:left;width:550px;margin-top:35px;}
@@ -21,7 +21,7 @@
 .hr_box li .hr_content h3 a:hover{text-decoration:none;color:#ff9900;}
 .hr_box li .hr_content li{color:#666666;float:left;margin-right:10px;line-height:25px;font-size:14px;font-family:"microsoft yahei";}
 .hr_box li .hr_content li .more{color:#017FCF}
-/*HR¹¤¾ßÏä ÏêÇé*/
+/*HRå·¥å…·ç®± è¯¦æƒ…*/
 .hr_dateil{font-family:"microsoft yahei";margin-bottom:20px;}
 .hr_dateil h2{float:left;padding:8px 22px;background-color:#0180CF;color:#fff;font-size:16px;}
 .hr_dateil .hr_list{border:1px solid #ccc;border-top:2px solid #0180CF;padding:15px 0px 15px 70px;_background:#fff;+background-color: #fff;}

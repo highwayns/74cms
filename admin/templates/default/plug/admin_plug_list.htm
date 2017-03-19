@@ -1,28 +1,28 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-Äú¿ÉÒÔ¹Ø±ÕµôÔİÊ±²»ĞèÒªµÄÄ£¿é£¬Ê¹ÏµÍ³¸ü¼ò½à¡£
+æ‚¨å¯ä»¥å…³é—­æ‰æš‚æ—¶ä¸éœ€è¦çš„æ¨¡å—ï¼Œä½¿ç³»ç»Ÿæ›´ç®€æ´ã€‚
 </p>
 </div>
   <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="link_lan" id="list" >
     <tr>
-            <td width="50%" align="center"  class="admin_list_tit admin_list_first">Ãû³Æ</td>
-            <td width="80%" align="center" class="admin_list_tit">²Ù×÷</td>
+            <td width="50%" align="center"  class="admin_list_tit admin_list_first">åç§°</td>
+            <td width="80%" align="center" class="admin_list_tit">æ“ä½œ</td>
     </tr>
 		 {#foreach from=$plug item=li#}
           <tr>
-      <td class="admin_list admin_list_first" align="center" style="color:#3366CC"> {#$li.plug_name#}{#if $li.p_install==2#}&nbsp;&nbsp;[<font color="green">ÒÑ¿ªÆô</font>]{#else#}&nbsp;&nbsp;[<font color="grey">Î´¿ªÆô</font>]{#/if#} </td>
+      <td class="admin_list admin_list_first" align="center" style="color:#3366CC"> {#$li.plug_name#}{#if $li.p_install==2#}&nbsp;&nbsp;[<font color="green">å·²å¼€å¯</font>]{#else#}&nbsp;&nbsp;[<font color="grey">æœªå¼€å¯</font>]{#/if#} </td>
             <td align="center" class="admin_list">
 				{#if $li.p_install==2#}
-				<a href="?act=uninstall_plug&id={#$li.id#}&{#$urltoken#}" onclick="return confirm('ÄãÈ·¶¨Òª¹Ø±ÕÂğ£¿')"><font color="red">¹Ø±Õ</font></a> 
+				<a href="?act=uninstall_plug&id={#$li.id#}&{#$urltoken#}" onclick="return confirm('ä½ ç¡®å®šè¦å…³é—­å—ï¼Ÿ')"><font color="red">å…³é—­</font></a> 
 				{#else#}
-				<a href="?act=install_plug&id={#$li.id#}&{#$urltoken#}"><font color="blue">¿ªÆô</font></a>
+				<a href="?act=install_plug&id={#$li.id#}&{#$urltoken#}"><font color="blue">å¼€å¯</font></a>
 				{#/if#}				</td>
           </tr>
          

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÆóÒµÓÃ»§Ïà¹Ø
+ * 74cms ä¼ä¸šç”¨æˆ·ç›¸å…³
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -81,7 +81,7 @@ if($act == 'jobs')
 				$wheresql=empty($wheresql)?" WHERE addtime> ".$settr:$wheresql." AND addtime> ".$settr;
 				$oederbysql=" order BY addtime DESC ";
 			}
-			//ÎŞĞ§Ô­Òò(1->Ö°Î»µ½ÆÚ  2->Ì×²Íµ½ÆÚ  3->Ö°Î»ÔİÍ£  4->ÉóºËÎ´Í¨¹ı)
+			//æ— æ•ˆåŸå› (1->èŒä½åˆ°æœŸ  2->å¥—é¤åˆ°æœŸ  3->èŒä½æš‚åœ  4->å®¡æ ¸æœªé€šè¿‡)
 			if ($invalid==1)
 			{
 			$wheresql=empty($wheresql)?" WHERE deadline< ".time():$wheresql." AND deadline< ".time();
@@ -181,7 +181,7 @@ if($act == 'jobs')
 	$total[4]=$db->get_total("SELECT COUNT(*) AS num FROM ".table('jobs_tmp')." WHERE audit=3 ");
 	}
 	$jobs = get_jobs($offset,$perpage,$getsql);
-	$smarty->assign('pageheader',"Ö°Î»¹ÜÀí");
+	$smarty->assign('pageheader',"èŒä½ç®¡ç†");
 	$smarty->assign('jobs',$jobs);
 	$smarty->assign('now',time());
 	$smarty->assign('total',$total);
@@ -194,18 +194,18 @@ if($act == 'jobs')
 elseif($act == 'jobs_perform')
 {
 		check_token();
-		$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:adminmsg("ÄãÃ»ÓĞÑ¡ÔñÖ°Î»£¡",1);
+		$yid =!empty($_REQUEST['y_id'])?$_REQUEST['y_id']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©èŒä½ï¼",1);
 		if (!empty($_REQUEST['delete']))
 		{
 			check_permissions($_SESSION['admin_purview'],"jobs_del");
 			$num=del_jobs($yid);
 			if ($num>0)
 			{
-			adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı".$num."ĞĞ",2);
+			adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 			}
 			else
 			{
-			adminmsg("É¾³ıÊ§°Ü£¡",0);
+			adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 			}
 		}
 		elseif (!empty($_POST['set_audit']))
@@ -217,22 +217,22 @@ elseif($act == 'jobs_perform')
 			if ($n=edit_jobs_audit($yid,$audit,$reason,$pms_notice))
 			{
 			refresh_jobs($yid); 
-			adminmsg("ÉóºË³É¹¦£¡ÏìÓ¦ĞĞÊı {$n}",2);			
+			adminmsg("å®¡æ ¸æˆåŠŸï¼å“åº”è¡Œæ•° {$n}",2);			
 			}
 			else
 			{
-			adminmsg("ÉóºËÊ§°Ü£¡ÏìÓ¦ĞĞÊı 0",1);
+			adminmsg("å®¡æ ¸å¤±è´¥ï¼å“åº”è¡Œæ•° 0",1);
 			}
 		}
 		elseif (!empty($_GET['refresh']))
 		{
 			if($n=refresh_jobs($yid))
 			{
-			adminmsg("Ë¢ĞÂ³É¹¦£¡ÏìÓ¦ĞĞÊı {$n}",2);
+			adminmsg("åˆ·æ–°æˆåŠŸï¼å“åº”è¡Œæ•° {$n}",2);
 			}
 			else
 			{
-			adminmsg("Ë¢ĞÂÊ§°Ü£¡",0);
+			adminmsg("åˆ·æ–°å¤±è´¥ï¼",0);
 			}
 		}
 		elseif (!empty($_POST['set_delay']))
@@ -240,7 +240,7 @@ elseif($act == 'jobs_perform')
 			$days=intval($_POST['days']);
 			if (empty($days))
 			{
-			adminmsg("ÇëÌîĞ´ÒªÑÓ³¤µÄÌìÊı£¡",0);
+			adminmsg("è¯·å¡«å†™è¦å»¶é•¿çš„å¤©æ•°ï¼",0);
 			}
 			$arr=delay_jobs($yid,$days);
 			if(!empty($arr))
@@ -255,11 +255,11 @@ elseif($act == 'jobs_perform')
 					$img_type = 2;
 				}
 				distribution_jobs($yid);
-				adminmsg("¹²ÑÓ³¤Ö°Î» {$job_arr[0]} ¸ö£¡³É¹¦ {$job_arr[1]} ¸ö£¬Ê§°Ü {$job_arr[2]} ¸ö",$img_type);
+				adminmsg("å…±å»¶é•¿èŒä½ {$job_arr[0]} ä¸ªï¼æˆåŠŸ {$job_arr[1]} ä¸ªï¼Œå¤±è´¥ {$job_arr[2]} ä¸ª",$img_type);
 			}
 			else
 			{
-			adminmsg("²Ù×÷Ê§°Ü£¡",0);
+			adminmsg("æ“ä½œå¤±è´¥ï¼",0);
 			}
 		}
 }
@@ -267,8 +267,8 @@ elseif($act == 'edit_jobs')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"jobs_edit");
-	$id =!empty($_REQUEST['id'])?intval($_REQUEST['id']):adminmsg("ÄãÃ»ÓĞÑ¡ÔñÖ°Î»£¡",1);
-	$smarty->assign('pageheader',"Ö°Î»¹ÜÀí");
+	$id =!empty($_REQUEST['id'])?intval($_REQUEST['id']):adminmsg("ä½ æ²¡æœ‰é€‰æ‹©èŒä½ï¼",1);
+	$smarty->assign('pageheader',"èŒä½ç®¡ç†");
 	$jobs=get_jobs_one($id);
 	$smarty->assign('url',$_SERVER["HTTP_REFERER"]);
 	$smarty->assign('jobs',$jobs);
@@ -282,7 +282,7 @@ elseif ($act=='editjobs_save')
 	$id=intval($_POST['id']);
 	$company_id=intval($_POST['company_id']);
     $company_profile=get_company_one_id($company_id);
-	$setsqlarr['jobs_name']=trim($_POST['jobs_name'])?trim($_POST['jobs_name']):adminmsg('ÄúÃ»ÓĞÌîĞ´Ö°Î»Ãû³Æ£¡',1);
+	$setsqlarr['jobs_name']=trim($_POST['jobs_name'])?trim($_POST['jobs_name']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™èŒä½åç§°ï¼',1);
 	$setsqlarr['nature']=intval($_POST['nature']);
 	$setsqlarr['nature_cn']=trim($_POST['nature_cn']);	
 	$setsqlarr['topclass']=intval($_POST['topclass']);
@@ -304,7 +304,7 @@ elseif ($act=='editjobs_save')
 	$setsqlarr['experience']=intval($_POST['experience']);
 	$setsqlarr['experience_cn']=trim($_POST['experience_cn']);
 	$setsqlarr['graduate']=intval($_POST['graduate']);
-	$setsqlarr['contents']=trim($_POST['contents'])?trim($_POST['contents']):adminmsg('ÄúÃ»ÓĞÌîĞ´Ö°Î»ÃèÊö£¡',1);	
+	$setsqlarr['contents']=trim($_POST['contents'])?trim($_POST['contents']):adminmsg('æ‚¨æ²¡æœ‰å¡«å†™èŒä½æè¿°ï¼',1);	
 	$setsqlarr['key']=$setsqlarr['jobs_name'].$company_profile['companyname'].$setsqlarr['category_cn'].$setsqlarr['district_cn'].$setsqlarr['contents'];
 	require_once(QISHI_ROOT_PATH.'include/splitword.class.php');
 	$sp = new SPWord();
@@ -332,14 +332,14 @@ elseif ($act=='editjobs_save')
 	$tb1=$db->getone("select * from ".table('jobs')." where id='{$id}' LIMIT 1");
 	if (!empty($tb1))
 	{
-		if (!$db->updatetable(table('jobs'),$setsqlarr,$wheresql)) adminmsg("±£´æÊ§°Ü£¡",0);
+		if (!$db->updatetable(table('jobs'),$setsqlarr,$wheresql)) adminmsg("ä¿å­˜å¤±è´¥ï¼",0);
 	}
 	else
 	{
-		if (!$db->updatetable(table('jobs_tmp'),$setsqlarr,$wheresql)) adminmsg("±£´æÊ§°Ü£¡",0);
+		if (!$db->updatetable(table('jobs_tmp'),$setsqlarr,$wheresql)) adminmsg("ä¿å­˜å¤±è´¥ï¼",0);
 	}
 	$wheresql=" pid=".$id;
-	if (!$db->updatetable(table('jobs_contact'),$setsqlarr_contact,$wheresql)) adminmsg("±£´æÊ§°Ü£¡",0);
+	if (!$db->updatetable(table('jobs_contact'),$setsqlarr_contact,$wheresql)) adminmsg("ä¿å­˜å¤±è´¥ï¼",0);
 	$searchtab['nature']=$setsqlarr['nature'];
 	$searchtab['sex']=$setsqlarr['sex'];
 	$searchtab['topclass']=$setsqlarr['topclass'];
@@ -360,12 +360,12 @@ elseif ($act=='editjobs_save')
 	$searchtab['key']=$setsqlarr['key'];
 	$searchtab['likekey']=$setsqlarr['jobs_name'].','.$company_profile['companyname'];
 	$db->updatetable(table('jobs_search_key'),$searchtab," id='{$id}' ");
-	write_log("ĞŞ¸ÄÖ°Î»idÎª".$id."µÄÖ°Î»,", $_SESSION['admin_name'],3);
+	write_log("ä¿®æ”¹èŒä½idä¸º".$id."çš„èŒä½,", $_SESSION['admin_name'],3);
 	unset($setsqlarr_contact,$setsqlarr);
 	distribution_jobs($id);
-	$link[0]['text'] = "·µ»ØÖ°Î»ÁĞ±í";
+	$link[0]['text'] = "è¿”å›èŒä½åˆ—è¡¨";
 	$link[0]['href'] = $_POST['url'];
-	adminmsg("ĞŞ¸Ä³É¹¦£¡",2,$link);
+	adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'company_list')
 {
@@ -405,7 +405,7 @@ elseif($act == 'company_list')
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$clist = get_company($offset,$perpage,$joinsql.$wheresql.$oederbysql,$operation_mode);
-	$smarty->assign('pageheader',"ÆóÒµ¹ÜÀí");
+	$smarty->assign('pageheader',"ä¼ä¸šç®¡ç†");
 	$smarty->assign('clist',$clist);
 	$smarty->assign('certificate_dir',$certificate_dir);
 	$smarty->assign('page',$page->show(3));
@@ -415,23 +415,23 @@ elseif($act == 'company_list')
 elseif($act == 'company_perform')
 {
 	check_token();
-	$u_id =!empty($_POST['y_id'])?$_POST['y_id']:adminmsg("ÄãÃ»ÓĞÑ¡ÔñÆóÒµ£¡",1);
+	$u_id =!empty($_POST['y_id'])?$_POST['y_id']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©ä¼ä¸šï¼",1);
 	if ($_POST['delete'])
 	{
 		check_permissions($_SESSION['admin_purview'],"com_del");
 		if ($_POST['delete_company']=='yes')
 		{
-		!del_company($u_id)?adminmsg("É¾³ıÆóÒµ×ÊÁÏÊ§°Ü£¡",0):"";
+		!del_company($u_id)?adminmsg("åˆ é™¤ä¼ä¸šèµ„æ–™å¤±è´¥ï¼",0):"";
 		}
 		if ($_POST['delete_jobs']=='yes')
 		{
-		!del_company_alljobs($u_id)?adminmsg("É¾³ıÖ°Î»Ê§°Ü£¡",0):"";
+		!del_company_alljobs($u_id)?adminmsg("åˆ é™¤èŒä½å¤±è´¥ï¼",0):"";
 		}
 		if ($_POST['delete_jobs']<>'yes' && $_POST['delete_company']<>'yes')
 		{
-		adminmsg("Î´Ñ¡ÔñÉ¾³ıÀàĞÍ£¡",1);
+		adminmsg("æœªé€‰æ‹©åˆ é™¤ç±»å‹ï¼",1);
 		}
-		adminmsg("É¾³ı³É¹¦£¡",2);
+		adminmsg("åˆ é™¤æˆåŠŸï¼",2);
 	}
 	if (trim($_POST['set_audit']))
 	{
@@ -439,7 +439,7 @@ elseif($act == 'company_perform')
 		$audit=$_POST['audit'];
 		$pms_notice=intval($_POST['pms_notice']);
 		$reason=trim($_POST['reason']);
-		!edit_company_audit($u_id,intval($audit),$reason,$pms_notice)?adminmsg("ÉèÖÃÊ§°Ü£¡",0):adminmsg("ÉèÖÃ³É¹¦£¡",2);
+		!edit_company_audit($u_id,intval($audit),$reason,$pms_notice)?adminmsg("è®¾ç½®å¤±è´¥ï¼",0):adminmsg("è®¾ç½®æˆåŠŸï¼",2);
 	}
 	elseif (!empty($_POST['set_refresh']))
 	{
@@ -453,11 +453,11 @@ elseif($act == 'company_perform')
 		}
 		if($n=refresh_company($u_id,$refresjobs))
 		{
-		adminmsg("Ë¢ĞÂ³É¹¦£¡ÏìÓ¦ĞĞÊı {$n} ĞĞ",2);
+		adminmsg("åˆ·æ–°æˆåŠŸï¼å“åº”è¡Œæ•° {$n} è¡Œ",2);
 		}
 		else
 		{
-		adminmsg("Ë¢ĞÂÊ§°Ü£¡",0);
+		adminmsg("åˆ·æ–°å¤±è´¥ï¼",0);
 		}
 	}
 }
@@ -465,14 +465,14 @@ elseif($act == 'edit_company_profile')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"com_edit");
-	$yid =!empty($_REQUEST['id'])?intval($_REQUEST['id']):adminmsg("ÄãÃ»ÓĞÑ¡ÔñÆóÒµ£¡",1);
-	$smarty->assign('pageheader',"ÆóÒµ¹ÜÀí");
+	$yid =!empty($_REQUEST['id'])?intval($_REQUEST['id']):adminmsg("ä½ æ²¡æœ‰é€‰æ‹©ä¼ä¸šï¼",1);
+	$smarty->assign('pageheader',"ä¼ä¸šç®¡ç†");
 	$company_profile=get_company_one_id($yid);
 	$smarty->assign('url',$_SERVER["HTTP_REFERER"]);
 	$smarty->assign('comaudit',get_comaudit_one($yid));
 
 	$smarty->assign('company_profile',$company_profile);
-	$smarty->assign('certificate_dir',$certificate_dir);//ÓªÒµÖ´ÕÕÂ·¾¶
+	$smarty->assign('certificate_dir',$certificate_dir);//è¥ä¸šæ‰§ç…§è·¯å¾„
 	$smarty->display('company/admin_company_profile_edit.htm');
 }
 elseif ($act=='company_profile_save')
@@ -483,18 +483,18 @@ elseif ($act=='company_profile_save')
 	$contents=array();
 	$id=intval($_POST['id']);
 	$setsqlarr['audit']=intval($_POST['audit']);
-	$setsqlarr['companyname']=trim($_POST['companyname'])?trim($_POST['companyname']):adminmsg('ÄúÃ»ÓĞÊäÈëÆóÒµÃû³Æ£¡',1);
-	$setsqlarr['nature']=trim($_POST['nature'])?trim($_POST['nature']):adminmsg('ÄúÑ¡ÔñÆóÒµĞÔÖÊ£¡',1);
-	$setsqlarr['nature_cn']=trim($_POST['nature_cn'])?trim($_POST['nature_cn']):adminmsg('ÄúÑ¡ÔñÆóÒµĞÔÖÊ£¡',1);
-	$setsqlarr['trade']=trim($_POST['trade'])?trim($_POST['trade']):adminmsg('ÄúÑ¡ÔñËùÊôĞĞÒµ£¡',1);
-	$setsqlarr['trade_cn']=trim($_POST['trade_cn'])?trim($_POST['trade_cn']):adminmsg('ÄúÑ¡ÔñËùÊôĞĞÒµ£¡',1);
-	$setsqlarr['district_cn']=trim($_POST['district_cn'])?trim($_POST['district_cn']):adminmsg('ÄúÑ¡ÔñËùÊôµØÇø£¡',1);
+	$setsqlarr['companyname']=trim($_POST['companyname'])?trim($_POST['companyname']):adminmsg('æ‚¨æ²¡æœ‰è¾“å…¥ä¼ä¸šåç§°ï¼',1);
+	$setsqlarr['nature']=trim($_POST['nature'])?trim($_POST['nature']):adminmsg('æ‚¨é€‰æ‹©ä¼ä¸šæ€§è´¨ï¼',1);
+	$setsqlarr['nature_cn']=trim($_POST['nature_cn'])?trim($_POST['nature_cn']):adminmsg('æ‚¨é€‰æ‹©ä¼ä¸šæ€§è´¨ï¼',1);
+	$setsqlarr['trade']=trim($_POST['trade'])?trim($_POST['trade']):adminmsg('æ‚¨é€‰æ‹©æ‰€å±è¡Œä¸šï¼',1);
+	$setsqlarr['trade_cn']=trim($_POST['trade_cn'])?trim($_POST['trade_cn']):adminmsg('æ‚¨é€‰æ‹©æ‰€å±è¡Œä¸šï¼',1);
+	$setsqlarr['district_cn']=trim($_POST['district_cn'])?trim($_POST['district_cn']):adminmsg('æ‚¨é€‰æ‹©æ‰€å±åœ°åŒºï¼',1);
 	$setsqlarr['district']=intval($_POST['district']);
 	$setsqlarr['sdistrict']=intval($_POST['sdistrict']);
 	$setsqlarr['street']=intval($_POST['street']);
 	$setsqlarr['street_cn']=trim($_POST['street_cn']);
-	$setsqlarr['scale']=trim($_POST['scale'])?trim($_POST['scale']):adminmsg('ÄúÑ¡Ôñ¹«Ë¾¹æÄ££¡',1);
-	$setsqlarr['scale_cn']=trim($_POST['scale_cn'])?trim($_POST['scale_cn']):adminmsg('ÄúÑ¡Ôñ¹«Ë¾¹æÄ££¡',1);	
+	$setsqlarr['scale']=trim($_POST['scale'])?trim($_POST['scale']):adminmsg('æ‚¨é€‰æ‹©å…¬å¸è§„æ¨¡ï¼',1);
+	$setsqlarr['scale_cn']=trim($_POST['scale_cn'])?trim($_POST['scale_cn']):adminmsg('æ‚¨é€‰æ‹©å…¬å¸è§„æ¨¡ï¼',1);	
 	$setsqlarr['registered']=trim($_POST['registered']);
 	$setsqlarr['currency']=trim($_POST['currency']);
 	$setsqlarr['address']=trim($_POST['address']);
@@ -502,14 +502,14 @@ elseif ($act=='company_profile_save')
 	$setsqlarr['telephone']=trim($_POST['telephone']);
 	$setsqlarr['email']=trim($_POST['email']);
 	$setsqlarr['website']=trim($_POST['website']);
-	$setsqlarr['contents']=trim($_POST['contents'])?trim($_POST['contents']):adminmsg('ÇëÌîĞ´¹«Ë¾¼ò½é£¡',1);
+	$setsqlarr['contents']=trim($_POST['contents'])?trim($_POST['contents']):adminmsg('è¯·å¡«å†™å…¬å¸ç®€ä»‹ï¼',1);
 		$setsqlarr['contact_show']=intval($_POST['contact_show']);
 	$setsqlarr['email_show']=intval($_POST['email_show']);
 	$setsqlarr['telephone_show']=intval($_POST['telephone_show']);
 	$setsqlarr['address_show']=intval($_POST['address_show']);
 		
 	$wheresql=" id='{$id}' ";
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = $_POST['url'];
 		if ($db->updatetable(table('company_profile'),$setsqlarr,$wheresql))
 		{
@@ -520,8 +520,8 @@ elseif ($act=='company_profile_save')
 				$jobarr['scale_cn']=$setsqlarr['scale_cn'];
 				$jobarr['street']=$setsqlarr['street'];
 				$jobarr['street_cn']=$setsqlarr['street_cn'];
-				if (!$db->updatetable(table('jobs'),$jobarr," uid=".intval($_POST['cuid'])."")) adminmsg('ĞŞ¸ÄÖ°Î»²¿·Ö³ö´í£¡',0);
-				if (!$db->updatetable(table('jobs_tmp'),$jobarr," uid=".intval($_POST['cuid'])."")) adminmsg('ĞŞ¸ÄÖ°Î»²¿·Ö³ö´í£¡',0);
+				if (!$db->updatetable(table('jobs'),$jobarr," uid=".intval($_POST['cuid'])."")) adminmsg('ä¿®æ”¹èŒä½éƒ¨åˆ†å‡ºé”™ï¼',0);
+				if (!$db->updatetable(table('jobs_tmp'),$jobarr," uid=".intval($_POST['cuid'])."")) adminmsg('ä¿®æ”¹èŒä½éƒ¨åˆ†å‡ºé”™ï¼',0);
 				$soarray['trade']=$jobarr['trade'];
 				$soarray['scale']=$jobarr['scale'];
 				$soarray['street']=$setsqlarr['street'];
@@ -533,12 +533,12 @@ elseif ($act=='company_profile_save')
 				$db->updatetable(table('jobs_search_key'),$soarray," uid=".intval($_POST['cuid'])."");
 				
 				unset($setsqlarr);
-				adminmsg("±£´æ³É¹¦£¡",2,$link);
+				adminmsg("ä¿å­˜æˆåŠŸï¼",2,$link);
 		}
 		else
 		{
 		unset($setsqlarr);
-		adminmsg("±£´æÊ§°Ü£¡",0);
+		adminmsg("ä¿å­˜å¤±è´¥ï¼",0);
 		}
 }
 elseif($act == 'order_list')
@@ -579,7 +579,7 @@ elseif($act == 'order_list')
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$orderlist = get_order_list($offset,$perpage,$joinsql.$wheresql.$oederbysql);
-	$smarty->assign('pageheader',"¶©µ¥¹ÜÀí");
+	$smarty->assign('pageheader',"è®¢å•ç®¡ç†");
 	$smarty->assign('payment_list',get_payment(2));
 	$smarty->assign('orderlist',$orderlist);
 	$smarty->assign('page',$page->show(3));
@@ -589,7 +589,7 @@ elseif($act == 'show_order')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"ord_show");
-	$smarty->assign('pageheader',"¶©µ¥¹ÜÀí");
+	$smarty->assign('pageheader',"è®¢å•ç®¡ç†");
 	$smarty->assign('url',$_SERVER["HTTP_REFERER"]);
 	$smarty->assign('payment',get_order_one($_GET['id']));
 	$smarty->display('company/admin_order_show.htm');
@@ -597,16 +597,16 @@ elseif($act == 'show_order')
 elseif($act == 'order_notes_save')
 {
 	check_token();
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = $_POST['url'];
-	!$db->query("UPDATE ".table('order')." SET  notes='".$_POST['notes']."' WHERE id='".intval($_GET['id'])."'")?adminmsg('²Ù×÷Ê§°Ü',1):adminmsg("²Ù×÷³É¹¦£¡",2,$link);
+	!$db->query("UPDATE ".table('order')." SET  notes='".$_POST['notes']."' WHERE id='".intval($_GET['id'])."'")?adminmsg('æ“ä½œå¤±è´¥',1):adminmsg("æ“ä½œæˆåŠŸï¼",2,$link);
 }
-//ÉèÖÃ³äÖµ¼ÇÂ¼£¨ÊÕ¿î¿ªÍ¨£©
+//è®¾ç½®å……å€¼è®°å½•ï¼ˆæ”¶æ¬¾å¼€é€šï¼‰
 elseif($act == 'order_set')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"ord_set");
-	$smarty->assign('pageheader',"¶©µ¥¹ÜÀí");
+	$smarty->assign('pageheader',"è®¢å•ç®¡ç†");
 	$smarty->assign('url',$_SERVER["HTTP_REFERER"]);
 	$smarty->assign('payment',get_order_one($_GET['id']));
 	$smarty->display('company/admin_order_set.htm');
@@ -617,28 +617,28 @@ elseif($act == 'order_set_save')
 	check_permissions($_SESSION['admin_purview'],"ord_set");
 		if (order_paid(trim($_POST['oid'])))
 		{
-		$link[0]['text'] = "·µ»ØÁĞ±í";
+		$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 		$link[0]['href'] = $_POST['url'];
-		!$db->query("UPDATE ".table('order')." SET notes='".$_POST['notes']."' WHERE id=".intval($_GET['id'])."  LIMIT 1 ")?adminmsg('²Ù×÷Ê§°Ü',1):adminmsg("²Ù×÷³É¹¦£¡",2,$link);
+		!$db->query("UPDATE ".table('order')." SET notes='".$_POST['notes']."' WHERE id=".intval($_GET['id'])."  LIMIT 1 ")?adminmsg('æ“ä½œå¤±è´¥',1):adminmsg("æ“ä½œæˆåŠŸï¼",2,$link);
 		}
 		else
 		{
-		adminmsg('²Ù×÷Ê§°Ü',1);
+		adminmsg('æ“ä½œå¤±è´¥',1);
 		}
 }
-//È¡Ïû»áÔ±³äÖµÉêÇë
+//å–æ¶ˆä¼šå‘˜å……å€¼ç”³è¯·
 elseif($act == 'order_del')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"ord_del");
-	$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("ÄãÃ»ÓĞÑ¡ÔñÏîÄ¿£¡",1);
+	$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 	if (del_order($id))
 	{
-	adminmsg("È¡Ïû³É¹¦£¡",2,$link);
+	adminmsg("å–æ¶ˆæˆåŠŸï¼",2,$link);
 	}
 	else
 	{
-	adminmsg("È¡ÏûÊ§°Ü£¡",1);
+	adminmsg("å–æ¶ˆå¤±è´¥ï¼",1);
 	}
 }
 elseif($act == 'meal_members')
@@ -686,7 +686,7 @@ elseif($act == 'meal_members')
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$member = get_meal_members_list($offset,$perpage,$joinsql.$wheresql.$oederbysql);
-	$smarty->assign('pageheader',"ÆóÒµ¹ÜÀí");
+	$smarty->assign('pageheader',"ä¼ä¸šç®¡ç†");
 	$smarty->assign('navlabel','meal_members');
 	$smarty->assign('member',$member);
 	$smarty->assign('setmeal',get_setmeal());	
@@ -702,7 +702,7 @@ elseif($act == 'meal_log')
 	$key=isset($_GET['key'])?trim($_GET['key']):"";
 	$key_type=isset($_GET['key_type'])?intval($_GET['key_type']):"";
 	$operation_mode=trim($_CFG['operation_mode']);
-	//»ı·Ö¡¢Ì×²ÍºÍ»ìºÏÈıÖÖÄ£Ê½±ä¸ü¼ÇÂ¼£¬»ìºÏÄ£Ê½ÏÂ»ı·ÖºÍÌ×²Í±ä¸üµÄ¼ÇÂ¼¶¼ÏÔÊ¾
+	//ç§¯åˆ†ã€å¥—é¤å’Œæ··åˆä¸‰ç§æ¨¡å¼å˜æ›´è®°å½•ï¼Œæ··åˆæ¨¡å¼ä¸‹ç§¯åˆ†å’Œå¥—é¤å˜æ›´çš„è®°å½•éƒ½æ˜¾ç¤º
 	if($operation_mode=='1')
 	{
 		$wheresql=" WHERE a.log_mode=1 AND a.log_utype=1";
@@ -715,14 +715,14 @@ elseif($act == 'meal_log')
 	{
 		$wheresql=" WHERE (a.log_mode=1 OR a.log_mode=2) AND a.log_utype=1";
 	}
-	//µ¥¸ö»áÔ±(uid)²é¿´±ä¸ü¼ÇÂ¼
+	//å•ä¸ªä¼šå‘˜(uid)æŸ¥çœ‹å˜æ›´è®°å½•
 	if ($key_uid)
 	{
 		$wheresql.="  AND a.log_uid = '".intval($key_uid)."' ";
-		//×ö¸ö±êÊ¶£¬Èç¹û²éÑ¯µ¥¸ö»áÔ±µÄ»° ÄÇÃ´ÓÒÏÂ½ÇµÄËÑË÷À¸¾ÍÃ»ÓÃÁË
+		//åšä¸ªæ ‡è¯†ï¼Œå¦‚æœæŸ¥è¯¢å•ä¸ªä¼šå‘˜çš„è¯ é‚£ä¹ˆå³ä¸‹è§’çš„æœç´¢æ å°±æ²¡ç”¨äº†
 		$smarty->assign('sign','1');
 	}
-	//ÏÂÃæµÄËÑË÷À¸ : ËÑË÷Ä³¸ö»áÔ±µÄ±ä¸ü¼ÇÂ¼
+	//ä¸‹é¢çš„æœç´¢æ  : æœç´¢æŸä¸ªä¼šå‘˜çš„å˜æ›´è®°å½•
 	elseif ($key && $key_type>0)
 	{
 		if     ($key_type===1)$wheresql.="  AND a.log_username = '{$key}'";
@@ -730,7 +730,7 @@ elseif($act == 'meal_log')
 		elseif ($key_type===3)$wheresql.=" AND c.companyname like '{$key}%'";
 		$oederbysql=" order BY a.log_id DESC ";
 	}
-	//²Ù×÷ÀàĞÍÉ¸Ñ¡£¨1->ÏµÍ³ÔùËÍ¡¢2->»áÔ±¹ºÂò¡¢3->¹ÜÀíÔ±ĞŞ¸Ä¡¢4->¹ÜÀíÔ±¿ªÍ¨£©µÈÉ¸Ñ¡
+	//æ“ä½œç±»å‹ç­›é€‰ï¼ˆ1->ç³»ç»Ÿèµ é€ã€2->ä¼šå‘˜è´­ä¹°ã€3->ç®¡ç†å‘˜ä¿®æ”¹ã€4->ç®¡ç†å‘˜å¼€é€šï¼‰ç­‰ç­›é€‰
 	if (!empty($_GET['log_type']))
 	{
 		$log_type=intval($_GET['log_type']);
@@ -747,7 +747,7 @@ elseif($act == 'meal_log')
 		$is_money=intval($_GET['is_money']);
 		$wheresql.= " AND a.log_ismoney={$is_money}";
 	}
-	//ÈıÖÖÄ£Ê½ µÄÍâÁ¬½Ósql
+	//ä¸‰ç§æ¨¡å¼ çš„å¤–è¿æ¥sql
 	if($operation_mode=='1')
 	{
 		$joinsql=" LEFT JOIN ".table('members_points')." as b ON a.log_uid=b.uid  LEFT JOIN ".table('company_profile')." as c ON a.log_uid=c.uid ";
@@ -767,7 +767,7 @@ elseif($act == 'meal_log')
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$meallog = get_meal_members_log($offset,$perpage,$joinsql.$wheresql.$oederbysql,$operation_mode);
-	$smarty->assign('pageheader','ÆóÒµ¹ÜÀí');
+	$smarty->assign('pageheader','ä¼ä¸šç®¡ç†');
 	$smarty->assign('navlabel','meal_log');
 	$smarty->assign('meallog',$meallog);
 	$smarty->assign('page',$page->show(3));
@@ -778,7 +778,7 @@ elseif($act == 'meal_log_pie')
 	require_once(ADMIN_ROOT_PATH.'include/admin_flash_statement_fun.php');
 	$pie_type=!empty($_GET['pie_type'])?intval($_GET['pie_type']):1;
 	meal_log_pie($pie_type,1);	
-	$smarty->assign('pageheader',"ÆóÒµ¹ÜÀí");
+	$smarty->assign('pageheader',"ä¼ä¸šç®¡ç†");
 	$smarty->assign('navlabel','meal_log_pie');
 	$smarty->display('company/admin_company_meal_log_pie.htm');
 }
@@ -786,28 +786,28 @@ elseif($act == 'meallog_del')
 {
 	check_permissions($_SESSION['admin_purview'],"meallog_del");
 	check_token();
-	$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("ÄãÃ»ÓĞÑ¡Ôñ¼ÇÂ¼£¡",1);
+	$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©è®°å½•ï¼",1);
 	$num=del_meal_log($id);
-	if ($num>0){adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı".$num."ĞĞ",2);}else{adminmsg("É¾³ıÊ§°Ü£¡",0);}
+	if ($num>0){adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);}else{adminmsg("åˆ é™¤å¤±è´¥ï¼",0);}
 }
 
 
 elseif($act == 'meal_delay')
 {
-			$tuid =!empty($_REQUEST['tuid'])?$_REQUEST['tuid']:adminmsg("ÄãÃ»ÓĞÑ¡Ôñ»áÔ±£¡",1);
+			$tuid =!empty($_REQUEST['tuid'])?$_REQUEST['tuid']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©ä¼šå‘˜ï¼",1);
 			$days=intval($_POST['days']);
 			if (empty($days))
 			{
-			adminmsg("ÇëÌîĞ´ÒªÑÓ³¤µÄÌìÊı£¡",0);
+			adminmsg("è¯·å¡«å†™è¦å»¶é•¿çš„å¤©æ•°ï¼",0);
 			}
 			if($n=delay_meal($tuid,$days))
 			{
 			distribution_jobs_uid($tuid);
-			adminmsg("ÑÓ³¤ÓĞĞ§ÆÚ³É¹¦£¡ÏìÓ¦ĞĞÊı {$n}",2);
+			adminmsg("å»¶é•¿æœ‰æ•ˆæœŸæˆåŠŸï¼å“åº”è¡Œæ•° {$n}",2);
 			}
 			else
 			{
-			adminmsg("²Ù×÷Ê§°Ü£¡",0);
+			adminmsg("æ“ä½œå¤±è´¥ï¼",0);
 			}
 }
 elseif($act == 'members_list')
@@ -830,13 +830,13 @@ elseif($act == 'members_list')
 	}
 	else
 	{	
-		//×¢²áÊ±¼ä
+		//æ³¨å†Œæ—¶é—´
 		if (!empty($_GET['settr']))
 		{
 			$settr=strtotime("-".intval($_GET['settr'])." day");
 			$wheresql.=" AND m.reg_time> ".$settr;
 		}
-		//ÑéÖ¤ÀàĞÍ
+		//éªŒè¯ç±»å‹
 		if (!empty($_GET['verification']))
 		{
 			if ($_GET['verification']=="1")
@@ -856,16 +856,16 @@ elseif($act == 'members_list')
 			$wheresql.=" AND m.mobile_audit = 0";
 			}
 		}
-		//ÓĞÎŞ¹ËÎÊ
+		//æœ‰æ— é¡¾é—®
 		if ($_GET['consultant']!="")
 		{
-			//Î´·ÖÅä
+			//æœªåˆ†é…
 			$consultant=intval($_GET['consultant']);
 			if ($consultant=="0")
 			{
 			$wheresql.=" AND  m.consultant=0";
 			}
-			//ÒÑ·ÖÅä
+			//å·²åˆ†é…
 			elseif ($consultant=="1")
 			{
 			$wheresql.=" AND m.consultant != 0";
@@ -879,7 +879,7 @@ elseif($act == 'members_list')
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$member = get_member_list($offset,$perpage,$joinsql.$wheresql.$oederbysql);
-	$smarty->assign('pageheader',"ÆóÒµ»áÔ±");
+	$smarty->assign('pageheader',"ä¼ä¸šä¼šå‘˜");
 	$smarty->assign('member',$member);
 	$smarty->assign('page',$page->show(3));
 	$smarty->display('company/admin_company_user_list.htm');
@@ -888,30 +888,30 @@ elseif($act == 'delete_user')
 {	
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"com_user_del");
-	$tuid =!empty($_REQUEST['tuid'])?$_REQUEST['tuid']:adminmsg("ÄãÃ»ÓĞÑ¡Ôñ»áÔ±£¡",1);
+	$tuid =!empty($_REQUEST['tuid'])?$_REQUEST['tuid']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©ä¼šå‘˜ï¼",1);
 	if ($_POST['delete'])
 	{
 		if (!empty($_POST['delete_user']))
 		{
-		!delete_company_user($tuid)?adminmsg("É¾³ı»áÔ±Ê§°Ü£¡",0):"";
+		!delete_company_user($tuid)?adminmsg("åˆ é™¤ä¼šå‘˜å¤±è´¥ï¼",0):"";
 		}
 		if (!empty($_POST['delete_company']))
 		{
-		!del_company($tuid)?adminmsg("É¾³ıÆóÒµ×ÊÁÏÊ§°Ü£¡",0):"";
+		!del_company($tuid)?adminmsg("åˆ é™¤ä¼ä¸šèµ„æ–™å¤±è´¥ï¼",0):"";
 		}
 		if (!empty($_POST['delete_jobs']))
 		{
-		!del_company_alljobs($tuid)?adminmsg("É¾³ıÖ°Î»Ê§°Ü£¡",0):"";
+		!del_company_alljobs($tuid)?adminmsg("åˆ é™¤èŒä½å¤±è´¥ï¼",0):"";
 		}
-	adminmsg("É¾³ı³É¹¦£¡",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼",2);
 	}
 }
-//Ìí¼Ó»áÔ±
+//æ·»åŠ ä¼šå‘˜
 elseif($act == 'members_add')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"com_user_add");
-	$smarty->assign('pageheader',"ÆóÒµ»áÔ±");
+	$smarty->assign('pageheader',"ä¼ä¸šä¼šå‘˜");
 	$smarty->assign('givesetmeal',get_setmeal(false));
 	$smarty->assign('points',get_cache('points_rule'));
 	$smarty->display('company/admin_company_user_add.htm');
@@ -921,27 +921,27 @@ elseif($act == 'members_add_save')
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"com_user_add");
 	require_once(ADMIN_ROOT_PATH.'include/admin_user_fun.php');
-	if (strlen(trim($_POST['username']))<3) adminmsg('ÓÃ»§Ãû±ØĞëÎª3Î»ÒÔÉÏ£¡',1);
-	if (strlen(trim($_POST['password']))<6) adminmsg('ÃÜÂë±ØĞëÎª6Î»ÒÔÉÏ£¡',1);
-	$sql['username'] = !empty($_POST['username']) ? trim($_POST['username']):adminmsg('ÇëÌîĞ´ÓÃ»§Ãû£¡',1);
-	$sql['password'] = !empty($_POST['password']) ? trim($_POST['password']):adminmsg('ÇëÌîĞ´ÃÜÂë£¡',1);	
+	if (strlen(trim($_POST['username']))<3) adminmsg('ç”¨æˆ·åå¿…é¡»ä¸º3ä½ä»¥ä¸Šï¼',1);
+	if (strlen(trim($_POST['password']))<6) adminmsg('å¯†ç å¿…é¡»ä¸º6ä½ä»¥ä¸Šï¼',1);
+	$sql['username'] = !empty($_POST['username']) ? trim($_POST['username']):adminmsg('è¯·å¡«å†™ç”¨æˆ·åï¼',1);
+	$sql['password'] = !empty($_POST['password']) ? trim($_POST['password']):adminmsg('è¯·å¡«å†™å¯†ç ï¼',1);	
 	if ($sql['password']<>trim($_POST['password1']))
 	{
-	adminmsg('Á½´ÎÊäÈëµÄÃÜÂë²»ÏàÍ¬£¡',1);
+	adminmsg('ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ç›¸åŒï¼',1);
 	}
-	$sql['utype'] = !empty($_POST['member_type']) ? intval($_POST['member_type']):adminmsg('ÄãÃ»ÓĞÑ¡Ôñ×¢²áÀàĞÍ£¡',1);
+	$sql['utype'] = !empty($_POST['member_type']) ? intval($_POST['member_type']):adminmsg('ä½ æ²¡æœ‰é€‰æ‹©æ³¨å†Œç±»å‹ï¼',1);
 	if (empty($_POST['email']) || !preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$_POST['email']))
 	{
-	adminmsg('µç×ÓÓÊÏä¸ñÊ½´íÎó£¡',1);
+	adminmsg('ç”µå­é‚®ç®±æ ¼å¼é”™è¯¯ï¼',1);
 	}
 	$sql['email']= trim($_POST['email']);
 	if (get_user_inusername($sql['username']))
 	{
-	adminmsg('¸ÃÓÃ»§ÃûÒÑ¾­±»Ê¹ÓÃ£¡',1);
+	adminmsg('è¯¥ç”¨æˆ·åå·²ç»è¢«ä½¿ç”¨ï¼',1);
 	}
 	if (get_user_inemail($sql['email']))
 	{
-	adminmsg('¸Ã Email ÒÑ¾­±»×¢²á£¡',1);
+	adminmsg('è¯¥ Email å·²ç»è¢«æ³¨å†Œï¼',1);
 	}
 	$sql['pwd_hash'] = randstr();
 	$sql['password'] = md5(md5($sql['password']).$sql['pwd_hash'].$QS_pwdhash);
@@ -962,9 +962,9 @@ elseif($act == 'members_add_save')
 				$regpoints_num=intval($_POST['regpoints_num']);
 				if ($_POST['regpoints']=="y")
 				{
-				write_memberslog($insert_id,1,9001,$sql['username'],"<span style=color:#FF6600>×¢²á»áÔ±ÏµÍ³×Ô¶¯ÔùËÍ!(+{$regpoints_num})</span>",1,1010,"×¢²á»áÔ±ÏµÍ³×Ô¶¯ÔùËÍ","+{$regpoints_num}","{$regpoints_num}");
-						//»áÔ±»ı·Ö±ä¸ü¼ÇÂ¼¡£¹ÜÀíÔ±ºóÌ¨ĞŞ¸Ä»áÔ±µÄ»ı·Ö¡£3±íÊ¾£º¹ÜÀíÔ±ºóÌ¨ĞŞ¸Ä
-				$notes="²Ù×÷ÈË£º{$_SESSION['admin_name']},ËµÃ÷£ººóÌ¨Ìí¼ÓÆóÒµ»áÔ±²¢ÔùËÍ(+{$regpoints_num})»ı·Ö£¬ÊÕÈ¡·ÑÓÃ£º{$amount}Ôª";
+				write_memberslog($insert_id,1,9001,$sql['username'],"<span style=color:#FF6600>æ³¨å†Œä¼šå‘˜ç³»ç»Ÿè‡ªåŠ¨èµ é€!(+{$regpoints_num})</span>",1,1010,"æ³¨å†Œä¼šå‘˜ç³»ç»Ÿè‡ªåŠ¨èµ é€","+{$regpoints_num}","{$regpoints_num}");
+						//ä¼šå‘˜ç§¯åˆ†å˜æ›´è®°å½•ã€‚ç®¡ç†å‘˜åå°ä¿®æ”¹ä¼šå‘˜çš„ç§¯åˆ†ã€‚3è¡¨ç¤ºï¼šç®¡ç†å‘˜åå°ä¿®æ”¹
+				$notes="æ“ä½œäººï¼š{$_SESSION['admin_name']},è¯´æ˜ï¼šåå°æ·»åŠ ä¼ä¸šä¼šå‘˜å¹¶èµ é€(+{$regpoints_num})ç§¯åˆ†ï¼Œæ”¶å–è´¹ç”¨ï¼š{$amount}å…ƒ";
 				write_setmeallog($insert_id,$sql['username'],$notes,4,$amount,$ismoney,1,1);
 					
 				report_deal($insert_id,1,$regpoints_num);
@@ -973,36 +973,36 @@ elseif($act == 'members_add_save')
 				if ($reg_service>0)
 				{
 				$service=get_setmeal_one($reg_service);
-				write_memberslog($insert_id,1,9002,$sql['username'],"¿ªÍ¨·şÎñ({$service['setmeal_name']})",2,1011,"¿ªÍ¨·şÎñ","","");
+				write_memberslog($insert_id,1,9002,$sql['username'],"å¼€é€šæœåŠ¡({$service['setmeal_name']})",2,1011,"å¼€é€šæœåŠ¡","","");
 				set_members_setmeal($insert_id,$reg_service);
-						//»áÔ±»ı·Ö±ä¸ü¼ÇÂ¼¡£¹ÜÀíÔ±ºóÌ¨ĞŞ¸Ä»áÔ±µÄ»ı·Ö¡£3±íÊ¾£º¹ÜÀíÔ±ºóÌ¨ĞŞ¸Ä
-				$notes="²Ù×÷ÈË£º{$_SESSION['admin_name']},ËµÃ÷£ººóÌ¨Ìí¼ÓÆóÒµ»áÔ±²¢¿ªÍ¨·şÎñ({$service['setmeal_name']})£¬ÊÕÈ¡·ÑÓÃ£º{$amount}Ôª";
+						//ä¼šå‘˜ç§¯åˆ†å˜æ›´è®°å½•ã€‚ç®¡ç†å‘˜åå°ä¿®æ”¹ä¼šå‘˜çš„ç§¯åˆ†ã€‚3è¡¨ç¤ºï¼šç®¡ç†å‘˜åå°ä¿®æ”¹
+				$notes="æ“ä½œäººï¼š{$_SESSION['admin_name']},è¯´æ˜ï¼šåå°æ·»åŠ ä¼ä¸šä¼šå‘˜å¹¶å¼€é€šæœåŠ¡({$service['setmeal_name']})ï¼Œæ”¶å–è´¹ç”¨ï¼š{$amount}å…ƒ";
 				write_setmeallog($insert_id,$sql['username'],$notes,4,$amount,$ismoney,2,1);
 					
 				}
 				if(intval($_POST['is_money']) && $_POST['log_amount'] && !$notes){
-				$notes="²Ù×÷ÈË£º{$_SESSION['admin_name']},ËµÃ÷£ººóÌ¨Ìí¼ÓÆóÒµ»áÔ±£¬Î´ÔùËÍ»ı·Ö£¬Î´¿ªÍ¨Ì×²Í£¬ÊÕÈ¡·ÑÓÃ£º{$amount}Ôª";
+				$notes="æ“ä½œäººï¼š{$_SESSION['admin_name']},è¯´æ˜ï¼šåå°æ·»åŠ ä¼ä¸šä¼šå‘˜ï¼Œæœªèµ é€ç§¯åˆ†ï¼Œæœªå¼€é€šå¥—é¤ï¼Œæ”¶å–è´¹ç”¨ï¼š{$amount}å…ƒ";
 				write_setmeallog($insert_id,$sql['username'],$notes,4,$amount,2,2,1);
 				}			
 			}
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = "?act=members_list";
-	$link[1]['text'] = "¼ÌĞøÌí¼Ó";
+	$link[1]['text'] = "ç»§ç»­æ·»åŠ ";
 	$link[1]['href'] = "?act=members_add";
-	write_log("Ìí¼Ó»áÔ±".$sql['username'], $_SESSION['admin_name'],3);
-	adminmsg('Ìí¼Ó³É¹¦£¡',2,$link);
+	write_log("æ·»åŠ ä¼šå‘˜".$sql['username'], $_SESSION['admin_name'],3);
+	adminmsg('æ·»åŠ æˆåŠŸï¼',2,$link);
 }
-//ÉèÖÃ¹ËÎÊ
+//è®¾ç½®é¡¾é—®
 elseif($act == 'consultant_install')
 {	
-	//µÃµ½ÒªÉèÖÃ¹ËÎÊµÄÆóÒµ»áÔ±uid 
-	$tuid =!empty($_REQUEST['tuid'])?$_REQUEST['tuid']:adminmsg("ÄãÃ»ÓĞÑ¡Ôñ»áÔ±£¡",1);
+	//å¾—åˆ°è¦è®¾ç½®é¡¾é—®çš„ä¼ä¸šä¼šå‘˜uid 
+	$tuid =!empty($_REQUEST['tuid'])?$_REQUEST['tuid']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©ä¼šå‘˜ï¼",1);
 	if(is_array($tuid)){
 		$tuid=implode(",",$tuid);
 	}
-	//µÃµ½¹ËÎÊĞÅÏ¢
+	//å¾—åˆ°é¡¾é—®ä¿¡æ¯
 	$consultants = $db->getall("select * from ".table('consultant'));
-	//·ÖÒ³
+	//åˆ†é¡µ
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
 	$total_sql="SELECT COUNT(*) AS num FROM ".table('consultant').$oederbysql;
 	$total_val=$db->get_total($total_sql);
@@ -1012,33 +1012,33 @@ elseif($act == 'consultant_install')
 	$clist = get_consultant($offset,$perpage,$oederbysql);
 
 	$smarty->assign('tuid',$tuid);
-	$smarty->assign('pageheader',"ÉèÖÃ¹ËÎÊ");
+	$smarty->assign('pageheader',"è®¾ç½®é¡¾é—®");
 	$smarty->assign('page',$page->show(3));
 	$smarty->assign('consultants',$consultants);
 	$smarty->display('company/admin_consultant_install.htm');
 }
-//±£´æ  ÉèÖÃ¹ËÎÊ
+//ä¿å­˜  è®¾ç½®é¡¾é—®
 elseif($act == 'consultant_install_save')
 {
-	//µÃµ½ ¹ËÎÊµÄid 
-	$id = !empty($_GET['id'])?intval($_GET['id']):adminmsg("Ñ¡Ôñ¹ËÎÊ·¢Éú´íÎó£¡",0);
-	//µÃµ½ÒªÉèÖÃ¹ËÎÊµÄÆóÒµ»áÔ±uid 
-	$tuid =!empty($_REQUEST['tuid'])?$_REQUEST['tuid']:adminmsg("ÄãÃ»ÓĞÑ¡Ôñ»áÔ±£¡",1);
+	//å¾—åˆ° é¡¾é—®çš„id 
+	$id = !empty($_GET['id'])?intval($_GET['id']):adminmsg("é€‰æ‹©é¡¾é—®å‘ç”Ÿé”™è¯¯ï¼",0);
+	//å¾—åˆ°è¦è®¾ç½®é¡¾é—®çš„ä¼ä¸šä¼šå‘˜uid 
+	$tuid =!empty($_REQUEST['tuid'])?$_REQUEST['tuid']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©ä¼šå‘˜ï¼",1);
 	$tuid=explode(",", $tuid);
 	foreach ($tuid as $uid) {
 		$db->updatetable(table('members'),array('consultant' => $id )," uid='{$uid}'");
 	}
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = "?act=members_list";
-	write_log("ÎªÆóÒµuidÎª".$tuid."µÄÆóÒµÉèÖÃ¹ËÎÊ,¹ËÎÊidÎª".$id, $_SESSION['admin_name'],3);
-	adminmsg('ÉèÖÃ³É¹¦£¡',2,$link);
+	write_log("ä¸ºä¼ä¸šuidä¸º".$tuid."çš„ä¼ä¸šè®¾ç½®é¡¾é—®,é¡¾é—®idä¸º".$id, $_SESSION['admin_name'],3);
+	adminmsg('è®¾ç½®æˆåŠŸï¼',2,$link);
 }
 elseif($act == 'user_edit')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"com_user_edit");
 	$company_user=get_user($_GET['tuid']);
-	$smarty->assign('pageheader',"ÆóÒµ»áÔ±");
+	$smarty->assign('pageheader',"ä¼ä¸šä¼šå‘˜");
 	$company_profile=get_company_one_uid($company_user['uid']);
 	$company_user['tpl']=$company_profile['tpl'];
 	$smarty->assign('company_user',$company_user);
@@ -1063,29 +1063,29 @@ elseif($act == 'set_account_save')
 	$setsqlarr['qq_openid']='';
 	}
 	$thisuid=intval($_POST['company_uid']);	
-	if (strlen($setsqlarr['username'])<3) adminmsg('ÓÃ»§Ãû±ØĞëÎª3Î»ÒÔÉÏ£¡',1);
+	if (strlen($setsqlarr['username'])<3) adminmsg('ç”¨æˆ·åå¿…é¡»ä¸º3ä½ä»¥ä¸Šï¼',1);
 	$getusername=get_user_inusername($setsqlarr['username']);
 	if (!empty($getusername)  && $getusername['uid']<>$thisuid)
 	{
-	adminmsg("ÓÃ»§Ãû {$setsqlarr['username']}  ÒÑ¾­´æÔÚ£¡",1);
+	adminmsg("ç”¨æˆ·å {$setsqlarr['username']}  å·²ç»å­˜åœ¨ï¼",1);
 	}
 	if (empty($setsqlarr['email']) || !preg_match("/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/",$setsqlarr['email']))
 	{
-	adminmsg('µç×ÓÓÊÏä¸ñÊ½´íÎó£¡',1);
+	adminmsg('ç”µå­é‚®ç®±æ ¼å¼é”™è¯¯ï¼',1);
 	}
 	$getemail=get_user_inemail($setsqlarr['email']);
 	if (!empty($getemail)  && $getemail['uid']<>$thisuid)
 	{
-	adminmsg("Email  {$setsqlarr['email']}  ÒÑ¾­´æÔÚ£¡",1);
+	adminmsg("Email  {$setsqlarr['email']}  å·²ç»å­˜åœ¨ï¼",1);
 	}
 	if (!empty($setsqlarr['mobile']) && !preg_match("/^(13|15|14|17|18)\d{9}$/",$setsqlarr['mobile']))
 	{
-	adminmsg('ÊÖ»úºÅÂë´íÎó£¡',1);
+	adminmsg('æ‰‹æœºå·ç é”™è¯¯ï¼',1);
 	}
 	$getmobile=get_user_inmobile($setsqlarr['mobile']);
 	if (!empty($setsqlarr['mobile']) && !empty($getmobile)  && $getmobile['uid']<>$thisuid)
 	{
-	adminmsg("ÊÖ»úºÅ {$setsqlarr['mobile']}  ÒÑ¾­´æÔÚ£¡",1);
+	adminmsg("æ‰‹æœºå· {$setsqlarr['mobile']}  å·²ç»å­˜åœ¨ï¼",1);
 	}
 	if ($_POST['tpl'])
 	{
@@ -1097,31 +1097,31 @@ elseif($act == 'set_account_save')
 	}
 	if ($db->updatetable(table('members'),$setsqlarr," uid=".$thisuid.""))
 	{
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = $_POST['url'];
-	write_log("ĞŞ¸Ä»áÔ±uidÎª".$thisuid."µÄ»ù±¾ĞÅÏ¢", $_SESSION['admin_name'],3);
-	adminmsg('ĞŞ¸Ä³É¹¦£¡',2,$link);
+	write_log("ä¿®æ”¹ä¼šå‘˜uidä¸º".$thisuid."çš„åŸºæœ¬ä¿¡æ¯", $_SESSION['admin_name'],3);
+	adminmsg('ä¿®æ”¹æˆåŠŸï¼',2,$link);
 	}
 	else
 	{
-	adminmsg('ĞŞ¸ÄÊ§°Ü£¡',1);
+	adminmsg('ä¿®æ”¹å¤±è´¥ï¼',1);
 	}
 }
 elseif($act == 'userpoints_edit')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"com_user_edit");
-	if (intval($_POST['points'])<1) adminmsg('ÇëÊäÈë»ı·Ö£¡',1);
-	if (trim($_POST['points_notes'])=='') adminmsg('ÇëÌîĞ´»ı·Ö²Ù×÷ËµÃ÷£¡',1);
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	if (intval($_POST['points'])<1) adminmsg('è¯·è¾“å…¥ç§¯åˆ†ï¼',1);
+	if (trim($_POST['points_notes'])=='') adminmsg('è¯·å¡«å†™ç§¯åˆ†æ“ä½œè¯´æ˜ï¼',1);
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = $_POST['url'];
 	$user=get_user($_POST['company_uid']);
 	$points_type=intval($_POST['points_type']);	
 	$t=$points_type==1?"+":"-";
 	report_deal($user['uid'],$points_type,intval($_POST['points']));
 	$points=get_user_points($user['uid']);
-	write_memberslog(intval($_POST['company_uid']),1,9001,$user['username']," ¹ÜÀíÔ±²Ù×÷»ı·Ö({$t}{$_POST['points']})£¬(Ê£Óà:{$points})£¬±¸×¢£º".$_POST['points_notes'],1,1012,"¹ÜÀíÔ±²Ù×÷»ı·Ö","{$t}{$_POST['points']}","{$points}");
-		//»áÔ±»ı·Ö±ä¸ü¼ÇÂ¼¡£¹ÜÀíÔ±ºóÌ¨ĞŞ¸Ä»áÔ±µÄ»ı·Ö¡£3±íÊ¾£º¹ÜÀíÔ±ºóÌ¨ĞŞ¸Ä
+	write_memberslog(intval($_POST['company_uid']),1,9001,$user['username']," ç®¡ç†å‘˜æ“ä½œç§¯åˆ†({$t}{$_POST['points']})ï¼Œ(å‰©ä½™:{$points})ï¼Œå¤‡æ³¨ï¼š".$_POST['points_notes'],1,1012,"ç®¡ç†å‘˜æ“ä½œç§¯åˆ†","{$t}{$_POST['points']}","{$points}");
+		//ä¼šå‘˜ç§¯åˆ†å˜æ›´è®°å½•ã€‚ç®¡ç†å‘˜åå°ä¿®æ”¹ä¼šå‘˜çš„ç§¯åˆ†ã€‚3è¡¨ç¤ºï¼šç®¡ç†å‘˜åå°ä¿®æ”¹
 		$user=get_user($_POST['company_uid']);
 		if(intval($_POST['is_money']) && $_POST['log_amount']){
 			$amount=round($_POST['log_amount'],2);
@@ -1130,10 +1130,10 @@ elseif($act == 'userpoints_edit')
 			$amount='0.00';
 			$ismoney=1;
 		}
-		$notes="²Ù×÷ÈË£º{$_SESSION['admin_name']},ËµÃ÷£ºĞŞ¸Ä»áÔ± {$user['username']} »ı·Ö ({$t}{$_POST['points']})¡£ÊÕÈ¡»ı·Ö½ğ¶î£º{$amount} Ôª£¬±¸×¢£º{$_POST['points_notes']}";
+		$notes="æ“ä½œäººï¼š{$_SESSION['admin_name']},è¯´æ˜ï¼šä¿®æ”¹ä¼šå‘˜ {$user['username']} ç§¯åˆ† ({$t}{$_POST['points']})ã€‚æ”¶å–ç§¯åˆ†é‡‘é¢ï¼š{$amount} å…ƒï¼Œå¤‡æ³¨ï¼š{$_POST['points_notes']}";
 		write_setmeallog($_POST['company_uid'],$user['username'],$notes,3,$amount,$ismoney,1,1);
-	write_log("ĞŞ¸Ä»áÔ±uidÎª".$user['uid']."»ı·Ö", $_SESSION['admin_name'],3);		
-	adminmsg('±£´æ³É¹¦£¡',2);
+	write_log("ä¿®æ”¹ä¼šå‘˜uidä¸º".$user['uid']."ç§¯åˆ†", $_SESSION['admin_name'],3);		
+	adminmsg('ä¿å­˜æˆåŠŸï¼',2);
 }
 elseif($act == 'set_setmeal_save')
 {
@@ -1143,9 +1143,9 @@ elseif($act == 'set_setmeal_save')
 	{
 		if (set_members_setmeal($_POST['company_uid'],$_POST['reg_service']))
 		{
-		$link[0]['text'] = "·µ»ØÁĞ±í";
+		$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 		$link[0]['href'] = $_POST['url'];
-		//»áÔ±Ì×²Í±ä¸ü¼ÇÂ¼¡£¹ÜÀíÔ±ºóÌ¨ĞŞ¸Ä»áÔ±Ì×²Í£ºÖØĞÂ¿ªÍ¨Ì×²Í¡£3±íÊ¾£º¹ÜÀíÔ±ºóÌ¨ĞŞ¸Ä
+		//ä¼šå‘˜å¥—é¤å˜æ›´è®°å½•ã€‚ç®¡ç†å‘˜åå°ä¿®æ”¹ä¼šå‘˜å¥—é¤ï¼šé‡æ–°å¼€é€šå¥—é¤ã€‚3è¡¨ç¤ºï¼šç®¡ç†å‘˜åå°ä¿®æ”¹
 		$user=get_user($_POST['company_uid']);
 		if(intval($_POST['is_money']) && $_POST['log_amount']){
 			$amount=round($_POST['log_amount'],2);
@@ -1154,19 +1154,19 @@ elseif($act == 'set_setmeal_save')
 			$amount='0.00';
 			$ismoney=1;
 		}
-		$notes="²Ù×÷ÈË£º{$_SESSION['admin_name']},ËµÃ÷£ºÎª»áÔ± {$user['username']} ÖØĞÂ¿ªÍ¨·şÎñ£¬ÊÕÈ¡·şÎñ½ğ¶î£º{$amount}Ôª£¬·şÎñID£º{$_POST['reg_service']}¡£";
+		$notes="æ“ä½œäººï¼š{$_SESSION['admin_name']},è¯´æ˜ï¼šä¸ºä¼šå‘˜ {$user['username']} é‡æ–°å¼€é€šæœåŠ¡ï¼Œæ”¶å–æœåŠ¡é‡‘é¢ï¼š{$amount}å…ƒï¼ŒæœåŠ¡IDï¼š{$_POST['reg_service']}ã€‚";
 		write_setmeallog($_POST['company_uid'],$user['username'],$notes,4,$amount,$ismoney,2,1);
-		write_log("ĞŞ¸Ä»áÔ±uidÎª".$_POST['company_uid']."Ì×²ÍĞÅÏ¢", $_SESSION['admin_name'],3);
-		adminmsg('²Ù×÷³É¹¦£¡',2,$link);
+		write_log("ä¿®æ”¹ä¼šå‘˜uidä¸º".$_POST['company_uid']."å¥—é¤ä¿¡æ¯", $_SESSION['admin_name'],3);
+		adminmsg('æ“ä½œæˆåŠŸï¼',2,$link);
 		}
 		else
 		{
-		adminmsg('²Ù×÷Ê§°Ü£¡',1);
+		adminmsg('æ“ä½œå¤±è´¥ï¼',1);
 		}
 	}
 	else
 	{
-	adminmsg('ÇëÑ¡Ôñ·şÎñÌ×²Í£¡',1);
+	adminmsg('è¯·é€‰æ‹©æœåŠ¡å¥—é¤ï¼',1);
 	}	
 }
 elseif($act == 'edit_setmeal_save')
@@ -1197,7 +1197,7 @@ elseif($act == 'edit_setmeal_save')
 		$setendtime=convert_datefm($_POST['setendtime'],2);
 		if ($setendtime=='')
 		{
-		adminmsg('ÈÕÆÚ¸ñÊ½´íÎó£¡',0);	
+		adminmsg('æ—¥æœŸæ ¼å¼é”™è¯¯ï¼',0);	
 		}
 		else
 		{
@@ -1225,8 +1225,8 @@ elseif($act == 'edit_setmeal_save')
 	if ($company_uid)
 	{
 			$setmeal=get_user_setmeal($company_uid);
-			if (!$db->updatetable(table('members_setmeal'),$setsqlarr," uid=".$company_uid."")) adminmsg('ĞŞ¸Ä³ö´í£¡',0);
-		//»áÔ±Ì×²Í±ä¸ü¼ÇÂ¼¡£¹ÜÀíÔ±ºóÌ¨ĞŞ¸Ä»áÔ±Ì×²Í£ºĞŞ¸Ä»áÔ±¡£3±íÊ¾£º¹ÜÀíÔ±ºóÌ¨ĞŞ¸Ä
+			if (!$db->updatetable(table('members_setmeal'),$setsqlarr," uid=".$company_uid."")) adminmsg('ä¿®æ”¹å‡ºé”™ï¼',0);
+		//ä¼šå‘˜å¥—é¤å˜æ›´è®°å½•ã€‚ç®¡ç†å‘˜åå°ä¿®æ”¹ä¼šå‘˜å¥—é¤ï¼šä¿®æ”¹ä¼šå‘˜ã€‚3è¡¨ç¤ºï¼šç®¡ç†å‘˜åå°ä¿®æ”¹
 			$setmeal['endtime']=date('Y-m-d',$setmeal['endtime']);
 			$setsqlarr['endtime']=date('Y-m-d',$setsqlarr['endtime']);
 			$setsqlarr['log_amount']=round($_POST['log_amount']);
@@ -1240,35 +1240,35 @@ elseif($act == 'edit_setmeal_save')
 			if ($setsqlarr['endtime']<>"")
 			{
 				$setmeal_deadline['setmeal_deadline']=$setmealtime;
-				if (!$db->updatetable(table('jobs'),$setmeal_deadline," uid='{$company_uid}' AND add_mode='2' "))adminmsg('ĞŞ¸Ä³ö´í£¡',0);
-				if (!$db->updatetable(table('jobs_tmp'),$setmeal_deadline," uid='{$company_uid}' AND add_mode='2' "))adminmsg('ĞŞ¸Ä³ö´í£¡',0);
+				if (!$db->updatetable(table('jobs'),$setmeal_deadline," uid='{$company_uid}' AND add_mode='2' "))adminmsg('ä¿®æ”¹å‡ºé”™ï¼',0);
+				if (!$db->updatetable(table('jobs_tmp'),$setmeal_deadline," uid='{$company_uid}' AND add_mode='2' "))adminmsg('ä¿®æ”¹å‡ºé”™ï¼',0);
 				distribution_jobs_uid($company_uid);
 			}
 	}
-	write_log("±à¼­»áÔ±uidÎª".$company_uid."Ì×²ÍĞÅÏ¢", $_SESSION['admin_name'],3);
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	write_log("ç¼–è¾‘ä¼šå‘˜uidä¸º".$company_uid."å¥—é¤ä¿¡æ¯", $_SESSION['admin_name'],3);
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = $_POST['url'];
-	adminmsg('²Ù×÷³É¹¦£¡',2,$link);
+	adminmsg('æ“ä½œæˆåŠŸï¼',2,$link);
 }
 elseif($act == 'userpass_edit')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"com_user_edit");
-	if (strlen(trim($_POST['password']))<6) adminmsg('ĞÂÃÜÂë±ØĞëÎª6Î»ÒÔÉÏ£¡',1);
+	if (strlen(trim($_POST['password']))<6) adminmsg('æ–°å¯†ç å¿…é¡»ä¸º6ä½ä»¥ä¸Šï¼',1);
 	require_once(ADMIN_ROOT_PATH.'include/admin_user_fun.php');
 	$user_info=get_user_inusername($_POST['username']);
 	$pwd_hash=$user_info['pwd_hash'];
 	$md5password=md5(md5(trim($_POST['password'])).$pwd_hash.$QS_pwdhash);	
 	if ($db->query( "UPDATE ".table('members')." SET password = '$md5password'  WHERE uid='".$user_info['uid']."'"))
 	{
-	write_log("ĞŞ¸Ä»áÔ±uidÎª".$user_info['uid']."ÃÜÂë", $_SESSION['admin_name'],3);
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	write_log("ä¿®æ”¹ä¼šå‘˜uidä¸º".$user_info['uid']."å¯†ç ", $_SESSION['admin_name'],3);
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = $_POST['url'];
-	adminmsg('²Ù×÷³É¹¦£¡',2,$link);
+	adminmsg('æ“ä½œæˆåŠŸï¼',2,$link);
 	}
 	else
 	{
-	adminmsg('²Ù×÷Ê§°Ü£¡',1);
+	adminmsg('æ“ä½œå¤±è´¥ï¼',1);
 	}
 }
 elseif($act == 'userstatus_edit')
@@ -1277,29 +1277,29 @@ elseif($act == 'userstatus_edit')
 	check_permissions($_SESSION['admin_purview'],"com_user_edit");
 	if(set_user_status(intval($_POST['status']),intval($_POST['userstatus_uid'])))
 	{
-		write_log("ĞŞ¸Ä»áÔ±uidÎª".intval($_POST['userstatus_uid'])."µÄ×´Ì¬", $_SESSION['admin_name'],3);
-		$link[0]['text'] = "·µ»ØÁĞ±í";
+		write_log("ä¿®æ”¹ä¼šå‘˜uidä¸º".intval($_POST['userstatus_uid'])."çš„çŠ¶æ€", $_SESSION['admin_name'],3);
+		$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 		$link[0]['href'] = $_POST['url'];
-		adminmsg('²Ù×÷³É¹¦£¡',2,$link);
+		adminmsg('æ“ä½œæˆåŠŸï¼',2,$link);
 	}
 	else
 	{
-	adminmsg('²Ù×÷Ê§°Ü£¡',1);
+	adminmsg('æ“ä½œå¤±è´¥ï¼',1);
 	}
 }
 elseif($act == 'del_auditreason')
 {	
 	//check_token();
-	check_permissions($_SESSION['admin_purview'],"jobs_audit");//ÓÃµÄÊÇÖ°Î»ÉóºËµÄÈ¨ÏŞ
-	$id =!empty($_REQUEST['a_id'])?$_REQUEST['a_id']:adminmsg("ÄãÃ»ÓĞÑ¡ÔñÈÕÖ¾£¡",1);
+	check_permissions($_SESSION['admin_purview'],"jobs_audit");//ç”¨çš„æ˜¯èŒä½å®¡æ ¸çš„æƒé™
+	$id =!empty($_REQUEST['a_id'])?$_REQUEST['a_id']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©æ—¥å¿—ï¼",1);
 	$n=reasonaudit_del($id);
 	if ($n>0)
 	{
-	adminmsg("É¾³ı³É¹¦£¡¹²É¾³ı {$n} ĞĞ",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤ {$n} è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ıÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'management')
@@ -1344,22 +1344,22 @@ elseif($act == 'consultant')
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$clist = get_consultant($offset,$perpage,$oederbysql);
-	$smarty->assign('pageheader',"¹ËÎÊ¹ÜÀí");
+	$smarty->assign('pageheader',"é¡¾é—®ç®¡ç†");
 	$smarty->assign('clist',$clist);
 	$smarty->assign('page',$page->show(3));
 	$smarty->display('company/admin_consultant_list.htm');
 }
-//¹ËÎÊ  ¹ÜÀí
+//é¡¾é—®  ç®¡ç†
 elseif($act == 'consultant_manage')
 {
-	//µÃµ½¹ËÎÊid 
+	//å¾—åˆ°é¡¾é—®id 
 	$id = intval($_GET['id']);
 	$sql = "select * from ".table('consultant')." where id = {$id}";
 	$consultant = $db->getone($sql);
 	if(empty($consultant)){
-		adminmsg('¹ËÎÊ¶ªÊ§',1);
+		adminmsg('é¡¾é—®ä¸¢å¤±',1);
 	}
-	//·ÖÒ³
+	//åˆ†é¡µ
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
 	$wheresql = " where consultant ={$id}";
 	$total_sql="select count(*) as num from ".table('members')." where consultant ={$id}";
@@ -1368,20 +1368,20 @@ elseif($act == 'consultant_manage')
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$members = get_member_manage($offset,$perpage,$wheresql);
-	$smarty->assign('pageheader',"ÖØÖÃ¹ËÎÊ");
+	$smarty->assign('pageheader',"é‡ç½®é¡¾é—®");
 	$smarty->assign('consultant',$consultant);
 	$smarty->assign('members',$members);
 	$smarty->assign('page',$page->show(3));
 	$smarty->display('company/admin_consultant_manage.htm');
 }
-//¹ÜÀí ¹ËÎÊ  ÖØÖÃ °´Å¥ 
+//ç®¡ç† é¡¾é—®  é‡ç½® æŒ‰é’® 
 elseif($act == 'resetting')
 {
-	//ÅúÁ¿ºÍ·ÇÅúÁ¿µÃµ½²»Í¬µÄ»áÔ±uid£¨ÅúÁ¿µÃµ½µÄuidÊÇ¸öÊı×émemberstuid£¬·ÇÅúÁ¿µÃµ½µÄÊÇÒ»¸öidÖµmembersids£©
+	//æ‰¹é‡å’Œéæ‰¹é‡å¾—åˆ°ä¸åŒçš„ä¼šå‘˜uidï¼ˆæ‰¹é‡å¾—åˆ°çš„uidæ˜¯ä¸ªæ•°ç»„memberstuidï¼Œéæ‰¹é‡å¾—åˆ°çš„æ˜¯ä¸€ä¸ªidå€¼membersidsï¼‰
 	$membersid =$_GET['uid'];
 	$memberstuid =$_REQUEST['tuid'];
 	if(empty($membersid) && empty($memberstuid)){
-		adminmsg("ÖØÖÃ·¢Éú´íÎó£¡",0);
+		adminmsg("é‡ç½®å‘ç”Ÿé”™è¯¯ï¼",0);
 	}
 	$members_id = empty($membersid)?$memberstuid:$membersid;
 	$member_del_id='';
@@ -1396,11 +1396,11 @@ elseif($act == 'resetting')
 	}else{
 		$member_del_id = $members_id;
 	}
-	//¶ÔÕâĞ©»áÔ±½øĞĞÖØÖÃ¹ËÎÊ
+	//å¯¹è¿™äº›ä¼šå‘˜è¿›è¡Œé‡ç½®é¡¾é—®
 	if($db->updatetable(table('members'),array('consultant'=>0)," uid in ({$member_del_id}) ")){
-		adminmsg('ÖØÖÃ³É¹¦!',2);
+		adminmsg('é‡ç½®æˆåŠŸ!',2);
 	}else{
-		adminmsg('ÖØÖÃ¹ı³ÌÊ§°Ü!',0);
+		adminmsg('é‡ç½®è¿‡ç¨‹å¤±è´¥!',0);
 	}
 	
 
@@ -1409,17 +1409,17 @@ elseif($act == 'consultant_add')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"consultant_add");
-	$smarty->assign('pageheader',"¹ËÎÊ¹ÜÀí");
+	$smarty->assign('pageheader',"é¡¾é—®ç®¡ç†");
 	$smarty->display('company/admin_consultant_add.htm');
 }
 elseif($act == 'consultant_add_save')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"consultant_add");
-	$setsqlarr['name'] = !empty($_POST['name']) ? trim($_POST['name']):adminmsg('ÇëÌîĞ´ĞÕÃû£¡',1);
-	$setsqlarr['qq'] = !empty($_POST['qq']) ? trim($_POST['qq']):adminmsg('ÇëÌîĞ´QQ£¡',1);	
+	$setsqlarr['name'] = !empty($_POST['name']) ? trim($_POST['name']):adminmsg('è¯·å¡«å†™å§“åï¼',1);
+	$setsqlarr['qq'] = !empty($_POST['qq']) ? trim($_POST['qq']):adminmsg('è¯·å¡«å†™QQï¼',1);	
 	
-	!$_FILES['pic']['name']?adminmsg('ÇëÉÏ´«ÕÕÆ¬£¡',1):"";
+	!$_FILES['pic']['name']?adminmsg('è¯·ä¸Šä¼ ç…§ç‰‡ï¼',1):"";
 	$upload_image_dir="../data/".$_CFG['updir_images']."/".date("Y/m/d/");
 	make_dir($upload_image_dir);
 	require_once(dirname(__FILE__).'/include/upload.php');
@@ -1427,12 +1427,12 @@ elseif($act == 'consultant_add_save')
 	$setsqlarr['pic']=date("Y/m/d/").$setsqlarr['pic'];
 
 	$insert_id=$db->inserttable(table('consultant'),$setsqlarr,true);
-	write_log("Ìí¼Ó¹ËÎÊ".$setsqlarr['name'], $_SESSION['admin_name'],3);
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	write_log("æ·»åŠ é¡¾é—®".$setsqlarr['name'], $_SESSION['admin_name'],3);
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = "?act=consultant";
-	$link[1]['text'] = "¼ÌĞøÌí¼Ó";
+	$link[1]['text'] = "ç»§ç»­æ·»åŠ ";
 	$link[1]['href'] = "?act=consultant_add";
-	adminmsg('Ìí¼Ó³É¹¦£¡',2,$link);
+	adminmsg('æ·»åŠ æˆåŠŸï¼',2,$link);
 }
 elseif($act == 'consultant_edit')
 {
@@ -1440,11 +1440,11 @@ elseif($act == 'consultant_edit')
 	check_permissions($_SESSION['admin_purview'],"consultant_edit");
 	$id=intval($_GET['id']);
 	if(!$id){
-		adminmsg("ÇëÑ¡Ôñ¹ËÎÊ£¡",1);
+		adminmsg("è¯·é€‰æ‹©é¡¾é—®ï¼",1);
 	}
 	$consultant = get_consultant_one($id);
 	$smarty->assign('consultant',$consultant);
-	$smarty->assign('pageheader',"¹ËÎÊ¹ÜÀí");
+	$smarty->assign('pageheader',"é¡¾é—®ç®¡ç†");
 	$smarty->display('company/admin_consultant_edit.htm');
 }
 elseif($act == 'consultant_edit_save')
@@ -1453,11 +1453,11 @@ elseif($act == 'consultant_edit_save')
 	check_permissions($_SESSION['admin_purview'],"consultant_edit");
 	$id=intval($_POST['id']);
 	if(!$id){
-		adminmsg("ÇëÑ¡Ôñ¹ËÎÊ£¡",1);
+		adminmsg("è¯·é€‰æ‹©é¡¾é—®ï¼",1);
 	}
 	$consultant = get_consultant_one($id);
-	$setsqlarr['name'] = !empty($_POST['name']) ? trim($_POST['name']):adminmsg('ÇëÌîĞ´ĞÕÃû£¡',1);
-	$setsqlarr['qq'] = !empty($_POST['qq']) ? trim($_POST['qq']):adminmsg('ÇëÌîĞ´QQ£¡',1);	
+	$setsqlarr['name'] = !empty($_POST['name']) ? trim($_POST['name']):adminmsg('è¯·å¡«å†™å§“åï¼',1);
+	$setsqlarr['qq'] = !empty($_POST['qq']) ? trim($_POST['qq']):adminmsg('è¯·å¡«å†™QQï¼',1);	
 	if($_FILES['pic']['name']){
 		$upload_image_dir="../data/".$_CFG['updir_images']."/".date("Y/m/d/");
 		make_dir($upload_image_dir);
@@ -1468,20 +1468,20 @@ elseif($act == 'consultant_edit_save')
 	}
 	
 	$db->updatetable(table('consultant'),$setsqlarr," id={$id} ");
-	write_log("ĞŞ¸Ä¹ËÎÊidÎª".$id."µÄ¹ËÎÊĞÅÏ¢", $_SESSION['admin_name'],3);
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	write_log("ä¿®æ”¹é¡¾é—®idä¸º".$id."çš„é¡¾é—®ä¿¡æ¯", $_SESSION['admin_name'],3);
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = "?act=consultant";
-	$link[1]['text'] = "²é¿´ĞŞ¸Ä½á¹û";
+	$link[1]['text'] = "æŸ¥çœ‹ä¿®æ”¹ç»“æœ";
 	$link[1]['href'] = "?act=consultant_edit&id={$id}";
-	adminmsg('ĞŞ¸Ä³É¹¦£¡',2,$link);
+	adminmsg('ä¿®æ”¹æˆåŠŸï¼',2,$link);
 }
 elseif($act == "consultant_del"){
 	check_permissions($_SESSION['admin_purview'],"consultant_del");
 	$id=intval($_GET['id']);
 	if(!$id){
-		adminmsg("ÇëÑ¡Ôñ¹ËÎÊ£¡",1);
+		adminmsg("è¯·é€‰æ‹©é¡¾é—®ï¼",1);
 	}
 	del_consultant($id);
-	adminmsg("É¾³ı³É¹¦£¡",2);
+	adminmsg("åˆ é™¤æˆåŠŸï¼",2);
 }
 ?>

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÏµÍ³ÈÕÖ¾
+ * 74cms ç³»ç»Ÿæ—¥å¿—
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_syslog_fun.php');
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'list';
 check_permissions($_SESSION['admin_purview'],"syslog");
-$smarty->assign('pageheader',"ÏµÍ³ÈÕÖ¾");
+$smarty->assign('pageheader',"ç³»ç»Ÿæ—¥å¿—");
 if($act == 'list')
 {
 	get_token();
@@ -48,49 +48,49 @@ elseif($act == 'del_syslog')
 	$dnum=del_syslog($id);
 	if ($dnum>0)
 	{
-	write_log("É¾³ýÏµÍ³ÈÕÖ¾,¹²É¾³ý".$dnum."ÐÐ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$dnum."ÐÐ",2);
+	write_log("åˆ é™¤ç³»ç»Ÿæ—¥å¿—,å…±åˆ é™¤".$dnum."è¡Œ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$dnum."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'pidel_syslog')
 {
 	get_token();
-	$smarty->assign('pageheader',"É¾³ýÏµÍ³´íÎóÈÕÖ¾");
+	$smarty->assign('pageheader',"åˆ é™¤ç³»ç»Ÿé”™è¯¯æ—¥å¿—");
 	$smarty->display('syslog/admin_syslog_del.htm');
 }
 elseif($act == 'pidel_syslog_del')
 {
 	check_token();
 	$l_type=$_POST['l_type'];
-	if(empty($l_type))	adminmsg('ÇëÑ¡Ôñ´íÎóÀàÐÍ£¡',1);
+	if(empty($l_type))	adminmsg('è¯·é€‰æ‹©é”™è¯¯ç±»åž‹ï¼',1);
 	$starttime=intval(convert_datefm($_POST['starttime'],2));
 	if (empty($starttime))
 	{
-	adminmsg('ÇëÌîÐ´¿ªÊ¼Ê±¼ä£¡',1);
+	adminmsg('è¯·å¡«å†™å¼€å§‹æ—¶é—´ï¼',1);
 	}	
 	$endtime=intval(convert_datefm($_POST['endtime'],2));
 	if (empty($endtime))
 	{
-	adminmsg('ÇëÌîÐ´½áÊøÊ±¼ä£¡',1);
+	adminmsg('è¯·å¡«å†™ç»“æŸæ—¶é—´ï¼',1);
 	}	
-	if($starttime >$endtime) adminmsg('¿ªÊ¼Ê±¼ä²»ÄÜ´óÓÚ½áÊøÊ±¼ä£¡',1);
-	$link[0]['text'] = "·µ»ØÈÕÖ¾ÁÐ±í";
+	if($starttime >$endtime) adminmsg('å¼€å§‹æ—¶é—´ä¸èƒ½å¤§äºŽç»“æŸæ—¶é—´ï¼',1);
+	$link[0]['text'] = "è¿”å›žæ—¥å¿—åˆ—è¡¨";
 	$link[0]['href'] = '?act=list';
-	$link[1]['text'] = "¼ÌÐøÉ¾³ý";
+	$link[1]['text'] = "ç»§ç»­åˆ é™¤";
 	$link[1]['href'] = '?act=pidel_syslog';
 	$dnum=pidel_syslog($l_type,$starttime,$endtime);
 	if ($dnum>0)
 	{
-	write_log("É¾³ýÏµÍ³ÈÕÖ¾,¹²É¾³ý".$dnum."ÐÐ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$dnum."ÐÐ",2,$link);
+	write_log("åˆ é™¤ç³»ç»Ÿæ—¥å¿—,å…±åˆ é™¤".$dnum."è¡Œ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$dnum."è¡Œ",2,$link);
 	}
 	else
 	{
-	adminmsg("¸ÃÈÕÆÚ¶ÎÃ»ÓÐÈÕÖ¾»òÉ¾³ýÊ§°Ü,Çë¼ì²é£¡",0,$link);
+	adminmsg("è¯¥æ—¥æœŸæ®µæ²¡æœ‰æ—¥å¿—æˆ–åˆ é™¤å¤±è´¥,è¯·æ£€æŸ¥ï¼",0,$link);
 	}
 }
 ?>

@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_personal.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
@@ -15,7 +15,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-//¼òÀúÁĞ±í¸ü¶à²Ù×÷Õ¹¿ª
+//ç®€å†åˆ—è¡¨æ›´å¤šæ“ä½œå±•å¼€
 $(".morebox").hover(
   function () {
     $(this).find(".morelist").slideDown("fast");
@@ -28,13 +28,13 @@ $(".resume_privacy").live("click",function(){
 	var pid = $(this).attr("pid");
 	var url = "personal_ajax.php?act=privacy&pid="+pid;
 	var myDialog = dialog();
-	myDialog.content("¼ÓÔØÖĞ...");
-    myDialog.title('ÒşË½ÉèÖÃ');
+	myDialog.content("åŠ è½½ä¸­...");
+    myDialog.title('éšç§è®¾ç½®');
     myDialog.width('550');
     myDialog.showModal();
     $.get(url, function(data){
         myDialog.content(data);
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
@@ -44,12 +44,12 @@ $(".tpl").live("click",function(){
 	var pid = $(this).attr("pid");
 	var url = "personal_ajax.php?act=tpl&pid="+pid;
 	var myDialog = dialog();
-	myDialog.content("¼ÓÔØÖĞ...");
-    myDialog.title('¸ü»»Ä£°å');
+	myDialog.content("åŠ è½½ä¸­...");
+    myDialog.title('æ›´æ¢æ¨¡æ¿');
     myDialog.showModal();
     $.get(url, function(data){
 	    myDialog.content(data);
-	    /* ¹Ø±Õ */
+	    /* å…³é—­ */
 	    $(".DialogClose").live('click',function() {
 	      myDialog.close().remove();
 	    });
@@ -59,13 +59,13 @@ $(".del_resume").live("click",function(){
 	var pid = $(this).attr("pid");
 	var url = "personal_ajax.php?act=del_resume&pid="+pid;
 	var myDialog = dialog();
-	myDialog.content("¼ÓÔØÖĞ...");
-    myDialog.title('É¾³ı¼òÀú');
+	myDialog.content("åŠ è½½ä¸­...");
+    myDialog.title('åˆ é™¤ç®€å†');
     myDialog.width('350');
     myDialog.showModal();
     $.get(url, function(data){
         myDialog.content(data);
-        /* ¹Ø±Õ */
+        /* å…³é—­ */
         $(".DialogClose").live('click',function() {
           myDialog.close().remove();
         });
@@ -76,13 +76,13 @@ $(".refresh_resume").live("click",function(){
 	$.get("personal_ajax.php?act=refresh_resume&id="+pid,function(result){
 		if(result=="1"){
 			dialog({
-			  title: 'ÏµÍ³ÌáÊ¾',
-			  content: "Ë¢ĞÂ³É¹¦",
+			  title: 'ç³»ç»Ÿæç¤º',
+			  content: "åˆ·æ–°æˆåŠŸ",
 			  width:'300px'
 			}).showModal();
 		}else{
 			dialog({
-			  title: 'ÏµÍ³ÌáÊ¾',
+			  title: 'ç³»ç»Ÿæç¤º',
 			  content: ""+result+"",
 			  width:'300px'
 			}).showModal();
@@ -96,7 +96,7 @@ $(".refresh_resume").live("click",function(){
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
 
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ÎÒµÄ¼òÀú</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > æˆ‘çš„ç®€å†</div>
 
 <div class="usermain">
   <div class="leftmenu link_bk">
@@ -108,8 +108,8 @@ $(".refresh_resume").live("click",function(){
 	
 	  <div class="resumelist">
 				<div class="titleH1">
-				  <div class="h1-title f-left">ÎÒµÄ¼òÀú</div>
-				  {#if $resume_list#}<div class="h1-title-num f-right">¹²¿É´´½¨ <span>{#$QISHI.resume_max#}</span> ·İ¼òÀú£¬ÄúÒÑ´´½¨ <span>{#$total#}</span> ·İ</div>{#/if#}
+				  <div class="h1-title f-left">æˆ‘çš„ç®€å†</div>
+				  {#if $resume_list#}<div class="h1-title-num f-right">å…±å¯åˆ›å»º <span>{#$QISHI.resume_max#}</span> ä»½ç®€å†ï¼Œæ‚¨å·²åˆ›å»º <span>{#$total#}</span> ä»½</div>{#/if#}
 				  <div class="clear"></div>
 				</div>
 			{#if $resume_list#}
@@ -119,26 +119,26 @@ $(".refresh_resume").live("click",function(){
 			  <div class="toptitle">
 				<div class="t">
 					<span class="h2-title">{#$list.title#}</span>
-					<span class="date">Ë¢ĞÂÊ±¼ä£º{#$list.refreshtime|date_format:"%Y-%m-%d %H:%M"#}</span>
+					<span class="date">åˆ·æ–°æ—¶é—´ï¼š{#$list.refreshtime|date_format:"%Y-%m-%d %H:%M"#}</span>
 				</div>
 			  </div>
 				<div class="fbox">
-					ÉóºË×´Ì¬£º{#if $list.audit=="1"#}<span style="color: #009900">ÉóºËÍ¨¹ı</span>{#elseif $list.audit=="2"#}<span style="color: #FF6600">ÉóºËÖĞ</span>{#elseif $list.audit=="3"#}<span style="color: #FF0000">ÉóºËÎ´Í¨¹ı</span>{#/if#}<br />¼òÀúµÈ¼¶£º{#if $list.talent=="2"#}<span style="color:#FF6600">¸ß¼¶</span>{#elseif $list.talent=="3"#}¸ß¼¶´ıÉó{#else#}ÆÕÍ¨{#/if#}</div>
-				  <div class="fbox">ÍêÕû¶È£º{#$list.complete_percent#}%<span style="color:#FF0000">({#if $list.level=="1"#}²î{#elseif $list.level=="2"#}Á¼{#else#}ÓÅ{#/if#})</span><br /> ¹«¿ª×´Ì¬£º<span style="cursor:pointer;" class="resume_privacy" pid="{#$list.id#}" id="view_display_{#$list.id#}">{#if $list.display=="1"#}¹«¿ª{#elseif $list.display=="2"#}±£ÃÜ{#/if#}</span></div>
-				  <div class="fbox">ÃæÊÔ/ÉêÇë£º<a href="personal_apply.php?act=interview">{#$list.countinterview#}</a>/<a href="personal_apply.php?act=apply_jobs">{#$list.countapply#}</a><br />ÏÂÔØ/ä¯ÀÀ£º<a href="personal_apply.php?act=attention_me">{#$list.countdown#}</a>/<a href="personal_apply.php?act=attention_me">{#$list.click#}</a></div>
+					å®¡æ ¸çŠ¶æ€ï¼š{#if $list.audit=="1"#}<span style="color: #009900">å®¡æ ¸é€šè¿‡</span>{#elseif $list.audit=="2"#}<span style="color: #FF6600">å®¡æ ¸ä¸­</span>{#elseif $list.audit=="3"#}<span style="color: #FF0000">å®¡æ ¸æœªé€šè¿‡</span>{#/if#}<br />ç®€å†ç­‰çº§ï¼š{#if $list.talent=="2"#}<span style="color:#FF6600">é«˜çº§</span>{#elseif $list.talent=="3"#}é«˜çº§å¾…å®¡{#else#}æ™®é€š{#/if#}</div>
+				  <div class="fbox">å®Œæ•´åº¦ï¼š{#$list.complete_percent#}%<span style="color:#FF0000">({#if $list.level=="1"#}å·®{#elseif $list.level=="2"#}è‰¯{#else#}ä¼˜{#/if#})</span><br /> å…¬å¼€çŠ¶æ€ï¼š<span style="cursor:pointer;" class="resume_privacy" pid="{#$list.id#}" id="view_display_{#$list.id#}">{#if $list.display=="1"#}å…¬å¼€{#elseif $list.display=="2"#}ä¿å¯†{#/if#}</span></div>
+				  <div class="fbox">é¢è¯•/ç”³è¯·ï¼š<a href="personal_apply.php?act=interview">{#$list.countinterview#}</a>/<a href="personal_apply.php?act=apply_jobs">{#$list.countapply#}</a><br />ä¸‹è½½/æµè§ˆï¼š<a href="personal_apply.php?act=attention_me">{#$list.countdown#}</a>/<a href="personal_apply.php?act=attention_me">{#$list.click#}</a></div>
 			  <div class="fbox last">					 	
-				 	<div class="buts"><input type="button" class="refresh_resume but100_30lan" value="Ë¢ĞÂ¼òÀú" pid="{#$list.id#}"/></div>			 	   
-				   		<div class="buts"><input type="button"  class="but100_30hui" value="ĞŞ¸Ä¼òÀú" onclick="javascript:location.href='?act=edit_resume&pid={#$list.id#}' "/></div>
+				 	<div class="buts"><input type="button" class="refresh_resume but100_30lan" value="åˆ·æ–°ç®€å†" pid="{#$list.id#}"/></div>			 	   
+				   		<div class="buts"><input type="button"  class="but100_30hui" value="ä¿®æ”¹ç®€å†" onclick="javascript:location.href='?act=edit_resume&pid={#$list.id#}' "/></div>
 						<div class="clear"></div>
-					<div class="buts"><input type="button"  class="but100_30hui" value="Ô¤ÀÀ¼òÀú" onclick="javascript:window.open('{#$list.resume_url#}')"/></div>
+					<div class="buts"><input type="button"  class="but100_30hui" value="é¢„è§ˆç®€å†" onclick="javascript:window.open('{#$list.resume_url#}')"/></div>
 						<div class="buts">
 								<div class="morebox" id="morebox">
-									<div class="more">¸ü¶à²Ù×÷</div>						
+									<div class="more">æ›´å¤šæ“ä½œ</div>						
 										<div class="morelist link_bk">
-											{#if $list.talent=="1"#}<div><a href="?act=talent_save&pid={#$list.id#}">Éı¼¶¼òÀú</a></div>{#/if#}
-												<div><a class="tpl" pid="{#$list.id#}" href="javascript:void(0);">¸ü»»Ä£°å</a></div>
-												<div class="resume_privacy" pid="{#$list.id#}"><a  href="javascript:void(0);">ÒşË½ÉèÖÃ</a> </div>
-												<div><a class="del_resume" pid="{#$list.id#}" href="javascript:void(0);">É¾³ı¼òÀú</a></div>
+											{#if $list.talent=="1"#}<div><a href="?act=talent_save&pid={#$list.id#}">å‡çº§ç®€å†</a></div>{#/if#}
+												<div><a class="tpl" pid="{#$list.id#}" href="javascript:void(0);">æ›´æ¢æ¨¡æ¿</a></div>
+												<div class="resume_privacy" pid="{#$list.id#}"><a  href="javascript:void(0);">éšç§è®¾ç½®</a> </div>
+												<div><a class="del_resume" pid="{#$list.id#}" href="javascript:void(0);">åˆ é™¤ç®€å†</a></div>
 										</div>
 										<script>
 											$(document).ready(function() {
@@ -165,23 +165,23 @@ $(".refresh_resume").live("click",function(){
 		      </table>
 		    {#/if#}
 			 <div class="addbut">
-			 <input type="button" name="submitsave" id="submitsave" value="ĞÂÔö¼òÀú" onclick="javascript:location.href='personal_resume.php?act=make1'"  class="but100lan"/>
+			 <input type="button" name="submitsave" id="submitsave" value="æ–°å¢ç®€å†" onclick="javascript:location.href='personal_resume.php?act=make1'"  class="but100lan"/>
 			 </div>
 			 
 	         <div class="bottomtip">
-		 	   <div class="tp h2-title">Ğ¡ÌùÊ¿</div>
-			   Ë¢ĞÂ¼òÀú£ºË¢ĞÂ¼òÀúÍêÈ«Ãâ·Ñ£¬Ë¢ĞÂºóÊ±¼ä»á±ä³É×îĞÂ£¬ÆóÒµÔÚËÑË÷¼òÀúµÄÊ±ºò»áÓÅÏÈÏÔÊ¾£¬Ìá¹©Ó¦Æ¸»ú»á¡£<br />
-ÆóÒµÆÁ±Î£ºÈç¹ûÄúµÄ¼òÀú²»Ïë±»Ä³¸ö¹«Ë¾¿´µ½£¬¿ÉÒÔÔÚ¸ü¶à²Ù×÷ÖĞÆÁ±Î¸Ã¹«Ë¾¡£<br />
-Î¯ÍĞ¼òÀú£ºÉèÖÃÎ¯ÍĞºó£¬ÔÚÈıÌìÄÚÎÒÃÇ»áÖ÷¶¯ÏòÊÊºÏÄúÖ°Î»µÄ¹«Ë¾Í¶µİÄúµÄ¼òÀú£¬Ìá¸ßÃæÊÔĞ§¹û¡£
+		 	   <div class="tp h2-title">å°è´´å£«</div>
+			   åˆ·æ–°ç®€å†ï¼šåˆ·æ–°ç®€å†å®Œå…¨å…è´¹ï¼Œåˆ·æ–°åæ—¶é—´ä¼šå˜æˆæœ€æ–°ï¼Œä¼ä¸šåœ¨æœç´¢ç®€å†çš„æ—¶å€™ä¼šä¼˜å…ˆæ˜¾ç¤ºï¼Œæä¾›åº”è˜æœºä¼šã€‚<br />
+ä¼ä¸šå±è”½ï¼šå¦‚æœæ‚¨çš„ç®€å†ä¸æƒ³è¢«æŸä¸ªå…¬å¸çœ‹åˆ°ï¼Œå¯ä»¥åœ¨æ›´å¤šæ“ä½œä¸­å±è”½è¯¥å…¬å¸ã€‚<br />
+å§”æ‰˜ç®€å†ï¼šè®¾ç½®å§”æ‰˜åï¼Œåœ¨ä¸‰å¤©å†…æˆ‘ä»¬ä¼šä¸»åŠ¨å‘é€‚åˆæ‚¨èŒä½çš„å…¬å¸æŠ•é€’æ‚¨çš„ç®€å†ï¼Œæé«˜é¢è¯•æ•ˆæœã€‚
 			 </div> 
 			{#else#}
 			<div style="width:780px;height:1px;background:#cccccc;margin:15px 20px 0px 20px;"></div>
 			<div class="no-rec-box">
 				<p>
-					¼òÀúÊÇÇóÖ°µÄÀûÆ÷£¬ÌîĞ´¼òÀú²ÅÄÜ¸ü¿ìÕÒµ½ºÃ¹¤×÷£¡<br />
-					È¥ÌîĞ´Ò»·İÓÅÖÊµÄ¼òÀú°É£¬ÈÏÕæµÄÈË£¬²ÅÄÜÈÃÈÏÕæµÄÆóÒµÕÒÉÏÄã£¡
+					ç®€å†æ˜¯æ±‚èŒçš„åˆ©å™¨ï¼Œå¡«å†™ç®€å†æ‰èƒ½æ›´å¿«æ‰¾åˆ°å¥½å·¥ä½œï¼<br />
+					å»å¡«å†™ä¸€ä»½ä¼˜è´¨çš„ç®€å†å§ï¼Œè®¤çœŸçš„äººï¼Œæ‰èƒ½è®©è®¤çœŸçš„ä¼ä¸šæ‰¾ä¸Šä½ ï¼
 				</p>
-				<input type="button" value="´´½¨¼òÀú" class="creat-resume" onclick="window.location.href='personal_resume.php?act=make1'"/><span style="margin-left:20px;font-family:'SimSun';color:#666;">¹²¿É´´½¨ <span style="color:#0180cf;">3</span> ·İ¼òÀú£¬ÄúÒÑ´´½¨ <span style="color:#0180cf;">{#$total#}</span> ·İ</span>
+				<input type="button" value="åˆ›å»ºç®€å†" class="creat-resume" onclick="window.location.href='personal_resume.php?act=make1'"/><span style="margin-left:20px;font-family:'SimSun';color:#666;">å…±å¯åˆ›å»º <span style="color:#0180cf;">3</span> ä»½ç®€å†ï¼Œæ‚¨å·²åˆ›å»º <span style="color:#0180cf;">{#$total#}</span> ä»½</span>
 			</div>
 			{#/if#}
 	  </div>	  

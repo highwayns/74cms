@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
  * Project:	template_lite, a smarter template engine
  * File:	class.config.php

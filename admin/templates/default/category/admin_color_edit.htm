@@ -1,17 +1,17 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
 	{#include file="category/admin_category_nav.htm"#}
   <div class="clear"></div>
 </div>
-<div class="toptit">ÐÞ¸ÄÑÕÉ«</div>
+<div class="toptit">ä¿®æ”¹é¢œè‰²</div>
 <form id="form1" name="form1" method="post" action="?act=edit_color_save">
 {#$inputtoken#}
 <div id="html_tpl">
 <table width="100%" border="0" cellspacing="6" cellpadding="0" >
   <tr>
-    <td width="120" align="right">Ñ¡ÔñÑÕÉ«:</td>
+    <td width="120" align="right">é€‰æ‹©é¢œè‰²:</td>
     <script src="{#$QISHI.site_template#}js/jquery.iColorPicker.js" type='text/javascript' language="javascript"></script>
     <td><input id="val" name="val" type="text" value="{#$color.value#}" class="iColorPicker input_text_200"  onclick="iColorShow('val','icp_val')"/></td>
   </tr>
@@ -23,8 +23,8 @@
     <td width="120"> </td>
     <td>
 	<input name="id" type="hidden" value="{#$color.id#}" />
-	<input type="submit" name="addsave" value="±£´æ" class="admin_submit" />
-		  <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="window.location='?act=colorlist'"/>
+	<input type="submit" name="addsave" value="ä¿å­˜" class="admin_submit" />
+		  <input name="submit22" type="button" class="admin_submit"    value="è¿” å›ž" onclick="window.location='?act=colorlist'"/>
 	
 	</td>
   </tr>

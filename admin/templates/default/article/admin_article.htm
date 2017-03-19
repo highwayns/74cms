@@ -1,10 +1,10 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//µã»÷ÅúÁ¿È¡Ïû	
+	//ç‚¹å‡»æ‰¹é‡å–æ¶ˆ	
 	$("#ButDel").click(function(){
-		if (confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿'))
+		if (confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ'))
 		{
 			$("form[name=form1]").submit()
 		}
@@ -19,10 +19,10 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="seltpye_x">
-		<div class="left">ÎÄÕÂ·ÖÀà</div>	
+		<div class="left">æ–‡ç« åˆ†ç±»</div>	
 		<div class="right">
-		<a href="{#"type_id:,parentid:"|qishi_parse_url#}" {#if $smarty.get.parentid==""#}class="select"{#/if#}>²»ÏŞ</a>
-		{#qishi_news_category set="ÁĞ±íÃû:category,×ÊÑ¶´óÀà:0"#}
+		<a href="{#"type_id:,parentid:"|qishi_parse_url#}" {#if $smarty.get.parentid==""#}class="select"{#/if#}>ä¸é™</a>
+		{#qishi_news_category set="åˆ—è¡¨å:category,èµ„è®¯å¤§ç±»:0"#}
 		{#foreach from=$category item=list#}
 			<a href="{#"type_id:,parentid:"|cat:$list.id|qishi_parse_url#}" {#if $smarty.get.parentid==$list.id#}class="select"{#/if#}>{#$list.categoryname#}</a>
 			{#/foreach#}
@@ -32,10 +32,10 @@ $(document).ready(function()
 </div>
 {#if $smarty.get.parentid<>""#}
 <div class="seltpye_x">
-		<div class="left"><span style="color:#999999">©¸ </span>×Ó·ÖÀà</div>	
+		<div class="left"><span style="color:#999999">â”” </span>å­åˆ†ç±»</div>	
 		<div class="right">
-		<a href="{#"type_id:"|qishi_parse_url#}" {#if $smarty.get.type_id==""#}class="select"{#/if#}>²»ÏŞ</a>
-	 	{#qishi_news_category set="ÁĞ±íÃû:category,×ÊÑ¶´óÀà:"|cat:$smarty.get.parentid#}
+		<a href="{#"type_id:"|qishi_parse_url#}" {#if $smarty.get.type_id==""#}class="select"{#/if#}>ä¸é™</a>
+	 	{#qishi_news_category set="åˆ—è¡¨å:category,èµ„è®¯å¤§ç±»:"|cat:$smarty.get.parentid#}
 		{#foreach from=$category item=list#}
 		<a href="{#"type_id:"|cat:$list.id|qishi_parse_url#}" {#if $smarty.get.type_id==$list.id#}class="select"{#/if#}>{#$list.categoryname#}</a>
 			{#/foreach#}
@@ -46,10 +46,10 @@ $(document).ready(function()
 {#/if#}
 
 <div class="seltpye_x">
-		<div class="left">ÎÄÕÂÊôĞÔ</div>	
+		<div class="left">æ–‡ç« å±æ€§</div>	
 		<div class="right">
-		<a href="{#"focos:"|qishi_parse_url#}" {#if $smarty.get.focos==""#}class="select"{#/if#}>²»ÏŞ</a>
-		{#qishi_news_property set="ÁĞ±íÃû:property"#}
+		<a href="{#"focos:"|qishi_parse_url#}" {#if $smarty.get.focos==""#}class="select"{#/if#}>ä¸é™</a>
+		{#qishi_news_property set="åˆ—è¡¨å:property"#}
 		{#foreach from=$property item=list#}
 			<a href="{#"focos:"|cat:$list.id|qishi_parse_url#}" {#if $smarty.get.focos==$list.id#}class="select"{#/if#}>{#$list.categoryname#}</a>
 		{#/foreach#}
@@ -60,14 +60,14 @@ $(document).ready(function()
 
 
  <div class="seltpye_x">
-		<div class="left">Ìí¼ÓÊ±¼ä</div>	
+		<div class="left">æ·»åŠ æ—¶é—´</div>	
 		<div class="right">
-		<a href="{#"settr:"|qishi_parse_url#}" {#if $smarty.get.settr==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"settr:3"|qishi_parse_url#}" {#if $smarty.get.settr=="3"#}class="select"{#/if#}>ÈıÌìÄÚ</a>
-		<a href="{#"settr:7"|qishi_parse_url#}" {#if $smarty.get.settr=="7"#}class="select"{#/if#}>Ò»ÖÜÄÚ</a>
-		<a href="{#"settr:30"|qishi_parse_url#}" {#if $smarty.get.settr=="30"#}class="select"{#/if#}>Ò»ÔÂÄÚ</a>
-		<a href="{#"settr:180"|qishi_parse_url#}" {#if $smarty.get.settr=="180"#}class="select"{#/if#}>°ëÄêÄÚ</a>
-		<a href="{#"settr:360"|qishi_parse_url#}" {#if $smarty.get.settr=="360"#}class="select"{#/if#}>Ò»ÄêÄÚ</a>
+		<a href="{#"settr:"|qishi_parse_url#}" {#if $smarty.get.settr==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"settr:3"|qishi_parse_url#}" {#if $smarty.get.settr=="3"#}class="select"{#/if#}>ä¸‰å¤©å†…</a>
+		<a href="{#"settr:7"|qishi_parse_url#}" {#if $smarty.get.settr=="7"#}class="select"{#/if#}>ä¸€å‘¨å†…</a>
+		<a href="{#"settr:30"|qishi_parse_url#}" {#if $smarty.get.settr=="30"#}class="select"{#/if#}>ä¸€æœˆå†…</a>
+		<a href="{#"settr:180"|qishi_parse_url#}" {#if $smarty.get.settr=="180"#}class="select"{#/if#}>åŠå¹´å†…</a>
+		<a href="{#"settr:360"|qishi_parse_url#}" {#if $smarty.get.settr=="360"#}class="select"{#/if#}>ä¸€å¹´å†…</a>
 		<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
@@ -77,13 +77,13 @@ $(document).ready(function()
   <table width="100%" border="0" cellpadding="0" cellspacing="0" id="list" class="link_lan">
     <tr>
       <td height="26" class="admin_list_tit admin_list_first" >
-      <label id="chkAll"><input type="checkbox" name=" " title="È«Ñ¡/·´Ñ¡" id="chk"/>ÎÄÕÂ±êÌâ</label></td>
-      <td width="100"   align="center"  class="admin_list_tit">Ìí¼Ó·½Ê½</td>
-      <td width="100"   align="center" class="admin_list_tit"> ÊôĞÔ </td>
-	  <td width="50"   align="center" class="admin_list_tit">ÅÅĞò</td>
-      <td width="50"   align="center" class="admin_list_tit">µã»÷</td>
-      <td width="120"   align="center" class="admin_list_tit" >Ìí¼ÓÈÕÆÚ</td>
-      <td width="100"   align="center" class="admin_list_tit" >²Ù×÷</td>
+      <label id="chkAll"><input type="checkbox" name=" " title="å…¨é€‰/åé€‰" id="chk"/>æ–‡ç« æ ‡é¢˜</label></td>
+      <td width="100"   align="center"  class="admin_list_tit">æ·»åŠ æ–¹å¼</td>
+      <td width="100"   align="center" class="admin_list_tit"> å±æ€§ </td>
+	  <td width="50"   align="center" class="admin_list_tit">æ’åº</td>
+      <td width="50"   align="center" class="admin_list_tit">ç‚¹å‡»</td>
+      <td width="120"   align="center" class="admin_list_tit" >æ·»åŠ æ—¥æœŸ</td>
+      <td width="100"   align="center" class="admin_list_tit" >æ“ä½œ</td>
     </tr>
 	  {#foreach from=$article item=list#}
       <tr>
@@ -92,51 +92,51 @@ $(document).ready(function()
 		<a href="?type_id={#$list.type_id#}&parentid={#$list.parentid#}" style="color: #006699">[{#$list.c_categoryname#}]</a> 
 		{#$list.url_title#}
 		 {#if $list.is_display<>"1"#} 
-		 <span style="color:#999999">[ÒÑÆÁ±Î]</span>
+		 <span style="color:#999999">[å·²å±è”½]</span>
 		 {#/if#}
 	    </td>
 		 <td align="center" class="admin_list" >
-		 {#if $list.robot=="0"#}ÈË¹¤{#/if#}
-		 {#if $list.robot=="1"#}²É¼¯{#/if#}		 </td>
+		 {#if $list.robot=="0"#}äººå·¥{#/if#}
+		 {#if $list.robot=="1"#}é‡‡é›†{#/if#}		 </td>
         <td align="center"  class="admin_list">{#$list.p_categoryname#}</td>
 		<td align="center"  class="admin_list">{#$list.article_order#}</td>
         <td align="center"  class="admin_list">{#$list.click#}</td>
         <td align="center"  class="admin_list">{#$list.addtime|date_format:"%Y-%m-%d"#}</td>
         <td align="center"  class="admin_list">
-		<a href="?act=article_edit&id={#$list.id#}">ĞŞ¸Ä</a> &nbsp;&nbsp;
-		<a href="?act=migrate_article&id={#$list.id#}&del_Submit=ok&{#$urltoken#}" onclick="return confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')">É¾³ı</a></td>
+		<a href="?act=article_edit&id={#$list.id#}">ä¿®æ”¹</a> &nbsp;&nbsp;
+		<a href="?act=migrate_article&id={#$list.id#}&del_Submit=ok&{#$urltoken#}" onclick="return confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')">åˆ é™¤</a></td>
       </tr>
       {#/foreach#}
     </table>
   </form>
 	{#if !$article#}
-	<div class="admin_list_no_info">Ã»ÓĞÈÎºÎĞÅÏ¢£¡</div>
+	<div class="admin_list_no_info">æ²¡æœ‰ä»»ä½•ä¿¡æ¯ï¼</div>
 	{#/if#}	
 <table width="100%" border="0" cellspacing="10"  class="admin_list_btm">
 <tr>
         <td>
-        <input name="ButADD" type="button" class="admin_submit" id="ButADD" value="Ìí¼ÓÎÄÕÂ"  onclick="window.location='?act=news_add'"/>
-		<input name="ButDel" type="button" class="admin_submit" id="ButDel"  value="É¾³ıËùÑ¡"/>
+        <input name="ButADD" type="button" class="admin_submit" id="ButADD" value="æ·»åŠ æ–‡ç« "  onclick="window.location='?act=news_add'"/>
+		<input name="ButDel" type="button" class="admin_submit" id="ButDel"  value="åˆ é™¤æ‰€é€‰"/>
 		</td>
         <td width="305" align="right">
 		<form id="formseh" name="formseh" method="get" action="?">	
 			<div class="seh">
 			    <div class="keybox"><input name="key" type="text"   value="{#$smarty.get.key#}" /></div>
 			    <div class="selbox">
-					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"±êÌâ"#}" readonly="true"/>
+					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"æ ‡é¢˜"#}" readonly="true"/>
 						<div>
 								<input name="key_type" id="key_type" type="hidden" value="{#$smarty.get.key_type|default:"1"#}" />
 												<div id="sehmenu" class="seh_menu">
 														<ul>
-														<li id="1" title="±êÌâ">±êÌâ</li>
-														<li id="2" title="×ÊÑ¶ID">×ÊÑ¶ID</li>
+														<li id="1" title="æ ‡é¢˜">æ ‡é¢˜</li>
+														<li id="2" title="èµ„è®¯ID">èµ„è®¯ID</li>
 														</ul>
 												</div>
 						</div>				
 				</div>
 				<div class="sbtbox">
 				<input name="act" type="hidden" value="newslist" />
-				<input type="submit" name="" class="sbt" id="sbt" value="ËÑË÷"/>
+				<input type="submit" name="" class="sbt" id="sbt" value="æœç´¢"/>
 				</div>
 				<div class="clear"></div>
 		  </div>

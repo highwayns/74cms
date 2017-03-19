@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¹ÜÀíÖÐÐÄÊ×Ò³
+ * 74cms ç®¡ç†ä¸­å¿ƒé¦–é¡µ
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -35,10 +35,10 @@ elseif($act=='left')
 elseif($act == 'main')
 {
 	get_userreg_30_days();
-	$install_warning=file_exists('../install')?"Äú»¹Ã»ÓÐÉ¾³ý install ÎÄ¼þ¼Ð£¬³öÓÚ°²È«µÄ¿¼ÂÇ£¬ÎÒÃÇ½¨ÒéÄúÉ¾³ý install ÎÄ¼þ¼Ð¡£":null;
-	$update_warning=file_exists('../update')?"Äú»¹Ã»ÓÐÉ¾³ý update ÎÄ¼þ¼Ð£¬³öÓÚ°²È«µÄ¿¼ÂÇ£¬ÎÒÃÇ½¨ÒéÄúÉ¾³ý update ÎÄ¼þ¼Ð¡£":null;
-	$admindir_warning=substr(ADMIN_ROOT_PATH,-7)=='/admin/'?"ÄúµÄÍøÕ¾¹ÜÀíÖÐÐÄÄ¿Â¼Îª ./admin £¬³öÓÚ°²È«µÄ¿¼ÂÇ£¬ÎÒÃÇ½¨ÒéÄúÐÞ¸ÄÄ¿Â¼Ãû¡£":null;
-	$admin_register_globals=ini_get('register_globals')?'ÄúµÄphp.iniÖÐregister_globalsÎªOn£¬Ç¿ÁÒ½¨ÒéÄãÉèÎªOff£¬·ñÔò½«»á³öÏÖÑÏÖØµÄ°²È«Òþ»¼ºÍÊý¾Ý´íÂÒ£¡':null;
+	$install_warning=file_exists('../install')?"æ‚¨è¿˜æ²¡æœ‰åˆ é™¤ install æ–‡ä»¶å¤¹ï¼Œå‡ºäºŽå®‰å…¨çš„è€ƒè™‘ï¼Œæˆ‘ä»¬å»ºè®®æ‚¨åˆ é™¤ install æ–‡ä»¶å¤¹ã€‚":null;
+	$update_warning=file_exists('../update')?"æ‚¨è¿˜æ²¡æœ‰åˆ é™¤ update æ–‡ä»¶å¤¹ï¼Œå‡ºäºŽå®‰å…¨çš„è€ƒè™‘ï¼Œæˆ‘ä»¬å»ºè®®æ‚¨åˆ é™¤ update æ–‡ä»¶å¤¹ã€‚":null;
+	$admindir_warning=substr(ADMIN_ROOT_PATH,-7)=='/admin/'?"æ‚¨çš„ç½‘ç«™ç®¡ç†ä¸­å¿ƒç›®å½•ä¸º ./admin ï¼Œå‡ºäºŽå®‰å…¨çš„è€ƒè™‘ï¼Œæˆ‘ä»¬å»ºè®®æ‚¨ä¿®æ”¹ç›®å½•åã€‚":null;
+	$admin_register_globals=ini_get('register_globals')?'æ‚¨çš„php.iniä¸­register_globalsä¸ºOnï¼Œå¼ºçƒˆå»ºè®®ä½ è®¾ä¸ºOffï¼Œå¦åˆ™å°†ä¼šå‡ºçŽ°ä¸¥é‡çš„å®‰å…¨éšæ‚£å’Œæ•°æ®é”™ä¹±ï¼':null;
 	$system_info = array();
 	$system_info['version'] = QISHI_VERSION;
 	$system_info['release'] = QISHI_RELEASE;
@@ -54,7 +54,7 @@ elseif($act == 'main')
 	$smarty->assign('update_warning',$update_warning);
 	$smarty->assign('admindir_warning',$admindir_warning);
 	$smarty->assign('admin_register_globals',$admin_register_globals);
-	$smarty->assign('pageheader',"74CMS ¹ÜÀíÖÐÐÄ - ºóÌ¨¹ÜÀíÊ×Ò³");
+	$smarty->assign('pageheader',"74CMS ç®¡ç†ä¸­å¿ƒ - åŽå°ç®¡ç†é¦–é¡µ");
 	$smarty->display('sys/admin_main.htm');
 }
 ?>

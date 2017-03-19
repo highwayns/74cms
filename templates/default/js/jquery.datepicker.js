@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  * Date prototype extensions. Doesn't depend on any
  * other code. Doens't overwrite existing methods.
  *
@@ -27,7 +27,7 @@
  * @type Array
  * @cat Plugins/Methods/Date
  */
-Date.dayNames = ['ÈÕ', 'Ò»', '¶ş', 'Èı', 'ËÄ', 'Îå', 'Áù'];
+Date.dayNames = ['æ—¥', 'ä¸€', 'äºŒ', 'ä¸‰', 'å››', 'äº”', 'å…­'];
 
 /**
  * An Array of abbreviated day names starting with Sun.
@@ -39,7 +39,7 @@ Date.dayNames = ['ÈÕ', 'Ò»', '¶ş', 'Èı', 'ËÄ', 'Îå', 'Áù'];
  * @type Array
  * @cat Plugins/Methods/Date
  */
-Date.abbrDayNames = ['ÈÕ', 'Ò»', '¶ş', 'Èı', 'ËÄ', 'Îå', 'Áù'];
+Date.abbrDayNames = ['æ—¥', 'ä¸€', 'äºŒ', 'ä¸‰', 'å››', 'äº”', 'å…­'];
 
 /**
  * An Array of month names starting with Janurary.
@@ -51,7 +51,7 @@ Date.abbrDayNames = ['ÈÕ', 'Ò»', '¶ş', 'Èı', 'ËÄ', 'Îå', 'Áù'];
  * @type Array
  * @cat Plugins/Methods/Date
  */
-Date.monthNames = ['Ò»ÔÂ', '¶şÔÂ', 'ÈıÔÂ', 'ËÄÔÂ', 'ÎåÔÂ', 'ÁùÔÂ', 'ÆßÔÂ', '°ËÔÂ', '¾ÅÔÂ', 'Ê®ÔÂ', 'Ê®Ò»ÔÂ', 'Ê®¶şÔÂ'];
+Date.monthNames = ['ä¸€æœˆ', 'äºŒæœˆ', 'ä¸‰æœˆ', 'å››æœˆ', 'äº”æœˆ', 'å…­æœˆ', 'ä¸ƒæœˆ', 'å…«æœˆ', 'ä¹æœˆ', 'åæœˆ', 'åä¸€æœˆ', 'åäºŒæœˆ'];
 
 /**
  * An Array of abbreviated month names starting with Jan.
@@ -63,7 +63,7 @@ Date.monthNames = ['Ò»ÔÂ', '¶şÔÂ', 'ÈıÔÂ', 'ËÄÔÂ', 'ÎåÔÂ', 'ÁùÔÂ', 'ÆßÔÂ', '°ËÔÂ
  * @type Array
  * @cat Plugins/Methods/Date
  */
-Date.abbrMonthNames = ['Ò»', '¶ş', 'Èı', 'ËÄ', 'Îå', 'Áù', 'Æß', '°Ë', '¾Å', 'Ê®', 'Ê®Ò»', 'Ê®¶ş'];
+Date.abbrMonthNames = ['ä¸€', 'äºŒ', 'ä¸‰', 'å››', 'äº”', 'å…­', 'ä¸ƒ', 'å…«', 'ä¹', 'å', 'åä¸€', 'åäºŒ'];
 
 /**
  * The first day of the week for this locale.
@@ -1534,7 +1534,7 @@ Date.fullYearStart = '20';
             if (!$this.is('.disabled')) {
               c.setSelected(d, !$this.is('.selected') || !c.selectMultiple, false, true);
               if (c.closeOnSelect) {
-                // Focus the next input in the form¡­
+                // Focus the next input in the formâ€¦
                 if (c.settings.autoFocusNextInput) {
                   var ele = c.ele;
                   var found = false;
@@ -1747,12 +1747,12 @@ Date.fullYearStart = '20';
   };
   // localisable text
   $.dpText = {
-    TEXT_PREV_YEAR    : 'ÉÏÒ»Äê',
-    TEXT_PREV_MONTH   : 'ÉÏ¸öÔÂ',
-    TEXT_NEXT_YEAR    : 'ÏÂÒ»Äê',
-    TEXT_NEXT_MONTH   : 'ÏÂ¸öÔÂ',
-    TEXT_CLOSE      : '¹Ø±Õ',
-    TEXT_CHOOSE_DATE  : 'Ñ¡ÔñÈÕÆÚ',
+    TEXT_PREV_YEAR    : 'ä¸Šä¸€å¹´',
+    TEXT_PREV_MONTH   : 'ä¸Šä¸ªæœˆ',
+    TEXT_NEXT_YEAR    : 'ä¸‹ä¸€å¹´',
+    TEXT_NEXT_MONTH   : 'ä¸‹ä¸ªæœˆ',
+    TEXT_CLOSE      : 'å…³é—­',
+    TEXT_CHOOSE_DATE  : 'é€‰æ‹©æ—¥æœŸ',
     HEADER_FORMAT   : 'mmmm yyyy'
   };
   // version

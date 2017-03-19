@@ -1,6 +1,6 @@
-<?php
+ï»¿<?php
 /**
- * ÀûÓÃGD¿â¶ÁĞ´bmp¸ñÊ½Í¼Æ¬
+ * åˆ©ç”¨GDåº“è¯»å†™bmpæ ¼å¼å›¾ç‰‡
  */
  if(!defined('IN_QISHI'))
 {
@@ -21,24 +21,24 @@ function imagebmp(&$im, $filename = '', $bit = 0, $compression = 0){
 
 	$bits = pow(2, $bit);
 
-	// µ÷Õûµ÷É«°å
+	// è°ƒæ•´è°ƒè‰²æ¿
 	imagetruecolortopalette($im, true, $bits);
 	$width  = imagesx($im);
 	$height = imagesy($im);
 	$colors_num = imagecolorstotal($im);
 
 	if ($bit <= 8){
-		// ÑÕÉ«Ë÷Òı
+		// é¢œè‰²ç´¢å¼•
 		$rgb_quad = '';
 		for ($i = 0; $i < $colors_num; $i ++){
 			$colors = imagecolorsforindex($im, $i);
 			$rgb_quad .= chr($colors['blue']) . chr($colors['green']) . chr($colors['red']) . "\0";
 		}
 
-		// Î»Í¼Êı¾İ
+		// ä½å›¾æ•°æ®
 		$bmp_data = '';
 
-		// ·ÇÑ¹Ëõ
+		// éå‹ç¼©
 		if ($compression == 0 || $bit < 8){
 			if (!in_array($bit, array(1, 4, 8))){
 				$bit = 8;
@@ -46,7 +46,7 @@ function imagebmp(&$im, $filename = '', $bit = 0, $compression = 0){
 
 			$compression = 0;
 
-			// Ã¿ĞĞ×Ö½ÚÊı±ØĞëÎª4µÄ±¶Êı£¬²¹Æë¡£
+			// æ¯è¡Œå­—èŠ‚æ•°å¿…é¡»ä¸º4çš„å€æ•°ï¼Œè¡¥é½ã€‚
 			$extra = '';
 			$padding = 4 - ceil($width / (8 / $bit)) % 4;
 			if ($padding % 4 != 0){
@@ -70,7 +70,7 @@ function imagebmp(&$im, $filename = '', $bit = 0, $compression = 0){
 
 				$bmp_data .= $extra;
 			}
-		}elseif ($compression == 1 && $bit == 8){ // RLE8 Ñ¹Ëõ
+		}elseif ($compression == 1 && $bit == 8){ // RLE8 å‹ç¼©
 			for ($j = $height - 1; $j >= 0; $j --){
 				$last_index = "\0";
 				$same_num   = 0;
@@ -94,14 +94,14 @@ function imagebmp(&$im, $filename = '', $bit = 0, $compression = 0){
 		$size_quad = strlen($rgb_quad);
 		$size_data = strlen($bmp_data);
 	}else{
-		// Ã¿ĞĞ×Ö½ÚÊı±ØĞëÎª4µÄ±¶Êı£¬²¹Æë¡£
+		// æ¯è¡Œå­—èŠ‚æ•°å¿…é¡»ä¸º4çš„å€æ•°ï¼Œè¡¥é½ã€‚
 		$extra = '';
 		$padding = 4 - ($width * ($bit / 8)) % 4;
 		if ($padding % 4 != 0){
 			$extra = str_repeat("\0", $padding);
 		}
 
-		// Î»Í¼Êı¾İ
+		// ä½å›¾æ•°æ®
 		$bmp_data = '';
 
 		for ($j = $height - 1; $j >= 0; $j --){
@@ -130,13 +130,13 @@ function imagebmp(&$im, $filename = '', $bit = 0, $compression = 0){
 		$colors_num = 0;
 	}
 
-	// Î»Í¼ÎÄ¼şÍ·
+	// ä½å›¾æ–‡ä»¶å¤´
 	$file_header = "BM" . pack("V3", 54 + $size_quad + $size_data, 0, 54 + $size_quad);
 
-	// Î»Í¼ĞÅÏ¢Í·
+	// ä½å›¾ä¿¡æ¯å¤´
 	$info_header = pack("V3v2V*", 0x28, $width, $height, 1, $bit, $compression, $size_data, 0, 0, $colors_num, 0);
 
-	// Ğ´ÈëÎÄ¼ş
+	// å†™å…¥æ–‡ä»¶
 	if ($filename != ''){
 		$fp = fopen($filename, "wb");
 		fwrite($fp, $file_header);
@@ -146,7 +146,7 @@ function imagebmp(&$im, $filename = '', $bit = 0, $compression = 0){
 		fclose($fp);
 		return true;
 	}else{
-		// ä¯ÀÀÆ÷Êä³ö
+		// æµè§ˆå™¨è¾“å‡º
 		header("Content-Type: image/bmp");
 		echo $file_header . $info_header;
 		echo $rgb_quad;

@@ -1,4 +1,4 @@
-Attr.AllowedRev
+﻿Attr.AllowedRev
 TYPE: lookup
 VERSION: 1.6.0
 DEFAULT: array()

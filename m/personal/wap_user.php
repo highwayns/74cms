@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
  * 74cms WAP
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -60,18 +60,18 @@ elseif ($act == 'add_favorites')
 {
 	$id=isset($_POST['id'])?intval($_POST['id']):exit("err");
 	if(intval($_SESSION['utype']!=2)){
-		exit("¸öÈË»áÔ±ÇëµÇÂ¼ºóÊÕ²ØÖ°Î»");
+		exit("ä¸ªäººä¼šå‘˜è¯·ç™»å½•åæ”¶è—èŒä½");
 	}
 	elseif(add_favorites($id,intval($_SESSION['uid']))==0)
 	{
-	exit("ÊÕ²Ø¼ĞÖĞÒÑ¾­´æÔÚ´ËÖ°Î»");
+	exit("æ”¶è—å¤¹ä¸­å·²ç»å­˜åœ¨æ­¤èŒä½");
 	}
 	else
 	{
 	exit("ok");
 	}
 }
-// ÌîĞ´¼òÀú
+// å¡«å†™ç®€å†
 elseif($act == "make_resume")
 {
 	$smarty->cache = false;
@@ -83,33 +83,33 @@ elseif($act == "make_resume")
 elseif($act == "make_resume_save")
 {	
 	$_POST=array_map("utf8_to_gbk",$_POST);
-	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):"Î´ÃüÃû¼òÀú";
+	$setsqlarr['title']=trim($_POST['title'])?trim($_POST['title']):"æœªå‘½åç®€å†";
 	$setsqlarr['uid']=$_SESSION['uid'];
-	$setsqlarr['fullname']=trim($_POST['fullname'])?trim($_POST['fullname']):exit("ÇëÌîĞ´ÕæÊµĞÕÃû");
+	$setsqlarr['fullname']=trim($_POST['fullname'])?trim($_POST['fullname']):exit("è¯·å¡«å†™çœŸå®å§“å");
 	$setsqlarr['display_name']=1;
-	$setsqlarr['sex']=trim($_POST['sex'])?trim($_POST['sex']):exit("ÇëÑ¡ÔñĞÔ±ğ");
-	$setsqlarr['sex_cn']=trim($_POST['sex_cn'])?trim($_POST['sex_cn']):exit("ÇëÑ¡ÔñĞÔ±ğ");
-	$setsqlarr['birthdate']=intval($_POST['birthdate'])?intval($_POST['birthdate']):exit("ÇëÑ¡Ôñ³öÉúÄê·İ");
+	$setsqlarr['sex']=trim($_POST['sex'])?trim($_POST['sex']):exit("è¯·é€‰æ‹©æ€§åˆ«");
+	$setsqlarr['sex_cn']=trim($_POST['sex_cn'])?trim($_POST['sex_cn']):exit("è¯·é€‰æ‹©æ€§åˆ«");
+	$setsqlarr['birthdate']=intval($_POST['birthdate'])?intval($_POST['birthdate']):exit("è¯·é€‰æ‹©å‡ºç”Ÿå¹´ä»½");
 	$setsqlarr['residence']=trim($_POST['residence']);
-	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):exit("ÇëÑ¡Ôñ»ñµÃÑ§Àú");
-	$setsqlarr['education_cn']=trim($_POST['education_cn'])?trim($_POST['education_cn']):exit("ÇëÑ¡Ôñ»ñµÃÑ§Àú");
-	$setsqlarr['experience']=intval($_POST['experience'])?intval($_POST['experience']):exit("ÇëÑ¡Ôñ¹¤×÷¾­Ñé");
-	$setsqlarr['experience_cn']=trim($_POST['experience_cn'])?trim($_POST['experience_cn']):exit("ÇëÑ¡Ôñ¹¤×÷¾­Ñé");
-	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):exit("ÇëÌîĞ´ÓÊÏä");
+	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):exit("è¯·é€‰æ‹©è·å¾—å­¦å†");
+	$setsqlarr['education_cn']=trim($_POST['education_cn'])?trim($_POST['education_cn']):exit("è¯·é€‰æ‹©è·å¾—å­¦å†");
+	$setsqlarr['experience']=intval($_POST['experience'])?intval($_POST['experience']):exit("è¯·é€‰æ‹©å·¥ä½œç»éªŒ");
+	$setsqlarr['experience_cn']=trim($_POST['experience_cn'])?trim($_POST['experience_cn']):exit("è¯·é€‰æ‹©å·¥ä½œç»éªŒ");
+	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):exit("è¯·å¡«å†™é‚®ç®±");
 	$setsqlarr['email_notify']=$_POST['email_notify']=="1"?1:0;
-	$setsqlarr['telephone']=trim($_POST['telephone'])?trim($_POST['telephone']):exit("ÇëÌîĞ´ÊÖ»ú");
-	$setsqlarr['intention_jobs']=trim($_POST['intention_jobs'])?trim($_POST['intention_jobs']):exit("ÇëÑ¡ÔñÆÚÍûÖ°Î»");
-	$_POST['intention_jobs_id']=trim($_POST['intention_jobs_id'])?trim($_POST['intention_jobs_id']):exit("ÇëÑ¡ÔñÆÚÍûÖ°Î»");
-	$setsqlarr['trade']=trim($_POST['trade'])?trim($_POST['trade']):exit("ÇëÑ¡ÔñÆÚÍûĞĞÒµ");
-	$setsqlarr['trade_cn']=trim($_POST['trade_cn'])?trim($_POST['trade_cn']):exit("ÇëÑ¡ÔñÆÚÍûĞĞÒµ");
+	$setsqlarr['telephone']=trim($_POST['telephone'])?trim($_POST['telephone']):exit("è¯·å¡«å†™æ‰‹æœº");
+	$setsqlarr['intention_jobs']=trim($_POST['intention_jobs'])?trim($_POST['intention_jobs']):exit("è¯·é€‰æ‹©æœŸæœ›èŒä½");
+	$_POST['intention_jobs_id']=trim($_POST['intention_jobs_id'])?trim($_POST['intention_jobs_id']):exit("è¯·é€‰æ‹©æœŸæœ›èŒä½");
+	$setsqlarr['trade']=trim($_POST['trade'])?trim($_POST['trade']):exit("è¯·é€‰æ‹©æœŸæœ›è¡Œä¸š");
+	$setsqlarr['trade_cn']=trim($_POST['trade_cn'])?trim($_POST['trade_cn']):exit("è¯·é€‰æ‹©æœŸæœ›è¡Œä¸š");
 	// $setsqlarr['district']=trim($_POST['district']);
 	// $setsqlarr['sdistrict']=intval($_POST['sdistrict']);
-	$setsqlarr['district_cn']=trim($_POST['district_cn'])?trim($_POST['district_cn']):exit("ÆÚÍû¹¤×÷µØÇø");
-	$setsqlarr['nature']=intval($_POST['nature'])?intval($_POST['nature']):exit("ÇëÑ¡Ôñ¹¤×÷ĞÔÖÊ");
-	$setsqlarr['nature_cn']=trim($_POST['nature_cn'])?trim($_POST['nature_cn']):exit("ÇëÑ¡Ôñ¹¤×÷ĞÔÖÊ");
-	$setsqlarr['wage']=intval($_POST['wage'])?intval($_POST['wage']):exit("ÇëÑ¡ÔñÆÚÍûĞ½×Ê");
-	$setsqlarr['wage_cn']=trim($_POST['wage_cn'])?trim($_POST['wage_cn']):exit("ÇëÑ¡ÔñÆÚÍûĞ½×Ê");
-	$setsqlarr['specialty']=trim($_POST['specialty'])?trim($_POST['specialty']):exit("ÇëÌîĞ´×ÔÎÒÃèÊö");
+	$setsqlarr['district_cn']=trim($_POST['district_cn'])?trim($_POST['district_cn']):exit("æœŸæœ›å·¥ä½œåœ°åŒº");
+	$setsqlarr['nature']=intval($_POST['nature'])?intval($_POST['nature']):exit("è¯·é€‰æ‹©å·¥ä½œæ€§è´¨");
+	$setsqlarr['nature_cn']=trim($_POST['nature_cn'])?trim($_POST['nature_cn']):exit("è¯·é€‰æ‹©å·¥ä½œæ€§è´¨");
+	$setsqlarr['wage']=intval($_POST['wage'])?intval($_POST['wage']):exit("è¯·é€‰æ‹©æœŸæœ›è–ªèµ„");
+	$setsqlarr['wage_cn']=trim($_POST['wage_cn'])?trim($_POST['wage_cn']):exit("è¯·é€‰æ‹©æœŸæœ›è–ªèµ„");
+	$setsqlarr['specialty']=trim($_POST['specialty'])?trim($_POST['specialty']):exit("è¯·å¡«å†™è‡ªæˆ‘æè¿°");
 	$setsqlarr['refreshtime']=time();
 	$setsqlarr['audit']=intval($_CFG['audit_resume']);
 	//1->PC  2->APP  3->wap
@@ -117,7 +117,7 @@ elseif($act == "make_resume_save")
 	$total=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume')." WHERE uid='{$_SESSION['uid']}'");
 	if ($total>=intval($_CFG['resume_max']))
 	{
-	exit("Äú×î¶à¿ÉÒÔ´´½¨{$_CFG['resume_max']} ·İ¼òÀú,ÒÑ¾­³¬³öÁË×î´óÏŞÖÆ£¡");
+	exit("æ‚¨æœ€å¤šå¯ä»¥åˆ›å»º{$_CFG['resume_max']} ä»½ç®€å†,å·²ç»è¶…å‡ºäº†æœ€å¤§é™åˆ¶ï¼");
 	}
 	else
 	{
@@ -133,14 +133,14 @@ elseif($act == "make_resume_save")
 	
 	$db->inserttable(table('resume_search_key'),$searchtab);
 	$db->inserttable(table('resume_search_rtime'),$searchtab);
-	if (empty($pid))exit("±£´æÊ§°Ü£¡");
+	if (empty($pid))exit("ä¿å­˜å¤±è´¥ï¼");
 
 	if(!wap_add_resume_jobs($pid,intval($_SESSION['uid']),$_POST["intention_jobs_id"]))exit('err');
 	check_resume($_SESSION['uid'],$pid);
 	if(intval($_POST['entrust'])){
 		set_resume_entrust($pid);
 	}
-	write_memberslog(intval($_SESSION['uid']),2,1101,$_SESSION['username'],"´´½¨ÁË¼òÀú");
+	write_memberslog(intval($_SESSION['uid']),2,1101,$_SESSION['username'],"åˆ›å»ºäº†ç®€å†");
 	
 	if(!get_userprofile(intval($_SESSION['uid']))){
 		$infoarr['realname']=$setsqlarr['fullname'];
@@ -163,7 +163,7 @@ elseif($act == "make_resume_save")
 	// header("Location: ?act=resume_success&pid=".$pid);
 	}
 }
-// ÌîĞ´¼òÀúÍê³É
+// å¡«å†™ç®€å†å®Œæˆ
 elseif($act == "resume_success")
 {
 	$smarty->cache = false;
@@ -173,7 +173,7 @@ elseif($act == "resume_success")
 	$smarty->assign('resume_jobs',$resume_jobs);
 	$smarty->display('wap/personal/wap-create-resume-success.html');
 }
-// ¼òÀúÁĞ±í
+// ç®€å†åˆ—è¡¨
 elseif($act == "resume_list")
 {	
 	$smarty->cache = false;
@@ -183,7 +183,7 @@ elseif($act == "resume_list")
 	$smarty->assign('resume_list',$resume_list);
 	$smarty->display('wap/personal/wap-resume-index.html');
 }
-// ÍêÉÆ¼òÀú
+// å®Œå–„ç®€å†
 elseif($act == "resume_one")
 {
 	$smarty->cache = false;
@@ -213,26 +213,26 @@ elseif($act == "resume_basic_save")
 	$smarty->cache = false;
 	$_POST=array_map("utf8_to_gbk",$_POST);
 	$setsqlarr['uid']=intval($_SESSION['uid']);
-	$setsqlarr['fullname']=trim($_POST['fullname'])?trim($_POST['fullname']):exit("ÇëÌîĞ´ÕæÊµĞÕÃû");
+	$setsqlarr['fullname']=trim($_POST['fullname'])?trim($_POST['fullname']):exit("è¯·å¡«å†™çœŸå®å§“å");
 	$setsqlarr['display_name']=intval($_POST['display_name']);
-	$setsqlarr['sex']=trim($_POST['sex'])?trim($_POST['sex']):exit("ÇëÑ¡ÔñĞÔ±ğ");
-	$setsqlarr['sex_cn']=trim($_POST['sex_cn'])?trim($_POST['sex_cn']):exit("ÇëÑ¡ÔñĞÔ±ğ");
-	$setsqlarr['birthdate']=intval($_POST['birthdate'])?intval($_POST['birthdate']):exit("ÇëÑ¡Ôñ³öÉúÄê·İ");
-	$setsqlarr['residence']=trim($_POST['residence'])?trim($_POST['residence']):exit("ÇëÑ¡ÔñÏÖ¾Ó×¡µØ");
-	$setsqlarr['residence']=trim($_POST['residence'])?trim($_POST['residence']):exit("ÇëÑ¡ÔñÏÖ¾Ó×¡µØ");
-	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):exit("ÇëÑ¡Ôñ»ñµÃÑ§Àú");
-	$setsqlarr['education_cn']=trim($_POST['education_cn'])?trim($_POST['education_cn']):exit("ÇëÑ¡Ôñ»ñµÃÑ§Àú");
-	$setsqlarr['experience']=intval($_POST['experience'])?intval($_POST['experience']):exit("ÇëÑ¡Ôñ¹¤×÷¾­Ñé");
-	$setsqlarr['experience_cn']=trim($_POST['experience_cn'])?trim($_POST['experience_cn']):exit("ÇëÑ¡Ôñ¹¤×÷¾­Ñé");
-	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):exit("ÇëÌîĞ´ÓÊÏä");
+	$setsqlarr['sex']=trim($_POST['sex'])?trim($_POST['sex']):exit("è¯·é€‰æ‹©æ€§åˆ«");
+	$setsqlarr['sex_cn']=trim($_POST['sex_cn'])?trim($_POST['sex_cn']):exit("è¯·é€‰æ‹©æ€§åˆ«");
+	$setsqlarr['birthdate']=intval($_POST['birthdate'])?intval($_POST['birthdate']):exit("è¯·é€‰æ‹©å‡ºç”Ÿå¹´ä»½");
+	$setsqlarr['residence']=trim($_POST['residence'])?trim($_POST['residence']):exit("è¯·é€‰æ‹©ç°å±…ä½åœ°");
+	$setsqlarr['residence']=trim($_POST['residence'])?trim($_POST['residence']):exit("è¯·é€‰æ‹©ç°å±…ä½åœ°");
+	$setsqlarr['education']=intval($_POST['education'])?intval($_POST['education']):exit("è¯·é€‰æ‹©è·å¾—å­¦å†");
+	$setsqlarr['education_cn']=trim($_POST['education_cn'])?trim($_POST['education_cn']):exit("è¯·é€‰æ‹©è·å¾—å­¦å†");
+	$setsqlarr['experience']=intval($_POST['experience'])?intval($_POST['experience']):exit("è¯·é€‰æ‹©å·¥ä½œç»éªŒ");
+	$setsqlarr['experience_cn']=trim($_POST['experience_cn'])?trim($_POST['experience_cn']):exit("è¯·é€‰æ‹©å·¥ä½œç»éªŒ");
+	$setsqlarr['email']=trim($_POST['email'])?trim($_POST['email']):exit("è¯·å¡«å†™é‚®ç®±");
 	$setsqlarr['email_notify']=$_POST['email_notify']=="1"?1:0;
-	$setsqlarr['telephone']=trim($_POST['telephone'])?trim($_POST['telephone']):exit("ÇëÌîĞ´ÊÖ»ú");
+	$setsqlarr['telephone']=trim($_POST['telephone'])?trim($_POST['telephone']):exit("è¯·å¡«å†™æ‰‹æœº");
 	$db->updatetable(table('resume'),$setsqlarr," id='".intval($_POST['pid'])."'  AND uid='{$setsqlarr['uid']}'");
 	check_resume($_SESSION['uid'],intval($_REQUEST['pid']));
 	if($_CFG['audit_edit_resume']!="-1"){
 		set_resume_entrust(intval($_REQUEST['pid']));
 	}
-	write_memberslog($_SESSION['uid'],2,1105,$_SESSION['username'],"ĞŞ¸ÄÁË¼òÀú({$_POST['title']})");
+	write_memberslog($_SESSION['uid'],2,1105,$_SESSION['username'],"ä¿®æ”¹äº†ç®€å†({$_POST['title']})");
 
 	$infoarr['realname']=$setsqlarr['fullname'];
 	$infoarr['sex']=$setsqlarr['sex'];
@@ -250,7 +250,7 @@ elseif($act == "resume_basic_save")
 	$db->updatetable(table('members_info'),$infoarr," uid={$infoarr['uid']} ");
 	exit("ok");
 }
-// ÇóÖ°ÒâÏò Ö°Î»
+// æ±‚èŒæ„å‘ èŒä½
 elseif($act == "resume_jobs")
 {
 	$smarty->cache = false;
@@ -264,22 +264,22 @@ elseif($act == "resume_jobs_save")
 {
 	$smarty->cache = false;
 	$_POST=array_map("utf8_to_gbk",$_POST);
-	$setsqlarr['intention_jobs']=trim($_POST['intention_jobs'])?trim($_POST['intention_jobs']):exit("ÇëÑ¡ÔñÆÚÍûÖ°Î»");
-	$_POST['intention_jobs_id']=trim($_POST['intention_jobs_id'])?trim($_POST['intention_jobs_id']):exit("ÇëÑ¡ÔñÆÚÍûÖ°Î»");
-	$setsqlarr['wage']=trim($_POST['wage'])?trim($_POST['wage']):exit("ÇëÑ¡ÔñÆÚÍûĞ½×Ê");
-	$setsqlarr['wage_cn']=trim($_POST['wage_cn'])?trim($_POST['wage_cn']):exit("ÇëÑ¡ÔñÆÚÍûĞ½×Ê");
-	$setsqlarr['nature']=trim($_POST['nature'])?trim($_POST['nature']):exit("ÇëÑ¡ÔñÆÚÍû¹¤×÷ĞÔÖÊ");
-	$setsqlarr['nature_cn']=trim($_POST['nature_cn'])?trim($_POST['nature_cn']):exit("ÇëÑ¡ÔñÆÚÍû¹¤×÷ĞÔÖÊ");
-	$setsqlarr['trade']=trim($_POST['trade'])?trim($_POST['trade']):exit("ÇëÑ¡ÔñÆÚÍûĞĞÒµ");
-	$setsqlarr['trade_cn']=trim($_POST['trade_cn'])?trim($_POST['trade_cn']):exit("ÇëÑ¡ÔñÆÚÍûĞĞÒµ");
-	$setsqlarr['district_cn']=trim($_POST['district_cn'])?trim($_POST['district_cn']):exit("ÇëÑ¡ÔñÆÚÍû¹¤×÷µØÇø");
+	$setsqlarr['intention_jobs']=trim($_POST['intention_jobs'])?trim($_POST['intention_jobs']):exit("è¯·é€‰æ‹©æœŸæœ›èŒä½");
+	$_POST['intention_jobs_id']=trim($_POST['intention_jobs_id'])?trim($_POST['intention_jobs_id']):exit("è¯·é€‰æ‹©æœŸæœ›èŒä½");
+	$setsqlarr['wage']=trim($_POST['wage'])?trim($_POST['wage']):exit("è¯·é€‰æ‹©æœŸæœ›è–ªèµ„");
+	$setsqlarr['wage_cn']=trim($_POST['wage_cn'])?trim($_POST['wage_cn']):exit("è¯·é€‰æ‹©æœŸæœ›è–ªèµ„");
+	$setsqlarr['nature']=trim($_POST['nature'])?trim($_POST['nature']):exit("è¯·é€‰æ‹©æœŸæœ›å·¥ä½œæ€§è´¨");
+	$setsqlarr['nature_cn']=trim($_POST['nature_cn'])?trim($_POST['nature_cn']):exit("è¯·é€‰æ‹©æœŸæœ›å·¥ä½œæ€§è´¨");
+	$setsqlarr['trade']=trim($_POST['trade'])?trim($_POST['trade']):exit("è¯·é€‰æ‹©æœŸæœ›è¡Œä¸š");
+	$setsqlarr['trade_cn']=trim($_POST['trade_cn'])?trim($_POST['trade_cn']):exit("è¯·é€‰æ‹©æœŸæœ›è¡Œä¸š");
+	$setsqlarr['district_cn']=trim($_POST['district_cn'])?trim($_POST['district_cn']):exit("è¯·é€‰æ‹©æœŸæœ›å·¥ä½œåœ°åŒº");
 	if(!$db->updatetable(table('resume'),$setsqlarr,array("id"=>intval($_POST['pid']),"uid"=>intval($_SESSION['uid']))))exit("err");
 	if(!wap_add_resume_jobs(intval($_POST['pid']),intval($_SESSION['uid']),intval($_POST['intention_jobs_id'])))exit('err');
 	if(!wap_add_resume_district(intval($_POST['pid']),intval($_SESSION['uid']),intval($_POST['district']),intval($_POST['sdistrict'])))exit('err');
 	if(!wap_add_resume_trade(intval($_POST['pid']),intval($_SESSION['uid']),intval($setsqlarr['trade'])))exit('err');
 	exit("ok");
 }
-//  ¹¤×÷¾­Ñé
+//  å·¥ä½œç»éªŒ
 elseif($act == "resume_work_list")
 {
 	$smarty->cache = false;
@@ -288,7 +288,7 @@ elseif($act == "resume_work_list")
 	$smarty->assign('resume_work',get_resume_work(intval($_SESSION['uid']),$id));
 	$smarty->display('wap/personal/wap-work-experience.html');
 }
-// Ìí¼Ó ĞŞ¸Ä ¹¤×÷¾­Ñé
+// æ·»åŠ  ä¿®æ”¹ å·¥ä½œç»éªŒ
 elseif($act == "resume_work_add")
 {	
 	$smarty->cache = false;
@@ -309,22 +309,22 @@ elseif($act == "resume_work_save")
 	$setsqlarr['uid'] = intval($_SESSION['uid']);
 	$setsqlarr['pid'] = intval($_POST['pid']);
 
-	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 )exit('¼òÀú²»´æÔÚ');
+	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 )exit('ç®€å†ä¸å­˜åœ¨');
 
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_POST['pid']));
-	if (empty($resume_basic)) exit('ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢');
+	if (empty($resume_basic)) exit('è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯');
 	$resume_work=get_resume_work($_SESSION['uid'],intval($_POST['pid']));
-	if (count($resume_work)>=6)  exit('¹¤×÷¾­Àú²»ÄÜ³¬¹ı6Ìõ');
-	$setsqlarr['companyname'] = trim($_POST['companyname'])?trim($_POST['companyname']):exit('ÇëÌîĞ´¹«Ë¾Ãû³Æ£¡');
-	$setsqlarr['jobs'] = trim($_POST['jobs'])?trim($_POST['jobs']):exit("ÇëÌîĞ´Ö°Î»Ãû³Æ£¡");
+	if (count($resume_work)>=6)  exit('å·¥ä½œç»å†ä¸èƒ½è¶…è¿‡6æ¡');
+	$setsqlarr['companyname'] = trim($_POST['companyname'])?trim($_POST['companyname']):exit('è¯·å¡«å†™å…¬å¸åç§°ï¼');
+	$setsqlarr['jobs'] = trim($_POST['jobs'])?trim($_POST['jobs']):exit("è¯·å¡«å†™èŒä½åç§°ï¼");
 	if(trim($_POST['startyear'])==""||trim($_POST['startmonth'])==""||trim($_POST['endyear'])==""||trim($_POST['endmonth'])==""){
-		exit("ÇëÑ¡ÔñÈÎÖ°Ê±¼ä!");
+		exit("è¯·é€‰æ‹©ä»»èŒæ—¶é—´!");
 	}
 	$setsqlarr['startyear'] = intval($_POST['startyear']);
 	$setsqlarr['startmonth'] = intval($_POST['startmonth']);
 	$setsqlarr['endyear'] = intval($_POST['endyear']);
 	$setsqlarr['endmonth'] = intval($_POST['endmonth']);
-	$setsqlarr['achievements'] = trim($_POST['achievements'])?trim($_POST['achievements']):exit("ÇëÌîĞ´¹¤×÷Ö°Ôğ£¡");
+	$setsqlarr['achievements'] = trim($_POST['achievements'])?trim($_POST['achievements']):exit("è¯·å¡«å†™å·¥ä½œèŒè´£ï¼");
 	
 	if($id){
 		$db->updatetable(table("resume_work"),$setsqlarr,array("id"=>$id,"uid"=>intval($_SESSION['uid'])));
@@ -351,7 +351,7 @@ elseif($act == "resume_work_del")
 		exit("err");
 	}
 }
-// ½ÌÓı¾­Àú
+// æ•™è‚²ç»å†
 elseif($act == "resume_education")
 {	
 	$smarty->cache = false;
@@ -361,7 +361,7 @@ elseif($act == "resume_education")
 	$smarty->assign("resume_education_list",$resume_education_list);
 	$smarty->display('wap/personal/wap-edu-experience.html');
 }
-// Ìí¼Ó ĞŞ¸Ä ½ÌÓı¾­Àú
+// æ·»åŠ  ä¿®æ”¹ æ•™è‚²ç»å†
 elseif($act == "resume_education_add")
 {	
 	$smarty->cache = false;
@@ -381,22 +381,22 @@ elseif($act == "resume_education_save")
 	$id=intval($_POST['id']);
 	$setsqlarr['uid'] = intval($_SESSION['uid']);
 	$setsqlarr['pid'] = intval($_POST['pid']);
-	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 )exit('¼òÀú²»´æÔÚ');
+	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 )exit('ç®€å†ä¸å­˜åœ¨');
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_POST['pid']));
-	if (empty($resume_basic)) exit('ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢');
+	if (empty($resume_basic)) exit('è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯');
 	$resume_education=get_resume_education($_SESSION['uid'],intval($_POST['pid']));
-	if (count($resume_education)>=6)  exit('½ÌÓı¾­Àú²»ÄÜ³¬¹ı6Ìõ');
-	$setsqlarr['school'] = trim($_POST['school'])?trim($_POST['school']):exit('ÇëÌîĞ´Ñ§Ğ£Ãû³Æ£¡');
-	$setsqlarr['speciality'] = trim($_POST['speciality'])?trim($_POST['speciality']):WapShowMsg("ÇëÌîĞ´×¨ÒµÃû³Æ£¡");
+	if (count($resume_education)>=6)  exit('æ•™è‚²ç»å†ä¸èƒ½è¶…è¿‡6æ¡');
+	$setsqlarr['school'] = trim($_POST['school'])?trim($_POST['school']):exit('è¯·å¡«å†™å­¦æ ¡åç§°ï¼');
+	$setsqlarr['speciality'] = trim($_POST['speciality'])?trim($_POST['speciality']):WapShowMsg("è¯·å¡«å†™ä¸“ä¸šåç§°ï¼");
 	if(trim($_POST['startyear'])==""||trim($_POST['startmonth'])==""||trim($_POST['endyear'])==""||trim($_POST['endmonth'])==""){
-		exit("ÇëÑ¡Ôñ¾Í¶ÁÊ±¼ä£¡");
+		exit("è¯·é€‰æ‹©å°±è¯»æ—¶é—´ï¼");
 	}
 	$setsqlarr['startyear'] = intval($_POST['startyear']);
 	$setsqlarr['startmonth'] = intval($_POST['startmonth']);
 	$setsqlarr['endyear'] = intval($_POST['endyear']);
 	$setsqlarr['endmonth'] = intval($_POST['endmonth']);
-	// $setsqlarr['education'] = trim($_POST['education'])?trim($_POST['education']):WapShowMsg("ÇëÑ¡Ôñ»ñµÃÑ§Àú",0);
-	// $setsqlarr['education_cn'] = trim($_POST['education_cn'])?trim($_POST['education_cn']):WapShowMsg("ÇëÑ¡Ôñ»ñµÃÑ§Àú",0);
+	// $setsqlarr['education'] = trim($_POST['education'])?trim($_POST['education']):WapShowMsg("è¯·é€‰æ‹©è·å¾—å­¦å†",0);
+	// $setsqlarr['education_cn'] = trim($_POST['education_cn'])?trim($_POST['education_cn']):WapShowMsg("è¯·é€‰æ‹©è·å¾—å­¦å†",0);
 	if($id){
 		$db->updatetable(table("resume_education"),$setsqlarr,array("id"=>$id,"uid"=>intval($_SESSION['uid'])));
 		exit("ok");
@@ -410,7 +410,7 @@ elseif($act == "resume_education_save")
 		}
 	}
 }
-// É¾³ı½ÌÓı¾­Àú
+// åˆ é™¤æ•™è‚²ç»å†
 elseif($act == "resume_education_del")
 {
 	$smarty->cache = false;
@@ -423,7 +423,7 @@ elseif($act == "resume_education_del")
 		exit("err");
 	}
 }
-// ÅàÑµ¾­Àú 
+// åŸ¹è®­ç»å† 
 elseif($act == "resume_train")
 {
 	$smarty->cache = false;
@@ -451,15 +451,15 @@ elseif($act == "resume_train_save")
 	$id=intval($_POST['id']);
 	$setsqlarr['uid'] = intval($_SESSION['uid']);
 	$setsqlarr['pid'] = intval($_POST['pid']);
-	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 )exit('¼òÀú²»´æÔÚ');
+	if ($setsqlarr['uid']==0 || $setsqlarr['pid']==0 )exit('ç®€å†ä¸å­˜åœ¨');
 	$resume_basic=get_resume_basic(intval($_SESSION['uid']),intval($_POST['pid']));
-	if (empty($resume_basic)) exit('ÇëÏÈÌîĞ´¼òÀú»ù±¾ĞÅÏ¢');
+	if (empty($resume_basic)) exit('è¯·å…ˆå¡«å†™ç®€å†åŸºæœ¬ä¿¡æ¯');
 	$resume_training=get_resume_training($_SESSION['uid'],intval($_POST['pid']));
-	if (count($resume_training)>=6)  exit('ÅàÑµ¾­Àú²»ÄÜ³¬¹ı6Ìõ');
-	$setsqlarr['agency'] = trim($_POST['agency'])?trim($_POST['agency']):exit('ÇëÌîĞ´ÅàÑµ»ú¹¹Ãû³Æ£¡');
-	$setsqlarr['course'] = trim($_POST['course'])?trim($_POST['course']):exit("ÇëÌîĞ´ÅàÑµ×¨ÒµÃû³Æ£¡");
+	if (count($resume_training)>=6)  exit('åŸ¹è®­ç»å†ä¸èƒ½è¶…è¿‡6æ¡');
+	$setsqlarr['agency'] = trim($_POST['agency'])?trim($_POST['agency']):exit('è¯·å¡«å†™åŸ¹è®­æœºæ„åç§°ï¼');
+	$setsqlarr['course'] = trim($_POST['course'])?trim($_POST['course']):exit("è¯·å¡«å†™åŸ¹è®­ä¸“ä¸šåç§°ï¼");
 	if(trim($_POST['startyear'])==""||trim($_POST['startmonth'])==""||trim($_POST['endyear'])==""||trim($_POST['endmonth'])==""){
-		exit("ÇëÑ¡ÔñÅàÑµÊ±¼ä£¡");
+		exit("è¯·é€‰æ‹©åŸ¹è®­æ—¶é—´ï¼");
 	}
 	$setsqlarr['startyear'] = intval($_POST['startyear']);
 	$setsqlarr['startmonth'] = intval($_POST['startmonth']);
@@ -490,7 +490,7 @@ elseif($act == "resume_train_del")
 		exit("err");
 	}
 }
-// ×ÔÎÒÆÀ¼Û
+// è‡ªæˆ‘è¯„ä»·
 elseif($act == "resume_specialty")
 {
 	$smarty->cache = false;
@@ -505,7 +505,7 @@ elseif($act == "resume_specialty_save")
 	$smarty->cache = false;
 	$id=intval($_POST['pid']);
 	$uid=intval($_SESSION["uid"]);
-	$specialty=$_POST['specialty']?$_POST['specialty']:exit("ÇëÌîĞ´×ÔÎÒÆÀ¼Û");
+	$specialty=$_POST['specialty']?$_POST['specialty']:exit("è¯·å¡«å†™è‡ªæˆ‘è¯„ä»·");
 	$sql="update ".table("resume")." set specialty='$specialty' where id=$id and uid=$uid ";
 	if($db->query($sql)){
 		exit("ok");
@@ -514,7 +514,7 @@ elseif($act == "resume_specialty_save")
 	}
 
 }
-// ¼òÀúË¢ĞÂ
+// ç®€å†åˆ·æ–°
 elseif($act == "resume_refresh")
 {
 	$smarty->cache = false;
@@ -526,23 +526,23 @@ elseif($act == "resume_refresh")
 	$refresh_time = get_today_refresh_times($_SESSION['uid'],"2001");
 	if($_CFG['per_refresh_resume_time']!=0&&($refresh_time['count(*)']>=$_CFG['per_refresh_resume_time']))
 	{
-	exit("Ã¿Ìì×î¶àÖ»ÄÜË¢ĞÂ".$_CFG['per_refresh_resume_time']."´Î,Äú½ñÌìÒÑ³¬¹ı×î´óË¢ĞÂ´ÎÊıÏŞÖÆ£¡");	
+	exit("æ¯å¤©æœ€å¤šåªèƒ½åˆ·æ–°".$_CFG['per_refresh_resume_time']."æ¬¡,æ‚¨ä»Šå¤©å·²è¶…è¿‡æœ€å¤§åˆ·æ–°æ¬¡æ•°é™åˆ¶ï¼");	
 	}
 	elseif($duringtime<=$space)
 	{
-	exit($_CFG['per_refresh_resume_space']."·ÖÖÓÄÚ²»ÄÜÖØ¸´Ë¢ĞÂ¼òÀú£¡");
+	exit($_CFG['per_refresh_resume_space']."åˆ†é’Ÿå†…ä¸èƒ½é‡å¤åˆ·æ–°ç®€å†ï¼");
 	}
 	else 
 	{
 	refresh_resume($resumeid,intval($_SESSION['uid']))?exit('ok'):exit("err");
 	}
 }
-// ¼òÀúÒşË½ÉèÖÃ
+// ç®€å†éšç§è®¾ç½®
 elseif($act == "resume_privacy")
 {
 	$smarty->cache = false;
 	$pid=intval($_GET['pid']);
-	//ÆÁ±ÎµÄÆóÒµ
+	//å±è”½çš„ä¼ä¸š
 	$uid=intval($_SESSION["uid"]);
 	$shield_company=$db->getall("select * from ".table("personal_shield_company")." where uid=$uid and pid=$pid");
 	$smarty->assign('shield_company',$shield_company);
@@ -561,14 +561,14 @@ elseif($act == "resume_privacy_save")
 	$setsqlarrdisplay['display']=intval($_POST['display']);
 	!$db->updatetable(table('resume_search_key'),$setsqlarrdisplay," uid='{$uid}' AND  id='{$pid}'");
 	!$db->updatetable(table('resume_search_rtime'),$setsqlarrdisplay," uid='{$uid}' AND  id='{$pid}'");
-	$rst=write_memberslog($uid,2,1104,$_SESSION['username'],"ÉèÖÃ¼òÀúÒşË½({$pid})");
+	$rst=write_memberslog($uid,2,1104,$_SESSION['username'],"è®¾ç½®ç®€å†éšç§({$pid})");
 	if($rst){
 		exit("ok");
 	}else{
 		exit("err");
 	}
 }
-// ÆÁ±ÎÆóÒµ
+// å±è”½ä¼ä¸š
 elseif($act == "shield_company_save")
 {
 	$smarty->cache = false;
@@ -580,7 +580,7 @@ elseif($act == "shield_company_save")
 	$setsqlarr['comkeyword']=$_GET['comkeyword'];
 	$db->inserttable(table('personal_shield_company'),$setsqlarr,1)?exit("ok"):exit("err");
 }
-// É¾³ıÆÁ±ÎÆóÒµ
+// åˆ é™¤å±è”½ä¼ä¸š
 elseif($act == "shield_company_del")
 {
 	$smarty->cache = false;
@@ -596,7 +596,7 @@ elseif($act == "resume_del")
 	$uid=intval($_SESSION['uid']);
 	del_resume($uid,$id)?exit('ok'):exit('err');
 }
-// Éı¼¶¸ß¼¶¼òÀú
+// å‡çº§é«˜çº§ç®€å†
 elseif($act == "resume_talent")
 {
 	$smarty->cache = false;
@@ -605,7 +605,7 @@ elseif($act == "resume_talent")
 	$resume=get_resume_basic($uid,$id);
 	if ($resume['complete_percent']<$_CFG['elite_resume_complete_percent'])
 	{
-		exit("¼òÀúÍêÕûÖ¸ÊıĞ¡ÓÚ{$_CFG['elite_resume_complete_percent']}%£¬½ûÖ¹ÉêÇë£¡");
+		exit("ç®€å†å®Œæ•´æŒ‡æ•°å°äº{$_CFG['elite_resume_complete_percent']}%ï¼Œç¦æ­¢ç”³è¯·ï¼");
 	}
 	else
 	{
@@ -613,14 +613,14 @@ elseif($act == "resume_talent")
 		$db->updatetable(table("resume"),$setsqlarr,array("id"=>$id,"uid"=>intval($_SESSION['uid'])))?exit("ok"):exit("err");
 	}
 }
-// ĞŞ¸Ä¼òÀúÃû
+// ä¿®æ”¹ç®€å†å
 elseif($act == 'resume_name_save')
 {
 	$smarty->cache = false;
 	$_POST=array_map("utf8_to_gbk", $_POST);
 	$resume_id=intval($_POST["resume_id"]);
 	$uid=intval($_SESSION["uid"]);
-	$title=trim($_POST['title'])?trim($_POST['title']):exit("ÇëÊäÈë¼òÀúÃû³Æ");
+	$title=trim($_POST['title'])?trim($_POST['title']):exit("è¯·è¾“å…¥ç®€å†åç§°");
 	$sql="update ".table("resume")." set title='$title' where id=$resume_id and uid=$uid ";
 	if($db->query($sql)){
 		exit("ok");

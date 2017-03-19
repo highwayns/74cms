@@ -1,6 +1,6 @@
-<?php
-//header('Access-Control-Allow-Origin: http://www.baidu.com'); //设置http://www.baidu.com允许跨域访问
-//header('Access-Control-Allow-Headers: X-Requested-With,X_Requested_With'); //设置允许的跨域header
+﻿<?php
+//header('Access-Control-Allow-Origin: http://www.baidu.com'); //璁剧疆http://www.baidu.com鍏佽璺ㄥ煙璁块棶
+//header('Access-Control-Allow-Headers: X-Requested-With,X_Requested_With'); //璁剧疆鍏佽鐨勮法鍩焗eader
 date_default_timezone_set("Asia/chongqing");
 error_reporting(E_ERROR);
 header("Content-Type: text/html; charset=gbk");
@@ -13,45 +13,45 @@ switch ($action) {
         $result =  json_encode($CONFIG);
         break;
 
-    /* 上传图片 */
+    /* 涓婁紶鍥剧墖 */
     case 'uploadimage':
-    /* 上传涂鸦 */
+    /* 涓婁紶娑傞甫 */
     case 'uploadscrawl':
-    /* 上传视频 */
+    /* 涓婁紶瑙嗛 */
     case 'uploadvideo':
-    /* 上传文件 */
+    /* 涓婁紶鏂囦欢 */
     case 'uploadfile':
         $result = include("action_upload.php");
         break;
 
-    /* 列出图片 */
+    /* 鍒楀嚭鍥剧墖 */
     case 'listimage':
         $result = include("action_list.php");
         break;
-    /* 列出文件 */
+    /* 鍒楀嚭鏂囦欢 */
     case 'listfile':
         $result = include("action_list.php");
         break;
 
-    /* 抓取远程文件 */
+    /* 鎶撳彇杩滅▼鏂囦欢 */
     case 'catchimage':
         $result = include("action_crawler.php");
         break;
 
     default:
         $result = json_encode(array(
-            'state'=> '请求地址出错'
+            'state'=> '璇锋眰鍦板潃鍑洪敊'
         ));
         break;
 }
 
-/* 输出结果 */
+/* 杈撳嚭缁撴灉 */
 if (isset($_GET["callback"])) {
     if (preg_match("/^[\w_]+$/", $_GET["callback"])) {
         echo htmlspecialchars($_GET["callback"]) . '(' . $result . ')';
     } else {
         echo json_encode(array(
-            'state'=> 'callback参数不合法'
+            'state'=> 'callback鍙傛暟涓嶅悎娉?
         ));
     }
 } else {

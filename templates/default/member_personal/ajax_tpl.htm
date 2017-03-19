@@ -1,10 +1,10 @@
-<div class="choose-tpl-dialog">
-	<h4>µ±Ç°¼òÀú£º{#$title#}</h4>
+ï»¿<div class="choose-tpl-dialog">
+	<h4>å½“å‰ç®€å†ï¼š{#$title#}</h4>
 	<input type="hidden" name="tpl_pid" id="tpl_pid" value="{#$resumeid#}">
 	<input type="hidden" name="tpl_dir" id="tpl_dir" value="{#$resume_tpl#}">
 	<div class="tpl-choose-wrap clearfix">
 		<div class="choose-left f-left">
-			<div class="resume-now">Ñ¡Ôñ¼òÀúÄ£°å</div>
+			<div class="resume-now">é€‰æ‹©ç®€å†æ¨¡æ¿</div>
 			<div class="tpl-radio-choose">
 				{#$tpl_left#}
 			</div>
@@ -13,11 +13,11 @@
 			<div class="tpl-choose-now">
 				{#$tpl_img#}
 			</div>
-			<!-- <p><a href="" class="underline">Ä£°åÔ¤ÀÀ</a></p> -->
+			<!-- <p><a href="" class="underline">æ¨¡æ¿é¢„è§ˆ</a></p> -->
 		</div>
 	</div>
 	<div class="center-btn-wrap">
-		<input type="button" value="±£´æ" class="btn-65-30blue btn-big-font" pid="{#$pid#}" id="save"/><input type="button" value="È¡Ïû" class="btn-65-30grey btn-big-font DialogClose" />
+		<input type="button" value="ä¿å­˜" class="btn-65-30blue btn-big-font" pid="{#$pid#}" id="save"/><input type="button" value="å–æ¶ˆ" class="btn-65-30grey btn-big-font DialogClose" />
 	</div>
 </div>
 
@@ -37,14 +37,14 @@ $(document).ready(function(){
 		$.post("{#$site_dir#}user/personal/personal_ajax.php?act=save_tpl",{tpl_pid:tpl_pid,tpl_dir:tpl_dir},function(result){
 			if(result=="1"){
 				dialog({
-                    title: 'ÏµÍ³ÌáÊ¾',
-                    content: "±£´æ³É¹¦!",
+                    title: 'ç³»ç»Ÿæç¤º',
+                    content: "ä¿å­˜æˆåŠŸ!",
                     width:300,
                 }).show();
 			}else{
 				dialog({
-                    title: 'ÏµÍ³ÌáÊ¾',
-                    content: "²ÎÊı´íÎó£¡",
+                    title: 'ç³»ç»Ÿæç¤º',
+                    content: "å‚æ•°é”™è¯¯ï¼",
                     width:300,
                 }).show();
 			}

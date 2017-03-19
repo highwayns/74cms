@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,23 +6,23 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-Ì×²ÍÄ£Ê½ÊÇÖ¸»áÔ±¿ÉÒÔ¹ºÂò²»Í¬µÈ¼¶·şÎñ£¬ÈçÆÕÍ¨»áÔ±£¬VIP»áÔ±µÈ£¬Ã¿¸öµÈ¼¶¶¼ÓĞ²»Í¬µÄÊ¹ÓÃÈ¨ÏŞ
+å¥—é¤æ¨¡å¼æ˜¯æŒ‡ä¼šå‘˜å¯ä»¥è´­ä¹°ä¸åŒç­‰çº§æœåŠ¡ï¼Œå¦‚æ™®é€šä¼šå‘˜ï¼ŒVIPä¼šå‘˜ç­‰ï¼Œæ¯ä¸ªç­‰çº§éƒ½æœ‰ä¸åŒçš„ä½¿ç”¨æƒé™
 </p>
 </div>
-<div class="toptit">»áÔ±Ä¬ÈÏÌ×²ÍÉèÖÃ</div>
+<div class="toptit">ä¼šå‘˜é»˜è®¤å¥—é¤è®¾ç½®</div>
  
 	<form action="?act=reg_service_save" method="post"  name="form1" id="form1">
  {#$inputtoken#}
     <table border="0" cellspacing="0" cellpadding="1"  style="margin-top:20px; margin-bottom:20px;">
       <tr>
-        <td width="240" height="30" align="right" >ĞÂ×¢²á»áÔ±ÔùËÍ·şÎñ£º</td>
+        <td width="240" height="30" align="right" >æ–°æ³¨å†Œä¼šå‘˜èµ é€æœåŠ¡ï¼š</td>
         <td  >
 		
           <label>
           <input type="radio" name="reg_service" value="0" {#if $QISHI.reg_service=='0'#}checked="checked"{#/if#}/>
-          ²»ÔùËÍ</label>
+          ä¸èµ é€</label>
           {#foreach from=$givesetmeal item=list#}
 		    &nbsp;&nbsp;
 		    <label>
@@ -32,7 +32,7 @@
 		</td>
       </tr>
     <tr>
-        <td height="30" align="right" >»áÔ±¹ıÆÚÌ×²Í¹ıÆÚºóÌ×²Í×Ô¶¯±ä¸üÎª£º</td>
+        <td height="30" align="right" >ä¼šå‘˜è¿‡æœŸå¥—é¤è¿‡æœŸåå¥—é¤è‡ªåŠ¨å˜æ›´ä¸ºï¼š</td>
         <td>
         {#foreach from=$givesetmeal item=list#}
         <label>
@@ -43,80 +43,80 @@
         </td>
     </tr>
 	  <tr>
-      <td height="30" align="right" >·şÎñ³¬ÆÚ»ò³¬³ö¹æ¶¨ÌõÊıÆôÓÃ»ı·ÖÏû·Ñ£º</td>
+      <td height="30" align="right" >æœåŠ¡è¶…æœŸæˆ–è¶…å‡ºè§„å®šæ¡æ•°å¯ç”¨ç§¯åˆ†æ¶ˆè´¹ï¼š</td>
       <td  >
 	
         <label>
         <input type="radio" name="setmeal_to_points" value="1" {#if $QISHI.setmeal_to_points=='1'#}checked="checked"{#/if#}/>
-        ÊÇ</label>
+        æ˜¯</label>
        
 	    &nbsp;&nbsp;
 		
 		 <label>
         <input type="radio" name="setmeal_to_points" value="2" {#if $QISHI.setmeal_to_points=='2'#}checked="checked"{#/if#}/>
-        ·ñ</label>
+        å¦</label>
 	   
 	</td>
     </tr>
 	 
 
  <tr>
-        <td height="30" align="right" >·şÎñµ½ÆÚÊ±¼äÌáÇ°¼¸ÌìÌáĞÑ£º</td>
+        <td height="30" align="right" >æœåŠ¡åˆ°æœŸæ—¶é—´æå‰å‡ å¤©æé†’ï¼š</td>
         <td  >
 		<input name="meal_min_remind" type="text" class="input_text_50" id="meal_min_remind" value="{#$QISHI.meal_min_remind#}"/>
-		   <span class="admin_note">0Îª²»ÌáĞÑ</span> 
+		   <span class="admin_note">0ä¸ºä¸æé†’</span> 
 		</td>
       </tr>
       <tr>
         <td height="40"  > 
         </td>
-        <td  ><input name="submit2" type="submit" class="admin_submit"    value="±£´æ"/></td>
+        <td  ><input name="submit2" type="submit" class="admin_submit"    value="ä¿å­˜"/></td>
       </tr>
     </table>
 	</form>
-	<div class="toptit">·şÎñÌ×²ÍÁĞ±í</div>
+	<div class="toptit">æœåŠ¡å¥—é¤åˆ—è¡¨</div>
  	
     <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
         <tr>
-          <td width="6%" height="26" class="admin_list_tit admin_list_first">ÏÔÊ¾</td>
-          <td  class="admin_list_tit ">Ãû³Æ</td>
-          <td width="10%"  class="admin_list_tit">»áÔ±ÉêÇë</td>
-          <td width="10%"  class="admin_list_tit">·şÎñ¼Û</td>
-          <td width="10%" align="center "class="admin_list_tit">ÆÚÏŞ</td>
-          <td width="8%" align="center"  class="admin_list_tit">ÅÅĞò</td>
-          <td width="15%" align="center"  class="admin_list_tit">²Ù×÷</td>
+          <td width="6%" height="26" class="admin_list_tit admin_list_first">æ˜¾ç¤º</td>
+          <td  class="admin_list_tit ">åç§°</td>
+          <td width="10%"  class="admin_list_tit">ä¼šå‘˜ç”³è¯·</td>
+          <td width="10%"  class="admin_list_tit">æœåŠ¡ä»·</td>
+          <td width="10%" align="center "class="admin_list_tit">æœŸé™</td>
+          <td width="8%" align="center"  class="admin_list_tit">æ’åº</td>
+          <td width="15%" align="center"  class="admin_list_tit">æ“ä½œ</td>
         </tr>
 		{#foreach from=$setmeal item=list#}
         <tr>
           <td class="admin_list admin_list_first" >
-		  {#if $list.display=="1"#}ÏÔÊ¾{#else#}<span style="color: #999999">ÆÁ±Î</span>{#/if#}		  </td>
+		  {#if $list.display=="1"#}æ˜¾ç¤º{#else#}<span style="color: #999999">å±è”½</span>{#/if#}		  </td>
           <td  class="admin_list" >
 	
 		  {#$list.setmeal_name#}
 		 <span style="color:#999999">(id:{#$list.id#})</span>
 	      </td>
-          <td class="admin_list"  > {#if $list.apply=="1"#}ÔÊĞí{#else#}<span style="color: #999999">²»ÔÊĞí</span>{#/if#}</td>
+          <td class="admin_list"  > {#if $list.apply=="1"#}å…è®¸{#else#}<span style="color: #999999">ä¸å…è®¸</span>{#/if#}</td>
           <td  class="admin_list" >
 		  {#if $list.expense==0#}
-		  Ãâ·Ñ
+		  å…è´¹
 		  {#else#}
-		   {#$list.expense#}Ôª
+		   {#$list.expense#}å…ƒ
 		  {#/if#}		  </td>
           <td class="admin_list" >
 		  {#if $list.days==0#}
-		  ²»ÏŞÖÆ
+		  ä¸é™åˆ¶
 		  {#else#}
-		   {#$list.days#}Ìì
+		   {#$list.days#}å¤©
 		  {#/if#}		  </td>
           <td align="center" class="admin_list" >{#$list.show_order#}</td>
-          <td align="center"  class="admin_list" ><a href="?act=set_meal_edit&id={#$list.id#}">ÉèÖÃ</a>&nbsp;&nbsp;&nbsp;<a href="?act=set_meal_del&id={#$list.id#}&{#$urltoken#}" onclick="return confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')">É¾³ı</a></td>
+          <td align="center"  class="admin_list" ><a href="?act=set_meal_edit&id={#$list.id#}">è®¾ç½®</a>&nbsp;&nbsp;&nbsp;<a href="?act=set_meal_del&id={#$list.id#}&{#$urltoken#}" onclick="return confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')">åˆ é™¤</a></td>
         </tr>
 		{#/foreach#}
   </table>
   <table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">
       <tr>
         <td>
-<input name="add" type="button" class="admin_submit" id="add"    value="ĞÂÔö"  onclick="window.location='?act=set_meal_add'"/>
+<input name="add" type="button" class="admin_submit" id="add"    value="æ–°å¢"  onclick="window.location='?act=set_meal_add'"/>
 		</td>
         <td width="305" align="right">
 		

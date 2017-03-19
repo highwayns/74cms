@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_company_list($params, &$smarty)
 {
 global $db,$_CFG;
@@ -8,58 +8,58 @@ foreach($arrset as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "ÁĞ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
-	case "ÏÔÊ¾ÊıÄ¿":
+	case "æ˜¾ç¤ºæ•°ç›®":
 		$aset['row'] = $a[1];
 		break;
-	case "¿ªÊ¼Î»ÖÃ":
+	case "å¼€å§‹ä½ç½®":
 		$aset['start'] = $a[1];
 		break;
-	case "ÆóÒµÃû³¤¶È":
+	case "ä¼ä¸šåé•¿åº¦":
 		$aset['companynamelen'] = $a[1];
 		break;
-	case "ÃèÊö³¤¶È":
+	case "æè¿°é•¿åº¦":
 		$aset['brieflylen'] = $a[1];
 		break;
-	case "Ìî²¹×Ö·û":
+	case "å¡«è¡¥å­—ç¬¦":
 		$aset['dot'] = $a[1];
 		break;
-	case "ĞĞÒµ":
+	case "è¡Œä¸š":
 		$aset['trade'] = $a[1];
 		break;
-	case "µØÇø·ÖÀà":
+	case "åœ°åŒºåˆ†ç±»":
 		$aset['citycategory'] = $a[1];
 		break;
-	case "µØÇø´óÀà":
+	case "åœ°åŒºå¤§ç±»":
 		$aset['district'] = $a[1];
 		break;
-	case "µØÇøĞ¡Àà":
+	case "åœ°åŒºå°ç±»":
 		$aset['sdistrict'] = $a[1];
 		break;
-	case "ÆóÒµĞÔÖÊ":
+	case "ä¼ä¸šæ€§è´¨":
 		$aset['nature'] = $a[1];
 		break;
-	case "»ÆÒ³":
+	case "é»„é¡µ":
 		$aset['yellowpages'] = $a[1];
 		break;
-	case "¹Ø¼ü×Ö":
+	case "å…³é”®å­—":
 		$aset['key'] = $a[1];
 		break;
-	case "ÅÅĞò":
+	case "æ’åº":
 		$aset['displayorder'] = $a[1];
 		break;
-	case "·ÖÒ³ÏÔÊ¾":
+	case "åˆ†é¡µæ˜¾ç¤º":
 		$aset['paged'] = $a[1];
 		break;
-	case "¹«Ë¾Ò³Ãæ":
+	case "å…¬å¸é¡µé¢":
 		$aset['companyshow'] = $a[1];
 		break;
-	case "ÁĞ±íÒ³":
+	case "åˆ—è¡¨é¡µ":
 		$aset['listpage'] = $a[1];
 		break;
-	case "¹æÄ£":
+	case "è§„æ¨¡":
 		$aset['scale'] = $a[1];
 		break;
 	}
@@ -77,7 +77,7 @@ if ($aset['displayorder'])
 	if (strpos($aset['displayorder'],'>'))
 	{
 		$arr=explode('>',$aset['displayorder']);
-		// ÅÅĞò×Ö¶Î
+		// æ’åºå­—æ®µ
 		if($arr[0]=='click'){
 			$arr[0]="click";
 		}
@@ -89,7 +89,7 @@ if ($aset['displayorder'])
 		{
 			$arr[0]="";
 		}
-		// ÅÅĞò·½Ê½
+		// æ’åºæ–¹å¼
 		if($arr[1]=='desc'){
 			$arr[1]="desc";
 		}

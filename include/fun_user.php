@@ -1,19 +1,19 @@
-<?php
+ï»¿<?php
  /*
- * 74cms »áÔ±ÖĞĞÄº¯Êı
+ * 74cms ä¼šå‘˜ä¸­å¿ƒå‡½æ•°
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
  if(!defined('IN_QISHI'))
  {
  	die('Access Denied!');
  }
-//×¢²á»áÔ±
+//æ³¨å†Œä¼šå‘˜
 function user_register($reg_type,$password,$member_type=0,$email="",$mobile="",$uc_reg=true,$username="",$weixin_openid="",$weixin_nickname="")
 {
 	global $db,$timestamp,$_CFG,$online_ip,$QS_pwdhash;
@@ -29,11 +29,11 @@ function user_register($reg_type,$password,$member_type=0,$email="",$mobile="",$
 	{
 	return -1;	
 	}
-	elseif ($reg_type==2 && !empty($ck_email))//ÓÊÏä×¢²áÑéÖ¤ ÓÊÏä
+	elseif ($reg_type==2 && !empty($ck_email))//é‚®ç®±æ³¨å†ŒéªŒè¯ é‚®ç®±
 	{
 	return -2;
 	}
-	elseif($reg_type==1 &&  !empty($ck_mobile))//ÊÖ»ú×¢²á ÑéÖ¤ÊÖ»úºÅ
+	elseif($reg_type==1 &&  !empty($ck_mobile))//æ‰‹æœºæ³¨å†Œ éªŒè¯æ‰‹æœºå·
 	{
 	return -3;
 	}
@@ -119,23 +119,23 @@ function user_register($reg_type,$password,$member_type=0,$email="",$mobile="",$
 					{
 						report_deal($insert_id,$points['reg_points']['type'],$points['reg_points']['value']);
 						$operator=$points['reg_points']['type']=="1"?"+":"-";
-						write_memberslog($insert_id,1,9001,$username,"ĞÂ×¢²á»áÔ±,({$operator}{$points['reg_points']['value']}),(Ê£Óà:{$points['reg_points']['value']})",1,1010,"×¢²á»áÔ±ÏµÍ³×Ô¶¯ÔùËÍ»ı·Ö","{$operator}{$points['reg_points']['value']}","{$points['reg_points']['value']}");
-						//»ı·Ö±ä¸ü¼ÇÂ¼
-						write_setmeallog($insert_id,$username,"×¢²á»áÔ±ÏµÍ³×Ô¶¯ÔùËÍ£º({$operator}{$points['reg_points']['value']}),(Ê£Óà:{$points['reg_points']['value']})",1,'0.00','1',1,1);
+						write_memberslog($insert_id,1,9001,$username,"æ–°æ³¨å†Œä¼šå‘˜,({$operator}{$points['reg_points']['value']}),(å‰©ä½™:{$points['reg_points']['value']})",1,1010,"æ³¨å†Œä¼šå‘˜ç³»ç»Ÿè‡ªåŠ¨èµ é€ç§¯åˆ†","{$operator}{$points['reg_points']['value']}","{$points['reg_points']['value']}");
+						//ç§¯åˆ†å˜æ›´è®°å½•
+						write_setmeallog($insert_id,$username,"æ³¨å†Œä¼šå‘˜ç³»ç»Ÿè‡ªåŠ¨èµ é€ï¼š({$operator}{$points['reg_points']['value']}),(å‰©ä½™:{$points['reg_points']['value']})",1,'0.00','1',1,1);
 					
 					}
 					if ($_CFG['reg_service']>0){
 						set_members_setmeal($insert_id,$_CFG['reg_service']);
 						$setmeal=get_setmeal_one($_CFG['reg_service']);
-						write_memberslog($insert_id,1,9002,$username,"×¢²á»áÔ±ÏµÍ³×Ô¶¯ÔùËÍ£º{$setmeal['setmeal_name']}",2,1011,"¿ªÍ¨·şÎñ(ÏµÍ³ÔùËÍ)","-","-");
-						//Ì×²Í±ä¸ü¼ÇÂ¼
-						write_setmeallog($insert_id,$username,"×¢²á»áÔ±ÏµÍ³×Ô¶¯ÔùËÍ£º{$setmeal['setmeal_name']}",1,'0.00','1',2,1);
+						write_memberslog($insert_id,1,9002,$username,"æ³¨å†Œä¼šå‘˜ç³»ç»Ÿè‡ªåŠ¨èµ é€ï¼š{$setmeal['setmeal_name']}",2,1011,"å¼€é€šæœåŠ¡(ç³»ç»Ÿèµ é€)","-","-");
+						//å¥—é¤å˜æ›´è®°å½•
+						write_setmeallog($insert_id,$username,"æ³¨å†Œä¼šå‘˜ç³»ç»Ÿè‡ªåŠ¨èµ é€ï¼š{$setmeal['setmeal_name']}",1,'0.00','1',2,1);
 					}
 			}
-			write_memberslog($insert_id,$member_type,1000,$username,"×¢²á³ÉÎª»áÔ±");
+			write_memberslog($insert_id,$member_type,1000,$username,"æ³¨å†Œæˆä¸ºä¼šå‘˜");
 return $insert_id;
 }
-//»áÔ±µÇÂ¼
+//ä¼šå‘˜ç™»å½•
 function user_login($account,$password,$account_type=1,$uc_login=true,$expire=NULL)
 {
 	global $timestamp,$online_ip,$QS_pwdhash;
@@ -168,7 +168,7 @@ function user_login($account,$password,$account_type=1,$uc_login=true,$expire=NU
 				update_user_info($usinfo['uid'],true,true,$expire);
 				$login['qs_login']=get_member_url($usinfo['utype']);
 				$success=true;
-				write_memberslog($usinfo['uid'],$usinfo['utype'],1001,$usname,"³É¹¦µÇÂ¼");
+				write_memberslog($usinfo['uid'],$usinfo['utype'],1001,$usname,"æˆåŠŸç™»å½•");
 			} 
 		}
 		else
@@ -179,7 +179,7 @@ function user_login($account,$password,$account_type=1,$uc_login=true,$expire=NU
 	}
 	return $login;	
 }
-//¼ì²âCOOKIE
+//æ£€æµ‹COOKIE
 function check_cookie($uid,$name,$pwd){
  	global $db;
  	$row = $db->getone("SELECT COUNT(*) AS num FROM ".table('members')." WHERE uid='{$uid}' and username='{$name}' and password = '{$pwd}'");
@@ -192,13 +192,13 @@ function check_cookie($uid,$name,$pwd){
  }
  /**
   *
-  * ¸üĞÂÓÃ»§ĞÅÏ¢
+  * æ›´æ–°ç”¨æˆ·ä¿¡æ¯
   *
   *
   */
  function update_user_info($uid,$record=true,$setcookie=true,$cookie_expire=NULL)
  {
- 	global $timestamp, $online_ip,$db,$QS_cookiepath,$QS_cookiedomain,$_CFG;//3.4Éı¼¶ĞŞ¸Ä ÒıÈë±äÁ¿$_CFG
+ 	global $timestamp, $online_ip,$db,$QS_cookiepath,$QS_cookiedomain,$_CFG;//3.4å‡çº§ä¿®æ”¹ å¼•å…¥å˜é‡$_CFG
 	$user = get_user_inid($uid);
 	if (empty($user))
 	{
@@ -240,7 +240,7 @@ function check_cookie($uid,$name,$pwd){
 					$user_points=get_user_points($_SESSION['uid']);
 					$operator=$rule['userlogin']['type']=="1"?"+":"-";
 					$_SESSION['handsel_userlogin']=$operator.$rule['userlogin']['value'];
-					write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],date("Y-m-d")." µÚÒ»´ÎµÇÂ¼£¬({$operator}{$rule['userlogin']['value']})£¬(Ê£Óà:{$user_points})",1,1014,"»áÔ±Ã¿ÌìµÚÒ»´ÎµÇÂ¼","{$operator}{$rule['userlogin']['value']}","{$user_points}");
+					write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],date("Y-m-d")." ç¬¬ä¸€æ¬¡ç™»å½•ï¼Œ({$operator}{$rule['userlogin']['value']})ï¼Œ(å‰©ä½™:{$user_points})",1,1014,"ä¼šå‘˜æ¯å¤©ç¬¬ä¸€æ¬¡ç™»å½•","{$operator}{$rule['userlogin']['value']}","{$user_points}");
 				}
 			}
 		}
@@ -259,7 +259,7 @@ function check_cookie($uid,$name,$pwd){
 			}
 		}
 	}
-	//ÏûÏ¢
+	//æ¶ˆæ¯
 	$user_pmid=$db->getone("SELECT pmid FROM ".table('pms_sys_log')." WHERE loguid ='{$_SESSION['uid']}' ORDER BY `pmid` DESC  LIMIT 1");
 	$user_pmid=intval($user_pmid['pmid']);
 	$result = $db->query("SELECT * FROM ".table('pms_sys')." WHERE spmid>{$user_pmid} AND (spms_usertype='0' OR spms_usertype='{$_SESSION['utype']}') AND spms_type='1' ");
@@ -278,7 +278,7 @@ function check_cookie($uid,$name,$pwd){
 		$db->inserttable(table('pms_sys_log'),$log);
 		unset($setsqlarr,$log);
 	}
-	//Í³¼ÆÏûÏ¢
+	//ç»Ÿè®¡æ¶ˆæ¯
 	$pmscount=$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$_SESSION['uid']}' OR msgtouid='{$_SESSION['uid']}') AND `new`='1' AND `replyuid`<>'{$_SESSION['uid']}'");
 	setcookie('QS[pmscount]',$pmscount, $expire,$QS_cookiepath,$QS_cookiedomain);
 	return true;
@@ -337,7 +337,7 @@ function get_user_intaobao_access_token($access)
 	$sql = "select * from ".table('members')." where taobao_access_token = '{$access}' LIMIT 1";
 	return $db->getone($sql);
 }
-//»ñÈ¡Ëæ»ú×Ö·û´®
+//è·å–éšæœºå­—ç¬¦ä¸²
 function randstr($length=6)
 {
 $hash='';
@@ -349,7 +349,7 @@ $hash.=$chars[mt_rand(0,$max)];
 }   
 return $hash;   
 }
-//»ñÈ¡Ëæ»ú×Ö·û´®ÓÃÓÚÓÃ»§Ãû
+//è·å–éšæœºå­—ç¬¦ä¸²ç”¨äºç”¨æˆ·å
 function randusername($length=6)
 {
 $hash='';
@@ -361,7 +361,7 @@ $hash.=$chars[mt_rand(0,$max)];
 }   
 return $hash;   
 }
-//ĞŞ¸ÄÃÜÂë
+//ä¿®æ”¹å¯†ç 
 function edit_password($arr,$check=true)
 {
 	global $db,$QS_pwdhash;
@@ -379,10 +379,10 @@ function edit_password($arr,$check=true)
 	}
 	$md5password=md5(md5($arr['password']).$pwd_hash.$QS_pwdhash);	
 	if ($db->query( "UPDATE ".table('members')." SET password = '$md5password'  WHERE username='".$arr['username']."'")) return $arr['username'];
-	write_memberslog($_SESSION['uid'],$_SESSION['utype'],1004,$_SESSION['username'],"ĞŞ¸ÄÁËÃÜÂë");
+	write_memberslog($_SESSION['uid'],$_SESSION['utype'],1004,$_SESSION['username'],"ä¿®æ”¹äº†å¯†ç ");
 	return false;
 }
-//ĞŞ¸ÄÓÃ»§Ãû
+//ä¿®æ”¹ç”¨æˆ·å
 function edit_username($arr,$check=true)
 {
 	global $db,$QS_pwdhash,$QS_cookiepath,$QS_cookiedomain;
@@ -394,14 +394,14 @@ function edit_username($arr,$check=true)
 	}
 	if ($db->query( "UPDATE ".table('members')." SET username = '{$arr['newusername']}'  WHERE uid='".$arr['uid']."'"))
 	{
-		write_memberslog($_SESSION['uid'],$_SESSION['utype'],1004,$_SESSION['username'],"ĞŞ¸ÄÁËÓÃ»§Ãû");
-		//ĞŞ¸Äsession ÖµÖĞµÄÓÃ»§Ãû
+		write_memberslog($_SESSION['uid'],$_SESSION['utype'],1004,$_SESSION['username'],"ä¿®æ”¹äº†ç”¨æˆ·å");
+		//ä¿®æ”¹session å€¼ä¸­çš„ç”¨æˆ·å
  		$_SESSION['username'] = $arr['newusername'];
 		return $arr['newusername'];
 	} 
 	return false;
 }
-//»ñÈ¡»áÔ±µÇÂ¼ÈÕÖ¾
+//è·å–ä¼šå‘˜ç™»å½•æ—¥å¿—
 function get_user_loginlog($offset,$perpage,$get_sql= '')
 {
 	global $db;

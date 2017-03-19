@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_personal.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
@@ -19,7 +19,7 @@ $(document).ready(function(){
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ´´½¨¼òÀú</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > åˆ›å»ºç®€å†</div>
 
 <div class="usermain">
   <div class="leftmenu link_bk">
@@ -28,30 +28,30 @@ $(document).ready(function(){
   <div class="rightmain">
 	<div class="bbox1">
 		<div class="make-success">
-			<h1>´´½¨¼òÀú</h1>
+			<h1>åˆ›å»ºç®€å†</h1>
 			<div class="success-tip-block">
 				<div class="tip-wrap clearfix">
 					<div class="success-icon f-left"><img src="{#$QISHI.site_template#}images/big-yes-2.png" alt="" width="120" /></div>
 					<div class="success-ctrl f-left">
-						<h2>¼òÀú·¢²¼³É¹¦</h2>
+						<h2>ç®€å†å‘å¸ƒæˆåŠŸ</h2>
 						<div class="resume-bar clearfix">
-							<div class="f-left">¼òÀúÍêÕû¶È£º</div>
+							<div class="f-left">ç®€å†å®Œæ•´åº¦ï¼š</div>
 							<div class="resume-progress f-left">
-								<span class="progress-box"><span class="progress-bar" style="width:{#$resume_basic.complete_percent#}%;background-color:{#if $resume_basic.complete_percent<=40#}#fb1238;{#elseif $resume_basic.complete_percent>40 && $resume_basic.complete_percent<=80#}#ff9900{#else#}#2db228{#/if#}"></span></span><!-- 40%ÒÔÏÂ±³¾°ÑÕÉ«Îª#fb1238¡£80%ÒÔÏÂÎª#ff9900¡£80%ÒÔÉÏÎª#2db228 -->
+								<span class="progress-box"><span class="progress-bar" style="width:{#$resume_basic.complete_percent#}%;background-color:{#if $resume_basic.complete_percent<=40#}#fb1238;{#elseif $resume_basic.complete_percent>40 && $resume_basic.complete_percent<=80#}#ff9900{#else#}#2db228{#/if#}"></span></span><!-- 40%ä»¥ä¸‹èƒŒæ™¯é¢œè‰²ä¸º#fb1238ã€‚80%ä»¥ä¸‹ä¸º#ff9900ã€‚80%ä»¥ä¸Šä¸º#2db228 -->
 							</div>
 							<span class="f-left {#if $resume_basic.complete_percent<=40#}low-progress{#elseif $resume_basic.complete_percent>40 && $resume_basic.complete_percent<=80#}mid-progress{#else#}high-progress{#/if#}">{#$resume_basic.complete_percent#}%</span>
-							<!-- 40%ÒÔÏÂclassÎªlow-progress¡£80%ÒÔÏÂÎªmid-progress¡£80%ÒÔÉÏÎªhigh-progress -->
+							<!-- 40%ä»¥ä¸‹classä¸ºlow-progressã€‚80%ä»¥ä¸‹ä¸ºmid-progressã€‚80%ä»¥ä¸Šä¸ºhigh-progress -->
 						</div>
 						{#if $user.mobile_audit!=1#}
-						<p>Íê³ÉÊÖ»úÈÏÖ¤¿ÉÒÔÌá¸ß¼òÀú¿ÉĞÅ¶È£¬»ñµÃ¸ü¶àÆóÒµÇàíù£¡ <a href="personal_user.php?act=authenticate" class="underline">ÊÖ»úÈÏÖ¤</a></p>
+						<p>å®Œæˆæ‰‹æœºè®¤è¯å¯ä»¥æé«˜ç®€å†å¯ä¿¡åº¦ï¼Œè·å¾—æ›´å¤šä¼ä¸šé’çï¼ <a href="personal_user.php?act=authenticate" class="underline">æ‰‹æœºè®¤è¯</a></p>
 						{#/if#}
 						{#if $user.email_audit!=1#}
-						<p>Íê³ÉÓÊÏäÈÏÖ¤¿ÉÒÔ¼´Ê±ÓÊ¼ş½ÓÊÕ¼òÀú¶¯Ì¬£¬ÈÃÄã²»´í¹ıÃ¿´Î¹¤×÷»ú»á£¡ <a href="personal/personal_user.php?act=authenticate" class="underline">ÓÊÏäÈÏÖ¤</a></p>
+						<p>å®Œæˆé‚®ç®±è®¤è¯å¯ä»¥å³æ—¶é‚®ä»¶æ¥æ”¶ç®€å†åŠ¨æ€ï¼Œè®©ä½ ä¸é”™è¿‡æ¯æ¬¡å·¥ä½œæœºä¼šï¼ <a href="personal/personal_user.php?act=authenticate" class="underline">é‚®ç®±è®¤è¯</a></p>
 						{#/if#}
 						<div class="success-btn-group">
-							<input type="button" name="submitsave" id="submitsave" value="Æ¥ÅäÖ°Î»"  class="but100_30lan btn-big-font" onclick="javascript:window.open('{#"QS_jobslist"|qishi_url#}')"/>
-							<input type="button" value="Ô¤ÀÀ¼òÀú" class="but100_30hui btn-big-font" onclick="javascript:window.open('{#$QISHI.site_dir#}resume/resume-show.php?id={#$pid#}')"/>
-							<input type="button" name="submitsave" id="submitsave" value="¹ÜÀí¼òÀú"  class="but100_30hui btn-big-font" onclick="javascript:location.href='?act=resume_list'"/>
+							<input type="button" name="submitsave" id="submitsave" value="åŒ¹é…èŒä½"  class="but100_30lan btn-big-font" onclick="javascript:window.open('{#"QS_jobslist"|qishi_url#}')"/>
+							<input type="button" value="é¢„è§ˆç®€å†" class="but100_30hui btn-big-font" onclick="javascript:window.open('{#$QISHI.site_dir#}resume/resume-show.php?id={#$pid#}')"/>
+							<input type="button" name="submitsave" id="submitsave" value="ç®¡ç†ç®€å†"  class="but100_30hui btn-big-font" onclick="javascript:location.href='?act=resume_list'"/>
 							
 						</div>
 					</div>
@@ -60,8 +60,8 @@ $(document).ready(function(){
 			
 			<div class="personal-rec-jobs">
 				<div class="p-rec-job-top clearfix">
-					<h2 class="f-left">ÎªÄúÍÆ¼öÖ°Î»</h2>
-					<a href="{#$QISHI.site_dir#}jobs/jobs-list.php" class="underline f-right">²é¿´¸ü¶à>></a>
+					<h2 class="f-left">ä¸ºæ‚¨æ¨èèŒä½</h2>
+					<a href="{#$QISHI.site_dir#}jobs/jobs-list.php" class="underline f-right">æŸ¥çœ‹æ›´å¤š>></a>
 				</div>
 				<div class="p-rec-data" pid="{#$pid#}">
 					<table id="interest_jobs_list"></table>

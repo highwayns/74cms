@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>¼òÀúÁĞ±í - {#$QISHI.site_name#}</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ç®€å†åˆ—è¡¨ - {#$QISHI.site_name#}</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <link href="css/resume.css" rel="stylesheet" type="text/css" />
@@ -17,12 +17,12 @@
 $(document).ready(function()
 {
 
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
 	
-	// ´´½¨¼òÀúµ¯³ö¿ò
+	// åˆ›å»ºç®€å†å¼¹å‡ºæ¡†
 	  function showFloatBox() {
 	    $("body").prepend("<div class=\"menu_bg_layer\"></div>");
 	    $(".menu_bg_layer").height($(document).height());
@@ -30,21 +30,21 @@ $(document).ready(function()
 	    $(".menu_bg_layer").css("opacity",0.3);
 	  }
 
-	  // µØÇøµã»÷
+	  // åœ°åŒºç‚¹å‡»
 	  $("#menulistCity").click(function(){
 	    showFloatBox();
 	    $("#menuDistrict").css({ top: ($(window).height() - $('#menuDistrict').outerHeight())/2 + $(document).scrollTop() });
 	    $("#menuDistrict").show();
 	  });
 
-	  // Ö°ÄÜµã»÷
+	  // èŒèƒ½ç‚¹å‡»
 	  $("#menulistJobs").click(function(){
 	    showFloatBox();
 	    $("#menuJobs").css({ top: ($(window).height() - $('#menuJobs').outerHeight())/2 + $(document).scrollTop() });
 	    $("#menuJobs").show();
 	  });
 
-	  // Ñ§Àúµã»÷
+	  // å­¦å†ç‚¹å‡»
 	  	$("#menulistEducation").click(function(){
 		    showFloatBox();
 		    $("#menuEducation").css({ top: ($(window).height() - $('#menuEducation').outerHeight())/2 + $(document).scrollTop() });
@@ -56,8 +56,8 @@ $(document).ready(function()
 			    $("#menuEducation").hide();
 			    $(".menu_bg_layer").remove();
 
-          //µã»÷ÍêÖ±½ÓËÑË÷
-          var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i;
+          //ç‚¹å‡»å®Œç›´æ¥æœç´¢
+          var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i;
           var key=$("#key").val();
           if (patrn.exec(key))
           {
@@ -76,7 +76,7 @@ $(document).ready(function()
 		    });
 	  	});
    
-	  	// ¹¤×÷¾­Ñéµã»÷
+	  	// å·¥ä½œç»éªŒç‚¹å‡»
 	  	$("#menulistExperience").click(function(){
 		    showFloatBox();
 		    $("#menuExperience").css({ top: ($(window).height() - $('#menuExperience').outerHeight())/2 + $(document).scrollTop() });
@@ -88,8 +88,8 @@ $(document).ready(function()
 			    $("#menuExperience").hide();
 			    $(".menu_bg_layer").remove();
 
-          //µã»÷ÍêÖ±½ÓËÑË÷
-          var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i;
+          //ç‚¹å‡»å®Œç›´æ¥æœç´¢
+          var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i;
           var key=$("#key").val();
           if (patrn.exec(key))
           {
@@ -107,7 +107,7 @@ $(document).ready(function()
           window.location.href=url+"?key="+key+"&district="+district+"&sdistrict="+sdistrict+"&education="+education+"&topclass="+topclass+"&category="+category+"&subclass="+subclass+"&experience="+experience+"&talent="+talent;
 		    });
 	  	});
-      // ¹Ø±Õµ¯³ö¿ò
+      // å…³é—­å¼¹å‡ºæ¡†
       $(".choose_close").click(function(event) {
         $(this).parent().hide();
         $(".menu_bg_layer").remove();
@@ -115,7 +115,7 @@ $(document).ready(function()
 	//
 	$("#key").focus(function()
 	{
-		var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+		var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
 		var key=$("#key").val();
 		if (patrn.exec(key))
 		{
@@ -131,7 +131,7 @@ $(document).ready(function()
 	{#if $resume#}
 	$(".more").click(function(){
 		$(this).hide();
-		var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+		var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
 		var key=$("#key").val();
 		if (patrn.exec(key))
 		{
@@ -154,7 +154,7 @@ $(document).ready(function()
 		$.get("{#$QISHI.wap_domain#}/plus/wap_ajax.php?act=ajaxresumelist&offset="+(offset+5)+"&rows=5&key="+key+"&district="+district+"&sdistrict="+sdistrict+"&education="+education+"&topclass="+topclass+"&category="+category+"&subclass="+subclass+"&experience="+experience+"&talent="+talent, function(result){
 		    if(result=="-1"){
 		    	$(".more").show();
-		    	$(".more").html("Ã»ÓĞ¸ü¶à¼òÀúÁË");
+		    	$(".more").html("æ²¡æœ‰æ›´å¤šç®€å†äº†");
 		    }else{
 		    	$(".showlist").append(result);
 		    	$(".more").show();
@@ -167,7 +167,7 @@ $(document).ready(function()
 	});
 	{#/if#}
 	$(".so_sub").click(function(){
-		var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i;
+		var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i;
 		var key=$("#key").val();
 		if (patrn.exec(key))
 		{
@@ -190,32 +190,32 @@ $(document).ready(function()
 <body>
 <div class="sub_bodybg"></div>
 <div class="sub_head_top">
-	<div class="title">ËÑË÷¼òÀú</div>
+	<div class="title">æœç´¢ç®€å†</div>
 	<div class="back" id="pageback"><img src="images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="javascript:void(0);"><img src="images/2.jpg"  border="0"/></a></div>
 </div>
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 {#include file="top-menu.html"#}
-<!--¿ì½İ°´Å¥ -->
-<!--¹Ø¼ü×ÖËÑË÷ -->
+<!--å¿«æ·æŒ‰é’® -->
+<!--å…³é”®å­—æœç´¢ -->
 <div class="resume_so">
-	<input name="key" type="text"  id="key"  class="keyinput" value="{#if $smarty.get.key==""#}ÇëÊäÈë¹Ø¼ü×Ö{#else#}{#$smarty.get.key#}{#/if#}"/>
+	<input name="key" type="text"  id="key"  class="keyinput" value="{#if $smarty.get.key==""#}è¯·è¾“å…¥å…³é”®å­—{#else#}{#$smarty.get.key#}{#/if#}"/>
 	<div class="clearkey" id="clearkey"><img src="images/17.jpg"  border="0"/></div>
     <div class="so_sub"><img src="images/19.jpg"  border="0"/></div>
 </div>
-<!--¸ü¶àËÑË÷Ìõ¼ş -->
+<!--æ›´å¤šæœç´¢æ¡ä»¶ -->
  <input type="hidden" id="talent" name="talent" value="{#$smarty.get.talent#}" />
 <div class="jobs_so_menus">
   <div class="menulistboxs" id="menulistCity">
     <div class="so_box area">
-      <img src="./images/so_icon_1_hui.gif" alt="" />&nbsp;µØÇø
+      <img src="./images/so_icon_1_hui.gif" alt="" />&nbsp;åœ°åŒº
         <input type="hidden" id="district" name="district" value="{#$smarty.get.district#}" />
         <input type="hidden" id="sdistrict" name="sdistrict" value="{#$smarty.get.sdistrict#}" />
     </div>
   </div>
   <div class="menu choose_menu" id="menuDistrict" style="display:none;position:absolute;z-index:1;">
-    <div class="menu_title">µØÇø</div>
+    <div class="menu_title">åœ°åŒº</div>
     <div class="choose_close"></div>
     <div class="area_choose">
       <ul class="area_left" id="area_left"></ul>
@@ -238,7 +238,7 @@ $(document).ready(function()
         var scitystr = "";
         if(QS_city[cid]) {
           var ccitysArray = QS_city[cid].split("|");
-          scitystr += '<li class="area_small" rcoid="0" title="'+ctitle+'/²»ÏŞ" pid="'+cid+'.0" href="javascript:;">²»ÏŞ</li>';
+          scitystr += '<li class="area_small" rcoid="0" title="'+ctitle+'/ä¸é™" pid="'+cid+'.0" href="javascript:;">ä¸é™</li>';
           $.each(ccitysArray, function(cindex, cval) {
             if(cval) {
               var ccitys = cval.split(",");
@@ -256,8 +256,8 @@ $(document).ready(function()
             $("#menuDistrict").hide();
             $(".menu_bg_layer").remove();
 
-            //µã»÷ÍêÖ±½ÓËÑË÷
-            var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i;
+            //ç‚¹å‡»å®Œç›´æ¥æœç´¢
+            var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i;
             var key=$("#key").val();
             if (patrn.exec(key))
             {
@@ -282,8 +282,8 @@ $(document).ready(function()
           $("#menuDistrict").hide();
           $(".menu_bg_layer").remove();
 
-          //µã»÷ÍêÖ±½ÓËÑË÷
-          var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i;
+          //ç‚¹å‡»å®Œç›´æ¥æœç´¢
+          var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i;
           var key=$("#key").val();
           if (patrn.exec(key))
           {
@@ -306,14 +306,14 @@ $(document).ready(function()
 
   <div class="menulistboxs" id="menulistJobs">
     <div class="so_box functions">
-      <img src="./images/so_icon_3_hui.gif" alt="" />&nbsp;Ö°ÄÜ
+      <img src="./images/so_icon_3_hui.gif" alt="" />&nbsp;èŒèƒ½
           <input name="topclass" id="topclass" type="hidden" value="{#$smarty.get.topclass#}" />
           <input name="category" id="category" type="hidden" value="{#$smarty.get.category#}" />
           <input name="subclass" id="subclass" type="hidden" value="{#$smarty.get.subclass#}" />
     </div>
   </div>
   <div class="menu choose_menu" id="menuJobs" style="display:none;position:absolute;z-index:1;">
-  <div class="menu_title">Ö°ÄÜ</div>
+  <div class="menu_title">èŒèƒ½</div>
   <div class="choose_close"></div>
   <div class="area_choose">
     <ul class="area_left" id="jobs_left_list"></ul>
@@ -342,7 +342,7 @@ $(document).ready(function()
       var sjobstr = "";
       if(QS_jobs[rid]) {
         var cjobsArray = QS_jobs[rid].split("|");
-        sjobstr += '<li class="area_small" rcoid="0" title="'+rtitle+'/²»ÏŞ" pid="'+rpid+'.0">²»ÏŞ</li>';
+        sjobstr += '<li class="area_small" rcoid="0" title="'+rtitle+'/ä¸é™" pid="'+rpid+'.0">ä¸é™</li>';
         $.each(cjobsArray, function(cindex, cval) {
           if(cval) {
             var cjobs = cval.split(",");
@@ -361,8 +361,8 @@ $(document).ready(function()
           $("#menuJobs").hide();
           $(".menu_bg_layer").remove();
 
-          //µã»÷ÍêÖ±½ÓËÑË÷
-          var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i;
+          //ç‚¹å‡»å®Œç›´æ¥æœç´¢
+          var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i;
           var key=$("#key").val();
           if (patrn.exec(key))
           {
@@ -390,8 +390,8 @@ $(document).ready(function()
         $("#menuJobs").hide();
         $(".menu_bg_layer").remove();
 
-        //µã»÷ÍêÖ±½ÓËÑË÷
-        var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i;
+        //ç‚¹å‡»å®Œç›´æ¥æœç´¢
+        var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i;
         var key=$("#key").val();
         if (patrn.exec(key))
         {
@@ -413,16 +413,16 @@ $(document).ready(function()
   </div>
     <div class="menulistboxs" id="menulistExperience">
     <div class="so_box trade">
-      <img src="./images/so_icon_6_hui.gif" alt="" />&nbsp;¾­Ñé
+      <img src="./images/so_icon_6_hui.gif" alt="" />&nbsp;ç»éªŒ
         <input name="experience" type="hidden" id="experience" value="{#$smarty.get.experience#}" />
         <input name="experience_cn" type="hidden" id="experience_cn" value="{#$smarty.get.experience_cn#}" />
     </div>
   </div>
   <div class="menu choose_menu" id="menuExperience" style="display:none;position:absolute;z-index:1;">
-  <div class="menu_title">¹¤×÷¾­Ñé</div>
+  <div class="menu_title">å·¥ä½œç»éªŒ</div>
       <div class="choose_close"></div>
       <ul>
-          {#qishi_get_classify  set="ÀàĞÍ:QS_experience,ÁĞ±íÃû:c_experience"#}
+          {#qishi_get_classify  set="ç±»å‹:QS_experience,åˆ—è¡¨å:c_experience"#}
           {#foreach from=$c_experience item=list#}
           <li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
           {#/foreach#}
@@ -430,16 +430,16 @@ $(document).ready(function()
   </div>
   <div class="menulistboxs" id="menulistEducation">
     <div class="so_box moneys">
-      <img src="./images/so_icon_5_hui.gif" alt="" />&nbsp;Ñ§Àú
+      <img src="./images/so_icon_5_hui.gif" alt="" />&nbsp;å­¦å†
         <input name="education" type="hidden" id="education" value="{#$smarty.get.education#}" />
         <input name="education_cn" type="hidden" id="education_cn" value="{#$smarty.get.education_cn#}" />
     </div>
   </div>
     <div class="menu choose_menu" id="menuEducation" style="display:none;position:absolute;z-index:1;">
-	    <div class="menu_title">Ñ§Àú</div>
+	    <div class="menu_title">å­¦å†</div>
       <div class="choose_close"></div>
 	    <ul>
-	        {#qishi_get_classify  set="ÀàĞÍ:QS_education,ÁĞ±íÃû:c_education"#}
+	        {#qishi_get_classify  set="ç±»å‹:QS_education,åˆ—è¡¨å:c_education"#}
 	        {#foreach from=$c_education item=list#}
 	        <li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 	        {#/foreach#}
@@ -449,16 +449,16 @@ $(document).ready(function()
 </div>
 
 
-<!-- Ñ¡ÔñÍêÖ®ºóµÄÍê³É¿ò -->
+<!-- é€‰æ‹©å®Œä¹‹åçš„å®Œæˆæ¡† -->
 <div class="so_complete">
   <div class="so_complete_box">
-  <span>ËÑË÷Ìõ¼ş£º</span><i id="showListCity"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i id="showListExperience"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i id="showListJobs"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i id="showListEducation"></i>
+  <span>æœç´¢æ¡ä»¶ï¼š</span><i id="showListCity"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i id="showListExperience"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i id="showListJobs"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i id="showListEducation"></i>
   </div>
   <div class="clear"></div>
   <img id="clearShowList" src="./images/so_close.gif" alt=""width="16"height="17" />
 </div>
 <script type="text/javascript">
-  // µØÇø»Ö¸´
+  // åœ°åŒºæ¢å¤
   var citygetDistrictId = "{#$smarty.get.district#}";
   var citygetSdistrictId = "{#$smarty.get.sdistrict#}";
   var showCityHtm = "";
@@ -471,7 +471,7 @@ $(document).ready(function()
      }
   });
   if(citygetSdistrictId == "0") {
-    showCityHtm += "²»ÏŞ";
+    showCityHtm += "ä¸é™";
   } else {
     if(QS_city[citygetDistrictId]) {
       var ccitysArray = QS_city[citygetDistrictId].split("|");
@@ -486,7 +486,7 @@ $(document).ready(function()
     }
   }
   $("#showListCity").html(showCityHtm);
-  // ¹¤×÷¾­Ñé»Ö¸´
+  // å·¥ä½œç»éªŒæ¢å¤
   var citygetExperienceId = "{#$smarty.get.experience#}";
   var showExperienceHtm = "";
   $.each(QS_experience, function(windex, eval) {
@@ -498,7 +498,7 @@ $(document).ready(function()
     }
   });
   $("#showListExperience").html(showExperienceHtm);
-  // Ö°ÄÜ»Ö¸´
+  // èŒèƒ½æ¢å¤
   var citygetTopclassId = "{#$smarty.get.topclass#}";
   var citygetCategoryId = "{#$smarty.get.category#}";
   var citygetSubclassId = "{#$smarty.get.subclass#}";
@@ -515,7 +515,7 @@ $(document).ready(function()
     });
   }
   if(citygetSubclassId == "0") {
-    showJobsHtm += "²»ÏŞ";
+    showJobsHtm += "ä¸é™";
   } else {
     if(QS_jobs[citygetCategoryId]) {
       var tsjobsArray = QS_jobs[citygetCategoryId].split("|");
@@ -530,7 +530,7 @@ $(document).ready(function()
     }
   }
   $("#showListJobs").html(showJobsHtm);
-  // Ñ§Àú»Ö¸´
+  // å­¦å†æ¢å¤
   var citygetEducationId = "{#$smarty.get.education#}";
   var showEducationHtm = "";
   $.each(QS_education, function(windex, edval) {
@@ -558,15 +558,15 @@ $(document).ready(function()
 {#foreach from=$resume item=list#}
 	<div class="list" id="li-0" url="{#$list.url#}">
 	  <span><a href="{#$list.url#}">{#$list.fullname#}({#$list.sex_cn#})</a></span><br />
-Ñ§Àú£º{#$list.education_cn#}  ¹¤×÷¾­Ñé£º{#$list.experience_cn#}<br />
+å­¦å†ï¼š{#$list.education_cn#}  å·¥ä½œç»éªŒï¼š{#$list.experience_cn#}<br />
 {#$list.intention_jobs#}
 	</div>
 {#/foreach#}
 </div>
 {#if $resume#}
-    <div class="more link_bk"><a href="javascript:void(0);">¸ü¶à¼òÀú...</a></div>	
+    <div class="more link_bk"><a href="javascript:void(0);">æ›´å¤šç®€å†...</a></div>	
 {#else#}
-    <div class="more link_bk">Ã»ÓĞ¸ü¶à¼òÀúÁË</div>	
+    <div class="more link_bk">æ²¡æœ‰æ›´å¤šç®€å†äº†</div>	
 {#/if#}
 </div>
 {#include file="wap/footer.htm"#}

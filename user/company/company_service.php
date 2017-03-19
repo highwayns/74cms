@@ -1,34 +1,34 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ÆóÒµ»áÔ±ÖĞĞÄ
+ * 74cms ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
 require_once(dirname(__FILE__).'/company_common.php');
 $smarty->assign('leftmenu',"service");
-//ÎÒµÄÕË»§ -> »ı·Ö²Ù×÷ 
+//æˆ‘çš„è´¦æˆ· -> ç§¯åˆ†æ“ä½œ 
 if ($act=='j_account')
 {
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
 	$smarty->assign('operation_mode',intval($_CFG['operation_mode']));
-	//ÊÕÖ§×´Ì¬(ÏûºÄ->1 ÔùËÍ->2)/²Ù×÷Ê±¼ä
+	//æ”¶æ”¯çŠ¶æ€(æ¶ˆè€—->1 èµ é€->2)/æ“ä½œæ—¶é—´
 	$cid=trim($_GET['cid']);
 	$settr=intval($_GET['settr']);
-	//Ì×²Í
+	//å¥—é¤
 	$my_setmeal = get_user_setmeal($_SESSION['uid']);
 	$smarty->assign('setmeal',$my_setmeal);
-	//»ı·Ö
+	//ç§¯åˆ†
 	$my_points = get_user_points(intval($_SESSION['uid']));
 	$smarty->assign('points',$my_points);
 	$smarty->assign('act','j_account');
-	$smarty->assign('title','ÎÒµÄÕË»§ - ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
-	//»ı·ÖÏû·ÑÃ÷Ï¸
+	$smarty->assign('title','æˆ‘çš„è´¦æˆ· - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
+	//ç§¯åˆ†æ¶ˆè´¹æ˜ç»†
 	if(trim($_GET['detail']) == '1')
 	{
 		$wheresql=" WHERE log_uid='{$_SESSION['uid']}' AND log_type=9001 AND log_mode=1";
@@ -40,13 +40,13 @@ if ($act=='j_account')
 		}
 		if($cid == '1')
 		{
-			$smarty->assign('c_type',"ÏûºÄ");
+			$smarty->assign('c_type',"æ¶ˆè€—");
 			$smarty->assign('cid',$_GET['cid']);
 			$wheresql.=" AND log_op_used < 0 ";
 		}
 		elseif($cid == '2')
 		{
-			$smarty->assign('c_type',"ÔùËÍ");
+			$smarty->assign('c_type',"èµ é€");
 			$smarty->assign('cid',$_GET['cid']);
 			$wheresql.=" AND log_op_used > 0 ";
 		}
@@ -59,28 +59,28 @@ if ($act=='j_account')
 		$smarty->assign('page',$page->show(3));
 		$smarty->display('member_company/company_my_account_detail.htm');
 	}
-	//»ı·Ö¹æÔò
+	//ç§¯åˆ†è§„åˆ™
 	else
 	{
 		$smarty->assign('points_rule',get_points_rule());
 		$smarty->display('member_company/company_my_account.htm');
 	}
 }
-//ÎÒµÄÕË»§ -> Ì×²Í²Ù×÷ 
+//æˆ‘çš„è´¦æˆ· -> å¥—é¤æ“ä½œ 
 elseif ($act=='t_account')
 {
 	$settr=intval($_GET['settr']);
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
 	$smarty->assign('operation_mode',intval($_CFG['operation_mode']));
-	//»ı·Ö
+	//ç§¯åˆ†
 	$my_points = get_user_points(intval($_SESSION['uid']));
 	$smarty->assign('points',$my_points);
-	//Ì×²Í
+	//å¥—é¤
 	$my_setmeal = get_user_setmeal($_SESSION['uid']);
 	$smarty->assign('setmeal',$my_setmeal);
 	$smarty->assign('act','t_account');
-	$smarty->assign('title','ÎÒµÄÕË»§ - ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
-	//Ì×²ÍÏû·ÑÃ÷Ï¸
+	$smarty->assign('title','æˆ‘çš„è´¦æˆ· - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
+	//å¥—é¤æ¶ˆè´¹æ˜ç»†
 	if(trim($_GET['detail']) == '1')
 	{
 		$wheresql=" WHERE log_uid='{$_SESSION['uid']}' AND log_type=9002 AND log_mode=2 ";
@@ -99,7 +99,7 @@ elseif ($act=='t_account')
 		$smarty->assign('page',$page->show(3));
 		$smarty->display('member_company/company_my_account_package_detail.htm');
 	}
-	//Ì×²Í¹æÔò
+	//å¥—é¤è§„åˆ™
 	else
 	{
 		$smarty->assign('setmeal_rule',get_members_setmeal_rule($my_setmeal['setmeal_id']));
@@ -113,13 +113,13 @@ elseif ($act=='order_list')
 	$is_paid=trim($_GET['is_paid']);
 	$pay_type=intval($_GET['pay_type']);
 	$wheresql=" WHERE uid='".$_SESSION['uid']."' ";
-	//¶©µ¥×´Ì¬
+	//è®¢å•çŠ¶æ€
 	if($is_paid<>'' && is_numeric($is_paid))
 	{
 		$smarty->assign('is_paid',$is_paid);
 		$wheresql.=" AND is_paid='".intval($is_paid)."' ";
 	}
-	//¶©µ¥Àà±ğ
+	//è®¢å•ç±»åˆ«
 	if($pay_type > 0)
 	{
 		$smarty->assign('pay_type',$pay_type);
@@ -130,7 +130,7 @@ elseif ($act=='order_list')
 	$page = new page(array('total'=>$db->get_total($total_sql), 'perpage'=>$perpage));
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
-	$smarty->assign('title','³äÖµ¼ÇÂ¼ - ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','å……å€¼è®°å½• - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('act',$act);
 	$smarty->assign('is_paid',$is_paid);
 	$smarty->assign('payment',get_order_all($offset, $perpage,$wheresql));
@@ -142,7 +142,7 @@ elseif ($act=='order_list')
 }
 elseif ($act=='order_add')
 {
-	$smarty->assign('title','ÔÚÏß³äÖµ - ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','åœ¨çº¿å……å€¼ - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('payment',get_payment());
 	$smarty->assign('points',get_user_points($_SESSION['uid']));
 	$smarty->display('member_company/company_order_add.htm');
@@ -151,36 +151,36 @@ elseif ($act=='order_add_save')
 {
 		if (!$cominfo_flge)
 		{
-		$link[0]['text'] = "ÌîĞ´ÆóÒµ×ÊÁÏ";
+		$link[0]['text'] = "å¡«å†™ä¼ä¸šèµ„æ–™";
 		$link[0]['href'] = 'company_info.php?act=company_profile';
-		showmsg("ÇëÏÈÌîĞ´ÄúµÄÆóÒµ×ÊÁÏ£¡",1,$link);
+		showmsg("è¯·å…ˆå¡«å†™æ‚¨çš„ä¼ä¸šèµ„æ–™ï¼",1,$link);
 		}
 	$myorder=get_user_order($_SESSION['uid'],1);
 	$order_num=count($myorder);
 	if ($order_num>=5)
 	{
-	$link[0]['text'] = "Á¢¼´²é¿´";
+	$link[0]['text'] = "ç«‹å³æŸ¥çœ‹";
 	$link[0]['href'] = '?act=order_list&is_paid=1';
-	showmsg("Î´´¦ÀíµÄ¶©µ¥²»ÄÜ³¬¹ı 5 Ìõ£¬ÇëÏÈ´¦ÀíºóÔÙ´ÎÉêÇë£¡",1,$link,true,8);
+	showmsg("æœªå¤„ç†çš„è®¢å•ä¸èƒ½è¶…è¿‡ 5 æ¡ï¼Œè¯·å…ˆå¤„ç†åå†æ¬¡ç”³è¯·ï¼",1,$link,true,8);
 	}
-	$amount=(trim($_POST['amount'])).(intval($_POST['amount']))?trim($_POST['amount']):showmsg('ÇëÌîĞ´³äÖµ½ğ¶î£¡',1);
-	($amount<$_CFG['payment_min'])?showmsg("µ¥±Ê³äÖµ½ğ¶î²»ÄÜÉÙÓÚ ".$_CFG['payment_min']." Ôª£¡",1):'';
-	$payment_name=empty($_POST['payment_name'])?showmsg("ÇëÑ¡Ôñ¸¶¿î·½Ê½£¡",1):$_POST['payment_name'];
+	$amount=(trim($_POST['amount'])).(intval($_POST['amount']))?trim($_POST['amount']):showmsg('è¯·å¡«å†™å……å€¼é‡‘é¢ï¼',1);
+	($amount<$_CFG['payment_min'])?showmsg("å•ç¬”å……å€¼é‡‘é¢ä¸èƒ½å°‘äº ".$_CFG['payment_min']." å…ƒï¼",1):'';
+	$payment_name=empty($_POST['payment_name'])?showmsg("è¯·é€‰æ‹©ä»˜æ¬¾æ–¹å¼ï¼",1):$_POST['payment_name'];
 	$paymenttpye=get_payment_info($payment_name);
-	if (empty($paymenttpye)) showmsg("Ö§¸¶·½Ê½´íÎó£¡",0);
-	$fee=number_format(($amount/100)*$paymenttpye['fee'],1,'.','');//ÊÖĞø·Ñ
-	$order['oid']= strtoupper(substr($paymenttpye['typename'],0,1))."-".date('ymd',time())."-".date('His',time());//¶©µ¥ºÅ
+	if (empty($paymenttpye)) showmsg("æ”¯ä»˜æ–¹å¼é”™è¯¯ï¼",0);
+	$fee=number_format(($amount/100)*$paymenttpye['fee'],1,'.','');//æ‰‹ç»­è´¹
+	$order['oid']= strtoupper(substr($paymenttpye['typename'],0,1))."-".date('ymd',time())."-".date('His',time());//è®¢å•å·
 	$order['v_url']=$_CFG['site_domain'].$_CFG['site_dir']."include/payment/respond_".$paymenttpye['typename'].".php";
 	$order['v_amount']=$amount+$fee; 
 	$points=$amount*$_CFG['payment_rate'];
-	$order_id=add_order($_SESSION['uid'],4,$order['oid'],$amount,$payment_name,"³äÖµ»ı·Ö:".$points,$timestamp,$points,'',1);
+	$order_id=add_order($_SESSION['uid'],4,$order['oid'],$amount,$payment_name,"å……å€¼ç§¯åˆ†:".$points,$timestamp,$points,'',1);
 		if ($order_id)
 			{
 			header("location:?act=payment&order_id=".$order_id);
 			}
 			else
 			{
-			showmsg("Ìí¼Ó¶©µ¥Ê§°Ü£¡",0);
+			showmsg("æ·»åŠ è®¢å•å¤±è´¥ï¼",0);
 			}
 }
 elseif ($act=='payment')
@@ -189,7 +189,7 @@ elseif ($act=='payment')
 	if ($setmeal['endtime']>0){
 		$setmeal_endtime=sub_day($setmeal['endtime'],time());
 	}else{
-		$setmeal_endtime="ÎŞÏŞÆÚ";
+		$setmeal_endtime="æ— é™æœŸ";
 	}
 	$smarty->assign('user_setmeal',$setmeal);
 	$smarty->assign('setmeal_endtime',$setmeal_endtime);
@@ -197,19 +197,19 @@ elseif ($act=='payment')
 	$order_id=intval($_GET['order_id']);
 	$myorder=get_order_one($_SESSION['uid'],$order_id);
 	$payment=get_payment_info($myorder['payment_name']);
-	if (empty($payment)) showmsg("Ö§¸¶·½Ê½´íÎó£¡",0);
-	$fee=number_format(($myorder['amount']/100)*$payment['fee'],1,'.','');//ÊÖĞø·Ñ
-	$order['oid']=$myorder['oid'];//¶©µ¥ºÅ
+	if (empty($payment)) showmsg("æ”¯ä»˜æ–¹å¼é”™è¯¯ï¼",0);
+	$fee=number_format(($myorder['amount']/100)*$payment['fee'],1,'.','');//æ‰‹ç»­è´¹
+	$order['oid']=$myorder['oid'];//è®¢å•å·
 	$order['v_url']=$_CFG['site_domain'].$_CFG['site_dir']."include/payment/respond_".$payment['typename'].".php";
 	$order['v_amount']=$myorder['amount']+$fee;
-	if ($myorder['payment_name']!='remittance')//¼ÙÈçÊÇ·ÇÏßÏÂÖ§¸¶£¬
+	if ($myorder['payment_name']!='remittance')//å‡å¦‚æ˜¯éçº¿ä¸‹æ”¯ä»˜ï¼Œ
 	{
 		require_once(QISHI_ROOT_PATH."include/payment/".$payment['typename'].".php");
 		$payment_form=get_code($order,$payment);
-		if (empty($payment_form)) showmsg("ÔÚÏßÖ§¸¶²ÎÊı´íÎó£¡",0);
+		if (empty($payment_form)) showmsg("åœ¨çº¿æ”¯ä»˜å‚æ•°é”™è¯¯ï¼",0);
 	}
 	$smarty->assign('points',get_user_points($_SESSION['uid']));
-	$smarty->assign('title','¸¶¿î - ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','ä»˜æ¬¾ - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('fee',$fee);
 	$smarty->assign('amount',$myorder['amount']);
 	$smarty->assign('oid',$order['oid']);
@@ -219,10 +219,10 @@ elseif ($act=='payment')
 }
 elseif ($act=='order_del')
 {
-	$link[0]['text'] = "·µ»ØÉÏÒ»Ò³";
+	$link[0]['text'] = "è¿”å›ä¸Šä¸€é¡µ";
 	$link[0]['href'] = '?act=order_list';
 	$id=intval($_GET['id']);
-	del_order($_SESSION['uid'],$id)?showmsg('È¡Ïû³É¹¦£¡',2,$link):showmsg('È¡ÏûÊ§°Ü£¡',1);
+	del_order($_SESSION['uid'],$id)?showmsg('å–æ¶ˆæˆåŠŸï¼',2,$link):showmsg('å–æ¶ˆå¤±è´¥ï¼',1);
 }
 elseif ($act=='setmeal_list')
 {
@@ -230,26 +230,26 @@ elseif ($act=='setmeal_list')
 	if ($setmeal['endtime']>0){
 		$setmeal_endtime=sub_day($setmeal['endtime'],time());
 	}else{
-		$setmeal_endtime="ÎŞÏŞÆÚ";
+		$setmeal_endtime="æ— é™æœŸ";
 	}
 	$smarty->assign('user_setmeal',$setmeal);
 	$smarty->assign('setmeal_endtime',$setmeal_endtime);
-	$smarty->assign('title','·şÎñÁĞ±í - ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','æœåŠ¡åˆ—è¡¨ - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('setmeal',get_setmeal());
 	$smarty->display('member_company/company_setmeal_list.htm');
 }
 elseif ($act=='setmeal_order_add')
 {
-	$setmealid = intval($_GET['setmealid'])?intval($_GET['setmealid']):showmsg("ÇëÑ¡Ôñ·şÎñÌ×²Í£¡",1);
+	$setmealid = intval($_GET['setmealid'])?intval($_GET['setmealid']):showmsg("è¯·é€‰æ‹©æœåŠ¡å¥—é¤ï¼",1);
 	$setmeal = get_user_setmeal($_SESSION['uid']);
 	if ($setmeal['endtime']>0){
 		$setmeal_endtime=sub_day($setmeal['endtime'],time());
 	}else{
-		$setmeal_endtime="ÎŞÏŞÆÚ";
+		$setmeal_endtime="æ— é™æœŸ";
 	}
 	$smarty->assign('user_setmeal',$setmeal);
 	$smarty->assign('setmeal_endtime',$setmeal_endtime);
-	$smarty->assign('title','ÉêÇë·şÎñ - ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','ç”³è¯·æœåŠ¡ - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('setmeal',get_setmeal_one($setmealid));
 	$smarty->assign('payment',get_payment());
 	$smarty->display('member_company/company_order_add_setmeal.htm');
@@ -258,57 +258,57 @@ elseif ($act=='setmeal_order_add_save')
 {
 		if (!$cominfo_flge)
 		{
-		$link[0]['text'] = "ÌîĞ´ÆóÒµ×ÊÁÏ";
+		$link[0]['text'] = "å¡«å†™ä¼ä¸šèµ„æ–™";
 		$link[0]['href'] = 'company_info.php?act=company_profile';
-		showmsg("ÇëÏÈÌîĞ´ÄúµÄÆóÒµ×ÊÁÏ£¡",1,$link);
+		showmsg("è¯·å…ˆå¡«å†™æ‚¨çš„ä¼ä¸šèµ„æ–™ï¼",1,$link);
 		}
 	$myorder=get_user_order($_SESSION['uid'],1);
 	$order_num=count($myorder);
 	if ($order_num>=5)
 	{
-	$link[0]['text'] = "Á¢¼´²é¿´";
+	$link[0]['text'] = "ç«‹å³æŸ¥çœ‹";
 	$link[0]['href'] = '?act=order_list&is_paid=1';
-	showmsg("Î´´¦ÀíµÄ¶©µ¥²»ÄÜ³¬¹ı 5 Ìõ£¬ÇëÏÈ´¦ÀíºóÔÙ´ÎÉêÇë£¡",1,$link,true,8);
+	showmsg("æœªå¤„ç†çš„è®¢å•ä¸èƒ½è¶…è¿‡ 5 æ¡ï¼Œè¯·å…ˆå¤„ç†åå†æ¬¡ç”³è¯·ï¼",1,$link,true,8);
 	}
 	$setmeal=get_setmeal_one($_POST['setmealid']);
 	if ($setmeal && $setmeal['apply']=="1")
 	{
-		$payment_name=empty($_POST['payment_name'])?showmsg("ÇëÑ¡Ôñ¸¶¿î·½Ê½£¡",1):$_POST['payment_name'];
+		$payment_name=empty($_POST['payment_name'])?showmsg("è¯·é€‰æ‹©ä»˜æ¬¾æ–¹å¼ï¼",1):$_POST['payment_name'];
 		$paymenttpye=get_payment_info($payment_name);
-		if (empty($paymenttpye)) showmsg("Ö§¸¶·½Ê½´íÎó£¡",0);
-		$fee=number_format(($setmeal['expense']/100)*$paymenttpye['fee'],1,'.','');//ÊÖĞø·Ñ
-		$order['oid']= strtoupper(substr($paymenttpye['typename'],0,1))."-".date('ymd',time())."-".date('His',time());//¶©µ¥ºÅ
+		if (empty($paymenttpye)) showmsg("æ”¯ä»˜æ–¹å¼é”™è¯¯ï¼",0);
+		$fee=number_format(($setmeal['expense']/100)*$paymenttpye['fee'],1,'.','');//æ‰‹ç»­è´¹
+		$order['oid']= strtoupper(substr($paymenttpye['typename'],0,1))."-".date('ymd',time())."-".date('His',time());//è®¢å•å·
 		$order['v_url']=$_CFG['site_domain'].$_CFG['site_dir']."include/payment/respond_".$paymenttpye['typename'].".php";
-		$order['v_amount']=$setmeal['expense']+$fee;//½ğ¶î
-		$order_id=add_order($_SESSION['uid'],1,$order['oid'],$setmeal['expense'],$payment_name,"¿ªÍ¨·şÎñ:".$setmeal['setmeal_name'],$timestamp,"",$setmeal['id'],1);
+		$order['v_amount']=$setmeal['expense']+$fee;//é‡‘é¢
+		$order_id=add_order($_SESSION['uid'],1,$order['oid'],$setmeal['expense'],$payment_name,"å¼€é€šæœåŠ¡:".$setmeal['setmeal_name'],$timestamp,"",$setmeal['id'],1);
 			if ($order_id)
 			{
-				if ($order['v_amount']==0)//0ÔªÌ×²Í
+				if ($order['v_amount']==0)//0å…ƒå¥—é¤
 				{
 					if (order_paid($order['oid']))
 					{
-						$link[0]['text'] = "²é¿´¶©µ¥";
+						$link[0]['text'] = "æŸ¥çœ‹è®¢å•";
 						$link[0]['href'] = 'company_service.php?act=order_list';
-						$link[1]['text'] = "»áÔ±ÖĞĞÄÊ×Ò³";
+						$link[1]['text'] = "ä¼šå‘˜ä¸­å¿ƒé¦–é¡µ";
 						$link[1]['href'] = 'company_index.php?act=';
-						showmsg("²Ù×÷³É¹¦£¬ÏµÍ³ÒÑÎªÄú¿ªÍ¨ÁË·şÎñ£¡",2,$link);	
+						showmsg("æ“ä½œæˆåŠŸï¼Œç³»ç»Ÿå·²ä¸ºæ‚¨å¼€é€šäº†æœåŠ¡ï¼",2,$link);	
 					}
 				}
-				header("Location:?act=payment&order_id=".$order_id."");//¸¶¿îÒ³Ãæ
+				header("Location:?act=payment&order_id=".$order_id."");//ä»˜æ¬¾é¡µé¢
 			}
 			else
 			{
-			showmsg("Ìí¼Ó¶©µ¥Ê§°Ü£¡",0);
+			showmsg("æ·»åŠ è®¢å•å¤±è´¥ï¼",0);
 			}
 	}
 	else
 	{
-	showmsg("Ìí¼Ó¶©µ¥Ê§°Ü£¡",0);
+	showmsg("æ·»åŠ è®¢å•å¤±è´¥ï¼",0);
 	}
 }
 elseif ($act=='feedback')
 {
-	$smarty->assign('title','ÓÃ»§·´À¡ - ÆóÒµ»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','ç”¨æˆ·åé¦ˆ - ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('feedback',get_feedback($_SESSION['uid']));
 	$smarty->display('member_company/company_feedback.htm');
 }
@@ -317,22 +317,22 @@ elseif ($act=='feedback_save')
 	$get_feedback=get_feedback($_SESSION['uid']);
 	if (count($get_feedback)>=5) 
 	{
-	showmsg('·´À¡ĞÅÏ¢²»ÄÜ³¬¹ı5Ìõ£¡',1);
+	showmsg('åé¦ˆä¿¡æ¯ä¸èƒ½è¶…è¿‡5æ¡ï¼',1);
 	exit();
 	}
 	$setsqlarr['infotype']=intval($_POST['infotype']);
-	$setsqlarr['feedback']=trim($_POST['feedback'])?trim($_POST['feedback']):showmsg("ÇëÌîĞ´ÄÚÈİ£¡",1);
+	$setsqlarr['feedback']=trim($_POST['feedback'])?trim($_POST['feedback']):showmsg("è¯·å¡«å†™å†…å®¹ï¼",1);
 	$setsqlarr['uid']=$_SESSION['uid'];
 	$setsqlarr['usertype']=$_SESSION['utype'];
 	$setsqlarr['username']=$_SESSION['username'];
 	$setsqlarr['addtime']=$timestamp;
-	write_memberslog($_SESSION['uid'],1,7001,$_SESSION['username'],"Ìí¼ÓÁË·´À¡ĞÅÏ¢");
-	!$db->inserttable(table('feedback'),$setsqlarr)?showmsg("Ìí¼ÓÊ§°Ü£¡",0):showmsg("Ìí¼Ó³É¹¦£¬ÇëµÈ´ı¹ÜÀíÔ±»Ø¸´£¡",2);
+	write_memberslog($_SESSION['uid'],1,7001,$_SESSION['username'],"æ·»åŠ äº†åé¦ˆä¿¡æ¯");
+	!$db->inserttable(table('feedback'),$setsqlarr)?showmsg("æ·»åŠ å¤±è´¥ï¼",0):showmsg("æ·»åŠ æˆåŠŸï¼Œè¯·ç­‰å¾…ç®¡ç†å‘˜å›å¤ï¼",2);
 }
 elseif ($act=='del_feedback')
 {
 	$id=intval($_GET['id']);
-	del_feedback($id,$_SESSION['uid'])?showmsg('É¾³ı³É¹¦£¡',2):showmsg('É¾³ıÊ§°Ü£¡',1);
+	del_feedback($id,$_SESSION['uid'])?showmsg('åˆ é™¤æˆåŠŸï¼',2):showmsg('åˆ é™¤å¤±è´¥ï¼',1);
 }
 unset($smarty);
 ?>

@@ -1,4 +1,4 @@
-/**
+Ôªø/**
 Vertigo Tip by www.vertigo-project.com
 Requires jQuery
 */
@@ -8,7 +8,7 @@ this.vtip_entrustinfo = function() {
     this.yOffset = 15; // y distance from mouse       
     $(".entrustinfo").unbind().hover(    
         function(e) {
-            this.t = "‘ÿ»Î÷–...";
+            this.t = "ËΩΩÂÖ•‰∏≠...";
             this.title = ''; 
             this.top = (e.pageY + yOffset);
 			this.left = (e.pageX);

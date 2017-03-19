@@ -1,4 +1,4 @@
-CSS.Trusted
+﻿CSS.Trusted
 TYPE: bool
 VERSION: 4.2.1
 DEFAULT: false

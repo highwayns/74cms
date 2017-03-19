@@ -1,33 +1,33 @@
-<div class="content link_lan spread_dialog">
+ï»¿<div class="content link_lan spread_dialog">
 	<table width="480">
 		<tbody>
 			<tr height="50">
-				<td width="90">ÍÆ¹ãÖ°Î»£º</td>
+				<td width="90">æ¨å¹¿èŒä½ï¼š</td>
 				<td>{#$jobs_name#}</td>
 			</tr>
 			<tr height="30">
-				<td>ÍÆ¹ã·½°¸£º</td>
+				<td>æ¨å¹¿æ–¹æ¡ˆï¼š</td>
 				<td width="120">
 					{#$promotion_name#}
 				</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td height="50">ÍÆ¹ãÆÚÏŞ£º</td>
-				<td>{#$days#}Ìì</td>
+				<td height="50">æ¨å¹¿æœŸé™ï¼š</td>
+				<td>{#$days#}å¤©</td>
 			</tr>
 			{#$color_list#}
 		</tbody>
 	</table>
-	<p>ÄúµÄÌ×²ÍÎª{#$setmeal_name#}£¬Ä¿Ç°{#$promotion_name#}Ê£Óà {#$num#} Ìõ£¬ÍÆ¹ãÊ±¼äÎª {#$days#} Ìì£¡ </p>
+	<p>æ‚¨çš„å¥—é¤ä¸º{#$setmeal_name#}ï¼Œç›®å‰{#$promotion_name#}å‰©ä½™ {#$num#} æ¡ï¼Œæ¨å¹¿æ—¶é—´ä¸º {#$days#} å¤©ï¼ </p>
 </div>
 <div class="spread_but_box">
 	<input type="hidden" id="jobid" value="{#$jobid#}">
 	<input type="hidden" id="catid" value="{#$catid#}">
 	<input type="hidden" id="days" value="{#$days#}">
 	<input type="hidden" id="pro_name" value="{#$pro_name#}">
-	<input type="button" value="È·¶¨" class="but95cheng DialogSubmit"/>
-	<input type="button" value="È¡Ïû" class="but95hui DialogClose"/>
+	<input type="button" value="ç¡®å®š" class="but95cheng DialogSubmit"/>
+	<input type="button" value="å–æ¶ˆ" class="but95hui DialogClose"/>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -36,7 +36,7 @@ $(document).ready(function(){
 		$(menuId).click(function(){
 			$(menuList).css("width",width);
 			$(menuList).slideDown('fast');
-			//Éú³É±³¾°
+			//ç”ŸæˆèƒŒæ™¯
 			$(menuId).parent("div").before("<div class=\"menu_bg_layer\"></div>");
 			$(".menu_bg_layer").height($(".FloatBox").height());
 			$(".menu_bg_layer").css({ width: $(".FloatBox").width(), position: "absolute", left: "0", top: "0" , "z-index": "0", "background-color": "#ffffff"});

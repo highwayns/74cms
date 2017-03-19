@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript"> 
 $(document).ready(function()
 {
@@ -7,7 +7,7 @@ $(document).ready(function()
 	$("#hide").show();	
 	});
 	$(".again_send").click(function(){
-		$(this).html('·¢ËÍÖĞ...');
+		$(this).html('å‘é€ä¸­...');
 		$(this).css('color','red');
 		$id=$(this).attr('id');
 		window.location.href='?act=again_send&id='+$id;
@@ -20,53 +20,53 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
  
-		  <div class="toptit">·¢ËÍ¶ÌĞÅ</div>
+		  <div class="toptit">å‘é€çŸ­ä¿¡</div>
     <span id="submitbox">
 		<form action="?act=sms_send" method="post"   name="form" id="form">
 		<input name="uid" type="hidden"  id="uid" value="{#$smarty.get.uid#}" /></td>
 		{#$inputtoken#}
 		<table width="90%" border="0" cellspacing="10" cellpadding="1" style=" margin-bottom:3px;">
           <tr>
-            <td width="100" align="right">½ÓÊÕÊÖ»ú:</td>
+            <td width="100" align="right">æ¥æ”¶æ‰‹æœº:</td>
             <td>
 			   <input name="mobile" type="text" class="input_text_400"   value="{#$smarty.get.mobile#}" />
 			       </td>
           </tr>
 		  <tr>
-            <td width="100" align="right">·¢ËÍÄÚÈİ:</td>
+            <td width="100" align="right">å‘é€å†…å®¹:</td>
             <td>
 			  <textarea name="txt" class="input_text_400" style="height:80px;"></textarea>
-			  <span class="admin_note">ÄÚÈİ³¬¹ı70¸ö×Ö·û½«×Ô¶¯½ØÈ¡</span>		    </td>
+			  <span class="admin_note">å†…å®¹è¶…è¿‡70ä¸ªå­—ç¬¦å°†è‡ªåŠ¨æˆªå–</span>		    </td>
           </tr>
           <tr>
             <td align="right">&nbsp;</td>
             <td>
 			<input name="url" type="hidden" value="{#$url#}" />
 			
-			<input name="check" type="submit" class="admin_submit" id="check"    value="Á¢¼´·¢ËÍ" /></td>
+			<input name="check" type="submit" class="admin_submit" id="check"    value="ç«‹å³å‘é€" /></td>
           </tr>
         </table>
 	    </form>
 		{#if $smslog#}	
-	 <div class="toptit">ÓÊ¼ş·¢ËÍ¼ÇÂ¼</div>
+	 <div class="toptit">é‚®ä»¶å‘é€è®°å½•</div>
 	<form action="?act=del" method="post"   name="form1" id="form1">
     <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
     <tr>
       <td  width="120" class="admin_list_tit admin_list_first">
-     <label id="chkAll"><input type="checkbox" name="" title="È«Ñ¡/·´Ñ¡" id="chk"/>ÀàĞÍ</label>	 </td>
-	  <td class="admin_list_tit" width="13%">ÊÖ»úºÅ</td>
-	  <td  class="admin_list_tit">¶ÌĞÅÄÚÈİ</td>
-      <td width="110"  align="center"  class="admin_list_tit">Ìí¼ÓÊ±¼ä</td>	  
-      <td width="110"  align="center"  class="admin_list_tit">·¢ËÍÊ±¼ä</td>
-      <td width="10%" align="center"  class="admin_list_tit">²Ù×÷</td>
+     <label id="chkAll"><input type="checkbox" name="" title="å…¨é€‰/åé€‰" id="chk"/>ç±»å‹</label>	 </td>
+	  <td class="admin_list_tit" width="13%">æ‰‹æœºå·</td>
+	  <td  class="admin_list_tit">çŸ­ä¿¡å†…å®¹</td>
+      <td width="110"  align="center"  class="admin_list_tit">æ·»åŠ æ—¶é—´</td>	  
+      <td width="110"  align="center"  class="admin_list_tit">å‘é€æ—¶é—´</td>
+      <td width="10%" align="center"  class="admin_list_tit">æ“ä½œ</td>
     </tr>
 	{#foreach from=$smslog item=list#}
 	 <tr>
       <td   class="admin_list admin_list_first">
      <input type="checkbox" name="id[]"  value="{#$list.s_id#}"/>
-	 {#if $list.s_type=="0"#}<span style="color:#FF6600">µÈ´ı·¢ËÍ</span>{#/if#}
-	 {#if $list.s_type=="1"#}<span style="color: #009900">·¢ËÍ³É¹¦</span>{#/if#}
-	 {#if $list.s_type=="2"#}<span style="color: #666666">·¢ËÍÊ§°Ü</span>{#/if#}
+	 {#if $list.s_type=="0"#}<span style="color:#FF6600">ç­‰å¾…å‘é€</span>{#/if#}
+	 {#if $list.s_type=="1"#}<span style="color: #009900">å‘é€æˆåŠŸ</span>{#/if#}
+	 {#if $list.s_type=="2"#}<span style="color: #666666">å‘é€å¤±è´¥</span>{#/if#}
 	  </td>
 	  <td  class="admin_list">
 	  {#$list.s_mobile#}
@@ -86,7 +86,7 @@ $(document).ready(function()
 		{#/if#}
 	  </td>
       <td align="center"  class="admin_list">
-	  <a href="javascript:void()" class="again_send" id="{#$list.s_id#}">ÖØĞÂ·¢ËÍ</a>
+	  <a href="javascript:void()" class="again_send" id="{#$list.s_id#}">é‡æ–°å‘é€</a>
 	</td>
 	</tr>
 	{#/foreach#}
@@ -95,7 +95,7 @@ $(document).ready(function()
 		<tr>
             <td height="30" width="110" align="right" >&nbsp;</td>
             <td height="30"  >
-              <input type="submit" name="submit22" type="button" class="admin_submit submitdel"    value="É¾³ıËùÑ¡" />
+              <input type="submit" name="submit22" type="button" class="admin_submit submitdel"    value="åˆ é™¤æ‰€é€‰" />
            </td>
           </tr>
 	  </table>
@@ -103,7 +103,7 @@ $(document).ready(function()
 <div class="page link_bk" style="height:20px">{#$page#}</div>
  {#/if#}  </span>
 <div id="hide" style="display: none; color: #009900; padding-left:30px; padding-bottom:80px;">
- ÕıÔÚ·¢ËÍ.......<br />
+ æ­£åœ¨å‘é€.......<br />
 <br />
 </div>
 </div>

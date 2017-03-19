@@ -1,9 +1,9 @@
-<link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
+ï»¿<link href="{#$QISHI.site_template#}css/ui-dialog.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/dialog-min.js" type="text/javascript" language="javascript"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//»áÔ±ÖĞĞÄ¶¥²¿ËÑË÷Ö°Î»¼òÀúÇĞ»» 
+	//ä¼šå‘˜ä¸­å¿ƒé¡¶éƒ¨æœç´¢èŒä½ç®€å†åˆ‡æ¢ 
 	$("#usertopselectbox").hover(
 	  function () {
 	  $(this).find(".#selmenu").show();
@@ -20,27 +20,27 @@ $(document).ready(function()
 	     $(this).css("background-color","#FFFFFF");
 	  }
 	);
-	//»áÔ±ÖĞĞÄ¶¥²¿ËÑË÷Ö°Î»¼òÀúÇĞ»» µã»÷Ñ¡Ôñ´¥·¢ÊÂ¼ş
+	//ä¼šå‘˜ä¸­å¿ƒé¡¶éƒ¨æœç´¢èŒä½ç®€å†åˆ‡æ¢ ç‚¹å‡»é€‰æ‹©è§¦å‘äº‹ä»¶
 	$("#usertopselectbox .selmenu").click(function(){
 
 			var txt=$(this).text();
 			
-			if (txt=="¼òÀú")
+			if (txt=="ç®€å†")
 			{
 			$("#topsotype").val('2');
-			$("#seltxt").text('¼òÀú');
-			$("#selmenu").text('Ö°Î»');
+			$("#seltxt").text('ç®€å†');
+			$("#selmenu").text('èŒä½');
 			$("#selmenu").hide();
 			}
 			else
 			{
 			$("#topsotype").val('1');
-			$("#seltxt").text('Ö°Î»');
-			$("#selmenu").text('¼òÀú');
+			$("#seltxt").text('èŒä½');
+			$("#selmenu").text('ç®€å†');
 			$("#selmenu").hide();
 			}
 	});
-	//ËùÓĞÌá½»°´Å¥Ğ§¹û
+	//æ‰€æœ‰æäº¤æŒ‰é’®æ•ˆæœ
 	$("input[type='submit'],input[type='button']").hover(
 	  function () {
 	    $(this).addClass("hover");
@@ -49,7 +49,7 @@ $(document).ready(function()
 	    $(this).removeClass("hover");
 	  }
 	);
-	//ËùÓĞ¶àÑ¡°´Å¥Ğ§¹û
+	//æ‰€æœ‰å¤šé€‰æŒ‰é’®æ•ˆæœ
 	$(".input_checkbox,.input_checkbox_add").hover(
 	  function () {
 	    $(this).addClass("h");
@@ -58,14 +58,14 @@ $(document).ready(function()
 	    $(this).removeClass("h");
 	  }
 	);
-	//¶àÑ¡
+	//å¤šé€‰
 	$('#chk').click(function(){
 		$(this).parents("form").find("input[type=checkbox]").attr('checked',$("#chk").is(':checked'))
 	});
 	$('#chk2').click(function(){
 		$(this).parents("form").find("input[type=checkbox]").attr('checked',$("#chk2").is(':checked'))
 	});
-	//ĞÅÏ¢ÁĞ±í±³¾°±äÉ«
+	//ä¿¡æ¯åˆ—è¡¨èƒŒæ™¯å˜è‰²
 	$(".userliststyle").hover(
 	  function () {
 	    $(this).css('background-color','#FCFCFC');
@@ -74,20 +74,20 @@ $(document).ready(function()
 	    $(this).css('background-color','#FFFFFF');
 	  }
 	);
-	// Ô¤ÀÀ¼òÀú
+	// é¢„è§ˆç®€å†
 	$("#reade_resume").click(function () {
 		dialog({
-	        title: 'Ñ¡ÔñÔ¤ÀÀ¼òÀú',
+	        title: 'é€‰æ‹©é¢„è§ˆç®€å†',
 	        content: $("#previewbox"),
 	        width:380
 	    }).showModal();
 	});
-	// µÚÒ»´ÎµÇÂ¼ Ë¢ĞÂ¼òÀú
+	// ç¬¬ä¸€æ¬¡ç™»å½• åˆ·æ–°ç®€å†
 	var personal_login_first="{#$personal_login_first#}";
 	if(personal_login_first)
 	{
 		dialog({
-	        title: 'Ë¢ĞÂ¼òÀú',
+	        title: 'åˆ·æ–°ç®€å†',
 	        content: $(".first_refresh_box"),
 	        width:380
 	    }).showModal();
@@ -97,13 +97,13 @@ $(document).ready(function()
 			$.get("personal_ajax.php?act=refresh_resume&id="+pid,function(result){
 				if(result=="1"){
 					dialog({
-					  title: 'ÎÂÜ°ÌáÊ¾',
-					  content: "Ë¢ĞÂ³É¹¦",
+					  title: 'æ¸©é¦¨æç¤º',
+					  content: "åˆ·æ–°æˆåŠŸ",
 					  width:'300px'
 					}).showModal();
 				}else{
 					dialog({
-					  title: 'ÎÂÜ°ÌáÊ¾',
+					  title: 'æ¸©é¦¨æç¤º',
 					  content: ""+result+"",
 					  width:'300px'
 					}).showModal();
@@ -111,19 +111,19 @@ $(document).ready(function()
 			});
 	    });
 	}
-	// Ã»ÓĞ¼òÀúÊ±µ¯´°ÌáÊ¾´´½¨¼òÀú
+	// æ²¡æœ‰ç®€å†æ—¶å¼¹çª—æç¤ºåˆ›å»ºç®€å†
 	$(".no-resume").click(function(event) {
 		var mynrDialog=dialog(),
 		url = $(this).attr("url");
-		mynrDialog.title('ÏµÍ³ÌáÊ¾');
-		mynrDialog.content('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text close-tips-text">Äú»¹Ã»ÓĞ´´½¨¼òÀú£¬½¨ÒéÄúÁ¢¼´´´½¨¡£</span></div></div><div class="center-btn-wrap"><input type="button" value="´´½¨" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="È¡Ïû" class="btn-65-30grey btn-big-font DialogClose" /></div>');
+		mynrDialog.title('ç³»ç»Ÿæç¤º');
+		mynrDialog.content('<div class="del-dialog"><div class="tip-block"><span class="del-tips-text close-tips-text">æ‚¨è¿˜æ²¡æœ‰åˆ›å»ºç®€å†ï¼Œå»ºè®®æ‚¨ç«‹å³åˆ›å»ºã€‚</span></div></div><div class="center-btn-wrap"><input type="button" value="åˆ›å»º" class="btn-65-30blue btn-big-font DialogSubmit" /><input type="button" value="å–æ¶ˆ" class="btn-65-30grey btn-big-font DialogClose" /></div>');
 	    mynrDialog.width('320');
 	    mynrDialog.showModal();
-	    /* ¹Ø±Õ */
+	    /* å…³é—­ */
 	    $(".DialogClose").live('click',function() {
 	      mynrDialog.close().remove();
 	    });
-	    // È·¶¨
+	    // ç¡®å®š
 	    $(".DialogSubmit").click(function() {
 	    	if (url) {window.location.href=url};
 	    });
@@ -134,70 +134,70 @@ $(document).ready(function()
 <div class="meun1">
   	<div class="meun2">
   		<div class="meunbox">
-			<div class="menu_top"><a href="personal_index.php">ÖĞĞÄÊ×Ò³</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;{#if $auditresume#}<a href="javascript:void(0)" id="reade_resume">Ô¤ÀÀ¼òÀú</a>{#else#}<a class="no-resume" url="personal_resume.php?act=make1" href="javascript:;">Ô¤ÀÀ¼òÀú</a>{#/if#}
+			<div class="menu_top"><a href="personal_index.php">ä¸­å¿ƒé¦–é¡µ</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;{#if $auditresume#}<a href="javascript:void(0)" id="reade_resume">é¢„è§ˆç®€å†</a>{#else#}<a class="no-resume" url="personal_resume.php?act=make1" href="javascript:;">é¢„è§ˆç®€å†</a>{#/if#}
 			</div>
 			<div class="previewbox" id="previewbox" style="display:none;">
 				<table width="90%" border="0" cellspacing="0" cellpadding="5" style="margin: 0 auto;padding-bottom: 10px;">
 				<tr>
-				<td bgcolor="#F3F7FC"><strong>¼òÀúÃû³Æ</strong></td>
-				<td width="130" align="center" bgcolor="#F3F7FC"><strong>Ë¢ĞÂÊ±¼ä</strong></td>
-				<td width="50" bgcolor="#F3F7FC"><strong>µã»÷</strong></td>
+				<td bgcolor="#F3F7FC"><strong>ç®€å†åç§°</strong></td>
+				<td width="130" align="center" bgcolor="#F3F7FC"><strong>åˆ·æ–°æ—¶é—´</strong></td>
+				<td width="50" bgcolor="#F3F7FC"><strong>ç‚¹å‡»</strong></td>
 				</tr>
 				{#foreach from=$auditresume item=list#}
 				<tr>
 				<td class="us_list" title="{#$list.title_#}"><a class="co01" href="{#$list.resume_url#}" target="_blank">{#$list.title_#}</a></td>
 				<td align="center" class="us_list">{#$list.refreshtime|date_format:"%m/%d %H:%M"#}</td>
-				<td class="us_list">{#$list.click#}´Î</td>
+				<td class="us_list">{#$list.click#}æ¬¡</td>
 				</tr>
 				{#/foreach#}
 				</table>
 			</div>
 		</div>
 		<div class="meunbox">
-		  <div class="tit"><div class="t i1">¼òÀú¹ÜÀí</div></div>
+		  <div class="tit"><div class="t i1">ç®€å†ç®¡ç†</div></div>
 		  	<div class="linktxt">
 				<ul>
-				<li{#if $smarty.get.act=="make1"#} class="h"{#/if#}><a href="personal_resume.php?act=make1">´´½¨¼òÀú</a></li>
-				<li{#if $smarty.get.act=="resume_list"#} class="h"{#/if#}><a href="personal_resume.php?act=resume_list">ÎÒµÄ¼òÀú</a></li>
+				<li{#if $smarty.get.act=="make1"#} class="h"{#/if#}><a href="personal_resume.php?act=make1">åˆ›å»ºç®€å†</a></li>
+				<li{#if $smarty.get.act=="resume_list"#} class="h"{#/if#}><a href="personal_resume.php?act=resume_list">æˆ‘çš„ç®€å†</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="meunbox">
-		  <div class="tit"><div class="t i2">ÇóÖ°¹ÜÀí</div></div>
+		  <div class="tit"><div class="t i2">æ±‚èŒç®¡ç†</div></div>
 		  	<div class="linktxt">
 				<ul>
-				<li{#if $smarty.get.act=="interview"#} class="h"{#/if#}><a href="personal_apply.php?act=interview">ÃæÊÔÑûÇë</a></li>
-				<li{#if $smarty.get.act=="apply_jobs"#} class="h"{#/if#}><a href="personal_apply.php?act=apply_jobs">ÒÑÉêÇëÖ°Î»</a></li>
-				<li{#if $smarty.get.act=="favorites"#} class="h"{#/if#}><a href="personal_apply.php?act=favorites">Ö°Î»ÊÕ²Ø¼Ğ</a></li>
+				<li{#if $smarty.get.act=="interview"#} class="h"{#/if#}><a href="personal_apply.php?act=interview">é¢è¯•é‚€è¯·</a></li>
+				<li{#if $smarty.get.act=="apply_jobs"#} class="h"{#/if#}><a href="personal_apply.php?act=apply_jobs">å·²ç”³è¯·èŒä½</a></li>
+				<li{#if $smarty.get.act=="favorites"#} class="h"{#/if#}><a href="personal_apply.php?act=favorites">èŒä½æ”¶è—å¤¹</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="meunbox last">
-		  <div class="tit"><div class="t i3">ÕËºÅ¹ÜÀí</div></div>
+		  <div class="tit"><div class="t i3">è´¦å·ç®¡ç†</div></div>
 		  	<div class="linktxt">
 				<ul>
-				<li{#if $smarty.get.act=="userprofile"#} class="h"{#/if#}><a href="personal_user.php?act=userprofile">»ù±¾×ÊÁÏ</a></li>
-				<li{#if $smarty.get.act=="authenticate"#} class="h"{#/if#}><a href="personal_user.php?act=authenticate">ÕËºÅ°²È«</a></li>
-				<li{#if $smarty.get.act=="pm"#} class="h"{#/if#}><a href="personal_user.php?act=pm">ÎÒµÄÏûÏ¢</a></li>
-				<li><a href="{#"QS_login"|qishi_url#}?act=logout">°²È«ÍË³ö</a></li>
+				<li{#if $smarty.get.act=="userprofile"#} class="h"{#/if#}><a href="personal_user.php?act=userprofile">åŸºæœ¬èµ„æ–™</a></li>
+				<li{#if $smarty.get.act=="authenticate"#} class="h"{#/if#}><a href="personal_user.php?act=authenticate">è´¦å·å®‰å…¨</a></li>
+				<li{#if $smarty.get.act=="pm"#} class="h"{#/if#}><a href="personal_user.php?act=pm">æˆ‘çš„æ¶ˆæ¯</a></li>
+				<li><a href="{#"QS_login"|qishi_url#}?act=logout">å®‰å…¨é€€å‡º</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- µÚÒ»´ÎµÇÂ¼ Ë¢ĞÂ¼òÀú  -->
+<!-- ç¬¬ä¸€æ¬¡ç™»å½• åˆ·æ–°ç®€å†  -->
 <div class="first_refresh_box" style="display:none;">
 	<table width="90%" border="0" cellspacing="0" cellpadding="5" style="margin: 0 auto;padding-bottom: 10px;">
 	<tr>
-	<td bgcolor="#F3F7FC"><strong>¼òÀúÃû³Æ</strong></td>
-	<td width="130" align="center" bgcolor="#F3F7FC"><strong>Ë¢ĞÂÊ±¼ä</strong></td>
-	<td width="50" bgcolor="#F3F7FC"><strong>²Ù×÷</strong></td>
+	<td bgcolor="#F3F7FC"><strong>ç®€å†åç§°</strong></td>
+	<td width="130" align="center" bgcolor="#F3F7FC"><strong>åˆ·æ–°æ—¶é—´</strong></td>
+	<td width="50" bgcolor="#F3F7FC"><strong>æ“ä½œ</strong></td>
 	</tr>
 	{#foreach from=$auditresume item=list#}
 	<tr>
 	<td class="us_list" title="{#$list.title_#}"><a class="co01" href="{#$list.resume_url#}" target="_blank">{#$list.title_#}</a></td>
 	<td align="center" class="us_list">{#$list.refreshtime|date_format:"%m/%d %H:%M"#}</td>
-	<td class="us_list"><a class="co01 first_refresh" href="javascript:;" pid="{#$list.id#}">Ë¢ĞÂ</a></td>
+	<td class="us_list"><a class="co01 first_refresh" href="javascript:;" pid="{#$list.id#}">åˆ·æ–°</a></td>
 	</tr>
 	{#/foreach#}
 	</table>

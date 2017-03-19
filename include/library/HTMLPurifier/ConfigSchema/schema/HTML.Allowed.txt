@@ -1,4 +1,4 @@
-HTML.Allowed
+﻿HTML.Allowed
 TYPE: itext/null
 VERSION: 2.0.0
 DEFAULT: NULL

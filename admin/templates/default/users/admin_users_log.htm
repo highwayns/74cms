@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit">{#$pageheader#}</div>
@@ -6,23 +6,23 @@
   <div class="clear"></div>
 </div>
 <div class="seltpye_x">
-		<div class="left">ÈÕÖ¾ÀàĞÍ</div>	
+		<div class="left">æ—¥å¿—ç±»å‹</div>	
 		<div class="right">
-		<a href="{#"log_type:"|qishi_parse_url#}" {#if $smarty.get.log_type==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"log_type:1"|qishi_parse_url#}" {#if $smarty.get.log_type=="1"#}class="select"{#/if#}>µÇÂ¼³É¹¦</a>
-		<a href="{#"log_type:2"|qishi_parse_url#}" {#if $smarty.get.log_type=="2"#}class="select"{#/if#}>µÇÂ¼Ê§°Ü</a>
-		<a href="{#"log_type:3"|qishi_parse_url#}" {#if $smarty.get.log_type=="3"#}class="select"{#/if#}>²Ù×÷¼ÇÂ¼</a>
+		<a href="{#"log_type:"|qishi_parse_url#}" {#if $smarty.get.log_type==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"log_type:1"|qishi_parse_url#}" {#if $smarty.get.log_type=="1"#}class="select"{#/if#}>ç™»å½•æˆåŠŸ</a>
+		<a href="{#"log_type:2"|qishi_parse_url#}" {#if $smarty.get.log_type=="2"#}class="select"{#/if#}>ç™»å½•å¤±è´¥</a>
+		<a href="{#"log_type:3"|qishi_parse_url#}" {#if $smarty.get.log_type=="3"#}class="select"{#/if#}>æ“ä½œè®°å½•</a>
 		<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
 </div>
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr>
-      <td   class="admin_list_tit admin_list_first">ÓÃ»§Ãû</td>
-      <td   class="admin_list_tit">ÈÕÖ¾ÀàĞÍ</td>
-	  <td  class="admin_list_tit">ËµÃ÷</td>
-      <td width="15%"  class="admin_list_tit"> ²Ù×÷Ê±¼ä </td>
-      <td width="15%" class="admin_list_tit">²Ù×÷IP</td>
+      <td   class="admin_list_tit admin_list_first">ç”¨æˆ·å</td>
+      <td   class="admin_list_tit">æ—¥å¿—ç±»å‹</td>
+	  <td  class="admin_list_tit">è¯´æ˜</td>
+      <td width="15%"  class="admin_list_tit"> æ“ä½œæ—¶é—´ </td>
+      <td width="15%" class="admin_list_tit">æ“ä½œIP</td>
       
     </tr>
 	{#foreach from=$list item=li#}
@@ -30,11 +30,11 @@
       <td class="admin_list admin_list_first"> {#$li.admin_name#}	</td>
       <td class="admin_list">
 	  {#if $li.log_type=="1"#}
-	  µÇÂ¼³É¹¦
+	  ç™»å½•æˆåŠŸ
 	  {#elseif $li.log_type=="2"#}
-	  <span style="color:#FF0000">µÇÂ¼Ê§°Ü</span>
+	  <span style="color:#FF0000">ç™»å½•å¤±è´¥</span>
 	  {#else#}
-	  <span style="color:#FF0000">²Ù×÷¼ÇÂ¼</span>
+	  <span style="color:#FF0000">æ“ä½œè®°å½•</span>
 	  {#/if#}
 	  </td>
 	  <td class="admin_list">{#$li.log_value#}</td>
@@ -46,12 +46,12 @@
   </table>
     
 	{#if !$list#}
-<div class="admin_list_no_info">Ã»ÓĞÈÎºÎĞÅÏ¢£¡</div>
+<div class="admin_list_no_info">æ²¡æœ‰ä»»ä½•ä¿¡æ¯ï¼</div>
 {#/if#}
 <table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">
       <tr>
         <td>
-<input type="button" class="admin_submit" id="ButAudit" value="·µ»Ø"  onclick="window.location='?'"/>
+<input type="button" class="admin_submit" id="ButAudit" value="è¿”å›"  onclick="window.location='?'"/>
 		</td>
         <td width="305" align="right"> 
 		

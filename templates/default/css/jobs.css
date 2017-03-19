@@ -1,4 +1,4 @@
-/*ËÑË÷*/
+ï»¿/*æœç´¢*/
 .jobsearch {width:998px;height:150px;margin:0 auto;margin-top:10px;border:1px solid #cccccc;background-color:#F5F5F5;}
 .jobsearch a{text-decoration: none;color:#0180cf;}
 .jobsearch .jobnav{width:600px;height:30px;line-height:30px;margin-top:15px;margin-left:25px;}
@@ -8,10 +8,10 @@
 .jobsearch .jobnav a.select{color:#0281D0; font-weight:bold;}
 .jobsearch .jobmain{margin-top:10px;margin-left:25px;}
 .jobsearch .jobmain .box{z-index:10000;width:278px;height:30px;line-height:30px;font-size:14px;color:#ACACAC;border:1px solid #cccccc;background-color:#FFFFFF;padding-left:15px;position:relative;float:left;margin-right:20px;cursor:pointer;}
-.jobsearch .jobmain .box span{display:block;width:250px;height:30px;overflow:hidden;white-space: nowrap;text-overflow:ellipsis;font-size:12px;font-family:"ËÎÌå";}
+.jobsearch .jobmain .box span{display:block;width:250px;height:30px;overflow:hidden;white-space: nowrap;text-overflow:ellipsis;font-size:12px;font-family:"å®‹ä½“";}
 .jobsearch .jobmain .box i{position:absolute;right:15px;top:13px;width:0;height:0;font-size:0;line-height:0;border-color:#ccc transparent transparent transparent;_border-color:#ccc #ffffff #ffffff #ffffff;border-style:solid;border-width:6px;cursor:pointer;}
 .jobsearch .jobmain .keybox{width:593px;height:30px;line-height:30px;font-size:14px;color:#ACACAC;border:1px solid #cccccc;background-color:#FFFFFF;padding-left:15px;position:relative;float:left;margin-top:15px;}
-.jobsearch .jobmain .keybox input{width:593px;height:28px;line-height:28px;font-size:12px;color:#ACACAC;border:0;*margin-left:-25px;font-family:"ËÎÌå";}
+.jobsearch .jobmain .keybox input{width:593px;height:28px;line-height:28px;font-size:12px;color:#ACACAC;border:0;*margin-left:-25px;font-family:"å®‹ä½“";}
 .jobsearch .jobmain .btnsearch{width:105px;height:32px;line-height:32px;background-color:#0180CF;float:left;color:#FFFFFF;font-size:16px;text-align:center;cursor:pointer;margin-top:15px;margin-left:20px;}
 .jobsearch .jobmain .btnsearch:hover{background-color:#0070BD;}
 .jobsearch .jobmain .more{display:block;width:80px;height:30px;line-height:30px;float:left;text-decoration:none;color:#0280CF;position:relative;margin-left:15px;margin-top:15px;}
@@ -33,9 +33,9 @@
 .jobselected .showselected .cnt:hover {text-decoration: none;}
 .jobselected .clearjobs{width:100px;height:30px;line-height:30px;background:url(../images/clear.gif) no-repeat scroll 0 8px;float:right;text-align:center;margin-top:10px;cursor:pointer;}
 
-/*×îºóĞŞ¸ÄËÑË÷Ìõ¼şÏÂÀ­¿òÑùÊ½*/
+/*æœ€åä¿®æ”¹æœç´¢æ¡ä»¶ä¸‹æ‹‰æ¡†æ ·å¼*/
 .jobmain .divJobCate,.jobmain .divIndCate{width:836px;position:absolute; top:30px; left:-1px;z-index:10000; font-size:12px;background:#fff;border:1px solid #cdcfd1;}
-/*ÒÑÑ¡Ìõ¼ş*/
+/*å·²é€‰æ¡ä»¶*/
 .acquired {width:836px;height:40px;border-bottom:1px solid #cdcfd1;}
 .acquired .l{width:79px;height:40px;text-align:center;line-height:40px;font-weight:bold;color:#0180cf;border-right:1px solid #cdcfd1;float:left;}
 .acquired .c{width:625px;height:34px;border-right:1px solid #cdcfd1;float:left;padding-left:10px;padding-top:6px;}
@@ -54,7 +54,7 @@
 	/* For IE 8 */
 	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#999999')"; 
 }
-/*ÒÑÑ¡Ìõ¼ş end*/
+/*å·²é€‰æ¡ä»¶ end*/
 .divIndCate .indcatelist{padding:8px 0 8px 25px;}
 .divIndCate .indcatelist li{ width:200px; height:28px; line-height:28px;display:inline-block; *display:inline; zoom:1;white-space:nowrap}
 .divIndCate .indcatelist a{color:#0180cf; display:inline;text-decoration: none;}
@@ -62,7 +62,7 @@
 .divIndCate .indcatelist a.selectedcolor{color:#F77D40}
 .divIndCate .exceed {display:none}
 table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
-/*Ö°Î»Àà±ğ*/
+/*èŒä½ç±»åˆ«*/
 .jobcatebox tr,.jobcatebox td,.jobcatebox th{border-bottom:1px solid #e9e9e9}
 .jobcatebox th,.jobcatebox td{height:auto;line-height:24px;vertical-align:top}
 .jobcatebox th{color: #585858}
@@ -138,11 +138,11 @@ table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
 .jobinfolists .infolists .list {width:1150px;height:104px;margin:0 auto;border-bottom:1px dotted #cccccc;}
 .jobinfolists .infolists .list:hover{background-color:#F5F5F5;}
 .jobinfolists .infolists .list .li_left_check{float:left;padding-top:17px;*padding-top:13px;padding-left:10px;width:22px;}
-.jobinfolists .infolists .list .jobname{height:20px; width:320px; font-size:14px; float:left; padding-top:6px;font-family:"microsoft yahei","ËÎÌå";}
+.jobinfolists .infolists .list .jobname{height:20px; width:320px; font-size:14px; float:left; padding-top:6px;font-family:"microsoft yahei","å®‹ä½“";}
 .jobinfolists .infolists .list .jobname a{text-decoration:none;color:#0180CF;font-size:14px;}
 .jobinfolists .infolists .list .jobname a:hover{color:#ff9900;}
 .jobinfolists .infolists .list .jobname img{vertical-align:middle;}
-.jobinfolists .infolists .list .com{height:20px; width:320px;float:left;padding-top:6px; font-family:"microsoft yahei","ËÎÌå";overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.jobinfolists .infolists .list .com{height:20px; width:320px;float:left;padding-top:6px; font-family:"microsoft yahei","å®‹ä½“";overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .jobinfolists .infolists .list .com a{text-decoration:none;color:#0180cf;float: left;}
 .jobinfolists .infolists .list .com a:hover{color:#ff9900;}
 .jobinfolists .infolists .list .com img{vertical-align:middle;float: left;margin-left: 5px;margin-top: 1px;}
@@ -169,7 +169,7 @@ table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
 .jobsearchbox .myselbox .right a{display:block;color:#009900; border:1px #ADC581 solid; height:19px;  line-height:19px; padding-left:23px; width:55px; text-decoration:none;  background:url(../images/51.gif) no-repeat 0px -320px;background-color:#FFFFFF;white-space: nowrap; margin-top:5px;}
 .jobsearchbox .myselbox .right a:hover{background-color: #F1FEDA; border-color: #009900}
 .jobsearchbox .bottomheight{ height:10px;}
-/*-----Ğ´×ÖÂ¥£¬µÀÂ·ËÑË÷------*/
+/*-----å†™å­—æ¥¼ï¼Œé“è·¯æœç´¢------*/
 .s2 { padding:0px;}
 .s2 .topsobox{ height:85px; border-bottom:1px #D5D5D5 solid; background-color:#F5F5F5; padding-top:5px;}
 .s2 .topsobox .left{ float:left; width:100px; text-align:right; height:20px; margin-top:12px; padding-top:4px;}
@@ -188,7 +188,7 @@ table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
 .s2 .showsobox .right li{ float:left; height:23px; line-height:23px; width:140px; padding-left:5px; overflow:hidden}
 .s2 .showsobox .right li span{ color:#FF6600; padding-left:3px;}
 .s2 .showsobox .right span {height:23px; line-height:23px;}
-/*µØÍ¼*/
+/*åœ°å›¾*/
 .mapnav {width:1198px; margin:0 auto; border:1px solid #D5D5D5; margin-top:10px;background:url(../images/91m.gif) repeat-x 0px -207px }
 .mapnav .left {float:left; width:920px; height:42px; padding-left:8px;}
 .mapnav .left .fdiv{float:left;  margin-top:8px; margin-right:10px; height:30px;}
@@ -204,7 +204,7 @@ table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
 .mapnav .right a{ display:block; float:left; padding-left:21px; padding-right:20px; margin-top:13px; background:url(../images/91m.gif) no-repeat 0px 0px; height:18px; line-height:18px;}
 .mapnav .right a.a6{ background-position:0px -132px;}
 .mapnav .right a.a7{ background-position:0px -154px;}
-/*µØÍ¼*/
+/*åœ°å›¾*/
 .map   {width:1198px; margin:0 auto; border:1px solid #C8C8C8; border-top:0px;}
 .map  .left{float:left; width:918px; height:500px;border-right:1px solid #C8C8C8; position:relative}
 .map  .left .maploading{width:918px; height:350px; position:absolute; left:0; top:0; background-color:#ffffff; text-align:center; padding-top:150px; color:#FF3300}
@@ -226,13 +226,13 @@ table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
 .map  .right .list li.noinfo{ padding-left:0px;background-image:none; color:#999999}
 .map  .right .listbox{ position:relative}
 .map  .right .listbox .listloading{ width:100%; height:374px; background-color: #FFFFFF; color:#000000; position:absolute;text-align:center; padding-top:100px; display:none}
-/*µØÍ¼·ÖÒ³*/
+/*åœ°å›¾åˆ†é¡µ*/
 .pagination {font-size: 10px; padding-top:8px;}        
 .pagination a {text-decoration: none;border: solid 1px #DBDBDB;color: #666666;background:#F9F9F9;}
 .pagination a, .pagination span { display: block; float: left;padding: 1px 2px;margin-right: 3px;margin-bottom: 3px;}
 .pagination .current {background: #26B;color: #fff;border: solid 1px #26B;}
 .pagination .current.prev, .pagination .current.next{color:#666666;border-color:#DBDBDB;background:#F9F9F9;}
-/*µØÍ¼¸²¸ÇÎï*/
+/*åœ°å›¾è¦†ç›–ç‰©*/
 .maplabel a{background:url(../images/92.gif) no-repeat; height:28px; display:block;text-decoration: none; padding-left:8px; color: #FFFFFF; padding-top:5px; position:relative; padding-right:6px;}
 .maplabel a u{display:block; height:33px;background:url(../images/92.gif) no-repeat right 0px; width:5px; position:absolute;top:0; right:0;}
 .maplabel a:hover { background-position:0px -34px;}
@@ -250,9 +250,9 @@ table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
 .s1 .littxt .keybox .keyinputbox{ width:342px; float:left}
 .s1 .littxt .keybox .keyinputbox input{ width:330px; border:1px   #B9B9B9 solid; background-color:#FFFFFF; height:22px; padding-left:10px; padding-top:6px; border-right:0px; line-height:18px;}
 .s1 .littxt .keybox .subinputbox{ width:70px; height:31px; float:left;}
-.s1 .littxt .keybox .subinputbox input{ width:70px; height:31px;background:url(../images/51.gif) no-repeat; border:0px; color:#FFFFFF; font-family:"microsoft yahei","ËÎÌå"; font-size:15px; line-height:31px; *margin-top:1px;}
+.s1 .littxt .keybox .subinputbox input{ width:70px; height:31px;background:url(../images/51.gif) no-repeat; border:0px; color:#FFFFFF; font-family:"microsoft yahei","å®‹ä½“"; font-size:15px; line-height:31px; *margin-top:1px;}
 .s1 .littxt .keybox .subinputbox1{ width:70px; height:31px; float:left;}
-.s1 .littxt .keybox .subinputbox1 input{ width:70px; height:31px;background:url(../images/51.gif) no-repeat 0px -32px; border:0px; color: #666666; font-family:"microsoft yahei","ËÎÌå"; font-size:15px; line-height:31px; *margin-top:1px;}
+.s1 .littxt .keybox .subinputbox1 input{ width:70px; height:31px;background:url(../images/51.gif) no-repeat 0px -32px; border:0px; color: #666666; font-family:"microsoft yahei","å®‹ä½“"; font-size:15px; line-height:31px; *margin-top:1px;}
 .s1 .littxt .keymore{ width:200px;background:url(../images/51.gif) no-repeat 40px -64px; float:left; padding-left:63px; padding-top:15px; color:#FF6600; }
 .s1 .littxt li{ float:left;width:145px; height:25px; line-height:25px; overflow:hidden; }
 .s1 .littxt li.hide{ display:none}
@@ -262,17 +262,17 @@ table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
 .s1 .littxt li span{ color: #FF6600}
 .s1 .advbox{ display:none}
 
-/*Ö°Î»ÁĞ±íÏÔÊ¾*/
+/*èŒä½åˆ—è¡¨æ˜¾ç¤º*/
 .jobinfolists .infolists .detail {width:950px;margin:0 auto;border-bottom:1px dotted #cccccc;padding-bottom:10px;}
 .jobinfolists .infolists .detail:hover{background-color:#F5F5F5;}
 .jobinfolists .infolists .detail .li_left_check{float:left;padding-top:17px;*padding-top:13px;padding-left:10px;width:22px;}
-.jobinfolists .infolists .detail .jobname{height:20px; width:320px; font-size:14px; float:left; padding-top:6px;font-family:"microsoft yahei","ËÎÌå";}
-.jobinfolists .infolists .detail .jobname_list{height:20px; width:280px; font-size:14px; float:left; padding-top:6px;font-family:"microsoft yahei","ËÎÌå";}
+.jobinfolists .infolists .detail .jobname{height:20px; width:320px; font-size:14px; float:left; padding-top:6px;font-family:"microsoft yahei","å®‹ä½“";}
+.jobinfolists .infolists .detail .jobname_list{height:20px; width:280px; font-size:14px; float:left; padding-top:6px;font-family:"microsoft yahei","å®‹ä½“";}
 .jobinfolists .infolists .detail .jobname_list a{text-decoration:none;color:#0180CF;font-size:14px;}
 .jobinfolists .infolists .detail .jobname_list a:hover{color:#ff9900;}
 .jobinfolists .infolists .detail .jobname_list img{vertical-align:middle;}
 
-.jobinfolists .infolists .detail .com_list{height:20px; width:200px;float:left;padding-top:6px; font-family:"microsoft yahei","ËÎÌå";overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.jobinfolists .infolists .detail .com_list{height:20px; width:200px;float:left;padding-top:6px; font-family:"microsoft yahei","å®‹ä½“";overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .jobinfolists .infolists .detail .com_list a{text-decoration:none;color:#0180cf;}
 .jobinfolists .infolists .detail .com_list a:hover{color:#ff9900;}
 .jobinfolists .infolists .detail .com_list img{vertical-align:middle;margin-left: 5px;margin-top: 1px;}
@@ -286,11 +286,11 @@ table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
 .jobinfolists .infolists .detail .li_right .app_jobs:hover{background-image:url(../images/li_right_h.png);}
 .jobinfolists .infolists .detail .li_right .collect{cursor:pointer;width:95px;height:30px;background:url(../images/li_right.png) no-repeat 0 -30px;}
 .jobinfolists .infolists .detail .li_right .collect:hover{background-image:url(../images/li_right_h.png);}
-.jobinfolists .infolists .detail .wage{height:20px; width:130px;float:left;padding-top:6px; font-family:"microsoft yahei","ËÎÌå";overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.jobinfolists .infolists .detail .district{height:20px; width:160px;float:left;padding-top:6px; font-family:"microsoft yahei","ËÎÌå";overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.jobinfolists .infolists .detail .refreshtime{height:20px; width:90px;float:left;padding-top:6px; font-family:"microsoft yahei","ËÎÌå";overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.jobinfolists .infolists .detail .wage{height:20px; width:130px;float:left;padding-top:6px; font-family:"microsoft yahei","å®‹ä½“";overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.jobinfolists .infolists .detail .district{height:20px; width:160px;float:left;padding-top:6px; font-family:"microsoft yahei","å®‹ä½“";overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.jobinfolists .infolists .detail .refreshtime{height:20px; width:90px;float:left;padding-top:6px; font-family:"microsoft yahei","å®‹ä½“";overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .jobinfolists .infolists .list_tab {float:right;padding-right:20px;}
-/*ºÏ²¢¹«Ë¾*/
+/*åˆå¹¶å…¬å¸*/
 .jobinfolists .infolists .list_tab .ld_tab{display: inline-block;margin-left: 10px;padding-left: 20px;background-image: url(../images/list-detail.gif);background-repeat: no-repeat;height:18px;line-height: 18px;font-size: 14px;color:#666;cursor: pointer;}
 .jobinfolists .infolists .list_tab .ld_tab:hover{color:#0180CF;}
 .jobinfolists .infolists .list_tab .ld_tab.tab_list{background-position: 3px -40px;}
@@ -344,9 +344,9 @@ table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
 .jobinfolists .infolists .detail .xiala.ishow{background-position: 0px 0px;}
 
 /*
-***ÒÔÏÂÑùÊ½Îª3.6°æ±¾×îĞÂÖ°Î»ÁĞ±í£¬½ô¼±ÕĞÆ¸ÁĞ±í£¬ÍÆ¼öÖ°Î»ÁĞ±íÑùÊ½
+***ä»¥ä¸‹æ ·å¼ä¸º3.6ç‰ˆæœ¬æœ€æ–°èŒä½åˆ—è¡¨ï¼Œç´§æ€¥æ‹›è˜åˆ—è¡¨ï¼Œæ¨èèŒä½åˆ—è¡¨æ ·å¼
 */
-/*ÍÆ¼öÖ°Î»£¬×îĞÂÖ°Î»*/
+/*æ¨èèŒä½ï¼Œæœ€æ–°èŒä½*/
 .job-normal-list{padding:0 0 15px 20px;}
 .job-normal-list .job-normal-item{padding:12px 0px 10px 10px;border-bottom: 1px dotted #dbdbdb;margin-right: 75px;width: 307px;overflow: hidden;font-family:"Microsoft Yahei";}
 .job-normal-list .job-normal-item .job-info{line-height: 20px;width: 280px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
@@ -357,7 +357,7 @@ table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
 .job-normal-list .job-normal-item .job-com-pay .j-com{color:#333;margin-right: 10px;text-decoration: none;}
 .job-normal-list .job-normal-item .job-com-pay .j-com:hover{text-decoration: underline;color:#0180cf;}
 .job-normal-list .job-normal-item .job-com-pay .j-pay{color:#333;margin-left: 10px;}
-/*½ô¼±ÕĞÆ¸*/
+/*ç´§æ€¥æ‹›è˜*/
 .urgent-job-list{padding:0 10px 15px;}
 .urgent-job-list .urgent-job-item{padding:14px 20px 14px 10px;border-bottom: 1px solid #e2e2e2;font-size: 12px;line-height: 20px;}
 .urgent-job-list .urgent-job-item .u-job-name{font-size: 14px;width: 95px;margin-right: 6px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
@@ -368,7 +368,7 @@ table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
 .urgent-job-list .urgent-job-item .u-job-com a:hover{color:#0180cf;text-decoration:underline;}
 .urgent-job-list .urgent-job-item .u-job-time{color:#999;white-space: nowrap;}
 
-/*Êı¾İÁĞ±í*/
+/*æ•°æ®åˆ—è¡¨*/
 .underline:hover{text-decoration: underline;}
 .infolists{font-family: "SimSun";}
 .infolists a{text-decoration: none;}
@@ -413,7 +413,7 @@ table{border-collapse:collapse;border-spacing:0;line-height: 25px;color: #666;}
 .info-list-wrap .infolist-row .info-list-detail .info-control p{padding-left: 30px;padding-top: 7px;}
 .info-list-wrap .infolist-row .info-list-detail .info-control p .collect-btn{display: block;width: 45px;height: 20px;background: url(../images/li_right.png) no-repeat -26px -39px;}
 .info-list-wrap .infolist-row .info-list-detail .info-control p .collect-btn:hover{background: url(../images/li_right_h.png) no-repeat -26px -39px;}
-/*3.6ºÏ²¢¹«Ë¾ÑùÊ½ÖØÖÃ*/
+/*3.6åˆå¹¶å…¬å¸æ ·å¼é‡ç½®*/
 .merger_com_box{padding:10px 0;font-family: "SimSun";margin:0;width:auto;}
 .merger_com_box .merger_job_list{padding-left: 0;}
 .merger_com_box h2 a{/*font-family: "Microsoft Yahei";*/}

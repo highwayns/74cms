@@ -1,4 +1,4 @@
-/*Î¢ÕĞÆ¸Ò³Ãæ*/
+ï»¿/*å¾®æ‹›è˜é¡µé¢*/
 .rec_banner{height:320px;width:100%;margin-top:15px;}
 .rec_banner p{font-size:18px;color:#fff;line-height:35px;font-family: "microsoft yahei";}
 .rec_banner.resume{background:url(../images/simple.jpg) top left no-repeat;}
@@ -35,7 +35,7 @@
 .wei_right p{font-size:14px;font-family:"microsoft yahei";line-height:28px;text-indent:2em;color:#666;}
 .wei_right p a{color:#0180CF;}
 
-/*Î¢ÕĞÆ¸µ¯³ö¿ò*/
+/*å¾®æ‹›è˜å¼¹å‡ºæ¡†*/
 .wei_job_dialog{font-size:14px;font-family:"microsoft yahei";background-color:#fff;padding:20px 36px;}
 .wei_job_dialog table tr{height:45px;}
 .wei_job_dialog table tr span{color:#A5A5A5;padding-left:3px;margin-right: 10px;}

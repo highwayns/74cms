@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -16,11 +16,11 @@ $(document).ready(function()
   <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
     <tr>
       <td  class="admin_list_tit admin_list_first">
-      <label id="chkAll">¹ËÎÊÕÕÆ¬</label>
+      <label id="chkAll">é¡¾é—®ç…§ç‰‡</label>
 	  </td>
-	  <td    class="admin_list_tit">¹ËÎÊĞÕÃû</td> 
-	  <td  width="12%" class="admin_list_tit">¹ËÎÊQQ</td>  
-      <td width="15%" align="center" class="admin_list_tit">²Ù×÷</td>
+	  <td    class="admin_list_tit">é¡¾é—®å§“å</td> 
+	  <td  width="12%" class="admin_list_tit">é¡¾é—®QQ</td>  
+      <td width="15%" align="center" class="admin_list_tit">æ“ä½œ</td>
     </tr>
 	{#foreach from=$consultants item=list#}
       <tr >
@@ -35,7 +35,7 @@ $(document).ready(function()
 		</td>
      
         <td width="15%" align="center" class="admin_list">
-		<a href="?act=consultant_install_save&id={#$list.id#}&tuid={#$tuid#}">±£´æ</a>
+		<a href="?act=consultant_install_save&id={#$list.id#}&tuid={#$tuid#}">ä¿å­˜</a>
 		
 		</td>
       </tr>
@@ -43,7 +43,7 @@ $(document).ready(function()
     </table>
   </form>
 	{#if !$consultants#}
-	<div class="admin_list_no_info">Ã»ÓĞÈÎºÎĞÅÏ¢£¡</div>
+	<div class="admin_list_no_info">æ²¡æœ‰ä»»ä½•ä¿¡æ¯ï¼</div>
 	{#/if#}
   
 	<table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">

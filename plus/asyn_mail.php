@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ·¢ËÍÓÊ¼ş
+ * 74cms å‘é€é‚®ä»¶
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 ignore_user_abort(true);
@@ -26,7 +26,7 @@ $asyn_userkey=asyn_userkey($uid);
 if ($asyn_userkey<>$key)exit("error");
 $mailconfig=get_cache('mailconfig');
 $mail_templates=get_cache('mail_templates');
-//·¢ËÍ×¢²áÓÊ¼ş
+//å‘é€æ³¨å†Œé‚®ä»¶
 if($act == 'reg'){
 	if ($_GET['sendemail'] && $_GET['sendusername'] && $_GET['sendpassword'] && $mailconfig['set_reg']=="1")
 	{
@@ -39,13 +39,13 @@ if($act == 'reg'){
 			}
 	}
 }
-//ÉêÇëÖ°Î»·¢ËÍÓÊ¼ş
+//ç”³è¯·èŒä½å‘é€é‚®ä»¶
 elseif($act == 'jobs_apply')
 {   
 	global $_CFG;
 	$templates=label_replace($mail_templates['set_applyjobs']);
 	$templates_title=label_replace($mail_templates['set_applyjobs_title']);
-	// ÉêÇëÖ°Î»·¢ËÍÓÊ¼ş ¼òÀúĞÅÏ¢
+	// ç”³è¯·èŒä½å‘é€é‚®ä»¶ ç®€å†ä¿¡æ¯
 	require_once(QISHI_ROOT_PATH.'include/fun_personal.php');
 	$resume_id=intval($_GET['resume_id']);
 	$resume_basic=get_resume_basic($uid,$resume_id);
@@ -63,41 +63,41 @@ elseif($act == 'jobs_apply')
 	$show_contact = false;
 	if($_CFG['showapplycontact']=='1' || $_CFG['showresumecontact']=='0')
 	{
-		$show_contact = '<p>ÊÖ»úºÅÂë£º'.$resume_basic["telephone"].' µç×ÓÓÊÏä£º'.$resume_basic["email"].'</p>';
+		$show_contact = '<p>æ‰‹æœºå·ç ï¼š'.$resume_basic["telephone"].' ç”µå­é‚®ç®±ï¼š'.$resume_basic["email"].'</p>';
 	}
 	else
 	{
-		$show_contact = '<p>ÁªÏµ·½Ê½£º<a href='.url_rewrite('QS_resumeshow',array('id'=>$resume_id)).'>µã»÷²é¿´</a></p>';
+		$show_contact = '<p>è”ç³»æ–¹å¼ï¼š<a href='.url_rewrite('QS_resumeshow',array('id'=>$resume_id)).'>ç‚¹å‡»æŸ¥çœ‹</a></p>';
 	}	
 	$htm='<div style="width: 900px;margin: 0 auto;font-size: 14px;">
 		<div style="margin-bottom:10px">
 			<div style="float: left;"><a href="'.$_CFG['site_domain'].$_CFG['site_dir'].'"><img src="'.$_CFG['site_domain'].$_CFG['upfiles_dir'].$_CFG['web_logo'].'" alt="'.$_CFG['site_name'].'" border="0" align="absmiddle" width=180 height=50 /></a></div>
-			<div style="float: right;padding-top:10px;">'.$templates.'¸üĞÂÊ±¼ä£º'.date("Y-m-d",$resume_basic["refreshtime"]).'</div>
+			<div style="float: right;padding-top:10px;">'.$templates.'æ›´æ–°æ—¶é—´ï¼š'.date("Y-m-d",$resume_basic["refreshtime"]).'</div>
 			<div style="clear:both"></div>
 		</div>
 		<div style="padding-bottom: 10px;">
-			<span style="font-size: 18px;font-weight: 700;">'.$resume_basic["fullname"].'</span><span>£¨'.$resume_basic["sex_cn"].'£¬'.$resume_basic["age"].'£©</span>
-			<p>Ñ§Àú£º'.$resume_basic["education_cn"].' | ×¨Òµ£º'.$resume_basic["major_cn"].' | ¹¤×÷¾­Ñé£º'.$resume_basic["experience_cn"].'Äê | ÏÖ¾Ó×¡µØ£º'.$resume_basic["residence"].'</p>
+			<span style="font-size: 18px;font-weight: 700;">'.$resume_basic["fullname"].'</span><span>ï¼ˆ'.$resume_basic["sex_cn"].'ï¼Œ'.$resume_basic["age"].'ï¼‰</span>
+			<p>å­¦å†ï¼š'.$resume_basic["education_cn"].' | ä¸“ä¸šï¼š'.$resume_basic["major_cn"].' | å·¥ä½œç»éªŒï¼š'.$resume_basic["experience_cn"].'å¹´ | ç°å±…ä½åœ°ï¼š'.$resume_basic["residence"].'</p>
 
 			'.$show_contact.$tag_str.'
 
 		</div>
 		<div style="padding-bottom: 10px;">
-			<p style="font-size: 16px;font-weight: 700;">ÇóÖ°ÒâÏò</p>
-			<p>ÆÚÍûÖ°Î»£º'.$resume_basic["intention_jobs"].'</p>
-			<p>ÆÚÍûĞ½×Ê£º'.$resume_basic["wage_cn"].'</p>
-			<p>ÆÚÍûµØÇø£º'.$resume_basic["district_cn"].'</p>
+			<p style="font-size: 16px;font-weight: 700;">æ±‚èŒæ„å‘</p>
+			<p>æœŸæœ›èŒä½ï¼š'.$resume_basic["intention_jobs"].'</p>
+			<p>æœŸæœ›è–ªèµ„ï¼š'.$resume_basic["wage_cn"].'</p>
+			<p>æœŸæœ›åœ°åŒºï¼š'.$resume_basic["district_cn"].'</p>
 		</div>
 		<div style="padding-bottom: 10px;">
-			<p style="font-size: 16px;font-weight: 700;">¹¤×÷¾­Ñé</p>';
+			<p style="font-size: 16px;font-weight: 700;">å·¥ä½œç»éªŒ</p>';
 				if(!empty($resume_work))
 				{
 					foreach ($resume_work as $value)
 					{
 						$htm.='<div>
 								<p style="font-size: 14px;font-weight: 700;">'.$value["companyname"].'</p>
-								<p>'.$value["startyear"].'Äê'.$value["startmonth"].'ÔÂ-'.$value["endyear"].'Äê'.$value["endmonth"].'ÔÂ '.$value["jobs"].'</p>
-								<div style="float: left;width: 100px;">¹¤×÷ÄÚÈİ£º</div>
+								<p>'.$value["startyear"].'å¹´'.$value["startmonth"].'æœˆ-'.$value["endyear"].'å¹´'.$value["endmonth"].'æœˆ '.$value["jobs"].'</p>
+								<div style="float: left;width: 100px;">å·¥ä½œå†…å®¹ï¼š</div>
 								<div style="float: right;width: 800px;">'.$value["achievements"].'</div>
 								<div style="clear:both"></div>
 							</div>'	;
@@ -106,7 +106,7 @@ elseif($act == 'jobs_apply')
 				else
 				{
 					$htm.='<div>
-								Ã»ÓĞÌîĞ´¹¤×÷¾­Àú
+								æ²¡æœ‰å¡«å†™å·¥ä½œç»å†
 							</div>'	;
 				}
 				
@@ -114,155 +114,155 @@ elseif($act == 'jobs_apply')
 		if($resume_basic["specialty"])
 		{
 			$htm.='<div style="padding-bottom: 10px;">
-				<p style="font-size: 16px;font-weight: 700;">×ÔÎÒÃèÊö</p>
+				<p style="font-size: 16px;font-weight: 700;">è‡ªæˆ‘æè¿°</p>
 				<p>'.$resume_basic["specialty"].'</p>
 			</div>';
 		}
 		$htm.='<div style="text-align: center;margin-top:20px">
-				¸Ã¼òÀúÀ´×Ô<a href="'.$_CFG["site_domain"].$_CFG["site_dir"].'">'.$_CFG["site_name"].'</a>
+				è¯¥ç®€å†æ¥è‡ª<a href="'.$_CFG["site_domain"].$_CFG["site_dir"].'">'.$_CFG["site_name"].'</a>
 			</div>
 		</div>';
 	smtp_mail($_GET['email'],$templates_title,$htm);
 }
-//ÑûÇëÃæÊÔ·¢ËÍÓÊ¼ş
+//é‚€è¯·é¢è¯•å‘é€é‚®ä»¶
 elseif($act == 'set_invite')
 {
 			$templates=label_replace($mail_templates['set_invite']);
 			$templates_title=label_replace($mail_templates['set_invite_title']);
 			smtp_mail($_GET['email'],$templates_title,$templates);
 }
-//ÉêÇë³äÖµ£¬·¢ËÍÓÊ¼ş
+//ç”³è¯·å……å€¼ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_order'){
 			$templates=label_replace($mail_templates['set_order']);
 			$templates_title=label_replace($mail_templates['set_order_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//³äÖµ³É¹¦£¬·¢ËÍÓÊ¼ş
+//å……å€¼æˆåŠŸï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_payment'){
 			$templates=label_replace($mail_templates['set_payment']);
 			$templates_title=label_replace($mail_templates['set_payment_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//ĞŞ¸ÄÃÜÂë£¬·¢ËÍÓÊ¼ş
+//ä¿®æ”¹å¯†ç ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_editpwd'){
 			$templates=label_replace($mail_templates['set_editpwd']);
 			$templates_title=label_replace($mail_templates['set_editpwd_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//Ö°Î»ÉóºËÍ¨¹ı£¬·¢ËÍÓÊ¼ş
+//èŒä½å®¡æ ¸é€šè¿‡ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_jobsallow'){
 			$templates=label_replace($mail_templates['set_jobsallow']);
 			$templates_title=label_replace($mail_templates['set_jobsallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//Ö°Î»Î´ÉóºËÍ¨¹ı£¬·¢ËÍÓÊ¼ş
+//èŒä½æœªå®¡æ ¸é€šè¿‡ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_jobsnotallow'){
 			$templates=label_replace($mail_templates['set_jobsnotallow']);
 			$templates_title=label_replace($mail_templates['set_jobsnotallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//ÆóÒµÈÏÖ¤Í¨¹ı£¬·¢ËÍÓÊ¼ş
+//ä¼ä¸šè®¤è¯é€šè¿‡ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_licenseallow'){
 			$templates=label_replace($mail_templates['set_licenseallow']);
 			$templates_title=label_replace($mail_templates['set_licenseallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//ÆóÒµÈÏÖ¤Î´Í¨¹ı£¬·¢ËÍÓÊ¼ş
+//ä¼ä¸šè®¤è¯æœªé€šè¿‡ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_licensenotallow'){
 			$templates=label_replace($mail_templates['set_licensenotallow']);
 			$templates_title=label_replace($mail_templates['set_licensenotallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//ÆóÒµ¼ÓÈëÌØ±ğÍÆ¼ö£¬·¢ËÍÓÊ¼ş
+//ä¼ä¸šåŠ å…¥ç‰¹åˆ«æ¨èï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_addmap'){
 			$templates=label_replace($mail_templates['set_addmap']);
 			$templates_title=label_replace($mail_templates['set_addmap_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//¼òÀúÍ¨¹ıÉóºË£¬·¢ËÍÓÊ¼ş
+//ç®€å†é€šè¿‡å®¡æ ¸ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_resumeallow'){
 			$templates=label_replace($mail_templates['set_resumeallow']);
 			$templates_title=label_replace($mail_templates['set_resumeallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//¼òÀúÎ´Í¨¹ıÉóºË£¬·¢ËÍÓÊ¼ş
+//ç®€å†æœªé€šè¿‡å®¡æ ¸ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_resumenotallow'){
 			$templates=label_replace($mail_templates['set_resumenotallow']);
 			$templates_title=label_replace($mail_templates['set_resumenotallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//½²Ê¦Í¨¹ıÉóºË£¬·¢ËÍÓÊ¼ş
+//è®²å¸ˆé€šè¿‡å®¡æ ¸ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_teaallow'){
 			$templates=label_replace($mail_templates['set_teaallow']);
 			$templates_title=label_replace($mail_templates['set_teaallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//½²Ê¦Î´Í¨¹ıÉóºË£¬·¢ËÍÓÊ¼ş
+//è®²å¸ˆæœªé€šè¿‡å®¡æ ¸ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_teanotallow'){
 			$templates=label_replace($mail_templates['set_teanotallow']);
 			$templates_title=label_replace($mail_templates['set_teanotallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//¿Î³ÌÍ¨¹ıÉóºË£¬·¢ËÍÓÊ¼ş
+//è¯¾ç¨‹é€šè¿‡å®¡æ ¸ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_couallow'){
 			$templates=label_replace($mail_templates['set_couallow']);
 			$templates_title=label_replace($mail_templates['set_couallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//¿Î³ÌÎ´Í¨¹ıÉóºË£¬·¢ËÍÓÊ¼ş
+//è¯¾ç¨‹æœªé€šè¿‡å®¡æ ¸ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_counotallow'){
 			$templates=label_replace($mail_templates['set_counotallow']);
 			$templates_title=label_replace($mail_templates['set_counotallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//¸öÈËÔÚÏßÉêÇë¿Î³Ì£¬·¢ËÍÓÊ¼ş
+//ä¸ªäººåœ¨çº¿ç”³è¯·è¯¾ç¨‹ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_applycou'){
 			$templates=label_replace($mail_templates['set_applycou']);
 			$templates_title=label_replace($mail_templates['set_applycou_title']);
 			smtp_mail($_GET['email'],$templates_title,$templates);
 }
-//»ú¹¹ÏÂÔØÉêÇë£¬·¢ËÍÓÊ¼ş
+//æœºæ„ä¸‹è½½ç”³è¯·ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_downapp'){
 			$templates=label_replace($mail_templates['set_downapp']);
 			$templates_title=label_replace($mail_templates['set_downapp_title']);
 			smtp_mail($_GET['email'],$templates_title,$templates);
 }
-//ÁÔÍ·Í¨¹ıÉóºË£¬·¢ËÍÓÊ¼ş
+//çŒå¤´é€šè¿‡å®¡æ ¸ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_hunallow'){
 			$templates=label_replace($mail_templates['set_hunallow']);
 			$templates_title=label_replace($mail_templates['set_hunallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//ÁÔÍ·Î´Í¨¹ıÉóºË£¬·¢ËÍÓÊ¼ş
+//çŒå¤´æœªé€šè¿‡å®¡æ ¸ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_hunnotallow'){
 			$templates=label_replace($mail_templates['set_hunnotallow']);
 			$templates_title=label_replace($mail_templates['set_hunnotallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//¸ß¼¶Ö°Î»Í¨¹ıÉóºË£¬·¢ËÍÓÊ¼ş
+//é«˜çº§èŒä½é€šè¿‡å®¡æ ¸ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_hunjobsallow'){
 			$templates=label_replace($mail_templates['set_hunjobsallow']);
 			$templates_title=label_replace($mail_templates['set_hunjobsallow_title']);
 			$useremail=get_user_inid($uid);
 			smtp_mail($useremail['email'],$templates_title,$templates);
 }
-//¸ß¼¶Ö°Î»Î´Í¨¹ıÉóºË£¬·¢ËÍÓÊ¼ş
+//é«˜çº§èŒä½æœªé€šè¿‡å®¡æ ¸ï¼Œå‘é€é‚®ä»¶
 elseif($act == 'set_hunjobsnotallow'){
 			$templates=label_replace($mail_templates['set_hunjobsnotallow']);
 			$templates_title=label_replace($mail_templates['set_hunjobsnotallow_title']);

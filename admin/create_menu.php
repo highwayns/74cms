@@ -1,18 +1,18 @@
-<?php
+ï»¿<?php
 define('IN_QISHI', true);
 require_once(dirname(__FILE__).'/../data/config.php');
 require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 $access_token = get_access_token();
 if(empty($access_token)){
-	adminmsg("access_token»ñÈ¡Ê§°Ü£¡",1);
+	adminmsg("access_tokenèŽ·å–å¤±è´¥ï¼",1);
 }
 $jsonmenu = get_weixin_json_menu();
 $url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$access_token;
 $result = https_request($url, $jsonmenu);
 $result_arr = json_decode($result,true);
 if($result_arr['errmsg']=='ok'){
-  adminmsg("Í¬²½²Ëµ¥³É¹¦£¡",2);
+  adminmsg("åŒæ­¥èœå•æˆåŠŸï¼",2);
 }else{
-  adminmsg("Í¬²½²Ëµ¥Ê§°Ü£¬Çë¼ì²é´úÂë£¡",1);
+  adminmsg("åŒæ­¥èœå•å¤±è´¥ï¼Œè¯·æ£€æŸ¥ä»£ç ï¼",1);
 }
 ?>

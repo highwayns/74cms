@@ -1,7 +1,7 @@
-<script src="{#$QISHI.site_template#}js/jquery.autocomplete.js" type="text/javascript" language="javascript"></script>
+ï»¿<script src="{#$QISHI.site_template#}js/jquery.autocomplete.js" type="text/javascript" language="javascript"></script>
 <script>
 	$(function() {
-		// ¶¥²¿navÕ¹¿ª
+		// é¡¶éƒ¨navå±•å¼€
 		$('.nav-list').hover(function(){
 			$(this).find('.nav-li').css({'background-color':'#005eac'});
 			$(this).find('.nav-more-drop').show();
@@ -9,13 +9,13 @@
 			$(this).find('.nav-li').attr('style', '');
 			$(this).find('.nav-more-drop').hide();
 		});
-		// ËÑË÷ÀàĞÍÕ¹¿ª
+		// æœç´¢ç±»å‹å±•å¼€
 		$('.search-type').hover(function(){
 			$(this).find('.search-type-drop').show();
 		}, function(){
 			$(this).find('.search-type-drop').hide();
 		});
-		// Ñ¡ÔñÕÒ¹¤×÷»¹ÊÇÕÒÈË²Å
+		// é€‰æ‹©æ‰¾å·¥ä½œè¿˜æ˜¯æ‰¾äººæ‰
 		$('.search-type-drop').bind('click', function() {
 			var stype = $(this).attr("code"), tit = $(this).attr("title"), data = $(this).attr("data"),
 				hstype = $(".search-type-show").attr("code"), htit = $(".search-type-show").attr("title"), hdata = $(".search-type-show").attr("data");
@@ -26,17 +26,17 @@
 			$('.search-type-drop').hide();
 		});
 		var dir = "{#$QISHI.site_dir#}";
-		// »Ø³µËÑË÷
+		// å›è½¦æœç´¢
 		$('#keyForIndexSearch').keydown(function(e) {
 			if (e.keyCode==13) {
 				search_location(dir);
 			}
 		});
-		// ËÑË÷°´Å¥µã»÷
+		// æœç´¢æŒ‰é’®ç‚¹å‡»
 		$("#btnForIndexSearch").click(function() {
 			search_location(dir);
 		});
-		// ËÑË÷Ìø×ª
+		// æœç´¢è·³è½¬
 		function search_location(dir) {
 			generateBackground();
 			var listype = $("#btnForIndexSearch").attr('code');
@@ -49,7 +49,7 @@
 				 },"text"
 			);
 		}
-		// ÕıÔÚ¼ÓÔØ
+		// æ­£åœ¨åŠ è½½
 		function generateBackground() {
 			var backgroundHtm = '<div id="bonfire-pageloader"><div class="bonfire-pageloader-icon"></div></div>';
 			var html = jQuery('body');
@@ -64,7 +64,7 @@
 			};
 			resizenow();
 		}
-		// ËÑË÷ÌáÊ¾
+		// æœç´¢æç¤º
 		var hotKey = $('#keyForIndexSearch').autocomplete({
 			serviceUrl:dir+"plus/ajax_common.php?act=hotword",
 			minChars:1, 
@@ -73,11 +73,11 @@
 			zIndex: 1,
 			deferRequestBy: 0 
 		});
-		// ÃûÆóÁĞ±í
+		// åä¼åˆ—è¡¨
 		$('.famous-items:nth-child(4n)').css({'margin-right':0});
-		// ÕÕÆ¬¼òÀú
+		// ç…§ç‰‡ç®€å†
 		$('.photo-items:nth-child(7n)').css({'margin-right':0});
-		// ¹ã¸æÎ»
+		// å¹¿å‘Šä½
 		var adBlock = $('.ad-row');
 		adBlock.each(function(){
 			if ($(this).find('.ad-item').length == 3) {
@@ -88,32 +88,32 @@
 		});
 	});
 </script>
-<!-- Í·²¿ -->
+<!-- å¤´éƒ¨ -->
 <div id="header">
 	<div class="top-nav-wrap">
 		<div class="top-nav clearfix">
 			<ul class="f-left">
-				{#qishi_nav set="µ÷ÓÃÃû³Æ:QS_top,ÁĞ±íÃû:list,·Ö¸î:5"#}
+				{#qishi_nav set="è°ƒç”¨åç§°:QS_top,åˆ—è¡¨å:list,åˆ†å‰²:5"#}
 				{#foreach from=$list item=list#}
 				<li><a href="{#$list.url#}" target="{#$list.target#}" class="nav-li {#if $list.tag==$page_select && $list.tag!=""#}active{#/if#}">{#$list.title#}</a></li>
 			    {#/foreach#}
 				<li class="nav-list">
-					<a href="javascript:;" class="nav-li">¸ü¶à<i class="nav-more"></i></a>
+					<a href="javascript:;" class="nav-li">æ›´å¤š<i class="nav-more"></i></a>
 					<div class="nav-more-drop">
 						<ul class="nav-detail clearfix">
 							{#foreach from=$list_more item=li#}
 							<li><a href="{#$li.url#}" target="{#$li.target#}" class="underline f-left">{#$li.title#}</a></li>
 						    {#/foreach#}
-							<li><a href="{#"QS_explainshow,id:7"|qishi_url#}" class="underline f-left" target="_blank">VIP·şÎñ</a></li>
-							<li><a href="{#"QS_suggest"|qishi_url#}" class="underline f-left" target="_blank">Òâ¼û½¨Òé</a></li>
-							<li><a href="{#"QS_simplelist"|qishi_url#}" class="underline f-left" target="_blank">Î¢ÕĞÆ¸</a></li>
-							<li><a href="{#"QS_helplist"|qishi_url#}" class="underline f-left">Ê¹ÓÃ°ïÖú</a></li>
+							<li><a href="{#"QS_explainshow,id:7"|qishi_url#}" class="underline f-left" target="_blank">VIPæœåŠ¡</a></li>
+							<li><a href="{#"QS_suggest"|qishi_url#}" class="underline f-left" target="_blank">æ„è§å»ºè®®</a></li>
+							<li><a href="{#"QS_simplelist"|qishi_url#}" class="underline f-left" target="_blank">å¾®æ‹›è˜</a></li>
+							<li><a href="{#"QS_helplist"|qishi_url#}" class="underline f-left">ä½¿ç”¨å¸®åŠ©</a></li>
 						</ul>
 						<div class="mob-list">
-							<h4>ÒÆ¶¯»¥Áª</h4>
+							<h4>ç§»åŠ¨äº’è”</h4>
 							<div class="mob-list-box clearfix">
-								<a href="{#$QISHI.site_dir#}mobile/?type=touch" class="mob-link wap-link f-left" target="_balnk">´¥ÆÁ°æ</a>
-								<a href="{#$QISHI.site_dir#}mobile/?type=weixin" class="mob-link wechat-link f-left" target="_balnk">Î¢ĞÅ°æ</a>
+								<a href="{#$QISHI.site_dir#}mobile/?type=touch" class="mob-link wap-link f-left" target="_balnk">è§¦å±ç‰ˆ</a>
+								<a href="{#$QISHI.site_dir#}mobile/?type=weixin" class="mob-link wechat-link f-left" target="_balnk">å¾®ä¿¡ç‰ˆ</a>
 							</div>
 						</div>
 					</div>
@@ -121,11 +121,11 @@
 			</ul>
 			<div class="nav-right f-right">
 				{#if $smarty.session.username#}
-				<span class="login-reg"><a href="{#"QS_login"|qishi_url#}" class="underline">{#$smarty.session.username#}</a>&nbsp;&nbsp;&nbsp;<a href="{#"QS_login,act:logout"|qishi_url#}" class="underline">[ÍË³ö]</a></span>
+				<span class="login-reg"><a href="{#"QS_login"|qishi_url#}" class="underline">{#$smarty.session.username#}</a>&nbsp;&nbsp;&nbsp;<a href="{#"QS_login,act:logout"|qishi_url#}" class="underline">[é€€å‡º]</a></span>
 				{#else#}
-				<span class="login-reg"><a href="{#"QS_login"|qishi_url#}" class="underline">µÇÂ¼</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{#$QISHI.site_dir#}user/user_reg.php" class="underline">×¢²á</a></span>
+				<span class="login-reg"><a href="{#"QS_login"|qishi_url#}" class="underline">ç™»å½•</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{#$QISHI.site_dir#}user/user_reg.php" class="underline">æ³¨å†Œ</a></span>
 				{#/if#}
-				<span class="nav-items"><a href="{#$QISHI.site_dir#}plus/shortcut.php" class="underline">±£´æµ½×ÀÃæ</a></span>
+				<span class="nav-items"><a href="{#$QISHI.site_dir#}plus/shortcut.php" class="underline">ä¿å­˜åˆ°æ¡Œé¢</a></span>
 			</div>
 		</div>
 	</div>
@@ -133,21 +133,21 @@
 		<div class="logo-box f-left"><a href="{#$QISHI.site_dir#}"><img src="{#$QISHI.upfiles_dir#}{#$QISHI.web_logo#}" alt="{#$QISHI.site_name#}" border="0" align="absmiddle" width="260" height="70"/></a></div>
 		<div class="mobile-block f-right">
 			<div class="complex-center f-left">
-				<!-- ËÑË÷ -->
+				<!-- æœç´¢ -->
 				<div class="search-wrap clearfix">
 					<div class="search-box f-left">
 						<div class="search-type f-left">
-							<div title="ÕÒ¹¤×÷" code="QS_jobslist" data="ÇëÊäÈëÖ°Î»Ãû³Æ»òÆóÒµÃû³Æ" class="search-type-show"><span>ÕÒ¹¤×÷</span><i class="search-icon"></i></div>
-							<div title="ÕÒÈË²Å" code="QS_resumelist" data="ÇëÊäÈë¼òÀú¹Ø¼ü×Ö" class="search-type-drop"><a href="javascript:;">ÕÒÈË²Å</a></div>
+							<div title="æ‰¾å·¥ä½œ" code="QS_jobslist" data="è¯·è¾“å…¥èŒä½åç§°æˆ–ä¼ä¸šåç§°" class="search-type-show"><span>æ‰¾å·¥ä½œ</span><i class="search-icon"></i></div>
+							<div title="æ‰¾äººæ‰" code="QS_resumelist" data="è¯·è¾“å…¥ç®€å†å…³é”®å­—" class="search-type-drop"><a href="javascript:;">æ‰¾äººæ‰</a></div>
 						</div>
 						<div class="search-text f-left">
-							<input type="text" name="keyForIndexSearch" id="keyForIndexSearch" placeholder="ÇëÊäÈëÖ°Î»Ãû³Æ»òÆóÒµÃû³Æ" />
+							<input type="text" name="keyForIndexSearch" id="keyForIndexSearch" placeholder="è¯·è¾“å…¥èŒä½åç§°æˆ–ä¼ä¸šåç§°" />
 						</div>
 					</div>
-					<div class="search-submit f-left"><input type="button" name="btnForIndexSearch" id="btnForIndexSearch" value="ËÑË÷" class="search-submit" /></div>
+					<div class="search-submit f-left"><input type="button" name="btnForIndexSearch" id="btnForIndexSearch" value="æœç´¢" class="search-submit" /></div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- Í·²¿½áÊø -->
+<!-- å¤´éƒ¨ç»“æŸ -->

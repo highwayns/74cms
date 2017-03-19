@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>ÆóÒµ»áÔ±ÖĞĞÄ</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ä¼ä¸šä¼šå‘˜ä¸­å¿ƒ</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="../css/common.css" rel="stylesheet" type="text/css" />
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
@@ -17,12 +17,12 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
 
-	  // µ¯³ö¿ò
+	  // å¼¹å‡ºæ¡†
 	  function showFloatBox() {
 	    $("body").prepend("<div class=\"menu_bg_layer\"></div>");
 	    $(".menu_bg_layer").height($(document).height());
@@ -30,7 +30,7 @@ $(document).ready(function()
 	    $(".menu_bg_layer").css("opacity",0.3);
 	  }
 
-		// Ö°Î»ĞÔÖÊµã»÷
+		// èŒä½æ€§è´¨ç‚¹å‡»
 		$("#nature_menu").click(function(){
 		    showFloatBox();
 		    $("#menuNature").css({ top: ($(window).height() - $('#menuNature').outerHeight())/2 + $(document).scrollTop() });
@@ -44,14 +44,14 @@ $(document).ready(function()
 		    });
 		});
 
-		// ÆÚÍûÖ°Î»µã»÷
+		// æœŸæœ›èŒä½ç‚¹å‡»
 		$("#jobs_menu").click(function(){
 		    showFloatBox();
 		    $("#menuJobs").css({ top: ($(window).height() - $('#menuJobs').outerHeight())/2 + $(document).scrollTop() });
 		    $("#menuJobs").show();
 		});
 
-		// ¹¤×÷¾­Ñéµã»÷
+		// å·¥ä½œç»éªŒç‚¹å‡»
 	  	$("#experience_menu").click(function(){
 		    showFloatBox();
 		    $("#menuExperience").css({ top: ($(window).height() - $('#menuExperience').outerHeight())/2 + $(document).scrollTop() });
@@ -65,7 +65,7 @@ $(document).ready(function()
 		    });
 	  	});
 
-	  	// ÔÂĞ½µã»÷
+	  	// æœˆè–ªç‚¹å‡»
 	  	$("#wage_menu").click(function(){
 		    showFloatBox();
 		    $("#menuWage").css({ top: ($(window).height() - $('#menuWage').outerHeight())/2 + $(document).scrollTop() });
@@ -79,7 +79,7 @@ $(document).ready(function()
 		    });
 	  	});
 
-	  	// Ñ§Àúµã»÷
+	  	// å­¦å†ç‚¹å‡»
 	  	$("#education_menu").click(function(){
 		    showFloatBox();
 		    $("#menuEducation").css({ top: ($(window).height() - $('#menuEducation').outerHeight())/2 + $(document).scrollTop() });
@@ -93,7 +93,7 @@ $(document).ready(function()
 		    });
 	  	});
 	  	    
-	  	// ĞÔ±ğµã»÷
+	  	// æ€§åˆ«ç‚¹å‡»
 	  	$("#sex_menu").click(function(){
 		    showFloatBox();
 		    $("#menuSex").css({ top: ($(window).height() - $('#menuSex').outerHeight())/2 + $(document).scrollTop() });
@@ -107,19 +107,19 @@ $(document).ready(function()
 		    });
 	  	});
 
-	  	// ¹¤×÷µØÇøµã»÷
+	  	// å·¥ä½œåœ°åŒºç‚¹å‡»
 	  	$("#district_menu").click(function(){ 
 		    showFloatBox();
 		    $("#menuDistrict").css({ top: ($(window).height() - $('#menuDistrict').outerHeight())/2 + $(document).scrollTop() });
 		    $("#menuDistrict").show();
 		});
 
-	  	// ¹Ø±Õµ¯³ö¿ò
+	  	// å…³é—­å¼¹å‡ºæ¡†
 		  $(".choose_close").click(function(event) {
 		    $(this).parent().hide();
 		    $(".menu_bg_layer").remove();
 		  });
-	// ajax ·¢²¼Ö°Î»
+	// ajax å‘å¸ƒèŒä½
 	$("#create_job_but").click(function(){
 		var add_mode =$("input[name=add_mode]").val();
 		var jobs_name =$("input[name=jobs_name]").val();
@@ -153,12 +153,12 @@ $(document).ready(function()
         	$("#create_job_but_no").show();
 			if(data.match(re)!=null)
 			{
-				alert("·¢²¼Ö°Î»³É¹¦");
+				alert("å‘å¸ƒèŒä½æˆåŠŸ");
 				window.location.href='?act=addjobs_save_succeed&id='+data+'';
 			}
 			else if(data=="err")
 			{
-				alert("·¢²¼Ö°Î»Ê§°Ü");
+				alert("å‘å¸ƒèŒä½å¤±è´¥");
 				window.location.reload();
 			}else{
 				alert(data);
@@ -173,41 +173,41 @@ $(document).ready(function()
 <body>
 <div class="sub_bodybg"></div>
 <div class="sub_head_top">
-	<div class="title">ÕĞÆ¸ĞÅÏ¢</div>
+	<div class="title">æ‹›è˜ä¿¡æ¯</div>
 	<div class="back" id="pageback"><img src="../images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="../images/2.jpg"  border="0"/></a></div>
 </div>
 
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="../index.php";'>
-    <div class="box"><img src="../images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="../images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-jobs-list.php";'>
-    <div class="box"><img src="../images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="../images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-resume-list.php";'>
-    <div class="box"><img src="../images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="../images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-news-list.php";'>
-    <div class="box"><img src="../images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="../images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 
-<!-- ´´½¨Ö°Î»Ò³Ãæ -->
+<!-- åˆ›å»ºèŒä½é¡µé¢ -->
 <form>
 	<table class="create_job">
 		<tbody>
 			<tr>
-				<td class="create_job_l">Ö°Î»Ãû³Æ</td>
+				<td class="create_job_l">èŒä½åç§°</td>
 				<td class="create_job_r"><input type="text" class="create_input" name="jobs_name"/></td>
 			</tr>
 			<tr>
-				<td class="create_job_l">Ö°Î»ĞÔÖÊ</td>
+				<td class="create_job_l">èŒä½æ€§è´¨</td>
 				<td class="create_job_r" id="nature_menu">
 					<div class="create_input" id="nature_text"></div>
 					<img src="../images/35.gif" alt="" />
@@ -215,10 +215,10 @@ $(document).ready(function()
           			<input name="nature_cn" id="nature_cn" type="hidden" value="" />
 				</td>
 				<div class="menu choose_menu" id="menuNature" style="display:none;position:absolute;z-index:1;">
-		            <div class="menu_title">Ö°Î»ĞÔÖÊ</div>
+		            <div class="menu_title">èŒä½æ€§è´¨</div>
             		<div class="choose_close"></div>
 		            <ul>
-		              {#qishi_get_classify set="ÀàĞÍ:QS_jobs_nature,ÁĞ±íÃû:c_nature"#}
+		              {#qishi_get_classify set="ç±»å‹:QS_jobs_nature,åˆ—è¡¨å:c_nature"#}
 		              {#foreach from=$c_nature item=list#}
 		              <li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 		              {#/foreach#}
@@ -226,7 +226,7 @@ $(document).ready(function()
 	          	</div> 
 			</tr>
 			<tr>
-				<td class="create_job_l">Ö°Î»Àà±ğ</td>
+				<td class="create_job_l">èŒä½ç±»åˆ«</td>
 				<td class="create_job_r" id="jobs_menu">
 					<div class="create_input" id="jobs_text"></div>
 					<img src="../images/35.gif" alt="" /> 
@@ -236,7 +236,7 @@ $(document).ready(function()
               		<input name="category_cn" id="category_cn" type="hidden" value="" />
 				</td>
 				<div class="menu choose_menu" id="menuJobs" style="display:none;position:absolute;z-index:1;">
-		            <div class="menu_title">Ö°Î»Àà±ğ</div>
+		            <div class="menu_title">èŒä½ç±»åˆ«</div>
             		<div class="choose_close"></div>
 		            <div class="area_choose">
 		              <ul class="area_left" id="jobs_left_list"></ul>
@@ -267,7 +267,7 @@ $(document).ready(function()
 	            var sjobstr = "";
 	            if(QS_jobs[rid]) {
 	              var cjobsArray = QS_jobs[rid].split("|");
-	              sjobstr += '<li class="area_small" rcoid="0" title="'+rtitle+'/²»ÏŞ" pid="'+rpid+'.0">²»ÏŞ</li>';
+	              sjobstr += '<li class="area_small" rcoid="0" title="'+rtitle+'/ä¸é™" pid="'+rpid+'.0">ä¸é™</li>';
 	              $.each(cjobsArray, function(cindex, cval) {
 	                if(cval) {
 	                  var cjobs = cval.split(",");
@@ -300,11 +300,11 @@ $(document).ready(function()
 	          });
 	        </script>
 			<tr>
-				<td class="create_job_l">ÕĞÆ¸ÈËÊı</td>
+				<td class="create_job_l">æ‹›è˜äººæ•°</td>
 				<td class="create_job_r"><input type="text" class="create_input" name="amount" /></td>
 			</tr>
 			<tr>
-				<td class="create_job_l">¹¤×÷ÄêÏŞ</td>
+				<td class="create_job_l">å·¥ä½œå¹´é™</td>
 				<td class="create_job_r">
 					<span id="experience_menu">
 						<div class="create_input short_input" id="experience_text"></div>
@@ -312,13 +312,13 @@ $(document).ready(function()
 		                <input name="experience" type="hidden" id="experience" value="" />
 		                <input name="experience_cn" type="hidden" id="experience_cn" value="" />
 	                </span>
-					<span class="check_box"><label><input type="checkbox" name="graduate"/> Ó¦½ì±ÏÒµÉú</label></span>
+					<span class="check_box"><label><input type="checkbox" name="graduate"/> åº”å±Šæ¯•ä¸šç”Ÿ</label></span>
 				</td>
 				<div class="menu choose_menu" id="menuExperience" style="display:none;position:absolute;z-index:1;">
-	            <div class="menu_title">¹¤×÷ÄêÏŞ</div>
+	            <div class="menu_title">å·¥ä½œå¹´é™</div>
             		<div class="choose_close"></div>
 		            <ul>
-		                {#qishi_get_classify  set="ÀàĞÍ:QS_experience,ÁĞ±íÃû:c_experience"#}
+		                {#qishi_get_classify  set="ç±»å‹:QS_experience,åˆ—è¡¨å:c_experience"#}
 		                {#foreach from=$c_experience item=list#}
 		                <li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 		                {#/foreach#}
@@ -326,7 +326,7 @@ $(document).ready(function()
 	            </div>
 			</tr>
 			<tr>
-				<td class="create_job_l">ÔÂĞ½</td>
+				<td class="create_job_l">æœˆè–ª</td>
 				<td class="create_job_r" id="wage_menu">
 					<div class="create_input" id="wage_text"></div>
 					<img src="../images/35.gif" alt="" />
@@ -334,10 +334,10 @@ $(document).ready(function()
 		            <input name="wage_cn" type="hidden" id="wage_cn" value="" />
 				</td>
 				<div class="menu choose_menu" id="menuWage" style="display:none;position:absolute;z-index:1;">
-	            <div class="menu_title">ÔÂĞ½</div>
+	            <div class="menu_title">æœˆè–ª</div>
             		<div class="choose_close"></div>
 		            <ul>
-			            {#qishi_get_classify  set="ÀàĞÍ:QS_wage,ÁĞ±íÃû:c_wage"#}
+			            {#qishi_get_classify  set="ç±»å‹:QS_wage,åˆ—è¡¨å:c_wage"#}
 			            {#foreach from=$c_wage item=list#}
 			            <li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 			            {#/foreach#}
@@ -345,7 +345,7 @@ $(document).ready(function()
 	          	</div>
 			</tr>
 			<tr>
-				<td class="create_job_l">Ñ§Àú</td>
+				<td class="create_job_l">å­¦å†</td>
 				<td class="create_job_r" id="education_menu">
 					<div class="create_input" id="education_text"></div>
 					<img src="../images/35.gif" alt="" />
@@ -353,10 +353,10 @@ $(document).ready(function()
 	                <input name="education_cn" type="hidden" id="education_cn" value="" />
 				</td>
 				<div class="menu choose_menu" id="menuEducation" style="display:none;position:absolute;z-index:1;">
-		            <div class="menu_title">Ñ§Àú</div>
+		            <div class="menu_title">å­¦å†</div>
             		<div class="choose_close"></div>
 		            <ul>
-			            {#qishi_get_classify  set="ÀàĞÍ:QS_education,ÁĞ±íÃû:c_education"#}
+			            {#qishi_get_classify  set="ç±»å‹:QS_education,åˆ—è¡¨å:c_education"#}
 			            {#foreach from=$c_education item=list#}
 			            <li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
 			            {#/foreach#}
@@ -364,7 +364,7 @@ $(document).ready(function()
 	          	</div>
 			</tr>
 			<tr>
-				<td class="create_job_l">ĞÔ±ğ</td>
+				<td class="create_job_l">æ€§åˆ«</td>
 				<td class="create_job_r" id="sex_menu">
 					<div class="create_input" id="sex_text"></div>
 					<img src="../images/35.gif" alt="" />
@@ -372,17 +372,17 @@ $(document).ready(function()
 	                <input name="sex_cn" type="hidden" id="sex_cn" value="" />
 				</td>
 				<div class="menu choose_menu" id="menuSex" style="display:none;position:absolute;z-index:1;">
-		            <div class="menu_title">ĞÔ±ğ</div>
+		            <div class="menu_title">æ€§åˆ«</div>
             		<div class="choose_close"></div>
 		            <ul>
-		            	<li title="²»ÏŞ" id="3">²»ÏŞ</li>
-		            	<li title="ÄĞ" id="1">ÄĞ</li>
-		            	<li title="Å®" id="2">Å®</li>
+		            	<li title="ä¸é™" id="3">ä¸é™</li>
+		            	<li title="ç”·" id="1">ç”·</li>
+		            	<li title="å¥³" id="2">å¥³</li>
 		            </ul>
 	          	</div>
 			</tr>
 			<tr>
-				<td class="create_job_l">¹¤×÷µØÇø</td>
+				<td class="create_job_l">å·¥ä½œåœ°åŒº</td>
 				<td class="create_job_r" id="district_menu">
 					<div class="create_input" id="district_text"></div>
 					<img src="../images/35.gif" alt="" />
@@ -391,7 +391,7 @@ $(document).ready(function()
 					<input type="hidden" id="district_cn" name="district_cn" value="" />
 				</td>
 				<div class="menu choose_menu" id="menuDistrict" style="display:none;position:absolute;z-index:1;">
-		            <div class="menu_title">¹¤×÷µØÇø</div>
+		            <div class="menu_title">å·¥ä½œåœ°åŒº</div>
             		<div class="choose_close"></div>
 		            <div class="area_choose">
 			            <ul class="area_left" id="area_left"></ul>
@@ -416,7 +416,7 @@ $(document).ready(function()
 	            var scitystr = "";
 	            if(QS_city[cid]) {
 	              var ccitysArray = QS_city[cid].split("|");
-	              scitystr += '<li class="area_small" rcoid="0" title="'+ctitle+'/²»ÏŞ" pid="'+cid+'.0" href="javascript:;">²»ÏŞ</li>';
+	              scitystr += '<li class="area_small" rcoid="0" title="'+ctitle+'/ä¸é™" pid="'+cid+'.0" href="javascript:;">ä¸é™</li>';
 	              $.each(ccitysArray, function(cindex, cval) {
 	                if(cval) {
 	                  var ccitys = cval.split(",");
@@ -445,22 +445,22 @@ $(document).ready(function()
 	          });
 	        </script>
 			<tr>
-				<td class="create_job_l">Ö°Î»ÃèÊö</td>
+				<td class="create_job_l">èŒä½æè¿°</td>
 				<td class="create_job_r"><textarea name="contents"></textarea></td>
 			</tr>
 			<tr>
-				<td class="create_job_l">ÁªÏµÈË</td>
+				<td class="create_job_l">è”ç³»äºº</td>
 				<td class="create_job_r"><input type="text" class="create_input" name="contact" value="{#$company_info.contact#}"/></td>
 			</tr>
 			<tr>
-				<td class="create_job_l">ÁªÏµµç»°</td>
+				<td class="create_job_l">è”ç³»ç”µè¯</td>
 				<td class="create_job_r"><input type="text" class="create_input" name="telephone" value="{#$company_info.telephone#}"/></td>
 			</tr>
 		</tbody>
 	</table>
 	<input type="hidden" name="add_mode" value="{#$add_mode#}"/>
-	<div class="create_job_but" id="create_job_but">·¢²¼</div>
-	<div class="create_job_but" id="create_job_but_no" style="display: none;">·¢²¼ÖĞ...</div>
+	<div class="create_job_but" id="create_job_but">å‘å¸ƒ</div>
+	<div class="create_job_but" id="create_job_but_no" style="display: none;">å‘å¸ƒä¸­...</div>
 </form>
 <!-- footer -->
 {#include file="wap/footer.htm"#}

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
  * 74cms WAP
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -26,7 +26,7 @@ elseif ($act == 'password_edit')
 {
 	$uid = intval($_SESSION['uid']);
 	$smarty->assign('total',$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$uid}' OR msgtouid='{$uid}') AND `new`='1'"));
-	$smarty->assign('title','ĞŞ¸ÄÃÜÂë - ¸öÈË»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','ä¿®æ”¹å¯†ç  - ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->display("wap/personal/wap-password.html");
 
 	
@@ -35,20 +35,20 @@ elseif ($act == 'save_password')
 {	
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
 	$arr['username']=$_SESSION['username'];
-	$arr['oldpassword']=trim($_POST['oldpassword'])?trim($_POST['oldpassword']):exit('ÇëÊäÈë¾ÉÃÜÂë£¡');
-	$arr['password']=trim($_POST['password'])?trim($_POST['password']):exit('ÇëÊäÈëĞÂÃÜÂë£¡');
-	if ($arr['password']!=trim($_POST['password1'])) exit('Á½´ÎÊäÈëÃÜÂë²»ÏàÍ¬£¬ÇëÖØĞÂÊäÈë£¡');
-	//edit_password()ĞŞ¸ÄÃÜÂëµÄ·½·¨
+	$arr['oldpassword']=trim($_POST['oldpassword'])?trim($_POST['oldpassword']):exit('è¯·è¾“å…¥æ—§å¯†ç ï¼');
+	$arr['password']=trim($_POST['password'])?trim($_POST['password']):exit('è¯·è¾“å…¥æ–°å¯†ç ï¼');
+	if ($arr['password']!=trim($_POST['password1'])) exit('ä¸¤æ¬¡è¾“å…¥å¯†ç ä¸ç›¸åŒï¼Œè¯·é‡æ–°è¾“å…¥ï¼');
+	//edit_password()ä¿®æ”¹å¯†ç çš„æ–¹æ³•
 	$info=edit_password($arr);
-	if ($info==-1) exit('¾ÉÃÜÂëÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë£¡');
+	if ($info==-1) exit('æ—§å¯†ç è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼');
 	if ($info==$_SESSION['username']){
-		//·¢ËÍÓÊ¼ş
+		//å‘é€é‚®ä»¶
 		$mailconfig=get_cache('mailconfig');
 		if ($mailconfig['set_editpwd']=="1" && $user['email_audit']=="1")
 		{
 		dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_mail.php?uid=".$_SESSION['uid']."&key=".asyn_userkey($_SESSION['uid'])."&act=set_editpwd&newpassword=".$arr['password']);
 		}
-		//ÓÊ¼ş·¢ËÍÍê±Ï
+		//é‚®ä»¶å‘é€å®Œæ¯•
 		//sms
 		$sms=get_cache('sms_config');
 		if ($sms['open']=="1" && $sms['set_editpwd']=="1"  && $user['mobile_audit']=="1")
@@ -61,9 +61,9 @@ elseif ($act == 'save_password')
 		include_once(QISHI_ROOT_PATH.'uc_client/client.php');
 		uc_user_edit($arr['username'],$arr['oldpassword'], $arr['password']);
 		}
-		//Íù»áÔ±ÈÕÖ¾±íÀï¼ÇÂ¼
-		write_memberslog($_SESSION['uid'],2,1004 ,$_SESSION['username'],"ĞŞ¸ÄÃÜÂë");
-		exit('ÃÜÂëĞŞ¸Ä³É¹¦£¡');
+		//å¾€ä¼šå‘˜æ—¥å¿—è¡¨é‡Œè®°å½•
+		write_memberslog($_SESSION['uid'],2,1004 ,$_SESSION['username'],"ä¿®æ”¹å¯†ç ");
+		exit('å¯†ç ä¿®æ”¹æˆåŠŸï¼');
 	 }
 }
 

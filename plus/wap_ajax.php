@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ajax·µ»Ø
+ * 74cms ajaxè¿”å›
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -109,7 +109,7 @@ elseif($act == 'ajaxresumelist'){
 			$url = wap_url_rewrite("wap-resume-show",array("id"=>$li["id"]));
 			$resumelisthtml.='<div class="list" id="li-'.$offset.'" url="'.$url.'">
 	  <span><a href="'.$url.'">'.$li["fullname"].'('.$li["sex_cn"].')</a></span><br />
-Ñ§Àú£º'.$li["education_cn"].'  ¹¤×÷¾­Ñé£º'.$li["experience_cn"].'<br />
+å­¦å†ï¼š'.$li["education_cn"].'  å·¥ä½œç»éªŒï¼š'.$li["experience_cn"].'<br />
 '.$li["intention_jobs"].'
 	</div>';
 	}
@@ -139,8 +139,8 @@ elseif($act == 'jobs_contact')
 			else
 			{
 			$show=false;
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-  			$html.='¸öÈË»áÔ±Çë<a href="wap_login.php">[µÇÂ¼]</a>ºó²é¿´ÁªÏµ·½Ê½<br />Ã»ÓĞÕÊºÅ£¿<a href="wap_user_reg.php">[Ãâ·Ñ×¢²á]</a>';
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+  			$html.='ä¸ªäººä¼šå‘˜è¯·<a href="wap_login.php">[ç™»å½•]</a>åæŸ¥çœ‹è”ç³»æ–¹å¼<br />æ²¡æœ‰å¸å·ï¼Ÿ<a href="wap_user_reg.php">[å…è´¹æ³¨å†Œ]</a>';
   			$html.='</div><div class="telimg"></div>';
 			}
 		}
@@ -156,16 +156,16 @@ elseif($act == 'jobs_contact')
 				else
 				{
 				$show=false;
-				$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-				$html.="ÄúÃ»ÓĞ·¢²¼¼òÀú»òÕß¼òÀúÎŞĞ§£¬·¢²¼¼òÀúºó²Å¿ÉÒÔ²é¿´ÁªÏµ·½Ê½¡£<a href=\"".get_member_url($_SESSION['utype'],true)."personal_resume.php?act=resume_list\">[²é¿´ÎÒµÄ¼òÀú]</a>";
+				$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+				$html.="æ‚¨æ²¡æœ‰å‘å¸ƒç®€å†æˆ–è€…ç®€å†æ— æ•ˆï¼Œå‘å¸ƒç®€å†åæ‰å¯ä»¥æŸ¥çœ‹è”ç³»æ–¹å¼ã€‚<a href=\"".get_member_url($_SESSION['utype'],true)."personal_resume.php?act=resume_list\">[æŸ¥çœ‹æˆ‘çš„ç®€å†]</a>";
 				$html.='</div><div class="telimg"></div>';
 				}
 			}
 			else
 			{
 			$show=false;
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			$html.='¸öÈË»áÔ±Çë<a href="wap_login.php">[µÇÂ¼]</a>ºó²é¿´ÁªÏµ·½Ê½<br />Ã»ÓĞÕÊºÅ£¿<a href="wap_user_reg.php">[Ãâ·Ñ×¢²á]</a>';
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			$html.='ä¸ªäººä¼šå‘˜è¯·<a href="wap_login.php">[ç™»å½•]</a>åæŸ¥çœ‹è”ç³»æ–¹å¼<br />æ²¡æœ‰å¸å·ï¼Ÿ<a href="wap_user_reg.php">[å…è´¹æ³¨å†Œ]</a>';
 			$html.='</div><div class="telimg"></div>';
 			}
 		}
@@ -176,19 +176,19 @@ elseif($act == 'jobs_contact')
 			if ($_CFG['contact_img_job']=='2')
 			{
 			$token=md5($val['contact'].$id.$val['telephone']);
-			$contact=$val['contact_show']=='1'?"ÁªÏµÈË£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"ÁªÏµÈË£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$telephone=$val['telephone_show']=='1'?"ÁªÏµµç»°£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"ÁªÏµµç»°£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$address=$val['address_show']=='1'?"ÁªÏµµØÖ·£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=4&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"ÁªÏµµØÖ·£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt telbox">';
+			$contact=$val['contact_show']=='1'?"è”ç³»äººï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"è”ç³»äººï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$telephone=$val['telephone_show']=='1'?"è”ç³»ç”µè¯ï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"è”ç³»ç”µè¯ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$address=$val['address_show']=='1'?"è”ç³»åœ°å€ï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=4&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"è”ç³»åœ°å€ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt telbox">';
 			$html.=$contact.$telephone.$address;
 			$html.='</div><div class="telimg"><a href="wtai://wp/mc;'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div>';
 			}
 			else
 			{
-			$contact=$val['contact_show']=='1'?"ÁªÏµÈË£º{$val['contact']}<br />":"ÁªÏµÈË£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$telephone=$val['telephone_show']=='1'?"ÁªÏµµç»°£º{$val['telephone']}<br />":"ÁªÏµµç»°£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$address=$val['address_show']=='1'?"ÁªÏµµØÖ·£º{$val['address']}<br />":"ÁªÏµµØÖ·£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
+			$contact=$val['contact_show']=='1'?"è”ç³»äººï¼š{$val['contact']}<br />":"è”ç³»äººï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$telephone=$val['telephone_show']=='1'?"è”ç³»ç”µè¯ï¼š{$val['telephone']}<br />":"è”ç³»ç”µè¯ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$address=$val['address_show']=='1'?"è”ç³»åœ°å€ï¼š{$val['address']}<br />":"è”ç³»åœ°å€ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
 			$html.=$contact.$telephone.$address;
 			$html.='</div><div class="telimg"><a href="wtai://wp/mc;'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div>';
 			}
@@ -220,8 +220,8 @@ elseif($act == 'company_contact')
 			else
 			{
 			$show=false;
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			$html.='¸öÈË»áÔ±Çë<a href="wap_login.php">[µÇÂ¼]</a>ºó²é¿´ÁªÏµ·½Ê½<br />Ã»ÓĞÕÊºÅ£¿<a href="wap_user_reg.php">[Ãâ·Ñ×¢²á]</a>';
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			$html.='ä¸ªäººä¼šå‘˜è¯·<a href="wap_login.php">[ç™»å½•]</a>åæŸ¥çœ‹è”ç³»æ–¹å¼<br />æ²¡æœ‰å¸å·ï¼Ÿ<a href="wap_user_reg.php">[å…è´¹æ³¨å†Œ]</a>';
 			$html.='</div><div class="telimg"></div>';
 			}
 		}
@@ -237,16 +237,16 @@ elseif($act == 'company_contact')
 				else
 				{
 				$show=false;
-				$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-				$html.="ÄúÃ»ÓĞ·¢²¼¼òÀú»òÕß¼òÀúÎŞĞ§£¬·¢²¼¼òÀúºó²Å¿ÉÒÔ²é¿´ÁªÏµ·½Ê½¡£<a href=\"".get_member_url($_SESSION['utype'],true)."personal_resume.php?act=resume_list\">[²é¿´ÎÒµÄ¼òÀú]</a>";
+				$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+				$html.="æ‚¨æ²¡æœ‰å‘å¸ƒç®€å†æˆ–è€…ç®€å†æ— æ•ˆï¼Œå‘å¸ƒç®€å†åæ‰å¯ä»¥æŸ¥çœ‹è”ç³»æ–¹å¼ã€‚<a href=\"".get_member_url($_SESSION['utype'],true)."personal_resume.php?act=resume_list\">[æŸ¥çœ‹æˆ‘çš„ç®€å†]</a>";
 				$html.='</div><div class="telimg"></div>';
 				}
 			}
 			else
 			{
 			$show=false;
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			$html.='¸öÈË»áÔ±Çë<a href="wap_login.php">[µÇÂ¼]</a>ºó²é¿´ÁªÏµ·½Ê½<br />Ã»ÓĞÕÊºÅ£¿<a href="wap_user_reg.php">[Ãâ·Ñ×¢²á]</a>';
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			$html.='ä¸ªäººä¼šå‘˜è¯·<a href="wap_login.php">[ç™»å½•]</a>åæŸ¥çœ‹è”ç³»æ–¹å¼<br />æ²¡æœ‰å¸å·ï¼Ÿ<a href="wap_user_reg.php">[å…è´¹æ³¨å†Œ]</a>';
 			$html.='</div><div class="telimg"></div>';
 			}
 		}
@@ -257,19 +257,19 @@ elseif($act == 'company_contact')
 			if ($_CFG['contact_img_com']=='2')
 			{
 			$token=md5($val['contact'].$id.$val['telephone']);
-			$contact=$val['contact_show']=='1'?"ÁªÏµÈË£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"ÁªÏµÈË£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$telephone=$val['telephone_show']=='1'?"ÁªÏµµç»°£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"ÁªÏµµç»°£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$address=$val['address_show']=='1'?"ÁªÏµµØÖ·£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=4&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"ÁªÏµµØÖ·£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
+			$contact=$val['contact_show']=='1'?"è”ç³»äººï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"è”ç³»äººï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$telephone=$val['telephone_show']=='1'?"è”ç³»ç”µè¯ï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"è”ç³»ç”µè¯ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$address=$val['address_show']=='1'?"è”ç³»åœ°å€ï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=4&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />":"è”ç³»åœ°å€ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
 			$html.=$contact.$telephone.$address;
 			$html.='</div><div class="telimg"><a href="wtai://wp/mc;'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div>';
 			}
 			else
 			{
-			$contact=$val['contact_show']=='1'?"ÁªÏµÈË£º{$val['contact']}<br />":"ÁªÏµÈË£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$telephone=$val['telephone_show']=='1'?"ÁªÏµµç»°£º{$val['telephone']}<br />":"ÁªÏµµç»°£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$address=$val['address_show']=='1'?"ÁªÏµµØÖ·£º{$val['address']}<br />":"ÁªÏµµØÖ·£ºÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª<br />";
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
+			$contact=$val['contact_show']=='1'?"è”ç³»äººï¼š{$val['contact']}<br />":"è”ç³»äººï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$telephone=$val['telephone_show']=='1'?"è”ç³»ç”µè¯ï¼š{$val['telephone']}<br />":"è”ç³»ç”µè¯ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$address=$val['address_show']=='1'?"è”ç³»åœ°å€ï¼š{$val['address']}<br />":"è”ç³»åœ°å€ï¼šä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€<br />";
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
 			$html.=$contact.$telephone.$address;
 			$html.='</div><div class="telimg"><a href="wtai://wp/mc;'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div>';
 			}
@@ -281,7 +281,7 @@ elseif($act == 'company_contact')
 		}
 	}	
 }
-//¼òÀúÁªÏµ·½Ê½
+//ç®€å†è”ç³»æ–¹å¼
 elseif($act == 'resume_contact')
 {   
 	$id=intval($_GET['id']);
@@ -299,8 +299,8 @@ elseif($act == 'resume_contact')
 			else
 			{
 			$show=false;
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			$html.='ÆóÒµ»áÔ±Çë<a href="wap_login.php">[µÇÂ¼]</a>ºó²é¿´ÁªÏµ·½Ê½<br />Ã»ÓĞÕÊºÅ£¿<a href="wap_user_reg.php">[Ãâ·Ñ×¢²á]</a>';
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			$html.='ä¼ä¸šä¼šå‘˜è¯·<a href="wap_login.php">[ç™»å½•]</a>åæŸ¥çœ‹è”ç³»æ–¹å¼<br />æ²¡æœ‰å¸å·ï¼Ÿ<a href="wap_user_reg.php">[å…è´¹æ³¨å†Œ]</a>';
 			$html.='</div><div class="telimg"></div>';
 			}
 		}
@@ -317,17 +317,17 @@ elseif($act == 'resume_contact')
 				else
 				{
 				$show=false;
-				$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
+				$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
 				$html="<div align=\"center\"><img src=\"{$_CFG['site_template']}images/44.gif\"  border=\"0\" id=\"download\"/></div>";
-				$html.="<div align=\"center\"><span class=\"add_resume_pool\">[Ìí¼Óµ½ÈË²Å¿â]</span><br/><br/></div>";
+				$html.="<div align=\"center\"><span class=\"add_resume_pool\">[æ·»åŠ åˆ°äººæ‰åº“]</span><br/><br/></div>";
 				$html.='</div><div class="telimg"></div>';
 				}
 			}
 			else
 			{
 			$show=false;
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			$html.='ÆóÒµ»áÔ±Çë<a href="wap_login.php">[µÇÂ¼]</a>ºó²é¿´ÁªÏµ·½Ê½<br />Ã»ÓĞÕÊºÅ£¿<a href="wap_user_reg.php">[Ãâ·Ñ×¢²á]</a>';
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			$html.='ä¼ä¸šä¼šå‘˜è¯·<a href="wap_login.php">[ç™»å½•]</a>åæŸ¥çœ‹è”ç³»æ–¹å¼<br />æ²¡æœ‰å¸å·ï¼Ÿ<a href="wap_user_reg.php">[å…è´¹æ³¨å†Œ]</a>';
 			$html.='</div><div class="telimg"></div>';
 			}
 		}
@@ -339,22 +339,22 @@ elseif($act == 'resume_contact')
 			if ($_CFG['contact_img_resume']=='2')
 			{
 			$token=md5($val['fullname'].$id.$val['telephone']);
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			$html.="Áª Ïµ ÈË£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
-			$html.="ÁªÏµµç»°£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
-			$html.="ÁªÏµµØÖ·£º<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=5&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			$html.="è” ç³» äººï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
+			$html.="è”ç³»ç”µè¯ï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
+			$html.="è”ç³»åœ°å€ï¼š<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=5&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><br />";
 			$html.="<div align=\"center\"><br/><img src=\"{$_CFG['site_template']}images/64.gif\"  border=\"0\" id=\"invited\"/></div>";
-			$html.="<div align=\"center\"><span class=\"add_resume_pool\">[Ìí¼Óµ½ÈË²Å¿â]</span><br/><br/></div>";
+			$html.="<div align=\"center\"><span class=\"add_resume_pool\">[æ·»åŠ åˆ°äººæ‰åº“]</span><br/><br/></div>";
 			$html.='</div><div class="telimg"><a href="wtai://wp/mc;'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div>';
 			}
 			else
 			{
-			$html='<div class="title"><h2>ÁªÏµ·½Ê½</h2></div><div class="txt">';
-			$html.="Áª Ïµ ÈË£º".$val['fullname']."<br />";
-			$html.="ÁªÏµµç»°£º".$val['telephone']."<br />";
-			$html.="ÁªÏµµØÖ·£º".$val['address']."<br />";
+			$html='<div class="title"><h2>è”ç³»æ–¹å¼</h2></div><div class="txt">';
+			$html.="è” ç³» äººï¼š".$val['fullname']."<br />";
+			$html.="è”ç³»ç”µè¯ï¼š".$val['telephone']."<br />";
+			$html.="è”ç³»åœ°å€ï¼š".$val['address']."<br />";
 			$html.="<div align=\"center\"><br/><img src=\"{$_CFG['site_template']}images/64.gif\"  border=\"0\" id=\"invited\"/></div>";
-			$html.="<div align=\"center\"><span class=\"add_resume_pool\">[Ìí¼Óµ½ÈË²Å¿â]</span><br/><br/></div>";
+			$html.="<div align=\"center\"><span class=\"add_resume_pool\">[æ·»åŠ åˆ°äººæ‰åº“]</span><br/><br/></div>";
 			$html.='</div><div class="telimg"><a href="wtai://wp/mc;'.$val["telephone"].'"><img src="images/23.jpg"  border="0"/></a></div>';
 			}
 			exit($html);
@@ -365,7 +365,7 @@ elseif($act == 'resume_contact')
 		exit($html);
 		}
 }
-//»ñÈ¡Ö°Î»»òÕß¼òÀúµÄËùÊôUID
+//è·å–èŒä½æˆ–è€…ç®€å†çš„æ‰€å±UID
 function get_uid($aid,$type='jobs')
 {
     global $db;

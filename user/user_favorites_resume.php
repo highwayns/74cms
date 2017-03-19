@@ -1,12 +1,12 @@
-<?php
+﻿<?php
  /*
- * 74cms ���ӵ��˲ſ�
+ * 74cms 添加到人才库
  * ============================================================================
- * ��Ȩ����: ��ʿ���磬����������Ȩ����
- * ��վ��ַ: http://www.74cms.com��
+ * 版权所有: 骑士网络，并保留所有权利。
+ * 网站地址: http://www.74cms.com；
  * ----------------------------------------------------------------------------
- * �ⲻ��һ��������������ֻ���ڲ�������ҵĿ�ĵ�ǰ���¶Գ����������޸ĺ�
- * ʹ�ã��������Գ���������κ���ʽ�κ�Ŀ�ĵ��ٷ�����
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -44,7 +44,7 @@ if ($_SESSION['utype']!='1')
 		    <tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					��������ҵ��Ա�ſ���ʹ���˲ſ⣡
+					必须是企业会员才可以使用人才库！
 				</td>
 		    </tr>
 		</table>');
@@ -57,14 +57,14 @@ if ($user['status']=="2")
 		    <tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					�����˺Ŵ�����ͣ״̬������ϵ����Ա��Ϊ��������в�����
+					您的账号处于暂停状态，请联系管理员设为正常后进行操作！
 				</td>
 		    </tr>
 		</table>');
 }
 if ($act=="add")
 {
-	$id=isset($_GET['id'])?$_GET['id']:exit("������"); 
+	$id=isset($_GET['id'])?$_GET['id']:exit("出错了"); 
 	$add_return=add_favorites($id,$_SESSION['uid']);
 	if ($add_return==="full")
 	{
@@ -72,7 +72,7 @@ if ($act=="add")
 		    <tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					����ʧ�ܣ��˲ſ������Ѿ������������
+					添加失败，人才库容量已经超出最大限制
 				</td>
 		    </tr>
 		</table>');
@@ -83,7 +83,7 @@ if ($act=="add")
 		    <tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					����ʧ�ܣ��˲ſ����Ѿ����ڣ�
+					添加失败，人才库中已经存在！
 				</td>
 		    </tr>
 		</table>');
@@ -95,10 +95,10 @@ if ($act=="add")
     <tr>
 		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/big-yes.png" /></td>
 		<td>
-			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">���ӳɹ�!������ <?php echo $add_return?>�ݼ���</strong>
+			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">添加成功!共添加 <?php echo $add_return?>份简历</strong>
 			<div style="border-top:1px #CCCCCC solid; line-height:180%; margin-top:10px; padding-top:10px; height:50px;margin-left:20px"  class="dialog_closed">
-			<a href="<?php echo get_member_url(1,true)?>company_recruitment.php?act=favorites_list"style="color:#0180cf;text-decoration:none" class="underline">�鿴�˲ſ�</a><br />
-			<a href="javascript:void(0)"  class="DialogClose underline"style="color:#0180cf;text-decoration:none">�������</a>
+			<a href="<?php echo get_member_url(1,true)?>company_recruitment.php?act=favorites_list"style="color:#0180cf;text-decoration:none" class="underline">查看人才库</a><br />
+			<a href="javascript:void(0)"  class="DialogClose underline"style="color:#0180cf;text-decoration:none">添加完成</a>
 			</div>
 		</td>
     </tr>

@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript" charset="gbk" src="ueditor/ueditor.config.js"></script>
 <script type="text/javascript" charset="gbk" src="ueditor/ueditor.all.min.js"> </script>
 <script type="text/javascript" charset="gbk" src="ueditor/lang/zh-cn/zh-cn.js"></script>
@@ -10,7 +10,7 @@ $(document).ready(function()
 	$("#hide").show();	
 	});
 	$(".again_send").click(function(){
-		$(this).html('·¢ËÍÖĞ...');
+		$(this).html('å‘é€ä¸­...');
 		$(this).css('color','red');
 		$id=$(this).attr('id');
 		window.location.href='?act=again_send&id='+$id;
@@ -23,24 +23,24 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
  
-	<div class="toptit">·¢ËÍÓÊ¼ş</div>
+	<div class="toptit">å‘é€é‚®ä»¶</div>
     <span id="submitbox">
 		<form action="?act=email_send" method="post"   name="form" id="form">
 		<input name="uid" type="hidden"  id="uid" value="{#$smarty.get.uid#}" /></td>
 		{#$inputtoken#}
 		<table width="100%" border="0" cellspacing="10" cellpadding="1" style=" margin-bottom:3px;">
           <tr>
-            <td width="100" align="right">ÊÕ¼şÈËµØÖ·:</td>
+            <td width="100" align="right">æ”¶ä»¶äººåœ°å€:</td>
             <td>
 			<input name="email" type="text"  class="input_text_200" id="email" value="{#$smarty.get.email#}" maxlength="60"/></td>
           </tr>
 		   <tr>
-            <td width="100" align="right">ÓÊ¼ş±êÌâ:</td>
+            <td width="100" align="right">é‚®ä»¶æ ‡é¢˜:</td>
             <td>
 			<input name="subject" type="text"  class="input_text_400" id="email" value="" /></td>
           </tr>
 		  <tr>
-            <td width="100" align="right" valign="top">ÓÊ¼şÄÚÈİ:</td>
+            <td width="100" align="right" valign="top">é‚®ä»¶å†…å®¹:</td>
             <td width="100" >
           <script id="editor" name="body" type="text/plain" style="width:700px;height:300px;"></script>
           <script type="text/javascript">
@@ -52,31 +52,31 @@ $(document).ready(function()
             <td align="right">&nbsp;</td>
             <td>
 			<input name="url" type="hidden" value="{#$url#}" />
-			<input name="check" type="submit" class="admin_submit" id="check"    value="Á¢¼´·¢ËÍ" /></td>
+			<input name="check" type="submit" class="admin_submit" id="check"    value="ç«‹å³å‘é€" /></td>
           </tr>
         </table>
 	    </form>
 		{#if $maillog#}	
-	 <div class="toptit">ÓÊ¼ş·¢ËÍ¼ÇÂ¼</div>
+	 <div class="toptit">é‚®ä»¶å‘é€è®°å½•</div>
 	<form action="?act=del" method="post"   name="form1" id="form1">
     <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
     <tr>
       <td  width="120" class="admin_list_tit admin_list_first">
-     <label id="chkAll"><input type="checkbox" name="" title="È«Ñ¡/·´Ñ¡" id="chk"/>ÀàĞÍ</label>	 </td>
-	  <td class="admin_list_tit" width="13%">ÊÕ¼şµØÖ·</td>
-	  <td  class="admin_list_tit">ÓÊ¼şÖ÷Ìâ</td>
-      <td  class="admin_list_tit">ÓÊ¼şÄÚÈİ</td>
-      <td width="110"  align="center"  class="admin_list_tit">Ìí¼ÓÊ±¼ä</td>	  
-      <td width="110"  align="center"  class="admin_list_tit">·¢ËÍÊ±¼ä</td>
-      <td width="10%" align="center"  class="admin_list_tit">²Ù×÷</td>
+     <label id="chkAll"><input type="checkbox" name="" title="å…¨é€‰/åé€‰" id="chk"/>ç±»å‹</label>	 </td>
+	  <td class="admin_list_tit" width="13%">æ”¶ä»¶åœ°å€</td>
+	  <td  class="admin_list_tit">é‚®ä»¶ä¸»é¢˜</td>
+      <td  class="admin_list_tit">é‚®ä»¶å†…å®¹</td>
+      <td width="110"  align="center"  class="admin_list_tit">æ·»åŠ æ—¶é—´</td>	  
+      <td width="110"  align="center"  class="admin_list_tit">å‘é€æ—¶é—´</td>
+      <td width="10%" align="center"  class="admin_list_tit">æ“ä½œ</td>
     </tr>
 	{#foreach from=$maillog item=list#}
 	 <tr>
       <td   class="admin_list admin_list_first">
      <input type="checkbox" name="id[]"  value="{#$list.m_id#}"/>
-	 {#if $list.m_type=="0"#}<span style="color:#FF6600">µÈ´ı·¢ËÍ</span>{#/if#}
-	 {#if $list.m_type=="1"#}<span style="color: #009900">·¢ËÍ³É¹¦</span>{#/if#}
-	 {#if $list.m_type=="2"#}<span style="color: #666666">·¢ËÍÊ§°Ü</span>{#/if#}
+	 {#if $list.m_type=="0"#}<span style="color:#FF6600">ç­‰å¾…å‘é€</span>{#/if#}
+	 {#if $list.m_type=="1"#}<span style="color: #009900">å‘é€æˆåŠŸ</span>{#/if#}
+	 {#if $list.m_type=="2"#}<span style="color: #666666">å‘é€å¤±è´¥</span>{#/if#}
 	  </td>
 	  <td  class="admin_list">
 	  {#$list.m_mail#}
@@ -99,7 +99,7 @@ $(document).ready(function()
 		{#/if#}
 	  </td>
       <td align="center"  class="admin_list">
-	  <a href="javascript:void()" class="again_send" id="{#$list.m_id#}">ÖØĞÂ·¢ËÍ</a>
+	  <a href="javascript:void()" class="again_send" id="{#$list.m_id#}">é‡æ–°å‘é€</a>
 	</td>
 	</tr>
 	{#/foreach#}
@@ -108,7 +108,7 @@ $(document).ready(function()
 		<tr>
             <td height="30" width="110" align="right" >&nbsp;</td>
             <td height="30"  >
-              <input type="submit" name="submit22" type="button" class="admin_submit submitdel"    value="É¾³ıËùÑ¡" />
+              <input type="submit" name="submit22" type="button" class="admin_submit submitdel"    value="åˆ é™¤æ‰€é€‰" />
            </td>
           </tr>
 	  </table>
@@ -117,7 +117,7 @@ $(document).ready(function()
  {#/if#}
   </span>
 <span id="hide" style="display: none; color: #009900; padding-left:30px; padding-bottom:80px;">
- ÕıÔÚ·¢ËÍÓÊ¼ş.......<br />
+ æ­£åœ¨å‘é€é‚®ä»¶.......<br />
 <br />
 </span>
 

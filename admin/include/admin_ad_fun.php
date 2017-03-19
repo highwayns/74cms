@@ -1,19 +1,19 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¹ÜÀíÖĞĞÄ ¹ã¸æ¹ãÀûº¯Êı
+ * 74cms ç®¡ç†ä¸­å¿ƒ å¹¿å‘Šå¹¿åˆ©å‡½æ•°
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
  if(!defined('IN_QISHI'))
  {
  	die('Access Denied!');
  }
- //»ñÈ¡¹ã¸æÁĞ±í
+ //è·å–å¹¿å‘Šåˆ—è¡¨
 function get_ad_list($offset,$perpage,$get_sql= '')
 {
 	global $db;
@@ -21,7 +21,7 @@ function get_ad_list($offset,$perpage,$get_sql= '')
 	$info = $db->getall("SELECT a.*,c.categoryname FROM ".table('ad')." AS a ".$get_sql." order BY a.show_order DESC,a.id DESC ".$limit);
 	return $info;
 }
-//»ñÈ¡¹ã¸æ(µ¥¸ö)
+//è·å–å¹¿å‘Š(å•ä¸ª)
 function get_ad_one($val)
 {
 	global $db;
@@ -32,7 +32,7 @@ function get_ad_one($val)
 	return $arr;
 }
 
-//»ñÈ¡¹ã¸æÎ»
+//è·å–å¹¿å‘Šä½
 function get_ad_category($type=NULL)
 {
 	global $db;
@@ -41,7 +41,7 @@ function get_ad_category($type=NULL)
 	$info = $db->getall($sql);
 	return $info;
 }
-//»ñÈ¡¹ã¸æÎ»(µ¥¸ö)
+//è·å–å¹¿å‘Šä½(å•ä¸ª)
 function get_ad_category_one($id)
 {
 	global $db;
@@ -59,8 +59,8 @@ function del_ad($id)
 	{
 		if (!$db->query("Delete from ".table('ad')." WHERE id IN (".$sqlin.") ")) return false;
 		$return=$return+$db->affected_rows();
-		//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ºóÌ¨É¾³ı¹ã¸æ³É¹¦", $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åå°åˆ é™¤å¹¿å‘ŠæˆåŠŸ", $_SESSION['admin_name'],3);
 	}
 	return $return;
 }
@@ -68,8 +68,8 @@ function del_ad_category($id)
 {
 	global $db;
 	if (!$db->query("Delete from ".table('ad_category')." WHERE id  = ".intval($id)." AND admin_set<>'1'")) return false; 
-	//ÌîĞ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨³É¹¦É¾³ı¹ã¸æÎ»", $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åå°æˆåŠŸåˆ é™¤å¹¿å‘Šä½", $_SESSION['admin_name'],3);
 	return true;
 }
 function ck_category_alias($alias,$noid=NULL){

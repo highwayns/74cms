@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ÎÒÔ¤¶¨µÄÕ¹Î»</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > æˆ‘é¢„å®šçš„å±•ä½</div>
 
 <div class="usermain">
   <div class="leftmenu com link_bk">
@@ -21,41 +21,41 @@
   <div class="rightmain">
   
  	<div class="bbox1 link_bk my_account intrgration">
-		<div class="title_h1">ÎÒÔ¤¶¨µÄÕ¹Î»</div>
+		<div class="title_h1">æˆ‘é¢„å®šçš„å±•ä½</div>
 		<div class="data resume">
 			{#if $list#}
 		  	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 		  		<tbody>
 		  			<tr bgcolor="#F5F5F5" align="left" height="44">
-		  				<th class="left" width="178" align="left">ÕĞÆ¸»á±êÌâ</th>
-		  				<th width="140" align="left">¾Ù°ìÈÕÆÚ</th>
-		  				<th width="80" align="left">Ô¤¶¨·½Ê½</th>
-		  				<th width="80" align="left">Ô¤¶©Ê±¼ä</th>
-		  				<th width="101" align="center">×´Ì¬</th>
+		  				<th class="left" width="178" align="left">æ‹›è˜ä¼šæ ‡é¢˜</th>
+		  				<th width="140" align="left">ä¸¾åŠæ—¥æœŸ</th>
+		  				<th width="80" align="left">é¢„å®šæ–¹å¼</th>
+		  				<th width="80" align="left">é¢„è®¢æ—¶é—´</th>
+		  				<th width="101" align="center">çŠ¶æ€</th>
 		  			</tr>
 		  			{#foreach from=$list item=li#}
 		  			<tr class="data_content" height="54">
 		  				<td class="left" width="178" align="left" style="white-space:nowrap;"><a style="color:#0180cf" href="{#$li.url#}" target="_blank">{#$li.title#}</a></td>
 		  				<td width="140" align="left">
-		  					{#$li.holddate_start|date_format:"%Y-%m-%d"#} ÖÁ {#$li.holddate_end|date_format:"%Y-%m-%d"#}
+		  					{#$li.holddate_start|date_format:"%Y-%m-%d"#} è‡³ {#$li.holddate_end|date_format:"%Y-%m-%d"#}
 				   		</td>
 		  				<td width="80" align="left">
 		  					{#if $li.etypr=="1"#}
-							  ÔÚÏßÔ¤¶¨
+							  åœ¨çº¿é¢„å®š
 							  {#/if#}
 							  {#if $li.etypr=="2"#}
-							  µç»°Ô¤¶¨
+							  ç”µè¯é¢„å®š
 							  {#/if#}
 							  {#if $li.etypr=="3"#}
-							  ÆäËû·½Ê½
+							  å…¶ä»–æ–¹å¼
 							  {#/if#}			
 						</td>
 		  				<td width="80" align="left">{#$li.eaddtime|date_format:"%Y-%m-%d"#}</a></td>
 		  				<td width="101" align="center">{#if $li.audit=="0"#}
-						  <span style="color:#FF3300" class="vtip"  title="ÇëÄÍĞÄµÈ´ı¹ÜÀíÔ±È·ÈÏ...">µÈ´ıÈ·ÈÏ</span>
+						  <span style="color:#FF3300" class="vtip"  title="è¯·è€å¿ƒç­‰å¾…ç®¡ç†å‘˜ç¡®è®¤...">ç­‰å¾…ç¡®è®¤</span>
 						  {#/if#}
 						  {#if $li.audit=="1"#}
-						  <span style="color:#009900" >Ô¤¶¨³É¹¦</span>
+						  <span style="color:#009900" >é¢„å®šæˆåŠŸ</span>
 						  {#/if#}</td>
 		  			</tr>
 		  			{#/foreach#}
@@ -72,15 +72,15 @@
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 		  		<tbody>
 		  			<tr bgcolor="#F5F5F5" align="left" height="44">
-		  				<th width="100" class="left">Ìí¼ÓÊ±¼ä</th>
-		  				<th width="178">ÕĞÆ¸»á±êÌâ</th>
-		  				<th width="100" align="center">¾Ù°ìÈÕÆÚ</th>
-		  				<th width="100" align="center">Ô¤¶¨·½Ê½</th>
-		  				<th width="101" align="center">×´Ì¬</th>
+		  				<th width="100" class="left">æ·»åŠ æ—¶é—´</th>
+		  				<th width="178">æ‹›è˜ä¼šæ ‡é¢˜</th>
+		  				<th width="100" align="center">ä¸¾åŠæ—¥æœŸ</th>
+		  				<th width="100" align="center">é¢„å®šæ–¹å¼</th>
+		  				<th width="101" align="center">çŠ¶æ€</th>
 		  			</tr>
 		  		</tbody>
 		  	</table>
-			<div class="emptytip">Ã»ÓĞÕÒµ½¶ÔÓ¦µÄĞÅÏ¢£¡</div>
+			<div class="emptytip">æ²¡æœ‰æ‰¾åˆ°å¯¹åº”çš„ä¿¡æ¯ï¼</div>
 			{#/if#}
 		  </div>
 

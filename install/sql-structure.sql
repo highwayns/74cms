@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `qs_ad`;
+锘緿ROP TABLE IF EXISTS `qs_ad`;
 CREATE TABLE `qs_ad` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `alias` varchar(80) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `qs_ad` (
   KEY `alias_starttime_deadline` (`alias`,`starttime`,`deadline`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||ad表创建成功！||-_-||
+||-_-||ad琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_admin`;
 CREATE TABLE `qs_admin` (
@@ -54,7 +54,7 @@ CREATE TABLE `qs_admin` (
   PRIMARY KEY  (`admin_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||admin表创建成功！||-_-||
+||-_-||admin琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_admin_log`;
 CREATE TABLE `qs_admin_log` (
@@ -67,7 +67,7 @@ CREATE TABLE `qs_admin_log` (
   PRIMARY KEY  (`log_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||admin_log表创建成功！||-_-||
+||-_-||admin_log琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_ad_category`;
 CREATE TABLE `qs_ad_category` (
@@ -80,7 +80,7 @@ CREATE TABLE `qs_ad_category` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||ad_category表创建成功！||-_-||
+||-_-||ad_category琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_article`;
 CREATE TABLE `qs_article` (
@@ -111,7 +111,7 @@ CREATE TABLE `qs_article` (
   KEY `parentid` (`parentid`,`article_order`,`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||qs_article表创建成功！||-_-||
+||-_-||qs_article琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_article_category`;
 CREATE TABLE `qs_article_category` (
@@ -126,7 +126,7 @@ CREATE TABLE `qs_article_category` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||article_category表创建成功！||-_-||
+||-_-||article_category琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_article_property`;
 CREATE TABLE `qs_article_property` (
@@ -137,7 +137,7 @@ CREATE TABLE `qs_article_property` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||article_property表创建成功！||-_-||
+||-_-||article_property琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_audit_reason`;
 CREATE TABLE `qs_audit_reason` (
@@ -153,7 +153,7 @@ CREATE TABLE `qs_audit_reason` (
   KEY `resume_id` (`resume_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||audit_reason表创建成功！||-_-||
+||-_-||audit_reason琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_baiduxml`;
 CREATE TABLE `qs_baiduxml` (
@@ -163,7 +163,7 @@ CREATE TABLE `qs_baiduxml` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||baiduxml表创建成功！||-_-||
+||-_-||baiduxml琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_baidu_submiturl`;
 CREATE TABLE `qs_baidu_submiturl` (
@@ -173,7 +173,7 @@ CREATE TABLE `qs_baidu_submiturl` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||baidu_submiturl表创建成功！||-_-||
+||-_-||baidu_submiturl琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_captcha`;
 CREATE TABLE `qs_captcha` (
@@ -183,7 +183,7 @@ CREATE TABLE `qs_captcha` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||captcha表创建成功！||-_-||
+||-_-||captcha琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_category`;
 CREATE TABLE `qs_category` (
@@ -200,7 +200,7 @@ CREATE TABLE `qs_category` (
   KEY `c_alias` (`c_alias`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||category表创建成功！||-_-||
+||-_-||category琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_category_district`;
 CREATE TABLE `qs_category_district` (
@@ -213,7 +213,7 @@ CREATE TABLE `qs_category_district` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||category_district表创建成功！||-_-||
+||-_-||category_district琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_category_group`;
 CREATE TABLE `qs_category_group` (
@@ -224,7 +224,7 @@ CREATE TABLE `qs_category_group` (
   PRIMARY KEY  (`g_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||category_group表创建成功！||-_-||
+||-_-||category_group琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_category_jobs`;
 CREATE TABLE `qs_category_jobs` (
@@ -239,7 +239,7 @@ CREATE TABLE `qs_category_jobs` (
   KEY `parentid` (`parentid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||category_jobs表创建成功！||-_-||
+||-_-||category_jobs琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_category_major`;
 CREATE TABLE `qs_category_major` (
@@ -250,7 +250,7 @@ CREATE TABLE `qs_category_major` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||category_major表创建成功！||-_-||
+||-_-||category_major琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_color`;
 CREATE TABLE `qs_color` (
@@ -259,7 +259,7 @@ CREATE TABLE `qs_color` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||color表创建成功！||-_-||
+||-_-||color琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_company_down_resume`;
 CREATE TABLE `qs_company_down_resume` (
@@ -276,7 +276,7 @@ CREATE TABLE `qs_company_down_resume` (
   KEY `company_uid_addtime` (`company_uid`,`down_addtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||company_down_resume表创建成功！||-_-||
+||-_-||company_down_resume琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_company_favorites`;
 CREATE TABLE `qs_company_favorites` (
@@ -288,7 +288,7 @@ CREATE TABLE `qs_company_favorites` (
   KEY `company_uid` (`company_uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||company_favorites表创建成功！||-_-||
+||-_-||company_favorites琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_company_interview`;
 CREATE TABLE `qs_company_interview` (
@@ -313,7 +313,7 @@ CREATE TABLE `qs_company_interview` (
   KEY `company_uid_jobid` (`company_uid`,`jobs_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||company_interview表创建成功！||-_-||
+||-_-||company_interview琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_company_label_resume`;
 CREATE TABLE `qs_company_label_resume` (
@@ -326,7 +326,7 @@ CREATE TABLE `qs_company_label_resume` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||company_label_resume表创建成功！||-_-||
+||-_-||company_label_resume琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_company_profile`;
 CREATE TABLE `qs_company_profile` (
@@ -383,7 +383,7 @@ CREATE TABLE `qs_company_profile` (
   KEY `addtime` (`addtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||company_profile表创建成功！||-_-||
+||-_-||company_profile琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_config`;
 CREATE TABLE `qs_config` (
@@ -393,7 +393,7 @@ CREATE TABLE `qs_config` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||config表创建成功！||-_-||
+||-_-||config琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_consultant`;
 CREATE TABLE `qs_consultant` (
@@ -404,7 +404,7 @@ CREATE TABLE `qs_consultant` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||consultant表创建成功！||-_-||
+||-_-||consultant琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_crons`;
 CREATE TABLE `qs_crons` (
@@ -422,7 +422,7 @@ CREATE TABLE `qs_crons` (
   PRIMARY KEY  (`cronid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||crons表创建成功！||-_-||
+||-_-||crons琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_explain`;
 CREATE TABLE `qs_explain` (
@@ -443,7 +443,7 @@ CREATE TABLE `qs_explain` (
   KEY `type_id` (`type_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||explain表创建成功！||-_-||
+||-_-||explain琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_explain_category`;
 CREATE TABLE `qs_explain_category` (
@@ -454,7 +454,7 @@ CREATE TABLE `qs_explain_category` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||explain_category表创建成功！||-_-||
+||-_-||explain_category琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_feedback`;
 CREATE TABLE `qs_feedback` (
@@ -466,7 +466,7 @@ CREATE TABLE `qs_feedback` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
-||-_-||feedback表创建成功！||-_-||
+||-_-||feedback琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_help`;
 CREATE TABLE `qs_help` (
@@ -483,7 +483,7 @@ CREATE TABLE `qs_help` (
   KEY `focos_article_order` (`order`,`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
-||-_-||help表创建成功！||-_-||
+||-_-||help琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_help_category`;
 CREATE TABLE `qs_help_category` (
@@ -494,7 +494,7 @@ CREATE TABLE `qs_help_category` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||help_category表创建成功！||-_-||
+||-_-||help_category琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_hotword`;
 CREATE TABLE `qs_hotword` (
@@ -506,7 +506,7 @@ CREATE TABLE `qs_hotword` (
   KEY `w_hot` (`w_hot`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||hotword表创建成功！||-_-||
+||-_-||hotword琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_hrtools`;
 CREATE TABLE `qs_hrtools` (
@@ -520,7 +520,7 @@ CREATE TABLE `qs_hrtools` (
   PRIMARY KEY  (`h_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||hrtools表创建成功！||-_-||
+||-_-||hrtools琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_hrtools_category`;
 CREATE TABLE `qs_hrtools_category` (
@@ -531,7 +531,7 @@ CREATE TABLE `qs_hrtools_category` (
   PRIMARY KEY  (`c_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||hrtools_category表创建成功！||-_-||
+||-_-||hrtools_category琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_jobs`;
 CREATE TABLE `qs_jobs` (
@@ -601,7 +601,7 @@ CREATE TABLE `qs_jobs` (
   KEY `audit` (`audit`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||jobs表创建成功！||-_-||
+||-_-||jobs琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_jobs_contact`;
 CREATE TABLE `qs_jobs_contact` (
@@ -623,7 +623,7 @@ CREATE TABLE `qs_jobs_contact` (
   KEY `pid` (`pid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||jobs_contact表创建成功！||-_-||
+||-_-||jobs_contact琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_jobs_search_hot`;
 CREATE TABLE `qs_jobs_search_hot` (
@@ -660,7 +660,7 @@ CREATE TABLE `qs_jobs_search_hot` (
   KEY `street_hot` (`street`,`click`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||jobs_search_hot表创建成功！||-_-||
+||-_-||jobs_search_hot琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_jobs_search_key`;
 CREATE TABLE `qs_jobs_search_key` (
@@ -698,7 +698,7 @@ CREATE TABLE `qs_jobs_search_key` (
   FULLTEXT KEY `key` (`key`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||jobs_search_key表创建成功！||-_-||
+||-_-||jobs_search_key琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_jobs_search_rtime`;
 CREATE TABLE `qs_jobs_search_rtime` (
@@ -738,7 +738,7 @@ CREATE TABLE `qs_jobs_search_rtime` (
   KEY `street_rtime` (`street`,`refreshtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||jobs_search_rtime表创建成功！||-_-||
+||-_-||jobs_search_rtime琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_jobs_search_scale`;
 CREATE TABLE `qs_jobs_search_scale` (
@@ -773,7 +773,7 @@ CREATE TABLE `qs_jobs_search_scale` (
   KEY `street_scale` (`street`,`scale`,`refreshtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||jobs_search_scale表创建成功！||-_-||
+||-_-||jobs_search_scale琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_jobs_search_stickrtime`;
 CREATE TABLE `qs_jobs_search_stickrtime` (
@@ -809,7 +809,7 @@ CREATE TABLE `qs_jobs_search_stickrtime` (
   KEY `stick_street` (`street`,`stick`,`refreshtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||jobs_search_stickrtime表创建成功！||-_-||
+||-_-||jobs_search_stickrtime琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_jobs_search_wage`;
 CREATE TABLE `qs_jobs_search_wage` (
@@ -844,7 +844,7 @@ CREATE TABLE `qs_jobs_search_wage` (
   KEY `street_wage` (`street`,`wage`,`refreshtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||jobs_search_wage表创建成功！||-_-||
+||-_-||jobs_search_wage琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_jobs_tag`;
 CREATE TABLE `qs_jobs_tag` (
@@ -857,7 +857,7 @@ CREATE TABLE `qs_jobs_tag` (
   KEY `tag` (`tag`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||jobs_tag表创建成功！||-_-||
+||-_-||jobs_tag琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_jobs_tmp`;
 CREATE TABLE `qs_jobs_tmp` (
@@ -927,7 +927,7 @@ CREATE TABLE `qs_jobs_tmp` (
   KEY `audit` (`audit`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||jobs_tmp表创建成功！||-_-||
+||-_-||jobs_tmp琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_link`;
 CREATE TABLE `qs_link` (
@@ -945,7 +945,7 @@ CREATE TABLE `qs_link` (
   KEY `show_order` (`show_order`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||link表创建成功！||-_-||
+||-_-||link琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_link_category`;
 CREATE TABLE `qs_link_category` (
@@ -956,7 +956,7 @@ CREATE TABLE `qs_link_category` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||link_category表创建成功！||-_-||
+||-_-||link_category琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_locoyspider`;
 CREATE TABLE `qs_locoyspider` (
@@ -966,7 +966,7 @@ CREATE TABLE `qs_locoyspider` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||locoyspider表创建成功！||-_-||
+||-_-||locoyspider琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_mailconfig`;
 CREATE TABLE `qs_mailconfig` (
@@ -976,7 +976,7 @@ CREATE TABLE `qs_mailconfig` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||mailconfig表创建成功！||-_-||
+||-_-||mailconfig琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_mailqueue`;
 CREATE TABLE `qs_mailqueue` (
@@ -992,7 +992,7 @@ CREATE TABLE `qs_mailqueue` (
   KEY `m_uid` (`m_uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
-||-_-||mailqueue表创建成功！||-_-||
+||-_-||mailqueue琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_mail_templates`;
 CREATE TABLE `qs_mail_templates` (
@@ -1002,7 +1002,7 @@ CREATE TABLE `qs_mail_templates` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||mail_templates表创建成功！||-_-||
+||-_-||mail_templates琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_members`;
 CREATE TABLE `qs_members` (
@@ -1047,7 +1047,7 @@ CREATE TABLE `qs_members` (
   KEY `taobao_access_token` (`taobao_access_token`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||members表创建成功！||-_-||
+||-_-||members琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_members_charge_log`;
 CREATE TABLE `qs_members_charge_log` (
@@ -1068,7 +1068,7 @@ CREATE TABLE `qs_members_charge_log` (
   KEY `uid_addtime` (`log_uid`,`log_addtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||members_charge_log表创建成功！||-_-||
+||-_-||members_charge_log琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_members_handsel`;
 CREATE TABLE `qs_members_handsel` (
@@ -1080,7 +1080,7 @@ CREATE TABLE `qs_members_handsel` (
   KEY `uid` (`uid`,`htype`,`addtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||members_handsel表创建成功！||-_-||
+||-_-||members_handsel琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_members_info`;
 CREATE TABLE `qs_members_info` (
@@ -1107,7 +1107,7 @@ CREATE TABLE `qs_members_info` (
   KEY `uid` (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||members_info表创建成功！||-_-||
+||-_-||members_info琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_members_log`;
 CREATE TABLE `qs_members_log` (
@@ -1133,7 +1133,7 @@ CREATE TABLE `qs_members_log` (
   KEY `uid_addtime` (`log_uid`,`log_addtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||members_log表创建成功！||-_-||
+||-_-||members_log琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_members_points`;
 CREATE TABLE `qs_members_points` (
@@ -1144,7 +1144,7 @@ CREATE TABLE `qs_members_points` (
   KEY `uid` (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||members_points表创建成功！||-_-||
+||-_-||members_points琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_members_points_rule`;
 CREATE TABLE `qs_members_points_rule` (
@@ -1157,7 +1157,7 @@ CREATE TABLE `qs_members_points_rule` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||members_points_rule表创建成功！||-_-||
+||-_-||members_points_rule琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_members_setmeal`;
 CREATE TABLE `qs_members_setmeal` (
@@ -1197,7 +1197,7 @@ CREATE TABLE `qs_members_setmeal` (
   KEY `uid` (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||members_setmeal表创建成功！||-_-||
+||-_-||members_setmeal琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_navigation`;
 CREATE TABLE `qs_navigation` (
@@ -1216,7 +1216,7 @@ CREATE TABLE `qs_navigation` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||navigation表创建成功！||-_-||
+||-_-||navigation琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_navigation_category`;
 CREATE TABLE `qs_navigation_category` (
@@ -1227,7 +1227,7 @@ CREATE TABLE `qs_navigation_category` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||navigation_category表创建成功！||-_-||
+||-_-||navigation_category琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_notice`;
 CREATE TABLE `qs_notice` (
@@ -1248,7 +1248,7 @@ CREATE TABLE `qs_notice` (
   KEY `type_id` (`type_id`,`sort`,`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
-||-_-||notice表创建成功！||-_-||
+||-_-||notice琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_notice_category`;
 CREATE TABLE `qs_notice_category` (
@@ -1259,7 +1259,7 @@ CREATE TABLE `qs_notice_category` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||notice_category表创建成功！||-_-||
+||-_-||notice_category琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_order`;
 CREATE TABLE `qs_order` (
@@ -1285,7 +1285,7 @@ CREATE TABLE `qs_order` (
   KEY `oid` (`oid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||order表创建成功！||-_-||
+||-_-||order琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_page`;
 CREATE TABLE `qs_page` (
@@ -1306,7 +1306,7 @@ CREATE TABLE `qs_page` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||page表创建成功！||-_-||
+||-_-||page琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_payment`;
 CREATE TABLE `qs_payment` (
@@ -1326,7 +1326,7 @@ CREATE TABLE `qs_payment` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||payment表创建成功！||-_-||
+||-_-||payment琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_personal_favorites`;
 CREATE TABLE `qs_personal_favorites` (
@@ -1339,7 +1339,7 @@ CREATE TABLE `qs_personal_favorites` (
   KEY `personal_uid` (`personal_uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||personal_favorites表创建成功！||-_-||
+||-_-||personal_favorites琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_personal_jobs_apply`;
 CREATE TABLE `qs_personal_jobs_apply` (
@@ -1364,7 +1364,7 @@ CREATE TABLE `qs_personal_jobs_apply` (
   KEY `personal_uid_addtime` (`personal_uid`,`apply_addtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||personal_jobs_apply表创建成功！||-_-||
+||-_-||personal_jobs_apply琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_plug`;
 CREATE TABLE `qs_plug` (
@@ -1375,7 +1375,7 @@ CREATE TABLE `qs_plug` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||plug表创建成功！||-_-||
+||-_-||plug琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_pms`;
 CREATE TABLE `qs_pms` (
@@ -1395,7 +1395,7 @@ CREATE TABLE `qs_pms` (
   KEY `msgtouid` (`msgtouid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||pms表创建成功！||-_-||
+||-_-||pms琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_pms_sys`;
 CREATE TABLE `qs_pms_sys` (
@@ -1407,7 +1407,7 @@ CREATE TABLE `qs_pms_sys` (
   PRIMARY KEY  (`spmid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||pms_sys表创建成功！||-_-||
+||-_-||pms_sys琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_pms_sys_log`;
 CREATE TABLE `qs_pms_sys_log` (
@@ -1418,7 +1418,7 @@ CREATE TABLE `qs_pms_sys_log` (
   KEY `loguid` (`loguid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||pms_sys_log表创建成功！||-_-||
+||-_-||pms_sys_log琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_promotion`;
 CREATE TABLE `qs_promotion` (
@@ -1438,7 +1438,7 @@ CREATE TABLE `qs_promotion` (
   KEY `cp_endtime` (`cp_endtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||promotion表创建成功！||-_-||
+||-_-||promotion琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_promotion_category`;
 CREATE TABLE `qs_promotion_category` (
@@ -1454,7 +1454,7 @@ CREATE TABLE `qs_promotion_category` (
   PRIMARY KEY  (`cat_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||promotion_category表创建成功！||-_-||
+||-_-||promotion_category琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_refresh_log`;
 CREATE TABLE `qs_refresh_log` (
@@ -1466,7 +1466,7 @@ CREATE TABLE `qs_refresh_log` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||refresh_log表创建成功！||-_-||
+||-_-||refresh_log琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_report`;
 CREATE TABLE `qs_report` (
@@ -1483,7 +1483,7 @@ CREATE TABLE `qs_report` (
   KEY `uid` (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||report表创建成功！||-_-||
+||-_-||report琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_report_resume`;
 CREATE TABLE `qs_report_resume` (
@@ -1500,7 +1500,7 @@ CREATE TABLE `qs_report_resume` (
   KEY `uid` (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||report_resume表创建成功！||-_-||
+||-_-||report_resume琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume`;
 CREATE TABLE `qs_resume` (
@@ -1561,7 +1561,7 @@ CREATE TABLE `qs_resume` (
   KEY `addtime` (`addtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume表创建成功！||-_-||
+||-_-||resume琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume_credent`;
 CREATE TABLE `qs_resume_credent` (
@@ -1576,7 +1576,7 @@ CREATE TABLE `qs_resume_credent` (
   KEY `uid` (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume_credent表创建成功！||-_-||
+||-_-||resume_credent琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume_district`;
 CREATE TABLE `qs_resume_district` (
@@ -1590,7 +1590,7 @@ CREATE TABLE `qs_resume_district` (
   KEY `district` (`district`,`sdistrict`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume_district表创建成功！||-_-||
+||-_-||resume_district琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume_education`;
 CREATE TABLE `qs_resume_education` (
@@ -1610,7 +1610,7 @@ CREATE TABLE `qs_resume_education` (
   KEY `uid` (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume_education表创建成功！||-_-||
+||-_-||resume_education琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume_img`;
 CREATE TABLE `qs_resume_img` (
@@ -1625,7 +1625,7 @@ CREATE TABLE `qs_resume_img` (
   KEY `resume_id` (`resume_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume_img表创建成功！||-_-||
+||-_-||resume_img琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume_jobs`;
 CREATE TABLE `qs_resume_jobs` (
@@ -1640,7 +1640,7 @@ CREATE TABLE `qs_resume_jobs` (
   KEY `category` (`category`,`subclass`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume_jobs表创建成功！||-_-||
+||-_-||resume_jobs琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume_language`;
 CREATE TABLE `qs_resume_language` (
@@ -1655,7 +1655,7 @@ CREATE TABLE `qs_resume_language` (
   KEY `uid` (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume_language表创建成功！||-_-||
+||-_-||resume_language琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume_search_key`;
 CREATE TABLE `qs_resume_search_key` (
@@ -1683,7 +1683,7 @@ CREATE TABLE `qs_resume_search_key` (
   FULLTEXT KEY `key` (`key`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume_search_key表创建成功！||-_-||
+||-_-||resume_search_key琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume_search_rtime`;
 CREATE TABLE `qs_resume_search_rtime` (
@@ -1713,7 +1713,7 @@ CREATE TABLE `qs_resume_search_rtime` (
   KEY `talent_rtime` (`talent`,`refreshtime`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume_search_rtime表创建成功！||-_-||
+||-_-||resume_search_rtime琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume_tag`;
 CREATE TABLE `qs_resume_tag` (
@@ -1726,7 +1726,7 @@ CREATE TABLE `qs_resume_tag` (
   KEY `tag` (`tag`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume_tag表创建成功！||-_-||
+||-_-||resume_tag琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume_trade`;
 CREATE TABLE `qs_resume_trade` (
@@ -1739,7 +1739,7 @@ CREATE TABLE `qs_resume_trade` (
   KEY `trade` (`trade`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume_trade表创建成功！||-_-||
+||-_-||resume_trade琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume_training`;
 CREATE TABLE `qs_resume_training` (
@@ -1758,7 +1758,7 @@ CREATE TABLE `qs_resume_training` (
   KEY `uid` (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume_training表创建成功！||-_-||
+||-_-||resume_training琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_resume_work`;
 CREATE TABLE `qs_resume_work` (
@@ -1777,7 +1777,7 @@ CREATE TABLE `qs_resume_work` (
   KEY `uid` (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||resume_work表创建成功！||-_-||
+||-_-||resume_work琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_setmeal`;
 CREATE TABLE `qs_setmeal` (
@@ -1813,7 +1813,7 @@ CREATE TABLE `qs_setmeal` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||setmeal表创建成功！||-_-||
+||-_-||setmeal琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_simple`;
 CREATE TABLE `qs_simple` (
@@ -1845,7 +1845,7 @@ CREATE TABLE `qs_simple` (
   FULLTEXT KEY `key` (`key`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||simple表创建成功！||-_-||
+||-_-||simple琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_smsqueue`;
 CREATE TABLE `qs_smsqueue` (
@@ -1860,7 +1860,7 @@ CREATE TABLE `qs_smsqueue` (
   KEY `s_uid` (`s_uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
-||-_-||smsqueue表创建成功！||-_-||
+||-_-||smsqueue琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_sms_config`;
 CREATE TABLE `qs_sms_config` (
@@ -1870,7 +1870,7 @@ CREATE TABLE `qs_sms_config` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||sms_config表创建成功！||-_-||
+||-_-||sms_config琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_sms_templates`;
 CREATE TABLE `qs_sms_templates` (
@@ -1880,7 +1880,7 @@ CREATE TABLE `qs_sms_templates` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||sms_templates表创建成功！||-_-||
+||-_-||sms_templates琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_syslog`;
 CREATE TABLE `qs_syslog` (
@@ -1895,7 +1895,7 @@ CREATE TABLE `qs_syslog` (
   PRIMARY KEY  (`l_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||syslog表创建成功！||-_-||
+||-_-||syslog琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_sys_email_log`;
 CREATE TABLE `qs_sys_email_log` (
@@ -1909,7 +1909,7 @@ CREATE TABLE `qs_sys_email_log` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||sys_email_log表创建成功！||-_-||
+||-_-||sys_email_log琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_text`;
 CREATE TABLE `qs_text` (
@@ -1919,7 +1919,7 @@ CREATE TABLE `qs_text` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||text表创建成功！||-_-||
+||-_-||text琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_tpl`;
 CREATE TABLE `qs_tpl` (
@@ -1932,7 +1932,7 @@ CREATE TABLE `qs_tpl` (
   PRIMARY KEY  (`tpl_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||tpl表创建成功！||-_-||
+||-_-||tpl琛ㄥ垱寤烘垚鍔燂紒||-_-||
 
 DROP TABLE IF EXISTS `qs_weixin_menu`;
 CREATE TABLE `qs_weixin_menu` (
@@ -1947,4 +1947,4 @@ CREATE TABLE `qs_weixin_menu` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=gbk;
 
-||-_-||weixin_menu表创建成功！||-_-||
+||-_-||weixin_menu琛ㄥ垱寤烘垚鍔燂紒||-_-||

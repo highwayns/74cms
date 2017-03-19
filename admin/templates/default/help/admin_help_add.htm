@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript" charset="gbk" src="ueditor/ueditor.config.js"></script>
 <script type="text/javascript" charset="gbk" src="ueditor/ueditor.all.min.js"> </script>
 <script type="text/javascript" charset="gbk" src="ueditor/lang/zh-cn/zh-cn.js"></script>
@@ -15,24 +15,24 @@ $(document).ready(function()
 	{#include file="help/admin_help_nav.htm"#}
   <div class="clear"></div>
 </div>
-<div class="toptit">ĞÂÔö°ïÖú</div>
+<div class="toptit">æ–°å¢å¸®åŠ©</div>
   <form action="?act=addsave" method="post"   name="FormData" id="FormData" >
   {#$inputtoken#}
     <table width="100%" border="0" cellpadding="3" cellspacing="0"  class="admin_table">
       <tr>
-        <td width="50" align="right" >±êÌâ£º</td>
+        <td width="50" align="right" >æ ‡é¢˜ï¼š</td>
         <td ><input name="title" type="text"  class="input_text_400" />		</td>
       </tr>
 	  <tr>
-        <td align="right"  >ÅÅĞò£º</td>
+        <td align="right"  >æ’åºï¼š</td>
         <td><input name="order" type="text"  class="input_text_200"  onkeyup="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');" value="0" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> 
-        <span class="admin_note">Êı×ÖÔ½´óÔ½¿¿Ç°</span>       </td>
+        <span class="admin_note">æ•°å­—è¶Šå¤§è¶Šé å‰</span>       </td>
       </tr>
       <tr>
-        <td align="right" >·ÖÀà£º</td>
+        <td align="right" >åˆ†ç±»ï¼š</td>
         <td >		
 		<div>		
-		<input type="text" value="{#$smarty.get.type_id_cn|default:"ÇëÑ¡Ôñ"#}"  readonly="readonly" name="type_id_cn" id="type_id_cn" class="input_text_200 input_text_selsect"/>
+		<input type="text" value="{#$smarty.get.type_id_cn|default:"è¯·é€‰æ‹©"#}"  readonly="readonly" name="type_id_cn" id="type_id_cn" class="input_text_200 input_text_selsect"/>
 		<input name="type_id" id="type_id" type="hidden" value="{#$smarty.get.type_id#}" />
 		<div id="menu1" class="menu">
 			<ul>	
@@ -44,7 +44,7 @@ $(document).ready(function()
 		  </div>		  </td>
       </tr>
       <tr>
-        <td align="right" valign="top" >ÄÚÈİ£º</td>
+        <td align="right" valign="top" >å†…å®¹ï¼š</td>
         <td>
           <script id="editor" name="content" type="text/plain" style="width:700px;height:300px;"></script>
           <script type="text/javascript">
@@ -54,7 +54,7 @@ $(document).ready(function()
       </tr>
       <tr>
         <td align="right" >&nbsp;</td>
-        <td height="100" ><input type="submit" name="Submit" value="±£´æ" class="admin_submit"   /></td>
+        <td height="100" ><input type="submit" name="Submit" value="ä¿å­˜" class="admin_submit"   /></td>
       </tr>
     </table>
    

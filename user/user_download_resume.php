@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÏÂÔØ¼òÀú
+ * 74cms ä¸‹è½½ç®€å†
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -44,22 +44,22 @@ if ($_SESSION['utype']!='1')
 		    <tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					±ØĞëÊÇÆóÒµ²Å¿ÉÒÔÏÂÔØ¼òÀú£¡
+					å¿…é¡»æ˜¯ä¼ä¸šæ‰å¯ä»¥ä¸‹è½½ç®€å†ï¼
 				</td>
 		    </tr>
 		</table>');
 }
-$id=!empty($_GET['id'])?intval($_GET['id']):exit("³ö´íÁË");
+$id=!empty($_GET['id'])?intval($_GET['id']):exit("å‡ºé”™äº†");
 $resumeshow=get_resume_basic_one($id);
 require_once(QISHI_ROOT_PATH.'include/fun_company.php');
 $user=get_user_info($_SESSION['uid']);
-$downresumeurl="<a href=\"".get_member_url(1,true)."company_recruitment.php?act=down_resume_list&talent=2\">[²é¿´ÒÑÏÂÔØµÄ¸ß¼¶¼òÀú]</a>";
+$downresumeurl="<a href=\"".get_member_url(1,true)."company_recruitment.php?act=down_resume_list&talent=2\">[æŸ¥çœ‹å·²ä¸‹è½½çš„é«˜çº§ç®€å†]</a>";
 if ($user['status']=='2'){
 	exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 		    <tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					ÄúµÄÕËºÅ´¦ÓÚÔİÍ£×´Ì¬£¬ÇëÁªÏµ¹ÜÀíÔ±ÉèÎªÕı³£ºó½øĞĞ²Ù×÷£¡
+					æ‚¨çš„è´¦å·å¤„äºæš‚åœçŠ¶æ€ï¼Œè¯·è”ç³»ç®¡ç†å‘˜è®¾ä¸ºæ­£å¸¸åè¿›è¡Œæ“ä½œï¼
 				</td>
 		    </tr>
 		</table>');
@@ -72,7 +72,7 @@ if(check_jobs_apply($id,$_SESSION['uid']))
 			<tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					¼òÀúÁªÏµ·½Ê½¿É¼û£¬ÄúÎŞĞèÏÂÔØ´Ë¼òÀú£¡
+					ç®€å†è”ç³»æ–¹å¼å¯è§ï¼Œæ‚¨æ— éœ€ä¸‹è½½æ­¤ç®€å†ï¼
 				</td>
 			</tr>
 		</table>');
@@ -80,20 +80,20 @@ if(check_jobs_apply($id,$_SESSION['uid']))
 }
 if (check_down_resumeid($id,$_SESSION['uid'])) 
 {
-	$str="<a href=\"".get_member_url(1,true)."company_recruitment.php?act=down_resume_list\">[²é¿´ÎÒµÄÏÂÔØµÄ¼òÀú]</a>";
+	$str="<a href=\"".get_member_url(1,true)."company_recruitment.php?act=down_resume_list\">[æŸ¥çœ‹æˆ‘çš„ä¸‹è½½çš„ç®€å†]</a>";
 	exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 			<tr>
 				<td width="20" align="right"></td>
 				<td class="ajax_app">
-					ÄúÒÑ¾­ÏÂÔØ¹ı´Ë¼òÀúÁË£¡'.$str.'
+					æ‚¨å·²ç»ä¸‹è½½è¿‡æ­¤ç®€å†äº†ï¼'.$str.'
 				</td>
 			</tr>
 		</table>');
 }
 if ($_CFG['down_resume_limit']=="1")
 {
-	$user_jobs=get_auditjobs($_SESSION['uid']);//ÉóºËÍ¨¹ıµÄÖ°Î»
-	$strurl="ÄãÃ»ÓĞ·¢²¼Ö°Î»»òÉóºËÎ´Í¨¹ıµ¼ÖÂÎŞ·¨ÏÂÔØ¼òÀú¡£<a href=\"".get_member_url(1,true)."company_jobs.php?act=jobs\">[Ö°Î»¹ÜÀí]</a>";
+	$user_jobs=get_auditjobs($_SESSION['uid']);//å®¡æ ¸é€šè¿‡çš„èŒä½
+	$strurl="ä½ æ²¡æœ‰å‘å¸ƒèŒä½æˆ–å®¡æ ¸æœªé€šè¿‡å¯¼è‡´æ— æ³•ä¸‹è½½ç®€å†ã€‚<a href=\"".get_member_url(1,true)."company_jobs.php?act=jobs\">[èŒä½ç®¡ç†]</a>";
 	if (empty($user_jobs))
 	{
 		exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
@@ -114,11 +114,11 @@ elseif ($resumeshow['display_name']=="3")
 {
 	if($resumeshow['sex']==1)
 	{
-		$resumeshow['resume_name']=cut_str($resumeshow['fullname'],1,0,"ÏÈÉú");
+		$resumeshow['resume_name']=cut_str($resumeshow['fullname'],1,0,"å…ˆç”Ÿ");
 	}
 	elseif($resumeshow['sex']==2)
 	{
-		$resumeshow['resume_name']=cut_str($resumeshow['fullname'],1,0,"Å®Ê¿");
+		$resumeshow['resume_name']=cut_str($resumeshow['fullname'],1,0,"å¥³å£«");
 	}
 }
 else
@@ -156,36 +156,36 @@ if ($_CFG['operation_mode']=="2")
 {
 	if (empty($setmeal) || ($setmeal['endtime']<time() && $setmeal['endtime']<>"0"))
 	{
-		$str="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ÉêÇë·şÎñ]</a>";
+		$str="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ç”³è¯·æœåŠ¡]</a>";
 		exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 			    <tr>
 					<td width="20" align="right"></td>
 					<td class="ajax_app">
-						ÄúµÄ·şÎñÒÑµ½ÆÚ¡£Äú¿ÉÒÔ '.$str.'
+						æ‚¨çš„æœåŠ¡å·²åˆ°æœŸã€‚æ‚¨å¯ä»¥ '.$str.'
 					</td>
 			    </tr>
 			</table>');
 	}
 	elseif ($resumeshow['talent']=='2' && $setmeal['download_resume_senior']<=0)
 	{
-		$str="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ÉêÇë·şÎñ]</a>";
+		$str="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ç”³è¯·æœåŠ¡]</a>";
 		exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 			    <tr>
 					<td width="20" align="right"></td>
 					<td class="ajax_app">
-						ÄãÏÂÔØ¸ß¼¶ÈË²Å¼òÀúÊıÁ¿ÒÑ¾­³¬³öÁËÏŞÖÆ¡£Äú¿ÉÒÔ '.$str.'
+						ä½ ä¸‹è½½é«˜çº§äººæ‰ç®€å†æ•°é‡å·²ç»è¶…å‡ºäº†é™åˆ¶ã€‚æ‚¨å¯ä»¥ '.$str.'
 					</td>
 			    </tr>
 			</table>');
 	}
 	elseif ($resumeshow['talent']=='1' && $setmeal['download_resume_ordinary']<=0)
 	{
-		$str="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ÉêÇë·şÎñ]</a>";
+		$str="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ç”³è¯·æœåŠ¡]</a>";
 		exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 			    <tr>
 					<td width="20" align="right"></td>
 					<td class="ajax_app">
-						ÄãÏÂÔØ¼òÀúÊıÁ¿ÒÑ¾­³¬³öÁËÏŞÖÆ¡£Äú¿ÉÒÔ '.$str.'
+						ä½ ä¸‹è½½ç®€å†æ•°é‡å·²ç»è¶…å‡ºäº†é™åˆ¶ã€‚æ‚¨å¯ä»¥ '.$str.'
 					</td>
 			    </tr>
 			</table>');
@@ -197,11 +197,11 @@ if ($act=="download")
 	{
 		if ($resumeshow['talent']=='2')
 		{	
-			$tip="ÌáÊ¾£ºÄú»¹¿ÉÒÔÏÂÔØ<span> {$setmeal['download_resume_senior']}</span>·İ¸ß¼¶ÈË²Å¼òÀú";
+			$tip="æç¤ºï¼šæ‚¨è¿˜å¯ä»¥ä¸‹è½½<span> {$setmeal['download_resume_senior']}</span>ä»½é«˜çº§äººæ‰ç®€å†";
 		}
 		else
 		{	
-			$tip="ÌáÊ¾£ºÄú»¹¿ÉÒÔÏÂÔØ<span> {$setmeal['download_resume_ordinary']}</span>·İÆÕÍ¨ÈË²Å¼òÀú";
+			$tip="æç¤ºï¼šæ‚¨è¿˜å¯ä»¥ä¸‹è½½<span> {$setmeal['download_resume_ordinary']}</span>ä»½æ™®é€šäººæ‰ç®€å†";
 		}
 		
 	}
@@ -212,15 +212,15 @@ if ($act=="download")
 		$mypoints=get_user_points($_SESSION['uid']);
 		if  ($mypoints<$points)
 		{
-			$str="<a href=\"".get_member_url(1,true)."company_service.php?act=order_add\">[³äÖµ{$_CFG['points_byname']}]</a>&nbsp;&nbsp;&nbsp;&nbsp;";
-			$str1="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ÉêÇë·şÎñ]</a>";
+			$str="<a href=\"".get_member_url(1,true)."company_service.php?act=order_add\">[å……å€¼{$_CFG['points_byname']}]</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+			$str1="<a href=\"".get_member_url(1,true)."company_service.php?act=setmeal_list\">[ç”³è¯·æœåŠ¡]</a>";
 			if (!empty($setmeal) && $_CFG['setmeal_to_points']=="1")
 			{
 				exit('<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 				    <tr>
 						<td width="20" align="right"></td>
 						<td class="ajax_app">
-							ÄãµÄ·şÎñÒÑµ½ÆÚ»ò³¬³ö·şÎñÌõÊı¡£Äú¿ÉÒÔ '.$str.$str1.'
+							ä½ çš„æœåŠ¡å·²åˆ°æœŸæˆ–è¶…å‡ºæœåŠ¡æ¡æ•°ã€‚æ‚¨å¯ä»¥ '.$str.$str1.'
 						</td>
 				    </tr>
 				</table>');
@@ -231,13 +231,13 @@ if ($act=="download")
 				    <tr>
 						<td width="20" align="right"></td>
 						<td class="ajax_app">
-							ÄãµÄ'.$_CFG['points_byname'].' ²»×ã£¬Çë³äÖµºóÏÂÔØ¡£'.$str.'
+							ä½ çš„'.$_CFG['points_byname'].' ä¸è¶³ï¼Œè¯·å……å€¼åä¸‹è½½ã€‚'.$str.'
 						</td>
 				    </tr>
 				</table>');
 			}			
 		}
-		$tip="ÏÂÔØ´Ë·İ¼òÀú½«¿Û³ı<span> {$points}</span>{$_CFG['points_quantifier']}{$_CFG['points_byname']}£¬ÄúÄ¿Ç°¹²ÓĞ<span> {$mypoints}</span>{$_CFG['points_quantifier']}{$_CFG['points_byname']}";
+		$tip="ä¸‹è½½æ­¤ä»½ç®€å†å°†æ‰£é™¤<span> {$points}</span>{$_CFG['points_quantifier']}{$_CFG['points_byname']}ï¼Œæ‚¨ç›®å‰å…±æœ‰<span> {$mypoints}</span>{$_CFG['points_quantifier']}{$_CFG['points_byname']}";
 	}
 ?>
 <script type="text/javascript">
@@ -245,7 +245,7 @@ $(".but100").hover(function(){$(this).addClass("but100_hover")},function(){$(thi
 $("#ajax_download_r").click(function() {
 		var id="<?php echo $id?>";
 		var tsTimeStamp= new Date().getTime();
-			$("#ajax_download_r").val("´¦ÀíÖĞ...");
+			$("#ajax_download_r").val("å¤„ç†ä¸­...");
 			$("#ajax_download_r").attr("disabled","disabled");
  			 var pms_notice=$("#pms_notice").attr("checked");
 			 if(pms_notice) pms_notice=1;else pms_notice=0;
@@ -258,7 +258,7 @@ $("#ajax_download_r").click(function() {
 				$("#ajax_download_table").hide();
 				$("#notice").hide();
 				$("#download_ok").show();
-				//Ë¢ĞÂÁªÏµµØÖ·
+				//åˆ·æ–°è”ç³»åœ°å€
 				$.get("<?php echo $_CFG['site_dir'] ?>plus/ajax_contact.php", { "id": id,"time":tsTimeStamp,"act":"resume_contact"},
 					function (data,textStatus)
 					{			
@@ -270,24 +270,24 @@ $("#ajax_download_r").click(function() {
 			{
 				alert(data);
 			}
-				$("#ajax_download_r").val("ÏÂÔØ¼òÀú");
+				$("#ajax_download_r").val("ä¸‹è½½ç®€å†");
 				$("#ajax_download_r").attr("disabled","");
 	 	 })
 });
 </script>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall" id="ajax_download_table">
     <tr>
-		<td width="120" align="right">Õ¾ÄÚĞÅÍ¨Öª¶Ô·½£º</td>
+		<td width="120" align="right">ç«™å†…ä¿¡é€šçŸ¥å¯¹æ–¹ï¼š</td>
 		<td class="ajax_app">
 			<label><input type="checkbox" name="pms_notice" id="pms_notice" value="1"  checked="checked"/>
-		  Õ¾ÄÚĞÅÍ¨Öª
+		  ç«™å†…ä¿¡é€šçŸ¥
 		   </label>
 		</td>
     </tr>
     <tr>
 		<td></td>
 		<td>
-			<input type="button" name="Submit"  id="ajax_download_r" class="but130lan" value="ÏÂÔØ¼òÀú" />
+			<input type="button" name="Submit"  id="ajax_download_r" class="but130lan" value="ä¸‹è½½ç®€å†" />
 		</td>
     </tr>
 </table>
@@ -306,12 +306,12 @@ $("#ajax_download_r").click(function() {
     <tr>
 		<td width="140" align="right"><img height="100" src="<?php echo  $_CFG['site_template']?>images/big-yes.png" /></td>
 		<td>
-			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">ÏÂÔØ³É¹¦!</strong>
+			<strong style="font-size:14px ; color:#0066CC;margin-left:20px">ä¸‹è½½æˆåŠŸ!</strong>
 			<?php
 				if($_SESSION['utype']==1){
 			?>
 			<div style="border-top:1px #CCCCCC solid; line-height:180%; margin-top:10px; padding-top:10px; height:50px;margin-left:20px"  class="dialog_closed">
-			<a href="<?php echo get_member_url(1,true)?>company_recruitment.php?act=down_resume_list" style="color:#0180cf;text-decoration:none;" class="underline">²é¿´ÒÑÏÂÔØ¼òÀú</a><br />
+			<a href="<?php echo get_member_url(1,true)?>company_recruitment.php?act=down_resume_list" style="color:#0180cf;text-decoration:none;" class="underline">æŸ¥çœ‹å·²ä¸‹è½½ç®€å†</a><br />
 			<?php
 				}else{
 			?>
@@ -320,7 +320,7 @@ $("#ajax_download_r").click(function() {
 			<?php
 				}
 			?>
-			<a href="javascript:void(0)"  class="DialogClose underline" style="color:#0180cf;text-decoration:none;">ÏÂÔØÍê³É</a>
+			<a href="javascript:void(0)"  class="DialogClose underline" style="color:#0180cf;text-decoration:none;">ä¸‹è½½å®Œæˆ</a>
 			</div>
 		</td>
     </tr>
@@ -339,15 +339,15 @@ elseif ($act=="download_save")
 					{
 					action_user_setmeal($_SESSION['uid'],"download_resume_senior");
 					$setmeal=get_user_setmeal($_SESSION['uid']);
-					write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄ¸ß¼¶¼òÀú,»¹¿ÉÒÔÏÂÔØ {$setmeal['download_resume_senior']} ·İ¸ß¼¶¼òÀú",2,1005,"ÏÂÔØ¸ß¼¶¼òÀú","1","{$setmeal['download_resume_senior']}");
-					write_memberslog($_SESSION['uid'],1,4001,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄ¼òÀú");
-					//Õ¾ÄÚĞÅ
+					write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„é«˜çº§ç®€å†,è¿˜å¯ä»¥ä¸‹è½½ {$setmeal['download_resume_senior']} ä»½é«˜çº§ç®€å†",2,1005,"ä¸‹è½½é«˜çº§ç®€å†","1","{$setmeal['download_resume_senior']}");
+					write_memberslog($_SESSION['uid'],1,4001,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„ç®€å†");
+					//ç«™å†…ä¿¡
 					if($pms_notice=='1'){
 						$company=$db->getone("select id,companyname  from ".table('company_profile')." where uid ={$_SESSION['uid']} limit 1");
 						// $user=$db->getone("select username from ".table('members')." where uid ={$resumeshow['uid']} limit 1");
 						$resume_url=url_rewrite('QS_resumeshow',array('id'=>$id));
 						$company_url=url_rewrite('QS_companyshow',array('id'=>$company['id']));
-						$message=$_SESSION['username']."ÏÂÔØÁËÄú·¢²¼µÄ¼òÀú£º<a href=\"{$resume_url}\" target=\"_blank\">{$resumeshow['resume_name']}</a>£¬<a href=\"$company_url\" target=\"_blank\">µã»÷²é¿´¹«Ë¾ÏêÇé</a>";
+						$message=$_SESSION['username']."ä¸‹è½½äº†æ‚¨å‘å¸ƒçš„ç®€å†ï¼š<a href=\"{$resume_url}\" target=\"_blank\">{$resumeshow['resume_name']}</a>ï¼Œ<a href=\"$company_url\" target=\"_blank\">ç‚¹å‡»æŸ¥çœ‹å…¬å¸è¯¦æƒ…</a>";
 						write_pmsnotice($resumeshow['uid'],$ruser['username'],$message);
 					}
 					exit("ok");
@@ -359,15 +359,15 @@ elseif ($act=="download_save")
 					{		
 					action_user_setmeal($_SESSION['uid'],"download_resume_ordinary");
 					$setmeal=get_user_setmeal($_SESSION['uid']);
-					write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄÆÕÍ¨¼òÀú,»¹¿ÉÒÔÏÂÔØ {$setmeal['download_resume_ordinary']} ·İÆÕÍ¨¼òÀú",2,1004,"ÏÂÔØÆÕÍ¨¼òÀú","1","{$setmeal['download_resume_ordinary']}");
-					write_memberslog($_SESSION['uid'],1,4001,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄ¼òÀú");
-					//Õ¾ÄÚĞÅ
+					write_memberslog($_SESSION['uid'],1,9002,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„æ™®é€šç®€å†,è¿˜å¯ä»¥ä¸‹è½½ {$setmeal['download_resume_ordinary']} ä»½æ™®é€šç®€å†",2,1004,"ä¸‹è½½æ™®é€šç®€å†","1","{$setmeal['download_resume_ordinary']}");
+					write_memberslog($_SESSION['uid'],1,4001,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„ç®€å†");
+					//ç«™å†…ä¿¡
 					if($pms_notice=='1'){
 						$company=$db->getone("select id,companyname  from ".table('company_profile')." where uid ={$_SESSION['uid']} limit 1");
 						// $user=$db->getone("select username from ".table('members')." where uid ={$resumeshow['uid']} limit 1");
 						$resume_url=url_rewrite('QS_resumeshow',array('id'=>$id));
 						$company_url=url_rewrite('QS_companyshow',array('id'=>$company['id']));
-						$message=$_SESSION['username']."ÏÂÔØÁËÄú·¢²¼µÄ¼òÀú£º<a href=\"{$resume_url}\" target=\"_blank\">{$resumeshow['resume_name']}</a>£¬<a href=\"$company_url\" target=\"_blank\">µã»÷²é¿´¹«Ë¾ÏêÇé</a>";
+						$message=$_SESSION['username']."ä¸‹è½½äº†æ‚¨å‘å¸ƒçš„ç®€å†ï¼š<a href=\"{$resume_url}\" target=\"_blank\">{$resumeshow['resume_name']}</a>ï¼Œ<a href=\"$company_url\" target=\"_blank\">ç‚¹å‡»æŸ¥çœ‹å…¬å¸è¯¦æƒ…</a>";
 						write_pmsnotice($resumeshow['uid'],$ruser['username'],$message);
 					}
 					exit("ok");
@@ -393,18 +393,18 @@ elseif ($act=="download_save")
 					$user_points=get_user_points($_SESSION['uid']);
 					$operator=$ptype=="1"?"+":"-";
 					if($resumeshow['talent']=='2'){
-						write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄ¼òÀú({$operator}{$points}),(Ê£Óà:{$user_points})",1,1005,"ÏÂÔØ¸ß¼¶¼òÀú","{$operator}{$points}","{$user_points}");
+						write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„ç®€å†({$operator}{$points}),(å‰©ä½™:{$user_points})",1,1005,"ä¸‹è½½é«˜çº§ç®€å†","{$operator}{$points}","{$user_points}");
 					}elseif($resumeshow['talent']=='1'){
-						write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄ¼òÀú({$operator}{$points}),(Ê£Óà:{$user_points})",1,1004,"ÏÂÔØÆÕÍ¨¼òÀú","{$operator}{$points}","{$user_points}");
+						write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„ç®€å†({$operator}{$points}),(å‰©ä½™:{$user_points})",1,1004,"ä¸‹è½½æ™®é€šç®€å†","{$operator}{$points}","{$user_points}");
 					}
-					write_memberslog($_SESSION['uid'],1,4001,$_SESSION['username'],"ÏÂÔØÁË {$ruser['username']} ·¢²¼µÄ¼òÀú");
-					//Õ¾ÄÚĞÅ
+					write_memberslog($_SESSION['uid'],1,4001,$_SESSION['username'],"ä¸‹è½½äº† {$ruser['username']} å‘å¸ƒçš„ç®€å†");
+					//ç«™å†…ä¿¡
 					if($pms_notice=='1'){
 						$company=$db->getone("select id,companyname  from ".table('company_profile')." where uid ={$_SESSION['uid']} limit 1");
 						// $user=$db->getone("select username from ".table('members')." where uid ={$resumeshow['uid']} limit 1");
 						$resume_url=url_rewrite('QS_resumeshow',array('id'=>$id));
 						$company_url=url_rewrite('QS_companyshow',array('id'=>$company['id']));
-						$message=$_SESSION['username']."ÏÂÔØÁËÄú·¢²¼µÄ¼òÀú£º<a href=\"{$resume_url}\" target=\"_blank\">{$resumeshow['resume_name']}</a>£¬<a href=\"$company_url\" target=\"_blank\">µã»÷²é¿´¹«Ë¾ÏêÇé</a>";
+						$message=$_SESSION['username']."ä¸‹è½½äº†æ‚¨å‘å¸ƒçš„ç®€å†ï¼š<a href=\"{$resume_url}\" target=\"_blank\">{$resumeshow['resume_name']}</a>ï¼Œ<a href=\"$company_url\" target=\"_blank\">ç‚¹å‡»æŸ¥çœ‹å…¬å¸è¯¦æƒ…</a>";
 						write_pmsnotice($resumeshow['uid'],$ruser['username'],$message);
 					}
 

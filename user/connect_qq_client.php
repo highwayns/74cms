@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms QQ»¥Áª client-sideÄ£Ê½
+ * 74cms QQäº’è” client-sideæ¨¡å¼
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -37,7 +37,7 @@ elseif ($act=='login_go')
 	$_SESSION["accessToken"] = trim($_GET['accessToken']);
 	if (empty($_SESSION["openid"]))
 	{
-		showmsg('µÇÂ¼Ê§°Ü£¡openid»ñÈ¡²»µ½',0);
+		showmsg('ç™»å½•å¤±è´¥ï¼openidèŽ·å–ä¸åˆ°',0);
 	}
 	else
 	{
@@ -69,10 +69,10 @@ elseif ($act=='login_go')
 					$time=time();
 					require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 					$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION['openid']}',qq_nick ='{$nickname}' ,qq_binding_time = '{$time}' WHERE uid='{$_SESSION[uid]}' AND qq_openid='' LIMIT 1");
-					$link[0]['text'] = "½øÈë»áÔ±ÖÐÐÄ";
+					$link[0]['text'] = "è¿›å…¥ä¼šå‘˜ä¸­å¿ƒ";
 					$link[0]['href'] = get_member_url($_SESSION['utype']);
 					$_SESSION['uqqid']=$_SESSION['openid'];
-					showmsg('°ó¶¨QQÕÊºÅ³É¹¦£¡',2,$link);
+					showmsg('ç»‘å®šQQå¸å·æˆåŠŸï¼',2,$link);
 				}
 				else
 				{
@@ -100,7 +100,7 @@ elseif ($act=='reg')
 		$jsoninfo = json_decode($output, true);
 		$nickname = iconv("utf-8","gbk",$jsoninfo["nickname"]);
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
-		$smarty->assign('title','²¹³äÐÅÏ¢ - '.$_CFG['site_name']);
+		$smarty->assign('title','è¡¥å……ä¿¡æ¯ - '.$_CFG['site_name']);
 		$smarty->assign('third_name',"QQ");
 		$smarty->assign('qqurl',"?act=");
 		$smarty->assign('nickname',$nickname);
@@ -137,9 +137,9 @@ elseif ($act=='reg_save')
 	else
 	{
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
-		$link[0]['text'] = "·µ»ØÊ×Ò³";
+		$link[0]['text'] = "è¿”å›žé¦–é¡µ";
 		$link[0]['href'] = "{$_CFG['site_dir']}";
-		showmsg('×¢²áÊ§°Ü£¡',0,$link);
+		showmsg('æ³¨å†Œå¤±è´¥ï¼',0,$link);
 	}
 }
 
@@ -182,11 +182,11 @@ elseif ($act=='binding_callback')
 			require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 			if (!empty($user))
 			{
-					$link[0]['text'] = "ÓÃ±ðµÄQQÕÊºÅ°ó¶¨";
+					$link[0]['text'] = "ç”¨åˆ«çš„QQå¸å·ç»‘å®š";
 					$link[0]['href'] = "?act=binding";
-					$link[1]['text'] = "½øÈë»áÔ±ÖÐÐÄ";
+					$link[1]['text'] = "è¿›å…¥ä¼šå‘˜ä¸­å¿ƒ";
 					$link[1]['href'] =get_member_url($_SESSION['utype']);
-					showmsg('´ËQQÕÊºÅÒÑ¾­°ó¶¨ÁËÆäËû»áÔ±,Çë»»Ò»¸öQQÕÊºÅ£¡',2,$link);
+					showmsg('æ­¤QQå¸å·å·²ç»ç»‘å®šäº†å…¶ä»–ä¼šå‘˜,è¯·æ¢ä¸€ä¸ªQQå¸å·ï¼',2,$link);
 			}
 			else
 			{	
@@ -202,10 +202,10 @@ elseif ($act=='binding_callback')
 					$nickname = iconv("utf-8","gbk",$jsoninfo["nickname"]);
 					$time=time();
 					$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION[openid]}', qq_nick = '{$nickname}', qq_binding_time = '{$time}' WHERE uid='".$_SESSION['uid']."' AND qq_openid='' LIMIT 1");
-					$link[0]['text'] = "½øÈë»áÔ±ÖÐÐÄ";
+					$link[0]['text'] = "è¿›å…¥ä¼šå‘˜ä¸­å¿ƒ";
 					$link[0]['href'] = get_member_url($_SESSION['utype']);
 					$_SESSION['uqqid']=$_SESSION['openid'];
-					showmsg('°ó¶¨QQÕÊºÅ³É¹¦£¡',2,$link);
+					showmsg('ç»‘å®šQQå¸å·æˆåŠŸï¼',2,$link);
 			}
 }
 ?>

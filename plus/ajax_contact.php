@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ajax ÁªÏµ·½Ê½
+ * 74cms ajax è”ç³»æ–¹å¼
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -40,7 +40,7 @@ if($act == 'jobs_contact')
 									<span class="border-item topright"></span>
 									<span class="border-item bottomleft"></span>
 									<span class="border-item bottomright"></span>
-									<p>¸öÈËÔÚ×¢²á²¢µÇÂ¼ºó²ÅÄÜ²é¿´ÆóÒµµÄÁªÏµ·½Ê½£¬ÏÖÔÚ<a href="javascript:void(0);" class="ajax_user_login" style="color:#ff7400">[Á¢¼´µÇÂ¼]</a>»òÕß<a href="'.$_CFG['site_dir'].'user/user_reg.php" style="color:#ff7400">[Ãâ·Ñ×¢²á]</a></p>
+									<p>ä¸ªäººåœ¨æ³¨å†Œå¹¶ç™»å½•åæ‰èƒ½æŸ¥çœ‹ä¼ä¸šçš„è”ç³»æ–¹å¼ï¼Œç°åœ¨<a href="javascript:void(0);" class="ajax_user_login" style="color:#ff7400">[ç«‹å³ç™»å½•]</a>æˆ–è€…<a href="'.$_CFG['site_dir'].'user/user_reg.php" style="color:#ff7400">[å…è´¹æ³¨å†Œ]</a></p>
 								</div>';
 			}
 		}
@@ -61,7 +61,7 @@ if($act == 'jobs_contact')
 									<span class="border-item topright"></span>
 									<span class="border-item bottomleft"></span>
 									<span class="border-item bottomright"></span>
-									<p>ÄúÃ»ÓĞ·¢²¼¼òÀú»òÕß¼òÀúÎŞĞ§£¬·¢²¼¼òÀúºó²Å¿ÉÒÔ²é¿´ÁªÏµ·½Ê½¡£<a href="'.get_member_url($_SESSION['utype'],true).'personal_resume.php?act=resume_list">[²é¿´ÎÒµÄ¼òÀú]</a></p>
+									<p>æ‚¨æ²¡æœ‰å‘å¸ƒç®€å†æˆ–è€…ç®€å†æ— æ•ˆï¼Œå‘å¸ƒç®€å†åæ‰å¯ä»¥æŸ¥çœ‹è”ç³»æ–¹å¼ã€‚<a href="'.get_member_url($_SESSION['utype'],true).'personal_resume.php?act=resume_list">[æŸ¥çœ‹æˆ‘çš„ç®€å†]</a></p>
 								</div>';
 				}
 			}
@@ -73,7 +73,7 @@ if($act == 'jobs_contact')
 									<span class="border-item topright"></span>
 									<span class="border-item bottomleft"></span>
 									<span class="border-item bottomright"></span>
-									<p>¸öÈËÔÚ×¢²á²¢µÇÂ¼ºó²ÅÄÜ²é¿´ÆóÒµµÄÁªÏµ·½Ê½£¬ÏÖÔÚ<a href="javascript:void(0);" class="ajax_user_login" style="color:#ff7400">[Á¢¼´µÇÂ¼]</a>»òÕß<a href="'.$_CFG['site_dir'].'user/user_reg.php" style="color:#ff7400">[Ãâ·Ñ×¢²á]</a></p>
+									<p>ä¸ªäººåœ¨æ³¨å†Œå¹¶ç™»å½•åæ‰èƒ½æŸ¥çœ‹ä¼ä¸šçš„è”ç³»æ–¹å¼ï¼Œç°åœ¨<a href="javascript:void(0);" class="ajax_user_login" style="color:#ff7400">[ç«‹å³ç™»å½•]</a>æˆ–è€…<a href="'.$_CFG['site_dir'].'user/user_reg.php" style="color:#ff7400">[å…è´¹æ³¨å†Œ]</a></p>
 								</div>';
 			}
 		}
@@ -96,49 +96,49 @@ if($act == 'jobs_contact')
 			{
 			$hashstr=$_GET['hashstr'];
 			$token=md5($val['contact'].$id.$val['telephone']);
-			$contact=$val['contact_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/></li>":"ÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª";
-			$telephone=$val['telephone_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=2&id={$id}&token={$token}&hashstr={$hashstr}\"  border=\"0\" align=\"absmiddle\"/><a style=\"color:#017fcf\" id=\"tel_show_pic\" href=\"javascript:;\" >[²é¿´]</a> <span  id=\"show_detail\" style='color:#666;display:none'>[ÁªÏµÎÒÊ±ÇëËµÃ÷ÊÇÔÚ&nbsp;".$_CFG['site_name']."&nbsp;ÉÏ¿´µ½µÄ]</span>":"ÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª";
-			$email=$val['email_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=3&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>":"ÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª";
+			$contact=$val['contact_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/></li>":"ä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€";
+			$telephone=$val['telephone_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=2&id={$id}&token={$token}&hashstr={$hashstr}\"  border=\"0\" align=\"absmiddle\"/><a style=\"color:#017fcf\" id=\"tel_show_pic\" href=\"javascript:;\" >[æŸ¥çœ‹]</a> <span  id=\"show_detail\" style='color:#666;display:none'>[è”ç³»æˆ‘æ—¶è¯·è¯´æ˜æ˜¯åœ¨&nbsp;".$_CFG['site_name']."&nbsp;ä¸Šçœ‹åˆ°çš„]</span>":"ä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€";
+			$email=$val['email_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=jobs_contact&type=3&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>":"ä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€";
 
 			$html='<div class="c-contact">
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">Áª Ïµ ÈË£º</div>
+										<div class="contact-type f-left">è” ç³» äººï¼š</div>
 										<div class="contact-content f-left">'.$contact.'</div>
 									</div>
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">ÁªÏµµç»°£º</div>
+										<div class="contact-type f-left">è”ç³»ç”µè¯ï¼š</div>
 										<div class="contact-content f-left">'.$telephone.'</div>
 									</div>
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">ÁªÏµÓÊÏä£º</div>
+										<div class="contact-type f-left">è”ç³»é‚®ç®±ï¼š</div>
 										<div class="contact-content f-left">'.$email.'</div>
 									</div>
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">¹«Ë¾µØÖ·£º</div>
+										<div class="contact-type f-left">å…¬å¸åœ°å€ï¼š</div>
 										<div class="contact-content f-left">'.$val['address'].'</div>
 									</div>
 								</div>';
 			}
 			else
 			{
-			$contact=$val['contact_show']=='1'?"{$val['contact']}":"ÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª";
-			$telephone=$val['telephone_show']=='1'?"{$val['telephone']}":"ÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª</li>";
-			$email=$val['email_show']=='1'?"{$val['email']}":"ÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª</li>";
+			$contact=$val['contact_show']=='1'?"{$val['contact']}":"ä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€";
+			$telephone=$val['telephone_show']=='1'?"{$val['telephone']}":"ä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€</li>";
+			$email=$val['email_show']=='1'?"{$val['email']}":"ä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€</li>";
 						$html='<div class="c-contact">
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">Áª Ïµ ÈË£º</div>
+										<div class="contact-type f-left">è” ç³» äººï¼š</div>
 										<div class="contact-content f-left">'.$contact.'</div>
 									</div>
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">ÁªÏµµç»°£º</div>
+										<div class="contact-type f-left">è”ç³»ç”µè¯ï¼š</div>
 										<div class="contact-content f-left"><span>'.$telephone.'</span></div>
 									</div>
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">ÁªÏµÓÊÏä£º</div>
+										<div class="contact-type f-left">è”ç³»é‚®ç®±ï¼š</div>
 										<div class="contact-content f-left"><span>'.$email.'</span></div>
 									</div>
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">¹«Ë¾µØÖ·£º</div>
+										<div class="contact-type f-left">å…¬å¸åœ°å€ï¼š</div>
 										<div class="contact-content f-left">'.$val['address'].'</div>
 									</div>
 								</div>';
@@ -177,7 +177,7 @@ elseif($act == 'company_contact')
 									<span class="border-item topright"></span>
 									<span class="border-item bottomleft"></span>
 									<span class="border-item bottomright"></span>
-									<p>¸öÈËÔÚ×¢²á²¢µÇÂ¼ºó²ÅÄÜ²é¿´ÆóÒµµÄÁªÏµ·½Ê½£¬ÏÖÔÚ<a href="javascript:void(0);" class="ajax_user_login" style="color:#ff7400">[Á¢¼´µÇÂ¼]</a>»òÕß<a href="'.$_CFG['site_dir'].'user/user_reg.php" style="color:#ff7400">[Ãâ·Ñ×¢²á]</a></p>
+									<p>ä¸ªäººåœ¨æ³¨å†Œå¹¶ç™»å½•åæ‰èƒ½æŸ¥çœ‹ä¼ä¸šçš„è”ç³»æ–¹å¼ï¼Œç°åœ¨<a href="javascript:void(0);" class="ajax_user_login" style="color:#ff7400">[ç«‹å³ç™»å½•]</a>æˆ–è€…<a href="'.$_CFG['site_dir'].'user/user_reg.php" style="color:#ff7400">[å…è´¹æ³¨å†Œ]</a></p>
 								</div>';
 			}
 		}
@@ -198,7 +198,7 @@ elseif($act == 'company_contact')
 									<span class="border-item topright"></span>
 									<span class="border-item bottomleft"></span>
 									<span class="border-item bottomright"></span>
-									<p>ÄúÃ»ÓĞ·¢²¼¼òÀú»òÕß¼òÀúÎŞĞ§£¬·¢²¼¼òÀúºó²Å¿ÉÒÔ²é¿´ÁªÏµ·½Ê½¡£<a href="'.get_member_url($_SESSION['utype'],true).'personal_resume.php?act=resume_list">[²é¿´ÎÒµÄ¼òÀú]</a></p>
+									<p>æ‚¨æ²¡æœ‰å‘å¸ƒç®€å†æˆ–è€…ç®€å†æ— æ•ˆï¼Œå‘å¸ƒç®€å†åæ‰å¯ä»¥æŸ¥çœ‹è”ç³»æ–¹å¼ã€‚<a href="'.get_member_url($_SESSION['utype'],true).'personal_resume.php?act=resume_list">[æŸ¥çœ‹æˆ‘çš„ç®€å†]</a></p>
 								</div>';
 				}
 			}
@@ -210,7 +210,7 @@ elseif($act == 'company_contact')
 									<span class="border-item topright"></span>
 									<span class="border-item bottomleft"></span>
 									<span class="border-item bottomright"></span>
-									<p>¸öÈËÔÚ×¢²á²¢µÇÂ¼ºó²ÅÄÜ²é¿´ÆóÒµµÄÁªÏµ·½Ê½£¬ÏÖÔÚ<a href="javascript:void(0);" class="ajax_user_login" style="color:#ff7400">[Á¢¼´µÇÂ¼]</a>»òÕß<a href="'.$_CFG['site_dir'].'user/user_reg.php" style="color:#ff7400">[Ãâ·Ñ×¢²á]</a></p>
+									<p>ä¸ªäººåœ¨æ³¨å†Œå¹¶ç™»å½•åæ‰èƒ½æŸ¥çœ‹ä¼ä¸šçš„è”ç³»æ–¹å¼ï¼Œç°åœ¨<a href="javascript:void(0);" class="ajax_user_login" style="color:#ff7400">[ç«‹å³ç™»å½•]</a>æˆ–è€…<a href="'.$_CFG['site_dir'].'user/user_reg.php" style="color:#ff7400">[å…è´¹æ³¨å†Œ]</a></p>
 								</div>';
 			}
 		}
@@ -232,49 +232,49 @@ elseif($act == 'company_contact')
 			if ($_CFG['contact_img_com']=='2')
 			{
 			$token=md5($val['contact'].$id.$val['telephone']);
-			$contact=$val['contact_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/></li>":"ÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª";
-			$telephone=$val['telephone_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>":"ÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª";
-			$email=$val['email_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=3&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>":"ÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª";
+			$contact=$val['contact_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=1&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/></li>":"ä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€";
+			$telephone=$val['telephone_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>":"ä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€";
+			$email=$val['email_show']=='1'?"<img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=company_contact&type=3&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>":"ä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€";
 
 			$html='<div class="c-contact">
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">Áª Ïµ ÈË£º</div>
+										<div class="contact-type f-left">è” ç³» äººï¼š</div>
 										<div class="contact-content f-left">'.$contact.'</div>
 									</div>
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">ÁªÏµµç»°£º</div>
+										<div class="contact-type f-left">è”ç³»ç”µè¯ï¼š</div>
 										<div class="contact-content f-left">'.$telephone.'</div>
 									</div>
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">ÁªÏµÓÊÏä£º</div>
+										<div class="contact-type f-left">è”ç³»é‚®ç®±ï¼š</div>
 										<div class="contact-content f-left">'.$email.'</div>
 									</div>
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">¹«Ë¾µØÖ·£º</div>
+										<div class="contact-type f-left">å…¬å¸åœ°å€ï¼š</div>
 										<div class="contact-content f-left">'.$val['address'].'</div>
 									</div>
 								</div>';
 			}
 			else
 			{
-			$contact=$val['contact_show']=='1'?"{$val['contact']}":"ÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª";
-			$telephone=$val['telephone_show']=='1'?"{$val['telephone']}":"ÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª</li>";
-			$email=$val['email_show']=='1'?"{$val['email']}":"ÆóÒµÉèÖÃ²»¶ÔÍâ¹«¿ª</li>";
+			$contact=$val['contact_show']=='1'?"{$val['contact']}":"ä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€";
+			$telephone=$val['telephone_show']=='1'?"{$val['telephone']}":"ä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€</li>";
+			$email=$val['email_show']=='1'?"{$val['email']}":"ä¼ä¸šè®¾ç½®ä¸å¯¹å¤–å…¬å¼€</li>";
 						$html='<div class="c-contact">
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">Áª Ïµ ÈË£º</div>
+										<div class="contact-type f-left">è” ç³» äººï¼š</div>
 										<div class="contact-content f-left">'.$contact.'</div>
 									</div>
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">ÁªÏµµç»°£º</div>
+										<div class="contact-type f-left">è”ç³»ç”µè¯ï¼š</div>
 										<div class="contact-content f-left"><span>'.$telephone.'</span></div>
 									</div>
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">ÁªÏµÓÊÏä£º</div>
+										<div class="contact-type f-left">è”ç³»é‚®ç®±ï¼š</div>
 										<div class="contact-content f-left"><span>'.$email.'</span></div>
 									</div>
 									<div class="contact-item clearfix">
-										<div class="contact-type f-left">¹«Ë¾µØÖ·£º</div>
+										<div class="contact-type f-left">å…¬å¸åœ°å€ï¼š</div>
 										<div class="contact-content f-left">'.$val['address'].'</div>
 									</div>
 								</div>';
@@ -316,7 +316,7 @@ elseif($act == 'resume_contact')
 				else
 				{
 				$show=false;
-				$html="<div class=\"contact-box\"><input type=\"button\" value=\"²é¿´ÁªÏµ·½Ê½\" class=\"contact-btn download\" /></div>";
+				$html="<div class=\"contact-box\"><input type=\"button\" value=\"æŸ¥çœ‹è”ç³»æ–¹å¼\" class=\"contact-btn download\" /></div>";
 				}
 			}
 			elseif($_CFG['showresumecontact']=='2')
@@ -332,13 +332,13 @@ elseif($act == 'resume_contact')
 					else
 					{
 					$show=false;
-					$html="<div class=\"contact-box\"><input type=\"button\" value=\"²é¿´ÁªÏµ·½Ê½\" class=\"contact-btn download\" /></div>";
+					$html="<div class=\"contact-box\"><input type=\"button\" value=\"æŸ¥çœ‹è”ç³»æ–¹å¼\" class=\"contact-btn download\" /></div>";
 					}
 				}
 				else
 				{
 				$show=false;
-				$html="<div class=\"contact-box\"><input type=\"button\" value=\"²é¿´ÁªÏµ·½Ê½\" class=\"contact-btn download\" /></div>";
+				$html="<div class=\"contact-box\"><input type=\"button\" value=\"æŸ¥çœ‹è”ç³»æ–¹å¼\" class=\"contact-btn download\" /></div>";
 				}
 			}
 		}
@@ -346,54 +346,54 @@ elseif($act == 'resume_contact')
 		{
 			$val=$db->getone("select fullname,telephone,email,word_resume from ".table('resume')." WHERE  id='{$id}'  LIMIT 1");
 			/*
-				¼òÀú±»±ê¼Ç×´Ì¬
+				ç®€å†è¢«æ ‡è®°çŠ¶æ€
 			*/
 			if($_SESSION['uid'] && $_SESSION['utype']==1)
 			{
 				$resume_state=$db->getone("select resume_state from ".table("company_label_resume")." where resume_id=$id and uid=$_SESSION[uid]");
 				switch ($resume_state['resume_state']) {
 					case 1:
-						$state_htm="<input type=\"button\" value=\"ÔİÎ´½ÓÍ¨\" class=\"interview-state\" state=\"4\" resume_id=\"{$id}\"/><input type=\"button\" value=\"´ı¶¨\" class=\"interview-state\" state=\"3\" resume_id=\"{$id}\"/><input type=\"button\" value=\"ºÏÊÊ\" class=\"interview-state selected\" state=\"1\" resume_id=\"{$id}\"/><input type=\"button\" value=\"²»ºÏÊÊ\" class=\"interview-state\" state=\"2\" resume_id=\"{$id}\"/>";
+						$state_htm="<input type=\"button\" value=\"æš‚æœªæ¥é€š\" class=\"interview-state\" state=\"4\" resume_id=\"{$id}\"/><input type=\"button\" value=\"å¾…å®š\" class=\"interview-state\" state=\"3\" resume_id=\"{$id}\"/><input type=\"button\" value=\"åˆé€‚\" class=\"interview-state selected\" state=\"1\" resume_id=\"{$id}\"/><input type=\"button\" value=\"ä¸åˆé€‚\" class=\"interview-state\" state=\"2\" resume_id=\"{$id}\"/>";
 						break;
 					case 2:
-						$state_htm="<input type=\"button\" value=\"ÔİÎ´½ÓÍ¨\" class=\"interview-state\" state=\"4\" resume_id=\"{$id}\"/><input type=\"button\" value=\"´ı¶¨\" class=\"interview-state\" state=\"3\" resume_id=\"{$id}\"/><input type=\"button\" value=\"ºÏÊÊ\" class=\"interview-state\" state=\"1\" resume_id=\"{$id}\"/><input type=\"button\" value=\"²»ºÏÊÊ\" class=\"interview-state selected\" state=\"2\" resume_id=\"{$id}\"/>";
+						$state_htm="<input type=\"button\" value=\"æš‚æœªæ¥é€š\" class=\"interview-state\" state=\"4\" resume_id=\"{$id}\"/><input type=\"button\" value=\"å¾…å®š\" class=\"interview-state\" state=\"3\" resume_id=\"{$id}\"/><input type=\"button\" value=\"åˆé€‚\" class=\"interview-state\" state=\"1\" resume_id=\"{$id}\"/><input type=\"button\" value=\"ä¸åˆé€‚\" class=\"interview-state selected\" state=\"2\" resume_id=\"{$id}\"/>";
 						break;
 					case 3:
-						$state_htm="<input type=\"button\" value=\"ÔİÎ´½ÓÍ¨\" class=\"interview-state\" state=\"4\" resume_id=\"{$id}\"/><input type=\"button\" value=\"´ı¶¨\" class=\"interview-state selected\" state=\"3\" resume_id=\"{$id}\"/><input type=\"button\" value=\"ºÏÊÊ\" class=\"interview-state\" state=\"1\" resume_id=\"{$id}\"/><input type=\"button\" value=\"²»ºÏÊÊ\" class=\"interview-state\" state=\"2\" resume_id=\"{$id}\"/>";
+						$state_htm="<input type=\"button\" value=\"æš‚æœªæ¥é€š\" class=\"interview-state\" state=\"4\" resume_id=\"{$id}\"/><input type=\"button\" value=\"å¾…å®š\" class=\"interview-state selected\" state=\"3\" resume_id=\"{$id}\"/><input type=\"button\" value=\"åˆé€‚\" class=\"interview-state\" state=\"1\" resume_id=\"{$id}\"/><input type=\"button\" value=\"ä¸åˆé€‚\" class=\"interview-state\" state=\"2\" resume_id=\"{$id}\"/>";
 						break;
 					case 4:
-						$state_htm="<input type=\"button\" value=\"ÔİÎ´½ÓÍ¨\" class=\"interview-state selected\" state=\"4\" resume_id=\"{$id}\"/><input type=\"button\" value=\"´ı¶¨\" class=\"interview-state\" state=\"3\" resume_id=\"{$id}\"/><input type=\"button\" value=\"ºÏÊÊ\" class=\"interview-state\" state=\"1\" resume_id=\"{$id}\"/><input type=\"button\" value=\"²»ºÏÊÊ\" class=\"interview-state\" state=\"2\" resume_id=\"{$id}\"/>";
+						$state_htm="<input type=\"button\" value=\"æš‚æœªæ¥é€š\" class=\"interview-state selected\" state=\"4\" resume_id=\"{$id}\"/><input type=\"button\" value=\"å¾…å®š\" class=\"interview-state\" state=\"3\" resume_id=\"{$id}\"/><input type=\"button\" value=\"åˆé€‚\" class=\"interview-state\" state=\"1\" resume_id=\"{$id}\"/><input type=\"button\" value=\"ä¸åˆé€‚\" class=\"interview-state\" state=\"2\" resume_id=\"{$id}\"/>";
 						break;
 					default:
-						$state_htm="<input type=\"button\" value=\"ÔİÎ´½ÓÍ¨\" class=\"interview-state\" state=\"4\" resume_id=\"{$id}\"/><input type=\"button\" value=\"´ı¶¨\" class=\"interview-state\" state=\"3\" resume_id=\"{$id}\"/><input type=\"button\" value=\"ºÏÊÊ\" class=\"interview-state\" state=\"1\" resume_id=\"{$id}\"/><input type=\"button\" value=\"²»ºÏÊÊ\" class=\"interview-state\" state=\"2\" resume_id=\"{$id}\"/>";
+						$state_htm="<input type=\"button\" value=\"æš‚æœªæ¥é€š\" class=\"interview-state\" state=\"4\" resume_id=\"{$id}\"/><input type=\"button\" value=\"å¾…å®š\" class=\"interview-state\" state=\"3\" resume_id=\"{$id}\"/><input type=\"button\" value=\"åˆé€‚\" class=\"interview-state\" state=\"1\" resume_id=\"{$id}\"/><input type=\"button\" value=\"ä¸åˆé€‚\" class=\"interview-state\" state=\"2\" resume_id=\"{$id}\"/>";
 						break;
 				}
 			}
 			else
 			{
-				$state_htm="<input type=\"button\" value=\"ÔİÎ´½ÓÍ¨\" class=\"interview-state\" state=\"4\" resume_id=\"{$id}\"/><input type=\"button\" value=\"´ı¶¨\" class=\"interview-state\" state=\"3\" resume_id=\"{$id}\"/><input type=\"button\" value=\"ºÏÊÊ\" class=\"interview-state\" state=\"1\" resume_id=\"{$id}\"/><input type=\"button\" value=\"²»ºÏÊÊ\" class=\"interview-state\" state=\"2\" resume_id=\"{$id}\"/>";
+				$state_htm="<input type=\"button\" value=\"æš‚æœªæ¥é€š\" class=\"interview-state\" state=\"4\" resume_id=\"{$id}\"/><input type=\"button\" value=\"å¾…å®š\" class=\"interview-state\" state=\"3\" resume_id=\"{$id}\"/><input type=\"button\" value=\"åˆé€‚\" class=\"interview-state\" state=\"1\" resume_id=\"{$id}\"/><input type=\"button\" value=\"ä¸åˆé€‚\" class=\"interview-state\" state=\"2\" resume_id=\"{$id}\"/>";
 			}
-			// word ¼òÀú
+			// word ç®€å†
 			if($val['word_resume'])
 			{
-				$word_resume="<a class=\"word_resume\" href=\"".$_CFG['site_dir']."data/word/".$val['word_resume']."\"><img src=\"".$_CFG['site_template']."/images/word_resume.png\"> word¼òÀú</a>";
+				$word_resume="<a class=\"word_resume\" href=\"".$_CFG['site_dir']."data/word/".$val['word_resume']."\"><img src=\"".$_CFG['site_template']."/images/word_resume.png\"> wordç®€å†</a>";
 			}
 			if ($_CFG['contact_img_resume']=='2')
 			{
 			$token=md5($val['fullname'].$id.$val['telephone']);
 			$html="<div class=\"contact-interview\">";
-			$html.="<div class=\"contact-text\">ÁªÏµ·½Ê½£º<span><img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><em>|</em><img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=3&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>".$word_resume."</span></div>";
+			$html.="<div class=\"contact-text\">è”ç³»æ–¹å¼ï¼š<span><img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=2&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/><em>|</em><img src=\"{$_CFG['site_dir']}plus/contact_img.php?act=resume_contact&type=3&id={$id}&token={$token}\"  border=\"0\" align=\"absmiddle\"/>".$word_resume."</span></div>";
 			$html.="<div class=\"interview-block\">";
-			$html.="<input id=\"invited\" type=\"button\" value=\"·¢ËÍÃæÊÔÑûÇë\" class=\"contact-btn\" resume_id=\"{$id}\" />".$state_htm;
+			$html.="<input id=\"invited\" type=\"button\" value=\"å‘é€é¢è¯•é‚€è¯·\" class=\"contact-btn\" resume_id=\"{$id}\" />".$state_htm;
 			$html.="</div>"; 
 			$html.="</div>";
 			}
 			else
 			{
 			$html="<div class=\"contact-interview\">";
-			$html.="<div class=\"contact-text\">ÁªÏµ·½Ê½£º<span>".$val['telephone']."<em>|</em>".$val['email'].$word_resume."</span></div>";
+			$html.="<div class=\"contact-text\">è”ç³»æ–¹å¼ï¼š<span>".$val['telephone']."<em>|</em>".$val['email'].$word_resume."</span></div>";
 			$html.="<div class=\"interview-block\">";
-			$html.="<input id=\"invited\" type=\"button\" value=\"·¢ËÍÃæÊÔÑûÇë\" class=\"contact-btn\" resume_id=\"{$id}\" />".$state_htm;
+			$html.="<input id=\"invited\" type=\"button\" value=\"å‘é€é¢è¯•é‚€è¯·\" class=\"contact-btn\" resume_id=\"{$id}\" />".$state_htm;
 			$html.="</div>"; 
 			$html.="</div>";
 			}

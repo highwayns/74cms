@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
@@ -16,7 +16,7 @@
 <body onbeforeunload="RunOnBeforeUnload()">
 {#include file="user/header.htm"#}
 
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > µØÍ¼±ê×¢</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > åœ°å›¾æ ‡æ³¨</div>
 
 <div class="usermain">
   <div class="leftmenu com link_bk">
@@ -27,18 +27,18 @@
 	  <div class="addjob link_bk">
 	    <div class="topnav">
 			<div class="titleH1" style="margin-top:0;">
-				<div class="h1-title">ÆóÒµ×ÊÁÏ</div>
+				<div class="h1-title">ä¼ä¸šèµ„æ–™</div>
 			</div>
 			<div class="navs">
-				<a href="?act=company_profile">»ù±¾×ÊÁÏ</a>
-				<a href="?act=company_logo">ÆóÒµLogo</a>
-				<a href="?act=company_map_open" class="se">µØÍ¼±ê×¢</a>
+				<a href="?act=company_profile">åŸºæœ¬èµ„æ–™</a>
+				<a href="?act=company_logo">ä¼ä¸šLogo</a>
+				<a href="?act=company_map_open" class="se">åœ°å›¾æ ‡æ³¨</a>
 				<div class="clear"></div>
 			</div>
 		</div>
-		  <!-- µØÍ¼±ê×¢ -->
+		  <!-- åœ°å›¾æ ‡æ³¨ -->
 		 <div class="map">
-		  	<p>ÇëÔÚµØÍ¼ÉÏÕÒµ½ÄúµÄ¾ßÌåÎ»ÖÃ£¬È»ºóµã»÷µØÍ¼ÓÒÉÏ½Ç¡°±ê¼ÇÎÒµÄÎ»ÖÃ¡±£¬±ê¼ÇÎ»ÖÃÍê³Éºóµã»÷¡°±£´æÎÒµÄÎ»ÖÃ¡±¡£</p>
+		  	<p>è¯·åœ¨åœ°å›¾ä¸Šæ‰¾åˆ°æ‚¨çš„å…·ä½“ä½ç½®ï¼Œç„¶åç‚¹å‡»åœ°å›¾å³ä¸Šè§’â€œæ ‡è®°æˆ‘çš„ä½ç½®â€ï¼Œæ ‡è®°ä½ç½®å®Œæˆåç‚¹å‡»â€œä¿å­˜æˆ‘çš„ä½ç½®â€ã€‚</p>
 		  	<form action="?act=company_map_set_save" method="post"  style="padding:0px; margin:0px;" id="form1" name="form1">
   			<input name="x" type="hidden" id="x"><input name="y" type="hidden" id="y"><input name="zoom" type="hidden" id="zoom">
   			</form>
@@ -48,18 +48,18 @@
 				return document.getElementById(id);
 			}
 			var map = new BMap.Map("container");
-			//¼ÙÈçÒÑ¾­ÉèÖÃÁË±ê×¢
+			//å‡å¦‚å·²ç»è®¾ç½®äº†æ ‡æ³¨
 			var opts = {   
-			  width : 250,     // ĞÅÏ¢´°¿Ú¿í¶È   
-			  height: 80,     // ĞÅÏ¢´°¿Ú¸ß¶È   
-			  title : "{#$company_profile.companyname#}"  // ĞÅÏ¢´°¿Ú±êÌâ   
+			  width : 250,     // ä¿¡æ¯çª—å£å®½åº¦   
+			  height: 80,     // ä¿¡æ¯çª—å£é«˜åº¦   
+			  title : "{#$company_profile.companyname#}"  // ä¿¡æ¯çª—å£æ ‡é¢˜   
 			}
-			var infoWindow = new BMap.InfoWindow("{#$company_profile.address#}", opts);  // ´´½¨ĞÅÏ¢´°¿Ú¶ÔÏó 
-			//¼ÙÈçÓĞÉèÖÃµÄ£¬ÏÔÊ¾²ÎÊı
+			var infoWindow = new BMap.InfoWindow("{#$company_profile.address#}", opts);  // åˆ›å»ºä¿¡æ¯çª—å£å¯¹è±¡ 
+			//å‡å¦‚æœ‰è®¾ç½®çš„ï¼Œæ˜¾ç¤ºå‚æ•°
 			{#if $company_profile && $company_profile.map_x && $company_profile.map_y#}
 			var point = new BMap.Point({#$company_profile.map_x#}, {#$company_profile.map_y#});
 			map.centerAndZoom(point, {#$company_profile.map_zoom#}); 
-			var qs_marker = new BMap.Marker(point);        // ´´½¨±ê×¢   
+			var qs_marker = new BMap.Marker(point);        // åˆ›å»ºæ ‡æ³¨   
 			map.addOverlay(qs_marker);  
 			map.openInfoWindow(infoWindow,point);
 			map.setCenter(point);
@@ -71,92 +71,92 @@
 			map.centerAndZoom(point, {#$QISHI.map_zoom#}); 
 			map.setCenter(point);
 			{#/if#}
-			map.addControl(new BMap.NavigationControl());//Ìí¼ÓÓã¹Ç
-			map.enableScrollWheelZoom();//ÆôÓÃ¹öÂÖ·Å´óËõĞ¡£¬Ä¬ÈÏ½ûÓÃ¡£
+			map.addControl(new BMap.NavigationControl());//æ·»åŠ é±¼éª¨
+			map.enableScrollWheelZoom();//å¯ç”¨æ»šè½®æ”¾å¤§ç¼©å°ï¼Œé»˜è®¤ç¦ç”¨ã€‚
 			var myPushpin = new BMap.PushpinTool(map,{
 			cursor : "crosshair"  
-			});   // PushpinTool´´½¨±ê×¢¹¤¾ßÊµÀı
-			myPushpin.addEventListener("markend", function(e){//Ìí¼ÓÌâµØÍ¼¼à¿Ø
-			// ´ò¿ªĞÅÏ¢´°¿Ú
+			});   // PushpinToolåˆ›å»ºæ ‡æ³¨å·¥å…·å®ä¾‹
+			myPushpin.addEventListener("markend", function(e){//æ·»åŠ é¢˜åœ°å›¾ç›‘æ§
+			// æ‰“å¼€ä¿¡æ¯çª—å£
 			map.openInfoWindow(infoWindow,e.marker.getPoint());   
 			document.getElementById("x").value=e.marker.getPoint().lng; 
 			document.getElementById("y").value= e.marker.getPoint().lat; 
 			document.getElementById("zoom").value= map.getZoom(); 
-			//alert(map.getZoom());//µØÍ¼Ëõ·Å¼¶±ğ
-			//map.zoomIn();µØÍ¼·Å´óÒ»¸ö¼¶±ğ
-			//alert("Äú±ê×¢µÄÎ»ÖÃ£º" + e.marker.getPoint().lng + ", " + e.marker.getPoint().lat);
-			//´ò¿ªÌáÊ¾²ã
+			//alert(map.getZoom());//åœ°å›¾ç¼©æ”¾çº§åˆ«
+			//map.zoomIn();åœ°å›¾æ”¾å¤§ä¸€ä¸ªçº§åˆ«
+			//alert("æ‚¨æ ‡æ³¨çš„ä½ç½®ï¼š" + e.marker.getPoint().lng + ", " + e.marker.getPoint().lat);
+			//æ‰“å¼€æç¤ºå±‚
 			});
 			//myPushpin.setIcon(icon:Icon);
-			// ¶¨ÒåÒ»¸ö¿Ø¼şÀà£¬¼´function   
+			// å®šä¹‰ä¸€ä¸ªæ§ä»¶ç±»ï¼Œå³function   
 			function ZoomControl(){   
-			  // ÉèÖÃÄ¬ÈÏÍ£¿¿Î»ÖÃºÍÆ«ÒÆÁ¿   
+			  // è®¾ç½®é»˜è®¤åœé ä½ç½®å’Œåç§»é‡   
 			  this.defaultAnchor = BMAP_ANCHOR_TOP_RIGHT;   
 			  this.defaultOffset = new BMap.Size(108, 10);   
 			}
 			function SaveMap(){   
-			  // ÉèÖÃÄ¬ÈÏÍ£¿¿Î»ÖÃºÍÆ«ÒÆÁ¿   
+			  // è®¾ç½®é»˜è®¤åœé ä½ç½®å’Œåç§»é‡   
 			  this.defaultAnchor = BMAP_ANCHOR_TOP_RIGHT;   
 			  this.defaultOffset = new BMap.Size(10, 10);   
 			}  
-			// Í¨¹ıJavaScriptµÄprototypeÊôĞÔ¼Ì³ĞÓÚBMap.Control   
+			// é€šè¿‡JavaScriptçš„prototypeå±æ€§ç»§æ‰¿äºBMap.Control   
 			ZoomControl.prototype = new BMap.Control();
 			SaveMap.prototype = new BMap.Control();   
 			  
-			// ×Ô¶¨Òå¿Ø¼ş±ØĞëÊµÏÖ×Ô¼ºµÄinitialize·½·¨£¬²¢ÇÒ½«¿Ø¼şµÄDOMÔªËØ·µ»Ø   
-			// ÔÚ±¾·½·¨ÖĞ´´½¨¸ödivÔªËØ×÷Îª¿Ø¼şµÄÈİÆ÷£¬²¢½«ÆäÌí¼Óµ½µØÍ¼ÈİÆ÷ÖĞ   
+			// è‡ªå®šä¹‰æ§ä»¶å¿…é¡»å®ç°è‡ªå·±çš„initializeæ–¹æ³•ï¼Œå¹¶ä¸”å°†æ§ä»¶çš„DOMå…ƒç´ è¿”å›   
+			// åœ¨æœ¬æ–¹æ³•ä¸­åˆ›å»ºä¸ªdivå…ƒç´ ä½œä¸ºæ§ä»¶çš„å®¹å™¨ï¼Œå¹¶å°†å…¶æ·»åŠ åˆ°åœ°å›¾å®¹å™¨ä¸­   
 			ZoomControl.prototype.initialize = function(map){   
-			  // ´´½¨Ò»¸öDOMÔªËØ   
+			  // åˆ›å»ºä¸€ä¸ªDOMå…ƒç´    
 			  var div = document.createElement("div");   
-			  // Ìí¼ÓÎÄ×ÖËµÃ÷   
-			  div.appendChild(document.createTextNode("±ê¼ÇÎÒµÄÎ»ÖÃ"));   
-			  // ÉèÖÃÑùÊ½  
+			  // æ·»åŠ æ–‡å­—è¯´æ˜   
+			  div.appendChild(document.createTextNode("æ ‡è®°æˆ‘çš„ä½ç½®"));   
+			  // è®¾ç½®æ ·å¼  
 			  div.style.cursor = "pointer";   
 			  div.style.padding = "6px"; 
 			  div.style.color = "#FFFFFF"; 
 			  div.style.border = "1px solid #003300";   
 			  div.style.backgroundColor = "#009900";   
 			  div.onclick = function(e){ 
-			  map.clearOverlays();//Çå³şµØÍ¼ÉÏËùÓĞ¸²¸ÇÎï
-			  myPushpin.open();//´ò¿ª±ê×¢¹¤¾ß
+			  map.clearOverlays();//æ¸…æ¥šåœ°å›¾ä¸Šæ‰€æœ‰è¦†ç›–ç‰©
+			  myPushpin.open();//æ‰“å¼€æ ‡æ³¨å·¥å…·
 			  }   
-			  // Ìí¼ÓDOMÔªËØµ½µØÍ¼ÖĞ   
+			  // æ·»åŠ DOMå…ƒç´ åˆ°åœ°å›¾ä¸­   
 			  map.getContainer().appendChild(div);   
-			  // ½«DOMÔªËØ·µ»Ø   
+			  // å°†DOMå…ƒç´ è¿”å›   
 			  return div;   
 			}
 			SaveMap.prototype.initialize = function(map){   
-			  // ´´½¨Ò»¸öDOMÔªËØ   
+			  // åˆ›å»ºä¸€ä¸ªDOMå…ƒç´    
 			  var div = document.createElement("div");   
-			  // Ìí¼ÓÎÄ×ÖËµÃ÷   
-			  div.appendChild(document.createTextNode("±£´æÎÒµÄÎ»ÖÃ"));   
-			  // ÉèÖÃÑùÊ½ 
+			  // æ·»åŠ æ–‡å­—è¯´æ˜   
+			  div.appendChild(document.createTextNode("ä¿å­˜æˆ‘çš„ä½ç½®"));   
+			  // è®¾ç½®æ ·å¼ 
 			  div.style.cursor = "pointer";   
 			  div.style.padding = "6px"; 
 			  div.style.color = "#FFFFFF"; 
 			  div.style.border = "1px solid #990000";   
 			  div.style.backgroundColor = "#FF6600";   
 			  div.onclick = function(e){ 
-			  chk_form();//ÑéÖ¤
+			  chk_form();//éªŒè¯
 			  }   
-			  // Ìí¼ÓDOMÔªËØµ½µØÍ¼ÖĞ   
+			  // æ·»åŠ DOMå…ƒç´ åˆ°åœ°å›¾ä¸­   
 			  map.getContainer().appendChild(div);   
-			  // ½«DOMÔªËØ·µ»Ø   
+			  // å°†DOMå…ƒç´ è¿”å›   
 			  return div;   
 			}   
 			  
-			// ´´½¨¿Ø¼ş   
+			// åˆ›å»ºæ§ä»¶   
 			var myZoomCtrl = new ZoomControl(); 
 			var SaveMapsub = new SaveMap(); 
-			// Ìí¼Óµ½µØÍ¼µ±ÖĞ   
+			// æ·»åŠ åˆ°åœ°å›¾å½“ä¸­   
 			map.addControl(myZoomCtrl);
 			map.addControl(SaveMapsub);
-			//ÑéÖ¤±íµ¥
+			//éªŒè¯è¡¨å•
 			function chk_form()
 			{
 			if (document.form1.x.value=="" || document.form1.y.value=="")
 				{
-				alert("ÇëÏÈÔÚµØÍ¼ÉÏ±ê¼ÇÄúµÄÎ»ÖÃ")
+				alert("è¯·å…ˆåœ¨åœ°å›¾ä¸Šæ ‡è®°æ‚¨çš„ä½ç½®")
 				return (false);
 				}
 				else
@@ -166,7 +166,7 @@
 			}
 			</script>
 		  </div> 
-		  <!-- µØÍ¼±ê×¢ ½áÊø -->
+		  <!-- åœ°å›¾æ ‡æ³¨ ç»“æŸ -->
 	
 	  </div>
 	</div>

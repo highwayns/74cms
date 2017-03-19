@@ -1,27 +1,27 @@
-
+ï»¿
 /**
- * ÓÊÏä×Ô¶¯ÌáÊ¾²å¼ş
+ * é‚®ç®±è‡ªåŠ¨æç¤ºæ’ä»¶
  * @constructor EmailAutoComplete
- * @ options {object} ¿ÉÅäÖÃÏî
+ * @ options {object} å¯é…ç½®é¡¹
  */
  function EmailAutoComplete(options) {
 	
 	this.config = {
-		targetCls      :  '.inputElem',       // Ä¿±êinputÔªËØ
-		parentCls      :  '.reg-form-content',       // µ±Ç°inputÔªËØµÄ¸¸¼¶Àà
-		hiddenCls      :  '.hiddenCls',       // µ±Ç°inputÒş²ØÓò 
-		searchForm     :  '.jqtransformdone', //form±íµ¥
-		hoverBg        :  'hoverBg',          // Êó±êÒÆÉÏÈ¥µÄ±³¾°
-		inputValColor  :  'black',              // ÊäÈë¿òÊäÈëÌáÊ¾ÑÕÉ«
-		mailArr        : ["@qq.com","@gmail.com","@126.com","@163.com","@hotmail.com","@yahoo.com","@yahoo.com.cn","@live.com","@sohu.com","@sina.com"], //ÓÊÏäÊı×é
-		isSelectHide   : true,                // µã»÷ÏÂÀ­¿ò ÊÇ·ñÒş²Ø Ä¬ÈÏÎªtrue
+		targetCls      :  '.inputElem',       // ç›®æ ‡inputå…ƒç´ 
+		parentCls      :  '.reg-form-content',       // å½“å‰inputå…ƒç´ çš„çˆ¶çº§ç±»
+		hiddenCls      :  '.hiddenCls',       // å½“å‰inputéšè—åŸŸ 
+		searchForm     :  '.jqtransformdone', //formè¡¨å•
+		hoverBg        :  'hoverBg',          // é¼ æ ‡ç§»ä¸Šå»çš„èƒŒæ™¯
+		inputValColor  :  'black',              // è¾“å…¥æ¡†è¾“å…¥æç¤ºé¢œè‰²
+		mailArr        : ["@qq.com","@gmail.com","@126.com","@163.com","@hotmail.com","@yahoo.com","@yahoo.com.cn","@live.com","@sohu.com","@sina.com"], //é‚®ç®±æ•°ç»„
+		isSelectHide   : true,                // ç‚¹å‡»ä¸‹æ‹‰æ¡† æ˜¯å¦éšè— é»˜è®¤ä¸ºtrue
 		callback       : function() {
 			$('.inputElem').focus();
 			$('.inputElem').blur();
-		}                 // µã»÷Ä³Ò»Ïî»Øµ÷º¯Êı
+		}                 // ç‚¹å‡»æŸä¸€é¡¹å›è°ƒå‡½æ•°
 	};
 	this.cache = {
-		onlyFlag            : true,     // Ö»äÖÈ¾Ò»´Î
+		onlyFlag            : true,     // åªæ¸²æŸ“ä¸€æ¬¡
 		currentIndex        : -1,
         oldIndex            : -1
 	};
@@ -51,10 +51,10 @@ EmailAutoComplete.prototype = {
 					parentNode = $(this).closest(_config.parentCls);
 				
 				$(parentNode).css({'position':'relative'});
-				// Èç¹ûÊäÈë¿òÖµÎª¿ÕµÄ»° ÄÇÃ´ÏÂÀ­¿òÒş²Ø
+				// å¦‚æœè¾“å…¥æ¡†å€¼ä¸ºç©ºçš„è¯ é‚£ä¹ˆä¸‹æ‹‰æ¡†éšè—
 				if(targetVal == '') {
 					$(item).attr({'data-html':''});
-					// ¸øÒş²ØÓò¸³Öµ
+					// ç»™éšè—åŸŸèµ‹å€¼
 					$(_config.hiddenCls,parentNode).val('');
 
 					_cache.currentIndex = -1;
@@ -65,11 +65,11 @@ EmailAutoComplete.prototype = {
 					
 					$(item).attr({'data-html':targetVal});
 
-					// ¸øÒş²ØÓò¸³Öµ
+					// ç»™éšè—åŸŸèµ‹å€¼
 					$(_config.hiddenCls,parentNode).val(targetVal);
 					
 					$(".auto-tip",parentNode) && $(".auto-tip",parentNode).hasClass('hidden') && $(".auto-tip",parentNode).removeClass('hidden');
-					// äÖÈ¾ÏÂÀ­¿òÄÚÈİ
+					// æ¸²æŸ“ä¸‹æ‹‰æ¡†å†…å®¹
 					self._renderHTML({keycode:keycode,e:e,target:target,targetVal:targetVal,height:elemHeight,width:elemWidth,parentNode:parentNode});
 				}
 				
@@ -77,7 +77,7 @@ EmailAutoComplete.prototype = {
 			});
 		});
 		
-	   // ×èÖ¹form±íµ¥Ä¬ÈÏenter¼üÌá½»
+	   // é˜»æ­¢formè¡¨å•é»˜è®¤enteré”®æäº¤
 	   $(_config.searchForm).each(function(index,item) {
 			$(item).keydown(function(e){
 				 var keyCode = e.keyCode;
@@ -87,7 +87,7 @@ EmailAutoComplete.prototype = {
 			});
 	   });
 
-	   // µã»÷ÎÄµµdocumentÊ±ºò ÏÂÀ­¿òÒş²Øµô
+	   // ç‚¹å‡»æ–‡æ¡£documentæ—¶å€™ ä¸‹æ‹‰æ¡†éšè—æ‰
 	   $(document).click(function(e){
 		  e.stopPropagation();
 		  var target = e.target,
@@ -101,7 +101,7 @@ EmailAutoComplete.prototype = {
 	   });
 	},
 	/*
-	 * äÖÈ¾ÏÂÀ­¿òÌáÊ¾ÄÚÈİ
+	 * æ¸²æŸ“ä¸‹æ‹‰æ¡†æç¤ºå†…å®¹
 	 * @param cfg{object}
 	 */
 	_renderHTML: function(cfg) {
@@ -113,7 +113,7 @@ EmailAutoComplete.prototype = {
 		
 		$('.auto-tip',cfg.parentNode).hasClass('hidden') && $('.auto-tip',cfg.parentNode).removeClass('hidden');
 		if(curIndex > -1){
-			// ¼üÅÌÉÏÏÂ²Ù×÷
+			// é”®ç›˜ä¸Šä¸‹æ“ä½œ
 			self._keyUpAndDown(cfg.targetVal,cfg.e,cfg.parentNode);
 		}else {
 			if(/@/.test(cfg.targetVal)) {
@@ -136,7 +136,7 @@ EmailAutoComplete.prototype = {
 					'border':'1px solid #ccc','z-index':10000});
 			}
 			
-			// ¸øËùÓĞliÌí¼ÓÊôĞÔ data-html
+			// ç»™æ‰€æœ‰liæ·»åŠ å±æ€§ data-html
 			$('.auto-tip li',cfg.parentNode).each(function(index,item){
 				$('.output-num',item).html(curVal);
 				!$('.output-num',item).hasClass(_config.inputValColor) && 
@@ -145,19 +145,19 @@ EmailAutoComplete.prototype = {
 				$(item).attr({'data-html':curVal + '' +emVal});
 			});
 
-			// ¾«È·Æ¥ÅäÄÚÈİ
+			// ç²¾ç¡®åŒ¹é…å†…å®¹
 			self._accurateMate({target:cfg.target,parentNode:cfg.parentNode});
 
-			// Êó±êÒÆµ½Ä³Ò»ÏîliÉÏÃæÊ±ºò
+			// é¼ æ ‡ç§»åˆ°æŸä¸€é¡¹liä¸Šé¢æ—¶å€™
 			self._itemHover(cfg.parentNode);
 			
-			// µã»÷¶ÔÓ¦µÄÏîÊ±
+			// ç‚¹å‡»å¯¹åº”çš„é¡¹æ—¶
 			self._executeClick(cfg.parentNode);
 		}
 		
 	},
 	/**
-	 * ¾«È·Æ¥ÅäÄ³ÏîÄÚÈİ
+	 * ç²¾ç¡®åŒ¹é…æŸé¡¹å†…å®¹
 	 */
 	_accurateMate: function(cfg) {
 		var self = this,
@@ -168,7 +168,7 @@ EmailAutoComplete.prototype = {
 			newArrs = [];
 		if(/@/.test(curVal)) {
 			
-			// »ñµÃ@ Ç°Ãæ ºóÃæµÄÖµ
+			// è·å¾—@ å‰é¢ åé¢çš„å€¼
 			var prefix = curVal.replace(/@.*/, ""),
 				suffix = curVal.replace(/.*@/, "");
 
@@ -189,7 +189,7 @@ EmailAutoComplete.prototype = {
 				}
 				$('.auto-tip',cfg.parentNode).html(html);
 				
-				// ¸øËùÓĞliÌí¼ÓÊôĞÔ data-html
+				// ç»™æ‰€æœ‰liæ·»åŠ å±æ€§ data-html
 				$('.auto-tip li',cfg.parentNode).each(function(index,item){
 					$('.output-num',item).html(prefix);
 					!$('.output-num',item).hasClass(_config.inputValColor) && 
@@ -201,16 +201,16 @@ EmailAutoComplete.prototype = {
 					$(item).attr({'data-html':prefix + '' +emVal});
 				});
 
-				// ¾«È·Æ¥Åäµ½Ä³ÏîÊ±ºò ÈÃµ±Ç°µÄË÷ÒıµÈÓÚ³õÊ¼Öµ
+				// ç²¾ç¡®åŒ¹é…åˆ°æŸé¡¹æ—¶å€™ è®©å½“å‰çš„ç´¢å¼•ç­‰äºåˆå§‹å€¼
 				_cache.currentIndex = -1;
 				_cache.oldIndex = -1;
 				
 				$('.auto-tip .output-num',cfg.parentNode).html(prefix);
 
-				// Êó±êÒÆµ½Ä³Ò»ÏîliÉÏÃæÊ±ºò
+				// é¼ æ ‡ç§»åˆ°æŸä¸€é¡¹liä¸Šé¢æ—¶å€™
 				self._itemHover(cfg.parentNode);
 
-				// µã»÷¶ÔÓ¦µÄÏîÊ±
+				// ç‚¹å‡»å¯¹åº”çš„é¡¹æ—¶
 				self._executeClick(cfg.parentNode);
 			}else {
 				$(".auto-tip",cfg.parentNode) && !$(".auto-tip",cfg.parentNode).hasClass('hidden') && 
@@ -220,7 +220,7 @@ EmailAutoComplete.prototype = {
 		}
 	},
 	/*
-	 * Êó±êÒÆµ½Ä³Ò»ÏîliÉÏÊ±
+	 * é¼ æ ‡ç§»åˆ°æŸä¸€é¡¹liä¸Šæ—¶
 	 */
 	_itemHover: function(parentNode) {
 		var self = this,
@@ -233,7 +233,7 @@ EmailAutoComplete.prototype = {
 		});
 	},
 	/*
-	 * µ±ÊäÈë¿òÖµÎª¿ÕÊ±ºò liÏî¶¼É¾µôclass hoverBg
+	 * å½“è¾“å…¥æ¡†å€¼ä¸ºç©ºæ—¶å€™ lié¡¹éƒ½åˆ æ‰class hoverBg
 	 */
 	_removeBg: function(parentNode){
 		var self = this,
@@ -244,14 +244,14 @@ EmailAutoComplete.prototype = {
 		});	
 	},
 	/**
-     * ¼üÅÌÉÏÏÂ¼ü²Ù×÷
+     * é”®ç›˜ä¸Šä¸‹é”®æ“ä½œ
      */
 	 _keyUpAndDown: function(targetVal,e,parentNode) {
 		var self = this,
 			_cache = self.cache,
 			_config = self.config;
 
-		// Èç¹ûÇëÇó³É¹¦ºó ·µ»ØÁËÊı¾İ(¸ù¾İÔªËØµÄ³¤¶ÈÀ´ÅĞ¶Ï) Ö´ĞĞÒÔÏÂ²Ù×÷
+		// å¦‚æœè¯·æ±‚æˆåŠŸå è¿”å›äº†æ•°æ®(æ ¹æ®å…ƒç´ çš„é•¿åº¦æ¥åˆ¤æ–­) æ‰§è¡Œä»¥ä¸‹æ“ä½œ
 		if($('.auto-tip' + ' li',parentNode) && $('.auto-tip' + ' li').length > 0) {
 
 			var plen = $('.auto-tip' + ' li',parentNode).length,
@@ -259,7 +259,7 @@ EmailAutoComplete.prototype = {
 				_cache.oldIndex = _cache.currentIndex;
 			
 
-			// ÉÏÒÆ²Ù×÷
+			// ä¸Šç§»æ“ä½œ
 			if(keyCode == 38) {
 				if(_cache.currentIndex == -1) {
 					_cache.currentIndex = plen - 1;
@@ -278,11 +278,11 @@ EmailAutoComplete.prototype = {
 					var curAttr = $('.auto-tip' + ' .p-index'+_cache.currentIndex,parentNode).attr('data-html');
 					$(_config.targetCls,parentNode).val(curAttr);
 					
-					// ¸øÒş²ØÓò¸³Öµ
+					// ç»™éšè—åŸŸèµ‹å€¼
 					$(_config.hiddenCls,parentNode).val(curAttr);
 				}
 
-			}else if(keyCode == 40) { //ÏÂÒÆ²Ù×÷
+			}else if(keyCode == 40) { //ä¸‹ç§»æ“ä½œ
 				if(_cache.currentIndex == plen - 1) {
 					_cache.currentIndex = 0;
 				}else {
@@ -299,15 +299,15 @@ EmailAutoComplete.prototype = {
 					
 					var curAttr = $('.auto-tip' + ' .p-index'+_cache.currentIndex,parentNode).attr('data-html');
 					$(_config.targetCls,parentNode).val(curAttr);
-					// ¸øÒş²ØÓò¸³Öµ
+					// ç»™éšè—åŸŸèµ‹å€¼
 					$(_config.hiddenCls,parentNode).val(curAttr);
 				}
 				
-			}else if(keyCode == 13) { //»Ø³µ²Ù×÷
+			}else if(keyCode == 13) { //å›è½¦æ“ä½œ
 				var curVal = $('.auto-tip' + ' .p-index'+_cache.oldIndex,parentNode).attr('data-html');
 				$(_config.targetCls,parentNode).val(curVal);
 				
-				// ¸øÒş²ØÓò¸³Öµ
+				// ç»™éšè—åŸŸèµ‹å€¼
 				$(_config.hiddenCls,parentNode).val(curVal);
 
 				if(_config.isSelectHide) {
@@ -331,7 +331,7 @@ EmailAutoComplete.prototype = {
          return -1;
      },
 	/**
-	  * µ±Êı¾İÏàÍ¬µÄÊ± µã»÷¶ÔÓ¦µÄÏîÊ± ·µ»ØÊı¾İ
+	  * å½“æ•°æ®ç›¸åŒçš„æ—¶ ç‚¹å‡»å¯¹åº”çš„é¡¹æ—¶ è¿”å›æ•°æ®
 	  */
 	 _executeClick: function(parentNode) {
 		
@@ -346,14 +346,14 @@ EmailAutoComplete.prototype = {
 			  if(_config.isSelectHide) {
 				  !$(".auto-tip",parentNode).hasClass('hidden') && $(".auto-tip",parentNode).addClass('hidden');
 			  }
-			  // ¸øÒş²ØÓò¸³Öµ
+			  // ç»™éšè—åŸŸèµ‹å€¼
 			  $(_config.hiddenCls,parentNode).val(dataAttr);
 			  _config.callback && $.isFunction(_config.callback) && _config.callback();
 			  
 		 });
 	 }
 };
-// ³õÊ¼»¯
+// åˆå§‹åŒ–
 $(function() {
 	new EmailAutoComplete({});
 });

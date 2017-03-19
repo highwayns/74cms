@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms QQ»¥Áª server-sideÄ£Ê½
+ * 74cms QQäº’è” server-sideæ¨¡å¼
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -16,7 +16,7 @@ $login_allback="{$_CFG['site_domain']}{$_CFG['site_dir']}user/connect_qq_server.
 $binding_callback="{$_CFG['site_domain']}{$_CFG['site_dir']}user/connect_qq_server.php?act=binding_callback" ;
 if (!function_exists('json_decode'))
 {
-exit('ÄúµÄphp²»Ö§³Öjson_decode');
+exit('æ‚¨çš„phpä¸æ”¯æŒjson_decode');
 }
 if ($_CFG['qq_appid']=="0" || empty($_CFG['qq_appid']) || empty($_CFG['qq_appkey']))
 {
@@ -99,10 +99,10 @@ elseif ($act=='login_allback')
 					require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 					$time=time();
 					$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION['openid']}',bindingtime='{$time}' WHERE uid='{$_SESSION[uid]}' AND qq_openid='' LIMIT 1");
-					$link[0]['text'] = "½øÈë»áÔ±ÖÐÐÄ";
+					$link[0]['text'] = "è¿›å…¥ä¼šå‘˜ä¸­å¿ƒ";
 					$link[0]['href'] = get_member_url($_SESSION['utype']);
 					$_SESSION['uqqid']=$_SESSION['openid'];
-					showmsg('°ó¶¨QQÕÊºÅ³É¹¦£¡',2,$link);
+					showmsg('ç»‘å®šQQå¸å·æˆåŠŸï¼',2,$link);
 				}
 				else
 				{
@@ -132,7 +132,7 @@ elseif ($act=='reg')
 		$nickname = iconv("utf-8","gbk",$jsoninfo["nickname"]);
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 		$smarty->assign('third_name',"QQ");
-		$smarty->assign('title','²¹³äÐÅÏ¢ - '.$_CFG['site_name']);
+		$smarty->assign('title','è¡¥å……ä¿¡æ¯ - '.$_CFG['site_name']);
 		$smarty->assign('qqurl',"?act=");
 		$smarty->assign('nickname',$nickname);
 		$smarty->assign('openid',$_SESSION["openid"]);
@@ -168,9 +168,9 @@ elseif ($act=='reg_save')
 	else
 	{
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
-		$link[0]['text'] = "·µ»ØÊ×Ò³";
+		$link[0]['text'] = "è¿”å›žé¦–é¡µ";
 		$link[0]['href'] = "{$_CFG['site_dir']}";
-		showmsg('×¢²áÊ§°Ü£¡',0,$link);
+		showmsg('æ³¨å†Œå¤±è´¥ï¼',0,$link);
 	}
 	
 }
@@ -250,11 +250,11 @@ elseif ($act=='binding_callback')
 			require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 			if (!empty($user))
 			{
-					$link[0]['text'] = "ÓÃ±ðµÄQQÕÊºÅ°ó¶¨";
+					$link[0]['text'] = "ç”¨åˆ«çš„QQå¸å·ç»‘å®š";
 					$link[0]['href'] = "?act=binding";
-					$link[1]['text'] = "½øÈë»áÔ±ÖÐÐÄ";
+					$link[1]['text'] = "è¿›å…¥ä¼šå‘˜ä¸­å¿ƒ";
 					$link[1]['href'] =get_member_url($_SESSION['utype']);
-					showmsg('´ËQQÕÊºÅÒÑ¾­°ó¶¨ÁËÆäËû»áÔ±,Çë»»Ò»¸öQQÕÊºÅ£¡',2,$link);
+					showmsg('æ­¤QQå¸å·å·²ç»ç»‘å®šäº†å…¶ä»–ä¼šå‘˜,è¯·æ¢ä¸€ä¸ªQQå¸å·ï¼',2,$link);
 			}
 			else
 			{
@@ -270,10 +270,10 @@ elseif ($act=='binding_callback')
 					$nickname = iconv("utf-8","gbk",$jsoninfo["nickname"]);
 					$time=time();
 					$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION[openid]}', qq_nick = '{$nickname}', qq_binding_time = '{$time}' WHERE uid='".$_SESSION['uid']."' AND qq_openid='' LIMIT 1");
-					$link[0]['text'] = "½øÈë»áÔ±ÖÐÐÄ";
+					$link[0]['text'] = "è¿›å…¥ä¼šå‘˜ä¸­å¿ƒ";
 					$link[0]['href'] = get_member_url($_SESSION['utype']);
 					$_SESSION['uqqid']=$_SESSION['openid'];
-					showmsg('°ó¶¨QQÕÊºÅ³É¹¦£¡',2,$link);
+					showmsg('ç»‘å®šQQå¸å·æˆåŠŸï¼',2,$link);
 			}
 }
 function get_url_contents($url)
@@ -293,7 +293,7 @@ function get_url_contents($url)
 	}
 	else
 	{
-		exit("Çë°Ñallow_url_fopenÉèÎªOn»ò´ò¿ªCURLÀ©Õ¹");
+		exit("è¯·æŠŠallow_url_fopenè®¾ä¸ºOnæˆ–æ‰“å¼€CURLæ‰©å±•");
 	}  
 }
 ?>

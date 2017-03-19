@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Ä£¿é¹ÜÀí
+ * 74cms æ¨¡å—ç®¡ç†
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_plug_fun.php');
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'list';
 check_permissions($_SESSION['admin_purview'],"site_plug");
-$smarty->assign('pageheader',"Ä£¿é¹ÜÀí");
+$smarty->assign('pageheader',"æ¨¡å—ç®¡ç†");
 if($act == 'list')
 {	
 	get_token();
@@ -27,9 +27,9 @@ elseif($act == 'uninstall_plug')
 	check_token();
 	if(uninstall_plug($_GET['id'])){
 		refresh_plug_cache();
-		adminmsg('¹Ø±Õ³É¹¦', 2);
+		adminmsg('å…³é—­æˆåŠŸ', 2);
 	}else{
-		adminmsg('¹Ø±ÕÊ§°Ü', 1);
+		adminmsg('å…³é—­å¤±è´¥', 1);
 	}
 
 			
@@ -39,9 +39,9 @@ elseif($act == 'install_plug')
 	check_token();
 	if(install_plug($_GET['id'])){
 		refresh_plug_cache();
-		adminmsg('¿ªÆô³É¹¦', 2);
+		adminmsg('å¼€å¯æˆåŠŸ', 2);
 	}else{
-		adminmsg('¿ªÆôÊ§°Ü', 1);
+		adminmsg('å¼€å¯å¤±è´¥', 1);
 	}
 }
 ?>

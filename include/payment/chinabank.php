@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /**
- * 74cms ÍøÒøÔÚÏß²å¼ş
+ * 74cms ç½‘é“¶åœ¨çº¿æ’ä»¶
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 
@@ -14,34 +14,34 @@
  {
  	die('Access Denied!');
  }
-//Éú³ÉÖ§¸¶´úÂë
+//ç”Ÿæˆæ”¯ä»˜ä»£ç 
 function get_code($order, $payment)
     {
 	global $_CFG;
 	if (!is_array($order) ||!is_array($payment))  return false;
-        $data_mid  = trim($payment['partnerid']);//ÉÌ»§±àºÅ
-        $data_oid   = $order['oid'];//¶©µ¥ºÅ
-        $data_amount  = intval($order['v_amount']); //Ö§¸¶½ğ¶î  
-        $data_moneytype  = 'CNY';//±ÒÖÖ
-        $data_key  = trim($payment['ytauthkey']);//MD5ÃÜÔ¿
-        $data_url = $order['v_url'];//·µ»Øurl,µØÖ·Ó¦Îª¾ø¶ÔÂ·¾¶,´øÓĞhttpĞ­Òé
-		$data_remark1 = $order['remark1'];//±¸×¢1
+        $data_mid  = trim($payment['partnerid']);//å•†æˆ·ç¼–å·
+        $data_oid   = $order['oid'];//è®¢å•å·
+        $data_amount  = intval($order['v_amount']); //æ”¯ä»˜é‡‘é¢  
+        $data_moneytype  = 'CNY';//å¸ç§
+        $data_key  = trim($payment['ytauthkey']);//MD5å¯†é’¥
+        $data_url = $order['v_url'];//è¿”å›url,åœ°å€åº”ä¸ºç»å¯¹è·¯å¾„,å¸¦æœ‰httpåè®®
+		$data_remark1 = $order['remark1'];//å¤‡æ³¨1
         $MD5KEY =$data_amount.$data_moneytype.$data_oid.$data_mid.$data_url.$data_key;
-        $MD5KEY = strtoupper(md5($MD5KEY)); //md5¼ÓÃÜÆ´´Õ´®,×¢ÒâË³Ğò²»ÄÜ±ä
+        $MD5KEY = strtoupper(md5($MD5KEY)); //md5åŠ å¯†æ‹¼å‡‘ä¸²,æ³¨æ„é¡ºåºä¸èƒ½å˜
         $def_url  = '<form name="E_FORM"  method="post" action="https://pay3.chinabank.com.cn/PayGate" target="_blank">';
-        $def_url .= "<input type=HIDDEN name='v_mid' value='".$data_mid."'>";//ÉÌ»§±àºÅ
-        $def_url .= "<input type=HIDDEN name='v_oid' value='".$data_oid."'>";//¶©µ¥ºÅ
-        $def_url .= "<input type=HIDDEN name='v_amount' value='".$data_amount."'>"; //Ö§¸¶½ğ¶î  
-        $def_url .= "<input type=HIDDEN name='v_moneytype'  value='".$data_moneytype."'>";//±ÒÖÖ
-        $def_url .= "<input type=HIDDEN name='v_url'  value='".$data_url."'>";//·µ»Øurl,µØÖ·Ó¦Îª¾ø¶ÔÂ·¾¶,´øÓĞhttpĞ­Òé
-        $def_url .= "<input type=HIDDEN name='v_md5info' value='".$MD5KEY."'>"; //md5¼ÓÃÜÆ´´Õ´®
-        $def_url .= "<input type=HIDDEN name='remark1' value='".$remark1."'>";//±¸×¢
+        $def_url .= "<input type=HIDDEN name='v_mid' value='".$data_mid."'>";//å•†æˆ·ç¼–å·
+        $def_url .= "<input type=HIDDEN name='v_oid' value='".$data_oid."'>";//è®¢å•å·
+        $def_url .= "<input type=HIDDEN name='v_amount' value='".$data_amount."'>"; //æ”¯ä»˜é‡‘é¢  
+        $def_url .= "<input type=HIDDEN name='v_moneytype'  value='".$data_moneytype."'>";//å¸ç§
+        $def_url .= "<input type=HIDDEN name='v_url'  value='".$data_url."'>";//è¿”å›url,åœ°å€åº”ä¸ºç»å¯¹è·¯å¾„,å¸¦æœ‰httpåè®®
+        $def_url .= "<input type=HIDDEN name='v_md5info' value='".$MD5KEY."'>"; //md5åŠ å¯†æ‹¼å‡‘ä¸²
+        $def_url .= "<input type=HIDDEN name='remark1' value='".$remark1."'>";//å¤‡æ³¨
         $def_url .= "</form>";
-		$def_url .= "<input type=\"button\" name=\"imageField\" class=\"but130lan intrgration_but\" value=\"È·ÈÏÖ§¸¶\"  onclick=\"document.E_FORM.submit()\"/>";
+		$def_url .= "<input type=\"button\" name=\"imageField\" class=\"but130lan intrgration_but\" value=\"ç¡®è®¤æ”¯ä»˜\"  onclick=\"document.E_FORM.submit()\"/>";
         return $def_url;
     }
 /**
- * ÏìÓ¦²Ù×÷
+ * å“åº”æ“ä½œ
 */
 function respond()
 {
@@ -56,17 +56,17 @@ $remark1        = trim($_POST['remark1']);
 $remark2        = trim($_POST['remark2']);
 $v_md5str       = trim($_POST['v_md5str']);
 /**
-* ÖØĞÂ¼ÆËãmd5µÄÖµ
+* é‡æ–°è®¡ç®—md5çš„å€¼
 */
 $key = $payment['ytauthkey'];
 
 $md5string=strtoupper(md5($v_oid.$v_pstatus.$v_amount.$v_moneytype.$key));
- /* ¼ì²éÃØÔ¿ÊÇ·ñÕıÈ· */
+ /* æ£€æŸ¥ç§˜é’¥æ˜¯å¦æ­£ç¡® */
 if ($v_md5str==$md5string)
 {
 if ($v_pstatus == '20')
 {
-/* ¸Ä±ä¶©µ¥×´Ì¬ */
+/* æ”¹å˜è®¢å•çŠ¶æ€ */
 if (!order_paid($v_oid)) return false;
 return true;
 }
@@ -76,14 +76,14 @@ else
 return false;
 }
 }
-//»ñÈ¡±ØĞë×Ö·û
+//è·å–å¿…é¡»å­—ç¬¦
 function pay_info()
 {
-$arr['p_introduction']="ÍøÒøÔÚÏß¼ò¶ÌÃèÊö£º";
-$arr['notes']="ÍøÒøÔÚÏßÏêÏ¸ÃèÊö£º";
-$arr['partnerid']="ÍøÒøÔÚÏßÉÌ»§±àºÅ£º";
-$arr['ytauthkey']="ÍøÒøÔÚÏßMD5 ÃÜÔ¿£º";
-$arr['fee']="ÍøÒøÔÚÏß½»Ò×ÊÖĞø·Ñ£º";
+$arr['p_introduction']="ç½‘é“¶åœ¨çº¿ç®€çŸ­æè¿°ï¼š";
+$arr['notes']="ç½‘é“¶åœ¨çº¿è¯¦ç»†æè¿°ï¼š";
+$arr['partnerid']="ç½‘é“¶åœ¨çº¿å•†æˆ·ç¼–å·ï¼š";
+$arr['ytauthkey']="ç½‘é“¶åœ¨çº¿MD5 å¯†é’¥ï¼š";
+$arr['fee']="ç½‘é“¶åœ¨çº¿äº¤æ˜“æ‰‹ç»­è´¹ï¼š";
 return $arr;
 }
 ?>

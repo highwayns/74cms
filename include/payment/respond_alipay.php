@@ -1,12 +1,12 @@
-<?php 
+ï»¿<?php 
  /*
- * 74cms Ö§¸¶ÏìÓ¦Ò³Ãæ
+ * 74cms æ”¯ä»˜å“åº”é¡µé¢
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -19,23 +19,23 @@ require_once(QISHI_ROOT_PATH."include/payment/alipay.php");
 	if (respond())
 	{		
 		$orderurl=array('1'=>'company_service.php?act=order_list',4=>'train_service.php?act=order_list',3=>'hunter_service.php?act=order_list');
-		$link[0]['text'] = "²é¿´¶©µ¥";
+		$link[0]['text'] = "æŸ¥çœ‹è®¢å•";
 		if($_SESSION['adv_pay']){
 			$link[0]['href'] = get_member_url($_SESSION['utype'],true)."company_service.php?act=adv_order_list";
 		}else{
 			$link[0]['href'] = get_member_url($_SESSION['utype'],true).$orderurl[$_SESSION['utype']];
 		}
 		unset($_SESSION['adv_pay']);
-		$link[1]['text'] = "»áÔ±ÖÐÐÄ";
+		$link[1]['text'] = "ä¼šå‘˜ä¸­å¿ƒ";
 		$link[1]['href'] = url_rewrite('QS_login');
-		$link[2]['text'] = "ÍøÕ¾Ê×Ò³";
+		$link[2]['text'] = "ç½‘ç«™é¦–é¡µ";
 		$link[2]['href'] = $_CFG['site_dir'];
-		showmsg("¸¶¿î³É¹¦£¡",2,$link,false);
+		showmsg("ä»˜æ¬¾æˆåŠŸï¼",2,$link,false);
 	}
 	else
 	{
-		$link[0]['text'] = "»áÔ±ÖÐÐÄ";
+		$link[0]['text'] = "ä¼šå‘˜ä¸­å¿ƒ";
 		$link[0]['href'] = get_member_url($_SESSION['utype']);
-		showmsg("¸¶¿îÊ§°Ü£¡ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±",0,$link);
+		showmsg("ä»˜æ¬¾å¤±è´¥ï¼è¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜",0,$link);
 	}
 ?>

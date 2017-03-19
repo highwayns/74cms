@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Ö§¸¶·½Ê½
+ * 74cms æ”¯ä»˜æ–¹å¼
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_pay_fun.php');
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'list';
 check_permissions($_SESSION['admin_purview'],"site_payment");
-$smarty->assign('pageheader',"Ö§¸¶·½Ê½");
+$smarty->assign('pageheader',"æ”¯ä»˜æ–¹å¼");
 if($act == 'list')
 {	
 	get_token();
@@ -25,13 +25,13 @@ if($act == 'list')
 elseif($act == 'uninstall_payment')
 {
 	check_token();
-	uninstall_payment($_GET['id'])?adminmsg('³É¹¦Ð¶ÔØ', 2):adminmsg('Ð¶ÔØÊ§°Ü', 1);
+	uninstall_payment($_GET['id'])?adminmsg('æˆåŠŸå¸è½½', 2):adminmsg('å¸è½½å¤±è´¥', 1);
 }
 elseif($act == 'action_payment')
 {
 	get_token();
 	$payment=get_payment_one($_GET['name']);
-	if (!$payment) adminmsg('»ñÈ¡Ê§°Ü', 1);
+	if (!$payment) adminmsg('èŽ·å–å¤±è´¥', 1);
 	require_once("../include/payment/".$payment['typename'].".php");
 	$smarty->assign('show',$payment);
 	$smarty->assign('pay',pay_info());
@@ -52,8 +52,8 @@ elseif($act == 'save_payment')
 	$setsqlarr['parameter3']=trim($_POST['parameter3']);
 	$setsqlarr['p_install']=2;
 	$wheresql=" id=".$setsqlarr['id']." ";
-	$link[0]['text'] = "·µ»ØÖ§¸¶·½Ê½ÁÐ±í";
+	$link[0]['text'] = "è¿”å›žæ”¯ä»˜æ–¹å¼åˆ—è¡¨";
 	$link[0]['href'] = '?';
-	!$db->updatetable(table('payment'), $setsqlarr,$wheresql)?adminmsg('±£´æÊ§°Ü£¡', 1):adminmsg('±£´æ³É¹¦£¡', 2,$link);
+	!$db->updatetable(table('payment'), $setsqlarr,$wheresql)?adminmsg('ä¿å­˜å¤±è´¥ï¼', 1):adminmsg('ä¿å­˜æˆåŠŸï¼', 2,$link);
 }
 ?>

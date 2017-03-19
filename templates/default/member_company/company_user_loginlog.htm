@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+锘�<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
 <title>{#$title#}</title>
 <meta http-equiv="X-UA-Compatible" content="edge"><meta name="renderer" content="webkit">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="骑士CMS" />
+<meta name="author" content="楠戝＋CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
@@ -15,7 +15,7 @@
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
 
-<div class="page_location link_bk">当前位置：<a href="{#$QISHI.site_dir#}">首页</a> > <a href="{#$userindexurl#}">会员中心</a> > 安全助手</div>
+<div class="page_location link_bk">褰撳墠浣嶇疆锛�<a href="{#$QISHI.site_dir#}">棣栭〉</a> > <a href="{#$userindexurl#}">浼氬憳涓績</a> > 瀹夊叏鍔╂墜</div>
 
 <div class="usermain">
   <div class="leftmenu com link_bk">
@@ -30,26 +30,26 @@
  	    	<div class="topnav">
 			  
 			<div class="titleH1">
-			  <div class="h1-title">安全认证</div>
+			  <div class="h1-title">瀹夊叏璁よ瘉</div>
 			</div>
 			<div class="navs">
-				<a href="company_user.php?act=authenticate">账号安全</a>
-				  <a href="company_info.php?act=company_auth">营业执照</a>
-				  <a href="company_user.php?act=login_log" class="se">登录日志</a>
+				<a href="company_user.php?act=authenticate">璐﹀彿瀹夊叏</a>
+				  <a href="company_info.php?act=company_auth">钀ヤ笟鎵х収</a>
+				  <a href="company_user.php?act=login_log" class="se">鐧诲綍鏃ュ織</a>
 				<div class="clear"></div>
 			</div>		
 	  	</div>
 	  		<div class="toptitle"  >
-			    <div class="t1" style="width:246px;padding-left:70px;">登录时间 </div>
-				<div class="t2">登录地点</div>
-				<div class="t3">登录IP</div>
+			    <div class="t1" style="width:246px;padding-left:70px;">鐧诲綍鏃堕棿 </div>
+				<div class="t2">鐧诲綍鍦扮偣</div>
+				<div class="t3">鐧诲綍IP</div>
 				<div class="clear"></div>
 			  </div>
 	  		{#if $loginlog#}
 			  {#foreach from=$loginlog item=list#}
 			   <div class="ilist userliststyle">
 			    <div class="t1">{#$list.log_addtime|date_format:"%Y-%m-%d %H:%M:%S"#}</div>
-				<div class="t2">{#if $list.log_address#}{#$list.log_address#}{#else#}未知{#/if#}</div>
+				<div class="t2">{#if $list.log_address#}{#$list.log_address#}{#else#}鏈煡{#/if#}</div>
 				<div class="t3">{#$list.log_ip#}</div>
 				<div class="clear"></div>
 			  </div>
@@ -62,7 +62,7 @@
 		      </table>
 		      {#/if#}
 			  {#else#}
-			   <div class="emptytip">对不起！没有找到您要的信息！</div>
+			   <div class="emptytip">瀵逛笉璧凤紒娌℃湁鎵惧埌鎮ㄨ鐨勪俊鎭紒</div>
 			   {#/if#}
 	  	</div>
 	</div>

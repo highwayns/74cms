@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_resume_list($params, &$smarty)
 {
 global $db,$_CFG;
@@ -8,97 +8,97 @@ foreach($arrset as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "ÁĞ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
-	case "ÏÔÊ¾ÊıÄ¿":
+	case "æ˜¾ç¤ºæ•°ç›®":
 		$aset['row'] = $a[1];
 		break;
-	case "Ó¦½ìÉú¼òÀú":
+	case "åº”å±Šç”Ÿç®€å†":
 		$aset['campu_sresume'] = $a[1];
 		break;
-	case "¸üĞÂÊ±¼ä":
+	case "æ›´æ–°æ—¶é—´":
 		$aset['refreshtime'] = $a[1];
 		break;
-	case "¿ªÊ¼Î»ÖÃ":
+	case "å¼€å§‹ä½ç½®":
 		$aset['start'] = $a[1];
 		break;
-	case "ĞÕÃû³¤¶È":
+	case "å§“åé•¿åº¦":
 		$aset['namelen'] = $a[1];
 		break;
-	case "ÌØ³¤ÃèÊö³¤¶È":
+	case "ç‰¹é•¿æè¿°é•¿åº¦":
 		$aset['specialtylen'] = $a[1];
 		break;
-	case "ÒâÏòÖ°Î»³¤¶È":
+	case "æ„å‘èŒä½é•¿åº¦":
 		$aset['jobslen'] = $a[1];
 		break;
-	case "×¨Òµ³¤¶È":
+	case "ä¸“ä¸šé•¿åº¦":
 		$aset['majorlen'] = $a[1];
 		break;
-	case "Ìî²¹×Ö·û":
+	case "å¡«è¡¥å­—ç¬¦":
 		$aset['dot'] = $a[1];
 		break;
-	case "ÈÕÆÚ·¶Î§":
+	case "æ—¥æœŸèŒƒå›´":
 		$aset['settr'] = $a[1];
 		break;
-	case "Ö°Î»·ÖÀà":
+	case "èŒä½åˆ†ç±»":
 		$aset['jobcategory'] = trim($a[1]);
 		break;
-	case "Ö°Î»´óÀà":
+	case "èŒä½å¤§ç±»":
 		$aset['category'] = trim($a[1]);
 		break;
-	case "Ö°Î»Ğ¡Àà":
+	case "èŒä½å°ç±»":
 		$aset['subclass'] = trim($a[1]);
 		break;
-	case "µØÇø·ÖÀà":
+	case "åœ°åŒºåˆ†ç±»":
 		$aset['citycategory'] = trim($a[1]);
 		break;
-	case "µØÇø´óÀà":
+	case "åœ°åŒºå¤§ç±»":
 		$aset['district'] = $a[1];
 		break;
-	case "µØÇøĞ¡Àà":
+	case "åœ°åŒºå°ç±»":
 		$aset['sdistrict'] = $a[1];
 		break;
-	case "ĞĞÒµ":
+	case "è¡Œä¸š":
 		$aset['trade'] = trim($a[1]);
 		break;
-	case "×¨Òµ":
+	case "ä¸“ä¸š":
 		$aset['major'] = trim($a[1]);
 		break;
-	case "±êÇ©":
+	case "æ ‡ç­¾":
 		$aset['tag'] = $a[1];
 		break;
-	case "Ñ§Àú":
+	case "å­¦å†":
 		$aset['education'] = $a[1];
 		break;
-	case "¹¤×÷¾­Ñé":
+	case "å·¥ä½œç»éªŒ":
 		$aset['experience'] = $a[1];
 		break;
-	case "µÈ¼¶":
+	case "ç­‰çº§":
 		$aset['talent'] = $a[1];
 		break;
-	case "ĞÔ±ğ":
-		$aset['sex'] = $a[1];  // Ìí¼ÓËÑË÷Ìõ¼ş  ÄĞ Å®
+	case "æ€§åˆ«":
+		$aset['sex'] = $a[1];  // æ·»åŠ æœç´¢æ¡ä»¶  ç”· å¥³
 		break;
-	case "ÕÕÆ¬":
+	case "ç…§ç‰‡":
 		$aset['photo'] = $a[1];
 		break;
-	case "¹Ø¼ü×Ö":
+	case "å…³é”®å­—":
 		$aset['key'] = $a[1];
 		break;
-	case "ÅÅĞò":
+	case "æ’åº":
 		$aset['displayorder'] = $a[1];
 		break;
-	case "·ÖÒ³ÏÔÊ¾":
+	case "åˆ†é¡µæ˜¾ç¤º":
 		$aset['paged'] = $a[1];
 		break;
-	case "Ò³Ãæ":
+	case "é¡µé¢":
 		$aset['showname'] = $a[1];
 		break;
-	case "ÁĞ±íÒ³":
+	case "åˆ—è¡¨é¡µ":
 		$aset['listpage'] = $a[1];
 		break;
-	case "ä¯ÀÀ¹ıµÄ¼òÀú":
+	case "æµè§ˆè¿‡çš„ç®€å†":
 		$aset['readresume'] = $a[1];
 		break;
 	}
@@ -119,7 +119,7 @@ $resumetable=table('resume_search_rtime');
 if (isset($aset['displayorder']))
 {
 	$arr=explode('>',$aset['displayorder']);
-	// ÅÅĞò·½Ê½
+	// æ’åºæ–¹å¼
 	if($arr[1]=='desc'){
 		$arr[1]="desc";
 	}
@@ -140,12 +140,12 @@ else
 {
 	$orderbysql=" ORDER BY r.refreshtime desc,id desc ";
 }
-//Ó¦½ìÉú¼òÀú
+//åº”å±Šç”Ÿç®€å†
 if(isset($aset['campu_sresume']) && !empty($aset['campu_sresume']))
 {
 	$wheresql.=" AND r.experience='-1' ";
 }
-//¸üĞÂÊ±¼ä
+//æ›´æ–°æ—¶é—´
 if(isset($aset['refreshtime']) && !empty($aset['refreshtime']))
 {
 	$refreshtime_min = strtotime("-".$aset['refreshtime']."day");
@@ -253,7 +253,7 @@ if (isset($aset['settr']) && $aset['settr']<>'')
 	$wheresql.=" AND refreshtime>".$settr_val;
 	}
 }
-// major ×¨ÒµËÑË÷
+// major ä¸“ä¸šæœç´¢
 if (!empty($aset['major']))
 {
 	
@@ -355,7 +355,7 @@ if (isset($aset['talent']) && !empty($aset['talent']))
 }
 if (isset($aset['sex']) && !empty($aset['sex']))
 {
-	$wheresql.=" AND r.sex=".intval($aset['sex'])." "; // Ìí¼ÓËÑË÷Ìõ¼ş  ÄĞ Å®
+	$wheresql.=" AND r.sex=".intval($aset['sex'])." "; // æ·»åŠ æœç´¢æ¡ä»¶  ç”· å¥³
 }
 if (isset($aset['photo']) && !empty($aset['photo']))
 {
@@ -419,7 +419,7 @@ if (!empty($aset['tag']))
 	}
 	$joinsql=$joinsql==""?"  INNER  JOIN  ( SELECT DISTINCT pid FROM ".table('resume_tag')." {$joinwheresql_tag} )AS g ON  r.id=g.pid ":$joinsql."  INNER  JOIN  ( SELECT DISTINCT pid FROM ".table('resume_tag')." {$joinwheresql_tag} )AS g ON  r.id=g.pid ";
 }
-/* ËÑË÷ Ê±¼ä·¶Î§ */
+/* æœç´¢ æ—¶é—´èŒƒå›´ */
 $moth=intval($_CFG['search_time']);
 if($moth>0)
 {
@@ -480,9 +480,9 @@ $wheresql=" WHERE ".ltrim(ltrim($wheresql),'AND');
 			elseif($row['display_name']=="3")
 			{ 
 				if($row['sex']==1){
-				$row['fullname']=cut_str($row['fullname'],1,0,"ÏÈÉú");
+				$row['fullname']=cut_str($row['fullname'],1,0,"å…ˆç”Ÿ");
 				}elseif($row['sex'] == 2){
-				$row['fullname']=cut_str($row['fullname'],1,0,"Å®Ê¿");
+				$row['fullname']=cut_str($row['fullname'],1,0,"å¥³å£«");
 				}else{
 				$row['fullname']=cut_str($row['fullname'],1,0,"**");
 				}	
@@ -521,7 +521,7 @@ $wheresql=" WHERE ".ltrim(ltrim($wheresql),'AND');
 			{
 			$row['tag_cn']=array();
 			}
-			// ÕÕÆ¬ÏÔÊ¾·½Ê½
+			// ç…§ç‰‡æ˜¾ç¤ºæ–¹å¼
 			if ($row['photo']=="1")
 			{
 				if($row['photo_display']=="1")
@@ -538,10 +538,10 @@ $wheresql=" WHERE ".ltrim(ltrim($wheresql),'AND');
 			{
 				$row['photosrc']=$_CFG['resume_photo_dir_thumb']."no_photo.gif";
 			}
-			//ÅĞ¶ÏÊÖ»úÊÇ·ñÑéÖ¤
+			//åˆ¤æ–­æ‰‹æœºæ˜¯å¦éªŒè¯
 			$is_audit_phone = $db->getone("SELECT mobile_audit FROM ".table('members')." WHERE uid={$row['uid']}  LIMIT 1 ");
 			$row['is_audit_mobile'] = $is_audit_phone['mobile_audit'];
-			//ÓïÑÔÄÜÁ¦
+			//è¯­è¨€èƒ½åŠ›
 			$language = $db->getall("SELECT * FROM ".table('resume_language')." WHERE pid={$row['id']} ");
 			$row['language'] = $language;
 			$list[] = $row;

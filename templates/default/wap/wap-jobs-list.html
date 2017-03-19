@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>Ö°Î»ÁĞ±í - {#$QISHI.site_name#}</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>èŒä½åˆ—è¡¨ - {#$QISHI.site_name#}</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <link href="css/jobs.css" rel="stylesheet" type="text/css" />
@@ -16,12 +16,12 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
 	
-	  // ´´½¨¼òÀúµ¯³ö¿ò
+	  // åˆ›å»ºç®€å†å¼¹å‡ºæ¡†
 	  function showFloatBox() {
 	    $("body").prepend("<div class=\"menu_bg_layer\"></div>");
 	    $(".menu_bg_layer").height($(document).height());
@@ -29,28 +29,28 @@ $(document).ready(function()
 	    $(".menu_bg_layer").css("opacity",0.3);
 	  }
 
-	  // Ö°ÄÜµã»÷
+	  // èŒèƒ½ç‚¹å‡»
 	  $("#menulistJobs").click(function(){
 	    showFloatBox();
 	    $("#menuJobs").css({ top: ($(window).height() - $('#menuJobs').outerHeight())/2 + $(document).scrollTop() });
 	    $("#menuJobs").show();
 	  });
     
-	  // µØÇøµã»÷
+	  // åœ°åŒºç‚¹å‡»
 	  $("#menulistCity").click(function(){
 	    showFloatBox();
 	    $("#menuDistrict").css({ top: ($(window).height() - $('#menuDistrict').outerHeight())/2 + $(document).scrollTop() });
 	    $("#menuDistrict").show();
 	  });
 
-    // ĞĞÒµµã»÷
+    // è¡Œä¸šç‚¹å‡»
     $("#menulistTrad").click(function(){
       showFloatBox();
       $("#menuTrad").css({ top: ($(window).height() - $('#menuTrad').outerHeight())/2 + $(document).scrollTop() });
       $("#menuTrad").show();
     });
 
-    // Ğ½×Êµã»÷
+    // è–ªèµ„ç‚¹å‡»
     $("#menulistWage").click(function(){
       showFloatBox();
       $("#menuWage").css({ top: ($(window).height() - $('#menuWage').outerHeight())/2 + $(document).scrollTop() });
@@ -61,8 +61,8 @@ $(document).ready(function()
         $("#showListWage").html($(this).attr("title"));
         $("#menuWage").hide();
         $(".menu_bg_layer").remove();
-        //µãÑ¡ÍêÖ°ÄÜºó¾Í¿ªÊ¼ËÑË÷
-        var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+        //ç‚¹é€‰å®ŒèŒèƒ½åå°±å¼€å§‹æœç´¢
+        var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
         var key=$("#key").val();
         if (patrn.exec(key))
         {
@@ -81,7 +81,7 @@ $(document).ready(function()
         window.location.href=url+"?key="+key+"&district="+district+"&sdistrict="+sdistrict+"&trade="+trade+"&topclass="+topclass+"&category="+category+"&subclass="+subclass+"&wage="+wage+"&recommend="+recommend+"&emergency="+emergency;
       });
     });
-    // ¹Ø±Õµ¯³ö¿ò
+    // å…³é—­å¼¹å‡ºæ¡†
     $(".choose_close").click(function(event) {
       $(this).parent().hide();
       $(".menu_bg_layer").remove();
@@ -89,7 +89,7 @@ $(document).ready(function()
 	//
 	$("#key").focus(function()
 	{
-		var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i;
+		var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i;
 		var key=$("#key").val();
 		if (patrn.exec(key))
 		{
@@ -104,7 +104,7 @@ $(document).ready(function()
 	});
 	{#if $jobs#}
 	$(".more").click(function(){
-    var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+    var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
     var key=$("#key").val();
     if (patrn.exec(key))
     {
@@ -125,7 +125,7 @@ $(document).ready(function()
 		$.get("{#$QISHI.wap_domain#}/plus/wap_ajax.php?act=ajaxjobslist&offset="+(offset)+"&rows=5&recommend="+recommend+"&emergency="+emergency+"&key="+key+"&district="+district+"&sdistrict="+sdistrict+"&trade="+trade+"&topclass="+topclass+"&category="+category+"&subclass="+subclass+"&wage="+wage, function(result){
 		    if(result=="-1"){
 		    	$(".more").show();
-		    	$(".more").html("Ã»ÓĞ¸ü¶àÖ°Î»ÁË");
+		    	$(".more").html("æ²¡æœ‰æ›´å¤šèŒä½äº†");
 		    }else{
 		    	$(".showlist").append(result);
 		    	$(".more").show();
@@ -138,7 +138,7 @@ $(document).ready(function()
 	});
 	{#/if#}
 	$(".so_sub").click(function(){
-		var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+		var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
 		var key=$("#key").val();
 		if (patrn.exec(key))
 		{
@@ -162,33 +162,33 @@ $(document).ready(function()
 <body>
 <div class="sub_bodybg"></div>
 <div class="sub_head_top">
-	<div class="title">{#if $smarty.get.emergency=="1"#}½ô¼±ÕĞÆ¸{#elseif $smarty.get.recommend=="1"#}ÍÆ¼öÖ°Î»{#else#}ËÑË÷Ö°Î»{#/if#}</div>
+	<div class="title">{#if $smarty.get.emergency=="1"#}ç´§æ€¥æ‹›è˜{#elseif $smarty.get.recommend=="1"#}æ¨èèŒä½{#else#}æœç´¢èŒä½{#/if#}</div>
 	<div class="back" id="pageback"><img src="images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="javascript:void(0);"><img src="images/2.jpg"  border="0"/></a></div>
 </div>
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 {#include file="top-menu.html"#}
-<!--¿ì½İ°´Å¥ -->
-<!--¹Ø¼ü×ÖËÑË÷ -->
+<!--å¿«æ·æŒ‰é’® -->
+<!--å…³é”®å­—æœç´¢ -->
 <div class="jobs_so">
-	<input name="key" type="text"  id="key"  class="keyinput" value="{#if $smarty.get.key==""#}ÇëÊäÈë¹Ø¼ü×Ö{#else#}{#$smarty.get.key#}{#/if#}"/>
+	<input name="key" type="text"  id="key"  class="keyinput" value="{#if $smarty.get.key==""#}è¯·è¾“å…¥å…³é”®å­—{#else#}{#$smarty.get.key#}{#/if#}"/>
 	<div class="clearkey" id="clearkey"><img src="images/17.jpg"  border="0"/></div>
     <div class="so_sub"><img src="images/19.jpg"  border="0"/></div>
 </div>
-<!--¸ü¶àËÑË÷Ìõ¼ş -->
+<!--æ›´å¤šæœç´¢æ¡ä»¶ -->
 <input type="hidden" name="emergency" id="emergency" value="{#$smarty.get.emergency#}"/>
 <input type="hidden" name="recommend" id="recommend" value="{#$smarty.get.recommend#}"/>
 <div class="jobs_so_menus">
   <div class="menulistboxs" id="menulistCity">
     <div class="so_box area">
-      <img src="./images/so_icon_1_hui.gif" alt="" />&nbsp;µØÇø
+      <img src="./images/so_icon_1_hui.gif" alt="" />&nbsp;åœ°åŒº
         <input type="hidden" id="district" name="district" value="{#$smarty.get.district#}" />
         <input type="hidden" id="sdistrict" name="sdistrict" value="{#$smarty.get.sdistrict#}" />
     </div>
   </div>
   <div class="menu choose_menu" id="menuDistrict" style="display:none;position:absolute;z-index:1;">
-    <div class="menu_title">µØÇø</div>
+    <div class="menu_title">åœ°åŒº</div>
     <div class="choose_close"></div>
     <div class="area_choose">
       <ul class="area_left" id="area_left"></ul>
@@ -211,7 +211,7 @@ $(document).ready(function()
         var scitystr = "";
         if(QS_city[cid]) {
           var ccitysArray = QS_city[cid].split("|");
-          scitystr += '<li class="area_small" rcoid="0" title="'+ctitle+'/²»ÏŞ" pid="'+cid+'.0" href="javascript:;">²»ÏŞ</li>';
+          scitystr += '<li class="area_small" rcoid="0" title="'+ctitle+'/ä¸é™" pid="'+cid+'.0" href="javascript:;">ä¸é™</li>';
           $.each(ccitysArray, function(cindex, cval) {
             if(cval) {
               var ccitys = cval.split(",");
@@ -229,8 +229,8 @@ $(document).ready(function()
             $("#menuDistrict").hide();
             $(".menu_bg_layer").remove();
 
-            //µãÑ¡ÍêÖ°ÄÜºó¾Í¿ªÊ¼ËÑË÷
-            var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+            //ç‚¹é€‰å®ŒèŒèƒ½åå°±å¼€å§‹æœç´¢
+            var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
             var key=$("#key").val();
             if (patrn.exec(key))
             {
@@ -256,8 +256,8 @@ $(document).ready(function()
           $("#menuDistrict").hide();
           $(".menu_bg_layer").remove();
 
-          //µãÑ¡ÍêÖ°ÄÜºó¾Í¿ªÊ¼ËÑË÷
-          var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+          //ç‚¹é€‰å®ŒèŒèƒ½åå°±å¼€å§‹æœç´¢
+          var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
           var key=$("#key").val();
           if (patrn.exec(key))
           {
@@ -280,13 +280,13 @@ $(document).ready(function()
   </div>
   <div class="menulistboxs" id="menulistTrad">
     <div class="so_box trade">
-      <img src="./images/so_icon_2_hui.gif" alt="" />&nbsp;ĞĞÒµ
+      <img src="./images/so_icon_2_hui.gif" alt="" />&nbsp;è¡Œä¸š
         <input type="hidden" id="trade" name="trade" value="{#$smarty.get.trade#}" />
         <input type="hidden" id="trade_cn" name="trade_cn" value="" />
     </div>
   </div>
   <div class="menu choose_menu" id="menuTrad" style="display:none;position:absolute;z-index:1;">
-        <div class="menu_title">ĞĞÒµ</div>
+        <div class="menu_title">è¡Œä¸š</div>
         <div class="choose_close"></div>
         <ul id="trad_list"></ul>
   </div>
@@ -308,8 +308,8 @@ $(document).ready(function()
         $("#menuTrad").hide();
         $(".menu_bg_layer").remove();
 
-        //µãÑ¡ÍêÖ°ÄÜºó¾Í¿ªÊ¼ËÑË÷
-        var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+        //ç‚¹é€‰å®ŒèŒèƒ½åå°±å¼€å§‹æœç´¢
+        var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
         var key=$("#key").val();
         if (patrn.exec(key))
         {
@@ -330,14 +330,14 @@ $(document).ready(function()
   </script>
   <div class="menulistboxs" id="menulistJobs">
     <div class="so_box functions">
-      <img src="./images/so_icon_3_hui.gif" alt="" />&nbsp;Ö°ÄÜ
+      <img src="./images/so_icon_3_hui.gif" alt="" />&nbsp;èŒèƒ½
           <input name="topclass" id="topclass" type="hidden" value="{#$smarty.get.topclass#}" />
           <input name="category" id="category" type="hidden" value="{#$smarty.get.category#}" />
           <input name="subclass" id="subclass" type="hidden" value="{#$smarty.get.subclass#}" />
     </div>
   </div>
   <div class="menu choose_menu" id="menuJobs" style="display:none;position:absolute;z-index:1;">
-  <div class="menu_title">Ö°ÄÜ</div>
+  <div class="menu_title">èŒèƒ½</div>
   <div class="choose_close"></div>
   <div class="area_choose">
     <ul class="area_left" id="jobs_left_list"></ul>
@@ -366,7 +366,7 @@ $(document).ready(function()
       var sjobstr = "";
       if(QS_jobs[rid]) {
         var cjobsArray = QS_jobs[rid].split("|");
-        sjobstr += '<li class="area_small" rcoid="0" title="'+rtitle+'/²»ÏŞ" pid="'+rpid+'.0">²»ÏŞ</li>';
+        sjobstr += '<li class="area_small" rcoid="0" title="'+rtitle+'/ä¸é™" pid="'+rpid+'.0">ä¸é™</li>';
         $.each(cjobsArray, function(cindex, cval) {
           if(cval) {
             var cjobs = cval.split(",");
@@ -385,8 +385,8 @@ $(document).ready(function()
           $("#menuJobs").hide();
           $(".menu_bg_layer").remove();
 
-          //µãÑ¡ÍêÖ°ÄÜºó¾Í¿ªÊ¼ËÑË÷
-          var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+          //ç‚¹é€‰å®ŒèŒèƒ½åå°±å¼€å§‹æœç´¢
+          var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
           var key=$("#key").val();
           if (patrn.exec(key))
           {
@@ -415,8 +415,8 @@ $(document).ready(function()
         $("#menuJobs").hide();
         $(".menu_bg_layer").remove();
 
-        //µãÑ¡ÍêÖ°ÄÜºó¾Í¿ªÊ¼ËÑË÷
-        var patrn=/^(ÇëÊäÈë¹Ø¼ü×Ö)/i; 
+        //ç‚¹é€‰å®ŒèŒèƒ½åå°±å¼€å§‹æœç´¢
+        var patrn=/^(è¯·è¾“å…¥å…³é”®å­—)/i; 
         var key=$("#key").val();
         if (patrn.exec(key))
         {
@@ -439,16 +439,16 @@ $(document).ready(function()
   </div>
   <div class="menulistboxs" id="menulistWage">
     <div class="so_box moneys">
-      <img src="./images/so_icon_4_hui.gif" alt="" />&nbsp;Ğ½×Ê
+      <img src="./images/so_icon_4_hui.gif" alt="" />&nbsp;è–ªèµ„
         <input name="wage" type="hidden" id="wage" value="{#$smarty.get.wage#}" />
         <input name="wage_cn" type="hidden" id="wage_cn" value="" />
     </div>
   </div>
   <div class="menu choose_menu" id="menuWage" style="display:none;position:absolute;z-index:1;">
-  <div class="menu_title">Ğ½×Ê</div>
+  <div class="menu_title">è–ªèµ„</div>
     <div class="choose_close"></div>
     <ul>
-      {#qishi_get_classify  set="ÀàĞÍ:QS_wage,ÁĞ±íÃû:c_wage"#}
+      {#qishi_get_classify  set="ç±»å‹:QS_wage,åˆ—è¡¨å:c_wage"#}
       {#foreach from=$c_wage item=list#}
       <li id="{#$list.id#}" title="{#$list.categoryname#}">{#$list.categoryname#}</li>
       {#/foreach#}
@@ -456,16 +456,16 @@ $(document).ready(function()
   </div>
   <div class="clear"></div>
 </div>
-<!-- Ñ¡ÔñÍêÖ®ºóµÄÍê³É¿ò -->
+<!-- é€‰æ‹©å®Œä¹‹åçš„å®Œæˆæ¡† -->
 <div class="so_complete">
   <div class="so_complete_box">
-  <span>ËÑË÷Ìõ¼ş£º</span><i id="showListCity"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i id="showListTrad"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i id="showListJobs"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i id="showListWage"></i>
+  <span>æœç´¢æ¡ä»¶ï¼š</span><i id="showListCity"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i id="showListTrad"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i id="showListJobs"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i id="showListWage"></i>
 </div>
 <div class="clear"></div>
   <img id="clearShowList" src="./images/so_close.gif" alt=""width="16"height="17" />
 </div>
 <script type="text/javascript">
-  // µØÇø»Ö¸´
+  // åœ°åŒºæ¢å¤
   var citygetDistrictId = "{#$smarty.get.district#}";
   var citygetSdistrictId = "{#$smarty.get.sdistrict#}";
   var showCityHtm = "";
@@ -478,7 +478,7 @@ $(document).ready(function()
      }
   });
   if(citygetSdistrictId == "0") {
-    showCityHtm += "²»ÏŞ";
+    showCityHtm += "ä¸é™";
   } else {
     if(QS_city[citygetDistrictId]) {
       var ccitysArray = QS_city[citygetDistrictId].split("|");
@@ -493,7 +493,7 @@ $(document).ready(function()
     }
   }
   $("#showListCity").html(showCityHtm);
-  // ĞĞÒµ»Ö¸´
+  // è¡Œä¸šæ¢å¤
   var citygetTradeId = "{#$smarty.get.trade#}";
   var showTradeHtm = "";
   $.each(QS_trade, function(tindex, tval) {
@@ -505,7 +505,7 @@ $(document).ready(function()
     }
   });
   $("#showListTrad").html(showTradeHtm);
-  // Ö°ÄÜ»Ö¸´
+  // èŒèƒ½æ¢å¤
   var citygetTopclassId = "{#$smarty.get.topclass#}";
   var citygetCategoryId = "{#$smarty.get.category#}";
   var citygetSubclassId = "{#$smarty.get.subclass#}";
@@ -522,7 +522,7 @@ $(document).ready(function()
     });
   }
   if(citygetSubclassId == "0") {
-    showJobsHtm += "²»ÏŞ";
+    showJobsHtm += "ä¸é™";
   } else {
     if(QS_jobs[citygetCategoryId]) {
       var tsjobsArray = QS_jobs[citygetCategoryId].split("|");
@@ -537,7 +537,7 @@ $(document).ready(function()
     }
   }
   $("#showListJobs").html(showJobsHtm);
-  // Ğ½×Ê»Ö¸´
+  // è–ªèµ„æ¢å¤
   var citygetWageId = "{#$smarty.get.wage#}";
   var showWageHtm = "";
   $.each(QS_wage, function(windex, wval) {
@@ -566,10 +566,10 @@ $(document).ready(function()
 	<div class="list" id="li-0" url="{#$list.url#}">
 	  <div class="t1">
          <span ><a href="{#$list.url#}">{#$list.jobs_name#}</a>
-              {#if $list.stick=="1"#}<img title="ÖÃ¶¥ĞÅÏ¢" src="images/ding.jpg" border="0" class="vtip"/>{#/if#}
-              {#if $list.emergency=="1"#}<img title="½ô¼±ÕĞÆ¸" src="images/iconji.gif" border="0" class="vtip" />{#/if#}
-              {#if $list.recommend=="1"#}<img title="ÍÆ¼öÖ°Î»" src="images/iconjian.gif" border="0" class="vtip" />{#/if#}
-              {#if $list.graduate=="1"#}<img title="»¶Ó­Ó¦½ìÉúÍ¶µİ¼òÀú" src="images/ying.jpg" border="0" class="vtip"/>{#/if#}
+              {#if $list.stick=="1"#}<img title="ç½®é¡¶ä¿¡æ¯" src="images/ding.jpg" border="0" class="vtip"/>{#/if#}
+              {#if $list.emergency=="1"#}<img title="ç´§æ€¥æ‹›è˜" src="images/iconji.gif" border="0" class="vtip" />{#/if#}
+              {#if $list.recommend=="1"#}<img title="æ¨èèŒä½" src="images/iconjian.gif" border="0" class="vtip" />{#/if#}
+              {#if $list.graduate=="1"#}<img title="æ¬¢è¿åº”å±Šç”ŸæŠ•é€’ç®€å†" src="images/ying.jpg" border="0" class="vtip"/>{#/if#}
          </span>
          <br />
 {#$list.companyname#}</div>
@@ -580,9 +580,9 @@ $(document).ready(function()
 {#/foreach#}
 </div>	
 {#if $jobs#}
-    <div class="more link_bk"><a href="javascript:void(0);">¸ü¶àÖ°Î»...</a></div>	
+    <div class="more link_bk"><a href="javascript:void(0);">æ›´å¤šèŒä½...</a></div>	
 {#else#}
-    <div class="more link_bk">Ã»ÓĞ¸ü¶àÖ°Î»ÁË</div>	
+    <div class="more link_bk">æ²¡æœ‰æ›´å¤šèŒä½äº†</div>	
 {#/if#}
 </div>
 {#include file="wap/footer.htm"#}

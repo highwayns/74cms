@@ -1,4 +1,4 @@
-CSS.AllowedProperties
+﻿CSS.AllowedProperties
 TYPE: lookup/null
 VERSION: 3.1.0
 DEFAULT: NULL

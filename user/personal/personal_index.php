@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /*
- * 74cms ¸öÈË»áÔ±ÖĞĞÄ
+ * 74cms ä¸ªäººä¼šå‘˜ä¸­å¿ƒ
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ $smarty->assign('leftmenu',"index");
 if ($act=='index')
 {
 	$uid=intval($_SESSION['uid']);
-	$smarty->assign('title','¸öÈË»áÔ±ÖĞĞÄ - '.$_CFG['site_name']);
+	$smarty->assign('title','ä¸ªäººä¼šå‘˜ä¸­å¿ƒ - '.$_CFG['site_name']);
 	$smarty->assign('user',$user);
 
 	require_once(QISHI_ROOT_PATH.'include/fun_user.php');
@@ -29,7 +29,7 @@ if ($act=='index')
 	$smarty->assign('count_apply',count_personal_jobs_apply($uid));
 	$smarty->assign('msg_total1',$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$uid}' OR msgtouid='{$uid}') AND `new`='1' AND `replyuid`<>'{$uid}' AND msgtype=1"));
 	$smarty->assign('msg_total2',$db->get_total("SELECT COUNT(*) AS num FROM ".table('pms')." WHERE (msgfromuid='{$uid}' OR msgtouid='{$uid}') AND `new`='2' AND `replyuid`<>'{$uid}' AND msgtype=1"));
-	//Ê×Ò³ÌáÊ¾ÏûÏ¢(×î½üÁ½ÖÜ ÏÂÔØ ºÍ ÃæÊÔÑûÇëµÄĞÅÏ¢)
+	//é¦–é¡µæç¤ºæ¶ˆæ¯(æœ€è¿‘ä¸¤å‘¨ ä¸‹è½½ å’Œ é¢è¯•é‚€è¯·çš„ä¿¡æ¯)
 	$message = array();
 	$time = strtotime("- 14 day");
 	$down_resume = $db->getall("SELECT distinct company_uid , company_name FROM ".table('company_down_resume')." WHERE resume_uid='".$_SESSION['uid']."' AND down_addtime > ".$time);
@@ -37,13 +37,13 @@ if ($act=='index')
 	{
 		$company_id = $db->getone("SELECT id FROM ".table('company_profile')." WHERE uid=".$value['company_uid']." LIMIT 1");
 		$company_url = url_rewrite('QS_companyshow',array('id'=>$company_id['id']));
-		$message[] ="ÄúµÄ¼òÀú±»<a href=\"".$company_url."\" target=\"_black\" class=\"underline\">¡¾".$value['company_name']."¡¿</a>ÏÂÔØ£¡Ö÷¶¯ÁªÏµÕĞÆ¸µ¥Î»¸üÈİÒ×»ñµÃ¹¤×÷»ú»á£¡";
+		$message[] ="æ‚¨çš„ç®€å†è¢«<a href=\"".$company_url."\" target=\"_black\" class=\"underline\">ã€".$value['company_name']."ã€‘</a>ä¸‹è½½ï¼ä¸»åŠ¨è”ç³»æ‹›è˜å•ä½æ›´å®¹æ˜“è·å¾—å·¥ä½œæœºä¼šï¼";
 	}
 	$inter_resume = $db->getall("SELECT distinct company_id , company_name FROM ".table('company_interview')." WHERE resume_uid='".$_SESSION['uid']."' AND interview_addtime > ".$time." AND personal_look=1 ");
 	foreach ($inter_resume as $key => $value) 
 	{
 		$company_url = url_rewrite('QS_companyshow',array('id'=>$value['company_id']));
-		$message[] ="<a href=\"".$company_url."\" target=\"_black\" class=\"underline\">¡¾".$value['company_name']."¡¿</a>¶ÔÄú·¢ÆğÃæÊÔÑûÇë£¬Çë¾¡¿ìÁªÏµ¸ÃÕĞÆ¸µ¥Î»£¡";
+		$message[] ="<a href=\"".$company_url."\" target=\"_black\" class=\"underline\">ã€".$value['company_name']."ã€‘</a>å¯¹æ‚¨å‘èµ·é¢è¯•é‚€è¯·ï¼Œè¯·å°½å¿«è”ç³»è¯¥æ‹›è˜å•ä½ï¼";
 	}
 	$smarty->assign('message',$message);
 	$smarty->display('member_personal/personal_index.htm');

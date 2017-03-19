@@ -1,7 +1,7 @@
-function allaround(dir){
+ï»¿function allaround(dir){
 	if($("#divCityCate").length > 0) {
-		fillCity("#divCityCate"); // µØÇøÌî³ä
-		// »Ö¸´µØÇøÑ¡ÖĞÌõ¼ş
+		fillCity("#divCityCate"); // åœ°åŒºå¡«å……
+		// æ¢å¤åœ°åŒºé€‰ä¸­æ¡ä»¶
 		if($("#sdistrict").val()) {
 			var scityid = $("#sdistrict").val();
 			$(".citycatebox .subcate a").each(function() {
@@ -11,7 +11,7 @@ function allaround(dir){
 				}
 			});
 		}
-		/* µØÇøµã»÷ÏÔÊ¾µ½ÒÑÑ¡ */
+		/* åœ°åŒºç‚¹å‡»æ˜¾ç¤ºåˆ°å·²é€‰ */
 		$("#divCityCate li p a").unbind().live('click', function(){
 			$("#divCityCate li p a").each(function() {
 				$(this).removeClass('selectedcolor');

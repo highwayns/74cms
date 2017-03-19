@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
  * 74cms AJAX BAIDUMAP
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -132,10 +132,10 @@ if (!empty($jobshow))
 		$js.="position:new BMap.Point({$row['map_x']},{$row['map_y']})});";
 		$js.="myLabel{$row['id']}.setStyle({ border:0,background:''});";
 		$js.="map.addOverlay(myLabel{$row['id']});";
-		$js.="var infoWindow{$row['id']} = new BMap.InfoWindow(\"ÔØÈëÖĞ...\",{width:300});";
+		$js.="var infoWindow{$row['id']} = new BMap.InfoWindow(\"è½½å…¥ä¸­...\",{width:300});";
 		$js.="myLabel{$row['id']}.addEventListener(\"click\", function(){ map.openInfoWindow(infoWindow{$row['id']},new BMap.Point({$row['map_x']},{$row['map_y']}));}); "; 
 		$js.="infoWindow{$row['id']}.addEventListener(\"open\", function(){";
-		$js.="if (infoWindow{$row['id']}.getContent()=='ÔØÈëÖĞ...')";
+		$js.="if (infoWindow{$row['id']}.getContent()=='è½½å…¥ä¸­...')";
 		$js.="{";
 		$js.="var htm='<div class=\"mapinfowindow link_lan\"><div class=\"tit link_bk\"><a href=\"{$row['company_url']}\" target=\"_blank\">{$row['companyname_']}</a></div><ul>';";
 		$js.="var htmend='</ul></div>';";
@@ -150,10 +150,10 @@ if (!empty($jobshow))
 	}
 	if (empty($li))
 	{
-	$li="<li class=\\\"noinfo\\\">Ã»ÓĞÕÒµ½ÄúÒªµÄĞÅÏ¢...</li>";
+	$li="<li class=\\\"noinfo\\\">æ²¡æœ‰æ‰¾åˆ°æ‚¨è¦çš„ä¿¡æ¯...</li>";
 	$js.="$(\"#infolist\").html(\"{$li}\");";
 	$js.="$(\"#infotiploading\").hide();";
-	$js.="$(\"#infotipshow\").show().html(\"Ã»ÓĞÕÒµ½ÄúÒªµÄĞÅÏ¢...\");";
+	$js.="$(\"#infotipshow\").show().html(\"æ²¡æœ‰æ‰¾åˆ°æ‚¨è¦çš„ä¿¡æ¯...\");";
 	$js.="$('.listloading').hide();";
 	}
 	else
@@ -165,7 +165,7 @@ if (!empty($jobshow))
 		}
 	$js.="$(\"#infolist\").html(\"{$li}\");";
 	$js.="$(\"#infotiploading\").hide();";
-	$js.="$(\"#infotipshow\").show().html(\"¹²ÕÒµ½{$comcount}¸ö¹«Ë¾£¬{$jobscount}¸öÖ°Î»\");";
+	$js.="$(\"#infotipshow\").show().html(\"å…±æ‰¾åˆ°{$comcount}ä¸ªå…¬å¸ï¼Œ{$jobscount}ä¸ªèŒä½\");";
 	$js.="$('.listloading').hide();";
 	$js.=$js_right;
 	}	
@@ -216,8 +216,8 @@ if ($id==1)
 	$js.="if (map.getZoom()<8)";
 	$js.="{";
 	$js.="$(\"#infotiploading\").hide();";
-	$js.="$(\"#infotipshow\").show().html('ÊÓÒ°¹ı´ó£¬ÎŞ·¨»ñÈ¡ĞÅÏ¢');";
-	$js.="$(\"#infolist\").html('<li class=\"noinfo\">ÊÓÒ°¹ı´ó£¬ÎŞ·¨»ñÈ¡ĞÅÏ¢</li>');";
+	$js.="$(\"#infotipshow\").show().html('è§†é‡è¿‡å¤§ï¼Œæ— æ³•è·å–ä¿¡æ¯');";
+	$js.="$(\"#infolist\").html('<li class=\"noinfo\">è§†é‡è¿‡å¤§ï¼Œæ— æ³•è·å–ä¿¡æ¯</li>');";
 	$js.="map.clearOverlays();"; 
 	$js.="$(\"#pagination\").empty();";
 	$js.="}";
@@ -237,8 +237,8 @@ if ($id==1)
 	$js.="if (map.getZoom()<8)";
 	$js.="{";
 	$js.="$(\"#infotiploading\").hide();";
-	$js.="$(\"#infotipshow\").show().html('ÊÓÒ°¹ı´ó£¬ÎŞ·¨»ñÈ¡ĞÅÏ¢');";
-	$js.="$(\"#infolist\").html('<li class=\"noinfo\">ÊÓÒ°¹ı´ó£¬ÎŞ·¨»ñÈ¡ĞÅÏ¢</li>');";
+	$js.="$(\"#infotipshow\").show().html('è§†é‡è¿‡å¤§ï¼Œæ— æ³•è·å–ä¿¡æ¯');";
+	$js.="$(\"#infolist\").html('<li class=\"noinfo\">è§†é‡è¿‡å¤§ï¼Œæ— æ³•è·å–ä¿¡æ¯</li>');";
 	$js.="map.clearOverlays();";
 	$js.="$(\"#pagination\").empty();";
 	$js.="}";
@@ -259,26 +259,26 @@ if ($id==1)
 }
 elseif ($id==2)
 {
-	$js.="$('.maploading').html(\"ÇëÔÚÏÈÔÚÓÒ²àÑ¡ÔñÖ°Î»·ÖÀà\");";
+	$js.="$('.maploading').html(\"è¯·åœ¨å…ˆåœ¨å³ä¾§é€‰æ‹©èŒä½åˆ†ç±»\");";
 	$js.="$('.maploading').unbind().click(function(){";
-	$js.="alert('ÇëÏÈÔÚÓÒ²àÑ¡ÔñÖ°Î»·ÖÀà,È»ºóµã»÷ËÑË÷');";
+	$js.="alert('è¯·å…ˆåœ¨å³ä¾§é€‰æ‹©èŒä½åˆ†ç±»,ç„¶åç‚¹å‡»æœç´¢');";
 	$js.="});";
 	$js.="$(\"#infotiploading\").hide();";
-	$js.="$(\"#infotipshow\").show().html(\"ÇëÏÈÔÚÏÂ·½Ñ¡ÔñÖ°Î»·ÖÀà\");";
-	$js.="$(\"#infolist\").html('<li class=\"noinfo\">ÇëÏÈÔÚÑ¡ÔñÖ°Î»·ÖÀà</li>');";
+	$js.="$(\"#infotipshow\").show().html(\"è¯·å…ˆåœ¨ä¸‹æ–¹é€‰æ‹©èŒä½åˆ†ç±»\");";
+	$js.="$(\"#infolist\").html('<li class=\"noinfo\">è¯·å…ˆåœ¨é€‰æ‹©èŒä½åˆ†ç±»</li>');";
 	$js.="$('#search').unbind().click(function(){";
 	$js.="var jobcategory=$('#jobcategory').val();";
 	$js.="if (jobcategory=='')";
 	$js.="{";
-	$js.="alert('ÇëÏÈÑ¡ÔñÖ°Î»·ÖÀà,È»ºóµã»÷ËÑË÷');";
+	$js.="alert('è¯·å…ˆé€‰æ‹©èŒä½åˆ†ç±»,ç„¶åç‚¹å‡»æœç´¢');";
 	$js.="}";
 	$js.="else";
 	$js.="{";
 	$js.="$('.maploading').unbind();";
 	$js.="$(\"#infotiploading\").show();";
 	$js.="$(\"#infotipshow\").hide();";
-	$js.="$('.maploading').html('<img src=\"{$_CFG['site_template']}images/90.gif\" />µØÍ¼¼ÓÔØÖĞ...');";
-	$js.="$(\"#infolist\").html('<li class=\"noinfo\">ÔØÈëÖĞ...</li>');";
+	$js.="$('.maploading').html('<img src=\"{$_CFG['site_template']}images/90.gif\" />åœ°å›¾åŠ è½½ä¸­...');";
+	$js.="$(\"#infolist\").html('<li class=\"noinfo\">è½½å…¥ä¸­...</li>');";
 	$js.="$('.listloading').show().css('opacity',0.8);";
 	$js.="$.getScript(\"{$_CFG['site_dir']}plus/ajax_map.php?jobshow=jobcategory:::\"+jobcategory);";
 	$js.="}";
@@ -287,26 +287,26 @@ elseif ($id==2)
 }
 elseif ($id==3)
 {
-	$js.="$('.maploading').html(\"ÇëÔÚÏÈÔÚÓÒ²àÑ¡ÔñµØÇø\");";
+	$js.="$('.maploading').html(\"è¯·åœ¨å…ˆåœ¨å³ä¾§é€‰æ‹©åœ°åŒº\");";
 	$js.="$('.maploading').unbind().click(function(){";
-	$js.="alert('ÇëÏÈÔÚÓÒ²àÑ¡ÔñµØÇø·ÖÀà,È»ºóµã»÷ËÑË÷');";
+	$js.="alert('è¯·å…ˆåœ¨å³ä¾§é€‰æ‹©åœ°åŒºåˆ†ç±»,ç„¶åç‚¹å‡»æœç´¢');";
 	$js.="});";
 	$js.="$(\"#infotiploading\").hide();";
-	$js.="$(\"#infotipshow\").show().html(\"ÇëÏÈÔÚÏÂ·½Ñ¡ÔñµØÇø·ÖÀà\");";
-	$js.="$(\"#infolist\").html('<li class=\"noinfo\">ÇëÏÈÔÚÑ¡ÔñµØÇø·ÖÀà</li>');";
+	$js.="$(\"#infotipshow\").show().html(\"è¯·å…ˆåœ¨ä¸‹æ–¹é€‰æ‹©åœ°åŒºåˆ†ç±»\");";
+	$js.="$(\"#infolist\").html('<li class=\"noinfo\">è¯·å…ˆåœ¨é€‰æ‹©åœ°åŒºåˆ†ç±»</li>');";
 	$js.="$('#search').unbind().click(function(){";
 	$js.="var citycategory=$('#citycategory').val();";
 	$js.="if (citycategory=='')";
 	$js.="{";
-	$js.="alert('ÇëÏÈÑ¡ÔñµØÇø·ÖÀà,È»ºóµã»÷ËÑË÷');";
+	$js.="alert('è¯·å…ˆé€‰æ‹©åœ°åŒºåˆ†ç±»,ç„¶åç‚¹å‡»æœç´¢');";
 	$js.="}";
 	$js.="else";
 	$js.="{";
 	$js.="$('.maploading').unbind();";
 	$js.="$(\"#infotiploading\").show();";
 	$js.="$(\"#infotipshow\").hide();";
-	$js.="$('.maploading').html('<img src=\"{$_CFG['site_template']}images/90.gif\" />µØÍ¼¼ÓÔØÖĞ...');";
-	$js.="$(\"#infolist\").html('<li class=\"noinfo\">ÔØÈëÖĞ...</li>');";
+	$js.="$('.maploading').html('<img src=\"{$_CFG['site_template']}images/90.gif\" />åœ°å›¾åŠ è½½ä¸­...');";
+	$js.="$(\"#infolist\").html('<li class=\"noinfo\">è½½å…¥ä¸­...</li>');";
 	$js.="$('.listloading').show().css('opacity',0.8);";
 	$js.="$.getScript(\"{$_CFG['site_dir']}plus/ajax_map.php?jobshow=citycategory:::\"+citycategory);";
 	$js.="}";
@@ -315,26 +315,26 @@ elseif ($id==3)
 }
 elseif ($id==4)
 {
-	$js.="$('.maploading').html(\"ÇëÔÚÏÈÔÚÓÒ²àÑ¡ÔñĞĞÒµ·ÖÀà\");";
+	$js.="$('.maploading').html(\"è¯·åœ¨å…ˆåœ¨å³ä¾§é€‰æ‹©è¡Œä¸šåˆ†ç±»\");";
 	$js.="$('.maploading').unbind().click(function(){";
-	$js.="alert('ÇëÏÈÔÚÓÒ²àÑ¡ÔñĞĞÒµ·ÖÀà,È»ºóµã»÷ËÑË÷');";
+	$js.="alert('è¯·å…ˆåœ¨å³ä¾§é€‰æ‹©è¡Œä¸šåˆ†ç±»,ç„¶åç‚¹å‡»æœç´¢');";
 	$js.="});";
 	$js.="$(\"#infotiploading\").hide();";
-	$js.="$(\"#infotipshow\").show().html(\"ÇëÏÈÔÚÏÂ·½Ñ¡ÔñĞĞÒµ·ÖÀà\");";
-	$js.="$(\"#infolist\").html('<li class=\"noinfo\">ÇëÏÈÔÚÑ¡ÔñĞĞÒµ·ÖÀà</li>');";
+	$js.="$(\"#infotipshow\").show().html(\"è¯·å…ˆåœ¨ä¸‹æ–¹é€‰æ‹©è¡Œä¸šåˆ†ç±»\");";
+	$js.="$(\"#infolist\").html('<li class=\"noinfo\">è¯·å…ˆåœ¨é€‰æ‹©è¡Œä¸šåˆ†ç±»</li>');";
 	$js.="$('#search').unbind().click(function(){";
 	$js.="var trade=$('#trade').val();";
 	$js.="if (trade=='')";
 	$js.="{";
-	$js.="alert('ÇëÏÈÑ¡ÔñĞĞÒµ·ÖÀà,È»ºóµã»÷ËÑË÷');";
+	$js.="alert('è¯·å…ˆé€‰æ‹©è¡Œä¸šåˆ†ç±»,ç„¶åç‚¹å‡»æœç´¢');";
 	$js.="}";
 	$js.="else";
 	$js.="{";
 	$js.="$('.maploading').unbind();";
 	$js.="$(\"#infotiploading\").show();";
 	$js.="$(\"#infotipshow\").hide();";
-	$js.="$('.maploading').html('<img src=\"{$_CFG['site_template']}images/90.gif\" />µØÍ¼¼ÓÔØÖĞ...');";
-	$js.="$(\"#infolist\").html('<li class=\"noinfo\">ÔØÈëÖĞ...</li>');";
+	$js.="$('.maploading').html('<img src=\"{$_CFG['site_template']}images/90.gif\" />åœ°å›¾åŠ è½½ä¸­...');";
+	$js.="$(\"#infolist\").html('<li class=\"noinfo\">è½½å…¥ä¸­...</li>');";
 	$js.="$('.listloading').show().css('opacity',0.8);";
 	$js.="$.getScript(\"{$_CFG['site_dir']}plus/ajax_map.php?jobshow=trade:::\"+trade);";
 	$js.="}";
@@ -343,26 +343,26 @@ elseif ($id==4)
 }
 elseif ($id==5)
 {
-	$js.="$('.maploading').html(\"ÇëÔÚÏÈÔÚÓÒ²àÊäÈë¹Ø¼ü×Ö\");";
+	$js.="$('.maploading').html(\"è¯·åœ¨å…ˆåœ¨å³ä¾§è¾“å…¥å…³é”®å­—\");";
 	$js.="$('.maploading').unbind().click(function(){";
-	$js.="alert('ÇëÏÈÔÚÓÒ²àÊäÈë¹Ø¼ü×Ö,È»ºóµã»÷ËÑË÷');";
+	$js.="alert('è¯·å…ˆåœ¨å³ä¾§è¾“å…¥å…³é”®å­—,ç„¶åç‚¹å‡»æœç´¢');";
 	$js.="});";
 	$js.="$(\"#infotiploading\").hide();";
-	$js.="$(\"#infotipshow\").show().html(\"ÇëÏÈÔÚÏÂ·½ÊäÈë¹Ø¼ü×Ö\");";
-	$js.="$(\"#infolist\").html('<li class=\"noinfo\">ÇëÏÈÊäÈë¹Ø¼ü×Ö</li>');";
+	$js.="$(\"#infotipshow\").show().html(\"è¯·å…ˆåœ¨ä¸‹æ–¹è¾“å…¥å…³é”®å­—\");";
+	$js.="$(\"#infolist\").html('<li class=\"noinfo\">è¯·å…ˆè¾“å…¥å…³é”®å­—</li>');";
 	$js.="$('#search').unbind().click(function(){";
 	$js.="var key=$('#key').val();";
-	$js.="if (key=='' || key=='ÇëÊäÈë¹Ø¼ü×Ö...')";
+	$js.="if (key=='' || key=='è¯·è¾“å…¥å…³é”®å­—...')";
 	$js.="{";
-	$js.="alert('ÇëÊäÈë¹Ø¼ü×Ö,È»ºóµã»÷ËÑË÷');";
+	$js.="alert('è¯·è¾“å…¥å…³é”®å­—,ç„¶åç‚¹å‡»æœç´¢');";
 	$js.="}";
 	$js.="else";
 	$js.="{";
 	$js.="$('.maploading').unbind();";
 	$js.="$(\"#infotiploading\").show();";
 	$js.="$(\"#infotipshow\").hide();";
-	$js.="$('.maploading').html('<img src=\"{$_CFG['site_template']}images/90.gif\" />µØÍ¼¼ÓÔØÖĞ...');";
-	$js.="$(\"#infolist\").html('<li class=\"noinfo\">ÔØÈëÖĞ...</li>');";
+	$js.="$('.maploading').html('<img src=\"{$_CFG['site_template']}images/90.gif\" />åœ°å›¾åŠ è½½ä¸­...');";
+	$js.="$(\"#infolist\").html('<li class=\"noinfo\">è½½å…¥ä¸­...</li>');";
 	$js.="$('.listloading').show().css('opacity',0.8);";
 	$js.="$.getScript(\"{$_CFG['site_dir']}plus/ajax_map.php?jobshow=key:::\"+key);";
 	$js.="}";
@@ -374,8 +374,8 @@ elseif ($id==6)
 	$js.="$('.maploading').unbind();";
 	$js.="$(\"#infotiploading\").show();";
 	$js.="$(\"#infotipshow\").hide();";
-	$js.="$('.maploading').html('<img src=\"{$_CFG['site_template']}images/90.gif\" />µØÍ¼¼ÓÔØÖĞ...');";
-	$js.="$(\"#infolist\").html('<li class=\"noinfo\">ÔØÈëÖĞ...</li>');";
+	$js.="$('.maploading').html('<img src=\"{$_CFG['site_template']}images/90.gif\" />åœ°å›¾åŠ è½½ä¸­...');";
+	$js.="$(\"#infolist\").html('<li class=\"noinfo\">è½½å…¥ä¸­...</li>');";
 	$js.="$('.listloading').show().css('opacity',0.8);";
 	$js.="$.getScript(\"{$_CFG['site_dir']}plus/ajax_map.php?jobshow=new:::1\");";
 	exit(iconv_js($js));

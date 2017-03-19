@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¼Æ»®ÈÎÎñ
+ * 74cms è®¡åˆ’ä»»åŠ¡
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_crons_fun.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'list';
 check_permissions($_SESSION['admin_purview'],"crons");
-$smarty->assign('pageheader',"¼Æ»®ÈÎÎñ");
+$smarty->assign('pageheader',"è®¡åˆ’ä»»åŠ¡");
 if($act == 'list')
 {
 	require_once(QISHI_ROOT_PATH.'include/page.class.php');
@@ -40,8 +40,8 @@ elseif($act == 'add')
 elseif($act == 'add_save')
 {
 	check_token();
-$setsqlarr['name']=!empty($_POST['name'])?trim($_POST['name']):adminmsg('Ãû³Æ²»ÄÜÎª¿Õ',1);
-$setsqlarr['filename']=!empty($_POST['filename'])?trim($_POST['filename']):adminmsg('ÈÎÎñ½Å±¾²»ÄÜÎª¿Õ',1);
+$setsqlarr['name']=!empty($_POST['name'])?trim($_POST['name']):adminmsg('åç§°ä¸èƒ½ä¸ºç©º',1);
+$setsqlarr['filename']=!empty($_POST['filename'])?trim($_POST['filename']):adminmsg('ä»»åŠ¡è„šæœ¬ä¸èƒ½ä¸ºç©º',1);
 $setsqlarr['weekday']=intval($_POST['weekday']);
 $setsqlarr['day']=intval($_POST['day']);
 $setsqlarr['hour']=trim($_POST['hour']);
@@ -54,14 +54,14 @@ $setsqlarr['admin_set']=0;
 $setsqlarr['available']=intval($_POST['available']);
 	if ($db->inserttable(table('crons'),$setsqlarr))
 	{
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] ="?act=";
-	write_log("Ìí¼Ó¼Æ»®ÈÎÎñ£º".$setsqlarr['name'], $_SESSION['admin_name'],3);
-	adminmsg("Ìí¼Ó³É¹¦£¡",2,$link);
+	write_log("æ·»åŠ è®¡åˆ’ä»»åŠ¡ï¼š".$setsqlarr['name'], $_SESSION['admin_name'],3);
+	adminmsg("æ·»åŠ æˆåŠŸï¼",2,$link);
 	}
 	else
 	{
-	adminmsg("Ìí¼ÓÊ§°Ü£¡",0);
+	adminmsg("æ·»åŠ å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'edit')
@@ -73,10 +73,10 @@ elseif($act == 'edit')
 elseif($act == 'edit_save')
 {
 	check_token();
-	$link[0]['text'] = "·µ»ØÁÐ±í";
+	$link[0]['text'] = "è¿”å›žåˆ—è¡¨";
 	$link[0]['href'] ="?act=";
-	$setsqlarr['name']=!empty($_POST['name'])?trim($_POST['name']):adminmsg('Ãû³Æ²»ÄÜÎª¿Õ',1);
-	$setsqlarr['filename']=!empty($_POST['filename'])?trim($_POST['filename']):adminmsg('ÈÎÎñ½Å±¾²»ÄÜÎª¿Õ',1);
+	$setsqlarr['name']=!empty($_POST['name'])?trim($_POST['name']):adminmsg('åç§°ä¸èƒ½ä¸ºç©º',1);
+	$setsqlarr['filename']=!empty($_POST['filename'])?trim($_POST['filename']):adminmsg('ä»»åŠ¡è„šæœ¬ä¸èƒ½ä¸ºç©º',1);
 	$setsqlarr['weekday']=intval($_POST['weekday']);
 	$setsqlarr['day']=intval($_POST['day']);
 	$setsqlarr['hour']=intval($_POST['hour']);
@@ -87,21 +87,21 @@ elseif($act == 'edit_save')
 	}
 	$setsqlarr['available']=intval($_POST['available']);
 	$wheresql=" cronid=".intval($_POST['cronid']);
-	!$db->updatetable(table('crons'),$setsqlarr,$wheresql)?adminmsg("ÐÞ¸ÄÊ§°Ü£¡",0):adminmsg("ÐÞ¸Ä³É¹¦£¡",2,$link);
+	!$db->updatetable(table('crons'),$setsqlarr,$wheresql)?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 }
 elseif($act == 'del')
 {
 	get_token();
 	$id=$_REQUEST['id'];
-	if (empty($id)) adminmsg("ÇëÑ¡ÔñÏîÄ¿£¡",0);
+	if (empty($id)) adminmsg("è¯·é€‰æ‹©é¡¹ç›®ï¼",0);
 	if ($num=del_crons($id))
 	{
-	write_log("É¾³ý¼Æ»®ÈÎÎñ,¹²É¾³ý".$num."ÐÐ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."ÐÐ",2);
+	write_log("åˆ é™¤è®¡åˆ’ä»»åŠ¡,å…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡".$num,1);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼".$num,1);
 	}
 }
 elseif($act == 'execution')
@@ -113,10 +113,10 @@ elseif($act == 'execution')
 	{
 		if (!file_exists(QISHI_ROOT_PATH."include/crons/".$crons['filename']))
 		{
-		adminmsg("ÈÎÎñÎÄ¼þ {$crons['filename']} ²»´æÔÚ£¡",0);
+		adminmsg("ä»»åŠ¡æ–‡ä»¶ {$crons['filename']} ä¸å­˜åœ¨ï¼",0);
 		}
 	require_once(QISHI_ROOT_PATH."include/crons/".$crons['filename']);
-	adminmsg("Ö´ÐÐ³É¹¦£¡",2);
+	adminmsg("æ‰§è¡ŒæˆåŠŸï¼",2);
 	}	
 }
 ?>

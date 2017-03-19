@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
@@ -13,12 +13,12 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//¼ÆËã»ñµÃ»ı·ÖÊıÁ¿
+	//è®¡ç®—è·å¾—ç§¯åˆ†æ•°é‡
 	$("#amount").keyup(function(){	
 		if((/^(\+|-)?\d+$/.test($(this).val())) && $(this).val()>={#$QISHI.payment_min#})
 		{
 		$("#count").css("display","");	
-		$("#show_val").html("³äÖµ½ğ¶îÎª<strong style=\"color:#003399\">&nbsp;&nbsp;"+$(this).val()+"&nbsp;&nbsp;</strong>Ôª£¬¿É»ñµÃ£º&nbsp;&nbsp;<span style=\"color: #009900; font-size:22px; font-style:italic\">"+$(this).val()*{#$QISHI.payment_rate#}+"</span>&nbsp;&nbsp;{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}");   
+		$("#show_val").html("å……å€¼é‡‘é¢ä¸º<strong style=\"color:#003399\">&nbsp;&nbsp;"+$(this).val()+"&nbsp;&nbsp;</strong>å…ƒï¼Œå¯è·å¾—ï¼š&nbsp;&nbsp;<span style=\"color: #009900; font-size:22px; font-style:italic\">"+$(this).val()*{#$QISHI.payment_rate#}+"</span>&nbsp;&nbsp;{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}");   
 		}
 		else
 		{
@@ -26,7 +26,7 @@ $(document).ready(function()
 		}	
 	});	
 })
-//ÑéÖ¤
+//éªŒè¯
 $(document).ready(function() {
  $("#Form1").validate({
  //debug: true,
@@ -44,12 +44,12 @@ $(document).ready(function() {
 	},
     messages: {
 		amount: {
-			required: "ÇëÊäÈë³äÖµ½ğ¶î",
-			digits: "½ğ¶î±ØĞëÊÇÕûÊı",
-			min: jQuery.format("µ¥±Ê½ğ¶î²»ÄÜµÍÓÚ{0}Ôª")
+			required: "è¯·è¾“å…¥å……å€¼é‡‘é¢",
+			digits: "é‡‘é¢å¿…é¡»æ˜¯æ•´æ•°",
+			min: jQuery.format("å•ç¬”é‡‘é¢ä¸èƒ½ä½äº{0}å…ƒ")
 		},
 		payment_name:{
-			required: "ÇëÑ¡ÔñÖ§¸¶·½Ê½"
+			required: "è¯·é€‰æ‹©æ”¯ä»˜æ–¹å¼"
 		}
 	},
   errorPlacement: function(error, element) {
@@ -66,7 +66,7 @@ $(document).ready(function() {
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ³äÖµ¶©µ¥</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > å……å€¼è®¢å•</div>
 
 <div class="usermain">
   <div class="leftmenu  com link_bk">
@@ -77,32 +77,32 @@ $(document).ready(function() {
  	<div class="bbox1 link_bk my_account intrgration" style="padding-top:0;">
 		<div class="topnav">
 			<div class="titleH1">
-				<div class="h1-title">³äÖµ/¶©µ¥</div>
+				<div class="h1-title">å……å€¼/è®¢å•</div>
 			</div>
 
 			<div class="navs">
         {#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
-        <a href="?act=order_add" class="se">»ı·Ö³äÖµ</a>
+        <a href="?act=order_add" class="se">ç§¯åˆ†å……å€¼</a>
         {#/if#}
         {#if $QISHI.operation_mode=="2" || $QISHI.operation_mode=="3"#}
-        <a href="?act=setmeal_list">ÉêÇëVIPÌ×²Í</a>
+        <a href="?act=setmeal_list">ç”³è¯·VIPå¥—é¤</a>
         {#/if#}
-        <a href="?act=order_list">ÎÒµÄ¶©µ¥</a>
+        <a href="?act=order_list">æˆ‘çš„è®¢å•</a>
 				<div class="clear"></div>
 			</div>
 		</div>
 		<div class="balance margin-common">
-  			<div class="bal_text" style="margin-bottom:0;">ÄúµÄÕË»§Ê£Óà<span> {#$points#} </span>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="company_service.php?act=j_account&detail=1">[»ı·ÖÃ÷Ï¸]</a>&nbsp;&nbsp;<a target="_blank" href="company_service.php?act=j_account">[»ı·ÖÏû·Ñ¹æÔò]</a></div>
+  			<div class="bal_text" style="margin-bottom:0;">æ‚¨çš„è´¦æˆ·å‰©ä½™<span> {#$points#} </span>{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="company_service.php?act=j_account&detail=1">[ç§¯åˆ†æ˜ç»†]</a>&nbsp;&nbsp;<a target="_blank" href="company_service.php?act=j_account">[ç§¯åˆ†æ¶ˆè´¹è§„åˆ™]</a></div>
   		</div>
   		<div class="bar">
   			<div class="bar_step1">
-  				<p>ÌîĞ´¶©µ¥</p>
+  				<p>å¡«å†™è®¢å•</p>
   			</div>
   			<div class="bar_step2 hui">
-  				<p>È·ÈÏ¶©µ¥</p>
+  				<p>ç¡®è®¤è®¢å•</p>
   			</div>
   			<div class="bar_step3 hui">
-  				<p>Ìá½»¶©µ¥</p>
+  				<p>æäº¤è®¢å•</p>
   			</div>
   		</div>
   		<form id="Form1" name="Form1" method="post" action="?act=order_add_save"  >
@@ -110,9 +110,9 @@ $(document).ready(function() {
   			<table>
   				<tbody>
   					<tr>
-  						<td height="30" width="100">³äÖµ½ğ¶î£º</td>
-  						<td width="240"><input type="text" name="amount" id="amount" maxlength="8" class="input_text_200"/>&nbsp;Ôª</td>
-              <td> £¨µ¥±Ê½ğ¶î²»ÄÜµÍÓÚ{#$QISHI.payment_min#}Ôª£©&nbsp; 1Ôª = {#$QISHI.payment_rate#}{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}</td>
+  						<td height="30" width="100">å……å€¼é‡‘é¢ï¼š</td>
+  						<td width="240"><input type="text" name="amount" id="amount" maxlength="8" class="input_text_200"/>&nbsp;å…ƒ</td>
+              <td> ï¼ˆå•ç¬”é‡‘é¢ä¸èƒ½ä½äº{#$QISHI.payment_min#}å…ƒï¼‰&nbsp; 1å…ƒ = {#$QISHI.payment_rate#}{#$QISHI.points_quantifier#}{#$QISHI.points_byname#}</td>
   					</tr>
   					<tr id="count" style="display:none;">
   						<td></td>
@@ -124,7 +124,7 @@ $(document).ready(function() {
   				<tbody>
   					{#section name=payment loop=$payment#}
   					<tr>
-  						<td height="30" width="100">{#if $smarty.section.payment.index==0#}Ö§¸¶·½Ê½£º{#/if#}</td>
+  						<td height="30" width="100">{#if $smarty.section.payment.index==0#}æ”¯ä»˜æ–¹å¼ï¼š{#/if#}</td>
   						<td width="150"><input type="radio" name="payment_name" value="{#$payment[payment].typename#}" id="payment_name" />&nbsp;&nbsp;<img src="{#$QISHI.site_dir#}include/payment/logo/{#$payment[payment].typename#}.gif" alt=""/></td>
   						<td> <p>({#$payment[payment].p_introduction#})</p></td>
   					</tr>
@@ -137,7 +137,7 @@ $(document).ready(function() {
 					<td width="150"><div id="pay_er"> </td> 
 				</tr>
 			</table> 
-  			<input class="but130lan intrgration_but" type="submit" style="margin-top:0;" name="submit" value="³äÖµ"/>
+  			<input class="but130lan intrgration_but" type="submit" style="margin-top:0;" name="submit" value="å……å€¼"/>
   		</div>
   		</form>
   	</div>

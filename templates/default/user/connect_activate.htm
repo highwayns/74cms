@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gbk">
@@ -13,11 +13,11 @@ $(function() {
 		var utype=$(this).attr("member-type");
 		$(".utype").val(utype);
 	})
-	//ÑéÖ¤ÂëËæ»ú
+	//éªŒè¯ç éšæœº
 	$("#getcode").live('click',function(){
 		$(this).attr('src','{#$QISHI.site_dir#}include/imagecaptcha.php?t='+Math.random()+'');
 	});
-	// ±íµ¥ÑéÖ¤
+	// è¡¨å•éªŒè¯
 	$("#Form1").validate({
 		success: function(lable) {
 				lable.text(" ").addClass("ver-success");
@@ -58,23 +58,23 @@ $(function() {
 		messages: {
 			password: 
 			{
-				required: "ÇëÌîĞ´ÃÜÂë",
-				minlength: jQuery.format("ÌîĞ´²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-				maxlength: jQuery.format("ÌîĞ´²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+				required: "è¯·å¡«å†™å¯†ç ",
+				minlength: jQuery.format("å¡«å†™ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+				maxlength: jQuery.format("å¡«å†™ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
 			},
 			rpassword: {
-				required: "ÇëÌîĞ´ÃÜÂë",
-				equalTo: "Á½´ÎÊäÈëµÄÃÜÂë²»Í¬"
+				required: "è¯·å¡«å†™å¯†ç ",
+				equalTo: "ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸åŒ"
 			},
 			mobile: {
-				required: "ÇëÌîĞ´ÊÖ»úºÅ",
-				remote: jQuery.format("ÊÖ»úºÅÒÑ±»×¢²á")
+				required: "è¯·å¡«å†™æ‰‹æœºå·",
+				remote: jQuery.format("æ‰‹æœºå·å·²è¢«æ³¨å†Œ")
 			},
 			email:
 			{
-				required: "ÇëÊäÈëÓÊÏä",
-				email: "ÇëÊäÈëÕıÈ·¸ñÊ½µÄÓÊÏä",
-				remote: jQuery.format("¸ÃÓÊÏäÒÑ¾­±»×¢²á¹ı£¡")	
+				required: "è¯·è¾“å…¥é‚®ç®±",
+				email: "è¯·è¾“å…¥æ­£ç¡®æ ¼å¼çš„é‚®ç®±",
+				remote: jQuery.format("è¯¥é‚®ç®±å·²ç»è¢«æ³¨å†Œè¿‡ï¼")	
 			}
 		},
 		errorPlacement: function(error, element) {
@@ -86,30 +86,30 @@ $(function() {
 		    error.appendTo(element.parent().next());
 		}
 	});
-	// ÊÖ»ú
+	// æ‰‹æœº
 	jQuery.validator.addMethod("ismobile", function(value, element) { 
 	var tel = /^(13|14|15|18|17)\d{9}$/;
 	var $cstr= false;
 	if (tel.test(value)) $cstr= true;
 	return $cstr || this.optional(element); 
-	}, "ÇëÊäÈëÕıÈ·µÄÊÖ»úºÅ");
-	//°ó¶¨ ±íµ¥ÑéÖ¤
+	}, "è¯·è¾“å…¥æ­£ç¡®çš„æ‰‹æœºå·");
+	//ç»‘å®š è¡¨å•éªŒè¯
 	$("form[id=pcLogin]").submit(function(e) {
 	e.preventDefault();
-		if ($("#username").val()=="" || $("#username").val()=="ÓÃ»§Ãû/ÓÊÏä/ÊÖ»úºÅ")
+		if ($("#username").val()=="" || $("#username").val()=="ç”¨æˆ·å/é‚®ç®±/æ‰‹æœºå·")
 		{			
-			$(".login_err").html("ÇëÌîĞ´£ºÓÃ»§Ãû / ÓÊÏä / ÊÖ»úºÅ");	
+			$(".login_err").html("è¯·å¡«å†™ï¼šç”¨æˆ·å / é‚®ç®± / æ‰‹æœºå·");	
 			$(".login_err").show();
 		}
 		else if($("#login_password").val()=="")
 		{	
-		$(".login_err").html("ÇëÌîĞ´ÃÜÂë£¡");
+		$(".login_err").html("è¯·å¡«å†™å¯†ç ï¼");
 		$(".login_err").show();
 		}
 		else if($("#postcaptcha").val()=="")
 		{	
 
-			$(".login_err").html("ÇëÌîĞ´ÑéÖ¤Âë£¡");
+			$(".login_err").html("è¯·å¡«å†™éªŒè¯ç ï¼");
 			$(".login_err").show();
 		}
 		else
@@ -128,16 +128,16 @@ $(function() {
 					$(".login_err").show();	
 					if (data=="err")
 					{
-					errinfo="ÕÊºÅ»òÕßÃÜÂë´íÎó";
+					errinfo="å¸å·æˆ–è€…å¯†ç é”™è¯¯";
 					}
 					else if(data=="errcaptcha")
 					{
 					$("#imgdiv img").attr("src",$("#imgdiv img").attr("src")+"1");
-					errinfo="ÑéÖ¤Âë´íÎó";
+					errinfo="éªŒè¯ç é”™è¯¯";
 					}
 					else if(data=="status_err")
 					{
-					errinfo="ÕËºÅÒÑ¾­±»ÔİÍ££¬ÇëÁªÏµ¹ÜÀíÔ±£¡";
+					errinfo="è´¦å·å·²ç»è¢«æš‚åœï¼Œè¯·è”ç³»ç®¡ç†å‘˜ï¼";
 					}
 					$(".login_err").html(errinfo);
 				}
@@ -153,56 +153,56 @@ $(function() {
 </script>
 </head>
 <body>
-	<!-- Í·²¿ -->
+	<!-- å¤´éƒ¨ -->
 	{#include file="user/reg_header.htm"#}
 	<!-- main -->
 	<div class="container">
 		<div class="third-reg-wrap">
-			<h1>Ö»²îÒ»²½£¬¼´¿ÉÍê³ÉµÇÂ¼ÉèÖÃ</h1>
-			<p class="t-reg-tips">»¶Ó­Ê¹ÓÃ{#$third_name#}ÕÊºÅµÇÂ¼{#$QISHI.site_name#}<br />Íê³ÉÕËºÅ´´½¨ºó¿ÉÖ±½ÓµÇÂ¼Å¶£¡</p>
+			<h1>åªå·®ä¸€æ­¥ï¼Œå³å¯å®Œæˆç™»å½•è®¾ç½®</h1>
+			<p class="t-reg-tips">æ¬¢è¿ä½¿ç”¨{#$third_name#}å¸å·ç™»å½•{#$QISHI.site_name#}<br />å®Œæˆè´¦å·åˆ›å»ºåå¯ç›´æ¥ç™»å½•å“¦ï¼</p>
 			<div class="t-reg-main clearfix">
 				<div class="reg-left-form f-left">
 					<div class="reg-form-item clearfix">
-						<div class="reg-form-type f-left">	{#$third_name#}êÇ³Æ</div>
+						<div class="reg-form-type f-left">	{#$third_name#}æ˜µç§°</div>
 						<div class="reg-form-content f-left">
 							<span class="third-form-text">{#$nickname#}</span>
 						</div>
 					</div>
 					<form action="?act=reg_save" id="Form1" method="post">
 					<div class="reg-form-item clearfix">
-						<div class="reg-form-type f-left">	×¢²áÀàĞÍ</div>
+						<div class="reg-form-type f-left">	æ³¨å†Œç±»å‹</div>
 						<div class="reg-form-content f-left">
 							<div class="member-type-wrap clearfix">
-								<div class="member-type select f-left" member-type="2"><i class="member-icon m-icon1"></i>¸öÈË</div>
-								<div class="member-type f-left" member-type="1"><i class="member-icon m-icon2"></i>ÆóÒµ</div>
+								<div class="member-type select f-left" member-type="2"><i class="member-icon m-icon1"></i>ä¸ªäºº</div>
+								<div class="member-type f-left" member-type="1"><i class="member-icon m-icon2"></i>ä¼ä¸š</div>
 							</div>
 						</div>
 					</div>
 					<div class="reg-form-item clearfix">
-						<div class="reg-form-type f-left">	ÃÜÂë</div>
+						<div class="reg-form-type f-left">	å¯†ç </div>
 						<div class="reg-form-content f-left">
-							<input type="password" name="password" id="password" class="text text-lg span350" placeholder="ÃÜÂë" />
+							<input type="password" name="password" id="password" class="text text-lg span350" placeholder="å¯†ç " />
 						</div>
 						<div class="verification f-left" style="width: 110px;overflow: hidden;"></div>
 					</div>
 					<div class="reg-form-item clearfix">
-						<div class="reg-form-type f-left">	È·ÈÏÃÜÂë</div>
+						<div class="reg-form-type f-left">	ç¡®è®¤å¯†ç </div>
 						<div class="reg-form-content f-left">
-							<input type="password" name="rpassword" id="rpassword" class="text text-lg span350" placeholder="ÖØĞÂÊäÈëÃÜÂë" />
+							<input type="password" name="rpassword" id="rpassword" class="text text-lg span350" placeholder="é‡æ–°è¾“å…¥å¯†ç " />
 						</div>
 						<div class="verification f-left"  style="width: 110px;overflow: hidden;"></div>
 					</div>
 					<div class="reg-form-item clearfix">
-						<div class="reg-form-type f-left">	ÊÖ»ú</div>
+						<div class="reg-form-type f-left">	æ‰‹æœº</div>
 						<div class="reg-form-content f-left">
-							<input type="text" name="mobile" id="mobile" class="text text-lg span350" placeholder="ÇëÊäÈëÄúµÄÊÖ»úºÅÂë" />
+							<input type="text" name="mobile" id="mobile" class="text text-lg span350" placeholder="è¯·è¾“å…¥æ‚¨çš„æ‰‹æœºå·ç " />
 						</div>
 						<div class="verification f-left"  style="width: 110px;overflow: hidden;"></div>
 					</div>
 					<div class="reg-form-item clearfix">
-						<div class="reg-form-type f-left">ÓÊÏä</div>
+						<div class="reg-form-type f-left">é‚®ç®±</div>
 						<div class="reg-form-content f-left">
-							<input type="text" name="email" id="email" class="text text-lg span350" placeholder="ÇëÊäÈëÄúµÄÓÊÏä" />
+							<input type="text" name="email" id="email" class="text text-lg span350" placeholder="è¯·è¾“å…¥æ‚¨çš„é‚®ç®±" />
 						</div>
 						<div class="verification f-left"  style="width: 110px;overflow: hidden;"></div>
 					</div>
@@ -212,42 +212,42 @@ $(function() {
 							<input type="hidden" name="utype" class="utype" value="2"/>
 							<input type="hidden" name="nickname" value="{#$nickname#}" />
 							<input type="hidden" name="act" value="reg_save" />
-							<input type="submit" value="Íê³É" class="btn btn-lg blue span1" />
+							<input type="submit" value="å®Œæˆ" class="btn btn-lg blue span1" />
 						</div>
 					</div>
 					</form>
 				</div>
 				<div class="third-reg-right f-right">
 					<form method="post" id="pcLogin">
-					<h2>ÒÑÓĞÕËºÅ£¿Ö±½Ó°ó¶¨</h2>
+					<h2>å·²æœ‰è´¦å·ï¼Ÿç›´æ¥ç»‘å®š</h2>
 					<div class="s-bind">
 						<div class="bind-item">
 							<div class="login-ver-box error login_err" style="display: none;"></div>
 							<div class="bind-content">
-								<input type="text" name="username" id="username" class="text text-lg span300" placeholder="ÇëÊäÈëÄúµÄÓÃ»§Ãû/ÊÖ»ú/ÓÊÏä" />
+								<input type="text" name="username" id="username" class="text text-lg span300" placeholder="è¯·è¾“å…¥æ‚¨çš„ç”¨æˆ·å/æ‰‹æœº/é‚®ç®±" />
 							</div>
 						</div>
 						<div class="bind-item">
 							<div class="bind-content">
-								<input type="password" name="password" id="login_password" class="text text-lg span300" placeholder="ÇëÊäÈëÃÜÂë" />
+								<input type="password" name="password" id="login_password" class="text text-lg span300" placeholder="è¯·è¾“å…¥å¯†ç " />
 							</div>
 						</div>
 						<div class="bind-item">
 							<div class="bind-content clearfix">
 								<div class="bind-ver f-left">
-									<input type="text" name="postcaptcha" id="postcaptcha" class="text text-lg span190" placeholder="ÇëÊäÈëÑéÖ¤Âë" />
+									<input type="text" name="postcaptcha" id="postcaptcha" class="text text-lg span190" placeholder="è¯·è¾“å…¥éªŒè¯ç " />
 								</div>
 								<div class="bind-ver-img f-left">
-									<img src="{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}" id="getcode" align="absmiddle"  style="cursor:pointer;width: 100px;height: 38px;" title="¿´²»ÇëÑéÖ¤Âë£¿µã»÷¸ü»»Ò»ÕÅ"  border="0" />
+									<img src="{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}" id="getcode" align="absmiddle"  style="cursor:pointer;width: 100px;height: 38px;" title="çœ‹ä¸è¯·éªŒè¯ç ï¼Ÿç‚¹å‡»æ›´æ¢ä¸€å¼ "  border="0" />
 								</div>
 							</div>
 						</div>
 						<div class="bind-submit-item">
-							<input type="submit" name="submitlogin" id="login" value="°ó¶¨ÕËºÅ" class="btn btn-small blue span3" />
-							<input type="text"  id="waiting" value="ÕıÔÚ°ó¶¨..." class="btn btn-small blue span3"  style="display: none;" disabled/>
-							<a href="{#$QISHI.site_dir#}user/user_getpass.php" class="f-right">Íü¼ÇÃÜÂë£¿</a>
+							<input type="submit" name="submitlogin" id="login" value="ç»‘å®šè´¦å·" class="btn btn-small blue span3" />
+							<input type="text"  id="waiting" value="æ­£åœ¨ç»‘å®š..." class="btn btn-small blue span3"  style="display: none;" disabled/>
+							<a href="{#$QISHI.site_dir#}user/user_getpass.php" class="f-right">å¿˜è®°å¯†ç ï¼Ÿ</a>
 						</div>
-						<p class="bind-tips">°ó¶¨ºó£¬Äú¿ÉÒÔÊ¹ÓÃ{#$third_name#}Ö±½ÓµÇÂ¼</p>
+						<p class="bind-tips">ç»‘å®šåï¼Œæ‚¨å¯ä»¥ä½¿ç”¨{#$third_name#}ç›´æ¥ç™»å½•</p>
 					</div>
 					</form>
 				</div>

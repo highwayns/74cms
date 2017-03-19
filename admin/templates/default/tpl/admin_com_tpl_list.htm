@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript"> 
 $(document).ready(function()
 {
@@ -19,14 +19,14 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-ĞÂÔöÆóÒµÄ£°åÖ»Ğè½«Ä£°åÎÄ¼şÉÏ´«ÖÁ ./templates/tpl_companyÄ¿Â¼ÏÂ£¬¸ü¶àÄ£°æÇëµ½ <a href="http://www.74cms.com/bbs" target="_blank" style="color:#009900">[ÂÛÌ³]</a> »ñÈ¡¡£<br />
-Ôö¼Ó»òÉ¾³ıÄ£°æºóÇëµã»÷ÏÂ·½<strong>Ë¢ĞÂ</strong>°´Å¥¡£<br />
-      Èç¹ûÄúÊìÏ¤htmlÓï·¨£¬Ôò¿ÉÒÔ²Î¿¼ <a href="http://www.74cms.com/handbook" target="_blank" style="color:#009900">[Ä£°æ¿ª·¢ÊÖ²á]</a> ×Ô¶¨Òå·ç¸ñÄ£°æ¡£
+æ–°å¢ä¼ä¸šæ¨¡æ¿åªéœ€å°†æ¨¡æ¿æ–‡ä»¶ä¸Šä¼ è‡³ ./templates/tpl_companyç›®å½•ä¸‹ï¼Œæ›´å¤šæ¨¡ç‰ˆè¯·åˆ° <a href="http://www.74cms.com/bbs" target="_blank" style="color:#009900">[è®ºå›]</a> è·å–ã€‚<br />
+å¢åŠ æˆ–åˆ é™¤æ¨¡ç‰ˆåè¯·ç‚¹å‡»ä¸‹æ–¹<strong>åˆ·æ–°</strong>æŒ‰é’®ã€‚<br />
+      å¦‚æœæ‚¨ç†Ÿæ‚‰htmlè¯­æ³•ï¼Œåˆ™å¯ä»¥å‚è€ƒ <a href="http://www.74cms.com/handbook" target="_blank" style="color:#009900">[æ¨¡ç‰ˆå¼€å‘æ‰‹å†Œ]</a> è‡ªå®šä¹‰é£æ ¼æ¨¡ç‰ˆã€‚
 </p>
 </div>
-<div class="toptit">ÆóÒµÄ£°æÉèÖÃ</div>
+<div class="toptit">ä¼ä¸šæ¨¡ç‰ˆè®¾ç½®</div>
 <form id="form1" name="form1" method="post" action="?act=com_tpl_save">
 {#$inputtoken#}
 	{#foreach from=$list item=li#}
@@ -36,38 +36,38 @@ $(document).ready(function()
     <td width="225"><img src="../templates/tpl_company/{#$li.tpl_dir#}/thumbnail.jpg" alt="{#$li.info.name#}" width="225" height="136" border="1"  style="border: #CCCCCC;"/></td>
     <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-        <td width="50" align="right">Ãû³Æ£º</td>
+        <td width="50" align="right">åç§°ï¼š</td>
         <td><input name="tpl_id[]" type="hidden" value="{#$li.tpl_id#}" />
           <input name="tpl_name[]" type="text" value="{#$li.info.name#}"  class="input_text_200" />
 		  
 		  </td>
       </tr>
       <tr>
-        <td width="50" align="right">Ä¬ÈÏ£º</td>
+        <td width="50" align="right">é»˜è®¤ï¼š</td>
         <td><label>
           <input name="tpl_company" type="radio" value="{#$li.tpl_dir#}" {#if $li.tpl_dir==$QISHI.tpl_company#}checked="checked" {#/if#}/>
         </label></td>
       </tr>
 	  <tr>
-        <td align="right">¿ÉÓÃ£º</td>
+        <td align="right">å¯ç”¨ï¼š</td>
         <td><label>
          <input name="tpl_display[]" type="checkbox" value="1" {#if $li.tpl_display=="1"#}checked="checked" {#/if#}/>
         </label></td>
       </tr>
       <tr>
-        <td align="right">ÊÛ¼Û£º</td>
+        <td align="right">å”®ä»·ï¼š</td>
         <td><input type="text" class="input_text_200" maxlength="3" value="{#$li.tpl_val#}" name="tpl_val[]"/>
-		µã»ı·Ö
+		ç‚¹ç§¯åˆ†
 		
 		
-		<span class="admin_note">ÆóÒµ»áÔ±Ê¹ÓÃ´ËÄ£°æĞèÒªÖ§¸¶µÄ»ı·Ö£¬0ÎªÃâ·Ñ</span></td>
+		<span class="admin_note">ä¼ä¸šä¼šå‘˜ä½¿ç”¨æ­¤æ¨¡ç‰ˆéœ€è¦æ”¯ä»˜çš„ç§¯åˆ†ï¼Œ0ä¸ºå…è´¹</span></td>
       </tr>
 	  <tr>
-        <td align="right">°æ±¾£º</td>
+        <td align="right">ç‰ˆæœ¬ï¼š</td>
         <td>{#$li.info.version#}</td>
       </tr>
 	        <tr>
-        <td align="right">×÷Õß£º</td>
+        <td align="right">ä½œè€…ï¼š</td>
         <td><a href="{#$li.info.authorurl#}" target="_blank">{#$li.info.author#}</a></td>
       </tr>
     </table></td>
@@ -78,8 +78,8 @@ $(document).ready(function()
 	<table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">
       <tr>
         <td>
-		 <input type="submit" name="" value="±£´æ" class="admin_submit" />
-		 <input type="button" name="Submit22" value="Ë¢ĞÂ" class="admin_submit"    onclick="window.location='?act=refresh_tpl&type=1&tpl_dir=tpl_company&{#$urltoken#}'"/>
+		 <input type="submit" name="" value="ä¿å­˜" class="admin_submit" />
+		 <input type="button" name="Submit22" value="åˆ·æ–°" class="admin_submit"    onclick="window.location='?act=refresh_tpl&type=1&tpl_dir=tpl_company&{#$urltoken#}'"/>
 		</td>
         <td width="305" align="right">		
 	    </td>

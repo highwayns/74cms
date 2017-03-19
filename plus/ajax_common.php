@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
  * 74cms ajax
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -22,7 +22,7 @@ if ($act=="countinfo")
 	$total_resume=$db->get_total($total);
 	$total="SELECT COUNT(*) AS num FROM ".table('members');
 	$total_members=$db->get_total($total);
-		$contents = "ÆóÒµ×ÜÊı£º<span>{$total_company}</span>&nbsp;&nbsp;&nbsp;&nbsp;ÓĞĞ§Ö°Î»£º<span>{$total_jobs}</span>&nbsp;&nbsp;&nbsp;&nbsp;ÓĞĞ§¼òÀú£º<span>{$total_resume}</span>&nbsp;&nbsp;&nbsp;&nbsp;»áÔ±×ÜÊı£º<span>{$total_members}</span>";
+		$contents = "ä¼ä¸šæ€»æ•°ï¼š<span>{$total_company}</span>&nbsp;&nbsp;&nbsp;&nbsp;æœ‰æ•ˆèŒä½ï¼š<span>{$total_jobs}</span>&nbsp;&nbsp;&nbsp;&nbsp;æœ‰æ•ˆç®€å†ï¼š<span>{$total_resume}</span>&nbsp;&nbsp;&nbsp;&nbsp;ä¼šå‘˜æ€»æ•°ï¼š<span>{$total_members}</span>";
 		$contents = ereg_replace("\t","",$contents); 
 		$contents = ereg_replace("\r\n","",$contents); 
 		$contents = ereg_replace("\r","",$contents); 
@@ -47,17 +47,17 @@ elseif ($act=="company_down_resume")
 		{
 			if($row['sex']==1)
 			{
-				$row['fullname']=cut_str($row['fullname'],1,0,"ÏÈÉú");
+				$row['fullname']=cut_str($row['fullname'],1,0,"å…ˆç”Ÿ");
 			}
 			elseif($row['sex']==2)
 			{
-				$row['fullname']=cut_str($row['fullname'],1,0,"Å®Ê¿");
+				$row['fullname']=cut_str($row['fullname'],1,0,"å¥³å£«");
 			}
 		}
 		if($_CFG['closetime']==1){
-			$html[$row['bid']]="<li><a href=".url_rewrite('QS_companyshow',array('id'=>$row['bid']))." target=\"_blank\">".$row['companyname']." </a> ÏÂÔØÁË <a href=".url_rewrite('QS_resumeshow',array('id'=>$row['cid']))." target=\"_blank\">".$row['fullname']." </a>µÄ¸öÈË¼òÀú</li>";
+			$html[$row['bid']]="<li><a href=".url_rewrite('QS_companyshow',array('id'=>$row['bid']))." target=\"_blank\">".$row['companyname']." </a> ä¸‹è½½äº† <a href=".url_rewrite('QS_resumeshow',array('id'=>$row['cid']))." target=\"_blank\">".$row['fullname']." </a>çš„ä¸ªäººç®€å†</li>";
 		}else{
-			$html[$row['bid']]="<li><a href=".url_rewrite('QS_companyshow',array('id'=>$row['bid']))." target=\"_blank\">".$row['companyname']." </a> ÏÂÔØÁË <a href=".url_rewrite('QS_resumeshow',array('id'=>$row['cid']))." target=\"_blank\">".$row['fullname']." </a>µÄ¸öÈË¼òÀú<span>{$row['time']}</span></li>";
+			$html[$row['bid']]="<li><a href=".url_rewrite('QS_companyshow',array('id'=>$row['bid']))." target=\"_blank\">".$row['companyname']." </a> ä¸‹è½½äº† <a href=".url_rewrite('QS_resumeshow',array('id'=>$row['cid']))." target=\"_blank\">".$row['fullname']." </a>çš„ä¸ªäººç®€å†<span>{$row['time']}</span></li>";
 		}
 		}
 	}
@@ -90,7 +90,7 @@ elseif($act=="hotword")
 	exit($str);
 	}
 }
-// ÓÊÏä×Ô¶¯ÌáÊ¾
+// é‚®ç®±è‡ªåŠ¨æç¤º
 elseif($act=="reg_email")
 {
 	if (empty($_GET['query']))
@@ -147,7 +147,7 @@ elseif($act=="joblisttip")
 				$row['company_url']=url_rewrite('QS_companyshow',array('id'=>$row['company_id']));
 				if ($i>5)
 				{
-				$html.="<li class=\"more\"><a href=\"{$row['company_url']}\" target=\"_blank\">¸ü¶à...</span></li>";
+				$html.="<li class=\"more\"><a href=\"{$row['company_url']}\" target=\"_blank\">æ›´å¤š...</span></li>";
 				break;
 				}
 				if($_CFG['closetime']==1){
@@ -236,7 +236,7 @@ elseif($act=="ajaxcomlist")
 				if($_CFG['closetime']==1){
 					$html.="<li><p><a class=\"com_name\" href=\"{$li['company_url']}\" target=\"_blank\"><span class=\"comtip\" id=\"{$li['uid']}\">{$li['companyname']}</span>&nbsp;";
 					if ($li['company_audit'] == 1) {
-						$html.="<img title=\"ÆóÒµÒÑÈÏÖ¤\" class=\"vtip\" src=\"$_CFG[site_template]images/iconren.jpg\" border=\"0\">&nbsp;";
+						$html.="<img title=\"ä¼ä¸šå·²è®¤è¯\" class=\"vtip\" src=\"$_CFG[site_template]images/iconren.jpg\" border=\"0\">&nbsp;";
 					}
 					if ($_CFG['operation_mode'] >= 2 && $li['setmeal_id'] > 1) {
 						$html.="<img src=\"$_CFG[site_dir]data/setmealimg/{$li['setmeal_id']}.gif\" border=\"0\" title=\"{$li['setmeal_name']}\" class=\"vtip\"/>";
@@ -245,16 +245,16 @@ elseif($act=="ajaxcomlist")
 				}else{
 					$html.="<li><p><a class=\"com_name\" href=\"{$li['company_url']}\" target=\"_blank\"><span class=\"comtip\" id=\"{$li['uid']}\">{$li['companyname']}</span>&nbsp;";
 					if ($li['company_audit'] == 1) {
-						$html.="<img title=\"ÆóÒµÒÑÈÏÖ¤\" class=\"vtip\" src=\"$_CFG[site_template]images/iconren.jpg\" border=\"0\">&nbsp;";
+						$html.="<img title=\"ä¼ä¸šå·²è®¤è¯\" class=\"vtip\" src=\"$_CFG[site_template]images/iconren.jpg\" border=\"0\">&nbsp;";
 					}
 					if ($_CFG['operation_mode'] >= 2 && $li['setmeal_id'] > 1) {
 						$html.="<img src=\"$_CFG[site_dir]data/setmealimg/{$li['setmeal_id']}.gif\" border=\"0\" title=\"{$li['setmeal_name']}\" class=\"vtip\"/>";
 					}
-					$html.="</a><span>{$li['refreshtime_cn']}¸üĞÂ</span></p>";
+					$html.="</a><span>{$li['refreshtime_cn']}æ›´æ–°</span></p>";
 				}
 		 		
 		 		if (!empty($li['jobs'])){
-		 			$html.="<p>Æ¸£º";
+		 			$html.="<p>è˜ï¼š";
 		 			foreach($li['jobs'] as $jobsli){
 			 			$html.="<a href=\"{$jobsli['jobs_url']}\" target=\"_blank\">{$jobsli['jobs_name']}</a>";
 			 		}
@@ -295,7 +295,7 @@ elseif($act=="ajaxjoblist")
 	$html .= '</div>';
 	exit($html);
 }
-// ½â³ıÎ¢ĞÅ°ó¶¨
+// è§£é™¤å¾®ä¿¡ç»‘å®š
 elseif($act == "bind_wx_jc")
 {
 	$uid=intval($_GET['uid']);
@@ -307,7 +307,7 @@ elseif($act == "bind_wx_jc")
 		$db->query("update ".table('members')." set weixin_openid=null,bindingtime='' where uid=$uid ");
 
 		$html.="<div style='padding:10px 20px 20px 20px;'>";
-		$html.="<div style='font-size: 14px;line-height: 1.8;'>½â³ıÎ¢ĞÅ°ó¶¨³É¹¦</div>";
+		$html.="<div style='font-size: 14px;line-height: 1.8;'>è§£é™¤å¾®ä¿¡ç»‘å®šæˆåŠŸ</div>";
 		$html.="</div>";
 	}
 	else
@@ -315,15 +315,15 @@ elseif($act == "bind_wx_jc")
 		if($user['email_audit']!=1 && $user['mobile_audit']!=1)
 		{
 			$html.="<div class='unbindBox unbindBoxs'>";
-			$html.="<div class='con'><div class='f-left'><img src='$_CFG[site_template]images/wx_showmsg.jpg'></div><div class='f-right tex'>¼ì²âµ½ÄúµÄÕËºÅÃ»ÓĞ°ó¶¨ÊÖ»úºÍÓÊÏä£¬¹Ø±ÕÎ¢ĞÅ°²È«µÇÂ¼ºóÈç¹ûÃÜÂë¶ªÊ§ºó<span class='class'>½«ÎŞ·¨ÕÒ»ØÃÜÂë</span>£¬È·¶¨Òª¹Ø±ÕÎ¢ĞÅ°²È«µÇÂ¼Âğ£¿</div><div class='clear'></div></div>";
-			$html.="<div class='sclosePd'><a class='sclose f-left' href='javascript:;' id='bind_wx_true' uid='".$user['uid']."'>È·ÈÏ</a><a class='sclose f-left sclosem' href='javascript:;'>È¡Ïû</a></div>";
+			$html.="<div class='con'><div class='f-left'><img src='$_CFG[site_template]images/wx_showmsg.jpg'></div><div class='f-right tex'>æ£€æµ‹åˆ°æ‚¨çš„è´¦å·æ²¡æœ‰ç»‘å®šæ‰‹æœºå’Œé‚®ç®±ï¼Œå…³é—­å¾®ä¿¡å®‰å…¨ç™»å½•åå¦‚æœå¯†ç ä¸¢å¤±å<span class='class'>å°†æ— æ³•æ‰¾å›å¯†ç </span>ï¼Œç¡®å®šè¦å…³é—­å¾®ä¿¡å®‰å…¨ç™»å½•å—ï¼Ÿ</div><div class='clear'></div></div>";
+			$html.="<div class='sclosePd'><a class='sclose f-left' href='javascript:;' id='bind_wx_true' uid='".$user['uid']."'>ç¡®è®¤</a><a class='sclose f-left sclosem' href='javascript:;'>å–æ¶ˆ</a></div>";
 			$html.="</div>";
 		}
 		else
 		{
 			$html.="<div class='unbindBox unbindBoxs'>";
-			$html.="<div class='con'><div class='f-left'><img src='$_CFG[site_template]images/wx_showmsg.jpg'></div><div class='f-right tex'>Î¢ĞÅµÇÂ¼¸ü¼òµ¥°²È«£¬ÇÒ¿É·ÀÖ¹Ä¾Âí¡¢¼üÅÌÂ¼ÖÆÇÔÈ¡ÃÜÂë£¬È·¶¨Òª¹Ø±ÕÎ¢ĞÅ°²È«µÇÂ¼Âğ£¿</div><div class='clear'></div></div>";
-			$html.="<div class='sclosePd'><a class='sclose f-left' href='javascript:;' id='bind_wx_true' uid='".$user['uid']."'>È·ÈÏ</a><a class='sclose f-left sclosem' href='javascript:;'>È¡Ïû</a></div>";
+			$html.="<div class='con'><div class='f-left'><img src='$_CFG[site_template]images/wx_showmsg.jpg'></div><div class='f-right tex'>å¾®ä¿¡ç™»å½•æ›´ç®€å•å®‰å…¨ï¼Œä¸”å¯é˜²æ­¢æœ¨é©¬ã€é”®ç›˜å½•åˆ¶çªƒå–å¯†ç ï¼Œç¡®å®šè¦å…³é—­å¾®ä¿¡å®‰å…¨ç™»å½•å—ï¼Ÿ</div><div class='clear'></div></div>";
+			$html.="<div class='sclosePd'><a class='sclose f-left' href='javascript:;' id='bind_wx_true' uid='".$user['uid']."'>ç¡®è®¤</a><a class='sclose f-left sclosem' href='javascript:;'>å–æ¶ˆ</a></div>";
 			$html.="</div>";
 		}
 	}
@@ -344,7 +344,7 @@ elseif($act == 'waiting_weixin_scan'){
 		global $db;
 		$result = $db->query("update ".table('members')." set weixin_openid='".$openid."',weixin_nick='".$w_userinfo['nickname']."' where uid=".$_SESSION['uid']." and weixin_openid IS NULL");
 		if($result){
-			// °ó¶¨Î¢ĞÅ »ñµÃ»ı·Ö
+			// ç»‘å®šå¾®ä¿¡ è·å¾—ç§¯åˆ†
 			$rule=get_cache('points_rule');
 			if ($rule['company_wx_points']['value']>0)
 			{
@@ -358,7 +358,7 @@ elseif($act == 'waiting_weixin_scan'){
 				$user_points=get_user_points($_SESSION['uid']);
 				$operator=$rule['company_wx_points']['type']=="1"?"+":"-";
 				$_SESSION['handsel_company_wx_points']=$_CFG['points_byname'].$operator.$rule['company_wx_points']['value'];
-				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username']," °ó¶¨Î¢ĞÅ£¬{$_CFG['points_byname']}({$operator}{$rule['company_wx_points']['value']})£¬(Ê£Óà:{$user_points})",1,1016,"°ó¶¨Î¢ĞÅ","{$operator}{$rule['company_wx_points']['value']}","{$user_points}");
+				write_memberslog($_SESSION['uid'],1,9001,$_SESSION['username']," ç»‘å®šå¾®ä¿¡ï¼Œ{$_CFG['points_byname']}({$operator}{$rule['company_wx_points']['value']})ï¼Œ(å‰©ä½™:{$user_points})",1,1016,"ç»‘å®šå¾®ä¿¡","{$operator}{$rule['company_wx_points']['value']}","{$user_points}");
 				}
 			}
 			unlink(QISHI_ROOT_PATH."data/weixin/".($event_key%10).'/'.$event_key.".txt");

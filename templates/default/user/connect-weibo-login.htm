@@ -1,20 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <meta http-equiv="X-UA-Compatible" content="edge"><meta name="renderer" content="webkit">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/bind.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' language="javascript"></script>
 <script src="{#$QISHI.site_template#}js/jquery.validate.min.js" type='text/javascript' language="javascript"></script>
 <script type="text/javascript">
-//ÑéÖ¤
+//éªŒè¯
 $(document).ready(function() {
-//ÑéÖ¤
+//éªŒè¯
  $("#Form1").validate({
 //debug: true,
 // onsubmit:false,
@@ -55,25 +55,25 @@ $(document).ready(function() {
   },
     messages: {
    member_type:{
-    required: "ÇëÑ¡ÔñÄúÒª³ÉÎªÄÄÖÖ»áÔ±"
+    required: "è¯·é€‰æ‹©æ‚¨è¦æˆä¸ºå“ªç§ä¼šå‘˜"
    },
    username: {
-    required: "ÇëÌîĞ´ÓÃ»§Ãû",
-  remote: jQuery.format("ÓÃ»§ÃûÒÑ¾­´æÔÚ»òÕß²»ºÏ·¨") 
+    required: "è¯·å¡«å†™ç”¨æˆ·å",
+  remote: jQuery.format("ç”¨æˆ·åå·²ç»å­˜åœ¨æˆ–è€…ä¸åˆæ³•") 
    },
     email: {
-    required: "ÇëÌîĞ´µç×ÓÓÊÏä",
-  email: jQuery.format("µç×ÓÓÊÏä¸ñÊ½´íÎó"),
-  remote: jQuery.format("emailÒÑ¾­´æÔÚ")  
+    required: "è¯·å¡«å†™ç”µå­é‚®ç®±",
+  email: jQuery.format("ç”µå­é‚®ç®±æ ¼å¼é”™è¯¯"),
+  remote: jQuery.format("emailå·²ç»å­˜åœ¨")  
    },
    password: {
-    required: "ÇëÌîĞ´ÃÜÂë",
-    minlength: jQuery.format("ÌîĞ´²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-  maxlength: jQuery.format("ÌîĞ´²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+    required: "è¯·å¡«å†™å¯†ç ",
+    minlength: jQuery.format("å¡«å†™ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+  maxlength: jQuery.format("å¡«å†™ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
    },
    password2: {
-   required: "ÇëÌîĞ´ÃÜÂë",
-    equalTo: "Á½´ÎÊäÈëµÄÃÜÂë²»Í¬"
+   required: "è¯·å¡«å†™å¯†ç ",
+    equalTo: "ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸åŒ"
    }
   },
   errorPlacement: function(error, element) {
@@ -85,7 +85,7 @@ $(document).ready(function() {
         error.appendTo(element.parent());
   }
     });
-   //ÖĞÎÄ×ÖÁ½¸ö×Ö½Ú
+   //ä¸­æ–‡å­—ä¸¤ä¸ªå­—èŠ‚
   jQuery.validator.addMethod("byteRangeLength", function(value, element,  param) {
   var length = value.length;
   for (var i = 0; i < value.length; i++) {
@@ -94,17 +94,17 @@ $(document).ready(function() {
       }
     }
   return this.optional(element) || (length >= param[0] && length <= param[1]);
-  }, "È·±£µÄÖµÔÚ3-18¸ö×Ö½ÚÖ®¼ä");
-  //×Ö·ûÑéÖ¤
+  }, "ç¡®ä¿çš„å€¼åœ¨3-18ä¸ªå­—èŠ‚ä¹‹é—´");
+  //å­—ç¬¦éªŒè¯
   jQuery.validator.addMethod("userName", function(value, element) {
   return this.optional(element) || /^[\u0391-\uFFE5\w]+$/.test(value);
-  }, "Ö»ÄÜ°üº¬ÖĞÓ¢ÎÄ¡¢Êı×ÖºÍÏÂ»®Ïß");
+  }, "åªèƒ½åŒ…å«ä¸­è‹±æ–‡ã€æ•°å­—å’Œä¸‹åˆ’çº¿");
   jQuery.validator.addMethod("nomobile", function(value, element) { 
     var tel = /^(13|15|18)\d{9}$/;
   var $cstr= true;
   if (tel.test(value)) $cstr= false;
   return $cstr || this.optional(element); 
-}, "ÓÃ»§Ãû²»ÄÜÊÇÊÖ»úºÅ");
+}, "ç”¨æˆ·åä¸èƒ½æ˜¯æ‰‹æœºå·");
 });
 </script>
 </head>
@@ -113,74 +113,74 @@ $(document).ready(function() {
     <div class="container">
       <div class="sign_lgo"><img src="{#$QISHI.upfiles_dir#}{#$QISHI.web_logo#}" alt="{#$QISHI.site_name#}" /></div>
       <div class="sign_centent">
-        <!-- °ó¶¨±íµ¥ -->
+        <!-- ç»‘å®šè¡¨å• -->
         <div class="sign_left bind">
           <div class="bind_top">
-            <h2>Ö»²îÒ»²½£¬¼´¿ÉÍê³ÉµÇÂ¼ÉèÖÃ</h2>
-            <p>»¶Ó­Ê¹ÓÃQQÕÊºÅµÇÂ¼{#$QISHI.site_name#}</p>
-            <p>Íê³ÉÕËºÅ´´½¨ºó£¬¼´¿ÉÖ±½ÓµÇÂ¼Å¶£¡</p>
+            <h2>åªå·®ä¸€æ­¥ï¼Œå³å¯å®Œæˆç™»å½•è®¾ç½®</h2>
+            <p>æ¬¢è¿ä½¿ç”¨QQå¸å·ç™»å½•{#$QISHI.site_name#}</p>
+            <p>å®Œæˆè´¦å·åˆ›å»ºåï¼Œå³å¯ç›´æ¥ç™»å½•å“¦ï¼</p>
           </div>
           <form id="Form1" name="Form1" method="post" action="?act=reg_save">
           <div class="sign_form">
             <ul>
               <li>
-                <div class="w99"><span>&nbsp;&nbsp;</span>Î¢ĞÅêÇ³Æ£º</div>
+                <div class="w99"><span>&nbsp;&nbsp;</span>å¾®ä¿¡æ˜µç§°ï¼š</div>
                 <div class="input_box">{#$nickname#}<input type="hidden" name="qq_nick" id="qq_nick" value="{#$nickname#}" /></div>
                 <div class="clear"></div>
               </li>
               <li>
-                <div class="w99"><span>*</span>»áÔ±ÀàĞÍ£º</div>
+                <div class="w99"><span>*</span>ä¼šå‘˜ç±»å‹ï¼š</div>
                 <div class="input_box">
                   <input name="member_type" id="member_type" type="hidden" />
-                  <div class="bind_radio select" id="2">¸öÈË</div>
-                  <div class="bind_radio" id="1">ÆóÒµ</div>
+                  <div class="bind_radio select" id="2">ä¸ªäºº</div>
+                  <div class="bind_radio" id="1">ä¼ä¸š</div>
                   <div class="clear"></div>
                 </div>
                 <div class="clear"></div>
               </li>
               <li>
-                <div class="w99"><span>*</span>ÓÃ»§Ãû£º</div>
-                <div class="input_box"><input type="text" class="sign_up_input_name" placeholder="ÇëÊäÈëÓÃ»§Ãû" name="username" id="username" /></div>
+                <div class="w99"><span>*</span>ç”¨æˆ·åï¼š</div>
+                <div class="input_box"><input type="text" class="sign_up_input_name" placeholder="è¯·è¾“å…¥ç”¨æˆ·å" name="username" id="username" /></div>
                 <div class="clear"></div>
               </li>
               <li>
-                <div class="w99"><span>*</span>ÉèÖÃÃÜÂë£º</div>
-                <div class="input_box"><input type="password" class="sign_up_input_pwd" placeholder="ÇëÊäÈëµÇÂ¼ÃÜÂë" name="password" id="password" /></div>
+                <div class="w99"><span>*</span>è®¾ç½®å¯†ç ï¼š</div>
+                <div class="input_box"><input type="password" class="sign_up_input_pwd" placeholder="è¯·è¾“å…¥ç™»å½•å¯†ç " name="password" id="password" /></div>
                 <div class="clear"></div>
               </li>
               <li>
-                <div class="w99"><span>*</span>È·ÈÏÃÜÂë£º</div>
-                <div class="input_box"><input type="password" class="sign_up_input_pwd" placeholder="ÇëÈ·ÈÏµÇÂ¼ÃÜÂë" name="password2" id="password2" /></div>
+                <div class="w99"><span>*</span>ç¡®è®¤å¯†ç ï¼š</div>
+                <div class="input_box"><input type="password" class="sign_up_input_pwd" placeholder="è¯·ç¡®è®¤ç™»å½•å¯†ç " name="password2" id="password2" /></div>
                 <div class="clear"></div>
               </li>
               <li>
-                <div class="w99"><span>*</span>µç×ÓÓÊÏä£º</div>
-                <div class="input_box"><input type="text" class="sign_up_input_mail" placeholder="ÇëÊäÈëÄúµÄ³£ÓÃÓÊÏä" name="email" id="email" /></div>
+                <div class="w99"><span>*</span>ç”µå­é‚®ç®±ï¼š</div>
+                <div class="input_box"><input type="text" class="sign_up_input_mail" placeholder="è¯·è¾“å…¥æ‚¨çš„å¸¸ç”¨é‚®ç®±" name="email" id="email" /></div>
                 <div class="clear"></div>
               </li>
               <li>
                 <div class="w99">&nbsp;</div>
-                <div class="input_box"><input type="submit" value="Íê³É" name="reg" id="reg" class="sign_up_but_sign" /></div>
+                <div class="input_box"><input type="submit" value="å®Œæˆ" name="reg" id="reg" class="sign_up_but_sign" /></div>
                 <div class="clear"></div>
               </li>
             </ul>
           </div>
         </form>
         </div>
-        <!-- °ó¶¨±íµ¥ ½áÊø -->
+        <!-- ç»‘å®šè¡¨å• ç»“æŸ -->
 
         <div class="sign_right">
           <div class="fast_login">
             <div class="content_box">
-              <p>ÒÑ¾­ÓĞÕÊºÅ£¬µÇÂ¼ÓëQQÕÊºÅ¹ØÁªµÇÂ¼</p>
-              <div><input type="button" value="Á¢¼´µÇÂ¼" class="sign_up_but_login" onclick="window.location='{#"QS_login"|qishi_url#}'"/></div>
+              <p>å·²ç»æœ‰å¸å·ï¼Œç™»å½•ä¸QQå¸å·å…³è”ç™»å½•</p>
+              <div><input type="button" value="ç«‹å³ç™»å½•" class="sign_up_but_login" onclick="window.location='{#"QS_login"|qishi_url#}'"/></div>
                 <div class="clear"></div> 
-                <p><strong><a href="{#$qqurl#}">[¸ü»»QQÕÊºÅ]</a></strong></p>
+                <p><strong><a href="{#$qqurl#}">[æ›´æ¢QQå¸å·]</a></strong></p>
             </div>
           </div>
           <div class="other_sign">
-            <p>ÄúÊÇÆóÒµÓÃ»§£¿<a href="{#$QISHI.site_dir#}user/user_reg.php?type=1">×¢²á<strong>ÆóÒµ»áÔ±</strong></a></p>
-            <p>ÄúÊÇ¸öÈËÓÃ»§£¿<a href="{#$QISHI.site_dir#}user/user_reg.php?type=2">×¢²á<strong>¸öÈË»áÔ±</strong></a></p>
+            <p>æ‚¨æ˜¯ä¼ä¸šç”¨æˆ·ï¼Ÿ<a href="{#$QISHI.site_dir#}user/user_reg.php?type=1">æ³¨å†Œ<strong>ä¼ä¸šä¼šå‘˜</strong></a></p>
+            <p>æ‚¨æ˜¯ä¸ªäººç”¨æˆ·ï¼Ÿ<a href="{#$QISHI.site_dir#}user/user_reg.php?type=2">æ³¨å†Œ<strong>ä¸ªäººä¼šå‘˜</strong></a></p>
           </div>
         </div>
         <div class="clear"></div>

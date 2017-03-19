@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_common.css" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_company.css" />
@@ -16,18 +16,18 @@
 <script src="{#$QISHI.site_template#}js/dialog-min-common.js" type="text/javascript" language="javascript"></script>
 <script>
 	$(document).ready(function() {
-		// ¶¥²¿É¸Ñ¡
+		// é¡¶éƒ¨ç­›é€‰
 		$('.data-filter').on('click', function(e){
 			$(this).find('.filter-down').toggle();
-			// ¶¯Ì¬ÉèÖÃÏÂÀ­ÁĞ±í¿í¶È
+			// åŠ¨æ€è®¾ç½®ä¸‹æ‹‰åˆ—è¡¨å®½åº¦
 			var fWidth = $(this).find('.filter-span').outerWidth(true) - 2;
 			$(this).find(".filter-down").width(fWidth);
-			// µã»÷ÆäËûÎ»ÖÃÊÕÆğÏÂÀ­
+			// ç‚¹å‡»å…¶ä»–ä½ç½®æ”¶èµ·ä¸‹æ‹‰
 			$(document).one("click",function(){
 				$('.filter-down').hide();
 			});
 			e.stopPropagation();
-			//µã»÷ÏÂÀ­Ê±ÊÕÆğÆäËûÏÂÀ­
+			//ç‚¹å‡»ä¸‹æ‹‰æ—¶æ”¶èµ·å…¶ä»–ä¸‹æ‹‰
 			$(".data-filter").not($(this)).find('.filter-down').hide();
 		});
 		$('.name-link').on('click', function(){
@@ -37,24 +37,24 @@
 			    url: "{#$QISHI.site_dir#}user/company/company_ajax.php?act=order_detail&order_id="+order_id,
 			    success: function (data) {
 			        myDialog.content(data);
-			        myDialog.title('¶©µ¥ÏêÇé');
+			        myDialog.title('è®¢å•è¯¦æƒ…');
 			        myDialog.width('400');
 			    	myDialog.showModal();
-			    	/* ¹Ø±Õ */
+			    	/* å…³é—­ */
 			    	$(".DialogClose").live('click',function() {
 			    		myDialog.close().remove();
 			    	});
 			    }
 			});
 		});
-		// É¾³ıµ¯³ö
+		// åˆ é™¤å¼¹å‡º
 		delete_dialog('.ctrl-del','#form1');
 	});
 </script>
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ³äÖµ¶©µ¥</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > å……å€¼è®¢å•</div>
 	<div class="usermain">
 		<div class="leftmenu com link_bk">
 			{#include file="member_company/left.htm"#}	
@@ -62,45 +62,45 @@
 		<div class="rightmain">
 			<div class="bbox1 my_account">
 				<div class="topnav get_resume">
-					<div class="titleH1"><div class="h1-title">³äÖµ/¶©µ¥</div></div>
+					<div class="titleH1"><div class="h1-title">å……å€¼/è®¢å•</div></div>
 					<div class="navs link_bk">
 						{#if $QISHI.operation_mode=="1" || $QISHI.operation_mode=="3"#}
-						<a href="?act=order_add">»ı·Ö³äÖµ</a>
+						<a href="?act=order_add">ç§¯åˆ†å……å€¼</a>
 						{#/if#}
 						{#if $QISHI.operation_mode=="2" || $QISHI.operation_mode=="3"#}
-				        <a href="?act=setmeal_list">ÉêÇëVIPÌ×²Í</a>
+				        <a href="?act=setmeal_list">ç”³è¯·VIPå¥—é¤</a>
 						{#/if#}
-						<a href="?act=order_list" class="se">ÎÒµÄ¶©µ¥</a>
+						<a href="?act=order_list" class="se">æˆ‘çš„è®¢å•</a>
 						<div class="clear"></div>
 					</div>
 				</div>
 				<div class="company-data-list">
 					<div class="c-data-top order-list clearfix">
-						<div class="item f-left top-item1">¶©µ¥ºÅ</div>
+						<div class="item f-left top-item1">è®¢å•å·</div>
 						<div class="item f-left top-item2">
 							<div class="data-filter span4">
-								<span class="filter-span">{#if $is_paid=='1'#}Î´Íê³É{#elseif $is_paid=='2'#}ÒÑÖ§¸¶{#else#}¶©µ¥×´Ì¬{#/if#}<i class="filter-icon"></i></span>
+								<span class="filter-span">{#if $is_paid=='1'#}æœªå®Œæˆ{#elseif $is_paid=='2'#}å·²æ”¯ä»˜{#else#}è®¢å•çŠ¶æ€{#/if#}<i class="filter-icon"></i></span>
 								<ul class="filter-down">
-									<li><a href="company_service.php?act=order_list&pay_type={#$smarty.get.pay_type#}&is_paid=">È«²¿</a></li>
-									<li><a href="company_service.php?act=order_list&pay_type={#$smarty.get.pay_type#}&is_paid=2">ÒÑÖ§¸¶</a></li>
-									<li><a href="company_service.php?act=order_list&pay_type={#$smarty.get.pay_type#}&is_paid=1">Î´Íê³É</a></li>
+									<li><a href="company_service.php?act=order_list&pay_type={#$smarty.get.pay_type#}&is_paid=">å…¨éƒ¨</a></li>
+									<li><a href="company_service.php?act=order_list&pay_type={#$smarty.get.pay_type#}&is_paid=2">å·²æ”¯ä»˜</a></li>
+									<li><a href="company_service.php?act=order_list&pay_type={#$smarty.get.pay_type#}&is_paid=1">æœªå®Œæˆ</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="item f-left top-item3">
 							<div class="data-filter span4">
-								<span class="filter-span">{#if $pay_type=='1'#}Ì×²Í¶©µ¥{#elseif $pay_type=='2'#}¹ã¸æ¶©µ¥{#elseif $pay_type=='3'#}¶ÌĞÅ¶©µ¥{#elseif $pay_type=='4'#}»ı·Ö¶©µ¥{#else#}¶©µ¥Àà±ğ{#/if#}<i class="filter-icon"></i></span>
+								<span class="filter-span">{#if $pay_type=='1'#}å¥—é¤è®¢å•{#elseif $pay_type=='2'#}å¹¿å‘Šè®¢å•{#elseif $pay_type=='3'#}çŸ­ä¿¡è®¢å•{#elseif $pay_type=='4'#}ç§¯åˆ†è®¢å•{#else#}è®¢å•ç±»åˆ«{#/if#}<i class="filter-icon"></i></span>
 								<ul class="filter-down">
-									<li><a href="company_service.php?act=order_list&pay_type=0&is_paid={#$smarty.get.is_paid#}">È«²¿¶©µ¥</a></li>
-									<li><a href="company_service.php?act=order_list&pay_type=1&is_paid={#$smarty.get.is_paid#}">Ì×²Í¶©µ¥</a></li>
-									<li><a href="company_service.php?act=order_list&pay_type=2&is_paid={#$smarty.get.is_paid#}">¹ã¸æ¶©µ¥</a></li>
-									<li><a href="company_service.php?act=order_list&pay_type=3&is_paid={#$smarty.get.is_paid#}">¶ÌĞÅ¶©µ¥</a></li>
-									<li><a href="company_service.php?act=order_list&pay_type=4&is_paid={#$smarty.get.is_paid#}">»ı·Ö¶©µ¥</a></li>
+									<li><a href="company_service.php?act=order_list&pay_type=0&is_paid={#$smarty.get.is_paid#}">å…¨éƒ¨è®¢å•</a></li>
+									<li><a href="company_service.php?act=order_list&pay_type=1&is_paid={#$smarty.get.is_paid#}">å¥—é¤è®¢å•</a></li>
+									<li><a href="company_service.php?act=order_list&pay_type=2&is_paid={#$smarty.get.is_paid#}">å¹¿å‘Šè®¢å•</a></li>
+									<li><a href="company_service.php?act=order_list&pay_type=3&is_paid={#$smarty.get.is_paid#}">çŸ­ä¿¡è®¢å•</a></li>
+									<li><a href="company_service.php?act=order_list&pay_type=4&is_paid={#$smarty.get.is_paid#}">ç§¯åˆ†è®¢å•</a></li>
 								</ul>
 							</div>
 						</div>
-						<div class="item f-left top-item4">½ğ¶î</div>
-						<div class="item f-left top-item5">²Ù×÷</div>
+						<div class="item f-left top-item4">é‡‘é¢</div>
+						<div class="item f-left top-item5">æ“ä½œ</div>
 					</div>
 					{#if $payment#}
 	  		 			{#section name=payment loop=$payment#}
@@ -108,19 +108,19 @@
 							<div class="c-data-content order-list clearfix">
 								<div class="c-item f-left content1">
 									<div><a href="javascript:;" order_id="{#$payment[payment].id#}" class="name-link underline">{#$payment[payment].oid#}</a></div>
-									<p>´´½¨Ê±¼ä:{#$payment[payment].addtime|date_format:"%Y-%m-%d %H:%M"#} | Ö§¸¶·½Ê½:{#$payment[payment].payment_name#}</p>
+									<p>åˆ›å»ºæ—¶é—´:{#$payment[payment].addtime|date_format:"%Y-%m-%d %H:%M"#} | æ”¯ä»˜æ–¹å¼:{#$payment[payment].payment_name#}</p>
 								</div>
 								<div class="c-item f-left content2">
-									<span class="order-not-done">{#if $payment[payment].is_paid==1#}Î´Íê³É{#/if#}{#if $payment[payment].is_paid==2#}<span style="color:#4CA51F">ÒÑÖ§¸¶</span>{#/if#}</span>
+									<span class="order-not-done">{#if $payment[payment].is_paid==1#}æœªå®Œæˆ{#/if#}{#if $payment[payment].is_paid==2#}<span style="color:#4CA51F">å·²æ”¯ä»˜</span>{#/if#}</span>
 								</div>
-								<div class="c-item f-left content3">{#if $payment[payment].pay_type==1#}Ì×²Í¶©µ¥{#elseif $payment[payment].pay_type==2#}¹ã¸æ¶©µ¥{#elseif $payment[payment].pay_type==3#}¶ÌĞÅ¶©µ¥{#elseif $payment[payment].pay_type==4#}»ı·Ö¶©µ¥{#/if#}</div>
-								<div class="c-item f-left content4"><span class="order-money">£¤{#$payment[payment].amount#}</span></div>
+								<div class="c-item f-left content3">{#if $payment[payment].pay_type==1#}å¥—é¤è®¢å•{#elseif $payment[payment].pay_type==2#}å¹¿å‘Šè®¢å•{#elseif $payment[payment].pay_type==3#}çŸ­ä¿¡è®¢å•{#elseif $payment[payment].pay_type==4#}ç§¯åˆ†è®¢å•{#/if#}</div>
+								<div class="c-item f-left content4"><span class="order-money">ï¿¥{#$payment[payment].amount#}</span></div>
 								<div class="c-item f-left content5">
 									{#if $payment[payment].is_paid==1#}
-									<a href="?act=payment&order_id={#$payment[payment].id#}" class="data-ctrl underline order-info">Ö§¸¶</a>&nbsp;
-									<a url="?act=order_del&id={#$payment[payment].id#}" href="javascript:;" class="data-ctrl underline ctrl-del">È¡Ïû</a>
+									<a href="?act=payment&order_id={#$payment[payment].id#}" class="data-ctrl underline order-info">æ”¯ä»˜</a>&nbsp;
+									<a url="?act=order_del&id={#$payment[payment].id#}" href="javascript:;" class="data-ctrl underline ctrl-del">å–æ¶ˆ</a>
 									{#else#}
-									<span class="order-done">Ö§¸¶</span>&nbsp;<span class="order-done">È¡Ïû</span>
+									<span class="order-done">æ”¯ä»˜</span>&nbsp;<span class="order-done">å–æ¶ˆ</span>
 									{#/if#}
 								</div>
 							</div>
@@ -134,7 +134,7 @@
 						</table>
 						{#/if#}
 					{#else#}
-						<div class="emptytip">Ã»ÓĞÕÒµ½¶ÔÓ¦µÄ¶©µ¥ĞÅÏ¢£¡</div>
+						<div class="emptytip">æ²¡æœ‰æ‰¾åˆ°å¯¹åº”çš„è®¢å•ä¿¡æ¯ï¼</div>
 					{#/if#}
 				</div>
 			</div>

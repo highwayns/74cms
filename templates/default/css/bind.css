@@ -1,6 +1,6 @@
-body{background-image:none;
+﻿body{background-image:none;
 }
-/*注册页面*/
+/*娉ㄥ唽椤甸潰*/
 .sign_up_box .sign_centent{border:2px solid #E8E8E8;border-radius:5px;margin-top:18px;background-color:#fff;padding:29px 36px 29px 46px;font-family: "microsoft yahei";}
 .sign_up_box .sign_centent .sign_left{float:left;width:608px;padding-right:22px;border-right:1px solid #DADADA;}
 .sign_left .sign_nav{border-bottom:1px solid #DADADA;width:608px;}
@@ -12,7 +12,7 @@ body{background-image:none;
 .sign_left .sign_form .w99{line-height:36px;float:left;width:99px;}
 .sign_left .sign_form .w99 span{margin-right:5px;color:#E94F8B}
 .sign_left .sign_form li{margin-bottom:25px;}
-/*注册页面输入框+按钮样式*/
+/*娉ㄥ唽椤甸潰杈撳叆妗?鎸夐挳鏍峰紡*/
 
 .sign_up_input_name{width:225px;font-size:14px;padding:10px 32px 10px 13px;border:1px solid #ccc;border-radius:3px;background:url(../images/48.gif) 235px 8px no-repeat;}
 .sign_up_input_pwd{width:225px;font-size:14px;padding:10px 32px 10px 13px;border:1px solid #ccc;border-radius:3px;background:url(../images/49.gif) 240px 8px no-repeat;}
@@ -43,7 +43,7 @@ body{background-image:none;
 .var_code{float:left;margin-top:2px;margin-right:8px;width:75px;height:32px;border:1px solid #ccc;}
 
 
-/*绑定右边样式*/
+/*缁戝畾鍙宠竟鏍峰紡*/
 .bind_right{float: left;width:250px;padding-left: 25px;padding-right: 25px;margin-top: 50px;}
 .bind_right .fast_bind{}
 .bind_right .fast_bind h3{font-size: 20px;color:#333;font-weight: normal;}

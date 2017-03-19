@@ -1,4 +1,4 @@
-URI.DefaultScheme
+﻿URI.DefaultScheme
 TYPE: string
 DEFAULT: 'http'
 --DESCRIPTION--

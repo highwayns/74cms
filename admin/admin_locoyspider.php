@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms »ð³µÍ·²É¼¯Æ÷ÉèÖÃ
+ * 74cms ç«è½¦å¤´é‡‡é›†å™¨è®¾ç½®
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -18,7 +18,7 @@ check_permissions($_SESSION['admin_purview'],"locoyspider");
 	require_once(ADMIN_ROOT_PATH.'include/admin_article_fun.php');
 $show=get_cache('locoyspider');
 $smarty->assign('show',$show);
-$smarty->assign('pageheader',"»ð³µÍ·²É¼¯");
+$smarty->assign('pageheader',"ç«è½¦å¤´é‡‡é›†");
 if($act=="set")
 {	
 	get_token();
@@ -55,10 +55,10 @@ elseif($act == 'set_save')
 	if (intval($_POST['search_threshold'])>100 || intval($_POST['search_threshold'])==0) unset($_POST['search_threshold']);
 	foreach($_POST as $k => $v)
 	{
-	!$db->query("UPDATE ".table('locoyspider')." SET value='$v' WHERE name='$k' LIMIT 1")?adminmsg('¸üÐÂÊ§°Ü', 1):"";
+	!$db->query("UPDATE ".table('locoyspider')." SET value='$v' WHERE name='$k' LIMIT 1")?adminmsg('æ›´æ–°å¤±è´¥', 1):"";
 	}
 	refresh_cache('locoyspider');
-	write_log("ÉèÖÃ»ð³µÍ·ÅäÖÃ", $_SESSION['admin_name'],3);
-	adminmsg("±£´æ³É¹¦£¡",2);
+	write_log("è®¾ç½®ç«è½¦å¤´é…ç½®", $_SESSION['admin_name'],3);
+	adminmsg("ä¿å­˜æˆåŠŸï¼",2);
 }
 ?>

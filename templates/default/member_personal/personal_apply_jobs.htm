@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_common.css" />
 <link rel="stylesheet" href="{#$QISHI.site_template#}css/user_personal.css" />
@@ -16,28 +16,28 @@
 <script src="{#$QISHI.site_template#}js/dialog-min-common.js" type="text/javascript" language="javascript"></script>
 <script>
 	$(document).ready(function() {
-		// ¶¥²¿É¸Ñ¡
+		// é¡¶éƒ¨ç­›é€‰
 		$('.data-filter').on('click', function(e){
 			$(this).find('.filter-down').toggle();
-			// ¶¯Ì¬ÉèÖÃÏÂÀ­ÁĞ±í¿í¶È
+			// åŠ¨æ€è®¾ç½®ä¸‹æ‹‰åˆ—è¡¨å®½åº¦
 			var fWidth = $(this).find('.filter-span').outerWidth(true) - 2;
 			$(this).find(".filter-down").width(fWidth);
-			// µã»÷ÆäËûÎ»ÖÃÊÕÆğÏÂÀ­
+			// ç‚¹å‡»å…¶ä»–ä½ç½®æ”¶èµ·ä¸‹æ‹‰
 			$(document).one("click",function(){
 				$('.filter-down').hide();
 			});
 			e.stopPropagation();
-			//µã»÷ÏÂÀ­Ê±ÊÕÆğÆäËûÏÂÀ­
+			//ç‚¹å‡»ä¸‹æ‹‰æ—¶æ”¶èµ·å…¶ä»–ä¸‹æ‹‰
 			$(".data-filter").not($(this)).find('.filter-down').hide();
 		});
-		// É¾³ıµ¯³ö
+		// åˆ é™¤å¼¹å‡º
 		delete_dialog('.ctrl-del','#form1');
 	});
 </script>
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ÒÑÉêÇëµÄÖ°Î»</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > å·²ç”³è¯·çš„èŒä½</div>
 	<div class="usermain">
 		<div class="leftmenu link_bk">
 			{#include file="member_personal/left.htm"#}
@@ -45,33 +45,33 @@
 		<div class="rightmain">
 			<div class="bbox1">
 				<div class="topnav link_bk">
-					<div class="titleH1"><div class="h1-title">ÒÑÉêÇëÖ°Î»</div></div>
+					<div class="titleH1"><div class="h1-title">å·²ç”³è¯·èŒä½</div></div>
 					<div class="navs">
-						<a href="?act={#$act#}&aetlook=&jobs_type={#$smarty.get.jobs_type#}&jobs_type_cn={#$smarty.get.jobs_type_cn#}"{#if $smarty.get.aetlook==""#} class="se"{#/if#}>ËùÓĞ<span>({#$count.2#})</span></a>
-						<a href="?act={#$act#}&aetlook=1&jobs_type={#$smarty.get.jobs_type#}&jobs_type_cn={#$smarty.get.jobs_type_cn#}"{#if $smarty.get.aetlook=="1"#} class="se"{#/if#}>ÆóÒµÎ´²é¿´<span class="h">({#$count.0#})</span></a>
-						<a href="?act={#$act#}&aetlook=2&jobs_type={#$smarty.get.jobs_type#}&jobs_type_cn={#$smarty.get.jobs_type_cn#}"{#if $smarty.get.aetlook=="2"#} class="se"{#/if#}>ÆóÒµÒÑ²é¿´<span>({#$count.1#})</span></a>
+						<a href="?act={#$act#}&aetlook=&jobs_type={#$smarty.get.jobs_type#}&jobs_type_cn={#$smarty.get.jobs_type_cn#}"{#if $smarty.get.aetlook==""#} class="se"{#/if#}>æ‰€æœ‰<span>({#$count.2#})</span></a>
+						<a href="?act={#$act#}&aetlook=1&jobs_type={#$smarty.get.jobs_type#}&jobs_type_cn={#$smarty.get.jobs_type_cn#}"{#if $smarty.get.aetlook=="1"#} class="se"{#/if#}>ä¼ä¸šæœªæŸ¥çœ‹<span class="h">({#$count.0#})</span></a>
+						<a href="?act={#$act#}&aetlook=2&jobs_type={#$smarty.get.jobs_type#}&jobs_type_cn={#$smarty.get.jobs_type_cn#}"{#if $smarty.get.aetlook=="2"#} class="se"{#/if#}>ä¼ä¸šå·²æŸ¥çœ‹<span>({#$count.1#})</span></a>
 					</div>
 				</div>
 				<form action="?act=del_jobs_apply" id="form1" name="form1" method="post">
 				<div class="personal-data-list">
 					<div class="c-data-top app-job clearfix">
-						<div class="item f-left check-item"><input type="checkbox" name="chkAll" id="chk" title="È«Ñ¡/·´Ñ¡" class="checkbox" /></div>
+						<div class="item f-left check-item"><input type="checkbox" name="chkAll" id="chk" title="å…¨é€‰/åé€‰" class="checkbox" /></div>
 						<div class="item f-left top-item1">
 							<div class="data-filter span4">
-								<span class="filter-span">{#if $smarty.get.jobs_type_cn#}{#$smarty.get.jobs_type_cn#}{#else#}ÆÕÍ¨Ö°Î»{#/if#}<i class="filter-icon"></i></span>
+								<span class="filter-span">{#if $smarty.get.jobs_type_cn#}{#$smarty.get.jobs_type_cn#}{#else#}æ™®é€šèŒä½{#/if#}<i class="filter-icon"></i></span>
 								<ul class="filter-down">
-									<li><a href="{#"jobs_type:,jobs_type_cn:ÆÕÍ¨Ö°Î»"|qishi_parse_url#}">ÆÕÍ¨Ö°Î»</a></li>
+									<li><a href="{#"jobs_type:,jobs_type_cn:æ™®é€šèŒä½"|qishi_parse_url#}">æ™®é€šèŒä½</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="item f-left top-item2">
-							¹«Ë¾Ãû³Æ
+							å…¬å¸åç§°
 						</div>
 						<div class="item f-left top-item3">
 							<div class="data-filter span4">
-								<span class="filter-span">{#if $smarty.get.resume_cn#}{#$smarty.get.resume_cn#}{#else#}Í¶µİ¼òÀú{#/if#}<i class="filter-icon"></i></span>
+								<span class="filter-span">{#if $smarty.get.resume_cn#}{#$smarty.get.resume_cn#}{#else#}æŠ•é€’ç®€å†{#/if#}<i class="filter-icon"></i></span>
 								<ul class="filter-down">
-									<li><a href="{#"resume_id:,resume_cn:"|qishi_parse_url#}">È«²¿¼òÀú</a></li>
+									<li><a href="{#"resume_id:,resume_cn:"|qishi_parse_url#}">å…¨éƒ¨ç®€å†</a></li>
 									{#foreach from=$resume_list item=list#}
 									<li><a href="{#"resume_id:$list.id,resume_cn:$list.title"|qishi_parse_url#}">{#$list.title#}</a></li>
 									{#/foreach#}
@@ -80,29 +80,29 @@
 						</div>
 						<div class="item f-left top-item4">
 							<div class="data-filter span4">
-								<span class="filter-span">{#if $smarty.get.reply_cn#}{#$smarty.get.reply_cn#}{#else#}Í¶µİ·´À¡{#/if#}<i class="filter-icon"></i></span>
+								<span class="filter-span">{#if $smarty.get.reply_cn#}{#$smarty.get.reply_cn#}{#else#}æŠ•é€’åé¦ˆ{#/if#}<i class="filter-icon"></i></span>
 								<ul class="filter-down">
-									<li><a href="{#"reply_id:,reply_cn:"|qishi_parse_url#}">È«²¿</a></li>
-									<li><a href="{#"reply_id:1,reply_cn:ÆóÒµÎ´²é¿´"|qishi_parse_url#}">ÆóÒµÎ´²é¿´</a></li>
-									<li><a href="{#"reply_id:2,reply_cn:´ı·´À¡"|qishi_parse_url#}">´ı·´À¡</a></li>
-									<li><a href="{#"reply_id:3,reply_cn:ºÏÊÊ"|qishi_parse_url#}">ºÏÊÊ</a></li>
-									<li><a href="{#"reply_id:4,reply_cn:²»ºÏÊÊ"|qishi_parse_url#}">²»ºÏÊÊ</a></li>
-									<li><a href="{#"reply_id:5,reply_cn:´ı¶¨"|qishi_parse_url#}">´ı¶¨</a></li>
-									<li><a href="{#"reply_id:6,reply_cn:Î´½ÓÍ¨"|qishi_parse_url#}">Î´½ÓÍ¨</a></li>
+									<li><a href="{#"reply_id:,reply_cn:"|qishi_parse_url#}">å…¨éƒ¨</a></li>
+									<li><a href="{#"reply_id:1,reply_cn:ä¼ä¸šæœªæŸ¥çœ‹"|qishi_parse_url#}">ä¼ä¸šæœªæŸ¥çœ‹</a></li>
+									<li><a href="{#"reply_id:2,reply_cn:å¾…åé¦ˆ"|qishi_parse_url#}">å¾…åé¦ˆ</a></li>
+									<li><a href="{#"reply_id:3,reply_cn:åˆé€‚"|qishi_parse_url#}">åˆé€‚</a></li>
+									<li><a href="{#"reply_id:4,reply_cn:ä¸åˆé€‚"|qishi_parse_url#}">ä¸åˆé€‚</a></li>
+									<li><a href="{#"reply_id:5,reply_cn:å¾…å®š"|qishi_parse_url#}">å¾…å®š</a></li>
+									<li><a href="{#"reply_id:6,reply_cn:æœªæ¥é€š"|qishi_parse_url#}">æœªæ¥é€š</a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="item f-left top-item5">
 							<div class="data-filter span4">
-								<span class="filter-span">{#if $smarty.get.settr_cn#}{#$smarty.get.settr_cn#}{#else#}Í¶µİÊ±¼ä{#/if#}<i class="filter-icon"></i></span>
+								<span class="filter-span">{#if $smarty.get.settr_cn#}{#$smarty.get.settr_cn#}{#else#}æŠ•é€’æ—¶é—´{#/if#}<i class="filter-icon"></i></span>
 								<ul class="filter-down">
-									<li><a href="{#"settr:,settr_cn:"|qishi_parse_url#}">È«²¿</a></li>
-									<li><a href="{#"settr:7,settr_cn:×î½üÒ»ÖÜ"|qishi_parse_url#}">×î½üÒ»ÖÜ</a></li>
-									<li><a href="{#"settr:14,settr_cn:×î½üÁ½ÖÜ"|qishi_parse_url#}">×î½üÁ½ÖÜ</a></li>
+									<li><a href="{#"settr:,settr_cn:"|qishi_parse_url#}">å…¨éƒ¨</a></li>
+									<li><a href="{#"settr:7,settr_cn:æœ€è¿‘ä¸€å‘¨"|qishi_parse_url#}">æœ€è¿‘ä¸€å‘¨</a></li>
+									<li><a href="{#"settr:14,settr_cn:æœ€è¿‘ä¸¤å‘¨"|qishi_parse_url#}">æœ€è¿‘ä¸¤å‘¨</a></li>
 								</ul>
 							</div>
 						</div>
-						<div class="item f-left top-item6">²Ù×÷</div>
+						<div class="item f-left top-item6">æ“ä½œ</div>
 					</div>
 					{#if $jobs_apply#}
 						{#foreach from=$jobs_apply item=list#}
@@ -115,32 +115,32 @@
 								<div class="c-item f-left content3">{#$list.resume_name#}</div>
 								<div class="c-item f-left content4">{#$list.reply_status#}</div>
 								<div class="c-item f-left content5">{#$list.apply_addtime|date_format:"%Y-%m-%d"#}</div>
-								<div class="c-item f-left content6"><a href="javascript:;" url="?act=del_jobs_apply&y_id={#$list.did#}&jobs_type={#$smarty.get.jobs_type#}" class="data-ctrl underline ctrl-del">É¾³ı</a></div>
+								<div class="c-item f-left content6"><a href="javascript:;" url="?act=del_jobs_apply&y_id={#$list.did#}&jobs_type={#$smarty.get.jobs_type#}" class="data-ctrl underline ctrl-del">åˆ é™¤</a></div>
 							</div>
 						</div>
 						{#else#}
 						<div class="c-data-row">
 							<div class="c-data-content interview36 clearfix">
 								<div class="c-item f-left check-item"><input type="checkbox" name="y_id[]" id="y_id" class="checkbox"  value="{#$list.did#}"/></div>
-								¸ÃÖ°Î» [{#$list.jobs_name#}] ¿ÉÄÜÒÑ±»É¾³ı£¬Äú¿ÉÒÔÉ¾³ı±¾ÌõĞÅÏ¢¡£
+								è¯¥èŒä½ [{#$list.jobs_name#}] å¯èƒ½å·²è¢«åˆ é™¤ï¼Œæ‚¨å¯ä»¥åˆ é™¤æœ¬æ¡ä¿¡æ¯ã€‚
 							</div>
 						</div>
 						{#/if#}
 						{#/foreach#}
 						<div class="c-data-row last">
 							<div class="c-data-content apply_jobs clearfix">
-								<div class="c-item f-left check-item"><input type="checkbox" name="chkAll" id="chk2" title="È«Ñ¡/·´Ñ¡" class="checkbox" /></div>
+								<div class="c-item f-left check-item"><input type="checkbox" name="chkAll" id="chk2" title="å…¨é€‰/åé€‰" class="checkbox" /></div>
 								<div class="data-last-btn f-left">
-									<input type="button" value="É¾³ı" class="btn-65-30blue ctrl-del"  act="?act=del_jobs_apply&jobs_type={#$smarty.get.jobs_type#}"/>
+									<input type="button" value="åˆ é™¤" class="btn-65-30blue ctrl-del"  act="?act=del_jobs_apply&jobs_type={#$smarty.get.jobs_type#}"/>
 								</div>
 							</div>
 						</div>
 					{#else#}
-					<div class="emptytip" style="margin:0 15px;">¶Ô²»Æğ£¡Ã»ÓĞÕÒµ½ÄúÒªµÄĞÅÏ¢£¡</div>
+					<div class="emptytip" style="margin:0 15px;">å¯¹ä¸èµ·ï¼æ²¡æœ‰æ‰¾åˆ°æ‚¨è¦çš„ä¿¡æ¯ï¼</div>
 					{#/if#}
 				</div>
 				</form>
-				<!-- ÕâÀï¼Ó·ÖÒ³ -->
+				<!-- è¿™é‡ŒåŠ åˆ†é¡µ -->
 				{#if $page#}
 				<table border="0" align="center" cellpadding="0" cellspacing="0">
 		          	<tr>

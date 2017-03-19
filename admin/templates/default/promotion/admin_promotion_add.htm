@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit">{#$pageheader#}</div>
@@ -6,12 +6,12 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-<h2>ÌáÊ¾£º</h2>
+<h2>æç¤ºï¼š</h2>
 <p>
-ÏµÍ³½«×Ô¶¯È¡Ïûµ½ÆÚµÄÆóÒµÍÆ¹ã¡£<br />
+ç³»ç»Ÿå°†è‡ªåŠ¨å–æ¶ˆåˆ°æœŸçš„ä¼ä¸šæ¨å¹¿ã€‚<br />
 </p>
 </div>  
- <div class="toptit">ĞÂÔöÍÆ¹ã</div>
+ <div class="toptit">æ–°å¢æ¨å¹¿</div>
  <script type="text/javascript" src="js/jquery.iColorPicker.js"></script>
  <script type="text/javascript">
 $(document).ready(function()
@@ -35,11 +35,11 @@ $(document).ready(function()
 				{
 					html="<table width=\"100%\" border=\"0\" cellpadding=\"4\" cellspacing=\"0\" style=\"margin-bottom:10px;\" >";
 					html+="<tr>";
-					html+="<td width=\"25%\" height=\"28\" bgcolor=\"#EBF7FC\"  >&nbsp;&nbsp;&nbsp;&nbsp;<strong>Ö°Î»Ãû³Æ<\/strong><\/td>";
-					html+="<td bgcolor=\"#EBF7FC\"  ><strong>¹«Ë¾Ãû³Æ<\/strong><\/td>";
-					html+="<td width=\"13%\" align=\"center\" bgcolor=\"#EBF7FC\"  ><strong>·¢²¼Ê±¼ä<\/strong><\/td>";
-					html+="<td width=\"13%\" align=\"center\" bgcolor=\"#EBF7FC\"  ><strong>µ½ÆÚÊ±¼ä<\/strong><\/td>";
-					html+="<td width=\"13%\" align=\"center\" bgcolor=\"#EBF7FC\"  ><strong>Ë¢ĞÂÊ±¼ä<\/strong><\/td>";
+					html+="<td width=\"25%\" height=\"28\" bgcolor=\"#EBF7FC\"  >&nbsp;&nbsp;&nbsp;&nbsp;<strong>èŒä½åç§°<\/strong><\/td>";
+					html+="<td bgcolor=\"#EBF7FC\"  ><strong>å…¬å¸åç§°<\/strong><\/td>";
+					html+="<td width=\"13%\" align=\"center\" bgcolor=\"#EBF7FC\"  ><strong>å‘å¸ƒæ—¶é—´<\/strong><\/td>";
+					html+="<td width=\"13%\" align=\"center\" bgcolor=\"#EBF7FC\"  ><strong>åˆ°æœŸæ—¶é—´<\/strong><\/td>";
+					html+="<td width=\"13%\" align=\"center\" bgcolor=\"#EBF7FC\"  ><strong>åˆ·æ–°æ—¶é—´<\/strong><\/td>";
 					html+="<\/tr>";
 					var str=data.split("@@@");
 					var i=1;
@@ -65,7 +65,7 @@ $(document).ready(function()
 				}
 				else
 				{
-				html="<div style=\"padding:15px; color:#0066CC\">Ã»ÓĞÕÒµ½¶ÔÓ¦µÄÖ°Î»¡£</div>";
+				html="<div style=\"padding:15px; color:#0066CC\">æ²¡æœ‰æ‰¾åˆ°å¯¹åº”çš„èŒä½ã€‚</div>";
 				$("#showtd").html(html);
 				}
 			 })
@@ -97,7 +97,7 @@ $(document).ready(function()
 
 	
 	
-	//µã»÷ÅúÁ¿È¡Ïû	
+	//ç‚¹å‡»æ‰¹é‡å–æ¶ˆ	
 	$("#ADD").click(function(){	
 	 var flag = false;
         $("input[name='jobid']").each(function(index)
@@ -107,12 +107,12 @@ $(document).ready(function()
             }
         });
         if(!flag){
-          alert("ÇëÑ¡ÔñÒªÍÆ¹ãµÄÖ°Î»");
+          alert("è¯·é€‰æ‹©è¦æ¨å¹¿çš„èŒä½");
           return false;
         };
 		if ($("#promotionid").val()=='-1')
 		{
-			alert("ÇëÑ¡ÔñÒªÍÆ¹ã·½°¸");
+			alert("è¯·é€‰æ‹©è¦æ¨å¹¿æ–¹æ¡ˆ");
 			$("#promotionid").focus();
           	return false;
 		}
@@ -120,13 +120,13 @@ $(document).ready(function()
 		{
 			if ($("#val").val()=="")
 			{
-			alert("ÇëÑ¡ÔñÑÕÉ«");
+			alert("è¯·é€‰æ‹©é¢œè‰²");
 			return false;
 			}          	
 		}
 		else if ($("#days").val()=="")
 		{
-			alert("ÇëÌîĞ´ÍÆ¹ãÌìÊı");
+			alert("è¯·å¡«å†™æ¨å¹¿å¤©æ•°");
 			$("#days").focus();
 			return false;       	
 		}
@@ -143,33 +143,33 @@ $(document).ready(function()
     <tr>
       <td width="350" valign="top"><table width="100%" border="0" cellpadding="3" cellspacing="0" bgcolor="#F4FDFF"   class="link_lan"  style="border-bottom:1px #B4E0ED solid;border-top:1px #B4E0ED solid;border-left:1px #B4E0ED solid;">
         <tr>
-          <td height="32" align="right"  class="trcolor" >ÇëÊäÈëÖ°Î»ID£º</td>
+          <td height="32" align="right"  class="trcolor" >è¯·è¾“å…¥èŒä½IDï¼š</td>
           <td width="215"  class="trcolor" ><input name="admin_name" type="text" class="input_text_200 getinfo" id="get_id" maxlength="25" value=""/></td>
         </tr>
         <tr>
-          <td height="32" align="right"  class="trcolor"  >»òÖ°Î»Ãû³Æ£º</td>
+          <td height="32" align="right"  class="trcolor"  >æˆ–èŒä½åç§°ï¼š</td>
           <td class="trcolor"  ><input name="admin_name" type="text" class="input_text_200 getinfo" id="get_jobname" maxlength="25" value=""/></td>
         </tr>
         <tr>
-          <td height="32" align="right" class="trcolor"  >»òÆóÒµÃû³Æ£º</td>
+          <td height="32" align="right" class="trcolor"  >æˆ–ä¼ä¸šåç§°ï¼š</td>
           <td   class="trcolor"  ><input name="admin_name" type="text" class="input_text_200 getinfo" id="get_comname" maxlength="25" value=""/></td>
         </tr>
         <tr>
-          <td height="32" align="right" class="trcolor"  >»ò»áÔ±ID£º</td>
+          <td height="32" align="right" class="trcolor"  >æˆ–ä¼šå‘˜IDï¼š</td>
           <td   class="trcolor"  ><input name="admin_name" type="text" class="input_text_200 getinfo" id="get_uid" maxlength="25" value=""/></td>
         </tr>
 		</table>
 		<table width="100%" border="0" cellspacing="0" cellpadding="3" class="link_lan">
         
         <tr>
-          <td height="35" align="right" >ÍÆ¹ãÆÚÏŞ(Ìì)£º</td>
+          <td height="35" align="right" >æ¨å¹¿æœŸé™(å¤©)ï¼š</td>
           <td ><input name="days"  id="days" type="text" class="input_text_200"   maxlength="3" value=""/></td>
         </tr>
 		<tr>
-          <td height="35" align="right"  >ÍÆ¹ã·½°¸£º</td>
+          <td height="35" align="right"  >æ¨å¹¿æ–¹æ¡ˆï¼š</td>
           <td width="215"    >
               <select name="promotionid" id="promotionid">
-                <option value="-1">ÇëÑ¡ÔñÍÆ¹ã·½°¸</option>
+                <option value="-1">è¯·é€‰æ‹©æ¨å¹¿æ–¹æ¡ˆ</option>
                
                 
 				{#foreach from=$cat item=li#}
@@ -179,24 +179,24 @@ $(document).ready(function()
               </select>          </td>
 		</tr>
 		<tr>
-          <td height="35" align="right"  class="showColor" style="display:none">ÍÆ¹ãÑÕÉ«£º</td>
+          <td height="35" align="right"  class="showColor" style="display:none">æ¨å¹¿é¢œè‰²ï¼š</td>
           <td class="showColor" style="display:none">
 		  <input id="val" name="val" type="text" value="" class="iColorPicker input_text_150"  onclick="iColorShow('val','icp_val')"/>		  </td>
         </tr>
         <tr>
-          <td height="35" align="right"  class="showhour" style="display:none">×Ô¶¯Ë¢ĞÂÊ±¼äµã£º</td>
+          <td height="35" align="right"  class="showhour" style="display:none">è‡ªåŠ¨åˆ·æ–°æ—¶é—´ç‚¹ï¼š</td>
           <td class="showhour" style="display:none">
 		  <select name="hour">
-			          <option value="8 Ê±" selected="selected">8 Ê±</option>
-			          <option value="11 Ê±">11 Ê±</option>
-			          <option value="14 Ê±">14 Ê±</option>
-			          <option value="20 Ê±">20 Ê±</option>
+			          <option value="8 æ—¶" selected="selected">8 æ—¶</option>
+			          <option value="11 æ—¶">11 æ—¶</option>
+			          <option value="14 æ—¶">14 æ—¶</option>
+			          <option value="20 æ—¶">20 æ—¶</option>
 			        </select></td>
         </tr>
         <tr>
           <td height="35" align="right"  >&nbsp;</td>
-          <td height="60"  ><input name="submit3" type="button" class="admin_submit"   id="ADD"  value="È·¶¨"/>
-            <input name="submit22" type="button" class="admin_submit"    value="·µ»Ø" onclick="Javascript:window.history.go(-1)"/></td>
+          <td height="60"  ><input name="submit3" type="button" class="admin_submit"   id="ADD"  value="ç¡®å®š"/>
+            <input name="submit22" type="button" class="admin_submit"    value="è¿”å›" onclick="Javascript:window.history.go(-1)"/></td>
         </tr>
         <tr>
           <td height="35" align="right"  >&nbsp;</td>
@@ -211,7 +211,7 @@ $(document).ready(function()
 			  <table width="100%" border="0" cellspacing="0" cellpadding="0" >
 		  <tr>
 			<td style="border:1px  #B4E0ED solid; height:152px;" id="showtd"  bgcolor="#FFFFFF"  valign="top">
-			<div style="padding:15px; color: #0066CC">ÇëÔÚ×ó²à±íµ¥ÖĞÊäÈëÄãÒª²éÕÒµÄÖµ¡£</div>
+			<div style="padding:15px; color: #0066CC">è¯·åœ¨å·¦ä¾§è¡¨å•ä¸­è¾“å…¥ä½ è¦æŸ¥æ‰¾çš„å€¼ã€‚</div>
 			
 			</td>
 			</tr>

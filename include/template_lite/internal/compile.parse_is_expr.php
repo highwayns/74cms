@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Lite compile IS exprenssion in IF tag - template internal module
  *

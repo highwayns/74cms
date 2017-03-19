@@ -1,9 +1,9 @@
-<div class="topnav">
-<a href="?act=set" {#if  $navlabel=='set'#}class="select"{#/if#}><u>»ù±¾ÉèÖÃ</u></a>
-<a href="?act=set_news" {#if  $navlabel=='set_news'#}class="select"{#/if#}><u>×ÊÑ¶²É¼¯</u></a>
-<a href="?act=set_company" {#if $navlabel=='set_company'#}class="select"{#/if#}><u>ÆóÒµ²É¼¯</u></a>
-<a href="?act=set_jobs" {#if $navlabel=='set_jobs'#}class="select"{#/if#}><u>Ö°Î»²É¼¯</u></a>
-<a href="?act=set_user" {#if $navlabel=='set_user'#}class="select"{#/if#}><u>Éú³É»áÔ±</u></a>
+ï»¿<div class="topnav">
+<a href="?act=set" {#if  $navlabel=='set'#}class="select"{#/if#}><u>åŸºæœ¬è®¾ç½®</u></a>
+<a href="?act=set_news" {#if  $navlabel=='set_news'#}class="select"{#/if#}><u>èµ„è®¯é‡‡é›†</u></a>
+<a href="?act=set_company" {#if $navlabel=='set_company'#}class="select"{#/if#}><u>ä¼ä¸šé‡‡é›†</u></a>
+<a href="?act=set_jobs" {#if $navlabel=='set_jobs'#}class="select"{#/if#}><u>èŒä½é‡‡é›†</u></a>
+<a href="?act=set_user" {#if $navlabel=='set_user'#}class="select"{#/if#}><u>ç”Ÿæˆä¼šå‘˜</u></a>
 <div class="clear"></div>
 </div>
 <script src="{#$QISHI.site_dir#}data/cache_classify.js" type="text/javascript" charset="utf-8"></script>
@@ -22,7 +22,7 @@ $(document).ready(function()
 	
 	
 		
-	//Ö¸¶¨ÃÜÂëÀàĞÍ
+	//æŒ‡å®šå¯†ç ç±»å‹
 	var password_tpye=$("#reg_password_tpye  :radio[checked]").val();
 	password_tpye=="3"?$("#show_reg_password").show():$("#show_reg_password").hide();
 	$("#reg_password_tpye :radio").click(function(){

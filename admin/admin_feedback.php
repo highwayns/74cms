@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Í¶ËßÓë½¨Òé
+ * 74cms æŠ•è¯‰ä¸Žå»ºè®®
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -36,13 +36,13 @@ if($act == 'suggest_list')
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$list = get_feedback_list($offset,$perpage,$wheresql);
-	$smarty->assign('pageheader',"Òâ¼ûºÍ½¨Òé");
+	$smarty->assign('pageheader',"æ„è§å’Œå»ºè®®");
 	$smarty->assign('infotype',$_GET['infotype']);
 	$smarty->assign('perpage',$perpage);
-	$smarty->assign('list',$list);//ÁÐ±í
+	$smarty->assign('list',$list);//åˆ—è¡¨
 	if ($total_val>$perpage)
 	{
-	$smarty->assign('page',$page->show(3));//·ÖÒ³·û
+	$smarty->assign('page',$page->show(3));//åˆ†é¡µç¬¦
 	}
 	$smarty->display('feedback/admin_feedback_suggest_list.htm');
 }
@@ -50,15 +50,15 @@ elseif($act == 'del_feedback')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"suggest_del");
-	$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("ÄãÃ»ÓÐÑ¡ÔñÏîÄ¿£¡",1);
+	$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 	if ($num=del_feedback($id))
 	{
-	write_log("É¾³ýÒâ¼û½¨Òé,¹²É¾³ý".$num."ÐÐ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."ÐÐ",2);
+	write_log("åˆ é™¤æ„è§å»ºè®®,å…±åˆ é™¤".$num."è¡Œ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'report_list')
@@ -92,7 +92,7 @@ elseif($act == 'report_list')
 	$currenpage=$page->nowindex;
 	$offset=($currenpage-1)*$perpage;
 	$list = get_report_list($offset,$perpage,$joinsql.$wheresql.$oederbysql,$type);
-	$smarty->assign('pageheader',"¾Ù±¨ÐÅÏ¢");
+	$smarty->assign('pageheader',"ä¸¾æŠ¥ä¿¡æ¯");
 	$smarty->assign('list',$list);
 	$smarty->assign('page',$page->show(3));
 	if($type==1){
@@ -104,7 +104,7 @@ elseif($act == 'report_list')
 elseif($act == 'report_perform')
 {
 	$type=intval($_POST['type'])==0?1:intval($_POST['type']);
-	//ÉóºË
+	//å®¡æ ¸
 	if(!empty($_POST['set_audit'])){
 		check_permissions($_SESSION['admin_purview'],"report_audit");
 		check_token();
@@ -117,16 +117,16 @@ elseif($act == 'report_perform')
 		$audit=intval($_POST['audit']);
 		if (empty($id))
 		{
-		adminmsg("ÄúÃ»ÓÐÑ¡ÔñÏîÄ¿£¡",1);
+		adminmsg("æ‚¨æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 		}
 		if ($num=report_audit($id,$audit,$type,$rid))
 		{
-		write_log("ÉèÖÃ¾Ù±¨ÐÅÏ¢ÉóºË×´Ì¬£¬¹²Ó°Ïì{$num}ÐÐ ", $_SESSION['admin_name'],3);
-		adminmsg("ÉèÖÃ³É¹¦£¡¹²Ó°Ïì {$num}ÐÐ ",2);
+		write_log("è®¾ç½®ä¸¾æŠ¥ä¿¡æ¯å®¡æ ¸çŠ¶æ€ï¼Œå…±å½±å“{$num}è¡Œ ", $_SESSION['admin_name'],3);
+		adminmsg("è®¾ç½®æˆåŠŸï¼å…±å½±å“ {$num}è¡Œ ",2);
 		}
 		else
 		{
-		adminmsg("ÉèÖÃÊ§°Ü£¡",0);
+		adminmsg("è®¾ç½®å¤±è´¥ï¼",0);
 		}
 	}
 }
@@ -134,32 +134,32 @@ elseif($act == 'del_report')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"report_del");
-	$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("ÄãÃ»ÓÐÑ¡ÔñÏîÄ¿£¡",1);
+	$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 	$id=$_REQUEST['id'];
 	if ($num=del_report($id))
 	{
-	write_log("É¾³ý¾Ù±¨ÐÅÏ¢£¬¹²É¾³ý{$num}ÐÐ ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."ÐÐ",2);
+	write_log("åˆ é™¤ä¸¾æŠ¥ä¿¡æ¯ï¼Œå…±åˆ é™¤{$num}è¡Œ ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 elseif($act == 'del_report_resume')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"report_del");
-	$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("ÄãÃ»ÓÐÑ¡ÔñÏîÄ¿£¡",1);
+	$id =!empty($_REQUEST['id'])?$_REQUEST['id']:adminmsg("ä½ æ²¡æœ‰é€‰æ‹©é¡¹ç›®ï¼",1);
 	$id=$_REQUEST['id'];
 	if ($num=del_report_resume($id))
 	{
-	write_log("É¾³ý¾Ù±¨¼òÀúÐÅÏ¢£¬¹²É¾³ý{$num}ÐÐ ", $_SESSION['admin_name'],3);
-	adminmsg("É¾³ý³É¹¦£¡¹²É¾³ý".$num."ÐÐ",2);
+	write_log("åˆ é™¤ä¸¾æŠ¥ç®€åŽ†ä¿¡æ¯ï¼Œå…±åˆ é™¤{$num}è¡Œ ", $_SESSION['admin_name'],3);
+	adminmsg("åˆ é™¤æˆåŠŸï¼å…±åˆ é™¤".$num."è¡Œ",2);
 	}
 	else
 	{
-	adminmsg("É¾³ýÊ§°Ü£¡",0);
+	adminmsg("åˆ é™¤å¤±è´¥ï¼",0);
 	}
 }
 ?>

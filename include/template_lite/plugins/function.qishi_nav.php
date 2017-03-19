@@ -1,6 +1,6 @@
-<?php
+ï»¿<?php
 /*********************************************
-*µ¼º½À¸Ä¿
+*å¯¼èˆªæ ç›®
 * *******************************************/
 function tpl_function_qishi_nav($params, &$smarty)
 {
@@ -11,13 +11,13 @@ function tpl_function_qishi_nav($params, &$smarty)
 	$a=explode(':',$str);
 		switch ($a[0])
 		{
-		case "µ÷ÓÃÃû³Æ":
+		case "è°ƒç”¨åç§°":
 			$aset['alias'] = $a[1];
 			break;
-		case "ÁÐ±íÃû":
+		case "åˆ—è¡¨å":
 			$aset['listname'] = $a[1];
 			break;
-		case "·Ö¸î":
+		case "åˆ†å‰²":
 			$aset['limit'] = $a[1];
 			break;
 		}

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms QQ»¥Áª server-sideÄ£Ê½
+ * 74cms QQäº’è” server-sideæ¨¡å¼
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -16,7 +16,7 @@ $login_allback="{$_CFG['wap_domain']}/connect_qq_server.php?act=login_allback" ;
 $binding_callback="{$_CFG['wap_domain']}/connect_qq_server.php?act=binding_callback" ;
 if (!function_exists('json_decode'))
 {
-exit('ÄúµÄphp²»Ö§³Öjson_decode');
+exit('æ‚¨çš„phpä¸æ”¯æŒjson_decode');
 }
 if ($_CFG['qq_appid']=="0" || empty($_CFG['qq_appid']) || empty($_CFG['qq_appkey']))
 {
@@ -103,7 +103,7 @@ elseif ($act=='login_allback')
 					require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 					$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION['openid']}'  WHERE uid='{$_SESSION[uid]}' AND qq_openid='' LIMIT 1");
 					$_SESSION['uqqid']=$_SESSION['openid'];
-					exit('°ó¶¨QQÕÊºÅ³É¹¦£¡');
+					exit('ç»‘å®šQQå¸å·æˆåŠŸï¼');
 				}
 				else
 				{
@@ -132,7 +132,7 @@ elseif ($act=='reg')
 		$jsoninfo = json_decode($output, true);
 		$nickname = iconv("utf-8","gbk",$jsoninfo["nickname"]);
 		require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
-		$smarty->assign('title','²¹³äÐÅÏ¢ - '.$_CFG['site_name']);
+		$smarty->assign('title','è¡¥å……ä¿¡æ¯ - '.$_CFG['site_name']);
 		$smarty->assign('qqurl',"?act=");
 		$smarty->assign('nickname',$nickname);
 		$smarty->display('wap/wap-bind.html');
@@ -144,12 +144,12 @@ elseif ($act=='reg_save')
 	{
 		exit("openid is empty");
 	}
-	$val['username']=!empty($_POST['username'])?trim($_POST['username']):exit("ÊäÈëÓÃ»§Ãû");
-	$val['email']=!empty($_POST['email'])?trim($_POST['email']):exit("ÊäÈëÓÊÏä");
+	$val['username']=!empty($_POST['username'])?trim($_POST['username']):exit("è¾“å…¥ç”¨æˆ·å");
+	$val['email']=!empty($_POST['email'])?trim($_POST['email']):exit("è¾“å…¥é‚®ç®±");
 	$val['member_type']=intval($_POST['member_type']);
-	$val['password']=!empty($_POST['password'])?trim($_POST['password']):exit("ÊäÈëÃÜÂë");
+	$val['password']=!empty($_POST['password'])?trim($_POST['password']):exit("è¾“å…¥å¯†ç ");
 	if($val['password']!=trim($_POST['rpassword'])){
-		exit("ÃÜÂë²»Ò»ÖÂ");
+		exit("å¯†ç ä¸ä¸€è‡´");
 	}
 	require_once(QISHI_ROOT_PATH.'include/mysql.class.php');
 	$db = new mysql($dbhost,$dbuser,$dbpass,$dbname);
@@ -158,7 +158,7 @@ elseif ($act=='reg_save')
 	$sql="select * from ".table("members")." where username='$val[username]' or email='$val[email]'";
 	$row = $db->getall($sql);
 	if(!empty($row)){
-		exit("ÓÃ»§Ãû»òÓÊÏäÒÑ¾­´æÔÚ£¡");
+		exit("ç”¨æˆ·åæˆ–é‚®ç®±å·²ç»å­˜åœ¨ï¼");
 	}
 	$userid=user_register($val['username'],$val['password'],$val['member_type'],$val['email']);
 	if ($userid)
@@ -250,13 +250,13 @@ elseif ($act=='binding_callback')
 			require_once(QISHI_ROOT_PATH.'include/tpl.inc.php');
 			if (!empty($user))
 			{
-					exit('´ËQQÕÊºÅÒÑ¾­°ó¶¨ÁËÆäËû»áÔ±,Çë»»Ò»¸öQQÕÊºÅ£¡');
+					exit('æ­¤QQå¸å·å·²ç»ç»‘å®šäº†å…¶ä»–ä¼šå‘˜,è¯·æ¢ä¸€ä¸ªQQå¸å·ï¼');
 			}
 			else
 			{
 					$db->query("UPDATE ".table('members')." SET qq_openid = '{$_SESSION['openid']}'  WHERE uid='{$_SESSION[uid]}' AND qq_openid='' LIMIT 1");
 					$_SESSION['uqqid']=$_SESSION['openid'];
-					exit('°ó¶¨QQÕÊºÅ³É¹¦£¡');
+					exit('ç»‘å®šQQå¸å·æˆåŠŸï¼');
 			}
 }
 function get_url_contents($url)
@@ -276,7 +276,7 @@ function get_url_contents($url)
 	}
 	else
 	{
-		exit("Çë°Ñallow_url_fopenÉèÎªOn»ò´ò¿ªCURLÀ©Õ¹");
+		exit("è¯·æŠŠallow_url_fopenè®¾ä¸ºOnæˆ–æ‰“å¼€CURLæ‰©å±•");
 	}  
 }
 ?>

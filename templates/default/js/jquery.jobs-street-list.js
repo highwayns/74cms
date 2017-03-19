@@ -1,4 +1,4 @@
-function jobslist()
+ï»¿function jobslist()
 {
 	var key=$('#key').val();
 	if (key)
@@ -24,11 +24,11 @@ function jobslist()
 				}
 			}); 
 	 }
- 	//È«Ñ¡·´Ñ¡
+ 	//å…¨é€‰åé€‰
 	$("input[name='selectall']").unbind().click(function(){$("#infolists :checkbox").attr('checked',$(this).is(':checked'))});
-	//µã»÷Ñ¡ÔñºóÖØĞÂ¼ÓÑùÊ½
+	//ç‚¹å‡»é€‰æ‹©åé‡æ–°åŠ æ ·å¼
 	$("#formjobslist input[type='checkbox']").click(function(){setlistbg();});
-	//ÌáĞÑ
+	//æé†’
 	$(function(){
 	var _wrap=$('#jobs_list_tip ul');
 	var _interval=3000;
@@ -46,7 +46,7 @@ function jobslist()
 	}).trigger('mouseleave');
 	});
 }
-// ÉêÇëÖ°Î»
+// ç”³è¯·èŒä½
 function apply_jobs(ajaxurl)
 {
 	$(".deliver").click(function()
@@ -56,8 +56,8 @@ function apply_jobs(ajaxurl)
 		if (sltlength==0)
 		{
 			var myDialog = dialog();
-			myDialog.content("ÇëÑ¡ÔñÖ°Î»");
-	        myDialog.title('ÏµÍ³ÌáÊ¾');
+			myDialog.content("è¯·é€‰æ‹©èŒä½");
+	        myDialog.title('ç³»ç»Ÿæç¤º');
 	        myDialog.width('300');
 	        myDialog.showModal();
 		}
@@ -67,37 +67,37 @@ function apply_jobs(ajaxurl)
 			$("#infolists .list :checkbox[checked]").each(function(index){jidArr[index]=$(this).val();});
 			var url_=ajaxurl+"user/user_apply_jobs.php?id="+jidArr.join("-")+"&act=app";
 			var myDialog = dialog();
-			myDialog.title('ÉêÇëÖ°Î»');
-			myDialog.content("¼ÓÔØÖĞ...");
+			myDialog.title('ç”³è¯·èŒä½');
+			myDialog.content("åŠ è½½ä¸­...");
 			myDialog.width('500');
 			myDialog.showModal();
 			$.get(url_, function(data){
 				myDialog.content(data);
-				/* ¹Ø±Õ */
+				/* å…³é—­ */
 				$(".DialogClose").live('click',function() {
 					myDialog.close().remove();
 				});
 			});
 		}
 	});
-	//µ¥¸öÉêÇëÖ°Î»
+	//å•ä¸ªç”³è¯·èŒä½
 	$(".app_jobs").unbind().click(function(){
 		var url_=ajaxurl+"user/user_apply_jobs.php?id="+$(this).attr("jobs_id")+"&act=app";
 		var myDialog = dialog();
-		myDialog.title('ÉêÇëÖ°Î»');
-		myDialog.content("¼ÓÔØÖĞ...");
+		myDialog.title('ç”³è¯·èŒä½');
+		myDialog.content("åŠ è½½ä¸­...");
 		myDialog.width('500');
 		myDialog.showModal();
 		$.get(url_, function(data){
 			myDialog.content(data);
-			/* ¹Ø±Õ */
+			/* å…³é—­ */
 			$(".DialogClose").live('click',function() {
 				myDialog.close().remove();
 			});
 		});
 	});
 }
-// ÊÕ²ØÖ°Î»
+// æ”¶è—èŒä½
 function favorites(ajaxurl)
 {	
 	$(".collecter").click(function()
@@ -107,8 +107,8 @@ function favorites(ajaxurl)
 		if (sltlength==0)
 		{
 			var myDialog = dialog();
-			myDialog.content("ÇëÑ¡ÔñÖ°Î»");
-	        myDialog.title('ÏµÍ³ÌáÊ¾');
+			myDialog.content("è¯·é€‰æ‹©èŒä½");
+	        myDialog.title('ç³»ç»Ÿæç¤º');
 	        myDialog.width('300');
 	        myDialog.showModal();
 		}
@@ -120,42 +120,42 @@ function favorites(ajaxurl)
 			var url_=ajaxurl+"user/user_favorites_job.php?id="+jidArr.join("-")+"&act=add";
 		    $.get(url_, function(data){
 		        myDialog.content(data);
-		        myDialog.title('¼ÓÈëÊÕ²Ø');
+		        myDialog.title('åŠ å…¥æ”¶è—');
 		        myDialog.width('500');
 		        myDialog.showModal();
-		        /* ¹Ø±Õ */
+		        /* å…³é—­ */
 		        $(".DialogClose").live('click',function() {
 		          myDialog.close().remove();
 		        });
 		    });
 		}
 	});
-	// µ¥¸öÊÕ²ØÖ°Î»
+	// å•ä¸ªæ”¶è—èŒä½
 	$(".add_favorites").unbind().click(function(){
 		var myDialog = dialog();
 		var url_=ajaxurl+"user/user_favorites_job.php?id="+$(this).attr("jobs_id")+"&act=add";
 	    $.get(url_, function(data){
 	        myDialog.content(data);
-	        myDialog.title('¼ÓÈëÊÕ²Ø');
+	        myDialog.title('åŠ å…¥æ”¶è—');
 	        myDialog.width('500');
 	        myDialog.showModal();
-	        /* ¹Ø±Õ */
+	        /* å…³é—­ */
 	        $(".DialogClose").live('click',function() {
 	          myDialog.close().remove();
 	        });
 	    });
 	});
 }
-// Ò»Ğ©jsµÄ¼¯ºÏ
+// ä¸€äº›jsçš„é›†åˆ
 function allaround(dir) {
-	// Ìî³ä×ÖÄ¸
+	// å¡«å……å­—æ¯
 	var letterArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
 		letterHtm = '';
 	$.each(letterArray, function(index, val) {
 		letterHtm += '<a class="st" href="javascript:;" code="'+val+'">'+val+'</a>';
 	});
 	$("#street_letter").html(letterHtm);
-	// µã»÷×ÖÄ¸¼ìË÷
+	// ç‚¹å‡»å­—æ¯æ£€ç´¢
 	$("#street_letter a").die().live('click', function(event) {
 		$("#key").val('');
 		$("#street_letter a").removeClass("select");
@@ -168,7 +168,7 @@ function allaround(dir) {
 			}
 		);	
 	});
-	// ¹Ø¼ü×Ö¼ìË÷
+	// å…³é”®å­—æ£€ç´¢
 	$("#sosub").die().live('click', function() {
 		var str=$("#key").val();
 		if (str!='') {
@@ -180,11 +180,11 @@ function allaround(dir) {
 				}
 			);
 		} else {
-			alert("ÇëÊäÈë¼ìË÷¹Ø¼ü×Ö");
+			alert("è¯·è¾“å…¥æ£€ç´¢å…³é”®å­—");
 			$("#key").focus();
 		}
 	});
-	// Ñ¡Ïîµã»÷
+	// é€‰é¡¹ç‚¹å‡»
 	$(".fl-content-li").die().live('click',function() {
 		var type = $(this).attr('type'),
 			code = $(this).attr('code');
@@ -198,7 +198,7 @@ function allaround(dir) {
 		search_location(dir);
 	});
 }
-// ËÑË÷Ìø×ª
+// æœç´¢è·³è½¬
 function search_location(dir) {
 	generateBackground();
 	var listype = $("#searcnbtn").attr('detype');
@@ -213,7 +213,7 @@ function search_location(dir) {
 		 },"text"
 	);
 }
-// ÕıÔÚ¼ÓÔØ
+// æ­£åœ¨åŠ è½½
 function generateBackground() {
 	var backgroundHtm = '<div id="bonfire-pageloader"><div class="bonfire-pageloader-icon"></div></div>';
 	var html = jQuery('html');

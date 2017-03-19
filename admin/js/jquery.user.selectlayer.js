@@ -1,4 +1,4 @@
-//Ö°Î»£¬µØÇøÑ¡Ôñµ¯³ö²ãº¯Êı(½öÏŞÓÚ´´½¨¼òÀúÒ³Ãæ)
+ï»¿//èŒä½ï¼Œåœ°åŒºé€‰æ‹©å¼¹å‡ºå±‚å‡½æ•°(ä»…é™äºåˆ›å»ºç®€å†é¡µé¢)
 function OpenCategoryLayer(click_obj,showid,input,input_cn,input_txt,QSarr,strlen)
 {
 	$(click_obj).click(function()
@@ -19,13 +19,13 @@ function OpenCategoryLayer(click_obj,showid,input,input_cn,input_txt,QSarr,strle
 				var pid=$(this).attr("id");
 				if (strclass)
 				{
-					//Èç¹ûÓĞ×ÓÀàÔò²»ÄÜÑ¡Ôñ¶¥¼¶·ÖÀà
+					//å¦‚æœæœ‰å­ç±»åˆ™ä¸èƒ½é€‰æ‹©é¡¶çº§åˆ†ç±»
 					$(this).find(".titem :checkbox").attr({'checked':false,"disabled":"disabled"});
 					//
 					$(this).find(".sitem").css("display","block");
 					if ($(this).find(".sitem").html()=="")
 					{
-					$(this).find(".sitem").html(MakeLi(strclass,pid));//Éú³ÉLI
+					$(this).find(".sitem").html(MakeLi(strclass,pid));//ç”ŸæˆLI
 					}
 					$(showid+" .OpenFloatBox label").unbind().click(function()
 					{
@@ -74,18 +74,18 @@ function OpenCategoryLayer(click_obj,showid,input,input_cn,input_txt,QSarr,strle
 			);
 			$(showid+" .OpenFloatBox .DialogClose").unbind().hover(function(){$(this).addClass("spanhover")},function(){$(this).removeClass("spanhover")});
 			$(showid+" .DialogClose").click(function(){DialogClose(showid);});
-			//È·¶¨Ñ¡Ôñ
+			//ç¡®å®šé€‰æ‹©
 			$(showid+" .Set").unbind().click(function()
 			{
 					SetInput(showid,input_cn,input,strlen);
 			});	
-			//¹Ø±Õ
+			//å…³é—­
 			function DialogClose(showid)
 			{
 				$(".menu_bg_layer").hide();
 				$(showid).hide();
 			}
-			//ÉèÖÃ±íµ¥
+			//è®¾ç½®è¡¨å•
 			function SetInput(showid,input_cn,input,strlen)
 			{
 					var a_cn=new Array();
@@ -93,7 +93,7 @@ function OpenCategoryLayer(click_obj,showid,input,input_cn,input_txt,QSarr,strle
 					var i=0;
 					if ($(showid+" .OpenFloatBox .selecteditem :checkbox[checked]").length>8)
 					{
-						alert("²»ÄÜ³¬¹ı8¸öÑ¡Ïî");
+						alert("ä¸èƒ½è¶…è¿‡8ä¸ªé€‰é¡¹");
 						return false;
 					}
 					$(showid+" .OpenFloatBox .selecteditem :checkbox[checked]").each(function(index)
@@ -113,13 +113,13 @@ function OpenCategoryLayer(click_obj,showid,input,input_cn,input_txt,QSarr,strle
 					$(input_txt).html(a_cn.join(","));
 					$(input).val(a_id.join("-"));
 					DialogClose(showid);
-					 //ÑéÖ¤±íµ¥ÖĞµÄÒ»¸öĞèÒªÑéÖ¤µÄ±íµ¥ÔªËØ¡£ 
+					 //éªŒè¯è¡¨å•ä¸­çš„ä¸€ä¸ªéœ€è¦éªŒè¯çš„è¡¨å•å…ƒç´ ã€‚ 
 					$("#Form1").validate().element("#intention_jobs");
 			}
 		
 	});	
 }
-//ÉèÖÃÒõÓ°
+//è®¾ç½®é˜´å½±
 function SetBoxBg(showid)
 {
 				var FloatBoxWidth=$(showid+" .OpenFloatBox").width();
@@ -129,7 +129,7 @@ function SetBoxBg(showid)
 				$(showid+" .OpenFloatBoxBg").css({display:"block",width:(FloatBoxWidth+12)+"px",height:(FloatBoxHeight+12)+"px"});
 				$(showid+" .OpenFloatBoxBg").css({left:(FloatBoxLeft-5)+"px",top:(FloatBoxTop-5)+"px"});
 }
-//Éú³ÉĞ¡Àà
+//ç”Ÿæˆå°ç±»
 function MakeLi(val,pid)
 {
 			if (val=="")return false;
@@ -142,10 +142,10 @@ function MakeLi(val,pid)
 				}
 			return htmlstr; 
 }
-//¿½±´
+//æ‹·è´
 function CopyItem(showid)
 {
-					var htmlstr='&nbsp;&nbsp;&nbsp;ÒÑ¾­Ñ¡Ôñ·ÖÀà£º<span class=\"empty\">[Çå¿ÕÒÑÑ¡]</span><br/>';
+					var htmlstr='&nbsp;&nbsp;&nbsp;å·²ç»é€‰æ‹©åˆ†ç±»ï¼š<span class=\"empty\">[æ¸…ç©ºå·²é€‰]</span><br/>';
 					$(showid+" .item :checkbox[checked][class='b']").each(function(index){
 					htmlstr+="<label><input class=\"b\"  type=\"checkbox\" value=\""+$(this).attr("value")+"\" title=\""+$(this).attr("title")+"\" checked/>"+$(this).attr("title")+"</label>";
 					})
@@ -165,7 +165,7 @@ function CopyItem(showid)
 					{
 						$(showid+" .selecteditem").css("display","none");
 					}
-					//ÒÑÑ¡ÏîÄ¿°ó¶¨click
+					//å·²é€‰é¡¹ç›®ç»‘å®šclick
 					$(showid+" .selecteditem :checkbox").unbind().click(function()
 					{
 						var selval=$(this).val();
@@ -178,7 +178,7 @@ function CopyItem(showid)
 									{
 										$(this).parent().next().find(":checkbox").attr("checked",false);
 									}									
-									//ÖØĞÂ¿ËÂ¡
+									//é‡æ–°å…‹éš†
 									CopyItem(showid);
 								}	
 							})
@@ -189,7 +189,7 @@ function CopyItem(showid)
 					 	$(this).parent().parent().prev().css("color","#FF6600");
 					});
 					SetBoxBg(showid);
-					//Çå¿Õ
+					//æ¸…ç©º
 					$(showid+" .selecteditem .empty").unbind().click(function()
 					{
 							$(showid+" .selecteditem").css("display","none");
@@ -200,7 +200,7 @@ function CopyItem(showid)
 							SetBoxBg(showid);
 					});	
 }
-//½ØÈ¡×Ö·û
+//æˆªå–å­—ç¬¦
 function limit(objString,num)
 {
 	if (num==0)
@@ -213,19 +213,19 @@ function limit(objString,num)
 	} 
 	return objString;
 }
-//Ä£Äâselect
+//æ¨¡æ‹Ÿselect
 function showmenu(menuID,showID,inputname,Form,Forminput)
 {
 	$(menuID).click(function(){
 		$(menuID).blur();
 		$(menuID).parent("div").css("position","relative");
 		$(showID).slideToggle("fast");
-		//Éú³É±³¾°
+		//ç”ŸæˆèƒŒæ™¯
 		$(menuID).parent("div").before("<div class=\"menu_bg_layer\"></div>");
 		$(".menu_bg_layer").height($(document).height());
 		$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute", left: "0", top: "0" , "z-index": "0", "background-color": "#ffffff"});
 		$(".menu_bg_layer").css("opacity","0");
-		//Éú³É±³¾°½áÊø
+		//ç”ŸæˆèƒŒæ™¯ç»“æŸ
 		$(showID+" li").live("click",function(){
 			$(menuID).val($(this).attr("title"));
 			$(inputname).val($(this).attr("id"));
@@ -257,7 +257,7 @@ function showmenu(menuID,showID,inputname,Form,Forminput)
 		);
 	});
 }
-//´ò¿ªĞĞÒµ(´Ëº¯Êı½öÏŞ´´½¨¼òÀúÌîĞ´ÒâÏòĞĞÒµ)
+//æ‰“å¼€è¡Œä¸š(æ­¤å‡½æ•°ä»…é™åˆ›å»ºç®€å†å¡«å†™æ„å‘è¡Œä¸š)
 function OpentradeLayer(click_obj,input,input_cn,input_txt,showid,strlen)
 {
 	$(click_obj).click(function()
@@ -275,7 +275,7 @@ function OpentradeLayer(click_obj,input,input_cn,input_txt,showid,strlen)
 				$(showid+"  label").unbind().click(function(){
 						if ($(showid+" .content :checkbox[checked]").length>5)
 						{
-							alert("²»ÄÜ³¬¹ı5¸öÑ¡Ïî");
+							alert("ä¸èƒ½è¶…è¿‡5ä¸ªé€‰é¡¹");
 							$(this).attr("checked",false);
 							return false;
 						}
@@ -288,7 +288,7 @@ function OpentradeLayer(click_obj,input,input_cn,input_txt,showid,strlen)
 				});
 		
 	});
-	//È·¶¨Ñ¡Ôñ
+	//ç¡®å®šé€‰æ‹©
 	$(showid+" .Set").click(function()
 	{
 			var a_cn=new Array();
@@ -302,10 +302,10 @@ function OpentradeLayer(click_obj,input,input_cn,input_txt,showid,strlen)
 			if ($(input_cn).val()=="")$(input_cn).val("");
 			$(input).val(a_id.join(","));
 			 DialogClose(showid);
-			 //ÑéÖ¤±íµ¥ÖĞµÄÒ»¸öĞèÒªÑéÖ¤µÄ±íµ¥ÔªËØ
+			 //éªŒè¯è¡¨å•ä¸­çš„ä¸€ä¸ªéœ€è¦éªŒè¯çš„è¡¨å•å…ƒç´ 
 			 $("#Form1").validate().element(input_cn); 
 	});
-	//ÉèÖÃÒõÓ°
+	//è®¾ç½®é˜´å½±
 	function SetBoxBg(showid)
 	{
 				var FloatBoxWidth=$(showid+" .OpenFloatBox").width();
@@ -315,7 +315,7 @@ function OpentradeLayer(click_obj,input,input_cn,input_txt,showid,strlen)
 				$(showid+" .OpenFloatBoxBg").css({display:"block",width:(FloatBoxWidth+12)+"px",height:(FloatBoxHeight+12)+"px"});
 				$(showid+" .OpenFloatBoxBg").css({left:(FloatBoxLeft-5)+"px",top:(FloatBoxTop-5)+"px"});
 	}
-	//¹Ø±Õ
+	//å…³é—­
 	$(showid+" .OpenFloatBox .DialogClose").hover(function(){$(this).addClass("spanhover")},function(){$(this).removeClass("spanhover")});
 	$(showid+" .DialogClose").click(function(){DialogClose(showid);});
 	function DialogClose(showid)
@@ -345,14 +345,14 @@ function showtaglayer(menuID,showID,inputname,inputname1,strlen,get)
 		$(menuID).blur();
 		$(menuID).parent("div").css("position","relative");
 		$(showID).slideToggle("fast");
-		//Éú³É±³¾°
+		//ç”ŸæˆèƒŒæ™¯
 		$(menuID).parent("div").before("<div class=\"menu_bg_layer\"></div>");
 		$(".menu_bg_layer").height($(document).height());
 		$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute", left: "0", top: "0" , "z-index": "0"});
 		$(showID+"  label").unbind().click(function(){
 						if ($(showID+" :checkbox[checked]").length>5)
 						{
-							alert("²»ÄÜ³¬¹ı5¸öÑ¡Ïî");
+							alert("ä¸èƒ½è¶…è¿‡5ä¸ªé€‰é¡¹");
 							$(this).attr("checked",false);
 							return false;
 						}
@@ -362,7 +362,7 @@ function showtaglayer(menuID,showID,inputname,inputname1,strlen,get)
 						$(showID+"  :checkbox[checked]").parent().css("color","#FF3300");
 						}
 		});
-		//È·¶¨Ñ¡Ôñ
+		//ç¡®å®šé€‰æ‹©
 		$(showID+" .Set").click(function()
 		{
 				var a_cn=new Array();
@@ -404,14 +404,14 @@ function showtaglayer_new(menuID,showID,inputname,inputname1,strlen,get)
 		$(menuID).blur();
 		$(menuID).parent("div").css("position","relative");
 		$(showID).slideToggle("fast");
-		//Éú³É±³¾°
+		//ç”ŸæˆèƒŒæ™¯
 		$(menuID).parent("div").before("<div class=\"menu_bg_layer\"></div>");
 		$(".menu_bg_layer").height($(document).height());
 		$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute", left: "0", top: "0" , "z-index": "0"});
 		$(showID+"  label").unbind().click(function(){
 						// if ($(showID+" :checkbox[checked]").length>5)
 						// {
-						// 	alert("²»ÄÜ³¬¹ı5¸öÑ¡Ïî");
+						// 	alert("ä¸èƒ½è¶…è¿‡5ä¸ªé€‰é¡¹");
 						// 	$(this).attr("checked",false);
 						// 	return false;
 						// }
@@ -421,7 +421,7 @@ function showtaglayer_new(menuID,showID,inputname,inputname1,strlen,get)
 						$(showID+"  :checkbox[checked]").parent().css("color","#FF3300");
 						// }
 		});
-		//È·¶¨Ñ¡Ôñ
+		//ç¡®å®šé€‰æ‹©
 		$(showID+" .Set").click(function()
 		{
 				var a_cn=new Array();
@@ -443,30 +443,30 @@ function showtaglayer_new(menuID,showID,inputname,inputname1,strlen,get)
 				});
 	});
 }
-//´óÁĞ±í(µ¥Ñ¡)
+//å¤§åˆ—è¡¨(å•é€‰)
 function showmenulayer(menuID,showID,inputname,inputname1,arr)
 {
 	$(menuID).click(function(){
 		$(menuID).blur();
 		$(menuID).parent("div").css("position","relative");
 		$(showID).slideToggle("fast");
-		//Éú³É±³¾°
+		//ç”ŸæˆèƒŒæ™¯
 		$(menuID).parent("div").before("<div class=\"menu_bg_layer\"></div>");
 		$(".menu_bg_layer").height($(document).height());
 		$(".menu_bg_layer").css({ width: $(document).width(), position: "absolute", left: "0", top: "0" , "z-index": "0"});
-		//Éú³É±³¾°½áÊø
+		//ç”ŸæˆèƒŒæ™¯ç»“æŸ
 		$(showID+">ul>li").click(function(){
 			$(menuID).val($(this).attr("title"));
 			$(inputname).val($(this).attr("id"));
 			var strclass=arr[$(this).attr("id")];
-			if (strclass)//¼ÙÈç´æÔÚĞ¡Àà
+			if (strclass)//å‡å¦‚å­˜åœ¨å°ç±»
 			{
 				$(showID).hide();
 				$(showID+"_s").show();
-				var	go_back="<span class=\"go_back\">[·µ»ØÉÏ²ã·ÖÀà>>]</span>";
-				$(showID+"_s").html(go_back+getcathtml(strclass));//Éú³ÉLI
+				var	go_back="<span class=\"go_back\">[è¿”å›ä¸Šå±‚åˆ†ç±»>>]</span>";
+				$(showID+"_s").html(go_back+getcathtml(strclass));//ç”ŸæˆLI
 				
-					$(showID+"_s>ul>li").click(function(){//µã»÷Ğ¡Àà	
+					$(showID+"_s>ul>li").click(function(){//ç‚¹å‡»å°ç±»	
 						$(menuID).val($(menuID).val()+"/"+$(this).attr("title"));
 						$(inputname1).val($(this).attr("id"));
 						$(".menu_bg_layer").hide();	
@@ -475,7 +475,7 @@ function showmenulayer(menuID,showID,inputname,inputname1,arr)
 						$(menuID).parent("div").css("position","");	
 						$(this).css("background-color","");
 					});
-					$(".go_back").click(function(){//·µ»ØÉÏ²ã·ÖÀà
+					$(".go_back").click(function(){//è¿”å›ä¸Šå±‚åˆ†ç±»
 					$(showID).show();
 					$(showID+"_s").hide();
 					});
@@ -499,7 +499,7 @@ function showmenulayer(menuID,showID,inputname,inputname1,arr)
 			$(menuID).parent("div").css("position","");	
 			$(this).css("background-color","");
 			}
-			$("#Form1").validate().element(inputname); //ÑéÖ¤±íµ¥ÖĞµÄÒ»¸öĞèÒªÑéÖ¤µÄ±íµ¥ÔªËØ¡£ 			
+			$("#Form1").validate().element(inputname); //éªŒè¯è¡¨å•ä¸­çš„ä¸€ä¸ªéœ€è¦éªŒè¯çš„è¡¨å•å…ƒç´ ã€‚ 			
 		});
 
 				$(".menu_bg_layer").click(function(){
@@ -533,7 +533,7 @@ function getcathtml(val)
 	htmlstr+="</ul>";
 	return htmlstr; 
 }
- //ÄêÔÂ(µ¥Ñ¡)
+ //å¹´æœˆ(å•é€‰)
 function showyearbox(inputname)
 {
 	$(inputname).click(function(){
@@ -548,22 +548,22 @@ function showyearbox(inputname)
 			 y=y+5;
 		var ymin=y-65;
 		htm="<div class=\"showyearbox yearlist\">";		
-		htm+="<div class=\"tit\">ÇëÑ¡ÔñÄê·İ>></div>";
+		htm+="<div class=\"tit\">è¯·é€‰æ‹©å¹´ä»½>></div>";
 		htm+="<ul>";
 		for (i=y;i>=ymin;i--)
 		{
-		htm+="<li title=\""+i+"Äê\">"+i+"Äê</li>";
+		htm+="<li title=\""+i+"å¹´\">"+i+"å¹´</li>";
 		}
 		htm+="<div class=\"clear\"></div>";
 		htm+="</ul>";
 		htm+="</div>";
 		//
 		htm+="<div class=\"showyearbox monthlist\">";
-		htm+="<div class=\"tit\">ÇëÑ¡ÔñÔÂ·İ>></div>";
+		htm+="<div class=\"tit\">è¯·é€‰æ‹©æœˆä»½>></div>";
 		htm+="<ul>";
 		for (i=1;i<=12;i++)
 		{
-		htm+="<li title=\""+i+"ÔÂ\">"+i+"ÔÂ</li>";
+		htm+="<li title=\""+i+"æœˆ\">"+i+"æœˆ</li>";
 		}
 		htm+="<div class=\"clear\"></div>";
 		htm+="</ul>";
@@ -616,7 +616,7 @@ function showyearbox(inputname)
 	});
 }
 
-//ºáÅÅ¶àÑ¡¿òÑ¡ÖĞ¸³Öµ
+//æ¨ªæ’å¤šé€‰æ¡†é€‰ä¸­èµ‹å€¼
 function getcheckboxval(menuID,showID,inputname,inputname1,get)
 {
 	if (get)
@@ -632,7 +632,7 @@ function getcheckboxval(menuID,showID,inputname,inputname1,get)
 		$(inputname).val(tcn.join(","));
 		$(inputname1).val(get);
 	}
-	//Ñ¡ÖĞµ¥Ñ¡¿ò
+	//é€‰ä¸­å•é€‰æ¡†
 	$(showID+" label").click(function()
 	{
 			var a_cn=new Array();

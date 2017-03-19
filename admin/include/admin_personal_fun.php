@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¹ÜÀíÖÐÐÄ ¸öÈËÓÃ»§Ïà¹Øº¯Êý
+ * 74cms ç®¡ç†ä¸­å¿ƒ ä¸ªäººç”¨æˆ·ç›¸å…³å‡½æ•°
  * ============================================================================
- * °æÈ¨ËùÓÐ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓÐÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼þ£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌÐò´úÂë½øÐÐÐÞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊÐí¶Ô³ÌÐò´úÂëÒÔÈÎºÎÐÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºŽå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
  if(!defined('IN_QISHI'))
@@ -19,14 +19,14 @@
 	$sql = "select * from ".table('members')." where uid = ".intval($uid)." LIMIT 1";
 	return $db->getone($sql);
 }
- //¼ì²é¸Ã¼òÀúÊÇ·ñÍ¶µÝ¹ý¸ÃÖ°Î»
+ //æ£€æŸ¥è¯¥ç®€åŽ†æ˜¯å¦æŠ•é€’è¿‡è¯¥èŒä½
  function check_jobs_apply($jobs_id,$resume_id,$p_uid)
 {
 	global $db;
 	$sql = "select did from ".table('personal_jobs_apply')." WHERE personal_uid = '".intval($p_uid)."' AND jobs_id='".intval($jobs_id)."'  AND resume_id='".intval($resume_id)."'";
 	return $db->getall($sql);
 }
- //»ñÈ¡Ö°Î»ÐÅÏ¢ÁÐ±í
+ //èŽ·å–èŒä½ä¿¡æ¯åˆ—è¡¨
 function get_jobs($offset,$perpage,$get_sql= '')
 {
 	global $db,$timestamp;
@@ -50,7 +50,7 @@ function get_jobs($offset,$perpage,$get_sql= '')
 	}
 	return $row_arr;
 }
- //******************************¼òÀú²¿·Ö**********************************
+ //******************************ç®€åŽ†éƒ¨åˆ†**********************************
 function get_resume_list($offset,$perpage,$get_sql= '')
 {
 	global $db;
@@ -82,8 +82,8 @@ function del_resume($id)
 	if (!$db->query("Delete from ".table('resume_work')." WHERE pid IN ({$sqlin}) ")) return false;
 	if (!$db->query("Delete from ".table('resume_search_rtime')." WHERE id IN ({$sqlin})")) return false;
 	if (!$db->query("Delete from ".table('resume_search_key')." WHERE id IN ({$sqlin})")) return false;
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("É¾³ý¼òÀúidÎª".$id."µÄ¼òÀú , ¹²É¾³ý".$return."ÐÐ", $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åˆ é™¤ç®€åŽ†idä¸º".$id."çš„ç®€åŽ† , å…±åˆ é™¤".$return."è¡Œ", $_SESSION['admin_name'],3);
 	return $return;
 	}
 	return $return;
@@ -122,17 +122,17 @@ function edit_resume_audit($id,$audit,$reason,$pms_notice)
 		if (!$db->query("update  ".table('resume_search_key')." SET audit='{$audit}'  WHERE id IN ({$sqlin}) ")) return false;
 		if (!$db->query("update  ".table('resume_search_rtime')." SET audit='{$audit}'  WHERE id IN ({$sqlin}) ")) return false;
 		// distribution_resume($id);
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ÐÞ¸Ä¼òÀúidÎª".$sqlin."µÄÉóºË×´Ì¬Îª".$audit, $_SESSION['admin_name'],3);
-		//·¢ËÍÕ¾ÄÚÐÅ
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("ä¿®æ”¹ç®€åŽ†idä¸º".$sqlin."çš„å®¡æ ¸çŠ¶æ€ä¸º".$audit, $_SESSION['admin_name'],3);
+		//å‘é€ç«™å†…ä¿¡
 		if ($pms_notice=='1')
 		{
 				$result = $db->query("SELECT  fullname,title,uid  FROM ".table('resume')." WHERE id IN ({$sqlin})");
-				$reason=$reason==''?'Ô­Òò£ºÎ´Öª':'Ô­Òò£º'.$reason;
+				$reason=$reason==''?'åŽŸå› ï¼šæœªçŸ¥':'åŽŸå› ï¼š'.$reason;
 				while($list = $db->fetch_array($result))
 				{
 					$user_info=get_user($list['uid']);
-					$setsqlarr['message']=$audit=='1'?"Äú´´½¨µÄ¼òÀú£º{$list['title']},ÕæÊµÐÕÃû£º{$list['fullname']},³É¹¦Í¨¹ýÍøÕ¾¹ÜÀíÔ±ÉóºË£¡":"Äú´´½¨µÄ¼òÀú£º{$list['title']},ÕæÊµÐÕÃû£º{$list['fullname']},Î´Í¨¹ýÍøÕ¾¹ÜÀíÔ±ÉóºË,{$reason}";
+					$setsqlarr['message']=$audit=='1'?"æ‚¨åˆ›å»ºçš„ç®€åŽ†ï¼š{$list['title']},çœŸå®žå§“åï¼š{$list['fullname']},æˆåŠŸé€šè¿‡ç½‘ç«™ç®¡ç†å‘˜å®¡æ ¸ï¼":"æ‚¨åˆ›å»ºçš„ç®€åŽ†ï¼š{$list['title']},çœŸå®žå§“åï¼š{$list['fullname']},æœªé€šè¿‡ç½‘ç«™ç®¡ç†å‘˜å®¡æ ¸,{$reason}";
 					$setsqlarr['msgtype']=1;
 					$setsqlarr['msgtouid']=$user_info['uid'];
 					$setsqlarr['msgtoname']=$user_info['username'];
@@ -142,7 +142,7 @@ function edit_resume_audit($id,$audit,$reason,$pms_notice)
 					$db->inserttable(table('pms'),$setsqlarr);
 				 }
 		}
-		//ÉóºËÎ´Í¨¹ýÔö¼ÓÔ­Òò
+		//å®¡æ ¸æœªé€šè¿‡å¢žåŠ åŽŸå› 
 		if($audit=='3'){
 			foreach($id as $list){
 				$auditsqlarr['resume_id']=$list;
@@ -152,10 +152,10 @@ function edit_resume_audit($id,$audit,$reason,$pms_notice)
 			}
 		}
 			
-			//·¢ËÍÓÊ¼þ
-				$mailconfig=get_cache('mailconfig');//»ñÈ¡ÓÊ¼þ¹æÔò
+			//å‘é€é‚®ä»¶
+				$mailconfig=get_cache('mailconfig');//èŽ·å–é‚®ä»¶è§„åˆ™
 				$sms=get_cache('sms_config');
-				if ($audit=="1" && $mailconfig['set_resumeallow']=="1")//ÉóºËÍ¨¹ý
+				if ($audit=="1" && $mailconfig['set_resumeallow']=="1")//å®¡æ ¸é€šè¿‡
 				{
 						$result = $db->query("SELECT * FROM ".table('resume')." WHERE id IN ({$sqlin}) ");
 						while($list = $db->fetch_array($result))
@@ -163,7 +163,7 @@ function edit_resume_audit($id,$audit,$reason,$pms_notice)
 						dfopen($_CFG['site_domain'].$_CFG['site_dir']."plus/asyn_mail.php?uid=".$list['uid']."&key=".asyn_userkey($list['uid'])."&act=set_resumeallow");
 						}
 				}
-				if ($audit=="3" && $mailconfig['set_resumenotallow']=="1")//ÉóºËÎ´Í¨¹ý
+				if ($audit=="3" && $mailconfig['set_resumenotallow']=="1")//å®¡æ ¸æœªé€šè¿‡
 				{
 					$result = $db->query("SELECT * FROM ".table('resume')." WHERE id IN ({$sqlin}) ");
 						while($list = $db->fetch_array($result))
@@ -185,7 +185,7 @@ function edit_resume_audit($id,$audit,$reason,$pms_notice)
 						}
 				}
 				//sms
-				if ($audit=="3" && $sms['open']=="1" && $sms['set_resumenotallow']=="1" )//ÈÏÖ¤Î´Í¨¹ý
+				if ($audit=="3" && $sms['open']=="1" && $sms['set_resumenotallow']=="1" )//è®¤è¯æœªé€šè¿‡
 				{
 					$result = $db->query("SELECT * FROM ".table('resume')." WHERE id IN ({$sqlin}) ");
 						while($list = $db->fetch_array($result))
@@ -198,12 +198,12 @@ function edit_resume_audit($id,$audit,$reason,$pms_notice)
 						}
 				}
 				//sms
-			//·¢ËÍÓÊ¼þ
+			//å‘é€é‚®ä»¶
 	return true;
 	}
 	return false;
 }
-//ÐÞ¸ÄÕÕÆ¬ÉóºË×´Ì¬
+//ä¿®æ”¹ç…§ç‰‡å®¡æ ¸çŠ¶æ€
 function edit_resume_photoaudit($id,$audit,$is_del_img)
 {
 	global $db,$_CFG;
@@ -243,12 +243,12 @@ function edit_resume_photoaudit($id,$audit,$is_del_img)
 				}
 			}
 		}
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ÐÞ¸Ä¼òÀúidÎª".$id."µÄÕÕÆ¬ÉóºË×´Ì¬Îª".$audit, $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("ä¿®æ”¹ç®€åŽ†idä¸º".$id."çš„ç…§ç‰‡å®¡æ ¸çŠ¶æ€ä¸º".$audit, $_SESSION['admin_name'],3);
 	}
 	return true;
 }
-//ÐÞ¸ÄÈË²ÅµÈ¼¶
+//ä¿®æ”¹äººæ‰ç­‰çº§
 function edit_resume_talent($id,$talent)
 {
 	global $db;
@@ -260,13 +260,13 @@ function edit_resume_talent($id,$talent)
 		if (!$db->query("update  ".table('resume')." SET talent={$talent}  WHERE id IN ({$sqlin})")) return false;
 		if (!$db->query("update  ".table('resume_search_rtime')." SET talent={$talent}  WHERE id IN ({$sqlin})")) return false;
 		if (!$db->query("update  ".table('resume_search_key')." SET talent={$talent}  WHERE id IN ({$sqlin})")) return false;
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("ÐÞ¸Ä¼òÀúidÎª".$sqlin."µÄÈË²ÅµÈ¼¶Îª".$talent, $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("ä¿®æ”¹ç®€åŽ†idä¸º".$sqlin."çš„äººæ‰ç­‰çº§ä¸º".$talent, $_SESSION['admin_name'],3);
 		return true;
 	}
 	return false;
 }
-//´ÓUID»ñÈ¡ËùÓÐ¼òÀú
+//ä»ŽUIDèŽ·å–æ‰€æœ‰ç®€åŽ†
 function get_resume_uid($uid)
 {
 	global $db;
@@ -292,11 +292,11 @@ function refresh_resume($id)
 		if (!$db->query("update  ".table('resume_search_rtime')." SET refreshtime='".time()."'  WHERE id IN (".$sqlin.")")) return false;
 		if (!$db->query("update  ".table('resume_search_key')." SET refreshtime='".time()."'  WHERE id IN (".$sqlin.")")) return false;
 	}
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("Ë¢ÐÂ¼òÀúidÎª".$sqlin."µÄ¼òÀú , ¹²Ë¢ÐÂ".$return."ÐÐ", $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åˆ·æ–°ç®€åŽ†idä¸º".$sqlin."çš„ç®€åŽ† , å…±åˆ·æ–°".$return."è¡Œ", $_SESSION['admin_name'],3);
 	return $return;
 }
-//**************************¸öÈË»áÔ±ÁÐ±í
+//**************************ä¸ªäººä¼šå‘˜åˆ—è¡¨
 function get_member_list($offset,$perpage,$get_sql= '')
 {
 	global $db;
@@ -320,8 +320,8 @@ function delete_member($uid)
 		{
 		if (!$db->query("Delete from ".table('members')." WHERE uid IN (".$sqlin.")")) return false;
 		if (!$db->query("Delete from ".table('members_info')." WHERE uid IN (".$sqlin.")")) return false;
-		//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-		write_log("É¾³ýuidÎª".$sqlin."µÄ»áÔ±", $_SESSION['admin_name'],3);
+		//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+		write_log("åˆ é™¤uidä¸º".$sqlin."çš„ä¼šå‘˜", $_SESSION['admin_name'],3);
 		return true;
 		}
 	return false;
@@ -340,13 +340,13 @@ function get_user($uid)
 	$sql = "select * from ".table('members')." where uid = '{$uid}' LIMIT 1";
 	return $db->getone($sql);
 }
-//»ñÈ¡¼òÀúµÄÉóºËÈÕÖ¾
+//èŽ·å–ç®€åŽ†çš„å®¡æ ¸æ—¥å¿—
 function get_resumeaudit_one($resume_id){
 	global $db;
 	$sql = "select * from ".table('audit_reason')."  WHERE resume_id='".intval($resume_id)."' ORDER BY id DESC";
 	return $db->getall($sql);
 }
-//»ñÈ¡¼òÀú»ù±¾ÐÅÏ¢
+//èŽ·å–ç®€åŽ†åŸºæœ¬ä¿¡æ¯
 function get_resume_basic($uid,$id)
 {
 	global $db;
@@ -366,7 +366,7 @@ function get_resume_basic($uid,$id)
 	return $info;
 	}
 }
-//»ñÈ¡½ÌÓý¾­ÀúÁÐ±í
+//èŽ·å–æ•™è‚²ç»åŽ†åˆ—è¡¨
 function get_resume_education($uid,$pid)
 {
 	global $db;
@@ -374,21 +374,21 @@ function get_resume_education($uid,$pid)
 	$sql = "SELECT * FROM ".table('resume_education')." WHERE  pid='".intval($pid)."' AND uid='".intval($uid)."' ";
 	return $db->getall($sql);
 }
-//»ñÈ¡£º¹¤×÷¾­Àú
+//èŽ·å–ï¼šå·¥ä½œç»åŽ†
 function get_resume_work($uid,$pid)
 {
 	global $db;
 	$sql = "select * from ".table('resume_work')." where pid='".$pid."' AND uid=".intval($uid)."" ;
 	return $db->getall($sql);
 }
-//»ñÈ¡£ºÅàÑµ¾­ÀúÁÐ±í
+//èŽ·å–ï¼šåŸ¹è®­ç»åŽ†åˆ—è¡¨
 function get_resume_training($uid,$pid)
 {
 	global $db;
 	$sql = "select * from ".table('resume_training')." where pid='".intval($pid)."' AND  uid='".intval($uid)."' ";
 	return $db->getall($sql);
 }
-//»ñÈ¡ÒâÏòÖ°Î»
+//èŽ·å–æ„å‘èŒä½
 function get_resume_jobs($pid)
 {
 	global $db;
@@ -403,19 +403,19 @@ function reasonaudit_del($id)
 	$sqlin=implode(",",$id);
 	if (!preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin)) return false;
 	if (!$db->query("Delete from ".table('audit_reason')." WHERE id IN ({$sqlin})")) return false;
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨É¾³ýÈÕÖ¾idÎª".$sqlin."µÄÈÕÖ¾", $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°åˆ é™¤æ—¥å¿—idä¸º".$sqlin."çš„æ—¥å¿—", $_SESSION['admin_name'],3);
 	return $db->affected_rows();
 }
-//ÐÞ¸ÄÓÃ»§×´Ì¬
+//ä¿®æ”¹ç”¨æˆ·çŠ¶æ€
 function set_user_status($status,$uid)
 {
 	global $db;
 	$status=intval($status);
 	$uid=intval($uid);
 	if (!$db->query("UPDATE ".table('members')." SET status= {$status} WHERE uid={$uid} LIMIT 1")) return false;
-	//ÌîÐ´¹ÜÀíÔ±ÈÕÖ¾
-	write_log("ºóÌ¨½«uidÎª".$uid."»áÔ±µÄÓÃ»§×´Ì¬ÐÞ¸ÄÎª".$status, $_SESSION['admin_name'],3);
+	//å¡«å†™ç®¡ç†å‘˜æ—¥å¿—
+	write_log("åŽå°å°†uidä¸º".$uid."ä¼šå‘˜çš„ç”¨æˆ·çŠ¶æ€ä¿®æ”¹ä¸º".$status, $_SESSION['admin_name'],3);
 	return true;
 }
 ?>

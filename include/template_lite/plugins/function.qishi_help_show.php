@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_help_show($params, &$smarty)
 {
 	global $db;
@@ -11,7 +11,7 @@ function tpl_function_qishi_help_show($params, &$smarty)
 		case "ID":
 			$aset['id'] = $a[1];
 			break;
-		case "ÁÐ±íÃû":
+		case "åˆ—è¡¨å":
 			$aset['listname'] = $a[1];
 			break;
 		}

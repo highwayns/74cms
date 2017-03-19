@@ -1,9 +1,9 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript" src="js/jquery.userinfotip-min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#Butdel").click(function(){
-			if(confirm("É¾³ıÌ×²Í±ä¸ü¼ÇÂ¼ºó½«²»¿É»Ö¸´£¬ÄúÈ·¶¨ÒªÉ¾³ıÃ´£¿")){
+			if(confirm("åˆ é™¤å¥—é¤å˜æ›´è®°å½•åå°†ä¸å¯æ¢å¤ï¼Œæ‚¨ç¡®å®šè¦åˆ é™¤ä¹ˆï¼Ÿ")){
 			$("#form1").submit();
 			}
 		})
@@ -17,43 +17,43 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÃèÊöËµÃ÷£º</h2>
+	<h2>æè¿°è¯´æ˜ï¼š</h2>
 	<p>
-		¹ÜÀíÔ±ĞŞ¸Ä°üÀ¨£º¹ÜÀíÔ±ĞŞ¸Ä»áÔ±µÄ»ı·Ö£¬ĞŞ¸Ä»áÔ±µÄÌ×²ÍÄÚ¸÷ÖÖ·şÎñµÄÌõÊı£¡<br>
-		¹ÜÀíÔ±¿ªÍ¨°üÀ¨£º¹ÜÀíÔ±ºóÌ¨È·ÈÏ¶©µ¥ÊÕ¿î£¬ÖØĞÂ¿ªÍ¨·şÎñ£¬Ìí¼Ó»áÔ±ÔùËÍ»ı·Ö£¬ÔùËÍÌ×²Í£¡<br>
-		ĞŞ¸ÄÌ×²ÍËµÃ÷£º·¢²¼ÆÕÍ¨Ö°Î»3-10,3±íÊ¾ĞŞ¸ÄÖ®Ç°µÄÊıÄ¿£¬10±íÊ¾ĞŞ¸ÄºóµÄÊıÄ¿£¡
+		ç®¡ç†å‘˜ä¿®æ”¹åŒ…æ‹¬ï¼šç®¡ç†å‘˜ä¿®æ”¹ä¼šå‘˜çš„ç§¯åˆ†ï¼Œä¿®æ”¹ä¼šå‘˜çš„å¥—é¤å†…å„ç§æœåŠ¡çš„æ¡æ•°ï¼<br>
+		ç®¡ç†å‘˜å¼€é€šåŒ…æ‹¬ï¼šç®¡ç†å‘˜åå°ç¡®è®¤è®¢å•æ”¶æ¬¾ï¼Œé‡æ–°å¼€é€šæœåŠ¡ï¼Œæ·»åŠ ä¼šå‘˜èµ é€ç§¯åˆ†ï¼Œèµ é€å¥—é¤ï¼<br>
+		ä¿®æ”¹å¥—é¤è¯´æ˜ï¼šå‘å¸ƒæ™®é€šèŒä½3-10,3è¡¨ç¤ºä¿®æ”¹ä¹‹å‰çš„æ•°ç›®ï¼Œ10è¡¨ç¤ºä¿®æ”¹åçš„æ•°ç›®ï¼
 	</p>
 </div>
   <div class="seltpye_x">
-		<div class="left">²Ù×÷ÀàĞÍ</div>	
+		<div class="left">æ“ä½œç±»å‹</div>	
 		<div class="right">
 		<div class="clear"></div>
-		<a href="{#"log_type:"|qishi_parse_url#}" {#if $smarty.get.log_type==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"log_type:1"|qishi_parse_url#}" {#if $smarty.get.log_type=="1"#}class="select"{#/if#}>ÏµÍ³ÔùËÍ</a>
-		<a href="{#"log_type:2"|qishi_parse_url#}" {#if $smarty.get.log_type=="2"#}class="select"{#/if#}>»áÔ±¹ºÂò</a>
-		<a href="{#"log_type:3"|qishi_parse_url#}" {#if $smarty.get.log_type=="3"#}class="select"{#/if#}>¹ÜÀíÔ±ĞŞ¸Ä</a>
-		<a href="{#"log_type:4"|qishi_parse_url#}" {#if $smarty.get.log_type=="4"#}class="select"{#/if#}>¹ÜÀíÔ±¿ªÍ¨</a>
+		<a href="{#"log_type:"|qishi_parse_url#}" {#if $smarty.get.log_type==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"log_type:1"|qishi_parse_url#}" {#if $smarty.get.log_type=="1"#}class="select"{#/if#}>ç³»ç»Ÿèµ é€</a>
+		<a href="{#"log_type:2"|qishi_parse_url#}" {#if $smarty.get.log_type=="2"#}class="select"{#/if#}>ä¼šå‘˜è´­ä¹°</a>
+		<a href="{#"log_type:3"|qishi_parse_url#}" {#if $smarty.get.log_type=="3"#}class="select"{#/if#}>ç®¡ç†å‘˜ä¿®æ”¹</a>
+		<a href="{#"log_type:4"|qishi_parse_url#}" {#if $smarty.get.log_type=="4"#}class="select"{#/if#}>ç®¡ç†å‘˜å¼€é€š</a>
 		</div>
 		<div class="clear"></div>
   </div>
   <div class="seltpye_x">
-		<div class="left">Ìí¼ÓÊ±¼ä</div>	
+		<div class="left">æ·»åŠ æ—¶é—´</div>	
 		<div class="right">
-		<a href="{#"settr:"|qishi_parse_url#}" {#if $smarty.get.settr==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"settr:3"|qishi_parse_url#}" {#if $smarty.get.settr=="3"#}class="select"{#/if#}>ÈıÌìÄÚ</a>
-		<a href="{#"settr:7"|qishi_parse_url#}" {#if $smarty.get.settr=="7"#}class="select"{#/if#}>Ò»ÖÜÄÚ</a>
-		<a href="{#"settr:30"|qishi_parse_url#}" {#if $smarty.get.settr=="30"#}class="select"{#/if#}>Ò»ÔÂÄÚ</a>
-		<a href="{#"settr:90"|qishi_parse_url#}" {#if $smarty.get.settr=="90"#}class="select"{#/if#}>ÈıÔÂÄÚ</a>
+		<a href="{#"settr:"|qishi_parse_url#}" {#if $smarty.get.settr==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"settr:3"|qishi_parse_url#}" {#if $smarty.get.settr=="3"#}class="select"{#/if#}>ä¸‰å¤©å†…</a>
+		<a href="{#"settr:7"|qishi_parse_url#}" {#if $smarty.get.settr=="7"#}class="select"{#/if#}>ä¸€å‘¨å†…</a>
+		<a href="{#"settr:30"|qishi_parse_url#}" {#if $smarty.get.settr=="30"#}class="select"{#/if#}>ä¸€æœˆå†…</a>
+		<a href="{#"settr:90"|qishi_parse_url#}" {#if $smarty.get.settr=="90"#}class="select"{#/if#}>ä¸‰æœˆå†…</a>
 		<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
   </div>
   <div class="seltpye_x">
-		<div class="left">ÊÕÈ¡·ÑÓÃ</div>	
+		<div class="left">æ”¶å–è´¹ç”¨</div>	
 		<div class="right">
-		<a href="{#"is_money:"|qishi_parse_url#}" {#if $smarty.get.is_money==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"is_money:2"|qishi_parse_url#}" {#if $smarty.get.is_money=="2"#}class="select"{#/if#}>ÒÑÊÕÈ¡·ÑÓÃ</a>
-		<a href="{#"is_money:1"|qishi_parse_url#}" {#if $smarty.get.is_money=="1"#}class="select"{#/if#}>Î´ÊÕÈ¡·ÑÓÃ</a>
+		<a href="{#"is_money:"|qishi_parse_url#}" {#if $smarty.get.is_money==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"is_money:2"|qishi_parse_url#}" {#if $smarty.get.is_money=="2"#}class="select"{#/if#}>å·²æ”¶å–è´¹ç”¨</a>
+		<a href="{#"is_money:1"|qishi_parse_url#}" {#if $smarty.get.is_money=="1"#}class="select"{#/if#}>æœªæ”¶å–è´¹ç”¨</a>
 		<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
@@ -64,20 +64,20 @@
   <table width="100%" border="0" cellpadding="0" cellspacing="0"   class="link_lan">
     <tr>
       <td  class="admin_list_tit admin_list_first" >
-      <label id="chkAll"><input type="checkbox" name=" " title="È«Ñ¡/·´Ñ¡" id="chk"/>¹«Ë¾Ãû³Æ</label></td>
-	   <td  class="admin_list_tit">ÓÃ»§Ãû</td>
+      <label id="chkAll"><input type="checkbox" name=" " title="å…¨é€‰/åé€‰" id="chk"/>å…¬å¸åç§°</label></td>
+	   <td  class="admin_list_tit">ç”¨æˆ·å</td>
 		{#if $QISHI.operation_mode=='1'#}  
-			  <td width="10%" class="admin_list_tit">Ä¿Ç°»ı·Ö</td>
+			  <td width="10%" class="admin_list_tit">ç›®å‰ç§¯åˆ†</td>
 		{#elseif $QISHI.operation_mode=='2'#}  
-			  <td width="10%"  class="admin_list_tit">Ä¿Ç°Ì×²Í</td>
+			  <td width="10%"  class="admin_list_tit">ç›®å‰å¥—é¤</td>
 		{#elseif $QISHI.operation_mode=='3'#}  
-			<td width="10%"  class="admin_list_tit">Ä¿Ç°»ı·Ö(Ì×²Í)</td>
+			<td width="10%"  class="admin_list_tit">ç›®å‰ç§¯åˆ†(å¥—é¤)</td>
 		{#/if#}
-      <td  class="admin_list_tit">²Ù×÷ÀàĞÍ</td>     
-      <td  class="admin_list_tit">¸¶¿î½ğ¶î</td>     
-      <td   class="admin_list_tit">²Ù×÷Ê±¼ä</td>
-	  <td   class="admin_list_tit">ÃèÊö</td>
-      <td align="center" width="80" class="admin_list_tit">²Ù×÷</td>
+      <td  class="admin_list_tit">æ“ä½œç±»å‹</td>     
+      <td  class="admin_list_tit">ä»˜æ¬¾é‡‘é¢</td>     
+      <td   class="admin_list_tit">æ“ä½œæ—¶é—´</td>
+	  <td   class="admin_list_tit">æè¿°</td>
+      <td align="center" width="80" class="admin_list_tit">æ“ä½œ</td>
     </tr>
 	{#foreach from=$meallog item=list#}
       <tr>
@@ -86,7 +86,7 @@
 		{#if $list.companyname#}
  	        {#$list.companyname#}
 		{#else#}
-		<span style="color:#FF0000">Î´ÍêÉÆÆóÒµ×ÊÁÏ</span>
+		<span style="color:#FF0000">æœªå®Œå–„ä¼ä¸šèµ„æ–™</span>
 		{#/if#}
 		</td>
 
@@ -96,26 +96,26 @@
 		</td>
 		 <td class="admin_list">
 		{#if $QISHI.operation_mode=='1'#} 
-			<strong>{#$list.points#}</strong> »ı·Ö
+			<strong>{#$list.points#}</strong> ç§¯åˆ†
 		{#elseif $QISHI.operation_mode=='2'#}  
-			{#if $list.setmeal_name#}<span style="color: #009900">{#$list.setmeal_name#}</span>{#else#}<span style="color:#FF3300">ÎŞÌ×²Í</span>{#/if#}
+			{#if $list.setmeal_name#}<span style="color: #009900">{#$list.setmeal_name#}</span>{#else#}<span style="color:#FF3300">æ— å¥—é¤</span>{#/if#}
 		{#elseif $QISHI.operation_mode=='3'#}  
-			»ı·Ö:<strong>{#$list.points#}</strong>({#if $list.setmeal_name#}<span style="color: #009900">{#$list.setmeal_name#}</span>{#else#}<span style="color:#FF3300">ÎŞÌ×²Í</span>{#/if#})
+			ç§¯åˆ†:<strong>{#$list.points#}</strong>({#if $list.setmeal_name#}<span style="color: #009900">{#$list.setmeal_name#}</span>{#else#}<span style="color:#FF3300">æ— å¥—é¤</span>{#/if#})
 		{#/if#}
 		</td>
  		<td class="admin_list">
 			{#if $list.log_type =="1"#}
-				ÏµÍ³ÔùËÍ
+				ç³»ç»Ÿèµ é€
 			{#elseif $list.log_type =="2"#}
-				»áÔ±¹ºÂò
+				ä¼šå‘˜è´­ä¹°
 			{#elseif $list.log_type =="3"#}
-				¹ÜÀíÔ±ĞŞ¸Ä
+				ç®¡ç†å‘˜ä¿®æ”¹
 			{#elseif $list.log_type =="4"#}
-				¹ÜÀíÔ±¿ªÍ¨
+				ç®¡ç†å‘˜å¼€é€š
 			{#/if#}
 		</td>
 		 <td class="admin_list">
-			£¤{#$list.log_amount#}
+			ï¿¥{#$list.log_amount#}
 		</td>
 		 <td class="admin_list">
 			{#$list.log_addtime|date_format:"%Y-%m-%d %H:%M"#}
@@ -124,21 +124,21 @@
 		{#$list.log_value#}
 		</td>
         <td align="center" class="admin_list">
-		<a href="?act=user_edit&tuid={#$list.log_uid#}">ĞŞ¸Ä</a>
+		<a href="?act=user_edit&tuid={#$list.log_uid#}">ä¿®æ”¹</a>
 		&nbsp;
-		<a href="?act=management&id={#$list.log_uid#}"  target="_blank"  class="userinfo"  id="{#$list.log_uid#}">¹ÜÀí</a>
+		<a href="?act=management&id={#$list.log_uid#}"  target="_blank"  class="userinfo"  id="{#$list.log_uid#}">ç®¡ç†</a>
 		</td>
       </tr>
       {#/foreach#}
     </table>
   </form>
 	{#if !$meallog#}
-	<div class="admin_list_no_info">Ã»ÓĞÈÎºÎĞÅÏ¢£¡</div>
+	<div class="admin_list_no_info">æ²¡æœ‰ä»»ä½•ä¿¡æ¯ï¼</div>
 	{#/if#}
 	<table width="100%" border="0" cellspacing="10" cellpadding="0" class="admin_list_btm">
       <tr>
         <td>
-        <input type="button" name="Butdel"  id="Butdel" value="É¾³ı¼ÇÂ¼" class="admin_submit"/>
+        <input type="button" name="Butdel"  id="Butdel" value="åˆ é™¤è®°å½•" class="admin_submit"/>
 		</td>
 	{#if $sign!='1'#}
         <td width="305" align="right">
@@ -146,14 +146,14 @@
 			<div class="seh">
 			    <div class="keybox"><input name="key" type="text"   value="{#$smarty.get.key#}" /></div>
 			    <div class="selbox">
-					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"ÓÃ»§Ãû"#}" readonly="true"/>
+					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"ç”¨æˆ·å"#}" readonly="true"/>
 		
 						<div>
 								<input name="key_type" id="key_type" type="hidden" value="{#$smarty.get.key_type|default:"1"#}" />
 												<div id="sehmenu" class="seh_menu">
 														<ul>
-														<li id="1" title="ÓÃ»§Ãû">ÓÃ»§Ãû</li>
-														<li id="3" title="¹«Ë¾Ãû">¹«Ë¾Ãû</li>
+														<li id="1" title="ç”¨æˆ·å">ç”¨æˆ·å</li>
+														<li id="3" title="å…¬å¸å">å…¬å¸å</li>
 														<li id="2" title="UID">UID</li>
 														</ul>
 												</div>
@@ -162,7 +162,7 @@
 				</div>
 				<div class="sbtbox">
 				<input name="act" type="hidden" value="meal_log" />
-				<input type="submit" name="" class="sbt" id="sbt" value="ËÑË÷"/>
+				<input type="submit" name="" class="sbt" id="sbt" value="æœç´¢"/>
 				</div>
 				<div class="clear"></div>
 		  </div>

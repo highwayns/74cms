@@ -1,10 +1,10 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
   $(document).ready(function() {
     jQuery.validator.addMethod("isPhoneNumber", function(value, element) {   
       var tel = /^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/;
       return this.optional(element) || (tel.test(value));
-  }, "ÇëÕıÈ·ÌîĞ´ÊÖ»úºÅÂë");
+  }, "è¯·æ­£ç¡®å¡«å†™æ‰‹æœºå·ç ");
       $("#form4").validate({
          rules:{
           mobile: {
@@ -17,11 +17,11 @@
         },
           messages: {
           mobile: {
-        isPhoneNumber: jQuery.format("ÇëÕıÈ·ÌîĞ´ÊÖ»úºÅÂë")
+        isPhoneNumber: jQuery.format("è¯·æ­£ç¡®å¡«å†™æ‰‹æœºå·ç ")
          },
          email: {
-          required: jQuery.format("ÇëÌîĞ´µç×ÓÓÊÏä"),
-        email: jQuery.format("ÇëÕıÈ·ÌîĞ´µç×ÓÓÊÏä")
+          required: jQuery.format("è¯·å¡«å†™ç”µå­é‚®ç®±"),
+        email: jQuery.format("è¯·æ­£ç¡®å¡«å†™ç”µå­é‚®ç®±")
          } 
         },
         errorPlacement: function(error, element) {
@@ -40,22 +40,22 @@
 	<div class="ptit"> {#$pageheader#}</div>
   <div class="clear"></div>
 </div>
-<div class="toptit">»ù±¾ĞÅÏ¢</div>
+<div class="toptit">åŸºæœ¬ä¿¡æ¯</div>
   <table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
     <tr>
-      <td width="120" height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">×¢²áÊ±¼ä£º</td>
+      <td width="120" height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">æ³¨å†Œæ—¶é—´ï¼š</td>
       <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >{#$user.reg_time|date_format:"%Y-%m-%d   %H:%M"#}</td>
-      <td width="120" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >×îºóµÇÂ¼Ê±¼ä£º</td>
+      <td width="120" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >æœ€åç™»å½•æ—¶é—´ï¼š</td>
       <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >{#$user.last_login_time|date_format:"%Y-%m-%d   %H:%M"#}</td>
     </tr>
     <tr>
-      <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">×¢²áIP£º</td>
+      <td height="30" align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">æ³¨å†ŒIPï¼š</td>
       <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >{#if $user.reg_ip#}{#$user.reg_ip#}{#else#}- - - -{#/if#}</td>
-      <td align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >×îºóµÇÂ¼IP£º</td>
+      <td align="right" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >æœ€åç™»å½•IPï¼š</td>
       <td bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed" >{#if $user.last_login_ip#}{#$user.last_login_ip#}{#else#}- - - -{#/if#}</td>
     </tr>
     <tr>
-      <td height="30" align="right" valign="top" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">¸öÈË¼òÀú£º</td>
+      <td height="30" align="right" valign="top" bgcolor="#FFFFFF" style=" border-bottom:1px #CCCCCC dashed">ä¸ªäººç®€å†ï¼š</td>
       <td colspan="3" bgcolor="#FFFFFF"  class="link_lan" style=" border-bottom:1px #CCCCCC dashed;" >
 	  <table border="0" cellspacing="12" cellpadding="0">
 	   {#foreach from=$resume item=list#}
@@ -66,61 +66,61 @@
 		  {#else#}
 		   <a href="{#$list.resume_url#}" target="_blank"> {#$list.title#}</a>
 		  {#/if#}	</td>
-    <td  style="color:#009900">(ÍêÕûÖ¸Êı£º{#$list.complete_percent#}%)</td>
-    <td><a href="?act=perform&delete=yes&id={#$list.id#}&{#$urltoken#}"  onClick="return confirm('ÄúÈ·¶¨É¾³ıÂğ?')">[É¾³ı]</a></td>
+    <td  style="color:#009900">(å®Œæ•´æŒ‡æ•°ï¼š{#$list.complete_percent#}%)</td>
+    <td><a href="?act=perform&delete=yes&id={#$list.id#}&{#$urltoken#}"  onClick="return confirm('æ‚¨ç¡®å®šåˆ é™¤å—?')">[åˆ é™¤]</a></td>
     </tr>
 	 {#/foreach#}
 	 {#if $resume==""#}
   <tr> 
-    <td colspan="3"><span style="color:#999999">Î´´´½¨¼òÀú</span></td>
+    <td colspan="3"><span style="color:#999999">æœªåˆ›å»ºç®€å†</span></td>
     </tr>
 	  {#/if#}
 </table>	  </td>
     </tr>
   </table>
-    <div class="toptit">»ù±¾ĞÅÏ¢</div>
+    <div class="toptit">åŸºæœ¬ä¿¡æ¯</div>
   <form id="form4" name="form4" method="post" action="?act=set_account_save">
 	{#$inputtoken#}
 	<table width="700" border="0" cellpadding="4" cellspacing="0"   >
       <tr>
-        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÓÃ»§Ãû£º</td>
+        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ç”¨æˆ·åï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="username" type="text" class="input_text_200"   maxlength="50" value="{#$user.username#}"  >
        	</td>
       </tr>
 	  <tr>
-        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÓÊÏä£º</td>
+        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">é‚®ç®±ï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="email" type="text" class="input_text_200"   maxlength="50" value="{#$user.email#}"  >
 		  
 		  &nbsp;&nbsp;&nbsp;
 		  <label>
           <input name="email_audit" type="checkbox" value="1" {#if $user.email_audit=="1"#}checked="checked"{#/if#} />
-          ÒÑÑéÖ¤</label>	
+          å·²éªŒè¯</label>	
 		</td>
       </tr>
 	  <tr>
-        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÊÖ»ú£º</td>
+        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">æ‰‹æœºï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
           <input name="mobile" type="text" class="input_text_200"   maxlength="50" value="{#$user.mobile#}"  >
 		  
 		  &nbsp;&nbsp;&nbsp;
 		  <label>
           <input type="checkbox" name="mobile_audit" value="1"  {#if $user.mobile_audit=="1"#}checked="checked"{#/if#} />
-          ÒÑÑéÖ¤</label>	
+          å·²éªŒè¯</label>	
 		</td>
       </tr>
 	   <tr>
-        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">QQ°ó¶¨£º</td>
+        <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">QQç»‘å®šï¼š</td>
         <td  style=" border-bottom:1px #CCCCCC dashed;" >
          {#if $user.qq_openid#}
-		 ÒÑ°ó¶¨QQÕËºÅ 
+		 å·²ç»‘å®šQQè´¦å· 
 		  &nbsp;&nbsp;&nbsp; 
 		 <label>
           <input type="checkbox" name="qq_openid" value="1"  />
-          È¡Ïû°ó¶¨</label>
+          å–æ¶ˆç»‘å®š</label>
 		 {#else#}
-		 Î´°ó¶¨QQÕÊºÅ
+		 æœªç»‘å®šQQå¸å·
 		 {#/if#}
 		 	
 		</td>
@@ -130,25 +130,25 @@
         <td height="50"  >
 		<input type="hidden" name="thisuid"  value="{#$user.uid#}" />
             <input type="hidden" name="url"  value="{#$url#}" />
-            <input name="submit32" type="submit" class="admin_submit"    value="È·¶¨"/>
-          <input name="submit222" type="button" class="admin_submit"    value="·µ »Ø" onclick="Javascript:window.history.go(-1)"/>        </td>
+            <input name="submit32" type="submit" class="admin_submit"    value="ç¡®å®š"/>
+          <input name="submit222" type="button" class="admin_submit"    value="è¿” å›" onclick="Javascript:window.history.go(-1)"/>        </td>
       </tr>
     </table>
   </form>
   
-   <div class="toptit">ÓÃ»§×´Ì¬</div>
+   <div class="toptit">ç”¨æˆ·çŠ¶æ€</div>
 	 <form id="form9" name="form9" method="post" action="?act=userstatus_edit">
 	 {#$inputtoken#}
 	<table width="100%" border="0" cellpadding="4" cellspacing="0"   > 
 		<tr>
-      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÕÊºÅ×´Ì¬£º</td>
+      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">å¸å·çŠ¶æ€ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed;" >
 	    <label>
 	    <input name="status" type="radio" value="1"  {#if $user.status=="1"#}checked="checked"{#/if#}/>
-	    Õı³£</label> 
+	    æ­£å¸¸</label> 
 		<label>&nbsp;&nbsp;&nbsp;&nbsp;
 	    <input type="radio" name="status" value="2"  {#if $user.status=="2"#}checked="checked"{#/if#}/>
-	    ÔİÍ£</label>
+	    æš‚åœ</label>
 		</td>
     </tr>
 	    <tr>
@@ -156,20 +156,20 @@
       <td height="60"   ><span style="font-size:14px;">
         <input type="hidden" name="userstatus_uid"  value="{#$user.uid#}" />
 		<input type="hidden" name="url"  value="{#$url#}" />
-        <input name="submit3" type="submit" class="admin_submit"    value="È·¶¨"/>
-        <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="Javascript:window.history.go(-1)"/>
+        <input name="submit3" type="submit" class="admin_submit"    value="ç¡®å®š"/>
+        <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="Javascript:window.history.go(-1)"/>
       </span></td>
     </tr>	
   </table>
   </form>
   
-   <div class="toptit">ÃÜÂëĞŞ¸Ä</div>
+   <div class="toptit">å¯†ç ä¿®æ”¹</div>
    <form id="form1" name="form1" method="post" action="?act=userpass_edit">
    {#$inputtoken#}
   <table width="700" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"  >
 		 
 	<tr>
-      <td height="30" align="right" bgcolor="#FFFFFF"  >ĞÂÃÜÂë£º</td>
+      <td height="30" align="right" bgcolor="#FFFFFF"  >æ–°å¯†ç ï¼š</td>
       <td bgcolor="#FFFFFF" >
         <input name="password" type="text" class="input_text_200" id="password" maxlength="50" value=""  />        </td>
     </tr>
@@ -178,9 +178,9 @@
       <td  bgcolor="#FFFFFF"  > 
 	  <input type="hidden" name="memberuid"  value="{#$user.uid#}" />
 		<input type="hidden" name="url"  value="{#$url#}" />
-        <input name="submit3" type="submit" class="admin_submit"    value="È·¶¨"/>
+        <input name="submit3" type="submit" class="admin_submit"    value="ç¡®å®š"/>
      
-        <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="Javascript:window.history.go(-1)"/>
+        <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="Javascript:window.history.go(-1)"/>
        </td>
     </tr>
 	

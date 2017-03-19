@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 function tpl_function_qishi_link($params, &$smarty)
 {
 global $db,$_CFG;
@@ -8,25 +8,25 @@ foreach($arr as $str)
 $a=explode(':',$str);
 	switch ($a[0])
 	{
-	case "ÁÐ±íÃû":
+	case "åˆ—è¡¨å":
 		$aset['listname'] = $a[1];
 		break;
-	case "ÏÔÊ¾ÊýÄ¿":
+	case "æ˜¾ç¤ºæ•°ç›®":
 		$aset['row'] = $a[1];
 		break;
-	case "¿ªÊ¼Î»ÖÃ":
+	case "å¼€å§‹ä½ç½®":
 		$aset['start'] = $a[1];
 		break;
-	case "ÎÄ×Ö³¤¶È":
+	case "æ–‡å­—é•¿åº¦":
 		$aset['len'] = $a[1];
 		break;
-	case "Ìî²¹×Ö·û":
+	case "å¡«è¡¥å­—ç¬¦":
 		$aset['dot'] = $a[1];
 		break;
-	case "ÀàÐÍ":
+	case "ç±»åž‹":
 		$aset['linktype'] = $a[1];
 		break;
-	case "µ÷ÓÃÃû³Æ":
+	case "è°ƒç”¨åç§°":
 		$aset['alias'] = $a[1];
 		break;
 	}

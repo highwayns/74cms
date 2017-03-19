@@ -1,13 +1,13 @@
-/*3.6注册登录*/
-/*此样式文件包含3.6版本的注册，登录，三方登录，修改密码的相关样式*/
+﻿/*3.6娉ㄥ唽鐧诲綍*/
+/*姝ゆ牱寮忔枃浠跺寘鍚?.6鐗堟湰鐨勬敞鍐岋紝鐧诲綍锛屼笁鏂圭櫥褰曪紝淇敼瀵嗙爜鐨勭浉鍏虫牱寮?/
 /*CSS reset*/
-body { margin:0px;background-color: #ffffff;font-family:"microsoft yahei","宋体"; font-size:12px; color:#000000; height:100%}
+body { margin:0px;background-color: #ffffff;font-family:"microsoft yahei","瀹嬩綋"; font-size:12px; color:#000000; height:100%}
 h1,h2,h3,h4,h5,form,p,ul{ margin:0px; padding:0px;}
-input,textarea {font-family:"microsoft yahei","宋体";font-size:14px; color: #666666;outline: none;border:0;margin:0;padding:0;}
+input,textarea {font-family:"microsoft yahei","瀹嬩綋";font-size:14px; color: #666666;outline: none;border:0;margin:0;padding:0;}
 li {padding:0px; margin:0px; line-height:180%;list-style-type:none;}
 a{text-decoration:none;}
 img{border:0;}
-/*清除浮动*/
+/*娓呴櫎娴姩*/
 .clearfix:after{content:"";display:block;clear:both;}
 .clearfix{zoom:1;}
 .f-left{float: left;}
@@ -22,7 +22,7 @@ input.radio{position: relative;top:2px;margin-right: 5px;}
 .link_lan a:hover {text-decoration: underline;color: #0066CC;}
 .link_bk a {color: #666666;text-decoration: none;}
 .link_bk a:hover {text-decoration: underline;color:#0180CF;}
-/*按钮*/
+/*鎸夐挳*/
 .btn{display: inline-block;text-align: center;vertical-align: middle;cursor: pointer;-webkit-transition: background-color .2s;-moz-transition: background-color .2s;-ms-transition: background-color .2s;-o-transition: background-color .2s;transition: background-color .2s;}
 .btn.login-btn{font-size: 12px;color:#666;height:30px;line-height: 30px;display: block;width: 62px;font-family: "SimSun";background-color: #f7f7f7;border-radius: 3px;}
 .btn.reg-btn{font-size: 12px;color:#fff;font-weight: bold;height:30px;line-height: 30px;display: block;width: 62px;font-family: "SimSun";border:1px solid #0180cf;background-color: #0180cf;border-radius: 3px;}
@@ -40,10 +40,10 @@ input.radio{position: relative;top:2px;margin-right: 5px;}
 .btn.span2{width: 180px;}
 .btn.span3{width: 90px;}
 
-/*按钮交互优化*/
+/*鎸夐挳浜や簰浼樺寲*/
 .btn:active{box-shadow: inset 0px 3px 5px rgba(0,0,0,.125);}
 
-/*文本框*/
+/*鏂囨湰妗?/
 input.text{display: inline-block;border:1px solid #dddddd;background-color: #fff;color:#666;}
 /*height*/
 input.text.text-lg{font-size: 14px;line-height: 18px;padding:10px 9px;height:18px;}
@@ -53,7 +53,7 @@ input.text.span300{width: 280px;}
 input.text.span180{width: 160px;}
 input.text.span190{width: 170px;}
 
-/*下拉框*/
+/*涓嬫媺妗?/
 .drop-control{font-size: 14px;color:#333;position: relative;}
 .drop-control .drop-box{position: relative;display:inline-block;border:1px solid #e2e2e2;height:38px;line-height: 38px;padding-left:7px;width:203px;overflow: hidden;cursor: pointer;background-color: #fff;}
 .drop-control .drop-icon{position: absolute;top:0;right:0;width:30px;height:100%;background: url(../images/icon36.png) no-repeat 7px -96px #fff;z-index: 2;}
@@ -62,7 +62,7 @@ input.text.span190{width: 170px;}
 .drop-control .drop-list a:hover{background-color: #f5f5f5;}
 
 .drop-control.width350 .drop-box{width:341px;}
-/* 注册选填信息 下拉框*/
+/* 娉ㄥ唽閫夊～淇℃伅 涓嬫媺妗?/
 .drop-control_reg{font-size: 14px;color:#333;}
 .drop-control_reg .drop-box{position: relative;border:1px solid #e2e2e2;height:38px;line-height: 38px;padding-left:7px;width:341px;overflow: hidden;cursor: pointer;background-color: #fff;}
 .drop-control_reg .drop-icon{position: absolute;top:0;right:0;width:30px;height:100%;background: url(../images/icon36.png) no-repeat 7px -96px #fff;z-index: 2;}
@@ -81,7 +81,7 @@ input.text.span190{width: 170px;}
     width: 836px;
     z-index: 10000;
 }
-/*头部*/
+/*澶撮儴*/
 #reg-head{width: 100%;background-color: #fff;height:100px;box-shadow: 0px 0px 5px #ccc;margin-bottom: 40px;}
 #reg-head.no-shadow{box-shadow: 0px 0px 0px #fff;margin-bottom: 0;}
 #reg-head .logo-box{padding-top: 16px;}
@@ -91,7 +91,7 @@ input.text.span190{width: 170px;}
 #reg-head .top-right{height:48px;margin-top:34px;}
 #reg-head .top-right p{line-height: 32px;font-size: 12px;color:#666;font-family: "SimSun";padding-right: 8px;}
 
-/*进度*/
+/*杩涘害*/
 .step_wrap{height:24px;line-height: 24px;border-bottom: 2px solid #e6e6e6;padding-bottom: 15px;}
 .step_wrap .three-step-bar{padding-left: 123px;}
 .step_wrap .four-step-bar{padding-left: 80px;}
@@ -101,7 +101,7 @@ input.text.span190{width: 170px;}
 .step_wrap .step.active .step-icon{background-color: #0180cf;}
 .step_wrap .four-step-bar .step{margin-right: 96px;}
 
-/*主体*/
+/*涓讳綋*/
 .reg-main{padding:64px 55px;}
 
 .reg-left-form .reg-form-item{margin-bottom:22px;}
@@ -153,7 +153,7 @@ input.text.span190{width: 170px;}
 .weixin-reg .weixin-img{width: 120px;height: 120px;overflow: hidden;margin:25px auto 0 auto;}
 .weixin-reg p{text-align: center;margin-top: 12px;font-size: 14px;color:#666;}
 
-/*提醒页*/
+/*鎻愰啋椤?/
 .common-status{width: 100%;text-align: center;padding-top: 180px;}
 .common-status .status-main{height:32px;line-height: 32px;font-size: 18px;color:#333;}
 .common-status .status-main span{margin-right: 10px;}
@@ -163,16 +163,16 @@ input.text.span190{width: 170px;}
 .common-status p a{color:#0180cf;}
 .common-status .status-btn{width: 180px;margin:0 auto;}
 
-/*密码*/
+/*瀵嗙爜*/
 .password-text{font-size: 16px;}
 .must-star{color:#ff0101;font-size: 14px;}
 .label-group{margin-right:15px;}
 
-/*表单验证*/
+/*琛ㄥ崟楠岃瘉*/
 .verification label{font-size: 12px;line-height: 38px;height:38px;*line-height:16px;*height:16px;margin:12px 0 12px 10px;white-space: nowrap;padding-left: 20px;background: url(../images/icon36.png) no-repeat;display: inline-block;}
 .verification label.error {background-position: 0px 1px;color: #fc4343;display: none;}
 .verification label.ver-success {background-position: 0px -24px;}
-/*第三方注册*/
+/*绗笁鏂规敞鍐?/
 .third-reg-wrap{border:1px solid #dddddd;background-color: #fff;padding:35px 50px 50px;}
 .third-reg-wrap h1{line-height: 34px;font-size: 28px;color:#333;font-weight: normal;margin-bottom:20px;}
 .third-reg-wrap .t-reg-tips{font-size: 16px;color:#999;line-height: 24px;margin-bottom: 25px;}
@@ -188,14 +188,14 @@ input.text.span190{width: 170px;}
 .s-bind .login-ver-box{margin-bottom: 10px;padding-left: 34px;border:1px solid;height:24px;line-height: 24px;}
 .s-bind .login-ver-box.tips{background:url(../images/icon36.png) no-repeat 10px -46px #fff6d2;border-color: #ffe57d;color: #666;}
 .s-bind .login-ver-box.error{background:url(../images/icon36.png) no-repeat 10px 4px #fff0f0;border-color: #ff483f;color: #fc4343;}
-/*会员中心主体-底部*/
+/*浼氬憳涓績涓讳綋-搴曢儴*/
 .foot{ width:100%; border-top:3px #E4E4E4 solid; background-color:#F2F2F2; margin-top:15px;}
 .foot .box{margin:0 auto;font-size:12px;color: #666666; padding-bottom:30px; padding-top:10px;position:relative}
 .foot .box .list{ width:230px; float:left; line-height:230%;}
 .foot .box .weixin{ position:absolute; right:0px; top:15px; width:100px; text-align:center}
 .foot .box .weixin img{ margin-top:15px;}
 .foot .copyright {width:100%; text-align:center; line-height:180%; color:#999999; padding-bottom:15px;}
-/*底部*/
+/*搴曢儴*/
 .foot .footer_box{border-bottom: 1px solid #ccc;margin-bottom: 17px;font-family: "microsoft yahei";}
 .foot .box{margin:0 auto; width:1000px; font-size:12px;color: #666666; padding-bottom:30px; padding-top:24px;position:relative}
 .foot .box .list{ width:162px; float:left; /*line-height:230%;*/margin-right: 46px;}
@@ -216,7 +216,7 @@ input.text.span190{width: 170px;}
 .foot .box .weixin .weixin_cons img{float: left;}
 #footer{border-top: 1px solid #ccc;background-color: #fff;height: 100px;padding-top: 23px;line-height: 26px;font-size: 12px;color:#333;font-family: "SimSun";text-align: center;}
 #footer a{color:#009900;font-style: italic;text-decoration: underline;margin-right:10px;}
-/*回到顶部组件*/
+/*鍥炲埌椤堕儴缁勪欢*/
 .back_to_top{position:fixed;right:50px;bottom:50px;_position:absolute;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0))-40);}
 .back_to_top .back{width:39px;height:39px;margin-bottom:15px;border:1px solid #0189DD;background:url(../images/64.gif) 5px 10px no-repeat #0189DD;cursor:pointer;}
 .back_to_top .back div{color:#fff;padding:3px 7px;background-color:#0189DD;display:none;_line-height:17px;}
@@ -224,13 +224,13 @@ input.text.span190{width: 170px;}
 .back_to_top .steer div{color:#fff;padding:3px 7px;background-color:#999999;display:none;_line-height:17px;}
 .back_to_top .sub{width:39px;height:39px;border:1px solid #ccc;border-top:0;background:url(../images/64.gif) 5px -72px no-repeat;cursor:pointer;background-color: #fff;}
 .back_to_top .sub div{color:#fff;padding:3px 7px;background-color:#999999;display:none;_line-height:17px;}
-/*选分站组件*/
+/*閫夊垎绔欑粍浠?/
 .user_top_logo .sub_station_bbox{position:absolute;top:35px;left:280px;font-family:"microsoft yahei";z-index: 77;}
 .user_top_logo .sub_station_bbox .local_station{font-size:14px;color:#017FCF;cursor:pointer;width:100px;height:50px; padding-left: 0px;padding-top: 10px; border-left: 1px solid #ccc;}
 .user_top_logo .sub_station_bbox .local_station h3{font-size: 16px;font-weight: normal;text-align: center;}
 .user_top_logo .sub_station_bbox .local_station p{font-size: 12px;color:#666;text-align: center;}
 .user_top_logo .sub_station_bbox .local_station p.hover{color:#0180CF;}
-/*登录*/
+/*鐧诲綍*/
 .login-banner-wrap{width: 100%;height:475px;}
 .login-banner-wrap .banner-list{position: relative;width: 100%;height: 475px;}
 .login-banner-wrap .banner-list div{position: absolute;top:0;left:0;width: 100%;height: 475px;overflow: hidden;background-repeat: no-repeat;background-position: center center;}
@@ -263,7 +263,7 @@ input.text.span190{width: 170px;}
 #codeLogin .code-login{width: 120px;height: 120px;margin:0 auto 15px auto;border:1px solid #ddd;}
 #codeLogin p{font-size: 14px;color:#666;}
 
-/*框计算*/
+/*妗嗚绠?/
 .autocomplete-w1 { position:absolute; top:0px; left:0px; margin:8px 0 0 6px; /* IE6 fix: */ _background:none; _margin:0; line-height:160% }
 .autocomplete { border:1px solid #CCCCCC; background:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; /* IE6 specific: */ _height:350px;  _margin:0; _overflow-x:hidden; }
 .autocomplete .selected { background:#F0F0F0; }

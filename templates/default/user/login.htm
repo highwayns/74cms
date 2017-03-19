@@ -1,24 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-{#qishi_pageinfo set="ÁĞ±íÃû:page,µ÷ÓÃ:QS_login"#}
+{#qishi_pageinfo set="åˆ—è¡¨å:page,è°ƒç”¨:QS_login"#}
 <title>{#$page.title#}</title>
 <meta name="description" content="{#$page.description#}">
 <meta name="keywords" content="{#$page.keywords#}">
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/reg.css" rel="stylesheet" type="text/css" />
 <script src="{#$QISHI.site_template#}js/jquery.js" type='text/javascript' language="javascript"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//ÑéÖ¤ÂëËæ»ú
+	//éªŒè¯ç éšæœº
 	$("#getcode").live('click',function(){
 		$(this).attr('src','{#$QISHI.site_dir#}include/imagecaptcha.php?t='+Math.random()+'');
 	});
-	// ±³¾°Í¼Æ¬
+	// èƒŒæ™¯å›¾ç‰‡
 	var aDiv = $(".banner-list").find("div"),
 		index = 0,
 		timer = null;
@@ -40,13 +40,13 @@ $(document).ready(function()
 	function stopFoucs(){
 		clearInterval(timer);
 	};
-	// Ñ¡ÔñµÇÂ¼·½Ê½ 
+	// é€‰æ‹©ç™»å½•æ–¹å¼ 
 	var wxrun = '';
 	$('.login-type').toggle(function(){
 		$('#pcLogin').hide();
 		$('#codeLogin').show();
-		$('#login-box h1').html('Î¢ĞÅµÇÂ¼');
-		$(this).attr('title', 'ÓÃ»§ÃûµÇÂ¼');
+		$('#login-box h1').html('å¾®ä¿¡ç™»å½•');
+		$(this).attr('title', 'ç”¨æˆ·åç™»å½•');
 		$(this).removeClass('wx').addClass('pc');
 		{#if $QISHI.weixin_apiopen=='1' && $QISHI.weixin_scan_login=='1'#}
 		wxrun = window.setInterval(run, 5000);
@@ -61,31 +61,31 @@ $(document).ready(function()
 	}, function(){
 		$('#pcLogin').show();
 		$('#codeLogin').hide();
-		$('#login-box h1').html('»áÔ±µÇÂ¼');
-		$(this).attr('title', 'Î¢ĞÅµÇÂ¼');
+		$('#login-box h1').html('ä¼šå‘˜ç™»å½•');
+		$(this).attr('title', 'å¾®ä¿¡ç™»å½•');
 		$(this).removeClass('pc').addClass('wx');
 		{#if $QISHI.weixin_apiopen=='1' && $QISHI.weixin_scan_login=='1'#}
 		window.clearInterval(wxrun);
 		{#/if#}
 	})
-	//±íµ¥ÑéÖ¤
+	//è¡¨å•éªŒè¯
 	$("form[id=pcLogin]").submit(function(e) {
 	e.preventDefault();
-		if ($("#username").val()=="" || $("#username").val()=="ÓÃ»§Ãû/ÓÊÏä/ÊÖ»úºÅ")
+		if ($("#username").val()=="" || $("#username").val()=="ç”¨æˆ·å/é‚®ç®±/æ‰‹æœºå·")
 		{			
-			$(".login_err").html("ÇëÌîĞ´£ºÓÃ»§Ãû / ÓÊÏä / ÊÖ»úºÅ");	
+			$(".login_err").html("è¯·å¡«å†™ï¼šç”¨æˆ·å / é‚®ç®± / æ‰‹æœºå·");	
 			$(".login_err").show();
 		}
 		else if($("#password").val()=="")
 		{	
-		$(".login_err").html("ÇëÌîĞ´ÃÜÂë£¡");
+		$(".login_err").html("è¯·å¡«å†™å¯†ç ï¼");
 		$(".login_err").show();
 		}
 		{#if $verify_userlogin=="1"#}
 		else if($("#postcaptcha").val()=="")
 		{	
 
-			$(".login_err").html("ÇëÌîĞ´ÑéÖ¤Âë£¡");
+			$(".login_err").html("è¯·å¡«å†™éªŒè¯ç ï¼");
 			$(".login_err").show();
 		}
 		{#/if#}
@@ -112,16 +112,16 @@ $(document).ready(function()
 					$(".login_err").show();	
 					if (data=="err")
 					{
-					errinfo="ÕÊºÅ»òÕßÃÜÂë´íÎó";
+					errinfo="å¸å·æˆ–è€…å¯†ç é”™è¯¯";
 					}
 					else if(data=="errcaptcha")
 					{
 					$("#imgdiv img").attr("src",$("#imgdiv img").attr("src")+"1");
-					errinfo="ÑéÖ¤Âë´íÎó";
+					errinfo="éªŒè¯ç é”™è¯¯";
 					}
 					else if(data=="status_err")
 					{
-					errinfo="ÕËºÅÒÑ¾­±»ÔİÍ££¬ÇëÁªÏµ¹ÜÀíÔ±£¡";
+					errinfo="è´¦å·å·²ç»è¢«æš‚åœï¼Œè¯·è”ç³»ç®¡ç†å‘˜ï¼";
 					}
 					$(".login_err").html(errinfo);
 				}
@@ -137,7 +137,7 @@ $(document).ready(function()
 </script> 
 </head>
 <body>
-	<!-- Í·²¿ -->
+	<!-- å¤´éƒ¨ -->
 	{#include file="user/reg_header.htm"#}
 	<div class="login-banner-wrap">
 		<div class="banner-list">
@@ -148,47 +148,47 @@ $(document).ready(function()
 	</div>
 	<div id="login-box">
 		{#if $QISHI.weixin_apiopen=='1' && $QISHI.weixin_scan_login=='1'#}
-		<div class="weixin-login-box"><a href="javascript:void(0);" class="login-type wx" title="Î¢ĞÅµÇÂ¼"></a><!-- pcµÇÂ¼class="pc" --></div> 
+		<div class="weixin-login-box"><a href="javascript:void(0);" class="login-type wx" title="å¾®ä¿¡ç™»å½•"></a><!-- pcç™»å½•class="pc" --></div> 
 		{#/if#}
-		<h1>»áÔ±µÇÂ¼</h1>
+		<h1>ä¼šå‘˜ç™»å½•</h1>
 		<form action="" id="pcLogin">
-			<div class="login-ver-box tips">¹«¹²³¡Ëù²»½¨Òé×Ô¶¯µÇÂ¼£¬ÒÔ·ÀÕËºÅ¶ªÊ§</div>
+			<div class="login-ver-box tips">å…¬å…±åœºæ‰€ä¸å»ºè®®è‡ªåŠ¨ç™»å½•ï¼Œä»¥é˜²è´¦å·ä¸¢å¤±</div>
 			<div class="login-ver-box error login_err" style="display: none;"></div>
 			<div class="login-input-item clearfix">
 				<i class="login-icon l-icon-user f-left"></i>
-				<div class="f-left"><input type="text" name="username" id="username" placeholder="ÓÃ»§Ãû/ÊÖ»ú/ÓÊÏä" class="login-input" /></div>
+				<div class="f-left"><input type="text" name="username" id="username" placeholder="ç”¨æˆ·å/æ‰‹æœº/é‚®ç®±" class="login-input" /></div>
 				<div class="input-clear"></div>
 			</div>
 			<div class="login-input-item clearfix">
 				<i class="login-icon l-icon-password f-left"></i>
-				<div class="f-left"><input type="password" name="password" id="password" placeholder="ÃÜÂë" class="login-input" /></div>
+				<div class="f-left"><input type="password" name="password" id="password" placeholder="å¯†ç " class="login-input" /></div>
 			</div>
 			{#if $verify_userlogin=="1"#}
 			<div class="login-input-item lver clearfix">
-				<div class="f-left"><input type="text" class="text span190 text-lg" name="postcaptcha" id="postcaptcha" placeholder="ÊäÈëÓÒ²àÑéÖ¤Âë" /></div>
-				<div class="login-ver f-left"><img src="{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}" id="getcode" align="absmiddle"  style="cursor:pointer;width: 100px;height: 38px;" title="¿´²»ÇëÑéÖ¤Âë£¿µã»÷¸ü»»Ò»ÕÅ"  border="0" /></div>
+				<div class="f-left"><input type="text" class="text span190 text-lg" name="postcaptcha" id="postcaptcha" placeholder="è¾“å…¥å³ä¾§éªŒè¯ç " /></div>
+				<div class="login-ver f-left"><img src="{#$QISHI.site_dir#}include/imagecaptcha.php?t={#$random#}" id="getcode" align="absmiddle"  style="cursor:pointer;width: 100px;height: 38px;" title="çœ‹ä¸è¯·éªŒè¯ç ï¼Ÿç‚¹å‡»æ›´æ¢ä¸€å¼ "  border="0" /></div>
 			</div>
 			{#/if#}
 			<div class="auto-login clearfix">
-				<label class="f-left clearfix"><input type="checkbox" name="autologin" id="expire" name="expire" value="7" class="f-left" style="margin-top: 1px;*margin-top: -3px;margin-right: 5px;"/><span class="f-left">7ÈÕÄÚ×Ô¶¯µÇÂ¼</span></label>
-				<a href="{#$QISHI.site_dir#}user/user_getpass.php" class="f-right">Íü¼ÇÃÜÂë£¿</a>
+				<label class="f-left clearfix"><input type="checkbox" name="autologin" id="expire" name="expire" value="7" class="f-left" style="margin-top: 1px;*margin-top: -3px;margin-right: 5px;"/><span class="f-left">7æ—¥å†…è‡ªåŠ¨ç™»å½•</span></label>
+				<a href="{#$QISHI.site_dir#}user/user_getpass.php" class="f-right">å¿˜è®°å¯†ç ï¼Ÿ</a>
 			</div>
 			<div class="login-btn-box">
-				<input type="submit" name="submitlogin" id="login" value="µÇ&nbsp;&nbsp;&nbsp;Â¼" class="btn login-submit" />
-				<input type="text"  id="waiting" value="ÕıÔÚµÇÂ¼..." class="btn login-submit"  style="display: none;" disabled/>
+				<input type="submit" name="submitlogin" id="login" value="ç™»&nbsp;&nbsp;&nbsp;å½•" class="btn login-submit" />
+				<input type="text"  id="waiting" value="æ­£åœ¨ç™»å½•..." class="btn login-submit"  style="display: none;" disabled/>
 			</div>
 			{#if $QISHI.qq_apiopen=="1" || $QISHI.sina_apiopen=="1" || $QISHI.taobao_apiopen=="1"#}
 			<div class="cooperation-account">
-				<p>Ê¹ÓÃºÏ×÷ÕËºÅµÇÂ¼</p>
+				<p>ä½¿ç”¨åˆä½œè´¦å·ç™»å½•</p>
 				<div class="coop-account">
 					{#if $QISHI.qq_apiopen=="1"#}
 					<a href="{#$QISHI.site_dir#}user/{#if $QISHI.qq_logintype=='1'#}connect_qq_client.php{#else#}connect_qq_server.php{#/if#}"class="qq">QQ</a>
 					{#/if#}
 					{#if $QISHI.sina_apiopen=="1"#}
-					&nbsp;|&nbsp;<a href="{#$QISHI.site_dir#}user/connect_sina.php" class="weibo">ĞÂÀËÎ¢²©</a>
+					&nbsp;|&nbsp;<a href="{#$QISHI.site_dir#}user/connect_sina.php" class="weibo">æ–°æµªå¾®åš</a>
 					{#/if#}
 					{#if $QISHI.taobao_apiopen=="1"#}
-					&nbsp;|&nbsp;<a href="{#$QISHI.site_dir#}user/connect_taobao.php" class="taobao">ÌÔ±¦</a>
+					&nbsp;|&nbsp;<a href="{#$QISHI.site_dir#}user/connect_taobao.php" class="taobao">æ·˜å®</a>
 					{#/if#}
 				</div>
 			</div>
@@ -197,13 +197,13 @@ $(document).ready(function()
 		{#if $QISHI.weixin_apiopen=='1' && $QISHI.weixin_scan_login=='1'#}
 		<div id="codeLogin">
 			<div class="code-login" id="login_container">{#$qrcode_img#}</div>
-			<p>´ò¿ªÎ¢ĞÅÉ¨Ãè¶şÎ¬Âë</p>
+			<p>æ‰“å¼€å¾®ä¿¡æ‰«æäºŒç»´ç </p>
 		</div>
 		{#/if#}
 	</div>
 	<div id="footer">
-	<p>ÁªÏµµØÖ·£º{#$QISHI.address#} ÁªÏµµç»°£º{#$QISHI.bootom_tel#} ÍøÕ¾±¸°¸£º{#$QISHI.icp#}{#$QISHI.statistics#}</p>
-	<p>{#$QISHI.site_name#}   Powered by   <a href="http://www.74cms.com/" target="_blank">74cms v{#$QISHI.version#}</a>   °æÈ¨ËùÓĞ | ·ÂÃ°±Ø¾¿</p>
+	<p>è”ç³»åœ°å€ï¼š{#$QISHI.address#} è”ç³»ç”µè¯ï¼š{#$QISHI.bootom_tel#} ç½‘ç«™å¤‡æ¡ˆï¼š{#$QISHI.icp#}{#$QISHI.statistics#}</p>
+	<p>{#$QISHI.site_name#}   Powered by   <a href="http://www.74cms.com/" target="_blank">74cms v{#$QISHI.version#}</a>   ç‰ˆæƒæ‰€æœ‰ | ä»¿å†’å¿…ç©¶</p>
 	<p>{#$QISHI.bottom_other#}</p>
 </div>
 </body>

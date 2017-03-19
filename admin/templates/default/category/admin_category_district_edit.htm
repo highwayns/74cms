@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,32 +6,32 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-ÕıÊ½Ê¹ÓÃºóÉ¾³ı·ÖÀà»áµ¼ÖÂÓë´Ë·ÖÀà¹ØÁªµÄĞÅÏ¢Àà±ğ¶ªÊ§£¬ĞŞ¸Ä²»»áÊÜÓ°Ïì¡£<br />
+æ­£å¼ä½¿ç”¨ååˆ é™¤åˆ†ç±»ä¼šå¯¼è‡´ä¸æ­¤åˆ†ç±»å…³è”çš„ä¿¡æ¯ç±»åˆ«ä¸¢å¤±ï¼Œä¿®æ”¹ä¸ä¼šå—å½±å“ã€‚<br />
 </p>
 </div>
-<div class="toptit">ĞŞ¸Ä·ÖÀà</div>
+<div class="toptit">ä¿®æ”¹åˆ†ç±»</div>
 <form id="form1" name="form1" method="post" action="?act=edit_district_save">
 {#$inputtoken#}
 <table width="100%" border="0" cellspacing="6" cellpadding="0" >
  <tr>
-    <td width="120" align="right">ËùÊô·ÖÀà:</td>
+    <td width="120" align="right">æ‰€å±åˆ†ç±»:</td>
     <td>
 	<select name="parentid">
-	  <option value="0" {#if "0"==$district.parentid#}selected="selected"{#/if#}>¶¥¼¶·ÖÀà</option>
-	  {#qishi_get_classify set="ÁĞ±íÃû:c_province,ÀàĞÍ:QS_district,id:0"#}{#foreach from=$c_province item=list#}
+	  <option value="0" {#if "0"==$district.parentid#}selected="selected"{#/if#}>é¡¶çº§åˆ†ç±»</option>
+	  {#qishi_get_classify set="åˆ—è¡¨å:c_province,ç±»å‹:QS_district,id:0"#}{#foreach from=$c_province item=list#}
 	  <option value="{#$list.id#}" {#if $list.id==$district.parentid#}selected="selected"{#/if#}>{#$list.categoryname#}</option>
 	 {#/foreach#}
 	</select>
 	</td>
  </tr>
   <tr>
-    <td width="120" align="right">Ãû³Æ:</td>
+    <td width="120" align="right">åç§°:</td>
     <td><input name="categoryname" type="text" class="input_text_200"  value="{#$district.categoryname#}"/></td>
   </tr>
    <tr>
-    <td width="120" align="right">ÅÅĞò:</td>
+    <td width="120" align="right">æ’åº:</td>
     <td><input name="category_order" type="text" class="input_text_200"  value="{#$district.category_order#}"/></td>
   </tr>
 </table>
@@ -41,8 +41,8 @@
     <td width="120"> </td>
     <td>
 	<input name="id" type="hidden" value="{#$district.id#}" />
-	<input type="submit" name="addsave" value="±£´æ" class="admin_submit" />
-		  <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="window.location='?act=district'"/>
+	<input type="submit" name="addsave" value="ä¿å­˜" class="admin_submit" />
+		  <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="window.location='?act=district'"/>
 	
 	</td>
   </tr>

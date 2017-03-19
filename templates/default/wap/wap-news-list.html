@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>×ÊÑ¶ÁĞ±í - {#$QISHI.site_name#}</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>èµ„è®¯åˆ—è¡¨ - {#$QISHI.site_name#}</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <link href="css/jobs.css" rel="stylesheet" type="text/css" />
@@ -16,7 +16,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
@@ -33,7 +33,7 @@ $(document).ready(function()
 		$.get("plus/wap_ajax.php?act=ajaxnewslist&offset="+(offset+5)+"&rows=5", function(result){
 		    if(result=="-1"){
 		    	$(".more").show();
-		    	$(".more").html("Ã»ÓĞ¸ü¶à×ÊÑ¶ÁË");
+		    	$(".more").html("æ²¡æœ‰æ›´å¤šèµ„è®¯äº†");
 		    }else{
 		    	$(".showlist").append(result);
 		    	$(".more").show();
@@ -55,14 +55,14 @@ $(document).ready(function()
 <body>
 <div class="sub_bodybg"></div>
 <div class="sub_head_top">
-	<div class="title">×ÊÑ¶ÁĞ±í</div>
+	<div class="title">èµ„è®¯åˆ—è¡¨</div>
 	<div class="back" id="pageback"><img src="images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="javascript:void(0);"><img src="images/2.jpg"  border="0"/></a></div>
 </div>
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 {#include file="top-menu.html"#}
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="jobs_list">
 <div class="showlist">
 {#foreach from=$article item=list#}
@@ -77,9 +77,9 @@ $(document).ready(function()
 {#/foreach#}
 </div>	
 {#if $article#}
-    <div class="more link_bk"><a href="javascript:void(0);">¸ü¶à×ÊÑ¶...</a></div>	
+    <div class="more link_bk"><a href="javascript:void(0);">æ›´å¤šèµ„è®¯...</a></div>	
 {#else#}
-    <div class="more link_bk">Ã»ÓĞ¸ü¶à×ÊÑ¶ÁË</div>	
+    <div class="more link_bk">æ²¡æœ‰æ›´å¤šèµ„è®¯äº†</div>	
 {#/if#}
 </div>
 {#include file="wap/footer.htm"#}

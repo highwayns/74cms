@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_company.css" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-//¿ØÖÆÍ¼Æ¬´óĞ¡
+//æ§åˆ¶å›¾ç‰‡å¤§å°
 {#if $company_profile.logo<>""#}
 var imgwidth=$("#c_img").attr("width");
 if (imgwidth>500)
@@ -22,7 +22,7 @@ $("#c_img").attr("width","500")
 }
 {#/if#}
 });
-//ÑéÖ¤
+//éªŒè¯
 $(document).ready(function() {
  $("#Form1").validate({
 // debug: true,
@@ -36,8 +36,8 @@ $(document).ready(function() {
 	},
     messages: {
    logo:{
-    required:jQuery.format("ÇëÉÏ´«logo"),
-	accept:jQuery.format("ÄúÉÏ´«µÄÎÄ¼ş¸ñÊ½²»ÕıÈ·")
+    required:jQuery.format("è¯·ä¸Šä¼ logo"),
+	accept:jQuery.format("æ‚¨ä¸Šä¼ çš„æ–‡ä»¶æ ¼å¼ä¸æ­£ç¡®")
    }   
   },
   errorPlacement: function(error, element) {
@@ -67,7 +67,7 @@ $(document).ready(function() {
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
 
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > ÆóÒµLogo</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > ä¼ä¸šLogo</div>
 
 <div class="usermain">
   <div class="leftmenu com link_bk">
@@ -78,22 +78,22 @@ $(document).ready(function() {
 	  <div class="addjob link_bk">
 	    <div class="topnav">
 			<div class="titleH1" style="margin-top:0;">
-				<div class="h1-title">ÆóÒµ×ÊÁÏ</div>
+				<div class="h1-title">ä¼ä¸šèµ„æ–™</div>
 			</div>
 			<div class="navs">
-				<a href="?act=company_profile">»ù±¾×ÊÁÏ</a>
-				<a href="?act=company_logo" class="se">ÆóÒµLogo</a>
-				<a href="?act=company_map_open">µØÍ¼±ê×¢</a>
+				<a href="?act=company_profile">åŸºæœ¬èµ„æ–™</a>
+				<a href="?act=company_logo" class="se">ä¼ä¸šLogo</a>
+				<a href="?act=company_map_open">åœ°å›¾æ ‡æ³¨</a>
 				<div class="clear"></div>
 			</div>
 		</div>
 		
 		  <div class="pic">
-		  	<p class="pic_txt">ÎÂÜ°ÌáÊ¾£ºÆóÒµlogoÊÇÆóÒµµÄÏóÕ÷£¬ÉÏ´«³ß´çÇë²»Òª³¬¹ı300¡Á110ÏñËØ£¬Í¼Æ¬´óĞ¡²»³¬¹ı 500KB£¬ÔÊĞí¸ñÊ½£ºjpg/gif/png</p>
+		  	<p class="pic_txt">æ¸©é¦¨æç¤ºï¼šä¼ä¸šlogoæ˜¯ä¼ä¸šçš„è±¡å¾ï¼Œä¸Šä¼ å°ºå¯¸è¯·ä¸è¦è¶…è¿‡300Ã—110åƒç´ ï¼Œå›¾ç‰‡å¤§å°ä¸è¶…è¿‡ 500KBï¼Œå…è®¸æ ¼å¼ï¼šjpg/gif/png</p>
 		  	{#if $company_profile.logo<>""#}
 		  	<div class="logo_img">
 		  		<div class="img"><img width="245" height="80" src="{#$QISHI.site_dir#}data/logo/{#$company_profile.logo#}?rand={#$rand#}" border="0" id="c_img"/></div>
-		  		<a href="javascript:void(0);" class="reupload">[¸ü¸Ä]</a>
+		  		<a href="javascript:void(0);" class="reupload">[æ›´æ”¹]</a>
 		  	</div>
 		  	{#/if#}
 		  	<div class="upload" {#if $company_profile.logo<>""#}style="display:none;"{#/if#}>
@@ -101,13 +101,13 @@ $(document).ready(function() {
 		  		<table id="upform" width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 			  	<tbody>
 			  		<tr>
-						<td width="90" align="left">ÉÏ´«Í¼Æ¬£º</td>
-						<td width="150"><input type="file" name="logo" id="logo" class="input_text_200"  onkeydown="alert('Çëµã»÷ÓÒ²à¡°ä¯ÀÀ¡±Ñ¡ÔñÄúµçÄÔÉÏµÄÍ¼Æ¬£¡');return false"/></td>
+						<td width="90" align="left">ä¸Šä¼ å›¾ç‰‡ï¼š</td>
+						<td width="150"><input type="file" name="logo" id="logo" class="input_text_200"  onkeydown="alert('è¯·ç‚¹å‡»å³ä¾§â€œæµè§ˆâ€é€‰æ‹©æ‚¨ç”µè„‘ä¸Šçš„å›¾ç‰‡ï¼');return false"/></td>
 						<td></td>
 			  		</tr>
 			  		<tr>
 						<td width="90" align="right"></td>
-						<td width="150"><input type="submit" name="Submit" value="ÉÏ´«" id="up" class="but_upload" /></td>
+						<td width="150"><input type="submit" name="Submit" value="ä¸Šä¼ " id="up" class="but_upload" /></td>
 						<td></td>
 			  		</tr>
 			  	</tbody>
@@ -118,7 +118,7 @@ $(document).ready(function() {
 						<td height="40" align="center"><img src="{#$QISHI.site_template#}images/30.gif"  border="0"/></td>
 			  		</tr>
 			  		<tr>
-						<td height="20" align="center">ÕıÔÚÉÏ´«£¬ÇëÉÔºó...</td>
+						<td height="20" align="center">æ­£åœ¨ä¸Šä¼ ï¼Œè¯·ç¨å...</td>
 			  		</tr>
 			  	</tbody>
 			  </table>

@@ -1,10 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=gb2312">
 <title>{#$title#}</title>
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="{#$QISHI.site_template#}css/user_personal.css" rel="stylesheet" type="text/css" />
 <link href="{#$QISHI.site_template#}css/user_common.css" rel="stylesheet" type="text/css" />
@@ -16,25 +16,25 @@
 <script src="{#$QISHI.site_template#}js/jquery.validate.min.js" type='text/javascript' language="javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	// ÑéÖ¤ÓÊÏä
+	// éªŒè¯é‚®ç®±
 	auditEmail_dialog('.audit_email',"personal_ajax.php?act=user_email");
-	//ÑéÖ¤ÊÖ»ú
+	//éªŒè¯æ‰‹æœº
 	auditMobile_dialog(".audit_mobile","personal_ajax.php?act=user_mobile");
-	// Éí·İÑéÖ¤
+	// èº«ä»½éªŒè¯
 	editMobile_dialog(".edit_mobile","personal_ajax.php?act=old_mobile");
-	// °ó¶¨²Ù×÷Î¢ĞÅ
+	// ç»‘å®šæ“ä½œå¾®ä¿¡
 	$(".bind_wx").click(function(){
 		dialog({
-            title: 'Î¢ĞÅ°ó¶¨',
+            title: 'å¾®ä¿¡ç»‘å®š',
             content: $("#weixin_openid"),
         }).showModal();
 	});
-	// ½â³ı°ó¶¨
+	// è§£é™¤ç»‘å®š
 	$(".bind_wx_jc").click(function() {
 		var uid = $(this).attr('uid');
 		var myDialog = dialog();
-		myDialog.title('½â³ıÕËºÅ°ó¶¨');
-		myDialog.content("¼ÓÔØÖĞ...");
+		myDialog.title('è§£é™¤è´¦å·ç»‘å®š');
+		myDialog.content("åŠ è½½ä¸­...");
 		myDialog.width('500');
 		myDialog.showModal();
 		$.get("{#$QISHI.site_dir#}plus/ajax_common.php?act=bind_wx_jc&uid="+uid, function(data)
@@ -45,13 +45,13 @@ $(document).ready(function(){
 			myDialog.close().remove();
 		});
 	});
-	// È·ÈÏ½â³ı°ó¶¨
+	// ç¡®è®¤è§£é™¤ç»‘å®š
 	$("#bind_wx_true").live('click', function() {
 		var uid = $(this).attr('uid');
 		var uid = $(this).attr('uid');
 		var myDialog = dialog();
-		myDialog.title('½â³ıÕËºÅ°ó¶¨');
-		myDialog.content("¼ÓÔØÖĞ...");
+		myDialog.title('è§£é™¤è´¦å·ç»‘å®š');
+		myDialog.content("åŠ è½½ä¸­...");
 		myDialog.width('500');
 		myDialog.showModal();
 		$.get("{#$QISHI.site_dir#}plus/ajax_common.php?act=bind_wx_jc&uid="+uid+"&bind_wx_true=1", function(data)
@@ -60,10 +60,10 @@ $(document).ready(function(){
 				setTimeout(function () {window.location.reload()}, 1000);
 			});
 	});      
-	// ĞÂÀËÎ¢²©½â³ı°ó¶¨
+	// æ–°æµªå¾®åšè§£é™¤ç»‘å®š
 	$("#accountUnbindSina").click(function() {
 		var myDialog = dialog();
-		myDialog.title('½â³ıÕËºÅ°ó¶¨');
+		myDialog.title('è§£é™¤è´¦å·ç»‘å®š');
 		myDialog.content($("#unbindBoxSina"));
 		myDialog.width('500');
 		myDialog.showModal();
@@ -79,10 +79,10 @@ $(document).ready(function(){
 			myDialog.close().remove();
 		});
 	});
-	// QQ½â³ı°ó¶¨
+	// QQè§£é™¤ç»‘å®š
 	$("#accountUnbindQQ").click(function() {
 		var myDialog = dialog();
-		myDialog.title('½â³ıÕËºÅ°ó¶¨');
+		myDialog.title('è§£é™¤è´¦å·ç»‘å®š');
 		myDialog.content($("#unbindBoxQQ"));
 		myDialog.width('500');
 		myDialog.showModal();
@@ -98,10 +98,10 @@ $(document).ready(function(){
 			myDialog.close().remove();
 		});
 	});
-	// ÌÔ±¦ÕËºÅ½â³ı°ó¶¨
+	// æ·˜å®è´¦å·è§£é™¤ç»‘å®š
 	$("#accountUnbindTaobao").click(function() {
 		var myDialog = dialog();
-		myDialog.title('½â³ıÕËºÅ°ó¶¨');
+		myDialog.title('è§£é™¤è´¦å·ç»‘å®š');
 		myDialog.content($("#unbindBoxTaobao"));
 		myDialog.width('500');
 		myDialog.showModal();
@@ -117,18 +117,18 @@ $(document).ready(function(){
 			myDialog.close().remove();
 		});
 	});
-	// ĞŞ¸ÄÃÜÂë
+	// ä¿®æ”¹å¯†ç 
 	$("#updatePassword").die().live('click', function() {
 		dialog({
-            title: 'ĞŞ¸ÄÃÜÂë',
+            title: 'ä¿®æ”¹å¯†ç ',
             content: $("#editPwdBox"),
             width:520
         }).showModal(); 
 	});
-	// ĞŞ¸ÄÓÃ»§Ãû
+	// ä¿®æ”¹ç”¨æˆ·å
 	$("#updateName").die().live('click', function() {
 		var upDialog = dialog({
-            title: 'ĞŞ¸ÄÓÃ»§Ãû',
+            title: 'ä¿®æ”¹ç”¨æˆ·å',
             content: $("#editUserNameBox"),
             width:520
         }).showModal();
@@ -136,22 +136,22 @@ $(document).ready(function(){
 			var uname = $('input[name=newusername]').val();
 			if (!uname) {
 				dialog({
-		            title: 'ÏµÍ³ÌáÊ¾',
-		            content: 'ÇëÊäÈëÓÃ»§Ãû',
+		            title: 'ç³»ç»Ÿæç¤º',
+		            content: 'è¯·è¾“å…¥ç”¨æˆ·å',
 		            width:300
 		        }).show();
 			} else {
 				$.post('?act=save_username', {"newusername":$('input[name=newusername]').val()}, function(data) {
 					var conHtm = '';
 					if (data == "-1") {
-						conHtm = 'ÓÃ»§ÃûÒÑ´æÔÚ';
+						conHtm = 'ç”¨æˆ·åå·²å­˜åœ¨';
 					} else if (data == "-2") {
-						conHtm = 'ÓÃ»§²»´æÔÚ';
+						conHtm = 'ç”¨æˆ·ä¸å­˜åœ¨';
 					} else if (data == "-3") {
-						conHtm = 'ÓÃ»§ÃûĞŞ¸ÄÊ§°Ü';
+						conHtm = 'ç”¨æˆ·åä¿®æ”¹å¤±è´¥';
 					} else {
-						conHtm = 'ĞŞ¸Ä³É¹¦';
-						upDialog.title('ÏµÍ³ÌáÊ¾');
+						conHtm = 'ä¿®æ”¹æˆåŠŸ';
+						upDialog.title('ç³»ç»Ÿæç¤º');
 						upDialog.content(conHtm);
 						upDialog.width(300);
 						setTimeout(function () {window.location.reload()}, 1000);
@@ -162,7 +162,7 @@ $(document).ready(function(){
 						return false;
 					}
 					dialog({
-			            title: 'ÏµÍ³ÌáÊ¾',
+			            title: 'ç³»ç»Ÿæç¤º',
 			            content: conHtm,
 			            width:300
 			        }).show();
@@ -190,7 +190,7 @@ function run(){
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="user/header.htm"#}
 
-<div class="page_location link_bk">µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a> > <a href="{#$userindexurl#}">»áÔ±ÖĞĞÄ</a> > °²È«ÈÏÖ¤</div>
+<div class="page_location link_bk">å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a> > <a href="{#$userindexurl#}">ä¼šå‘˜ä¸­å¿ƒ</a> > å®‰å…¨è®¤è¯</div>
 
 <div class="usermain">
   <div class="leftmenu link_bk">
@@ -201,14 +201,14 @@ function run(){
 	  <div class="pwd link_bk">
  	    <div class="topnav">
 		 	<div class="titleH1">
-			  <div class="h1-title">ÕËºÅ¹ÜÀí</div>
+			  <div class="h1-title">è´¦å·ç®¡ç†</div>
 			</div>
 			<div class="navs link_bk">
-				<a href="?act=userprofile">»ù±¾×ÊÁÏ</a>
-				  <a href="?act=authenticate" class="se">ÕËºÅ°²È«</a>
-				  <a href="?act=avatars">ÎÒµÄÍ·Ïñ</a>
-				  <a href="?act=pm">ÎÒµÄÏûÏ¢{#if $total#}<span class="h">({#$total#})</span>{#/if#}</a>
-				   <a href="?act=login_log">µÇÂ¼ÈÕÖ¾</a>
+				<a href="?act=userprofile">åŸºæœ¬èµ„æ–™</a>
+				  <a href="?act=authenticate" class="se">è´¦å·å®‰å…¨</a>
+				  <a href="?act=avatars">æˆ‘çš„å¤´åƒ</a>
+				  <a href="?act=pm">æˆ‘çš„æ¶ˆæ¯{#if $total#}<span class="h">({#$total#})</span>{#/if#}</a>
+				   <a href="?act=login_log">ç™»å½•æ—¥å¿—</a>
 				  <div class="clear"></div>
 			</div>
 	  	</div>
@@ -216,43 +216,43 @@ function run(){
 			<div class="my_account">
 				<div class="row rowpdno">
 					<dl>
-						<dt class="field_Key">ÓÃ»§Ãû</dt>
+						<dt class="field_Key">ç”¨æˆ·å</dt>
 						<dd class="field_value"><b id="account-newName" class="old-userName">{#$user.username#}</b></dd>
-						<dd class="msg_box">ÓÃ»§ÃûºÍÓÊÏä¶¼ÄÜ×÷ÎªµÇÂ¼{#$QISHI.site_name#}µÄÕÊ»§Ãû¡£</dd>
-						<dd class="btn"><a id="updateName" title="ĞŞ¸Ä" href="javascript:;">ĞŞ¸Ä</a></dd>
+						<dd class="msg_box">ç”¨æˆ·åå’Œé‚®ç®±éƒ½èƒ½ä½œä¸ºç™»å½•{#$QISHI.site_name#}çš„å¸æˆ·åã€‚</dd>
+						<dd class="btn"><a id="updateName" title="ä¿®æ”¹" href="javascript:;">ä¿®æ”¹</a></dd>
 					</dl>
 				</div>
 				<div id="editUserNameBox" class="pwd" style="display:none;">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 						<tr>
-							<td width="165" align="right"><span class="nec">¾ÉÓÃ»§Ãû</span>£º</td>
+							<td width="165" align="right"><span class="nec">æ—§ç”¨æˆ·å</span>ï¼š</td>
 							<td width="424"><div id="account-oldName" class="field_value_up old-userName">{#$user.username#}</div></td>
 						</tr>
 						<tr>
-							<td width="165" align="right"><span class="nec">ĞÂÓÃ»§Ãû</span>£º</td>
+							<td width="165" align="right"><span class="nec">æ–°ç”¨æˆ·å</span>ï¼š</td>
 							<td width="424"><input name="newusername" type="text" class="input_text_200" id="newusername" /> </td>
 							<td></td>
 						</tr>
 					   <tr>
 						<td align="right"> </td>
-						<td colspan="2"><input type="button" name="usernamesave" id="newusernamesave" value="ĞŞ¸Ä"  class="but220lan"/>
+						<td colspan="2"><input type="button" name="usernamesave" id="newusernamesave" value="ä¿®æ”¹"  class="but220lan"/>
 						</td>
 					  </tr>
 					</table>
 				</div>
 				<div class="row rowpdt">
 					<dl>
-						<dt class="field_Key">ÃÜÂë</dt>
+						<dt class="field_Key">å¯†ç </dt>
 						<dd class="field_value">
-							<div id="default-pd-level" class="password_level low"><em>×îºóÒ»´ÎµÇÂ¼Ê±¼ä</em>&nbsp;{#$user.last_login_time|date_format:"%Y-%m-%d %H:%M"#}</div>
+							<div id="default-pd-level" class="password_level low"><em>æœ€åä¸€æ¬¡ç™»å½•æ—¶é—´</em>&nbsp;{#$user.last_login_time|date_format:"%Y-%m-%d %H:%M"#}</div>
 						</dd>
-						<dd class="msg_box">»¥ÁªÍøÕË»§´æÔÚ±»µÁ·çÏÕ£¬½¨ÒéÄã¶¨ÆÚ¸ü¸ÄÃÜÂëÒÔ±£»¤ÕË»§°²È«¡£</dd>
-						<dd class="btn"><a id="updatePassword" title="ĞŞ¸Ä" href="javascript:;">ĞŞ¸Ä</a></dd>
+						<dd class="msg_box">äº’è”ç½‘è´¦æˆ·å­˜åœ¨è¢«ç›—é£é™©ï¼Œå»ºè®®ä½ å®šæœŸæ›´æ”¹å¯†ç ä»¥ä¿æŠ¤è´¦æˆ·å®‰å…¨ã€‚</dd>
+						<dd class="btn"><a id="updatePassword" title="ä¿®æ”¹" href="javascript:;">ä¿®æ”¹</a></dd>
 					</dl>
 					<dl>
 						<dt class="field_Key">&nbsp;</dt>
 						<dd class="field_value">
-							<div class="verified mpdl"><a href="?act=login_log" target="_blank">²é¿´µÇÂ¼ÈÕÖ¾</a></div>
+							<div class="verified mpdl"><a href="?act=login_log" target="_blank">æŸ¥çœ‹ç™»å½•æ—¥å¿—</a></div>
 						</dd>													
 					</dl>
 				</div>
@@ -260,29 +260,29 @@ function run(){
 					<form id="Form1" name="Form1" method="post" action="?act=save_password">	 
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableall">
 					  <tr>
-						<td width="165" align="right"><span class="nec">¾ÉÃÜÂë</span>£º</td>
+						<td width="165" align="right"><span class="nec">æ—§å¯†ç </span>ï¼š</td>
 						<td width="424"><input name="oldpassword" type="password" class="input_text_200" id="oldpassword"/> </td>
 						<td></td>
 					  </tr>
 						<tr>
-						<td width="165" align="right"><span class="nec">ĞÂÃÜÂë</span>£º</td>
+						<td width="165" align="right"><span class="nec">æ–°å¯†ç </span>ï¼š</td>
 						<td width="424"><input name="password" type="password" class="input_text_200" id="password" /> </td>
 						<td></td>
 						</tr>
 						<tr>
-						<td width="165" align="right"><span class="nec">È·ÈÏĞÂÃÜÂë</span>£º</td>
+						<td width="165" align="right"><span class="nec">ç¡®è®¤æ–°å¯†ç </span>ï¼š</td>
 						<td width="424"><input name="password1" type="password" class="input_text_200" id="password1" /> </td>
 						<td></td>
 						</tr>
 					   <tr>
 						<td align="right"> </td>
-						<td colspan="2"><input type="submit" name="submitsave" id="submitsave" value="±£´æ"  class="but220lan" onclick="$(window).unbind('beforeunload');"/>
+						<td colspan="2"><input type="submit" name="submitsave" id="submitsave" value="ä¿å­˜"  class="but220lan" onclick="$(window).unbind('beforeunload');"/>
 						</td>
 					  </tr>
 					</table>
 					</form>
 					<script type="text/javascript">
-					//ÑéÖ¤
+					//éªŒè¯
 					 $("#Form1").validate({
 					 //debug: true,
 					// onsubmit:false,
@@ -305,17 +305,17 @@ function run(){
 						},
 					    messages: {
 					    oldpassword: {
-					    required: "ÇëÊäÈë¾ÉÃÜÂë",
-					    minlength: jQuery.format("¾ÉÃÜÂë²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-						maxlength: jQuery.format("¾ÉÃÜÂë²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+					    required: "è¯·è¾“å…¥æ—§å¯†ç ",
+					    minlength: jQuery.format("æ—§å¯†ç ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+						maxlength: jQuery.format("æ—§å¯†ç ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
 					   },
 					   password: {
-					    required: "ÇëÊäÈëĞÂÃÜÂë",
-					    minlength: jQuery.format("ĞÂÃÜÂë²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-						maxlength: jQuery.format("ĞÂÃÜÂë²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+					    required: "è¯·è¾“å…¥æ–°å¯†ç ",
+					    minlength: jQuery.format("æ–°å¯†ç ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+						maxlength: jQuery.format("æ–°å¯†ç ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
 					   },
 					   password1: {
-					    equalTo: "Á½´ÎÊäÈëµÄÃÜÂë²»Í¬"
+					    equalTo: "ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸åŒ"
 					   }
 					  },
 					  errorPlacement: function(error, element) {
@@ -330,51 +330,51 @@ function run(){
 						jQuery.validator.addMethod("NOequalTo", function(value, element,param) {
 						var toval=$(param).val();
 					    return this.optional(element) || (toval!=value);
-					}, "ĞÂÃÜÂë²»¿ÉÒÔºÍ¾ÉÃÜÂëÏàÍ¬");
+					}, "æ–°å¯†ç ä¸å¯ä»¥å’Œæ—§å¯†ç ç›¸åŒ");
 					</script>
 				</div>
 				<div class="row rowpdt">
 					<dl>
-						<dt class="field_Key">ÓÊÏä</dt>
-						<dd class="field_value"><b>{#if $user.email#}{#$user.email#}{#else#}Î´ÌîĞ´{#/if#}</b></dd>
-						<dd class="msg_box">ÓÊÏäÑéÖ¤ºó£¬¿ÉÒÔÍ¨¹ıÓÊÏäËæÊ±È¡»ØÕË»§ÃÜÂë£¬½ÓÊÕÆóÒµÃæÊÔÑûÇëÓÊ¼ş¡£</dd>
-						<dd class="btn"><a class="audit_email" title="{#if $user.email_audit=="1"#}ĞŞ¸Ä{#else#}ÑéÖ¤{#/if#}" href="javascript:;">{#if $user.email_audit=="1"#}ĞŞ¸Ä{#else#}ÑéÖ¤{#/if#}</a></dd>
+						<dt class="field_Key">é‚®ç®±</dt>
+						<dd class="field_value"><b>{#if $user.email#}{#$user.email#}{#else#}æœªå¡«å†™{#/if#}</b></dd>
+						<dd class="msg_box">é‚®ç®±éªŒè¯åï¼Œå¯ä»¥é€šè¿‡é‚®ç®±éšæ—¶å–å›è´¦æˆ·å¯†ç ï¼Œæ¥æ”¶ä¼ä¸šé¢è¯•é‚€è¯·é‚®ä»¶ã€‚</dd>
+						<dd class="btn"><a class="audit_email" title="{#if $user.email_audit=="1"#}ä¿®æ”¹{#else#}éªŒè¯{#/if#}" href="javascript:;">{#if $user.email_audit=="1"#}ä¿®æ”¹{#else#}éªŒè¯{#/if#}</a></dd>
 					</dl>
 					<dl>
 						<dt class="field_Key">&nbsp;</dt>
 						<dd class="field_value">
 							{#if $user.email_audit=="1"#}
-							<div class="verified"><i></i>ÒÑÑéÖ¤</div>
+							<div class="verified"><i></i>å·²éªŒè¯</div>
 							{#else#}
-							<div id="fieldValPhone" class="unverified"><i></i>Î´ÑéÖ¤</div>
+							<div id="fieldValPhone" class="unverified"><i></i>æœªéªŒè¯</div>
 							{#/if#}
 						</dd>													
 					</dl>
 				</div>
 				<div class="row rowpdt">
 					<dl>
-						<dt class="field_Key">ÊÖ»ú</dt>
-						<dd class="field_value"><b>{#if $user.mobile#}{#$user.mobile#}{#else#}Î´ÌîĞ´{#/if#}</b></dd>
-						<dd class="msg_box">ÊÖ»úÑéÖ¤ºó£¬¿ÉÒÔÍ¨¹ıÊÖ»úËæÊ±È¡»ØÕË»§ÃÜÂë£¬½ÓÊÕÆóÒµÃæÊÔÑûÇë¶ÌĞÅ¡£</dd>
-						<dd class="btn"><a class="{#if $user.mobile_audit=="1"#}edit_mobile{#else#}audit_mobile{#/if#}" title="{#if $user.mobile_audit=="1"#}ĞŞ¸Ä{#else#}ÑéÖ¤{#/if#}" href="javascript:;">{#if $user.mobile_audit=="1"#}ĞŞ¸Ä{#else#}ÑéÖ¤{#/if#}</a></dd>
+						<dt class="field_Key">æ‰‹æœº</dt>
+						<dd class="field_value"><b>{#if $user.mobile#}{#$user.mobile#}{#else#}æœªå¡«å†™{#/if#}</b></dd>
+						<dd class="msg_box">æ‰‹æœºéªŒè¯åï¼Œå¯ä»¥é€šè¿‡æ‰‹æœºéšæ—¶å–å›è´¦æˆ·å¯†ç ï¼Œæ¥æ”¶ä¼ä¸šé¢è¯•é‚€è¯·çŸ­ä¿¡ã€‚</dd>
+						<dd class="btn"><a class="{#if $user.mobile_audit=="1"#}edit_mobile{#else#}audit_mobile{#/if#}" title="{#if $user.mobile_audit=="1"#}ä¿®æ”¹{#else#}éªŒè¯{#/if#}" href="javascript:;">{#if $user.mobile_audit=="1"#}ä¿®æ”¹{#else#}éªŒè¯{#/if#}</a></dd>
 					</dl>
 					<dl>
 						<dt class="field_Key">&nbsp;</dt>							
 						<dd class="field_value ">
 							{#if $user.mobile_audit=="1"#}
-							<div class="verified"><i></i>ÒÑÑéÖ¤</div>
+							<div class="verified"><i></i>å·²éªŒè¯</div>
 							{#else#}
-							<div id="fieldValPhone" class="unverified"><i></i>Î´ÑéÖ¤</div>
+							<div id="fieldValPhone" class="unverified"><i></i>æœªéªŒè¯</div>
 							{#/if#}
 						</dd>				
 					</dl>
 				</div>
 				<div class="row binding rownb rowpdt">
 					<dl class="clearfix">
-						<dt class="field_Key">ÕËºÅ°ó¶¨</dt>
+						<dt class="field_Key">è´¦å·ç»‘å®š</dt>
 						<dd class="field_value">
 							<ul class="clearfix">
-								<!-- Î¢²©°ó¶¨ -->
+								<!-- å¾®åšç»‘å®š -->
 								{#if $QISHI.sina_apiopen=="1"#}
 								<li>
 									{#if $user.sina_access_token#}
@@ -383,7 +383,7 @@ function run(){
 											<div class="pic f-left sina"></div>
 											<div class="info f-left">
 												<div class="name">{#$user.sina_nick#}</div>
-												<div><a class="accountUnbind" id="accountUnbindSina" href="javascript:;">½â³ı°ó¶¨</a></div>
+												<div><a class="accountUnbind" id="accountUnbindSina" href="javascript:;">è§£é™¤ç»‘å®š</a></div>
 											</div>
 										</div>
 									</div>
@@ -392,7 +392,7 @@ function run(){
 										<div class="box">
 											<div class="pic f-left sina"></div>
 											<div class="info f-left">
-												<div class="mt"><a href="{#$QISHI.site_dir#}user/connect_sina.php" class="accountUnbind">°ó¶¨Î¢²©ÕËºÅ</a></div>
+												<div class="mt"><a href="{#$QISHI.site_dir#}user/connect_sina.php" class="accountUnbind">ç»‘å®šå¾®åšè´¦å·</a></div>
 											</div>
 										</div>
 									</div>
@@ -402,18 +402,18 @@ function run(){
 									<div class="con">
 										<div class="f-left"><img src="{#$QISHI.site_template#}images/wx_showmsg.jpg"></div>
 										<div class="f-right tex">
-											È·¶¨Òª½â³ıÓë<span class="co">ĞÂÀËÎ¢²©</span>µÄ°ó¶¨Âğ?<br>Èç¹û½â³ı°ó¶¨£¬Äã½«ÎŞ·¨Ê¹ÓÃĞÂÀËÎ¢²©ÕÊºÅÖ±½ÓµÇÂ¼{#$QISHI.site_name#}¡£È·¶¨²¢¼ÌĞøÂğ?
+											ç¡®å®šè¦è§£é™¤ä¸<span class="co">æ–°æµªå¾®åš</span>çš„ç»‘å®šå—?<br>å¦‚æœè§£é™¤ç»‘å®šï¼Œä½ å°†æ— æ³•ä½¿ç”¨æ–°æµªå¾®åšå¸å·ç›´æ¥ç™»å½•{#$QISHI.site_name#}ã€‚ç¡®å®šå¹¶ç»§ç»­å—?
 										</div>
 										<div class="clear"></div>
 									</div>
 									<div class="sclosePd">
-										<a class="sclose f-left" id="bind_sina_true" uid="{#$user.uid#}" href="javascript:;">È·ÈÏ</a>
-										<a class="sclose f-left sclosem" href="javascript:;">È¡Ïû</a>
+										<a class="sclose f-left" id="bind_sina_true" uid="{#$user.uid#}" href="javascript:;">ç¡®è®¤</a>
+										<a class="sclose f-left sclosem" href="javascript:;">å–æ¶ˆ</a>
 									</div>
 								</div>
 								{#/if#}
-								<!-- Î¢²©°ó¶¨ end-->
-								<!-- QQ°ó¶¨ -->
+								<!-- å¾®åšç»‘å®š end-->
+								<!-- QQç»‘å®š -->
 								{#if $QISHI.qq_apiopen=="1"#}
 								<li>
 									{#if $user.qq_openid#}
@@ -422,7 +422,7 @@ function run(){
 											<div class="pic f-left qq"></div>
 											<div class="info f-left">
 												<div class="name">{#$user.qq_nick#}</div>
-												<div><a class="accountUnbind" id="accountUnbindQQ" href="javascript:;">½â³ı°ó¶¨</a></div>
+												<div><a class="accountUnbind" id="accountUnbindQQ" href="javascript:;">è§£é™¤ç»‘å®š</a></div>
 											</div>
 										</div>
 									</div>
@@ -431,7 +431,7 @@ function run(){
 										<div class="box">
 											<div class="pic f-left qq"></div>
 											<div class="info f-left">
-												<div class="mt"><a href="{#$QISHI.site_dir#}user/{#if $QISHI.qq_logintype=='1'#}connect_qq_client.php{#else#}connect_qq_server.php{#/if#}?act=binding" class="accountUnbind">°ó¶¨QQÕËºÅ</a></div>
+												<div class="mt"><a href="{#$QISHI.site_dir#}user/{#if $QISHI.qq_logintype=='1'#}connect_qq_client.php{#else#}connect_qq_server.php{#/if#}?act=binding" class="accountUnbind">ç»‘å®šQQè´¦å·</a></div>
 											</div>
 										</div>
 									</div>
@@ -441,18 +441,18 @@ function run(){
 									<div class="con">
 										<div class="f-left"><img src="{#$QISHI.site_template#}images/wx_showmsg.jpg"></div>
 										<div class="f-right tex">
-											È·¶¨Òª½â³ıÓë<span class="co">ÌÚÑ¶QQ</span>µÄ°ó¶¨Âğ?<br>Èç¹û½â³ı°ó¶¨£¬Äã½«ÎŞ·¨Ê¹ÓÃÌÚÑ¶QQÕÊºÅÖ±½ÓµÇÂ¼{#$QISHI.site_name#}¡£È·¶¨²¢¼ÌĞøÂğ?
+											ç¡®å®šè¦è§£é™¤ä¸<span class="co">è…¾è®¯QQ</span>çš„ç»‘å®šå—?<br>å¦‚æœè§£é™¤ç»‘å®šï¼Œä½ å°†æ— æ³•ä½¿ç”¨è…¾è®¯QQå¸å·ç›´æ¥ç™»å½•{#$QISHI.site_name#}ã€‚ç¡®å®šå¹¶ç»§ç»­å—?
 										</div>
 										<div class="clear"></div>
 									</div>
 									<div class="sclosePd">
-										<a class="sclose f-left" id="bind_qq_true" uid="{#$user.uid#}" href="javascript:;">È·ÈÏ</a>
-										<a class="sclose f-left sclosem" href="javascript:;">È¡Ïû</a>
+										<a class="sclose f-left" id="bind_qq_true" uid="{#$user.uid#}" href="javascript:;">ç¡®è®¤</a>
+										<a class="sclose f-left sclosem" href="javascript:;">å–æ¶ˆ</a>
 									</div>
 								</div>
 								{#/if#}
-								<!-- QQ°ó¶¨ end-->
-								<!-- Î¢ĞÅ°ó¶¨ -->
+								<!-- QQç»‘å®š end-->
+								<!-- å¾®ä¿¡ç»‘å®š -->
 								{#if $QISHI.weixin_apiopen=="1" && $QISHI.weixin_scan_bind=='1'#}
 								<li>
 									{#if $user.weixin_openid#}
@@ -461,7 +461,7 @@ function run(){
 											<div class="pic f-left weixin"></div>
 											<div class="info f-left">
 												<div class="name">{#$user.weixin_nick#}</div>
-												<div><a uid="{#$user.uid#}" class="accountUnbind bind_wx_jc" href="javascript:;">½â³ı°ó¶¨</a></div>
+												<div><a uid="{#$user.uid#}" class="accountUnbind bind_wx_jc" href="javascript:;">è§£é™¤ç»‘å®š</a></div>
 											</div>
 										</div>
 									</div>
@@ -470,7 +470,7 @@ function run(){
 										<div class="box">
 											<div class="pic f-left weixin"></div>
 											<div class="info f-left">
-												<div class="mt"><a href="javascript:;" class="accountUnbind bind_wx">°ó¶¨Î¢ĞÅÕËºÅ</a></div>
+												<div class="mt"><a href="javascript:;" class="accountUnbind bind_wx">ç»‘å®šå¾®ä¿¡è´¦å·</a></div>
 											</div>
 										</div>
 									</div>
@@ -482,13 +482,13 @@ function run(){
 										<td align="center">{#$qrcode_img#}</td>
 										</tr>
 										<tr>
-										<td align="center">ÇëÓÃÎ¢ĞÅÉ¨ÃèÉÏ·½¶şÎ¬Âë£¬ÔÚ´ò¿ªµÄÒ³ÃæÖĞµã»÷¡°¹Ø×¢¡±</td>
+										<td align="center">è¯·ç”¨å¾®ä¿¡æ‰«æä¸Šæ–¹äºŒç»´ç ï¼Œåœ¨æ‰“å¼€çš„é¡µé¢ä¸­ç‚¹å‡»â€œå…³æ³¨â€</td>
 										</tr>
 									</table>
 						  		</div>
 								{#/if#}
-								<!-- Î¢ĞÅ°ó¶¨ end-->
-								<!-- ÌÔ±¦°ó¶¨ -->
+								<!-- å¾®ä¿¡ç»‘å®š end-->
+								<!-- æ·˜å®ç»‘å®š -->
 								{#if $QISHI.taobao_apiopen=="1"#}
 								<li>
 									{#if $user.taobao_access_token#}
@@ -497,7 +497,7 @@ function run(){
 											<div class="pic f-left taobao"></div>
 											<div class="info f-left">
 												<div class="name">{#$user.taobao_nick#}</div>
-												<div><a class="accountUnbind" id="accountUnbindTaobao" href="javascript:;">½â³ı°ó¶¨</a></div>
+												<div><a class="accountUnbind" id="accountUnbindTaobao" href="javascript:;">è§£é™¤ç»‘å®š</a></div>
 											</div>
 										</div>
 									</div>
@@ -506,7 +506,7 @@ function run(){
 										<div class="box">
 											<div class="pic f-left taobao"></div>
 											<div class="info f-left">
-												<div class="mt"><a href="{#$QISHI.site_dir#}user/connect_taobao.php" class="accountUnbind">°ó¶¨ÌÔ±¦ÕËºÅ</a></div>
+												<div class="mt"><a href="{#$QISHI.site_dir#}user/connect_taobao.php" class="accountUnbind">ç»‘å®šæ·˜å®è´¦å·</a></div>
 											</div>
 										</div>
 									</div>
@@ -516,23 +516,23 @@ function run(){
 									<div class="con">
 										<div class="f-left"><img src="{#$QISHI.site_template#}images/wx_showmsg.jpg"></div>
 										<div class="f-right tex">
-											È·¶¨Òª½â³ıÓë<span class="co">ÌÔ±¦ÕËºÅ</span>µÄ°ó¶¨Âğ?<br>Èç¹û½â³ı°ó¶¨£¬Äã½«ÎŞ·¨Ê¹ÓÃÌÔ±¦ÕËºÅÕÊºÅÖ±½ÓµÇÂ¼{#$QISHI.site_name#}¡£È·¶¨²¢¼ÌĞøÂğ?
+											ç¡®å®šè¦è§£é™¤ä¸<span class="co">æ·˜å®è´¦å·</span>çš„ç»‘å®šå—?<br>å¦‚æœè§£é™¤ç»‘å®šï¼Œä½ å°†æ— æ³•ä½¿ç”¨æ·˜å®è´¦å·å¸å·ç›´æ¥ç™»å½•{#$QISHI.site_name#}ã€‚ç¡®å®šå¹¶ç»§ç»­å—?
 										</div>
 										<div class="clear"></div>
 									</div>
 									<div class="sclosePd">
-										<a class="sclose f-left" id="bind_taobao_true" uid="{#$user.uid#}" href="javascript:;">È·ÈÏ</a>
-										<a class="sclose f-left sclosem" href="javascript:;">È¡Ïû</a>
+										<a class="sclose f-left" id="bind_taobao_true" uid="{#$user.uid#}" href="javascript:;">ç¡®è®¤</a>
+										<a class="sclose f-left sclosem" href="javascript:;">å–æ¶ˆ</a>
 									</div>
 								</div>
 								{#/if#}
-								<!-- ÌÔ±¦°ó¶¨ end-->
+								<!-- æ·˜å®ç»‘å®š end-->
 							</ul>
 						</dd>
 					</dl>
 					<dl class="clearfix">
 						<dt class="field_Key">&nbsp;</dt>
-						<dd class="field_value remark">°ó¶¨µÚÈı·½ÕËºÅºó£¬Äã¿ÉÒÔÓÃ°ó¶¨ÕËºÅÖ±½ÓµÇÂ¼{#$QISHI.site_name#}£¬±ãÓÚÕËºÅÃÜÂë¼ÇÒä¡£</dd>
+						<dd class="field_value remark">ç»‘å®šç¬¬ä¸‰æ–¹è´¦å·åï¼Œä½ å¯ä»¥ç”¨ç»‘å®šè´¦å·ç›´æ¥ç™»å½•{#$QISHI.site_name#}ï¼Œä¾¿äºè´¦å·å¯†ç è®°å¿†ã€‚</dd>
 					</dl>
 				</div>
 			</div>

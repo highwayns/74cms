@@ -1,4 +1,4 @@
-HTML.DefinitionID
+﻿HTML.DefinitionID
 TYPE: string/null
 DEFAULT: NULL
 VERSION: 2.0.0

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Lite template_destroy_dir template internal module
  *

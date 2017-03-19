@@ -1,4 +1,4 @@
-AutoFormat.RemoveEmpty
+﻿AutoFormat.RemoveEmpty
 TYPE: bool
 VERSION: 3.2.0
 DEFAULT: false

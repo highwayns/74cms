@@ -1,9 +1,9 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
   $("#importnum").QSdialog({
-  DialogTitle:"ÇëÑ¡Ôñ",
+  DialogTitle:"è¯·é€‰æ‹©",
   DialogContent:"#ImportSet",
   DialogContentType:"id",
   DialogAddObj:"#OpImport", 
@@ -18,43 +18,43 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="toptip">
-<h2>ÌáÊ¾£º</h2>
+<h2>æç¤ºï¼š</h2>
 <p>
-¶ÌĞÅÄÚÈİ²»ÄÜ³¬¹ı70¸ö×Ö£¡
+çŸ­ä¿¡å†…å®¹ä¸èƒ½è¶…è¿‡70ä¸ªå­—ï¼
 </p>
 </div> 
- <div class="toptit">ĞÂÔö¶ÌĞÅÈÎÎñ</div>
+ <div class="toptit">æ–°å¢çŸ­ä¿¡ä»»åŠ¡</div>
     <form id="form1" name="form1" method="post"   action="?act=smsqueue_add_save" >
 	{#$inputtoken#}
   <table width="100%" border="0" cellpadding="4" cellspacing="0"   >
     <tr>
-      <td width="120" height="30" align="right"  >ÊÕ¼şÈË£º</td>
+      <td width="120" height="30" align="right"  >æ”¶ä»¶äººï¼š</td>
       <td  >
 	  <textarea name="s_sms" class="input_text_400" style="height:80px;">{#$import_numbers#}</textarea>   
-	   <span class="admin_note">(ÇëÓÃ¡°|¡±¸ô¿ª¶à¸öÊÖ»úºÅÂë)</span>  
+	   <span class="admin_note">(è¯·ç”¨â€œ|â€éš”å¼€å¤šä¸ªæ‰‹æœºå·ç )</span>  
 	  </td>
     </tr>
     <tr>
       <td width="120" height="30" align="right"  ></td>
-      <td  ><input type="button" name="importnum" class="admin_submit" id="importnum" value="µ¼ÈëºÅÂë"/> 
-     <span class="admin_note">(Ö§³ÖTXTÎÄ±¾£¬¶à¸öºÅÂëÇë»»ĞĞ)</span>  
+      <td  ><input type="button" name="importnum" class="admin_submit" id="importnum" value="å¯¼å…¥å·ç "/> 
+     <span class="admin_note">(æ”¯æŒTXTæ–‡æœ¬ï¼Œå¤šä¸ªå·ç è¯·æ¢è¡Œ)</span>  
     </td>
     </tr>
 	
 	
 		  <tr>
-            <td width="100" align="right">·¢ËÍÄÚÈİ:</td>
+            <td width="100" align="right">å‘é€å†…å®¹:</td>
             <td>
 			  <textarea name="s_body" class="input_text_400" style="height:80px;" onpropertychange="if(this.value.length&gt;70){this.value=this.value.slice(0,70)}"></textarea>
-			  <span class="admin_note">ÄÚÈİ³¬¹ı70¸ö×Ö·û½«×Ô¶¯½ØÈ¡</span>		    </td>
+			  <span class="admin_note">å†…å®¹è¶…è¿‡70ä¸ªå­—ç¬¦å°†è‡ªåŠ¨æˆªå–</span>		    </td>
           </tr>
 	  
 	  
 	      <tr>
       <td height="30" align="right"  >&nbsp;</td>
       <td height="50"  > 
-           <input name="submit3" type="submit" class="admin_submit"    value="Ìí¼Ó"/>
-        <input name="submit22" type="button" class="admin_submit"    value="·µ»Ø" onclick="Javascript:window.history.go(-1)"/>
+           <input name="submit3" type="submit" class="admin_submit"    value="æ·»åŠ "/>
+        <input name="submit22" type="button" class="admin_submit"    value="è¿”å›" onclick="Javascript:window.history.go(-1)"/>
        </td>
     </tr>
   </table>
@@ -65,7 +65,7 @@ $(document).ready(function()
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="6">
     <tr>
       <td width="20" height="30">&nbsp;</td>
-      <td height="30"><strong  style="color:#0066CC; font-size:14px;">Ñ¡ÔñTXTÎÄ¼ş</strong></td>
+      <td height="30"><strong  style="color:#0066CC; font-size:14px;">é€‰æ‹©TXTæ–‡ä»¶</strong></td>
     </tr>
         <tr>
       <td width="27" height="25">&nbsp;</td>
@@ -76,7 +76,7 @@ $(document).ready(function()
     <tr>
       <td height="25">&nbsp;</td>
       <td>
-    <input type="submit" name="import_txt" value="È·¶¨" class="admin_submit"/>
+    <input type="submit" name="import_txt" value="ç¡®å®š" class="admin_submit"/>
  </td>
     </tr>
   </table>

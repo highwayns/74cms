@@ -1,9 +1,9 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
 	$("#ButSend").QSdialog({
-	DialogTitle:"ÇëÑ¡Ôñ",
+	DialogTitle:"è¯·é€‰æ‹©",
 	DialogContent:"#SendDiv",
 	DialogContentType:"id",
 	DialogAddObj:"#OpSend",	
@@ -11,19 +11,19 @@ $(document).ready(function()
 	DialogWidth:500	
 	});
 	$("#ButDel").QSdialog({
-	DialogTitle:"ÄúÒªÉ¾³ıÄÄĞ©ĞÅÏ¢?",
+	DialogTitle:"æ‚¨è¦åˆ é™¤å“ªäº›ä¿¡æ¯?",
 	DialogContent:"#DelDiv",
 	DialogContentType:"id",
 	DialogAddObj:"#OpDel",	
 	DialogAddType:"html",
 	DialogWidth:300	
 	});
-	//·¢ËÍ
+	//å‘é€
 	$(".submitsend").click(function(){
 			$("form[name=form1]").attr("action","?act=totalsend");
 			$("form[name=form1]").submit()
 	});	
-	//É¾³ı
+	//åˆ é™¤
 	$(".submitdel").click(function(){
 			$("form[name=form1]").attr("action","?act=del");
 			$("form[name=form1]").submit()
@@ -37,19 +37,19 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="toptip link_g">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 		<p>
-		¶ÌĞÅÄ£¿éÊôÊÕ·ÑÄ£¿é£¬ĞèÉêÇë¿ªÍ¨ºó²ÅÄÜÊ¹ÓÃ£¬Çëµã»÷ <a href="http://www.74cms.com/sms.php" target="_blank">ÕâÀï</a> ÉêÇë¿ªÍ¨¡£
+		çŸ­ä¿¡æ¨¡å—å±æ”¶è´¹æ¨¡å—ï¼Œéœ€ç”³è¯·å¼€é€šåæ‰èƒ½ä½¿ç”¨ï¼Œè¯·ç‚¹å‡» <a href="http://www.74cms.com/sms.php" target="_blank">è¿™é‡Œ</a> ç”³è¯·å¼€é€šã€‚
 		<br />
-		×Ê·Ñ±ê×¼ÇëÁªÏµÆïÊ¿ÏúÊÛ»ñÈ¡£¬¸ü¶à½éÉÜÇë½øÈë <a href="http://www.74cms.com" target="_blank">ÆïÊ¿ÈË²ÅÏµÍ³¹Ù·½ÍøÕ¾</a></p>
+		èµ„è´¹æ ‡å‡†è¯·è”ç³»éª‘å£«é”€å”®è·å–ï¼Œæ›´å¤šä»‹ç»è¯·è¿›å…¥ <a href="http://www.74cms.com" target="_blank">éª‘å£«äººæ‰ç³»ç»Ÿå®˜æ–¹ç½‘ç«™</a></p>
 </div>
 <div class="seltpye_x">
-		<div class="left">É¸Ñ¡ÀàĞÍ</div>	
+		<div class="left">ç­›é€‰ç±»å‹</div>	
 		<div class="right">
-		<a href="{#"s_type:"|qishi_parse_url#}" {#if $smarty.get.s_type==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"s_type:0"|qishi_parse_url#}" {#if $smarty.get.s_type=="0"#}class="select"{#/if#}>µÈ´ı·¢ËÍ</a>
-		<a href="{#"s_type:1"|qishi_parse_url#}" {#if $smarty.get.s_type=="1"#}class="select"{#/if#}>·¢ËÍ³É¹¦</a>
-		<a href="{#"s_type:2"|qishi_parse_url#}" {#if $smarty.get.s_type=="2"#}class="select"{#/if#}>·¢ËÍÊ§°Ü</a>
+		<a href="{#"s_type:"|qishi_parse_url#}" {#if $smarty.get.s_type==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"s_type:0"|qishi_parse_url#}" {#if $smarty.get.s_type=="0"#}class="select"{#/if#}>ç­‰å¾…å‘é€</a>
+		<a href="{#"s_type:1"|qishi_parse_url#}" {#if $smarty.get.s_type=="1"#}class="select"{#/if#}>å‘é€æˆåŠŸ</a>
+		<a href="{#"s_type:2"|qishi_parse_url#}" {#if $smarty.get.s_type=="2"#}class="select"{#/if#}>å‘é€å¤±è´¥</a>
 		<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
@@ -59,20 +59,20 @@ $(document).ready(function()
     <table width="100%" border="0" cellpadding="0" cellspacing="0"  id="list" class="link_lan">
     <tr>
       <td  width="120" class="admin_list_tit admin_list_first">
-     <label id="chkAll"><input type="checkbox" name="" title="È«Ñ¡/·´Ñ¡" id="chk"/>ÀàĞÍ</label>	 </td>
-	  <td class="admin_list_tit" width="13%">ÊÖ»úºÅ</td>
-	  <td  class="admin_list_tit">¶ÌĞÅÄÚÈİ</td>
-      <td width="110"  align="center"  class="admin_list_tit">Ìí¼ÓÊ±¼ä</td>	  
-      <td width="110"  align="center"  class="admin_list_tit">·¢ËÍÊ±¼ä</td>
-      <td width="10%" align="center"  class="admin_list_tit">²Ù×÷</td>
+     <label id="chkAll"><input type="checkbox" name="" title="å…¨é€‰/åé€‰" id="chk"/>ç±»å‹</label>	 </td>
+	  <td class="admin_list_tit" width="13%">æ‰‹æœºå·</td>
+	  <td  class="admin_list_tit">çŸ­ä¿¡å†…å®¹</td>
+      <td width="110"  align="center"  class="admin_list_tit">æ·»åŠ æ—¶é—´</td>	  
+      <td width="110"  align="center"  class="admin_list_tit">å‘é€æ—¶é—´</td>
+      <td width="10%" align="center"  class="admin_list_tit">æ“ä½œ</td>
     </tr>
 	{#foreach from=$list item=list#}
 	 <tr>
       <td   class="admin_list admin_list_first">
      <input type="checkbox" name="id[]"  value="{#$list.s_id#}"/>
-	 {#if $list.s_type=="0"#}<span style="color:#FF6600">µÈ´ı·¢ËÍ</span>{#/if#}
-	 {#if $list.s_type=="1"#}<span style="color: #009900">·¢ËÍ³É¹¦</span>{#/if#}
-	 {#if $list.s_type=="2"#}<span style="color: #666666">·¢ËÍÊ§°Ü</span>{#/if#}
+	 {#if $list.s_type=="0"#}<span style="color:#FF6600">ç­‰å¾…å‘é€</span>{#/if#}
+	 {#if $list.s_type=="1"#}<span style="color: #009900">å‘é€æˆåŠŸ</span>{#/if#}
+	 {#if $list.s_type=="2"#}<span style="color: #666666">å‘é€å¤±è´¥</span>{#/if#}
 	  </td>
 	  <td  class="admin_list">
 	  {#$list.s_mobile#}
@@ -92,7 +92,7 @@ $(document).ready(function()
 		{#/if#}
 	  </td>
       <td align="center"  class="admin_list">
-	  <a href="?act=smsqueue_edit&id={#$list.s_id#}">ĞŞ¸Ä</a>
+	  <a href="?act=smsqueue_edit&id={#$list.s_id#}">ä¿®æ”¹</a>
 	 
 	</td>
 	</tr>
@@ -100,7 +100,7 @@ $(document).ready(function()
   </table>
   
 	{#if !$list#}
-	<div class="admin_list_no_info">Ã»ÓĞÈÎºÎĞÅÏ¢£¡</div>
+	<div class="admin_list_no_info">æ²¡æœ‰ä»»ä½•ä¿¡æ¯ï¼</div>
 	{#/if#}
 	
 	<span id="OpDel">
@@ -112,10 +112,10 @@ $(document).ready(function()
    <table width="100%" border="0" cellspacing="10"  class="admin_list_btm">
 	<tr>
       <td>
-	  <input type="button" name="Submit22" value="·¢ËÍ" class="admin_submit" id="ButSend"/>
-       <input type="button" name="Submit22" value="Ìí¼ÓÈÎÎñ" class="admin_submit"    onclick="window.location='?act=smsqueue_add'"/>
-	   <input type="button" name="Submit22" value="ÅúÁ¿Ìí¼Ó" class="admin_submit"    onclick="window.location='?act=smsqueue_batchadd'"/>
-	<input type="button" name="ButDel" id="ButDel" value="É¾³ı" class="admin_submit" />
+	  <input type="button" name="Submit22" value="å‘é€" class="admin_submit" id="ButSend"/>
+       <input type="button" name="Submit22" value="æ·»åŠ ä»»åŠ¡" class="admin_submit"    onclick="window.location='?act=smsqueue_add'"/>
+	   <input type="button" name="Submit22" value="æ‰¹é‡æ·»åŠ " class="admin_submit"    onclick="window.location='?act=smsqueue_batchadd'"/>
+	<input type="button" name="ButDel" id="ButDel" value="åˆ é™¤" class="admin_submit" />
 	  </td>
       <td width="305">
 	  
@@ -126,19 +126,19 @@ $(document).ready(function()
 			<div class="seh">
 			    <div class="keybox"><input name="key" type="text"   value="{#$smarty.get.key#}" /></div>
 			    <div class="selbox">
-					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"¶ÌĞÅÄÚÈİ"#}" readonly="true"/>
+					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"çŸ­ä¿¡å†…å®¹"#}" readonly="true"/>
 						<div>
 								<input name="key_type" id="key_type" type="hidden" value="{#$smarty.get.key_type|default:"1"#}" />
 												<div id="sehmenu" class="seh_menu">
 														<ul>
-														<li id="1" title="¶ÌĞÅÄÚÈİ">¶ÌĞÅÄÚÈİ</li>
-														<li id="2" title="ÊÖ»úºÅÂë">ÊÖ»úºÅÂë</li>
+														<li id="1" title="çŸ­ä¿¡å†…å®¹">çŸ­ä¿¡å†…å®¹</li>
+														<li id="2" title="æ‰‹æœºå·ç ">æ‰‹æœºå·ç </li>
 														</ul>
 												</div>
 						</div>				
 				</div>
 				<div class="sbtbox">
-				<input type="submit" name="" class="sbt" id="sbt" value="ËÑË÷"/>
+				<input type="submit" name="" class="sbt" id="sbt" value="æœç´¢"/>
 				</div>
 				<div class="clear"></div>
 		  </div>
@@ -152,52 +152,52 @@ $(document).ready(function()
 <div style="display:none" id="SendDiv">
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="6">
  <tr>
-      <td  width="100"  align="right">·¢ËÍÑ¡Ôñ£º</td>
+      <td  width="100"  align="right">å‘é€é€‰æ‹©ï¼š</td>
       <td>
       
 	  <label><input name="sendtype" type="radio" value="1" checked="checked"  />      
-	   ÒÑÑ¡ÏîÄ¿
+	   å·²é€‰é¡¹ç›®
 	   </label>
 	   &nbsp;
 	   &nbsp;
 	   <label><input name="sendtype" type="radio" value="2"  />      
-	   ËùÓĞµÈ´ı·¢ËÍµÄ
+	   æ‰€æœ‰ç­‰å¾…å‘é€çš„
 	   </label>
 	   &nbsp;
 	   &nbsp;
 	   <label><input name="sendtype" type="radio" value="3"   />      
-	   ËùÓĞ·¢ËÍÊ§°ÜµÄ
+	   æ‰€æœ‰å‘é€å¤±è´¥çš„
 	   </label>
 					  
 	    </td>
     </tr>
 	<tr>
-      <td align="right">·¢ËÍ¼ä¸ôÊ±¼ä£º</td>
+      <td align="right">å‘é€é—´éš”æ—¶é—´ï¼š</td>
       <td>
 	  <input name="intervaltime" type="text" class="input_text_150"  value="3" maxlength="3" /> 
-	  Ãë
+	  ç§’
 	  </td>
     </tr>
     <tr>
-      <td align="right">×î´ó·¢ËÍÊıÁ¿£º</td>
+      <td align="right">æœ€å¤§å‘é€æ•°é‡ï¼š</td>
       <td>
 	  <input name="sendmax" type="text" class="input_text_150"  value="100" maxlength="3" /> 
-	  0Îª²»ÏŞÖÆ  
+	  0ä¸ºä¸é™åˆ¶  
 	  </td>
     </tr>
 	 <tr>
-      <td align="right">·¢ËÍÊ§°ÜÊ±£º</td>
+      <td align="right">å‘é€å¤±è´¥æ—¶ï¼š</td>
       <td>
                       <label><input type="radio" name="senderr" value="1"  checked="checked" />
-                       Ìø¹ı¼ÌĞø</label>
+                       è·³è¿‡ç»§ç»­</label>
 					   <label><input type="radio" name="senderr" value="2"  />
-                       Í£Ö¹·¢ËÍ</label>
+                       åœæ­¢å‘é€</label>
 					   </td>
     </tr>
     <tr>
       <td height="70">&nbsp;</td>
       <td>
-	  <input type="submit" name="submitdel"  value="È·¶¨" class="admin_submit submitsend"/>
+	  <input type="submit" name="submitdel"  value="ç¡®å®š" class="admin_submit submitsend"/>
  </td>
     </tr>
   </table>
@@ -219,37 +219,37 @@ $(document).ready(function()
       <td  width="30">&nbsp;</td>
       <td>
                       <label><input name="deltype" type="radio" value="1" checked="checked"  />
-                      ÒÑÑ¡ÏîÄ¿</label></td>
+                      å·²é€‰é¡¹ç›®</label></td>
     </tr>
     <tr>
       <td >&nbsp;</td>
       <td>
                       <label><input type="radio" name="deltype" value="2"  />
-                       ËùÓĞµÈ´ı·¢ËÍÏîÄ¿</label></td>
+                       æ‰€æœ‰ç­‰å¾…å‘é€é¡¹ç›®</label></td>
     </tr>
 	 <tr>
       <td >&nbsp;</td>
       <td>
                       <label><input type="radio" name="deltype" value="3"  />
-                       ËùÓĞ·¢ËÍ³É¹¦ÏîÄ¿</label></td>
+                       æ‰€æœ‰å‘é€æˆåŠŸé¡¹ç›®</label></td>
     </tr>
 	<tr>
       <td >&nbsp;</td>
       <td>
                       <label><input type="radio" name="deltype" value="4"  />
-                       ËùÓĞ·¢²¼Ê§°ÜÏîÄ¿</label></td>
+                       æ‰€æœ‰å‘å¸ƒå¤±è´¥é¡¹ç›®</label></td>
     </tr>
 	
 	<tr>
       <td  >&nbsp;</td>
       <td>
                       <label><input type="radio" name="deltype" value="5"  />
-                       Çå¿ÕËùÓĞÁĞ¶Ó</label></td>
+                       æ¸…ç©ºæ‰€æœ‰åˆ—é˜Ÿ</label></td>
     </tr>
     <tr>
       <td height="70">&nbsp;</td>
       <td>
-	  <input type="submit" name="submitdel"  value="È·¶¨" class="admin_submit submitdel"/>
+	  <input type="submit" name="submitdel"  value="ç¡®å®š" class="admin_submit submitdel"/>
  </td>
     </tr>
   </table>

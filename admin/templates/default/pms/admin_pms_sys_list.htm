@@ -1,10 +1,10 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//µã»÷ÅúÁ¿È¡Ïû	
+	//ç‚¹å‡»æ‰¹é‡å–æ¶ˆ	
 	$("#ButDel").click(function(){
-		if (confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿'))
+		if (confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ'))
 		{
 			$("form[name=form1]").submit()
 		}
@@ -19,24 +19,24 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="seltpye_x">
-		<div class="left">½ÓÊÕ»áÔ±</div>	
+		<div class="left">æ¥æ”¶ä¼šå‘˜</div>	
 		<div class="right">
-		<a href="{#"spms_usertype:"|qishi_parse_url#}" {#if $smarty.get.spms_usertype==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"spms_usertype:0"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="0"#}class="select"{#/if#}>ËùÓĞ»áÔ±</a>
-		<a href="{#"spms_usertype:1"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="1"#}class="select"{#/if#}>ÆóÒµ»áÔ±</a>
-		<a href="{#"spms_usertype:2"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="2"#}class="select"{#/if#}>¸öÈË»áÔ±</a>
-		<a href="{#"spms_usertype:3"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="3"#}class="select"{#/if#}>ÁÔÍ·¹ËÎÊ</a>
-		<a href="{#"spms_usertype:4"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="4"#}class="select"{#/if#}>ÅàÑµ»ú¹¹</a>
+		<a href="{#"spms_usertype:"|qishi_parse_url#}" {#if $smarty.get.spms_usertype==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"spms_usertype:0"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="0"#}class="select"{#/if#}>æ‰€æœ‰ä¼šå‘˜</a>
+		<a href="{#"spms_usertype:1"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="1"#}class="select"{#/if#}>ä¼ä¸šä¼šå‘˜</a>
+		<a href="{#"spms_usertype:2"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="2"#}class="select"{#/if#}>ä¸ªäººä¼šå‘˜</a>
+		<a href="{#"spms_usertype:3"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="3"#}class="select"{#/if#}>çŒå¤´é¡¾é—®</a>
+		<a href="{#"spms_usertype:4"|qishi_parse_url#}" {#if $smarty.get.spms_usertype=="4"#}class="select"{#/if#}>åŸ¹è®­æœºæ„</a>
 		<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
 </div>
 <div class="seltpye_x">
-		<div class="left">ÏûÏ¢ÀàĞÍ</div>	
+		<div class="left">æ¶ˆæ¯ç±»å‹</div>	
 		<div class="right">
-		<a href="{#"spms_type:"|qishi_parse_url#}" {#if $smarty.get.spms_type==""#}class="select"{#/if#}>²»ÏŞ</a>
-		<a href="{#"spms_type:1"|qishi_parse_url#}" {#if $smarty.get.spms_type=="1"#}class="select"{#/if#}>ÆÕÍ¨ÏûÏ¢</a>
-		<a href="{#"spms_type:2"|qishi_parse_url#}" {#if $smarty.get.spms_type=="2"#}class="select"{#/if#}>×¢²áÌáĞÑ</a>
+		<a href="{#"spms_type:"|qishi_parse_url#}" {#if $smarty.get.spms_type==""#}class="select"{#/if#}>ä¸é™</a>
+		<a href="{#"spms_type:1"|qishi_parse_url#}" {#if $smarty.get.spms_type=="1"#}class="select"{#/if#}>æ™®é€šæ¶ˆæ¯</a>
+		<a href="{#"spms_type:2"|qishi_parse_url#}" {#if $smarty.get.spms_type=="2"#}class="select"{#/if#}>æ³¨å†Œæé†’</a>
 		<div class="clear"></div>
 		</div>
 		<div class="clear"></div>
@@ -49,11 +49,11 @@ $(document).ready(function()
   <table width="100%" border="0" cellpadding="0" cellspacing="0" id="list" class="link_lan">
     <tr>
       <td height="26" class="admin_list_tit admin_list_first" >
-      <label id="chkAll"><input type="checkbox" name=" " title="È«Ñ¡/·´Ñ¡" id="chk"/>ÏûÏ¢</label></td>
-      <td width="100"   align="center" class="admin_list_tit">½ÓÊÕ»áÔ±</td>
-      <td width="100"   align="center" class="admin_list_tit">ÀàĞÍ</td>
-      <td width="120"   align="center" class="admin_list_tit" >Ìí¼ÓÈÕÆÚ</td>
-	   <td width="130"   align="center" class="admin_list_tit" >²Ù×÷</td>
+      <label id="chkAll"><input type="checkbox" name=" " title="å…¨é€‰/åé€‰" id="chk"/>æ¶ˆæ¯</label></td>
+      <td width="100"   align="center" class="admin_list_tit">æ¥æ”¶ä¼šå‘˜</td>
+      <td width="100"   align="center" class="admin_list_tit">ç±»å‹</td>
+      <td width="120"   align="center" class="admin_list_tit" >æ·»åŠ æ—¥æœŸ</td>
+	   <td width="130"   align="center" class="admin_list_tit" >æ“ä½œ</td>
     </tr>
 	  {#foreach from=$pmslist item=list#}
       <tr>
@@ -61,51 +61,51 @@ $(document).ready(function()
         <input name="id[]" type="checkbox" id="id" value="{#$list.spmid#}"/>
 		{#$list.message1#}		</td>
 	    <td align="center"  class="admin_list">
-		{#if $list.spms_usertype=='0'#}ËùÓĞ»áÔ±{#/if#}
-		{#if $list.spms_usertype=='1'#}ÆóÒµ»áÔ±{#/if#}
-		{#if $list.spms_usertype=='2'#}¸öÈË»áÔ±{#/if#}		
-		{#if $list.spms_usertype=='3'#}ÁÔÍ·¹ËÎÊ{#/if#}
-		{#if $list.spms_usertype=='4'#}ÅàÑµ»ú¹¹{#/if#}		
+		{#if $list.spms_usertype=='0'#}æ‰€æœ‰ä¼šå‘˜{#/if#}
+		{#if $list.spms_usertype=='1'#}ä¼ä¸šä¼šå‘˜{#/if#}
+		{#if $list.spms_usertype=='2'#}ä¸ªäººä¼šå‘˜{#/if#}		
+		{#if $list.spms_usertype=='3'#}çŒå¤´é¡¾é—®{#/if#}
+		{#if $list.spms_usertype=='4'#}åŸ¹è®­æœºæ„{#/if#}		
 		
 		</td>
         <td align="center"  class="admin_list">
-		{#if $list.spms_type=='1'#}ÆÕÍ¨ÏûÏ¢{#/if#}
-		{#if $list.spms_type=='2'#}×¢²áÌáĞÑ{#/if#}		</td>
+		{#if $list.spms_type=='1'#}æ™®é€šæ¶ˆæ¯{#/if#}
+		{#if $list.spms_type=='2'#}æ³¨å†Œæé†’{#/if#}		</td>
         <td align="center"  class="admin_list">{#$list.dateline|date_format:"%Y-%m-%d"#}</td>
 	    <td align="center"  class="admin_list">
-		<a href="?act=pms_edit&id={#$list.spmid#}">ĞŞ¸Ä</a> &nbsp;&nbsp;
-		<a href="?act=pms_sys_del&id={#$list.spmid#}&del_Submit=ok&{#$urltoken#}" onclick="return confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')">É¾³ı</a></td>
+		<a href="?act=pms_edit&id={#$list.spmid#}">ä¿®æ”¹</a> &nbsp;&nbsp;
+		<a href="?act=pms_sys_del&id={#$list.spmid#}&del_Submit=ok&{#$urltoken#}" onclick="return confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')">åˆ é™¤</a></td>
       </tr>
       {#/foreach#}
     </table>
   </form>
 	{#if !$pmslist#}
-	<div class="admin_list_no_info">Ã»ÓĞÈÎºÎĞÅÏ¢£¡</div>
+	<div class="admin_list_no_info">æ²¡æœ‰ä»»ä½•ä¿¡æ¯ï¼</div>
 	{#/if#}	
 <table width="100%" border="0" cellspacing="10"  class="admin_list_btm">
 <tr>
         <td>
-        <input name="ButADD" type="button" class="admin_submit" id="ButADD" value="Ìí¼Ó"  onclick="window.location='?act=add_pms_sys'"/>
-		<input name="ButDel" type="button" class="admin_submit" id="ButDel"  value="É¾³ıËùÑ¡"/>
+        <input name="ButADD" type="button" class="admin_submit" id="ButADD" value="æ·»åŠ "  onclick="window.location='?act=add_pms_sys'"/>
+		<input name="ButDel" type="button" class="admin_submit" id="ButDel"  value="åˆ é™¤æ‰€é€‰"/>
 		</td>
         <td width="305" align="right">
 		<form id="formseh" name="formseh" method="get" action="?">	
 			<div class="seh">
 			    <div class="keybox"><input name="key" type="text"   value="{#$smarty.get.key#}" /></div>
 			    <div class="selbox">
-					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"ÏûÏ¢"#}" readonly="true"/>
+					<input name="key_type_cn"  id="key_type_cn" type="text" value="{#$smarty.get.key_type_cn|default:"æ¶ˆæ¯"#}" readonly="true"/>
 						<div>
 								<input name="key_type" id="key_type" type="hidden" value="{#$smarty.get.key_type|default:"1"#}" />
 												<div id="sehmenu" class="seh_menu">
 														<ul>
-														<li id="1" title="ÏûÏ¢">ÏûÏ¢</li>
+														<li id="1" title="æ¶ˆæ¯">æ¶ˆæ¯</li>
 														</ul>
 												</div>
 						</div>				
 				</div>
 				<div class="sbtbox">
 				<input name="act" type="hidden" value="list" />
-				<input type="submit" name="" class="sbt" id="sbt" value="ËÑË÷"/>
+				<input type="submit" name="" class="sbt" id="sbt" value="æœç´¢"/>
 				</div>
 				<div class="clear"></div>
 		  </div>

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ¹²ÓÃº¯Êı
+ * 74cms å…±ç”¨å‡½æ•°
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 if(!defined('IN_QISHI')) die('Access Denied!');
@@ -20,14 +20,14 @@ function showmsg($msg_detail, $msg_type = 0, $links = array(), $auto_redirect = 
 	global $smarty;
     if (count($links) == 0)
     {
-        $links[0]['text'] = '·µ»ØÉÏÒ»Ò³';
+        $links[0]['text'] = 'è¿”å›ä¸Šä¸€é¡µ';
         $links[0]['href'] = 'javascript:history.go(-1)';
     }
-   $smarty->assign('ur_here',     'ÏµÍ³ÌáÊ¾');
+   $smarty->assign('ur_here',     'ç³»ç»Ÿæç¤º');
    $smarty->assign('msg_detail',  $msg_detail);
    $smarty->assign('msg_type',    $msg_type);
    $smarty->assign('links',       $links);
-   $smarty->assign('default_url', $links[0]['href']);           //ÒâË¼ÊÇÔÚ¹æ¶¨µÄÊ±¼äÄÚÈç¹û²»½øĞĞ²Ù×÷£¬Ä¬ÈÏÌø×ªµÄµØ·½
+   $smarty->assign('default_url', $links[0]['href']);           //æ„æ€æ˜¯åœ¨è§„å®šçš„æ—¶é—´å†…å¦‚æœä¸è¿›è¡Œæ“ä½œï¼Œé»˜è®¤è·³è½¬çš„åœ°æ–¹
    $smarty->assign('auto_redirect', $auto_redirect);
    $smarty->assign('seconds', $seconds);
    $smarty->display('showmsg.htm');
@@ -178,31 +178,31 @@ function sub_day($endday,$staday,$range='')
 	}
 	elseif($value >= 0 && $value < 59)
 	{
-		return ($value+1)."Ãë";
+		return ($value+1)."ç§’";
 	}
 	elseif($value >= 60 && $value < 3600)
 	{
 		$min = intval($value / 60);
-		return $min."·ÖÖÓ";
+		return $min."åˆ†é’Ÿ";
 	}
 	elseif($value >=3600 && $value < 86400)
 	{
 		$h = intval($value / 3600);
-		return $h."Ğ¡Ê±";
+		return $h."å°æ—¶";
 	}
 	elseif($value >= 86400 && $value < 86400*30)
 	{
 		$d = intval($value / 86400);
-		return intval($d)."Ìì";
+		return intval($d)."å¤©";
 	}
 	elseif($value >= 86400*30 && $value < 86400*30*12)
 	{
 		$mon  = intval($value / (86400*30));
-		return $mon."ÔÂ";
+		return $mon."æœˆ";
 	}
 	else{	
 		$y = intval($value / (86400*30*12));
-		return $y."Äê";
+		return $y."å¹´";
 	}
 }
 function daterange($endday,$staday,$format='Y-m-d',$color='',$range=3)
@@ -214,17 +214,17 @@ function daterange($endday,$staday,$format='Y-m-d',$color='',$range=3)
 	}
 	elseif($value >= 0 && $value < 59)
 	{
-		$return=($value+1)."ÃëÇ°";
+		$return=($value+1)."ç§’å‰";
 	}
 	elseif($value >= 60 && $value < 3600)
 	{
 		$min = intval($value / 60);
-		$return=$min."·ÖÖÓÇ°";
+		$return=$min."åˆ†é’Ÿå‰";
 	}
 	elseif($value >=3600 && $value < 86400)
 	{
 		$h = intval($value / 3600);
-		$return=$h."Ğ¡Ê±Ç°";
+		$return=$h."å°æ—¶å‰";
 	}
 	elseif($value >= 86400)
 	{
@@ -235,7 +235,7 @@ function daterange($endday,$staday,$format='Y-m-d',$color='',$range=3)
 		}
 		else
 		{
-		$return=$d."ÌìÇ°";
+		$return=$d."å¤©å‰";
 		}
 	}
 	if ($color)
@@ -286,7 +286,7 @@ function smtp_mail($sendto_email,$subject,$body,$From='',$FromName='')
 	{
 		if (empty($mailconfig['smtpservers']) || empty($mailconfig['smtpusername']) || empty($mailconfig['smtppassword']) || empty($mailconfig['smtpfrom']))
 		{
-		write_syslog(2,'MAIL',"ÓÊ¼şÅäÖÃĞÅÏ¢²»ÍêÕû");
+		write_syslog(2,'MAIL',"é‚®ä»¶é…ç½®ä¿¡æ¯ä¸å®Œæ•´");
 		return false;
 		}
 	$mail->IsSMTP();
@@ -406,7 +406,7 @@ function dfopen($url,$limit = 0, $post = '', $cookie = '', $bysocket = FALSE	, $
 			return $return;
 		}
 }
-//Í¨ÖªÀà¶ÌĞÅ½Ó¿Ú
+//é€šçŸ¥ç±»çŸ­ä¿¡æ¥å£
 function send_sms($mobile,$content)
 {
 	global $db;
@@ -421,7 +421,7 @@ function send_sms($mobile,$content)
 	
 	}	
 }
-//ÑéÖ¤ÂëÀà¶ÌĞÅ½Ó¿Ú
+//éªŒè¯ç ç±»çŸ­ä¿¡æ¥å£
 function captcha_send_sms($mobile,$content)
 {
 	global $db;
@@ -435,7 +435,7 @@ function captcha_send_sms($mobile,$content)
 		return https_request("http://www.74cms.com/SMSsend.php?sms_name={$sms['captcha_sms_name']}&sms_key={$sms['captcha_sms_key']}&mobile={$mobile}&content={$content}");
 	}	
 }
-//ÆäËûÀà¶ÌĞÅ½Ó¿Ú
+//å…¶ä»–ç±»çŸ­ä¿¡æ¥å£
 function free_send_sms($mobile,$content)
 {
 	global $db;
@@ -514,7 +514,7 @@ function url_rewrite($alias=NULL,$get=NULL,$rewrite=true)
 {
 	global $_CFG,$_PAGE;
 	$url ='';
-	if ($_PAGE[$alias]['url']=='0' || $rewrite==false)//Ô­Ê¼Á´½Ó
+	if ($_PAGE[$alias]['url']=='0' || $rewrite==false)//åŸå§‹é“¾æ¥
 	{
 			if (!empty($get))
 			{
@@ -702,14 +702,14 @@ function write_pmsnotice($touid,$toname,$message){
 	$setsqlarr['new']=1;
 	$db->inserttable(table('pms'),$setsqlarr);
 }
-//²é¿´»áÔ±µÄÈÕÖ¾
+//æŸ¥çœ‹ä¼šå‘˜çš„æ—¥å¿—
 function get_last_refresh_date($uid,$type,$mode=0)
 {
 	global $db;
 	$sql = "select max(addtime) from ".table('refresh_log')." where uid=".intval($uid).' and ' . "`type`='".$type."' and mode = ".$mode;
 	return $db->getone($sql);
 }
-//Í³¼Æ½ñÌìË¢ĞÂ´ÎÊı
+//ç»Ÿè®¡ä»Šå¤©åˆ·æ–°æ¬¡æ•°
 function get_today_refresh_times($uid,$type,$mode=0)
 {
 	global $db;
@@ -729,7 +729,7 @@ function write_refresh_log($uid,$mode=0,$type)
 }
 
 /**
- * 3.5¸üĞÂÄÚÈİ
+ * 3.5æ›´æ–°å†…å®¹
  */
 function filter_url($alias){
 	global $_PAGE,$smarty;
@@ -747,7 +747,7 @@ function filter_url($alias){
 	    
 	// }
 	/*
-	²»Ìø×ª404£¬ÖØ¶¨Ïòµ½ÕıÈ·Ò³Ãæ
+	ä¸è·³è½¬404ï¼Œé‡å®šå‘åˆ°æ­£ç¡®é¡µé¢
 	 */
 	$param = array();
 	if(!empty($url_arr[1])){
@@ -764,7 +764,7 @@ function filter_url($alias){
 	}
 }
 /**
- * utf8×ªgbk
+ * utf8è½¬gbk
  * @param $utfstr
  */
 function utf8_to_gbk($utfstr) {
@@ -808,7 +808,7 @@ function utf8_to_gbk($utfstr) {
 	return $okstr;
 }
 /**
- * gbk×ªutf8
+ * gbkè½¬utf8
  * @param $gbstr
  */
 function gbk_to_utf8($gbstr) {
@@ -844,7 +844,7 @@ function gbk_to_utf8($gbstr) {
 	return $ret;
 }
 /**
- * utf8×ªunicode
+ * utf8è½¬unicode
  * @param  $c
  */
 function utf8_to_unicode($c) {
@@ -869,7 +869,7 @@ function utf8_to_unicode($c) {
 	}
 }
 /**
- * unicode×ªutf8
+ * unicodeè½¬utf8
  * @param  $c
  */
 function unicode_to_utf8($c) {
@@ -944,7 +944,7 @@ function https_request($url,$data = null){
 }
 function get_access_token(){
 	global $_CFG,$db;
-	//ÅĞ¶ÏÖ®Ç°µÄtokenÊÇ·ñÔÚÉúÃüÖÜÆÚ·¶Î§ÄÚ
+	//åˆ¤æ–­ä¹‹å‰çš„tokenæ˜¯å¦åœ¨ç”Ÿå‘½å‘¨æœŸèŒƒå›´å†…
 	if(!empty($_CFG['access_token']) && !empty($_CFG['expires_addtime']) && (time()-$_CFG['expires_addtime'] <= 7200))
 	{
 		return $_CFG['access_token'];
@@ -955,7 +955,7 @@ function get_access_token(){
 		$result = https_request($url);
 		$jsoninfo = json_decode($result, true);
 		$access_token = $jsoninfo["access_token"];
-		//¸üĞÂÊı¾İ¿â
+		//æ›´æ–°æ•°æ®åº“
 		$db->query("UPDATE ".table('config')." SET value='".$access_token."' WHERE name='access_token'");
 		$db->query("UPDATE ".table('config')." SET value='".time()."' WHERE name='expires_addtime'");
 		return $access_token;
@@ -967,13 +967,13 @@ function send_template_message($data){
 	$result = https_request($url, $data);
 	return json_decode($result,true);
 }
-//¼ì²é»º´æ
+//æ£€æŸ¥ç¼“å­˜
 function check_cache($cache,$dir,$days=1)
 {
 	$cachename=QISHI_ROOT_PATH.'data/'.$dir."/".$cache;
 	if (!is_writable(QISHI_ROOT_PATH.'data/'.$dir.'/'))
 	{
-	exit("ÇëÏÈ½«¡°".$dir."¡±Ä¿Â¼ÉèÖÃ¿É¶ÁĞ´£¡");
+	exit("è¯·å…ˆå°†â€œ".$dir."â€ç›®å½•è®¾ç½®å¯è¯»å†™ï¼");
 	}
 	if (file_exists($cachename))
 	{
@@ -985,7 +985,7 @@ function check_cache($cache,$dir,$days=1)
 	}
 	return false;
 }
-//Ğ´Èë»º´æ
+//å†™å…¥ç¼“å­˜
 function write_cache($cache, $json, $dir)
 {
 	$content = $json;
@@ -995,11 +995,11 @@ function write_cache($cache, $json, $dir)
 		$fp = @fopen($cachename, 'wb+');
 		if (!$fp)
 		{
-			exit('ÉúcacheÎÄ¼şÊ§°Ü£¬ÇëÉèÖÃ¡°'.$dir.'¡±µÄ¶ÁĞ´È¨ÏŞ');
+			exit('ç”Ÿcacheæ–‡ä»¶å¤±è´¥ï¼Œè¯·è®¾ç½®â€œ'.$dir.'â€çš„è¯»å†™æƒé™');
 		}
 		if (!@fwrite($fp, trim($content)))
 		{
-			exit('ÉúcacheÎÄ¼şÊ§°Ü£¬ÇëÉèÖÃ¡°'.$dir.'¡±µÄ¶ÁĞ´È¨ÏŞ');
+			exit('ç”Ÿcacheæ–‡ä»¶å¤±è´¥ï¼Œè¯·è®¾ç½®â€œ'.$dir.'â€çš„è¯»å†™æƒé™');
 		}
 		@fclose($fp);
 	}

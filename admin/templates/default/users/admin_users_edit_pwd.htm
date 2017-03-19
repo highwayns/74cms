@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit">{#$pageheader#}</div>
@@ -6,51 +6,51 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-<h2>ÌáÊ¾£º</h2>
+<h2>æç¤ºï¼š</h2>
 <p>
-Í¨¹ı¹ÜÀíÔ±ÉèÖÃ£¬Äú¿ÉÒÔ½øĞĞ±à¼­¹ÜÀíÔ±×ÊÁÏ¡¢È¨ÏŞ¡¢ÃÜÂëÒÔ¼°É¾³ı¹ÜÀíÔ±µÈ²Ù×÷£»
+é€šè¿‡ç®¡ç†å‘˜è®¾ç½®ï¼Œæ‚¨å¯ä»¥è¿›è¡Œç¼–è¾‘ç®¡ç†å‘˜èµ„æ–™ã€æƒé™ã€å¯†ç ä»¥åŠåˆ é™¤ç®¡ç†å‘˜ç­‰æ“ä½œï¼›
 </p>
 </div>  
-  <div class="toptit">ĞŞ¸ÄÃÜÂë</div>
+  <div class="toptit">ä¿®æ”¹å¯†ç </div>
   <form id="form1" name="form1" method="post" action="?act=edit_users_pwd_save">
   {#$inputtoken#}
     {#if $admin_purview=="all"#}
 			{#if $account.purview=="all"#}
   	<table width="100%" border="0" cellpadding="4" cellspacing="0"   >
     <tr>
-      <td width="120" height="30" align="right"  >¾ÉÃÜÂë£º</td>
+      <td width="120" height="30" align="right"  >æ—§å¯†ç ï¼š</td>
       <td   ><input name="old_password" type="password" class="input_text_200" id="old_password" maxlength="25" value=""/></td>
     </tr>
     <tr>
-      <td height="30" align="right"  >ÃÜÂë£º</td>
+      <td height="30" align="right"  >å¯†ç ï¼š</td>
       <td   ><input name="password" type="password" class="input_text_200" id="password" maxlength="25" value=""/></td>
     </tr>
     <tr>
-      <td height="30" align="right"  >ÔÙ´ÎÊäÈëÃÜÂë£º</td>
+      <td height="30" align="right"  >å†æ¬¡è¾“å…¥å¯†ç ï¼š</td>
       <td   ><input name="password1" type="password" class="input_text_200" id="password1" maxlength="25" value=""/></td>
     </tr>
     <tr>
       <td height="30" align="right"  >&nbsp;</td>
       <td height="50"  >
 	  <input name="id" type="hidden" value="{#$account.admin_id#}" />
-            <input name="submit3" type="submit" class="admin_submit"    value="ĞŞ¸Ä"/>
-            <input name="submit22" type="button" class="admin_submit"    value="·µ»Ø" onclick="Javascript:window.history.go(-1)"/>
+            <input name="submit3" type="submit" class="admin_submit"    value="ä¿®æ”¹"/>
+            <input name="submit22" type="button" class="admin_submit"    value="è¿”å›" onclick="Javascript:window.history.go(-1)"/>
        </td>
     </tr>
   </table>
   				{#else#}
  	<table width="100%" border="0" cellpadding="4" cellspacing="0"   >
     <tr>
-      <td width="120" height="30" align="right"  >ÃÜÂë£º</td>
+      <td width="120" height="30" align="right"  >å¯†ç ï¼š</td>
       <td   ><input name="password" type="text" class="input_text_200" id="password" maxlength="25" value=""/>
-        Èç¹û²»¸ü¸ÄÃÜÂë´Ë´¦ÇëÁô¿Õ</td>
+        å¦‚æœä¸æ›´æ”¹å¯†ç æ­¤å¤„è¯·ç•™ç©º</td>
     </tr> 
     <tr>
       <td height="30" align="right"  >&nbsp;</td>
       <td height="50"  >
 	  <input name="id" type="hidden" value="{#$account.admin_id#}" />
-            <input name="submit3" type="submit" class="admin_submit"    value="ĞŞ¸Ä"/>
-            <input name="submit22" type="button" class="admin_submit"    value="·µ»Ø" onclick="Javascript:window.history.go(-1)"/>
+            <input name="submit3" type="submit" class="admin_submit"    value="ä¿®æ”¹"/>
+            <input name="submit22" type="button" class="admin_submit"    value="è¿”å›" onclick="Javascript:window.history.go(-1)"/>
        </td>
     </tr>
   </table>
@@ -58,23 +58,23 @@
   {#else#}
   <table width="100%" border="0" cellpadding="4" cellspacing="0"   >
     <tr>
-      <td width="120" height="30" align="right"  >¾ÉÃÜÂë£º</td>
+      <td width="120" height="30" align="right"  >æ—§å¯†ç ï¼š</td>
       <td   ><input name="old_password" type="password" class="input_text_200" id="old_password" maxlength="25" value=""/></td>
     </tr>
     <tr>
-      <td height="30" align="right"  >ÃÜÂë£º</td>
+      <td height="30" align="right"  >å¯†ç ï¼š</td>
       <td   ><input name="password" type="password" class="input_text_200" id="password" maxlength="25" value=""/></td>
     </tr>
     <tr>
-      <td height="30" align="right"  >ÔÙ´ÎÊäÈëÃÜÂë£º</td>
+      <td height="30" align="right"  >å†æ¬¡è¾“å…¥å¯†ç ï¼š</td>
       <td   ><input name="password1" type="password" class="input_text_200" id="password1" maxlength="25" value=""/></td>
     </tr>
     <tr>
       <td height="30" align="right"  >&nbsp;</td>
       <td height="50"  >
 	  <input name="id" type="hidden" value="{#$account.admin_id#}" />
-            <input name="submit3" type="submit" class="admin_submit"    value="ĞŞ¸Ä"/>
-            <input name="submit22" type="button" class="admin_submit"    value="·µ»Ø" onclick="Javascript:window.history.go(-1)"/>
+            <input name="submit3" type="submit" class="admin_submit"    value="ä¿®æ”¹"/>
+            <input name="submit22" type="button" class="admin_submit"    value="è¿”å›" onclick="Javascript:window.history.go(-1)"/>
        </td>
     </tr>
   </table>

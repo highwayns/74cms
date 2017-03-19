@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
  * 74cms WAP
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
  if(!defined('IN_QISHI'))
@@ -64,13 +64,13 @@ function jobs_one($id)
 		$val=$db->getone($sql);
 	}
 	if(intval($_SESSION['uid'])>0 && intval($_SESSION['utype'])==2){
-		//¼ì²é¸ÃÖ°Î»ÊÇ·ñ¶Ô´Ë»áÔ±·¢ÆğÃæÊÔÑûÇë,²¢ÇÒ´Ë»áÔ±Ã»¿´
+		//æ£€æŸ¥è¯¥èŒä½æ˜¯å¦å¯¹æ­¤ä¼šå‘˜å‘èµ·é¢è¯•é‚€è¯·,å¹¶ä¸”æ­¤ä¼šå‘˜æ²¡çœ‹
 		$check_int = wap_check_interview(intval($_SESSION['uid']),$val['id']);
 		if($check_int){
 			wap_update_interview(intval($_SESSION['uid']),$val['id']);
 		}
 	}
-	$val['amount']=$val['amount']=="0"?'Èô¸É':$val['amount'];
+	$val['amount']=$val['amount']=="0"?'è‹¥å¹²':$val['amount'];
 	$profile=company_one($val['company_id']);
 	$val['company']=$profile;
 	$val['contents'] = htmlspecialchars_decode($val['contents'],ENT_QUOTES);
@@ -97,7 +97,7 @@ function hunter_jobs_one($id)
 	$wheresql=" WHERE id='{$id}'";
 	$sql = "select * from ".table('hunter_jobs').$wheresql." LIMIT 1";
 	$val=$db->getone($sql);
-	$val['amount']=$val['amount']=="0"?'Èô¸É':$val['amount'];
+	$val['amount']=$val['amount']=="0"?'è‹¥å¹²':$val['amount'];
 	$profile=hunter_one($val['uid']);
 	$val['company']=$profile;
 	return $val;
@@ -119,11 +119,11 @@ function resume_one($id)
 	{
 		if($val['sex']==1)
 		{
-			$val['fullname']=cut_str($val['fullname'],1,0,"ÏÈÉú");
+			$val['fullname']=cut_str($val['fullname'],1,0,"å…ˆç”Ÿ");
 		}
 		elseif($val['sex']==2)
 		{
-			$val['fullname']=cut_str($val['fullname'],1,0,"Å®Ê¿");
+			$val['fullname']=cut_str($val['fullname'],1,0,"å¥³å£«");
 		}
 		$val['fullname_']=$val['fullname'];	
 	}
@@ -134,12 +134,12 @@ function resume_one($id)
 	}
 	if($val['talent']==1){
 		$val['talent_'] = "1";
-		$val['talent'] = "ÆÕÍ¨";
+		$val['talent'] = "æ™®é€š";
 	}elseif($val['talent']==2){
 		$val['talent_'] = "2";
-		$val['talent'] = "¸ß¼¶";
+		$val['talent'] = "é«˜çº§";
 	}
-	$val['fullname_3']=cut_str($val['fullname'],1,0,"ÏÈÉú/Å®Ê¿");
+	$val['fullname_3']=cut_str($val['fullname'],1,0,"å…ˆç”Ÿ/å¥³å£«");
 	$val['age']=date("Y")-$val['birthdate'];
 	$val['education_list']=get_this_education_all($val['uid'],$val['id']);
 	$val['work_list']=get_this_work_all($val['uid'],$val['id']);
@@ -160,10 +160,10 @@ function WapShowMsg($msg_detail, $msg_type = 0, $links = array())
 	global $smarty;
     if (count($links) == 0)
     {
-        $links[0]['text'] = '·µ»ØÉÏÒ»Ò³';
+        $links[0]['text'] = 'è¿”å›ä¸Šä¸€é¡µ';
         $links[0]['href'] = 'javascript:history.go(-1)';
     }
-   $smarty->assign('ur_here',     'ÏµÍ³ÌáÊ¾');
+   $smarty->assign('ur_here',     'ç³»ç»Ÿæç¤º');
    $smarty->assign('msg_type',    $msg_type);
    $smarty->assign('msg_detail',  $msg_detail);
    $smarty->assign('links',       $links);
@@ -173,12 +173,12 @@ function WapShowMsg($msg_detail, $msg_type = 0, $links = array())
 }
 function wapmulti($num, $perpage, $curpage, $mpurl)
 {
-	$lang['home_page']="Ê×Ò³";
-	$lang['last_page']="ÉÏÒ»Ò³";
-	$lang['next_page']="ÏÂÒ»Ò³";
-	$lang['end_page']="Î²Ò³";
-	$lang['page']="Ò³";
-	$lang['turn_page']="·­Ò³";
+	$lang['home_page']="é¦–é¡µ";
+	$lang['last_page']="ä¸Šä¸€é¡µ";
+	$lang['next_page']="ä¸‹ä¸€é¡µ";
+	$lang['end_page']="å°¾é¡µ";
+	$lang['page']="é¡µ";
+	$lang['turn_page']="ç¿»é¡µ";
 	$multipage = '';
 	$mpurl .= strpos($mpurl, '?') ? '&amp;' : '?';
 	if($num > $perpage) {
@@ -316,7 +316,7 @@ function wap_get_user_type($uid)
 	$user_info=$db->getone($sql);
 	return $user_info['utype'];
 }
-//×¢²á»áÔ±
+//æ³¨å†Œä¼šå‘˜
 function wap_user_register($username,$password,$member_type=0,$email,$uc_reg=true)
 {
 	global $db,$timestamp,$_CFG,$online_ip,$QS_pwdhash;
@@ -344,7 +344,7 @@ function wap_user_register($username,$password,$member_type=0,$email,$uc_reg=tru
 	$setsqlarr['utype']=intval($member_type);
 	$setsqlarr['reg_time']=$timestamp;
 	$setsqlarr['reg_ip']=$online_ip;
-	$setsqlarr['reg_type']=2;	//À´Ô´ÓÚWAP
+	$setsqlarr['reg_type']=2;	//æ¥æºäºWAP
 	$insert_id=$db->inserttable(table('members'),$setsqlarr,true);
 			if($member_type=="1")
 			{
@@ -399,7 +399,7 @@ function wap_user_login($account,$password,$account_type=1,$uc_login=true,$expir
 }
 function wap_update_user_info($uid,$record=true,$setcookie=true,$cookie_expire=NULL)
  {
- 	global $timestamp, $online_ip,$db,$QS_cookiepath,$QS_cookiedomain,$_CFG;//3.4Éı¼¶ĞŞ¸Ä ÒıÈë±äÁ¿$_CFG
+ 	global $timestamp, $online_ip,$db,$QS_cookiepath,$QS_cookiedomain,$_CFG;//3.4å‡çº§ä¿®æ”¹ å¼•å…¥å˜é‡$_CFG
 	$user = wap_get_user_inid($uid);
 	if (empty($user))
 	{
@@ -435,7 +435,7 @@ function wap_update_user_info($uid,$record=true,$setcookie=true,$cookie_expire=N
 	$sql = "select * from ".table('members')." where uid = '{$uid}' LIMIT 1";
 	return $db->getone($sql);
 }
-// »ñÈ¡¸öÈË¼òÀúÁĞ±í
+// è·å–ä¸ªäººç®€å†åˆ—è¡¨
 function wap_get_user_resume($uid)
 {
 	global $db;
@@ -443,7 +443,7 @@ function wap_get_user_resume($uid)
 	$sql="select * from ".table("resume")." where uid=$uid";
 	return $db->getall($sql);
 }
-//Ôö¼ÓÒâÏòÖ°Î»
+//å¢åŠ æ„å‘èŒä½
 function wap_add_resume_jobs($pid,$uid,$str)
 {
 	global $db;
@@ -461,7 +461,7 @@ function wap_add_resume_jobs($pid,$uid,$str)
 	}
 	return true;
 }
-//Ôö¼ÓÒâÏòµØÇø
+//å¢åŠ æ„å‘åœ°åŒº
 function wap_add_resume_district($pid,$uid,$district,$sdistrict)
 {
 	global $db;
@@ -473,7 +473,7 @@ function wap_add_resume_district($pid,$uid,$district,$sdistrict)
 	if (!$db->inserttable(table('resume_district'),$setsqlarr))return false;
 	return true;
 }
-// Ìí¼ÓÒâÏòĞĞÒµ
+// æ·»åŠ æ„å‘è¡Œä¸š
 function wap_add_resume_trade($pid,$uid,$str)
 {
 	global $db;
@@ -485,7 +485,7 @@ function wap_add_resume_trade($pid,$uid,$str)
 	if (!$db->inserttable(table('resume_trade'),$setsqlarr))return false;
 	return true;
 }
-// °ó¶¨ÕÊºÅ×Ô¶¯µÇÂ¼
+// ç»‘å®šå¸å·è‡ªåŠ¨ç™»å½•
 function wap_weixin_logon($fromUsername,$expire=null)
 {
 	global $db;

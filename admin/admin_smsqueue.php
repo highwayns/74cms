@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms ÓÊ¼şÈº·¢
+ * 74cms é‚®ä»¶ç¾¤å‘
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/include/admin_common.inc.php');
 require_once(ADMIN_ROOT_PATH.'include/admin_smsqueue_fun.php');
 $act = !empty($_GET['act']) ? trim($_GET['act']) : 'list';
 check_permissions($_SESSION['admin_purview'],"smsqueue");
-$smarty->assign('pageheader',"¶ÌĞÅÓªÏú");
+$smarty->assign('pageheader',"çŸ­ä¿¡è¥é”€");
 if($act == 'list')
 {
 	get_token();
@@ -44,11 +44,11 @@ if($act == 'list')
 elseif($act == 'smsqueue_add')
 {
 	get_token();
-	$label[]=array('{sitename}','ÍøÕ¾Ãû³Æ');
-	$label[]=array('{sitedomain}','ÍøÕ¾ÓòÃû');
-	$label[]=array('{sitelogo}','ÍøÕ¾LOGO');
-	$label[]=array('{address}','ÁªÏµµØÖ·');
-	$label[]=array('{tel}','ÁªÏµµç»°');
+	$label[]=array('{sitename}','ç½‘ç«™åç§°');
+	$label[]=array('{sitedomain}','ç½‘ç«™åŸŸå');
+	$label[]=array('{sitelogo}','ç½‘ç«™LOGO');
+	$label[]=array('{address}','è”ç³»åœ°å€');
+	$label[]=array('{tel}','è”ç³»ç”µè¯');
 	$smarty->assign('label',$label);
 	$smarty->assign('navlabel','add');
 	$smarty->display('smsqueue/admin_smsqueue_add.htm');
@@ -56,9 +56,9 @@ elseif($act == 'smsqueue_add')
 elseif($act == 'smsqueue_add_save')
 {
 	check_token();
-	$setsqlarr['s_sms']=trim($_POST['s_sms'])?trim($_POST['s_sms']):adminmsg('ÊÖ»úºÅÂë±ØĞëÌîĞ´£¡',1);
-	$s_body=trim($_POST['s_body'])?trim($_POST['s_body']):adminmsg('ÇëÌîĞ´¶ÌĞÅÄÚÈİ',1);
-	mb_strlen(trim($_POST['s_body']),'gb2312')>70?adminmsg('¶ÌĞÅÄÚÈİ³¬¹ı70¸ö×Ö£¬ÇëÖØĞÂÊäÈë£¡',1):'';
+	$setsqlarr['s_sms']=trim($_POST['s_sms'])?trim($_POST['s_sms']):adminmsg('æ‰‹æœºå·ç å¿…é¡»å¡«å†™ï¼',1);
+	$s_body=trim($_POST['s_body'])?trim($_POST['s_body']):adminmsg('è¯·å¡«å†™çŸ­ä¿¡å†…å®¹',1);
+	mb_strlen(trim($_POST['s_body']),'gb2312')>70?adminmsg('çŸ­ä¿¡å†…å®¹è¶…è¿‡70ä¸ªå­—ï¼Œè¯·é‡æ–°è¾“å…¥ï¼',1):'';
 	$mobile_arr=explode('|',$setsqlarr['s_sms']);
 	$mobile_arr=array_unique($mobile_arr);
 	foreach($mobile_arr as $list){
@@ -73,11 +73,11 @@ elseif($act == 'smsqueue_add_save')
 			$num++;
 		}
 	}
-	$link[0]['text'] = "¼ÌĞøÌí¼Ó";
+	$link[0]['text'] = "ç»§ç»­æ·»åŠ ";
 	$link[0]['href'] = '?act=smsqueue_add';
-	$link[1]['text'] = "·µ»ØÁĞ±í";
+	$link[1]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[1]['href'] = '?';
-	adminmsg("Ìí¼Ó³É¹¦{$num}£¡",2,$links);
+	adminmsg("æ·»åŠ æˆåŠŸ{$num}ï¼",2,$links);
 }
 elseif($act == 'smsqueue_edit')
 {
@@ -88,18 +88,18 @@ elseif($act == 'smsqueue_edit')
 elseif($act == 'smsqueue_edit_save')
 {
 	check_token();
-	$setsqlarr['s_sms']=trim($_POST['s_sms'])?trim($_POST['s_sms']):adminmsg('ÊÖ»úºÅÂë±ØĞëÌîĞ´£¡',1);
-	$s_body=trim($_POST['s_body'])?trim($_POST['s_body']):adminmsg('ÇëÌîĞ´¶ÌĞÅÄÚÈİ',1);
-	mb_strlen(trim($_POST['s_body']),'gb2312')>70?adminmsg('¶ÌĞÅÄÚÈİ³¬¹ı70¸ö×Ö£¬ÇëÖØĞÂÊäÈë£¡',1):'';
+	$setsqlarr['s_sms']=trim($_POST['s_sms'])?trim($_POST['s_sms']):adminmsg('æ‰‹æœºå·ç å¿…é¡»å¡«å†™ï¼',1);
+	$s_body=trim($_POST['s_body'])?trim($_POST['s_body']):adminmsg('è¯·å¡«å†™çŸ­ä¿¡å†…å®¹',1);
+	mb_strlen(trim($_POST['s_body']),'gb2312')>70?adminmsg('çŸ­ä¿¡å†…å®¹è¶…è¿‡70ä¸ªå­—ï¼Œè¯·é‡æ–°è¾“å…¥ï¼',1):'';
 	$wheresql=" s_id='".intval($_POST['id'])."' ";
-	$link[0]['text'] = "·µ»ØÁĞ±í";
+	$link[0]['text'] = "è¿”å›åˆ—è¡¨";
 	$link[0]['href'] = '?';
 	if (preg_match("/^(13|15|14|17|18)\d{9}$/",$setsqlarr['s_sms']))
 	{
 		$smssqlarr['s_body']=$s_body;
 		$smssqlarr['s_addtime']=time();
 		$smssqlarr['s_mobile']=$setsqlarr['s_sms'];
-		!$db->updatetable(table('smsqueue'),$smssqlarr,$wheresql)?adminmsg("ĞŞ¸ÄÊ§°Ü£¡",0):adminmsg("ĞŞ¸Ä³É¹¦£¡",2,$link);
+		!$db->updatetable(table('smsqueue'),$smssqlarr,$wheresql)?adminmsg("ä¿®æ”¹å¤±è´¥ï¼",0):adminmsg("ä¿®æ”¹æˆåŠŸï¼",2,$link);
 	}
 }
 elseif($act == 'smsqueue_batchadd')
@@ -112,8 +112,8 @@ elseif($act == 'smsqueue_batchadd')
 elseif($act == 'smsqueue_batchadd_save')
 {
 	check_token();
-	$s_body=trim($_POST['s_body'])?trim($_POST['s_body']):adminmsg('ÇëÌîĞ´¶ÌĞÅÄÚÈİ',1);
-	mb_strlen(trim($_POST['s_body']),'gb2312')>70?adminmsg('¶ÌĞÅÄÚÈİ³¬¹ı70¸ö×Ö£¬ÇëÖØĞÂÊäÈë£¡',1):'';
+	$s_body=trim($_POST['s_body'])?trim($_POST['s_body']):adminmsg('è¯·å¡«å†™çŸ­ä¿¡å†…å®¹',1);
+	mb_strlen(trim($_POST['s_body']),'gb2312')>70?adminmsg('çŸ­ä¿¡å†…å®¹è¶…è¿‡70ä¸ªå­—ï¼Œè¯·é‡æ–°è¾“å…¥ï¼',1):'';
 	$selutype=intval($_POST['selutype']);
 	$selsettr=intval($_POST['selsettr']);
 	if ($selutype>0)
@@ -154,11 +154,11 @@ elseif($act == 'smsqueue_batchadd_save')
 				$smssqlarr['s_body']=$s_body;
 				$smssqlarr['s_addtime']=time();
 				$smssqlarr['s_mobile']=$user['mobile'];
-				!$db->inserttable(table('smsqueue'),$smssqlarr)?adminmsg("Ìí¼ÓÊ§°Ü£¡",0):'';
+				!$db->inserttable(table('smsqueue'),$smssqlarr)?adminmsg("æ·»åŠ å¤±è´¥ï¼",0):'';
 				$num++;
 			}
 	}
-	adminmsg("Ìí¼Ó³É¹¦{$num}£¡",2);
+	adminmsg("æ·»åŠ æˆåŠŸ{$num}ï¼",2);
 }
 elseif($act == 'totalsend')
 {
@@ -175,7 +175,7 @@ elseif($act == 'totalsend')
 		$id=$_POST['id'];
 		if (empty($id))
 		{
-		adminmsg("ÇëÑ¡ÔñÏîÄ¿£¡",1);
+		adminmsg("è¯·é€‰æ‹©é¡¹ç›®ï¼",1);
 		}
 		if(!is_array($id)) $id=array($id);
 		$sqlin=implode(",",$id);
@@ -188,7 +188,7 @@ elseif($act == 'totalsend')
 			}
 			if (empty($idarr))
 			{
-				adminmsg("Ã»ÓĞ¿É·¢ËÍµÄ¶ÌĞÅ",1);
+				adminmsg("æ²¡æœ‰å¯å‘é€çš„çŸ­ä¿¡",1);
 			}
 			@file_put_contents(QISHI_ROOT_PATH."temp/sendsms.txt", serialize($idarr));
 			header("Location:?act=send&senderr={$$senderr}&intervaltime={$intervaltime}");
@@ -204,7 +204,7 @@ elseif($act == 'totalsend')
 			}
 			if (empty($idarr))
 			{
-				adminmsg("Ã»ÓĞ¿É·¢ËÍµÄ¶ÌĞÅ",1);
+				adminmsg("æ²¡æœ‰å¯å‘é€çš„çŸ­ä¿¡",1);
 			}
 			@file_put_contents(QISHI_ROOT_PATH."temp/sendsms.txt", serialize($idarr));
 			header("Location:?act=send&senderr={$$senderr}&intervaltime={$intervaltime}");
@@ -218,7 +218,7 @@ elseif($act == 'totalsend')
 			}
 			if (empty($idarr))
 			{
-				adminmsg("Ã»ÓĞ¿É·¢ËÍµÄ¶ÌĞÅ",1);
+				adminmsg("æ²¡æœ‰å¯å‘é€çš„çŸ­ä¿¡",1);
 			}
 			@file_put_contents(QISHI_ROOT_PATH."temp/sendsms.txt", serialize($idarr));
 			header("Location:?act=send&senderr={$$senderr}&intervaltime={$intervaltime}");
@@ -234,9 +234,9 @@ elseif($act == 'send')
 	$totalid=count($idarr);
 	if (empty($idarr))
 	{
-		$link[0]['text'] = "·µ»Ø¶ÌĞÅÁĞ¶Ó";
+		$link[0]['text'] = "è¿”å›çŸ­ä¿¡åˆ—é˜Ÿ";
 		$link[0]['href'] = '?act=list';
-		adminmsg("ÈÎÎñÖ´ĞĞÍê±Ï!",2,$link);
+		adminmsg("ä»»åŠ¡æ‰§è¡Œå®Œæ¯•!",2,$link);
 	}
 	else
 	{
@@ -251,23 +251,23 @@ elseif($act == 'send')
 				$db->query("update  ".table('smsqueue')." SET s_type='2'  WHERE s_id = '".intval($s_id)."'  LIMIT 1");
 				if ($senderr=="2")
 				{
-				$link[0]['text'] = "·µ»Ø¶ÌĞÅÁĞ¶Ó";
+				$link[0]['text'] = "è¿”å›çŸ­ä¿¡åˆ—é˜Ÿ";
 				$link[0]['href'] = '?act=list';
-				adminmsg('¶ÌĞÅ·¢ËÍ·¢Éú´íÎó£¡'.$senderr,0,$link);
+				adminmsg('çŸ­ä¿¡å‘é€å‘ç”Ÿé”™è¯¯ï¼'.$senderr,0,$link);
 				}
 				else
 				{
-				$link[0]['text'] = "·¢ËÍÏÂÒ»Ìõ";
+				$link[0]['text'] = "å‘é€ä¸‹ä¸€æ¡";
 				$link[0]['href'] = "?act=send&senderr={$$senderr}&intervaltime={$intervaltime}";
-				adminmsg("·¢Éú´íÎó£¬×¼±¸·¢ËÍÏÂÒ»Ìõ£¬Ê£ÓàÈÎÎñ×ÜÊı£º".($totalid-1),0,$link,true,$intervaltime);
+				adminmsg("å‘ç”Ÿé”™è¯¯ï¼Œå‡†å¤‡å‘é€ä¸‹ä¸€æ¡ï¼Œå‰©ä½™ä»»åŠ¡æ€»æ•°ï¼š".($totalid-1),0,$link,true,$intervaltime);
 				}			
 			}
 			else
 			{
 			$db->query("update  ".table('smsqueue')." SET s_type='1',s_sendtime='".time()."'  WHERE s_id = '".intval($s_id)."'  LIMIT 1");
-			$link[0]['text'] = "·¢ËÍÏÂÒ»Ìõ";
+			$link[0]['text'] = "å‘é€ä¸‹ä¸€æ¡";
 			$link[0]['href'] = "?act=send&senderr={$$senderr}&intervaltime={$intervaltime}";
-			adminmsg("·¢ËÍ³É¹¦£¬×¼±¸·¢ËÍÏÂÒ»Ìõ£¬Ê£ÓàÈÎÎñ×ÜÊı£º".($totalid-1),2,$link,true,$intervaltime);
+			adminmsg("å‘é€æˆåŠŸï¼Œå‡†å¤‡å‘é€ä¸‹ä¸€æ¡ï¼Œå‰©ä½™ä»»åŠ¡æ€»æ•°ï¼š".($totalid-1),2,$link,true,$intervaltime);
 			}
 	}	
 }
@@ -280,38 +280,38 @@ elseif($act == 'del')
 		$id=$_POST['id'];
 		if (empty($id))
 		{
-		adminmsg("ÇëÑ¡ÔñÏîÄ¿£¡",1);
+		adminmsg("è¯·é€‰æ‹©é¡¹ç›®ï¼",1);
 		}
 		if(!is_array($id)) $id=array($id);
 		$sqlin=implode(",",$id);
 		if (preg_match("/^(\d{1,10},)*(\d{1,10})$/",$sqlin))
 		{
 		$db->query("Delete from ".table('smsqueue')." WHERE s_id IN ({$sqlin}) ");
-		adminmsg("É¾³ı³É¹¦",2);
+		adminmsg("åˆ é™¤æˆåŠŸ",2);
 		}
 	}
 	elseif ($deltype===2)
 	{
 		$db->query("Delete from ".table('smsqueue')." WHERE s_type=0 ");
-		adminmsg("É¾³ı³É¹¦ $delnum",2);
+		adminmsg("åˆ é™¤æˆåŠŸ $delnum",2);
 	}
 	elseif ($deltype===3)
 	{
 		$db->query("Delete from ".table('smsqueue')." WHERE s_type=1 ");
-		adminmsg("É¾³ı³É¹¦",2);
+		adminmsg("åˆ é™¤æˆåŠŸ",2);
 	}
 	elseif ($deltype===4)
 	{
 		$db->query("Delete from ".table('smsqueue')." WHERE s_type=2 ");
-		adminmsg("É¾³ı³É¹¦",2);
+		adminmsg("åˆ é™¤æˆåŠŸ",2);
 	}
 	elseif ($deltype===5)
 	{
 		$db->query("Delete from ".table('smsqueue')."");
-		adminmsg("É¾³ı³É¹¦",2);
+		adminmsg("åˆ é™¤æˆåŠŸ",2);
 	}
 }
-/*µ¼³öÓÃ»§ĞÅÏ¢*/
+/*å¯¼å‡ºç”¨æˆ·ä¿¡æ¯*/
 elseif($act == 'export_info')
 {
   	$selutype=intval($_POST['selutype']);
@@ -350,12 +350,12 @@ elseif($act == 'export_info')
  	$result = $db->query("SELECT * FROM ".table('members').$wheresql);
  	while($v = $db->fetch_array($result))
 	{
-			$v['mobile']=$v['mobile']?$v['mobile']:'Î´ÌîĞ´';
-			$v['email']=$v['email']?$v['email']:'Î´ÌîĞ´';
-			$contents.= '¡ï ÓÃ»§Ãû£º'.$v['username'].'                 ÊÖ»úºÅ£º'.$v['mobile'].'                     ÓÊÏä£º'.$v['email']."\r\n\r\n"; 
+			$v['mobile']=$v['mobile']?$v['mobile']:'æœªå¡«å†™';
+			$v['email']=$v['email']?$v['email']:'æœªå¡«å†™';
+			$contents.= 'â˜… ç”¨æˆ·åï¼š'.$v['username'].'                 æ‰‹æœºå·ï¼š'.$v['mobile'].'                     é‚®ç®±ï¼š'.$v['email']."\r\n\r\n"; 
 	}
   	$time=date("Y-m-d H:i:s",time());
-	$header="===================================»áÔ±ĞÅÏ¢ÎÄ¼ş£¬·ûºÏÌõ¼şµÄ×Ü¼Æ{$total_val}¸ö£¬µ¼³öÊ±¼ä£º{$time}========================================"."\r\n\r\n";
+	$header="===================================ä¼šå‘˜ä¿¡æ¯æ–‡ä»¶ï¼Œç¬¦åˆæ¡ä»¶çš„æ€»è®¡{$total_val}ä¸ªï¼Œå¯¼å‡ºæ—¶é—´ï¼š{$time}========================================"."\r\n\r\n";
 	$txt=$header.$contents;
 	header("Content-type:application/octet-stream"); 
 	header("Content-Disposition: attachment; filename=userinfo.txt"); 

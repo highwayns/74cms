@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 
 <div class="admin_main_nr_dbox">
 <script type="text/javascript">
@@ -60,22 +60,22 @@ $(document).ready(function()
     },
     messages: {
       username: {
-        required: "ÇëÌîĞ´ÓÃ»§Ãû",
-        remote: jQuery.format("ÓÃ»§ÃûÒÑ¾­´æÔÚ»òÕß²»ºÏ·¨")
+        required: "è¯·å¡«å†™ç”¨æˆ·å",
+        remote: jQuery.format("ç”¨æˆ·åå·²ç»å­˜åœ¨æˆ–è€…ä¸åˆæ³•")
        },
       email: {
-        required: "ÇëÌîĞ´µç×ÓÓÊÏä",
-        email: jQuery.format("µç×ÓÓÊÏä¸ñÊ½´íÎó"),
-        remote: jQuery.format("emailÒÑ¾­´æÔÚ")  
+        required: "è¯·å¡«å†™ç”µå­é‚®ç®±",
+        email: jQuery.format("ç”µå­é‚®ç®±æ ¼å¼é”™è¯¯"),
+        remote: jQuery.format("emailå·²ç»å­˜åœ¨")  
       },
       password: {
-        required: "ÇëÌîĞ´ÃÜÂë",
-        minlength: jQuery.format("ÌîĞ´²»ÄÜĞ¡ÓÚ{0}¸ö×Ö·û"),
-      maxlength: jQuery.format("ÌîĞ´²»ÄÜ´óÓÚ{0}¸ö×Ö·û")
+        required: "è¯·å¡«å†™å¯†ç ",
+        minlength: jQuery.format("å¡«å†™ä¸èƒ½å°äº{0}ä¸ªå­—ç¬¦"),
+      maxlength: jQuery.format("å¡«å†™ä¸èƒ½å¤§äº{0}ä¸ªå­—ç¬¦")
        },
        password1: {
-       required: "ÇëÌîĞ´ÃÜÂë",
-        equalTo: "Á½´ÎÊäÈëµÄÃÜÂë²»Í¬"
+       required: "è¯·å¡«å†™å¯†ç ",
+        equalTo: "ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸åŒ"
        }
      },
      errorPlacement: function(error, element) {
@@ -87,7 +87,7 @@ $(document).ready(function()
           error.appendTo(element.next());
     }
   });
-    //ÖĞÎÄ×ÖÁ½¸ö×Ö½Ú
+    //ä¸­æ–‡å­—ä¸¤ä¸ªå­—èŠ‚
     jQuery.validator.addMethod("byteRangeLength", function(value, element,  param) {
     var length = value.length;
     for (var i = 0; i < value.length; i++) {
@@ -96,68 +96,68 @@ $(document).ready(function()
         }
       }
     return this.optional(element) || (length >= param[0] && length <= param[1]);
-    }, "È·±£µÄÖµÔÚ3-18¸ö×Ö½ÚÖ®¼ä");
-     //×Ö·ûÑéÖ¤
+    }, "ç¡®ä¿çš„å€¼åœ¨3-18ä¸ªå­—èŠ‚ä¹‹é—´");
+     //å­—ç¬¦éªŒè¯
     jQuery.validator.addMethod("userName", function(value, element) {
     return this.optional(element) || /^[\u0391-\uFFE5\w]+$/.test(value);
-    }, "Ö»ÄÜ°üº¬ÖĞÓ¢ÎÄ¡¢Êı×ÖºÍÏÂ»®Ïß");
+    }, "åªèƒ½åŒ…å«ä¸­è‹±æ–‡ã€æ•°å­—å’Œä¸‹åˆ’çº¿");
     jQuery.validator.addMethod("nomobile", function(value, element) { 
       var tel = /^(13|15|18)\d{9}$/;
     var $cstr= true;
     if (tel.test(value)) $cstr= false;
     return $cstr || this.optional(element); 
-  }, "ÓÃ»§Ãû²»ÄÜÊÇÊÖ»úºÅ");
+  }, "ç”¨æˆ·åä¸èƒ½æ˜¯æ‰‹æœºå·");
 });
 </script>
 <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
   <div class="clear"></div>
 </div>
-<div class="toptit">Ìí¼ÓÆóÒµ»áÔ±</div>
+<div class="toptit">æ·»åŠ ä¼ä¸šä¼šå‘˜</div>
   <form id="form1" name="form1" method="post" action="?act=members_add_save">
   {#$inputtoken#}
   <table width="100%" border="0" cellpadding="4" cellspacing="0"   >
     <tr>
-      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÓÃ»§Ãû£º</td>
+      <td width="120" height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ç”¨æˆ·åï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed"> <input name="username" type="text" class="input_text_200" id="username" maxlength="25" value=""/> <label></label></td>
     </tr>
     <tr>
-      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÓÊÏäµØÖ·£º</td>
+      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">é‚®ç®±åœ°å€ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed" ><input name="email" type="text" class="input_text_200" id="email" maxlength="25" value=""/><label></label></td>
     </tr>
     <tr>
-      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">µÇÂ¼ÃÜÂë£º</td>
+      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ç™»å½•å¯†ç ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed" ><input name="password" type="password" class="input_text_200" id="password" maxlength="25" value=""/><label></label></td>
     </tr>
 	
     <tr>
-      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÔÙ´ÎÊäÈëÃÜÂë£º</td>
+      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">å†æ¬¡è¾“å…¥å¯†ç ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed" ><input name="password1" type="password" class="input_text_200" id="password1" maxlength="25" value=""/><label></label></td>
     </tr>
 		
 	{#if $QISHI.operation_mode=="1"||$QISHI.operation_mode=="3"#}
 	    <tr>
-      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÊÇ·ñÔùËÍ»ı·Ö£º</td>
+      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">æ˜¯å¦èµ é€ç§¯åˆ†ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed"  ><label>
         <input name="regpoints" type="radio" value="y" checked="checked" />
-        ÔùËÍ</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
+        èµ é€</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
         <input type="radio" name="regpoints" value="n"   />
-        ²»ÔùËÍ</label></td>
+        ä¸èµ é€</label></td>
 	    </tr>
 		
 		<tr id="regpointsshow">
-      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÔùËÍÊıÁ¿£º</td>
+      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">èµ é€æ•°é‡ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed" ><input name="regpoints_num" type="text" class="input_text_200" id="regpoints_num" maxlength="25" value="{#$points.reg_points.value#}" onkeyup="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/></td>
     </tr>
 		{#/if#}
 
 	{#if $QISHI.operation_mode=='2'||$QISHI.operation_mode=="3"#}  
 	<tr>
-      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">ÔùËÍ·şÎñÌ×²Í£º</td>
+      <td height="30" align="right"  style=" border-bottom:1px #CCCCCC dashed">èµ é€æœåŠ¡å¥—é¤ï¼š</td>
       <td  style=" border-bottom:1px #CCCCCC dashed" >
           <label>
           <input type="radio" name="reg_service" value="0" {#if $QISHI.reg_service=='0'#}checked="checked"{#/if#}/>
-          ²»ÔùËÍ</label>
+          ä¸èµ é€</label>
           {#foreach from=$givesetmeal item=list#}
 		    &nbsp;&nbsp;
 		    <label>
@@ -168,27 +168,27 @@ $(document).ready(function()
 	    </tr>
 		{#/if#}
 		<tr>
-			<td align="right" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF0000">ÊÇ·ñÒÑÊÕ·Ñ£º</span></td>
+			<td align="right" style=" border-bottom:1px #CCCCCC dashed"><span style="color:#FF0000">æ˜¯å¦å·²æ”¶è´¹ï¼š</span></td>
 			<td style=" border-bottom:1px #CCCCCC dashed">
 			<label>
 			 <input name="is_money" type="radio" value="1" checked="checked" class="yes_money3"/>
-			ÊÇ</label> &nbsp;&nbsp;&nbsp;<label>
+			æ˜¯</label> &nbsp;&nbsp;&nbsp;<label>
 			<input name="is_money" type="radio" value="0"  class="no_money3"/>
-			·ñ</label>		
+			å¦</label>		
 			</td>
       </tr>
 	   <tr class="log_amount3">
-        <td align="right"  style=" border-bottom:1px #CCCCCC dashed;"><span style="color:#FF0000">ÊÕ·Ñ½ğ¶î£º</span></td>
-        <td style=" border-bottom:1px #CCCCCC dashed"><input name="log_amount" type="text" class="input_text_200"  value="{#$setmeal.log_amount#}" maxlength="5"/> Ôª
-         <span class="admin_note">(ÇëÌîĞ´ÊÕ·Ñ½ğ¶î)</span> </td>
+        <td align="right"  style=" border-bottom:1px #CCCCCC dashed;"><span style="color:#FF0000">æ”¶è´¹é‡‘é¢ï¼š</span></td>
+        <td style=" border-bottom:1px #CCCCCC dashed"><input name="log_amount" type="text" class="input_text_200"  value="{#$setmeal.log_amount#}" maxlength="5"/> å…ƒ
+         <span class="admin_note">(è¯·å¡«å†™æ”¶è´¹é‡‘é¢)</span> </td>
       </tr>
     <tr>
       <td height="30" align="right"  >&nbsp;</td>
       <td height="60"  ><span style="font-size:14px;">
         <input type="hidden" name="member_type"  value="1" />
-        <input name="submit3" type="submit" class="admin_submit"    value="Ìí¼Ó"/>
+        <input name="submit3" type="submit" class="admin_submit"    value="æ·»åŠ "/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="window.location.href='?act=members_list'"/>
+        <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="window.location.href='?act=members_list'"/>
       </span></td>
     </tr>
   </table>

@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -16,47 +16,47 @@ $(document).ready(function()
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-µã»÷¡°¼ÌĞøÌí¼Ó¡±°´Å¥£¬¿ÉÍ¬Ê±Ìí¼Ó¶à¸ö·ÖÀà£¡<br />
+ç‚¹å‡»â€œç»§ç»­æ·»åŠ â€æŒ‰é’®ï¼Œå¯åŒæ—¶æ·»åŠ å¤šä¸ªåˆ†ç±»ï¼<br />
 </p>
 </div>
-<div class="toptit">ĞÂÔö·ÖÀà</div>
+<div class="toptit">æ–°å¢åˆ†ç±»</div>
 
     <form id="form1" name="form1" method="post" action="?act=add_category_save">
 	{#$inputtoken#}
 	<div id="html_tpl">
       <table width="100%" border="0" cellpadding="3" cellspacing="5" style="border-bottom:1px  #86AFE8 dashed">
         <tr>
-          <td width="120" align="right">ËùÊô·ÖÀà£º</td>
+          <td width="120" align="right">æ‰€å±åˆ†ç±»ï¼š</td>
           <td>
 		  <select name="parentid[]" id="parentid"  style="width:108px; font-size:12px;">
-              <option value="0">¶¥¼¶·ÖÀà</option>
-			  {#qishi_news_category set="ÁĞ±íÃû:category,×ÊÑ¶´óÀà:0"#}
+              <option value="0">é¡¶çº§åˆ†ç±»</option>
+			  {#qishi_news_category set="åˆ—è¡¨å:category,èµ„è®¯å¤§ç±»:0"#}
 			  {#foreach from=$category item=list#}
             <option value="{#$list.id#}" {#if $smarty.get.parentid==$list.id#}selected="selected"{#/if#}>{#$list.categoryname#}</option>
 			{#/foreach#}       
           </select>		  </td>
         </tr>
         <tr>
-          <td align="right">Ãû³Æ£º</td>
+          <td align="right">åç§°ï¼š</td>
           <td><input name="categoryname[]" type="text" class="input_text_200"  value="" maxlength=""/></td>
         </tr>
         <tr>
-          <td align="right">ÅÅĞò£º</td>
+          <td align="right">æ’åºï¼š</td>
           <td><input name="category_order[]" type="text" style="width:30px; font-size:12px;"   value="0" maxlength="3" class="input_text_200" /></td>
         </tr>
         <tr>
-          <td align="right">title£º</td>
+          <td align="right">titleï¼š</td>
           <td><input name="title[]" type="text" class="input_text_200"  maxlength="30"/>
-            ²»ÌîÔòÎª·ÖÀàÃû³Æ</td>
+            ä¸å¡«åˆ™ä¸ºåˆ†ç±»åç§°</td>
         </tr>
         <tr>
-          <td align="right">description£º</td>
+          <td align="right">descriptionï¼š</td>
           <td><textarea name="description[]" class="input_text_400" style="height:50px;"></textarea></td>
         </tr>
         <tr>
-          <td align="right">keywords£º</td>
+          <td align="right">keywordsï¼š</td>
           <td><textarea name="keywords[]" class="input_text_400" style="height:50px;"></textarea></td>
         </tr>
 		 </table>
@@ -66,9 +66,9 @@ $(document).ready(function()
         <tr>
           <td width="120" align="right">&nbsp;</td>
           <td >
-		  <input type="submit" name="addsave" value="±£´æ" class="admin_submit" />
-		  <input type="button" name="add_form" id="add_form" value="¼ÌĞøÌí¼Ó" class="admin_submit" />
-		  <input name="submit22" type="button" class="admin_submit"    value="·µ »Ø" onclick="history.go(-1)"/>
+		  <input type="submit" name="addsave" value="ä¿å­˜" class="admin_submit" />
+		  <input type="button" name="add_form" id="add_form" value="ç»§ç»­æ·»åŠ " class="admin_submit" />
+		  <input name="submit22" type="button" class="admin_submit"    value="è¿” å›" onclick="history.go(-1)"/>
 		  </td>
         </tr>
       </table>

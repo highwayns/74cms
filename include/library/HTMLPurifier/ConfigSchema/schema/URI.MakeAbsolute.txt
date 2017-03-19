@@ -1,4 +1,4 @@
-URI.MakeAbsolute
+﻿URI.MakeAbsolute
 TYPE: bool
 VERSION: 2.1.0
 DEFAULT: false

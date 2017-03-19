@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-{#qishi_help_category set="ÁĞ±íÃû:cat,Ãû³Æ³¤¶È:10,Ğ¡Àà:GET[id]"#}
-<title>{#$cat.categoryname#}- °ïÖú - {#$QISHI.site_name#}</title>
+{#qishi_help_category set="åˆ—è¡¨å:cat,åç§°é•¿åº¦:10,å°ç±»:GET[id]"#}
+<title>{#$cat.categoryname#}- å¸®åŠ© - {#$QISHI.site_name#}</title>
 <meta name="description" content="{#$page.description#}">
 <meta name="keywords" content="{#$page.keywords#}">
-<meta name="author" content="ÆïÊ¿CMS" />
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link rel="shortcut icon" href="{#$QISHI.site_dir#}favicon.ico" />
 <link href="{#$QISHI.site_template#}css/common.css" rel="stylesheet" type="text/css" />
@@ -27,12 +27,12 @@ $(document).ready(function(){
 	});
 	$("#help_searcform #search_go").click(function()
 	{
-		if ($("#help_searcform #key").val()=="" || $("#key").val()=="ÇëÊäÈë¹Ø¼ü×Ö...")
+		if ($("#help_searcform #key").val()=="" || $("#key").val()=="è¯·è¾“å…¥å…³é”®å­—...")
 			{
-				alert("ÇëÊäÈë¹Ø¼ü×Ö");
+				alert("è¯·è¾“å…¥å…³é”®å­—");
 				return false;
 			}
-	$("body").append('<div id="pageloadingbox">Ò³Ãæ¼ÓÔØÖĞ....</div><div id="pageloadingbg"></div>');
+	$("body").append('<div id="pageloadingbox">é¡µé¢åŠ è½½ä¸­....</div><div id="pageloadingbg"></div>');
 	$("#pageloadingbg").css("opacity", 0.5);
 	$.get("{#$QISHI.site_dir#}plus/ajax_search_location.php", {"act":"QS_helpsearch","key":$("#help_searcform #key").val(),"page":1},
 			function (data,textStatus)
@@ -42,7 +42,7 @@ $(document).ready(function(){
 		);
 	});
 	$("#help_searcform #key").focus(function(){
-	if ($("#key").val()=="ÇëÊäÈë¹Ø¼ü×Ö...")
+	if ($("#key").val()=="è¯·è¾“å…¥å…³é”®å­—...")
 	{
 	$("#help_searcform #key").css('color','').val('');
 	}  
@@ -52,32 +52,32 @@ $(document).ready(function(){
 </head>
 <body {#if $QISHI.body_bgimg#}style="background:url({#$QISHI.site_domain#}{#$QISHI.site_dir#}data/{#$QISHI.updir_images#}/{#$QISHI.body_bgimg#}) repeat-x center 38px;"{#/if#}>
 {#include file="header.htm"#}
-<!-- µ±Ç°Î»ÖÃ -->
+<!-- å½“å‰ä½ç½® -->
 <div class="page_location link_bk">
-	µ±Ç°Î»ÖÃ£º<a href="{#$QISHI.site_dir#}">Ê×Ò³</a>&nbsp;>&nbsp;<a href="{#"QS_help"|qishi_url#}">°ïÖú</a>&nbsp;>&nbsp;<a href="{#$cat.url#}">{#$cat.categoryname#}</a>
+	å½“å‰ä½ç½®ï¼š<a href="{#$QISHI.site_dir#}">é¦–é¡µ</a>&nbsp;>&nbsp;<a href="{#"QS_help"|qishi_url#}">å¸®åŠ©</a>&nbsp;>&nbsp;<a href="{#$cat.url#}">{#$cat.categoryname#}</a>
 </div>
-	<!-- Ö÷ÌåÄÚÈİ -->
+	<!-- ä¸»ä½“å†…å®¹ -->
 	<div class="container link_bk">
 		<div class="about_left">
-			<h2 class="about_tit">°ïÖúÖĞĞÄ</h2>
+			<h2 class="about_tit">å¸®åŠ©ä¸­å¿ƒ</h2>
 			<ul>
-				{#qishi_help_category set="ÁĞ±íÃû:category,´óÀà:0"#}
+				{#qishi_help_category set="åˆ—è¡¨å:category,å¤§ç±»:0"#}
 				{#foreach from=$category item=list#}
 				<li class="help_nav t"><a href="javascript:void(0);">{#$list.title#}</a></li>
 				<ul class="nav_son" style="display:none;">
-					{#qishi_help_category set="ÁĞ±íÃû:sclass,´óÀà:"|cat:$list.id#}
+					{#qishi_help_category set="åˆ—è¡¨å:sclass,å¤§ç±»:"|cat:$list.id#}
 					{#foreach from=$sclass item=slist#}
 					<li><a href="{#$slist.url#}">{#$slist.title#}</a></li>
 					{#/foreach#}
-					<!-- <li class="active"><a href="#">Ö°Î»ÍÆ¹ã</a></li> -->
+					<!-- <li class="active"><a href="#">èŒä½æ¨å¹¿</a></li> -->
 				</ul>
 				{#/foreach#}
 			</ul>
 		</div>
 		<div class="help_sreach clearfix" id="help_searcform">
-			<div class="f-left"><input type="text" class="input_text_300" placeholder="ÇëÊäÈëÎÊÌâ¹Ø¼ü×Ö" name="key" id="key" /></div>
-			<div class="f-left"><input type="submit" value="ËÑË÷" class="but70lan" id="search_go" /></div>
-			<div class="f-left hot-help">ÈÈÃÅ¹Ø¼ü×Ö£º<a href="{#"QS_helpsearch"|qishi_url#}?key={#"ÕÒ»ØÃÜÂë"|escape:"url"#}">ÕÒ»ØÃÜÂë</a><a href="{#"QS_helpsearch"|qishi_url#}?key={#"ÖÃ¶¥"|escape:"url"#}">ÖÃ¶¥</a><a href="{#"QS_helpsearch"|qishi_url#}?key={#"ÍÆ¼ö"|escape:"url"#}">ÍÆ¼ö</a><a href="{#"QS_helpsearch"|qishi_url#}?key={#"Ä£°æ"|escape:"url"#}">Ä£°æ</a><a href="{#"QS_helpsearch"|qishi_url#}?key={#"µç×ÓµØÍ¼"|escape:"url"#}">µç×ÓµØÍ¼</a></div>
+			<div class="f-left"><input type="text" class="input_text_300" placeholder="è¯·è¾“å…¥é—®é¢˜å…³é”®å­—" name="key" id="key" /></div>
+			<div class="f-left"><input type="submit" value="æœç´¢" class="but70lan" id="search_go" /></div>
+			<div class="f-left hot-help">çƒ­é—¨å…³é”®å­—ï¼š<a href="{#"QS_helpsearch"|qishi_url#}?key={#"æ‰¾å›å¯†ç "|escape:"url"#}">æ‰¾å›å¯†ç </a><a href="{#"QS_helpsearch"|qishi_url#}?key={#"ç½®é¡¶"|escape:"url"#}">ç½®é¡¶</a><a href="{#"QS_helpsearch"|qishi_url#}?key={#"æ¨è"|escape:"url"#}">æ¨è</a><a href="{#"QS_helpsearch"|qishi_url#}?key={#"æ¨¡ç‰ˆ"|escape:"url"#}">æ¨¡ç‰ˆ</a><a href="{#"QS_helpsearch"|qishi_url#}?key={#"ç”µå­åœ°å›¾"|escape:"url"#}">ç”µå­åœ°å›¾</a></div>
 		</div>
 		<div class="about_right">
 			
@@ -86,18 +86,18 @@ $(document).ready(function(){
 			</div>
 			<div class="about_r_content">
 				<ul>
-					{#qishi_help_list set="ÁĞ±íÃû:help,ÏÔÊ¾ÊıÄ¿:25,±êÌâ³¤¶È:45,Ìî²¹×Ö·û:...,Ğ¡Àà:GET[id],·ÖÒ³ÏÔÊ¾:1"#}
+					{#qishi_help_list set="åˆ—è¡¨å:help,æ˜¾ç¤ºæ•°ç›®:25,æ ‡é¢˜é•¿åº¦:45,å¡«è¡¥å­—ç¬¦:...,å°ç±»:GET[id],åˆ†é¡µæ˜¾ç¤º:1"#}
 					{#foreach from=$help item=list#}
 					<li><a href="{#$list.url#}"  target="_blank">{#$list.title#}</a></li>
 					{#foreachelse#}
-					<li>Ã»ÓĞÏà¹ØĞÅÏ¢£¡</li>
+					<li>æ²¡æœ‰ç›¸å…³ä¿¡æ¯ï¼</li>
 					{#/foreach#}
 				</ul>
 			</div>
 		</div>
 		<div class="clear"></div>
 	</div>
-	<!-- Ö÷ÌåÄÚÈİ ½áÊø -->
+	<!-- ä¸»ä½“å†…å®¹ ç»“æŸ -->
 	{#include file="footer.htm"#}
 </body>
 </html>

@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
  * 74cms WAP
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -45,11 +45,11 @@ elseif ($act == 'index')
 		{
 			if($value['sex']==1)
 			{
-				$value['fullname']=cut_str($value['fullname'],1,0,"ÏÈÉú");
+				$value['fullname']=cut_str($value['fullname'],1,0,"å…ˆç”Ÿ");
 			}
 			elseif($value['sex']==2)
 			{
-				$value['fullname']=cut_str($value['fullname'],1,0,"Å®Ê¿");
+				$value['fullname']=cut_str($value['fullname'],1,0,"å¥³å£«");
 			}
 		}
 		$row[$key]=$value;
@@ -77,11 +77,11 @@ elseif($act=="ajax_collect_resume")
 			{
 				if($list['sex']==1)
 				{
-					$list['fullname']=cut_str($list['fullname'],1,0,"ÏÈÉú");
+					$list['fullname']=cut_str($list['fullname'],1,0,"å…ˆç”Ÿ");
 				}
 				elseif($list['sex']==2)
 				{
-					$list['fullname']=cut_str($list['fullname'],1,0,"Å®Ê¿");
+					$list['fullname']=cut_str($list['fullname'],1,0,"å¥³å£«");
 				}
 			}
 			$favoriteshtml.='<div class="get_resume_box" onclick="window.location.href="../wap-resume-show.php?id='.$list["resume_id"].'
@@ -101,11 +101,11 @@ elseif($act=="ajax_collect_resume_add")
 	$sql="select * from ".table("company_favorites")." where resume_id=$resume_id and company_uid=$uid ";
 	$collect_resume=$db->getone($sql);
 	if($_SESSION["utype"]!=1){
-		exit("ÆóÒµ»áÔ±µÇÂ¼ºóÊÕ²Ø¼òÀú");
+		exit("ä¼ä¸šä¼šå‘˜ç™»å½•åæ”¶è—ç®€å†");
 	}
 	else if($collect_resume)
 	{
-		exit("ÄúÒÑ¾­ÊÕ²Ø¹ı´Ë¼òÀú");
+		exit("æ‚¨å·²ç»æ”¶è—è¿‡æ­¤ç®€å†");
 	}
 	else
 	{

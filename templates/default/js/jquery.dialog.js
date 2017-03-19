@@ -1,4 +1,4 @@
-var dialogFirst=true;
+﻿var dialogFirst=true;
 function dialog(title,content,width,height,cssName,displayClose)
 {
 	if (width=='')
@@ -14,7 +14,7 @@ if(dialogFirst==true){
   temp_float="<div class=\"FloatBg\"  style=\"height:"+$(document).height()+"px;width:"+$(document).width()+"px; background-color:#000000; background:#f00\9; filter:alpha(opacity=50); opacity:0.3\"></div>";
   temp_float+="<div class=\"FloatBox\">";
   temp_float+="<div class=\"Box\">";
-  temp_float+="<div class=\"title\"><h4></h4><span class=\"DialogClose\" title=\"�ر�\" id=\"DialogClose\"></span></div>";
+  temp_float+="<div class=\"title\"><h4></h4><span class=\"DialogClose\" title=\"关闭\" id=\"DialogClose\"></span></div>";
   temp_float+="<div class=\"content link_lan\" style=\" padding-top:10px;\"><div class=\"loading\"></div></div>";
   temp_float+="</div></div>";
   $("body").append(temp_float);

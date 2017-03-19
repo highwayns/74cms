@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=false;"  />
 <meta name="format-detection" content="telephone=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>¸öÈË»áÔ±ÖĞĞÄ</title>
-<meta name="author" content="ÆïÊ¿CMS" />
+<title>ä¸ªäººä¼šå‘˜ä¸­å¿ƒ</title>
+<meta name="author" content="éª‘å£«CMS" />
 <meta name="copyright" content="74cms.com" />
 <link href="../css/common.css" rel="stylesheet" type="text/css" />
 <link href="../css/user.css" rel="stylesheet" type="text/css" />
@@ -17,19 +17,19 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-	//´ò¿ª¶¥²¿²Ëµ¥
+	//æ‰“å¼€é¡¶éƒ¨èœå•
 	$("#topmenu_sub").click( function () { 
 		$("#topmenu").slideToggle("fast");
 	});
-	// É¾³ıÅàÑµ¾­Àú
+	// åˆ é™¤åŸ¹è®­ç»å†
 	$(".exp_del_but").click(function(){
 		var id=$(this).attr("data");
 		$.get("?act=resume_train_del",{ train_id: ""+id+""},function(data){
 			if(data=="ok"){
-				alert("É¾³ı³É¹¦");
+				alert("åˆ é™¤æˆåŠŸ");
 				location.reload();
 			}else if(data=="err"){
-				alert("É¾³ıÊ§°Ü");
+				alert("åˆ é™¤å¤±è´¥");
 			}
 		})
 	});
@@ -39,52 +39,52 @@ $(document).ready(function()
 <body>
 <div class=""></div>
 <div class="sub_head_top">
-	<div class="title">ÅàÑµ¾­Àú</div>
+	<div class="title">åŸ¹è®­ç»å†</div>
 	<div class="back" id="pageback"><img src="../images/18.jpg" alt="#"   border="0"/></div>  
 	<div class="menu" id="topmenu_sub"><a href="#"><img src="../images/2.jpg"  border="0"/></a></div>
 </div>
 
 
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 <div class="topnav" id="topmenu">
   <div class="list" onclick='window.location.href="../index.php";'>
-    <div class="box"><img src="../images/9.jpg"  border="0"/><br />Ê×Ò³</div>
+    <div class="box"><img src="../images/9.jpg"  border="0"/><br />é¦–é¡µ</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-jobs-list.php";'>
-    <div class="box"><img src="../images/11.jpg"  border="0"/><br />ËÑÖ°Î»</div>
+    <div class="box"><img src="../images/11.jpg"  border="0"/><br />æœèŒä½</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-resume-list.php";'>
-    <div class="box"><img src="../images/12.jpg"  border="0"/><br />ËÑ¼òÀú</div>
+    <div class="box"><img src="../images/12.jpg"  border="0"/><br />æœç®€å†</div>
   </div>
   <div class="list" onclick='window.location.href="../wap-news-list.php";'>
-    <div class="box"><img src="../images/13.jpg"  border="0"/><br />¿´×ÊÑ¶</div>
+    <div class="box"><img src="../images/13.jpg"  border="0"/><br />çœ‹èµ„è®¯</div>
   </div>
   <div class="clear"></div>
 </div>
-<!--¿ì½İ°´Å¥ -->
+<!--å¿«æ·æŒ‰é’® -->
 
 
-<!-- ÅàÑµ¾­ÀúÁĞ±íÒ³ -->
+<!-- åŸ¹è®­ç»å†åˆ—è¡¨é¡µ -->
 <div class="edu_exp_bbox">
 	{#if $resume_train_list#}
 	{#foreach from=$resume_train_list item=list#}
 	<div class="edu_exp_box">
 		<div class="exp_left" onclick="window.location.href='?act=resume_train_add&pid={#$smarty.get.pid#}&id={#$list.id#}'"><span class="company_name">{#$list.agency#}</span><br />{#$list.startyear#}.{#$list.startmonth#}-{#$list.endyear#}.{#$list.endmonth#}<br />{#$list.course#}</div>
 		<div class="exp_right">
-			<div class="exp_del_but" style="cursor: pointer;" data="{#$list.id#}">É¾³ı</div>
+			<div class="exp_del_but" style="cursor: pointer;" data="{#$list.id#}">åˆ é™¤</div>
 		</div>
 		<div class="clear"></div>
 	</div>
 	{#/foreach#}
 	{#else#}
 	<div class="edu_exp_box" style="text-align: center;line-height: 85px;">
-		ÄúÃ»ÓĞÌí¼ÓÅàÑµ¾­Àú
+		æ‚¨æ²¡æœ‰æ·»åŠ åŸ¹è®­ç»å†
 	</div>
 	{#/if#}
 </div>
 <div class="edu_exp_but_group">
-	<div class="edu_exp_add_but"><a href="?act=resume_train_add&pid={#$smarty.get.pid#}">Ìí¼Ó</a></div>
-	<div class="edu_exp_save_but" onclick="window.location.href='wap_user.php'" style="cursor: pointer;"><a>·µ»Ø¸öÈË»áÔ±ÖĞĞÄ</a></div>
+	<div class="edu_exp_add_but"><a href="?act=resume_train_add&pid={#$smarty.get.pid#}">æ·»åŠ </a></div>
+	<div class="edu_exp_save_but" onclick="window.location.href='wap_user.php'" style="cursor: pointer;"><a>è¿”å›ä¸ªäººä¼šå‘˜ä¸­å¿ƒ</a></div>
 	<dic class="clear"></dic>
 </div>
 

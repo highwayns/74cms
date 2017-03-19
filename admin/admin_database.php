@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
  /*
- * 74cms Êı¾İ¿â
+ * 74cms æ•°æ®åº“
  * ============================================================================
- * °æÈ¨ËùÓĞ: ÆïÊ¿ÍøÂç£¬²¢±£ÁôËùÓĞÈ¨Àû¡£
- * ÍøÕ¾µØÖ·: http://www.74cms.com£»
+ * ç‰ˆæƒæ‰€æœ‰: éª‘å£«ç½‘ç»œï¼Œå¹¶ä¿ç•™æ‰€æœ‰æƒåˆ©ã€‚
+ * ç½‘ç«™åœ°å€: http://www.74cms.comï¼›
  * ----------------------------------------------------------------------------
- * Õâ²»ÊÇÒ»¸ö×ÔÓÉÈí¼ş£¡ÄúÖ»ÄÜÔÚ²»ÓÃÓÚÉÌÒµÄ¿µÄµÄÇ°ÌáÏÂ¶Ô³ÌĞò´úÂë½øĞĞĞŞ¸ÄºÍ
- * Ê¹ÓÃ£»²»ÔÊĞí¶Ô³ÌĞò´úÂëÒÔÈÎºÎĞÎÊ½ÈÎºÎÄ¿µÄµÄÔÙ·¢²¼¡£
+ * è¿™ä¸æ˜¯ä¸€ä¸ªè‡ªç”±è½¯ä»¶ï¼æ‚¨åªèƒ½åœ¨ä¸ç”¨äºå•†ä¸šç›®çš„çš„å‰æä¸‹å¯¹ç¨‹åºä»£ç è¿›è¡Œä¿®æ”¹å’Œ
+ * ä½¿ç”¨ï¼›ä¸å…è®¸å¯¹ç¨‹åºä»£ç ä»¥ä»»ä½•å½¢å¼ä»»ä½•ç›®çš„çš„å†å‘å¸ƒã€‚
  * ============================================================================
 */
 define('IN_QISHI', true);
@@ -16,23 +16,23 @@ require_once(ADMIN_ROOT_PATH.'include/admin_database.fun.php');
 $act = !empty($_REQUEST['act']) ? trim($_REQUEST['act']) : 'backup';
 $backup_dir="backup";
 $smarty->assign('act',$act);
-//±¸·İ
+//å¤‡ä»½
 if($act == 'backup')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"database");
 	$pre = str_replace('_', '\_', $pre);
 	$smarty->assign('list',$db->getall("SHOW TABLES LIKE '$pre%'", MYSQL_NUM));
-	$smarty->assign('pageheader',"Êı¾İ¿â");
+	$smarty->assign('pageheader',"æ•°æ®åº“");
 	$smarty->assign('navlabel',"backup");
 	$smarty->display('database/admin_database_backup.htm');
 }
-//Ö´ĞĞ±¸·İ
+//æ‰§è¡Œå¤‡ä»½
 elseif($act =='do_backup')
 {
 	check_permissions($_SESSION['admin_purview'],"database");
-	if (!file_exists("../data/".$backup_dir."/"))adminmsg("±¸·İÎÄ¼ş´æ·ÅÄ¿Â¼data/".$backup_dir."²»´æÔÚ£¡",0);
-	if (!is_writable("../data/".$backup_dir."/"))adminmsg("±¸·İÎÄ¼ş´æ·ÅÄ¿Â¼data/".$backup_dir."²»¿ÉĞ´£¡",0);
+	if (!file_exists("../data/".$backup_dir."/"))adminmsg("å¤‡ä»½æ–‡ä»¶å­˜æ”¾ç›®å½•data/".$backup_dir."ä¸å­˜åœ¨ï¼",0);
+	if (!is_writable("../data/".$backup_dir."/"))adminmsg("å¤‡ä»½æ–‡ä»¶å­˜æ”¾ç›®å½•data/".$backup_dir."ä¸å¯å†™ï¼",0);
 	$limit_size = !empty($_REQUEST['limit_size']) ? intval($_REQUEST['limit_size']) : '2048'; 
 	$mysql_type = !empty($_REQUEST['mysql_type']) ? trim($_REQUEST['mysql_type']) : '';
 	$table_id = !empty($_REQUEST['table_id']) ? intval($_REQUEST['table_id']) : 0;
@@ -51,7 +51,7 @@ elseif($act =='do_backup')
 		}
 		else
 		{
-		adminmsg("ÄúÃ»ÓĞÑ¡Ôñ±¸·İµÄ±í£¡",1);
+		adminmsg("æ‚¨æ²¡æœ‰é€‰æ‹©å¤‡ä»½çš„è¡¨ï¼",1);
 		}
 	$db_version = $db->dbversion();
 	$sql = '';
@@ -105,15 +105,15 @@ elseif($act =='do_backup')
 		{
 			if (!write_file("../data/{$backup_dir}/{$file}_{$num}.sql", $sql))
 			{
-			adminmsg('±¸·İÊı¾İ¿â¾í-'.$num.'Ê§°Ü',0);
+			adminmsg('å¤‡ä»½æ•°æ®åº“å·-'.$num.'å¤±è´¥',0);
 			}
 			if ($j == $row_count-1)
 			{
 			$i++;
 			}
-			$link[0]['text'] = "ÏµÍ³½«×Ô¶¯¼ÌĞø...";
+			$link[0]['text'] = "ç³»ç»Ÿå°†è‡ªåŠ¨ç»§ç»­...";
 			$link[0]['href'] = "admin_database.php?act=do_backup&limit_size={$limit_size}&mysql_type={$mysql_type}&file={$file}&num=".($num+1)."&table_id={$i}&pos=".$j;
-			adminmsg('ÎÄ¼ş'.$file.'_'.$num.'.sql ³É¹¦±¸·İ¡£ÏµÍ³½«×Ô¶¯¼ÌĞø...',1,$link,true,1);
+			adminmsg('æ–‡ä»¶'.$file.'_'.$num.'.sql æˆåŠŸå¤‡ä»½ã€‚ç³»ç»Ÿå°†è‡ªåŠ¨ç»§ç»­...',1,$link,true,1);
 			exit();
 		}else{
 			$sql .= $table_sql;
@@ -126,24 +126,24 @@ elseif($act =='do_backup')
 	{
 		if (!write_file("../data/{$backup_dir}/{$file}_{$num}.sql", $sql))
 		{
-		adminmsg("±¸·İÊı¾İ¿â¾í-{$num}Ê§°Ü",0);
+		adminmsg("å¤‡ä»½æ•°æ®åº“å·-{$num}å¤±è´¥",0);
 		}
-		$link[0]['text'] = "³ÌĞò½«×Ô¶¯¼ÌĞø...";
+		$link[0]['text'] = "ç¨‹åºå°†è‡ªåŠ¨ç»§ç»­...";
 		$link[0]['href'] = "admin_database.php?act=do_backup&limit_size=".$limit_size."&mysql_type=".$mysql_type."&file=".$file."&num=".($num+1)."&table_id=".($i+1);
-		adminmsg('ÎÄ¼ş' . $file . '_' . $num.'.sql ³É¹¦±¸·İ¡£³ÌĞò½«×Ô¶¯¼ÌĞø...', 1,$link,true,2);
+		adminmsg('æ–‡ä»¶' . $file . '_' . $num.'.sql æˆåŠŸå¤‡ä»½ã€‚ç¨‹åºå°†è‡ªåŠ¨ç»§ç»­...', 1,$link,true,2);
 		exit();
 	}
 	elseif ($i == $count-1)
 	{
 		if (!write_file("../data/{$backup_dir}/{$file}_{$num}.sql", $sql))
 		{
-		adminmsg('±¸·İÊı¾İ¿â¾í-{$num}Ê§°Ü');
+		adminmsg('å¤‡ä»½æ•°æ®åº“å·-{$num}å¤±è´¥');
 		}
 		@unlink("../data/{$backup_dir}/temp.txt");
-		$link[0]['text'] = "²é¿´±¸·İÎÄ¼ş";
+		$link[0]['text'] = "æŸ¥çœ‹å¤‡ä»½æ–‡ä»¶";
 		$link[0]['href'] = "?act=restore";
-		write_log("Êı¾İ¿â±¸·İ³É¹¦", $_SESSION['admin_name'],3);
-		adminmsg('Êı¾İ¿â±¸·İ³É¹¦',2,$link);
+		write_log("æ•°æ®åº“å¤‡ä»½æˆåŠŸ", $_SESSION['admin_name'],3);
+		adminmsg('æ•°æ®åº“å¤‡ä»½æˆåŠŸ',2,$link);
 		}
 		elseif ($j == 0)
 		{
@@ -155,7 +155,7 @@ elseif($act =='restore')
 {
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"database");
-	if (!file_exists("../data/{$backup_dir}/"))adminmsg("±¸·İÎÄ¼ş´æ·ÅÄ¿Â¼data/backup²»´æÔÚ£¡",0);
+	if (!file_exists("../data/{$backup_dir}/"))adminmsg("å¤‡ä»½æ–‡ä»¶å­˜æ”¾ç›®å½•data/backupä¸å­˜åœ¨ï¼",0);
 	$data_backup_list = $file_info = array();
 	$dir = opendir('../data/'.$backup_dir);
 		while($file = readdir($dir))
@@ -187,7 +187,7 @@ elseif($act =='restore')
 		$file_info[$key]['mysql_ver'] = $sqlfile_info_arr['mysql_ver'];
 		$file_info[$key]['add_time'] = $sqlfile_info_arr['add_time'];
 	}
-	$smarty->assign('pageheader',"Êı¾İ¿â");
+	$smarty->assign('pageheader',"æ•°æ®åº“");
 	$smarty->assign('navlabel',"restore");
 	$smarty->assign('list',array_reverse($file_info));
 	$smarty->display('database/admin_database_restore.htm');
@@ -196,7 +196,7 @@ elseif($act =='del')
 {
 	check_token();
 	check_permissions($_SESSION['admin_purview'],"database");
-	$file_name = !empty($_REQUEST['file_name']) ? $_REQUEST['file_name'] : adminmsg('ÇëÑ¡ÔñÏîÄ¿',0);
+	$file_name = !empty($_REQUEST['file_name']) ? $_REQUEST['file_name'] : adminmsg('è¯·é€‰æ‹©é¡¹ç›®',0);
 	if (!is_array($file_name)) $file_name=array($file_name);
 	foreach ($file_name as $fname)
 	{
@@ -217,8 +217,8 @@ elseif($act =='del')
 		}	
 		unset($sql_file,$file);
 	}
-	write_log("É¾³ı±¸·İÎÄ¼ş³É¹¦", $_SESSION['admin_name'],3);
-	adminmsg('É¾³ı±¸·İÎÄ¼ş³É¹¦',2);
+	write_log("åˆ é™¤å¤‡ä»½æ–‡ä»¶æˆåŠŸ", $_SESSION['admin_name'],3);
+	adminmsg('åˆ é™¤å¤‡ä»½æ–‡ä»¶æˆåŠŸ',2);
 }
 elseif($act =='import')
 {
@@ -246,25 +246,25 @@ elseif($act =='import')
 		}
 		else
 		{
-			adminmsg('¸Ã±¸·İÎÄ¼ş²»´æÔÚ!',0);
+			adminmsg('è¯¥å¤‡ä»½æ–‡ä»¶ä¸å­˜åœ¨!',0);
 		}
 		closedir("../data/".$backup_dir);
 		$file ="../data/{$backup_dir}/{$backup_file[0]}";
 		$file_info = get_sqlfile_info($file);
 		if($file_info['74cms_ver'] != QISHI_VERSION)
 		{
-		adminmsg('ÆïÊ¿CMSµ±Ç°³ÌĞòÓë±¸·İ³ÌĞò°æ±¾²»Ò»ÖÂ');
+		adminmsg('éª‘å£«CMSå½“å‰ç¨‹åºä¸å¤‡ä»½ç¨‹åºç‰ˆæœ¬ä¸ä¸€è‡´');
 		}
 		$_SESSION['backup_file']=$backup_file;
 		$filekey=intval($_GET['filekey']);
 		$backup_file=$_SESSION['backup_file'][$filekey];
 		if (empty($backup_file))
 		{
-			$link[0]['text'] = "²é¿´±¸·İÎÄ¼ş";
+			$link[0]['text'] = "æŸ¥çœ‹å¤‡ä»½æ–‡ä»¶";
 			$link[0]['href'] = "?act=restore";
 			unset($_SESSION['backup_file']);
-			write_log("Êı¾İ¿â»¹Ô­³É¹¦", $_SESSION['admin_name'],3);
-			adminmsg('Êı¾İ¿â»¹Ô­³É¹¦',2,$link);
+			write_log("æ•°æ®åº“è¿˜åŸæˆåŠŸ", $_SESSION['admin_name'],3);
+			adminmsg('æ•°æ®åº“è¿˜åŸæˆåŠŸ',2,$link);
 		}
 		else
 		{
@@ -282,12 +282,12 @@ elseif($act =='import')
 						{
 						$arr[$i] = str_replace('DEFAULT CHARSET='. str_replace('-', '', QISHI_CHARSET), '', $arr[$i]);
 						}
-					!$db->query($arr[$i])?adminmsg('»¹Ô­Ê§°Ü',0):"";
+					!$db->query($arr[$i])?adminmsg('è¿˜åŸå¤±è´¥',0):"";
 				}
 			}			
-			$link[0]['text'] = "ÏµÍ³½«×Ô¶¯¼ÌĞø...";
+			$link[0]['text'] = "ç³»ç»Ÿå°†è‡ªåŠ¨ç»§ç»­...";
 			$link[0]['href'] = "?act=import&file_name={$_GET['file_name']}&filekey=".($filekey+1);
-			adminmsg("»¹Ô­·Ö¾í ({$backup_file}) ³É¹¦£¬ÏµÍ³½«×Ô¶¯»¹Ô­ÏÂÒ»¸ö·Ö¾í...",1,$link,true,2);
+			adminmsg("è¿˜åŸåˆ†å· ({$backup_file}) æˆåŠŸï¼Œç³»ç»Ÿå°†è‡ªåŠ¨è¿˜åŸä¸‹ä¸€ä¸ªåˆ†å·...",1,$link,true,2);
 		}
 }
 elseif($act == 'optimize')
@@ -295,7 +295,7 @@ elseif($act == 'optimize')
 	get_token();
 	check_permissions($_SESSION['admin_purview'],"database");
 	$smarty->assign('list',get_optimize_list());
-	$smarty->assign('pageheader',"Êı¾İ¿â");
+	$smarty->assign('pageheader',"æ•°æ®åº“");
 	$smarty->assign('navlabel',"optimize");
 	$smarty->display('database/admin_database_optimize.htm');
 }
@@ -306,15 +306,15 @@ elseif($act == 'optimize_table')
 	$tablename=$_POST['tablename'];
 	if (empty($tablename))
 	{
-	adminmsg('ÄúÃ»ÓĞÑ¡ÔñÏîÄ¿',0);
+	adminmsg('æ‚¨æ²¡æœ‰é€‰æ‹©é¡¹ç›®',0);
 	}
 	if (is_array($tablename))
 	{
 		$sqlstr=implode(",",$tablename);
 		if ($db->query("OPTIMIZE TABLE $sqlstr"))
 		{	
-			write_log("ÓÅ»¯Êı¾İ¿â³É¹¦", $_SESSION['admin_name'],3);
-			adminmsg('ÓÅ»¯³É¹¦!',2);
+			write_log("ä¼˜åŒ–æ•°æ®åº“æˆåŠŸ", $_SESSION['admin_name'],3);
+			adminmsg('ä¼˜åŒ–æˆåŠŸ!',2);
 		}
 	}
 }

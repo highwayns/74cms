@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
 <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,9 +6,9 @@
   <div class="clear"></div>
 </div>
 <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
+	<h2>æç¤ºï¼š</h2>
 	<p>
-ÏµÍ³Ä¬ÈÏ·ÖÀà²»ÄÜÉ¾³ı£¡<br />
+ç³»ç»Ÿé»˜è®¤åˆ†ç±»ä¸èƒ½åˆ é™¤ï¼<br />
 </p>
 </div>
   <form id="form1" name="form1" method="post" action="?act=del_property">
@@ -16,12 +16,12 @@
     <table width="100%" border="0" cellpadding="0" cellspacing="0" id="list" class="link_lan"  >
     <tr>
       <td height="26" class="admin_list_tit admin_list_first" >
-      <label id="chkAll"><input type="checkbox" name=" " title="È«Ñ¡/·´Ñ¡" id="chk"/>ÊôĞÔÃû³Æ</label></td>
-	  <td width="160"   align="center"  class="admin_list_tit">ÀàĞÍ</td>
-      <td width="160"   align="center"  class="admin_list_tit">ÅÅĞò</td>
-      <td width="100"   class="admin_list_tit">²Ù×÷</td>
+      <label id="chkAll"><input type="checkbox" name=" " title="å…¨é€‰/åé€‰" id="chk"/>å±æ€§åç§°</label></td>
+	  <td width="160"   align="center"  class="admin_list_tit">ç±»å‹</td>
+      <td width="160"   align="center"  class="admin_list_tit">æ’åº</td>
+      <td width="100"   class="admin_list_tit">æ“ä½œ</td>
     </tr>
-	{#qishi_news_property set="ÁĞ±íÃû:property"#}
+	{#qishi_news_property set="åˆ—è¡¨å:property"#}
 	  {#foreach from=$property item=list#}
      <tr>
       <td   class="admin_list admin_list_first" >
@@ -31,18 +31,18 @@
 	  </td>
 	   <td align="center"  class="admin_list">
 	    {#if $list.admin_set=="1"#}
-			   ÏµÍ³·ÖÀà
+			   ç³»ç»Ÿåˆ†ç±»
 			   {#else#}
-			     ×Ô¶¨ÒåÊôĞÔ
+			     è‡ªå®šä¹‰å±æ€§
 			   {#/if#}
 	   </td>
       <td align="center"  class="admin_list">
 	  {#$list.category_order#}
 	  </td>
       <td class="admin_list">
-	 <a href="?act=edit_property&id={#$list.id#}">ĞŞ¸Ä</a>&nbsp;&nbsp;
+	 <a href="?act=edit_property&id={#$list.id#}">ä¿®æ”¹</a>&nbsp;&nbsp;
 			  {#if $list.admin_set<>"1"#}
-			  |&nbsp;&nbsp;<a onclick="return confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')" href="?act=del_property&id={#$list.id#}&{#$urltoken#}">É¾³ı</a>
+			  |&nbsp;&nbsp;<a onclick="return confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')" href="?act=del_property&id={#$list.id#}&{#$urltoken#}">åˆ é™¤</a>
 			  {#/if#}	  </td>
     </tr>
 	 {#/foreach#}
@@ -50,8 +50,8 @@
 	<table width="100%" border="0" cellspacing="10"  class="admin_list_btm">
 <tr>
         <td>
-        <input name="ButADD" type="button" class="admin_submit" id="ButADD" value="Ìí¼ÓÊôĞÔ"  onclick="window.location='?act=property_add'"/>
-		<input name="ButDel" type="submit" class="admin_submit" id="ButDel"  value="É¾³ıËùÑ¡" onclick="return confirm('ÄãÈ·¶¨ÒªÉ¾³ıÂğ£¿')"/>
+        <input name="ButADD" type="button" class="admin_submit" id="ButADD" value="æ·»åŠ å±æ€§"  onclick="window.location='?act=property_add'"/>
+		<input name="ButDel" type="submit" class="admin_submit" id="ButDel"  value="åˆ é™¤æ‰€é€‰" onclick="return confirm('ä½ ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')"/>
 		</td>
         <td width="305" align="right">
 	  

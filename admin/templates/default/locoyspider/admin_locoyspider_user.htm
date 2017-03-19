@@ -1,4 +1,4 @@
-{#include file="sys/admin_header.htm"#}
+ï»¿{#include file="sys/admin_header.htm"#}
 <div class="admin_main_nr_dbox">
  <div class="pagetit">
 	<div class="ptit"> {#$pageheader#}</div>
@@ -6,36 +6,36 @@
   <div class="clear"></div>
 </div>
     <div class="toptip">
-	<h2>ÌáÊ¾£º</h2>
-	<p>»ğ³µÍ·²É¼¯¹æÔòÇëµ½ÂÛÌ³ÏÂÔØ£¡</p>
+	<h2>æç¤ºï¼š</h2>
+	<p>ç«è½¦å¤´é‡‡é›†è§„åˆ™è¯·åˆ°è®ºå›ä¸‹è½½ï¼</p>
 	</div>
-	 <div class="toptit">Éú³É»áÔ±ÉèÖÃ</div>
+	 <div class="toptit">ç”Ÿæˆä¼šå‘˜è®¾ç½®</div>
 	    <form action="?act=set_save" method="post"  name="form1" id="form1">
 		{#$inputtoken#}
 	<table width="700" border="0" cellspacing="5" cellpadding="1" style=" margin-bottom:3px; margin-top:10px;">
     <tr>
-      <td width="180" align="right">Éú³ÉÓÃ»§Ãû£º</td>
+      <td width="180" align="right">ç”Ÿæˆç”¨æˆ·åï¼š</td>
       <td > 
       <input name="reg_usname" type="text"  class="input_text_200" id="reg_usname"   value="{#$show.reg_usname#}" maxlength="10"/>
-      ¼ÓËæ»ú×Ö·û
+      åŠ éšæœºå­—ç¬¦
        </td>
     </tr>
 	<tr>
-      <td width="180" align="right">Éú³ÉÃÜÂë£º</td>
+      <td width="180" align="right">ç”Ÿæˆå¯†ç ï¼š</td>
       <td  id="reg_password_tpye">
-	  <label><input name="reg_password_tpye"  type="radio" value="1" {#if $show.reg_password_tpye =="1"#}checked="checked"{#/if#} />ÓëÓÃ»§ÃûÏàÍ¬</label>&nbsp;&nbsp;&nbsp;
-		 <label><input name="reg_password_tpye"  type="radio" value="2" {#if $show.reg_password_tpye =="2"#}checked="checked"{#/if#} />Ëæ»úÃÜÂë</label>&nbsp;&nbsp;&nbsp;
-		 <label><input name="reg_password_tpye"  type="radio" value="3" {#if $show.reg_password_tpye =="3"#}checked="checked"{#/if#} />Ö¸¶¨ÃÜÂë</label>&nbsp;&nbsp;&nbsp;   
+	  <label><input name="reg_password_tpye"  type="radio" value="1" {#if $show.reg_password_tpye =="1"#}checked="checked"{#/if#} />ä¸ç”¨æˆ·åç›¸åŒ</label>&nbsp;&nbsp;&nbsp;
+		 <label><input name="reg_password_tpye"  type="radio" value="2" {#if $show.reg_password_tpye =="2"#}checked="checked"{#/if#} />éšæœºå¯†ç </label>&nbsp;&nbsp;&nbsp;
+		 <label><input name="reg_password_tpye"  type="radio" value="3" {#if $show.reg_password_tpye =="3"#}checked="checked"{#/if#} />æŒ‡å®šå¯†ç </label>&nbsp;&nbsp;&nbsp;   
       </td>
     </tr>
 	<tr  id="show_reg_password" style="display:none">
-      <td width="180" align="right">ÊäÈëÖ¸¶¨ÃÜÂë£º</td>
+      <td width="180" align="right">è¾“å…¥æŒ‡å®šå¯†ç ï¼š</td>
       <td >
 	  <input name="reg_password" type="text"  class="input_text_200" id="reg_password"   value="{#$show.reg_password#}" maxlength="16"/> 
       </td>
     </tr>
 	<tr>
-      <td width="180" align="right">ÎŞ·¨Æ¥ÅäEmailÔòÎªËæ»ú×Ö·û¼Ó£º</td>
+      <td width="180" align="right">æ— æ³•åŒ¹é…Emailåˆ™ä¸ºéšæœºå­—ç¬¦åŠ ï¼š</td>
       <td ><input name="reg_email" type="text"  class="input_text_200" id="reg_email"   value="{#$show.reg_email#}" maxlength="10"/>
       
        </td>
@@ -43,7 +43,7 @@
     <tr>
       <td align="right">&nbsp;</td>
       <td height="50"><span style="font-size:14px;">
-        <input name="submit2" type="submit" class="admin_submit"    value="±£´æĞŞ¸Ä"/>
+        <input name="submit2" type="submit" class="admin_submit"    value="ä¿å­˜ä¿®æ”¹"/>
       </span></td>
     </tr>
   </table>
